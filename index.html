@@ -699,6 +699,7 @@ function buildResultHTML(scenarios){
 }
 
 function runCalc(){
+  cachedResult=null;
   const scenarios=computeScenarios([...watchlist]);
   cachedResult={scenarios,currentIdx:0};
   const res=document.getElementById('wl-result');
