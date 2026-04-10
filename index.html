@@ -15,32 +15,22 @@
 }
 html{-webkit-tap-highlight-color:transparent}
 body{background:var(--bg);color:var(--white);font-family:"DM Sans",sans-serif;min-height:100vh}
-
-/* HEADER */
 .hdr{padding:22px 18px 0}
 .hdr-logo{height:56px;width:auto;object-fit:contain;object-position:left;display:block}
 .hdr-fallback{display:none;font-family:"Bebas Neue",sans-serif;font-size:52px;line-height:.9;color:var(--white)}
 .hdr-fallback em{color:var(--orange);font-style:normal}
 .hdr-dates{font-size:12px;color:var(--gray);letter-spacing:2px;text-transform:uppercase;margin-top:7px}
 .hdr-line{height:1px;background:var(--bdr);margin-top:14px}
-
-/* NAV TABS */
-.nav-tabs{display:flex;overflow-x:auto;gap:0;padding:12px 18px 0;
-  scrollbar-width:none;border-bottom:1px solid var(--bdr);margin-top:6px;
-  -webkit-overflow-scrolling:touch}
+.nav-tabs{display:flex;overflow-x:auto;gap:0;padding:12px 18px 0;scrollbar-width:none;border-bottom:1px solid var(--bdr);margin-top:6px;-webkit-overflow-scrolling:touch}
 .nav-tabs::-webkit-scrollbar{display:none}
-.dtab{flex-shrink:0;background:none;border:none;
-  border-bottom:2px solid transparent;margin-bottom:-1px;
-  padding:8px 14px 10px;cursor:pointer;color:var(--gray);
-  font-family:"DM Sans",sans-serif;transition:color .15s;text-align:center;min-width:70px}
+.dtab{flex-shrink:0;background:none;border:none;border-bottom:2px solid transparent;margin-bottom:-1px;padding:8px 14px 10px;cursor:pointer;color:var(--gray);font-family:"DM Sans",sans-serif;transition:color .15s;text-align:center;min-width:70px}
 .dtab-name{font-family:"Bebas Neue",sans-serif;font-size:23px;letter-spacing:.5px;display:block;line-height:1}
 .dtab-date{font-size:11px;display:block;margin-top:2px}
 .dtab-cnt{font-size:9px;background:var(--bdr);border-radius:10px;padding:1px 6px;margin-top:4px;display:inline-block}
 .dtab:hover{color:var(--white)}
 .dtab.on{color:var(--orange);border-bottom-color:var(--orange)}
 .dtab.on .dtab-cnt{background:var(--orange);color:#fff;font-weight:600}
-
-/* FILTER + AGENDA BARS */
+.dtab.past{opacity:.4}
 .fbar-wrap{overflow-x:auto;scrollbar-width:none;border-bottom:1px solid var(--bdr);-webkit-overflow-scrolling:touch}
 .fbar-wrap::-webkit-scrollbar{display:none}
 .fbar{display:flex;gap:7px;padding:9px 18px;width:max-content;min-width:100%;align-items:center}
@@ -55,20 +45,12 @@ body{background:var(--bg);color:var(--white);font-family:"DM Sans",sans-serif;mi
 .agbar-btn.on{border-color:var(--orange);color:var(--orange);background:rgba(232,90,30,.08)}
 .agbar-cnt{font-size:10px;background:var(--bdr);border-radius:10px;padding:1px 6px;font-weight:600}
 .agbar-btn.on .agbar-cnt{background:var(--orange);color:#fff}
-
-/* HINT + COUNT */
 .hint{padding:8px 18px;font-size:11px;color:var(--gray);min-height:30px}
 .hint.active{color:var(--orange)}
 .cnt-line{padding:2px 18px 6px;font-size:11px;color:var(--gray)}
 .cnt-line b{color:var(--white)}
-
-/* GRID */
 .grid{padding:10px 12px 60px;display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,300px),1fr));gap:10px}
-
-/* CARDS */
-.card{border:1px solid var(--bdr);border-radius:var(--r);overflow:hidden;
-  display:flex;flex-direction:column;position:relative;cursor:pointer;
-  transition:opacity .2s,border-color .2s,box-shadow .2s}
+.card{border:1px solid var(--bdr);border-radius:var(--r);overflow:hidden;display:flex;flex-direction:column;position:relative;cursor:pointer;transition:opacity .2s,border-color .2s,box-shadow .2s}
 .card:nth-child(odd){background:var(--card-a)}
 .card:nth-child(even){background:var(--card-b)}
 @media(hover:hover){.card:not(.conflict):hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,.6);border-color:rgba(232,90,30,.35)}}
@@ -80,20 +62,14 @@ body{background:var(--bg);color:var(--white);font-family:"DM Sans",sans-serif;mi
 .card.apertura{border-color:rgba(232,90,30,.55);box-shadow:0 0 16px rgba(232,90,30,.1)}
 .card.in-wl{border-color:rgba(232,90,30,.4)}
 .card.in-watched{border-color:rgba(58,170,110,.4)}
-
-/* Card action buttons */
+.card.past-card{opacity:.5}
 .card-actions{position:absolute;top:9px;right:10px;display:flex;gap:3px;z-index:2}
-.action-btn{background:rgba(0,0,0,.35);border:none;cursor:pointer;font-size:15px;
-  line-height:1;padding:4px 6px;color:var(--gray2);border-radius:6px;
-  transition:color .15s,background .15s}
+.action-btn{background:rgba(0,0,0,.35);border:none;cursor:pointer;font-size:15px;line-height:1;padding:4px 6px;color:var(--gray2);border-radius:6px;transition:color .15s,background .15s}
 .action-btn:active{transform:scale(.85)}
 .action-btn.wl-on{color:var(--orange)}
 .action-btn.w-on{color:var(--green)}
-.apertura-badge{position:absolute;top:9px;right:74px;font-size:9px;
-  background:var(--orange);color:#fff;font-weight:700;letter-spacing:1px;
-  padding:2px 6px;border-radius:8px;font-family:"Bebas Neue",sans-serif;z-index:2}
-
-/* CARD BODY */
+.apertura-badge{position:absolute;top:9px;right:74px;font-size:9px;background:var(--orange);color:#fff;font-weight:700;letter-spacing:1px;padding:2px 6px;border-radius:8px;font-family:"Bebas Neue",sans-serif;z-index:2}
+.past-badge{position:absolute;top:9px;left:10px;font-size:9px;color:var(--gray2);font-weight:600;letter-spacing:.5px;z-index:2}
 .c-body{padding:16px 16px 14px;display:flex;flex-direction:column;gap:14px}
 .c-film{display:flex;flex-direction:column;gap:6px}
 .c-time{font-family:"Bebas Neue",sans-serif;font-size:28px;color:var(--orange);letter-spacing:2px;line-height:1}
@@ -132,87 +108,79 @@ body{background:var(--bg);color:var(--white);font-family:"DM Sans",sans-serif;mi
 .prog-badge{font-size:10px;color:var(--gray2);font-weight:600;letter-spacing:.4px;white-space:nowrap}
 .empty{grid-column:1/-1;text-align:center;padding:60px 20px;color:var(--gray)}
 .empty span{font-size:44px;display:block;margin-bottom:10px}
-
-/* ── AGENDA VIEW ── */
+/* AGENDA VIEW */
 .ag-view{padding:14px 16px 60px;display:none}
 .ag-view.visible{display:block}
 .ag-section{margin-bottom:20px}
-.ag-section-title{font-family:"Bebas Neue",sans-serif;font-size:19px;color:var(--white);
-  letter-spacing:.5px;margin-bottom:10px;padding-bottom:7px;border-bottom:1px solid var(--bdr)}
-
-/* Saved agenda banner */
-.saved-agenda{background:rgba(58,170,110,.08);border:1px solid rgba(58,170,110,.3);
-  border-radius:var(--r);padding:14px;margin-bottom:20px}
-.saved-agenda-title{font-family:"Bebas Neue",sans-serif;font-size:18px;color:var(--green);
-  letter-spacing:.5px;margin-bottom:8px;display:flex;align-items:center;justify-content:space-between}
-.saved-agenda-clear{background:none;border:none;cursor:pointer;color:var(--gray2);
-  font-size:12px;padding:0;transition:color .15s}
-.saved-agenda-clear:hover{color:#e05050}
-.saved-day{margin-bottom:10px}
-.saved-day-lbl{font-size:11px;color:var(--green);text-transform:uppercase;
-  letter-spacing:1px;font-weight:600;margin-bottom:5px}
-.saved-item{display:flex;align-items:center;gap:8px;padding:6px 0;
-  border-bottom:1px solid rgba(58,170,110,.1)}
+.ag-section-title{font-family:"Bebas Neue",sans-serif;font-size:19px;color:var(--white);letter-spacing:.5px;margin-bottom:10px;padding-bottom:7px;border-bottom:1px solid var(--bdr)}
+/* Saved agenda */
+.saved-agenda{background:rgba(58,170,110,.07);border:1px solid rgba(58,170,110,.25);border-radius:var(--r);padding:14px;margin-bottom:20px}
+.saved-agenda-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px}
+.saved-agenda-title{font-family:"Bebas Neue",sans-serif;font-size:18px;color:var(--green);letter-spacing:.5px}
+.saved-agenda-clear{background:none;border:none;cursor:pointer;color:var(--gray2);font-size:11px;padding:3px 8px;border:1px solid var(--bdr);border-radius:20px;font-family:"DM Sans",sans-serif;transition:all .15s}
+.saved-agenda-clear:hover{border-color:#e05050;color:#e05050}
+/* Archive section */
+.archive-toggle{display:flex;align-items:center;justify-content:space-between;padding:8px 12px;background:rgba(0,0,0,.2);border-radius:8px;cursor:pointer;margin-bottom:6px;user-select:none}
+.archive-toggle-lbl{font-size:11px;color:var(--gray);font-weight:500}
+.archive-body{display:none}
+.archive-body.open{display:block}
+/* Today section */
+.today-banner{background:rgba(232,90,30,.1);border:1px solid rgba(232,90,30,.3);border-radius:8px;padding:7px 12px;margin-bottom:8px;font-size:11px;color:var(--orange);font-weight:600;letter-spacing:.5px}
+/* Saved items */
+.saved-day-lbl{font-size:10px;color:var(--green);text-transform:uppercase;letter-spacing:1px;font-weight:600;margin:8px 0 4px}
+.saved-item{display:flex;align-items:center;gap:8px;padding:7px 0;border-bottom:1px solid rgba(58,170,110,.08)}
 .saved-item:last-child{border-bottom:none}
-.saved-item.done{opacity:.45}
+.saved-item.done{opacity:.5}
+.saved-time{font-family:"Bebas Neue",sans-serif;font-size:18px;color:var(--orange);letter-spacing:1px;flex-shrink:0;min-width:46px}
 .saved-item.done .saved-time{color:var(--green)}
-.saved-time{font-family:"Bebas Neue",sans-serif;font-size:18px;color:var(--orange);
-  letter-spacing:1px;flex-shrink:0;min-width:46px}
 .saved-info{flex:1;min-width:0}
 .saved-title{font-size:12px;font-weight:600;color:var(--white);line-height:1.3}
 .saved-venue{font-size:10px;color:var(--gray);margin-top:1px}
-.saved-check{background:none;border:1px solid var(--bdr);border-radius:6px;cursor:pointer;
-  font-size:13px;padding:3px 6px;color:var(--gray2);transition:all .15s;flex-shrink:0}
+.saved-check{background:none;border:1px solid var(--bdr);border-radius:6px;cursor:pointer;font-size:12px;padding:3px 6px;color:var(--gray2);transition:all .15s;flex-shrink:0;font-family:"DM Sans",sans-serif}
 .saved-check.done{color:var(--green);border-color:rgba(58,170,110,.4)}
 .saved-check:hover{border-color:var(--orange);color:var(--orange)}
-.travel-warn{font-size:10px;color:#e5a020;display:flex;align-items:center;gap:4px;
-  padding:4px 8px;background:rgba(229,160,32,.08);border-radius:6px;margin:3px 0}
-
+.travel-warn{font-size:10px;color:#e5a020;display:flex;align-items:center;gap:4px;padding:3px 8px;background:rgba(229,160,32,.07);border-radius:5px;margin:2px 0}
+/* Suggestions */
+.suggestion-item{display:flex;align-items:center;gap:8px;padding:7px 10px;background:rgba(255,255,255,.03);border:1px solid var(--bdr-l);border-radius:8px;margin-bottom:5px;opacity:.7}
+.suggestion-item:hover{opacity:1}
+.suggestion-time{font-family:"Bebas Neue",sans-serif;font-size:16px;color:var(--gray);letter-spacing:1px;flex-shrink:0;min-width:46px}
+.suggestion-info{flex:1;min-width:0}
+.suggestion-title{font-size:12px;color:var(--gray);font-weight:500}
+.suggestion-meta{font-size:10px;color:var(--gray2);margin-top:1px}
+.suggestion-add{background:none;border:1px solid var(--gray2);border-radius:20px;color:var(--gray2);font-size:10px;padding:2px 8px;cursor:pointer;font-family:"DM Sans",sans-serif;transition:all .15s;white-space:nowrap;flex-shrink:0}
+.suggestion-add:hover{border-color:var(--orange);color:var(--orange)}
 /* Search */
 .ag-search-wrap{position:relative;margin-bottom:10px}
-.ag-search{width:100%;background:var(--card-a);border:1px solid var(--bdr);
-  border-radius:var(--r);color:var(--white);font-size:14px;padding:11px 14px 11px 38px;
-  font-family:"DM Sans",sans-serif;transition:border-color .15s}
+.ag-search{width:100%;background:var(--card-a);border:1px solid var(--bdr);border-radius:var(--r);color:var(--white);font-size:14px;padding:11px 14px 11px 38px;font-family:"DM Sans",sans-serif;transition:border-color .15s}
 .ag-search::placeholder{color:var(--gray2)}
 .ag-search:focus{outline:none;border-color:var(--orange)}
-.ag-search-ico{position:absolute;left:12px;top:50%;transform:translateY(-50%);
-  font-size:16px;color:var(--gray2);pointer-events:none}
-.ag-search-results{background:var(--card-b);border:1px solid var(--bdr);
-  border-radius:var(--r);margin-top:4px;overflow:hidden;display:none}
+.ag-search-ico{position:absolute;left:12px;top:50%;transform:translateY(-50%);font-size:16px;color:var(--gray2);pointer-events:none}
+.ag-search-results{background:var(--card-b);border:1px solid var(--bdr);border-radius:var(--r);margin-top:4px;overflow:hidden;display:none}
 .ag-search-results.open{display:block}
-.ag-sr-item{display:flex;align-items:center;justify-content:space-between;
-  gap:10px;padding:10px 14px;cursor:pointer;border-bottom:1px solid var(--bdr-l)}
+.ag-sr-item{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:10px 14px;border-bottom:1px solid var(--bdr-l)}
 .ag-sr-item:last-child{border-bottom:none}
 .ag-sr-item:hover{background:var(--card-a)}
 .ag-sr-title{font-size:13px;color:var(--white);font-weight:500;flex:1;min-width:0}
 .ag-sr-meta{font-size:10px;color:var(--gray)}
-.ag-sr-add{background:none;border:1px solid var(--bdr);border-radius:20px;
-  color:var(--gray);font-size:11px;padding:3px 9px;cursor:pointer;
-  font-family:"DM Sans",sans-serif;transition:all .15s;white-space:nowrap;flex-shrink:0}
+.ag-sr-add{background:none;border:1px solid var(--bdr);border-radius:20px;color:var(--gray);font-size:11px;padding:3px 9px;cursor:pointer;font-family:"DM Sans",sans-serif;transition:all .15s;white-space:nowrap;flex-shrink:0}
 .ag-sr-add:hover{border-color:var(--orange);color:var(--orange)}
 .ag-sr-add.added{border-color:var(--orange);color:var(--orange);background:rgba(232,90,30,.08)}
 .ag-sr-empty{padding:14px;text-align:center;font-size:12px;color:var(--gray)}
-
-/* Film list items */
-.ag-film-item{display:flex;align-items:center;gap:10px;padding:9px 12px;
-  background:var(--card-a);border:1px solid var(--bdr);border-radius:8px;margin-bottom:6px}
-.ag-film-item.watched-item{background:var(--card-p);border-color:var(--bdr-l);opacity:.75}
+/* Film list */
+.ag-film-item{display:flex;align-items:center;gap:10px;padding:9px 12px;background:var(--card-a);border:1px solid var(--bdr);border-radius:8px;margin-bottom:6px}
+.ag-film-item.watched-item{background:var(--card-p);border-color:var(--bdr-l);opacity:.7}
 .ag-fi-flags{font-size:15px;flex-shrink:0}
 .ag-fi-info{flex:1;min-width:0}
 .ag-fi-title{font-size:13px;font-weight:600;color:var(--white);line-height:1.3}
 .ag-fi-meta{font-size:10.5px;color:var(--gray);margin-top:2px}
 .ag-fi-actions{display:flex;align-items:center;gap:4px;flex-shrink:0}
-.ag-fi-btn{background:none;border:1px solid var(--bdr);border-radius:6px;
-  cursor:pointer;font-size:14px;padding:4px 7px;color:var(--gray2);
-  transition:all .15s;line-height:1}
+.ag-fi-btn{background:none;border:1px solid var(--bdr);border-radius:6px;cursor:pointer;font-size:14px;padding:4px 7px;color:var(--gray2);transition:all .15s;line-height:1}
 .ag-fi-btn:hover{border-color:var(--orange);color:var(--orange)}
 .ag-fi-btn.w-on{color:var(--green);border-color:rgba(58,170,110,.4)}
 .ag-fi-btn.del:hover{border-color:#e05050;color:#e05050}
-
 /* Availability */
 .av-day{border:1px solid var(--bdr);border-radius:var(--r);margin-bottom:6px;overflow:hidden}
-.av-day-header{display:flex;align-items:center;justify-content:space-between;
-  padding:11px 14px;cursor:pointer;background:var(--card-a);user-select:none}
+.av-day-header{display:flex;align-items:center;justify-content:space-between;padding:11px 14px;cursor:pointer;background:var(--card-a);user-select:none}
 .av-day-header:hover{background:var(--card-b)}
 .av-day-left{display:flex;align-items:center;gap:8px}
 .av-arrow{font-size:10px;color:var(--gray);transition:transform .2s;display:inline-block}
@@ -222,33 +190,22 @@ body{background:var(--bg);color:var(--white);font-family:"DM Sans",sans-serif;mi
 .av-summary.has-blocks{color:var(--orange)}
 .av-day-body{padding:12px 14px;background:var(--card-p);border-top:1px solid var(--bdr-l)}
 .av-blocks-list{display:flex;flex-direction:column;gap:5px;margin-bottom:10px}
-.av-block-pill{display:flex;align-items:center;justify-content:space-between;
-  background:rgba(232,90,30,.08);border:1px solid rgba(232,90,30,.25);
-  border-radius:7px;padding:6px 10px}
+.av-block-pill{display:flex;align-items:center;justify-content:space-between;background:rgba(232,90,30,.08);border:1px solid rgba(232,90,30,.25);border-radius:7px;padding:6px 10px}
 .av-block-text{font-size:12px;color:var(--white);font-weight:500}
-.av-block-remove{background:none;border:none;cursor:pointer;color:var(--gray2);
-  font-size:14px;padding:0 2px;transition:color .15s;line-height:1}
+.av-block-remove{background:none;border:none;cursor:pointer;color:var(--gray2);font-size:14px;padding:0 2px;transition:color .15s;line-height:1}
 .av-block-remove:hover{color:#e05050}
 .av-add-form{display:flex;align-items:center;gap:7px;flex-wrap:wrap;margin-bottom:8px}
-.av-time-input{background:var(--surf);border:1px solid var(--bdr);border-radius:7px;
-  color:var(--white);font-size:13px;padding:6px 9px;font-family:"DM Sans",sans-serif;width:95px;cursor:pointer}
+.av-time-input{background:var(--surf);border:1px solid var(--bdr);border-radius:7px;color:var(--white);font-size:13px;padding:6px 9px;font-family:"DM Sans",sans-serif;width:95px;cursor:pointer}
 .av-time-input:focus{outline:none;border-color:var(--orange)}
 .av-sep{font-size:12px;color:var(--gray)}
-.av-add-btn{background:rgba(232,90,30,.1);border:1px solid rgba(232,90,30,.3);
-  border-radius:7px;color:var(--orange);font-size:12px;font-weight:600;
-  padding:6px 11px;cursor:pointer;font-family:"DM Sans",sans-serif;transition:all .15s}
+.av-add-btn{background:rgba(232,90,30,.1);border:1px solid rgba(232,90,30,.3);border-radius:7px;color:var(--orange);font-size:12px;font-weight:600;padding:6px 11px;cursor:pointer;font-family:"DM Sans",sans-serif;transition:all .15s}
 .av-add-btn:hover{background:rgba(232,90,30,.2)}
-.av-day-block-btn{width:100%;background:none;border:1px solid var(--bdr);
-  border-radius:7px;color:var(--gray);font-size:12px;padding:6px;
-  cursor:pointer;font-family:"DM Sans",sans-serif;transition:all .15s}
+.av-day-block-btn{width:100%;background:none;border:1px solid var(--bdr);border-radius:7px;color:var(--gray);font-size:12px;padding:6px;cursor:pointer;font-family:"DM Sans",sans-serif;transition:all .15s}
 .av-day-block-btn:hover{border-color:#e05050;color:#e05050}
 .av-day-block-btn.blocked{border-color:rgba(224,80,80,.4);color:#e05050;background:rgba(224,80,80,.08)}
-.av-calc-btn{width:100%;margin-top:10px;padding:13px;border-radius:var(--r);
-  background:var(--orange);border:none;color:#fff;font-size:14px;font-weight:600;
-  cursor:pointer;font-family:"DM Sans",sans-serif;letter-spacing:.3px;transition:opacity .15s}
+.av-calc-btn{width:100%;margin-top:10px;padding:13px;border-radius:var(--r);background:var(--orange);border:none;color:#fff;font-size:14px;font-weight:600;cursor:pointer;font-family:"DM Sans",sans-serif;letter-spacing:.3px;transition:opacity .15s}
 .av-calc-btn:hover{opacity:.88}
 .av-calc-btn:disabled{opacity:.35;cursor:default}
-
 /* Results */
 .ag-calc-prompt{text-align:center;padding:28px 20px;color:var(--gray);font-size:13px;line-height:1.6;background:var(--card-a);border:1px solid var(--bdr);border-radius:var(--r)}
 .ag-calc-prompt strong{color:var(--orange)}
@@ -257,10 +214,7 @@ body{background:var(--bg);color:var(--white);font-family:"DM Sans",sans-serif;mi
 .ag-summary-text{font-size:13px;color:var(--gray);line-height:1.6}
 .ag-summary-text b{color:var(--white)}
 .ok{color:var(--orange)}.conflict-label{color:#e05050}
-.ag-save-btn{width:100%;margin-top:10px;padding:10px;border-radius:8px;
-  background:rgba(58,170,110,.12);border:1px solid rgba(58,170,110,.35);
-  color:var(--green);font-size:13px;font-weight:600;cursor:pointer;
-  font-family:"DM Sans",sans-serif;transition:all .15s}
+.ag-save-btn{width:100%;margin-top:10px;padding:10px;border-radius:8px;background:rgba(58,170,110,.12);border:1px solid rgba(58,170,110,.35);color:var(--green);font-size:13px;font-weight:600;cursor:pointer;font-family:"DM Sans",sans-serif;transition:all .15s}
 .ag-save-btn:hover{background:rgba(58,170,110,.2)}
 .ag-nav{display:flex;align-items:center;justify-content:center;gap:12px;margin-top:10px}
 .ag-nav-btn{background:none;border:1px solid var(--bdr);color:var(--gray);border-radius:20px;padding:5px 13px;font-size:12px;cursor:pointer;font-family:"DM Sans",sans-serif;transition:all .15s}
@@ -273,9 +227,7 @@ body{background:var(--bg);color:var(--white);font-family:"DM Sans",sans-serif;mi
 .ag-conflict-item:last-child{border-bottom:none}
 .ag-conflict-info{flex:1;min-width:0}
 .ag-conflict-item strong{color:var(--white)}
-.ag-prioritize-btn{background:none;border:1px solid #555;border-radius:20px;
-  color:#888;font-size:10px;padding:3px 9px;cursor:pointer;white-space:nowrap;
-  font-family:"DM Sans",sans-serif;transition:all .15s;flex-shrink:0}
+.ag-prioritize-btn{background:none;border:1px solid #555;border-radius:20px;color:#888;font-size:10px;padding:3px 9px;cursor:pointer;white-space:nowrap;font-family:"DM Sans",sans-serif;transition:all .15s;flex-shrink:0}
 .ag-prioritize-btn:hover{border-color:var(--orange);color:var(--orange)}
 .ag-prioritize-btn.active{border-color:var(--orange);color:var(--orange);background:rgba(232,90,30,.1)}
 .ag-day-label{font-family:"Bebas Neue",sans-serif;font-size:18px;color:var(--gray);letter-spacing:1px;margin:14px 0 7px;padding-bottom:5px;border-bottom:1px solid var(--bdr)}
@@ -290,9 +242,7 @@ body{background:var(--bg);color:var(--white);font-family:"DM Sans",sans-serif;mi
 .ag-card-actions{display:flex;gap:4px;flex-shrink:0}
 .ag-card-btn{background:none;border:1px solid var(--bdr);border-radius:6px;cursor:pointer;font-size:13px;padding:4px 6px;color:var(--gray2);transition:all .15s;line-height:1}
 .ag-card-btn:hover{border-color:var(--green);color:var(--green)}
-.ag-warn{display:flex;align-items:center;gap:5px;padding:4px 8px;margin-bottom:4px;
-  background:rgba(229,160,32,.08);border-radius:6px;font-size:10.5px;color:#e5a020}
-
+.ag-warn{display:flex;align-items:center;gap:5px;padding:4px 8px;margin-bottom:4px;background:rgba(229,160,32,.08);border-radius:6px;font-size:10.5px;color:#e5a020}
 .ag-empty{text-align:center;padding:40px 20px;color:var(--gray)}
 .ag-empty span{font-size:40px;display:block;margin-bottom:10px}
 .ag-empty p{font-size:13px;line-height:1.6}
@@ -326,7 +276,38 @@ body{background:var(--bg);color:var(--white);font-family:"DM Sans",sans-serif;mi
 const FILMS=[{"title": "Feito Pipa", "title_en": "Gugu's World", "country": "Brasil", "flags": "🇧🇷", "duration": "93 min", "day": "Martes", "date": 14, "time": "19:00", "venue": "C. de Convenciones · Patio de Banderas", "section": "🎬 Apertura", "day_order": 0, "is_cortos": false, "film_list": []}, {"title": "Queimada", "title_en": "Burn!", "country": "Italia", "flags": "🇮🇹", "duration": "112 min", "day": "Miércoles", "date": 15, "time": "10:00", "venue": "Teatro Adolfo Mejía", "section": "📽️ Retrospectiva FICCI Años 60", "day_order": 1, "is_cortos": false, "film_list": []}, {"title": "O Riso e a Faca", "title_en": "I Only Rest in the Storm", "country": "Portugal/Francia/Brasil/Rumania", "flags": "🇵🇹🇫🇷🇧🇷🇷🇴", "duration": "217 min", "day": "Miércoles", "date": 15, "time": "11:00", "venue": "CC Bocagrande ‒ Sala 5", "section": "🌎 Comp. Iberoamérica", "day_order": 1, "is_cortos": false, "film_list": []}, {"title": "Vetre, pričaj sa mnom", "title_en": "Wind, Talk to Me", "country": "Serbia/Eslovenia/Croacia", "flags": "🇷🇸🇸🇮🇭🇷", "duration": "100 min", "day": "Miércoles", "date": 15, "time": "11:20", "venue": "CC Bocagrande ‒ Sala 1", "section": "⏳ (s)paces of Time", "day_order": 1, "is_cortos": false, "film_list": []}, {"title": "Geu Jayeoni Nege Mworago Hani", "title_en": "What Does That Nature Say to You", "country": "Corea del Sur", "flags": "🇰🇷", "duration": "108 min", "day": "Miércoles", "date": 15, "time": "11:40", "venue": "CC Bocagrande ‒ Sala 3", "section": "🌍 Internacional", "day_order": 1, "is_cortos": false, "film_list": []}, {"title": "Costas — Prog. 4", "title_en": "Comunicado de Argentina · Nicaragua, semilla de soles · Palestina, otro Vietnam", "flags": "🌊", "country": "Varios", "duration": "119 min", "day": "Miércoles", "date": 15, "time": "12:00", "venue": "CC Bocagrande ‒ Sala 4", "section": "🌊 Costas", "day_order": 1, "is_cortos": true, "film_list": [{"title": "Comunicado de Argentina", "country": "Argentina/EEUU", "duration": "40 min"}, {"title": "Nicaragua, semilla de soles", "country": "México/Nicaragua", "duration": "57 min"}, {"title": "Palestina, otro Vietnam", "country": "Argentina/Italia/Palestina", "duration": "22 min"}]}, {"title": "Las almas ni los ojos", "title_en": "Neither Souls nor Eyes", "country": "Colombia", "flags": "🇨🇴", "duration": "75 min", "day": "Miércoles", "date": 15, "time": "13:00", "venue": "Teatro Adolfo Mejía", "section": "🇨🇴 Comp. Colombia", "day_order": 1, "is_cortos": false, "film_list": []}, {"title": "Lolita en Honda", "title_en": "Lolita in Honda", "country": "Colombia", "flags": "🇨🇴", "duration": "61 min", "day": "Miércoles", "date": 15, "time": "14:00", "venue": "CC Bocagrande ‒ Sala 1", "section": "🇨🇴 Comp. Colombia", "day_order": 1, "is_cortos": false, "film_list": []}, {"title": "Prog. Cortometrajes — Jorge Cadena", "title_en": "El cuento de Antonia · Flores del otro patio · Les Trois Hirondelles · Mapalé · Soeurs Jarariju · Sonali", "flags": "🇨🇭🇨🇴", "country": "Suiza/Colombia", "duration": "98 min", "day": "Miércoles", "date": 15, "time": "14:00", "venue": "CC Bocagrande ‒ Sala 1", "section": "🇨🇭 Muestra Suiza", "day_order": 1, "is_cortos": true, "film_list": [{"title": "El cuento de Antonia", "country": "Suiza", "duration": "30 min"}, {"title": "Flores del otro patio", "country": "Suiza/Colombia", "duration": "16 min"}, {"title": "Les Trois Hirondelles", "country": "Suiza", "duration": "17 min"}, {"title": "Mapalé", "country": "Suiza", "duration": "6 min"}, {"title": "Soeurs Jarariju", "country": "Suiza", "duration": "21 min"}, {"title": "Sonali", "country": "Suiza", "duration": "8 min"}]}, {"title": "A Fabulosa Máquina do Tempo", "title_en": "The Fabulous Time Machine", "country": "Brasil", "flags": "🇧🇷", "duration": "70 min", "day": "Miércoles", "date": 15, "time": "14:20", "venue": "CC Caribe Plaza ‒ Sala 5", "section": "🇧🇷 Casa Brasil", "day_order": 1, "is_cortos": false, "film_list": []}, {"title": "Die papierene Brücke", "title_en": "Paper Bridge", "country": "Austria", "flags": "🇦🇹", "duration": "95 min", "day": "Miércoles", "date": 15, "time": "14:20", "venue": "CC Bocagrande ‒ Sala 2", "section": "📽️ Retrospectiva Ruth Beckermann", "day_order": 1, "is_cortos": false, "film_list": []}, {"title": "Si no ardemos, cómo iluminar la noche", "title_en": "If We Don’t Burn, How Do We Light Up the Night", "country": "Costa Rica/México", "flags": "🇲🇽", "duration": "85 min", "day": "Miércoles", "date": 15, "time": "14:40", "venue": "CC Caribe Plaza ‒ Sala 6", "section": "🏆 Comp. Cine en los Barrios", "day_order": 1, "is_cortos": false, "film_list": []}, {"title": "Iván & Hadoum", "title_en": "", "country": "", "flags": "🇪🇸", "duration": "103 min", "day": "Miércoles", "date": 15, "time": "14:40", "venue": "CC Bocagrande ‒ Sala 3", "section": "🇪🇸 Muestra España", "day_order": 1, "is_cortos": false, "film_list": []}, {"title": "Cine Indígena — Prog. 2", "title_en": "Tu mañana será mi canto · Runa Simi", "flags": "🇨🇱🇵🇪", "country": "Chile/Perú", "duration": "99 min", "day": "Miércoles", "date": 15, "time": "15:00", "venue": "CC Bocagrande ‒ Sala 4", "section": "🪶 Cine Indígena", "day_order": 1, "is_cortos": true, "film_list": [{"title": "Tu mañana será mi canto", "country": "Chile/EEUU", "duration": "14 min"}, {"title": "Runa Simi", "country": "Perú", "duration": "85 min"}]}, {"title": "Manual para invocar fantasmas", "title_en": "How to Summon Ghosts", "country": "Colombia", "flags": "🇨🇴", "duration": "71 min", "day": "Miércoles", "date": 15, "time": "15:20", "venue": "CC Bocagrande ‒ Sala 5", "section": "🇨🇴 Comp. Colombia", "day_order": 1, "is_cortos": false, "film_list": []}, {"title": "Las corrientes", "title_en": "The Currents", "country": "Suiza/Argentina", "flags": "🇨🇭🇦🇷", "duration": "104 min", "day": "Miércoles", "date": 15, "time": "15:30", "venue": "Teatro Adolfo Mejía", "section": "🌎 Comp. Iberoamérica", "day_order": 1, "is_cortos": false, "film_list": []}, {"title": "ojoboca — Prog. 1 · 16mm", "title_en": "A Running Woman · Instant Life · Wolkenschatten", "flags": "🇩🇪🇨🇴", "country": "Alemania/Colombia", "duration": "56 min", "day": "Miércoles", "date": 15, "time": "16:00", "venue": "Salón 1 ‒ Miguel Sebastián Guerrero, unibac", "section": "📽️ Retrospectiva ojoboca", "day_order": 1, "is_cortos": true, "film_list": [{"title": "A Running Woman (1, 2, 3)", "country": "Alemania", "duration": "12 min"}, {"title": "Instant Life", "country": "EEUU/Alemania", "duration": "27 min"}, {"title": "Wolkenschatten", "country": "Alemania", "duration": "17 min"}]}, {"title": "Una escritura en apariencias", "title_en": "A Writing in Appearances", "country": "Colombia", "flags": "🇨🇴", "duration": "70 min", "day": "Miércoles", "date": 15, "time": "17:00", "venue": "CC Bocagrande ‒ Sala 1", "section": "🇨🇴 Comp. Colombia", "day_order": 1, "is_cortos": false, "film_list": []}, {"title": "(s)paces Cortos — Prog. 1", "title_en": "Atado · Pequeno Jogo · Trưa Lịm · Warnungen an die ferne Zukunft · 3cm of Complexity", "flags": "⏳", "country": "Varios", "duration": "~60 min", "day": "Miércoles", "date": 15, "time": "17:00", "venue": "CC Caribe Plaza ‒ Sala 2", "section": "⏳ (s)paces of Time", "day_order": 1, "is_cortos": true, "film_list": []}, {"title": "Kaye", "title_en": "", "country": "Chile/Italia", "flags": "🇨🇱🇮🇹", "duration": "85 min", "day": "Miércoles", "date": 15, "time": "17:20", "venue": "CC Caribe Plaza ‒ Sala 5", "section": "🏆 Comp. Cine en los Barrios", "day_order": 1, "is_cortos": false, "film_list": []}, {"title": "Esa otra selva blanca", "title_en": "That Other White Jungle", "country": "Chile", "flags": "🇨🇱", "duration": "67 min", "day": "Miércoles", "date": 15, "time": "17:20", "venue": "CC Bocagrande ‒ Sala 2", "section": "⏳ (s)paces of Time", "day_order": 1, "is_cortos": false, "film_list": []}, {"title": "Chicas tristes", "title_en": "Sad Girlz", "country": "México/España/Francia", "flags": "🇲🇽🇪🇸🇫🇷", "duration": "90 min", "day": "Miércoles", "date": 15, "time": "17:40", "venue": "CC Bocagrande ‒ Sala 3", "section": "🌎 Comp. Iberoamérica", "day_order": 1, "is_cortos": false, "film_list": []}, {"title": "Frío metal", "title_en": "Cold Metal", "country": "México", "flags": "🇲🇽", "duration": "102 min", "day": "Miércoles", "date": 15, "time": "17:40", "venue": "CC Caribe Plaza ‒ Sala 6", "section": "⏳ (s)paces of Time", "day_order": 1, "is_cortos": false, "film_list": []}, {"title": "Aro berria", "title_en": "New Year", "country": "España", "flags": "🇪🇸", "duration": "102 min", "day": "Miércoles", "date": 15, "time": "18:00", "venue": "CC Bocagrande ‒ Sala 4", "section": "🇪🇸 Muestra España", "day_order": 1, "is_cortos": false, "film_list": []}, {"title": "Bosque arriba en la montaña", "title_en": "Forest Up in the Mountain", "country": "Argentina", "flags": "🇦🇷", "duration": "91 min", "day": "Miércoles", "date": 15, "time": "18:20", "venue": "CC Bocagrande ‒ Sala 5", "section": "🌎 Comp. Iberoamérica", "day_order": 1, "is_cortos": false, "film_list": []}, {"title": "Puntos de fuga", "title_en": "Vanishing Points", "country": "Colombia", "flags": "🇨🇴", "duration": "72 min", "day": "Miércoles", "date": 15, "time": "18:30", "venue": "Teatro Adolfo Mejía", "section": "🇨🇴 Comp. Colombia", "day_order": 1, "is_cortos": false, "film_list": []}, {"title": "Feito Pipa", "title_en": "Gugu’s World", "country": "Brasil", "flags": "🇧🇷", "duration": "93 min", "day": "Miércoles", "date": 15, "time": "19:00", "venue": "Auditorio nido", "section": "🏆 Comp. Cine en los Barrios", "day_order": 1, "is_cortos": false, "film_list": []}, {"title": "Animación Porosa — Prog. de Cortos", "title_en": "Ako počúvať fontány · Evacuations · La baraja de Myriam · Luna Rossa · Venezia Diorama", "flags": "🎨", "country": "Varios", "duration": "69 min", "day": "Miércoles", "date": 15, "time": "19:00", "venue": "Plaza de la Proclamación", "section": "🎨 Animación Porosa", "day_order": 1, "is_cortos": true, "film_list": [{"title": "Ako počúvať fontány", "country": "Eslovaquia", "duration": "10 min"}, {"title": "Evacuations", "country": "Estados Unidos", "duration": "7 min"}, {"title": "La baraja de Myriam", "country": "Chile", "duration": "14 min"}, {"title": "Luna Rossa", "country": "Estonia/Francia", "duration": "32 min"}, {"title": "Venezia Diorama", "country": "Bélgica", "duration": "6 min"}]}, {"title": "Costas — Prog. 5", "title_en": "Riochiquito", "flags": "🌊", "country": "Francia", "duration": "19 min", "day": "Miércoles", "date": 15, "time": "19:00", "venue": "aecid", "section": "🌊 Costas", "day_order": 1, "is_cortos": true, "film_list": [{"title": "Riochiquito", "country": "Francia", "duration": "19 min"}]}, {"title": "Isabel", "title_en": "", "country": "Brasil/Francia", "flags": "🇧🇷🇫🇷", "duration": "85 min", "day": "Miércoles", "date": 15, "time": "20:00", "venue": "CC Bocagrande ‒ Sala 1", "section": "🇧🇷 Casa Brasil", "day_order": 1, "is_cortos": false, "film_list": []}, {"title": "Tóc, Giấy và Nước…", "title_en": "Hair, Paper, Water…", "country": "Bélgica/Francia/Vietnam", "flags": "🇧🇪🇫🇷🇻🇳", "duration": "71 min", "day": "Miércoles", "date": 15, "time": "20:20", "venue": "CC Bocagrande ‒ Sala 2", "section": "🌍 Internacional", "day_order": 1, "is_cortos": false, "film_list": []}, {"title": "Queen at Sea", "title_en": "", "country": "Reino Unido/Estados Unidos", "flags": "🇬🇧🇺🇸", "duration": "121 min", "day": "Miércoles", "date": 15, "time": "20:40", "venue": "CC Bocagrande ‒ Sala 3", "section": "🌍 Internacional", "day_order": 1, "is_cortos": false, "film_list": []}, {"title": "Piedras preciosas", "title_en": "Gemstones", "country": "Colombia/Portugal", "flags": "🇨🇴🇵🇹", "duration": "70 min", "day": "Miércoles", "date": 15, "time": "21:00", "venue": "Teatro Adolfo Mejía", "section": "🇨🇴 Comp. Colombia", "day_order": 1, "is_cortos": false, "film_list": []}, {"title": "Blue Heron", "title_en": "", "country": "Canadá/Hungría", "flags": "🇨🇦🇭🇺", "duration": "90 min", "day": "Miércoles", "date": 15, "time": "21:00", "venue": "CC Bocagrande ‒ Sala 4", "section": "🌍 Internacional", "day_order": 1, "is_cortos": false, "film_list": []}, {"title": "Jóhanna af örk", "title_en": "Joan of Arc", "country": "Islandia/Dinamarca/Francia", "flags": "🇮🇸🇩🇰🇫🇷", "duration": "61 min", "day": "Miércoles", "date": 15, "time": "21:00", "venue": "Plaza de la Proclamación", "section": "⏳ (s)paces of Time", "day_order": 1, "is_cortos": false, "film_list": []}, {"title": "Internacional — Prog. de Cortos", "title_en": "Cul-De-Sac! · Ein Unfall · Force Times Displacement · Intersecting Memory · Daria's Night Flowers", "flags": "🌍", "country": "Varios", "duration": "~90 min", "day": "Miércoles", "date": 15, "time": "21:30", "venue": "Auditorio nido", "section": "🌍 Internacional", "day_order": 1, "is_cortos": true, "film_list": [{"title": "Cul-De-Sac!", "country": "Bélgica/Francia", "duration": "17 min"}, {"title": "Ein Unfall", "country": "Austria", "duration": "30 min"}, {"title": "Force Times Displacement", "country": "Taiwán", "duration": "11 min"}, {"title": "Intersecting Memory", "country": "Palestina/Francia", "duration": "20 min"}, {"title": "Daria's Night Flowers", "country": "Irán/UK/Francia", "duration": "16 min"}]}, {"title": "Rodrigo D. No futuro", "title_en": "Rodrigo D: No Future", "country": "Colombia", "flags": "🇨🇴", "duration": "91 min", "day": "Jueves", "date": 16, "time": "10:30", "venue": "Teatro Adolfo Mejía", "section": "📽️ Retrospectiva Clásicos – Ópera Prima", "day_order": 2, "is_cortos": false, "film_list": []}, {"title": "Khmeli Potoli", "title_en": "Dry Leaf", "country": "Alemania/Georgia", "flags": "🇩🇪🇬🇪", "duration": "186 min", "day": "Jueves", "date": 16, "time": "11:00", "venue": "CC Caribe Plaza ‒ Sala 6", "section": "🌍 Internacional", "day_order": 2, "is_cortos": false, "film_list": []}, {"title": "A Fabulosa Máquina do Tempo", "title_en": "The Fabulous Time Machine", "country": "Brasil", "flags": "🇧🇷", "duration": "70 min", "day": "Jueves", "date": 16, "time": "11:20", "venue": "CC Bocagrande ‒ Sala 1", "section": "🇧🇷 Casa Brasil", "day_order": 2, "is_cortos": false, "film_list": []}, {"title": "Cine Afro — Prog. de Cortos", "title_en": "Como Nasce um Rio · Taxi Moto · Voz, Zov, Zvo", "flags": "🇧🇷🇨🇭", "country": "Brasil/Suiza/Francia", "duration": "81 min", "day": "Jueves", "date": 16, "time": "11:20", "venue": "CC Caribe Plaza ‒ Sala 5", "section": "✊ Cine Afro", "day_order": 2, "is_cortos": true, "film_list": [{"title": "Como Nasce um Rio", "country": "Brasil", "duration": "8 min"}, {"title": "Taxi Moto", "country": "Suiza/Francia", "duration": "21 min"}, {"title": "Voz, Zov, Zvo", "country": "Brasil", "duration": "52 min"}]}, {"title": "Aro berria", "title_en": "New Year", "country": "España", "flags": "🇪🇸", "duration": "102 min", "day": "Jueves", "date": 16, "time": "11:40", "venue": "CC Bocagrande ‒ Sala 3", "section": "🇪🇸 Muestra España", "day_order": 2, "is_cortos": false, "film_list": []}, {"title": "Se Eu Fosse Vivo… Vivia", "title_en": "If I Were Alive", "country": "Brasil", "flags": "🇧🇷", "duration": "101 min", "day": "Jueves", "date": 16, "time": "12:00", "venue": "CC Bocagrande ‒ Sala 4", "section": "✊ Cine Afro", "day_order": 2, "is_cortos": false, "film_list": []}, {"title": "Anoche conquisté Tebas", "title_en": "Last Night I Conquered the City of Thebes", "country": "España/Portugal", "flags": "🇪🇸🇵🇹", "duration": "111 min", "day": "Jueves", "date": 16, "time": "13:30", "venue": "Teatro Adolfo Mejía", "section": "🌎 Comp. Iberoamérica", "day_order": 2, "is_cortos": false, "film_list": []}, {"title": "El príncipe de Nanawa", "title_en": "The Prince of Nanawa", "country": "Argentina/Colombia/Paraguay", "flags": "🇦🇷🇨🇴🇵🇾", "duration": "212 min", "day": "Jueves", "date": 16, "time": "13:40", "venue": "CC Bocagrande ‒ Sala 5", "section": "⏳ (s)paces of Time", "day_order": 2, "is_cortos": false, "film_list": []}, {"title": "Risa y la cabina del viento", "title_en": "Risa and the Wind Phone", "country": "Argentina", "flags": "🇦🇷", "duration": "94 min", "day": "Jueves", "date": 16, "time": "14:00", "venue": "CC Caribe Plaza ‒ Sala 2", "section": "🏆 Comp. Cine en los Barrios", "day_order": 2, "is_cortos": false, "film_list": []}, {"title": "Cortos Colombia — Prog. 1", "title_en": "Decaer · La garganta del diablo · Las formas de la magia · Madres de nacimiento · Todas las manos que solté · Ya se ven los tigres en la lluvia", "flags": "🇨🇴", "country": "Colombia", "duration": "~90 min", "day": "Jueves", "date": 16, "time": "14:00", "venue": "CC Bocagrande ‒ Sala 1", "section": "🇨🇴 Comp. Colombia", "day_order": 2, "is_cortos": true, "film_list": []}, {"title": "El valor de la palabra", "title_en": "The Value of Speech", "country": "Colombia", "flags": "🇨🇴", "duration": "79 min", "day": "Jueves", "date": 16, "time": "14:20", "venue": "CC Bocagrande ‒ Sala 2", "section": "🪶 Cine Indígena", "day_order": 2, "is_cortos": false, "film_list": []}, {"title": "Dao", "title_en": "Dao", "country": "Francia/Senegal/Guinea-Bissau", "flags": "🇫🇷🇸🇳", "duration": "185 min", "day": "Jueves", "date": 16, "time": "14:20", "venue": "CC Caribe Plaza ‒ Sala 5", "section": "✊ Cine Afro", "day_order": 2, "is_cortos": false, "film_list": []}, {"title": "Historias del buen valle", "title_en": "Good Valley Stories", "country": "España/Francia", "flags": "🇪🇸🇫🇷", "duration": "122 min", "day": "Jueves", "date": 16, "time": "14:40", "venue": "CC Bocagrande ‒ Sala 3", "section": "🇪🇸 Muestra España", "day_order": 2, "is_cortos": false, "film_list": []}, {"title": "Two Years at Sea", "title_en": "", "country": "Reino Unido", "flags": "🇬🇧", "duration": "88 min", "day": "Jueves", "date": 16, "time": "15:00", "venue": "CC Bocagrande ‒ Sala 4", "section": "🎖️ Tributo Ben Rivers", "day_order": 2, "is_cortos": false, "film_list": []}, {"title": "ojoboca — Prog. 2 · 16mm", "title_en": "Come and Dance with Me · Gente perra · The Masked Monkeys", "flags": "🇩🇪🇨🇴", "country": "Alemania/Colombia", "duration": "61 min", "day": "Jueves", "date": 16, "time": "16:00", "venue": "Salón 1 ‒ Miguel Sebastián Guerrero, unibac", "section": "📽️ Retrospectiva ojoboca", "day_order": 2, "is_cortos": true, "film_list": [{"title": "Come and Dance with Me", "country": "Alemania", "duration": "4 min"}, {"title": "Gente perra", "country": "Colombia/Alemania", "duration": "25 min"}, {"title": "The Masked Monkeys", "country": "Alemania", "duration": "32 min"}]}, {"title": "El tren fluvial", "title_en": "The River Train", "country": "Argentina", "flags": "🇦🇷", "duration": "75 min", "day": "Jueves", "date": 16, "time": "16:30", "venue": "Teatro Adolfo Mejía", "section": "🌎 Comp. Iberoamérica", "day_order": 2, "is_cortos": false, "film_list": []}, {"title": "Iván & Hadoum", "title_en": "", "country": "", "flags": "🇪🇸", "duration": "103 min", "day": "Jueves", "date": 16, "time": "17:00", "venue": "CC Caribe Plaza ‒ Sala 2", "section": "🇪🇸 Muestra España", "day_order": 2, "is_cortos": false, "film_list": []}, {"title": "Cortos Colombia — Prog. 2", "title_en": "La forma y la raíz · Montaña luminosa · Pawa · Sombras en la niebla", "flags": "🇨🇴", "country": "Colombia", "duration": "~90 min", "day": "Jueves", "date": 16, "time": "17:00", "venue": "CC Bocagrande ‒ Sala 1", "section": "🇨🇴 Comp. Colombia", "day_order": 2, "is_cortos": true, "film_list": []}, {"title": "Duhuldeki Deney", "title_en": "Soul of the Foot", "country": "Canadá/Turquía", "flags": "🇨🇦🇹🇷", "duration": "65 min", "day": "Jueves", "date": 16, "time": "17:20", "venue": "CC Bocagrande ‒ Sala 2", "section": "⏳ (s)paces of Time", "day_order": 2, "is_cortos": false, "film_list": []}, {"title": "Staatsschutz", "title_en": "Prosecution", "country": "Alemania", "flags": "🇩🇪", "duration": "113 min", "day": "Jueves", "date": 16, "time": "17:40", "venue": "CC Bocagrande ‒ Sala 3", "section": "🌍 Internacional", "day_order": 2, "is_cortos": false, "film_list": []}, {"title": "Crocodile", "title_en": "", "country": "Nueva Zelanda/Nigeria", "flags": "🇳🇬", "duration": "100 min", "day": "Jueves", "date": 16, "time": "17:40", "venue": "CC Caribe Plaza ‒ Sala 6", "section": "✊ Cine Afro", "day_order": 2, "is_cortos": false, "film_list": []}, {"title": "Señoritas", "title_en": "", "country": "Colombia/Canadá", "flags": "🇨🇴🇨🇦", "duration": "87 min", "day": "Jueves", "date": 16, "time": "18:00", "venue": "CC Bocagrande ‒ Sala 4", "section": "📽️ Retrospectiva Clásicos – Ópera Prima", "day_order": 2, "is_cortos": false, "film_list": []}, {"title": "Piedras preciosas", "title_en": "Gemstones", "country": "Colombia/Portugal", "flags": "🇨🇴🇵🇹", "duration": "70 min", "day": "Jueves", "date": 16, "time": "18:20", "venue": "CC Bocagrande ‒ Sala 5", "section": "🇨🇴 Comp. Colombia", "day_order": 2, "is_cortos": false, "film_list": []}, {"title": "Los cruces", "title_en": "Intersections", "country": "Argentina", "flags": "🇦🇷", "duration": "83 min", "day": "Jueves", "date": 16, "time": "18:20", "venue": "CC Caribe Plaza ‒ Sala 5", "section": "🇦🇷 Muestra Argentina", "day_order": 2, "is_cortos": false, "film_list": []}, {"title": "Mare’s Nest", "title_en": "", "country": "", "flags": "🎬", "duration": "98 min", "day": "Jueves", "date": 16, "time": "18:45", "venue": "Teatro Adolfo Mejía", "section": "⏳ (s)paces of Time", "day_order": 2, "is_cortos": false, "film_list": []}, {"title": "Mare's Nest", "title_en": "", "country": "Reino Unido/Francia/Canadá", "flags": "🇬🇧🇫🇷🇨🇦", "duration": "98 min", "day": "Jueves", "date": 16, "time": "18:45", "venue": "Teatro Adolfo Mejía", "section": "🎖️ Tributo Ben Rivers", "day_order": 2, "is_cortos": false, "film_list": []}, {"title": "Cine Indígena — Prog. 2", "title_en": "Tu mañana será mi canto · Runa Simi", "flags": "🇨🇱🇵🇪", "country": "Chile/Perú", "duration": "99 min", "day": "Jueves", "date": 16, "time": "19:00", "venue": "Plaza de la Proclamación", "section": "🪶 Cine Indígena", "day_order": 2, "is_cortos": true, "film_list": [{"title": "Tu mañana será mi canto", "country": "Chile/EEUU", "duration": "14 min"}, {"title": "Runa Simi", "country": "Perú", "duration": "85 min"}]}, {"title": "Doggerland", "title_en": "", "country": "Suecia", "flags": "🇸🇪", "duration": "76 min", "day": "Jueves", "date": 16, "time": "20:00", "venue": "CC Bocagrande ‒ Sala 1", "section": "🌍 Internacional", "day_order": 2, "is_cortos": false, "film_list": []}, {"title": "Costas — Prog. 2", "title_en": "¡Aysa! · No les pedimos un viaje a la luna", "flags": "🌊", "country": "Varios", "duration": "106 min", "day": "Jueves", "date": 16, "time": "20:20", "venue": "CC Bocagrande ‒ Sala 2", "section": "🌊 Costas", "day_order": 2, "is_cortos": true, "film_list": [{"title": "¡Aysa!", "country": "Bolivia", "duration": "20 min"}, {"title": "No les pedimos un viaje a la luna", "country": "México", "duration": "86 min"}]}, {"title": "The Loneliest Man in Town", "title_en": "", "country": "Austria", "flags": "🇦🇹", "duration": "86 min", "day": "Jueves", "date": 16, "time": "20:40", "venue": "CC Bocagrande ‒ Sala 3", "section": "🌍 Internacional", "day_order": 2, "is_cortos": false, "film_list": []}, {"title": "Sehnsucht in Sangerhausen", "title_en": "Phantoms of July", "country": "Alemania", "flags": "🇩🇪", "duration": "90 min", "day": "Jueves", "date": 16, "time": "21:00", "venue": "CC Bocagrande ‒ Sala 4", "section": "⏳ (s)paces of Time", "day_order": 2, "is_cortos": false, "film_list": []}, {"title": "Tehran Bedoune Mojavez", "title_en": "Put Your Soul on Your Hand and Walk", "country": "Francia/Palestina", "flags": "🇫🇷🇵🇸", "duration": "112 min", "day": "Jueves", "date": 16, "time": "21:20", "venue": "Plaza de la Proclamación", "section": "🌍 Internacional", "day_order": 2, "is_cortos": false, "film_list": []}, {"title": "Dracula", "title_en": "Dracula", "country": "Rumania/Austria/Luxemburgo", "flags": "🇷🇴🇦🇹🇱🇺", "duration": "170 min", "day": "Jueves", "date": 16, "time": "22:00", "venue": "Teatro Adolfo Mejía", "section": "🌙 Medianoche", "day_order": 2, "is_cortos": false, "film_list": []}, {"title": "Planas, testimonio de un etnocidio", "title_en": "Planas, Testimony of an Ethnocide", "country": "Colombia", "flags": "🇨🇴", "duration": "37 min", "day": "Viernes", "date": 17, "time": "10:00", "venue": "Teatro Adolfo Mejía", "section": "📽️ Retrospectiva Clásicos – Ópera Prima", "day_order": 3, "is_cortos": false, "film_list": []}, {"title": "Campesinos", "title_en": "Peasants", "country": "Colombia", "flags": "🇨🇴", "duration": "51 min", "day": "Viernes", "date": 17, "time": "10:00", "venue": "Teatro Adolfo Mejía", "section": "📽️ Retrospectiva Clásicos – Ópera Prima", "day_order": 3, "is_cortos": false, "film_list": []}, {"title": "Ben Rivers — Prog. 1", "title_en": "Ghost Strata · The Shape of Things · Things", "flags": "🇬🇧", "country": "Reino Unido", "duration": "69 min", "day": "Viernes", "date": 17, "time": "11:00", "venue": "CC Caribe Plaza ‒ Sala 2", "section": "🎖️ Tributo Ben Rivers", "day_order": 3, "is_cortos": true, "film_list": [{"title": "Ghost Strata", "country": "Reino Unido", "duration": "46 min"}, {"title": "The Shape of Things", "country": "Reino Unido", "duration": "2 min"}, {"title": "Things", "country": "Reino Unido", "duration": "21 min"}]}, {"title": "Animación Porosa — Prog. de Cortos", "title_en": "Ako počúvať fontány · Evacuations · La baraja de Myriam · Luna Rossa · Venezia Diorama", "flags": "🎨", "country": "Varios", "duration": "69 min", "day": "Viernes", "date": 17, "time": "11:00", "venue": "CC Bocagrande ‒ Sala 1", "section": "🎨 Animación Porosa", "day_order": 3, "is_cortos": true, "film_list": [{"title": "Ako počúvať fontány", "country": "Eslovaquia", "duration": "10 min"}, {"title": "Evacuations", "country": "Estados Unidos", "duration": "7 min"}, {"title": "La baraja de Myriam", "country": "Chile", "duration": "14 min"}, {"title": "Luna Rossa", "country": "Estonia/Francia", "duration": "32 min"}, {"title": "Venezia Diorama", "country": "Bélgica", "duration": "6 min"}]}, {"title": "Esa otra selva blanca", "title_en": "That Other White Jungle", "country": "Chile", "flags": "🇨🇱", "duration": "67 min", "day": "Viernes", "date": 17, "time": "11:20", "venue": "CC Caribe Plaza ‒ Sala 5", "section": "⏳ (s)paces of Time", "day_order": 3, "is_cortos": false, "film_list": []}, {"title": "El pagador de promesas", "title_en": "The Given Word", "country": "Brasil", "flags": "🇧🇷", "duration": "87 min", "day": "Viernes", "date": 17, "time": "11:40", "venue": "CC Bocagrande ‒ Sala 3", "section": "📽️ Retrospectiva FICCI Años 60", "day_order": 3, "is_cortos": false, "film_list": []}, {"title": "Prog. Cortometrajes — Jorge Cadena", "title_en": "El cuento de Antonia · Flores del otro patio · Les Trois Hirondelles · Mapalé · Soeurs Jarariju · Sonali", "flags": "🇨🇭🇨🇴", "country": "Suiza/Colombia", "duration": "98 min", "day": "Viernes", "date": 17, "time": "12:00", "venue": "CC Bocagrande ‒ Sala 4", "section": "🇨🇭 Muestra Suiza", "day_order": 3, "is_cortos": true, "film_list": [{"title": "El cuento de Antonia", "country": "Suiza", "duration": "30 min"}, {"title": "Flores del otro patio", "country": "Suiza/Colombia", "duration": "16 min"}, {"title": "Les Trois Hirondelles", "country": "Suiza", "duration": "17 min"}, {"title": "Mapalé", "country": "Suiza", "duration": "6 min"}, {"title": "Soeurs Jarariju", "country": "Suiza", "duration": "21 min"}, {"title": "Sonali", "country": "Suiza", "duration": "8 min"}]}, {"title": "Las almas ni los ojos", "title_en": "Neither Souls nor Eyes", "country": "Colombia", "flags": "🇨🇴", "duration": "75 min", "day": "Viernes", "date": 17, "time": "12:20", "venue": "CC Bocagrande ‒ Sala 5", "section": "🇨🇴 Comp. Colombia", "day_order": 3, "is_cortos": false, "film_list": []}, {"title": "Chicas tristes", "title_en": "Sad Girlz", "country": "México/España/Francia", "flags": "🇲🇽🇪🇸🇫🇷", "duration": "90 min", "day": "Viernes", "date": 17, "time": "13:00", "venue": "Teatro Adolfo Mejía", "section": "🌎 Comp. Iberoamérica", "day_order": 3, "is_cortos": false, "film_list": []}, {"title": "Queen at Sea", "title_en": "", "country": "Reino Unido/Estados Unidos", "flags": "🇬🇧🇺🇸", "duration": "121 min", "day": "Viernes", "date": 17, "time": "14:00", "venue": "CC Caribe Plaza ‒ Sala 2", "section": "🌍 Internacional", "day_order": 3, "is_cortos": false, "film_list": []}, {"title": "Cortos Colombia — Prog. 3", "title_en": "El cazador · Filme Pin · Futuros luminosos · Lejanía · Winter Blumen Garten", "flags": "🇨🇴", "country": "Colombia", "duration": "~90 min", "day": "Viernes", "date": 17, "time": "14:00", "venue": "CC Bocagrande ‒ Sala 1", "section": "🇨🇴 Comp. Colombia", "day_order": 3, "is_cortos": true, "film_list": []}, {"title": "Les Voyageurs", "title_en": "The Travelers", "country": "España/Camerún", "flags": "🇪🇸🇨🇲", "duration": "61 min", "day": "Viernes", "date": 17, "time": "14:20", "venue": "CC Bocagrande ‒ Sala 2", "section": "🇪🇸 Muestra España", "day_order": 3, "is_cortos": false, "film_list": []}, {"title": "Nuit Obscure - Ain’t I a Child?", "title_en": "Obscure Night - Ain’t I a Child?", "country": "", "flags": "🇨🇭", "duration": "164 min", "day": "Viernes", "date": 17, "time": "14:20", "venue": "Caribe Plaza ‒ Sala 5", "section": "🇨🇭 Muestra Suiza", "day_order": 3, "is_cortos": false, "film_list": []}, {"title": "Tehran Bedoune Mojavez", "title_en": "Put Your Soul on Your Hand and Walk", "country": "Francia/Palestina", "flags": "🇫🇷🇵🇸", "duration": "112 min", "day": "Viernes", "date": 17, "time": "14:40", "venue": "CC Caribe Plaza ‒ Sala 6", "section": "🌍 Internacional", "day_order": 3, "is_cortos": false, "film_list": []}, {"title": "El mundo al revés", "title_en": "The World Upside Down", "country": "Suiza/Argentina", "flags": "🇨🇭🇦🇷", "duration": "77 min", "day": "Viernes", "date": 17, "time": "14:40", "venue": "CC Bocagrande ‒ Sala 3", "section": "🇨🇭 Muestra Suiza", "day_order": 3, "is_cortos": false, "film_list": []}, {"title": "Nuestra tierra", "title_en": "Landmarks", "country": "Argentina/EEUU/México/Francia/Países Bajos/Dinamarca", "flags": "🇦🇷🇺🇸🇲🇽🇫🇷🇳🇱🇩🇰", "duration": "122 min", "day": "Viernes", "date": 17, "time": "14:40", "venue": "CC Caribe Plaza ‒ Sala 6", "section": "🇦🇷 Muestra Argentina", "day_order": 3, "is_cortos": false, "film_list": []}, {"title": "Anoche conquisté Tebas", "title_en": "Last Night I Conquered the City of Thebes", "country": "España/Portugal", "flags": "🇪🇸🇵🇹", "duration": "111 min", "day": "Viernes", "date": 17, "time": "15:00", "venue": "CC Bocagrande ‒ Sala 4", "section": "🌎 Comp. Iberoamérica", "day_order": 3, "is_cortos": false, "film_list": []}, {"title": "ojoboca — Prog. 2 · 16mm", "title_en": "Come and Dance with Me · Gente perra · The Masked Monkeys", "flags": "🇩🇪🇨🇴", "country": "Alemania/Colombia", "duration": "61 min", "day": "Viernes", "date": 17, "time": "15:00", "venue": "Salón 1 ‒ Miguel Sebastián Guerrero, unibac", "section": "📽️ Retrospectiva ojoboca", "day_order": 3, "is_cortos": true, "film_list": [{"title": "Come and Dance with Me", "country": "Alemania", "duration": "4 min"}, {"title": "Gente perra", "country": "Colombia/Alemania", "duration": "25 min"}, {"title": "The Masked Monkeys", "country": "Alemania", "duration": "32 min"}]}, {"title": "O Riso e a Faca", "title_en": "I Only Rest in the Storm", "country": "Portugal/Francia/Brasil/Rumania", "flags": "🇵🇹🇫🇷🇧🇷🇷🇴", "duration": "217 min", "day": "Viernes", "date": 17, "time": "15:40", "venue": "CC Bocagrande ‒ Sala 5", "section": "🌎 Comp. Iberoamérica", "day_order": 3, "is_cortos": false, "film_list": []}, {"title": "Una escritura en apariencias", "title_en": "A Writing in Appearances", "country": "Colombia", "flags": "🇨🇴", "duration": "70 min", "day": "Viernes", "date": 17, "time": "16:00", "venue": "Teatro Adolfo Mejía", "section": "🇨🇴 Comp. Colombia", "day_order": 3, "is_cortos": false, "film_list": []}, {"title": "Cortos Colombia — Prog. 4", "title_en": "Belleza letal · Consagración · Mi amigo, el arquitecto · Sirena mecánica · Suite intercontinental", "flags": "🇨🇴", "country": "Colombia", "duration": "~90 min", "day": "Viernes", "date": 17, "time": "17:00", "venue": "CC Bocagrande ‒ Sala 1", "section": "🇨🇴 Comp. Colombia", "day_order": 3, "is_cortos": true, "film_list": []}, {"title": "Cine Indígena — Prog. 1", "title_en": "Apotnojushi La casa del viento · La Raya", "flags": "🇨🇴🇲🇽", "country": "Colombia/México", "duration": "92 min", "day": "Viernes", "date": 17, "time": "17:00", "venue": "CC Caribe Plaza ‒ Sala 2", "section": "🪶 Cine Indígena", "day_order": 3, "is_cortos": true, "film_list": [{"title": "Apotnojushi La casa del viento", "country": "Colombia", "duration": "12 min"}, {"title": "La Raya", "country": "México", "duration": "80 min"}]}, {"title": "Waldheims Walzer", "title_en": "The Waldheim Waltz", "country": "Austria", "flags": "🇦🇹", "duration": "93 min", "day": "Viernes", "date": 17, "time": "17:20", "venue": "CC Bocagrande ‒ Sala 2", "section": "📽️ Retrospectiva Ruth Beckermann", "day_order": 3, "is_cortos": false, "film_list": []}, {"title": "Historias del buen valle", "title_en": "Good Valley Stories", "country": "España/Francia", "flags": "🇪🇸🇫🇷", "duration": "122 min", "day": "Viernes", "date": 17, "time": "17:40", "venue": "CC Caribe Plaza ‒ Sala 6", "section": "🇪🇸 Muestra España", "day_order": 3, "is_cortos": false, "film_list": []}, {"title": "La noche está marchándose ya", "title_en": "The Night is Fading Away", "country": "Argentina", "flags": "🇦🇷", "duration": "104 min", "day": "Viernes", "date": 17, "time": "17:40", "venue": "CC Bocagrande ‒ Sala 3", "section": "🇦🇷 Muestra Argentina", "day_order": 3, "is_cortos": false, "film_list": []}, {"title": "Tóc, Giấy và Nước…", "title_en": "Hair, Paper, Water…", "country": "Bélgica/Francia/Vietnam", "flags": "🇧🇪🇫🇷🇻🇳", "duration": "71 min", "day": "Viernes", "date": 17, "time": "18:00", "venue": "CC Caribe Plaza ‒ Sala 5", "section": "🌍 Internacional", "day_order": 3, "is_cortos": false, "film_list": []}, {"title": "Cortos Iberoamérica — Prog. 1", "title_en": "Abortion Party · A donde nos lleva la fe de José Gerónimo · Agua fría · Fim de Rodovia · Quem se Move · Samba Infinito · En otra Palestina · Fuente alemana · Los peces no se ahogan", "flags": "🌎", "country": "Varios", "duration": "~90 min", "day": "Viernes", "date": 17, "time": "18:00", "venue": "CC Bocagrande ‒ Sala 4", "section": "🌎 Comp. Iberoamérica", "day_order": 3, "is_cortos": true, "film_list": []}, {"title": "El hogar fue sepultado en esa tierra", "title_en": "que nunca pudimos encontrar", "country": "Colombia", "flags": "🇨🇴", "duration": "92 min", "day": "Viernes", "date": 17, "time": "18:30", "venue": "Teatro Adolfo Mejía", "section": "🇨🇴 Comp. Colombia", "day_order": 3, "is_cortos": false, "film_list": []}, {"title": "Se Eu Fosse Vivo… Vivia", "title_en": "If I Were Alive", "country": "Brasil", "flags": "🇧🇷", "duration": "101 min", "day": "Viernes", "date": 17, "time": "18:30", "venue": "Plaza de la Proclamación", "section": "✊ Cine Afro", "day_order": 3, "is_cortos": false, "film_list": []}, {"title": "Pequenas Criaturas", "title_en": "Little Creatures", "country": "Brasil", "flags": "🇧🇷", "duration": "106 min", "day": "Viernes", "date": 17, "time": "20:00", "venue": "CC Bocagrande ‒ Sala 1", "section": "🇧🇷 Casa Brasil", "day_order": 3, "is_cortos": false, "film_list": []}, {"title": "Cine Afro — Prog. de Cortos", "title_en": "Como Nasce um Rio · Taxi Moto · Voz, Zov, Zvo", "flags": "🇧🇷🇨🇭", "country": "Brasil/Suiza/Francia", "duration": "81 min", "day": "Viernes", "date": 17, "time": "20:20", "venue": "CC Bocagrande ‒ Sala 2", "section": "✊ Cine Afro", "day_order": 3, "is_cortos": true, "film_list": [{"title": "Como Nasce um Rio", "country": "Brasil", "duration": "8 min"}, {"title": "Taxi Moto", "country": "Suiza/Francia", "duration": "21 min"}, {"title": "Voz, Zov, Zvo", "country": "Brasil", "duration": "52 min"}]}, {"title": "Maspalomas", "title_en": "", "country": "España", "flags": "🇪🇸", "duration": "115 min", "day": "Viernes", "date": 17, "time": "20:40", "venue": "CC Bocagrande ‒ Sala 3", "section": "🇪🇸 Muestra España", "day_order": 3, "is_cortos": false, "film_list": []}, {"title": "Jóhanna af örk", "title_en": "Joan of Arc", "country": "Islandia/Dinamarca/Francia", "flags": "🇮🇸🇩🇰🇫🇷", "duration": "61 min", "day": "Viernes", "date": 17, "time": "21:00", "venue": "CC Bocagrande ‒ Sala 4", "section": "⏳ (s)paces of Time", "day_order": 3, "is_cortos": false, "film_list": []}, {"title": "Internacional — Prog. de Cortos", "title_en": "Cul-De-Sac! · Ein Unfall · Force Times Displacement · Intersecting Memory · Daria's Night Flowers", "flags": "🌍", "country": "Varios", "duration": "~90 min", "day": "Viernes", "date": 17, "time": "21:00", "venue": "Plaza de la Proclamación", "section": "🌍 Internacional", "day_order": 3, "is_cortos": true, "film_list": [{"title": "Cul-De-Sac!", "country": "Bélgica/Francia", "duration": "17 min"}, {"title": "Ein Unfall", "country": "Austria", "duration": "30 min"}, {"title": "Force Times Displacement", "country": "Taiwán", "duration": "11 min"}, {"title": "Intersecting Memory", "country": "Palestina/Francia", "duration": "20 min"}, {"title": "Daria's Night Flowers", "country": "Irán/UK/Francia", "duration": "16 min"}]}, {"title": "Lust", "title_en": "", "country": "Bulgaria/Dinamarca/Suecia", "flags": "🇧🇬🇩🇰🇸🇪", "duration": "77 min", "day": "Viernes", "date": 17, "time": "21:20", "venue": "CC Bocagrande ‒ Sala 5", "section": "🌍 Internacional", "day_order": 3, "is_cortos": false, "film_list": []}, {"title": "AnyMart", "title_en": "チルド", "country": "Japón", "flags": "🇯🇵", "duration": "88 min", "day": "Viernes", "date": 17, "time": "22:00", "venue": "Teatro Adolfo Mejía", "section": "🌙 Medianoche", "day_order": 3, "is_cortos": false, "film_list": []}, {"title": "Alborada en Cartagena", "title_en": "Dawn in Cartagena", "country": "Colombia", "flags": "🇨🇴", "duration": "84 min", "day": "Sábado", "date": 18, "time": "09:00", "venue": "Teatro Adolfo Mejía", "section": "📽️ Retrospectiva FICCI Años 60", "day_order": 4, "is_cortos": false, "film_list": []}, {"title": "Lolita en Honda", "title_en": "Lolita in Honda", "country": "Colombia", "flags": "🇨🇴", "duration": "61 min", "day": "Sábado", "date": 18, "time": "11:00", "venue": "Teatro Adolfo Mejía", "section": "🇨🇴 Comp. Colombia", "day_order": 4, "is_cortos": false, "film_list": []}, {"title": "Cortos Colombia — Prog. 2", "title_en": "La forma y la raíz · Montaña luminosa · Pawa · Sombras en la niebla", "flags": "🇨🇴", "country": "Colombia", "duration": "~90 min", "day": "Sábado", "date": 18, "time": "11:00", "venue": "CC Caribe Plaza ‒ Sala 2", "section": "🇨🇴 Comp. Colombia", "day_order": 4, "is_cortos": true, "film_list": []}, {"title": "El valor de la palabra", "title_en": "The Value of Speech", "country": "Colombia", "flags": "🇨🇴", "duration": "79 min", "day": "Sábado", "date": 18, "time": "11:20", "venue": "CC Caribe Plaza ‒ Sala 5", "section": "🪶 Cine Indígena", "day_order": 4, "is_cortos": false, "film_list": []}, {"title": "Costas — Prog. 1", "title_en": "An Incomplete Calendar · Fuego en el mar · Petrolita", "flags": "🌊", "country": "Varios", "duration": "94 min", "day": "Sábado", "date": 18, "time": "11:20", "venue": "CC Bocagrande ‒ Sala 1", "section": "🌊 Costas", "day_order": 4, "is_cortos": true, "film_list": [{"title": "An Incomplete Calendar", "country": "Canadá/Irán/Venezuela/Turquía", "duration": "77 min"}, {"title": "Fuego en el mar", "country": "Argentina", "duration": "15 min"}, {"title": "Petrolita", "country": "Argentina", "duration": "2 min"}]}, {"title": "Los nadadores", "title_en": "The Swimmers", "country": "", "flags": "🇦🇷", "duration": "76 min", "day": "Sábado", "date": 18, "time": "11:40", "venue": "CC Bocagrande ‒ Sala 3", "section": "🇦🇷 Muestra Argentina", "day_order": 4, "is_cortos": false, "film_list": []}, {"title": "Crocodile", "title_en": "", "country": "Nueva Zelanda/Nigeria", "flags": "🇳🇬", "duration": "100 min", "day": "Sábado", "date": 18, "time": "11:40", "venue": "CC Caribe Plaza ‒ Sala 6", "section": "✊ Cine Afro", "day_order": 4, "is_cortos": false, "film_list": []}, {"title": "Bosque arriba en la montaña", "title_en": "Forest Up in the Mountain", "country": "Argentina", "flags": "🇦🇷", "duration": "91 min", "day": "Sábado", "date": 18, "time": "13:30", "venue": "Teatro Adolfo Mejía", "section": "🌎 Comp. Iberoamérica", "day_order": 4, "is_cortos": false, "film_list": []}, {"title": "Cortos Colombia — Prog. 1", "title_en": "Decaer · La garganta del diablo · Las formas de la magia · Madres de nacimiento · Todas las manos que solté · Ya se ven los tigres en la lluvia", "flags": "🇨🇴", "country": "Colombia", "duration": "~90 min", "day": "Sábado", "date": 18, "time": "14:00", "venue": "CC Caribe Plaza ‒ Sala 2", "section": "🇨🇴 Comp. Colombia", "day_order": 4, "is_cortos": true, "film_list": []}, {"title": "Cortos Iberoamérica — Prog. 2", "title_en": "O Mapa em que Estão os Meus Pés · Pajuyuk · Trizas", "flags": "🌎", "country": "Varios", "duration": "~90 min", "day": "Sábado", "date": 18, "time": "14:00", "venue": "CC Bocagrande ‒ Sala 1", "section": "🌎 Comp. Iberoamérica", "day_order": 4, "is_cortos": true, "film_list": []}, {"title": "Wax & Gold", "title_en": "", "country": "Austria/Italia", "flags": "🇦🇹🇮🇹", "duration": "97 min", "day": "Sábado", "date": 18, "time": "14:20", "venue": "CC Bocagrande ‒ Sala 2", "section": "📽️ Retrospectiva Ruth Beckermann", "day_order": 4, "is_cortos": false, "film_list": []}, {"title": "De Indias — Ángeles somos", "title_en": "Ángeles somos · El reportaje · Héroes del silencio · Kuagro · La tinaja · Piratas de La Boquilla", "flags": "🇨🇴", "country": "Colombia", "duration": "~51 min", "day": "Sábado", "date": 18, "time": "14:20", "venue": "CC Caribe Plaza ‒ Sala 5", "section": "🏛️ De Indias", "day_order": 4, "is_cortos": true, "film_list": [{"title": "Ángeles somos", "country": "Colombia", "duration": "9 min"}, {"title": "El reportaje", "country": "Colombia", "duration": "4 min"}, {"title": "Héroes del silencio", "country": "Colombia", "duration": "13 min"}, {"title": "Kuagro", "country": "Colombia", "duration": "12 min"}, {"title": "La tinaja", "country": "Colombia/Argentina", "duration": "13 min"}, {"title": "Piratas de La Boquilla", "country": "Colombia", "duration": "3 × 2 min"}]}, {"title": "Las corrientes", "title_en": "The Currents", "country": "Suiza/Argentina", "flags": "🇨🇭🇦🇷", "duration": "104 min", "day": "Sábado", "date": 18, "time": "14:40", "venue": "CC Bocagrande ‒ Sala 3", "section": "🌎 Comp. Iberoamérica", "day_order": 4, "is_cortos": false, "film_list": []}, {"title": "Vetre, pričaj sa mnom", "title_en": "Wind, Talk to Me", "country": "Serbia/Eslovenia/Croacia", "flags": "🇷🇸🇸🇮🇭🇷", "duration": "100 min", "day": "Sábado", "date": 18, "time": "14:40", "venue": "CC Caribe Plaza ‒ Sala 6", "section": "⏳ (s)paces of Time", "day_order": 4, "is_cortos": false, "film_list": []}, {"title": "Staatsschutz", "title_en": "Prosecution", "country": "Alemania", "flags": "🇩🇪", "duration": "113 min", "day": "Sábado", "date": 18, "time": "15:00", "venue": "CC Bocagrande ‒ Sala 4", "section": "🌍 Internacional", "day_order": 4, "is_cortos": false, "film_list": []}, {"title": "Puntos de fuga", "title_en": "Vanishing Points", "country": "Colombia", "flags": "🇨🇴", "duration": "72 min", "day": "Sábado", "date": 18, "time": "15:20", "venue": "CC Bocagrande ‒ Sala 5", "section": "🇨🇴 Comp. Colombia", "day_order": 4, "is_cortos": false, "film_list": []}, {"title": "Lo demás es ruido", "title_en": "Everything Else is Noise", "country": "México/Alemania/Canadá", "flags": "🇲🇽🇩🇪🇨🇦", "duration": "70 min", "day": "Sábado", "date": 18, "time": "16:30", "venue": "Teatro Adolfo Mejía", "section": "🌎 Comp. Iberoamérica", "day_order": 4, "is_cortos": false, "film_list": []}, {"title": "La noche está marchándose ya", "title_en": "The Night is Fading Away", "country": "Argentina", "flags": "🇦🇷", "duration": "104 min", "day": "Sábado", "date": 18, "time": "17:00", "venue": "CC Bocagrande ‒ Sala 1", "section": "🇦🇷 Muestra Argentina", "day_order": 4, "is_cortos": false, "film_list": []}, {"title": "El príncipe de Nanawa", "title_en": "The Prince of Nanawa", "country": "Argentina/Colombia/Paraguay", "flags": "🇦🇷🇨🇴🇵🇾", "duration": "212 min", "day": "Sábado", "date": 18, "time": "17:20", "venue": "CC Caribe Plaza ‒ Sala 5", "section": "⏳ (s)paces of Time", "day_order": 4, "is_cortos": false, "film_list": []}, {"title": "Los cruces", "title_en": "Intersections", "country": "Argentina", "flags": "🇦🇷", "duration": "83 min", "day": "Sábado", "date": 18, "time": "17:20", "venue": "CC Bocagrande ‒ Sala 2", "section": "🇦🇷 Muestra Argentina", "day_order": 4, "is_cortos": false, "film_list": []}, {"title": "El tren fluvial", "title_en": "The River Train", "country": "Argentina", "flags": "🇦🇷", "duration": "75 min", "day": "Sábado", "date": 18, "time": "17:40", "venue": "CC Bocagrande ‒ Sala 3", "section": "🌎 Comp. Iberoamérica", "day_order": 4, "is_cortos": false, "film_list": []}, {"title": "Cortos Iberoamérica — Prog. 1", "title_en": "Abortion Party · A donde nos lleva la fe de José Gerónimo · Agua fría · Fim de Rodovia · Quem se Move · Samba Infinito · En otra Palestina · Fuente alemana · Los peces no se ahogan", "flags": "🌎", "country": "Varios", "duration": "~90 min", "day": "Sábado", "date": 18, "time": "17:40", "venue": "CC Caribe Plaza ‒ Sala 6", "section": "🌎 Comp. Iberoamérica", "day_order": 4, "is_cortos": true, "film_list": []}, {"title": "Duhuldeki Deney", "title_en": "Soul of the Foot", "country": "Canadá/Turquía", "flags": "🇨🇦🇹🇷", "duration": "65 min", "day": "Sábado", "date": 18, "time": "18:00", "venue": "CC Bocagrande ‒ Sala 4", "section": "⏳ (s)paces of Time", "day_order": 4, "is_cortos": false, "film_list": []}, {"title": "Khmeli Potoli", "title_en": "Dry Leaf", "country": "Alemania/Georgia", "flags": "🇩🇪🇬🇪", "duration": "186 min", "day": "Sábado", "date": 18, "time": "18:20", "venue": "CC Bocagrande ‒ Sala 5", "section": "🌍 Internacional", "day_order": 4, "is_cortos": false, "film_list": []}, {"title": "ojoboca — Prog. 3 · 35mm", "title_en": "A Flea's Skin Would Be Too Big for You · Eigenheim", "flags": "🇩🇪", "country": "Alemania", "duration": "63 min", "day": "Sábado", "date": 18, "time": "18:30", "venue": "Auditorio nido", "section": "📽️ Retrospectiva ojoboca", "day_order": 4, "is_cortos": true, "film_list": [{"title": "A Flea's Skin Would Be Too Big for You", "country": "Alemania", "duration": "47 min"}, {"title": "Eigenheim", "country": "Alemania", "duration": "16 min"}]}, {"title": "Manual para invocar fantasmas", "title_en": "How to Summon Ghosts", "country": "Colombia", "flags": "🇨🇴", "duration": "71 min", "day": "Sábado", "date": 18, "time": "19:00", "venue": "Teatro Adolfo Mejía", "section": "🇨🇴 Comp. Colombia", "day_order": 4, "is_cortos": false, "film_list": []}, {"title": "Isabel", "title_en": "", "country": "Brasil/Francia", "flags": "🇧🇷🇫🇷", "duration": "85 min", "day": "Sábado", "date": 18, "time": "19:00", "venue": "Plaza de la Proclamación", "section": "🇧🇷 Casa Brasil", "day_order": 4, "is_cortos": false, "film_list": []}, {"title": "Risa y la cabina del viento", "title_en": "Risa and the Wind Phone", "country": "Argentina", "flags": "🇦🇷", "duration": "94 min", "day": "Sábado", "date": 18, "time": "20:00", "venue": "CC Caribe Plaza ‒ Sala 2", "section": "🏆 Comp. Cine en los Barrios", "day_order": 4, "is_cortos": false, "film_list": []}, {"title": "El mundo al revés", "title_en": "The World Upside Down", "country": "Suiza/Argentina", "flags": "🇨🇭🇦🇷", "duration": "77 min", "day": "Sábado", "date": 18, "time": "20:00", "venue": "CC Bocagrande ‒ Sala 1", "section": "🇨🇭 Muestra Suiza", "day_order": 4, "is_cortos": false, "film_list": []}, {"title": "(s)paces Cortos — Prog. 1", "title_en": "Atado · Pequeno Jogo · Trưa Lịm · Warnungen an die ferne Zukunft · 3cm of Complexity", "flags": "⏳", "country": "Varios", "duration": "~60 min", "day": "Sábado", "date": 18, "time": "20:20", "venue": "CC Bocagrande ‒ Sala 2", "section": "⏳ (s)paces of Time", "day_order": 4, "is_cortos": true, "film_list": []}, {"title": "The Sky Trembles and the Earth Is Afraid", "title_en": "and the Two Eyes Are Not Brothers", "country": "Reino Unido", "flags": "🇬🇧", "duration": "96 min", "day": "Sábado", "date": 18, "time": "20:30", "venue": "Auditorio nido", "section": "🎖️ Tributo Ben Rivers", "day_order": 4, "is_cortos": false, "film_list": []}, {"title": "The Chronology of Water", "title_en": "", "country": "Francia/Letonia/Estados Unidos", "flags": "🇫🇷🇱🇻🇺🇸", "duration": "128 min", "day": "Sábado", "date": 18, "time": "20:40", "venue": "CC Bocagrande ‒ Sala 3", "section": "⭐ Proyecciones Especiales", "day_order": 4, "is_cortos": false, "film_list": []}, {"title": "Blue Heron", "title_en": "", "country": "Canadá/Hungría", "flags": "🇨🇦🇭🇺", "duration": "90 min", "day": "Sábado", "date": 18, "time": "21:00", "venue": "Plaza de la Proclamación", "section": "🌍 Internacional", "day_order": 4, "is_cortos": false, "film_list": []}, {"title": "Los caifanes", "title_en": "The Caifanes", "country": "México", "flags": "🇲🇽", "duration": "95 min", "day": "Sábado", "date": 18, "time": "21:00", "venue": "CC Bocagrande ‒ Sala 4", "section": "📽️ Retrospectiva FICCI Años 60", "day_order": 4, "is_cortos": false, "film_list": []}, {"title": "Matapanki", "title_en": "", "country": "Chile", "flags": "🇨🇱", "duration": "71 min", "day": "Sábado", "date": 18, "time": "22:00", "venue": "Teatro Adolfo Mejía", "section": "🌙 Medianoche", "day_order": 4, "is_cortos": false, "film_list": []}, {"title": "A la salida nos vemos", "title_en": "See You Outside", "country": "Colombia", "flags": "🇨🇴", "duration": "105 min", "day": "Domingo", "date": 19, "time": "11:00", "venue": "Teatro Adolfo Mejía", "section": "📽️ Retrospectiva Clásicos – Ópera Prima", "day_order": 5, "is_cortos": false, "film_list": []}, {"title": "Cortos Colombia — Prog. 3", "title_en": "El cazador · Filme Pin · Futuros luminosos · Lejanía · Winter Blumen Garten", "flags": "🇨🇴", "country": "Colombia", "duration": "~90 min", "day": "Domingo", "date": 19, "time": "11:00", "venue": "CC Caribe Plaza ‒ Sala 2", "section": "🇨🇴 Comp. Colombia", "day_order": 5, "is_cortos": true, "film_list": []}, {"title": "Cine Indígena — Prog. 1", "title_en": "Apotnojushi La casa del viento · La Raya", "flags": "🇨🇴🇲🇽", "country": "Colombia/México", "duration": "92 min", "day": "Domingo", "date": 19, "time": "11:00", "venue": "CC Bocagrande ‒ Sala 1", "section": "🪶 Cine Indígena", "day_order": 5, "is_cortos": true, "film_list": [{"title": "Apotnojushi La casa del viento", "country": "Colombia", "duration": "12 min"}, {"title": "La Raya", "country": "México", "duration": "80 min"}]}, {"title": "Maspalomas", "title_en": "", "country": "España", "flags": "🇪🇸", "duration": "115 min", "day": "Domingo", "date": 19, "time": "11:20", "venue": "CC Caribe Plaza ‒ Sala 5", "section": "🇪🇸 Muestra España", "day_order": 5, "is_cortos": false, "film_list": []}, {"title": "Costas — Prog. 3", "title_en": "Ali au pays des merveilles · Viaje a la explotación", "flags": "🌊", "country": "Varios", "duration": "78 min", "day": "Domingo", "date": 19, "time": "11:20", "venue": "CC Bocagrande ‒ Sala 2", "section": "🌊 Costas", "day_order": 5, "is_cortos": true, "film_list": [{"title": "Ali au pays des merveilles", "country": "Francia", "duration": "59 min"}, {"title": "Viaje a la explotación", "country": "España", "duration": "19 min"}]}, {"title": "Mare’s Nest", "title_en": "", "country": "", "flags": "🎬", "duration": "98 min", "day": "Domingo", "date": 19, "time": "11:40", "venue": "CC Bocagrande ‒ Sala 3", "section": "⏳ (s)paces of Time", "day_order": 5, "is_cortos": false, "film_list": []}, {"title": "De Indias — Ángeles somos", "title_en": "Ángeles somos · El reportaje · Héroes del silencio · Kuagro · La tinaja · Piratas de La Boquilla", "flags": "🇨🇴", "country": "Colombia", "duration": "~51 min", "day": "Domingo", "date": 19, "time": "11:40", "venue": "CC Caribe Plaza ‒ Sala 6", "section": "🏛️ De Indias", "day_order": 5, "is_cortos": true, "film_list": [{"title": "Ángeles somos", "country": "Colombia", "duration": "9 min"}, {"title": "El reportaje", "country": "Colombia", "duration": "4 min"}, {"title": "Héroes del silencio", "country": "Colombia", "duration": "13 min"}, {"title": "Kuagro", "country": "Colombia", "duration": "12 min"}, {"title": "La tinaja", "country": "Colombia/Argentina", "duration": "13 min"}, {"title": "Piratas de La Boquilla", "country": "Colombia", "duration": "3 × 2 min"}]}, {"title": "Lo demás es ruido", "title_en": "Everything Else is Noise", "country": "México/Alemania/Canadá", "flags": "🇲🇽🇩🇪🇨🇦", "duration": "70 min", "day": "Domingo", "date": 19, "time": "12:00", "venue": "CC Bocagrande ‒ Sala 4", "section": "🌎 Comp. Iberoamérica", "day_order": 5, "is_cortos": false, "film_list": []}, {"title": "El lugar más pequeño", "title_en": "The Tiniest Place", "country": "México", "flags": "🇲🇽", "duration": "108 min", "day": "Domingo", "date": 19, "time": "12:20", "venue": "CC Bocagrande ‒ Sala 5", "section": "📽️ Retrospectiva Clásicos – Ópera Prima", "day_order": 5, "is_cortos": false, "film_list": []}, {"title": "Mu-Ki-Ra", "title_en": "", "country": "Colombia/España/Francia", "flags": "🇨🇴🇪🇸🇫🇷", "duration": "81 min", "day": "Domingo", "date": 19, "time": "14:00", "venue": "Teatro Adolfo Mejía", "section": "🏆 Comp. Cine en los Barrios", "day_order": 5, "is_cortos": false, "film_list": []}, {"title": "Frío metal", "title_en": "Cold Metal", "country": "México", "flags": "🇲🇽", "duration": "102 min", "day": "Domingo", "date": 19, "time": "14:00", "venue": "CC Bocagrande ‒ Sala 1", "section": "⏳ (s)paces of Time", "day_order": 5, "is_cortos": false, "film_list": []}, {"title": "Ben Rivers — Prog. 3 · 16mm", "title_en": "This Is My Land · Ah, Liberty! · Origin of the Species · A World Rattled of Habit", "flags": "🇬🇧", "country": "Reino Unido", "duration": "59 min", "day": "Domingo", "date": 19, "time": "14:00", "venue": "Auditorio nido", "section": "🎖️ Tributo Ben Rivers", "day_order": 5, "is_cortos": true, "film_list": [{"title": "This Is My Land", "country": "Reino Unido", "duration": "14 min"}, {"title": "Ah, Liberty!", "country": "Reino Unido", "duration": "19 min"}, {"title": "Origin of the Species", "country": "Reino Unido", "duration": "16 min"}, {"title": "A World Rattled of Habit", "country": "Reino Unido", "duration": "10 min"}]}, {"title": "Cortos Colombia — Prog. 4", "title_en": "Belleza letal · Consagración · Mi amigo, el arquitecto · Sirena mecánica · Suite intercontinental", "flags": "🇨🇴", "country": "Colombia", "duration": "~90 min", "day": "Domingo", "date": 19, "time": "14:00", "venue": "CC Caribe Plaza ‒ Sala 2", "section": "🇨🇴 Comp. Colombia", "day_order": 5, "is_cortos": true, "film_list": []}, {"title": "Lust", "title_en": "", "country": "Bulgaria/Dinamarca/Suecia", "flags": "🇧🇬🇩🇰🇸🇪", "duration": "77 min", "day": "Domingo", "date": 19, "time": "14:20", "venue": "CC Bocagrande ‒ Sala 2", "section": "🌍 Internacional", "day_order": 5, "is_cortos": false, "film_list": []}, {"title": "Cortos Iberoamérica — Prog. 2", "title_en": "O Mapa em que Estão os Meus Pés · Pajuyuk · Trizas", "flags": "🌎", "country": "Varios", "duration": "~90 min", "day": "Domingo", "date": 19, "time": "14:20", "venue": "CC Caribe Plaza ‒ Sala 5", "section": "🌎 Comp. Iberoamérica", "day_order": 5, "is_cortos": true, "film_list": []}, {"title": "Los nadadores", "title_en": "The Swimmers", "country": "", "flags": "🇦🇷", "duration": "76 min", "day": "Domingo", "date": 19, "time": "14:40", "venue": "CC Caribe Plaza ‒ Sala 6", "section": "🇦🇷 Muestra Argentina", "day_order": 5, "is_cortos": false, "film_list": []}, {"title": "El dependiente", "title_en": "The Dependent", "country": "Argentina", "flags": "🇦🇷", "duration": "87 min", "day": "Domingo", "date": 19, "time": "14:40", "venue": "CC Bocagrande ‒ Sala 3", "section": "📽️ Retrospectiva FICCI Años 60", "day_order": 5, "is_cortos": false, "film_list": []}, {"title": "Geu Jayeoni Nege Mworago Hani", "title_en": "What Does That Nature Say to You", "country": "Corea del Sur", "flags": "🇰🇷", "duration": "108 min", "day": "Domingo", "date": 19, "time": "15:00", "venue": "CC Bocagrande ‒ Sala 4", "section": "🌍 Internacional", "day_order": 5, "is_cortos": false, "film_list": []}, {"title": "Sehnsucht in Sangerhausen", "title_en": "Phantoms of July", "country": "Alemania", "flags": "🇩🇪", "duration": "90 min", "day": "Domingo", "date": 19, "time": "15:20", "venue": "CC Bocagrande ‒ Sala 5", "section": "⏳ (s)paces of Time", "day_order": 5, "is_cortos": false, "film_list": []}, {"title": "El hogar fue sepultado en esa tierra", "title_en": "que nunca pudimos encontrar", "country": "Colombia", "flags": "🇨🇴", "duration": "92 min", "day": "Domingo", "date": 19, "time": "16:00", "venue": "Auditorio nido", "section": "🇨🇴 Comp. Colombia", "day_order": 5, "is_cortos": false, "film_list": []}, {"title": "Les Voyageurs", "title_en": "The Travelers", "country": "España/Camerún", "flags": "🇪🇸🇨🇲", "duration": "61 min", "day": "Domingo", "date": 19, "time": "17:00", "venue": "CC Caribe Plaza ‒ Sala 2", "section": "🇪🇸 Muestra España", "day_order": 5, "is_cortos": false, "film_list": []}, {"title": "Ben Rivers — Prog. 2", "title_en": "Slow Action · Look Then Below · Urth", "flags": "🇬🇧", "country": "Reino Unido", "duration": "86 min", "day": "Domingo", "date": 19, "time": "17:00", "venue": "CC Bocagrande ‒ Sala 1", "section": "🎖️ Tributo Ben Rivers", "day_order": 5, "is_cortos": true, "film_list": [{"title": "Slow Action", "country": "Reino Unido", "duration": "45 min"}, {"title": "Look Then Below", "country": "Reino Unido", "duration": "21 min"}, {"title": "Urth", "country": "Reino Unido", "duration": "20 min"}]}, {"title": "Feito Pipa", "title_en": "Gugu’s World", "country": "Brasil", "flags": "🇧🇷", "duration": "93 min", "day": "Domingo", "date": 19, "time": "17:20", "venue": "CC Caribe Plaza ‒ Sala 5", "section": "🏆 Comp. Cine en los Barrios", "day_order": 5, "is_cortos": false, "film_list": []}, {"title": "Dao", "title_en": "Dao", "country": "Francia/Senegal/Guinea-Bissau", "flags": "🇫🇷🇸🇳", "duration": "185 min", "day": "Domingo", "date": 19, "time": "17:20", "venue": "CC Bocagrande ‒ Sala 2", "section": "✊ Cine Afro", "day_order": 5, "is_cortos": false, "film_list": []}, {"title": "The Loneliest Man in Town", "title_en": "", "country": "Austria", "flags": "🇦🇹", "duration": "86 min", "day": "Domingo", "date": 19, "time": "17:40", "venue": "CC Bocagrande ‒ Sala 3", "section": "🌍 Internacional", "day_order": 5, "is_cortos": false, "film_list": []}, {"title": "Pequenas Criaturas", "title_en": "Little Creatures", "country": "Brasil", "flags": "🇧🇷", "duration": "106 min", "day": "Domingo", "date": 19, "time": "17:40", "venue": "CC Caribe Plaza ‒ Sala 6", "section": "🇧🇷 Casa Brasil", "day_order": 5, "is_cortos": false, "film_list": []}, {"title": "Nuit Obscure - Ain’t I a Child?", "title_en": "Obscure Night - Ain’t I a Child?", "country": "", "flags": "🇨🇭", "duration": "164 min", "day": "Domingo", "date": 19, "time": "18:00", "venue": "CC Bocagrande ‒ Sala 4", "section": "🇨🇭 Muestra Suiza", "day_order": 5, "is_cortos": false, "film_list": []}, {"title": "Doggerland", "title_en": "", "country": "Suecia", "flags": "🇸🇪", "duration": "76 min", "day": "Domingo", "date": 19, "time": "18:20", "venue": "CC Bocagrande ‒ Sala 5", "section": "🌍 Internacional", "day_order": 5, "is_cortos": false, "film_list": []}, {"title": "De Indias — Ángeles somos", "title_en": "Ángeles somos · El reportaje · Héroes del silencio · Kuagro · La tinaja · Piratas de La Boquilla", "flags": "🇨🇴", "country": "Colombia", "duration": "~51 min", "day": "Domingo", "date": 19, "time": "18:30", "venue": "Plaza de la Proclamación", "section": "🏛️ De Indias", "day_order": 5, "is_cortos": true, "film_list": [{"title": "Ángeles somos", "country": "Colombia", "duration": "9 min"}, {"title": "El reportaje", "country": "Colombia", "duration": "4 min"}, {"title": "Héroes del silencio", "country": "Colombia", "duration": "13 min"}, {"title": "Kuagro", "country": "Colombia", "duration": "12 min"}, {"title": "La tinaja", "country": "Colombia/Argentina", "duration": "13 min"}, {"title": "Piratas de La Boquilla", "country": "Colombia", "duration": "3 × 2 min"}]}];
 const LB_SVG=`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="13" height="13" style="display:block;flex-shrink:0"><rect width="64" height="64" rx="9" fill="#2C3440"/><circle cx="21" cy="32" r="12" fill="#00B020" opacity=".9"/><circle cx="32" cy="32" r="12" fill="#3CBEDB" opacity=".85"/><circle cx="43" cy="32" r="12" fill="#FF8000" opacity=".9"/></svg>`;
 
-// ── VENUES — Caribe Plaza = 🍿 ──
+// Festival date map
+const FESTIVAL_DATES={
+  'Martes':'2026-04-14','Miércoles':'2026-04-15','Jueves':'2026-04-16',
+  'Viernes':'2026-04-17','Sábado':'2026-04-18','Domingo':'2026-04-19'
+};
+
+// Check if a screening has passed (with 10 min grace)
+function screeningPassed(s){
+  const dateStr=FESTIVAL_DATES[s.day];
+  if(!dateStr) return false;
+  const screeningTime=new Date(`${dateStr}T${s.time}:00`);
+  screeningTime.setMinutes(screeningTime.getMinutes()+10); // 10 min grace
+  return new Date()>screeningTime;
+}
+function dayFullyPassed(day){
+  const dateStr=FESTIVAL_DATES[day];
+  if(!dateStr) return false;
+  // Day passed if last function of that day has passed
+  const dayFilms=FILMS.filter(f=>f.day===day);
+  if(!dayFilms.length) return false;
+  const lastTime=dayFilms.reduce((max,f)=>f.time>max?f.time:max,'00:00');
+  const lastScreen=new Date(`${dateStr}T${lastTime}:00`);
+  lastScreen.setMinutes(lastScreen.getMinutes()+10);
+  return new Date()>lastScreen;
+}
+function isToday(day){
+  const dateStr=FESTIVAL_DATES[day];
+  if(!dateStr) return false;
+  const today=new Date().toISOString().slice(0,10);
+  return dateStr===today;
+}
+
 const VENUES={
   'Teatro Adolfo Mejía':{ico:'🎭',short:'Teatro Adolfo Mejía'},
   'CC Bocagrande':      {ico:'🎬',short:'CC Bocagrande'},
@@ -356,22 +337,12 @@ function screensConflict(a,b){
   const bS=toMin(b.time)-10,bE=toMin(b.time)+parseDur(b.duration)+10;
   return aS<bE&&bS<aE;
 }
-
-// ── TRAVEL TIMES (minutes) between venue groups ──
-// Centro histórico: Teatro Adolfo Mejía, Plaza Proclamación, Auditorio nido, C. Convenciones
-// Bocagrande: CC Bocagrande
-// Pie de la Popa: CC Caribe Plaza
-function travelMins(venueA, venueB){
-  const grupo=v=>{
-    if(v.includes('Bocagrande')) return 'bog';
-    if(v.includes('Caribe Plaza')) return 'cp';
-    return 'centro'; // Teatro, Plaza, Nido, Convenciones
-  };
-  const g1=grupo(venueA),g2=grupo(venueB);
+function travelMins(venueA,venueB){
+  const g=v=>v.includes('Bocagrande')?'bog':v.includes('Caribe Plaza')?'cp':'centro';
+  const g1=g(venueA),g2=g(venueB);
   if(g1===g2) return 0;
   if((g1==='bog'&&g2==='cp')||(g1==='cp'&&g2==='bog')) return 13;
-  if((g1==='centro'&&g2==='bog')||(g1==='bog'&&g2==='centro')) return 12;
-  if((g1==='centro'&&g2==='cp')||(g1==='cp'&&g2==='centro')) return 16;
+  if(g1==='centro'||g2==='centro') return g1==='cp'||g2==='cp'?16:12;
   return 0;
 }
 function travelWarn(s1,s2){
@@ -383,12 +354,16 @@ function travelWarn(s1,s2){
   return null;
 }
 
+// Normalize text for accent-insensitive search
+function normalize(str){
+  return str.normalize('NFD').replace(/[̀-ͯ]/g,'').toLowerCase();
+}
+
 // ── STATE ──
 let watchlist=new Set();
 let watched=new Set();
-let prioritized=new Set(); // titles to force-include in algorithm
-let savedAgenda=null; // {schedule:[...]}
-
+let prioritized=new Set();
+let savedAgenda=null;
 const DAY_KEYS=['Martes','Miércoles','Jueves','Viernes','Sábado','Domingo'];
 let availability={Martes:{blocks:[]},Miércoles:{blocks:[]},Jueves:{blocks:[]},Viernes:{blocks:[]},Sábado:{blocks:[]},Domingo:{blocks:[]}};
 
@@ -405,9 +380,14 @@ function saveWatched(){try{localStorage.setItem('ficci65_watched',JSON.stringify
 function saveAV(){try{localStorage.setItem('ficci65_av3',JSON.stringify(availability));}catch(e){}}
 function saveSavedAgenda(){try{localStorage.setItem('ficci65_saved',JSON.stringify(savedAgenda));}catch(e){}}
 
-function pendingCount(){return[...watchlist].filter(t=>!watched.has(t)).length;}
+function pendingCount(){return[...watchlist].filter(t=>!watched.has(t)&&!screeningPassed({day:'x',time:'00:00'})).length;}
 function updateAgTab(){
-  const el=document.getElementById('ag-cnt');if(el) el.textContent=pendingCount();
+  // Count: in watchlist, not watched, and has future screenings
+  const future=[...watchlist].filter(t=>{
+    if(watched.has(t)) return false;
+    return FILMS.some(f=>f.title===t&&!screeningPassed(f));
+  });
+  const el=document.getElementById('ag-cnt');if(el) el.textContent=future.length;
   const tab=document.getElementById('agtab');if(tab) tab.classList.toggle('on',activeView==='agenda');
 }
 
@@ -423,11 +403,6 @@ function toggleWatched(title,e){
   if(watched.has(title)) watched.delete(title);
   else watched.add(title);
   saveWatched();updateCardState(title);updateAgTab();
-  // Update saved agenda item
-  if(savedAgenda){
-    const el=document.querySelector(`.saved-item[data-title="${CSS.escape(title)}"]`);
-    if(el){el.classList.toggle('done',watched.has(title));const btn=el.querySelector('.saved-check');if(btn) btn.classList.toggle('done',watched.has(title));}
-  }
   if(activeView==='agenda'){cachedResult=null;renderAgenda();}
 }
 function updateCardState(title){
@@ -437,21 +412,14 @@ function updateCardState(title){
     card.classList.toggle('in-watched',inW);
     const wlBtn=card.querySelector('.wl-btn');
     const wBtn=card.querySelector('.w-btn');
-    if(wlBtn){
-      wlBtn.textContent=inWL?'♥':'♡';
-      wlBtn.classList.toggle('wl-on',inWL);
-      wlBtn.title=inWL?'Quitar de Mi agenda':'Añadir a Mi agenda';
-    }
-    if(wBtn){
-      wBtn.classList.toggle('w-on',inW);
-      wBtn.title=inW?'Marcar como pendiente':'Marcar como vista';
-    }
+    if(wlBtn){wlBtn.textContent=inWL?'♥':'♡';wlBtn.classList.toggle('wl-on',inWL);wlBtn.title=inWL?'Quitar de Mi agenda':'Añadir a Mi agenda';}
+    if(wBtn){wBtn.classList.toggle('w-on',inW);wBtn.title=inW?'Marcar como pendiente':'Marcar como vista';}
   });
 }
 
-// ── FUZZY SEARCH ──
+// ── FUZZY SEARCH — accent insensitive ──
 function fuzzyMatch(query,title){
-  const q=query.toLowerCase(),t=title.toLowerCase();
+  const q=normalize(query),t=normalize(title);
   if(t.includes(q)) return{match:true,score:100+q.length};
   let qi=0;for(let i=0;i<t.length&&qi<q.length;i++) if(t[i]===q[qi]) qi++;
   if(qi===q.length) return{match:true,score:qi};
@@ -460,12 +428,10 @@ function fuzzyMatch(query,title){
 function searchFilms(query){
   if(!query||query.length<2) return[];
   const seen=new Set();
-  // Search both individual films AND programs (is_cortos)
   return FILMS
     .map(f=>{
       const r1=fuzzyMatch(query,f.title);
       const r2=f.title_en?fuzzyMatch(query,f.title_en):{match:false,score:0};
-      // Also search within film_list titles
       let r3={match:false,score:0};
       if(f.film_list&&f.film_list.length){
         for(const item of f.film_list){
@@ -488,11 +454,10 @@ function onSearchInput(){
   if(!films.length){res.innerHTML='<div class="ag-sr-empty">Sin resultados</div>';res.classList.add('open');return;}
   res.innerHTML=films.map(f=>{
     const inWL=watchlist.has(f.title);
-    const isProgLabel=f.is_cortos?' · Programa':'';
     return`<div class="ag-sr-item">
       <div>
         <div class="ag-sr-title">${f.title}</div>
-        <div class="ag-sr-meta">${f.flags||''} ${f.duration||''}${isProgLabel}${inWL?' · <span style="color:var(--orange)">♥ En agenda</span>':''}</div>
+        <div class="ag-sr-meta">${f.flags||''} ${f.duration||''}${f.is_cortos?' · Programa':''}${inWL?' · <span style="color:var(--orange)">♥</span>':''}</div>
       </div>
       <button class="ag-sr-add${inWL?' added':''}" onclick="addFromSearch('${f.title.replace(/'/g,"\'")}')">
         ${inWL?'✓ Añadida':'＋ Añadir'}
@@ -535,8 +500,7 @@ function addBlock(day){
   if(toMin(f)>=toMin(t)){alert('La hora de inicio debe ser menor que la de fin');return;}
   const av=availability[day];
   if(av.blocks.some(b=>toMin(f)<toMin(b.to)&&toMin(t)>toMin(b.from))){alert('Este bloque se solapa con uno existente');return;}
-  av.blocks.push({from:f,to:t});
-  av.blocks.sort((a,b)=>toMin(a.from)-toMin(b.from));
+  av.blocks.push({from:f,to:t});av.blocks.sort((a,b)=>toMin(a.from)-toMin(b.from));
   saveAV();renderAvDay(day);updateAvSummary(day);
 }
 function removeBlock(day,fromVal,toVal){
@@ -553,16 +517,13 @@ function toggleAvDay(day){
 }
 function renderAvDay(day){
   const body=document.getElementById(`av-body-${day}`);if(!body) return;
-  const av=availability[day];
   const fullBlocked=isFullDayBlocked(day);
-  const visibleBlocks=av.blocks.filter(b=>!(toMin(b.from)<=0&&toMin(b.to)>=toMin('23:59')));
+  const visibleBlocks=availability[day].blocks.filter(b=>!(toMin(b.from)<=0&&toMin(b.to)>=toMin('23:59')));
   const blocksHtml=fullBlocked
     ?`<div class="av-blocks-list"><div class="av-block-pill"><span class="av-block-text">🚫 Día completo bloqueado</span></div></div>`
     :visibleBlocks.length?`<div class="av-blocks-list">${visibleBlocks.map(b=>
-        `<div class="av-block-pill">
-          <span class="av-block-text">🚫 ${b.from} – ${b.to}</span>
-          <button class="av-block-remove" onclick="removeBlock('${day}','${b.from}','${b.to}')">×</button>
-        </div>`).join('')}</div>`:'';
+        `<div class="av-block-pill"><span class="av-block-text">🚫 ${b.from} – ${b.to}</span>
+        <button class="av-block-remove" onclick="removeBlock('${day}','${b.from}','${b.to}')">×</button></div>`).join('')}</div>`:'';
   body.innerHTML=`${blocksHtml}
     <div class="av-add-form">
       <input type="time" id="av-from-${day}" class="av-time-input" value="12:00">
@@ -576,24 +537,26 @@ function renderAvDay(day){
 }
 function isScreeningBlocked(s){
   const av=availability[s.day];if(!av) return false;
-  const sMin=toMin(s.time);
-  return av.blocks.some(b=>sMin>=toMin(b.from)&&sMin<toMin(b.to));
+  return av.blocks.some(b=>toMin(s.time)>=toMin(b.from)&&toMin(s.time)<toMin(b.to));
 }
 
-// ── ALGORITHM with MRV + random restarts + priority ──
+// ── ALGORITHM — exhaustive max + MRV + random restarts ──
 function shuffle(arr){
   const a=[...arr];
   for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}
   return a;
 }
 function computeScenarios(titles){
+  // Only consider future screenings
   const pending=titles.filter(t=>!watched.has(t));
   const baseGroups=pending.map(t=>{
-    const screens=FILMS.filter(f=>f.title===t&&!isScreeningBlocked(f));
+    const screens=FILMS.filter(f=>f.title===t&&!isScreeningBlocked(f)&&!screeningPassed(f));
     return{title:t,screens,priority:prioritized.has(t)};
   }).filter(g=>g.screens.length>0);
   if(!baseGroups.length) return[];
+
   const seenKeys=new Set();const allScenarios=[];let bestScore=-1;
+
   function runBacktrack(groups){
     function backtrack(idx,chosen){
       if(allScenarios.length>=8) return;
@@ -614,30 +577,63 @@ function computeScenarios(titles){
           if(allScenarios.length>=8) return;
         }
       }
-      // Only skip this film if it's NOT prioritized
-      // Prioritized films must be included — if no slot found, this branch fails
+      // Only skip if NOT prioritized
       if(!g.priority) backtrack(idx+1,chosen);
     }
     backtrack(0,[]);
   }
-  // Priority films first, then MRV
+
+  // Phase 1: MRV — prioritized first, then fewest options
   const sorted=[...baseGroups].sort((a,b)=>{
     if(a.priority&&!b.priority) return -1;
     if(!a.priority&&b.priority) return 1;
     return a.screens.length-b.screens.length;
   });
   runBacktrack(sorted);
-  for(let i=0;i<25&&allScenarios.length<8;i++) runBacktrack(shuffle(baseGroups));
+
+  // Phase 2: random restarts for diversity
+  for(let i=0;i<30&&allScenarios.length<8;i++) runBacktrack(shuffle(baseGroups));
+
   allScenarios.forEach(sc=>sc.sort((a,b)=>a.day_order!==b.day_order?a.day_order-b.day_order:toMin(a.time)-toMin(b.time)));
+
   return allScenarios.map(sc=>{
     const included=new Set(sc.map(s=>s._title));
-    return{schedule:sc,excluded:pending.filter(t=>!included.has(t))};
+    // Excluded = pending but not in this scenario
+    // Distinguish: truly impossible vs just not in this scenario
+    const excl=pending.filter(t=>!included.has(t));
+    return{schedule:sc,excluded:excl};
   });
 }
 
-// ── RENDER ──
-let cachedResult=null;
+// ── SUGGESTIONS after saved agenda ──
+function getSuggestions(){
+  if(!savedAgenda||!savedAgenda.schedule.length) return[];
+  const saved=savedAgenda.schedule.filter(s=>!screeningPassed(s));
+  const suggestions=[];
+  const seen=new Set([...watchlist]);
 
+  for(let i=0;i<saved.length-1;i++){
+    const a=saved[i],b=saved[i+1];
+    if(a.day!==b.day) continue;
+    const gapStart=toMin(a.time)+parseDur(a.duration)+10;
+    const gapEnd=toMin(b.time)-10;
+    const gapMins=gapEnd-gapStart;
+    if(gapMins<30) continue;
+    // Find films that fit in this gap
+    FILMS.forEach(f=>{
+      if(seen.has(f.title)||f.is_cortos||screeningPassed(f)) return;
+      if(f.day!==a.day) return;
+      const fStart=toMin(f.time),fEnd=fStart+parseDur(f.duration);
+      if(fStart>=gapStart&&fEnd<=gapEnd+10){
+        seen.add(f.title);
+        suggestions.push({...f,_gapDay:a.day,_gapStart:gapStart,_gapEnd:gapEnd});
+      }
+    });
+  }
+  return suggestions.slice(0,5);
+}
+
+// ── RENDER FILM LIST ──
 function renderFilmListHTML(){
   const pending=[...watchlist].filter(t=>!watched.has(t));
   const watchedList=[...watched];
@@ -645,15 +641,16 @@ function renderFilmListHTML(){
   if(pending.length){
     html+=pending.map(t=>{
       const f=FILMS.find(fi=>fi.title===t);
-      return`<div class="ag-film-item">
+      const hasFuture=FILMS.some(fi=>fi.title===t&&!screeningPassed(fi));
+      return`<div class="ag-film-item${!hasFuture?' watched-item':''}">
         <div class="ag-fi-flags">${f?f.flags||'🎬':'🎬'}</div>
         <div class="ag-fi-info">
           <div class="ag-fi-title">${t}</div>
-          <div class="ag-fi-meta">${f?f.section||'':''} ${f&&f.duration?' · '+f.duration:''}</div>
+          <div class="ag-fi-meta">${f?f.section||'':''}${f&&f.duration?' · '+f.duration:''}${!hasFuture?' · Sin funciones futuras':''}</div>
         </div>
         <div class="ag-fi-actions">
           <button class="ag-fi-btn w-mark${watched.has(t)?' w-on':''}" onclick="toggleWatched('${t.replace(/'/g,"\'")}',event)" title="Marcar como vista">✓</button>
-          <button class="ag-fi-btn del" onclick="toggleWL('${t.replace(/'/g,"\'")}',event)" title="Quitar de Mi agenda">✕</button>
+          <button class="ag-fi-btn del" onclick="toggleWL('${t.replace(/'/g,"\'")}',event)" title="Quitar">✕</button>
         </div>
       </div>`;
     }).join('');
@@ -678,18 +675,131 @@ function renderFilmListHTML(){
   return html||`<div class="ag-empty" style="padding:20px"><p>Usa el buscador para añadir películas.</p></div>`;
 }
 
+// ── RENDER SAVED AGENDA ──
+function renderSavedAgendaHTML(){
+  if(!savedAgenda||!savedAgenda.schedule.length) return'';
+  const all=savedAgenda.schedule;
+  const archive=all.filter(s=>screeningPassed(s)||watched.has(s._title));
+  const upcoming=all.filter(s=>!screeningPassed(s)&&!watched.has(s._title));
+  const todayItems=upcoming.filter(s=>isToday(s.day));
+  const futureItems=upcoming.filter(s=>!isToday(s.day));
+  const byDay={};
+  futureItems.forEach(s=>{if(!byDay[s.day])byDay[s.day]=[];byDay[s.day].push(s);});
+
+  let html=`<div class="saved-agenda">
+    <div class="saved-agenda-header">
+      <div class="saved-agenda-title">📌 Mi agenda guardada</div>
+      <button class="saved-agenda-clear" onclick="clearSavedAgenda()">✕ Borrar</button>
+    </div>`;
+
+  // Archive (past + watched)
+  if(archive.length){
+    const archByDay={};
+    archive.forEach(s=>{if(!archByDay[s.day])archByDay[s.day]=[];archByDay[s.day].push(s);});
+    html+=`<div class="archive-toggle" onclick="toggleArchive()">
+      <span class="archive-toggle-lbl">🗄 Historial (${archive.length}) — toca para ver</span>
+      <span id="arch-arrow" style="color:var(--gray);font-size:11px">▼</span>
+    </div>
+    <div class="archive-body" id="archive-body">
+      ${DAY_KEYS.filter(d=>archByDay[d]).map(day=>`
+        <div class="saved-day-lbl">${DAY_SHORT[day]}</div>
+        ${archByDay[day].map(s=>{
+          const vc2=vcfg(s.venue),sl=sala(s.venue);
+          const isDone=watched.has(s._title);
+          return`<div class="saved-item done">
+            <div class="saved-time">${s.time}</div>
+            <div class="saved-info">
+              <div class="saved-title">${s._title}</div>
+              <div class="saved-venue">${vc2.ico} ${vc2.short}${sl?' · '+sl:''}</div>
+            </div>
+            <button class="saved-check done" onclick="toggleWatched('${s._title.replace(/'/g,"\'")}',event)" title="Desmarcar">↩</button>
+          </div>`;
+        }).join('')}`).join('')}
+    </div>`;
+  }
+
+  // Today
+  if(todayItems.length){
+    html+=`<div class="today-banner">HOY — Funciones pendientes</div>`;
+    todayItems.forEach((s,i)=>{
+      if(i>0){const warn=travelWarn(todayItems[i-1],s);if(warn) html+=`<div class="travel-warn">${warn}</div>`;}
+      const vc2=vcfg(s.venue),sl=sala(s.venue);
+      html+=`<div class="saved-item" data-title="${(s._title||'').replace(/"/g,'&quot;')}">
+        <div class="saved-time">${s.time}</div>
+        <div class="saved-info">
+          <div class="saved-title">${s._title}</div>
+          <div class="saved-venue">${vc2.ico} ${vc2.short}${sl?' · '+sl:''}</div>
+        </div>
+        <button class="saved-check" onclick="toggleWatched('${(s._title||'').replace(/'/g,"\'")}',event)">○</button>
+      </div>`;
+    });
+  }
+
+  // Future days
+  DAY_KEYS.filter(d=>byDay[d]).forEach(day=>{
+    html+=`<div class="saved-day-lbl">${DAY_SHORT[day]}</div>`;
+    byDay[day].forEach((s,i)=>{
+      if(i>0){const warn=travelWarn(byDay[day][i-1],s);if(warn) html+=`<div class="travel-warn">${warn}</div>`;}
+      const vc2=vcfg(s.venue),sl=sala(s.venue);
+      html+=`<div class="saved-item" data-title="${(s._title||'').replace(/"/g,'&quot;')}">
+        <div class="saved-time">${s.time}</div>
+        <div class="saved-info">
+          <div class="saved-title">${s._title}</div>
+          <div class="saved-venue">${vc2.ico} ${vc2.short}${sl?' · '+sl:''}</div>
+        </div>
+        <button class="saved-check" onclick="toggleWatched('${(s._title||'').replace(/'/g,"\'")}',event)">○</button>
+      </div>`;
+    });
+  });
+
+  // Suggestions
+  const suggestions=getSuggestions();
+  if(suggestions.length){
+    html+=`<div style="margin-top:12px;font-size:10px;color:var(--gray);text-transform:uppercase;letter-spacing:1px;font-weight:600;margin-bottom:6px">💡 Caben en tus huecos</div>`;
+    html+=suggestions.map(f=>{
+      const vc2=vcfg(f.venue),sl=sala(f.venue);
+      return`<div class="suggestion-item">
+        <div class="suggestion-time">${f.time}</div>
+        <div class="suggestion-info">
+          <div class="suggestion-title">${f.title}</div>
+          <div class="suggestion-meta">${vc2.ico} ${vc2.short}${sl?' · '+sl:''} · ${f.duration}</div>
+        </div>
+        <button class="suggestion-add" onclick="addFromSearch('${f.title.replace(/'/g,"\'")}')">＋ Añadir</button>
+      </div>`;
+    }).join('');
+  }
+
+  html+='</div>';
+  return html;
+}
+
+let archiveOpen=false;
+function toggleArchive(){
+  archiveOpen=!archiveOpen;
+  const body=document.getElementById('archive-body');
+  const arrow=document.getElementById('arch-arrow');
+  if(body) body.classList.toggle('open',archiveOpen);
+  if(arrow) arrow.textContent=archiveOpen?'▲':'▼';
+}
+
+function clearSavedAgenda(){savedAgenda=null;localStorage.removeItem('ficci65_saved');renderAgenda();}
+
+// ── RESULT HTML ──
+let cachedResult=null;
+
 function buildResultHTML(scenarios){
   if(!scenarios||!scenarios.length)
-    return`<div class="ag-calc-prompt">No hay combinaciones posibles con estas disponibilidades.</div>`;
+    return`<div class="ag-calc-prompt">No hay combinaciones posibles. Ajusta disponibilidades o añade más películas.</div>`;
   const{currentIdx}=cachedResult;
   const sc=scenarios[currentIdx],n=scenarios.length;
-  const total=[...watchlist].filter(t=>!watched.has(t)).length;
-  const ok=sc.schedule.length,bad=sc.excluded.length;
+  const pending=[...watchlist].filter(t=>!watched.has(t)&&FILMS.some(f=>f.title===t&&!screeningPassed(f)));
+  const total=pending.length,ok=sc.schedule.length,bad=sc.excluded.length;
+
   let html=`<div class="ag-summary">
     <div class="ag-summary-title">Escenario ${currentIdx+1} de ${n}</div>
     <div class="ag-summary-text">
-      Puedes ver <span class="ok"><b>${ok}</b></span> de <b>${total}</b> pendientes.
-      ${bad?`<span class="conflict-label"> · <b>${bad}</b> sin solución.</span>`:''}
+      Puedes ver <span class="ok"><b>${ok}</b></span> de <b>${total}</b> pendientes con funciones futuras.
+      ${bad?`<span class="conflict-label"> · <b>${bad}</b> no entra${bad!==1?'n':''} en este escenario.</span>`:''}
     </div>
     ${n>1?`<div class="ag-nav">
       <button class="ag-nav-btn" onclick="changeScenario(-1)" ${currentIdx===0?'disabled':''}>← Anterior</button>
@@ -700,18 +810,17 @@ function buildResultHTML(scenarios){
   </div>`;
 
   if(sc.excluded.length){
-    html+=`<div class="ag-conflicts"><div class="ag-conflicts-title">⚠ Sin combinación posible</div>
+    html+=`<div class="ag-conflicts"><div class="ag-conflicts-title">↩ No incluidas en este escenario</div>
       ${sc.excluded.map(t=>{
-        const screens=FILMS.filter(f=>f.title===t&&!isScreeningBlocked(f));
-        const opts=screens.length?screens.map(s=>`${s.day} ${s.time}`).join(' · '):'Sin funciones disponibles';
+        const screens=FILMS.filter(f=>f.title===t&&!isScreeningBlocked(f)&&!screeningPassed(f));
+        const opts=screens.length?screens.map(s=>`${s.day} ${s.time}`).join(' · '):'Sin funciones futuras disponibles';
         const isPrio=prioritized.has(t);
         return`<div class="ag-conflict-item">
           <div class="ag-conflict-info">
             <strong>${t}</strong><br>
             <span style="color:var(--gray2);font-size:11px">${opts}</span>
           </div>
-          <button class="ag-prioritize-btn${isPrio?' active':''}"
-            onclick="togglePriority('${t.replace(/'/g,"\'")}')">
+          <button class="ag-prioritize-btn${isPrio?' active':''}" onclick="togglePriority('${t.replace(/'/g,"\'")}')">
             ${isPrio?'✕ Sin prioridad':'⭐ Priorizar'}
           </button>
         </div>`;
@@ -725,14 +834,9 @@ function buildResultHTML(scenarios){
     const films=byDay[day];if(!films||!films.length) return;
     html+=`<div class="ag-day-label"><span>${DAY_SHORT[day]}</span>${films.length} película${films.length!==1?'s':''}</div>`;
     films.forEach((s,i)=>{
-      // Travel warning between consecutive films
-      if(i>0){
-        const prev=films[i-1];
-        const warn=travelWarn(prev,s);
-        if(warn) html+=`<div class="ag-warn">${warn}</div>`;
-      }
+      if(i>0){const warn=travelWarn(films[i-1],s);if(warn) html+=`<div class="ag-warn">${warn}</div>`;}
       const vc2=vcfg(s.venue),sl=sala(s.venue);
-      const alts=FILMS.filter(f=>f.title===s._title&&!isScreeningBlocked(f)&&!(f.day===s.day&&f.time===s.time));
+      const alts=FILMS.filter(f=>f.title===s._title&&!isScreeningBlocked(f)&&!screeningPassed(f)&&!(f.day===s.day&&f.time===s.time));
       html+=`<div class="ag-card">
         <div class="ag-time">${s.time}</div>
         <div class="ag-info">
@@ -742,7 +846,7 @@ function buildResultHTML(scenarios){
         <div class="ag-flags">${s.flags||'🎬'}</div>
         <div class="ag-card-actions">
           <button class="ag-card-btn" onclick="toggleWatched('${s._title.replace(/'/g,"\'")}',event)" title="Marcar como vista">✓</button>
-          <button class="ag-card-btn" onclick="toggleWL('${s._title.replace(/'/g,"\'")}',event)" title="Quitar" style="hover:color:#e05050">✕</button>
+          <button class="ag-card-btn" onclick="toggleWL('${s._title.replace(/'/g,"\'")}',event)" title="Quitar">✕</button>
         </div>
       </div>`;
     });
@@ -755,53 +859,11 @@ function togglePriority(title){
   else prioritized.add(title);
   runCalc();
 }
-
 function saveCurrentScenario(){
   if(!cachedResult||!cachedResult.scenarios.length) return;
   savedAgenda={schedule:[...cachedResult.scenarios[cachedResult.currentIdx].schedule]};
-  saveSavedAgenda();
-  renderAgenda();
+  saveSavedAgenda();renderAgenda();
 }
-
-function renderSavedAgenda(){
-  if(!savedAgenda||!savedAgenda.schedule.length) return'';
-  const byDay={};
-  savedAgenda.schedule.forEach(s=>{if(!byDay[s.day])byDay[s.day]=[];byDay[s.day].push(s);});
-  let html=`<div class="saved-agenda">
-    <div class="saved-agenda-title">
-      📌 Mi agenda guardada
-      <button class="saved-agenda-clear" onclick="clearSavedAgenda()">✕ Borrar</button>
-    </div>`;
-  DAY_KEYS.forEach(day=>{
-    const films=byDay[day];if(!films||!films.length) return;
-    html+=`<div class="saved-day">
-      <div class="saved-day-lbl">${DAY_SHORT[day]}</div>
-      ${films.map((s,i)=>{
-        const vc2=vcfg(s.venue),sl=sala(s.venue);
-        const isDone=watched.has(s._title);
-        let warnHtml='';
-        if(i>0){const warn=travelWarn(films[i-1],s);if(warn) warnHtml=`<div class="travel-warn">${warn}</div>`;}
-        return`${warnHtml}<div class="saved-item${isDone?' done':''}" data-title="${(s._title||'').replace(/"/g,'&quot;')}">
-          <div class="saved-time">${s.time}</div>
-          <div class="saved-info">
-            <div class="saved-title">${s._title}</div>
-            <div class="saved-venue" style="font-size:10px;color:var(--gray);margin-top:1px">${vc2.ico} ${vc2.short}${sl?' · '+sl:''}</div>
-          </div>
-          <button class="saved-check${isDone?' done':''}" onclick="toggleWatched('${(s._title||'').replace(/'/g,"\'")}',event)">${isDone?'✓':'○'}</button>
-        </div>`;
-      }).join('')}
-    </div>`;
-  });
-  html+='</div>';
-  return html;
-}
-
-function clearSavedAgenda(){
-  savedAgenda=null;
-  localStorage.removeItem('ficci65_saved');
-  renderAgenda();
-}
-
 function runCalc(){
   cachedResult=null;
   const scenarios=computeScenarios([...watchlist]);
@@ -819,14 +881,13 @@ function changeScenario(dir){
 
 function renderAgenda(){
   const view=document.getElementById('ag-view');
-  const pending=[...watchlist].filter(t=>!watched.has(t));
-  const hasPending=pending.length>0;
+  const pending=[...watchlist].filter(t=>!watched.has(t)&&FILMS.some(f=>f.title===t&&!screeningPassed(f)));
   const resultContent=cachedResult
     ?buildResultHTML(cachedResult.scenarios)
     :`<div class="ag-calc-prompt">Configura tus disponibilidades y toca <strong>Calcular escenarios</strong>.</div>`;
 
   view.innerHTML=`
-    ${renderSavedAgenda()}
+    ${renderSavedAgendaHTML()}
     <div class="ag-section">
       <div class="ag-section-title">Mis películas</div>
       <div class="ag-search-wrap">
@@ -840,19 +901,21 @@ function renderAgenda(){
     </div>
     <div class="ag-section">
       <div class="ag-section-title">Mis disponibilidades</div>
-      ${DAY_KEYS.map(day=>`
-        <div class="av-day">
+      ${DAY_KEYS.map(day=>{
+        const passed=dayFullyPassed(day);
+        return`<div class="av-day" style="${passed?'opacity:.4;pointer-events:none':''}">
           <div class="av-day-header" onclick="toggleAvDay('${day}')">
             <div class="av-day-left">
               <span class="av-arrow" id="av-arrow-${day}">▶</span>
-              <span class="av-day-name">${DAY_LONG[day]}</span>
+              <span class="av-day-name">${DAY_LONG[day]}${passed?' ✓':''}</span>
             </div>
-            <span class="av-summary${availability[day].blocks.length?' has-blocks':''}" id="av-summary-${day}">${avSummary(day)}</span>
+            <span class="av-summary${availability[day].blocks.length?' has-blocks':''}" id="av-summary-${day}">${passed?'Día pasado':avSummary(day)}</span>
           </div>
           <div class="av-day-body" id="av-body-${day}" style="display:none"></div>
-        </div>`).join('')}
-      <button class="av-calc-btn" onclick="runCalc()" ${!hasPending?'disabled':''}>
-        Calcular escenarios${!hasPending?' (sin películas pendientes)':''}
+        </div>`;
+      }).join('')}
+      <button class="av-calc-btn" onclick="runCalc()" ${!pending.length?'disabled':''}>
+        Calcular escenarios${!pending.length?' (sin pendientes)':''}
       </button>
     </div>
     <div class="ag-section">
@@ -860,7 +923,7 @@ function renderAgenda(){
       <div id="ag-result">${resultContent}</div>
     </div>`;
 
-  DAY_KEYS.forEach(d=>renderAvDay(d));
+  DAY_KEYS.forEach(d=>{if(!dayFullyPassed(d)) renderAvDay(d);});
 }
 
 // ── CALENDAR VIEW ──
@@ -888,7 +951,8 @@ const DAYS=[{k:'Martes',d:14,lbl:'MAR'},{k:'Miércoles',d:15,lbl:'MIÉ'},{k:'Jue
 DAYS.forEach(day=>{
   const cnt=FILMS.filter(f=>f.day===day.k).length;
   const btn=document.createElement('button');
-  btn.className='dtab'+(day.k===activeDay?' on':'');btn.dataset.day=day.k;
+  btn.className='dtab'+(day.k===activeDay?' on':'')+(dayFullyPassed(day.k)?' past':'');
+  btn.dataset.day=day.k;
   btn.innerHTML=`<span class="dtab-name">${day.lbl} ${day.d}</span><span class="dtab-date">${day.k}</span><span class="dtab-cnt">${cnt}</span>`;
   btn.onclick=()=>{activeDay=day.k;activeVenue='all';activeSec='all';selectedIdx=null;showDayView();render();};
   dtabs.appendChild(btn);
@@ -959,6 +1023,7 @@ function render(){
   grid.innerHTML=films.map((f,i)=>{
     const vc=vcfg(f.venue),sl=sala(f.venue);
     const isAp=f.section==='🎬 Apertura',isMid=f.section==='🌙 Medianoche',isProg=f.is_cortos;
+    const passed=screeningPassed(f);
     const flags=f.flags||'🎬';
     const tEn=!isProg&&f.title_en&&f.title_en!==f.title&&!f.title_en.includes('·')?f.title_en:'';
     const secActive=activeSec===f.section?' active-sec':'';
@@ -971,19 +1036,18 @@ function render(){
     }
     const expandBtn=isProg&&filmBlock?`<div class="c-expand" onclick="toggleExpand(this,event)"><span>Ver programa</span><span class="c-expand-arrow">▼</span></div>`:'';
     const safe=f.title.replace(/"/g,'&quot;').replace(/'/g,"\'");
-    const wlTitle=inWL?'Quitar de Mi agenda':'Añadir a Mi agenda';
-    const wTitle=inW?'Marcar como pendiente':'Marcar como vista';
     const actBtns=`<div class="card-actions">
-      <button class="action-btn wl-btn${inWL?' wl-on':''}" onclick="toggleWL('${safe}',event)" title="${wlTitle}">${inWL?'♥':'♡'}</button>
-      <button class="action-btn w-btn${inW?' w-on':''}" onclick="toggleWatched('${safe}',event)" title="${wTitle}">✓</button>
+      <button class="action-btn wl-btn${inWL?' wl-on':''}" onclick="toggleWL('${safe}',event)" title="${inWL?'Quitar de Mi agenda':'Añadir a Mi agenda'}">${inWL?'♥':'♡'}</button>
+      <button class="action-btn w-btn${inW?' w-on':''}" onclick="toggleWatched('${safe}',event)" title="${inW?'Marcar como pendiente':'Marcar como vista'}">✓</button>
     </div>`;
     const apBadge=isAp?'<div class="apertura-badge">✦ APERTURA</div>':'';
+    const pastBadge=passed?'<div class="past-badge">ya pasó</div>':'';
     const lbPill=isProg?'':`<a class="c-lb" href="https://letterboxd.com/search/films/${encodeURIComponent(f.title)}/" target="_blank" rel="noopener" onclick="event.stopPropagation()">${LB_SVG}<span class="c-lb-text">Letterboxd</span></a>`;
-    return`<div class="card${isAp?' apertura':isProg?' program':''}${inWL&&!inW?' in-wl':inW?' in-watched':''}" data-idx="${i}" data-title="${f.title.replace(/"/g,'&quot;')}">
-      ${apBadge}${actBtns}
+    return`<div class="card${isAp?' apertura':isProg?' program':''}${inWL&&!inW?' in-wl':inW?' in-watched':''}${passed?' past-card':''}" data-idx="${i}" data-title="${f.title.replace(/"/g,'&quot;')}">
+      ${apBadge}${pastBadge}${actBtns}
       <div class="c-body">
         <div class="c-film">
-          <div class="c-time">${f.time}</div>
+          <div class="c-time" style="${passed?'color:var(--gray2)':''}">${f.time}</div>
           <div class="c-title">${f.title}${isMid?' 🌙':''}</div>
           ${tEn?`<div class="c-title-en">${tEn}</div>`:''}
           <div class="c-flags">${flags}</div>
