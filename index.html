@@ -196,17 +196,27 @@ body{background:var(--bg);color:var(--white);font-family:"DM Sans",sans-serif;mi
 .ag-sr-add.added{border-color:var(--orange);color:var(--orange);background:rgba(232,90,30,.08)}
 .ag-sr-empty{padding:14px;text-align:center;font-size:12px;color:var(--gray)}
 /* Film list */
-.ag-film-item{display:flex;align-items:center;gap:10px;padding:9px 12px;background:var(--card-a);border:1px solid var(--bdr);border-radius:8px;margin-bottom:6px}
-.ag-film-item.watched-item{background:var(--card-p);border-color:var(--bdr-l);opacity:.7}
-.ag-fi-flags{font-size:15px;flex-shrink:0}
-.ag-fi-info{flex:1;min-width:0}
-.ag-fi-title{font-size:13px;font-weight:600;color:var(--white);line-height:1.3}
-.ag-fi-meta{font-size:10.5px;color:var(--gray);margin-top:2px}
-.ag-fi-actions{display:flex;align-items:center;gap:4px;flex-shrink:0}
-.ag-fi-btn{background:none;border:1px solid var(--bdr);border-radius:6px;cursor:pointer;font-size:14px;padding:4px 7px;color:var(--gray2);transition:all .15s;line-height:1}
+/* Film grid — poster cards */
+.ag-film-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:8px}
+.ag-film-item{position:relative;border-radius:8px;overflow:hidden;background:var(--card-a);border:1px solid var(--bdr);cursor:default}
+.ag-film-item.watched-item{opacity:.55}
+.ag-fi-poster{width:100%;aspect-ratio:2/3;object-fit:cover;display:block;background:#1a1a1a}
+.ag-fi-poster-ph{width:100%;aspect-ratio:2/3;background:#1a1a1a;display:flex;align-items:center;justify-content:center;font-size:20px;opacity:.3}
+.ag-fi-overlay{position:absolute;top:0;left:0;right:0;bottom:0;background:linear-gradient(to top,rgba(0,0,0,.85) 0%,rgba(0,0,0,.0) 50%);pointer-events:none}
+.ag-fi-actions{position:absolute;top:5px;right:5px;display:flex;gap:3px;pointer-events:all}
+.ag-fi-btn{background:rgba(0,0,0,.55);border:1px solid rgba(255,255,255,.15);border-radius:5px;cursor:pointer;font-size:12px;padding:3px 5px;color:rgba(255,255,255,.6);line-height:1;backdrop-filter:blur(4px);transition:all .15s}
 .ag-fi-btn:hover{border-color:var(--orange);color:var(--orange)}
-.ag-fi-btn.w-on{color:var(--green);border-color:rgba(58,170,110,.4)}
+.ag-fi-btn.w-on{color:var(--green);border-color:rgba(58,170,110,.5)}
 .ag-fi-btn.del:hover{border-color:#e05050;color:#e05050}
+.ag-fi-bottom{position:absolute;bottom:0;left:0;right:0;padding:6px 7px 7px;pointer-events:none}
+.ag-fi-flags{font-size:12px;line-height:1;margin-bottom:2px}
+.ag-fi-title{font-size:10.5px;font-weight:600;color:var(--white);line-height:1.3;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+/* Watched section pills (non-grid) */
+.ag-watched-section{margin-top:12px}
+.ag-watched-item{display:flex;align-items:center;gap:8px;padding:6px 10px;background:var(--card-p);border:1px solid var(--bdr-l);border-radius:7px;margin-bottom:5px;opacity:.6}
+.ag-wi-flag{font-size:13px;flex-shrink:0}
+.ag-wi-title{flex:1;font-size:11.5px;font-weight:500;color:var(--gray);min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.ag-wi-actions{display:flex;gap:3px;flex-shrink:0}
 /* Availability */
 .av-day{border:1px solid var(--bdr);border-radius:var(--r);margin-bottom:6px;overflow:hidden}
 .av-day-header{display:flex;align-items:center;justify-content:space-between;padding:11px 14px;cursor:pointer;background:var(--card-a);user-select:none}
@@ -726,18 +736,22 @@ function renderFilmListHTML(){
   const watchedList=[...watched];
   let html='';
   if(pending.length){
+    html+='<div class="ag-film-grid">';
     html+=pending.map(t=>{
       const f=FILMS.find(fi=>fi.title===t);
       const hasFuture=FILMS.some(fi=>fi.title===t&&!screeningPassed(fi));
+      const posterSrcFl=f?(CUSTOM_POSTERS[t]||(POSTERS[t]?TMDB_IMG+POSTERS[t]:null)):null;
+      const posterHtmlFl=posterSrcFl?`<img class="ag-fi-poster" src="${posterSrcFl}" loading="lazy" onerror="this.className='ag-fi-poster-ph';this.innerHTML='🎬'" alt="">`:`<div class="ag-fi-poster-ph">🎬</div>`;
       return`<div class="ag-film-item${!hasFuture?' watched-item':''}">
-        <div class="ag-fi-flags">${f?f.flags||'🎬':'🎬'}</div>
-        <div class="ag-fi-info">
-          <div class="ag-fi-title">${t}</div>
-          <div class="ag-fi-meta">${f?f.section||'':''}${f&&f.duration?' · '+f.duration:''}${!hasFuture?' · Sin funciones futuras':''}</div>
-        </div>
+        ${posterHtmlFl}
+        <div class="ag-fi-overlay"></div>
         <div class="ag-fi-actions">
           <button class="ag-fi-btn w-mark${watched.has(t)?' w-on':''}" onclick="toggleWatched('${t.replace(/'/g,"\'")}',event)" title="Marcar como vista">✓</button>
           <button class="ag-fi-btn del" onclick="toggleWL('${t.replace(/'/g,"\'")}',event)" title="Quitar">✕</button>
+        </div>
+        <div class="ag-fi-bottom">
+          <div class="ag-fi-flags">${f?f.flags||'🎬':'🎬'}</div>
+          <div class="ag-fi-title">${t}</div>
         </div>
       </div>`;
     }).join('');
@@ -746,13 +760,10 @@ function renderFilmListHTML(){
     html+=`<div style="margin-top:${pending.length?'10px':'0'};font-size:11px;color:var(--green);font-weight:600;letter-spacing:.5px;margin-bottom:6px">✓ YA VISTAS</div>`;
     html+=watchedList.map(t=>{
       const f=FILMS.find(fi=>fi.title===t);
-      return`<div class="ag-film-item watched-item">
-        <div class="ag-fi-flags">${f?f.flags||'🎬':'🎬'}</div>
-        <div class="ag-fi-info">
-          <div class="ag-fi-title">${t}</div>
-          <div class="ag-fi-meta" style="color:var(--green)">Vista ✓</div>
-        </div>
-        <div class="ag-fi-actions">
+      return`<div class="ag-watched-item">
+        <div class="ag-wi-flag">${f?f.flags||'✓':'✓'}</div>
+        <div class="ag-wi-title">${t}</div>
+        <div class="ag-wi-actions">
           <button class="ag-fi-btn" onclick="toggleWatched('${t.replace(/'/g,"\'")}',event)" title="Desmarcar">↩</button>
           <button class="ag-fi-btn del" onclick="toggleWL('${t.replace(/'/g,"\'")}',event)" title="Quitar">✕</button>
         </div>
@@ -852,7 +863,7 @@ function renderSavedAgendaHTML(){
           <div class="suggestion-time">${f.time}</div>
           <div class="suggestion-info">
             <div class="suggestion-title">${f.title}</div>
-            <div class="suggestion-meta">${vc2.ico} ${vc2.short}${sl?' · '+sl:''} · ${f.duration}</div>
+            <div class="suggestion-meta">${f.flags||''} ${f.section||''} · ${vc2.ico} ${vc2.short}${sl?' · '+sl:''} · ${f.duration}</div>
           </div>
           <button class="suggestion-add" onclick="addFromSearch('${f.title.replace(/'/g,"\'")}')">＋ Añadir</button>
         </div>`;
