@@ -72,17 +72,29 @@ body{background:var(--bg);color:var(--white);font-family:"DM Sans",sans-serif;mi
 .past-badge{position:absolute;top:9px;left:10px;font-size:9px;color:var(--gray2);font-weight:600;letter-spacing:.5px;z-index:2}
 .c-body{padding:18px 16px 16px;display:flex;flex-direction:column;gap:16px}
 .c-body.has-poster{flex-direction:row;gap:0;padding:0}
-.c-poster{flex-shrink:0;width:90px;border-radius:8px;overflow:hidden;margin:14px 0 14px 14px;background:#181818;align-self:flex-start}
-.c-poster img{width:90px;height:135px;object-fit:cover;display:block;border-radius:8px}
-.c-poster-none{width:90px;height:135px;background:#1a1a1a;display:flex;align-items:center;justify-content:center;border-radius:8px}
-.c-poster-none span{font-size:24px;opacity:.2}
-.c-content{flex:1;min-width:0;padding:18px 16px 16px;display:flex;flex-direction:column;gap:16px}
+/* Poster: fixed 90x135, rounded, internal margin */
+.c-poster{flex-shrink:0;width:90px;padding:14px 0 14px 14px}.c-poster img{width:90px;height:135px;object-fit:cover;display:block;border-radius:8px}
+.c-poster-none{width:90px;height:135px;background:#1a1a1a;border-radius:8px;
+  display:flex;align-items:center;justify-content:center;font-size:24px;opacity:.2}
+/* Content: fills space, padding from top, elements stack naturally */
+.c-content{flex:1;min-width:0;padding:16px 16px 16px 14px;
+  display:flex;flex-direction:column;gap:0}
+.c-content .c-film{gap:7px}
+.c-content .c-venue{margin-top:auto;padding-top:12px}
 .c-film{display:flex;flex-direction:column;gap:8px}
 .c-time{font-family:"Bebas Neue",sans-serif;font-size:28px;color:var(--orange);letter-spacing:2px;line-height:1}
 .c-title{font-size:16px;font-weight:600;color:var(--white);line-height:1.4;padding-right:60px}
+/* In poster cards: smaller size, no padding-right (actions are top-right, not overlapping content) */
+.has-poster .c-title{font-size:13px;line-height:1.35;padding-right:0}
+.has-poster .c-title-en{font-size:10px}
+.has-poster .c-flags{font-size:16px}
+.has-poster .c-time{font-size:24px}
+.has-poster .c-venue-name{font-size:12px}
+.has-poster .c-venue-sub{font-size:10.5px}
 .c-title-en{font-size:11.5px;color:var(--gray);font-style:italic;line-height:1.35;margin-top:1px}
 .c-flags{font-size:20px;line-height:1;margin-top:2px}
 .c-div{height:1px;background:var(--bdr-l)}
+.has-poster .c-div{margin:8px 0 6px}
 .c-venue{display:flex;flex-direction:column;gap:5px}
 .c-venue-name{font-size:13px;font-weight:500;color:#aaa}
 .c-venue-sub{font-size:11px;color:var(--gray2)}
@@ -102,9 +114,12 @@ body{background:var(--bg);color:var(--white);font-family:"DM Sans",sans-serif;mi
 .c-title-pills{display:none;border-top:1px solid var(--bdr-l);padding-top:8px;margin-top:2px;flex-wrap:wrap;gap:4px}
 .c-title-pills.visible{display:flex}
 .c-title-pill{font-size:11px;color:var(--gray2);background:rgba(255,255,255,.04);border-radius:5px;padding:3px 7px}
-.c-foot{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:11px 16px;border-top:1px solid var(--bdr);background:rgba(0,0,0,.15)}
-.c-foot-l{display:flex;align-items:center;gap:8px;min-width:0;flex:1;flex-wrap:wrap}
-.c-sec{font-size:10px;padding:3px 8px;border-radius:20px;background:var(--surf);border:1px solid var(--bdr);color:var(--gray);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:160px;cursor:pointer;transition:border-color .15s,color .15s;flex-shrink:0}
+.c-foot{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:9px 14px;border-top:1px solid var(--bdr);background:rgba(0,0,0,.15);flex-wrap:nowrap}
+/* foot-l: never wraps, section truncates */
+.c-foot-l{display:flex;align-items:center;gap:6px;min-width:0;flex:1;overflow:hidden;flex-wrap:nowrap}
+.c-sec{font-size:10px;padding:3px 8px;border-radius:20px;background:var(--surf);border:1px solid var(--bdr);color:var(--gray);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;cursor:pointer;transition:border-color .15s,color .15s;flex-shrink:1;min-width:0;max-width:150px}
+/* LB pill never shrinks off line */
+.c-lb{flex-shrink:0!important}
 .c-sec:hover{border-color:var(--orange);color:var(--orange)}
 .c-sec.active-sec{border-color:var(--orange);color:var(--orange);background:rgba(232,90,30,.08)}
 .c-lb{display:inline-flex;align-items:center;gap:4px;background:#222;border:1px solid var(--bdr);border-radius:20px;padding:3px 8px 3px 5px;cursor:pointer;transition:border-color .15s,transform .15s;line-height:1;flex-shrink:0;text-decoration:none}
