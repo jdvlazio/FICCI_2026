@@ -21,29 +21,29 @@ body{background:var(--bg);color:var(--white);font-family:"DM Sans",sans-serif;mi
 .hdr-fallback em{color:var(--orange);font-style:normal}
 .hdr-dates{font-size:12px;color:var(--gray);letter-spacing:2px;text-transform:uppercase;margin-top:7px}
 .hdr-line{height:1px;background:var(--bdr);margin-top:14px}
-.nav-tabs{display:flex;overflow-x:auto;gap:0;padding:12px 18px 0;scrollbar-width:none;border-bottom:1px solid var(--bdr);margin-top:6px;-webkit-overflow-scrolling:touch}
+.nav-tabs{display:flex;overflow-x:auto;gap:0;padding:8px 6px 0;scrollbar-width:none;border-bottom:1px solid var(--bdr);margin-top:4px;-webkit-overflow-scrolling:touch}
 .nav-tabs::-webkit-scrollbar{display:none}
-.dtab{flex-shrink:0;background:none;border:none;border-bottom:2px solid transparent;margin-bottom:-1px;padding:8px 14px 10px;cursor:pointer;color:var(--gray);font-family:"DM Sans",sans-serif;transition:color .15s;text-align:center;min-width:70px}
-.dtab-name{font-family:"Bebas Neue",sans-serif;font-size:23px;letter-spacing:.5px;display:block;line-height:1}
-.dtab-date{font-size:11px;display:block;margin-top:2px}
-.dtab-cnt{font-size:9px;background:var(--bdr);border-radius:10px;padding:1px 6px;margin-top:4px;display:inline-block}
+.dtab{flex-shrink:0;background:none;border:none;border-bottom:2px solid transparent;margin-bottom:-1px;padding:6px 10px 8px;cursor:pointer;color:var(--gray2);font-family:"DM Sans",sans-serif;transition:color .15s,border-color .15s;text-align:center;min-width:56px}
+.dtab-name{font-size:22px;font-weight:600;display:block;line-height:1;letter-spacing:-.3px;font-family:"Bebas Neue",sans-serif}
+.dtab-date{font-size:9.5px;font-weight:500;display:block;margin-top:3px;letter-spacing:.8px;text-transform:uppercase;opacity:.7}
+.dtab-cnt{display:none}
 .dtab:hover{color:var(--white)}
 .dtab.on{color:var(--orange);border-bottom-color:var(--orange)}
-.dtab.on .dtab-cnt{background:var(--orange);color:#fff;font-weight:600}
-.dtab.past{opacity:.4}
+.dtab.past{opacity:.35}
 .fbar-wrap{overflow-x:auto;scrollbar-width:none;border-bottom:1px solid var(--bdr);-webkit-overflow-scrolling:touch}
 .fbar-wrap::-webkit-scrollbar{display:none}
-.fbar{display:flex;gap:7px;padding:9px 18px;width:max-content;min-width:100%;align-items:center}
-.fbar-lbl{font-size:11px;color:var(--gray2);text-transform:uppercase;letter-spacing:1px;white-space:nowrap;flex-shrink:0;min-width:58px;font-weight:500}
-.fbtn{padding:6px 13px;border-radius:20px;border:1px solid var(--bdr);background:none;color:var(--gray);font-size:12px;cursor:pointer;font-family:"DM Sans",sans-serif;transition:all .15s;white-space:nowrap;flex-shrink:0;min-height:34px}
+.fbar{display:flex;gap:4px;padding:7px 14px;width:max-content;min-width:100%;align-items:center}
+.fbar-lbl{font-size:9px;color:var(--gray2);text-transform:uppercase;letter-spacing:1.2px;white-space:nowrap;flex-shrink:0;min-width:44px;font-weight:600;opacity:.6}
+.fbtn{flex-shrink:0;padding:5px 12px;border-radius:0 5px 5px 0;border:none;border-left:2px solid transparent;background:none;color:var(--gray2);font-size:12px;font-weight:500;cursor:pointer;font-family:"DM Sans",sans-serif;transition:color .15s,background .12s,border-color .15s;white-space:nowrap;min-height:30px;display:inline-flex;align-items:center}
 .fbtn:active{opacity:.7}
 .fbtn.on{border-color:var(--orange);color:var(--orange);background:rgba(232,90,30,.08)}
 .agbar{overflow-x:auto;scrollbar-width:none;border-bottom:1px solid var(--bdr);-webkit-overflow-scrolling:touch}
-.agbar-inner{display:flex;gap:7px;padding:9px 18px;align-items:center}
-.agbar-lbl{font-size:11px;color:var(--gray2);text-transform:uppercase;letter-spacing:1px;white-space:nowrap;flex-shrink:0;min-width:58px;font-weight:500}
-.agbar-btn{padding:6px 13px;border-radius:20px;border:1px solid var(--bdr);background:none;color:var(--gray);font-size:12px;cursor:pointer;font-family:"DM Sans",sans-serif;transition:all .15s;white-space:nowrap;min-height:34px;display:inline-flex;align-items:center;gap:6px}
-.agbar-btn.on{border-color:var(--orange);color:var(--orange);background:rgba(232,90,30,.08)}
-.agbar-cnt{font-size:10px;background:var(--bdr);border-radius:10px;padding:1px 6px;font-weight:600}
+.agbar-inner{display:flex;gap:4px;padding:7px 14px;align-items:center}
+.agbar-lbl{font-size:9px;color:var(--gray2);text-transform:uppercase;letter-spacing:1.2px;white-space:nowrap;flex-shrink:0;min-width:44px;font-weight:600;opacity:.6}
+.agbar-btn{padding:5px 12px;border-radius:6px;border:none;border-left:2px solid transparent;background:none;color:var(--gray2);font-size:12px;font-weight:500;cursor:pointer;font-family:"DM Sans",sans-serif;transition:color .15s,background .12s,border-color .15s;white-space:nowrap;min-height:32px;display:inline-flex;align-items:center;gap:6px;border-radius:0 5px 5px 0}
+.agbar-btn:hover{background:rgba(255,255,255,.04);color:var(--white)}
+.agbar-btn.on{border-left-color:var(--orange);background:rgba(232,90,30,.07);color:var(--white)}
+.agbar-cnt{font-size:10px;background:rgba(255,255,255,.08);border-radius:4px;padding:1px 5px;font-weight:600;font-variant-numeric:tabular-nums}
 .agbar-btn.on .agbar-cnt{background:var(--orange);color:#fff}
 .hint{padding:8px 18px;font-size:11px;color:var(--gray);min-height:30px}
 .hint.active{color:var(--orange)}
@@ -75,7 +75,7 @@ body{background:var(--bg);color:var(--white);font-family:"DM Sans",sans-serif;mi
 .ag-fi-prio-badge{position:absolute;top:5px;left:5px;font-size:11px;color:var(--orange);background:rgba(0,0,0,.6);border-radius:4px;padding:1px 4px;font-weight:700;pointer-events:none;z-index:3}
 .prio-toast{position:fixed;bottom:80px;left:50%;transform:translateX(-50%);background:#2a2a2a;border:1px solid #444;color:var(--white);font-size:12px;padding:8px 16px;border-radius:8px;z-index:9999;transition:opacity .4s;max-width:320px;text-align:center;pointer-events:none}
 .prio-toast.warn{border-color:rgba(229,160,32,.6);color:#e5a020}
-.apertura-badge{position:absolute;top:9px;left:10px;font-size:9px;background:var(--orange);color:#fff;font-weight:700;letter-spacing:1px;padding:2px 6px;border-radius:8px;font-family:"Bebas Neue",sans-serif;z-index:2}
+.apertura-badge{display:inline-block;font-size:9px;background:var(--orange);color:#fff;font-weight:700;letter-spacing:1px;padding:2px 6px;border-radius:8px;font-family:"Bebas Neue",sans-serif;margin-right:5px;vertical-align:middle;flex-shrink:0}
 .past-badge{position:absolute;bottom:8px;right:10px;font-size:9px;color:var(--gray2);font-weight:600;letter-spacing:.5px;z-index:2;background:rgba(0,0,0,.5);padding:1px 5px;border-radius:5px}
 .c-body{padding:18px 16px 16px;display:flex;flex-direction:column;gap:16px}
 .c-body.has-poster{flex-direction:row;gap:0;padding:0}
@@ -177,7 +177,7 @@ body{background:var(--bg);color:var(--white);font-family:"DM Sans",sans-serif;mi
 .saved-check:hover{border-color:var(--orange);color:var(--orange)}
 .travel-warn{font-size:10px;color:#e5a020;display:flex;align-items:center;gap:4px;padding:3px 8px;background:rgba(229,160,32,.07);border-radius:5px;margin:2px 0}
 /* Suggestions */
-.suggestion-item{display:flex;align-items:center;gap:8px;padding:7px 10px;background:rgba(255,255,255,.03);border:1px solid var(--bdr-l);border-radius:8px;margin-bottom:5px;opacity:.7}
+.suggestion-item{display:flex;align-items:center;gap:10px;padding:8px 10px;background:rgba(255,255,255,.03);border:1px solid var(--bdr-l);border-radius:8px;margin-bottom:5px;opacity:.8}
 .suggestion-item:hover{opacity:1}
 .suggestion-time{font-family:"Bebas Neue",sans-serif;font-size:16px;color:var(--gray);letter-spacing:1px;flex-shrink:0;min-width:46px}
 .suggestion-info{flex:1;min-width:0}
@@ -214,6 +214,8 @@ body{background:var(--bg);color:var(--white);font-family:"DM Sans",sans-serif;mi
 .ag-fi-btn{background:rgba(0,0,0,.55);border:1px solid rgba(255,255,255,.15);border-radius:5px;cursor:pointer;font-size:12px;padding:3px 5px;color:rgba(255,255,255,.6);line-height:1;backdrop-filter:blur(4px);transition:all .15s}
 .ag-fi-btn:hover{border-color:var(--orange);color:var(--orange)}
 .ag-fi-btn.w-on{color:var(--green);border-color:rgba(58,170,110,.5)}
+.ag-fi-btn.prio-fi-btn{font-size:11px}
+.ag-fi-btn.prio-on{color:var(--orange);border-color:rgba(232,90,30,.4)}
 .ag-fi-btn.del:hover{border-color:#e05050;color:#e05050}
 .ag-fi-bottom{position:absolute;bottom:0;left:0;right:0;padding:6px 7px 7px;pointer-events:none}
 .ag-fi-flags{font-size:12px;line-height:1;margin-bottom:2px}
@@ -839,10 +841,13 @@ function renderFilmListHTML(){
       const hasFuture=FILMS.some(fi=>fi.title===t&&!screeningPassed(fi));
       const posterSrcFl=f?(CUSTOM_POSTERS[t]||(POSTERS[t]?TMDB_IMG+POSTERS[t]:null)):null;
       const posterHtmlFl=posterSrcFl?`<img class="ag-fi-poster" src="${posterSrcFl}" loading="lazy" onerror="this.className='ag-fi-poster-ph';this.innerHTML='🎬'" alt="">`:`<div class="ag-fi-poster-ph">🎬</div>`;
+      const isPrioFl=prioritized.has(t);
       return`<div class="ag-film-item${!hasFuture?' watched-item':''}">
         ${posterHtmlFl}
         <div class="ag-fi-overlay"></div>
+        ${isPrioFl?'<div class="ag-fi-prio-badge">★</div>':''}
         <div class="ag-fi-actions">
+          <button class="ag-fi-btn prio-fi-btn${isPrioFl?' prio-on':''}" onclick="togglePriority('${t.replace(/'/g,"\'")}');event.stopPropagation()" title="${isPrioFl?'Quitar prioridad':'Priorizar'}">★</button>
           <button class="ag-fi-btn w-mark${watched.has(t)?' w-on':''}" onclick="toggleWatched('${t.replace(/'/g,"\'")}',event)" title="Marcar como vista">✓</button>
           <button class="ag-fi-btn del" onclick="toggleWL('${t.replace(/'/g,"\'")}',event)" title="Quitar">✕</button>
         </div>
@@ -969,12 +974,15 @@ function renderSavedAgendaHTML(){
   const suggsByDay=getSuggestions();
   const suggDays=Object.keys(suggsByDay).filter(d=>suggsByDay[d].length>0);
   if(suggDays.length){
-    html+=`<div style="margin-top:16px;font-size:10px;color:var(--gray);text-transform:uppercase;letter-spacing:1px;font-weight:600;margin-bottom:6px">💡 Caben en tus huecos</div>`;
+    html+=`<div style="margin-top:16px;font-size:10px;color:var(--gray);text-transform:uppercase;letter-spacing:1px;font-weight:600;margin-bottom:6px">💡 Entran en tu plan</div>`;
     suggDays.forEach(day=>{
       html+=`<div style="font-size:10px;color:var(--orange);font-weight:700;letter-spacing:.5px;text-transform:uppercase;margin:8px 0 4px;padding-left:2px">${day}</div>`;
       html+=suggsByDay[day].slice(0,4).map(f=>{
         const vc2=vcfg(f.venue),sl=sala(f.venue);
+        {const _sp=CUSTOM_POSTERS[f.title]||(POSTERS[f.title]?TMDB_IMG+POSTERS[f.title]:null);
+        const _sph=_sp?`<img class="lb-poster" src="${_sp}" loading="lazy" onerror="this.outerHTML='<div class=lb-poster-ph>🎬</div>'" alt="">`:'<div class="lb-poster-ph">🎬</div>';
         return`<div class="suggestion-item">
+          ${_sph}
           <div class="suggestion-time">${f.time}</div>
           <div class="suggestion-info">
             <div class="suggestion-title">${f.title}</div>
@@ -982,7 +990,7 @@ function renderSavedAgendaHTML(){
             ${f.gapCtx?`<div style="font-size:9px;color:var(--gray);margin-top:2px;font-style:italic">${f.gapCtx}</div>`:''}
           </div>
           <button class="suggestion-add" onclick="addFromSearch('${f.title.replace(/'/g,"\'")}')">＋ Añadir</button>
-        </div>`;
+        </div>`;}
       }).join('');
     });
   }
@@ -1071,7 +1079,10 @@ function buildResultHTML(scenarios){
         const atLimit=!isPrio&&prioCount>=PRIO_LIMIT;
         const prioLabel=isPrio?'✕ Sin prioridad':atLimit?`★ ${PRIO_LIMIT}/${PRIO_LIMIT}`:'⭐ Priorizar';
         const prioAction=isPrio?`togglePriority('${t.replace(/'/g,"\'")}')`:atLimit?`showToast('Máximo ${PRIO_LIMIT} prioridades activas','warn')`:`togglePriority('${t.replace(/'/g,"\'")}')`;
+        {const _ep=CUSTOM_POSTERS[t]||(POSTERS[t]?TMDB_IMG+POSTERS[t]:null);
+        const _eph=_ep?`<img class="lb-poster" src="${_ep}" loading="lazy" onerror="this.outerHTML='<div class=lb-poster-ph>🎬</div>'" alt="">`:'<div class="lb-poster-ph">🎬</div>';
         return`<div class="ag-conflict-item">
+          ${_eph}
           <div class="ag-conflict-info">
             ${isPrio?'<span style="color:var(--orange);font-size:10px;font-weight:700">★ PRIORIDAD · </span>':''}
             <strong>${t}</strong><br>
@@ -1080,7 +1091,7 @@ function buildResultHTML(scenarios){
           <button class="ag-prioritize-btn${isPrio?' active':''}${atLimit?' disabled':''}" onclick="${prioAction}">
             ${prioLabel}
           </button>
-        </div>`;
+        </div>`;}
       }).join('')}
     </div>`;
   }
@@ -1197,8 +1208,8 @@ function renderAgenda(){
         <div class="prio-reminder-title">★ Prioridades activas</div>
         <div>${[...prioritized].map(t=>`<span class="prio-pill" data-prio-title="${t.replace(/"/g,'&quot;')}" onclick="event.stopPropagation();togglePriority(this.dataset.prioTitle)">★ ${t.length>22?t.slice(0,20)+'…':t} <span class="prio-pill-rm">✕</span></span>`).join('')}</div>
       </div>`:''}
-      <button class="av-calc-btn" onclick="runCalc()" \${!pending.length?'disabled':''}>
-        Calcular escenarios\${!pending.length?' (sin pendientes)':''}
+      <button class="av-calc-btn" onclick="runCalc()" ${!pending.length?'disabled':''}>
+        Calcular escenarios${!pending.length?' (sin pendientes)':''}
       </button>
     </div>
     <div class="ag-section">
@@ -1236,7 +1247,7 @@ DAYS.forEach(day=>{
   const btn=document.createElement('button');
   btn.className='dtab'+(day.k===activeDay?' on':'')+(dayFullyPassed(day.k)?' past':'');
   btn.dataset.day=day.k;
-  btn.innerHTML=`<span class="dtab-name">${day.lbl} ${day.d}</span><span class="dtab-date">${day.k}</span><span class="dtab-cnt">${cnt}</span>`;
+  btn.innerHTML=`<span class="dtab-name">${day.d}</span><span class="dtab-date">${day.lbl}</span>`;
   btn.onclick=()=>{activeDay=day.k;activeVenue='all';activeSec='all';selectedIdx=null;showDayView();render();};
   dtabs.appendChild(btn);
 });
@@ -1246,11 +1257,14 @@ function addFbtn(bar,label,val,activeVal,fn){
 }
 function renderVbar(){
   const bar=document.getElementById('vbar');bar.querySelectorAll('.fbtn').forEach(b=>b.remove());
-  const vs=[...new Set(FILMS.filter(f=>f.day===activeDay).map(f=>vcfg(f.venue).short))];
-  addFbtn(bar,'Todas','all',activeVenue,()=>{activeVenue='all';selectedIdx=null;setHint(null);render();});
+  const dayFilms=FILMS.filter(f=>f.day===activeDay);
+  const vs=[...new Set(dayFilms.map(f=>vcfg(f.venue).short))];
+  const total=dayFilms.length;
+  addFbtn(bar,`Todas <span style="font-size:10px;opacity:.5;font-variant-numeric:tabular-nums">${total}</span>`,'all',activeVenue,()=>{activeVenue='all';selectedIdx=null;setHint(null);render();});
   vs.forEach(vk=>{
     const cfg=Object.values(VENUES).find(c=>c.short===vk)||VENUES['C. Convenciones'];
-    addFbtn(bar,`${cfg.ico} ${vk}`,vk,activeVenue,()=>{activeVenue=activeVenue===vk?'all':vk;selectedIdx=null;setHint(null);render();});
+    const cnt=dayFilms.filter(f=>vcfg(f.venue).short===vk).length;
+    addFbtn(bar,`${cfg.ico} ${vk} <span style="font-size:10px;opacity:.5;font-variant-numeric:tabular-nums">${cnt}</span>`,vk,activeVenue,()=>{activeVenue=activeVenue===vk?'all':vk;selectedIdx=null;setHint(null);render();});
   });
 }
 function renderSbar(){
@@ -1258,8 +1272,11 @@ function renderSbar(){
   let dayF=FILMS.filter(f=>f.day===activeDay);
   if(activeVenue!=='all') dayF=dayF.filter(f=>vcfg(f.venue).short===activeVenue);
   const secs=[...new Set(dayF.map(f=>f.section))].sort();
-  addFbtn(bar,'Todas','all',activeSec,()=>{activeSec='all';selectedIdx=null;setHint(null);render();});
-  secs.forEach(sec=>{addFbtn(bar,sec,sec,activeSec,()=>{activeSec=activeSec===sec?'all':sec;selectedIdx=null;setHint(null);render();});});
+  addFbtn(bar,`Todas <span style="font-size:10px;opacity:.5">${dayF.length}</span>`,'all',activeSec,()=>{activeSec='all';selectedIdx=null;setHint(null);render();});
+  secs.forEach(sec=>{
+    const cnt=dayF.filter(f=>f.section===sec).length;
+    addFbtn(bar,`${sec} <span style="font-size:10px;opacity:.5;font-variant-numeric:tabular-nums">${cnt}</span>`,sec,activeSec,()=>{activeSec=activeSec===sec?'all':sec;selectedIdx=null;setHint(null);render();});
+  });
 }
 function setHint(film){
   const el=document.getElementById('hint');
@@ -1353,7 +1370,7 @@ function render(){
     const posterHtml=posterSrc?`<div class="c-poster"><img src="${posterSrc}" alt="" loading="lazy" onerror="this.parentElement.innerHTML='<div class=c-poster-none><span>🎬</span></div>'"></div>`:'';
     const hasPoster=!!posterSrc;
     return`<div class="card${isAp?' apertura':isProg?' program':''}${inWL&&!inW?' in-wl':inW?' in-watched':''}${passed?' past-card':''}" data-idx="${i}" data-title="${f.title.replace(/"/g,'&quot;')}">
-      ${apBadge}${pastBadge}${nowBadge}${actBtns}
+      ${pastBadge}${nowBadge}${actBtns}
       <div class="c-body${hasPoster?' has-poster':''}">
         ${posterHtml}
         <div${hasPoster?' class="c-content"':''}>
@@ -1371,7 +1388,7 @@ function render(){
       </div>
       <div class="c-foot">
         <div class="c-foot-l">
-          <span class="c-sec${secActive}" data-sec="${f.section.replace(/"/g,'&quot;')}">${f.section}</span>
+          ${apBadge}<span class="c-sec${secActive}" data-sec="${f.section.replace(/"/g,'&quot;')}">${f.section}</span>
           ${isProg?'<span class="prog-badge">● PROGRAMA</span>':''}${lbPill}
         </div>
         <span class="c-dur">🕐 ${f.duration}</span>
