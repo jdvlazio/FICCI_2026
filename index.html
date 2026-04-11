@@ -193,7 +193,7 @@ body{background:var(--bg);color:var(--white);font-family:"DM Sans",sans-serif;mi
 .ag-sr-empty{padding:14px;text-align:center;font-size:12px;color:var(--gray)}
 /* Film list */
 /* Film grid — poster cards */
-.ag-film-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(110px,130px));gap:8px;margin-bottom:8px;justify-content:start}
+.ag-film-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(80px,95px));gap:7px;margin-bottom:8px;justify-content:start}
 .ag-film-item{position:relative;border-radius:8px;overflow:hidden;background:var(--card-a);border:1px solid var(--bdr);cursor:default}
 .ag-film-item.watched-item{opacity:.55}
 .ag-fi-poster{width:100%;aspect-ratio:2/3;object-fit:cover;display:block;background:#1a1a1a}
@@ -894,8 +894,8 @@ function renderPrioStrip(){
 }
 function renderFilmListHTML(){
   const allPending=[...watchlist].filter(t=>!watched.has(t));
-  // C — Prioritized films first
-  const pending=[...allPending].sort((a,b)=>{const pa=prioritized.has(a),pb=prioritized.has(b);return pa===pb?0:pa?-1:1;});
+  // Prioritized go to prio-strip only; rest sorted normally
+  const pending=[...allPending].filter(t=>!prioritized.has(t));
   const watchedList=[...watched];
   let html=renderPrioStrip();
   if(pending.length){
@@ -1201,6 +1201,18 @@ function togglePriority(title,cost){
     if(cost&&cost>0) showToast(`⭐ Prioridad activada · Tu máximo baja de ${cost+watchlist.size-prioritized.size+1} a ${cost} películas`,'info');
     runCalc();
   }
+  // Re-render film list immediately in any view
+  if(activeView==='agenda' && activeAgSection==='films'){
+    const fl=document.getElementById('ag-film-list');
+    if(fl) fl.innerHTML=renderFilmListHTML();
+  } else if(activeView==='agenda' && activeAgSection==='scenarios'){
+    // update prio reminder in scenarios
+    const pr=document.querySelector('.prio-reminder');
+    if(pr||prioritized.size>0) renderAgScenarios(document.getElementById('ag-view'));
+  }
+  // Always update sidebar badge
+  const agNavFilms=document.getElementById('ag-nav-films');
+  if(agNavFilms) updateAgTab();
 }
 function showToast(msg,type='info'){
   let t=document.getElementById('prio-toast');
@@ -1247,25 +1259,31 @@ function updatePrioCounter(){
   el.textContent=prioritized.size>0?`⭐ ${prioritized.size}/${PRIO_LIMIT}`:'';
 }
 function renderAgenda(){
+  updatePrioCounter();updateMainHeader();
   const view=document.getElementById('ag-view');
-  const pending=[...watchlist].filter(t=>!watched.has(t)&&FILMS.some(f=>f.title===t&&!screeningPassed(f)));
-  const resultContent=cachedResult
-    ?buildResultHTML(cachedResult.scenarios)
-    :`<div class="ag-calc-prompt">Configura tu disponibilidad y toca <strong>Calcular escenarios</strong>.</div>`;
-
+  if(activeAgSection==='films') renderAgFilms(view);
+  else if(activeAgSection==='scenarios') renderAgScenarios(view);
+  else renderAgSaved(view);
+}
+function renderAgFilms(view){
   view.innerHTML=`
-    ${renderSavedAgendaHTML()}
     <div class="ag-section">
-      <div class="ag-section-title">Mis películas</div>
       <div class="ag-search-wrap">
         <span class="ag-search-ico">🔍</span>
         <input type="text" id="ag-search-input" class="ag-search"
-          placeholder="Buscar y añadir película o programa…"
+          placeholder="Buscar y añadir película…"
           oninput="onSearchInput()" onblur="closeSearch()" autocomplete="off">
         <div id="ag-search-results" class="ag-search-results"></div>
       </div>
       <div id="ag-film-list">${renderFilmListHTML()}</div>
-    </div>
+    </div>`;
+}
+function renderAgScenarios(view){
+  const pending=[...watchlist].filter(t=>!watched.has(t)&&FILMS.some(f=>f.title===t&&!screeningPassed(f)));
+  const resultContent=cachedResult
+    ?buildResultHTML(cachedResult.scenarios)
+    :`<div class="ag-calc-prompt">Configura tu disponibilidad y toca <strong>Calcular escenarios</strong>.</div>`;
+  view.innerHTML=`
     <div class="ag-section">
       <div class="ag-section-title">Mi disponibilidad</div>
       ${DAY_KEYS.map(day=>{
@@ -1293,8 +1311,10 @@ function renderAgenda(){
       <div class="ag-section-title">Escenarios</div>
       <div id="ag-result">${resultContent}</div>
     </div>`;
-
   DAY_KEYS.forEach(d=>{if(!dayFullyPassed(d)) renderAvDay(d);});
+}
+function renderAgSaved(view){
+  view.innerHTML=`<div class="ag-section">${renderSavedAgendaHTML()}</div>`;
 }
 
 // ── CALENDAR VIEW ──
