@@ -288,14 +288,9 @@ body{background:var(--bg);color:var(--white);font-family:"DM Sans",sans-serif;mi
 .ag-empty p{font-size:13px;line-height:1.6}
 
 /* ── Priority strip (A) ── */
-.prio-strip{margin-bottom:12px}
-.prio-strip-title{font-size:10px;font-weight:700;color:var(--orange);letter-spacing:1px;text-transform:uppercase;margin-bottom:8px;display:flex;align-items:center;gap:6px}
-.prio-strip-row{display:flex;gap:8px;overflow-x:auto;padding-bottom:4px}
-.prio-chip{flex-shrink:0;width:72px;position:relative;cursor:pointer}
-.prio-chip-poster{width:72px;height:108px;object-fit:cover;border-radius:6px;display:block;background:#1a1a1a}
-.prio-chip-ph{width:72px;height:108px;border-radius:6px;background:#222;display:flex;align-items:center;justify-content:center;font-size:20px;opacity:.4}
-.prio-chip-rm{position:absolute;top:4px;right:4px;background:rgba(0,0,0,.7);border:none;color:#fff;border-radius:50%;width:18px;height:18px;font-size:10px;cursor:pointer;display:flex;align-items:center;justify-content:center;line-height:1}
-.prio-chip-title{font-size:9px;color:var(--gray2);margin-top:4px;line-height:1.2;text-align:center;overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical}
+.prio-section{margin-bottom:10px}
+.prio-section-title{font-size:9px;font-weight:700;color:var(--orange);letter-spacing:1.2px;text-transform:uppercase;margin-bottom:7px;display:flex;align-items:center;gap:5px}
+.ag-film-item.prio-item{border-color:rgba(232,90,30,.45);box-shadow:0 0 0 1px rgba(232,90,30,.2)}
 /* ── Priority reminder (B) ── */
 .prio-reminder{background:rgba(232,90,30,.07);border:1px solid rgba(232,90,30,.2);border-radius:8px;padding:10px 12px;margin-bottom:10px}
 .prio-reminder-title{font-size:10px;font-weight:700;color:var(--orange);letter-spacing:.5px;text-transform:uppercase;margin-bottom:6px}
@@ -314,50 +309,120 @@ body{background:var(--bg);color:var(--white);font-family:"DM Sans",sans-serif;mi
 .festival-progress-bar{height:3px;background:#333;border-radius:2px;overflow:hidden}
 .festival-progress-fill{height:100%;background:var(--orange);border-radius:2px;transition:width .4s}
 
-/* ═══ APP LAYOUT ═══ */
-.app-layout{display:flex;min-height:calc(100vh - 70px);overflow:hidden}
-.sidebar{width:240px;flex-shrink:0;background:#191919;border-right:1px solid rgba(255,255,255,.07);overflow-y:auto;overflow-x:hidden;scrollbar-width:thin;scrollbar-color:rgba(255,255,255,.08) transparent;padding:16px 0 40px}
-.sidebar::-webkit-scrollbar{width:4px}
-.sidebar::-webkit-scrollbar-thumb{background:rgba(255,255,255,.08);border-radius:2px}
-.main-panel{flex:1;overflow-y:auto;overflow-x:hidden;min-width:0}
-.sb-group{padding:0 0 12px}
-.sb-label{font-size:9px;font-weight:700;color:rgba(255,255,255,.25);letter-spacing:1.5px;text-transform:uppercase;padding:12px 16px 4px;display:block}
-.sb-divider{height:1px;background:rgba(255,255,255,.07);margin:0}
-.sb-item{display:flex;align-items:center;gap:9px;height:36px;padding:0 16px;border:none;background:none;cursor:pointer;color:rgba(255,255,255,.4);font-family:"DM Sans",sans-serif;font-size:13px;font-weight:400;width:100%;text-align:left;transition:color .12s,background .12s;position:relative;border-left:2px solid transparent}
-.sb-item:hover{background:rgba(255,255,255,.04);color:rgba(255,255,255,.75)}
-.sb-item.on{border-left-color:var(--orange);background:rgba(232,90,30,.1);color:#fff}
-.sb-ico{width:14px;height:14px;flex-shrink:0;fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;opacity:.6}
-.sb-item.on .sb-ico{opacity:1}
-.sb-text{flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.sb-count{font-size:10px;color:rgba(255,255,255,.3);font-variant-numeric:tabular-nums;font-weight:500;margin-left:auto;flex-shrink:0}
-.sb-item.on .sb-count{color:rgba(255,255,255,.5)}
-.sb-dot{width:6px;height:6px;border-radius:50%;background:var(--orange);flex-shrink:0;margin-left:auto}
-/* main header */
-.main-header{padding:12px 20px 8px;border-bottom:1px solid rgba(255,255,255,.07);display:flex;align-items:center;gap:8px;min-height:44px;flex-shrink:0}
-.mh-crumb{font-size:12px;color:rgba(255,255,255,.3)}
-.mh-crumb-sep{color:rgba(255,255,255,.15);margin:0 2px}
-.mh-crumb-active{color:rgba(255,255,255,.7);font-weight:500}
-.mh-count{margin-left:auto;font-size:11px;color:rgba(255,255,255,.3)}
-/* hint + cnt inside main */
-.hint{padding:6px 20px}
-.cnt-line{padding:4px 20px 8px;font-size:12px;color:rgba(255,255,255,.4)}
-.grid{padding:0 12px 60px}
-.ag-view{padding:14px 16px 60px;display:none}
+/* ═══ APP LAYOUT — bottom nav ═══ */
+html,body{height:100%;overflow:hidden}
+body{display:flex;flex-direction:column}
+
+/* TOP BAR */
+.top-bar{flex-shrink:0;height:46px;background:#191919;border-bottom:1px solid rgba(255,255,255,.07);display:flex;align-items:center;padding:0 14px;gap:10px;position:sticky;top:0;z-index:50}
+.tb-logo{font-family:"Bebas Neue",sans-serif;font-size:17px;color:var(--orange);letter-spacing:1px;flex-shrink:0}
+.tb-crumb{flex:1;font-size:11px;color:rgba(255,255,255,.35);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.tb-actions{display:flex;gap:2px;margin-left:auto;flex-shrink:0}
+.tb-btn{width:32px;height:32px;border:none;background:none;border-radius:7px;cursor:pointer;color:rgba(255,255,255,.4);display:flex;align-items:center;justify-content:center;transition:all .12s}
+.tb-btn:hover{background:rgba(255,255,255,.06);color:rgba(255,255,255,.75)}
+.tb-btn svg{width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.tb-btn.view-grid svg rect{fill:currentColor;stroke:none}
+
+/* DAY STRIP */
+.day-strip{flex-shrink:0;height:38px;background:#191919;border-bottom:1px solid rgba(255,255,255,.06);display:flex;align-items:center;padding:0 10px;gap:3px;overflow-x:auto;scrollbar-width:none}
+.day-strip::-webkit-scrollbar{display:none}
+.day-pill{flex-shrink:0;height:26px;padding:0 9px;border-radius:5px;border:none;background:none;color:rgba(255,255,255,.3);font-size:11px;font-weight:500;cursor:pointer;font-family:"DM Sans",sans-serif;transition:all .12s;display:flex;align-items:center;gap:4px}
+.day-pill:hover{background:rgba(255,255,255,.05);color:rgba(255,255,255,.65)}
+.day-pill.on{background:rgba(232,90,30,.1);color:var(--orange);border:1px solid rgba(232,90,30,.25)}
+.day-pill .dp-dot{width:5px;height:5px;border-radius:50%;background:currentColor;opacity:.6;flex-shrink:0}
+
+/* FILTER SHEET */
+.filter-sheet{position:fixed;bottom:56px;left:0;right:0;background:#212121;border-radius:14px 14px 0 0;border-top:1px solid rgba(255,255,255,.08);z-index:200;transform:translateY(100%);transition:transform .25s cubic-bezier(.4,0,.2,1);max-height:70vh;overflow-y:auto;scrollbar-width:none}
+.filter-sheet.open{transform:translateY(0)}
+.fs-handle{width:32px;height:3px;border-radius:2px;background:rgba(255,255,255,.15);margin:10px auto 4px}
+.fs-inner{padding:0 0 12px}
+.fs-title{font-size:9px;font-weight:700;color:rgba(255,255,255,.25);letter-spacing:1.4px;text-transform:uppercase;padding:8px 14px 6px}
+.fs-list .sb-item{border-radius:0;border-left:none;height:40px;padding:0 14px;font-size:13px;gap:10px}
+.fs-list .sb-item.on{border-left:2px solid var(--orange);background:rgba(232,90,30,.08);color:#fff}
+.fs-backdrop{position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:199;display:none;backdrop-filter:blur(2px)}
+.fs-backdrop.show{display:block}
+
+/* MAIN CONTENT */
+.main-content{flex:1;overflow-y:auto;overflow-x:hidden;-webkit-overflow-scrolling:touch;scrollbar-width:thin;scrollbar-color:rgba(255,255,255,.08) transparent}
+.main-content::-webkit-scrollbar{width:3px}
+.main-content::-webkit-scrollbar-thumb{background:rgba(255,255,255,.1);border-radius:2px}
+.hint{padding:6px 14px;font-size:11px}
+.cnt-line{padding:4px 14px 6px;font-size:11px;color:rgba(255,255,255,.35)}
+
+/* BOTTOM NAV */
+.bottom-nav{flex-shrink:0;height:56px;background:#191919;border-top:1px solid rgba(255,255,255,.08);display:flex;align-items:stretch;padding:0 4px;z-index:50}
+.bn-tab{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;cursor:pointer;color:rgba(255,255,255,.3);border:none;background:none;font-family:"DM Sans",sans-serif;font-size:9px;font-weight:500;border-radius:8px;margin:3px 1px;transition:color .12s,background .12s;line-height:1}
+.bn-tab:hover{color:rgba(255,255,255,.65);background:rgba(255,255,255,.04)}
+.bn-tab.on{color:var(--orange)}
+.bn-tab svg{width:19px;height:19px;fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;margin-bottom:1px}
+.bn-tab.on svg{stroke:var(--orange)}
+.bn-center{flex:0 0 60px}
+.bn-center-ring{width:42px;height:42px;border-radius:50%;background:rgba(232,90,30,.12);border:1.5px solid rgba(232,90,30,.35);display:flex;align-items:center;justify-content:center;margin-bottom:1px;transition:all .15s}
+.bn-center-ring svg{width:20px;height:20px;stroke:var(--orange);fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.bn-tab.on .bn-center-ring,.bn-center:hover .bn-center-ring{background:rgba(232,90,30,.2);border-color:var(--orange)}
+#ag-cnt{font-size:10px;font-weight:700;color:var(--orange)}
+
+/* ═══ LIST VIEW ═══ */
+#grid.list-view{padding:0}
+.lr{display:flex;align-items:center;gap:9px;padding:8px 12px;border-bottom:1px solid rgba(255,255,255,.05);cursor:pointer;transition:background .1s;position:relative}
+.lr:hover{background:rgba(255,255,255,.025)}
+.lr.past-card{opacity:.4}
+.lr.past-card .lr-time{color:rgba(255,255,255,.3)}
+.lr-now{width:6px;height:6px;border-radius:50%;background:var(--orange);flex-shrink:0;animation:pulse-dot 1.5s ease-in-out infinite}
+.lr-no-dot{width:6px;height:6px;flex-shrink:0}
+@keyframes pulse-dot{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(1.4)}}
+.lr-poster{width:32px;height:48px;border-radius:5px;flex-shrink:0;background:#242424;overflow:hidden;position:relative}
+.lr-poster img{width:100%;height:100%;object-fit:cover;display:block}
+.lr-poster-ph{width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:12px;opacity:.25}
+.lr-collage{display:grid;grid-template-columns:1fr 1fr;gap:1px;width:100%;height:100%}
+.lr-collage-tile{background:#2a2a2a}
+.lr-time{font-size:14px;color:var(--orange);font-family:"Bebas Neue",sans-serif;letter-spacing:.5px;flex-shrink:0;width:36px;line-height:1}
+.lr-body{flex:1;min-width:0}
+.lr-prog-badge{display:inline-flex;align-items:center;background:rgba(232,90,30,.1);border:1px solid rgba(232,90,30,.2);border-radius:4px;font-size:8px;color:var(--orange);font-weight:700;padding:1px 5px;margin-bottom:2px;letter-spacing:.3px}
+.lr-title{font-size:12px;color:rgba(255,255,255,.85);font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;line-height:1.3}
+.lr-sub{font-size:10px;color:rgba(255,255,255,.3);margin-top:1px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.lr-dur{font-size:9px;color:rgba(255,255,255,.22);flex-shrink:0;white-space:nowrap}
+.lr-dur.long{color:#E8993C;font-weight:600}
+.lr-actions{display:flex;align-items:center;gap:3px;flex-shrink:0}
+.lr-btn{width:26px;height:26px;border-radius:7px;background:none;border:1px solid rgba(255,255,255,.1);font-size:11px;color:rgba(255,255,255,.35);cursor:pointer;transition:all .1s;font-family:inherit;display:flex;align-items:center;justify-content:center}
+.lr-btn:hover{border-color:rgba(255,255,255,.3);color:rgba(255,255,255,.75)}
+.lr-btn.on-heart{color:var(--orange);border-color:rgba(232,90,30,.4);background:rgba(232,90,30,.07)}
+.lr-btn.on-check{color:var(--green);border-color:rgba(58,170,110,.4);background:rgba(58,170,110,.06)}
+.lr-btn.on-star{color:#f0c040;border-color:rgba(240,192,64,.4)}
+.lr-lb{width:26px;height:26px;border-radius:7px;background:#222;border:1px solid rgba(255,255,255,.1);display:inline-flex;align-items:center;justify-content:center;cursor:pointer;transition:border-color .12s,transform .12s;text-decoration:none;flex-shrink:0}
+.lr-lb:hover{border-color:rgba(255,255,255,.3);transform:scale(1.06)}
+.lr-expand{width:22px;height:22px;border-radius:5px;background:none;border:none;font-size:10px;color:rgba(255,255,255,.2);cursor:pointer;transition:transform .2s,color .12s;font-family:inherit;display:flex;align-items:center;justify-content:center;padding:0}
+.lr-expand.open{transform:rotate(90deg);color:var(--orange)}
+
+/* SUB-FILMS (expanded prog) */
+.lr-subfilms{background:rgba(0,0,0,.2);border-bottom:1px solid rgba(255,255,255,.05);display:none}
+.lr-subfilms.open{display:block}
+.sf-row{display:flex;align-items:center;gap:8px;padding:6px 12px 6px 50px;border-bottom:1px solid rgba(255,255,255,.04)}
+.sf-row:last-child{border-bottom:none}
+.sf-poster{width:22px;height:33px;border-radius:3px;background:#2a2a2a;flex-shrink:0;overflow:hidden}
+.sf-poster img{width:100%;height:100%;object-fit:cover;display:block}
+.sf-title{flex:1;font-size:11px;color:rgba(255,255,255,.65);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.sf-country{font-size:9px;color:rgba(255,255,255,.2);flex-shrink:0}
+.sf-dur{font-size:9px;color:rgba(255,255,255,.2);flex-shrink:0;min-width:26px;text-align:right}
+.sf-lb{width:20px;height:20px;border-radius:4px;background:#222;border:1px solid rgba(255,255,255,.1);display:inline-flex;align-items:center;justify-content:center;cursor:pointer;transition:border-color .1s;text-decoration:none;flex-shrink:0}
+.sf-lb:hover{border-color:rgba(255,255,255,.3)}
+
+/* Grid view (for Mis películas) */
+#grid.grid-view{padding:10px 12px 80px;display:grid;grid-template-columns:repeat(auto-fill,minmax(80px,95px));gap:7px}
+
+/* Keep ag-view */
+.ag-view{padding:12px 14px 80px;display:none}
 .ag-view.visible{display:block}
-/* mobile: sidebar collapses */
-@media(max-width:600px){
-  .sidebar{width:200px}
-  .sb-item{font-size:12px;height:34px;gap:7px}
-}
-@media(max-width:480px){
-  .app-layout{flex-direction:column}
-  .sidebar{width:100%;border-right:none;border-bottom:1px solid rgba(255,255,255,.07);padding:8px 0;overflow-y:hidden;overflow-x:auto;display:flex;flex-direction:row;flex-wrap:nowrap;gap:0;white-space:nowrap}
-  .sb-group{padding:0;display:flex;flex-direction:row;align-items:center;border-right:1px solid rgba(255,255,255,.07);padding-right:4px}
-  .sb-label{display:none}
-  .sb-divider{display:none}
-  .sb-item{height:32px;padding:0 10px;font-size:11px;border-left:none;border-bottom:2px solid transparent;white-space:nowrap;flex-shrink:0}
-  .sb-item.on{border-left-color:transparent;border-bottom-color:var(--orange);background:none;color:#fff}
-  .main-panel{min-height:0}
+
+/* hdr stays compact */
+.hdr{background:var(--bg2);padding:0;border-bottom:none}
+
+/* Mobile adjustments */
+@media(max-width:380px){
+  .tb-logo{font-size:15px}
+  .lr-time{width:32px;font-size:13px}
+  .lr-btn{width:24px;height:24px}
+  .lr-lb{width:24px;height:24px}
 }
 </style>
 </head>
@@ -877,19 +942,30 @@ function getSuggestions(){
 // ── RENDER FILM LIST ──
 function renderPrioStrip(){
   if(!prioritized.size) return'';
-  const chips=[...prioritized].map(t=>{
+  const cards=[...prioritized].map(t=>{
+    const f=FILMS.find(fi=>fi.title===t);
+    const hasFuture=FILMS.some(fi=>fi.title===t&&!screeningPassed(fi));
     const p=CUSTOM_POSTERS[t]||(POSTERS[t]?TMDB_IMG+POSTERS[t]:null);
-    const img=p?`<img class="prio-chip-poster" src="${p}" loading="lazy" onerror="this.outerHTML='<div class=prio-chip-ph>★</div>'" alt="">`:'<div class="prio-chip-ph">★</div>';
-    const short=t.length>18?t.slice(0,16)+'…':t;
-    return`<div class="prio-chip">
-      ${img}
-      <button class="prio-chip-rm" data-prio-title="${t.replace(/"/g,'&quot;')}" onclick="event.stopPropagation();togglePriority(this.dataset.prioTitle)" title="Quitar prioridad">✕</button>
-      <div class="prio-chip-title">${short}</div>
+    const posterHtml=p?`<img class="ag-fi-poster" src="${p}" loading="lazy" onerror="this.className='ag-fi-poster-ph';this.innerHTML='🎬'" alt="">`:`<div class="ag-fi-poster-ph">🎬</div>`;
+    const safe=t.replace(/'/g,"\'");
+    return`<div class="ag-film-item prio-item${!hasFuture?' watched-item':''}">
+      ${posterHtml}
+      <div class="ag-fi-overlay"></div>
+      <div class="ag-fi-prio-badge">★</div>
+      <div class="ag-fi-actions">
+        <button class="ag-fi-btn prio-fi-btn prio-on" onclick="togglePriority('${safe}');event.stopPropagation()" title="Quitar prioridad">★</button>
+        <button class="ag-fi-btn w-mark${watched.has(t)?' w-on':''}" onclick="toggleWatched('${safe}',event)" title="Marcar como vista">✓</button>
+        <button class="ag-fi-btn del" onclick="toggleWL('${safe}',event)" title="Quitar">✕</button>
+      </div>
+      <div class="ag-fi-bottom">
+        <div class="ag-fi-flags">${f?f.flags||'🎬':'🎬'}</div>
+        <div class="ag-fi-title">${t}</div>
+      </div>
     </div>`;
   }).join('');
-  return`<div class="prio-strip">
-    <div class="prio-strip-title">★ Prioridades ${prioritized.size}/${PRIO_LIMIT}</div>
-    <div class="prio-strip-row">${chips}</div>
+  return`<div class="prio-section">
+    <div class="prio-section-title">★ Prioridades ${prioritized.size}/${PRIO_LIMIT}</div>
+    <div class="ag-film-grid">${cards}</div>
   </div>`;
 }
 function renderFilmListHTML(){
@@ -899,6 +975,7 @@ function renderFilmListHTML(){
   const watchedList=[...watched];
   let html=renderPrioStrip();
   if(pending.length){
+    if(prioritized.size>0) html+='<div style="font-size:9px;font-weight:700;color:rgba(255,255,255,.25);letter-spacing:1.2px;text-transform:uppercase;margin:10px 0 7px">LISTA</div>';
     html+='<div class="ag-film-grid">';
     html+=pending.map(t=>{
       const f=FILMS.find(fi=>fi.title===t);
@@ -1171,15 +1248,17 @@ function buildResultHTML(scenarios){
       const alts=FILMS.filter(f=>f.title===s._title&&!isScreeningBlocked(f)&&!screeningPassed(f)&&!(f.day===s.day&&f.time===s.time));
       {const t=s._title;const _p=CUSTOM_POSTERS[t]||(POSTERS[t]?TMDB_IMG+POSTERS[t]:null);
       const _ph=_p?`<img class="lb-poster" src="${_p}" loading="lazy" onerror="this.outerHTML='<div class=lb-poster-ph>🎬</div>'" alt="">`:'<div class="lb-poster-ph">🎬</div>';
-      html+=`<div class="ag-card">
+      const _isP=prioritized.has(s._title);
+      html+=`<div class="ag-card${_isP?' prio-item':''}">
         ${_ph}
         <div class="ag-time">${s.time}</div>
         <div class="ag-info">
-          <div class="ag-title">${s._title}</div>
+          <div class="ag-title">${_isP?'<span style="color:var(--orange);font-size:10px;margin-right:3px">★</span>':''}${s._title}</div>
           <div class="ag-venue">${vc2.ico} ${vc2.short}${sl?' · '+sl:''}${s.duration?' · '+s.duration:''}${alts.length?`<span class="ag-alts">${alts.length} alt.</span>`:''}</div>
         </div>
         <div class="ag-card-actions">
-          <button class="ag-card-btn" onclick="toggleWatched('${s._title.replace(/'/g,"\'")}',event)" title="Marcar como vista">✓</button>
+          <button class="ag-card-btn${_isP?' prio-on':''}" onclick="togglePriority('${s._title.replace(/'/g,"\'")}');renderAgenda()" title="${_isP?'Quitar prioridad':'Priorizar'}">★</button>
+          <button class="ag-card-btn${watched.has(s._title)?' w-on':''}" onclick="toggleWatched('${s._title.replace(/'/g,"\'")}',event)" title="Marcar como vista">✓</button>
           <button class="ag-card-btn" onclick="toggleWL('${s._title.replace(/'/g,"\'")}',event)" title="Quitar">✕</button>
         </div>
       </div>`;}
@@ -1244,12 +1323,15 @@ function changeScenario(dir){
 function updateMainHeader(){
   const el=document.getElementById('main-header');if(!el) return;
   if(activeView==='agenda'){
-    const labels={'films':'Mis películas','scenarios':'Escenarios','saved':'Agenda guardada'};
-    el.innerHTML=`<span class="mh-crumb">FICCI 65</span><span class="mh-crumb-sep">›</span><span class="mh-crumb-active">Mi agenda</span><span class="mh-crumb-sep">›</span><span class="mh-crumb-active">${labels[activeAgSection]||''}</span>`;
+    const labels={'films':'Películas','scenarios':'Escenarios','saved':'Guardada'};
+    el.textContent='Mi agenda · '+(labels[activeAgSection]||'');
   } else {
-    const dayFLabel=activeDay?activeDay+' '+({Martes:14,Miércoles:15,Jueves:16,Viernes:17,Sábado:18,Domingo:19}[activeDay]||''):'Todos';
-    const cnt=FILMS.filter(f=>(activeDay==='Todos'||f.day===activeDay)&&(activeVenue==='all'||vcfg(f.venue).short===activeVenue)&&(activeSec==='all'||f.section===activeSec)).length;
-    el.innerHTML=`<span class="mh-crumb">FICCI 65</span><span class="mh-crumb-sep">›</span><span class="mh-crumb-active">${activeDay||'Todos'} ${({Martes:14,Miércoles:15,Jueves:16,Viernes:17,Sábado:18,Domingo:19}[activeDay]||'')}</span><span class="mh-count">${cnt} funciones</span>`;
+    const dayNum={Martes:14,Miércoles:15,Jueves:16,Viernes:17,Sábado:18,Domingo:19}[activeDay]||'';
+    const filtered=FILMS.filter(f=>(f.day===activeDay)&&(activeVenue==='all'||vcfg(f.venue).short===activeVenue)&&(activeSec==='all'||f.section===activeSec));
+    const parts=[activeDay&&dayNum?activeDay+' '+dayNum:''];
+    if(activeVenue!=='all') parts.push(activeVenue);
+    if(activeSec!=='all') parts.push(activeSec.replace(/^[^\s]+\s/,''));
+    el.textContent=parts.filter(Boolean).join(' · ')+' · '+filtered.length+' funciones';
   }
 }
 
@@ -1323,10 +1405,10 @@ function showDayView(){
   activeView='day';
   ['hint','cnt','grid'].forEach(id=>{const el=document.getElementById(id);if(el) el.style.display='';});
   document.getElementById('ag-view').classList.remove('visible');
-  ['ag-nav-films','ag-nav-scenarios','ag-nav-saved'].forEach(id=>{
-    const el=document.getElementById(id);if(el) el.classList.remove('on');
-  });
-  document.querySelectorAll('#dtabs .sb-item').forEach(t=>t.classList.toggle('on',t.dataset.day===activeDay));
+  ['bn-cartelera','bn-sede','bn-seccion','bn-ahora'].forEach(id=>document.getElementById(id)?.classList.remove('on'));
+  document.getElementById('bn-cartelera')?.classList.add('on');
+  document.getElementById('bn-agenda')?.classList.remove('on');
+  document.querySelectorAll('#dtabs .day-pill').forEach(t=>t.classList.toggle('on',t.dataset.day===activeDay));
   updateMainHeader();
 }
 let activeAgSection='films';
@@ -1335,10 +1417,9 @@ function showAgView(section){
   activeView='agenda';
   ['hint','cnt','grid'].forEach(id=>{const el=document.getElementById(id);if(el) el.style.display='none';});
   document.getElementById('ag-view').classList.add('visible');
-  document.querySelectorAll('#dtabs .sb-item').forEach(t=>t.classList.remove('on'));
-  ['ag-nav-films','ag-nav-scenarios','ag-nav-saved'].forEach(id=>{
-    const el=document.getElementById(id);if(el) el.classList.toggle('on',id==='ag-nav-'+section);
-  });
+  ['bn-cartelera','bn-sede','bn-seccion','bn-ahora'].forEach(id=>document.getElementById(id)?.classList.remove('on'));
+  document.getElementById('bn-agenda')?.classList.add('on');
+  document.querySelectorAll('#dtabs .day-pill').forEach(t=>t.classList.remove('on'));
   updateMainHeader();
   renderAgenda();
 }
@@ -1350,13 +1431,12 @@ DAYS.forEach(day=>{
   const btn=document.createElement('button');
 
   btn.dataset.day=day.k;
-  btn.className='sb-item'+(day.k===activeDay?' on':'')+(dayFullyPassed(day.k)?' past-item':'');
+  btn.className='day-pill'+(day.k===activeDay?' on':'');
   btn.dataset.day=day.k;
-  const ico=`<svg class="sb-ico" viewBox="0 0 16 16"><circle cx="8" cy="9" r="3"/><path d="M8 6V4"/><path d="M8 12v1"/><path d="M5 9H4"/><path d="M12 9h-1"/></svg>`;
   const wlCnt=FILMS.filter(f=>f.day===day.k&&watchlist.has(f.title)).length;
-  const dot=wlCnt>0?`<span class="sb-dot" style="width:6px;height:6px;border-radius:50%;background:var(--orange);flex-shrink:0"></span>`:'';
-  btn.innerHTML=`${ico}<span class="sb-text">${day.lbl} ${day.d}</span>${dot}`;
-  btn.onclick=()=>{activeDay=day.k;activeVenue='all';activeSec='all';selectedIdx=null;showDayView();render();updateMainHeader();};
+  const dot=wlCnt>0?`<span class="dp-dot"></span>`:'';
+  btn.innerHTML=`${day.lbl} ${day.d}${dot}`;
+  btn.onclick=()=>{activeDay=day.k;activeVenue='all';activeSec='all';selectedIdx=null;showDayView();render();closeFilterSheet();};
   dtabs.appendChild(btn);
 });
 
@@ -1437,83 +1517,168 @@ function restoreExpand(){
   });
 }
 
+let viewMode='list'; // 'list' or 'grid'
+function toggleViewMode(){
+  viewMode=viewMode==='list'?'grid':'list';
+  const btn=document.getElementById('tb-view-btn');
+  if(btn) btn.title=viewMode==='list'?'Vista lista':'Vista grid';
+  render();
+}
+
+function toggleProgRow(btn,idx){
+  btn.classList.toggle('open');
+  const sub=document.getElementById('sf-'+idx);
+  if(sub) sub.classList.toggle('open');
+}
+
+function openFilterSheet(type){
+  const sheet=document.getElementById('filter-sheet');
+  const backdrop=document.getElementById('fs-backdrop');
+  const vbar=document.getElementById('vbar');
+  const sbar=document.getElementById('sbar');
+  const title=document.getElementById('fs-title');
+  if(type==='sede'){
+    renderVbar();
+    vbar.style.display='';sbar.style.display='none';
+    if(title) title.textContent='Sede';
+  } else {
+    renderSbar();
+    sbar.style.display='';vbar.style.display='none';
+    if(title) title.textContent='Sección';
+  }
+  sheet.classList.add('open');
+  backdrop.classList.add('show');
+}
+function closeFilterSheet(){
+  document.getElementById('filter-sheet').classList.remove('open');
+  document.getElementById('fs-backdrop').classList.remove('show');
+}
+function jumpToNow(){
+  showDayView();
+  // Find first now-showing or next upcoming
+  const now=new Date();const h=now.getHours(),m=now.getMinutes(),cur=h*60+m;
+  const todayMap={1:'Martes',2:'Miércoles',3:'Jueves',4:'Viernes',5:'Sábado',0:'Domingo'};
+  const todayName=todayMap[now.getDay()]||'';
+  if(DAY_KEYS.includes(todayName)) activeDay=todayName;
+  activeVenue='all';activeSec='all';render();
+  setTimeout(()=>{
+    const firstNow=document.querySelector('.lr-now');
+    if(firstNow) firstNow.closest('.lr')?.scrollIntoView({behavior:'smooth',block:'center'});
+  },150);
+}
+
 function render(){
   if(activeView==='agenda') return;
-  renderVbar();renderSbar();
+  // Update day strip active state
+  document.querySelectorAll('#dtabs .day-pill').forEach(t=>t.classList.toggle('on',t.dataset.day===activeDay));
   let films=FILMS.filter(f=>f.day===activeDay);
   if(activeVenue!=='all') films=films.filter(f=>vcfg(f.venue).short===activeVenue);
   if(activeSec!=='all') films=films.filter(f=>f.section===activeSec);
-  restoreExpand();updateMainHeader();
+  updateMainHeader();
   document.getElementById('cnt').innerHTML=`<b>${films.length}</b> función${films.length!==1?'es':''}`;
   const grid=document.getElementById('grid');
-  if(!films.length){grid.innerHTML='<div class="empty"><span>🎞️</span>Sin funciones para este filtro.</div>';return;}
+  if(!films.length){
+    grid.className='';
+    grid.innerHTML='<div class="empty" style="padding:40px 20px;text-align:center"><span>🎞️</span><p style="color:var(--gray2);font-size:13px;margin-top:8px">Sin funciones para este filtro.</p></div>';
+    return;
+  }
+  if(viewMode==='grid'){
+    grid.className='grid-view';
+    grid.innerHTML=films.map((f,i)=>{
+      const isProg=f.is_cortos;
+      const passed=screeningPassed(f);
+      const inWL=watchlist.has(f.title),inW=watched.has(f.title),inPrio=prioritized.has(f.title);
+      const posterSrc=!isProg?(CUSTOM_POSTERS[f.title]||(POSTERS[f.title]?TMDB_IMG+POSTERS[f.title]:null)):null;
+      const safe=f.title.replace(/'/g,"\\'");
+      const posterHtml=posterSrc?`<img class="ag-fi-poster" src="${posterSrc}" loading="lazy" onerror="this.className='ag-fi-poster-ph';this.innerHTML='🎬'" alt="">`:'<div class="ag-fi-poster-ph">🎬</div>';
+      return`<div class="ag-film-item${inPrio?' prio-item':''}${passed?' watched-item':''}">
+        ${posterHtml}<div class="ag-fi-overlay"></div>
+        ${inPrio?'<div class="ag-fi-prio-badge">★</div>':''}
+        <div class="ag-fi-actions">
+          ${!isProg?`<button class="ag-fi-btn prio-fi-btn${inPrio?' prio-on':''}" onclick="togglePriority('${safe}');event.stopPropagation()">★</button>`:''}
+          <button class="ag-fi-btn w-mark${inW?' w-on':''}" onclick="toggleWatched('${safe}',event)">✓</button>
+          <button class="ag-fi-btn${inWL?' wl-on':''}" onclick="toggleWL('${safe}',event)">${inWL?'♥':'♡'}</button>
+        </div>
+        <div class="ag-fi-bottom"><div class="ag-fi-flags">${f.flags||'🎬'}</div><div class="ag-fi-title">${f.title}</div></div>
+      </div>`;
+    }).join('');
+    return;
+  }
+  // LIST VIEW
+  grid.className='list-view';
   grid.innerHTML=films.map((f,i)=>{
     const vc=vcfg(f.venue),sl=sala(f.venue);
-    const isAp=f.section==='🎬 Apertura',isMid=f.section==='🌙 Medianoche',isProg=f.is_cortos;
+    const isProg=f.is_cortos;
     const passed=screeningPassed(f);
-    const flags=f.flags||'🎬';
-    const tEn=!isProg&&f.title_en&&f.title_en!==f.title&&!f.title_en.includes('·')?f.title_en:'';
+    const isNow=isNowShowing(f);
+    const inWL=watchlist.has(f.title),inW=watched.has(f.title),inPrio=prioritized.has(f.title);
+    const safe=f.title.replace(/'/g,"\\'");
     const durMin=f.duration?parseInt(f.duration):0;
-    const durLong=!isProg&&durMin>150?`<span class='dur-long'>⏱ ${Math.floor(durMin/60)}h ${durMin%60}min</span>`:'';
-    const secActive=activeSec===f.section?' active-sec':'';
-    const inWL=watchlist.has(f.title),inW=watched.has(f.title);
-    let filmBlock='';
+    const durStr=durMin>90?`${Math.floor(durMin/60)}h ${durMin%60}m`:f.duration||'';
+    const durClass=durMin>150?' long':'';
+
+    // POSTER / COLLAGE
+    let posterHtml='';
+    if(isProg){
+      const colImgs=(COLLAGES[f.title]||[]).slice(0,4);
+      if(colImgs.length>=2){
+        posterHtml=`<div class="lr-collage">${colImgs.map(s=>`<div class="lr-collage-tile" style="background-image:url(${s});background-size:cover"></div>`).join('')}</div>`;
+      } else {
+        posterHtml=`<div class="lr-poster-ph">${f.flags||'🎬'}</div>`;
+      }
+    } else {
+      const src=CUSTOM_POSTERS[f.title]||(POSTERS[f.title]?TMDB_IMG+POSTERS[f.title]:null);
+      posterHtml=src?`<img src="${src}" loading="lazy" alt="" onerror="this.outerHTML='<div class=lr-poster-ph>🎬</div>'">`:`<div class="lr-poster-ph">🎬</div>`;
+    }
+
+    // LETTERBOXD (only non-prog)
+    const lbBtn=!isProg?`<a class="lr-lb" href="https://letterboxd.com/search/films/${encodeURIComponent(f.title)}/" target="_blank" rel="noopener" onclick="event.stopPropagation()" title="Ver en Letterboxd">${LB_SVG}</a>`:'';
+
+    // ACTIONS
+    const heartBtn=`<button class="lr-btn${inWL?' on-heart':''}" onclick="toggleWL('${safe}',event)" title="${inWL?'Quitar':'Añadir'}">${inWL?'♥':'♡'}</button>`;
+    const checkBtn=`<button class="lr-btn${inW?' on-check':''}" onclick="toggleWatched('${safe}',event)" title="Vista">✓</button>`;
+    const starBtn=!isProg?`<button class="lr-btn${inPrio?' on-star':''}" onclick="togglePriority('${safe}')" title="Prioridad">★</button>`:'';
+    const expandBtn=isProg?`<button class="lr-expand" onclick="toggleProgRow(this,${i})" title="Ver programa">▶</button>`:'';
+
+    // BODY TEXT
+    let bodyHtml='';
+    if(isProg){
+      const count=(f.film_list||[]).length||(f.title_en||'').split('·').filter(Boolean).length;
+      const preview=(f.title_en||'').split('·').map(t=>t.trim()).filter(Boolean).slice(0,3).join(' · ');
+      bodyHtml=`
+        ${count?`<div class="lr-prog-badge">${count} cortos</div>`:''}
+        <div class="lr-title">${f.title}</div>
+        ${preview?`<div class="lr-sub">${preview}${(f.film_list||[]).length>3?'…':''}</div>`:''}
+        <div class="lr-sub">${vc.ico} ${vc.short}${sl?' · '+sl:''} · ${f.flags||''}</div>`;
+    } else {
+      bodyHtml=`
+        <div class="lr-title">${f.title}</div>
+        <div class="lr-sub">${vc.ico} ${vc.short}${sl?' · '+sl:''} · ${f.flags||''}</div>`;
+    }
+
+    // SUB-FILMS for prog
+    let subFilmsHtml='';
     if(isProg){
       const list=f.film_list||[];
-      if(list.length) filmBlock=`<div class="c-film-list">${list.map((item,n)=>{const thumb=SHORT_IMGS[item.title];const thumbHtml=thumb?`<img src="${thumb}" class="c-film-thumb" loading="lazy" onerror="this.style.display='none'" alt="">`:'<div class="c-film-thumb-ph"></div>';return`<div class="c-film-item">${thumbHtml}<div class="c-film-num">${n+1}</div><div class="c-film-info"><div class="c-film-title">${item.title}</div><div class="c-film-meta">${item.country}</div></div><div class="c-film-dur">${item.duration}</div></div>`}).join('')}</div>`;
-      else{const titles=(f.title_en||'').split('·').map(t=>t.trim()).filter(Boolean);if(titles.length) filmBlock=`<div class="c-title-pills">${titles.map(t=>`<span class="c-title-pill">${t}</span>`).join('')}</div>`;}
+      if(list.length){
+        subFilmsHtml=`<div class="lr-subfilms" id="sf-${i}">${list.slice(0,6).map(item=>{
+          const thumb=SHORT_IMGS[item.title];
+          const thumbImg=thumb?`<img src="${thumb}" loading="lazy" alt="" onerror="this.outerHTML=''">`:'';
+          const sfLb=`<a class="sf-lb" href="https://letterboxd.com/search/films/${encodeURIComponent(item.title)}/" target="_blank" rel="noopener" onclick="event.stopPropagation()" title="Letterboxd">${LB_SVG}</a>`;
+          return`<div class="sf-row"><div class="sf-poster">${thumbImg}</div><div class="sf-title">${item.title}</div><div class="sf-country">${item.country.split('/')[0]}</div><div class="sf-dur">${item.duration}</div>${sfLb}</div>`;
+        }).join('')}${list.length>6?`<div class="sf-row"><div class="sf-title" style="color:rgba(255,255,255,.3)">+ ${list.length-6} más</div></div>`:''}</div>`;
+      }
     }
-    const expandBtn=isProg&&filmBlock?`<div class="c-expand" onclick="toggleExpand(this,event)"><span>Ver programa</span><span class="c-expand-arrow">▼</span></div>`:'';
-    const safe=f.title.replace(/"/g,'&quot;').replace(/'/g,"\'");
-    const inPrio=prioritized.has(f.title);
-    const prioBtn=!isProg?`<button class="action-btn prio-btn${inPrio?' prio-on':''}" onclick="togglePriority('${safe}')" title="${inPrio?'Quitar prioridad':'Priorizar'}">★</button>`:'';
-    const actBtns=`<div class="card-actions">
-      <button class="action-btn wl-btn${inWL?' wl-on':''}" onclick="toggleWL('${safe}',event)" title="${inWL?'Quitar de Mi agenda':'Añadir a Mi agenda'}">${inWL?'♥':'♡'}</button>
-      <button class="action-btn w-btn${inW?' w-on':''}" onclick="toggleWatched('${safe}',event)" title="${inW?'Marcar como pendiente':'Marcar como vista'}">✓</button>
-      ${prioBtn}
-    </div>`;
-    const apBadge=isAp?'<div class="apertura-badge">✦ APERTURA</div>':'';
-    const nowBadge=isNowShowing(f)?'<div class="now-label"><span class="now-pulse"></span>AHORA</div>':'';
-    const pastBadge=passed?'<div class="past-badge">ya pasó</div>':'';
-    const lbPill=isProg?'':`<a class="c-lb" href="https://letterboxd.com/search/films/${encodeURIComponent(f.title)}/" target="_blank" rel="noopener" onclick="event.stopPropagation()">${LB_SVG}<span class="c-lb-text">Letterboxd</span></a>`;
-    const posterSrc=!isProg?(CUSTOM_POSTERS[f.title]||(POSTERS[f.title]?TMDB_IMG+POSTERS[f.title]:null)):null;
-    // Programs: no poster in collapsed state — thumbnails only shown on expand
-    const posterHtml=posterSrc?`<div class="c-poster"><img src="${posterSrc}" alt="" loading="lazy" onerror="this.parentElement.innerHTML='<div class=c-poster-none><span>🎬</span></div>'"></div>`:'';
-    const hasPoster=!!posterSrc;
-    return`<div class="card${isAp?' apertura':isProg?' program':''}${inWL&&!inW?' in-wl':inW?' in-watched':''}${passed?' past-card':''}" data-idx="${i}" data-title="${f.title.replace(/"/g,'&quot;')}">
-      ${pastBadge}${nowBadge}${actBtns}
-      <div class="c-body${hasPoster?' has-poster':''}">
-        ${posterHtml}
-        <div${hasPoster?' class="c-content"':''}>
-        <div class="c-film">
-          <div class="c-time" style="${passed?'color:var(--gray2)':''}">${f.time}</div>
-          <div class="c-title">${f.title}${isMid?' 🌙':''}</div>
-          ${tEn?`<div class="c-title-en">${tEn}</div>`:''}
-          ${durLong?`<div style="margin-top:2px">${durLong}</div>`:''}
-          <div class="c-flags">${flags}</div>
-        </div>
-        <div class="c-div"></div>
-        <div class="c-venue"><div class="c-venue-name">${vc.ico} ${vc.short}</div>${sl?`<div class="c-venue-sub">${sl}</div>`:''}</div>
-        ${expandBtn}${filmBlock}
-        </div>
-      </div>
-      <div class="c-foot">
-        <div class="c-foot-l">
-          ${apBadge}<span class="c-sec${secActive}" data-sec="${f.section.replace(/"/g,'&quot;')}">${f.section}</span>
-          ${isProg?'<span class="prog-badge">● PROGRAMA</span>':''}${lbPill}
-        </div>
-        <span class="c-dur">🕐 ${f.duration}</span>
-      </div>
-    </div>`;
+
+    return`<div class="lr${passed?' past-card':''}">
+      <div class="${isNow?'lr-now':'lr-no-dot'}"></div>
+      <div class="lr-poster">${posterHtml}</div>
+      <div class="lr-time">${f.time}</div>
+      <div class="lr-body">${bodyHtml}</div>
+      <div class="lr-dur${durClass}">${durStr}</div>
+      <div class="lr-actions">${lbBtn}${heartBtn}${checkBtn}${starBtn}${expandBtn}</div>
+    </div>${subFilmsHtml}`;
   }).join('');
-  document.querySelectorAll('.card').forEach(card=>{
-    card.addEventListener('click',e=>{
-      if(e.target.closest('.card-actions')||e.target.closest('.c-expand')||e.target.closest('.c-lb')) return;
-      if(e.target.closest('.c-sec')){const sec=e.target.closest('.c-sec').dataset.sec;activeSec=activeSec===sec?'all':sec;selectedIdx=null;setHint(null);render();return;}
-      onCardClick(parseInt(card.dataset.idx),films);
-    });
-  });
-  if(selectedIdx!==null&&selectedIdx<films.length) applyStates(films);
 }
 
 loadState();updateAgTab();render();
