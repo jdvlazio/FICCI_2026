@@ -142,7 +142,7 @@ body{background:var(--bg);color:var(--white);font-family:"DM Sans",sans-serif;mi
 .c-venue{display:flex;flex-direction:column;gap:5px}
 .c-venue-name{font-size:13px;font-weight:500;color:#aaa}
 .c-venue-sub{font-size:11px;color:var(--gray2)}
-.c-expand{display:flex;align-items:center;gap:6px;font-size:11.5px;color:var(--gray);cursor:pointer;user-select:none;padding-top:2px;transition:color .15s}
+.c-expand{display:flex;align-items:center;gap:5px;font-size:10px;color:var(--gray);cursor:pointer;user-select:none;transition:color .15s;font-weight:600;letter-spacing:.2px;white-space:nowrap}
 .c-expand:hover{color:var(--orange)}
 .c-expand-arrow{font-size:10px;transition:transform .2s;display:inline-block}
 .c-expand-arrow.open{transform:rotate(180deg)}
@@ -1515,6 +1515,8 @@ function render(){
         const m=f.title.match(/^(.+?)\s*[—–]\s*(Prog\..*)$/);
         if(m){displayTitle=m[1];progSuffix=m[2];}
       }
+      // Drop suffix if it has no number — e.g. "Prog. de Cortos", "Prog. Cortometrajes"
+      if(progSuffix&&!/\d/.test(progSuffix)) progSuffix='';
     }
     return`<div class="card${isAp?' apertura':isProg?' program':''}${inWL&&!inW?' in-wl':inW?' in-watched':''}${passed?' past-card':''}" data-idx="${i}" data-title="${f.title.replace(/"/g,'&quot;')}">
       ${pastBadge}${nowBadge}${actBtns}
@@ -1530,12 +1532,12 @@ function render(){
         </div>
         <div class="c-div"></div>
         <div class="c-venue"><div class="c-venue-name">${vc.ico} ${vc.short}${sl?`<span style="color:var(--gray2);margin:0 5px">|</span><span style="color:var(--gray2);font-weight:400">${sl}</span>`:''}</div></div>
-        ${expandBtn}${filmBlock}
+        ${filmBlock}
         </div>
       </div>
       <div class="c-foot">
         <div class="c-foot-l">
-          ${apBadge}<span class="c-sec${secActive}" data-sec="${f.section.replace(/"/g,'&quot;')}">${f.section}</span>
+          ${apBadge}${isProg&&expandBtn?expandBtn:`<span class="c-sec${secActive}" data-sec="${f.section.replace(/"/g,'&quot;')}">${f.section}</span>`}
           ${lbPill}
         </div>
         <span class="c-dur">${progSuffix?`<span style="color:var(--gray2);margin-right:6px">${progSuffix}</span>`:''}🕐 ${f.duration}</span>
