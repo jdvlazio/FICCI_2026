@@ -1501,9 +1501,16 @@ function render(){
     const nowBadge=isNowShowing(f)?'<div class="now-label"><span class="now-pulse"></span>AHORA</div>':'';
     const pastBadge=passed?'<div class="past-badge">ya pasó</div>':'';
     const lbPill=isProg?'':`<a class="c-lb" href="https://letterboxd.com/search/films/${encodeURIComponent(f.title)}/" target="_blank" rel="noopener" onclick="event.stopPropagation()">${LB_SVG}<span class="c-lb-text">Letterboxd</span></a>`;
-    const posterSrc=!isProg?(CUSTOM_POSTERS[f.title]||(POSTERS[f.title]?TMDB_IMG+POSTERS[f.title]:null)):null;
-    // Programs: no poster in collapsed state — thumbnails only shown on expand
-    const posterHtml=posterSrc?`<div class="c-poster"><img src="${posterSrc}" alt="" loading="lazy" onerror="this.parentElement.innerHTML='<div class=c-poster-none><span>🎬</span></div>'"></div>`:'';
+    // Poster: films use TMDB/custom; programs use official FICCI 65 festival poster
+    const FICCI_POSTER='https://ficcifestival.com/sites/default/files/2026-02/logo-ficci65_2.png';
+    let posterSrc=null, posterHtml='';
+    if(!isProg){
+      posterSrc=CUSTOM_POSTERS[f.title]||(POSTERS[f.title]?TMDB_IMG+POSTERS[f.title]:null);
+      if(posterSrc) posterHtml=`<div class="c-poster"><img src="${posterSrc}" alt="" loading="lazy" onerror="this.parentElement.innerHTML='<div class=c-poster-none></div>'"></div>`;
+    } else {
+      posterSrc=true;
+      posterHtml=`<div class="c-poster"><img src="${FICCI_POSTER}" alt="FICCI 65" loading="lazy" style="object-fit:contain;background:#111" onerror="this.parentElement.innerHTML='<div class=c-poster-none></div>'"></div>`;
+    }
     const hasPoster=!!posterSrc;
     // Split program title: "Costas — Prog. 4" → displayTitle="Costas", progSuffix="Prog. 4"
     // Special case: "Prog. Cortometrajes — Jorge Cadena" → displayTitle="Jorge Cadena", progSuffix="Prog. Cortometrajes"
