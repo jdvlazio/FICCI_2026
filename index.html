@@ -284,6 +284,9 @@ body{background:var(--bg);color:var(--white);font-family:"DM Sans",sans-serif;mi
 .ag-card-btn{background:none;border:1px solid var(--bdr);border-radius:6px;cursor:pointer;font-size:13px;padding:4px 6px;color:var(--gray2);transition:all .15s;line-height:1}
 .ag-card-btn:hover{border-color:var(--green);color:var(--green)}
 .ag-warn{display:flex;align-items:center;gap:5px;padding:4px 8px;margin-bottom:4px;background:rgba(229,160,32,.08);border-radius:6px;font-size:10.5px;color:#e5a020}
+/* Letterboxd-style item poster */
+.lb-poster{width:40px;height:60px;object-fit:cover;border-radius:5px;flex-shrink:0;display:block;background:#1a1a1a}
+.lb-poster-ph{width:40px;height:60px;border-radius:5px;flex-shrink:0;background:#1e1e1e;display:flex;align-items:center;justify-content:center;font-size:14px;opacity:.3}
 .ag-empty{text-align:center;padding:40px 20px;color:var(--gray)}
 .ag-empty span{font-size:40px;display:block;margin-bottom:10px}
 .ag-empty p{font-size:13px;line-height:1.6}
@@ -857,14 +860,17 @@ function renderSavedAgendaHTML(){
     todayItems.forEach((s,i)=>{
       if(i>0){const warn=travelWarn(todayItems[i-1],s);if(warn) html+=`<div class="travel-warn">${warn}</div>`;}
       const vc2=vcfg(s.venue),sl=sala(s.venue);
+      {const t=s._title||'';const _p=CUSTOM_POSTERS[t]||(POSTERS[t]?TMDB_IMG+POSTERS[t]:null);
+      const _ph=_p?`<img class="lb-poster" src="${_p}" loading="lazy" onerror="this.outerHTML='<div class=lb-poster-ph>🎬</div>'" alt="">`:'<div class="lb-poster-ph">🎬</div>';
       html+=`<div class="saved-item" data-title="${(s._title||'').replace(/"/g,'&quot;')}">
+        ${_ph}
         <div class="saved-time">${s.time}</div>
         <div class="saved-info">
           <div class="saved-title">${s._title}</div>
-          <div class="saved-venue">${vc2.ico} ${vc2.short}${sl?' · '+sl:''}</div>
+          <div class="saved-venue">${vc2.ico} ${vc2.short}${sl?' · '+sl:''}${s.duration?' · '+s.duration:''}</div>
         </div>
         <button class="saved-check" onclick="toggleWatched('${(s._title||'').replace(/'/g,"\'")}',event)">○</button>
-      </div>`;
+      </div>`;}
     });
   }
 
@@ -874,14 +880,17 @@ function renderSavedAgendaHTML(){
     byDay[day].forEach((s,i)=>{
       if(i>0){const warn=travelWarn(byDay[day][i-1],s);if(warn) html+=`<div class="travel-warn">${warn}</div>`;}
       const vc2=vcfg(s.venue),sl=sala(s.venue);
+      {const t=s._title||'';const _p=CUSTOM_POSTERS[t]||(POSTERS[t]?TMDB_IMG+POSTERS[t]:null);
+      const _ph=_p?`<img class="lb-poster" src="${_p}" loading="lazy" onerror="this.outerHTML='<div class=lb-poster-ph>🎬</div>'" alt="">`:'<div class="lb-poster-ph">🎬</div>';
       html+=`<div class="saved-item" data-title="${(s._title||'').replace(/"/g,'&quot;')}">
+        ${_ph}
         <div class="saved-time">${s.time}</div>
         <div class="saved-info">
           <div class="saved-title">${s._title}</div>
-          <div class="saved-venue">${vc2.ico} ${vc2.short}${sl?' · '+sl:''}</div>
+          <div class="saved-venue">${vc2.ico} ${vc2.short}${sl?' · '+sl:''}${s.duration?' · '+s.duration:''}</div>
         </div>
         <button class="saved-check" onclick="toggleWatched('${(s._title||'').replace(/'/g,"\'")}',event)">○</button>
-      </div>`;
+      </div>`;}
     });
   });
 
@@ -926,7 +935,7 @@ let cachedResult=null;
 
 function buildResultHTML(scenarios){
   if(!scenarios||!scenarios.length)
-    return`<div class="ag-calc-prompt">No hay combinaciones posibles. Ajusta disponibilidades o añade más películas.</div>`;
+    return`<div class="ag-calc-prompt">No hay combinaciones posibles. Ajusta disponibilidad o añade más películas.</div>`;
   const{currentIdx}=cachedResult;
   const sc=scenarios[currentIdx],n=scenarios.length;
   const pending=[...watchlist].filter(t=>!watched.has(t)&&FILMS.some(f=>f.title===t&&!screeningPassed(f)));
@@ -976,18 +985,20 @@ function buildResultHTML(scenarios){
       if(i>0){const warn=travelWarn(films[i-1],s);if(warn) html+=`<div class="ag-warn">${warn}</div>`;}
       const vc2=vcfg(s.venue),sl=sala(s.venue);
       const alts=FILMS.filter(f=>f.title===s._title&&!isScreeningBlocked(f)&&!screeningPassed(f)&&!(f.day===s.day&&f.time===s.time));
+      {const t=s._title;const _p=CUSTOM_POSTERS[t]||(POSTERS[t]?TMDB_IMG+POSTERS[t]:null);
+      const _ph=_p?`<img class="lb-poster" src="${_p}" loading="lazy" onerror="this.outerHTML='<div class=lb-poster-ph>🎬</div>'" alt="">`:'<div class="lb-poster-ph">🎬</div>';
       html+=`<div class="ag-card">
+        ${_ph}
         <div class="ag-time">${s.time}</div>
         <div class="ag-info">
           <div class="ag-title">${s._title}</div>
-          <div class="ag-venue">${vc2.ico} ${vc2.short}${sl?' · '+sl:''}${alts.length?`<span class="ag-alts">${alts.length} alt.</span>`:''}</div>
+          <div class="ag-venue">${vc2.ico} ${vc2.short}${sl?' · '+sl:''}${s.duration?' · '+s.duration:''}${alts.length?`<span class="ag-alts">${alts.length} alt.</span>`:''}</div>
         </div>
-        <div class="ag-flags">${s.flags||'🎬'}</div>
         <div class="ag-card-actions">
           <button class="ag-card-btn" onclick="toggleWatched('${s._title.replace(/'/g,"\'")}',event)" title="Marcar como vista">✓</button>
           <button class="ag-card-btn" onclick="toggleWL('${s._title.replace(/'/g,"\'")}',event)" title="Quitar">✕</button>
         </div>
-      </div>`;
+      </div>`;}
     });
   });
   return html;
@@ -1023,7 +1034,7 @@ function renderAgenda(){
   const pending=[...watchlist].filter(t=>!watched.has(t)&&FILMS.some(f=>f.title===t&&!screeningPassed(f)));
   const resultContent=cachedResult
     ?buildResultHTML(cachedResult.scenarios)
-    :`<div class="ag-calc-prompt">Configura tus disponibilidades y toca <strong>Calcular escenarios</strong>.</div>`;
+    :`<div class="ag-calc-prompt">Configura tus disponibilidad y toca <strong>Calcular escenarios</strong>.</div>`;
 
   view.innerHTML=`
     ${renderSavedAgendaHTML()}
@@ -1039,7 +1050,7 @@ function renderAgenda(){
       <div id="ag-film-list">${renderFilmListHTML()}</div>
     </div>
     <div class="ag-section">
-      <div class="ag-section-title">Mis disponibilidades</div>
+      <div class="ag-section-title">Mi disponibilidad</div>
       ${DAY_KEYS.map(day=>{
         const passed=dayFullyPassed(day);
         return`<div class="av-day" style="${passed?'opacity:.4;pointer-events:none':''}">
