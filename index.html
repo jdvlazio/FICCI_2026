@@ -184,7 +184,7 @@ body{background:var(--bg);color:var(--white);font-family:"DM Sans",sans-serif;mi
 .empty{grid-column:1/-1;text-align:center;padding:60px 20px;color:var(--gray)}
 .empty span{font-size:44px;display:block;margin-bottom:10px}
 /* AGENDA VIEW */
-.ag-view{padding:14px 16px 60px;display:none}
+.ag-view{padding:14px 20px 60px;display:none}
 .ag-view.visible{display:block}
 .ag-section{margin-bottom:20px}
 .ag-section-title{font-size:10px;font-weight:700;color:var(--orange);letter-spacing:1px;text-transform:uppercase;margin-bottom:10px;display:flex;align-items:center;gap:6px}
@@ -423,7 +423,7 @@ body{background:var(--bg);color:var(--white);font-family:"DM Sans",sans-serif;mi
 
 /* ── Priority strip (A) ── */
 .prio-strip{margin-bottom:12px}
-.prio-strip-title{font-size:10px;font-weight:700;color:var(--orange);letter-spacing:1px;text-transform:uppercase;margin-bottom:8px;display:flex;align-items:center;gap:6px}
+.prio-strip-title{font-size:10px;font-weight:700;color:var(--orange);letter-spacing:1px;text-transform:uppercase;margin-bottom:8px;display:flex;align-items:center;gap:6px;width:100%}
 .prio-strip-row{display:flex;gap:8px;overflow-x:auto;padding-bottom:4px}
 .prio-chip{flex-shrink:0;width:72px;position:relative;cursor:pointer}
 .prio-chip-poster{width:72px;height:108px;object-fit:cover;border-radius:6px;display:block;background:#1a1a1a}
@@ -453,7 +453,7 @@ body{background:var(--bg);color:var(--white);font-family:"DM Sans",sans-serif;mi
   .main-nav-tab{border-bottom:none;border-top:2px solid transparent;margin-bottom:0;margin-top:-1px;padding:8px 4px;height:52px}
   .main-nav-tab.on{border-bottom-color:transparent;border-top-color:var(--orange)}
   .grid{padding-bottom:calc(80px + env(safe-area-inset-bottom))}
-  .ag-view{padding:14px 16px calc(80px + env(safe-area-inset-bottom))}
+  .ag-view{padding:14px 20px calc(80px + env(safe-area-inset-bottom))}
   .prio-toast{bottom:calc(80px + env(safe-area-inset-bottom) + 10px)}
   .ag-film-grid{grid-template-columns:repeat(4,1fr);gap:6px}
 }
@@ -1437,7 +1437,7 @@ function renderFilmListHTML(){
   if(!allPending.length&&!watchedList.length){
     return`<div style="margin-top:8px;padding:20px 16px;border:1px solid var(--bdr-l);border-radius:var(--r);text-align:center">
       <div class="prio-strip-title" style="justify-content:center;margin-bottom:10px">♥︎ Selección</div>
-      <div style="font-size:12px;color:var(--gray);line-height:1.6">
+      <div style="font-size:12px;color:var(--gray);line-height:1.6;text-align:center">
         Aún no tienes películas guardadas.<br>Usa el buscador para añadir títulos.
       </div>
     </div>`;
@@ -1458,7 +1458,7 @@ function renderFilmListHTML(){
   }
   return html||`<div style="margin-top:8px;padding:20px 16px;border:1px solid var(--bdr-l);border-radius:var(--r);text-align:center">
       <div class="prio-strip-title" style="justify-content:center;margin-bottom:10px">♥︎ Selección</div>
-      <div style="font-size:12px;color:var(--gray);line-height:1.6">
+      <div style="font-size:12px;color:var(--gray);line-height:1.6;text-align:center">
         Aún no tienes películas guardadas.<br>Usa el buscador para añadir títulos.
       </div>
     </div>`;
@@ -1511,7 +1511,7 @@ function _renderSavedAgendaHTML(){
   if(!savedAgenda||!savedAgenda.schedule.length) return`
     <div style="margin-top:16px;padding:20px 16px;border:1px solid var(--bdr-l);border-radius:var(--r);text-align:center">
       <div class="prio-strip-title" style="justify-content:center;margin-bottom:10px">◆ Mi Plan</div>
-      <div style="font-size:12px;color:var(--gray);line-height:1.6;margin-bottom:14px">
+      <div style="font-size:12px;color:var(--gray);line-height:1.6;margin-bottom:14px;text-align:center">
         Aún no tienes un plan guardado.<br>Ve a <strong style="color:var(--white)">Planear</strong>, calcula un escenario y toca <strong style="color:var(--white)">◆ Elegir Plan</strong>.
       </div>
       <button onclick="switchMainNav('mnav-planner');showAgView()" style="background:none;border:1px solid var(--bdr);border-radius:20px;color:var(--gray);font-size:11px;padding:5px 14px;cursor:pointer;font-family:'DM Sans',sans-serif;transition:all .15s" onmouseover="this.style.borderColor='var(--orange)';this.style.color='var(--orange)'" onmouseout="this.style.borderColor='var(--bdr)';this.style.color='var(--gray)'">Ir a Planear →</button>
