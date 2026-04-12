@@ -186,7 +186,7 @@ body{background:var(--bg);color:var(--white);font-family:"DM Sans",sans-serif;mi
 .ag-view{padding:14px 16px 60px;display:none}
 .ag-view.visible{display:block}
 .ag-section{margin-bottom:20px}
-.ag-section-title{font-family:"Bebas Neue",sans-serif;font-size:19px;color:var(--white);letter-spacing:.5px;margin-bottom:10px;padding-bottom:7px;border-bottom:1px solid var(--bdr)}
+.ag-section-title{font-size:10px;font-weight:700;color:var(--orange);letter-spacing:1px;text-transform:uppercase;margin-bottom:10px;display:flex;align-items:center;gap:6px}
 /* Saved agenda */
 .saved-agenda{padding:0;margin-bottom:20px}
 .saved-agenda-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px}
@@ -840,14 +840,7 @@ function toggleWL(title,e){
   }
   else{
     watchlist.add(title);watched.delete(title);
-    // Check conflicts with existing watchlist
-    const newScreenings=FILMS.filter(f=>f.title===title);
-    const conflicts=[];
-    [...watchlist].filter(t=>t!==title).forEach(t=>{
-      const existing=FILMS.filter(f=>f.title===t);
-      newScreenings.forEach(ns=>{ existing.forEach(es=>{ if(screensConflict(ns,es)&&!conflicts.includes(t)) conflicts.push(t); }); });
-    });
-    if(conflicts.length) showToast(`Alguna función solapa con: ${conflicts.slice(0,2).join(', ')}${conflicts.length>2?' y más':''}`, 'warn');
+    showToast('♥ Añadida a Selección','info');
   }
   saveWL();saveWatched();updateCardState(title);updateAgTab();
   if(activeView==='agenda'){cachedResult=null;renderAgenda();}
@@ -1815,7 +1808,6 @@ function renderAgenda(){
     // ── Selección: buscador + lista de películas ──
     view.innerHTML=`
       <div class="ag-section">
-        <div class="ag-section-title">Mis películas</div>
         <div class="ag-search-wrap">
           <span class="ag-search-ico">🔍</span>
           <input type="text" id="ag-search-input" class="ag-search"
@@ -1846,8 +1838,8 @@ function renderAgenda(){
           <div id="ag-search-results" class="ag-search-results"></div>
         </div>
         ${renderPrioStrip()}
-        <div class="ag-section-title">Mi disponibilidad</div>
-        <div style="font-size:12px;color:var(--gray);margin-bottom:10px;line-height:1.5">Marca cuando estás ocupado. El algoritmo lo tendrá en cuenta al planear.</div>
+        <div class="ag-section-title">⏱ Disponibilidad</div>
+        <div style="font-size:12px;color:var(--gray);margin-bottom:10px;line-height:1.5">Marca cu&aacute;ndo est&aacute;s ocupado. El algoritmo lo tendr&aacute; en cuenta al planear.</div>
         <div class="av-section">
           ${DAY_KEYS.map(day=>{
             const passed=dayFullyPassed(day);
@@ -1859,7 +1851,7 @@ function renderAgenda(){
         </button>
       </div>
       <div class="ag-section">
-        <div class="ag-section-title">Escenarios</div>
+        <div class="ag-section-title">◇ Escenarios</div>
         <div id="ag-result">${resultContent}</div>
       </div>`;
     DAY_KEYS.forEach(d=>renderAvDay(d));
