@@ -520,7 +520,11 @@ const COLLAGES={"Ben Rivers — Prog. 1": ["https://image.tmdb.org/t/p/w185/a03L
 const TMDB_IMG="https://image.tmdb.org/t/p/w185";
 const FICCI_POSTER_URL='https://ficcifestival.com/sites/default/files/2026-02/logo-ficci65_2.png';
 function getPosterSrc(title,isCortos){
-  if(isCortos) return FICCI_POSTER_URL;
+  if(isCortos){
+    const imgs=COLLAGES[title];
+    if(imgs&&imgs.length) return imgs[0];
+    return FICCI_POSTER_URL;
+  }
   return CUSTOM_POSTERS[title]||(POSTERS[title]?TMDB_IMG+POSTERS[title]:null);
 }
 const LB_SVG=`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="13" height="13" style="display:block;flex-shrink:0"><rect width="64" height="64" rx="9" fill="#2C3440"/><circle cx="21" cy="32" r="12" fill="#00B020" opacity=".9"/><circle cx="32" cy="32" r="12" fill="#3CBEDB" opacity=".85"/><circle cx="43" cy="32" r="12" fill="#FF8000" opacity=".9"/></svg>`;
@@ -947,13 +951,10 @@ function addSuggestion(title,day,time){
     if(!savedAgenda) savedAgenda={schedule:[]};
     // Avoid duplicates
     if(!savedAgenda.schedule.some(s=>s._title===title)){
-      // ⚠️ Validar conflicto antes de añadir
-      const conflict=savedAgenda.schedule.find(s=>screensConflict(s,screen));
-      if(conflict){
-        const cname=(conflict._title||'').split(' ').slice(0,3).join(' ');
-        showToast(`Conflicto con: ${cname}…`,'warn');
-        return;
-      }
+      // No se re-valida conflicto aquí: getSuggestions ya garantizó que la función
+      // cabe en el hueco (los slots ya incluyen el buffer ±10). screensConflict
+      // añadiría ±10 adicional sobre ambos lados → falso positivo sistemático
+      // en funciones que empiezan exactamente en el borde del slot.
       savedAgenda.schedule.push({...screen,_title:title});
       savedAgenda.schedule.sort((a,b)=>a.day_order!==b.day_order?a.day_order-b.day_order:toMin(a.time)-toMin(b.time));
       saveSavedAgenda();
@@ -962,7 +963,10 @@ function addSuggestion(title,day,time){
   // 3. Quitar de lista de restaurables
   lastRemovedSlots=lastRemovedSlots.filter(r=>r._title!==title);
   saveLastSlot();
-  // 4. Re-render
+  // 4. Saltar al día de la sugerencia en el calendario
+  const jumpIdx=DAY_KEYS.indexOf(day);
+  if(jumpIdx>=0) activeMiPlanDay=jumpIdx;
+  // 5. Re-render
   renderAgenda();
 }
 function closeSearch(){setTimeout(()=>{const r=document.getElementById('ag-search-results');if(r) r.classList.remove('open');},200);}
@@ -1292,24 +1296,25 @@ function getSuggestions(){
     // Calcular huecos del día
     const slots=[];
     if(dayItems.length===0){
-      slots.push({start:0,end:23*60,ctx:'Día libre en tu Plan'});
+      // Día completamente libre — cubre hasta la 1am
+      slots.push({start:0,end:25*60,ctx:'Día libre en tu Plan'});
     } else {
       // Antes de la primera
       if(toMin(dayItems[0].time)>60)
         slots.push({start:0,end:toMin(dayItems[0].time)-10,ctx:`Antes de ${(dayItems[0]._title||'').split(' ').slice(0,3).join(' ')}…`});
-      // Entre funciones
+      // Entre funciones — cualquier hueco positivo (el chequeo fStart/fEnd filtra lo imposible)
       for(let i=0;i<dayItems.length-1;i++){
         const a=dayItems[i],b=dayItems[i+1];
         const aEnd=toMin(a.time)+parseDur(a.duration)+10;
         const bStart=toMin(b.time)-10;
-        if(bStart-aEnd>=30)
+        if(bStart>aEnd)
           slots.push({start:aEnd,end:bStart,ctx:`Entre ${(a._title||'').split(' ').slice(0,3).join(' ')}… y ${(b._title||'').split(' ').slice(0,3).join(' ')}…`});
       }
-      // Después de la última
+      // Después de la última — siempre se crea, extiende hasta la 1am
+      // Bug fix: el if(lastEnd<22*60) cortaba noches con película tardía (ej: 20:00+90min=22:10 → sin slot)
       const last=dayItems[dayItems.length-1];
       const lastEnd=toMin(last.time)+parseDur(last.duration)+10;
-      if(lastEnd<22*60)
-        slots.push({start:lastEnd,end:23*60,ctx:`Después de ${(last._title||'').split(' ').slice(0,3).join(' ')}…`});
+      slots.push({start:lastEnd,end:25*60,ctx:`Después de ${(last._title||'').split(' ').slice(0,3).join(' ')}…`});
     }
 
     // Bloque 1 — Descubrimiento: películas del festival que quepan en huecos
