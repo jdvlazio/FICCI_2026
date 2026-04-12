@@ -343,30 +343,35 @@ body{background:var(--bg);color:var(--white);font-family:"DM Sans",sans-serif;mi
 .ag-wi-title{flex:1;font-size:11.5px;font-weight:500;color:var(--gray);min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .ag-wi-actions{display:flex;gap:3px;flex-shrink:0}
 /* Availability */
-.av-day{border:1px solid var(--bdr);border-radius:var(--r);margin-bottom:6px;overflow:hidden}
-.av-day-header{display:flex;align-items:center;justify-content:space-between;padding:11px 14px;cursor:pointer;background:var(--card-a);user-select:none}
-.av-day-header:hover{background:var(--card-b)}
-.av-day-left{display:flex;align-items:center;gap:8px}
-.av-arrow{font-size:10px;color:var(--gray);transition:transform .2s;display:inline-block}
-.av-arrow.open{transform:rotate(90deg)}
-.av-day-name{font-size:13px;font-weight:500;color:var(--white)}
-.av-summary{font-size:11px;color:var(--gray)}
-.av-summary.has-blocks{color:var(--orange)}
-.av-day-body{padding:12px 14px;background:var(--card-p);border-top:1px solid var(--bdr-l)}
-.av-blocks-list{display:flex;flex-direction:column;gap:5px;margin-bottom:10px}
-.av-block-pill{display:flex;align-items:center;justify-content:space-between;background:rgba(232,90,30,.08);border:1px solid rgba(232,90,30,.25);border-radius:7px;padding:6px 10px}
-.av-block-text{font-size:12px;color:var(--white);font-weight:500}
-.av-block-remove{background:none;border:none;cursor:pointer;color:var(--gray2);font-size:14px;padding:0 2px;transition:color .15s;line-height:1}
-.av-block-remove:hover{color:#e05050}
-.av-add-form{display:flex;align-items:center;gap:7px;flex-wrap:wrap;margin-bottom:8px}
-.av-time-input{background:var(--surf);border:1px solid var(--bdr);border-radius:7px;color:var(--white);font-size:13px;padding:6px 9px;font-family:"DM Sans",sans-serif;width:95px;cursor:pointer}
+/* ── Disponibilidad — vista plana estilo Calendly ── */
+.av-section{border:1px solid var(--bdr-l);border-radius:var(--r);overflow:hidden;margin-bottom:10px}
+.av-row{display:flex;align-items:flex-start;gap:12px;padding:12px 14px;border-bottom:1px solid var(--bdr-l)}
+.av-row:last-child{border-bottom:none}
+.av-row.av-past{opacity:.35;pointer-events:none}
+.av-row.av-full{background:rgba(224,80,80,.03)}
+.av-row-lbl{flex-shrink:0;width:42px;padding-top:2px}
+.av-row-dayname{font-size:9px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;color:var(--gray2)}
+.av-row-date{font-family:"Bebas Neue",sans-serif;font-size:22px;line-height:1.1;color:var(--gray2)}
+.av-row-date.wk-has{color:var(--white)}
+.av-row-content{flex:1;min-width:0}
+.av-pills{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:5px}
+.av-pills:empty{margin-bottom:0}
+.av-pill{display:inline-flex;align-items:center;gap:5px;background:rgba(232,90,30,.09);border:1px solid rgba(232,90,30,.28);border-radius:6px;padding:4px 9px;font-size:11px;color:var(--white);font-weight:500}
+.av-pill.full{background:rgba(224,80,80,.08);border-color:rgba(224,80,80,.3);color:#e07070}
+.av-pill-rm{background:none;border:none;cursor:pointer;color:var(--gray2);font-size:13px;padding:0;line-height:1;transition:color .15s}
+.av-pill-rm:hover{color:#e05050}
+.av-row-btns{display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+.av-inline-form{display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin-bottom:6px}
+.av-time-input{background:var(--surf);border:1px solid var(--bdr);border-radius:6px;color:var(--white);font-size:12px;padding:5px 8px;font-family:"DM Sans",sans-serif;width:88px;cursor:pointer;appearance:none;-webkit-appearance:none}
 .av-time-input:focus{outline:none;border-color:var(--orange)}
-.av-sep{font-size:12px;color:var(--gray)}
-.av-add-btn{background:rgba(232,90,30,.1);border:1px solid rgba(232,90,30,.3);border-radius:7px;color:var(--orange);font-size:12px;font-weight:600;padding:6px 11px;cursor:pointer;font-family:"DM Sans",sans-serif;transition:all .15s}
+.av-sep{font-size:11px;color:var(--gray2)}
+.av-add-btn{background:rgba(232,90,30,.1);border:1px solid rgba(232,90,30,.3);border-radius:6px;color:var(--orange);font-size:11px;font-weight:600;padding:5px 10px;cursor:pointer;font-family:"DM Sans",sans-serif;transition:all .15s}
 .av-add-btn:hover{background:rgba(232,90,30,.2)}
-.av-day-block-btn{width:100%;background:none;border:1px solid var(--bdr);border-radius:7px;color:var(--gray);font-size:12px;padding:6px;cursor:pointer;font-family:"DM Sans",sans-serif;transition:all .15s}
-.av-day-block-btn:hover{border-color:#e05050;color:#e05050}
-.av-day-block-btn.blocked{border-color:rgba(224,80,80,.4);color:#e05050;background:rgba(224,80,80,.08)}
+.av-plus-btn{background:none;border:1px solid var(--bdr);border-radius:6px;color:var(--gray);font-size:11px;padding:4px 9px;cursor:pointer;font-family:"DM Sans",sans-serif;transition:all .15s;white-space:nowrap}
+.av-plus-btn:hover{border-color:var(--orange);color:var(--orange)}
+.av-full-btn{background:none;border:1px solid var(--bdr);border-radius:6px;color:var(--gray2);font-size:11px;padding:4px 9px;cursor:pointer;font-family:"DM Sans",sans-serif;transition:all .15s;white-space:nowrap}
+.av-full-btn:hover{border-color:#e05050;color:#e05050}
+.av-full-btn.active{border-color:rgba(224,80,80,.4);color:#e07070;background:rgba(224,80,80,.06)}
 .av-calc-btn{width:100%;margin-top:10px;padding:13px;border-radius:var(--r);background:var(--orange);border:none;color:#fff;font-size:14px;font-weight:600;cursor:pointer;font-family:"DM Sans",sans-serif;letter-spacing:.3px;transition:opacity .15s}
 .av-calc-btn:hover{opacity:.88}
 .av-calc-btn:disabled{opacity:.35;cursor:default}
@@ -962,65 +967,74 @@ function closeSearch(){setTimeout(()=>{const r=document.getElementById('ag-searc
 const DAY_KEYS=['Martes','Miércoles','Jueves','Viernes','Sábado','Domingo'];
 const DAY_LONG={Martes:'Martes 14',Miércoles:'Miércoles 15',Jueves:'Jueves 16',Viernes:'Viernes 17',Sábado:'Sábado 18',Domingo:'Domingo 19'};
 const DAY_SHORT={Martes:'MAR 14',Miércoles:'MIÉ 15',Jueves:'JUE 16',Viernes:'VIE 17',Sábado:'SÁB 18',Domingo:'DOM 19'};
+let avAddOpen={};
 function isFullDayBlocked(day){return availability[day].blocks.some(b=>toMin(b.from)<=0&&toMin(b.to)>=toMin('23:59'));}
 function toggleFullDay(day){
   if(isFullDayBlocked(day)) availability[day].blocks=[];
-  else availability[day].blocks=[{from:'00:00',to:'23:59'}];
-  saveAV();renderAvDay(day);updateAvSummary(day);
-}
-function avSummary(day){
-  const av=availability[day];
-  if(!av.blocks.length) return'Todo el día disponible';
-  if(isFullDayBlocked(day)) return'Día excluido';
-  return`${av.blocks.length} bloque${av.blocks.length!==1?'s':''} bloqueado${av.blocks.length!==1?'s':''}`;
-}
-function updateAvSummary(day){
-  const el=document.getElementById(`av-summary-${day}`);if(!el) return;
-  el.textContent=avSummary(day);
-  el.className='av-summary'+(availability[day].blocks.length?' has-blocks':'');
+  else{availability[day].blocks=[{from:'00:00',to:'23:59'}];avAddOpen[day]=false;}
+  saveAV();renderAvDay(day);
 }
 function addBlock(day){
   const f=document.getElementById(`av-from-${day}`).value;
   const t=document.getElementById(`av-to-${day}`).value;
-  if(!f||!t){alert('Selecciona hora de inicio y fin');return;}
-  if(toMin(f)>=toMin(t)){alert('La hora de inicio debe ser menor que la de fin');return;}
+  if(!f||!t){showToast('Selecciona hora de inicio y fin','warn');return;}
+  if(toMin(f)>=toMin(t)){showToast('La hora de inicio debe ser menor que la de fin','warn');return;}
   const av=availability[day];
-  if(av.blocks.some(b=>toMin(f)<toMin(b.to)&&toMin(t)>toMin(b.from))){alert('Este bloque se solapa con uno existente');return;}
+  if(av.blocks.some(b=>toMin(f)<toMin(b.to)&&toMin(t)>toMin(b.from))){showToast('Este bloque se solapa con uno existente','warn');return;}
   av.blocks.push({from:f,to:t});av.blocks.sort((a,b)=>toMin(a.from)-toMin(b.from));
-  saveAV();renderAvDay(day);updateAvSummary(day);
+  avAddOpen[day]=false;
+  saveAV();renderAvDay(day);
 }
 function removeBlock(day,fromVal,toVal){
   availability[day].blocks=availability[day].blocks.filter(b=>!(b.from===fromVal&&b.to===toVal));
-  saveAV();renderAvDay(day);updateAvSummary(day);
-}
-function toggleAvDay(day){
-  const body=document.getElementById(`av-body-${day}`);
-  const arrow=document.getElementById(`av-arrow-${day}`);
-  if(!body) return;
-  const open=body.style.display==='block';
-  body.style.display=open?'none':'block';
-  arrow.classList.toggle('open',!open);
+  saveAV();renderAvDay(day);
 }
 function renderAvDay(day){
-  const body=document.getElementById(`av-body-${day}`);if(!body) return;
+  const row=document.getElementById(`av-row-${day}`);if(!row) return;
   const fullBlocked=isFullDayBlocked(day);
   const visibleBlocks=availability[day].blocks.filter(b=>!(toMin(b.from)<=0&&toMin(b.to)>=toMin('23:59')));
-  const blocksHtml=fullBlocked
-    ?`<div class="av-blocks-list"><div class="av-block-pill"><span class="av-block-text">🚫 Día completo bloqueado</span></div></div>`
-    :visibleBlocks.length?`<div class="av-blocks-list">${visibleBlocks.map(b=>
-        `<div class="av-block-pill"><span class="av-block-text">🚫 ${b.from} – ${b.to}</span>
-        <button class="av-block-remove" onclick="removeBlock('${day}','${b.from}','${b.to}')">×</button></div>`).join('')}</div>`:'';
-  body.innerHTML=`${blocksHtml}
-    <div class="av-add-form">
-      <input type="time" id="av-from-${day}" class="av-time-input" value="12:00">
-      <span class="av-sep">→</span>
-      <input type="time" id="av-to-${day}" class="av-time-input" value="14:00">
-      <button class="av-add-btn" onclick="addBlock('${day}')">＋ Bloquear</button>
+  const hasAny=fullBlocked||visibleBlocks.length>0;
+  const addOpen=!!avAddOpen[day];
+
+  const pillsHtml=fullBlocked
+    ?`<span class="av-pill full">Todo el día</span>`
+    :visibleBlocks.map(b=>`<span class="av-pill">${b.from}–${b.to}<button class="av-pill-rm" onclick="removeBlock('${day}','${b.from}','${b.to}');event.stopPropagation()">×</button></span>`).join('');
+
+  // Inline form — always shows when addOpen, with 15-min slot dropdowns
+  const timeOpts=`<option value="08:00">08:00</option><option value="08:15">08:15</option><option value="08:30">08:30</option><option value="08:45">08:45</option><option value="09:00">09:00</option><option value="09:15">09:15</option><option value="09:30">09:30</option><option value="09:45">09:45</option><option value="10:00">10:00</option><option value="10:15">10:15</option><option value="10:30">10:30</option><option value="10:45">10:45</option><option value="11:00">11:00</option><option value="11:15">11:15</option><option value="11:30">11:30</option><option value="11:45">11:45</option><option value="12:00">12:00</option><option value="12:15">12:15</option><option value="12:30">12:30</option><option value="12:45">12:45</option><option value="13:00">13:00</option><option value="13:15">13:15</option><option value="13:30">13:30</option><option value="13:45">13:45</option><option value="14:00">14:00</option><option value="14:15">14:15</option><option value="14:30">14:30</option><option value="14:45">14:45</option><option value="15:00">15:00</option><option value="15:15">15:15</option><option value="15:30">15:30</option><option value="15:45">15:45</option><option value="16:00">16:00</option><option value="16:15">16:15</option><option value="16:30">16:30</option><option value="16:45">16:45</option><option value="17:00">17:00</option><option value="17:15">17:15</option><option value="17:30">17:30</option><option value="17:45">17:45</option><option value="18:00">18:00</option><option value="18:15">18:15</option><option value="18:30">18:30</option><option value="18:45">18:45</option><option value="19:00">19:00</option><option value="19:15">19:15</option><option value="19:30">19:30</option><option value="19:45">19:45</option><option value="20:00">20:00</option><option value="20:15">20:15</option><option value="20:30">20:30</option><option value="20:45">20:45</option><option value="21:00">21:00</option><option value="21:15">21:15</option><option value="21:30">21:30</option><option value="21:45">21:45</option><option value="22:00">22:00</option><option value="22:15">22:15</option><option value="22:30">22:30</option><option value="22:45">22:45</option><option value="23:00">23:00</option><option value="23:15">23:15</option><option value="23:30">23:30</option><option value="23:45">23:45</option><option value="00:00">00:00</option><option value="00:15">00:15</option><option value="00:30">00:30</option><option value="00:45">00:45</option><option value="00:00">01:00</option>`;
+  const inlineForm=addOpen?`<div class="av-inline-form">
+      <select id="av-from-${day}" class="av-time-input">${timeOpts}</select>
+      <span class="av-sep">–</span>
+      <select id="av-to-${day}" class="av-time-input">${timeOpts}</select>
+      <button class="av-add-btn" onclick="addBlock('${day}')">Confirmar</button>
+      <button class="av-plus-btn" onclick="avAddOpen['${day}']=false;renderAvDay('${day}')">✕</button>
+    </div>`:'';
+
+  row.className=`av-row${fullBlocked?' av-full':''}`;
+  row.innerHTML=`
+    <div class="av-row-lbl">
+      <div class="av-row-dayname">${DAY_SHORT[day]}</div>
+      <div class="av-row-date${hasAny?' wk-has':''}">${FESTIVAL_DATES[day].slice(-2)}</div>
     </div>
-    <button class="av-day-block-btn${fullBlocked?' blocked':''}" onclick="toggleFullDay('${day}')">
-      ${fullBlocked?'↩ Liberar día completo':'🚫 Bloquear día completo'}
-    </button>`;
+    <div class="av-row-content">
+      ${pillsHtml?`<div class="av-pills">${pillsHtml}</div>`:''}
+      ${inlineForm}
+      <div class="av-row-btns" style="margin-top:${pillsHtml||addOpen?'6px':'0'}">
+        ${!fullBlocked&&!addOpen?`<button class="av-plus-btn" onclick="avAddOpen['${day}']=true;renderAvDay('${day}')">＋ No disponible</button>`:''}
+        ${!addOpen?`<button class="av-full-btn${fullBlocked?' active':''}" onclick="toggleFullDay('${day}')">
+          ${fullBlocked?'↩ Liberar día':'Todo el día'}
+        </button>`:''}
+      </div>
+    </div>`;
+  // Set default values for selects after render
+  if(addOpen){
+    const sf=document.getElementById(`av-from-${day}`);
+    const st=document.getElementById(`av-to-${day}`);
+    if(sf) sf.value='12:00';
+    if(st) st.value='14:00';
+  }
 }
+
 function isScreeningBlocked(s){
   const av=availability[s.day];if(!av) return false;
   return av.blocks.some(b=>toMin(s.time)>=toMin(b.from)&&toMin(s.time)<toMin(b.to));
@@ -1736,7 +1750,8 @@ function swapFilm(excludedTitle, screenDay, screenTime, displacedTitle){
   if(existingIdx>=0){
     // Jump to the existing scenario
     cachedResult.currentIdx=existingIdx;
-    showToast(`Escenario ${existingIdx+1} — ya existía esta combinación`,'info');
+    const lbl=existingIdx===0?'◆ Plan óptimo':`Variación ${existingIdx}`;
+    showToast(`${lbl} — ya tenías esta combinación`,'info');
   } else {
     // Create a new custom scenario
     const pending=[...watchlist].filter(t=>!watched.has(t)&&FILMS.some(f=>f.title===t&&!screeningPassed(f)));
@@ -1747,7 +1762,7 @@ function swapFilm(excludedTitle, screenDay, screenTime, displacedTitle){
       excluded:pending.filter(t=>!included.has(t))
     });
     cachedResult.currentIdx=cachedResult.scenarios.length-1;
-    showToast(`Escenario ${cachedResult.currentIdx+1} — intercambio personalizado`,'info');
+    showToast(`Variación ${cachedResult.currentIdx} — intercambio personalizado`,'info');
   }
 
   const res=document.getElementById('ag-result');
@@ -1826,19 +1841,13 @@ function renderAgenda(){
         </div>
         ${renderPrioStrip()}
         <div class="ag-section-title">Mi disponibilidad</div>
-        ${DAY_KEYS.map(day=>{
-          const passed=dayFullyPassed(day);
-          return`<div class="av-day" style="${passed?'opacity:.4;pointer-events:none':''}">
-            <div class="av-day-header" onclick="toggleAvDay('${day}')">
-              <div class="av-day-left">
-                <span class="av-arrow" id="av-arrow-${day}">▶</span>
-                <span class="av-day-name">${DAY_LONG[day]}${passed?' ✓':''}</span>
-              </div>
-              <span class="av-summary${availability[day].blocks.length?' has-blocks':''}" id="av-summary-${day}">${passed?'Día pasado':avSummary(day)}</span>
-            </div>
-            <div class="av-day-body" id="av-body-${day}" style="display:none"></div>
-          </div>`;
-        }).join('')}
+        <div style="font-size:12px;color:var(--gray);margin-bottom:10px;line-height:1.5">Marca cuando estás ocupado. El algoritmo lo tendrá en cuenta al planear.</div>
+        <div class="av-section">
+          ${DAY_KEYS.map(day=>{
+            const passed=dayFullyPassed(day);
+            return`<div class="av-row${passed?' av-past':''}" id="av-row-${day}"></div>`;
+          }).join('')}
+        </div>
         <button class="av-calc-btn" onclick="runCalc()" ${!pending.length?'disabled':''}>
           Calcular Escenarios${!pending.length?' (sin pendientes)':''}
         </button>
@@ -1847,7 +1856,7 @@ function renderAgenda(){
         <div class="ag-section-title">Escenarios</div>
         <div id="ag-result">${resultContent}</div>
       </div>`;
-    DAY_KEYS.forEach(d=>{if(!dayFullyPassed(d)) renderAvDay(d);});
+    DAY_KEYS.forEach(d=>renderAvDay(d));
   }
 }
 
