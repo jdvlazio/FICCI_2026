@@ -199,15 +199,26 @@ body{background:var(--bg);color:var(--white);font-family:"DM Sans",sans-serif;mi
 /* Mi Plan calendar */
 .mplan-wrap{border:1px solid var(--bdr-l);border-radius:var(--r);overflow:hidden;margin-bottom:14px}
 /* ── Week calendar (Festiv layout · Calendly spacing) ── */
-.mplan-wk-outer{overflow:hidden}
+.mplan-wk-outer{overflow:auto;max-height:540px}
 .mplan-wk-outer::-webkit-scrollbar{width:3px;height:3px}
 .mplan-wk-outer::-webkit-scrollbar-thumb{background:var(--bdr)}
-.mplan-wk-inner{display:flex}
+.mplan-wk-inner{display:flex;min-width:480px}
 .mplan-wk-axis{width:44px;flex-shrink:0;position:relative;border-right:1px solid var(--bdr)}
 .mplan-wk-htick{position:absolute;right:6px;font-size:10px;color:var(--gray2);transform:translateY(-50%);white-space:nowrap;line-height:1}
 .mplan-wk-cols{flex:1;display:flex;min-width:0}
 .mplan-wk-col{flex:1;position:relative;border-right:1px solid var(--bdr-l);cursor:pointer;min-width:0;transition:background .15s}
-.mplan-nav{display:flex;align-items:center;justify-content:space-between;padding:8px 14px;border-bottom:1px solid var(--bdr)}
+.mplan-nav{display:none;align-items:center;justify-content:space-between;padding:8px 14px;border-bottom:1px solid var(--bdr)}
+@media(max-width:600px){
+  .mplan-nav{display:flex}
+  .mplan-wk-outer{overflow:hidden;max-height:none}
+  .mplan-wk-inner{min-width:0}
+  .mplan-wk-col{min-width:0}
+  .mplan-col-desktop{display:none}
+  .mplan-col-mobile{display:flex;flex:1}
+}
+@media(min-width:601px){
+  .mplan-col-mobile{display:none}
+}
 .mplan-nav-btn{background:none;border:1px solid var(--bdr);border-radius:var(--r);color:var(--white);font-size:18px;width:36px;height:36px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .15s}
 .mplan-nav-btn:active{background:var(--card-b)}
 .mplan-nav-lbl{font-family:"Bebas Neue",sans-serif;font-size:18px;letter-spacing:.5px;color:var(--white)}
@@ -728,8 +739,8 @@ function renderMiPlanCalendar(){
     <button class="mplan-nav-btn" onclick="miPlanNav(1)" ${ve>=DAY_KEYS.length-1?'disabled style="opacity:.3"':''}>▶</button>
   </div>`;
 
-  // ── 2 day columns ──
-  const colsHtml=[vs,ve].map((i)=>{
+  // ── Desktop: all 6 columns; Mobile: 2 columns via nav ──
+  const renderCol=(i,extraClass='')=>{
     const day=DAY_KEYS[i];
     const dayFilms=schedule.filter(s=>s.day===day).sort((a,b)=>toMin(a.time)-toMin(b.time));
     const isPastDay=nowDayIdx>=0&&i<nowDayIdx;
@@ -772,7 +783,7 @@ function renderMiPlanCalendar(){
       </div>`;
     }).join('');
 
-    const colClass=['mplan-wk-col',isToday?'wk-today':'',isActive?'wk-active':''].filter(Boolean).join(' ');
+    const colClass=['mplan-wk-col',isToday?'wk-today':'',isActive?'wk-active':'',extraClass].filter(Boolean).join(' ');
     return`<div class="${colClass}" style="height:${PHDR+TOTAL}px" onclick="selectMiPlanDay(${i})">
       <div class="mplan-wk-col-hdr">
         <div class="mplan-wk-col-day">${dayShortAll[i]}</div>
@@ -781,7 +792,10 @@ function renderMiPlanCalendar(){
       </div>
       ${gridHtml}${nowHtml}${blocksHtml}
     </div>`;
-  }).join('');
+  };
+  const desktopCols=DAY_KEYS.map((_,i)=>renderCol(i,'mplan-col-desktop')).join('');
+  const mobileCols=[vs,ve].map(i=>renderCol(i,'mplan-col-mobile')).join('');
+  const colsHtml=desktopCols+mobileCols;
 
   // ── Detail list for active day ──
   const activeKey=DAY_KEYS[activeMiPlanDay];
