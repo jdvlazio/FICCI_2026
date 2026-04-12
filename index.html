@@ -486,6 +486,8 @@ body{background:var(--bg);color:var(--white);font-family:"DM Sans",sans-serif;mi
     localStorage.setItem(V,CURRENT);
     var url=location.href.split('?')[0]+'?v='+CURRENT;
     location.replace(url);
+  } else if(location.search){
+    history.replaceState(null,'',location.pathname);
   }
 })();
 </script>
