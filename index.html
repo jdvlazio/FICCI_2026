@@ -807,6 +807,10 @@ function loadState(){
     const av=localStorage.getItem('ficci65_av3'); if(av){const p=JSON.parse(av);DAY_KEYS.forEach(d=>{if(p[d]) availability[d]=p[d];});}
     const sa=localStorage.getItem('ficci65_saved'); if(sa) savedAgenda=JSON.parse(sa);
     const pr=localStorage.getItem('ficci65_prio'); if(pr) prioritized=new Set(JSON.parse(pr));
+    // Heal: toda película en prioritized debe estar en watchlist
+    let healed=false;
+    prioritized.forEach(t=>{if(!watchlist.has(t)){watchlist.add(t);healed=true;}});
+    if(healed){try{localStorage.setItem('ficci65_wl',JSON.stringify([...watchlist]));}catch(e){}}
     // Restore reserved slot — persists across refresh, button shows "＋ Añadir" (not "← Restaurar")
     const rs=localStorage.getItem('ficci65_lastslot');if(rs){try{const p=JSON.parse(rs);lastRemovedSlots=Array.isArray(p)?p:(p?[p]:[]);}catch(e){}}
   }catch(e){}
@@ -1757,7 +1761,6 @@ function togglePriority(title,cost){
       showToast(`Máximo ${PRIO_LIMIT} prioridades activas. Quita una para cambiar.`,'warn');return;
     }
     prioritized.add(title);
-    if(!watchlist.has(title)){watchlist.add(title);watched.delete(title);saveWL();saveWatched();}
     savePrio();updateCardState(title);updateAgTab();
     showToast(`★ Prioridad activada · ${prioritized.size}/${PRIO_LIMIT}`,'info');
     runCalc();
