@@ -466,7 +466,7 @@ body{background:var(--bg);color:var(--white);font-family:"DM Sans",sans-serif;mi
     <span class="main-nav-lbl">Cartelera</span>
   </button>
   <button class="main-nav-tab" id="mnav-lista" onclick="switchMainNav('mnav-lista');showAgView()">
-    <span class="main-nav-ico">♥</span>
+    <span class="main-nav-ico">◆</span>
     <span class="main-nav-lbl">Mi Agenda</span>
   </button>
   <button class="main-nav-tab" id="mnav-planner" onclick="switchMainNav('mnav-planner');showAgView()">
@@ -674,7 +674,7 @@ function renderMiPlanCalendar(){
   const axisHtml=Array.from({length:EH-SH+1},(_,k)=>{
     const h=SH+k;
     const top=PHDR+toPx(h*60);
-    const lbl=h<24?h+':00':'0:00';
+    const lbl=(h%24)+':00';
     return`<div class="mplan-wk-htick" style="top:${top.toFixed(0)}px">${lbl}</div>`;
   }).join('');
 
@@ -1446,6 +1446,20 @@ function mkAgendaRow(s, mode='saved'){
 }
 
 function renderSavedAgendaHTML(){
+  // ⚠️ FIX CRÍTICO — NO REMOVER (Apr 2026)
+  // try/catch permanente: un error en renderMiPlanCalendar u otras subfunciones
+  // causaba que Mi Agenda quedara en blanco sin ningún mensaje de error visible.
+  // Este wrapper aísla el fallo y muestra el error en pantalla en lugar de silencio.
+  try{ return _renderSavedAgendaHTML(); }
+  catch(err){
+    console.error('renderSavedAgendaHTML error:',err);
+    return`<div style="margin:16px;padding:16px;border:1px solid #e05050;border-radius:var(--r);font-size:12px;color:#e05050">
+      <strong>Error al cargar Mi Plan:</strong><br>
+      <code style="font-size:10px;opacity:.8">${err.message}</code>
+    </div>`;
+  }
+}
+function _renderSavedAgendaHTML(){
   if(!savedAgenda||!savedAgenda.schedule.length) return`
     <div style="margin-top:16px;padding:20px 16px;border:1px solid var(--bdr-l);border-radius:var(--r);text-align:center">
       <div class="prio-strip-title" style="justify-content:center;margin-bottom:10px">◆ Mi Plan</div>
