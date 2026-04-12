@@ -1357,26 +1357,26 @@ function getSuggestions(){
     } else {
       // Antes de la primera
       if(toMin(dayItems[0].time)>60)
-        slots.push({start:0,end:toMin(dayItems[0].time)-10,ctx:`Antes de ${(dayItems[0]._title||'').split(' ').slice(0,3).join(' ')}…`});
+        slots.push({start:0,end:toMin(dayItems[0].time)-5,ctx:`Antes de ${(dayItems[0]._title||'').split(' ').slice(0,3).join(' ')}…`});
       // Entre funciones — cualquier hueco positivo (el chequeo fStart/fEnd filtra lo imposible)
       for(let i=0;i<dayItems.length-1;i++){
         const a=dayItems[i],b=dayItems[i+1];
-        const aEnd=toMin(a.time)+parseDur(a.duration)+10;
-        const bStart=toMin(b.time)-10;
+        const aEnd=toMin(a.time)+parseDur(a.duration)+5;
+        const bStart=toMin(b.time)-5;
         if(bStart>aEnd)
           slots.push({start:aEnd,end:bStart,ctx:`Entre ${(a._title||'').split(' ').slice(0,3).join(' ')}… y ${(b._title||'').split(' ').slice(0,3).join(' ')}…`});
       }
       // Después de la última — siempre se crea, extiende hasta la 1am
       // Bug fix: el if(lastEnd<22*60) cortaba noches con película tardía (ej: 20:00+90min=22:10 → sin slot)
       const last=dayItems[dayItems.length-1];
-      const lastEnd=toMin(last.time)+parseDur(last.duration)+10;
+      const lastEnd=toMin(last.time)+parseDur(last.duration)+5;
       slots.push({start:lastEnd,end:25*60,ctx:`Después de ${(last._title||'').split(' ').slice(0,3).join(' ')}…`});
     }
 
     // Bloque 1 — Descubrimiento: películas del festival que quepan en huecos
     if(slots.length){
       FILMS.forEach(f=>{
-        if(seenDiscover.has(f.title)||f.is_cortos||screeningPassed(f)||f.day!==day||isScreeningBlocked(f)) return;
+        if(seenDiscover.has(f.title)||screeningPassed(f)||f.day!==day||isScreeningBlocked(f)) return;
         const fStart=toMin(f.time),fEnd=fStart+parseDur(f.duration);
         const slot=slots.find(sl=>fStart>=sl.start&&fEnd<=sl.end&&fEnd-fStart>=20);
         if(slot){
