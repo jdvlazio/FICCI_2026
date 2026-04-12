@@ -20,7 +20,8 @@ body{background:var(--bg);color:var(--white);font-family:"DM Sans",sans-serif;mi
 .hdr-fallback{display:none;font-family:"Bebas Neue",sans-serif;font-size:52px;line-height:.9;color:var(--white)}
 .hdr-fallback em{color:var(--orange);font-style:normal}
 .hdr-dates{font-size:12px;color:var(--gray);letter-spacing:2px;text-transform:uppercase;margin-top:7px;margin-bottom:16px}
-.nav-row{display:flex;align-items:stretch;border-bottom:1px solid var(--bdr);margin-top:4px}
+.nav-row{display:flex;align-items:stretch;border-bottom:1px solid var(--bdr);margin-top:4px;transition:opacity .15s}
+.nav-row.hidden{visibility:hidden;pointer-events:none;opacity:0}
 .nav-tabs{display:flex;flex:1;justify-content:space-evenly;gap:0;padding:0;scrollbar-width:none}
 .nav-tabs::-webkit-scrollbar{display:none}
 .fdr-filters{display:flex;align-items:center;border-left:1px solid var(--bdr);flex-shrink:0}
@@ -1370,7 +1371,7 @@ function parseProgramTitle(t){
 
 function renderPrioStrip(){
   if(!prioritized.size) return'';
-  const chips=[...prioritized].map(t=>{
+  const chips=[...watchlist].filter(t=>prioritized.has(t)).map(t=>{
     const f=FILMS.find(fi=>fi.title===t);
     const p=getPosterSrc(t,f?.is_cortos);
     const img=p?`<img class="prio-chip-poster" src="${p}" loading="lazy" style="${f?.is_cortos?'object-fit:contain;background:#111':''}" onerror="this.outerHTML='<div class=prio-chip-ph>★</div>'" alt="">`:'<div class="prio-chip-ph">★</div>';
@@ -1921,7 +1922,7 @@ function switchMainNav(id){
 function showDayView(){
   activeView='day';
   switchMainNav('mnav-cartelera');
-  document.getElementById('nav-row').style.display='';
+  document.getElementById('nav-row').classList.remove('hidden');
   document.getElementById('filter-bars').style.display='';
   ['hint','cnt','grid'].forEach(id=>{const el=document.getElementById(id);if(el) el.style.display='';});
   document.getElementById('ag-view').classList.remove('visible');
@@ -1930,10 +1931,12 @@ function showDayView(){
 }
 function showAgView(){
   activeView='agenda';
-  document.getElementById('nav-row').style.display='none';
+  document.getElementById('nav-row').classList.add('hidden');
   document.getElementById('filter-bars').style.display='none';
   ['hint','cnt','grid'].forEach(id=>{const el=document.getElementById(id);if(el) el.style.display='none';});
-  document.getElementById('ag-view').classList.add('visible');
+  const _av=document.getElementById('ag-view');
+  _av.classList.add('visible');
+  _av.scrollTop=0;
   document.getElementById('agtab').classList.add('on');
   document.querySelectorAll('.dtab').forEach(t=>t.classList.remove('on'));
   renderAgenda();
