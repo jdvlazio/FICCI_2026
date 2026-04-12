@@ -807,10 +807,9 @@ function loadState(){
     const av=localStorage.getItem('ficci65_av3'); if(av){const p=JSON.parse(av);DAY_KEYS.forEach(d=>{if(p[d]) availability[d]=p[d];});}
     const sa=localStorage.getItem('ficci65_saved'); if(sa) savedAgenda=JSON.parse(sa);
     const pr=localStorage.getItem('ficci65_prio'); if(pr) prioritized=new Set(JSON.parse(pr));
-    // Heal: toda película en prioritized debe estar en watchlist
-    let healed=false;
-    prioritized.forEach(t=>{if(!watchlist.has(t)){watchlist.add(t);healed=true;}});
-    if(healed){try{localStorage.setItem('ficci65_wl',JSON.stringify([...watchlist]));}catch(e){}}
+    // Heal: garantiza que todo lo que está en prioritized esté en watchlist
+    prioritized.forEach(t=>{if(!watchlist.has(t)){watchlist.add(t);}});
+    saveWL();
     // Restore reserved slot — persists across refresh, button shows "＋ Añadir" (not "← Restaurar")
     const rs=localStorage.getItem('ficci65_lastslot');if(rs){try{const p=JSON.parse(rs);lastRemovedSlots=Array.isArray(p)?p:(p?[p]:[]);}catch(e){}}
   }catch(e){}
@@ -1380,7 +1379,7 @@ function parseProgramTitle(t){
 
 function renderPrioStrip(){
   if(!prioritized.size) return'';
-  const chips=[...watchlist].filter(t=>prioritized.has(t)).map(t=>{
+  const chips=[...prioritized].map(t=>{
     const f=FILMS.find(fi=>fi.title===t);
     const p=getPosterSrc(t,f?.is_cortos);
     const img=p?`<img class="prio-chip-poster" src="${p}" loading="lazy" style="${f?.is_cortos?'object-fit:contain;background:#111':''}" onerror="this.outerHTML='<div class=prio-chip-ph>★</div>'" alt="">`:'<div class="prio-chip-ph">★</div>';
@@ -1398,9 +1397,9 @@ function renderPrioStrip(){
   </div>`;
 }
 function renderFilmListHTML(){
-  const allPending=[...watchlist].filter(t=>!watched.has(t));
-  const prioList=allPending.filter(t=>prioritized.has(t));
-  const nonPrioList=allPending.filter(t=>!prioritized.has(t));
+  const prioList=[...prioritized].filter(t=>!watched.has(t));
+  const nonPrioList=[...watchlist].filter(t=>!watched.has(t)&&!prioritized.has(t));
+  const allPending=[...new Set([...prioList,...nonPrioList])];
   const watchedList=[...watched];
 
   const mkItem=(t)=>{
