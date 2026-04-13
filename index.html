@@ -82,7 +82,7 @@ body{background:var(--bg);color:var(--white);font-family:var(--font);min-height:
    Vive dentro de .hdr (padding:18px).
    margin negativo cancela ese padding → barra full-width.
    padding propio 18px → contenido alineado con el wordmark. */
-.hdr-fest-bar{display:flex;align-items:center;justify-content:space-between;background:var(--surf);border-top:1px solid var(--bdr-l);border-bottom:1px solid var(--bdr-l);padding:7px 18px;margin:10px -18px -10px;cursor:pointer;-webkit-tap-highlight-color:transparent}
+.hdr-fest-bar{display:flex;align-items:center;justify-content:space-between;background:var(--surf);border-top:1px solid var(--bdr-l);border-bottom:1px solid var(--bdr-l);padding:7px 18px;cursor:pointer;-webkit-tap-highlight-color:transparent}
 .hdr-fest-bar:active{background:var(--surf-2)}
 .hdr-fest-left{display:flex;align-items:center;gap:7px}
 .hdr-fest-dot{width:5px;height:5px;border-radius:50%;background:var(--amber);flex-shrink:0}
@@ -667,6 +667,74 @@ body{background:var(--bg);color:var(--white);font-family:var(--font);min-height:
   .ag-fi-actions{opacity:1!important}
 }
 
+
+/* ── FESTIVAL BOTTOM SHEET ── */
+.fs-overlay{position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:2000;opacity:0;transition:opacity .25s ease;pointer-events:none}
+.fs-overlay.open{opacity:1;pointer-events:all}
+.fs-sheet{position:fixed;bottom:0;left:0;right:0;background:var(--surf);border-radius:16px 16px 0 0;z-index:2001;padding:0 0 env(safe-area-inset-bottom);transform:translateY(100%);transition:transform .3s cubic-bezier(.32,1,.23,1)}
+.fs-sheet.open{transform:translateY(0)}
+.fs-handle{width:36px;height:4px;background:var(--bdr);border-radius:2px;margin:12px auto 0}
+.fs-header{padding:16px 20px 12px;border-bottom:1px solid var(--bdr-l)}
+.fs-title{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--gray)}
+.fs-section-lbl{font-size:9px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--gray2);padding:16px 20px 6px}
+.fs-festival-row{display:flex;align-items:center;gap:12px;padding:12px 20px;cursor:pointer;transition:background .15s}
+.fs-festival-row:active{background:var(--surf-2)}
+.fs-fest-dot{width:6px;height:6px;border-radius:50%;background:var(--amber);flex-shrink:0}
+.fs-fest-info{flex:1;min-width:0}
+.fs-fest-name{font-size:13px;font-weight:600;color:var(--white);line-height:1.2}
+.fs-fest-meta{font-size:10px;color:var(--gray);margin-top:2px}
+.fs-fest-check{color:var(--amber);flex-shrink:0}
+.fs-soon-row{display:flex;align-items:center;gap:12px;padding:12px 20px;opacity:.35}
+.fs-soon-dot{width:6px;height:6px;border-radius:50%;background:var(--gray2);flex-shrink:0}
+.fs-soon-info{flex:1}
+.fs-soon-name{font-size:13px;font-weight:500;color:var(--gray);font-style:italic}
+.fs-divider{height:1px;background:var(--bdr-l);margin:0 20px}
+
+/* ── DESKTOP TOPBAR — barra unificada ── */
+@media(min-width:769px){
+  /* ── Topbar unificado: sticky, fondo full-width ── */
+  .topbar{
+    display:flex;align-items:center;gap:0;
+    position:sticky;top:0;z-index:100;
+    background:var(--surf);border-bottom:1px solid var(--bdr);height:56px;
+    padding-left:max(24px, calc((100vw - 960px) / 2));
+    padding-right:max(24px, calc((100vw - 960px) / 2))}
+  .hdr{padding:0;flex-shrink:0;background:none;border:none;order:1}
+  .hdr-wordmark{font-size:22px}
+  .hdr-fest-bar{order:3;margin-left:auto;flex-shrink:0;
+    border:1px solid var(--bdr-l);border-radius:7px;
+    padding:5px 12px;background:transparent;
+    border-top:1px solid var(--bdr-l);border-bottom:1px solid var(--bdr-l)}
+  .hdr-fest-bar:hover{background:var(--surf-2)}
+  .main-nav{order:2;flex:1;border:none;background:none;
+    justify-content:center;height:56px;gap:0}
+  .main-nav-tab{flex:none;padding:0 20px;height:56px;
+    flex-direction:row;gap:7px;
+    border-bottom:2px solid transparent;margin-bottom:-1px;border-top:none}
+  .main-nav-tab.on{border-bottom-color:var(--orange)}
+  .main-nav-ico svg{width:15px;height:15px}
+  .main-nav-lbl{font-size:10px;letter-spacing:.08em}
+
+  /* ── Sub-nav: sticky bajo topbar, mismo contenedor ── */
+  .nav-row{
+    position:sticky;top:56px;z-index:99;background:var(--bg);
+    padding-left:max(24px, calc((100vw - 960px) / 2));
+    padding-right:max(24px, calc((100vw - 960px) / 2))}
+  .filter-row{
+    position:sticky;top:56px;z-index:98;background:var(--bg);
+    padding-left:max(24px, calc((100vw - 960px) / 2));
+    padding-right:max(24px, calc((100vw - 960px) / 2))}
+
+  /* ── Contenido: centrado, máx 960px, mismo ritmo ── */
+  .grid{
+    max-width:960px;margin-left:auto;margin-right:auto;
+    padding-left:24px;padding-right:24px}
+  .ag-view{
+    max-width:960px;margin-left:auto;margin-right:auto;
+    padding-left:24px;padding-right:24px}
+  .hint{max-width:960px;margin-left:auto;margin-right:auto;padding-left:24px;padding-right:24px}
+  .cnt-line{max-width:960px;margin-left:auto;margin-right:auto;padding-left:24px;padding-right:24px}
+}
 /* Touch devices — overlay always visible regardless of screen width */
 @media (hover: none) {
   .ag-fi-overlay{opacity:1!important}
@@ -688,16 +756,17 @@ body{background:var(--bg);color:var(--white);font-family:var(--font);min-height:
   }
 })();
 </script>
+<div class="topbar">
 <div class="hdr">
   <div class="hdr-wordmark">Otro<span>festiv</span></div>
-  <div class="hdr-fest-bar" onclick="void(0)">
-    <div class="hdr-fest-left">
-      <div class="hdr-fest-dot"></div>
-      <div class="hdr-fest-name">FICCI 65</div>
-      <div class="hdr-fest-dates">· 14–19 ABR</div>
-    </div>
-    <div class="hdr-fest-chev">˅</div>
+</div>
+<div class="hdr-fest-bar" onclick="openFestivalSheet()">
+  <div class="hdr-fest-left">
+    <div class="hdr-fest-dot"></div>
+    <div class="hdr-fest-name">FICCI 65</div>
+    <div class="hdr-fest-dates">· 14–19 ABR</div>
   </div>
+  <div class="hdr-fest-chev">˅</div>
 </div>
 <div class="main-nav" id="main-nav">
   <button class="main-nav-tab on" id="mnav-cartelera" onclick="switchMainNav('mnav-cartelera');showDayView();render()">
@@ -717,6 +786,7 @@ body{background:var(--bg);color:var(--white);font-family:var(--font);min-height:
     <span class="main-nav-lbl">MI PLAN</span>
   </button>
 </div>
+</div><!-- /topbar -->
 <div class="nav-row" id="nav-row">
   <div class="nav-tabs" id="dtabs"></div>
 </div>
@@ -3044,6 +3114,43 @@ if('serviceWorker' in navigator){
   navigator.serviceWorker.register('/FICCI_2026/sw.js')
     .catch(function(err){console.warn('SW error:',err)});
 }
+
+function openFestivalSheet(){
+  document.getElementById('fs-overlay').classList.add('open');
+  document.getElementById('fs-sheet').classList.add('open');
+}
+function closeFestivalSheet(){
+  document.getElementById('fs-overlay').classList.remove('open');
+  document.getElementById('fs-sheet').classList.remove('open');
+}
 </script>
+
+<!-- Festival switcher bottom sheet -->
+<div class="fs-overlay" id="fs-overlay" onclick="closeFestivalSheet()"></div>
+<div class="fs-sheet" id="fs-sheet">
+  <div class="fs-handle"></div>
+  <div class="fs-header">
+    <div class="fs-title">Cambiar festival</div>
+  </div>
+  <div class="fs-section-lbl">Activo</div>
+  <div class="fs-festival-row" onclick="closeFestivalSheet()">
+    <div class="fs-fest-dot"></div>
+    <div class="fs-fest-info">
+      <div class="fs-fest-name">FICCI 65</div>
+      <div class="fs-fest-meta">Cartagena · 14–19 abril 2026</div>
+    </div>
+    <div class="fs-fest-check">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+    </div>
+  </div>
+  <div class="fs-divider"></div>
+  <div class="fs-section-lbl">Próximamente</div>
+  <div class="fs-soon-row">
+    <div class="fs-soon-dot"></div>
+    <div class="fs-soon-info">
+      <div class="fs-soon-name">Más festivales en camino…</div>
+    </div>
+  </div>
+</div>
 </body>
 </html>
