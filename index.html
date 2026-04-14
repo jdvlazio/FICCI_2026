@@ -203,7 +203,8 @@
    2 · RESET & BASE
 ════════════════════════════════════════════════════════ */
 *{box-sizing:border-box;margin:0;padding:0}
-html{-webkit-tap-highlight-color:transparent;-webkit-text-size-adjust:100%;text-size-adjust:100%}
+html,body{-webkit-text-size-adjust:100%;text-size-adjust:100%}
+html{-webkit-tap-highlight-color:transparent}
 body{background:var(--bg);color:var(--white);font-family:var(--font),'Plus Jakarta Sans Fallback',system-ui,sans-serif;min-height:100vh}
 
 
@@ -1135,6 +1136,24 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:20px;fo
 @media(max-width:767px){
   #back-top{ display:flex; }
 }
+
+/* ── Safe area — Dynamic Island / notch ──────────────────────
+   Solo activa en standalone PWA mode.
+   En Safari browser, env(safe-area-inset-top) devuelve 0
+   así que no afecta la vista normal.
+────────────────────────────────────────────────────────────── */
+@supports (padding-top: env(safe-area-inset-top)) {
+  .topbar {
+    padding-top: env(safe-area-inset-top);
+    /* La altura del topbar se expande automáticamente
+       para acomodar el Dynamic Island o notch */
+  }
+  /* El sticky nav de Mi Plan también debe compensar */
+  .main-nav {
+    padding-bottom: max(env(safe-area-inset-bottom), 0px);
+  }
+}
+
 </style>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"WebApplication","name":"Otrofestiv","description":"Tu agenda personal para festivales de cine. Planea, prioriza y saca el máximo de cada festival.","url":"https://otrofestiv.app","applicationCategory":"EntertainmentApplication","operatingSystem":"iOS, Android, Web","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}
