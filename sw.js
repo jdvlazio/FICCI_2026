@@ -1,37 +1,59 @@
 // FICCI 65 — Service Worker
-// Siempre obtiene el HTML desde la red, nunca desde el caché de Safari.
-// Assets (imágenes, fuentes) se sirven desde caché para velocidad.
+// Cache strategy: Cache First para assets estáticos, Network First para HTML
 
-const CACHE_NAME = 'ficci65-v1';
+const CACHE_NAME = 'otrofestiv-v1';
+const STATIC_ASSETS = [
+  '/FICCI_2026/',
+  '/FICCI_2026/index.html',
+];
 
+// Instalar y pre-cachear assets esenciales
 self.addEventListener('install', event => {
-  self.skipWaiting();
+  event.waitUntil(
+    caches.open(CACHE_NAME)
+      .then(cache => cache.addAll(STATIC_ASSETS))
+      .then(() => self.skipWaiting())
+  );
 });
 
+// Activar y limpiar caches viejos
 self.addEventListener('activate', event => {
-  event.waitUntil(clients.claim());
+  event.waitUntil(
+    caches.keys()
+      .then(keys => Promise.all(
+        keys
+          .filter(key => key !== CACHE_NAME)
+          .map(key => caches.delete(key))
+      ))
+      .then(() => self.clients.claim())
+  );
 });
 
+// Fetch: Network First para HTML (siempre fresco), Cache First para el resto
 self.addEventListener('fetch', event => {
-  // Navegación (HTML) → siempre red
-  if (event.request.mode === 'navigate') {
+  const { request } = event;
+  const url = new URL(request.url);
+
+  // Solo interceptar requests del mismo origen
+  if (url.origin !== location.origin) return;
+
+  // HTML → Network First (actualiza la app cuando hay conexión)
+  if (request.destination === 'document') {
     event.respondWith(
-      fetch(event.request).catch(() => caches.match(event.request))
+      fetch(request)
+        .then(response => {
+          const clone = response.clone();
+          caches.open(CACHE_NAME).then(cache => cache.put(request, clone));
+          return response;
+        })
+        .catch(() => caches.match(request))
     );
     return;
   }
 
-  // Assets → caché primero, si no hay va a red y guarda
+  // Resto → Cache First
   event.respondWith(
-    caches.match(event.request).then(cached => {
-      if (cached) return cached;
-      return fetch(event.request).then(response => {
-        if (response.ok) {
-          const clone = response.clone();
-          caches.open(CACHE_NAME).then(cache => cache.put(event.request, clone));
-        }
-        return response;
-      });
-    })
+    caches.match(request)
+      .then(cached => cached || fetch(request))
   );
 });
