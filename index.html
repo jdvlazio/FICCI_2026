@@ -3137,13 +3137,18 @@ function _buildAgendaCanvas(){
   c.scale(DPR,DPR);
   c.fillStyle='#0A0A0A';c.fillRect(0,0,W,H);
   c.fillStyle='#D4900A';c.fillRect(0,0,W,HDR);
-  c.fillStyle='#0A0A0A';
-  c.font='700 20px system-ui,-apple-system,sans-serif';
+  // Wordmark: "Otro" blanco + "festiv" ámbar — igual que en la app
+  c.font='800 22px system-ui,-apple-system,sans-serif';
   c.textBaseline='alphabetic';
-  c.fillText('Mi Plan · FICCI 65',PAD,HDR/2+2);
-  c.fillStyle='rgba(0,0,0,0.5)';
-  c.font='400 11px system-ui,-apple-system,sans-serif';
-  c.fillText('Otrofestiv — '+active.length+' día'+(active.length!==1?'s':''),PAD,HDR/2+18);
+  c.fillStyle='#FFFFFF';
+  const otroW=c.measureText('Otro').width;
+  c.fillText('Otro',PAD,HDR/2+4);
+  c.fillStyle='#0A0A0A';
+  c.fillText('festiv',PAD+otroW,HDR/2+4);
+  // Subtítulo: contexto secundario
+  c.fillStyle='rgba(0,0,0,0.55)';
+  c.font='500 11px system-ui,-apple-system,sans-serif';
+  c.fillText('Mi Plan · FICCI 65 · '+active.length+' día'+(active.length!==1?'s':''),PAD,HDR/2+20);
   active.forEach((day,ci)=>{
     const x=PAD+ci*(CW+CGAP);
     const di=DAYS.indexOf(day);
