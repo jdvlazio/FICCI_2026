@@ -3325,20 +3325,18 @@ function buildResultHTML(scenarios){
     </div>`;
   }
 
+  const saveBtnHtml=`<button class="ag-save-btn" onclick="saveCurrentScenario()">${ICONS.calendar} Elegir este plan</button>`;
   let html=`<div class="ag-summary">
-    <div style="display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap">
-      <div>
-        <div class="ag-summary-title" style="font-size:${isOptimo?'15px':'13px'};color:${isOptimo?'var(--white)':'var(--gray)'}">${planLabel}</div>
-        <div class="ag-summary-text" style="margin-top:3px">
-          <span class="ok"><b>${ok}</b></span> de <b>${total}</b> películas
-          ${bad?`<span class="conflict-label"> · <b>${bad}</b> con ajustes</span>`:''}
-        </div>
-        ${sc.incompatiblePriorities?`<div style="margin-top:5px;font-size:var(--t-sm);color:var(--red)">Las prioridades se solapan entre sí — plan calculado sin forzarlas.</div>`:''}
-      </div>
-      <button class="ag-save-btn" onclick="saveCurrentScenario()" style="flex-shrink:0">${ICONS.calendar} Elegir Plan</button>
+    <div class="ag-summary-title" style="font-size:${isOptimo?'var(--t-md)':'var(--t-base)'};color:${isOptimo?'var(--white)':'var(--gray)'}">${planLabel}</div>
+    <div class="ag-summary-text" style="margin-top:var(--sp-1)">
+      <span class="ok"><b>${ok}</b></span> de <b>${total}</b> película${total!==1?'s':''}
+      ${bad?`<span class="conflict-label"> · <b>${bad}</b> con ajustes</span>`:''}
     </div>
+    ${sc.incompatiblePriorities?`<div style="margin-top:var(--sp-2);font-size:var(--t-sm);color:var(--red)">Las prioridades se solapan entre sí — plan calculado sin forzarlas.</div>`:''}
     ${navHtml}
-  </div>`;
+    <div style="margin-top:var(--sp-3)">${saveBtnHtml}</div>
+  </div>
+`;
 
   // ── Film list by day ──
   const byDay={};
@@ -3397,6 +3395,11 @@ function buildResultHTML(scenarios){
     </div>`;
   }
 
+  // ── CTA repetido al final — patrón UX formulario largo ──
+  html+=`<div class="ag-summary" style="margin-top:var(--sp-4)">
+    ${navHtml}
+    <div style="margin-top:${navHtml?'var(--sp-3)':'0'}">${saveBtnHtml}</div>
+  </div>`;
   return html;
 }
 
