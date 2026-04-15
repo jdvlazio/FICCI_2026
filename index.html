@@ -3643,6 +3643,10 @@ function switchMainNav(id){
 }
 function showDayView(){
   activeView='day';
+  // Calcular día actual del festival — replicable con FESTIVAL_DATES de cada edición
+  const _todayStr=simTodayStr();
+  const _nowIdx=DAY_KEYS.findIndex(d=>FESTIVAL_DATES[d]===_todayStr);
+  activeDay=_nowIdx>=0?DAY_KEYS[_nowIdx]:DAY_KEYS[0];
   switchMainNav('mnav-cartelera');
   document.getElementById('nav-row').classList.remove('hidden');
   document.getElementById('filter-row').classList.remove('hidden');
