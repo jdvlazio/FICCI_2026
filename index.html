@@ -1389,9 +1389,14 @@ function minToStr(m){
 }
 function screensConflict(a,b){
   if(a.day!==b.day) return false;
-  const aS=toMin(a.time)-10,aE=toMin(a.time)+parseDur(a.duration)+10;
-  const bS=toMin(b.time)-10,bE=toMin(b.time)+parseDur(b.duration)+10;
-  return aS<bE&&bS<aE;
+  const aS=toMin(a.time), aE=aS+parseDur(a.duration);
+  const bS=toMin(b.time), bE=bS+parseDur(b.duration);
+  // Gap requerido: tiempo de viaje entre sedes + 5min margen (mínimo 10min)
+  const travel=(a.venue&&b.venue)?travelMins(a.venue,b.venue):0;
+  const minGap=Math.max(10, travel+5);
+  if(aE<=bS) return (bS-aE)<minGap; // a antes que b
+  if(bE<=aS) return (aS-bE)<minGap; // b antes que a
+  return true; // solapamiento directo
 }
 function travelMins(venueA,venueB){
   const g=v=>v.includes('Bocagrande')?'bog':v.includes('Caribe Plaza')?'cp':'centro';
