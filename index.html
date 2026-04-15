@@ -3283,13 +3283,65 @@ function shareAsImage(){
   if(!savedAgenda||!savedAgenda.schedule||!savedAgenda.schedule.length){
     showToast('No tienes un plan guardado','warn'); return;
   }
+
+  // ── Guardia de integridad del plan ────────────────────────────
+  // Antes de generar la imagen verificamos tres condiciones:
+  // 1. Que todas las películas del plan siguen en la watchlist
+  // 2. Que no hay conflictos internos entre funciones del plan
+  // 3. Que al menos una función no ha pasado ya
+  const issues=[];
+
+  // 1. Películas del plan ya no en watchlist
+  const notInWL=savedAgenda.schedule.filter(s=>!watchlist.has(s._title));
+  if(notInWL.length){
+    const names=notInWL.map(s=>s._title.length>20?s._title.slice(0,18)+'…':s._title).join(', ');
+    issues.push(`${notInWL.length} película${notInWL.length>1?'s':''} ya no están en tu Selección: ${names}`);
+  }
+
+  // 2. Conflictos internos entre funciones del plan
+  const sched=savedAgenda.schedule;
+  const conflicting=[];
+  for(let i=0;i<sched.length;i++){
+    for(let j=i+1;j<sched.length;j++){
+      if(sched[i].day===sched[j].day && screensConflict(sched[i],sched[j])){
+        conflicting.push(sched[i]._title);
+      }
+    }
+  }
+  if(conflicting.length){
+    const names=[...new Set(conflicting)].map(t=>t.length>20?t.slice(0,18)+'…':t).join(', ');
+    issues.push(`Hay funciones con horario solapado: ${names}`);
+  }
+
+  // 3. Plan completamente pasado
+  const stillActive=savedAgenda.schedule.some(s=>!screeningPassed(s));
+  if(!stillActive) issues.push('Todas las funciones de tu plan ya pasaron');
+
+  // Si hay problemas: mostrar advertencia con opción de continuar igual
+  if(issues.length){
+    const msg=`<b>Tu plan puede estar desactualizado</b><br><br>`
+      +issues.map(i=>`• ${i}`).join('<br>')
+      +`<br><br>¿Compartir la imagen de todas formas?`;
+    showActionModal(
+      `${ICONS.share} Compartir imagen`,
+      msg,
+      'Compartir igual',
+      ()=>{_generateAndShare();},
+      'Revisar plan primero'
+    );
+    return;
+  }
+
+  _generateAndShare();
+}
+
+function _generateAndShare(){
   let canvas,dataUrl;
   try{
     canvas=_buildAgendaCanvas();
     dataUrl=canvas.toDataURL('image/png');
     if(!dataUrl||dataUrl==='data:,') throw new Error('canvas vacío');
   }catch(e){
-    /* shareAsImage error — silent in production */
     showToast('Error al generar imagen','err'); return;
   }
   _showImageModal(dataUrl,canvas);
