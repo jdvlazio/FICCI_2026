@@ -3753,16 +3753,30 @@ function squeezeExcluded(schedule, excludedTitles){
 
 function saveCurrentScenario(){
   if(!cachedResult||!cachedResult.scenarios.length) return;
-  const _sc=cachedResult.scenarios[cachedResult.currentIdx];
-  const _squeezed=squeezeExcluded(_sc.schedule,_sc.excluded||[]);
-  savedAgenda={schedule:_squeezed};
-  saveSavedAgenda();
-  // Saltar a Mi Plan — un solo render
-  switchMainNav('mnav-miplan');
-  showAgView(); // showAgView llama renderAgenda(), no llamar de nuevo
-  const agView=document.getElementById('ag-view');
-  if(agView) agView.scrollTop=0;
-  showToast(`${ICONS.calendar} Plan elegido — lo ves en Mi Plan`,'info');
+  const _doSave=()=>{
+    const _sc=cachedResult.scenarios[cachedResult.currentIdx];
+    const _squeezed=squeezeExcluded(_sc.schedule,_sc.excluded||[]);
+    savedAgenda={schedule:_squeezed};
+    saveSavedAgenda();
+    switchMainNav('mnav-miplan');
+    showAgView();
+    const agView=document.getElementById('ag-view');
+    if(agView) agView.scrollTop=0;
+    showToast(`${ICONS.calendar} Plan elegido — lo ves en Mi Plan`,'info');
+  };
+  // Si ya hay un plan guardado, pedir confirmación antes de reemplazarlo
+  if(savedAgenda&&savedAgenda.schedule&&savedAgenda.schedule.length){
+    const n=savedAgenda.schedule.length;
+    showActionModal(
+      `${ICONS.calendar} Reemplazar plan`,
+      `Ya tienes un plan con <b>${n} película${n!==1?'s':''}</b>.<br><br>¿Reemplazarlo con este nuevo escenario? Tu plan actual se perderá.`,
+      'Sí, reemplazar',
+      _doSave,
+      'Conservar mi plan actual'
+    );
+  } else {
+    _doSave();
+  }
 }
 function invalidateCalcResult(){
   // Called when availability changes — resets result prompt
