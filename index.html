@@ -3893,6 +3893,25 @@ function dismissSplash(){
 })();
 
 loadState();updateAgTab();render();
+/* ── Re-render automático cada 60s ───────────────────────────
+   Actualiza estados temporales (AHORA, Ya pasó, días pasados)
+   sin depender de que el usuario navegue entre tabs.
+   Solo re-renderiza si Planear o Cartelera están visibles.
+   Replicable en cualquier festival futuro sin cambios.
+────────────────────────────────────────────────────────────── */
+setInterval(function(){
+  // Actualizar contadores y estados en tab de Planear
+  if(activeMNav==='mnav-planner' && activeView==='agenda'){
+    renderAgenda(); // re-renderiza disponibilidad + estados de días
+  }
+  // Actualizar badges AHORA/Ya pasó en Cartelera si está visible
+  if(activeView==='day'){
+    render(); // re-renderiza cards con badges actualizados
+  }
+  // Siempre actualizar el contador del tab
+  updateAgTab();
+}, 60000); // cada 60 segundos
+
 // html2canvas eliminado — Canvas API puro
 document.addEventListener('click',e=>{if(!e.target.closest('.fdr-wrap')) closeDropdowns();});
 updateAgTab();render();
