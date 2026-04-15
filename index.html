@@ -4201,18 +4201,30 @@ document.addEventListener('click', function(e){
    Solo re-renderiza si Planear o Cartelera están visibles.
    Replicable en cualquier festival futuro sin cambios.
 ────────────────────────────────────────────────────────────── */
-setInterval(function(){
-  // Actualizar contadores y estados en tab de Planear
-  if(activeMNav==='mnav-planner' && activeView==='agenda'){
-    renderAgenda(); // re-renderiza disponibilidad + estados de días
-  }
-  // Actualizar badges AHORA/Ya pasó en Cartelera si está visible
-  if(activeView==='day'){
-    render(); // re-renderiza cards con badges actualizados
-  }
-  // Siempre actualizar el contador del tab
-  updateAgTab();
-}, 60000); // cada 60 segundos
+// Sincronizar el primer tick con el siguiente minuto del reloj del sistema
+// Así el contador avanza exactamente cuando cambia el minuto — no con retraso
+function _startTickLoop(){
+  setInterval(function(){
+    // Planear
+    if(activeMNav==='mnav-planner' && activeView==='agenda'){
+      renderAgenda();
+    }
+    // Cartelera
+    if(activeView==='day'){
+      render();
+    }
+    // Mi Plan — contador de minutos next-film-strip
+    if(activeMNav==='mnav-miplan' && activeView==='agenda'){
+      renderAgenda();
+    }
+    updateAgTab();
+  }, 60000);
+}
+// Esperar al próximo minuto exacto antes de iniciar el loop
+const _msToNextMin=(60-new Date().getSeconds())*1000;
+setTimeout(function(){ _startTickLoop(); _startTickLoop.call(); }, _msToNextMin);
+// Mientras tanto, tick inmediato para estado inicial correcto
+updateAgTab();; // cada 60 segundos
 
 // html2canvas eliminado — Canvas API puro
 document.addEventListener('click',e=>{if(!e.target.closest('.fdr-wrap')) closeDropdowns();});
