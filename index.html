@@ -1328,7 +1328,6 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:20px;fo
    Corazón ámbar + texto. Misma jerarquía que el stepper.
    Desaparece al añadir primera película. */
 .cartelera-cta{display:flex;align-items:flex-start;gap:var(--sp-2);padding:10px var(--sp-4);border-bottom:1px solid var(--bdr-l)}
-.cartelera-cta-heart{font-size:var(--t-lg);color:var(--amber);flex-shrink:0;line-height:1.2}
 .cartelera-cta-text{font-size:var(--t-sm);color:var(--gray);line-height:1.5}
 .cartelera-cta-text b{color:var(--white-60);font-weight:var(--w-semi)}
 </style>
@@ -1406,8 +1405,7 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:20px;fo
 <div id="cartelera-stepper" style="display:none"></div>
 <div id="cartelera-cta" style="display:none">
   <div class="cartelera-cta">
-    <span class="cartelera-cta-heart">♥</span>
-    <span class="cartelera-cta-text">Toca <b>♥</b> en cualquier película para añadirla a <b>Mi Lista</b></span>
+    <span class="cartelera-cta-text">Toca <span style="color:var(--amber)">♥</span> en cualquier película para añadirla a <b>Mi Lista</b></span>
   </div>
 </div>
 <div class="cnt-line" id="cnt"></div>
