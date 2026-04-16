@@ -606,6 +606,12 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:20px;fo
 .ag-fi-flags{font-size:var(--flag-size);line-height:1;margin-bottom:2px;display:block;line-height:1.2}
 
 .ag-fi-title{font-size:var(--t-sm);font-weight:var(--w-semi);color:var(--white);line-height:1.3;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+/* ── Mi Lista: metadatos de película ─────────────────────────────
+   ag-fi-meta: sección + días disponibles en compact chips.
+   El día es orientador (¿cuándo puedo verla?) no selector.
+   Escalable: generado desde FILMS[] con DAY_KEYS de cada festival. */
+.ag-fi-meta{font-size:9px;color:var(--gray2);line-height:1.3;margin-top:2px;display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.ag-fi-days{font-size:9px;color:var(--white-45);margin-top:1px;display:block;letter-spacing:.03em}
 .ag-watched-section{margin-top:var(--sp-3)}
 .ag-watched-item{display:flex;align-items:center;gap:var(--sp-2);padding:var(--sp-2) var(--sp-3);background:var(--card-p);border:1px solid var(--bdr-l);border-radius:var(--r-md);margin-bottom:var(--sp-2);opacity:.6}
 .ag-wi-flag{font-size:var(--t-base);flex-shrink:0}
@@ -1232,7 +1238,32 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:20px;fo
 .sel-plan-cta-text{font-size:var(--t-sm);color:var(--white-60);line-height:1.4}
 .sel-plan-cta-text b{color:var(--white);font-weight:var(--w-semi)}
 .sel-plan-cta-arrow{color:var(--amber);font-size:var(--t-lg);flex-shrink:0;line-height:1}
-
+/* ── Hint de modo Cartelera — primer uso ─────────────────────────
+   Explica el flujo en una línea. Desaparece en primer scroll/tap.
+   Escalable: key incluye prefijo del festival (ficci65_).
+   Para futuros festivales: cambiar prefijo en FESTIVAL_STORAGE_KEY. */
+.cartelera-mode-hint{
+  padding:8px var(--sp-5);
+  font-size:var(--t-sm);
+  color:var(--gray);
+  border-bottom:1px solid var(--bdr-l);
+  line-height:1.5;
+  background:var(--surf);
+  display:flex;
+  align-items:center;
+  gap:var(--sp-2);
+}
+.cartelera-mode-hint-close{
+  margin-left:auto;
+  background:none;
+  border:none;
+  color:var(--gray2);
+  cursor:pointer;
+  font-size:var(--t-base);
+  padding:0 0 0 var(--sp-2);
+  flex-shrink:0;
+  line-height:1;
+}
 </style>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"WebApplication","name":"Otrofestiv","description":"Tu agenda personal para festivales de cine. Planea, prioriza y saca el máximo de cada festival.","url":"https://otrofestiv.app","applicationCategory":"EntertainmentApplication","operatingSystem":"iOS, Android, Web","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}
@@ -1305,6 +1336,13 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:20px;fo
   <button id="agtab" style="display:none"><span id="ag-cnt">0</span></button>
 </div>
 <div class="hint" id="hint"></div>
+<!-- Hint de modo Cartelera — primer uso. Escalable por festival. -->
+<div class="cartelera-mode-hint" id="cartelera-mode-hint" style="display:none">
+  <span>Explora por día · Añade con ♥ a Mi Lista · El algoritmo planea tu ruta</span>
+  <button class="cartelera-mode-hint-close"
+    onclick="localStorage.setItem(FESTIVAL_STORAGE_KEY+'cartelera_hint_seen','1');this.parentElement.style.display='none'"
+    aria-label="Cerrar">×</button>
+</div>
 <div id="flow-hint" style="display:none;padding:10px 18px 8px;font-size:var(--t-sm);color:var(--gray);border-bottom:1px solid var(--bdr-l);line-height:1.5">
   <span style="color:var(--amber)">♥</span> Añade películas a Mi Lista
   · <span style="color:var(--orange)">★</span> Márcalas como prioridad
@@ -1686,6 +1724,10 @@ let watchlist=new Set();
 let watched=new Set();
 let prioritized=new Set();
 const PRIO_LIMIT=5;
+/* ── Clave de almacenamiento — cambiar por edición del festival ──
+   Formato: {nombre}{año}_ → prefija todas las keys de localStorage.
+   Garantiza que cada edición empiece limpia sin datos residuales. */
+const FESTIVAL_STORAGE_KEY='ficci65_';
 const FESTIVAL_BUFFER=15; // min entre funciones: salida sala + intro siguiente
 let savedAgenda=null;
 let lastRemovedSlots=[]; // tracks up to 5 recently removed films
@@ -2753,6 +2795,16 @@ function renderFilmListHTML(){
       <div class="ag-fi-bottom">
         <div class="ag-fi-flags">${f?f.flags||'🌐':'🌐'}</div>
         <div class="ag-fi-title">${displayTitle}</div>
+        ${(()=>{
+          if(!f||f.is_cortos) return '';
+          // Días disponibles — compacto, orientador (no selector)
+          // Escalable: usa DAY_KEYS del festival activo
+          const DAY_A=['MAR','MIÉ','JUE','VIE','SÁB','DOM'];
+          const filmDays=FILMS.filter(fi=>fi.title===t&&!screeningPassed(fi));
+          const dayChips=[...new Set(filmDays.map(fi=>DAY_A[DAY_KEYS.indexOf(fi.day)]).filter(Boolean))].join(' · ');
+          const secShort=(f.section||'').replace(/^[^\s]+ /,'').slice(0,22);
+          return dayChips?`<div class="ag-fi-days">${dayChips}${secShort?' · '+secShort:''}</div>`:'';
+        })()}
         ${progSuffix?`<div style="font-size:var(--t-xs);color:var(--orange);font-weight:var(--w-bold);margin-top:1px;line-height:1">${progSuffix}</div>`:''}
       </div>
     </div>`;
@@ -4100,6 +4152,9 @@ function setHint(film){
 }
 function onCardClick(idx,vis){
   if(selectedIdx===idx){selectedIdx=null;setHint(null);}else{selectedIdx=idx;setHint(vis[idx]);}
+      // Dismiss Cartelera hint on first interaction
+      const _hk=FESTIVAL_STORAGE_KEY+'cartelera_hint_seen';
+      if(!localStorage.getItem(_hk)){localStorage.setItem(_hk,'1');const _hel=document.getElementById('cartelera-mode-hint');if(_hel)_hel.style.display='none';}
   applyStates(vis);
 }
 function applyStates(vis){
@@ -4234,9 +4289,21 @@ function render(){
   });
   if(selectedIdx!==null&&selectedIdx<films.length) applyStates(films);
 
-  // ── Hint de flujo (primer uso) ─────────────────────────────
+  // ── Hint de flujo Mi Lista (primer uso) ─────────────────────
   const _flowHint=document.getElementById('flow-hint');
   if(_flowHint) _flowHint.style.display=watchlist.size===0&&activeVenue==='all'&&activeSec==='all'?'':'none';
+
+  // ── Hint de modo Cartelera (primer uso) ──────────────────────
+  // Explica el flujo en una línea: Explora → Añade → El algoritmo planea.
+  // Escalable: key usa FESTIVAL_STORAGE_KEY → se resetea por edición.
+  if(activeView==='day'){
+    const _hintKey=FESTIVAL_STORAGE_KEY+'cartelera_hint_seen';
+    const _hintEl=document.getElementById('cartelera-mode-hint');
+    if(_hintEl){
+      const _seen=localStorage.getItem(_hintKey);
+      _hintEl.style.display=_seen?'none':'flex';
+    }
+  }
 }
 
 
