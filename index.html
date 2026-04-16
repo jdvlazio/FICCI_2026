@@ -1003,24 +1003,20 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:20px;fo
   }
   .hdr-fest-bar:hover{background:var(--overlay-10)}
 
-  /* En desktop, el dot es más pequeño y todo es más sutil */
-  .hdr-fest-bar .hdr-fest-dot{
-    width:4px;height:4px;opacity:.6;
+  /* En desktop, la barra de festival es más sutil — menor jerarquía */
+  @media(min-width:600px){
+    .hdr-fest-bar .hdr-fest-dot{width:4px;height:4px;opacity:.6}
+    .hdr-fest-bar .hdr-fest-name{font-size:10px;letter-spacing:.1em;color:var(--white-45)}
+    .hdr-fest-bar .hdr-fest-dates{display:inline;font-size:10px;color:var(--white-30)}
+    .hdr-fest-bar .hdr-fest-chev{font-size:9px;margin-left:auto;color:var(--white-30)}
   }
-  .hdr-fest-bar .hdr-fest-name{
-    font-size:10px;
-    letter-spacing:.1em;
-    color:var(--white-45);
-  }
-  .hdr-fest-bar .hdr-fest-dates{
-    display:inline;
-    font-size:10px;
-    color:var(--white-30);
-  }
-  .hdr-fest-bar .hdr-fest-chev{
-    font-size:9px;
-    margin-left:auto;
-    color:var(--white-30);
+  /* Mobile: barra más prominente — texto legible, altura mayor */
+  @media(max-width:599px){
+    .hdr-fest-bar{height:32px;padding:0 var(--sp-4)}
+    .hdr-fest-bar .hdr-fest-name{font-size:var(--t-sm);color:var(--white);letter-spacing:.04em}
+    .hdr-fest-bar .hdr-fest-dates{font-size:var(--t-xs);color:var(--white-60)}
+    .hdr-fest-bar .hdr-fest-chev{font-size:var(--t-sm);color:var(--white-60);margin-left:auto}
+    .hdr-fest-dot{width:6px;height:6px}
   }
 
   /* ══════════════════════════════════════════════════════
@@ -1207,27 +1203,13 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:20px;fo
   .ag-film-item.ag-active .ag-fi-bottom,
   .ag-film-item.ag-active .ag-fi-actions{opacity:1;pointer-events:all}
 }
-/* ── Filtros como pills en mobile (touch devices) ───────────────
-   En desktop: estilo tab con underline activo (hover disponible).
-   En mobile: pills con borde visible → el usuario sabe que son tappables.
-   El estado activo cambia a naranja, igual que el tab desktop. */
+/* ── Filtros mobile: tamaño mayor, sin borde (el tamaño es suficiente) ──
+   El borde resultaba excesivo. El aumento de padding y color activo
+   naranja son suficientes para comunicar interactividad. */
 @media(hover:none){
   .fdr-row{gap:var(--sp-2);padding:var(--sp-2) var(--sp-3)}
-  .fdr-btn{
-    border:1px solid var(--bdr);
-    border-radius:var(--r-pill);
-    border-bottom:1px solid var(--bdr);
-    margin-bottom:0;
-    padding:5px 12px;
-    color:var(--gray);
-    background:var(--card-a);
-  }
-  .fdr-btn.active{
-    border-color:var(--orange);
-    background:var(--amber-08);
-    color:var(--orange);
-    border-bottom-color:var(--orange);
-  }
+  .fdr-btn{padding:6px 14px;color:var(--gray2)}
+  .fdr-btn.active{color:var(--orange)}
 }
 
 </style>
