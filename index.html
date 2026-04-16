@@ -3711,12 +3711,16 @@ function buildResultHTML(scenarios){
     const nextLabel=currentIdx===0?'Variación 1':`Variación ${currentIdx+1}`;
     // Dots: un botón por opción, activo destacado
     // Escalable: generado desde scenarios.length sin hardcodear
-    const dots=scenarios.map((_,di)=>{
+    const _algCount=cachedResult._algorithmCount||n;
+    const dots=scenarios.map((sc_,di)=>{
       const isActive=di===currentIdx;
       const isOptimoDot=di===0;
+      const isCustom=sc_._custom===true;
+      // Dot base: algoritmo=número, personalizado=✎ para distinguirlos
       const cls=isActive?(isOptimoDot?'ag-nav-dot active-star active':'ag-nav-dot active'):'ag-nav-dot';
-      const label=isOptimoDot?'★':(di).toString();
-      return`<button class="${cls}" onclick="jumpToScenario(${di})" title="${isOptimoDot?'Plan óptimo':'Opción '+di}">${label}</button>`;
+      const label=isOptimoDot?'★':isCustom?'✎':(di).toString();
+      const titleStr=isOptimoDot?'Plan óptimo':isCustom?'Opción personalizada':'Opción '+di;
+      return`<button class="${cls}" onclick="jumpToScenario(${di})" title="${titleStr}">${label}</button>`;
     }).join('');
     navHtml=`<div class="ag-nav" style="margin-top:8px">${dots}</div>`;
   }
@@ -3866,10 +3870,11 @@ function swapFilm(excludedTitle, screenDay, screenTime, displacedTitle){
     cachedResult.scenarios.push({
       ...sc,
       schedule:newSchedule,
-      excluded:pending.filter(t=>!included.has(t))
+      excluded:pending.filter(t=>!included.has(t)),
+      _custom:true  // marcada como personalizada — no generada por el algoritmo
     });
     cachedResult.currentIdx=cachedResult.scenarios.length-1;
-    showToast(`Variación ${cachedResult.currentIdx} — intercambio personalizado`,'info');
+    showToast(`Opción personalizada — intercambio aplicado`,'info');
   }
 
   const res=document.getElementById('ag-result');
@@ -3948,7 +3953,10 @@ function runCalc(){
   setTimeout(()=>{
     try{
       const scenarios=computeScenarios([...watchlist]);
-      cachedResult={scenarios,currentIdx:0};
+      // _algorithmCount: cuántos escenarios generó el algoritmo (sin personalizados).
+      // Escalable: cualquier escenario con índice >= _algorithmCount es personalizado.
+      // Al recalcular, este valor se resetea y los dots vuelven a reflejar solo el algoritmo.
+      cachedResult={scenarios,currentIdx:0,_algorithmCount:scenarios.length};
       if(res) res.innerHTML=buildResultHTML(scenarios);
     }catch(err){
       if(res) res.innerHTML=`<div class="ag-calc-prompt" style="color:var(--red)"><strong>Error al calcular:</strong><br><code style="font-size:var(--t-xs)">${err.message}</code></div>`;
