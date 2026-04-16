@@ -266,7 +266,13 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:20px;fo
 .ag-view{padding:var(--sp-4) var(--sp-5) 60px;display:none}
 .ag-view.visible{display:block}
 .hint{padding:0 var(--sp-5);font-size:var(--t-sm);color:var(--gray);min-height:0}
-.hint.active{color:var(--orange)}
+.hint.active{
+  color:var(--orange);
+  background:var(--amber-06);
+  border-bottom:1px solid var(--amber-10);
+  padding:8px var(--sp-5)!important;
+  font-weight:var(--w-semi);
+}
 .cnt-line{padding:2px var(--sp-5) var(--sp-2);font-size:var(--t-sm);color:var(--gray)}
 .cnt-line b{color:var(--white)}
 
@@ -472,7 +478,14 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:20px;fo
 @media(hover:hover){.card:not(.conflict):hover{transform:translateY(-2px);box-shadow:0 8px 24px var(--overlay-60);border-color:var(--amber-35)}}
 .card:active{opacity:.85}
 .card.program{background:var(--surf-2)!important}
-.card.selected{border-color:var(--orange)!important;box-shadow:0 0 0 2px var(--orange),0 8px 28px var(--amber-20)!important}
+.card.selected{
+  border-color:var(--orange)!important;
+  border-width:2px!important;
+  box-shadow:0 0 0 2px var(--orange),0 12px 32px var(--amber-20)!important;
+  transform:scale(1.018);
+  z-index:3;
+  position:relative;
+}
 .card.conflict{opacity:.22;filter:grayscale(.8);cursor:default;pointer-events:none}
 .card.conflict::after{content:'';position:absolute;inset:0;background:repeating-linear-gradient(-45deg,transparent,transparent 6px,var(--overlay-15) 6px,var(--overlay-15) 7px);border-radius:var(--r);pointer-events:none}
 .card.apertura{border-color:var(--amber-55);box-shadow:0 0 16px var(--amber-10)}
@@ -482,6 +495,29 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:20px;fo
 
 /* Card actions */
 .card-actions{position:absolute;top:9px;right:10px;display:flex;gap:var(--sp-1);z-index:4}
+/* ── Botón Añadir: pill visible en mobile ──────────────────────
+   El corazón solo es reconocible para usuarios que ya saben.
+   En mobile mostramos pill con texto para primer uso.
+   Una vez en WL (wl-on), vuelve a ícono — ya cumplió su función. */
+@media(hover:none){
+  .wl-btn:not(.wl-on){
+    background:var(--amber-10);
+    border:1px solid var(--amber-30);
+    border-radius:var(--r-pill);
+    color:var(--amber);
+    padding:5px 10px;
+    font-size:var(--t-xs);
+    font-weight:var(--w-bold);
+    letter-spacing:.03em;
+    gap:4px;
+    white-space:nowrap;
+  }
+  .wl-btn:not(.wl-on)::after{
+    content:'Añadir';
+    font-family:var(--font);
+  }
+  .card-actions{top:8px;right:8px}
+}
 .action-btn{background:var(--overlay-35);border:none;cursor:pointer;font-size:var(--t-sm);line-height:1;padding:var(--sp-1) var(--sp-2);color:var(--gray2);border-radius:var(--r-md);transition:color var(--tr-base),background var(--tr-base);display:inline-flex;align-items:center;justify-content:center}
 .action-btn:active{transform:scale(.85)}
 .action-btn.wl-on{color:var(--orange)}
@@ -1266,6 +1302,11 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:20px;fo
   <button id="agtab" style="display:none"><span id="ag-cnt">0</span></button>
 </div>
 <div class="hint" id="hint"></div>
+<div id="flow-hint" style="display:none;padding:10px 18px 8px;font-size:var(--t-sm);color:var(--gray);border-bottom:1px solid var(--bdr-l);line-height:1.5">
+  <span style="color:var(--amber)">♥</span> Añade películas a tu Selección
+  · <span style="color:var(--orange)">★</span> Márcalas como prioridad
+  · <span style="color:var(--white-60)">◉</span> Genera tu plan en Planear
+</div>
 
 <div class="cnt-line" id="cnt"></div>
 <div class="grid" id="grid"></div>
@@ -4034,7 +4075,15 @@ function setHint(film){
   const el=document.getElementById('hint');
   if(!film){el.textContent='';el.classList.remove('active');el.style.padding='0 18px';return;}
   const end=toMin(film.time)+parseDur(film.duration)+10;
-  el.innerHTML=`${ICONS.clock} Horario: ${minToStr(toMin(film.time)-10)} – ${minToStr(end)} · Toca de nuevo para deseleccionar`;
+  // Info de conflicto: cuántas otras funciones solapan en este horario
+  const conflictCount=vis?vis.filter((f2,j)=>{
+    if(j===selectedIdx) return false;
+    const s2=toMin(f2.time),e2=s2+parseDur(f2.duration);
+    const s=toMin(film.time)-10,e=toMin(film.time)+parseDur(film.duration)+10;
+    return s2>s&&s2<e;
+  }).length:0;
+  const conflictInfo=conflictCount>0?` · ${conflictCount} función${conflictCount>1?'es':''}  solapan`:'';
+  el.innerHTML=`${ICONS.clock} ${minToStr(toMin(film.time))} – ${minToStr(end)}${conflictInfo} · Toca de nuevo para cerrar`;
   el.style.padding='8px 18px';
   el.classList.add('active');
 }
@@ -4173,6 +4222,10 @@ function render(){
     });
   });
   if(selectedIdx!==null&&selectedIdx<films.length) applyStates(films);
+
+  // ── Hint de flujo (primer uso) ─────────────────────────────
+  const _flowHint=document.getElementById('flow-hint');
+  if(_flowHint) _flowHint.style.display=watchlist.size===0&&activeVenue==='all'&&activeSec==='all'?'':'none';
 }
 
 
