@@ -3791,8 +3791,7 @@ function buildResultHTML(scenarios){
     return`<div class="ag-calc-prompt">No hay combinaciones posibles. Ajusta disponibilidad o añade más películas.</div>`;
   const{currentIdx}=cachedResult;
   const sc=scenarios[currentIdx],n=scenarios.length;
-  const _progressHtml=(!savedAgenda||!savedAgenda.schedule||!savedAgenda.schedule.length)?renderFlowProgress():'';
-    const pending=[...watchlist].filter(t=>!watched.has(t)&&FILMS.some(f=>f.title===t&&!screeningPassed(f)));
+  const pending=[...watchlist].filter(t=>!watched.has(t)&&FILMS.some(f=>f.title===t&&!screeningPassed(f)));
   const total=pending.length,ok=sc.schedule.length,bad=sc.excluded.length;
   const isOptimo=currentIdx===0;
 
@@ -4082,6 +4081,7 @@ function renderAgenda(){
   const view=document.getElementById('ag-view');
   if(activeMNav==='mnav-seleccion'){
     // ── Mi Lista: buscador + lista de películas ──
+    const _progressHtml=(!savedAgenda||!savedAgenda.schedule||!savedAgenda.schedule.length)?renderFlowProgress():'';
     view.innerHTML=`${_progressHtml}
       <div class="ag-section">
         <div class="ag-search-wrap">
