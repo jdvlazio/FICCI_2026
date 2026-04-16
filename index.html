@@ -1395,12 +1395,7 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:20px;fo
   <button id="agtab" style="display:none"><span id="ag-cnt">0</span></button>
 </div>
 <div class="hint" id="hint"></div>
-<!-- Hint de iconos — primer uso. Conservado: más claro que el de texto. -->
-<div id="flow-hint" style="display:none;padding:10px 18px 8px;font-size:var(--t-sm);color:var(--gray);border-bottom:1px solid var(--bdr-l);line-height:1.5">
-  <span style="color:var(--amber)">♥</span> Añade películas a Mi Lista
-  · <span style="color:var(--orange)">★</span> Márcalas como prioridad
-  · <span style="color:var(--white-60)">◉</span> Genera tu plan en Planear
-</div>
+
 
 
 
@@ -4070,11 +4065,11 @@ function renderFlowProgress(){
   };
 
   return`<div class="flow-progress">
-    ${mkStep(1,'Añade','')}
+    ${mkStep(1,'Mi Lista','')}
     <div class="flow-step-sep"></div>
-    ${mkStep(2,'Genera','')}
+    ${mkStep(2,'Planear','')}
     <div class="flow-step-sep"></div>
-    ${mkStep(3,'Elige','')}
+    ${mkStep(3,'Mi Plan','')}
   </div>`;
 }
 function renderAgenda(){
@@ -4102,10 +4097,12 @@ function renderAgenda(){
         </div>`:''}
       </div>`;
   } else if(activeMNav==='mnav-miplan'){
-    // ── Mi Plan: calendario + sugerencias ──
-    view.innerHTML=renderSavedAgendaHTML();
+    // ── Mi Plan: stepper de progreso + calendario + sugerencias ──
+    const _progressHtmlPlan=(!savedAgenda||!savedAgenda.schedule||!savedAgenda.schedule.length)?renderFlowProgress():'';
+    view.innerHTML=_progressHtmlPlan+renderSavedAgendaHTML();
   } else {
-    // ── Planear: indicador de progreso + prio strip + disponibilidad + opciones ──
+    // ── Planear: stepper de progreso + prio strip + disponibilidad + opciones ──
+    const _progressHtml=(!savedAgenda||!savedAgenda.schedule||!savedAgenda.schedule.length)?renderFlowProgress():'';
     // El indicador desaparece cuando hay plan guardado
     const pending=[...watchlist].filter(t=>!watched.has(t)&&FILMS.some(f=>f.title===t&&!screeningPassed(f)));
     const resultContent=cachedResult
@@ -4113,7 +4110,7 @@ function renderAgenda(){
       :pending.length
         ?`<div class="ag-calc-prompt">Configura tu disponibilidad<br>y toca <strong>CALCULAR OPCIONES</strong>.</div>`
         :`<div class="ag-calc-prompt">Añade películas en <strong>Mi Lista</strong> para poder calcular opciones.</div>`;
-    view.innerHTML=`
+    view.innerHTML=`${_progressHtml}
       <div class="ag-section">
         <div class="ag-search-wrap">
           <span class="ag-search-ico">${ICONS.search}</span>
@@ -4408,9 +4405,6 @@ function render(){
 
 
 
-  // ── Hint de iconos (primer uso) ─────────────────────────────
-  const _flowHint=document.getElementById('flow-hint');
-  if(_flowHint) _flowHint.style.display=watchlist.size===0&&activeVenue==='all'&&activeSec==='all'?'':'none';
 
 
 }
