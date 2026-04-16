@@ -940,7 +940,7 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:20px;fo
     --poster-lg-h: 168px;
   }
 
-  /* ── Selección grid — comportamiento de overlay en desktop ──
+  /* ── Mi Lista grid — comportamiento de overlay en desktop ──
      Mobile: overlay + info siempre visible (opacity:1 en global)
      Desktop: hover-only para overlay/info/acciones; prog siempre visible */
   .ag-fi-overlay,
@@ -1990,7 +1990,7 @@ function toggleWL(title,e){
   if(watchlist.has(title)){
     // If film is in saved agenda, ask first
     if(savedAgenda&&savedAgenda.schedule.some(s=>s._title===title)){
-      showActionModal(`${ICONS.x} Quitar de Selección`,
+      showActionModal(`${ICONS.x} Quitar de Mi Lista`,
         `<b>${title.length>36?title.slice(0,34)+'…':title}</b> está en tu plan.<br><br>¿Quitarla también del plan guardado?`,
         'Sí, quitar de todo',()=>{
           savedAgenda.schedule=savedAgenda.schedule.filter(s=>s._title!==title);
@@ -2023,7 +2023,7 @@ function toggleWatched(title,e){
     const short=title.length>36?title.slice(0,34)+'…':title;
     showActionModal(
       `${ICONS.check} ¿Ya viste esta película?`,
-      `<b>${short}</b><br><br>Se moverá a <b>Ya vistas</b> en tu Selección.`,
+      `<b>${short}</b><br><br>Se moverá a <b>Ya vistas</b> en Mi Lista.`,
       'Sí, ya la vi',
       ()=>{
         watched.add(title);
@@ -2709,7 +2709,7 @@ function parseProgramTitle(t){
 //      renderSimPanel, renderNextStrip, renderUnconfirmed
 // ═══════════════════════════════════════════════════════════════
 function renderPrioStrip(){
-  if(!prioritized.size) return emptyState(ICONS.star,'No hay prioridades aún.','Añádelas desde Selección. Máximo 3 activas.');
+  if(!prioritized.size) return emptyState(ICONS.star,'No hay prioridades aún.','Añádelas desde Mi Lista. Máximo 3 activas.');
   const chips=[...prioritized].map(t=>{
     const f=FILMS.find(fi=>fi.title===t);
     const p=f?.is_cortos?FICCI_POSTER_URL:getPosterSrc(t,false);
@@ -2760,7 +2760,7 @@ function renderFilmListHTML(){
 
   let html='';
   if(!allPending.length&&!watchedList.length){
-    return emptyState(ICONS.heart,'Tu selección está vacía.','Añade películas con ♥ desde el buscador.');
+    return emptyState(ICONS.heart,'Tu lista está vacía.','Añade películas con ♥ desde el buscador.');
   }
   if(prioList.length){
     html+=`<div class="prio-strip-title" style="margin-bottom:8px">${ICONS.star} Prioridades ${prioList.length}/${PRIO_LIMIT}</div>`;
@@ -2768,12 +2768,12 @@ function renderFilmListHTML(){
   }
   if(nonPrioList.length){
     if(prioList.length) html+=`<div class="ag-list-sep"></div>`;
-    html+=`<div class="prio-strip-title" style="margin-bottom:8px">${ICONS.heart} Selección ${nonPrioList.length}</div>`;
+    html+=`<div class="prio-strip-title" style="margin-bottom:8px">${ICONS.heart} Mi Lista ${nonPrioList.length}</div>`;
     html+=`<div class="ag-film-grid">${nonPrioList.map(t=>mkItem(t)).join('')}</div>`;
   }
   if(!allPending.length&&!watchedList.length){
     return`<div style="margin-top:8px;padding:20px 16px;border:1px solid var(--bdr-l);border-radius:var(--r);text-align:center">
-      <div class="prio-strip-title" style="justify-content:center;margin-bottom:10px">${ICONS.heart} Selección</div>
+      <div class="prio-strip-title" style="justify-content:center;margin-bottom:10px">${ICONS.heart} Mi Lista</div>
       <div style="font-size:var(--t-base);color:var(--gray);line-height:1.6;text-align:center;max-width:240px;margin-left:auto;margin-right:auto;text-wrap:balance">
         Aún no tienes películas guardadas.<br>Usa el buscador para añadir títulos.
       </div>
@@ -2793,7 +2793,7 @@ function renderFilmListHTML(){
     }).join('');
   }
   return html||`<div style="margin-top:8px;padding:20px 16px;border:1px solid var(--bdr-l);border-radius:var(--r);text-align:center">
-      <div class="prio-strip-title" style="justify-content:center;margin-bottom:10px">${ICONS.heart} Selección</div>
+      <div class="prio-strip-title" style="justify-content:center;margin-bottom:10px">${ICONS.heart} Mi Lista</div>
       <div style="font-size:var(--t-base);color:var(--gray);line-height:1.6;text-align:center;max-width:240px;margin-left:auto;margin-right:auto;text-wrap:balance">
         Aún no tienes películas guardadas.<br>Usa el buscador para añadir títulos.
       </div>
@@ -2808,8 +2808,8 @@ function removeFilmFromScenario(title,e){
   if(e) e.stopPropagation();
   const short=title.length>36?title.slice(0,34)+'…':title;
   showActionModal(
-    `${ICONS.x} Quitar de la selección`,
-    `<b>${short}</b><br><br>Se quitará de tu Selección y los escenarios se recalcularán.`,
+    `${ICONS.x} Quitar de Mi Lista`,
+    `<b>${short}</b><br><br>Se quitará de Mi Lista y los escenarios se recalcularán.`,
     'Quitar',
     ()=>{
       watchlist.delete(title);
@@ -2817,7 +2817,7 @@ function removeFilmFromScenario(title,e){
       watched.delete(title);
       saveState('wl','prio','watched');
       updateAgTab();
-      showToast('Quitada de Selección','info');
+      showToast('Quitada de Mi Lista','info');
       runCalc(); // recalcula directamente, no borra la vista
     }
   );
@@ -2836,7 +2836,7 @@ function mkAgendaRow(s, mode='saved'){
   const isExpanded=_expandedFilm===filmKey;
   const actionBtn=mode==='saved'
     ?`<button class="ag-fi-btn del" data-rmt="${safeT}" onclick="removeFromAgenda(this.dataset.rmt);event.stopPropagation()" title="Quitar de agenda">${ICONS.x}</button>`
-    :`<button class="ag-fi-btn del" data-rfs="${safeT}" onclick="removeFilmFromScenario(this.dataset.rfs,event)" title="Quitar de selección">${ICONS.x}</button>`;
+    :`<button class="ag-fi-btn del" data-rfs="${safeT}" onclick="removeFilmFromScenario(this.dataset.rfs,event)" title="Quitar de Mi Lista">${ICONS.x}</button>`;
   const switchBtn=mode==='saved'&&!isDone
     ?`<button class="film-switch${isExpanded?' open':''}" onclick="toggleFilmAlternatives('${filmKey}','${safeT}','${s.day||''}','${s.time||''}');event.stopPropagation()" title="Ver alternativas">${ICONS.switch}</button>`
     :'';
@@ -3382,7 +3382,7 @@ function shareAsImage(){
   const notInWL=savedAgenda.schedule.filter(s=>!watchlist.has(s._title));
   if(notInWL.length){
     const names=notInWL.map(s=>s._title.length>20?s._title.slice(0,18)+'…':s._title).join(', ');
-    issues.push(`${notInWL.length} película${notInWL.length>1?'s':''} ya no están en tu Selección: ${names}`);
+    issues.push(`${notInWL.length} película${notInWL.length>1?'s':''} ya no están en Mi Lista: ${names}`);
   }
 
   // 2. Conflictos internos entre funciones del plan
@@ -3747,7 +3747,7 @@ function togglePriority(title,cost){
     if(activeMNav==='mnav-planner'){
       const short=title.length>40?title.slice(0,38)+'…':title;
       showActionModal(`${ICONS.star} Quitar prioridad`,
-        `<b>${short}</b><br><br>Sigue en tu Selección, deja de ser prioritaria.`,
+        `<b>${short}</b><br><br>Sigue en Mi Lista, deja de ser prioritaria.`,
         'Quitar prioridad',()=>{
           prioritized.delete(title);savePrio();updateCardState(title);updateAgTab();runCalc();
           showToast('Prioridad eliminada','info');
@@ -3872,7 +3872,7 @@ function invalidateCalcResult(){
   const pending=[...watchlist].filter(t=>!watched.has(t)&&FILMS.some(f=>f.title===t&&!screeningPassed(f)));
   res.innerHTML=pending.length
     ?`<div class="ag-calc-prompt">Configura tu disponibilidad<br>y toca <strong>CALCULAR ESCENARIOS</strong>.</div>`
-    :`<div class="ag-calc-prompt">Añade películas en <strong>Selección</strong> para poder calcular escenarios.</div>`;
+    :`<div class="ag-calc-prompt">Añade películas en <strong>Mi Lista</strong> para poder calcular escenarios.</div>`;
 }
 function runCalc(){
   cachedResult=null;
@@ -3911,7 +3911,7 @@ function updatePrioCounter(){
 function renderAgenda(){
   const view=document.getElementById('ag-view');
   if(activeMNav==='mnav-seleccion'){
-    // ── Selección: buscador + lista de películas ──
+    // ── Mi Lista: buscador + lista de películas ──
     view.innerHTML=`
       <div class="ag-section">
         <div class="ag-search-wrap">
@@ -3941,7 +3941,7 @@ function renderAgenda(){
       ?buildResultHTML(cachedResult.scenarios)
       :pending.length
         ?`<div class="ag-calc-prompt">Configura tu disponibilidad<br>y toca <strong>CALCULAR ESCENARIOS</strong>.</div>`
-        :`<div class="ag-calc-prompt">Añade películas en <strong>Selección</strong> para poder calcular escenarios.</div>`;
+        :`<div class="ag-calc-prompt">Añade películas en <strong>Mi Lista</strong> para poder calcular escenarios.</div>`;
     view.innerHTML=`
       <div class="ag-section">
         <div class="ag-search-wrap">
@@ -4264,7 +4264,7 @@ function dismissSplash(){
 })();
 
 loadState();{const _ts=simTodayStr();const _ni=DAY_KEYS.findIndex(d=>FESTIVAL_DATES[d]===_ts);activeDay=_ni>=0?DAY_KEYS[_ni]:DAY_KEYS[0];}updateAgTab();render();
-/* ── Tap-to-reveal en Selección mobile ──────────────────────────
+/* ── Tap-to-reveal en Mi Lista mobile ──────────────────────────
    Toca el poster → revela botones (ag-active).
    Toca fuera o toca un botón → cierra. */
 document.addEventListener('click', function(e){
