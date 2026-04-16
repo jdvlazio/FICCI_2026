@@ -4554,12 +4554,11 @@ document.addEventListener('visibilitychange', function(){
   else if(activeMNav==='mnav-planner'&&activeView==='agenda') renderAgenda();
   else if(activeView==='day') render();
   updateAgTab();
-});; // cada 60 segundos
+}); // visibilitychange
 
 // html2canvas eliminado — Canvas API puro
 document.addEventListener('click',e=>{if(!e.target.closest('.fdr-wrap')) closeDropdowns();});
 updateAgTab();render();
-document.addEventListener('click',e=>{if(!e.target.closest('.fdr-wrap')) closeDropdowns();});
 </script>
 <script>
 if('serviceWorker' in navigator){
