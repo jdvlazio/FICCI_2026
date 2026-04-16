@@ -1513,7 +1513,7 @@ const LB_SLUGS={
   "El dependiente":"the-dependent",
   "El hogar fue sepultado en esa tierra":"our-home-was-buried-in-a-land-we-could-never",
   "El lugar más pequeño":"the-tiniest-place",
-  "El mundo al revés":"the-world-upside-down",
+  "El mundo al revés":"https://boxd.it/TFM0",
   "El pagador de promesas":"the-given-word",
   "El príncipe de Nanawa":"the-prince-of-nanawa",
   "El reportaje":"el-reportaje",
@@ -1633,9 +1633,10 @@ const LB_SLUGS={
 };
 function lbUrl(title){
   const slug=LB_SLUGS[title];
-  return slug
-    ?`https://letterboxd.com/film/${slug}/`
-    :`https://letterboxd.com/search/films/${encodeURIComponent(title)}/`;
+  if(!slug) return`https://letterboxd.com/search/films/${encodeURIComponent(title)}/`;
+  // Si el slug es una URL completa (shortlink o full), úsala directamente
+  if(slug.startsWith('http')) return slug;
+  return`https://letterboxd.com/film/${slug}/`;
 }
 const LB_SVG=`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="13" height="13" style="display:block;flex-shrink:0"><rect width="64" height="64" rx="9" fill="#2C3440"/><circle cx="21" cy="32" r="12" fill="#00B020" opacity=".9"/><circle cx="32" cy="32" r="12" fill="#3CBEDB" opacity=".85"/><circle cx="43" cy="32" r="12" fill="#FF8000" opacity=".9"/></svg>`;
 
