@@ -1243,32 +1243,7 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:20px;fo
 .sel-plan-cta-text{font-size:var(--t-sm);color:var(--white-60);line-height:1.4}
 .sel-plan-cta-text b{color:var(--white);font-weight:var(--w-semi)}
 .sel-plan-cta-arrow{color:var(--amber);font-size:var(--t-lg);flex-shrink:0;line-height:1}
-/* ── Hint de modo Cartelera — primer uso ─────────────────────────
-   Explica el flujo en una línea. Desaparece en primer scroll/tap.
-   Escalable: key incluye prefijo del festival (ficci65_).
-   Para futuros festivales: cambiar prefijo en FESTIVAL_STORAGE_KEY. */
-.cartelera-mode-hint{
-  padding:8px var(--sp-5);
-  font-size:var(--t-sm);
-  color:var(--gray);
-  border-bottom:1px solid var(--bdr-l);
-  line-height:1.5;
-  background:var(--surf);
-  display:flex;
-  align-items:center;
-  gap:var(--sp-2);
-}
-.cartelera-mode-hint-close{
-  margin-left:auto;
-  background:none;
-  border:none;
-  color:var(--gray2);
-  cursor:pointer;
-  font-size:var(--t-base);
-  padding:0 0 0 var(--sp-2);
-  flex-shrink:0;
-  line-height:1;
-}
+
 /* ── Bienvenida — primer uso ─────────────────────────────────────
    Modal de una sola vez que reencuadra el modelo mental.
    No es un tutorial. Una frase, un botón.
@@ -1420,13 +1395,13 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:20px;fo
   <button id="agtab" style="display:none"><span id="ag-cnt">0</span></button>
 </div>
 <div class="hint" id="hint"></div>
-<!-- Hint de modo Cartelera — primer uso. Escalable por festival. -->
-<div class="cartelera-mode-hint" id="cartelera-mode-hint" style="display:none">
-  <span>Explora por día · Añade con ♥ a Mi Lista · El algoritmo arma tu plan</span>
-  <button class="cartelera-mode-hint-close"
-    onclick="localStorage.setItem(FESTIVAL_STORAGE_KEY+'cartelera_hint_seen','1');this.parentElement.style.display='none'"
-    aria-label="Cerrar">×</button>
+<!-- Hint de iconos — primer uso. Conservado: más claro que el de texto. -->
+<div id="flow-hint" style="display:none;padding:10px 18px 8px;font-size:var(--t-sm);color:var(--gray);border-bottom:1px solid var(--bdr-l);line-height:1.5">
+  <span style="color:var(--amber)">♥</span> Añade películas a Mi Lista
+  · <span style="color:var(--orange)">★</span> Márcalas como prioridad
+  · <span style="color:var(--white-60)">◉</span> Genera tu plan en Planear
 </div>
+
 
 
 <div class="cnt-line" id="cnt"></div>
@@ -4296,9 +4271,7 @@ function setHint(film){
 }
 function onCardClick(idx,vis){
   if(selectedIdx===idx){selectedIdx=null;setHint(null);}else{selectedIdx=idx;setHint(vis[idx]);}
-      // Dismiss Cartelera hint on first interaction
-      const _hk=FESTIVAL_STORAGE_KEY+'cartelera_hint_seen';
-      if(!localStorage.getItem(_hk)){localStorage.setItem(_hk,'1');const _hel=document.getElementById('cartelera-mode-hint');if(_hel)_hel.style.display='none';}
+
   applyStates(vis);
 }
 function applyStates(vis){
@@ -4435,17 +4408,11 @@ function render(){
 
 
 
-  // ── Hint de modo Cartelera (primer uso) ──────────────────────
-  // Explica el flujo en una línea: Explora → Añade → El algoritmo planea.
-  // Escalable: key usa FESTIVAL_STORAGE_KEY → se resetea por edición.
-  if(activeView==='day'){
-    const _hintKey=FESTIVAL_STORAGE_KEY+'cartelera_hint_seen';
-    const _hintEl=document.getElementById('cartelera-mode-hint');
-    if(_hintEl){
-      const _seen=localStorage.getItem(_hintKey);
-      _hintEl.style.display=_seen?'none':'flex';
-    }
-  }
+  // ── Hint de iconos (primer uso) ─────────────────────────────
+  const _flowHint=document.getElementById('flow-hint');
+  if(_flowHint) _flowHint.style.display=watchlist.size===0&&activeVenue==='all'&&activeSec==='all'?'':'none';
+
+
 }
 
 
