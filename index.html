@@ -1269,6 +1269,85 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:20px;fo
   flex-shrink:0;
   line-height:1;
 }
+/* ── Bienvenida — primer uso ─────────────────────────────────────
+   Modal de una sola vez que reencuadra el modelo mental.
+   No es un tutorial. Una frase, un botón.
+   Escalable: copy cambia por festival, lógica reutilizable. */
+.welcome-overlay{
+  position:fixed;inset:0;z-index:9999;
+  background:rgba(0,0,0,.85);
+  display:flex;align-items:flex-end;
+  -webkit-backdrop-filter:blur(4px);
+  backdrop-filter:blur(4px);
+}
+.welcome-sheet{
+  width:100%;max-width:480px;margin:0 auto;
+  background:var(--surf);
+  border-radius:var(--r) var(--r) 0 0;
+  border-top:1px solid var(--bdr);
+  padding:var(--sp-6) var(--sp-5) calc(var(--sp-6) + env(safe-area-inset-bottom));
+}
+.welcome-wordmark{
+  font-family:var(--font);font-size:22px;font-weight:var(--w-display);
+  letter-spacing:-.03em;color:var(--white);margin-bottom:var(--sp-4);
+}
+.welcome-wordmark span{color:var(--amber)}
+.welcome-title{
+  font-size:var(--t-lg);font-weight:var(--w-bold);
+  color:var(--white);line-height:1.25;margin-bottom:var(--sp-3);
+}
+.welcome-sub{
+  font-size:var(--t-base);color:var(--gray);line-height:1.6;
+  margin-bottom:var(--sp-5);
+}
+.welcome-sub b{color:var(--white-60);font-weight:var(--w-semi)}
+.welcome-cta{
+  width:100%;padding:14px;
+  background:var(--orange);border:none;border-radius:var(--r);
+  color:#fff;font-family:var(--font);font-size:var(--t-base);
+  font-weight:var(--w-bold);cursor:pointer;
+  transition:opacity var(--tr-base);
+}
+.welcome-cta:active{opacity:.85}
+/* ── Indicador de progreso de flujo ─────────────────────────────
+   Visible en Planear cuando no hay plan. 3 pasos no bloqueantes.
+   Escalable: basado en watchlist.size y savedAgenda — sin datos del festival. */
+.flow-progress{
+  display:flex;align-items:center;gap:0;
+  padding:10px var(--sp-4);
+  border-bottom:1px solid var(--bdr-l);
+  background:var(--surf);
+  overflow:hidden;
+}
+.flow-step{
+  display:flex;align-items:center;gap:6px;
+  flex:1;min-width:0;
+  font-size:9px;font-weight:var(--w-bold);
+  letter-spacing:.05em;text-transform:uppercase;
+  color:var(--gray2);
+  white-space:nowrap;
+}
+.flow-step.done{color:var(--green)}
+.flow-step.active{color:var(--white)}
+.flow-step-dot{
+  width:18px;height:18px;border-radius:50%;
+  border:1px solid var(--bdr);
+  display:flex;align-items:center;justify-content:center;
+  font-size:9px;flex-shrink:0;
+  color:var(--gray2);
+  transition:all var(--tr-base);
+}
+.flow-step.done .flow-step-dot{
+  background:var(--green);border-color:var(--green);color:#000;
+}
+.flow-step.active .flow-step-dot{
+  background:var(--amber-10);border-color:var(--orange);color:var(--orange);
+}
+.flow-step-sep{
+  width:16px;height:1px;background:var(--bdr);
+  flex-shrink:0;margin:0 2px;
+}
+
 </style>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"WebApplication","name":"Otrofestiv","description":"Tu agenda personal para festivales de cine. Planea, prioriza y saca el máximo de cada festival.","url":"https://otrofestiv.app","applicationCategory":"EntertainmentApplication","operatingSystem":"iOS, Android, Web","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}
@@ -1733,6 +1812,23 @@ const PRIO_LIMIT=5;
    Formato: {nombre}{año}_ → prefija todas las keys de localStorage.
    Garantiza que cada edición empiece limpia sin datos residuales. */
 const FESTIVAL_STORAGE_KEY='ficci65_';
+
+/* ── GLOSARIO DE TÉRMINOS USER-FACING ────────────────────────────
+   Validar con usuarios reales antes de cada edición del festival.
+   Regla: si un asistente al festival no usaría la palabra
+   naturalmente, cambiarla antes de codificarla.
+
+   TÉRMINO          USO EN LA APP           EVITAR
+   ──────────────────────────────────────────────────
+   Mi Lista         colección personal      Selección, Watchlist
+   Mi Plan          agenda generada         Agenda, Calendario
+   Planear          tab de generación       Algoritmo, Cálculo
+   Opciones         resultados del alg.     Escenarios, Variantes
+   Prioridad        ★ película destacada    Favorita, Top
+   Disponibilidad   bloques de tiempo libre Horario, Agenda libre
+   Añadir           acción de ♥             Guardar, Seleccionar
+   Elegir           confirmar un plan       Guardar, Aceptar
+   ────────────────────────────────────────────────── */
 const FESTIVAL_BUFFER=15; // min entre funciones: salida sala + intro siguiente
 let savedAgenda=null;
 let lastRemovedSlots=[]; // tracks up to 5 recently removed films
@@ -2756,7 +2852,16 @@ function parseProgramTitle(t){
 //      renderSimPanel, renderNextStrip, renderUnconfirmed
 // ═══════════════════════════════════════════════════════════════
 function renderPrioStrip(){
-  if(!prioritized.size) return emptyState(ICONS.star,'No hay prioridades aún.','Añádelas desde Mi Lista. Máximo 3 activas.');
+  if(!prioritized.size) return `<div style="text-align:center;padding:24px 20px">
+      <div style="font-size:24px;margin-bottom:10px">${ICONS.star}</div>
+      <div style="font-weight:var(--w-bold);color:var(--white);margin-bottom:6px">Sin prioridades aún</div>
+      <div style="font-size:var(--t-sm);color:var(--gray);line-height:1.6;margin-bottom:16px">
+        Marca hasta ${PRIO_LIMIT} películas como ★ en Mi Lista para que el algoritmo las incluya primero.
+      </div>
+      <button onclick="switchMainNav('mnav-seleccion');showAgView()" style="background:none;border:1px solid var(--bdr);color:var(--gray);font-family:var(--font);font-size:var(--t-sm);padding:8px 16px;border-radius:var(--r-pill);cursor:pointer">
+        Ir a Mi Lista →
+      </button>
+    </div>`;
   const chips=[...prioritized].map(t=>{
     const f=FILMS.find(fi=>fi.title===t);
     const p=f?.is_cortos?FICCI_POSTER_URL:getPosterSrc(t,false);
@@ -2817,7 +2922,16 @@ function renderFilmListHTML(){
 
   let html='';
   if(!allPending.length&&!watchedList.length){
-    return emptyState(ICONS.heart,'Tu lista está vacía.','Añade películas con ♥ desde el buscador.');
+    return `<div style="text-align:center;padding:32px 20px">
+      <div style="font-size:28px;margin-bottom:12px">${ICONS.heart}</div>
+      <div style="font-weight:var(--w-bold);color:var(--white);margin-bottom:8px">Tu lista está vacía</div>
+      <div style="font-size:var(--t-sm);color:var(--gray);line-height:1.6;margin-bottom:20px;max-width:260px;margin-left:auto;margin-right:auto">
+        Añade lo que quieres ver. El algoritmo armará tu agenda sin solapamientos.
+      </div>
+      <button onclick="switchMainNav('mnav-cartelera');showDayView()" style="background:var(--amber-10);border:1px solid var(--amber-30);color:var(--amber);font-family:var(--font);font-size:var(--t-sm);font-weight:var(--w-bold);padding:10px 20px;border-radius:var(--r-pill);cursor:pointer">
+        Explorar Cartelera →
+      </button>
+    </div>`;
   }
   if(prioList.length){
     html+=`<div class="prio-strip-title" style="margin-bottom:8px">${ICONS.star} Prioridades ${prioList.length}/${PRIO_LIMIT}</div>`;
@@ -3268,7 +3382,16 @@ function renderGapOptions(gapStartMin,gapEndMin,todayKey,removedTitle){
   }).join('');
 }
 function _renderSavedAgendaHTML(){
-  if(!savedAgenda||!savedAgenda.schedule.length) return emptyState(ICONS.calendar,'Más de lo que crees posible.','En Planear, calcula un escenario. Luego elige el tuyo.');
+  if(!savedAgenda||!savedAgenda.schedule.length) return `<div style="text-align:center;padding:32px 20px">
+      <div style="font-size:28px;margin-bottom:12px">${ICONS.calendar}</div>
+      <div style="font-weight:var(--w-bold);color:var(--white);margin-bottom:8px">Tu plan aparecerá aquí</div>
+      <div style="font-size:var(--t-sm);color:var(--gray);line-height:1.6;margin-bottom:20px;max-width:260px;margin-left:auto;margin-right:auto">
+        Añade películas a Mi Lista y genera opciones en Planear. El algoritmo hace el resto.
+      </div>
+      <button onclick="switchMainNav('mnav-planner');showAgView()" style="background:var(--amber-10);border:1px solid var(--amber-30);color:var(--amber);font-family:var(--font);font-size:var(--t-sm);font-weight:var(--w-bold);padding:10px 20px;border-radius:var(--r-pill);cursor:pointer">
+        Ir a Planear →
+      </button>
+    </div>`;
   const all=savedAgenda.schedule;
   const planTitles=new Set(all.map(s=>s._title));
   const archive=all.filter(s=>screeningPassed(s)||watched.has(s._title));
@@ -3697,7 +3820,8 @@ function buildResultHTML(scenarios){
     return`<div class="ag-calc-prompt">No hay combinaciones posibles. Ajusta disponibilidad o añade más películas.</div>`;
   const{currentIdx}=cachedResult;
   const sc=scenarios[currentIdx],n=scenarios.length;
-  const pending=[...watchlist].filter(t=>!watched.has(t)&&FILMS.some(f=>f.title===t&&!screeningPassed(f)));
+  const _progressHtml=(!savedAgenda||!savedAgenda.schedule||!savedAgenda.schedule.length)?renderFlowProgress():'';
+    const pending=[...watchlist].filter(t=>!watched.has(t)&&FILMS.some(f=>f.title===t&&!screeningPassed(f)));
   const total=pending.length,ok=sc.schedule.length,bad=sc.excluded.length;
   const isOptimo=currentIdx===0;
 
@@ -3809,11 +3933,11 @@ function togglePriority(title,cost){
   }
   if(activeView==='agenda') renderAgenda();
 }
-function showToast(msg,type='info'){
+function showToast(msg,type='info',duration=2800){
   let t=document.getElementById('prio-toast');
   if(!t){t=document.createElement('div');t.id='prio-toast';document.body.appendChild(t);}
   t.className='prio-toast '+type;t.innerHTML=msg;t.style.opacity='1';
-  clearTimeout(t._to);t._to=setTimeout(()=>{t.style.opacity='0';},5000);
+  clearTimeout(t._to);t._to=setTimeout(()=>{t.style.opacity='0';},duration);
 }
 function swapFilm(excludedTitle, screenDay, screenTime, displacedTitle){
   if(!cachedResult) return;
@@ -3958,11 +4082,36 @@ function updatePrioCounter(){
   if(!el) return;
   el.textContent=prioritized.size>0?`⭐ ${prioritized.size}/${PRIO_LIMIT}`:'';
 }
+function renderFlowProgress(){
+  // 3 pasos no bloqueantes — basados en estado real
+  // Escalable: watchlist.size y savedAgenda funcionan en cualquier festival
+  const hasList=watchlist.size>0;
+  const hasPlan=savedAgenda&&savedAgenda.schedule&&savedAgenda.schedule.length>0;
+  const step=hasPlan?3:hasList?2:1;
+
+  const mkStep=(n,label,icon)=>{
+    const isDone=n<step, isActive=n===step;
+    const cls=`flow-step${isDone?' done':isActive?' active':''}`;
+    const dotContent=isDone?'✓':n.toString();
+    return`<div class="${cls}">
+      <div class="flow-step-dot">${dotContent}</div>
+      <span>${label}</span>
+    </div>`;
+  };
+
+  return`<div class="flow-progress">
+    ${mkStep(1,'Añade','')}
+    <div class="flow-step-sep"></div>
+    ${mkStep(2,'Genera','')}
+    <div class="flow-step-sep"></div>
+    ${mkStep(3,'Elige','')}
+  </div>`;
+}
 function renderAgenda(){
   const view=document.getElementById('ag-view');
   if(activeMNav==='mnav-seleccion'){
     // ── Mi Lista: buscador + lista de películas ──
-    view.innerHTML=`
+    view.innerHTML=`${_progressHtml}
       <div class="ag-section">
         <div class="ag-search-wrap">
           <span class="ag-search-ico">${ICONS.search}</span>
@@ -3985,7 +4134,8 @@ function renderAgenda(){
     // ── Mi Plan: calendario + sugerencias ──
     view.innerHTML=renderSavedAgendaHTML();
   } else {
-    // ── Planear: prio strip compacto + disponibilidad + opciones ──
+    // ── Planear: indicador de progreso + prio strip + disponibilidad + opciones ──
+    // El indicador desaparece cuando hay plan guardado
     const pending=[...watchlist].filter(t=>!watched.has(t)&&FILMS.some(f=>f.title===t&&!screeningPassed(f)));
     const resultContent=cachedResult
       ?buildResultHTML(cachedResult.scenarios)
@@ -4381,6 +4531,23 @@ updateAgTab();
 // iOS/Android suspenden setInterval cuando la app va a background.
 // visibilitychange fuerza re-render inmediato al volver,
 // sin esperar al próximo tick del loop.
+// ── Bienvenida primer uso ────────────────────────────────────────
+// Escalable: FESTIVAL_STORAGE_KEY cambia por edición → siempre nuevo
+function showWelcomeIfNeeded(){
+  const key=FESTIVAL_STORAGE_KEY+'welcome_seen';
+  if(localStorage.getItem(key)) return;
+  const el=document.getElementById('welcome-overlay');
+  if(el) el.style.display='flex';
+}
+function dismissWelcome(){
+  localStorage.setItem(FESTIVAL_STORAGE_KEY+'welcome_seen','1');
+  const el=document.getElementById('welcome-overlay');
+  if(el){ el.style.opacity='0';el.style.transition='opacity .25s';
+    setTimeout(()=>el.style.display='none',260); }
+}
+// Mostrar después de que el estado cargue
+setTimeout(showWelcomeIfNeeded, 400);
+
 document.addEventListener('visibilitychange', function(){
   if(document.visibilityState!=='visible') return;
   if(activeMNav==='mnav-miplan'&&activeView==='agenda') renderAgenda();
@@ -4444,5 +4611,17 @@ function closeFestivalSheet(){
 
 
 <button id="back-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Volver arriba">↑</button>
+<div id="welcome-overlay" class="welcome-overlay" style="display:none" role="dialog" aria-modal="true">
+  <div class="welcome-sheet">
+    <div class="welcome-wordmark">Otro<span>festiv</span></div>
+    <div class="welcome-title">Tu agenda de cine,<br>sin solapamientos.</div>
+    <div class="welcome-sub">
+      <b>Añade</b> lo que quieres ver en Cartelera.<br>
+      <b>El algoritmo</b> arma tu agenda sin conflictos de horario.<br>
+      <b>Tú eliges</b> entre las opciones generadas.
+    </div>
+    <button class="welcome-cta" onclick="dismissWelcome()">Empezar →</button>
+  </div>
+</div>
 </body>
 </html>
