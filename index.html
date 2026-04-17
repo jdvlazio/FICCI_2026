@@ -842,6 +842,22 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:20px;fo
 
 /* Banners contextuales */
 .today-banner{background:var(--amber-10);border:1px solid var(--amber-30);border-radius:var(--r-md);padding:var(--sp-2) var(--sp-3);margin-bottom:var(--sp-2);font-size:var(--t-sm);color:var(--orange);font-weight:var(--w-semi);letter-spacing:.5px}
+/* ── CTAs contextuales Mi Plan ── */
+.cta-ctx{border-radius:var(--r-md);padding:12px 14px;display:flex;align-items:center;gap:12px;cursor:pointer;margin-bottom:var(--sp-2)}
+.cta-ctx-a{background:var(--amber-10);border:1px solid var(--amber-30)}
+.cta-ctx-b{background:rgba(224,123,57,0.08);border:1px solid rgba(224,123,57,0.28)}
+.cta-ctx-c{background:var(--surf);border:1px solid var(--bdr);border-left:3px solid var(--amber)}
+.cta-ctx-ico{font-size:18px;flex-shrink:0}
+.cta-ctx-body{flex:1;min-width:0}
+.cta-ctx-title{font-size:13px;font-weight:var(--w-bold);margin-bottom:2px;line-height:1.3}
+.cta-ctx-title-a{color:var(--amber)}
+.cta-ctx-title-b{color:var(--orange)}
+.cta-ctx-title-c{color:var(--white)}
+.cta-ctx-sub{font-size:11px;color:var(--gray2);line-height:1.45}
+.cta-ctx-arr{font-size:15px;flex-shrink:0}
+.cta-ctx-arr-a{color:var(--amber)}
+.cta-ctx-arr-b{color:var(--orange)}
+.cta-ctx-arr-c{color:var(--gray)}
 .ctx-banner{background:var(--card-a);border:1px solid var(--bdr);border-radius:var(--r);margin-bottom:var(--sp-3);overflow:hidden}
 .ctx-banner.ctx-now{border-color:var(--amber-50);background:var(--amber-06)}
 .ctx-banner.ctx-soon{border-color:var(--yellow-12);background:var(--yellow-04)}
@@ -1796,7 +1812,7 @@ const FESTIVAL_STORAGE_KEY='ficci65_';
 // ── Reset agresivo de caché — independiente del SW ────────────────
 // Cada deploy cambia BUILD_VERSION. Al cargar, si localStorage tiene
 // una versión anterior → location.reload(true) fuerza descarga limpia.
-const BUILD_VERSION='202604172317';
+const BUILD_VERSION='202604172336';
 (function(){
   const _vk='otrofestiv_build';
   const _stored=localStorage.getItem(_vk);
@@ -1829,6 +1845,8 @@ let savedAgenda=null;
 let lastRemovedSlots=[]; // tracks up to 5 recently removed films
 const MAX_REMEMBERED_SLOTS=5;
 let activeMiPlanDay=null;
+let _ctaRemovedVisible=false; // CTA B: post-eliminación
+let _ctaRemovedTimer=null;    // CTA B: timer de auto-dismiss
 // ── Simulation clock (dev tool) ──
 let _simTime=null; // null = real time
 function simNow(){return _simTime?new Date(_simTime):new Date();}
@@ -2010,7 +2028,19 @@ function renderMiPlanCalendar(){
 
   let listHtml=`<div class="mplan-list" id="mplan-detail"><div class="mplan-list-hdr">${dayChip(activeKey)}</div>`;
   if(!dayFilms.length){
-    listHtml+=`<div class="mplan-empty">D\u00eda libre \u2014 sin funciones planificadas</div>`;
+    if(!isPastDay){
+      // CTA C: día futuro sin películas — invita a explorar sugerencias o recalcular
+      listHtml+=`<div class="cta-ctx cta-ctx-c" onclick="document.querySelector('.suggestion-wrap')?.scrollIntoView({behavior:'smooth',block:'start'})">
+        <div class="cta-ctx-ico">📅</div>
+        <div class="cta-ctx-body">
+          <div class="cta-ctx-title cta-ctx-title-c">Día libre en tu plan</div>
+          <div class="cta-ctx-sub">No hay funciones para este día. Añade desde Sugerencias abajo, o recalcula en Planear.</div>
+        </div>
+        <div class="cta-ctx-arr cta-ctx-arr-c">↓</div>
+      </div>`;
+    } else {
+      listHtml+=`<div class="mplan-empty">Sin funciones este día</div>`;
+    }
   } else {
     dayFilms.forEach((s,idx)=>{
       const fMin=toMin(s.time),dur=parseDur(s.duration);
@@ -2248,7 +2278,12 @@ function removeFromAgenda(title){
     if(rem){lastRemovedSlots=lastRemovedSlots.filter(r=>r._title!==rem._title);lastRemovedSlots.unshift({...rem,_isRestored:true});if(lastRemovedSlots.length>MAX_REMEMBERED_SLOTS)lastRemovedSlots.length=MAX_REMEMBERED_SLOTS;saveLastSlot();}
     savedAgenda.schedule=savedAgenda.schedule.filter(s=>s._title!==title);
     if(!savedAgenda.schedule.length)savedAgenda=null;
-    saveSavedAgenda();renderAgenda();showToast('Quitada de Mi Plan','info');
+    saveSavedAgenda();
+    // CTA B: mostrar aviso contextual post-eliminación
+    _ctaRemovedVisible=true;
+    if(_ctaRemovedTimer) clearTimeout(_ctaRemovedTimer);
+    _ctaRemovedTimer=setTimeout(()=>{_ctaRemovedVisible=false;renderAgenda();},6000);
+    renderAgenda();showToast('Quitada de Mi Plan','info');
   });
 }
 function addSuggestion(title,day,time){
@@ -3415,6 +3450,34 @@ function _renderSavedAgendaHTML(){
         <button class="saved-agenda-clear" onclick="clearSavedAgenda()" style="color:var(--red);border-color:var(--red-12)">${ICONS.x} Borrar</button>
       </div>
     </div>`;
+
+  // ── CTA A: películas de la watchlist sin lugar en el plan ──
+  const pendingExcluded=[...watchlist].filter(t=>!watched.has(t)&&!planTitles.has(t)&&FILMS.some(f=>f.title===t&&!screeningPassed(f)));
+  if(pendingExcluded.length){
+    const n=pendingExcluded.length;
+    const names=pendingExcluded.slice(0,2).map(t=>{const{displayTitle}=parseProgramTitle(t);return displayTitle.length>20?displayTitle.slice(0,18)+'…':displayTitle;}).join(' y ');
+    const label=n===1?`<b>${names}</b> no cabe en tu plan actual`:`<b>${names}${n>2?` y ${n-2} más`:''}${n===2?' no caben':' no caben'} en tu plan actual`;
+    html+=`<div class="cta-ctx cta-ctx-a" onclick="switchMainNav('mnav-planner');showAgView()">
+      <div class="cta-ctx-ico">★</div>
+      <div class="cta-ctx-body">
+        <div class="cta-ctx-title cta-ctx-title-a">${n} película${n!==1?'s':''} sin horario</div>
+        <div class="cta-ctx-sub">${label}. Prueba otra opción en Planear.</div>
+      </div>
+      <div class="cta-ctx-arr cta-ctx-arr-a">→</div>
+    </div>`;
+  }
+
+  // ── CTA B: post-eliminación (temporal, auto-dismiss 6s) ──
+  if(_ctaRemovedVisible){
+    html+=`<div class="cta-ctx cta-ctx-b" onclick="switchMainNav('mnav-planner');showAgView()">
+      <div class="cta-ctx-ico">↩</div>
+      <div class="cta-ctx-body">
+        <div class="cta-ctx-title cta-ctx-title-b">¿Quieres poner otra cosa ahí?</div>
+        <div class="cta-ctx-sub">Hay sugerencias abajo que caben en ese hueco, o recalcula en Planear.</div>
+      </div>
+      <div class="cta-ctx-arr cta-ctx-arr-b">→</div>
+    </div>`;
+  }
 
   if(archive.length||watchedOutsidePlan.length){
     const totalWatched=archive.length+watchedOutsidePlan.length;
