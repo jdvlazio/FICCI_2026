@@ -2010,7 +2010,7 @@ const FESTIVAL_STORAGE_KEY='ficci65_';
 // BUILD_VERSION: cambia en cada deploy.
 // Al cargar, compara con localStorage. Si difiere → reload duro.
 // sessionStorage evita loops infinitos dentro de la misma sesión.
-const BUILD_VERSION='202604182047';
+const BUILD_VERSION='202604182050';
 (function(){
   const _vk='otrofestiv_build';
   const _sk='otrofestiv_reloaded';
@@ -2408,10 +2408,11 @@ function toggleWL(title,e){
     }
     // Now safe to remove from watchlist
     watchlist.delete(title);watched.delete(title);prioritized.delete(title);
+    showToast('Quitada de Mi Lista','info');
   }
   else{
     watchlist.add(title);watched.delete(title);
-    showToast(`${ICONS.heart} Añadida a Mi Lista`,'info');
+    showToast(`${ICONS.heartFill} En Mi Lista`,'info');
   }
   saveState('wl','watched');updateCardState(title);updateAgTab();
   if(activeView==='agenda'){cachedResult=null;renderAgenda();}
@@ -2425,6 +2426,7 @@ function toggleWatched(title,e){
     saveState('wl','watched');updateCardState(title);updateAgTab();
     const listEl=document.getElementById('ag-film-list');
     if(listEl) listEl.innerHTML=renderFilmListHTML();
+    showToast('Movida a pendientes','info');
   } else {
     // Confirmar antes de marcar como vista
     const short=title.length>36?title.slice(0,34)+'…':title;
@@ -4201,12 +4203,12 @@ function togglePriority(title,cost){
         `<b>${short}</b><br><br>Sigue en Mi Lista, deja de ser prioritaria.`,
         'Quitar prioridad',()=>{
           prioritized.delete(title);savePrio();updateCardState(title);updateAgTab();runCalc();
-          showToast('Prioridad eliminada','info');
+          showToast(`${ICONS.star} Prioridad quitada`,'info');
         });return;
     }
     prioritized.delete(title);
     savePrio();updateCardState(title);updateAgTab();runCalc();
-    showToast('Prioridad eliminada','info');
+    showToast(`${ICONS.star} Prioridad quitada`,'info');
   } else {
     if(prioritized.size>=PRIO_LIMIT){
       showToast(`Máximo ${PRIO_LIMIT} prioridades activas. Quita una para cambiar.`,'warn');return;
@@ -4214,7 +4216,7 @@ function togglePriority(title,cost){
     prioritized.add(title);
     if(!watchlist.has(title)){watchlist.add(title);watched.delete(title);saveWL();saveWatched();}
     savePrio();updateCardState(title);updateAgTab();
-    showToast(`${ICONS.star} Prioridad activada · ${prioritized.size}/${PRIO_LIMIT}`,'info');
+    showToast(`${ICONS.starFill} Priorizada · ${prioritized.size}/${PRIO_LIMIT}`,'info');
     runCalc();
   }
   if(activeView==='agenda') renderAgenda();
@@ -4687,6 +4689,9 @@ function openRatingSheet(title){
 function closeRatingSheet(skip){
   if(!skip&&_currentRating>0){
     saveRating(_ratingTitle,_currentRating);
+    // Toast con las estrellas guardadas
+    const _stars=starsDisplay(_currentRating,11);
+    showToast(`<span style="display:inline-flex;align-items:center;gap:4px">${_stars}</span>`,'info');
   }
   document.getElementById('rating-overlay').classList.remove('open');
   document.getElementById('rating-sheet').classList.remove('open');
