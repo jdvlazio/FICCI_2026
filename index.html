@@ -610,6 +610,9 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:20px;fo
 
 .pel-sheet-prio-btn{background:none;border:1px solid var(--bdr);border-radius:var(--r-pill);color:var(--gray2);font-family:var(--font);font-size:13px;font-weight:700;padding:10px 0;cursor:pointer;width:100%;margin-top:8px;transition:all var(--tr-base)}
 .pel-sheet-prio-btn.prio-on{background:var(--amber-10);border-color:var(--amber-30);color:var(--amber)}
+.pel-sheet-action-btn{flex:1;background:none;border:1px solid var(--bdr);border-radius:var(--r-pill);color:var(--gray2);font-family:var(--font);font-size:12px;font-weight:700;padding:9px 4px;cursor:pointer;white-space:nowrap;min-width:0;transition:all var(--tr-base)}
+.pel-sheet-action-btn.act-on{background:rgba(39,174,96,.08);border-color:rgba(39,174,96,.25);color:var(--green)}
+.pel-sheet-action-btn.act-prio{background:var(--amber-10);border-color:var(--amber-30);color:var(--amber)}
 .pel-sheet-corto-item{display:flex;align-items:baseline;gap:8px;padding:5px 0;border-bottom:1px solid var(--bdr)}
 .pel-sheet-corto-item:last-child{border-bottom:none}
 .c-expand:hover{color:var(--orange)}
@@ -2010,7 +2013,7 @@ const FESTIVAL_STORAGE_KEY='ficci65_';
 // BUILD_VERSION: cambia en cada deploy.
 // Al cargar, compara con localStorage. Si difiere → reload duro.
 // sessionStorage evita loops infinitos dentro de la misma sesión.
-const BUILD_VERSION='202604182050';
+const BUILD_VERSION='202604182055';
 (function(){
   const _vk='otrofestiv_build';
   const _sk='otrofestiv_reloaded';
@@ -4722,8 +4725,8 @@ function togglePelPrio(title){
   const btn=document.getElementById('pel-prio-btn');
   if(!btn) return;
   const inPrio=prioritized.has(title);
-  btn.innerHTML=(inPrio?ICONS.starFill:ICONS.star)+(inPrio?' Priorizada':' Priorizar');
-  btn.className='pel-sheet-prio-btn'+(inPrio?' prio-on':'');
+  btn.innerHTML=(inPrio?ICONS.starFill:ICONS.star)+' '+(inPrio?'Priorizada':'Priorizar');
+  btn.className='pel-sheet-action-btn'+(inPrio?' act-prio':'');
 }
 
 /* ── BOTTOM SHEET: apertura, cierre, acciones ───────────────────────── */
@@ -4732,8 +4735,8 @@ function togglePelWL(title,e){
   const btn=document.getElementById('pel-wl-btn');
   if(!btn) return;
   const inWL=watchlist.has(title);
-  btn.innerHTML=inWL?`${ICONS.heartFill} En Mi Lista`:`${ICONS.heart} Mi Lista`;
-  btn.className='pel-sheet-wl-btn'+(inWL?' in-wl':'');
+  btn.innerHTML=(inWL?ICONS.heartFill:ICONS.heart)+' '+(inWL?'En Mi Lista':'Mi Lista');
+  btn.className='pel-sheet-action-btn'+(inWL?' act-on':'');
 }
 function openPelSheet(title){
   const entry=Object.values((()=>{
@@ -4810,16 +4813,17 @@ function openPelSheet(title){
     <div class="pel-sheet-synopsis">Sinopsis disponible próximamente.</div>
     ${cortosHtml}
     ${!f.is_cortos?`<a class="c-lb" href="${lbUrl(f.title)}" target="_blank" rel="noopener" style="display:inline-flex;margin-top:14px;margin-bottom:2px">${LB_SVG}<span class="c-lb-text">Ver en Letterboxd</span></a>`:''}
-    ${_inPlan&&!inW&&activeView==='agenda'?`<div style="display:flex;gap:8px;margin-top:16px;margin-bottom:0">
-        <button onclick="toggleWatched('${safeT}',event);closePelSheet()" style="flex:1;background:none;border:1px solid var(--bdr);border-radius:var(--r-pill);color:var(--gray2);font-family:var(--font);font-size:13px;font-weight:700;padding:10px 0;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:5px">${ICONS.check} Vista</button>
-        <button onclick="closePelSheet();removeFromAgenda('${safeT}')" style="flex:1;background:none;border:1px solid var(--bdr);border-radius:var(--r-pill);color:var(--gray2);font-family:var(--font);font-size:13px;font-weight:700;padding:10px 0;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:5px">${ICONS.x} Quitar</button>
-      </div>`:''}
-    ${!inW?`<button id="pel-wl-btn" class="pel-sheet-wl-btn${inWL?' in-wl':''}" onclick="togglePelWL('${safeT}',event)">${wlLabel}</button>
-      <button id="pel-prio-btn" class="pel-sheet-prio-btn${inPrio?' prio-on':''}" onclick="togglePelPrio('${safeT}')">${inPrio?ICONS.starFill:ICONS.star} ${inPrio?'Priorizada':'Priorizar'}</button>`
-    :`<div style="margin-top:16px;display:flex;gap:8px">
-        <button onclick="toggleWatched('${safeT}',event);closePelSheet()" style="flex:1;background:rgba(39,174,96,.08);border:1px solid rgba(39,174,96,.2);border-radius:var(--r-pill);color:var(--green);font-family:var(--font);font-size:14px;font-weight:700;padding:13px 0;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:7px">${ICONS.check} Ya vista</button>
-        <button onclick="closePelSheet();setTimeout(()=>openRatingSheet('${safeT}'),100)" style="flex:1;background:none;border:1px solid var(--bdr);border-radius:var(--r-pill);color:var(--gray2);font-family:var(--font);font-size:13px;font-weight:700;padding:13px 0;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:7px">${ICONS.star} ${filmRatings['${safeT}']?'Cambiar':'Calificar'}</button>
+    <div class="pel-sheet-divider" style="margin-top:16px"></div>
+    ${inW?`<div style="display:flex;gap:8px;margin-top:12px">
+        <button onclick="toggleWatched('${safeT}',event);closePelSheet()" style="flex:1;background:rgba(39,174,96,.08);border:1px solid rgba(39,174,96,.2);border-radius:var(--r-pill);color:var(--green);font-family:var(--font);font-size:13px;font-weight:700;padding:10px 0;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:5px">${ICONS.check} Ya vista</button>
+        <button onclick="closePelSheet();setTimeout(()=>openRatingSheet('${safeT}'),100)" style="flex:1;background:none;border:1px solid var(--bdr);border-radius:var(--r-pill);color:var(--gray2);font-family:var(--font);font-size:13px;font-weight:700;padding:10px 0;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:5px">${ICONS.star} ${filmRatings['${safeT}']?'Cambiar':'Calificar'}</button>
+      </div>`
+    :`<div style="display:flex;gap:6px;margin-top:12px">
+        <button id="pel-wl-btn" class="pel-sheet-action-btn${inWL?' act-on':''}" onclick="togglePelWL('${safeT}',event)" style="display:inline-flex;align-items:center;justify-content:center;gap:5px">${inWL?ICONS.heartFill:ICONS.heart} ${inWL?'En Mi Lista':'Mi Lista'}</button>
+        <button id="pel-prio-btn" class="pel-sheet-action-btn${inPrio?' act-prio':''}" onclick="togglePelPrio('${safeT}')" style="display:inline-flex;align-items:center;justify-content:center;gap:5px">${inPrio?ICONS.starFill:ICONS.star} ${inPrio?'Priorizada':'Priorizar'}</button>
+        <button id="pel-vista-btn" class="pel-sheet-action-btn" onclick="toggleWatched('${safeT}',event)" style="display:inline-flex;align-items:center;justify-content:center;gap:5px">${ICONS.check} Vista</button>
       </div>`}
+    ${_inPlan&&activeView==='agenda'?`<button onclick="closePelSheet();removeFromAgenda('${safeT}')" style="width:100%;margin-top:8px;background:none;border:1px solid var(--bdr);border-radius:var(--r-pill);color:var(--gray2);font-family:var(--font);font-size:12px;font-weight:600;padding:8px 0;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:5px">${ICONS.x} Quitar del plan</button>`:''}
   `;
   document.getElementById('pel-overlay').classList.add('open');
   document.getElementById('pel-sheet').classList.add('open');
