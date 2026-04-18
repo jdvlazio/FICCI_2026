@@ -596,7 +596,7 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:20px;fo
 .pel-sheet-overlay.open{opacity:1;pointer-events:all}
 .pel-sheet{position:fixed;bottom:0;left:0;right:0;background:var(--surf);border-radius:20px 20px 0 0;z-index:9001;max-height:88vh;overflow-y:auto;transform:translateY(100%);transition:transform .3s cubic-bezier(.32,0,.67,0)}
 .pel-sheet.open{transform:translateY(0)}
-.pel-sheet-topbar{display:flex;align-items:center;justify-content:center;padding:10px 16px 0;position:relative;flex-shrink:0}
+.pel-sheet-topbar{display:flex;align-items:center;justify-content:center;padding:14px 16px 8px;position:relative;flex-shrink:0;cursor:grab;touch-action:none}
 .pel-sheet-handle{width:36px;height:4px;background:var(--bdr);border-radius:2px}
 .pel-sheet-close{position:absolute;right:12px;top:6px;background:var(--surf-2);border:none;color:var(--gray2);width:28px;height:28px;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:16px;line-height:1}
 .pel-sheet-close:active{background:var(--bdr)}
@@ -1964,7 +1964,7 @@ const FESTIVAL_STORAGE_KEY='ficci65_';
 // ── Reset agresivo de caché — independiente del SW ────────────────
 // Cada deploy cambia BUILD_VERSION. Al cargar, si localStorage tiene
 // una versión anterior → location.reload(true) fuerza descarga limpia.
-const BUILD_VERSION='202604180948';
+const BUILD_VERSION='202604181611';
 (function(){
   const _vk='otrofestiv_build';
   const _stored=localStorage.getItem(_vk);
@@ -4713,6 +4713,39 @@ function closePelSheet(){
   document.getElementById('pel-overlay').classList.remove('open');
   document.getElementById('pel-sheet').classList.remove('open');
 }
+(function(){
+  let _startY=0,_dragging=false;
+  document.addEventListener('DOMContentLoaded',()=>{});
+  // Swipe-down en el topbar para cerrar el sheet
+  function _initSheetSwipe(){
+    const topbar=document.querySelector('.pel-sheet-topbar');
+    if(!topbar||topbar._swipeInit) return;
+    topbar._swipeInit=true;
+    topbar.addEventListener('touchstart',e=>{
+      _startY=e.touches[0].clientY;_dragging=true;
+    },{passive:true});
+    topbar.addEventListener('touchmove',e=>{
+      if(!_dragging) return;
+      const sheet=document.getElementById('pel-sheet');
+      const dy=e.touches[0].clientY-_startY;
+      if(dy>0) sheet.style.transform=`translateY(${dy}px)`;
+    },{passive:true});
+    topbar.addEventListener('touchend',e=>{
+      if(!_dragging) return;
+      _dragging=false;
+      const sheet=document.getElementById('pel-sheet');
+      const dy=e.changedTouches[0].clientY-_startY;
+      sheet.style.transform='';
+      if(dy>80) closePelSheet();
+    },{passive:true});
+  }
+  // Inicializar cuando se abre el sheet
+  const _origOpen=window.openPelSheet;
+  window.openPelSheet=function(title){
+    if(_origOpen) _origOpen(title);
+    setTimeout(_initSheetSwipe,50);
+  };
+})();
 
 function setCartelaMode(mode){
   cartelaMode=mode;
