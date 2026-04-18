@@ -885,7 +885,7 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:20px;fo
 .mplan-prog-num{font-size:var(--t-sm);color:var(--gray2);min-width:16px;text-align:right;flex-shrink:0}
 .mplan-prog-title{font-size:var(--t-sm);color:var(--white);flex:1;min-width:0;line-height:1.35}
 .mplan-prog-dur{font-size:var(--t-sm);color:var(--gray);flex-shrink:0}
-.mplan-prog-toggle{background:none;border:none;color:var(--orange);font-size:var(--t-sm);font-weight:var(--w-semi);cursor:pointer;font-family:var(--font);padding:0;margin-top:var(--sp-1);display:flex;align-items:center;gap:var(--sp-1);touch-action:manipulation}
+.mplan-prog-toggle{background:none;border:none;color:var(--orange);font-size:var(--t-sm);font-weight:var(--w-semi);cursor:pointer;font-family:var(--font);padding:0;margin-top:var(--sp-1);display:inline-flex;align-items:center;gap:5px;touch-action:manipulation;line-height:1}
 .mplan-prog-toggle:active{color:var(--orange)}
 .mplan-row:last-child{border-bottom:none}
 .mplan-tc{flex-shrink:0;min-width:50px}
@@ -2037,7 +2037,7 @@ const FESTIVAL_STORAGE_KEY='ficci65_';
 // BUILD_VERSION: cambia en cada deploy.
 // Al cargar, compara con localStorage. Si difiere → reload duro.
 // sessionStorage evita loops infinitos dentro de la misma sesión.
-const BUILD_VERSION='202604182013';
+const BUILD_VERSION='202604182017';
 (function(){
   const _vk='otrofestiv_build';
   const _sk='otrofestiv_reloaded';
@@ -2298,7 +2298,7 @@ function renderMiPlanCalendar(){
         <div class="mplan-ri">
           <div class="mplan-rtitle">${prioritized.has(s._title)?`<span style="color:var(--orange);margin-right:4px">${ICONS.starFill}</span>`:''} ${s._title||''}</div>
           <div class="mplan-rvenue">${ICONS.pin} ${vcfg(s.venue).short}${sala(s.venue)?' \u00b7 '+sala(s.venue):''}</div>
-          ${(()=>{const _mf=FILMS.find(fi=>fi.title===s._title&&fi.day===s.day&&fi.time===s.time);if(!_mf||!_mf.is_cortos||!_mf.film_list||!_mf.film_list.length) return'';return`<button class="mplan-prog-toggle" onclick="toggleMplanProg(this,event)">▸ Ver programa</button>`;})()}
+          ${(()=>{const _mf=FILMS.find(fi=>fi.title===s._title&&fi.day===s.day&&fi.time===s.time);if(!_mf||!_mf.is_cortos||!_mf.film_list||!_mf.film_list.length) return'';return`<button class="mplan-prog-toggle" onclick="toggleMplanProg(this,event)" style="display:inline-flex;align-items:center;gap:5px">${ICONS.chevronR} Programa</button>`;})()}
         </div>
         <div style="display:flex;flex-direction:column;align-items:flex-end;gap:4px;flex-shrink:0">
           <div class="mplan-dur">${s.duration||''}</div>
@@ -2786,8 +2786,8 @@ function renderAvDay(day){
       ${inlineForm}
       <div class="av-row-btns" style="margin-top:${pillsHtml||addOpen?'6px':'0'}">
         ${!fullBlocked&&!addOpen?`<button class="av-plus-btn" onclick="avAddOpen['${day}']=true;renderAvDay('${day}')">${ICONS.plus} No disponible</button>`:''}
-        ${!addOpen?`<button class="av-full-btn${fullBlocked?' active':''}" onclick="toggleFullDay('${day}')">
-          ${fullBlocked?'Liberar día':'Todo el día'}
+        ${!addOpen?`<button class="av-full-btn${fullBlocked?' active':''}" onclick="toggleFullDay('${day}')" style="display:inline-flex;align-items:center;gap:5px">
+          ${fullBlocked?ICONS.x+' Liberar día':ICONS.plus+' Todo el día'}
         </button>`:''}
       </div>
     </div>`;
@@ -3311,7 +3311,7 @@ function mkAgendaRow(s, mode='saved'){
     ?`<button class="film-switch${isExpanded?' open':''}" onclick="toggleFilmAlternatives('${filmKey}','${safeT}','${s.day||''}','${s.time||''}');event.stopPropagation()">Cambiar</button>`
     :'';
   const altsHtml=isExpanded&&mode==='saved'?renderFilmAlternatives(t,s.day,s.time):'';
-  const _progBtn=(()=>{const _mf=f;if(!_mf||!_mf.is_cortos||!_mf.film_list||!_mf.film_list.length)return'';return`<button class="mplan-prog-toggle" onclick="toggleMplanProg(this,event)">▸ Ver programa</button>`;})();
+  const _progBtn=(()=>{const _mf=f;if(!_mf||!_mf.is_cortos||!_mf.film_list||!_mf.film_list.length)return'';return`<button class="mplan-prog-toggle" onclick="toggleMplanProg(this,event)" style="display:inline-flex;align-items:center;gap:5px">${ICONS.chevronR} Programa</button>`;})();
   const _progList=(()=>{const _mf=f;if(!_mf||!_mf.is_cortos||!_mf.film_list||!_mf.film_list.length)return'';return`<div class="mplan-prog-list">${_mf.film_list.map((item,n)=>{const _mt=getPosterSrc(item.title,item.is_cortos!==false);const _mth=_mt?`<img src="${_mt}" class="c-film-thumb" loading="lazy" onerror="this.outerHTML='<div class=c-film-thumb-ph>🎬</div>'" alt="">`:'<div class="c-film-thumb-ph">🎬</div>';return`<div class="mplan-prog-item">${_mth}<div class="mplan-prog-num">${n+1}</div><div class="mplan-prog-title">${item.title}</div><div class="mplan-prog-dur">${item.duration}</div></div>`;}).join('')}</div>`;})();
   return`<div class="saved-item${isDone?' done':''}">
     ${_ph}
@@ -3391,7 +3391,7 @@ function toggleMplanProg(btn,e){
   const list=row?.nextElementSibling;
   if(!list||!list.classList.contains('mplan-prog-list')) return;
   const open=list.classList.toggle('open');
-  btn.innerHTML=(open?ICONS.chevronD+' ':ICONS.chevronR+' ')+'Ver programa';
+  btn.innerHTML=(open?ICONS.chevronD:ICONS.chevronR)+' Programa';
 }
 function setActivePlanFilm(el){_activeMiPlanFilm=el.dataset.fkey||'';}
 function selectFromDetail(el){
