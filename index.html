@@ -963,7 +963,8 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:20px;fo
 .saved-venue{font-size:var(--t-sm);color:var(--gray);margin-top:1px}
 .saved-check{background:none;border:1px solid var(--bdr);border-radius:var(--r-md);cursor:pointer;font-size:var(--t-sm);padding:var(--sp-1) var(--sp-2);color:var(--gray2);transition:color var(--tr-base),border-color var(--tr-base);flex-shrink:0;font-family:var(--font);display:inline-flex;align-items:center;gap:4px;line-height:1}
 .saved-check.done{color:var(--green);border-color:var(--green-20)}
-.saved-check:hover{border-color:var(--orange);color:var(--orange)}
+.saved-check:hover{border-color:var(--bdr);color:var(--gray)}
+.saved-check.done:hover{border-color:var(--bdr);color:var(--gray2)}
 
 /* Progress festival */
 .festival-progress{padding:var(--sp-3) var(--sp-3);background:var(--amber-06);border-radius:var(--r-md);margin-bottom:var(--sp-3)}
@@ -2036,7 +2037,7 @@ const FESTIVAL_STORAGE_KEY='ficci65_';
 // BUILD_VERSION: cambia en cada deploy.
 // Al cargar, compara con localStorage. Si difiere → reload duro.
 // sessionStorage evita loops infinitos dentro de la misma sesión.
-const BUILD_VERSION='202604182006';
+const BUILD_VERSION='202604182010';
 (function(){
   const _vk='otrofestiv_build';
   const _sk='otrofestiv_reloaded';
@@ -2303,7 +2304,7 @@ function renderMiPlanCalendar(){
           <div class="mplan-dur">${s.duration||''}</div>
           <div style="display:flex;gap:4px">
             ${!isPast?`<button class="film-switch${_expandedFilm===(s._title||'')+(s.day||'')+(s.time||'')?' open':''}" onclick="toggleFilmAlternatives('${(s._title||'')+(s.day||'')+(s.time||'')}','${safeT}','${s.day||''}','${s.time||''}');event.stopPropagation()">Cambiar</button>`:''}
-            <button class="ag-fi-btn${watched.has(s._title)?' w-on':''}" data-wt="${safeT}" onclick="toggleWatched(this.dataset.wt,event)" title="${watched.has(s._title)?'Desmarcar':'Marcar como vista'}">${watched.has(s._title)?ICONS.x+' No la vi':ICONS.check+' Vista'}</button>
+            <button class="ag-fi-btn${watched.has(s._title)?' w-on':''}" data-wt="${safeT}" onclick="toggleWatched(this.dataset.wt,event)" title="${watched.has(s._title)?'Desmarcar':'Marcar como vista'}">${watched.has(s._title)?ICONS.check+' No vista':ICONS.check+' Vista'}</button>
             <button class="ag-fi-btn del" data-rmt="${safeT}" onclick="removeFromAgenda(this.dataset.rmt);event.stopPropagation()" title="Quitar">\u2715</button>
           </div>
         </div>
@@ -3320,7 +3321,7 @@ function mkAgendaRow(s, mode='saved'){
       <div class="saved-venue">${ICONS.pin} ${vc2.short}${sl?' · '+sl:''}${s.duration?' · '+s.duration:''}${altBadge}</div>
       ${_progBtn}
     </div>
-    <button class="saved-check${isDone?' done':''}" data-wt="${safeT}" onclick="toggleWatched(this.dataset.wt,event)" title="${isDone?'Desmarcar':'Marcar como vista'}">${isDone?ICONS.x+' No la vi':ICONS.check+' Vista'}</button>
+    <button class="saved-check${isDone?' done':''}" data-wt="${safeT}" onclick="toggleWatched(this.dataset.wt,event)" title="${isDone?'Desmarcar':'Marcar como vista'}">${isDone?ICONS.check+' No vista':ICONS.check+' Vista'}</button>
     ${switchBtn}${actionBtn}
   </div>${_progList}${altsHtml?`<div class="film-alts">${altsHtml}</div>`:''}`;
 }
@@ -3811,7 +3812,7 @@ function _renderSavedAgendaHTML(){
               <div class="saved-title">${s._title}</div>
               <div class="saved-venue">${ICONS.pin} ${vc2.short}${sl?' · '+sl:''}</div>
             </div>
-            <button class="saved-check done" data-wt="${(s._title||'').replace(/"/g,'&quot;')}" onclick="toggleWatched(this.dataset.wt,event)" title="Desmarcar">${ICONS.x} No la vi</button>
+            <button class="saved-check done" data-wt="${(s._title||'').replace(/"/g,'&quot;')}" onclick="toggleWatched(this.dataset.wt,event)" title="Desmarcar">${ICONS.check} No vista</button>
           </div>`;
         }).join('')}`).join(''):''}
       ${watchedOutsidePlan.length?`
@@ -3826,7 +3827,7 @@ function _renderSavedAgendaHTML(){
               <div class="saved-title">${f.title}</div>
               <div class="saved-venue">${ICONS.clock} ${f.duration||'—'}</div>
             </div>
-            <button class="saved-check done" data-wt="${(f.title||'').replace(/"/g,'&quot;')}" onclick="toggleWatched(this.dataset.wt,event)" title="Desmarcar">${ICONS.x} No la vi</button>
+            <button class="saved-check done" data-wt="${(f.title||'').replace(/"/g,'&quot;')}" onclick="toggleWatched(this.dataset.wt,event)" title="Desmarcar">${ICONS.check} No vista</button>
           </div>`;
         }).join('')}`:''}
     </div>`;
@@ -4891,7 +4892,7 @@ function openPelSheet(title){
         </div>
         <div style="display:flex;gap:8px">
           <button onclick="closePelSheet();setTimeout(()=>openRatingSheet('${safeT}'),100)" style="flex:1;background:none;border:1px solid var(--bdr);border-radius:var(--r-pill);color:var(--gray2);font-family:var(--font);font-size:13px;font-weight:700;padding:10px 0;cursor:pointer">${ICONS.star} ${filmRatings['${safeT}']?'Cambiar':'Calificar'}</button>
-          <button onclick="toggleWatched('${safeT}',event);closePelSheet()" style="flex:1;background:none;border:1px solid var(--bdr);border-radius:var(--r-pill);color:var(--gray2);font-family:var(--font);font-size:13px;font-weight:700;padding:10px 0;cursor:pointer">${ICONS.x} No la vi</button>
+          <button onclick="toggleWatched('${safeT}',event);closePelSheet()" style="flex:1;background:none;border:1px solid var(--bdr);border-radius:var(--r-pill);color:var(--gray2);font-family:var(--font);font-size:13px;font-weight:700;padding:10px 0;cursor:pointer">${ICONS.check} No vista</button>
         </div>
       </div>`}
   `;
