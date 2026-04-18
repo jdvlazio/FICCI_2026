@@ -555,6 +555,22 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:20px;fo
 .carta-mode-btn.active{background:var(--amber-10);border-color:var(--amber-30);color:var(--amber)}
 /* ── Grid Por Película ── */
 .pelicula-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--sp-2);padding:12px}
+/* ── Vista horario compacta — grid 2 columnas ── */
+.horario-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;padding:12px}
+.horario-card{border-radius:var(--r-md);overflow:hidden;background:var(--card-a);border:1px solid var(--bdr);cursor:pointer;transition:border-color var(--tr-base);position:relative}
+.horario-card.in-wl{border-color:var(--amber-30)}
+.horario-card.in-watched{border-color:rgba(39,174,96,.25);opacity:.55}
+.horario-card.past-card{opacity:.45}
+.horario-card:active{opacity:.8}
+.horario-poster{width:100%;aspect-ratio:2/3;object-fit:cover;display:block;background:var(--surf-2)}
+.horario-poster-prog{width:100%;aspect-ratio:2/3;object-fit:contain;background:#111;display:block}
+.horario-poster-ph{width:100%;aspect-ratio:2/3;background:var(--surf-2);display:flex;align-items:center;justify-content:center;font-size:32px;opacity:.3}
+.horario-label{padding:7px 8px 9px}
+.horario-time{font-size:13px;font-weight:800;color:var(--amber);line-height:1;margin-bottom:3px}
+.horario-title{font-size:12px;font-weight:600;color:var(--white);line-height:1.3;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.horario-wl-dot{position:absolute;bottom:46px;right:6px;font-size:14px;line-height:1}
+.horario-now{position:absolute;top:6px;left:6px;background:var(--green);color:#000;font-size:9px;font-weight:800;letter-spacing:.6px;padding:2px 6px;border-radius:3px}
+.horario-past{position:absolute;top:6px;left:6px;background:rgba(0,0,0,.6);color:var(--gray2);font-size:9px;font-weight:700;padding:2px 5px;border-radius:3px}
 .pelicula-card{border-radius:var(--r-md);overflow:hidden;background:var(--card-a);border:1px solid var(--bdr);cursor:pointer;transition:border-color var(--tr-base)}
 .pelicula-card.in-wl{border-color:var(--amber-30)}
 .pelicula-card.expanded{border-color:var(--orange)}
@@ -1938,7 +1954,7 @@ const FESTIVAL_STORAGE_KEY='ficci65_';
 // ── Reset agresivo de caché — independiente del SW ────────────────
 // Cada deploy cambia BUILD_VERSION. Al cargar, si localStorage tiene
 // una versión anterior → location.reload(true) fuerza descarga limpia.
-const BUILD_VERSION='202604180917';
+const BUILD_VERSION='202604180928';
 (function(){
   const _vk='otrofestiv_build';
   const _stored=localStorage.getItem(_vk);
@@ -4764,85 +4780,35 @@ function render(){
   }
   const grid=document.getElementById('grid');
   if(!films.length){grid.innerHTML=emptyState(ICONS.search,'Sin funciones para este filtro.','Ajusta los filtros de sección o sede.');return;}
-  grid.innerHTML=films.map((f,i)=>{
-    const vc=vcfg(f.venue),sl=sala(f.venue);
-    const isAp=f.section==='🎬 Apertura',isMid=f.section==='🌙 Medianoche',isProg=f.is_cortos;
-    const passed=screeningPassed(f);
-    const flags=f.flags||'🎬';
-    const tEn=!isProg&&f.title_en&&f.title_en!==f.title&&!f.title_en.includes('·')?f.title_en:'';
-    const durMin=f.duration?parseInt(f.duration):0;
-    const secActive=activeSec===f.section?' active-sec':'';
-    const inWL=watchlist.has(f.title),inW=watched.has(f.title);
-    let filmBlock='';
-    if(isProg){
-      const list=f.film_list||[];
-      if(list.length) filmBlock=`<div class="c-film-list">${list.map((item,n)=>{const thumb=getPosterSrc(item.title,item.is_cortos!==false);const thumbHtml=thumb?`<img src="${thumb}" class="c-film-thumb" loading="lazy" onerror="this.outerHTML='<div class=c-film-thumb-ph>🎬</div>'" alt="">`:'<div class="c-film-thumb-ph">🎬</div>';return`<div class="c-film-item">${thumbHtml}<div class="c-film-num">${n+1}</div><div class="c-film-info"><div class="c-film-title">${item.title}</div><div class="c-film-meta">${item.country}${item.duration?" · "+item.duration:""}</div></div><a class="c-film-lb" href="${lbUrl(item.title)}" target="_blank" rel="noopener" onclick="event.stopPropagation()">${LB_SVG}</a></div>`;}).join('')}</div>`;
-      else{const titles=(f.title_en||'').split('·').map(t=>t.trim()).filter(Boolean);if(titles.length) filmBlock=`<div class="c-title-pills">${titles.map(t=>`<span class="c-title-pill">${t}</span>`).join('')}</div>`;}
-    }
-    const expandBtn=isProg&&filmBlock?`<div class="c-expand" onclick="toggleExpand(this,event)"><span>Ver programa</span><span class="c-expand-arrow">▼</span></div>`:'';
-    const safe=f.title.replace(/"/g,'&quot;').replace(/'/g,"\'");
-    const inPrio=prioritized.has(f.title);
-    const prioBtn=`<button class="action-btn prio-btn${inPrio?' prio-on':''}" onclick="togglePriority('${safe}')" title="${inPrio?'Quitar prioridad':'Priorizar'}">${ICONS.star}</button>`;
-    const actBtns=`<div class="card-actions">
-      <button class="action-btn wl-btn${inWL?' wl-on':''}" onclick="toggleWL('${safe}',event)" title="${inWL?'Quitar de Mi Lista':'Añadir a Mi Lista'}">${inWL?ICONS.heartFill:ICONS.heart}</button>
-      <button class="action-btn w-btn${inW?' w-on':''}" onclick="toggleWatched('${safe}',event)" title="${inW?'Marcar como pendiente':'Marcar como vista'}">${ICONS.check}</button>
-      ${prioBtn}
-    </div>`;
-    const apBadge=isAp?'<div class="apertura-badge">✦ APERTURA</div>':'';
-    const nowBadge=isNowShowing(f)?'<div class="now-label"><span class="now-pulse"></span>AHORA</div>':'';
-    const pastBadge=(passed&&!isNowShowing(f))?'<div class="past-badge">Ya pasó</div>':'';
-    const lbPill=isProg?'':`<a class="c-lb" href="${lbUrl(f.title)}" target="_blank" rel="noopener" onclick="event.stopPropagation()">${LB_SVG}<span class="c-lb-text">Letterboxd</span></a>`;
-    // Poster: films use getPosterSrc; programs use official FICCI 65 festival poster
+  // ── Vista horario: grid 2 columnas de posters ──
+  grid.innerHTML='<div class="horario-grid">'+films.map((f,i)=>{
     const FICCI_POSTER='https://ficcifestival.com/sites/default/files/2026-02/logo-ficci65_2.png';
-    let posterSrc=null, posterHtml='';
-    if(!isProg){
-      posterSrc=getPosterSrc(f.title,false);
-      if(posterSrc) posterHtml=`<div class="c-poster"><img src="${posterSrc}" alt="" loading="lazy" onerror="this.parentElement.innerHTML='<div class=c-poster-none>🎬</div>'"></div>`;
-      else posterHtml=`<div class="c-poster"><div class="c-poster-none">🎬</div></div>`;
-    } else {
-      posterSrc=true;
-      posterHtml=`<div class="c-poster"><img src="${FICCI_POSTER}" alt="FICCI 65" loading="lazy" style="object-fit:contain;background:#111" onerror="this.parentElement.innerHTML='<div class=c-poster-none>🎬</div>'"></div>`;
-    }
-    const hasPoster=!!posterSrc;
-    const{displayTitle,progSuffix}=parseProgramTitle(f.title);
-    const durLongHtml=durMin>150?`<span class="c-dur-long">${ICONS.clock} ${Math.floor(durMin/60)}h ${durMin%60}min</span>`:'';
-    const zoneHtml=`
-      <div class="c-slot-time"><div class="c-time" style="${passed?'color:var(--gray2)':''}">${f.time}</div></div>
-      <div class="c-slot-title"><div class="c-title">${displayTitle}${isMid?' 🌙':''}</div></div>
-      <div class="c-slot-flags"><div class="c-flags">${flags}</div></div>
-      <div class="c-slot-dur"><div class="c-meta-ico">${ICONS.clock} ${f.duration}</div></div>
-      <div class="c-slot-venue"><div class="c-meta-ico">${ICONS.pin} ${vc.short}${sl?' · '+sl:''}</div></div>
-      <div class="c-slot-space"></div>`;
-    const posterCol=posterHtml
-      ?posterHtml
-      :`<div class="c-poster empty"><div class="c-poster-none"></div></div>`;
-    return`<div class="card${isAp?' apertura':isProg?' program':''}${hasPoster?' has-poster':''}${inWL&&!inW?' in-wl':inW?' in-watched':''}${passed?' past-card':''}" data-idx="${i}" data-title="${f.title.replace(/"/g,'&quot;')}">
-      ${actBtns}
-      <div class="c-body">
-        ${posterCol}<div class="c-content">${zoneHtml}</div>
+    const isProg=f.is_cortos;
+    const passed=screeningPassed(f);
+    const inWL=watchlist.has(f.title),inW=watched.has(f.title);
+    const isNow=isNowShowing(f);
+    const safeT=f.title.replace(/'/g,"\'");
+    const posterSrc=isProg?FICCI_POSTER:(getPosterSrc(f.title,false)||null);
+    const posterHtml=posterSrc
+      ?`<img class="${isProg?'horario-poster-prog':'horario-poster'}" src="${posterSrc}" loading="lazy" onerror="this.outerHTML='<div class=horario-poster-ph>🎬</div>'" alt="">`
+      :`<div class="horario-poster-ph">🎬</div>`;
+    const{displayTitle}=parseProgramTitle(f.title);
+    const shortTitle=displayTitle.length>32?displayTitle.slice(0,30)+'…':displayTitle;
+    const nowBadge=isNow?'<div class="horario-now">AHORA</div>':'';
+    const pastBadge=passed&&!isNow?'<div class="horario-past">Ya pasó</div>':'';
+    const wlDot=inWL?`<div class="horario-wl-dot">${ICONS.heartFill}</div>`:'';
+    const progBadge=isProg&&f.film_list?.length?`<div class="pelicula-prog-badge">CORTOS · ${f.film_list.length}</div>`:'';
+    return`<div class="horario-card${inWL&&!inW?' in-wl':''}${inW?' in-watched':''}${passed?' past-card':''}" onclick="openPelSheet('${safeT}')">
+      <div style="position:relative">
+        ${posterHtml}
+        ${nowBadge}${pastBadge}${progBadge}${wlDot}
       </div>
-      ${filmBlock}
-      <div class="c-divider"></div>
-      <div class="c-foot">
-        <div class="c-foot-left">
-          ${apBadge}${isProg&&expandBtn?expandBtn:`<span class="c-sec${secActive}" data-sec="${f.section.replace(/"/g,'&quot;')}">${f.section}</span>`}
-          ${lbPill}
-        </div>
-        <div class="c-foot-space"></div>
-        <div class="c-foot-right">
-          ${nowBadge}${pastBadge}${progSuffix?`<span class="c-dur" style="color:var(--gray2)">${progSuffix}</span>`:''}
-        </div>
+      <div class="horario-label">
+        <div class="horario-time">${f.time}</div>
+        <div class="horario-title">${shortTitle}</div>
       </div>
     </div>`;
-  }).join('');
-  document.querySelectorAll('.card').forEach(card=>{
-    card.addEventListener('click',e=>{
-      if(e.target.closest('.card-actions')||e.target.closest('.c-expand')||e.target.closest('.c-lb')) return;
-      if(e.target.closest('.c-sec')){const sec=e.target.closest('.c-sec').dataset.sec;activeSec=activeSec===sec?'all':sec;selectedIdx=null;setHint(null);const _sy=window.scrollY||document.documentElement.scrollTop||0;render();requestAnimationFrame(()=>window.scrollTo({top:_sy,behavior:'instant'}));return;}
-      onCardClick(parseInt(card.dataset.idx),films);
-    });
-  });
-  if(selectedIdx!==null&&selectedIdx<films.length) applyStates(films);
+  }).join('')+'</div>';
 
 
 
