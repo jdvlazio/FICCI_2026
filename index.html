@@ -604,6 +604,22 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:20px;fo
 .pel-sheet-wl-btn{background:var(--amber-10);border:1px solid var(--amber-30);border-radius:var(--r-pill);color:var(--amber);font-family:var(--font);font-size:14px;font-weight:700;padding:14px 0;cursor:pointer;width:100%;margin-top:16px;transition:background var(--tr-base)}
 .pel-sheet-wl-btn:active{background:var(--amber-20)}
 .pel-sheet-wl-btn.in-wl{background:rgba(39,174,96,.1);border-color:rgba(39,174,96,.3);color:var(--green)}
+/* ── Rating sheet ── */
+.rating-overlay{position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:9100;opacity:0;transition:opacity .2s;pointer-events:none}
+.rating-overlay.open{opacity:1;pointer-events:all}
+.rating-sheet{position:fixed;bottom:0;left:0;right:0;background:var(--surf);border-radius:20px 20px 0 0;z-index:9101;padding:16px 20px 40px;transform:translateY(100%);transition:transform .28s cubic-bezier(.32,0,.67,0)}
+.rating-sheet.open{transform:translateY(0)}
+.rating-handle{width:36px;height:4px;background:var(--bdr);border-radius:2px;margin:0 auto 18px}
+.rating-title{font-size:13px;color:var(--gray2);margin-bottom:4px}
+.rating-film{font-size:16px;font-weight:700;color:var(--white);margin-bottom:20px;line-height:1.3}
+.rating-stars{display:flex;justify-content:center;gap:2px;margin-bottom:24px}
+.rating-star-wrap{width:44px;height:44px;position:relative;cursor:pointer;display:flex;align-items:center;justify-content:center}
+.rating-star-half,.rating-star-full{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);pointer-events:none}
+.rating-star-zone{position:absolute;top:0;height:100%;width:50%;cursor:pointer}
+.rating-star-zone.left{left:0}
+.rating-star-zone.right{right:0}
+.rating-skip{width:100%;background:none;border:none;color:var(--gray);font-family:var(--font);font-size:13px;padding:8px;cursor:pointer}
+.ya-vistas-stars{display:flex;align-items:center;justify-content:center;gap:1px;padding:3px 0 1px;height:14px}
 .pel-sheet-prio-btn{background:none;border:1px solid var(--bdr);border-radius:var(--r-pill);color:var(--gray2);font-family:var(--font);font-size:13px;font-weight:700;padding:10px 0;cursor:pointer;width:100%;margin-top:8px;transition:all var(--tr-base)}
 .pel-sheet-prio-btn.prio-on{background:var(--amber-10);border-color:var(--amber-30);color:var(--amber)}
 .pel-sheet-corto-item{display:flex;align-items:baseline;gap:8px;padding:5px 0;border-bottom:1px solid var(--bdr)}
@@ -1519,6 +1535,15 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:20px;fo
   <button class="fdr-btn active" id="btn-modo-pelicula" onclick="setCartelaMode('pelicula')"><span class="fdr-label">Por Película</span></button>
   <button class="fdr-btn" id="btn-modo-horario" onclick="setCartelaMode('horario')"><span class="fdr-label">Por Horario</span></button>
 </div>
+<!-- ── Rating Sheet ── -->
+<div class="rating-overlay" id="rating-overlay" onclick="closeRatingSheet()"></div>
+<div class="rating-sheet" id="rating-sheet">
+  <div class="rating-handle"></div>
+  <div class="rating-title">¿Qué te pareció?</div>
+  <div class="rating-film" id="rating-film-title"></div>
+  <div class="rating-stars" id="rating-stars"></div>
+  <button class="rating-skip" onclick="closeRatingSheet(true)">Sin calificar</button>
+</div>
 <!-- ── Bottom Sheet Por Película ── -->
 <div class="pel-sheet-overlay" id="pel-overlay" onclick="closePelSheet()"></div>
 <div class="pel-sheet" id="pel-sheet">
@@ -1998,6 +2023,7 @@ function normalize(str){
 // ═══════════════════════════════════════════════════════════════
 // ── STATE ──
 let watchlist=new Set();
+const filmRatings={}; // {title: 0.5..5} medias estrellas Letterboxd-style
 let watched=new Set();
 let prioritized=new Set();
 const PRIO_LIMIT=5;
@@ -2009,7 +2035,7 @@ const FESTIVAL_STORAGE_KEY='ficci65_';
 // BUILD_VERSION: cambia en cada deploy.
 // Al cargar, compara con localStorage. Si difiere → reload duro.
 // sessionStorage evita loops infinitos dentro de la misma sesión.
-const BUILD_VERSION='202604181953';
+const BUILD_VERSION='202604181958';
 (function(){
   const _vk='otrofestiv_build';
   const _sk='otrofestiv_reloaded';
@@ -2309,6 +2335,7 @@ function loadState(){
   try{
     const wl=localStorage.getItem('ficci65_wl'); if(wl) watchlist=new Set(JSON.parse(wl));
     const wt=localStorage.getItem('ficci65_watched'); if(wt) watched=new Set(JSON.parse(wt));
+    const _rt=localStorage.getItem('ficci65_ratings'); if(_rt) try{Object.assign(filmRatings,JSON.parse(_rt));}catch(e){}
     const av=localStorage.getItem('ficci65_av3'); if(av){const p=JSON.parse(av);DAY_KEYS.forEach(d=>{if(p[d]) availability[d]=p[d];});}
     const sa=localStorage.getItem('ficci65_saved'); if(sa) savedAgenda=JSON.parse(sa);
     // Normalizar venues viejos (ej: 'CC Bocagrande' → 'Plaza Bocagrande')
@@ -2328,6 +2355,10 @@ function loadState(){
 }
 function saveWL(){try{localStorage.setItem('ficci65_wl',JSON.stringify([...watchlist]));}catch(e){}}
 function saveWatched(){try{localStorage.setItem('ficci65_watched',JSON.stringify([...watched]));}catch(e){}}
+function saveRating(title,rating){
+  if(rating>0) filmRatings[title]=rating; else delete filmRatings[title];
+  try{localStorage.setItem('ficci65_ratings',JSON.stringify(filmRatings));}catch(e){}
+}
 function saveAV(){try{localStorage.setItem('ficci65_av3',JSON.stringify(availability));}catch(e){}}
 function saveSavedAgenda(){try{localStorage.setItem('ficci65_saved',JSON.stringify(savedAgenda));}catch(e){}}
 function savePrio(){try{localStorage.setItem('ficci65_prio',JSON.stringify([...prioritized]));}catch(e){}}
@@ -2428,7 +2459,8 @@ function toggleWatched(title,e){
         watched.add(title);
         saveWatched();updateCardState(title);updateAgTab();
         if(activeView==='agenda'){cachedResult=null;renderAgenda();}
-        showToast(`✓ Movida a Ya vistas`);
+        showToast('Movida a Ya vistas','info');
+        setTimeout(()=>openRatingSheet(title),350);
       }
     );
   }
@@ -3206,22 +3238,27 @@ function renderFilmListHTML(){
   }
   if(watchedList.length){
     html+=`<div class="prio-strip-title" style="margin-top:${allPending.length?'10px':'0'};margin-bottom:6px;color:var(--green)">${ICONS.check} Ya vistas</div>`;
-    html+=`<div class="ag-film-grid">${watchedList.map(t=>{
+    const _sortedW=[...watchedList].sort((a,b)=>(filmRatings[b]||0)-(filmRatings[a]||0));
+    html+=`<div class="ag-film-grid">${_sortedW.map(t=>{
       const f=FILMS.find(fi=>fi.title===t);
       const posterSrc=f?(f.is_cortos?makeProgramPoster(t):getPosterSrc(t,false)):null;
       const posterHtml=posterSrc?`<img class="ag-fi-poster" src="${posterSrc}" loading="lazy" style="object-fit:cover;opacity:.55" onerror="this.outerHTML='<div class=ag-fi-poster-ph>🎬</div>'" alt="">`:`<div class="ag-fi-poster-ph" style="opacity:.55">🎬</div>`;
       const safeT=t.replace(/"/g,'&quot;');
       const safeTQ2=t.replace(/'/g,"\'");
       const{displayTitle}=parseProgramTitle(t);
+      const _rating=filmRatings[t]||0;
+      const _stars=_rating?`<div class="ya-vistas-stars">${starsDisplay(_rating,9)}</div>`:'';
       return`<div class="ag-film-item watched-item" onclick="openPelSheet('${safeTQ2}')">
         ${posterHtml}
         <div class="ag-fi-overlay"></div>
         <div class="ag-fi-actions">
+          <button class="ag-fi-btn" onclick="event.stopPropagation();openRatingSheet('${safeTQ2}')" title="Calificar">${ICONS.star}</button>
           <button class="ag-fi-btn" data-wt="${safeT}" onclick="toggleWatched(this.dataset.wt,event);event.stopPropagation()" title="Desmarcar">${ICONS.undo} Desmarcar</button>
         </div>
         <div class="ag-fi-bottom">
           <div class="ag-fi-flags">${f?f.flags||'🌐':'🌐'}</div>
           <div class="ag-fi-title">${displayTitle}</div>
+          ${_stars}
         </div>
       </div>`;
     }).join('')}</div>`;
@@ -4680,6 +4717,79 @@ function updateHorarioPrioBtn(title){
     btn.innerHTML=(inPrio?ICONS.starFill:ICONS.star)+' Prio.';
   });
 }
+/* ── RATING SHEET ── */
+let _ratingTitle='';
+
+function starSVG(fill){
+  // fill: 'none' | 'half' | 'full'
+  const id='rs'+Math.random().toString(36).slice(2,6);
+  const grad=fill==='half'
+    ?`<defs><linearGradient id="${id}"><stop offset="50%" stop-color="var(--amber)"/><stop offset="50%" stop-color="transparent"/></linearGradient></defs>`
+    :'';
+  const fillVal=fill==='none'?'none':fill==='full'?'var(--amber)':`url(#${id})`;
+  const stroke=fill==='none'?'var(--gray)':'var(--amber)';
+  return`<svg width="28" height="28" viewBox="0 0 24 24" style="display:block;flex-shrink:0">${grad}<polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26" fill="${fillVal}" stroke="${stroke}" stroke-width="1.5" stroke-linejoin="round"/></svg>`;
+}
+
+function renderRatingStars(current){
+  // current: 0..5 en 0.5
+  const el=document.getElementById('rating-stars');
+  if(!el) return;
+  let html='';
+  for(let i=1;i<=5;i++){
+    const fill=current>=i?'full':current>=i-0.5?'half':'none';
+    html+=`<div class="rating-star-wrap" data-star="${i}">
+      ${starSVG(fill)}
+      <div class="rating-star-zone left" onclick="setRating(${i-0.5})"></div>
+      <div class="rating-star-zone right" onclick="setRating(${i})"></div>
+    </div>`;
+  }
+  el.innerHTML=html;
+}
+
+let _currentRating=0;
+function setRating(val){
+  _currentRating=val;
+  renderRatingStars(val);
+}
+
+function openRatingSheet(title){
+  _ratingTitle=title;
+  _currentRating=filmRatings[title]||0;
+  const{displayTitle}=parseProgramTitle(title);
+  document.getElementById('rating-film-title').textContent=displayTitle;
+  renderRatingStars(_currentRating);
+  document.getElementById('rating-overlay').classList.add('open');
+  document.getElementById('rating-sheet').classList.add('open');
+}
+
+function closeRatingSheet(skip){
+  if(!skip&&_currentRating>0){
+    saveRating(_ratingTitle,_currentRating);
+  }
+  document.getElementById('rating-overlay').classList.remove('open');
+  document.getElementById('rating-sheet').classList.remove('open');
+  // Re-render Ya vistas con nuevo orden
+  const listEl=document.getElementById('ag-film-list');
+  if(listEl) listEl.innerHTML=renderFilmListHTML();
+}
+
+function starsDisplay(rating,size){
+  // size en px para display compacto
+  if(!rating) return '';
+  let html='';
+  for(let i=1;i<=5;i++){
+    const fill=rating>=i?'full':rating>=i-0.5?'half':'none';
+    const s=size||10;
+    const id='sd'+i+Math.random().toString(36).slice(2,5);
+    const grad=fill==='half'?`<defs><linearGradient id="${id}"><stop offset="50%" stop-color="var(--amber)"/><stop offset="50%" stop-color="transparent"/></linearGradient></defs>`:'';
+    const fv=fill==='none'?'none':fill==='full'?'var(--amber)':`url(#${id})`;
+    const st=fill==='none'?'rgba(255,255,255,.2)':'var(--amber)';
+    html+=`<svg width="${s}" height="${s}" viewBox="0 0 24 24" style="display:block;flex-shrink:0">${grad}<polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26" fill="${fv}" stroke="${st}" stroke-width="1.5" stroke-linejoin="round"/></svg>`;
+  }
+  return html;
+}
+
 function renderAgendaOrRender(){
   if(activeView==='agenda') renderAgenda(); else render();
 }
