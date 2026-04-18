@@ -3115,7 +3115,8 @@ function renderPrioStrip(){
   const chips=[...prioritized].map(t=>{
     const f=FILMS.find(fi=>fi.title===t);
     const p=f?.is_cortos?makeProgramPoster(t):getPosterSrc(t,false);
-    const img=p?`<img class="prio-chip-poster" src="${p}" loading="lazy" style="object-fit:cover" onerror="this.outerHTML='<div class=prio-chip-ph>🎬</div>'" alt="">`:`<div class="prio-chip-ph">${ICONS.star}</div>`;
+    const _safeChipT=t.replace(/'/g,"\'");
+    const img=p?`<img class="prio-chip-poster" src="${p}" loading="lazy" style="object-fit:cover;cursor:pointer" onclick="event.stopPropagation();openPelSheet('${_safeChipT}')" onerror="this.outerHTML='<div class=prio-chip-ph>🎬</div>'" alt="">`:`<div class="prio-chip-ph">${ICONS.star}</div>`;
     const{displayTitle,progSuffix}=parseProgramTitle(t);
     const short=displayTitle.length>16?displayTitle.slice(0,14)+'…':displayTitle;
     const allPast=!FILMS.some(f=>f.title===t&&!screeningPassed(f));
