@@ -2017,7 +2017,7 @@ const FESTIVAL_STORAGE_KEY='ficci65_';
 // BUILD_VERSION: cambia en cada deploy.
 // Al cargar, compara con localStorage. Si difiere → reload duro.
 // sessionStorage evita loops infinitos dentro de la misma sesión.
-const BUILD_VERSION='202604182126';
+const BUILD_VERSION='202604182130';
 (function(){
   const _vk='otrofestiv_build';
   const _sk='otrofestiv_reloaded';
@@ -4613,6 +4613,7 @@ function starSVG(fill){
   return`<svg width="28" height="28" viewBox="0 0 24 24" style="display:block;flex-shrink:0">${grad}<polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26" fill="${fillVal}" stroke="${stroke}" stroke-width="1.5" stroke-linejoin="round"/></svg>`;
 }
 
+// Render inicial — construye el DOM de las 5 estrellas una sola vez
 function renderRatingStars(current){
   const el=document.getElementById('rating-stars');
   if(!el) return;
@@ -4622,19 +4623,56 @@ function renderRatingStars(current){
     html+=`<div style="width:44px;height:44px;display:flex;align-items:center;justify-content:center">${starSVG(fill)}</div>`;
   }
   el.innerHTML=html;
-  const range=document.getElementById('rating-range');
-  if(range) range.value=Math.round(current*2);
+}
+
+// Update rápido durante drag — solo actualiza los atributos SVG sin recrear DOM
+function updateRatingStars(current){
+  const el=document.getElementById('rating-stars');
+  if(!el) return;
+  const wraps=el.querySelectorAll('div');
+  if(wraps.length!==5){renderRatingStars(current);return;}
+  for(let i=0;i<5;i++){
+    const star=i+1;
+    const fill=current>=star?'full':current>=star-0.5?'half':'none';
+    const poly=wraps[i].querySelector('polygon');
+    const defs=wraps[i].querySelector('defs');
+    if(!poly) continue;
+    if(fill==='none'){
+      poly.setAttribute('fill','none');
+      poly.setAttribute('stroke','rgba(255,255,255,.2)');
+      if(defs) defs.remove();
+    } else if(fill==='full'){
+      if(defs) defs.remove();
+      poly.setAttribute('fill','var(--amber)');
+      poly.setAttribute('stroke','var(--amber)');
+    } else {
+      // half — recrear gradient solo cuando es necesario
+      const svg=wraps[i].querySelector('svg');
+      if(svg&&!defs){
+        const id='rg'+i;
+        svg.insertAdjacentHTML('afterbegin',
+          `<defs><linearGradient id="${id}"><stop offset="50%" stop-color="var(--amber)"/><stop offset="50%" stop-color="transparent"/></linearGradient></defs>`);
+        poly.setAttribute('fill',`url(#${id})`);
+        poly.setAttribute('stroke','var(--amber)');
+      }
+    }
+  }
 }
 
 let _currentRating=0;
+let _prevBtnState=''; // evitar actualizar el botón en cada frame
 
 function setRating(val){
   _currentRating=val;
-  renderRatingStars(val);
-  const btn=document.getElementById('rating-action-btn');
-  if(btn){
-    if(val>0){btn.textContent='Guardar';btn.className='rating-action-btn save';}
-    else{btn.textContent='Sin calificar';btn.className='rating-action-btn skip';}
+  updateRatingStars(val); // rápido, sin recrear DOM
+  const state=val>0?'save':'skip';
+  if(state!==_prevBtnState){
+    _prevBtnState=state;
+    const btn=document.getElementById('rating-action-btn');
+    if(btn){
+      if(state==='save'){btn.textContent='Guardar';btn.className='rating-action-btn save';}
+      else{btn.textContent='Sin calificar';btn.className='rating-action-btn skip';}
+    }
   }
 }
 
