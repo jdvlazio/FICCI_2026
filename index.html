@@ -565,15 +565,34 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:20px;fo
 .pelicula-flags{font-size:10px;color:var(--gray2);margin-top:2px}
 .pelicula-prog-badge{position:absolute;top:6px;left:6px;background:rgba(10,10,10,.75);backdrop-filter:blur(4px);border:1px solid rgba(255,255,255,.12);border-radius:4px;font-size:9px;font-weight:700;color:var(--orange);letter-spacing:.6px;padding:2px 5px;line-height:1.4;pointer-events:none}
 /* ── Expansión inline de funciones ── */
-.pelicula-expand{background:var(--surf);border-top:1px solid var(--bdr-l);padding:10px 10px 12px}
-.pelicula-screening{display:flex;align-items:center;gap:8px;padding:6px 0;border-bottom:1px solid var(--bdr)}
-.pelicula-screening:last-of-type{border-bottom:none}
 .pelicula-day{font-size:10px;font-weight:700;color:var(--amber);letter-spacing:.8px;text-transform:uppercase;width:28px;flex-shrink:0}
-.pelicula-time{font-size:13px;font-weight:700;color:var(--white);flex-shrink:0;width:38px}
-.pelicula-venue{font-size:11px;color:var(--gray2);flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.pelicula-wl-btn{background:var(--amber-10);border:1px solid var(--amber-30);border-radius:var(--r-pill);color:var(--amber);font-family:var(--font);font-size:var(--t-xs);font-weight:var(--w-bold);padding:8px 0;cursor:pointer;width:100%;margin-top:8px;transition:background var(--tr-base)}
-.pelicula-wl-btn:active{background:var(--amber-20)}
-.pelicula-wl-btn.in-wl{background:rgba(39,174,96,.1);border-color:rgba(39,174,96,.3);color:var(--green)}
+.pelicula-time{font-size:14px;font-weight:700;color:var(--white);flex-shrink:0;width:42px}
+.pelicula-venue{font-size:12px;color:var(--gray2);flex:1;min-width:0}
+/* ── Bottom Sheet ── */
+.pel-sheet-overlay{position:fixed;inset:0;background:rgba(0,0,0,.65);z-index:9000;opacity:0;transition:opacity .25s;pointer-events:none}
+.pel-sheet-overlay.open{opacity:1;pointer-events:all}
+.pel-sheet{position:fixed;bottom:0;left:0;right:0;background:var(--surf);border-radius:20px 20px 0 0;z-index:9001;max-height:88vh;overflow-y:auto;transform:translateY(100%);transition:transform .3s cubic-bezier(.32,0,.67,0)}
+.pel-sheet.open{transform:translateY(0)}
+.pel-sheet-handle{width:36px;height:4px;background:var(--bdr);border-radius:2px;margin:10px auto 0;flex-shrink:0}
+.pel-sheet-inner{padding:14px 16px 32px}
+.pel-sheet-header{display:flex;gap:14px;margin-bottom:16px}
+.pel-sheet-poster{width:90px;height:135px;border-radius:8px;object-fit:cover;flex-shrink:0;background:var(--surf-2)}
+.pel-sheet-poster-ph{width:90px;height:135px;border-radius:8px;background:var(--surf-2);display:flex;align-items:center;justify-content:center;font-size:32px;flex-shrink:0}
+.pel-sheet-meta{flex:1;min-width:0;display:flex;flex-direction:column;gap:4px;padding-top:2px}
+.pel-sheet-title{font-size:16px;font-weight:800;color:var(--white);line-height:1.25}
+.pel-sheet-flags{font-size:13px;color:var(--gray2)}
+.pel-sheet-dur{font-size:12px;color:var(--gray2)}
+.pel-sheet-sec{font-size:11px;color:var(--orange);font-weight:600;margin-top:2px}
+.pel-sheet-divider{height:1px;background:var(--bdr);margin:14px 0}
+.pel-sheet-section-lbl{font-size:10px;letter-spacing:1.2px;color:var(--gray);text-transform:uppercase;font-weight:700;margin-bottom:10px}
+.pel-sheet-screening{display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid var(--bdr)}
+.pel-sheet-screening:last-of-type{border-bottom:none}
+.pel-sheet-synopsis{font-size:13px;color:var(--gray2);line-height:1.6;font-style:italic}
+.pel-sheet-wl-btn{background:var(--amber-10);border:1px solid var(--amber-30);border-radius:var(--r-pill);color:var(--amber);font-family:var(--font);font-size:14px;font-weight:700;padding:14px 0;cursor:pointer;width:100%;margin-top:16px;transition:background var(--tr-base)}
+.pel-sheet-wl-btn:active{background:var(--amber-20)}
+.pel-sheet-wl-btn.in-wl{background:rgba(39,174,96,.1);border-color:rgba(39,174,96,.3);color:var(--green)}
+.pel-sheet-corto-item{display:flex;align-items:baseline;gap:8px;padding:5px 0;border-bottom:1px solid var(--bdr)}
+.pel-sheet-corto-item:last-child{border-bottom:none}
 .c-expand:hover{color:var(--orange)}
 .c-expand-arrow{font-size:var(--t-sm);transition:transform var(--tr-smooth);display:inline-block}
 .c-expand-arrow.open{transform:rotate(180deg)}
@@ -1494,6 +1513,12 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:20px;fo
   <button class="carta-mode-btn active" id="btn-modo-horario" onclick="setCartelaMode('horario')">Por Horario</button>
   <button class="carta-mode-btn" id="btn-modo-pelicula" onclick="setCartelaMode('pelicula')">Por Película</button>
 </div>
+<!-- ── Bottom Sheet Por Película ── -->
+<div class="pel-sheet-overlay" id="pel-overlay" onclick="closePelSheet()"></div>
+<div class="pel-sheet" id="pel-sheet">
+  <div class="pel-sheet-handle"></div>
+  <div class="pel-sheet-inner" id="pel-sheet-inner"></div>
+</div>
 <div class="nav-row" id="nav-row">
   <div class="nav-tabs" id="dtabs"></div>
 </div>
@@ -1913,7 +1938,7 @@ const FESTIVAL_STORAGE_KEY='ficci65_';
 // ── Reset agresivo de caché — independiente del SW ────────────────
 // Cada deploy cambia BUILD_VERSION. Al cargar, si localStorage tiene
 // una versión anterior → location.reload(true) fuerza descarga limpia.
-const BUILD_VERSION='202604180905';
+const BUILD_VERSION='202604180914';
 (function(){
   const _vk='otrofestiv_build';
   const _stored=localStorage.getItem(_vk);
@@ -4543,6 +4568,98 @@ function restoreExpand(){
   });
 }
 
+// ── Orden oficial FICCI 65 (Letterboxd) ── largometrajes primero, cortos al final
+const SECTION_ORDER_LF=[
+  '🇨🇴 Comp. Colombia',
+  '🌎 Comp. Iberoamérica',
+  '⏳ (s)paces of Time',
+  '🌍 Internacional',
+  '✊ Cine Afro',
+  '🪶 Cine Indígena',
+  '🏆 Comp. Cine en los Barrios',
+  '🌙 Medianoche',
+  '🇪🇸 Muestra España',
+  '🇨🇭 Muestra Suiza',
+  '🇦🇷 Muestra Argentina',
+  '📽️ Retrospectiva Ruth Beckermann',
+  '📽️ Retrospectiva FICCI Años 60',
+  '📽️ Retrospectiva Clásicos – Ópera Prima',
+  '🎖️ Tributo Ben Rivers',
+  '🇧🇷 Casa Brasil',
+  '⭐ Proyecciones Especiales',
+];
+
+function openPelSheet(title){
+  const entry=Object.values((()=>{
+    const m={};
+    FILMS.forEach(f=>{if(!m[f.title])m[f.title]={film:f,screenings:[]};m[f.title].screenings.push(f);});
+    return m;
+  })()).find(e=>e.film.title===title);
+  if(!entry) return;
+  const{film:f,screenings}=entry;
+  const inWL=watchlist.has(f.title),inW=watched.has(f.title);
+  const posterSrc=f.is_cortos?'https://ficcifestival.com/sites/default/files/2026-02/logo-ficci65_2.png':getPosterSrc(f.title,false);
+  const posterHtml=posterSrc
+    ?`<img class="pel-sheet-poster" src="${posterSrc}" loading="lazy" style="${f.is_cortos?'object-fit:contain;background:#111':''}" onerror="this.outerHTML='<div class=pel-sheet-poster-ph>🎬</div>'" alt="">`
+    :`<div class="pel-sheet-poster-ph">🎬</div>`;
+  const{displayTitle}=parseProgramTitle(f.title);
+  const secLabel=f.section?f.section.replace(/^[^ ]+ /,''):'';
+  const DAY_ABB=['MAR','MIÉ','JUE','VIE','SÁB','DOM'];
+  const future=screenings.filter(s=>!screeningPassed(s)).sort((a,b)=>a.day_order-b.day_order||toMin(a.time)-toMin(b.time));
+  const past=screenings.filter(s=>screeningPassed(s));
+  const allScr=[...future,...past];
+  const rows=allScr.map(s=>{
+    const dayAbb=DAY_ABB[DAY_KEYS.indexOf(s.day)]||s.day.slice(0,3).toUpperCase();
+    const vc=vcfg(s.venue),sl=sala(s.venue);
+    const isPast=screeningPassed(s);
+    return`<div class="pel-sheet-screening"${isPast?' style="opacity:.4"':''}>
+      <span class="pelicula-day">${dayAbb}</span>
+      <span class="pelicula-time">${s.time}</span>
+      <span class="pelicula-venue">${ICONS.pin} ${vc.short}${sl?' · '+sl:''}</span>
+    </div>`;
+  }).join('');
+  // Lista de cortos si es programa
+  let cortosHtml='';
+  if(f.is_cortos&&f.film_list?.length){
+    cortosHtml=`<div class="pel-sheet-divider"></div>
+      <div class="pel-sheet-section-lbl">Programa · ${f.film_list.length} cortos</div>
+      ${f.film_list.map((item,n)=>`<div class="pel-sheet-corto-item">
+        <span style="font-size:11px;color:var(--gray);width:16px;flex-shrink:0">${n+1}</span>
+        <span style="font-size:12px;color:var(--white);flex:1;line-height:1.3">${item.title}</span>
+        <span style="font-size:11px;color:var(--gray2)">${item.duration}</span>
+      </div>`).join('')}`;
+  }
+  const wlLabel=inWL?`${ICONS.heartFill} En Mi Lista`:`${ICONS.heart} Añadir a Mi Lista`;
+  const safeT=f.title.replace(/'/g,"\'");
+  document.getElementById('pel-sheet-inner').innerHTML=`
+    <div class="pel-sheet-header">
+      ${posterHtml}
+      <div class="pel-sheet-meta">
+        <div class="pel-sheet-title">${displayTitle}</div>
+        <div class="pel-sheet-flags">${f.flags||'🌐'}</div>
+        <div class="pel-sheet-dur">${ICONS.clock} ${f.duration}</div>
+        <div class="pel-sheet-sec">${secLabel}</div>
+        ${f.is_cortos&&f.film_list?.length?`<div style="font-size:11px;color:var(--orange);margin-top:2px">CORTOS · ${f.film_list.length} films</div>`:''}
+      </div>
+    </div>
+    <div class="pel-sheet-divider"></div>
+    <div class="pel-sheet-section-lbl">Funciones</div>
+    ${rows}
+    <div class="pel-sheet-divider"></div>
+    <div class="pel-sheet-section-lbl">Sinopsis</div>
+    <div class="pel-sheet-synopsis">Sinopsis disponible próximamente.</div>
+    ${cortosHtml}
+    ${!inW?`<button class="pel-sheet-wl-btn${inWL?' in-wl':''}" onclick="toggleWL('${safeT}',event);this.innerHTML=watchlist.has('${safeT}')?'${ICONS.heartFill} En Mi Lista':'${ICONS.heart} Añadir a Mi Lista';this.className='pel-sheet-wl-btn'+(watchlist.has('${safeT}')?' in-wl':'')">${wlLabel}</button>`
+    :`<div style="text-align:center;color:var(--green);padding:14px 0;font-weight:700">${ICONS.check} Ya vista</div>`}
+  `;
+  document.getElementById('pel-overlay').classList.add('open');
+  document.getElementById('pel-sheet').classList.add('open');
+}
+function closePelSheet(){
+  document.getElementById('pel-overlay').classList.remove('open');
+  document.getElementById('pel-sheet').classList.remove('open');
+}
+
 function setCartelaMode(mode){
   cartelaMode=mode;
   expandedPelicula='';
@@ -4582,33 +4699,12 @@ function renderPeliculaView(){
   let entries=Object.values(titleMap);
   if(activeSec!=='all') entries=entries.filter(e=>e.film.section===activeSec);
 
-  // Orden oficial FICCI 65: competencias → temáticas → muestras → retrospectivas → especiales
-  const SECTION_ORDER=[
-    '🇨🇴 Comp. Colombia',
-    '🌎 Comp. Iberoamérica',
-    '🏆 Comp. Cine en los Barrios',
-    '🌍 Internacional',
-    '⏳ (s)paces of Time',
-    '✊ Cine Afro',
-    '🪶 Cine Indígena',
-    '🏛️ De Indias',
-    '🌊 Costas',
-    '🎨 Animación Porosa',
-    '🇪🇸 Muestra España',
-    '🇨🇭 Muestra Suiza',
-    '🇦🇷 Muestra Argentina',
-    '🇧🇷 Casa Brasil',
-    '📽️ Retrospectiva Ruth Beckermann',
-    '📽️ Retrospectiva ojoboca',
-    '📽️ Retrospectiva FICCI Años 60',
-    '📽️ Retrospectiva Clásicos – Ópera Prima',
-    '🎖️ Tributo Ben Rivers',
-    '⭐ Proyecciones Especiales',
-    '🌙 Medianoche',
-  ];
-  const secIdx=s=>{ const i=SECTION_ORDER.indexOf(s); return i>=0?i:99; };
+  // Orden oficial FICCI 65 según Letterboxd: largometrajes primero, cortos al final
+  const secIdxLF=s=>{const i=SECTION_ORDER_LF.indexOf(s);return i>=0?i:98;};
   entries.sort((a,b)=>{
-    const si=secIdx(a.film.section)-secIdx(b.film.section);
+    // Cortos siempre al final
+    if(a.film.is_cortos!==b.film.is_cortos) return a.film.is_cortos?1:-1;
+    const si=secIdxLF(a.film.section)-secIdxLF(b.film.section);
     if(si!==0) return si;
     return a.film.title.localeCompare(b.film.title,'es');
   });
@@ -4626,60 +4722,20 @@ function renderPeliculaView(){
       ?`<img class="pelicula-poster" src="${posterSrc}" loading="lazy" style="${f.is_cortos?'object-fit:contain;background:#111':''}${allPast?';opacity:.45':''}" onerror="this.outerHTML='<div class=pelicula-poster-ph>🎬</div>'" alt="">`
       :`<div class="pelicula-poster-ph"${allPast?' style="opacity:.45"':''}>🎬</div>`;
     const safeT=f.title.replace(/'/g,"\'");
-    const isExpanded=expandedPelicula===f.title;
     const{displayTitle}=parseProgramTitle(f.title);
 
-    // Expansión inline con funciones
-    let expandHtml='';
-    if(isExpanded){
-      const future=screenings.filter(s=>!screeningPassed(s)).sort((a,b)=>a.day_order-b.day_order||toMin(a.time)-toMin(b.time));
-      const past=screenings.filter(s=>screeningPassed(s)).sort((a,b)=>a.day_order-b.day_order);
-      const allScreenings=[...future,...past];
-      const rows=allScreenings.map(s=>{
-        const dayAbb=DAY_ABB[DAY_KEYS.indexOf(s.day)]||s.day.slice(0,3).toUpperCase();
-        const vc=vcfg(s.venue),sl=sala(s.venue);
-        const venueShort=vc.short+(sl?' · '+sl:'');
-        const isPast=screeningPassed(s);
-        return`<div class="pelicula-screening"${isPast?' style="opacity:.4"':''}>
-          <span class="pelicula-day">${dayAbb}</span>
-          <span class="pelicula-time">${s.time}</span>
-          <span class="pelicula-venue">${ICONS.pin} ${venueShort}</span>
-        </div>`;
-      }).join('');
-      const wlLabel=inWL?`${ICONS.heartFill} En Mi Lista`:`${ICONS.heart} Añadir a Mi Lista`;
-      expandHtml=`<div class="pelicula-expand">
-        <div style="font-size:var(--t-xs);color:var(--gray2);margin-bottom:6px">${f.duration}${f.section?' · '+f.section.replace(/^[^ ]+ /,'').slice(0,28):''}</div>
-        ${rows}
-        ${!inW?`<button class="pelicula-wl-btn${inWL?' in-wl':''}" onclick="event.stopPropagation();toggleWL('${safeT}',event);expandedPelicula='${safeT}';renderPeliculaView()">${wlLabel}</button>`:`<div style="font-size:var(--t-xs);color:var(--green);text-align:center;margin-top:8px">${ICONS.check} Ya vista</div>`}
-      </div>`;
-    }
-
-    // Badge y lista de cortos para programas
     const progBadge=f.is_cortos&&f.film_list?.length
       ?`<div class="pelicula-prog-badge">CORTOS · ${f.film_list.length}</div>`:'';
-    // En expansión de programas: mostrar lista de títulos individuales
-    let progListHtml='';
-    if(isExpanded&&f.is_cortos&&f.film_list?.length){
-      progListHtml=`<div style="border-top:1px solid var(--bdr-l);margin-top:8px;padding-top:8px">
-        ${f.film_list.map((item,n)=>`<div style="display:flex;gap:6px;align-items:baseline;padding:3px 0;border-bottom:1px solid var(--bdr)">
-          <span style="font-size:10px;color:var(--gray);flex-shrink:0;width:14px">${n+1}</span>
-          <span style="font-size:11px;color:var(--white);line-height:1.3;flex:1">${item.title}</span>
-          <span style="font-size:10px;color:var(--gray2);flex-shrink:0">${item.duration}</span>
-        </div>`).join('')}
-      </div>`;
-      // Reemplazar expandHtml para incluir la lista
-      expandHtml=expandHtml.replace('</div>\`', progListHtml+'</div>\`');
-    }
-    return`<div class="pelicula-card${inWL?' in-wl':''}${isExpanded?' expanded':''}" onclick="togglePeliculaExpand('${safeT}')">
+    return`<div class="pelicula-card${inWL?' in-wl':''}" onclick="openPelSheet('${safeT}')">
       <div style="position:relative">
         ${posterHtml}
         ${progBadge}
+        ${inWL?`<div style="position:absolute;bottom:4px;right:4px;font-size:14px;line-height:1">${ICONS.heartFill}</div>`:''}
       </div>
       <div class="pelicula-label">
         <div class="pelicula-title">${displayTitle}</div>
         <div class="pelicula-flags">${f.flags||'🌐'}</div>
       </div>
-      ${expandHtml}
     </div>`;
   }).join('')}</div>`;
 }
