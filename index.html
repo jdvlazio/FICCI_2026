@@ -871,9 +871,10 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:20px;fo
 .mplan-prog-toggle:active{color:var(--orange)}
 .mplan-row:last-child{border-bottom:none}
 .mplan-tc{flex-shrink:0;min-width:50px}
-.mplan-t1{font-family:var(--font);font-size:var(--t-md);color:var(--orange);line-height:1;cursor:pointer;border-radius:4px;padding:2px 0;transition:opacity var(--tr-base)}
+.mplan-t1{font-family:var(--font);font-size:var(--t-md);color:var(--orange);line-height:1;cursor:pointer;border-radius:4px;padding:2px 0;transition:opacity var(--tr-base);text-decoration:underline;text-decoration-style:dotted;text-decoration-color:rgba(200,150,62,.4);text-underline-offset:3px}
 .mplan-t1:active{opacity:.6}
-.mplan-t1.mp-past{color:var(--gray2);cursor:default}
+.mplan-t1.mp-past{color:var(--gray2);cursor:default;text-decoration:none}
+.mplan-change-hint{font-size:11px;color:var(--gray);padding:6px 0 10px;text-align:center;letter-spacing:.2px}
 .mplan-t2{font-size:var(--t-xs);color:var(--gray2);margin-top:2px}
 .mplan-ri{flex:1;min-width:0}
 .mplan-rtitle{font-size:var(--t-base);font-weight:var(--w-semi);color:var(--white);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
@@ -2011,7 +2012,7 @@ const FESTIVAL_STORAGE_KEY='ficci65_';
 // BUILD_VERSION: cambia en cada deploy.
 // Al cargar, compara con localStorage. Si difiere → reload duro.
 // sessionStorage evita loops infinitos dentro de la misma sesión.
-const BUILD_VERSION='202604182034';
+const BUILD_VERSION='202604182043';
 (function(){
   const _vk='otrofestiv_build';
   const _sk='otrofestiv_reloaded';
@@ -2291,7 +2292,13 @@ function renderMiPlanCalendar(){
       </div>
     </div>
     ${listHtml}
-  </div>`;
+    ${(()=>{
+      const _hintSeen=localStorage.getItem('otrofestiv_hint_cambiar');
+      const _hasFuture=savedAgenda&&savedAgenda.schedule.some(s=>!screeningPassed(s));
+      if(_hintSeen||!_hasFuture) return '';
+      return`<div class="mplan-change-hint">${ICONS.clock} Toca la hora para cambiar la película</div>`;
+    })()}
+  </div>`
 }
 
 
@@ -3523,6 +3530,10 @@ function renderUnconfirmed(schedule){
 function toggleFilmAlternatives(key,title,day,time){
   if(_expandedFilm===key){_expandedFilm='';renderAgenda();return;}
   _expandedFilm=key;
+  // Marcar hint como visto la primera vez que se usa
+  if(!localStorage.getItem('otrofestiv_hint_cambiar')){
+    localStorage.setItem('otrofestiv_hint_cambiar','1');
+  }
   renderAgenda();
 }
 
