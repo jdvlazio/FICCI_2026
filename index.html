@@ -273,7 +273,7 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:20px;fo
   padding:8px var(--sp-5)!important;
   font-weight:var(--w-semi);
 }
-.cnt-line{padding:2px var(--sp-5) var(--sp-2);font-size:var(--t-sm);color:var(--gray)}
+.cnt-line{padding:6px var(--sp-5) 4px;font-size:var(--t-sm);color:var(--gray)}
 .cnt-line b{color:var(--white)}
 
 
@@ -2009,7 +2009,7 @@ const FESTIVAL_STORAGE_KEY='ficci65_';
 // BUILD_VERSION: cambia en cada deploy.
 // Al cargar, compara con localStorage. Si difiere → reload duro.
 // sessionStorage evita loops infinitos dentro de la misma sesión.
-const BUILD_VERSION='202604181943';
+const BUILD_VERSION='202604181946';
 (function(){
   const _vk='otrofestiv_build';
   const _sk='otrofestiv_reloaded';
@@ -4876,7 +4876,7 @@ function renderPeliculaView(){
     return a.film.title.localeCompare(b.film.title,'es');
   });
 
-  cntEl.innerHTML=`<b>${entries.length}</b> película${entries.length!==1?'s':''}`;
+  cntEl.innerHTML=activeSec!=='all'?`<b>${entries.length}</b> película${entries.length!==1?'s':''}`:'';
 
   const DAY_ABB=['MAR','MIÉ','JUE','VIE','SÁB','DOM'];
 
