@@ -1964,7 +1964,7 @@ const FESTIVAL_STORAGE_KEY='ficci65_';
 // ── Reset agresivo de caché — independiente del SW ────────────────
 // Cada deploy cambia BUILD_VERSION. Al cargar, si localStorage tiene
 // una versión anterior → location.reload(true) fuerza descarga limpia.
-const BUILD_VERSION='202604181737';
+const BUILD_VERSION='202604181749';
 (function(){
   const _vk='otrofestiv_build';
   const _stored=localStorage.getItem(_vk);
@@ -4972,7 +4972,10 @@ function dismissSplash(){
   }
 })();
 
-loadState();{const _ts=simTodayStr();const _ni=DAY_KEYS.findIndex(d=>FESTIVAL_DATES[d]===_ts);activeDay=_ni>=0?DAY_KEYS[_ni]:DAY_KEYS[0];}updateAgTab();render();
+loadState();{const _ts=simTodayStr();const _ni=DAY_KEYS.findIndex(d=>FESTIVAL_DATES[d]===_ts);activeDay=_ni>=0?DAY_KEYS[_ni]:DAY_KEYS[0];}
+// Aplicar modo inicial al DOM antes del primer render
+(()=>{if(cartelaMode==='pelicula'){const nr=document.getElementById('nav-row');if(nr)nr.classList.add('hidden');const bP=document.getElementById('btn-modo-pelicula');if(bP)bP.classList.add('active');const bH=document.getElementById('btn-modo-horario');if(bH)bH.classList.remove('active');}})();
+updateAgTab();render();
 /* ── Tap-to-reveal en Mi Lista mobile ──────────────────────────
    Toca el poster → revela botones (ag-active).
    Toca fuera o toca un botón → cierra. */
