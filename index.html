@@ -2012,7 +2012,7 @@ const FESTIVAL_STORAGE_KEY='ficci65_';
 // BUILD_VERSION: cambia en cada deploy.
 // Al cargar, compara con localStorage. Si difiere → reload duro.
 // sessionStorage evita loops infinitos dentro de la misma sesión.
-const BUILD_VERSION='202604182043';
+const BUILD_VERSION='202604182045';
 (function(){
   const _vk='otrofestiv_build';
   const _sk='otrofestiv_reloaded';
@@ -4759,7 +4759,7 @@ function openPelSheet(title){
     <div class="pel-sheet-synopsis">Sinopsis disponible próximamente.</div>
     ${cortosHtml}
     ${!f.is_cortos?`<a class="c-lb" href="${lbUrl(f.title)}" target="_blank" rel="noopener" style="display:inline-flex;margin-top:14px;margin-bottom:2px">${LB_SVG}<span class="c-lb-text">Ver en Letterboxd</span></a>`:''}
-    ${_inPlan&&!inW?`<div style="display:flex;gap:8px;margin-top:16px;margin-bottom:0">
+    ${_inPlan&&!inW&&activeView==='agenda'?`<div style="display:flex;gap:8px;margin-top:16px;margin-bottom:0">
         <button onclick="toggleWatched('${safeT}',event);closePelSheet()" style="flex:1;background:none;border:1px solid var(--bdr);border-radius:var(--r-pill);color:var(--gray2);font-family:var(--font);font-size:13px;font-weight:700;padding:10px 0;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:5px">${ICONS.check} Vista</button>
         <button onclick="closePelSheet();removeFromAgenda('${safeT}')" style="flex:1;background:none;border:1px solid var(--bdr);border-radius:var(--r-pill);color:var(--gray2);font-family:var(--font);font-size:13px;font-weight:700;padding:10px 0;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:5px">${ICONS.x} Quitar</button>
       </div>`:''}
