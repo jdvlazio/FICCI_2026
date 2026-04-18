@@ -601,9 +601,11 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:20px;fo
 .rating-handle{width:36px;height:4px;background:var(--bdr);border-radius:2px;margin:0 auto 18px}
 .rating-title{font-size:13px;color:var(--gray2);margin-bottom:4px}
 .rating-film{font-size:16px;font-weight:700;color:var(--white);margin-bottom:20px;line-height:1.3}
-.rating-stars{position:relative;margin-bottom:20px}
-.rating-range{width:100%;height:44px;opacity:0;cursor:pointer;position:absolute;top:0;left:0;z-index:2;touch-action:none}
-.rating-stars-display{display:flex;justify-content:center;gap:4px;pointer-events:none;padding:8px 0}
+.rating-stars{margin-bottom:20px}
+.rating-stars-display{display:flex;justify-content:center;gap:4px;margin-bottom:14px}
+.rating-range{-webkit-appearance:none;appearance:none;width:100%;height:4px;border-radius:2px;background:linear-gradient(to right,var(--amber) calc(var(--pct,0)*1%),var(--surf-2) calc(var(--pct,0)*1%));outline:none;cursor:pointer;touch-action:none}
+.rating-range::-webkit-slider-thumb{-webkit-appearance:none;appearance:none;width:22px;height:22px;border-radius:50%;background:var(--amber);cursor:pointer;box-shadow:0 1px 4px rgba(0,0,0,.4)}
+.rating-range::-moz-range-thumb{width:22px;height:22px;border-radius:50%;background:var(--amber);cursor:pointer;border:none}
 
 .rating-skip{width:100%;background:none;border:none;color:var(--gray);font-family:var(--font);font-size:13px;padding:8px;cursor:pointer}
 .ya-vistas-stars{display:flex;align-items:center;justify-content:center;gap:1px;padding:3px 0 1px;height:14px}
@@ -2016,7 +2018,7 @@ const FESTIVAL_STORAGE_KEY='ficci65_';
 // BUILD_VERSION: cambia en cada deploy.
 // Al cargar, compara con localStorage. Si difiere → reload duro.
 // sessionStorage evita loops infinitos dentro de la misma sesión.
-const BUILD_VERSION='202604182102';
+const BUILD_VERSION='202604182105';
 (function(){
   const _vk='otrofestiv_build';
   const _sk='otrofestiv_reloaded';
@@ -4639,11 +4641,17 @@ function _initRatingInteraction(){
   const range=document.getElementById('rating-range');
   if(!range||range._ratingInit) return;
   range._ratingInit=true;
+  const updateTrack=()=>{
+    const pct=(parseInt(range.value)/10)*100;
+    range.style.setProperty('--pct',pct);
+  };
   range.addEventListener('input',()=>{
-    const val=parseInt(range.value)/2; // 0-10 → 0-5
+    const val=parseInt(range.value)/2;
     _currentRating=val;
     renderRatingStars(val);
+    updateTrack();
   });
+  updateTrack();
 }
 
 function openRatingSheet(title){
@@ -4656,7 +4664,7 @@ function openRatingSheet(title){
   document.getElementById('rating-sheet').classList.add('open');
   requestAnimationFrame(()=>{
     const range=document.getElementById('rating-range');
-    if(range){range.value=Math.round(_currentRating*2);range._ratingInit=false;}
+    if(range){range.value=Math.round(_currentRating*2);range._ratingInit=false;const pct=(parseInt(range.value)/10)*100;range.style.setProperty('--pct',pct);}
     _initRatingInteraction();
   });
 }
