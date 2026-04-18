@@ -601,9 +601,9 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:20px;fo
 .rating-handle{width:36px;height:4px;background:var(--bdr);border-radius:2px;margin:0 auto 18px}
 .rating-title{font-size:13px;color:var(--gray2);margin-bottom:4px}
 .rating-film{font-size:16px;font-weight:700;color:var(--white);margin-bottom:20px;line-height:1.3}
-.rating-stars{display:flex;justify-content:center;gap:2px;margin-bottom:24px;cursor:pointer;user-select:none;-webkit-user-select:none;touch-action:none}
-.rating-star-wrap{width:44px;height:44px;display:flex;align-items:center;justify-content:center}
-.rating-star-half,.rating-star-full{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);pointer-events:none}
+.rating-stars{position:relative;margin-bottom:20px}
+.rating-range{width:100%;height:44px;opacity:0;cursor:pointer;position:absolute;top:0;left:0;z-index:2;touch-action:none}
+.rating-stars-display{display:flex;justify-content:center;gap:4px;pointer-events:none;padding:8px 0}
 
 .rating-skip{width:100%;background:none;border:none;color:var(--gray);font-family:var(--font);font-size:13px;padding:8px;cursor:pointer}
 .ya-vistas-stars{display:flex;align-items:center;justify-content:center;gap:1px;padding:3px 0 1px;height:14px}
@@ -1519,7 +1519,10 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:20px;fo
   <div class="rating-handle"></div>
   <div class="rating-title">¿Qué te pareció?</div>
   <div class="rating-film" id="rating-film-title"></div>
-  <div class="rating-stars" id="rating-stars"></div>
+  <div class="rating-stars">
+    <input type="range" class="rating-range" id="rating-range" min="0" max="10" step="1" value="0">
+    <div class="rating-stars-display" id="rating-stars"></div>
+  </div>
   <button class="rating-skip" onclick="closeRatingSheet(true)">Sin calificar</button>
 </div>
 <!-- ── Bottom Sheet Por Película ── -->
@@ -2013,7 +2016,7 @@ const FESTIVAL_STORAGE_KEY='ficci65_';
 // BUILD_VERSION: cambia en cada deploy.
 // Al cargar, compara con localStorage. Si difiere → reload duro.
 // sessionStorage evita loops infinitos dentro de la misma sesión.
-const BUILD_VERSION='202604182055';
+const BUILD_VERSION='202604182100';
 (function(){
   const _vk='otrofestiv_build';
   const _sk='otrofestiv_reloaded';
@@ -4609,73 +4612,38 @@ function starSVG(fill){
   return`<svg width="28" height="28" viewBox="0 0 24 24" style="display:block;flex-shrink:0">${grad}<polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26" fill="${fillVal}" stroke="${stroke}" stroke-width="1.5" stroke-linejoin="round"/></svg>`;
 }
 
+// Renderizar display de estrellas (solo visual, sin interacción)
 function renderRatingStars(current){
   const el=document.getElementById('rating-stars');
   if(!el) return;
   let html='';
   for(let i=1;i<=5;i++){
     const fill=current>=i?'full':current>=i-0.5?'half':'none';
-    html+=`<div class="rating-star-wrap" data-star="${i}">${starSVG(fill)}</div>`;
+    html+=starSVG(fill);
   }
   el.innerHTML=html;
-}
-
-// Calcular rating (0.5–5) desde posición X relativa al contenedor de estrellas
-function _ratingFromX(el,clientX){
-  const rect=el.getBoundingClientRect();
-  const x=Math.max(0,Math.min(clientX-rect.left,rect.width));
-  const raw=(x/rect.width)*5;
-  // Redondear a medias estrellas
-  return Math.min(5,Math.max(0.5,Math.round(raw*2)/2));
+  // Sincronizar el range input
+  const range=document.getElementById('rating-range');
+  if(range) range.value=Math.round(current*2);
 }
 
 let _currentRating=0;
-let _ratingDragging=false;
 
 function setRating(val){
   _currentRating=val;
   renderRatingStars(val);
 }
 
-// Inicializar drag/touch en el contenedor de estrellas
+// El input range maneja todo el touch/drag nativo del browser
 function _initRatingInteraction(){
-  const el=document.getElementById('rating-stars');
-  if(!el||el._ratingInit) return;
-  el._ratingInit=true;
-
-  // Tap/click individual
-  el.addEventListener('click',e=>{
-    const rating=_ratingFromX(el,e.clientX);
-    setRating(rating);
+  const range=document.getElementById('rating-range');
+  if(!range||range._ratingInit) return;
+  range._ratingInit=true;
+  range.addEventListener('input',()=>{
+    const val=parseInt(range.value)/2; // 0-10 → 0-5
+    _currentRating=val;
+    renderRatingStars(val);
   });
-
-  // Touch drag
-  el.addEventListener('touchstart',e=>{
-    _ratingDragging=true;
-    const t=e.touches[0];
-    setRating(_ratingFromX(el,t.clientX));
-    e.preventDefault();
-  },{passive:false});
-
-  el.addEventListener('touchmove',e=>{
-    if(!_ratingDragging) return;
-    const t=e.touches[0];
-    setRating(_ratingFromX(el,t.clientX));
-    e.preventDefault();
-  },{passive:false});
-
-  el.addEventListener('touchend',()=>{_ratingDragging=false;});
-
-  // Mouse drag (desktop)
-  el.addEventListener('mousedown',e=>{
-    _ratingDragging=true;
-    setRating(_ratingFromX(el,e.clientX));
-  });
-  document.addEventListener('mousemove',e=>{
-    if(!_ratingDragging) return;
-    setRating(_ratingFromX(el,e.clientX));
-  });
-  document.addEventListener('mouseup',()=>{_ratingDragging=false;});
 }
 
 function openRatingSheet(title){
@@ -4686,13 +4654,22 @@ function openRatingSheet(title){
   renderRatingStars(_currentRating);
   document.getElementById('rating-overlay').classList.add('open');
   document.getElementById('rating-sheet').classList.add('open');
-  requestAnimationFrame(_initRatingInteraction);
+  requestAnimationFrame(()=>{
+    const range=document.getElementById('rating-range');
+    if(range){range.value=Math.round(_currentRating*2);range._ratingInit=false;}
+    _initRatingInteraction();
+  });
 }
 
 function closeRatingSheet(skip){
-  if(!skip&&_currentRating>0){
+  if(skip){
+    // Sin calificar — eliminar rating existente
+    if(filmRatings[_ratingTitle]){
+      saveRating(_ratingTitle,0);
+      showToast('Calificación eliminada','info');
+    }
+  } else if(_currentRating>0){
     saveRating(_ratingTitle,_currentRating);
-    // Toast con las estrellas guardadas
     const _stars=starsDisplay(_currentRating,11);
     showToast(`<span style="display:inline-flex;align-items:center;gap:4px">${_stars}</span>`,'info');
   }
