@@ -2,7 +2,7 @@
 // Estrategia: HTML siempre desde red. Assets en caché.
 
 const CACHE_NAME = 'otrofestiv-v15';
-const BUILD = '202604182121';
+const BUILD = '202604182123';
 
 // Solo assets estáticos — NUNCA el HTML
 const STATIC_ASSETS = [

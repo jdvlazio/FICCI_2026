@@ -601,7 +601,10 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:20px;fo
 .rating-handle{width:36px;height:4px;background:var(--bdr);border-radius:2px;margin:0 auto 18px}
 .rating-title{font-size:13px;color:var(--gray2);margin-bottom:4px}
 .rating-film{font-size:16px;font-weight:700;color:var(--white);margin-bottom:20px;line-height:1.3}
-.rating-stars{display:flex;justify-content:center;gap:2px;margin-bottom:24px;cursor:pointer;user-select:none;-webkit-user-select:none;touch-action:none}
+.rating-stars-wrap, #rating-stars-wrap{position:relative;margin-bottom:24px}
+#rating-range{position:absolute;inset:0;width:100%;height:100%;opacity:0.01;cursor:pointer;z-index:2;-webkit-appearance:none;appearance:none;background:transparent;touch-action:none;margin:0}
+#rating-range::-webkit-slider-thumb{-webkit-appearance:none;width:44px;height:44px;background:transparent}
+#rating-stars{padding:4px 0}
 .rating-star-wrap{width:44px;height:44px;display:flex;align-items:center;justify-content:center}
 
 .rating-skip{width:100%;background:none;border:none;color:var(--gray);font-family:var(--font);font-size:13px;padding:8px;cursor:pointer}
@@ -1518,7 +1521,7 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:20px;fo
   <div class="rating-handle"></div>
   <div class="rating-title">¿Qué te pareció?</div>
   <div class="rating-film" id="rating-film-title"></div>
-  <div class="rating-stars" id="rating-stars"></div>
+  <div class="rating-stars" id="rating-stars-wrap"><input type="range" id="rating-range" min="0" max="10" step="1" value="0"><div id="rating-stars" style="display:flex;justify-content:center;gap:2px;pointer-events:none"></div></div>
   <button class="rating-skip" onclick="closeRatingSheet(true)">Sin calificar</button>
 </div>
 <!-- ── Bottom Sheet Por Película ── -->
@@ -2012,7 +2015,7 @@ const FESTIVAL_STORAGE_KEY='ficci65_';
 // BUILD_VERSION: cambia en cada deploy.
 // Al cargar, compara con localStorage. Si difiere → reload duro.
 // sessionStorage evita loops infinitos dentro de la misma sesión.
-const BUILD_VERSION='202604182121';
+const BUILD_VERSION='202604182123';
 (function(){
   const _vk='otrofestiv_build';
   const _sk='otrofestiv_reloaded';
@@ -4614,9 +4617,11 @@ function renderRatingStars(current){
   let html='';
   for(let i=1;i<=5;i++){
     const fill=current>=i?'full':current>=i-0.5?'half':'none';
-    html+=`<div class="rating-star-wrap">${starSVG(fill)}</div>`;
+    html+=`<div style="width:44px;height:44px;display:flex;align-items:center;justify-content:center">${starSVG(fill)}</div>`;
   }
   el.innerHTML=html;
+  const range=document.getElementById('rating-range');
+  if(range) range.value=Math.round(current*2);
 }
 
 let _currentRating=0;
@@ -4635,23 +4640,11 @@ function _ratingFromX(el,clientX){
 // Pointer Events API — unificado mouse+touch, con setPointerCapture
 // para que el drag funcione correctamente en iOS dentro de transforms
 function _initRatingInteraction(){
-  const el=document.getElementById('rating-stars');
-  if(!el||el._ratingInit) return;
-  el._ratingInit=true;
-
-  el.addEventListener('pointerdown',e=>{
-    el.setPointerCapture(e.pointerId);
-    setRating(_ratingFromX(el,e.clientX));
-    e.preventDefault();
-  },{passive:false});
-
-  el.addEventListener('pointermove',e=>{
-    if(!el.hasPointerCapture(e.pointerId)) return;
-    setRating(_ratingFromX(el,e.clientX));
-  });
-
-  el.addEventListener('pointerup',e=>{
-    el.releasePointerCapture(e.pointerId);
+  const range=document.getElementById('rating-range');
+  if(!range||range._ratingInit) return;
+  range._ratingInit=true;
+  range.addEventListener('input',()=>{
+    setRating(parseInt(range.value)/2);
   });
 }
 
@@ -4664,8 +4657,8 @@ function openRatingSheet(title){
   document.getElementById('rating-overlay').classList.add('open');
   document.getElementById('rating-sheet').classList.add('open');
   requestAnimationFrame(()=>{
-    const el=document.getElementById('rating-stars');
-    if(el) el._ratingInit=false;
+    const range=document.getElementById('rating-range');
+    if(range){range.value=Math.round(_currentRating*2);range._ratingInit=false;}
     _initRatingInteraction();
   });
 }
