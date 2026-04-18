@@ -288,7 +288,7 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:20px;fo
 .fdr-wrap{position:relative}
 .fdr-btn{flex-shrink:0;background:none;border:none;border-bottom:2px solid transparent;margin-bottom:-1px;padding:var(--sp-2) var(--sp-2) var(--sp-2);cursor:pointer;color:var(--gray2);font-family:var(--font);font-size:var(--t-xs);font-weight:var(--w-bold);letter-spacing:.07em;text-transform:uppercase;display:inline-flex;align-items:center;gap:var(--sp-1);transition:color var(--tr-base),border-color var(--tr-base);white-space:nowrap;min-height:36px}
 .fdr-btn:hover{color:var(--white)}
-.fdr-btn.active{border-bottom-color:var(--orange);color:var(--orange)}.fdr-btn.active .fdr-arrow{color:var(--orange)}.fdr-btn:not(.active) .fdr-label::after{content:" ▾";font-size:9px;opacity:.4;letter-spacing:0}
+.fdr-btn.active{border-bottom-color:var(--orange);color:var(--orange)}.fdr-btn.active .fdr-arrow{color:var(--orange)}.filter-row .fdr-btn:not(.active) .fdr-label::after{content:" ▾";font-size:9px;opacity:.4;letter-spacing:0}
 .fdr-arrow{font-size:var(--t-sm);transition:transform var(--tr-smooth);flex-shrink:0;font-family:var(--font)}
 .fdr-arrow.open{transform:rotate(180deg)}
 .fdr-label{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
@@ -2009,7 +2009,7 @@ const FESTIVAL_STORAGE_KEY='ficci65_';
 // BUILD_VERSION: cambia en cada deploy.
 // Al cargar, compara con localStorage. Si difiere → reload duro.
 // sessionStorage evita loops infinitos dentro de la misma sesión.
-const BUILD_VERSION='202604181940';
+const BUILD_VERSION='202604181943';
 (function(){
   const _vk='otrofestiv_build';
   const _sk='otrofestiv_reloaded';
