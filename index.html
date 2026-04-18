@@ -2009,7 +2009,7 @@ const FESTIVAL_STORAGE_KEY='ficci65_';
 // BUILD_VERSION: cambia en cada deploy.
 // Al cargar, compara con localStorage. Si difiere → reload duro.
 // sessionStorage evita loops infinitos dentro de la misma sesión.
-const BUILD_VERSION='202604181946';
+const BUILD_VERSION='202604181953';
 (function(){
   const _vk='otrofestiv_build';
   const _sk='otrofestiv_reloaded';
@@ -4205,12 +4205,12 @@ function buildResultHTML(scenarios){
       return`<span style="color:var(--gray2)">${displayTitle.length>22?displayTitle.slice(0,20)+'…':displayTitle}</span>`;
     }).join('<span style="color:var(--gray3)"> · </span>');
     html+=`<div class="ag-conflicts" style="padding:10px 14px 8px">
-      <div class="ag-conflicts-title" style="color:var(--gray2);font-size:var(--t-xs);letter-spacing:.8px;margin-bottom:4px">
-        NO INCLUIDAS · ${sc.excluded.length} película${sc.excluded.length!==1?'s':''}
+      <div style="font-size:var(--t-xs);color:var(--gray);margin-bottom:4px">
+        ${sc.excluded.length} sin encajar en este escenario
       </div>
       <div style="font-size:var(--t-sm);line-height:1.5">${excNames}</div>
-      <div style="margin-top:6px;font-size:var(--t-xs);color:var(--gray2)">
-        Elige esta opción y ajusta en Mi Plan →
+      <div style="margin-top:6px;font-size:var(--t-xs);color:var(--gray)">
+        Prueba otro escenario o ajústalas en Mi Plan
       </div>
     </div>`;
   }
