@@ -541,10 +541,10 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:20px;fo
 .c-dur-long{color:var(--yellow);font-size:var(--t-sm);font-weight:var(--w-semi)}
 .c-venue-name{font-size:var(--t-base);font-weight:var(--w-regular);color:var(--gray);overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
 .c-expand{display:flex;align-items:center;gap:var(--sp-2);font-size:var(--t-sm);color:var(--gray);cursor:pointer;user-select:none;transition:color var(--tr-base);font-weight:var(--w-semi);letter-spacing:.2px;white-space:nowrap}
-/* ── Toggle Por Horario / Por Película ── */
-.carta-mode-toggle{display:flex;gap:4px;padding:8px 12px;border-bottom:1px solid var(--bdr)}
-.carta-mode-btn{flex:1;background:none;border:1px solid var(--bdr);border-radius:var(--r-pill);color:var(--gray);font-family:var(--font);font-size:var(--t-xs);font-weight:var(--w-semi);padding:6px 0;cursor:pointer;transition:all var(--tr-base);letter-spacing:.3px}
-.carta-mode-btn.active{background:var(--amber-10);border-color:var(--amber-30);color:var(--amber)}
+/* ── Toggle Por Horario / Por Película — mismo sistema que fdr-btn ── */
+.carta-mode-toggle{display:flex;align-items:center;border-bottom:1px solid var(--bdr);padding:0 2px}
+.carta-mode-toggle .fdr-btn{flex:1;justify-content:center}
+.carta-mode-toggle .fdr-btn.active{border-bottom-color:var(--orange);color:var(--orange)}
 /* ── Grid Por Película ── */
 /* ── POSTER GRID — sistema unificado 3 col / ratio 2:3 ──────────────── *
  * Matemática: 390px - 20px padding - 16px gaps = 354px / 3 = 118px    *
@@ -1516,8 +1516,8 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:20px;fo
   </button>
 </div>
 <div class="carta-mode-toggle" id="carta-mode-toggle">
-  <button class="carta-mode-btn active" id="btn-modo-pelicula" onclick="setCartelaMode('pelicula')">Por Película</button>
-  <button class="carta-mode-btn" id="btn-modo-horario" onclick="setCartelaMode('horario')">Por Horario</button>
+  <button class="fdr-btn active" id="btn-modo-pelicula" onclick="setCartelaMode('pelicula')"><span class="fdr-label">Por Película</span></button>
+  <button class="fdr-btn" id="btn-modo-horario" onclick="setCartelaMode('horario')"><span class="fdr-label">Por Horario</span></button>
 </div>
 <!-- ── Bottom Sheet Por Película ── -->
 <div class="pel-sheet-overlay" id="pel-overlay" onclick="closePelSheet()"></div>
@@ -2009,7 +2009,7 @@ const FESTIVAL_STORAGE_KEY='ficci65_';
 // BUILD_VERSION: cambia en cada deploy.
 // Al cargar, compara con localStorage. Si difiere → reload duro.
 // sessionStorage evita loops infinitos dentro de la misma sesión.
-const BUILD_VERSION='202604181938';
+const BUILD_VERSION='202604181940';
 (function(){
   const _vk='otrofestiv_build';
   const _sk='otrofestiv_reloaded';
