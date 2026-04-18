@@ -3346,8 +3346,9 @@ function renderNextStrip(schedule){
       delayHtml=`<div class="delay-row">
         <span class="delay-lbl">+${delayMins} min</span>
         ${[10,15,20,30].map(m=>`<button class="delay-btn" onclick="setDelay('${safeT}','${item.day}','${item.time}',${m})" title="+${m} min">+${m}</button>`).join('')}
-        ${delayMins>5?`<button class="delay-btn" onclick="setDelay('${safeT}','${item.day}','${item.time}',-5)" title="-5 min">−5</button>`:''}
-        ${delayMins>10?`<button class="delay-btn" onclick="setDelay('${safeT}','${item.day}','${item.time}',-10)" title="-10 min">−10</button>`:''}
+        ${delayMins>=10?`<button class="delay-btn" onclick="setDelay('${safeT}','${item.day}','${item.time}',-10)" title="-10 min">−10</button>`:''}
+        ${delayMins>=15?`<button class="delay-btn" onclick="setDelay('${safeT}','${item.day}','${item.time}',-15)" title="-15 min">−15</button>`:''}
+        ${delayMins>=20?`<button class="delay-btn" onclick="setDelay('${safeT}','${item.day}','${item.time}',-20)" title="-20 min">−20</button>`:''}
         <button class="delay-clear" onclick="clearDelay('${safeT}','${item.day}','${item.time}')" title="Quitar retraso">✕</button>
       </div>`;
     } else {
