@@ -2037,7 +2037,7 @@ const FESTIVAL_STORAGE_KEY='ficci65_';
 // BUILD_VERSION: cambia en cada deploy.
 // Al cargar, compara con localStorage. Si difiere → reload duro.
 // sessionStorage evita loops infinitos dentro de la misma sesión.
-const BUILD_VERSION='202604182020';
+const BUILD_VERSION='202604182022';
 (function(){
   const _vk='otrofestiv_build';
   const _sk='otrofestiv_reloaded';
@@ -4884,16 +4884,9 @@ function openPelSheet(title){
     ${!f.is_cortos?`<a class="c-lb" href="${lbUrl(f.title)}" target="_blank" rel="noopener" style="display:inline-flex;margin-top:14px;margin-bottom:2px">${LB_SVG}<span class="c-lb-text">Ver en Letterboxd</span></a>`:''}
     ${!inW?`<button id="pel-wl-btn" class="pel-sheet-wl-btn${inWL?' in-wl':''}" onclick="togglePelWL('${safeT}',event)">${wlLabel}</button>
       <button id="pel-prio-btn" class="pel-sheet-prio-btn${inPrio?' prio-on':''}" onclick="togglePelPrio('${safeT}')">${inPrio?ICONS.starFill:ICONS.star} ${inPrio?'Priorizada':'Priorizar'}</button>`
-    :`<div style="margin-top:16px">
-        <div style="display:flex;align-items:center;justify-content:center;gap:8px;padding:10px 0;border-radius:var(--r-pill);background:rgba(39,174,96,.08);border:1px solid rgba(39,174,96,.2);margin-bottom:8px">
-          ${ICONS.check}
-          <span style="color:var(--green);font-weight:700;font-size:14px">Ya vista</span>
-          ${filmRatings['${safeT}']?`<span style="display:flex;gap:1px;margin-left:4px">${starsDisplay(filmRatings['${safeT}'],11)}</span>`:''}
-        </div>
-        <div style="display:flex;gap:8px">
-          <button onclick="closePelSheet();setTimeout(()=>openRatingSheet('${safeT}'),100)" style="flex:1;background:none;border:1px solid var(--bdr);border-radius:var(--r-pill);color:var(--gray2);font-family:var(--font);font-size:13px;font-weight:700;padding:10px 0;cursor:pointer">${ICONS.star} ${filmRatings['${safeT}']?'Cambiar':'Calificar'}</button>
-          <button onclick="toggleWatched('${safeT}',event);closePelSheet()" style="flex:1;background:none;border:1px solid var(--bdr);border-radius:var(--r-pill);color:var(--gray2);font-family:var(--font);font-size:13px;font-weight:700;padding:10px 0;cursor:pointer">No vista</button>
-        </div>
+    :`<div style="margin-top:16px;display:flex;gap:8px">
+        <button onclick="toggleWatched('${safeT}',event);closePelSheet()" style="flex:1;background:rgba(39,174,96,.08);border:1px solid rgba(39,174,96,.2);border-radius:var(--r-pill);color:var(--green);font-family:var(--font);font-size:14px;font-weight:700;padding:13px 0;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:7px">${ICONS.check} Ya vista</button>
+        <button onclick="closePelSheet();setTimeout(()=>openRatingSheet('${safeT}'),100)" style="flex:1;background:none;border:1px solid var(--bdr);border-radius:var(--r-pill);color:var(--gray2);font-family:var(--font);font-size:13px;font-weight:700;padding:13px 0;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:7px">${ICONS.star} ${filmRatings['${safeT}']?'Cambiar':'Calificar'}</button>
       </div>`}
   `;
   document.getElementById('pel-overlay').classList.add('open');
