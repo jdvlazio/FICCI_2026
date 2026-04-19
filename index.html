@@ -623,6 +623,23 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:20px;fo
 .rating-star-wrap{width:44px;height:44px;display:flex;align-items:center;justify-content:center}
 
 .rating-action-btn{width:100%;border:none;border-radius:var(--r-pill);font-family:var(--font);font-size:14px;font-weight:700;padding:13px 0;cursor:pointer;transition:all .2s ease}
+/* ── Sheet de confirmación de plan ── */
+.plan-confirm-overlay{position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:9200;opacity:0;pointer-events:none;transition:opacity .25s}
+.plan-confirm-overlay.open{opacity:1;pointer-events:all}
+.plan-confirm-sheet{position:fixed;bottom:0;left:0;right:0;background:var(--surf-2);border-top:1px solid var(--bdr);border-radius:20px 20px 0 0;z-index:9201;padding:8px 20px 44px;transform:translateY(100%);transition:transform .32s cubic-bezier(.32,0,.67,0)}
+.plan-confirm-sheet.open{transform:translateY(0)}
+.plan-confirm-handle{width:36px;height:4px;background:rgba(255,255,255,.12);border-radius:2px;margin:12px auto 20px}
+.plan-confirm-row{display:flex;align-items:center;gap:14px;margin-bottom:18px}
+.plan-confirm-ico{width:48px;height:48px;background:var(--green-10);border:1px solid var(--green-30);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.plan-confirm-title{font-size:18px;font-weight:800;color:var(--white);letter-spacing:-.2px}
+.plan-confirm-sub{font-size:13px;color:var(--gray);margin-top:3px}
+.plan-confirm-films{border:1px solid var(--bdr);border-radius:12px;overflow:hidden;margin-bottom:18px}
+.plan-confirm-film{display:flex;align-items:center;gap:10px;padding:10px 14px;border-bottom:1px solid var(--bdr);font-size:13px;color:var(--white)}
+.plan-confirm-film:last-child{border-bottom:none;color:var(--gray)}
+.plan-confirm-dot{width:5px;height:5px;background:var(--amber);border-radius:50%;flex-shrink:0}
+.plan-confirm-time{color:var(--amber);font-weight:700;font-size:12px;flex-shrink:0;min-width:40px}
+.plan-confirm-name{overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
+.plan-confirm-cta{width:100%;background:var(--amber);color:#000;border:none;border-radius:var(--r-pill);font-family:var(--font);font-size:14px;font-weight:800;padding:14px;cursor:pointer;letter-spacing:.1px}
 .rating-action-btn.skip{background:none;color:var(--gray)}
 .rating-action-btn.save{background:var(--amber-10);border:1px solid var(--amber-30);color:var(--amber)}
 .ya-vistas-stars{display:flex;align-items:center;justify-content:center;gap:1px;padding:3px 0 1px;height:14px}
@@ -1532,6 +1549,22 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:20px;fo
   <button class="fdr-btn active" id="btn-modo-pelicula" onclick="setCartelaMode('pelicula')"><span class="fdr-label">Por Película</span></button>
   <button class="fdr-btn" id="btn-modo-horario" onclick="setCartelaMode('horario')"><span class="fdr-label">Por Horario</span></button>
 </div>
+<!-- ── Plan Confirm Sheet ── -->
+<div class="plan-confirm-overlay" id="plan-confirm-overlay" onclick="closePlanConfirm()"></div>
+<div class="plan-confirm-sheet" id="plan-confirm-sheet">
+  <div class="plan-confirm-handle"></div>
+  <div class="plan-confirm-row">
+    <div class="plan-confirm-ico">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#3AAA6E" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+    </div>
+    <div>
+      <div class="plan-confirm-title" id="plan-confirm-title">Listo para el festival</div>
+      <div class="plan-confirm-sub" id="plan-confirm-sub"></div>
+    </div>
+  </div>
+  <div class="plan-confirm-films" id="plan-confirm-films"></div>
+  <button class="plan-confirm-cta" onclick="closePlanConfirm(true)">Ver mi plan</button>
+</div>
 <!-- ── Rating Sheet ── -->
 <div class="rating-overlay" id="rating-overlay" onclick="closeRatingSheet()"></div>
 <div class="rating-sheet" id="rating-sheet">
@@ -2042,7 +2075,7 @@ const FESTIVAL_STORAGE_KEY='ficci65_';
 // BUILD_VERSION: cambia en cada deploy.
 // Al cargar, compara con localStorage. Si difiere → reload duro.
 // sessionStorage evita loops infinitos dentro de la misma sesión.
-const BUILD_VERSION='202604192017';
+const BUILD_VERSION='202604192022';
 (function(){
   const _vk='otrofestiv_build';
   const _sk='otrofestiv_reloaded';
@@ -4288,6 +4321,51 @@ function squeezeExcluded(schedule, excludedTitles){
   return result;
 }
 
+function openPlanConfirm(schedule){
+  const{displayTitle}=parseProgramTitle;
+  // Ordenar por día y hora
+  const DAY_ORD={Martes:0,Miércoles:1,Jueves:2,Viernes:3,Sábado:4,Domingo:5};
+  const sorted=[...schedule].sort((a,b)=>(DAY_ORD[a.day]||0)-(DAY_ORD[b.day]||0)||a.time.localeCompare(b.time));
+  const total=sorted.length;
+  const days=[...new Set(sorted.map(s=>s.day))];
+  const DAY_A={Martes:'MAR',Miércoles:'MIÉ',Jueves:'JUE',Viernes:'VIE',Sábado:'SÁB',Domingo:'DOM'};
+  const dayRange=days.length===1?DAY_A[days[0]]:`${DAY_A[days[0]]}–${DAY_A[days[days.length-1]]}`;
+
+  // Sub: N películas · DÍAS
+  const sub=document.getElementById('plan-confirm-sub');
+  if(sub) sub.textContent=`${total} película${total!==1?'s':''} · ${dayRange}`;
+
+  // Lista — máx 3 + resumen del resto
+  const show=sorted.slice(0,3);
+  const rest=total-show.length;
+  const filmsEl=document.getElementById('plan-confirm-films');
+  if(filmsEl){
+    filmsEl.innerHTML=show.map(s=>{
+      const{displayTitle:dt}=parseProgramTitle(s._title||'');
+      const short=dt.length>28?dt.slice(0,26)+'…':dt;
+      return`<div class="plan-confirm-film">
+        <div class="plan-confirm-dot"></div>
+        <div class="plan-confirm-time">${s.time}</div>
+        <div class="plan-confirm-name">${short}</div>
+      </div>`;
+    }).join('')+(rest>0?`<div class="plan-confirm-film" style="color:var(--gray)"><div class="plan-confirm-dot" style="background:var(--gray)"></div><div class="plan-confirm-name">+ ${rest} más · ${dayRange}</div></div>`:'');
+  }
+
+  document.getElementById('plan-confirm-overlay').classList.add('open');
+  document.getElementById('plan-confirm-sheet').classList.add('open');
+}
+
+function closePlanConfirm(goToPlan){
+  document.getElementById('plan-confirm-overlay').classList.remove('open');
+  document.getElementById('plan-confirm-sheet').classList.remove('open');
+  if(goToPlan){
+    switchMainNav('mnav-miplan');
+    showAgView();
+    const agView=document.getElementById('ag-view');
+    if(agView) agView.scrollTop=0;
+  }
+}
+
 function saveCurrentScenario(){
   if(!cachedResult||!cachedResult.scenarios.length) return;
   const _doSave=()=>{
@@ -4295,11 +4373,7 @@ function saveCurrentScenario(){
     const _squeezed=squeezeExcluded(_sc.schedule,_sc.excluded||[]);
     savedAgenda={schedule:_squeezed};
     saveSavedAgenda();
-    switchMainNav('mnav-miplan');
-    showAgView();
-    const agView=document.getElementById('ag-view');
-    if(agView) agView.scrollTop=0;
-    showToast(`${ICONS.calendar} Plan elegido — lo ves en Mi Plan`,'info');
+    openPlanConfirm(_squeezed);
   };
   // Si ya hay un plan guardado, pedir confirmación antes de reemplazarlo
   if(savedAgenda&&savedAgenda.schedule&&savedAgenda.schedule.length){
