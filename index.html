@@ -627,6 +627,31 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:20px;fo
 /* ── Sheet límite de prioridades ── */
 /* ── Sheet añadir a Mi Lista desde Cartelera ── */
 /* ── Sheet conflicto de horario ── */
+/* ── Sheet rating post-función desde Mi Plan ── */
+.pv-rating-overlay{position:fixed;inset:0;background:rgba(4,4,4,.78);backdrop-filter:blur(12px);z-index:9300;opacity:0;pointer-events:none;transition:opacity .25s}
+.pv-rating-overlay.open{opacity:1;pointer-events:all}
+.pv-rating-sheet{position:fixed;bottom:0;left:0;right:0;background:var(--surf-2);border-top:1px solid var(--bdr);border-radius:20px 20px 0 0;z-index:9301;transform:translateY(100%);transition:transform .32s cubic-bezier(.32,0,.67,0)}
+.pv-rating-sheet.open{transform:translateY(0)}
+.pv-handle{width:36px;height:4px;background:rgba(255,255,255,.1);border-radius:2px;margin:12px auto 0}
+.pv-header{display:flex;gap:14px;align-items:flex-start;padding:20px 20px 16px;border-bottom:1px solid var(--bdr)}
+.pv-poster-wrap{width:44px;height:66px;border-radius:6px;flex-shrink:0;position:relative;overflow:visible}
+.pv-poster-img{width:44px;height:66px;border-radius:6px;object-fit:cover;background:var(--surf-3)}
+.pv-poster-check{position:absolute;bottom:-5px;right:-5px;width:18px;height:18px;background:var(--green);border-radius:50%;display:flex;align-items:center;justify-content:center;border:2px solid var(--surf-2)}
+.pv-eyebrow{font-size:10px;font-weight:700;color:var(--green);letter-spacing:.5px;text-transform:uppercase;display:flex;align-items:center;gap:4px;margin-bottom:5px}
+.pv-film-title{font-size:16px;font-weight:800;color:var(--white);letter-spacing:-.2px;line-height:1.2;margin-bottom:5px}
+.pv-context{font-size:11px;color:var(--gray);line-height:1.6}
+.pv-question{padding:22px 20px 6px;text-align:center}
+.pv-question-text{font-size:15px;font-weight:700;color:var(--white);letter-spacing:-.1px}
+.pv-question-hint{font-size:12px;color:var(--gray);margin-top:4px;transition:color .15s}
+.pv-stars-area{padding:18px 20px 22px;display:flex;justify-content:center;position:relative}
+.pv-stars-row{display:flex;gap:2px;position:relative;z-index:1}
+.pv-star{width:44px;height:44px;display:flex;align-items:center;justify-content:center}
+.pv-range{position:absolute;inset:0;width:100%;height:100%;opacity:.01;cursor:pointer;z-index:2;-webkit-appearance:none;appearance:none;background:transparent;touch-action:none;margin:0}
+.pv-range::-webkit-slider-thumb{-webkit-appearance:none;width:44px;height:44px;background:transparent}
+.pv-actions{padding:0 20px 44px;display:flex;gap:8px}
+.pv-btn-save{flex:2;background:var(--amber);color:#000;border:none;border-radius:50px;font-family:var(--font);font-size:14px;font-weight:800;padding:13px;cursor:pointer;transition:opacity .15s}
+.pv-btn-save:disabled{opacity:.3;cursor:default}
+.pv-btn-later{flex:1;background:none;border:1px solid var(--bdr);border-radius:50px;color:var(--gray);font-family:var(--font);font-size:13px;font-weight:600;padding:13px;cursor:pointer;white-space:nowrap}
 .conflict-sheet-overlay{position:fixed;inset:0;background:rgba(4,4,4,.72);backdrop-filter:blur(10px);z-index:9180;opacity:0;pointer-events:none;transition:opacity .25s}
 .conflict-sheet-overlay.open{opacity:1;pointer-events:all}
 .conflict-sheet{position:fixed;bottom:0;left:0;right:0;background:var(--surf-2);border-top:1px solid var(--bdr);border-radius:20px 20px 0 0;z-index:9181;transform:translateY(100%);transition:transform .32s cubic-bezier(.32,0,.67,0)}
@@ -1616,6 +1641,36 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:20px;fo
   <button class="fdr-btn active" id="btn-modo-pelicula" onclick="setCartelaMode('pelicula')"><span class="fdr-label">Por Película</span></button>
   <button class="fdr-btn" id="btn-modo-horario" onclick="setCartelaMode('horario')"><span class="fdr-label">Por Horario</span></button>
 </div>
+<!-- ── Post-View Rating Sheet ── -->
+<div class="pv-rating-overlay" id="pv-rating-overlay" onclick="closePVRating()"></div>
+<div class="pv-rating-sheet" id="pv-rating-sheet">
+  <div class="pv-handle"></div>
+  <div class="pv-header">
+    <div class="pv-poster-wrap">
+      <img class="pv-poster-img" id="pv-poster" src="" alt="">
+      <div class="pv-poster-check">
+        <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>
+      </div>
+    </div>
+    <div style="flex:1;min-width:0">
+      <div class="pv-eyebrow"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Vista</div>
+      <div class="pv-film-title" id="pv-film-title"></div>
+      <div class="pv-context" id="pv-context"></div>
+    </div>
+  </div>
+  <div class="pv-question">
+    <div class="pv-question-text">¿La calificás?</div>
+    <div class="pv-question-hint" id="pv-hint">Deslizá sobre las estrellas</div>
+  </div>
+  <div class="pv-stars-area">
+    <div class="pv-stars-row" id="pv-stars-row"></div>
+    <input type="range" class="pv-range" id="pv-range" min="0" max="10" step="1" value="0">
+  </div>
+  <div class="pv-actions">
+    <button class="pv-btn-save" id="pv-btn-save" disabled onclick="savePVRating()">Guardar</button>
+    <button class="pv-btn-later" onclick="closePVRating()">Después</button>
+  </div>
+</div>
 <!-- ── Conflict Sheet ── -->
 <div class="conflict-sheet-overlay" id="conflict-sheet-overlay" onclick="closeConflictSheet()"></div>
 <div class="conflict-sheet" id="conflict-sheet">
@@ -2215,7 +2270,7 @@ const FESTIVAL_STORAGE_KEY='ficci65_';
 // BUILD_VERSION: cambia en cada deploy.
 // Al cargar, compara con localStorage. Si difiere → reload duro.
 // sessionStorage evita loops infinitos dentro de la misma sesión.
-const BUILD_VERSION='202604192213';
+const BUILD_VERSION='202604192235';
 (function(){
   const _vk='otrofestiv_build';
   const _sk='otrofestiv_reloaded';
@@ -3505,7 +3560,7 @@ function mkAgendaRow(s, mode='saved'){
       <div class="saved-venue">${ICONS.pin} ${vc2.short}${sl?' · '+sl:''}${s.duration?' · '+s.duration:''}${altBadge}</div>
       ${_progBtn}
     </div>
-    <button class="saved-check${isDone?' done':''}" data-wt="${safeT}" onclick="toggleWatched(this.dataset.wt,event)" style="display:inline-flex;align-items:center;gap:5px">${isDone?'No vista':ICONS.check+' Vista'}</button>
+    <button class="saved-check${isDone?' done':''}" onclick="${isDone?`toggleWatched('${safeT}',event)`:`markWatchedFromPlan('${safeT}','${s.day||''}','${s.time||''}','${(s.venue||'').replace(/'/g,'\\'')}  ','${s.duration||''}',event)`}" style="display:inline-flex;align-items:center;gap:5px">${isDone?'No vista':ICONS.check+' Vista'}</button>
   </div>${_progList}${altsHtml?`<div class="film-alts">${altsHtml}</div>`:''}`;
 }
 
@@ -3526,8 +3581,14 @@ function renderSavedAgendaHTML(){
   }
 }
 function checkinLaVi(title){
-  if(!watched.has(title)){watched.add(title);saveWatched();updateCardState(title);updateAgTab();}
-  renderAgenda();
+  if(!watched.has(title)){
+    watched.add(title);saveWatched();updateCardState(title);updateAgTab();
+    renderAgenda();
+    const s=savedAgenda&&savedAgenda.schedule.find(e=>e._title===title);
+    setTimeout(()=>openPostViewRating(title, s?.day, s?.time, s?.venue, s?.duration), 250);
+  } else {
+    renderAgenda();
+  }
 }
 function checkinNoLaVi(title){
   _removePlanItem(title);
@@ -4461,6 +4522,124 @@ function squeezeExcluded(schedule, excludedTitles){
     }
   });
   return result;
+}
+
+/* ── POST-VIEW RATING SHEET ── */
+let _pvTitle='', _pvRating=0;
+
+function _pvStarSVG(fill){
+  if(fill==='full')  return`<svg width="34" height="34" viewBox="0 0 24 24"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26" fill="var(--amber)" stroke="var(--amber)" stroke-width="1.5" stroke-linejoin="round"/></svg>`;
+  if(fill==='half')  return`<svg width="34" height="34" viewBox="0 0 24 24"><defs><linearGradient id="pvhg"><stop offset="50%" stop-color="var(--amber)"/><stop offset="50%" stop-color="transparent"/></linearGradient></defs><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26" fill="url(#pvhg)" stroke="var(--amber)" stroke-width="1.5" stroke-linejoin="round"/></svg>`;
+  return`<svg width="34" height="34" viewBox="0 0 24 24" style="opacity:.15"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26" fill="none" stroke="var(--amber)" stroke-width="1.5" stroke-linejoin="round"/></svg>`;
+}
+
+function _pvRenderStars(val){
+  const row=document.getElementById('pv-stars-row');
+  if(!row) return;
+  row.innerHTML='';
+  for(let i=1;i<=5;i++){
+    const fill=val>=i?'full':val>=i-.5?'half':'none';
+    const div=document.createElement('div');
+    div.className='pv-star';
+    div.innerHTML=_pvStarSVG(fill);
+    row.appendChild(div);
+  }
+  // Hint y botón
+  const hint=document.getElementById('pv-hint');
+  const btn=document.getElementById('pv-btn-save');
+  if(hint) hint.textContent=val>0?`${val} de 5`:'Deslizá sobre las estrellas';
+  if(hint) hint.style.color=val>0?'var(--amber)':'var(--gray)';
+  if(btn)  btn.disabled=val===0;
+}
+
+function openPostViewRating(title, day, time, venue, duration){
+  _pvTitle=title;
+  _pvRating=filmRatings[title]||0;
+
+  const{displayTitle}=parseProgramTitle(title);
+  const f=FILMS.find(fi=>fi.title===title);
+  const DAY_A={Martes:'MAR',Miércoles:'MIÉ',Jueves:'JUE',Viernes:'VIE',Sábado:'SÁB',Domingo:'DOM'};
+
+  // Poster
+  const poster=document.getElementById('pv-poster');
+  if(poster){
+    const src=f?.is_cortos?makeProgramPoster(title):(getPosterSrc(title,false)||'');
+    poster.src=src;
+    poster.onerror=()=>{poster.style.opacity='0';};
+  }
+
+  // Título
+  const titleEl=document.getElementById('pv-film-title');
+  if(titleEl) titleEl.textContent=displayTitle;
+
+  // Contexto: día · venue · duración
+  const ctx=document.getElementById('pv-context');
+  if(ctx){
+    const parts=[];
+    if(day) parts.push(DAY_A[day]||day);
+    if(venue) parts.push(venue.split('·')[0].trim().split('‒')[0].trim());
+    if(duration) parts.push(duration);
+    ctx.textContent=parts.join(' · ');
+  }
+
+  // Estrellas y rango
+  const range=document.getElementById('pv-range');
+  if(range){
+    range.value=Math.round(_pvRating*2);
+    range._pvInit=false;
+  }
+  _pvRenderStars(_pvRating);
+
+  // Listener del range
+  requestAnimationFrame(()=>{
+    const r=document.getElementById('pv-range');
+    if(r&&!r._pvInit){
+      r._pvInit=true;
+      r.addEventListener('input',()=>{
+        _pvRating=parseInt(r.value)/2;
+        _pvRenderStars(_pvRating);
+      });
+    }
+  });
+
+  document.getElementById('pv-rating-overlay').classList.add('open');
+  document.getElementById('pv-rating-sheet').classList.add('open');
+}
+
+function savePVRating(){
+  if(_pvRating>0){
+    filmRatings[_pvTitle]=_pvRating;
+    localStorage.setItem('ficci65_ratings',JSON.stringify(filmRatings));
+    const stars=['','★','★★','★★★','★★★★','★★★★★'];
+    showToast(stars[Math.round(_pvRating)]||'★ Calificada','info');
+  }
+  closePVRating();
+}
+
+function closePVRating(){
+  document.getElementById('pv-rating-overlay').classList.remove('open');
+  document.getElementById('pv-rating-sheet').classList.remove('open');
+}
+
+function markWatchedFromPlan(title, day, time, venue, duration, e){
+  if(e) e.stopPropagation();
+  if(watched.has(title)){
+    // Ya está vista — desmarcar
+    watched.delete(title);
+    if(!watchlist.has(title)) watchlist.add(title);
+    saveState('wl','watched');
+    updateCardState(title);
+    updateAgTab();
+    showToast('Movida a pendientes','info');
+    return;
+  }
+  // Marcar como vista y abrir sheet de calificación
+  watched.add(title);
+  saveWatched();
+  updateCardState(title);
+  updateAgTab();
+  renderAgenda();
+  setTimeout(()=>openPostViewRating(title, day, time, venue, duration), 250);
 }
 
 /* ── CONFLICT SHEET ── */
