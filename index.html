@@ -5500,7 +5500,7 @@ function openPelSheet(title){
         <div class="pel-sheet-title">${displayTitle}</div>
         <div class="pel-sheet-flags">${f.flags||'🌐'}</div>
         <div class="pel-sheet-dur">${ICONS.clock} ${f.duration}</div>
-        ${f.section?`<div class="pel-sheet-sec" onclick="filterBySection('${f.section.replace(/'/g,'\\'')}')">${secLabel} <span class="pel-sheet-sec-arrow">›</span></div>`:''}
+        ${f.section?`<div class="pel-sheet-sec" data-sec="${f.section.replace(/"/g,'&quot;')}" onclick="filterBySection(this.dataset.sec)">${secLabel} <span class="pel-sheet-sec-arrow">›</span></div>`:''}
         ${unica?`<div style="font-size:11px;color:rgba(248,213,140,.7);font-weight:600;margin-top:3px;letter-spacing:.3px">Única función</div>`:''}
         ${f.is_cortos&&f.film_list?.length?`<div style="font-size:11px;color:var(--orange);margin-top:2px">CORTOS · ${f.film_list.length} films</div>`:''}
       </div>
