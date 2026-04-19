@@ -2017,7 +2017,7 @@ const FESTIVAL_STORAGE_KEY='ficci65_';
 // BUILD_VERSION: cambia en cada deploy.
 // Al cargar, compara con localStorage. Si difiere → reload duro.
 // sessionStorage evita loops infinitos dentro de la misma sesión.
-const BUILD_VERSION='202604190947';
+const BUILD_VERSION='202604191509';
 (function(){
   const _vk='otrofestiv_build';
   const _sk='otrofestiv_reloaded';
@@ -4660,19 +4660,13 @@ function updateRatingStars(current){
 }
 
 let _currentRating=0;
-let _prevBtnState=''; // evitar actualizar el botón en cada frame
-
 function setRating(val){
   _currentRating=val;
   updateRatingStars(val); // rápido, sin recrear DOM
-  const state=val>0?'save':'skip';
-  if(state!==_prevBtnState){
-    _prevBtnState=state;
-    const btn=document.getElementById('rating-action-btn');
-    if(btn){
-      if(state==='save'){btn.textContent='Guardar';btn.className='rating-action-btn save';}
-      else{btn.textContent='Sin calificar';btn.className='rating-action-btn skip';}
-    }
+  const btn=document.getElementById('rating-action-btn');
+  if(btn){
+    if(val>0){btn.textContent='Guardar';btn.className='rating-action-btn save';}
+    else{btn.textContent='Sin calificar';btn.className='rating-action-btn skip';}
   }
 }
 
