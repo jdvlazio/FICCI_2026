@@ -624,6 +624,29 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:20px;fo
 
 .rating-action-btn{width:100%;border:none;border-radius:var(--r-pill);font-family:var(--font);font-size:14px;font-weight:700;padding:13px 0;cursor:pointer;transition:all .2s ease}
 /* ── Sheet de confirmación de plan ── */
+/* ── Sheet límite de prioridades ── */
+.prio-limit-overlay{position:fixed;inset:0;background:rgba(5,5,5,.75);backdrop-filter:blur(8px);z-index:9200;opacity:0;pointer-events:none;transition:opacity .25s}
+.prio-limit-overlay.open{opacity:1;pointer-events:all}
+.prio-limit-sheet{position:fixed;bottom:0;left:0;right:0;background:var(--surf-2);border-top:1px solid var(--bdr);border-radius:20px 20px 0 0;z-index:9201;transform:translateY(100%);transition:transform .32s cubic-bezier(.32,0,.67,0)}
+.prio-limit-sheet.open{transform:translateY(0)}
+.prio-limit-handle{width:36px;height:4px;background:rgba(255,255,255,.1);border-radius:2px;margin:12px auto 0}
+.prio-limit-hdr{padding:18px 20px 14px;border-bottom:1px solid var(--bdr)}
+.prio-limit-eyebrow{font-size:10px;font-weight:700;color:var(--amber-60);letter-spacing:1px;text-transform:uppercase;margin-bottom:4px;display:flex;align-items:center;gap:5px}
+.prio-limit-title{font-size:17px;font-weight:800;color:var(--white);letter-spacing:-.2px}
+.prio-limit-sub{font-size:13px;color:var(--gray);margin-top:5px}
+.prio-limit-new{margin:14px 20px 4px;background:var(--amber-10);border:1px solid var(--amber-30);border-radius:10px;padding:10px 14px;display:flex;align-items:center;gap:10px}
+.prio-limit-new-lbl{font-size:10px;color:var(--amber-60);font-weight:700;letter-spacing:.5px;text-transform:uppercase;margin-bottom:2px}
+.prio-limit-new-title{font-size:13px;font-weight:700;color:var(--amber);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.prio-limit-list{padding:6px 0}
+.prio-limit-item{display:flex;align-items:center;gap:12px;padding:11px 20px;border-bottom:1px solid var(--bdr-l);cursor:pointer}
+.prio-limit-item:last-child{border-bottom:none}
+.prio-limit-thumb{width:32px;height:48px;border-radius:4px;flex-shrink:0;object-fit:cover;background:var(--surf-3)}
+.prio-limit-info{flex:1;min-width:0}
+.prio-limit-name{font-size:13px;font-weight:600;color:var(--white);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.prio-limit-when{font-size:11px;color:var(--gray);margin-top:2px}
+.prio-limit-swap{background:none;border:1px solid var(--bdr);border-radius:20px;color:var(--gray);font-family:var(--font);font-size:11px;font-weight:600;padding:5px 11px;cursor:pointer;white-space:nowrap;flex-shrink:0;transition:all .15s}
+.prio-limit-swap:active{border-color:var(--amber-30);color:var(--amber);background:var(--amber-10)}
+.prio-limit-cancel{width:calc(100% - 40px);margin:14px 20px 44px;background:none;border:1px solid var(--bdr);border-radius:50px;color:var(--gray);font-family:var(--font);font-size:13px;font-weight:600;padding:12px;cursor:pointer;display:block}
 .plan-confirm-overlay{position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:9200;opacity:0;pointer-events:none;transition:opacity .25s}
 .plan-confirm-overlay.open{opacity:1;pointer-events:all}
 .plan-confirm-sheet{position:fixed;bottom:0;left:0;right:0;background:var(--surf-2);border-top:1px solid var(--bdr);border-radius:20px 20px 0 0;z-index:9201;padding:8px 20px 44px;transform:translateY(100%);transition:transform .32s cubic-bezier(.32,0,.67,0)}
@@ -1549,6 +1572,25 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:20px;fo
   <button class="fdr-btn active" id="btn-modo-pelicula" onclick="setCartelaMode('pelicula')"><span class="fdr-label">Por Película</span></button>
   <button class="fdr-btn" id="btn-modo-horario" onclick="setCartelaMode('horario')"><span class="fdr-label">Por Horario</span></button>
 </div>
+<!-- ── Prio Limit Sheet ── -->
+<div class="prio-limit-overlay" id="prio-limit-overlay" onclick="closePrioLimit()"></div>
+<div class="prio-limit-sheet" id="prio-limit-sheet">
+  <div class="prio-limit-handle"></div>
+  <div class="prio-limit-hdr">
+    <div class="prio-limit-eyebrow"><svg width="11" height="11" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1.5"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg><span id="prio-limit-eyebrow-txt"></span></div>
+    <div class="prio-limit-title">Ya tienes <span id="prio-limit-count"></span> prioridades</div>
+    <div class="prio-limit-sub">Cambia una para priorizar esta película</div>
+  </div>
+  <div class="prio-limit-new" id="prio-limit-new-bar">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#F59E0B" stroke-width="2"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
+    <div style="flex:1;min-width:0">
+      <div class="prio-limit-new-lbl">Quieres priorizar</div>
+      <div class="prio-limit-new-title" id="prio-limit-new-title"></div>
+    </div>
+  </div>
+  <div class="prio-limit-list" id="prio-limit-list"></div>
+  <button class="prio-limit-cancel" onclick="closePrioLimit()">Cancelar</button>
+</div>
 <!-- ── Plan Confirm Sheet ── -->
 <div class="plan-confirm-overlay" id="plan-confirm-overlay" onclick="closePlanConfirm()"></div>
 <div class="plan-confirm-sheet" id="plan-confirm-sheet">
@@ -2075,7 +2117,7 @@ const FESTIVAL_STORAGE_KEY='ficci65_';
 // BUILD_VERSION: cambia en cada deploy.
 // Al cargar, compara con localStorage. Si difiere → reload duro.
 // sessionStorage evita loops infinitos dentro de la misma sesión.
-const BUILD_VERSION='202604192022';
+const BUILD_VERSION='202604192203';
 (function(){
   const _vk='otrofestiv_build';
   const _sk='otrofestiv_reloaded';
@@ -4277,7 +4319,7 @@ function togglePriority(title,cost){
     showToast(`${ICONS.star} Prioridad quitada`,'info');
   } else {
     if(prioritized.size>=PRIO_LIMIT){
-      showToast(`Máximo ${PRIO_LIMIT} prioridades activas. Quita una para cambiar.`,'warn');return;
+      openPrioLimit(title);return;
     }
     prioritized.add(title);
     if(!watchlist.has(title)){watchlist.add(title);watched.delete(title);saveWL();saveWatched();}
@@ -4319,6 +4361,62 @@ function squeezeExcluded(schedule, excludedTitles){
     }
   });
   return result;
+}
+
+function openPrioLimit(newTitle){
+  // Eyebrow con contador
+  const eyebrow=document.getElementById('prio-limit-eyebrow-txt');
+  const count=document.getElementById('prio-limit-count');
+  if(eyebrow) eyebrow.textContent=`Prioridades · ${PRIO_LIMIT}/${PRIO_LIMIT}`;
+  if(count) count.textContent=PRIO_LIMIT;
+
+  // Título de la nueva película
+  const{displayTitle}=parseProgramTitle(newTitle);
+  const newTitleEl=document.getElementById('prio-limit-new-title');
+  if(newTitleEl) newTitleEl.textContent=displayTitle;
+
+  // Lista de prioritarias actuales
+  const list=document.getElementById('prio-limit-list');
+  if(list){
+    const DAY_A={Martes:'MAR',Miércoles:'MIÉ',Jueves:'JUE',Viernes:'VIE',Sábado:'SÁB',Domingo:'DOM'};
+    const items=[...prioritized].map(t=>{
+      const{displayTitle:dt}=parseProgramTitle(t);
+      const f=FILMS.find(fi=>fi.title===t&&!screeningPassed(fi));
+      const when=f?`${DAY_A[f.day]||f.day} · ${f.time}`:'';
+      const poster=t===dt?(getPosterSrc(t,false)||''):makeProgramPoster(t);
+      const safeSwap=t.replace(/'/g,"\'");
+      const safeNew=newTitle.replace(/'/g,"\'");
+      return`<div class="prio-limit-item">
+        ${poster?`<img class="prio-limit-thumb" src="${poster}" onerror="this.style.opacity=0" alt="">`:'<div class="prio-limit-thumb"></div>'}
+        <div class="prio-limit-info">
+          <div class="prio-limit-name">${dt}</div>
+          <div class="prio-limit-when">${when}</div>
+        </div>
+        <button class="prio-limit-swap" onclick="swapPriority('${safeSwap}','${safeNew}')">Cambiar</button>
+      </div>`;
+    }).join('');
+    list.innerHTML=items;
+  }
+
+  document.getElementById('prio-limit-overlay').classList.add('open');
+  document.getElementById('prio-limit-sheet').classList.add('open');
+}
+
+function closePrioLimit(){
+  document.getElementById('prio-limit-overlay').classList.remove('open');
+  document.getElementById('prio-limit-sheet').classList.remove('open');
+}
+
+function swapPriority(removeTitle, addTitle){
+  prioritized.delete(removeTitle);
+  prioritized.add(addTitle);
+  savePrio();
+  updateCardState(removeTitle);
+  updateCardState(addTitle);
+  updateAgTab();
+  closePrioLimit();
+  const{displayTitle}=parseProgramTitle(addTitle);
+  showToast(`${ICONS.starFill} ${displayTitle} priorizada`,'info');
 }
 
 function openPlanConfirm(schedule){
