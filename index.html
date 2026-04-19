@@ -3560,7 +3560,7 @@ function mkAgendaRow(s, mode='saved'){
       <div class="saved-venue">${ICONS.pin} ${vc2.short}${sl?' · '+sl:''}${s.duration?' · '+s.duration:''}${altBadge}</div>
       ${_progBtn}
     </div>
-    <button class="saved-check${isDone?' done':''}" onclick="${isDone?`toggleWatched('${safeT}',event)`:`markWatchedFromPlan('${safeT}','${s.day||''}','${s.time||''}','${(s.venue||'').replace(/'/g,'\\'')}  ','${s.duration||''}',event)`}" style="display:inline-flex;align-items:center;gap:5px">${isDone?'No vista':ICONS.check+' Vista'}</button>
+    <button class="saved-check${isDone?' done':''}" data-title="${safeT}" data-day="${s.day||''}" data-time="${s.time||''}" data-venue="${(s.venue||'').replace(/"/g,'&quot;')}" data-dur="${s.duration||''}" onclick="${isDone?'toggleWatched(this.dataset.title,event)':'markWatchedFromPlan(this.dataset.title,this.dataset.day,this.dataset.time,this.dataset.venue,this.dataset.dur,event)'}" style="display:inline-flex;align-items:center;gap:5px">${isDone?'No vista':ICONS.check+' Vista'}</button>
   </div>${_progList}${altsHtml?`<div class="film-alts">${altsHtml}</div>`:''}`;
 }
 
