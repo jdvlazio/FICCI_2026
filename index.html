@@ -1893,7 +1893,7 @@ const FESTIVAL_DATES={
   'Viernes':'2026-04-17','Sábado':'2026-04-18','Domingo':'2026-04-19'
 };
 // Fin del festival — última función del Domingo + margen
-const FESTIVAL_END=new Date('2026-04-20T06:00:00');
+const FESTIVAL_END=new Date('2026-04-20T02:00:00');
 function festivalEnded(){ return simNow()>FESTIVAL_END; }
 
 // Check if a screening has passed (with 10 min grace)
@@ -2021,7 +2021,7 @@ const FESTIVAL_STORAGE_KEY='ficci65_';
 // BUILD_VERSION: cambia en cada deploy.
 // Al cargar, compara con localStorage. Si difiere → reload duro.
 // sessionStorage evita loops infinitos dentro de la misma sesión.
-const BUILD_VERSION='202604191517';
+const BUILD_VERSION='202604191521';
 (function(){
   const _vk='otrofestiv_build';
   const _sk='otrofestiv_reloaded';
