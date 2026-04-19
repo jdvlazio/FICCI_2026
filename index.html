@@ -626,6 +626,35 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:20px;fo
 /* ── Sheet de confirmación de plan ── */
 /* ── Sheet límite de prioridades ── */
 /* ── Sheet añadir a Mi Lista desde Cartelera ── */
+/* ── Sheet conflicto de horario ── */
+.conflict-sheet-overlay{position:fixed;inset:0;background:rgba(4,4,4,.72);backdrop-filter:blur(10px);z-index:9180;opacity:0;pointer-events:none;transition:opacity .25s}
+.conflict-sheet-overlay.open{opacity:1;pointer-events:all}
+.conflict-sheet{position:fixed;bottom:0;left:0;right:0;background:var(--surf-2);border-top:1px solid var(--bdr);border-radius:20px 20px 0 0;z-index:9181;transform:translateY(100%);transition:transform .32s cubic-bezier(.32,0,.67,0)}
+.conflict-sheet.open{transform:translateY(0)}
+.conflict-handle{width:36px;height:4px;background:rgba(255,255,255,.1);border-radius:2px;margin:12px auto 0}
+.conflict-hdr{padding:16px 20px 14px;border-bottom:1px solid var(--bdr)}
+.conflict-eyebrow{font-size:10px;font-weight:700;color:var(--red);letter-spacing:1px;text-transform:uppercase;display:flex;align-items:center;gap:5px;margin-bottom:4px;opacity:.8}
+.conflict-title{font-size:17px;font-weight:800;color:var(--white);letter-spacing:-.2px}
+.conflict-sub{font-size:13px;color:var(--gray);margin-top:4px}
+.conflict-arena{padding:16px 20px;display:flex;flex-direction:column;gap:10px}
+.conflict-card{display:flex;align-items:center;gap:12px;padding:12px 14px;border-radius:12px;border:1px solid var(--bdr);background:var(--surf-3)}
+.conflict-card.incoming{border-color:var(--amber-30);background:var(--amber-10)}
+.conflict-card.existing{border-color:var(--red-20);background:var(--red-08);opacity:.8}
+.conflict-poster{width:32px;height:48px;border-radius:4px;flex-shrink:0;object-fit:cover;background:rgba(255,255,255,.06)}
+.conflict-card.incoming .conflict-poster{background:rgba(245,158,11,.12)}
+.conflict-card.existing .conflict-poster{background:rgba(224,90,90,.12)}
+.conflict-role{font-size:10px;font-weight:700;letter-spacing:.8px;text-transform:uppercase;margin-bottom:3px}
+.conflict-card.incoming .conflict-role{color:var(--amber);opacity:.7}
+.conflict-card.existing .conflict-role{color:var(--red);opacity:.7}
+.conflict-name{font-size:13px;font-weight:700;color:var(--white);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.conflict-card.existing .conflict-name{opacity:.7}
+.conflict-when{font-size:11px;color:var(--gray);margin-top:2px}
+.conflict-vs{display:flex;align-items:center;gap:10px}
+.conflict-vs-line{flex:1;height:1px;background:var(--bdr)}
+.conflict-vs-lbl{font-size:10px;font-weight:800;color:var(--gray);letter-spacing:2px}
+.conflict-actions{padding:4px 20px 44px;display:flex;flex-direction:column;gap:8px}
+.conflict-btn-replace{width:100%;background:var(--amber);color:#000;border:none;border-radius:50px;font-family:var(--font);font-size:14px;font-weight:800;padding:14px;cursor:pointer}
+.conflict-btn-cancel{width:100%;background:none;border:1px solid var(--bdr);border-radius:50px;color:var(--gray);font-family:var(--font);font-size:13px;font-weight:600;padding:12px;cursor:pointer}
 .wl-add-overlay{position:fixed;inset:0;z-index:9150;pointer-events:none}
 .wl-add-overlay.open{pointer-events:all}
 .wl-add-sheet{position:fixed;bottom:52px;left:0;right:0;background:var(--surf-2);border-top:1px solid var(--bdr);padding:14px 20px 18px;z-index:9151;transform:translateY(100%);transition:transform .28s cubic-bezier(.32,0,.67,0);pointer-events:all}
@@ -1587,6 +1616,39 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:20px;fo
   <button class="fdr-btn active" id="btn-modo-pelicula" onclick="setCartelaMode('pelicula')"><span class="fdr-label">Por Película</span></button>
   <button class="fdr-btn" id="btn-modo-horario" onclick="setCartelaMode('horario')"><span class="fdr-label">Por Horario</span></button>
 </div>
+<!-- ── Conflict Sheet ── -->
+<div class="conflict-sheet-overlay" id="conflict-sheet-overlay" onclick="closeConflictSheet()"></div>
+<div class="conflict-sheet" id="conflict-sheet">
+  <div class="conflict-handle"></div>
+  <div class="conflict-hdr">
+    <div class="conflict-eyebrow"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>Conflicto de horario</div>
+    <div class="conflict-title">Se solapan en el mismo tramo</div>
+    <div class="conflict-sub">¿Cuál querés en tu plan?</div>
+  </div>
+  <div class="conflict-arena">
+    <div class="conflict-card incoming">
+      <img class="conflict-poster" id="cs-incoming-poster" src="" alt="">
+      <div style="flex:1;min-width:0">
+        <div class="conflict-role">Querés añadir</div>
+        <div class="conflict-name" id="cs-incoming-name"></div>
+        <div class="conflict-when" id="cs-incoming-when"></div>
+      </div>
+    </div>
+    <div class="conflict-vs"><div class="conflict-vs-line"></div><div class="conflict-vs-lbl">vs</div><div class="conflict-vs-line"></div></div>
+    <div class="conflict-card existing">
+      <img class="conflict-poster" id="cs-existing-poster" src="" alt="">
+      <div style="flex:1;min-width:0">
+        <div class="conflict-role">Ya en tu plan</div>
+        <div class="conflict-name" id="cs-existing-name"></div>
+        <div class="conflict-when" id="cs-existing-when"></div>
+      </div>
+    </div>
+  </div>
+  <div class="conflict-actions">
+    <button class="conflict-btn-replace" id="cs-replace-btn"></button>
+    <button class="conflict-btn-cancel" onclick="closeConflictSheet()">Cancelar</button>
+  </div>
+</div>
 <!-- ── WL Add Sheet ── -->
 <div class="wl-add-overlay" id="wl-add-overlay"></div>
 <div class="wl-add-sheet" id="wl-add-sheet">
@@ -2153,7 +2215,7 @@ const FESTIVAL_STORAGE_KEY='ficci65_';
 // BUILD_VERSION: cambia en cada deploy.
 // Al cargar, compara con localStorage. Si difiere → reload duro.
 // sessionStorage evita loops infinitos dentro de la misma sesión.
-const BUILD_VERSION='202604192208';
+const BUILD_VERSION='202604192213';
 (function(){
   const _vk='otrofestiv_build';
   const _sk='otrofestiv_reloaded';
@@ -2690,9 +2752,7 @@ function addSuggestion(title,day,time){
       // en la misma sesión). Revalidamos contra el estado actual.
       const realConflict=savedAgenda.schedule.find(s=>s.day===day&&screensConflict(s,screen));
       if(realConflict){
-        const{displayTitle:ct}=parseProgramTitle(realConflict._title);
-        showToast(`Conflicto con ${ct.length>22?ct.slice(0,20)+'…':ct} — revisa el horario`,'warn');
-        renderAgenda();
+        openConflictSheet(title, screen, realConflict);
         return;
       }
       savedAgenda.schedule.push({...screen,_title:title});
@@ -4401,6 +4461,68 @@ function squeezeExcluded(schedule, excludedTitles){
     }
   });
   return result;
+}
+
+/* ── CONFLICT SHEET ── */
+let _conflictPending=null; // {title, day, time, screen, existingTitle}
+
+function openConflictSheet(incomingTitle, incomingScreen, existingEntry){
+  const{displayTitle:inDT}=parseProgramTitle(incomingTitle);
+  const{displayTitle:exDT}=parseProgramTitle(existingEntry._title||'');
+  const DAY_A={Martes:'MAR',Miércoles:'MIÉ',Jueves:'JUE',Viernes:'VIE',Sábado:'SÁB',Domingo:'DOM'};
+
+  // Pósters
+  const inF=FILMS.find(f=>f.title===incomingTitle&&f.day===incomingScreen.day&&f.time===incomingScreen.time);
+  const exF=FILMS.find(f=>f.title===(existingEntry._title||''));
+  const inPoster=inF?.is_cortos?makeProgramPoster(incomingTitle):(getPosterSrc(incomingTitle,false)||'');
+  const exPoster=exF?.is_cortos?makeProgramPoster(existingEntry._title||''):(getPosterSrc(existingEntry._title||'',false)||'');
+
+  const ip=document.getElementById('cs-incoming-poster');
+  const ep=document.getElementById('cs-existing-poster');
+  if(ip){ip.src=inPoster;ip.onerror=()=>{ip.style.opacity='0';};}
+  if(ep){ep.src=exPoster;ep.onerror=()=>{ep.style.opacity='0';};}
+
+  // Nombres y horarios
+  const setEl=(id,txt)=>{const el=document.getElementById(id);if(el)el.textContent=txt;};
+  setEl('cs-incoming-name', inDT);
+  setEl('cs-incoming-when', `${DAY_A[incomingScreen.day]||''} · ${incomingScreen.time} · ${inF?.duration||''}`);
+  setEl('cs-existing-name', exDT);
+  const exWhen=existingEntry.day?`${DAY_A[existingEntry.day]||''} · ${existingEntry.time} · ${exF?.duration||''}`:'';
+  setEl('cs-existing-when', exWhen);
+
+  // Botón de reemplazo con nombre exacto
+  const btn=document.getElementById('cs-replace-btn');
+  const shortEx=exDT.length>24?exDT.slice(0,22)+'…':exDT;
+  if(btn) btn.textContent=`Añadir y quitar ${shortEx}`;
+
+  // Guardar pendiente para ejecutar al confirmar
+  _conflictPending={incomingTitle, incomingScreen, existingEntry};
+
+  document.getElementById('conflict-sheet-overlay').classList.add('open');
+  document.getElementById('conflict-sheet').classList.add('open');
+
+  // Acción del botón
+  if(btn) btn.onclick=confirmConflictReplace;
+}
+
+function confirmConflictReplace(){
+  if(!_conflictPending) return;
+  const{incomingTitle, incomingScreen, existingEntry}=_conflictPending;
+  // Quitar la existente e insertar la nueva
+  savedAgenda.schedule=savedAgenda.schedule.filter(s=>!(s._title===existingEntry._title&&s.day===existingEntry.day&&s.time===existingEntry.time));
+  savedAgenda.schedule.push({...incomingScreen,_title:incomingTitle});
+  savedAgenda.schedule.sort((a,b)=>a.day_order!==b.day_order?a.day_order-b.day_order:toMin(a.time)-toMin(b.time));
+  saveSavedAgenda();
+  const{displayTitle:dt}=parseProgramTitle(incomingTitle);
+  closeConflictSheet();
+  showToast(`${ICONS.calendar} ${dt.length>22?dt.slice(0,20)+'…':dt} en tu plan`,'info');
+  renderAgenda();
+}
+
+function closeConflictSheet(){
+  _conflictPending=null;
+  document.getElementById('conflict-sheet-overlay').classList.remove('open');
+  document.getElementById('conflict-sheet').classList.remove('open');
 }
 
 let _wlAddTimer=null;
