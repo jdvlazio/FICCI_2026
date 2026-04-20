@@ -2406,7 +2406,7 @@ const FESTIVAL_STORAGE_KEY='ficci65_';
 // BUILD_VERSION: cambia en cada deploy.
 // Al cargar, compara con localStorage. Si difiere → reload duro.
 // sessionStorage evita loops infinitos dentro de la misma sesión.
-const BUILD_VERSION='202604201452';
+const BUILD_VERSION='202604201457';
 (function(){
   const _vk='otrofestiv_build';
   const _sk='otrofestiv_reloaded';
@@ -5523,7 +5523,11 @@ function onCartaSearch(){
   FILMS.forEach(f=>{if(!titleMap[f.title]) titleMap[f.title]=f;});
   const progMatches=Object.values(titleMap).filter(f=>{
     const{displayTitle}=parseProgramTitle(f.title);
-    return displayTitle.toLowerCase().includes(q)||f.title.toLowerCase().includes(q);
+    const secShort=(f.section||'').replace(/^[^ ]+ /,'').toLowerCase();
+    return displayTitle.toLowerCase().includes(q)
+      ||f.title.toLowerCase().includes(q)
+      ||secShort.includes(q)
+      ||(f.country||'').toLowerCase().includes(q);
   });
   // Buscar también en cortos individuales dentro de film_list
   const cortoMatches=[];
@@ -5565,7 +5569,10 @@ function onCartaSearch(){
       ${poster?`<img class="carta-sr-poster" src="${poster}" onerror="this.style.opacity=0" alt="">`:'<div class="carta-sr-poster"></div>'}
       <div class="carta-sr-info">
         <div class="carta-sr-title">${displayTitle}${progSuffix?` <span style="color:var(--orange);font-size:10px">${progSuffix}</span>`:''}</div>
-        <div class="carta-sr-meta">${f.duration||''}${f.section?' · '+f.section.replace(/^[^ ]+ /,''):''}${inWL?' · <span style="color:var(--amber)">♥</span>':''}</div>
+        <div class="carta-sr-meta">${f._isCortoItem
+          ?`Cortometraje${f._prog?` · ${parseProgramTitle(f._prog.title).displayTitle}`:''}`
+          :`${f.duration||''}${f.section?' · '+f.section.replace(/^[^ ]+ /,''):''}`
+        }${inWL?' · <span style="color:var(--amber)">♥</span>':''}</div>
       </div>
     </div>`;
   }).join('');
@@ -6006,7 +6013,7 @@ function openPelSheet(title){
   const rows=allScr.map(s=>{
     const dayAbb=DAY_ABB[DAY_KEYS.indexOf(s.day)]||s.day.slice(0,3).toUpperCase();
     const vc=vcfg(s.venue),sl=sala(s.venue);
-    const isPast=screeningPassed(s);
+    const isPast=screeningPassed(s)&&!festivalEnded();
     return`<div class="pel-sheet-screening"${isPast?' style="opacity:.4"':''}>
       <span class="pelicula-day">${dayAbb}</span>
       <span class="pelicula-time">${s.time}</span>
