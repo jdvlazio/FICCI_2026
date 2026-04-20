@@ -2857,7 +2857,7 @@ function updateCardState(title){
   const inWL=watchlist.has(title),inW=watched.has(title),inPrio=prioritized.has(title);
   document.querySelectorAll(`.card[data-title="${CSS.escape(title)}"]`).forEach(card=>{
     card.classList.toggle('in-wl',inWL&&!inW);
-    card.classList.toggle('in-watched',inW);
+    card.classList.toggle('in-watched',inW&&!festivalEnded());
     const wlBtn=card.querySelector('.wl-btn');
     const wBtn=card.querySelector('.w-btn');
     const prioBtn=card.querySelector('.prio-btn');
