@@ -261,7 +261,7 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:20px;fo
 .main-nav-lbl{font-size:var(--t-xs);letter-spacing:.08em;text-transform:uppercase;font-family:var(--font);font-weight:var(--w-bold)}
 
 /* Vistas */
-.ag-view{padding:var(--sp-4) var(--sp-5) 60px;display:none}
+.ag-view{padding:var(--sp-2) var(--sp-4) 60px;display:none}
 .ag-view.visible{display:block}
 .hint{padding:0 var(--sp-5);font-size:var(--t-sm);color:var(--gray);min-height:0}
 .hint.active{
@@ -283,14 +283,15 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:20px;fo
 .app-search-results{position:absolute;top:calc(100% + 4px);left:16px;right:16px;background:var(--surf);border:1px solid var(--bdr);border-radius:var(--r);z-index:200;max-height:300px;overflow-y:auto;display:none;box-shadow:0 8px 24px rgba(0,0,0,.4)}
 .app-search-results.open{display:block}
 /* Alias legacy — mantener IDs pero usar estilos unificados */
-.carta-search-wrap,.ag-search-wrap{position:relative;padding:8px 16px 0;margin-bottom:0}
-.carta-search,.ag-search{width:100%;background:var(--surf-2);border:1px solid var(--bdr);border-radius:var(--r-pill);color:var(--white);font-family:var(--font);font-size:var(--t-sm);padding:9px 36px 9px 36px;outline:none;box-sizing:border-box;transition:border-color var(--tr-base);-webkit-appearance:none}
+.carta-search-wrap{position:relative;padding:var(--sp-2) var(--sp-4) 0}
+.ag-search-wrap{position:relative;padding:0 0 var(--sp-2)}
+.carta-search,.ag-search{width:100%;background:var(--surf-2);border:1px solid var(--bdr);border-radius:var(--r-pill);color:var(--white);font-family:var(--font);font-size:var(--t-sm);padding:9px 36px 9px 32px;outline:none;box-sizing:border-box;transition:border-color var(--tr-base);-webkit-appearance:none}
 .carta-search::placeholder,.ag-search::placeholder{color:var(--gray2)}
 .carta-search:focus,.ag-search:focus{border-color:var(--amber-30)}
-.carta-search-ico,.ag-search-ico{position:absolute;left:26px;top:50%;transform:translateY(-50%);color:var(--gray2);display:flex;align-items:center;pointer-events:none}
-.carta-search-clear{position:absolute;right:26px;top:50%;transform:translateY(-50%);background:none;border:none;color:var(--gray2);cursor:pointer;display:none;align-items:center;padding:4px}
+.carta-search-ico,.ag-search-ico{position:absolute;left:10px;top:50%;transform:translateY(-50%);color:var(--gray2);display:flex;align-items:center;pointer-events:none}
+.carta-search-clear{position:absolute;right:10px;top:50%;transform:translateY(-50%);background:none;border:none;color:var(--gray2);cursor:pointer;display:none;align-items:center;padding:4px}
 .carta-search-clear.visible{display:flex}
-.carta-search-results,.ag-search-results{position:absolute;top:calc(100% + 4px);left:16px;right:16px;background:var(--surf);border:1px solid var(--bdr);border-radius:var(--r);z-index:200;max-height:300px;overflow-y:auto;display:none;box-shadow:0 8px 24px rgba(0,0,0,.4)}
+.carta-search-results,.ag-search-results{position:absolute;top:calc(100% + 4px);left:0;right:0;background:var(--surf);border:1px solid var(--bdr);border-radius:var(--r);z-index:200;max-height:300px;overflow-y:auto;display:none;box-shadow:0 8px 24px rgba(0,0,0,.4)}
 .carta-search-results.open,.ag-search-results.open{display:block}
 .carta-sr-item{display:flex;align-items:center;gap:10px;padding:10px 14px;border-bottom:1px solid var(--bdr-l);cursor:pointer;transition:background var(--tr-base)}
 .carta-sr-item:active,.ag-sr-item:active{background:var(--surf-2)}
@@ -1220,7 +1221,7 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:20px;fo
   .main-nav-tab{border-bottom:none;border-top:2px solid transparent;margin-bottom:0;margin-top:-1px;padding:var(--sp-2) var(--sp-1);height:52px}
   .main-nav-tab.on{border-bottom-color:transparent;border-top-color:var(--orange)}
   .grid{padding-bottom:calc(80px + env(safe-area-inset-bottom))}
-  .ag-view{padding-top:var(--sp-4);padding-left:var(--sp-5);padding-right:var(--sp-5);padding-bottom:calc(80px + env(safe-area-inset-bottom))}
+  .ag-view{padding-top:var(--sp-2);padding-left:var(--sp-4);padding-right:var(--sp-4);padding-bottom:calc(80px + env(safe-area-inset-bottom))}
   .prio-toast{top:calc(60px + env(safe-area-inset-top) + 4px)}
   .ag-film-grid{grid-template-columns:repeat(4,1fr);gap:var(--sp-2)}
   
@@ -2419,7 +2420,7 @@ const FESTIVAL_STORAGE_KEY='ficci65_';
 // BUILD_VERSION: cambia en cada deploy.
 // Al cargar, compara con localStorage. Si difiere → reload duro.
 // sessionStorage evita loops infinitos dentro de la misma sesión.
-const BUILD_VERSION='202604201538';
+const BUILD_VERSION='202604201545';
 (function(){
   const _vk='otrofestiv_build';
   const _sk='otrofestiv_reloaded';
