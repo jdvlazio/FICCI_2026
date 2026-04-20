@@ -2402,7 +2402,7 @@ const FESTIVAL_STORAGE_KEY='ficci65_';
 // BUILD_VERSION: cambia en cada deploy.
 // Al cargar, compara con localStorage. Si difiere → reload duro.
 // sessionStorage evita loops infinitos dentro de la misma sesión.
-const BUILD_VERSION='202604201323';
+const BUILD_VERSION='202604201332';
 (function(){
   const _vk='otrofestiv_build';
   const _sk='otrofestiv_reloaded';
@@ -2718,6 +2718,7 @@ function loadState(){
     // Restore reserved slot — persists across refresh, button shows "＋ Añadir" (not "← Restaurar")
     const rs=localStorage.getItem('ficci65_lastslot');if(rs){try{const p=JSON.parse(rs);lastRemovedSlots=Array.isArray(p)?p:(p?[p]:[]);}catch(e){}}
     const fd=localStorage.getItem('ficci65_delays');if(fd){try{filmDelays=JSON.parse(fd);}catch(e){}}
+    const _vm=localStorage.getItem('ficci65_viewmodes');if(_vm){try{const _v=JSON.parse(_vm);if(_v.miPlan)miPlanViewMode=_v.miPlan;if(_v.intereses)interesesViewMode=_v.intereses;}catch(e){}}
   }catch(e){}
 }
 function saveWL(){try{localStorage.setItem('ficci65_wl',JSON.stringify([...watchlist]));}catch(e){}}
@@ -2826,6 +2827,7 @@ function toggleWatched(title,e){
     saveState('wl','watched');updateCardState(title);updateAgTab();
     const listEl=document.getElementById('ag-film-list');
     if(listEl) listEl.innerHTML=renderFilmListHTML();
+    if(activeView==='agenda') renderAgenda();
     showToast('Movida a pendientes','info');
   } else {
     // Confirmar antes de marcar como vista
@@ -2837,7 +2839,9 @@ function toggleWatched(title,e){
       ()=>{
         watched.add(title);
         saveWatched();updateCardState(title);updateAgTab();
-        if(activeView==='agenda'){cachedResult=null;renderAgenda();}
+        cachedResult=null;
+        if(activeView==='agenda') renderAgenda();
+        if(activeMNav==='mnav-miplan') renderAgenda();
         showToast('Movida a Ya vistas','info');
         setTimeout(()=>openRatingSheet(title),350);
       }
@@ -6043,6 +6047,7 @@ function setMiPlanView(mode){
   miPlanViewMode=mode;
   document.getElementById('mpbtn-cal')?.classList.toggle('on',mode==='calendar');
   document.getElementById('mpbtn-list')?.classList.toggle('on',mode==='list');
+  try{const _v=JSON.parse(localStorage.getItem('ficci65_viewmodes')||'{}');_v.miPlan=mode;localStorage.setItem('ficci65_viewmodes',JSON.stringify(_v));}catch(e){}
   renderAgenda();
 }
 
@@ -6090,6 +6095,7 @@ function setInteresesView(mode){
   interesesViewMode=mode;
   document.getElementById('ibtn-grid')?.classList.toggle('on',mode==='grid');
   document.getElementById('ibtn-list')?.classList.toggle('on',mode==='list');
+  try{const _v=JSON.parse(localStorage.getItem('ficci65_viewmodes')||'{}');_v.intereses=mode;localStorage.setItem('ficci65_viewmodes',JSON.stringify(_v));}catch(e){}
   // Re-renderizar sección activa
   const grids=document.querySelectorAll('.ag-film-grid');
   const items=document.querySelectorAll('.ag-film-item:not(.watched-item)');
@@ -6378,10 +6384,9 @@ function _toggleWLFromList(title,btn){
 }
 
 function setCartelaMode(mode){
+  // Mantenida por compatibilidad — el nuevo sistema usa programaSubMode
   cartelaMode=mode;
   expandedPelicula='';
-  // El nuevo sistema usa programaSubMode — setCartelaMode solo se mantiene para compatibilidad interna
-  render();
 }
 
 
