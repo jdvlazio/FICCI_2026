@@ -1459,6 +1459,33 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:var(--t
     transform:translateY(-2px);
     box-shadow:0 8px 24px var(--overlay-60);
     border-color:var(--amber-35);
+    transition:transform .15s ease,box-shadow .15s ease,border-color .15s ease;
+  }
+  .card{transition:transform .15s ease,box-shadow .15s ease,border-color .15s ease}
+
+  /* Poster grid — hover individual en desktop */
+  .poster-card:hover{
+    transform:scale(1.04);
+    z-index:2;
+    box-shadow:0 12px 32px rgba(0,0,0,.7);
+    transition:transform .15s ease,box-shadow .15s ease;
+  }
+  .poster-card{transition:transform .15s ease,box-shadow .15s ease;position:relative}
+
+  /* WL button visible en hover (no en touch) */
+  .wl-btn:not(.wl-on){opacity:0;transition:opacity .15s}
+  .poster-card:hover .wl-btn{opacity:1}
+  /* Si ya está en lista, siempre visible */
+  .wl-btn.wl-on{opacity:1 !important}
+
+  /* Buscador — focus ring más visible en desktop */
+  .carta-search:focus,.ag-search:focus{
+    outline:none;
+  }
+  .carta-search-field:focus-within,
+  .ag-search-field:focus-within{
+    border-color:var(--amber-30);
+    box-shadow:0 0 0 2px var(--amber-08);
   }
 
   .ag-fi-actions{gap:var(--sp-1)}
@@ -1470,6 +1497,13 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:var(--t
     right:max(var(--sp-4),calc(50vw - 464px));
     transform:none;width:auto;max-width:300px;
   }
+
+  /* Nav tabs — transición suave */
+  .main-nav-tab{transition:color .15s ease,border-color .15s ease}
+  .main-nav-tab:hover{cursor:pointer}
+
+  /* Cursor pointer en elementos clickeables */
+  .poster-card,.hdr-fest-bar,.pchip,.fdr-btn{cursor:pointer}
 
   /* Splash */
   #otrofestiv-splash{padding:var(--sp-6) var(--sp-7)}
@@ -2494,7 +2528,7 @@ const FESTIVAL_STORAGE_KEY='ficci65_';
 // BUILD_VERSION: cambia en cada deploy.
 // Al cargar, compara con localStorage. Si difiere → reload duro.
 // sessionStorage evita loops infinitos dentro de la misma sesión.
-const BUILD_VERSION='202604202209';
+const BUILD_VERSION='202604202235';
 (function(){
   const _vk='otrofestiv_build';
   const _sk='otrofestiv_reloaded';
