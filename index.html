@@ -2454,7 +2454,7 @@ const FESTIVAL_STORAGE_KEY='ficci65_';
 // BUILD_VERSION: cambia en cada deploy.
 // Al cargar, compara con localStorage. Si difiere → reload duro.
 // sessionStorage evita loops infinitos dentro de la misma sesión.
-const BUILD_VERSION='202604202109';
+const BUILD_VERSION='202604202111';
 (function(){
   const _vk='otrofestiv_build';
   const _sk='otrofestiv_reloaded';
@@ -6814,6 +6814,7 @@ function selectSplashFest(name,meta){
   if(btn) btn.classList.remove('open');
 }
 function dismissSplash(){
+  localStorage.setItem('otrofestiv-welcomed','1');
   const s=document.getElementById('otrofestiv-splash');
   if(s){s.classList.add('fade-out');setTimeout(()=>s.remove(),520);}
 }
@@ -6825,10 +6826,9 @@ function dismissSplash(){
   if(hasData){
     const s=document.getElementById('otrofestiv-splash');
     if(s) s.remove();
-  } else {
-    localStorage.setItem(SPLASH_KEY,'1');
-    // Sin auto-dismiss — el usuario elige festival y toca Entrar
   }
+  // Si no hasData: el splash permanece visible hasta que el usuario toque Entrar
+  // El SPLASH_KEY se guarda en dismissSplash(), no aquí
 })();
 
 loadState();{const _ts=simTodayStr();const _ni=DAY_KEYS.findIndex(d=>FESTIVAL_DATES[d]===_ts);activeDay=_ni>=0?DAY_KEYS[_ni]:DAY_KEYS[0];}
