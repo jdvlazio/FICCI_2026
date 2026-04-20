@@ -2531,7 +2531,7 @@ const FESTIVAL_STORAGE_KEY='ficci65_';
 // BUILD_VERSION: cambia en cada deploy.
 // Al cargar, compara con localStorage. Si difiere → reload duro.
 // sessionStorage evita loops infinitos dentro de la misma sesión.
-const BUILD_VERSION='202604202239';
+const BUILD_VERSION='202604202246';
 (function(){
   const _vk='otrofestiv_build';
   const _sk='otrofestiv_reloaded';
@@ -6627,7 +6627,7 @@ function renderProgramaList(){
   if(activeSec!=='all') films=films.filter(f=>f.section===activeSec);
   films.sort((a,b)=>toMin(a.time)-toMin(b.time));
   if(!films.length){
-    el.innerHTML=`<div style="text-align:center;padding:40px 20px;color:var(--gray);font-size:var(--t-base)">Sin funciones para este filtro</div>`;
+    el.innerHTML=`<div style="text-align:center;padding:var(--sp-6) var(--sp-5);color:var(--gray);font-size:var(--t-base)">Sin funciones para este filtro</div>`;
     return;
   }
   // Agrupar por hora
@@ -6712,7 +6712,7 @@ function _renderExploreLista(){
     if(si!==0) return si;
     return a.film.title.localeCompare(b.film.title,'es');
   });
-  if(!entries.length){el.innerHTML=`<div style="text-align:center;padding:40px 20px;color:var(--gray);font-size:var(--t-base)">Sin películas para este filtro</div>`;return;}
+  if(!entries.length){el.innerHTML=`<div style="text-align:center;padding:var(--sp-6) var(--sp-5);color:var(--gray);font-size:var(--t-base)">Sin películas para este filtro</div>`;return;}
   el.innerHTML=entries.map(({film:f,screenings})=>{
     const inWL=watchlist.has(f.title);
     const safeT=f.title.replace(/'/g,"\'");
