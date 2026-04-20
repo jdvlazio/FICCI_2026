@@ -2406,7 +2406,7 @@ const FESTIVAL_STORAGE_KEY='ficci65_';
 // BUILD_VERSION: cambia en cada deploy.
 // Al cargar, compara con localStorage. Si difiere → reload duro.
 // sessionStorage evita loops infinitos dentro de la misma sesión.
-const BUILD_VERSION='202604201404';
+const BUILD_VERSION='202604201406';
 (function(){
   const _vk='otrofestiv_build';
   const _sk='otrofestiv_reloaded';
@@ -4176,7 +4176,8 @@ function renderContextualHeader(){
   if(ph.phase==='ended'){
     const{totalWatched,totalPlanned,pendingRatings}=ph;
     // Películas vistas con su calificación
-    const watchedFilms=[...watched].map(t=>{
+    // Ordenar: calificadas primero (descendente), sin calificar al final
+    const watchedFilms=[...watched].sort((a,b)=>((filmRatings[b]||0)-(filmRatings[a]||0))).map(t=>{
       const f=FILMS.find(fi=>fi.title===t);
       const r=filmRatings[t];
       const{displayTitle:dt}=parseProgramTitle(t);
@@ -4194,8 +4195,9 @@ function renderContextualHeader(){
     const subMsg=totalWatched===0
       ?'Explorá el programa del próximo festival'
       :pendingRatings>0
-        ?`${pendingRatings} película${pendingRatings!==1?'s':''} por calificar`
-        :'¡Gracias por estar en el FICCI!';
+        ?`${pendingRatings} sin calificar`
+        :'Todo calificado · ¡Gracias por estar!';
+    const ratedCount=Object.keys(filmRatings).filter(t=>watched.has(t)||FILMS.some(f=>f.is_cortos&&f.film_list?.some(c=>c.title===t))).length;
     const mainTitle=totalWatched===0
       ?'FICCI 65 ha terminado'
       :`Viste ${totalWatched} película${totalWatched!==1?'s':''}`;
@@ -4206,7 +4208,7 @@ function renderContextualHeader(){
       </div>
       <div class="ctx-main-title">${mainTitle}</div>
       <div class="ctx-sub" style="margin-bottom:${totalWatched?'12px':'0'}">${subMsg}</div>
-      ${totalWatched?`<div style="display:flex;gap:8px;overflow-x:auto;padding-bottom:2px;scrollbar-width:none;-webkit-overflow-scrolling:touch">${watchedFilms}</div>`:''}
+      ${totalWatched?`<div style="display:flex;gap:10px;overflow-x:auto;padding:4px 0 12px;scrollbar-width:none;-webkit-overflow-scrolling:touch">${watchedFilms}</div>`:''}
     </div>`;
   }
 
@@ -4357,6 +4359,8 @@ function renderContextualHeader(){
 }
 
 function _renderSavedAgendaHTML(){
+  // Post-festival: el ENDED header es el contenido completo — no renderizar nada más
+  if(festivalEnded()) return '';
   if(!savedAgenda||!savedAgenda.schedule.length) return `<div style="text-align:center;padding:32px 20px">
       <div style="font-size:28px;margin-bottom:12px">${ICONS.calendar}</div>
       <div style="font-weight:var(--w-bold);color:var(--white);margin-bottom:8px">Tu plan aparecerá aquí</div>
