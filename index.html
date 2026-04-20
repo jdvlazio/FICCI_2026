@@ -272,14 +272,26 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:20px;fo
   font-weight:var(--w-semi);
 }
 .cnt-line{padding:6px var(--sp-5) 4px;font-size:var(--t-sm);color:var(--gray)}
-.carta-search-wrap{position:relative;padding:8px 12px 0}
-.carta-search{width:100%;background:var(--surf-2);border:1px solid var(--bdr);border-radius:var(--r-pill);color:var(--white);font-family:var(--font);font-size:var(--t-sm);padding:8px 12px 8px 34px;outline:none;box-sizing:border-box;transition:border-color var(--tr-base)}
-.carta-search:focus{border-color:var(--amber-30)}
-.carta-search-ico{position:absolute;left:22px;top:50%;transform:translateY(-50%);color:var(--gray2);display:flex;align-items:center;pointer-events:none}
-.carta-search-clear{position:absolute;right:22px;top:50%;transform:translateY(-50%);background:none;border:none;color:var(--gray2);cursor:pointer;display:none;align-items:center;padding:4px}
+/* ── Buscador unificado (Programa, Intereses, Planear) ── */
+.app-search-wrap{position:relative;padding:8px 16px 0}
+.app-search{width:100%;background:var(--surf-2);border:1px solid var(--bdr);border-radius:var(--r-pill);color:var(--white);font-family:var(--font);font-size:var(--t-sm);padding:9px 36px 9px 36px;outline:none;box-sizing:border-box;transition:border-color var(--tr-base);-webkit-appearance:none}
+.app-search::placeholder{color:var(--gray2)}
+.app-search:focus{border-color:var(--amber-30)}
+.app-search-ico{position:absolute;left:26px;top:50%;transform:translateY(-50%);color:var(--gray2);display:flex;align-items:center;pointer-events:none}
+.app-search-clear{position:absolute;right:26px;top:50%;transform:translateY(-50%);background:none;border:none;color:var(--gray2);cursor:pointer;display:none;align-items:center;padding:4px}
+.app-search-clear.visible{display:flex}
+.app-search-results{position:absolute;top:calc(100% + 4px);left:16px;right:16px;background:var(--surf);border:1px solid var(--bdr);border-radius:var(--r);z-index:200;max-height:300px;overflow-y:auto;display:none;box-shadow:0 8px 24px rgba(0,0,0,.4)}
+.app-search-results.open{display:block}
+/* Alias legacy — mantener IDs pero usar estilos unificados */
+.carta-search-wrap,.ag-search-wrap{position:relative;padding:8px 16px 0;margin-bottom:0}
+.carta-search,.ag-search{width:100%;background:var(--surf-2);border:1px solid var(--bdr);border-radius:var(--r-pill);color:var(--white);font-family:var(--font);font-size:var(--t-sm);padding:9px 36px 9px 36px;outline:none;box-sizing:border-box;transition:border-color var(--tr-base);-webkit-appearance:none}
+.carta-search::placeholder,.ag-search::placeholder{color:var(--gray2)}
+.carta-search:focus,.ag-search:focus{border-color:var(--amber-30)}
+.carta-search-ico,.ag-search-ico{position:absolute;left:26px;top:50%;transform:translateY(-50%);color:var(--gray2);display:flex;align-items:center;pointer-events:none}
+.carta-search-clear{position:absolute;right:26px;top:50%;transform:translateY(-50%);background:none;border:none;color:var(--gray2);cursor:pointer;display:none;align-items:center;padding:4px}
 .carta-search-clear.visible{display:flex}
-.carta-search-results{position:absolute;top:calc(100% + 4px);left:12px;right:12px;background:var(--surf);border:1px solid var(--bdr);border-radius:var(--r);z-index:200;max-height:300px;overflow-y:auto;display:none;box-shadow:0 8px 24px rgba(0,0,0,.4)}
-.carta-search-results.open{display:block}
+.carta-search-results,.ag-search-results{position:absolute;top:calc(100% + 4px);left:16px;right:16px;background:var(--surf);border:1px solid var(--bdr);border-radius:var(--r);z-index:200;max-height:300px;overflow-y:auto;display:none;box-shadow:0 8px 24px rgba(0,0,0,.4)}
+.carta-search-results.open,.ag-search-results.open{display:block}
 .carta-sr-item{display:flex;align-items:center;gap:10px;padding:10px 14px;border-bottom:1px solid var(--bdr-l);cursor:pointer;transition:background var(--tr-base)}
 .carta-sr-item:last-child{border-bottom:none}
 .carta-sr-item:active{background:var(--surf-2)}
@@ -331,13 +343,7 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:20px;fo
 .agbar-btn.on .agbar-cnt{background:var(--orange);color:var(--white)}
 
 /* ── Búsqueda ── */
-.ag-search-wrap{position:relative;margin-bottom:var(--sp-3);overflow:hidden}
-.ag-search{display:block;width:100%;max-width:100%;min-width:0;box-sizing:border-box;background:var(--card-a);border:1px solid var(--bdr);border-radius:var(--r);color:var(--white);font-size:var(--t-base);padding:var(--sp-3) var(--sp-4) var(--sp-3) 40px /* icon accommodation */;font-family:var(--font);transition:border-color var(--tr-base);-webkit-appearance:none}
-.ag-search::placeholder{color:var(--gray2)}
-.ag-search:focus{outline:none;border-color:var(--orange)}
-.ag-search-ico{position:absolute;left:12px;top:50%;transform:translateY(-50%);color:var(--gray2);pointer-events:none;display:flex;align-items:center}
-.ag-search-results{background:var(--card-b);border:1px solid var(--bdr);border-radius:var(--r);margin-top:var(--sp-1);overflow:hidden;display:none}
-.ag-search-results.open{display:block}
+
 .ag-sr-item{display:flex;align-items:center;justify-content:space-between;gap:var(--sp-3);padding:var(--sp-3) var(--sp-4);border-bottom:1px solid var(--bdr-l)}
 .ag-sr-item:last-child{border-bottom:none}
 .ag-sr-item:hover{background:var(--card-a)}
@@ -1890,7 +1896,7 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:20px;fo
 </div>
 <div class="carta-search-wrap" id="carta-search-wrap">
   <span class="carta-search-ico"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></span>
-  <input type="text" id="carta-search-input" class="carta-search" placeholder="Buscar película…" oninput="onCartaSearch()" autocomplete="off" autocorrect="off">
+  <input type="text" id="carta-search-input" class="carta-search" placeholder="Buscar película…" oninput="onCartaSearch()" autocomplete="off" autocorrect="off" autocapitalize="off">
   <button class="carta-search-clear" id="carta-search-clear" onclick="clearCartaSearch()"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
   <div id="carta-search-results" class="carta-search-results"></div>
 </div>
@@ -2269,7 +2275,7 @@ const ICONS={
   chevronD: `<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>`,
   share:    `<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>`,
   image:    `<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>`,
-  search:   `<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>`,
+  search:   `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>`,
   pin:      `<svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>`,
 };
 
@@ -2412,7 +2418,7 @@ const FESTIVAL_STORAGE_KEY='ficci65_';
 // BUILD_VERSION: cambia en cada deploy.
 // Al cargar, compara con localStorage. Si difiere → reload duro.
 // sessionStorage evita loops infinitos dentro de la misma sesión.
-const BUILD_VERSION='202604201517';
+const BUILD_VERSION='202604201528';
 (function(){
   const _vk='otrofestiv_build';
   const _sk='otrofestiv_reloaded';
@@ -5429,10 +5435,10 @@ function renderAgenda(){
     view.innerHTML=`${_progressHtml}
       <div class="ag-section">
         <div class="ag-search-wrap">
-          <span class="ag-search-ico">${ICONS.search}</span>
+          <span class="ag-search-ico"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></span>
           <input type="text" id="ag-search-input" class="ag-search"
             placeholder="Buscar y añadir a Intereses…"
-            oninput="onSearchInput()" onblur="closeSearch()" autocomplete="off">
+            oninput="onSearchInput()" onblur="closeSearch()" autocomplete="off" autocapitalize="off">
           <div id="ag-search-results" class="ag-search-results"></div>
         </div>
         <div id="ag-film-list">${renderFilmListHTML()}</div>
@@ -5477,10 +5483,10 @@ function renderAgenda(){
     view.innerHTML=`${_progressHtml}
       <div class="ag-section">
         <div class="ag-search-wrap">
-          <span class="ag-search-ico">${ICONS.search}</span>
+          <span class="ag-search-ico"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></span>
           <input type="text" id="ag-search-input" class="ag-search"
             placeholder="Buscar y añadir a Intereses…"
-            oninput="onSearchInput()" onblur="closeSearch()" autocomplete="off">
+            oninput="onSearchInput()" onblur="closeSearch()" autocomplete="off" autocapitalize="off">
           <div id="ag-search-results" class="ag-search-results"></div>
         </div>
         ${renderPrioStrip()}
