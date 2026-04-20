@@ -2378,7 +2378,7 @@ const FESTIVAL_STORAGE_KEY='ficci65_';
 // BUILD_VERSION: cambia en cada deploy.
 // Al cargar, compara con localStorage. Si difiere → reload duro.
 // sessionStorage evita loops infinitos dentro de la misma sesión.
-const BUILD_VERSION='202604200233';
+const BUILD_VERSION='202604200235';
 (function(){
   const _vk='otrofestiv_build';
   const _sk='otrofestiv_reloaded';
@@ -6374,7 +6374,7 @@ function dismissSplash(){
 loadState();{const _ts=simTodayStr();const _ni=DAY_KEYS.findIndex(d=>FESTIVAL_DATES[d]===_ts);activeDay=_ni>=0?DAY_KEYS[_ni]:DAY_KEYS[0];}
 // Aplicar modo inicial al DOM antes del primer render
 (()=>{if(cartelaMode==='pelicula'){const nr=document.getElementById('nav-row');if(nr)nr.classList.add('hidden');const bP=document.getElementById('btn-modo-pelicula');if(bP)bP.classList.add('active');const bH=document.getElementById('btn-modo-horario');if(bH)bH.classList.remove('active');}})();
-updateAgTab();render();
+updateAgTab();showDayView();
 /* ── Tap-to-reveal en Intereses mobile ──────────────────────────
    Toca el poster → revela botones (ag-active).
    Toca fuera o toca un botón → cierra. */
