@@ -2406,7 +2406,7 @@ const FESTIVAL_STORAGE_KEY='ficci65_';
 // BUILD_VERSION: cambia en cada deploy.
 // Al cargar, compara con localStorage. Si difiere → reload duro.
 // sessionStorage evita loops infinitos dentro de la misma sesión.
-const BUILD_VERSION='202604201351';
+const BUILD_VERSION='202604201353';
 (function(){
   const _vk='otrofestiv_build';
   const _sk='otrofestiv_reloaded';
@@ -4092,7 +4092,13 @@ function _getFestivalPhase(){
     // ENDED: resumen post-festival
     const totalWatched=[...watched].length;
     const totalPlanned=savedAgenda&&savedAgenda.schedule?savedAgenda.schedule.length:0;
-    const pendingRatings=[...watched].filter(t=>!filmRatings[t]).length;
+    // Calificaciones pendientes: programas vistos sin rating + cortos individuales sin rating
+    const _cortoPendRatings=FILMS.filter(f=>f.is_cortos&&f.film_list?.length&&watched.has(f.title))
+      .reduce((acc,prog)=>acc+prog.film_list.filter(c=>!filmRatings[c.title]).length,0);
+    const pendingRatings=[...watched].filter(t=>{
+      const f=FILMS.find(fi=>fi.title===t);
+      return f&&!f.is_cortos&&!filmRatings[t]; // programas de larga duración sin rating
+    }).length+_cortoPendRatings;
     return{phase:'ended',totalWatched,totalPlanned,pendingRatings};
   }
   if(!savedAgenda||!savedAgenda.schedule||!savedAgenda.schedule.length) return null;
@@ -5999,6 +6005,9 @@ function openPelSheet(title){
   const safeT=f.title.replace(/'/g,"\'");
   const _inPlan=savedAgenda&&savedAgenda.schedule.some(s=>s._title===f.title);
   const _planEntry=_inPlan?savedAgenda.schedule.find(s=>s._title===f.title):null;
+  // Abrir sheet (puede venir desde otro sheet o desde lista)
+  document.getElementById('pel-overlay').classList.add('open');
+  document.getElementById('pel-sheet').classList.add('open');
   document.getElementById('pel-sheet-inner').innerHTML=`
     <div class="pel-sheet-header">
       ${posterHtml}
@@ -6138,9 +6147,7 @@ function openCortoSheet(title, country, duration, section, flags){
     <div class="pel-sheet-synopsis">Sinopsis disponible próximamente.</div>
     ${lbLink}
     ${ratingSection}`;
-  document.getElementById('pel-overlay').classList.add('open');
-  document.getElementById('pel-sheet').classList.add('open');
-  setTimeout(()=>document.querySelector('.pel-sheet-topbar')&&(document.querySelector('.pel-sheet-topbar')._swipeInit=false),50);
+  setTimeout(()=>{const t=document.querySelector('.pel-sheet-topbar');if(t)t._swipeInit=false;},50);
 }
 
 function setMiPlanView(mode){
