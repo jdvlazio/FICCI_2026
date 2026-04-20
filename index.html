@@ -2406,7 +2406,7 @@ const FESTIVAL_STORAGE_KEY='ficci65_';
 // BUILD_VERSION: cambia en cada deploy.
 // Al cargar, compara con localStorage. Si difiere → reload duro.
 // sessionStorage evita loops infinitos dentro de la misma sesión.
-const BUILD_VERSION='202604201422';
+const BUILD_VERSION='202604201423';
 (function(){
   const _vk='otrofestiv_build';
   const _sk='otrofestiv_reloaded';
@@ -5866,6 +5866,8 @@ function _initRatingInteraction(){
 function openRatingSheet(title){
   _ratingTitle=title;
   _pushSheetState();
+  const _rs=document.getElementById('rating-sheet');
+  if(_rs) _rs.scrollTop=0;
   _currentRating=filmRatings[title]||0;
   const{displayTitle}=parseProgramTitle(title);
   document.getElementById('rating-film-title').textContent=displayTitle;
@@ -5897,9 +5899,13 @@ function closeRatingSheet(){
   }
   document.getElementById('rating-overlay').classList.remove('open');
   document.getElementById('rating-sheet').classList.remove('open');
-  // Re-render Ya vistas con nuevo orden
+  // Re-render para reflejar el nuevo rating
   const listEl=document.getElementById('ag-film-list');
   if(listEl) listEl.innerHTML=renderFilmListHTML();
+  // Actualizar Mi Plan si está activo (ENDED header con estrellas)
+  if(activeMNav==='mnav-miplan') renderAgenda();
+  // Actualizar Intereses si el grid está visible
+  if(activeMNav==='mnav-seleccion') updateAgTab();
 }
 
 function starsDisplay(rating,size){
@@ -6200,7 +6206,7 @@ function openCortoSheet(title, country, duration, section, flags){
         <div class="pel-sheet-title">${title}</div>
         <div class="pel-sheet-flags">${displayFlags||'🌐'}</div>
         <div class="pel-sheet-dur">${ICONS.clock} ${duration}</div>
-        ${secShort?`<div class="pel-sheet-sec">${secShort}</div>`:''}
+        ${secShort&&section?`<div class="pel-sheet-sec" onclick="closePelSheet();setTimeout(()=>filterBySection('${(section||''). replace(/'/g,\"\\'\")}'),50)">${secShort} <span class="pel-sheet-sec-arrow">›</span></div>`:''}
         ${country?`<div style="font-size:11px;color:var(--gray);margin-top:3px">${country}</div>`:''}
         <div style="font-size:11px;color:var(--orange);margin-top:3px;font-weight:600">Cortometraje</div>
         ${(()=>{const prog=FILMS.find(p=>p.is_cortos&&p.film_list?.some(c=>c.title===title));if(!prog)return'';const safeP=prog.title.replace(/'/g,"\'");const{displayTitle:dp}=parseProgramTitle(prog.title);return`<div style="font-size:10px;color:var(--gray2);margin-top:4px;cursor:pointer;text-decoration:underline;text-underline-offset:2px" onclick="closePelSheet();setTimeout(()=>openPelSheet('${safeP}'),50)">Parte de ${dp} ›</div>`;})()}
@@ -6339,6 +6345,7 @@ function setProgramaMode(mode){
   // Reset filtros al cambiar modo
   activeSec='all';activeVenue='all';selectedIdx=null;
   programaChip='all';_programaChipMatchFn=null;
+  clearCartaSearch();
   _updateProgramaActiveFilter();
   initProgramaModeBar();
   _renderProgramaContent();
