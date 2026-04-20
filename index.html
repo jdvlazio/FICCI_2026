@@ -809,6 +809,19 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:20px;fo
 .ag-section{margin-bottom:var(--sp-5)}
 .ag-section-title{font-size:var(--t-xs);font-weight:var(--w-bold);color:var(--amber-60);letter-spacing:1px;text-transform:uppercase;margin-bottom:var(--sp-3);display:flex;align-items:center;gap:var(--sp-2)}
 .ag-film-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(110px,130px));gap:var(--sp-2);margin-bottom:var(--sp-2);justify-content:start}
+.ag-film-grid.list-mode{display:flex;flex-direction:column;gap:0}
+.ag-film-item.list-mode{display:flex;flex-direction:row;align-items:center;gap:12px;border-radius:0;border-bottom:1px solid var(--bdr-l);padding:10px 0;background:none}
+.ag-film-item.list-mode .ag-fi-poster,.ag-film-item.list-mode img.ag-fi-poster{width:36px;height:54px;border-radius:5px;flex-shrink:0}
+.ag-film-item.list-mode .ag-fi-bottom{position:static;padding:0;background:none;flex:1;min-width:0}
+.ag-film-item.list-mode .ag-fi-title{font-size:13px;font-weight:700;color:var(--white);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ag-film-item.list-mode .ag-fi-flags{font-size:11px;color:var(--gray2);margin-bottom:2px}
+.ag-film-item.list-mode .ag-fi-overlay{display:none}
+/* Barra de modo Intereses */
+.intereses-mode-bar{display:flex;align-items:center;justify-content:space-between;padding:8px 0 6px;margin-bottom:4px}
+.intereses-mode-title{font-size:13px;font-weight:700;color:var(--white);display:flex;align-items:center;gap:6px}
+.intereses-view-switch{display:flex;align-items:center;gap:2px;background:var(--surf-2);border:1px solid var(--bdr);border-radius:8px;padding:3px}
+.intereses-view-btn{width:24px;height:24px;display:flex;align-items:center;justify-content:center;border-radius:5px;cursor:pointer;color:var(--gray);background:none;border:none;transition:all .15s}
+.intereses-view-btn.on{background:var(--amber);color:#000}
 .ag-film-item{position:relative;border-radius:var(--r-md);overflow:hidden;background:var(--card-a);border:1px solid var(--bdr);cursor:default}
 .ag-film-item.watched-item{opacity:.55}
 .ag-fi-poster{width:100%;aspect-ratio:2/3;object-fit:cover;display:block;background:var(--surf-2)}
@@ -2374,7 +2387,7 @@ const FESTIVAL_STORAGE_KEY='ficci65_';
 // BUILD_VERSION: cambia en cada deploy.
 // Al cargar, compara con localStorage. Si difiere → reload duro.
 // sessionStorage evita loops infinitos dentro de la misma sesión.
-const BUILD_VERSION='202604200251';
+const BUILD_VERSION='202604201255';
 (function(){
   const _vk='otrofestiv_build';
   const _sk='otrofestiv_reloaded';
@@ -3516,7 +3529,7 @@ function renderFilmListHTML(){
   const allPending=[...new Set([...prioList,...nonPrioList])];
   const watchedList=[...watched];
 
-  const mkItem=(t)=>{
+  const mkItem=(t,listMode=false)=>{
     const f=FILMS.find(fi=>fi.title===t);
     const hasFuture=FILMS.some(fi=>fi.title===t&&!screeningPassed(fi));
     const FICCI_POSTER_AG='https://ficcifestival.com/sites/default/files/2026-02/logo-ficci65_2.png';
@@ -3526,7 +3539,7 @@ function renderFilmListHTML(){
     const safeT=t.replace(/"/g,'&quot;');
     const{displayTitle,progSuffix}=parseProgramTitle(t);
     const safeTQ=t.replace(/'/g,"\'");
-    return`<div class="ag-film-item${!hasFuture?' watched-item':''}${f?.is_cortos?' ag-prog':''}" onclick="openPelSheet('${safeTQ}')">
+    return`<div class="ag-film-item${listMode?' list-mode':''}${f?.is_cortos?' ag-prog':''}" onclick="openPelSheet('${safeTQ}')">
       ${posterHtml}
       <div class="ag-fi-overlay"></div>
       <div class="ag-fi-actions">
@@ -3563,14 +3576,24 @@ function renderFilmListHTML(){
       </button>
     </div>`;
   }
+  // Switch grid/lista para Intereses
+  const _iSwitch=`<div class="intereses-view-switch" style="flex-shrink:0">
+    <button class="intereses-view-btn${interesesViewMode==='grid'?' on':''}" id="ibtn-grid" onclick="setInteresesView('grid')">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+    </button>
+    <button class="intereses-view-btn${interesesViewMode==='list'?' on':''}" id="ibtn-list" onclick="setInteresesView('list')">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="4" y1="6" x2="20" y2="6"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="18" x2="20" y2="18"/></svg>
+    </button>
+  </div>`;
+  const _listMode=interesesViewMode==='list';
   if(prioList.length){
-    html+=`<div class="prio-strip-title" style="margin-bottom:8px">${ICONS.star} Prioridades ${prioList.length}/${PRIO_LIMIT}</div>`;
-    html+=`<div class="ag-film-grid">${prioList.map(t=>mkItem(t)).join('')}</div>`;
+    html+=`<div class="intereses-mode-bar"><div class="intereses-mode-title">${ICONS.star} Prioridades ${prioList.length}/${PRIO_LIMIT}</div>${_iSwitch}</div>`;
+    html+=`<div class="ag-film-grid${_listMode?' list-mode':''}">${prioList.map(t=>mkItem(t,_listMode)).join('')}</div>`;
   }
   if(nonPrioList.length){
     if(prioList.length) html+=`<div class="ag-list-sep"></div>`;
-    html+=`<div class="prio-strip-title" style="margin-bottom:8px">${ICONS.heart} Intereses ${nonPrioList.length}</div>`;
-    html+=`<div class="ag-film-grid">${nonPrioList.map(t=>mkItem(t)).join('')}</div>`;
+    html+=`<div class="intereses-mode-bar"><div class="intereses-mode-title">${ICONS.heart} Intereses ${nonPrioList.length}</div>${prioList.length?'':_iSwitch}</div>`;
+    html+=`<div class="ag-film-grid${_listMode?' list-mode':''}">${nonPrioList.map(t=>mkItem(t,_listMode)).join('')}</div>`;
   }
   if(!allPending.length&&!watchedList.length){
     return`<div style="margin-top:8px;padding:20px 16px;border:1px solid var(--bdr-l);border-radius:var(--r);text-align:center">
@@ -4035,7 +4058,13 @@ function renderGapOptions(gapStartMin,gapEndMin,todayKey,removedTitle){
 function _getFestivalPhase(){
   const FESTIVAL_START=new Date('2026-04-14T09:00:00');
   const now=simNow();
-  if(festivalEnded()) return null;
+  if(festivalEnded()){
+    // ENDED: resumen post-festival
+    const totalWatched=[...watched].length;
+    const totalPlanned=savedAgenda&&savedAgenda.schedule?savedAgenda.schedule.length:0;
+    const pendingRatings=[...watched].filter(t=>!filmRatings[t]).length;
+    return{phase:'ended',totalWatched,totalPlanned,pendingRatings};
+  }
   if(!savedAgenda||!savedAgenda.schedule||!savedAgenda.schedule.length) return null;
 
   // BEFORE: antes de que arranque el festival
@@ -4106,6 +4135,40 @@ function renderContextualHeader(){
   const ph=_getFestivalPhase();
   if(!ph) return '';
   const DAY_A={Martes:'MAR',Miércoles:'MIÉ',Jueves:'JUE',Viernes:'VIE',Sábado:'SÁB',Domingo:'DOM'};
+
+  // ── ENDED ─────────────────────────────────────────────────
+  if(ph.phase==='ended'){
+    const{totalWatched,totalPlanned,pendingRatings}=ph;
+    // Películas vistas con su calificación
+    const watchedFilms=[...watched].map(t=>{
+      const f=FILMS.find(fi=>fi.title===t);
+      const r=filmRatings[t];
+      const{displayTitle:dt}=parseProgramTitle(t);
+      const src=f?.is_cortos?makeProgramPoster(t):(getPosterSrc(t,false)||'');
+      const safeT=t.replace(/'/g,"\'");
+      const stars=r?'★'.repeat(Math.round(r)):'';
+      return`<div style="position:relative;flex-shrink:0;cursor:pointer" onclick="openPelSheet('${safeT}')">
+        ${src?`<img src="${src}" style="width:60px;height:90px;object-fit:cover;border-radius:8px;display:block" onerror="this.style.opacity=0" alt="">`
+             :`<div style="width:60px;height:90px;border-radius:8px;background:var(--surf-3)"></div>`}
+        ${r?`<div style="position:absolute;bottom:3px;left:0;right:0;text-align:center;font-size:8px;color:var(--amber);text-shadow:0 1px 3px rgba(0,0,0,.9)">${stars}</div>`
+           :`<div style="position:absolute;bottom:3px;left:0;right:0;text-align:center">
+              <button onclick="event.stopPropagation();openPostViewRating('${safeT}','','','','')" style="background:rgba(0,0,0,.7);border:1px solid rgba(255,255,255,.2);border-radius:20px;color:var(--white);font-size:8px;font-weight:700;font-family:var(--font);padding:2px 5px;cursor:pointer">★</button>
+            </div>`}
+      </div>`;
+    }).join('');
+    const subMsg=pendingRatings>0
+      ?`${pendingRatings} película${pendingRatings!==1?'s':''} por calificar`
+      :`¡Gracias por estar en el FICCI!`;
+    return`<div class="ctx-header" style="background:linear-gradient(180deg,rgba(245,158,11,.06) 0%,transparent 100%)">
+      <div class="ctx-eyebrow" style="color:var(--amber-60)">
+        <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
+        FICCI 65 · 14–19 ABR 2026
+      </div>
+      <div class="ctx-main-title">Viste ${totalWatched} película${totalWatched!==1?'s':''}</div>
+      <div class="ctx-sub" style="margin-bottom:${totalWatched?'12px':'0'}">${subMsg}</div>
+      ${totalWatched?`<div style="display:flex;gap:8px;overflow-x:auto;padding-bottom:2px;scrollbar-width:none">${watchedFilms}</div>`:''}
+    </div>`;
+  }
 
   // ── BEFORE ─────────────────────────────────────────────────
   if(ph.phase==='before'){
@@ -5350,6 +5413,7 @@ function renderAgenda(){
 let activeView='day',activeDay='Martes',activeVenue='all',activeSec='all',selectedIdx=null,activeMNav='mnav-cartelera';
 let cartelaMode='pelicula'; // 'horario' | 'pelicula' (interno)
 let programaSubMode='explorar'; // 'explorar' | 'hoy' | 'manana'
+let interesesViewMode='grid';   // 'grid' | 'list' para Intereses
 let programaViewMode='grid';    // 'grid' | 'list'
 let programaChip='all';         // chip activo en Explorar
 let _programaChipMatchFn=null;  // función de match activa para filtrar
@@ -5935,6 +5999,17 @@ function closePelSheet(){
 // ─────────────────────────────────────────────────────────────────
 // PROGRAMA — EXPLORAR / HOY / MAÑANA
 // ─────────────────────────────────────────────────────────────────
+function setInteresesView(mode){
+  interesesViewMode=mode;
+  document.getElementById('ibtn-grid')?.classList.toggle('on',mode==='grid');
+  document.getElementById('ibtn-list')?.classList.toggle('on',mode==='list');
+  // Re-renderizar sección activa
+  const grids=document.querySelectorAll('.ag-film-grid');
+  const items=document.querySelectorAll('.ag-film-item:not(.watched-item)');
+  grids.forEach(g=>g.classList.toggle('list-mode',mode==='list'));
+  items.forEach(el=>el.classList.toggle('list-mode',mode==='list'));
+}
+
 function _getProgramaPhase(){
   // Retorna qué tabs deben ser visibles y cuál es el default
   if(festivalEnded()) return {tabs:['explorar'],default:'explorar'};
