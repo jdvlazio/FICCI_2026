@@ -1709,7 +1709,7 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:var(--t
     <div class="splash-dropdown" id="splash-dropdown" style="display:none" role="listbox">
       <button class="splash-drop-item selected" role="option" aria-selected="true" onclick="selectSplashFest('FICCI 65','Cartagena · 14–19 ABR 2026')">
         <div><div class="splash-drop-item-name">FICCI 65</div><div class="splash-drop-item-meta">Cartagena · 14–19 ABR 2026</div></div>
-        <div style="font-size:12px;color:var(--amber)"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle"><polyline points="20 6 9 17 4 12"/></svg></div>
+        <div style="font-size:var(--t-caption);color:var(--amber)"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle"><polyline points="20 6 9 17 4 12"/></svg></div>
       </button>
       <button class="splash-drop-item inactive" role="option" aria-selected="false" aria-disabled="true">
         <div><div class="splash-drop-item-name">FICCI 66</div><div class="splash-drop-item-meta">Cartagena · Próximamente</div></div>
@@ -1935,7 +1935,7 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:var(--t
 <div class="programa-active-filter" id="programa-active-filter">
   <div class="paf-tag" id="paf-tag" onclick="clearProgramaChip()">
     <span id="paf-tag-text"></span>
-    <span style="opacity:.6;font-size:11px">×</span>
+    <span style="opacity:.6;font-size:var(--t-sm)">×</span>
   </div>
   <span class="paf-count" id="paf-count"></span>
 </div>
@@ -2426,7 +2426,7 @@ const FESTIVAL_STORAGE_KEY='ficci65_';
 // BUILD_VERSION: cambia en cada deploy.
 // Al cargar, compara con localStorage. Si difiere → reload duro.
 // sessionStorage evita loops infinitos dentro de la misma sesión.
-const BUILD_VERSION='202604201554';
+const BUILD_VERSION='202604201555';
 (function(){
   const _vk='otrofestiv_build';
   const _sk='otrofestiv_reloaded';
@@ -2685,7 +2685,7 @@ function renderMiPlanCalendar(){
           <div class="mplan-t2">${mplanEndStr(s.time,dur)}${isNow?` <span style="color:var(--green);font-weight:var(--w-semi)">en curso</span>`:''}</div>
         </div>
         <div class="mplan-ri">
-          <div>${(()=>{const{displayTitle:_dt,progSuffix:_ps}=parseProgramTitle(s._title||'');return`<div class="mplan-rtitle">${prioritized.has(s._title)?`<span style="color:var(--orange);margin-right:4px">${ICONS.starFill}</span>`:''} ${_dt}</div>${_ps?`<div style="font-size:11px;color:var(--orange);font-weight:700;line-height:1;margin-top:2px">${_ps}</div>`:''}`;})()} </div>
+          <div>${(()=>{const{displayTitle:_dt,progSuffix:_ps}=parseProgramTitle(s._title||'');return`<div class="mplan-rtitle">${prioritized.has(s._title)?`<span style="color:var(--orange);margin-right:4px">${ICONS.starFill}</span>`:''} ${_dt}</div>${_ps?`<div style="font-size:var(--t-sm);color:var(--orange);font-weight:700;line-height:1;margin-top:2px">${_ps}</div>`:''}`;})()} </div>
           <div class="mplan-rvenue">${ICONS.pin} ${vcfg(s.venue).short}${sala(s.venue)?' \u00b7 '+sala(s.venue):''}</div>
           ${(()=>{const _mf=FILMS.find(fi=>fi.title===s._title&&fi.day===s.day&&fi.time===s.time);if(!_mf||!_mf.is_cortos||!_mf.film_list||!_mf.film_list.length) return'';return`<button class="mplan-prog-toggle" onclick="toggleMplanProg(this,event)" style="display:inline-flex;align-items:center;gap:5px">${ICONS.chevronR} Programa</button>`;})()}
         </div>
@@ -3542,7 +3542,7 @@ function parseProgramTitle(t){
 // ═══════════════════════════════════════════════════════════════
 function renderPrioStrip(){
   if(!prioritized.size) return `<div style="text-align:center;padding:24px 20px">
-      <div style="font-size:24px;margin-bottom:10px">${ICONS.star}</div>
+      <div style="font-size:var(--t-lg);margin-bottom:10px">${ICONS.star}</div>
       <div style="font-weight:var(--w-bold);color:var(--white);margin-bottom:6px">Sin prioridades aún</div>
       <div style="font-size:var(--t-sm);color:var(--gray);line-height:1.6;margin-bottom:16px">
         Marca hasta ${PRIO_LIMIT} películas como ★ en Intereses para que el algoritmo las incluya primero.
@@ -3615,7 +3615,7 @@ function renderFilmListHTML(){
   let html='';
   if(!allPending.length&&!watchedList.length){
     return `<div style="text-align:center;padding:32px 20px">
-      <div style="font-size:28px;margin-bottom:12px">${ICONS.heart}</div>
+      <div style="font-size:var(--t-display);margin-bottom:12px">${ICONS.heart}</div>
       <div style="font-weight:var(--w-bold);color:var(--white);margin-bottom:8px">Tu lista está vacía</div>
       <div style="font-size:var(--t-sm);color:var(--gray);line-height:1.6;margin-bottom:20px;max-width:260px;margin-left:auto;margin-right:auto">
         Tu plan para el festival, sin complicaciones.
@@ -3733,7 +3733,7 @@ function mkAgendaRow(s, mode='saved'){
     ${_ph}
     <div class="saved-time">${s.time}</div>
     <div class="saved-info">
-      <div class="saved-title">${displayTitle}</div>${progSuffix?`<div style="font-size:11px;color:var(--orange);font-weight:700;margin-top:1px;line-height:1">${progSuffix}</div>`:''}
+      <div class="saved-title">${displayTitle}</div>${progSuffix?`<div style="font-size:var(--t-sm);color:var(--orange);font-weight:700;margin-top:1px;line-height:1">${progSuffix}</div>`:''}
       <div class="saved-venue">${ICONS.pin} ${vc2.short}${sl?' · '+sl:''}${s.duration?' · '+s.duration:''}${altBadge}</div>
       ${_progBtn}
     </div>
@@ -3901,7 +3901,7 @@ function renderNextStrip(schedule){
     } else if(margin<15){
       const{displayTitle:nt}=parseProgramTitle(next._title||'');
       const nShort=nt.length>22?nt.slice(0,20)+'…':nt;
-      warnHtml=`<div class="delay-warn" style="color:#FFB74D;background:rgba(255,183,77,0.06);border-color:rgba(255,183,77,0.2)"><span class="delay-warn-ico">${ICONS.alert}</span><span>Terminas ~${minToStr(effectiveEndMin)}. Margen ajustado: <b>${margin} min</b> hasta <b>${nShort}</b>.</span></div>`;
+      warnHtml=`<div class="delay-warn" style="color:var(--amber);background:rgba(255,183,77,0.06);border-color:rgba(255,183,77,0.2)"><span class="delay-warn-ico">${ICONS.alert}</span><span>Terminas ~${minToStr(effectiveEndMin)}. Margen ajustado: <b>${margin} min</b> hasta <b>${nShort}</b>.</span></div>`;
     }
   }
 
@@ -4279,7 +4279,7 @@ function renderContextualHeader(){
     const vc=vcfg(next.venue);
     const src=next.is_cortos?makeProgramPoster(next._title||''):(getPosterSrc(next._title||'',false)||'');
     const badge=isNow
-      ?`<span class="ctx-next-badge" style="background:var(--green);color:#fff">Ahora</span>`
+      ?`<span class="ctx-next-badge" style="background:var(--green);color:var(--white)">Ahora</span>`
       :`<span class="ctx-next-badge">En ${minsUntil} min</span>`;
     const eyebrowLabel=isNow?'En pantalla ahora':'Próxima función';
     return`<div class="ctx-header">
@@ -4314,7 +4314,7 @@ function renderContextualHeader(){
       const vc2=vcfg(gapSuggestion.venue);
       const dur=parseInt(gapSuggestion.duration)||90;
       const safeT=gapSuggestion.title.replace(/'/g,"\'");
-      return`<div style="font-size:11px;color:var(--gray);margin-bottom:6px">Cabe en tu hueco</div>
+      return`<div style="font-size:var(--t-sm);color:var(--gray);margin-bottom:6px">Cabe en tu hueco</div>
         <div class="ctx-suggest-card" onclick="openPelSheet('${safeT}')" style="cursor:pointer">
           <div class="ctx-suggest-badge">${gapSuggestion.time}<br>${dur}m</div>
           <div class="ctx-suggest-info">
@@ -4322,7 +4322,7 @@ function renderContextualHeader(){
             <div class="ctx-suggest-venue">${vc2.short}</div>
           </div>
         </div>`;
-    })():`<div style="font-size:12px;color:var(--gray)">Sin funciones disponibles en este tramo.</div>`;
+    })():`<div style="font-size:var(--t-caption);color:var(--gray)">Sin funciones disponibles en este tramo.</div>`;
     return`<div class="ctx-header">
       <div class="ctx-eyebrow" style="color:rgba(58,170,110,.7)">
         <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
@@ -4362,9 +4362,9 @@ function renderContextualHeader(){
         ${src
           ?`<img class="prio-chip-poster" src="${src}" onerror="this.style.opacity=0" alt="">`
           :`<div class="prio-chip-ph">🎬</div>`}
-        ${r?`<div style="position:absolute;bottom:4px;left:0;right:0;text-align:center;font-size:9px;color:var(--amber);letter-spacing:1px;text-shadow:0 1px 3px rgba(0,0,0,.8)">${stars}</div>`:''}
+        ${r?`<div style="position:absolute;bottom:4px;left:0;right:0;text-align:center;font-size:var(--t-xs);color:var(--amber);letter-spacing:1px;text-shadow:0 1px 3px rgba(0,0,0,.8)">${stars}</div>`:''}
         ${(!r&&!f?.is_cortos)?`<div style="position:absolute;bottom:4px;left:0;right:0;text-align:center">
-          <button onclick="event.stopPropagation();openPostViewRating('${safeT}','${s.day||''}','${s.time||''}','${(s.venue||'').replace(/'/g,"\'")}','${s.duration||''}')" style="background:rgba(0,0,0,.7);border:1px solid rgba(255,255,255,.15);border-radius:20px;color:var(--white);font-size:9px;font-weight:700;font-family:var(--font);padding:2px 6px;cursor:pointer">★</button>
+          <button onclick="event.stopPropagation();openPostViewRating('${safeT}','${s.day||''}','${s.time||''}','${(s.venue||'').replace(/'/g,"\'")}','${s.duration||''}')" style="background:rgba(0,0,0,.7);border:1px solid rgba(255,255,255,.15);border-radius:var(--r-pill);color:var(--white);font-size:var(--t-xs);font-weight:700;font-family:var(--font);padding:2px 6px;cursor:pointer">★</button>
         </div>`:''}
       </div>`;
     }).join('');
@@ -4390,7 +4390,7 @@ function _renderSavedAgendaHTML(){
     return _eh?`<div class="saved-agenda">${_eh}</div>`:'';
   }
   if(!savedAgenda||!savedAgenda.schedule.length) return `<div style="text-align:center;padding:32px 20px">
-      <div style="font-size:28px;margin-bottom:12px">${ICONS.calendar}</div>
+      <div style="font-size:var(--t-display);margin-bottom:12px">${ICONS.calendar}</div>
       <div style="font-weight:var(--w-bold);color:var(--white);margin-bottom:8px">Tu plan aparecerá aquí</div>
       <div style="font-size:var(--t-sm);color:var(--gray);line-height:1.6;margin-bottom:20px;max-width:260px;margin-left:auto;margin-right:auto">
         Añade películas a Intereses y genera opciones en Planear. El algoritmo hace el resto.
@@ -4775,19 +4775,19 @@ function _showImageModal(dataUrl,canvas){
   ov.id='img-share-modal';
   ov.style.cssText='position:fixed;inset:0;background:rgba(0,0,0,.92);z-index:9999;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:20px;box-sizing:border-box;gap:14px';
   const hint=document.createElement('p');
-  hint.style.cssText='color:#666;font-size:12px;font-family:system-ui;text-align:center;margin:0;line-height:1.6';
+  hint.style.cssText='color:var(--gray);font-size:var(--t-caption);font-family:system-ui;text-align:center;margin:0;line-height:1.6';
   hint.textContent=isIOS?'Mantén presionada la imagen — Añadir a Fotos':'Toca Descargar para guardar';
   ov.appendChild(hint);
   const img=document.createElement('img');
   img.src=dataUrl;
-  img.style.cssText='max-width:100%;max-height:62vh;border-radius:10px;display:block;box-shadow:0 8px 32px rgba(0,0,0,.7)';
+  img.style.cssText='max-width:100%;max-height:62vh;border-radius:var(--r);display:block;box-shadow:0 8px 32px rgba(0,0,0,.7)';
   ov.appendChild(img);
   const row=document.createElement('div');
   row.style.cssText='display:flex;gap:10px;width:100%;max-width:320px';
   if(!isIOS){
     const btnDl=document.createElement('button');
     btnDl.textContent='⬇ Descargar';
-    btnDl.style.cssText='flex:1;padding:13px;background:#D4900A;color:#000;border:none;border-radius:8px;font-size:14px;font-family:system-ui;font-weight:700;cursor:pointer';
+    btnDl.style.cssText='flex:1;padding:13px;background:#D4900A;color:var(--black);border:none;border-radius:var(--r-md);font-size:var(--t-base);font-family:system-ui;font-weight:700;cursor:pointer';
     btnDl.onclick=function(){
       if(navigator.share&&navigator.canShare){
         canvas.toBlob(blob=>{
@@ -4802,7 +4802,7 @@ function _showImageModal(dataUrl,canvas){
   }
   const btnX=document.createElement('button');
   btnX.textContent='Cerrar';
-  btnX.style.cssText=(isIOS?'flex:1;':'')+'padding:13px 18px;background:rgba(255,255,255,0.08);color:#aaa;border:none;border-radius:8px;font-size:14px;font-family:system-ui;cursor:pointer';
+  btnX.style.cssText=(isIOS?'flex:1;':'')+'padding:13px 18px;background:rgba(255,255,255,0.08);color:var(--gray2);border:none;border-radius:var(--r-md);font-size:var(--t-base);font-family:system-ui;cursor:pointer';
   btnX.onclick=()=>ov.remove();
   row.appendChild(btnX);
   ov.appendChild(row);
@@ -5469,7 +5469,7 @@ function renderAgenda(){
     if(festivalEnded()){
       // Post-festival: Planear no tiene función — redirigir a Mi Plan
       view.innerHTML=`<div style="text-align:center;padding:48px 24px">
-        <div style="font-size:32px;margin-bottom:16px">🎬</div>
+        <div style="font-size:var(--t-display);margin-bottom:16px">🎬</div>
         <div style="font-weight:var(--w-bold);color:var(--white);font-size:var(--t-lg);margin-bottom:8px">FICCI 65 ha terminado</div>
         <div style="font-size:var(--t-sm);color:var(--gray);line-height:1.6;margin-bottom:24px;max-width:260px;margin-left:auto;margin-right:auto">
           El festival ya concluyó. Revisá las películas que viste en Mi Plan.
@@ -5592,7 +5592,7 @@ function onCartaSearch(){
   const matches=allMatches.filter(f=>{if(seen.has(f.title))return false;seen.add(f.title);return true;}).slice(0,10);
 
   if(!matches.length){
-    res.innerHTML='<div style="padding:14px;text-align:center;color:var(--gray);font-size:13px">Sin resultados</div>';
+    res.innerHTML='<div style="padding:14px;text-align:center;color:var(--gray);font-size:var(--t-base)">Sin resultados</div>';
     res.classList.add('open');
     return;
   }
@@ -5610,7 +5610,7 @@ function onCartaSearch(){
     return`<div class="carta-sr-item" onclick="${onclick}">
       ${poster?`<img class="carta-sr-poster" src="${poster}" onerror="this.style.opacity=0" alt="">`:'<div class="carta-sr-poster"></div>'}
       <div class="carta-sr-info">
-        <div class="carta-sr-title">${displayTitle}${progSuffix?` <span style="color:var(--orange);font-size:10px">${progSuffix}</span>`:''}</div>
+        <div class="carta-sr-title">${displayTitle}${progSuffix?` <span style="color:var(--orange);font-size:var(--t-label)">${progSuffix}</span>`:''}</div>
         <div class="carta-sr-meta">${f._isCortoItem
           ?`Cortometraje${f._prog?` · ${parseProgramTitle(f._prog.title).displayTitle}`:''}`
           :`${f.duration||''}${f.section?' · '+f.section.replace(/^[^ ]+ /,''):''}`
@@ -6066,7 +6066,7 @@ function openPelSheet(title){
     return`<div class="pel-sheet-screening"${isPast?' style="opacity:.4"':''}>
       <span class="pelicula-day">${dayAbb}</span>
       <span class="pelicula-time">${s.time}</span>
-      <span class="pelicula-venue" data-venue="${vc.short.replace(/"/g,'&quot;')}" onclick="filterByVenue(this.dataset.venue)">${ICONS.pin} ${vc.short}${sl?' · '+sl:''} <span style="opacity:.4;font-size:9px">›</span></span>
+      <span class="pelicula-venue" data-venue="${vc.short.replace(/"/g,'&quot;')}" onclick="filterByVenue(this.dataset.venue)">${ICONS.pin} ${vc.short}${sl?' · '+sl:''} <span style="opacity:.4;font-size:var(--t-xs)">›</span></span>
     </div>`;
   }).join('');
   // Lista de cortos si es programa
@@ -6089,8 +6089,8 @@ function openPelSheet(title){
       return`<div class="pel-sheet-corto-item" onclick="openCortoSheet('${safeCorto}','${safeCountry}','${safeDur}','${safeSec}','${safeFlags}')">
         ${thumbHtml}
         <div style="flex:1;min-width:0">
-          <div style="font-size:12px;font-weight:600;color:var(--white);line-height:1.3;margin-bottom:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${item.title}</div>
-          <div style="font-size:11px;color:var(--gray2)">${item.country||''} · ${item.duration}</div>
+          <div style="font-size:var(--t-caption);font-weight:600;color:var(--white);line-height:1.3;margin-bottom:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${item.title}</div>
+          <div style="font-size:var(--t-sm);color:var(--gray2)">${item.country||''} · ${item.duration}</div>
         </div>
         ${ratingEl}
       </div>`;
@@ -6114,8 +6114,8 @@ function openPelSheet(title){
         <div class="pel-sheet-flags">${f.flags||'🌐'}</div>
         <div class="pel-sheet-dur">${ICONS.clock} ${f.duration}</div>
         ${f.section?`<div class="pel-sheet-sec" data-sec="${f.section.replace(/"/g,'&quot;')}" onclick="filterBySection(this.dataset.sec)">${secLabel} <span class="pel-sheet-sec-arrow">›</span></div>`:''}
-        ${unica?`<div style="font-size:11px;color:rgba(248,213,140,.7);font-weight:600;margin-top:3px;letter-spacing:.3px">Única función</div>`:''}
-        ${f.is_cortos&&f.film_list?.length?`<div style="font-size:11px;color:var(--orange);margin-top:2px">CORTOS · ${f.film_list.length} films</div>`:''}
+        ${unica?`<div style="font-size:var(--t-sm);color:rgba(248,213,140,.7);font-weight:600;margin-top:3px;letter-spacing:.3px">Única función</div>`:''}
+        ${f.is_cortos&&f.film_list?.length?`<div style="font-size:var(--t-sm);color:var(--orange);margin-top:2px">CORTOS · ${f.film_list.length} films</div>`:''}
       </div>
     </div>
     <div class="pel-sheet-divider"></div>
@@ -6128,15 +6128,15 @@ function openPelSheet(title){
     ${!f.is_cortos?`<a class="c-lb" href="${lbUrl(f.title)}" target="_blank" rel="noopener" style="display:inline-flex;margin-top:14px;margin-bottom:2px">${LB_SVG}<span class="c-lb-text">Letterboxd</span></a>`:''}
     <div class="pel-sheet-divider" style="margin-top:16px"></div>
     ${inW?`<div style="display:flex;gap:8px;margin-top:12px">
-        <button onclick="toggleWatched('${safeT}',event);closePelSheet()" style="flex:1;background:rgba(39,174,96,.08);border:1px solid rgba(39,174,96,.2);border-radius:var(--r-pill);color:var(--green);font-family:var(--font);font-size:13px;font-weight:700;padding:10px 0;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:5px">${ICONS.check} Ya vista</button>
-        ${!f.is_cortos?`<button onclick="closePelSheet();setTimeout(()=>openRatingSheet('${safeT}'),100)" style="flex:1;background:none;border:1px solid var(--bdr);border-radius:var(--r-pill);color:var(--gray2);font-family:var(--font);font-size:13px;font-weight:700;padding:10px 0;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:5px">${ICONS.star} ${filmRatings['${safeT}']?'Cambiar':'Calificar'}</button>`:``}
+        <button onclick="toggleWatched('${safeT}',event);closePelSheet()" style="flex:1;background:rgba(39,174,96,.08);border:1px solid rgba(39,174,96,.2);border-radius:var(--r-pill);color:var(--green);font-family:var(--font);font-size:var(--t-base);font-weight:700;padding:10px 0;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:5px">${ICONS.check} Ya vista</button>
+        ${!f.is_cortos?`<button onclick="closePelSheet();setTimeout(()=>openRatingSheet('${safeT}'),100)" style="flex:1;background:none;border:1px solid var(--bdr);border-radius:var(--r-pill);color:var(--gray2);font-family:var(--font);font-size:var(--t-base);font-weight:700;padding:10px 0;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:5px">${ICONS.star} ${filmRatings['${safeT}']?'Cambiar':'Calificar'}</button>`:``}
       </div>`
     :`<div style="display:flex;gap:6px;margin-top:12px">
         <button id="pel-wl-btn" class="pel-sheet-action-btn${inWL?' act-on':''}" onclick="togglePelWL('${safeT}',event)" style="display:inline-flex;align-items:center;justify-content:center;gap:5px">${inWL?ICONS.heartFill:ICONS.heart} ${inWL?'En Intereses':'Intereses'}</button>
         <button id="pel-prio-btn" class="pel-sheet-action-btn${inPrio?' act-prio':''}" onclick="togglePelPrio('${safeT}')" style="display:inline-flex;align-items:center;justify-content:center;gap:5px">${inPrio?ICONS.starFill:ICONS.star} ${inPrio?'Priorizada':'Priorizar'}</button>
         <button id="pel-vista-btn" class="pel-sheet-action-btn" onclick="toggleWatched('${safeT}',event)" style="display:inline-flex;align-items:center;justify-content:center;gap:5px">${ICONS.check} Vista</button>
       </div>`}
-    ${_inPlan&&activeView==='agenda'?`<button onclick="closePelSheet();removeFromAgenda('${safeT}')" style="width:100%;margin-top:8px;background:none;border:1px solid var(--bdr);border-radius:var(--r-pill);color:var(--gray2);font-family:var(--font);font-size:12px;font-weight:600;padding:8px 0;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:5px">${ICONS.x} Quitar del plan</button>`:''}
+    ${_inPlan&&activeView==='agenda'?`<button onclick="closePelSheet();removeFromAgenda('${safeT}')" style="width:100%;margin-top:8px;background:none;border:1px solid var(--bdr);border-radius:var(--r-pill);color:var(--gray2);font-family:var(--font);font-size:var(--t-caption);font-weight:600;padding:8px 0;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:5px">${ICONS.x} Quitar del plan</button>`:''}
   `;
   document.getElementById('pel-overlay').classList.add('open');
   document.getElementById('pel-sheet').classList.add('open');
@@ -6247,9 +6247,9 @@ function openCortoSheet(title, country, duration, section, flags){
   const ratingSection=`
     <div class="pel-sheet-divider" style="margin-top:16px"></div>
     <div style="display:flex;gap:8px;margin-top:12px">
-      ${r?`<div style="flex:1;display:flex;align-items:center;gap:6px;font-size:16px;color:var(--amber)">${'★'.repeat(Math.round(r))}</div>`:``}
+      ${r?`<div style="flex:1;display:flex;align-items:center;gap:6px;font-size:var(--t-md);color:var(--amber)">${'★'.repeat(Math.round(r))}</div>`:``}
       <button onclick="closePelSheet();setTimeout(()=>openRatingSheet('${safeT}'),100)"
-        style="flex:1;background:none;border:1px solid var(--bdr);border-radius:var(--r-pill);color:var(--gray2);font-family:var(--font);font-size:13px;font-weight:700;padding:10px 0;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:5px">
+        style="flex:1;background:none;border:1px solid var(--bdr);border-radius:var(--r-pill);color:var(--gray2);font-family:var(--font);font-size:var(--t-base);font-weight:700;padding:10px 0;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:5px">
         ${ICONS.star} ${r?'Cambiar':'Calificar'}
       </button>
     </div>`;
@@ -6266,9 +6266,9 @@ function openCortoSheet(title, country, duration, section, flags){
         <div class="pel-sheet-flags">${displayFlags||'🌐'}</div>
         <div class="pel-sheet-dur">${ICONS.clock} ${duration}</div>
         ${secShort&&section?`<div class="pel-sheet-sec" data-sec="${(section||'').replace(/"/g,'&quot;')}" onclick="closePelSheet();setTimeout(()=>filterBySection(this.dataset.sec),50)">${secShort} <span class="pel-sheet-sec-arrow">›</span></div>`:''}
-        ${country?`<div style="font-size:11px;color:var(--gray);margin-top:3px">${country}</div>`:''}
-        <div style="font-size:11px;color:var(--orange);margin-top:3px;font-weight:600">Cortometraje</div>
-        ${(()=>{const prog=FILMS.find(p=>p.is_cortos&&p.film_list?.some(c=>c.title===title));if(!prog)return'';const safeP=prog.title.replace(/'/g,"\'");const{displayTitle:dp,progSuffix:dps}=parseProgramTitle(prog.title);const dpFull=dps?`${dp} — ${dps}`:dp;return`<div style="font-size:10px;color:var(--gray2);margin-top:4px;cursor:pointer;text-decoration:underline;text-underline-offset:2px" onclick="closePelSheet();setTimeout(()=>openPelSheet('${safeP}'),50)">Parte de ${dpFull} ›</div>`;})()}
+        ${country?`<div style="font-size:var(--t-sm);color:var(--gray);margin-top:3px">${country}</div>`:''}
+        <div style="font-size:var(--t-sm);color:var(--orange);margin-top:3px;font-weight:600">Cortometraje</div>
+        ${(()=>{const prog=FILMS.find(p=>p.is_cortos&&p.film_list?.some(c=>c.title===title));if(!prog)return'';const safeP=prog.title.replace(/'/g,"\'");const{displayTitle:dp,progSuffix:dps}=parseProgramTitle(prog.title);const dpFull=dps?`${dp} — ${dps}`:dp;return`<div style="font-size:var(--t-label);color:var(--gray2);margin-top:4px;cursor:pointer;text-decoration:underline;text-underline-offset:2px" onclick="closePelSheet();setTimeout(()=>openPelSheet('${safeP}'),50)">Parte de ${dpFull} ›</div>`;})()}
       </div>
     </div>
     <div class="pel-sheet-divider"></div>
@@ -6297,7 +6297,7 @@ function renderMiPlanList(schedule){
       const db=new Date(`${FESTIVAL_DATES[b.day]}T${b.time}:00`);
       return da-db;
     });
-  if(!upcoming.length) return '<div style="padding:20px 16px;text-align:center;color:var(--gray);font-size:13px">Sin funciones pendientes</div>';
+  if(!upcoming.length) return '<div style="padding:20px 16px;text-align:center;color:var(--gray);font-size:var(--t-base)">Sin funciones pendientes</div>';
   
   // Agrupar por día
   const byDay={};
@@ -6326,7 +6326,7 @@ function renderMiPlanList(schedule){
       }).join('')}
     `).join('')
   }</div>`;
-  }catch(e){return '<div style="padding:16px;color:var(--gray);font-size:13px">Error al cargar lista</div>';}
+  }catch(e){return '<div style="padding:16px;color:var(--gray);font-size:var(--t-base)">Error al cargar lista</div>';}
 }
 function setInteresesView(mode){
   interesesViewMode=mode;
@@ -6494,7 +6494,7 @@ function renderProgramaChips(){
   const allFilms=Object.values(titleSet);
   el.innerHTML=PROGRAMA_CHIPS.map(chip=>{
     const count=chip.match?allFilms.filter(f=>chip.match(f.section||'')).length:allFilms.length;
-    const label=chip.id==='all'?chip.label:`${chip.label}<span style="font-size:9px;opacity:.6;margin-left:3px">${count}</span>`;
+    const label=chip.id==='all'?chip.label:`${chip.label}<span style="font-size:var(--t-xs);opacity:.6;margin-left:3px">${count}</span>`;
     return`<div class="pchip${chip.id===programaChip?' on':''}" data-chip="${chip.id}"
          onclick="setProgramaChip('${chip.id}')">${label}</div>`;
   }).join('');
@@ -6510,7 +6510,7 @@ function renderProgramaList(){
   if(activeSec!=='all') films=films.filter(f=>f.section===activeSec);
   films.sort((a,b)=>toMin(a.time)-toMin(b.time));
   if(!films.length){
-    el.innerHTML=`<div style="text-align:center;padding:40px 20px;color:var(--gray);font-size:13px">Sin funciones para este filtro</div>`;
+    el.innerHTML=`<div style="text-align:center;padding:40px 20px;color:var(--gray);font-size:var(--t-base)">Sin funciones para este filtro</div>`;
     return;
   }
   // Agrupar por hora
@@ -6526,7 +6526,7 @@ function renderProgramaList(){
       const{displayTitle:dt}=parseProgramTitle(f.title);
       const vc=vcfg(f.venue);
       const src=f.is_cortos?makeProgramPoster(f.title):(getPosterSrc(f.title,false)||'');
-      const nowBadge=isNow?`<span style="font-size:9px;font-weight:800;color:var(--green);background:var(--green-10);border:1px solid var(--green-30);border-radius:10px;padding:2px 6px;margin-left:4px">AHORA</span>`:'';
+      const nowBadge=isNow?`<span style="font-size:var(--t-xs);font-weight:800;color:var(--green);background:var(--green-10);border:1px solid var(--green-30);border-radius:var(--r);padding:2px 6px;margin-left:4px">AHORA</span>`:'';
       const pastStyle=passed&&!isNow&&!festivalEnded()?'opacity:.45':'';
       return`<div class="plist-item" style="${pastStyle}" onclick="openPelSheet('${safeT}')">
         ${src?`<img class="plist-poster" src="${src}" loading="lazy" onerror="this.style.opacity=0" alt="">`:`<div class="plist-poster"></div>`}
@@ -6539,7 +6539,7 @@ function renderProgramaList(){
       </div>`;
     }).join('')}
   `).join('');
-  }catch(e){return '<div style="padding:16px;color:var(--gray);font-size:13px">Error al cargar funciones</div>';}
+  }catch(e){return '<div style="padding:16px;color:var(--gray);font-size:var(--t-base)">Error al cargar funciones</div>';}
 }
 function _renderProgramaContent(){
   const grid=document.getElementById('grid');
@@ -6595,7 +6595,7 @@ function _renderExploreLista(){
     if(si!==0) return si;
     return a.film.title.localeCompare(b.film.title,'es');
   });
-  if(!entries.length){el.innerHTML=`<div style="text-align:center;padding:40px 20px;color:var(--gray);font-size:13px">Sin películas para este filtro</div>`;return;}
+  if(!entries.length){el.innerHTML=`<div style="text-align:center;padding:40px 20px;color:var(--gray);font-size:var(--t-base)">Sin películas para este filtro</div>`;return;}
   el.innerHTML=entries.map(({film:f,screenings})=>{
     const inWL=watchlist.has(f.title);
     const safeT=f.title.replace(/'/g,"\'");
