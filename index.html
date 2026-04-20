@@ -2406,7 +2406,7 @@ const FESTIVAL_STORAGE_KEY='ficci65_';
 // BUILD_VERSION: cambia en cada deploy.
 // Al cargar, compara con localStorage. Si difiere → reload duro.
 // sessionStorage evita loops infinitos dentro de la misma sesión.
-const BUILD_VERSION='202604201457';
+const BUILD_VERSION='202604201500';
 (function(){
   const _vk='otrofestiv_build';
   const _sk='otrofestiv_reloaded';
@@ -4360,8 +4360,11 @@ function renderContextualHeader(){
 }
 
 function _renderSavedAgendaHTML(){
-  // Post-festival: el ENDED header es el contenido completo — no renderizar nada más
-  if(festivalEnded()) return '';
+  // Post-festival: el ENDED header es el contenido completo
+  if(festivalEnded()){
+    const _eh=renderContextualHeader();
+    return _eh?`<div class="saved-agenda">${_eh}</div>`:'';
+  }
   if(!savedAgenda||!savedAgenda.schedule.length) return `<div style="text-align:center;padding:32px 20px">
       <div style="font-size:28px;margin-bottom:12px">${ICONS.calendar}</div>
       <div style="font-weight:var(--w-bold);color:var(--white);margin-bottom:8px">Tu plan aparecerá aquí</div>
