@@ -1800,7 +1800,20 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:var(--t
   </div>
   <div class="hdr-fest-chev">˅</div>
 </div>
-  <div class="main-nav" id="main-nav" role="navigation" aria-label="Navegación principal">
+  
+  <div id="hdr-share-wrap" style="display:none;margin-left:auto;position:relative">
+    <button onclick="toggleShareMenu()" style="background:none;border:none;color:var(--gray2);cursor:pointer;padding:6px;display:flex;align-items:center;justify-content:center">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>
+    </button>
+    <div class="share-menu-wrap" id="share-menu-wrap" style="position:absolute;top:100%;right:0">
+      <div class="share-dropdown" id="share-dropdown">
+        <button class="share-opt" onclick="shareAsImage();closeShareMenu()">Como imagen</button>
+        <button class="share-opt" onclick="exportICS();closeShareMenu()">Archivo .ICS</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="main-nav" id="main-nav" role="navigation" aria-label="Navegación principal">
   <button class="main-nav-tab on" id="mnav-cartelera" onclick="{const _ph=_getProgramaPhase();programaSubMode=_ph.default;switchMainNav('mnav-cartelera');showDayView();}">
     <span class="main-nav-ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="2.18"/><line x1="7" y1="2" x2="7" y2="22"/><line x1="17" y1="2" x2="17" y2="22"/><line x1="2" y1="12" x2="22" y2="12"/><line x1="2" y1="7" x2="7" y2="7"/><line x1="2" y1="17" x2="7" y2="17"/><line x1="17" y1="17" x2="22" y2="17"/><line x1="17" y1="7" x2="22" y2="7"/></svg></span>
     <span class="main-nav-lbl">PROGRAMA</span>
@@ -1817,18 +1830,6 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:var(--t
     <span class="main-nav-ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></span>
     <span class="main-nav-lbl">MI PLAN</span>
   </button>
-</div>
-  <div id="hdr-share-wrap" style="display:none;margin-left:auto;position:relative">
-    <button onclick="toggleShareMenu()" style="background:none;border:none;color:var(--gray2);cursor:pointer;padding:6px;display:flex;align-items:center;justify-content:center">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>
-    </button>
-    <div class="share-menu-wrap" id="share-menu-wrap" style="position:absolute;top:100%;right:0">
-      <div class="share-dropdown" id="share-dropdown">
-        <button class="share-opt" onclick="shareAsImage();closeShareMenu()">Como imagen</button>
-        <button class="share-opt" onclick="exportICS();closeShareMenu()">Archivo .ICS</button>
-      </div>
-    </div>
-  </div>
 </div>
 </div><!-- /topbar -->
 
@@ -2493,7 +2494,7 @@ const FESTIVAL_STORAGE_KEY='ficci65_';
 // BUILD_VERSION: cambia en cada deploy.
 // Al cargar, compara con localStorage. Si difiere → reload duro.
 // sessionStorage evita loops infinitos dentro de la misma sesión.
-const BUILD_VERSION='202604202201';
+const BUILD_VERSION='202604202209';
 (function(){
   const _vk='otrofestiv_build';
   const _sk='otrofestiv_reloaded';
