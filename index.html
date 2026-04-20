@@ -1275,174 +1275,177 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:var(--t
 
 .ag-fi-actions{gap:2px}
 
-@media(min-width:768px){.ag-fi-actions{gap:var(--sp-1)}.ag-fi-btn{padding:var(--sp-1) var(--sp-2)}
+@media(min-width:768px){
 
-  /* ── ag-fi-btn: padding normal en desktop ── */
-  
-  .ag-fi-actions{gap:var(--sp-1)}
-
-    /* ── Pósters — escala desktop ── */
+  /* ── VARIABLES DESKTOP ── */
   :root{
-    --poster-lg-w: 112px;   /* Programa card: más espacio disponible en desktop */
+    --content-w: 960px;            /* ancho máximo del contenido         */
+    --content-pad: var(--sp-5);    /* padding horizontal del contenido   */
+    --tb-h: 44px;                  /* altura del topbar                  */
+    --mn-h: 44px;                  /* altura del main-nav                */
+    --sticky-top-carta: calc(var(--tb-h) + var(--mn-h));
+    --sticky-top-chips: calc(var(--tb-h) + var(--mn-h) + 40px);
+    --poster-lg-w: 112px;
     --poster-lg-h: 168px;
   }
 
-  /* ── Intereses grid — comportamiento de overlay en desktop ──
-     Mobile: overlay + info siempre visible (opacity:1 en global)
-     Desktop: hover-only para overlay/info/acciones; prog siempre visible */
-  .ag-fi-overlay,
-  .ag-fi-bottom,
-  .ag-fi-actions{opacity:0;transition:opacity var(--tr-base)}
-
-  .ag-film-item.ag-prog .ag-fi-overlay,
-  .ag-film-item.ag-prog .ag-fi-bottom{opacity:1}
-
-  .ag-film-item:hover .ag-fi-overlay,
-  .ag-film-item:hover .ag-fi-bottom,
-  .ag-film-item:hover .ag-fi-actions{opacity:1}
-
-  /* ══════════════════════════════════════════════════════
-     TOPBAR DESKTOP — DOS FILAS CON JERARQUÍA CLARA
-     ──────────────────────────────────────────────────
-     Fila 1 · LOGO:     44px · wordmark 28px  ← PRIMARIO
-     Fila 2 · FESTIVAL: 24px · texto 11px     ← secundario
-     Total:             68px → var(--tb-h)
-     ──────────────────────────────────────────────────
-     El logo nunca comparte fila con el festival.
-     La fila del festival es visualmente subordinada:
-     altura 24px (vs 44px del logo), texto pequeño,
-     color muy atenuado, sin background propio.
-  ═══════════════════════════════════════════════════════ */
-  :root{--tb-h:68px;--mn-h:44px;--sticky-top-carta:calc(var(--tb-h) + var(--mn-h));--sticky-top-chips:calc(var(--tb-h) + var(--mn-h) + 40px)}
-
-  .topbar{position:sticky;top:0;z-index:200;background:var(--surf);border-bottom:1px solid var(--bdr);padding-top:env(safe-area-inset-top)}
-
-  /* ── Fila 1: LOGO — presencia de marca ── */
+  /* ── TOPBAR — sticky, fondo full-width, contenido centrado ── */
+  .topbar{
+    position:sticky;top:0;z-index:200;
+    background:var(--surf);border-bottom:1px solid var(--bdr);
+  }
   .hdr{
-    display:flex;
-    align-items:center;
-    height:44px;
-    padding:0 max(var(--sp-5),calc((100vw - 960px) / 2));
-    background:none;
-    border:none;
-  }
-  .hdr-wordmark{
-    font-size:var(--t-display);
-    line-height:1;
-  }
-
-  /* ── Fila 2: FESTIVAL — contexto compacto y subordinado ── */
-  .hdr-fest-bar{
-    display:flex;
-    align-items:center;
-    height:24px;
-    max-width:960px;
+    height:var(--tb-h);
+    max-width:var(--content-w);
     margin:0 auto;
-    padding:0 var(--sp-5);
-    border-top:1px solid var(--bdr-l);
-    border-bottom:none;
+    padding:0 var(--content-pad);
+  }
+
+  /* ── FESTIVAL BAR — dentro del topbar, centrada ── */
+  .hdr-fest-bar{
+    max-width:var(--content-w);
+    margin:0 auto;
+    padding:var(--sp-2) var(--content-pad);
     background:transparent;
-    cursor:pointer;
-    justify-content:flex-start;
-    gap:var(--sp-2);
+    border:none;
+    height:auto;
   }
-  .hdr-fest-bar:hover{background:var(--overlay-10)}
+  .hdr-fest-bar:hover{background:transparent}
 
-  /* En desktop, la barra de festival es más sutil — menor jerarquía */
-  @media(min-width:600px){
-    .hdr-fest-bar .hdr-fest-dot{width:4px;height:4px;opacity:.6}
-    .hdr-fest-bar .hdr-fest-name{font-size:var(--t-label);letter-spacing:.1em;color:var(--white-45)}
-    .hdr-fest-bar .hdr-fest-dates{display:inline;font-size:var(--t-label);color:var(--white-30)}
-    .hdr-fest-bar .hdr-fest-chev{font-size:var(--t-xs);margin-left:auto;color:var(--white-30)}
-  }
-  /* Mobile: barra más prominente — texto legible, altura mayor */
-  @media(max-width:599px){
-    .hdr-fest-bar{height:32px;padding:0 var(--sp-4)}
-    .hdr-fest-bar .hdr-fest-name{font-size:var(--t-sm);color:var(--white);letter-spacing:.04em}
-    .hdr-fest-bar .hdr-fest-dates{font-size:var(--t-xs);color:var(--white-60)}
-    .hdr-fest-bar .hdr-fest-chev{font-size:var(--t-sm);color:var(--white-60);margin-left:auto}
-    .hdr-fest-dot{width:6px;height:6px}
-  }
-
-  /* ══════════════════════════════════════════════════════
-     MAIN NAV — own row, sticky just below topbar
-     960px max-width, centered in the page.
-  ═══════════════════════════════════════════════════════ */
+  /* ── MAIN NAV — sticky bajo el topbar, full-width bg, contenido centrado ── */
   .main-nav{
-    /* Override mobile fixed-bottom */
     position:sticky !important;
     top:var(--tb-h) !important;
     bottom:auto !important;
     left:auto !important;
     right:auto !important;
     z-index:199;
-    /* Layout */
-    display:flex;
     width:100%;
-    max-width:960px;
-    margin-left:auto;margin-right:auto;
+    max-width:100%;
     border-top:none !important;
     border-bottom:1px solid var(--bdr) !important;
-    padding-bottom:0 !important;
+    padding:0 max(var(--content-pad),calc((100vw - var(--content-w)) / 2)) !important;
     background:var(--surf);
-    height:44px;
+    display:flex;
+    justify-content:flex-start;
   }
-  /* Tabs: border-bottom indicator, NOT border-top */
   .main-nav-tab{
-    flex:1;
-    height:44px !important;
+    flex:1 !important;
+    max-width:140px !important;
+    height:var(--mn-h) !important;
     flex-direction:row !important;
     gap:var(--sp-2) !important;
-    padding:0 var(--sp-5) !important;
+    padding:0 var(--sp-3) !important;
     border-bottom:2px solid transparent !important;
     border-top:none !important;
     margin-bottom:-1px !important;
     margin-top:0 !important;
+    font-size:var(--t-sm) !important;
+    letter-spacing:.02em;
+    justify-content:center !important;
   }
   .main-nav-tab.on{
     border-bottom-color:var(--orange) !important;
     border-top-color:transparent !important;
+    color:var(--white) !important;
   }
-  .main-nav-ico svg{width:15px;height:15px}
-  .main-nav-lbl{font-size:var(--t-xs);letter-spacing:.08em}
+  .main-nav-ico svg{width:14px;height:14px}
+  .main-nav-lbl{font-size:var(--t-sm)}
 
-  /* ══════════════════════════════════════════════════════
-     CONTENT — 960px centered, sticky sub-nav offsets
-  ═══════════════════════════════════════════════════════ */
-
-  /* Day-tabs row (Planear) and filter row: sticky below topbar+mainnav */
+  /* ── SUB-NAV ROWS — centrados ── */
   .nav-row{
-    position:sticky;top:calc(var(--tb-h) + var(--mn-h));z-index:198;background:var(--bg);
-    max-width:960px;width:100%;margin-left:auto;margin-right:auto;
+    position:sticky;top:var(--sticky-top-carta);z-index:198;
+    background:var(--bg);
+    max-width:var(--content-w);width:100%;
+    margin-left:auto;margin-right:auto;
   }
   .filter-row{
-    position:sticky;top:calc(var(--tb-h) + var(--mn-h));z-index:197;background:var(--bg);
-    max-width:960px;width:100%;margin-left:auto;margin-right:auto;
+    position:sticky;top:var(--sticky-top-carta);z-index:197;
+    background:var(--bg);
+    max-width:var(--content-w);width:100%;
+    margin-left:auto;margin-right:auto;
+  }
+  .programa-mode-bar{
+    max-width:var(--content-w);
+    margin-left:auto;margin-right:auto;
+    padding:0 var(--content-pad);
+  }
+  .programa-chips{
+    max-width:var(--content-w);
+    margin-left:auto;margin-right:auto;
+    padding:var(--sp-2) var(--content-pad);
   }
 
-  /* Main content areas */
+  /* ── CONTENIDO PRINCIPAL — centrado a 960px ── */
   .grid{
-    max-width:960px;margin-left:auto;margin-right:auto;
-    padding-left:var(--sp-5);padding-right:var(--sp-5);
+    max-width:var(--content-w);
+    margin-left:auto;margin-right:auto;
+    padding-left:var(--content-pad);
+    padding-right:var(--content-pad);
     padding-bottom:var(--sp-6);
-    grid-template-columns:repeat(auto-fill,minmax(min(100%,290px),1fr));
+    grid-template-columns:repeat(auto-fill,minmax(min(100%,280px),1fr));
   }
   .ag-view{
-    max-width:960px;margin-left:auto;margin-right:auto;
-    padding-left:var(--sp-5);padding-right:var(--sp-5);
+    max-width:var(--content-w);
+    margin-left:auto;margin-right:auto;
+    padding-left:var(--content-pad);
+    padding-right:var(--content-pad);
     padding-bottom:var(--sp-6);
+    padding-top:var(--sp-3);
   }
-  .hint{max-width:960px;margin-left:auto;margin-right:auto;padding-left:var(--sp-5);padding-right:var(--sp-5)}
-  .cnt-line{max-width:960px;margin-left:auto;margin-right:auto;padding-left:var(--sp-5);padding-right:var(--sp-5)}
+  .hint{
+    max-width:var(--content-w);
+    margin-left:auto;margin-right:auto;
+    padding-left:var(--content-pad);
+    padding-right:var(--content-pad);
+  }
+  .cnt-line{
+    max-width:var(--content-w);
+    margin-left:auto;margin-right:auto;
+    padding-left:var(--content-pad);
+    padding-right:var(--content-pad);
+  }
 
-  /* Toast: top-right of the 960px band */
+  /* ── GRIDS EN DESKTOP — más columnas ── */
+  .ag-film-grid{
+    grid-template-columns:repeat(6,1fr) !important;
+  }
+  .poster-grid{
+    grid-template-columns:repeat(6,1fr);
+  }
+
+  /* ── INTERESES — hover overlay (no touch) ── */
+  .ag-fi-overlay,.ag-fi-bottom,.ag-fi-actions{
+    opacity:0;transition:opacity var(--tr-base);
+  }
+  .ag-film-item.ag-prog .ag-fi-overlay,
+  .ag-film-item.ag-prog .ag-fi-bottom{opacity:1}
+  .ag-film-item:hover .ag-fi-overlay,
+  .ag-film-item:hover .ag-fi-bottom,
+  .ag-film-item:hover .ag-fi-actions{opacity:1}
+
+  /* ── CARDS DE PROGRAMA — hover state ── */
+  .card:hover:not(.conflict){
+    transform:translateY(-2px);
+    box-shadow:0 8px 24px var(--overlay-60);
+    border-color:var(--amber-35);
+  }
+
+  /* ── AG-FI-BTN — más padding en desktop ── */
+  .ag-fi-actions{gap:var(--sp-1)}
+  .ag-fi-btn{padding:var(--sp-1) var(--sp-2)}
+
+  /* ── TOAST — top-right del área de contenido ── */
   .prio-toast{
-    top:12px;left:auto;
-    right:max(16px,calc(50vw - 464px));
-    transform:none;width:auto;max-width:300px;
+    top:var(--sp-3);
+    left:auto;
+    right:max(var(--sp-4),calc(50vw - 464px));
+    transform:none;
+    width:auto;
+    max-width:300px;
   }
 
-  /* Stable scrollbar gutter */
+  /* ── SCROLLBAR ── */
   html{scrollbar-gutter:stable}
 }
 /* Touch devices — overlay always visible regardless of screen width */
@@ -2440,7 +2443,7 @@ const FESTIVAL_STORAGE_KEY='ficci65_';
 // BUILD_VERSION: cambia en cada deploy.
 // Al cargar, compara con localStorage. Si difiere → reload duro.
 // sessionStorage evita loops infinitos dentro de la misma sesión.
-const BUILD_VERSION='202604202100';
+const BUILD_VERSION='202604202104';
 (function(){
   const _vk='otrofestiv_build';
   const _sk='otrofestiv_reloaded';
