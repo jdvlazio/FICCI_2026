@@ -2406,7 +2406,7 @@ const FESTIVAL_STORAGE_KEY='ficci65_';
 // BUILD_VERSION: cambia en cada deploy.
 // Al cargar, compara con localStorage. Si difiere → reload duro.
 // sessionStorage evita loops infinitos dentro de la misma sesión.
-const BUILD_VERSION='202604201502';
+const BUILD_VERSION='202604201504';
 (function(){
   const _vk='otrofestiv_build';
   const _sk='otrofestiv_reloaded';
@@ -2938,6 +2938,7 @@ function removeFromAgenda(title){
   });
 }
 function addSuggestion(title,day,time){
+  if(festivalEnded()) return;
   // 1. Add to watchlist if not already there
   if(!watchlist.has(title)){watchlist.add(title);watched.delete(title);saveState('wl','watched');updateCardState(title);updateAgTab();}
   // 2. Add specific screening to saved agenda
@@ -5355,6 +5356,7 @@ function invalidateCalcResult(){
     :`<div class="ag-calc-prompt">Añade películas en <strong>Intereses</strong> para poder calcular opciones.</div>`;
 }
 function runCalc(){
+  if(festivalEnded()){showToast('El festival ya terminó','info');return;}
   cachedResult=null;
   const btn=document.querySelector('.av-calc-btn');
   const res=document.getElementById('ag-result');
@@ -5425,7 +5427,7 @@ function renderAgenda(){
           <div id="ag-search-results" class="ag-search-results"></div>
         </div>
         <div id="ag-film-list">${renderFilmListHTML()}</div>
-        ${watchlist.size>0&&(!savedAgenda||!savedAgenda.schedule||!savedAgenda.schedule.length)?`
+        ${!festivalEnded()&&watchlist.size>0&&(!savedAgenda||!savedAgenda.schedule||!savedAgenda.schedule.length)?`
         <div class="sel-plan-cta" onclick="switchMainNav('mnav-planner');showAgView()">
           <div class="sel-plan-cta-text">
             <b>${watchlist.size} película${watchlist.size!==1?'s':''} en tu lista</b><br>
@@ -5441,7 +5443,21 @@ function renderAgenda(){
     _updateShareBtn();
   } else {
     // ── Planear: stepper de progreso + prio strip + disponibilidad + opciones ──
-    const _progressHtml=(!festivalEnded()&&(!savedAgenda||!savedAgenda.schedule||!savedAgenda.schedule.length))?renderFlowProgress('planner'):'';
+    if(festivalEnded()){
+      // Post-festival: Planear no tiene función — redirigir a Mi Plan
+      view.innerHTML=`<div style="text-align:center;padding:48px 24px">
+        <div style="font-size:32px;margin-bottom:16px">🎬</div>
+        <div style="font-weight:var(--w-bold);color:var(--white);font-size:var(--t-lg);margin-bottom:8px">FICCI 65 ha terminado</div>
+        <div style="font-size:var(--t-sm);color:var(--gray);line-height:1.6;margin-bottom:24px;max-width:260px;margin-left:auto;margin-right:auto">
+          El festival ya concluyó. Revisá las películas que viste en Mi Plan.
+        </div>
+        <button onclick="switchMainNav('mnav-miplan');showAgView()" style="background:var(--amber-10);border:1px solid var(--amber-30);color:var(--amber);font-family:var(--font);font-size:var(--t-sm);font-weight:var(--w-bold);padding:10px 20px;border-radius:var(--r-pill);cursor:pointer">
+          Ver Mi Plan
+        </button>
+      </div>`;
+      return;
+    }
+    const _progressHtml=(!savedAgenda||!savedAgenda.schedule||!savedAgenda.schedule.length)?renderFlowProgress('planner'):'';
     // El indicador desaparece cuando hay plan guardado
     const pending=[...watchlist].filter(t=>!watched.has(t)&&FILMS.some(f=>f.title===t&&!screeningPassed(f)));
     const resultContent=cachedResult
