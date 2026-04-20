@@ -1445,12 +1445,10 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:var(--t
     padding-top:var(--sp-3);padding-bottom:var(--sp-6);
   }
 
-  /* Grids — ag-film-grid más ancho en desktop: 4 cols (228px c/u en 912px)
-     poster-grid en Programa mantiene 6 (thumbnails pequeños)
-     pg-miplan en Mi Plan: auto-fill flexible (mejor con colecciones pequeñas) */
-  .ag-film-grid{grid-template-columns:repeat(4,1fr) !important}
+  /* Grids — regla única: 6 cols en desktop, 4 en mobile (consistente en todos los tabs) */
+  .ag-film-grid{grid-template-columns:repeat(6,1fr) !important}
   .poster-grid{grid-template-columns:repeat(6,1fr)}
-  .pg-miplan{grid-template-columns:repeat(auto-fill,minmax(170px,1fr))}
+  .pg-miplan{grid-template-columns:repeat(6,1fr)}
 
   /* Intereses hover */
   .ag-fi-overlay,.ag-fi-bottom,.ag-fi-actions{opacity:0;transition:opacity var(--tr-base)}
