@@ -6393,8 +6393,8 @@ function openPelSheet(title){
     <div class="pel-sheet-section-lbl">Funciones</div>
     ${rows}
     <div class="pel-sheet-divider"></div>
-    <div class="pel-sheet-section-lbl">Sinopsis</div>
     ${f.director?`<div style="font-size:var(--t-sm);color:var(--orange);margin-bottom:6px;font-weight:var(--w-semi)">Dir. ${f.director}</div>`:''}
+    <div class="pel-sheet-section-lbl">Sinopsis</div>
     <div class="pel-sheet-synopsis">${f.synopsis||'Sinopsis disponible próximamente.'}</div>
     ${f.genre?`<div style="font-size:var(--t-xs);color:var(--gray);margin-top:6px">${f.genre}${f.year?' · '+f.year:''}</div>`:''}
     ${cortosHtml}
