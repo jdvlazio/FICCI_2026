@@ -1772,11 +1772,9 @@ html.splash-skip #otrofestiv-splash{display:none}
 <script>
 (function(){
   try{
-    if(localStorage.getItem('otrofestiv-welcomed')||
-       localStorage.getItem('ficci65_wl')||
-       localStorage.getItem('ficci65_saved')){
-      document.documentElement.classList.add('splash-skip');
-    }
+    // El splash siempre se muestra — no auto-dismiss
+    // Solo omitir si está en modo incógnito (sin localStorage)
+    void 0; // no-op
   }catch(e){}
 })();
 </script>
@@ -2561,7 +2559,7 @@ let FESTIVAL_STORAGE_KEY='ficci65_';
 // BUILD_VERSION: cambia en cada deploy.
 // Al cargar, compara con localStorage. Si difiere → reload duro.
 // sessionStorage evita loops infinitos dentro de la misma sesión.
-const BUILD_VERSION='202604210047';
+const BUILD_VERSION='202604210054';
 (function(){
   const _vk='otrofestiv_build';
   const _sk='otrofestiv_reloaded';
@@ -6694,17 +6692,12 @@ function _renderProgramaContent(){
   const cntEl=document.getElementById('cnt');
   if(!grid||!lista) return;
   if(programaSubMode==='explorar'){
-    // Grid o lista de todo el catálogo
-    lista.classList.remove('visible');
-    if(programaViewMode==='grid'){
-      grid.style.display='';
-      renderPeliculaView();
-    } else {
-      grid.style.display='none';
-      lista.classList.add('visible');
-      // Lista de todas las películas (no por hora)
-      _renderExploreLista();
-    }
+    // Explorar siempre usa la lista — muestra el catálogo completo
+    grid.style.display='none';
+    lista.classList.add('visible');
+    _renderExploreLista();
+    const _dummy=0; // placeholder para igualar estructura
+    if(false){
   } else {
     // Hoy / Mañana
     if(programaViewMode==='grid'){
@@ -6991,40 +6984,25 @@ function loadFestival(id){
   showDayView();
 }
 function dismissSplash(){
-  localStorage.setItem('otrofestiv-welcomed','1');
   const s=document.getElementById('otrofestiv-splash');
   if(s){s.classList.add('fade-out');setTimeout(()=>s.remove(),520);}
-  if(_splashSelectedFestId && _splashSelectedFestId!==_activeFestId){
-    loadFestival(_splashSelectedFestId);
-  }
+  loadFestival(_splashSelectedFestId||'ficci65');
 }
 (function(){
-  const SPLASH_KEY='otrofestiv-welcomed';
+  // El splash es siempre el punto de entrada — aparece en cada carga.
+  // Solo pre-seleccionamos el festival que el usuario eligió la última vez.
   const storedFest=localStorage.getItem('otrofestiv_festival')||'ficci65';
-  const prefix=FESTIVAL_CONFIG[storedFest]?.storageKey||'ficci65_';
-  const hasData=localStorage.getItem(prefix+'wl')||
-                localStorage.getItem(prefix+'saved')||
-                localStorage.getItem(SPLASH_KEY);
-  if(hasData){
-    const s=document.getElementById('otrofestiv-splash');
-    if(s) s.remove();
-    // Restaurar festival guardado si no es el default
-    if(storedFest!=='ficci65'&&FESTIVAL_CONFIG[storedFest]){
-      // loadFestival aún no está disponible (está en scope), llamar con delay
-      setTimeout(()=>loadFestival(storedFest),0);
-    }
-  }
-  // Si no hasData: splash permanece, usuario elige
-  // Pre-seleccionar el festival guardado en el dropdown del splash
-  if(storedFest!=='ficci65'){
-    _splashSelectedFestId=storedFest;
-    const cfg=FESTIVAL_CONFIG[storedFest];
-    if(cfg){
-      const n=document.getElementById('splash-sel-name');
-      const m=document.getElementById('splash-sel-meta');
-      if(n) n.textContent=cfg.name;
-      if(m) m.textContent=cfg.city+' · '+cfg.dates+' 2026';
-    }
+  _splashSelectedFestId=storedFest;
+  const cfg=FESTIVAL_CONFIG[storedFest];
+  if(cfg){
+    const n=document.getElementById('splash-sel-name');
+    const m=document.getElementById('splash-sel-meta');
+    if(n) n.textContent=cfg.name;
+    if(m) m.textContent=cfg.city+' · '+cfg.dates+' 2026';
+    // Marcar el item del dropdown como seleccionado
+    document.querySelectorAll('.splash-drop-item').forEach(el=>{
+      el.classList.toggle('selected',el.dataset.fest===storedFest);
+    });
   }
 })();
 
