@@ -6382,7 +6382,7 @@ function openPelSheet(title){
     }).join('');
     cortosHtml=`<div class="pel-sheet-divider"></div>
       <div class="pel-sheet-section-lbl">Programa · ${f.film_list.length} cortos</div>
-      ${cortoItems}`;
+      <div class="pel-sheet-cortos-wrap">${cortoItems}</div>`;
   }
   const wlLabel=inWL?`${ICONS.heartFill} En Intereses`:`${ICONS.heart} Intereses`;
   const safeT=f.title.replace(/'/g,"\'");
