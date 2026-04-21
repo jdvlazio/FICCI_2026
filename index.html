@@ -286,7 +286,7 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:var(--t
    carta-search-wrap: provee margen externo (está fuera de ag-view)
    ag-search-wrap:    solo margen inferior (ag-view provee márgenes laterales)
 ────────────────────────────────────────────────────────────────────────── */
-.carta-search-wrap{margin:var(--sp-2) var(--sp-4) 0;position:relative}
+.carta-search-wrap{margin:0 var(--sp-4);padding:var(--sp-2) 0 0;position:sticky;top:var(--sticky-top-carta);z-index:121;background:var(--surf)}
 .ag-search-wrap{margin-bottom:var(--sp-2);position:relative}
 /* El pill: flex row que contiene ícono + input + clear */
 .carta-search-field,.ag-search-field{
@@ -578,7 +578,7 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:var(--t
 /* ── Toggle Por Horario / Por Película — mismo sistema que fdr-btn ── */
 .carta-mode-toggle{display:none} /* reemplazado por programa-mode-bar */
 /* ── Programa: mode bar Explorar/Hoy/Mañana ── */
-.programa-mode-bar{display:flex;align-items:center;border-bottom:1px solid var(--bdr);padding:0 var(--sp-3);flex-shrink:0;background:var(--surf);position:sticky;top:var(--sticky-top-carta);z-index:120}
+.programa-mode-bar{display:flex;align-items:center;border-bottom:1px solid var(--bdr);padding:0 var(--sp-3);flex-shrink:0;background:var(--surf);position:sticky;top:var(--sticky-top-modebar);z-index:120}
 .pmode-tab{padding:var(--sp-btn) var(--sp-3) var(--sp-2);font-size:var(--t-base);font-weight:var(--w-bold);color:var(--gray);border-bottom:2px solid transparent;cursor:pointer;background:none;border-top:none;border-left:none;border-right:none;font-family:var(--font);transition:color .15s,border-color .15s;white-space:nowrap}
 .pmode-tab.on{color:var(--white);border-bottom-color:var(--amber)}
 .pmode-spacer{flex:1}
@@ -1285,7 +1285,8 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:var(--t
     --nav-h:44px;
     --tb-total:calc(var(--tb-h) + var(--fest-h) + var(--nav-h));
     --sticky-top-carta:var(--tb-total);
-    --sticky-top-chips:calc(var(--tb-total) + 42px);
+    --sticky-top-modebar:calc(var(--tb-total) + 44px);
+    --sticky-top-chips:calc(var(--tb-total) + 44px + 42px);
     --poster-lg-w:112px;
     --poster-lg-h:168px;
   }
@@ -2028,6 +2029,11 @@ html.splash-skip #otrofestiv-splash{display:none}
 </div>
 <!-- Chips de categoría — solo Explorar -->
 <div class="programa-chips hidden" id="programa-chips"></div>
+<div id="cartelera-cta" style="display:none">
+  <div class="cartelera-cta">
+    <span class="cartelera-cta-text">Toca <span style="color:var(--amber)">♥</span> en cualquier película para añadirla a <b>Intereses</b></span>
+  </div>
+</div>
 <!-- Tag activo dismissible -->
 <div class="programa-active-filter" id="programa-active-filter">
   <div class="paf-tag" id="paf-tag" onclick="clearProgramaChip()">
@@ -2060,11 +2066,7 @@ html.splash-skip #otrofestiv-splash{display:none}
 </div>
 <div class="hint" id="hint"></div>
 <div id="cartelera-stepper" style="display:none"></div>
-<div id="cartelera-cta" style="display:none">
-  <div class="cartelera-cta">
-    <span class="cartelera-cta-text">Toca <span style="color:var(--amber)">♥</span> en cualquier película para añadirla a <b>Intereses</b></span>
-  </div>
-</div>
+
 <div class="cnt-line" id="cnt"></div>
 <div class="grid" id="grid"></div>
 <div class="ag-view" id="ag-view"></div>
@@ -2352,10 +2354,24 @@ let LB_SLUGS={
   "Ya se ven los tigres en la lluvia":"tigers-can-be-seen-in-the-rain",
   "Ángeles somos":"angeles-somos"
 };
+const LB_SLUGS_AFF={
+  'Cómo ser millonario antes que muera la abuela':'how-to-make-millions-before-grandma-dies-2024',
+  'La misteriosa mirada del flamenco':'the-mysterious-gaze-of-the-flamingo-2025',
+  'Rayas de tigre':'tiger-stripes-2023',
+  'Un fantasma para servirte':'a-useful-ghost-2025',
+  'La hija cóndor':'the-condor-daughter-2025',
+  'La reserva':'the-reserve-2025',
+  'Contrato de nueve meses':'9-month-contract-2025',
+  'Amar bajo las espinas':'cactus-pears-2025',
+  'Belén':'belen-2025',
+  'La naturaleza de las cosas invisibles':'the-nature-of-invisible-things-2025',
+};
 function lbUrl(title){
-  const slug=LB_SLUGS[title];
+  // Use festival-specific slug map from active festival config
+  const _cfg=FESTIVAL_CONFIG[_activeFestId]||{};
+  const _slugMap=_cfg.lbSlugs||LB_SLUGS;
+  const slug=_slugMap[title]||LB_SLUGS[title];
   if(!slug) return`https://letterboxd.com/search/films/${encodeURIComponent(title)}/`;
-  // Si el slug es una URL completa (shortlink o full), úsala directamente
   if(slug.startsWith('http')) return slug;
   return`https://letterboxd.com/film/${slug}/`;
 }
@@ -2364,7 +2380,7 @@ function lbUrl(title){
    MULTI-FESTIVAL — AFF 2026 data + config
 ══════════════════════════════════════════════════════════════ */
 const FILMS_AFF=[{"title":"Belén","title_en":"Belén","country":"Argentina","flags":"🇦🇷","duration":"108 min","day":"MAR 21","date":21,"time":"18:00","venue":"MAMM","section":"🏆 Comp. de Largos","day_order":0,"is_cortos":false,"film_list":[],"director":"Dolores Fonzi","year":2025,"genre":"Drama","synopsis":"Una joven falsamente acusada de infanticidio y la abogada que la defiende detonan un movimiento por la justicia y los derechos de las mujeres."},{"title":"Tierra perdida","title_en":"Lost Land","country":"Japón/Malasia/Alemania","flags":"🇯🇵🇲🇾🇩🇪","duration":"99 min","day":"MIÉ 22","date":22,"time":"16:00","venue":"MAMM","section":"🏆 Comp. de Largos","day_order":1,"is_cortos":false,"film_list":[],"director":"Akio Fujimoto","year":2025,"genre":"Drama","synopsis":"Shafi, de 4 años, y su hermana Somira, de 9, salen de un campamento Rohingya en Bangladesh en un peligroso viaje hacia Malasia para reunirse con su familia."},{"title":"Brigitte, Planeta B","title_en":"Brigitte's Planet B","country":"Colombia","flags":"🇨🇴","duration":"87 min","day":"MIÉ 22","date":22,"time":"19:00","venue":"MAMM","section":"🏆 Comp. de Largos","day_order":1,"is_cortos":false,"film_list":[],"director":"Santiago Posada","year":2025,"genre":"Documental","synopsis":"Brigitte Baptiste, Ph.D., se ha consolidado como una de las principales expertas ambientales de Colombia y también como un ícono transgénero influyente e inesperado."},{"title":"La hija cóndor","title_en":"The Condor Daughter","country":"Bolivia/Perú/Uruguay","flags":"🇧🇴🇵🇪🇺🇾","duration":"109 min","day":"JUE 23","date":23,"time":"16:00","venue":"MAMM","section":"🏆 Comp. de Largos","day_order":2,"is_cortos":false,"film_list":[],"director":"Álvaro Olmos Torrico","year":2025,"genre":"Drama","synopsis":"Clara, adolescente de una pequeña comunidad indígena en los Andes, criada por su madre adoptiva partera, sueña con ser estrella de música folclórica en la ciudad."},{"title":"Piedras preciosas","title_en":"Gemstones","country":"Colombia/Portugal","flags":"🇨🇴🇵🇹","duration":"70 min","day":"JUE 23","date":23,"time":"19:00","venue":"MAMM","section":"🏆 Comp. de Largos","day_order":2,"is_cortos":false,"film_list":[],"director":"Simón Vélez","year":2026,"genre":"Acción, Aventura","synopsis":"Machado, colombiano radicado en Francia, regresa a Medellín para robar una esmeralda. Mientras ejecuta el plan, se enreda en una serie de eventos que lo llevan a reconsiderar su misión."},{"title":"Amar bajo las espinas","title_en":"Cactus Pears","country":"India/Reino Unido/Canadá","flags":"🇮🇳🇬🇧🇨🇦","duration":"112 min","day":"VIE 24","date":24,"time":"15:00","venue":"MAMM","section":"🏆 Comp. de Largos","day_order":3,"is_cortos":false,"film_list":[],"director":"Rohan Parashuram Kanawade","year":2025,"genre":"Drama","synopsis":"Anand, obligado a pasar un periodo de duelo en el campo de India, entabla una tierna relación con un agricultor local que lucha por mantenerse soltero."},{"title":"Cómo ser millonario antes que muera la abuela","title_en":"How to Make Millions Before Grandma Dies","country":"Tailandia","flags":"🇹🇭","duration":"125 min","day":"VIE 24","date":24,"time":"19:00","venue":"MAMM · Plazoleta","section":"✨ Impact Hits","day_order":3,"is_cortos":false,"film_list":[],"director":"Pat Boonnitipat","year":2024,"genre":"Comedia, Drama","synopsis":"Un hombre deja su trabajo para cuidar a su abuela moribunda, motivado por su fortuna. Intenta ganarse su favor antes de que ella muera."},{"title":"La misteriosa mirada del flamenco","title_en":"The Mysterious Gaze of the Flamingo","country":"Chile/Francia/Alemania","flags":"🇨🇱🇫🇷🇩🇪","duration":"109 min","day":"VIE 24","date":24,"time":"19:00","venue":"Colombo Americano","section":"✨ Impact Hits","day_order":3,"is_cortos":false,"film_list":[],"director":"Diego Céspedes","year":2025,"genre":"Drama","synopsis":"1982. Una enfermedad desconocida en un pueblo minero chileno lleva a acusar a los hombres gay de transmitirla con la mirada. Lidia, de 12 años, busca la verdad."},{"title":"La reserva","title_en":"The Reserve","country":"México/Qatar","flags":"🇲🇽🇶🇦","duration":"93 min","day":"SÁB 25","date":25,"time":"14:00","venue":"MAMM","section":"🏆 Comp. de Largos","day_order":4,"is_cortos":false,"film_list":[],"director":"Pablo Pérez Lombardini","year":2025,"genre":"Thriller","synopsis":"Una guardabosques convence a su comunidad de expulsar a un grupo de invasores de su reserva natural, provocando una amenaza mucho mayor."},{"title":"Rayas de tigre","title_en":"Tiger Stripes","country":"Malasia","flags":"🇲🇾","duration":"95 min","day":"SÁB 25","date":25,"time":"17:00","venue":"Colombo Americano","section":"✨ Impact Hits","day_order":4,"is_cortos":false,"film_list":[],"director":"Amanda Nell Eu","year":2023,"genre":"Terror","synopsis":"Zaffan, de 12 años, la primera de sus amigas en llegar a la pubertad, descubre un secreto aterrador sobre su cuerpo."},{"title":"Solo el cielo lo sabe","title_en":"Only Heaven Knows","country":"Kirguistán/EEUU","flags":"🇰🇬🇺🇸","duration":"80 min","day":"SÁB 25","date":25,"time":"17:00","venue":"MAMM","section":"🏆 Comp. de Largos","day_order":4,"is_cortos":false,"film_list":[],"director":"Nurzhamal Karamoldoeva","year":2025,"genre":"Drama","synopsis":"En Chicago, una inmigrante kirguiza busca a su marido desaparecido y descubre deudas, traición y verdades ocultas que la llevan por un camino inesperado de libertad."},{"title":"Queer y punk","title_en":"Queer As Punk","country":"Malasia/Indonesia","flags":"🇲🇾🇮🇩","duration":"87 min","day":"SÁB 25","date":25,"time":"19:30","venue":"MAMM","section":"🏆 Comp. de Largos","day_order":4,"is_cortos":false,"film_list":[],"director":"Yihwen Chen","year":2025,"genre":"Documental","synopsis":"En Malasia, donde ser LGBT está criminalizado, el trans Faris y su banda punk siguen tocando y protestando. Un retrato de valentía, amistad y espíritu punk."},{"title":"La naturaleza de las cosas invisibles","title_en":"The Nature of Invisible Things","country":"Brasil/Chile","flags":"🇧🇷🇨🇱","duration":"90 min","day":"DOM 26","date":26,"time":"16:30","venue":"MAMM","section":"🏆 Comp. de Largos","day_order":5,"is_cortos":false,"film_list":[],"director":"Rafaela Camelo","year":2025,"genre":"Drama","synopsis":"Dos niñas se conocen en un hospital y forman una amistad improbable. Su experiencia compartida las lleva en un viaje emocional lleno de pérdidas y despedidas."},{"title":"Un fantasma para servirte","title_en":"A Useful Ghost","country":"Tailandia/Singapur","flags":"🇹🇭🇸🇬","duration":"130 min","day":"DOM 26","date":26,"time":"19:00","venue":"MAMM","section":"🏆 Comp. de Largos","day_order":5,"is_cortos":false,"film_list":[],"director":"Ratchapoom Boonbunchachoke","year":2025,"genre":"Comedia oscura","synopsis":"En esta sátira sobre el amor, la política y la memoria, un fantasma regresa a una aspiradora para demostrar su amor a su marido vivo."},{"title":"Contrato de nueve meses","title_en":"9-Month Contract","country":"Georgia","flags":"🇬🇪","duration":"79 min","day":"LUN 27","date":27,"time":"19:30","venue":"MAMM","section":"🏆 Comp. de Largos","day_order":6,"is_cortos":false,"film_list":[],"director":"Ketevan Vashagashvili","year":2025,"genre":"Documental","synopsis":"Una madre georgiana recurre a la subrogación para conseguir un techo para su hija. Lo que comienza como una solución rápida se convierte en un sacrificio profundo."},{"title":"Runa Simi","title_en":"Runa Simi","country":"Perú","flags":"🇵🇪","duration":"85 min","day":"MAR 28","date":28,"time":"17:00","venue":"MAMM","section":"🏆 Comp. de Largos","day_order":7,"is_cortos":false,"film_list":[],"director":"Augusto Zegarra","year":2025,"genre":"Documental","synopsis":"Un actor de doblaje peruano busca convencer a Disney de doblar El Rey León al quechua. El viaje se convierte en una odisea personal de paternidad y activismo."},{"title":"Nuevos horizontes","title_en":"Becoming","country":"Kazajistán/Francia/Países Bajos","flags":"🇰🇿🇫🇷🇳🇱","duration":"94 min","day":"MAR 28","date":28,"time":"19:30","venue":"MAMM","section":"🏆 Comp. de Largos","day_order":7,"is_cortos":false,"film_list":[],"director":"Zhannat Alshanova","year":2025,"genre":"Drama","synopsis":"En Kazajistán, Mila, de 17 años, escapa de su hogar caótico uniéndose a un equipo de natación en aguas abiertas. Cuando su lugar se ve amenazado, arriesga todo."},{"title":"Hacia otra vida","title_en":"Cutting Through Rocks","country":"Irán/Qatar/Chile","flags":"🇮🇷🇶🇦🇨🇱","duration":"94 min","day":"MIÉ 29","date":29,"time":"16:30","venue":"MAMM","section":"🏆 Comp. de Largos","day_order":8,"is_cortos":false,"film_list":[],"director":"Sara Khaki, Mohammadreza Eyni","year":2025,"genre":"Documental","synopsis":"Sara Shahverdi, primera concejala electa de su pueblo iraní, entrena adolescentes en moto para detener matrimonios infantiles. Acusaciones ponen en crisis su identidad."},{"title":"No hay hombres buenos","title_en":"No Good Men","country":"Afganistán/Alemania/Francia/Noruega/Dinamarca","flags":"🇦🇫🇩🇪🇫🇷🇳🇴🇩🇰","duration":"103 min","day":"MIÉ 29","date":29,"time":"20:00","venue":"MAMM · Plazoleta","section":"✨ Impact Hits","day_order":8,"is_cortos":false,"film_list":[],"director":"Shahrbanoo Sadat","year":2026,"genre":"Comedia, Romance","synopsis":"Naru, cámarógrafa en Kabul, cree que no existen hombres buenos en Afganistán. Película de clausura."},{"title":"Un mundo frágil y maravilloso","title_en":"Homebound","country":"India","flags":"🇮🇳","duration":"117 min","day":"JUE 23","date":23,"time":"16:30","venue":"Colombo Americano","section":"✨ Impact Hits","day_order":2,"is_cortos":false,"film_list":[],"director":"Neeraj Ghaywan","year":2025,"genre":"Drama","synopsis":"Dos amigos de la infancia de un pequeño pueblo del norte de India persiguen un trabajo policial que les promete dignidad. La desesperación amenaza el vínculo que los une."},{"title":"Confinados","title_en":"Cadet","country":"Kazajistán","flags":"🇰🇿","duration":"124 min","day":"DOM 26","date":26,"time":"17:00","venue":"Colombo Americano","section":"✨ Impact Hits","day_order":5,"is_cortos":false,"film_list":[],"director":"Adilkhan Yerzhanov","year":2024,"genre":"Terror","synopsis":"Alina intenta inscribir a su hijo Serik en una academia militar de élite, donde es acosado por su apariencia afeminada y el director lo considera no apto."},{"title":"BAM × Alternativa: Coproducción","title_en":"","country":"","flags":"🏛️","duration":"90 min","day":"MAR 28","date":28,"time":"10:00","venue":"Industry Days","section":"📋 Industry Days","day_order":7,"is_cortos":false,"film_list":[],"type":"event","synopsis":"Panel de coproducción internacional con aliados de la industria cinematográfica."},{"title":"Entrenamiento con impacto","title_en":"","country":"","flags":"🏛️","duration":"90 min","day":"MAR 28","date":28,"time":"11:45","venue":"Industry Days","section":"📋 Industry Days","day_order":7,"is_cortos":false,"film_list":[],"type":"event","synopsis":"Sesión práctica de estrategias de impacto para cineastas del Sur Global."},{"title":"SANFIC Industria × Alternativa","title_en":"","country":"","flags":"🏛️","duration":"60 min","day":"MAR 28","date":28,"time":"14:45","venue":"Industry Days","section":"📋 Industry Days","day_order":7,"is_cortos":false,"film_list":[],"type":"event","synopsis":"Encuentro entre la industria de SANFIC y el Alternativa Film Festival."},{"title":"BAM × Alternativa: Distribución","title_en":"","country":"","flags":"🏛️","duration":"90 min","day":"MIÉ 29","date":29,"time":"10:00","venue":"Industry Days","section":"📋 Industry Days","day_order":8,"is_cortos":false,"film_list":[],"type":"event","synopsis":"Panel sobre distribución para cine del Sur Global."},{"title":"Plataformas de streaming","title_en":"","country":"","flags":"🏛️","duration":"90 min","day":"MIÉ 29","date":29,"time":"11:45","venue":"Industry Days","section":"📋 Industry Days","day_order":8,"is_cortos":false,"film_list":[],"type":"event","synopsis":"Conversación sobre streaming y el cine del Sur Global."},{"title":"FICG × Alternativa: Caso de estudio","title_en":"","country":"","flags":"🏛️","duration":"60 min","day":"MIÉ 29","date":29,"time":"14:45","venue":"Industry Days","section":"📋 Industry Days","day_order":8,"is_cortos":false,"film_list":[],"type":"event","synopsis":"Alianza FICG y Alternativa: caso de estudio de distribución e impacto."},{"title":"Sesiones 1-1","title_en":"","country":"","flags":"🏛️","duration":"120 min","day":"JUE 30","date":30,"time":"09:00","venue":"Industry Days","section":"📋 Industry Days","day_order":9,"is_cortos":false,"film_list":[],"type":"event","synopsis":"Sesiones individuales con profesionales de la industria cinematográfica global."},{"title":"Espacio de networking","title_en":"","country":"","flags":"🏛️","duration":"90 min","day":"JUE 30","date":30,"time":"11:30","venue":"Industry Days","section":"📋 Industry Days","day_order":9,"is_cortos":false,"film_list":[],"type":"event","synopsis":"Encuentro de networking entre cineastas, distribuidores y aliados del festival."},{"title":"Cortos: Familia 12+","title_en":"Short Films: Family","country":"Varios","flags":"🎬","duration":"71 min","day":"DOM 26","date":26,"time":"14:00","venue":"MAMM","section":"🎞️ Comp. de Cortos","day_order":5,"is_cortos":true,"film_list":[{"title":"Akababuru: Expresión de asombro","title_en":"Akababuru: Expression of Astonishment","country":"Colombia","duration":"13 min","director":"Irati Dojura Landa Yagarí","genre":"Híbrido","synopsis":"Kari, una niña indígena, lucha con su miedo a la risa. Una versión de la antigua leyenda Kiraparamia le ofrece un camino para superar su ansiedad y abrazar la alegría."},{"title":"Balada de peces y pájaros","title_en":"Ballad of Fishes and Birds","country":"Colombia/España","duration":"7 min","director":"Anny Uribe, Juan José Arévalo","genre":"Animación","synopsis":"Carlina, que perdió a su padre en el conflicto armado, vive con su madre. El dolor es abrumador hasta que aparece un pez místico que la guía en su aventura."},{"title":"El monstruo del miedo","title_en":"The Fear Monster","country":"Brasil","duration":"10 min","director":"Andrew Gledson, Eduardo Padrão","genre":"Animación","synopsis":"Un corto animado que se sumerge en la imaginación de una joven cuyo mundo se sacude cuando una figura monstruosa amenaza con tomar el poder."},{"title":"Gris","title_en":"Grey","country":"Colombia/EEUU","duration":"15 min","director":"Loren Escandón","genre":"Animación","synopsis":"La primera semana de escuela de Sofía despierta preguntas inesperadas sobre raza, familia y pertenencia. Sus dibujos cobran vida y la ayudan en su viaje."},{"title":"Una isla","title_en":"An Island","country":"Venezuela/México","duration":"11 min","director":"Ricardo Muñoz Senior","genre":"Ficción","synopsis":"Manuel y Laura decidieron migrar. Para ayudar a su hija Isa a superar el duro camino, crean una fantasía familiar íntima mientras buscan un nuevo hogar."},{"title":"Samba infinito","title_en":"Samba Infinito","country":"Brasil/Francia","duration":"15 min","director":"Leonardo Martinelli","genre":"Ficción","synopsis":"Durante el Carnaval de Río, un barrendero carga con el duelo por su hermana. En medio de las celebraciones, encuentra a un niño perdido y parte a ayudarlo."}]},{"title":"Cortos: Territorio","title_en":"Short Films: Territory","country":"Varios","flags":"🎬","duration":"84 min","day":"LUN 27","date":27,"time":"17:00","venue":"MAMM","section":"🎞️ Comp. de Cortos","day_order":6,"is_cortos":true,"film_list":[{"title":"Corteza","title_en":"Bark","country":"Colombia/UK","duration":"14 min","director":"Simon Acosta","genre":"Documental","synopsis":"En el corazón rural de Colombia, Astrid, una joven guardabosques, defiende una reserva natural pristina contra cazadores, invasores y el atractivo urbano."},{"title":"Entre la sal y el cielo","title_en":"Between Salt and Sky","country":"Chile/Brasil/Bolivia","duration":"17 min","director":"Felipe Rosa","genre":"Documental","synopsis":"En el altiplano boliviano, Ariel Flores y su comunidad luchan por preservar su tradición milenaria de esquilar vicuñas frente a la explotación del litio."},{"title":"Casa chica","title_en":"Casa Chica","country":"México","duration":"26 min","director":"Lau Charles","genre":"Ficción","synopsis":"El término 'casa chica' describe una práctica en México donde hombres casados llevan una doble vida con otra familia. Esta es mi historia."},{"title":"Ixquic","title_en":"Ixquic","country":"Guatemala","duration":"25 min","director":"Elvis Caj","genre":"Ficción","synopsis":"Ixquic, adolescente indígena guatemalteca que rechaza sus raíces, ve su mundo transformado cuando el río de su comunidad comienza a sangrar. Fuerzas ancestrales la guían."},{"title":"Pacífico","title_en":"Pacífico","country":"Colombia/Francia","duration":"22 min","director":"Daniel Duque","genre":"Documental","synopsis":"Pacífico es el nombre de una región, pero también de una fuerza. Una tierra donde la música acompaña la vida y donde uno puede renacer."}]},{"title":"Cortos: Identidad","title_en":"Short Films: Identity","country":"Varios","flags":"🎬","duration":"61 min","day":"MIÉ 29","date":29,"time":"14:00","venue":"MAMM","section":"🎞️ Comp. de Cortos","day_order":8,"is_cortos":true,"film_list":[{"title":"No muerto","title_en":"Not Dead","country":"Brasil","duration":"15 min","director":"Alex Reis","genre":"Ficción","synopsis":"El nacimiento del primer hijo de una joven pareja negra trae felicidad y agonía. El padre expresa sus dilemas ante la llegada, convivencia y eventual partida de su primogénito."},{"title":"Una vez en un cuerpo","title_en":"Once in a Body","country":"Colombia/EEUU","duration":"10 min","director":"María Cristina Pérez González","genre":"Animación","synopsis":"Mientras lidia con un ser extraño que vive en su interior, una mujer busca reconciliarse con su hermana por un incidente de su adolescencia."},{"title":"Presente en los grandes eventos","title_en":"Present in the Big Events","country":"Panamá/Venezuela","duration":"21 min","director":"Pamela Andrea Martínez Barrera","genre":"Documental","synopsis":"Cineasta venezolana documenta el embarazo de su hermana en Panamá para entender el significado de la familia en la diáspora e imaginar un futuro de unidad."},{"title":"Coeur Bleu","title_en":"Blue Heart","country":"Haití/Francia","duration":"15 min","director":"Samuel Suffren","genre":"Ficción","synopsis":"Marianne y Pétion, en Haití, esperan la llamada de su hijo que emigró al sueño americano. El silencio revela el quiebre en sus propias vidas."}]}];
-const POSTERS_AFF={"Belén":"https://admin.alternativa.film/uploads/Belen_poster_d62bb957bf.jpg","Tierra perdida":"https://admin.alternativa.film/uploads/B1poster_LOSTLAND_XU_Jing_718e89c6d4.jpg","Brigitte, Planeta B":"https://admin.alternativa.film/uploads/Poster_Brigitte_ENG_Valentina_Baracco_9926e8fa9a.jpg","La hija cóndor":"https://admin.alternativa.film/uploads/THE_CONDOR_DAUGHTER_Poster_Bendita_Film_Sales_Jorge_Blanch_366b8e9f3b.jpg","Piedras preciosas":"https://admin.alternativa.film/uploads/Gemstones_poster_580efb4ace.jpg","Amar bajo las espinas":"https://admin.alternativa.film/uploads/Cactus_Pears_Poster_33f71d0f8f.png","Cómo ser millonario antes que muera la abuela":"https://admin.alternativa.film/uploads/01_Johanna_Pozo_5b1106003d.jpg","La misteriosa mirada del flamenco":"https://admin.alternativa.film/uploads/F_POSTER_ENG_100x70_Producao_Imovision_4c3fb4332d.jpg","La reserva":"https://admin.alternativa.film/uploads/poster_2_LA_RESERVA_baja_Pablo_Perez_Lombardini_8121110846.jpg","Rayas de tigre":"https://admin.alternativa.film/uploads/TS_Poster_S_Lena_Sophie_Daun_456689c104.jpg","Solo el cielo lo sabe":"https://admin.alternativa.film/uploads/Only_Heaven_Knows_poster_a8bf256fc2.jpg","Queer y punk":"https://admin.alternativa.film/uploads/Queer_as_Punk_Poster_fcd3bdfe82.jpg","Contrato de nueve meses":"https://admin.alternativa.film/uploads/9_Months_Contract_poster_25f7a04bd3.jpg","Runa Simi":"https://admin.alternativa.film/uploads/Runa_Simi_poster_11bcd09520.jpeg","Un fantasma para servirte":"https://admin.alternativa.film/uploads/A_USEFUL_GHOST_Poster_8a5e0d839a.jpeg","Nuevos horizontes":"https://admin.alternativa.film/uploads/Becoming_Poster_f4a584cc01.jpg","La naturaleza de las cosas invisibles":"https://admin.alternativa.film/uploads/A_natureza_das_coisas_invisiveis_frame_07_LOW_The_Open_Reel_Movies_c08e8b2678.png","Hacia otra vida":"https://admin.alternativa.film/uploads/Cutting_through_Rocks_Poster_468f178b0e.jpg","Akababuru: Expresión de asombro":"https://admin.alternativa.film/uploads/AKABABURU_POSTER_laura_giraldo_9666ac856d.jpg","Balada de peces y pájaros":"https://admin.alternativa.film/uploads/BLD_FRAME_5_ALTA_RESOLUCION_Balada_peces_y_pajaros_9ed5500d0a.png","Corteza":"https://admin.alternativa.film/uploads/3b5630f6ea_poster_Simon_Acosta_2aece7582f.jpg","Entre la sal y el cielo":"https://admin.alternativa.film/uploads/ENTRE_LA_SAL_Y_EL_CIELO_POSTER_02_ENG_felipefotocine_b2edc14a97.jpg","Coeur Bleu":"https://admin.alternativa.film/uploads/Blue_Heart_Still_2_Sofia_Tocari_5d55bb2cd7.jpg","Casa chica":"https://admin.alternativa.film/uploads/Poster_CASACHICA_Berlinale_baja_Abraham_Arellano_67f3f5f258.jpg","El monstruo del miedo":"https://admin.alternativa.film/uploads/still_03_medomonstro_20b3d5cf67.jpg","Gris":"https://admin.alternativa.film/uploads/Gris_Poster_Eng_Loren_Escandon_62e9c1d610.jpg","Una isla":"https://admin.alternativa.film/uploads/An_Island_Poster_5aa1d0a2b7.png","Ixquic":"https://admin.alternativa.film/uploads/Captura_2025_04_10_170830_1_1_6_Elvis_Caj_ce74a05ab7.png","No muerto":"https://admin.alternativa.film/uploads/NOTDEAD_Poster_Alex_Reis_84dc9dbc81.jpg","Una vez en un cuerpo":"https://admin.alternativa.film/uploads/Oficial_Poster_Una_Michel_d4a64a67e9.jpg","Pacífico":"https://admin.alternativa.film/uploads/Pacifico_still_6_Daniel_Duque_aaa8ad50ea.jpg","Presente en los grandes eventos":"https://admin.alternativa.film/uploads/Balloon_2_Pam_Martinez_2db918b067.jpg","Samba infinito":"https://admin.alternativa.film/uploads/SAMBA_INFINITO_POSTER_VERSION_02_LOW_Leonardo_Martinelli_f26536cccd.jpg","Confinados":"https://admin.alternativa.film/uploads/Cadet_still_8_140125_Kiunnei_Filippova_cf16e7f4d1.jpeg","Un mundo frágil y maravilloso":"https://admin.alternativa.film/uploads/Main_Still_Kiunnei_Filippova_ecc87d9f13.jpg","No hay hombres buenos":"https://admin.alternativa.film/uploads/No_Good_Men_Still_1_7c0cd5e47e.jpg"};
+const POSTERS_AFF={"Belén":"https://image.tmdb.org/t/p/w185/w0DzNvUOjCIqxxifViNlwMSc3bm.jpg","Tierra perdida":"https://admin.alternativa.film/uploads/B1poster_LOSTLAND_XU_Jing_718e89c6d4.jpg","Brigitte, Planeta B":"https://image.tmdb.org/t/p/w185/ajUS8Zl4qCGcsuX9lNgphTYh3Qp.jpg","La hija cóndor":"https://image.tmdb.org/t/p/w185/apNxjF4eu2Oy3kqugfBgUP37C4O.jpg","Piedras preciosas":"https://admin.alternativa.film/uploads/Gemstones_poster_580efb4ace.jpg","Amar bajo las espinas":"https://admin.alternativa.film/uploads/Cactus_Pears_Poster_33f71d0f8f.png","Cómo ser millonario antes que muera la abuela":"https://image.tmdb.org/t/p/w185/fgWhmlpxPEJQTZeKOAEPlgrD0lB.jpg","La misteriosa mirada del flamenco":"https://image.tmdb.org/t/p/w185/ra40EbZWA85Pk0ZijF9Dr78Z36o.jpg","La reserva":"https://admin.alternativa.film/uploads/poster_2_LA_RESERVA_baja_Pablo_Perez_Lombardini_8121110846.jpg","Rayas de tigre":"https://image.tmdb.org/t/p/w185/xn9jcXcSBCIFeUm94EPUTS8laos.jpg","Solo el cielo lo sabe":"https://admin.alternativa.film/uploads/Only_Heaven_Knows_poster_a8bf256fc2.jpg","Queer y punk":"https://image.tmdb.org/t/p/w185/oDh4NWEvpn6PPX8nydsAbBBB0Q3.jpg","Contrato de nueve meses":"https://image.tmdb.org/t/p/w185/zVVhh2SjEKE6ZZ0xTJ9ifODhxEA.jpg","Runa Simi":"https://admin.alternativa.film/uploads/Runa_Simi_poster_11bcd09520.jpeg","Un fantasma para servirte":"https://image.tmdb.org/t/p/w185/7bUn53aMQGlj1GGlIuxptyNtI3G.jpg","Nuevos horizontes":"https://admin.alternativa.film/uploads/Becoming_Poster_f4a584cc01.jpg","La naturaleza de las cosas invisibles":"https://admin.alternativa.film/uploads/A_natureza_das_coisas_invisiveis_frame_07_LOW_The_Open_Reel_Movies_c08e8b2678.png","Hacia otra vida":"https://image.tmdb.org/t/p/w185/qefjf5TeM0uRzrFU2c4xYt6ew9z.jpg","Akababuru: Expresión de asombro":"https://admin.alternativa.film/uploads/AKABABURU_POSTER_laura_giraldo_9666ac856d.jpg","Balada de peces y pájaros":"https://admin.alternativa.film/uploads/BLD_FRAME_5_ALTA_RESOLUCION_Balada_peces_y_pajaros_9ed5500d0a.png","Corteza":"https://admin.alternativa.film/uploads/3b5630f6ea_poster_Simon_Acosta_2aece7582f.jpg","Entre la sal y el cielo":"https://admin.alternativa.film/uploads/ENTRE_LA_SAL_Y_EL_CIELO_POSTER_02_ENG_felipefotocine_b2edc14a97.jpg","Coeur Bleu":"https://admin.alternativa.film/uploads/Blue_Heart_Still_2_Sofia_Tocari_5d55bb2cd7.jpg","Casa chica":"https://admin.alternativa.film/uploads/Poster_CASACHICA_Berlinale_baja_Abraham_Arellano_67f3f5f258.jpg","El monstruo del miedo":"https://admin.alternativa.film/uploads/still_03_medomonstro_20b3d5cf67.jpg","Gris":"https://admin.alternativa.film/uploads/Gris_Poster_Eng_Loren_Escandon_62e9c1d610.jpg","Una isla":"https://admin.alternativa.film/uploads/An_Island_Poster_5aa1d0a2b7.png","Ixquic":"https://admin.alternativa.film/uploads/Captura_2025_04_10_170830_1_1_6_Elvis_Caj_ce74a05ab7.png","No muerto":"https://admin.alternativa.film/uploads/NOTDEAD_Poster_Alex_Reis_84dc9dbc81.jpg","Una vez en un cuerpo":"https://admin.alternativa.film/uploads/Oficial_Poster_Una_Michel_d4a64a67e9.jpg","Pacífico":"https://admin.alternativa.film/uploads/Pacifico_still_6_Daniel_Duque_aaa8ad50ea.jpg","Presente en los grandes eventos":"https://admin.alternativa.film/uploads/Balloon_2_Pam_Martinez_2db918b067.jpg","Samba infinito":"https://admin.alternativa.film/uploads/SAMBA_INFINITO_POSTER_VERSION_02_LOW_Leonardo_Martinelli_f26536cccd.jpg","Confinados":"https://admin.alternativa.film/uploads/Cadet_still_8_140125_Kiunnei_Filippova_cf16e7f4d1.jpeg","Un mundo frágil y maravilloso":"https://admin.alternativa.film/uploads/Main_Still_Kiunnei_Filippova_ecc87d9f13.jpg","No hay hombres buenos":"https://admin.alternativa.film/uploads/No_Good_Men_Still_1_7c0cd5e47e.jpg"};
 
 const FESTIVAL_CONFIG={
   'ficci65':{
@@ -2393,8 +2409,11 @@ const FESTIVAL_CONFIG={
 // Bind ficci65 references (defined above as let)
 FESTIVAL_CONFIG.ficci65.films=FILMS;
 FESTIVAL_CONFIG.ficci65.posters=POSTERS;
+FESTIVAL_CONFIG.ficci65.prioLimit=5;
 FESTIVAL_CONFIG.ficci65.lbSlugs=LB_SLUGS;
 FESTIVAL_CONFIG.aff2026.posters=POSTERS_AFF;
+FESTIVAL_CONFIG.aff2026.lbSlugs=LB_SLUGS_AFF;
+FESTIVAL_CONFIG.aff2026.prioLimit=7;
 
 let _activeFestId='ficci65';
 const LB_SVG=`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="13" height="13" style="display:block;flex-shrink:0"><rect width="64" height="64" rx="9" fill="#2C3440"/><circle cx="21" cy="32" r="12" fill="#00B020" opacity=".9"/><circle cx="32" cy="32" r="12" fill="#3CBEDB" opacity=".85"/><circle cx="43" cy="32" r="12" fill="#FF8000" opacity=".9"/></svg>`;
@@ -2557,7 +2576,7 @@ let watchlist=new Set();
 let filmRatings={}; // {title: 0.5..5} medias estrellas Letterboxd-style
 let watched=new Set();
 let prioritized=new Set();
-const PRIO_LIMIT=5;
+let PRIO_LIMIT=5; // Updated by loadFestival per festival
 /* ── Clave de almacenamiento — cambiar por edición del festival ──
    Formato: {nombre}{año}_ → prefija todas las keys de localStorage.
    Garantiza que cada edición empiece limpia sin datos residuales. */
@@ -2566,7 +2585,7 @@ let FESTIVAL_STORAGE_KEY='ficci65_';
 // BUILD_VERSION: cambia en cada deploy.
 // Al cargar, compara con localStorage. Si difiere → reload duro.
 // sessionStorage evita loops infinitos dentro de la misma sesión.
-const BUILD_VERSION='202604210234';
+const BUILD_VERSION='202604211206';
 (function(){
   const _vk='otrofestiv_build';
   const _sk='otrofestiv_reloaded';
@@ -6398,7 +6417,7 @@ function openCortoSheet(title, country, duration, section, flags){
     :`<div class="pel-sheet-poster-ph">🎬</div>`;
   const r=filmRatings[title]||0;
   const secShort=(section||'').replace(/^[^ ]+ /,'');
-  const lbLink=LB_SLUGS[title]?`<a class="c-lb" href="${lbUrl(title)}" target="_blank" rel="noopener" style="display:inline-flex;margin-top:14px;margin-bottom:2px">${LB_SVG}<span class="c-lb-text">Letterboxd</span></a>`:'';
+  const lbLink=!f?.is_cortos?`<a class="c-lb" href="${lbUrl(title)}" target="_blank" rel="noopener" style="display:inline-flex;margin-top:14px;margin-bottom:2px">${LB_SVG}<span class="c-lb-text">Letterboxd</span></a>`:''; // always show for non-cortos
   const ratingSection=`
     <div class="pel-sheet-divider" style="margin-top:16px"></div>
     <div style="display:flex;gap:8px;margin-top:12px">
@@ -6719,10 +6738,15 @@ function _renderProgramaContent(){
   const cntEl=document.getElementById('cnt');
   if(!grid||!lista) return;
   if(programaSubMode==='explorar'){
-    // Explorar siempre usa la lista — muestra el catálogo completo
-    grid.style.display='none';
-    lista.classList.add('visible');
-    _renderExploreLista();
+    if(programaViewMode==='grid'){
+      lista.classList.remove('visible');
+      grid.style.display='';
+      renderPeliculaView();
+    } else {
+      grid.style.display='none';
+      lista.classList.add('visible');
+      _renderExploreLista();
+    }
   } else {
     // Hoy / Mañana
     if(programaViewMode==='grid'){
@@ -6972,6 +6996,7 @@ function loadFestival(id){
   DAY_KEYS=cfg.dayKeys;
   DAY_SHORT=cfg.dayShort;
   DAY_LONG=cfg.dayLong;
+  PRIO_LIMIT=cfg.prioLimit||5;
   // Reconstruir lookup de posters para el festival activo
   _POSTERS_N=Object.fromEntries(Object.entries(POSTERS).map(([k,v])=>[normKey(k),v]));
   // Mutar DAYS en sitio (const) + regenerar DAY_ABBR/DAY_NUM
@@ -7196,22 +7221,22 @@ function closeFestivalSheet(){
     <div class="fs-title">Cambiar festival</div>
   </div>
   <div class="fs-section-lbl">Festivales</div>
+  <div class="fs-festival-row" data-fest="aff2026" onclick="loadFestival('aff2026')">
+    <div class="fs-fest-dot" style="background:var(--orange)"></div>
+    <div class="fs-fest-info">
+      <div class="fs-fest-name">AFF 2026</div>
+      <div class="fs-fest-meta">Medellín · 21–30 abril 2026</div>
+    </div>
+    <div class="fs-fest-check" style="display:none">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+    </div>
+  </div>
+  <div class="fs-divider"></div>
   <div class="fs-festival-row" data-fest="ficci65" onclick="loadFestival('ficci65')">
     <div class="fs-fest-dot"></div>
     <div class="fs-fest-info">
       <div class="fs-fest-name">FICCI 65</div>
       <div class="fs-fest-meta">Cartagena · 14–19 abril 2026</div>
-    </div>
-    <div class="fs-fest-check">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-    </div>
-  </div>
-  <div class="fs-divider"></div>
-  <div class="fs-festival-row" data-fest="aff2026" onclick="loadFestival('aff2026')">
-    <div class="fs-fest-dot" style="background:var(--orange)"></div>
-    <div class="fs-fest-info">
-      <div class="fs-fest-name">AFF 2026</div>
-      <div class="fs-fest-meta">Medellín · 21–29 abril 2026</div>
     </div>
     <div class="fs-fest-check" style="display:none">
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
