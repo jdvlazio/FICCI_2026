@@ -2648,7 +2648,7 @@ let FESTIVAL_STORAGE_KEY='ficci65_';
 // BUILD_VERSION: cambia en cada deploy.
 // Al cargar, compara con localStorage. Si difiere → reload duro.
 // sessionStorage evita loops infinitos dentro de la misma sesión.
-const BUILD_VERSION='202604211637';
+const BUILD_VERSION='202604211643';
 (function(){
   const _vk='otrofestiv_build';
   const _sk='otrofestiv_reloaded';
@@ -7187,10 +7187,15 @@ function dismissSplash(){
 (function(){
   const _saved=localStorage.getItem('otrofestiv_festival');
   if(_saved&&FESTIVAL_CONFIG[_saved]){
-    // Returning user: use the exact same path as manual splash dismiss.
-    // This ensures correct state initialization (same as when user hits Entrar).
+    // Returning user: defer dismissSplash to after browser completes initial
+    // render pass. Calling it synchronously in init IIFE causes the mode bar
+    // to remain display:none — the browser hasn't applied CSS yet at that point.
     _splashSelectedFestId=_saved;
-    dismissSplash();
+    requestAnimationFrame(function(){
+      requestAnimationFrame(function(){// double-rAF: after paint
+        dismissSplash();
+      });
+    });
   }else{
     // First visit: show splash, fall through to default init
     loadState();{const _ts=simTodayStr();const _ni=DAY_KEYS.findIndex(d=>FESTIVAL_DATES[d]===_ts);activeDay=_ni>=0?DAY_KEYS[_ni]:DAY_KEYS[0];}
