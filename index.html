@@ -1728,11 +1728,10 @@ html.splash-skip #otrofestiv-splash{display:none}
   padding:10px var(--sp-4);
   border-bottom:1px solid var(--bdr-l);
   background:var(--surf);
-  overflow:hidden;
 }
 .flow-step{
   display:flex;align-items:center;gap:var(--sp-1);
-  flex:1;min-width:0;
+  flex-shrink:0;
   font-size:var(--t-xs);font-weight:var(--w-bold);
   letter-spacing:.05em;text-transform:uppercase;
   color:var(--gray2);
@@ -1755,8 +1754,8 @@ html.splash-skip #otrofestiv-splash{display:none}
   background:var(--amber-10);border-color:var(--orange);color:var(--orange);
 }
 .flow-step-sep{
-  width:16px;height:1px;background:var(--bdr);
-  flex-shrink:0;margin:0 2px;
+  flex:1;min-width:8px;height:1px;background:var(--bdr);
+  margin:0 var(--sp-2);
 }
 
 /* ── Programa: micro-CTA entrada al flujo ─────────────────────────
@@ -1792,18 +1791,18 @@ html.splash-skip #otrofestiv-splash{display:none}
     <div class="splash-fest-label">¿A qué festival vas?</div>
     <button class="splash-sel-btn" id="splash-sel-btn" onclick="toggleSplashDropdown()" aria-haspopup="listbox">
       <div>
-        <div class="splash-sel-name" id="splash-sel-name">FICCI 65</div>
-        <div class="splash-sel-meta" id="splash-sel-meta">Cartagena · 14–19 ABR 2026</div>
+        <div class="splash-sel-name" id="splash-sel-name">AFF 2026</div>
+        <div class="splash-sel-meta" id="splash-sel-meta">Medellín · 21–29 ABR 2026</div>
       </div>
       <div class="splash-sel-chev">▾</div>
     </button>
     <div class="splash-dropdown" id="splash-dropdown" style="display:none" role="listbox">
-      <button class="splash-drop-item selected" data-fest="ficci65" role="option" aria-selected="true" onclick="selectSplashFest('FICCI 65','Cartagena · 14–19 ABR 2026','ficci65')">
-        <div><div class="splash-drop-item-name">FICCI 65</div><div class="splash-drop-item-meta">Cartagena · 14–19 ABR 2026</div></div>
+      <button class="splash-drop-item selected" data-fest="aff2026" role="option" aria-selected="true" onclick="selectSplashFest('AFF 2026','Medellín · 21–29 ABR 2026','aff2026')">
+        <div><div class="splash-drop-item-name">AFF 2026</div><div class="splash-drop-item-meta">Medellín · 21–29 ABR 2026</div></div>
         <div style="font-size:var(--t-caption);color:var(--amber)"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle"><polyline points="20 6 9 17 4 12"/></svg></div>
       </button>
-      <button class="splash-drop-item" data-fest="aff2026" role="option" aria-selected="false" onclick="selectSplashFest('AFF 2026','Medellín · 21–29 ABR 2026','aff2026')">
-        <div><div class="splash-drop-item-name">AFF 2026</div><div class="splash-drop-item-meta">Medellín · 21–29 ABR 2026</div></div>
+      <button class="splash-drop-item" data-fest="ficci65" role="option" aria-selected="false" onclick="selectSplashFest('FICCI 65','Cartagena · 14–19 ABR 2026','ficci65')">
+        <div><div class="splash-drop-item-name">FICCI 65</div><div class="splash-drop-item-meta">Cartagena · 14–19 ABR 2026 · Pasado</div></div>
         <div style="font-size:var(--t-caption);color:transparent"></div>
       </button>
       <button class="splash-drop-item inactive" role="option" aria-selected="false" aria-disabled="true">
@@ -2633,7 +2632,7 @@ let FESTIVAL_STORAGE_KEY='ficci65_';
 // BUILD_VERSION: cambia en cada deploy.
 // Al cargar, compara con localStorage. Si difiere → reload duro.
 // sessionStorage evita loops infinitos dentro de la misma sesión.
-const BUILD_VERSION='202604211359';
+const BUILD_VERSION='202604211430';
 (function(){
   const _vk='otrofestiv_build';
   const _sk='otrofestiv_reloaded';
@@ -5910,7 +5909,14 @@ DAYS.forEach(day=>{
   btn.className='dtab'+(day.k===activeDay?' on':'')+(dayFullyPassed(day.k)?' past':'');
   btn.dataset.day=day.k;
   btn.innerHTML=`<span class="dtab-date">${day.lbl}</span><span class="dtab-name">${day.d}</span>`;
-  btn.onclick=()=>{activeDay=day.k;activeVenue='all';activeSec='all';selectedIdx=null;if(programaSubMode!=='explorar'){cartelaMode='horario';_renderProgramaContent();}else showDayView();};
+  btn.onclick=()=>{
+    activeDay=day.k;activeVenue='all';activeSec='all';selectedIdx=null;
+    if(programaSubMode==='explorar') programaSubMode='hoy';
+    cartelaMode='horario';
+    document.querySelectorAll('.dtab').forEach(t=>t.classList.toggle('on',t.dataset.day===day.k));
+    _renderProgramaContent();
+    if(activeMNav!=='mnav-cartelera') switchMainNav('mnav-cartelera');
+  };
   dtabs.appendChild(btn);
 });
 
@@ -6606,23 +6612,10 @@ function initProgramaModeBar(){
   // Mostrar/ocultar nav-row (días) y filter-row según modo
   const navRow=document.getElementById('nav-row');
   const filterRow=document.getElementById('filter-row');
-  if(programaSubMode==='explorar'){
-    if(navRow) navRow.classList.add('hidden');
-    if(filterRow) filterRow.classList.add('hidden');
-  } else {
-    // Hoy/Mañana: mostrar nav-row, ocultar filter-row (salvo filtrar activo)
-    if(navRow) navRow.classList.remove('hidden');
-    if(filterRow) filterRow.classList.add('hidden');
-    // Actualizar día activo según sub-modo
-    const ts=simTodayStr();
-    const todayIdx=DAY_KEYS.findIndex(d=>FESTIVAL_DATES[d]===ts);
-    if(programaSubMode==='hoy'){
-      activeDay=todayIdx>=0?DAY_KEYS[todayIdx]:DAY_KEYS[0];
-    } else {
-      activeDay=todayIdx>=0&&todayIdx<DAY_KEYS.length-1?DAY_KEYS[todayIdx+1]:DAY_KEYS[DAY_KEYS.length-1];
-    }
-    document.querySelectorAll('.dtab').forEach(t=>t.classList.toggle('on',t.dataset.day===activeDay));
-  }
+  // nav-row always visible in programa (all modes: explorar, hoy, mañana)
+  if(navRow) navRow.classList.remove('hidden');
+  if(filterRow) filterRow.classList.add('hidden');
+  document.querySelectorAll('.dtab').forEach(t=>t.classList.toggle('on',t.dataset.day===activeDay));
   // tag dismissible
   _updateProgramaActiveFilter();
 }
@@ -6633,6 +6626,14 @@ function setProgramaMode(mode){
   activeSec='all';activeVenue='all';selectedIdx=null;
   programaChip='all';_programaChipMatchFn=null;
   clearCartaSearch();
+  // Set active day for hoy/mañana modes
+  const _pts=simTodayStr();
+  const _pti=DAY_KEYS.findIndex(d=>FESTIVAL_DATES[d]===_pts);
+  if(mode==='hoy'){
+    activeDay=_pti>=0?DAY_KEYS[_pti]:DAY_KEYS[0];
+  } else if(mode==='manana'){
+    activeDay=_pti>=0&&_pti<DAY_KEYS.length-1?DAY_KEYS[_pti+1]:DAY_KEYS[DAY_KEYS.length-1];
+  }
   _updateProgramaActiveFilter();
   initProgramaModeBar();
   _renderProgramaContent();
@@ -6935,8 +6936,7 @@ function renderPeliculaView(){
     const posterSrc=f.type==='event'?makeEventPoster(f.title,f.duration):(f.is_cortos?makeProgramPoster(f.title):(getPosterSrc(f.title,false)||null));
     const safeT=f.title.replace(/'/g,"\'");
     const{displayTitle}=parseProgramTitle(f.title);
-    const progBadge=f.is_cortos&&f.film_list?.length
-      ?`<div class="poster-prog-badge">CORTOS · ${f.film_list.length}</div>`:'';
+    const progBadge='';//REMOVED: no count badge
     const _ended=festivalEnded();
     const posterImg=posterSrc
       ?`<img src="${posterSrc}" loading="lazy" style="width:100%;height:100%;object-fit:cover${allPast&&!_ended?';opacity:.45':''};display:block" onerror="this.style.opacity=0" alt="">`
@@ -6982,7 +6982,7 @@ function render(){
     const posterImg=posterSrc
       ?`<img src="${posterSrc}" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block" onerror="this.style.opacity=0" alt="">`
       :``;
-    const progBadge=isProg&&f.film_list?.length?`<div class="poster-prog-badge">CORTOS · ${f.film_list.length}</div>`:'';
+    const progBadge='';//REMOVED
     const nowBadge=isNow?`<div class="poster-now">AHORA</div>`:'';
     const pastBadge=passed&&!isNow?`<div class="poster-past-badge">Pasó</div>`:'';
     const _fe=festivalEnded();
@@ -7067,7 +7067,14 @@ function loadFestival(id){
       btn.className='dtab';
       btn.dataset.day=day.k;
       btn.innerHTML=`<span class="dtab-date">${day.lbl}</span><span class="dtab-name">${day.d}</span>`;
-      btn.onclick=()=>{activeDay=day.k;activeVenue='all';activeSec='all';selectedIdx=null;showDayView();};
+      btn.onclick=()=>{
+        activeDay=day.k;activeVenue='all';activeSec='all';selectedIdx=null;
+        if(programaSubMode==='explorar') programaSubMode='hoy';
+        cartelaMode='horario';
+        document.querySelectorAll('.dtab').forEach(t=>t.classList.toggle('on',t.dataset.day===day.k));
+        _renderProgramaContent();
+        if(activeMNav!=='mnav-cartelera') switchMainNav('mnav-cartelera');
+      };
       _dt.appendChild(btn);
     });
   }
@@ -7085,6 +7092,11 @@ function loadFestival(id){
   miPlanViewStart=0;activeMiPlanDay=0;
   // Load from new storage
   loadState();
+  // Filter watchlist/watched to current festival's films only (prevents cross-festival contamination)
+  const _validTitles=new Set(FILMS.map(f=>f.title));
+  watchlist=new Set([...watchlist].filter(t=>_validTitles.has(t)));
+  watched=new Set([...watched].filter(t=>_validTitles.has(t)));
+  prioritized=new Set([...prioritized].filter(t=>_validTitles.has(t)));
   // Set active day to today
   const _ts=simTodayStr();
   const _ni=DAY_KEYS.findIndex(d=>FESTIVAL_DATES[d]===_ts);
@@ -7109,12 +7121,12 @@ function loadFestival(id){
 function dismissSplash(){
   const s=document.getElementById('otrofestiv-splash');
   if(s){s.classList.add('fade-out');setTimeout(()=>s.remove(),520);}
-  loadFestival(_splashSelectedFestId||'ficci65');
+  loadFestival(_splashSelectedFestId||'aff2026');
 }
 (function(){
   // El splash es siempre el punto de entrada — aparece en cada carga.
   // Solo pre-seleccionamos el festival que el usuario eligió la última vez.
-  const storedFest=localStorage.getItem('otrofestiv_festival')||'ficci65';
+  const storedFest=localStorage.getItem('otrofestiv_festival')||'aff2026';
   _splashSelectedFestId=storedFest;
   const cfg=FESTIVAL_CONFIG[storedFest];
   if(cfg){
