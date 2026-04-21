@@ -1810,15 +1810,7 @@ html.splash-skip #otrofestiv-splash{display:none}
 </script>
 </head>
 <body>
-<!-- Pre-render: set splash-skip BEFORE browser paints, so returning users
-     never see the splash flicker. The CSS rule html.splash-skip #otrofestiv-splash{display:none}
-     suppresses it at the CSS level, before any JS runs. -->
-<script>
-(function(){
-  var f=localStorage.getItem('otrofestiv_festival');
-  if(f) document.documentElement.classList.add('splash-skip');
-})();
-</script>
+<!-- Splash siempre visible — se pre-selecciona el festival en curso por fecha. -->
 <div id="otrofestiv-splash" role="dialog" aria-label="Bienvenida" aria-modal="true">
   <div class="splash-wordmark">OTRO<span>FESTIV</span></div>
   <div class="splash-tagline">
@@ -7186,35 +7178,44 @@ function dismissSplash(){
   loadFestival(_splashSelectedFestId||'aff2026');
 }
 (function(){
-  // Pre-populate splash selector with previously chosen festival (or default AFF).
-  // Splash is only visible when there's no saved festival (first-time users).
-  const storedFest=localStorage.getItem('otrofestiv_festival')||'aff2026';
-  _splashSelectedFestId=storedFest;
-  const cfg=FESTIVAL_CONFIG[storedFest];
+  // Detecta el festival en curso por fecha. Prioridad:
+  // 1. Festival que está sucediendo hoy · 2. El próximo más cercano · 3. El más reciente
+  function detectActiveFest(){
+    const today=new Date();today.setHours(12,0,0,0);
+    let inProgress=null,nextUp=null,nextUpStart=null,mostRecent=null,mostRecentEnd=null;
+    Object.entries(FESTIVAL_CONFIG).forEach(([id,cfg])=>{
+      if(!cfg.festivalDates) return;
+      const dates=Object.values(cfg.festivalDates);
+      const startStr=dates.reduce((a,b)=>a<b?a:b);
+      const start=new Date(startStr+'T00:00:00');
+      const end=new Date(cfg.festivalEndStr);
+      if(today>=start&&today<=end){
+        inProgress=id;
+      } else if(start>today){
+        if(!nextUpStart||start<nextUpStart){nextUp=id;nextUpStart=start;}
+      } else {
+        if(!mostRecentEnd||end>mostRecentEnd){mostRecent=id;mostRecentEnd=end;}
+      }
+    });
+    return inProgress||nextUp||mostRecent||'aff2026';
+  }
+  const activeFest=detectActiveFest();
+  _splashSelectedFestId=activeFest;
+  const cfg=FESTIVAL_CONFIG[activeFest];
   if(cfg){
     const n=document.getElementById('splash-sel-name');
     const m=document.getElementById('splash-sel-meta');
     if(n) n.textContent=cfg.name;
-    if(m) m.textContent=cfg.city+' · '+cfg.dates+' 2026';
+    if(m) m.textContent=cfg.city+' \u00b7 '+cfg.dates+' 2026';
     document.querySelectorAll('.splash-drop-item').forEach(el=>{
-      el.classList.toggle('selected',el.dataset.fest===storedFest);
+      el.classList.toggle('selected',el.dataset.fest===activeFest);
     });
   }
 })();
 
-// ── Init: single-phase startup ───────────────────────────────────
-// Returning user (has saved festival): load it directly — one call, correct data from the start.
-// First-time user (no saved festival): splash is visible; dismissSplash() → loadFestival().
-// No two-phase logic. No default FICCI data loading before switching.
-(function(){
-  const _saved=localStorage.getItem('otrofestiv_festival');
-  if(_saved&&FESTIVAL_CONFIG[_saved]){
-    // Suppress welcome overlay — returning user already saw it
-    localStorage.setItem(FESTIVAL_CONFIG[_saved].storageKey+'welcome_seen','1');
-    loadFestival(_saved);
-  }
-  // else: first-time user, splash covers everything — nothing to render yet
-})();
+// ── Init: el splash siempre se muestra ─────────────────────────────
+// El festival pre-seleccionado es el que está en curso por fecha.
+// loadFestival() se llama desde dismissSplash() cuando el usuario pulsa "Entrar".
 /* ── Tap-to-reveal en Intereses mobile ──────────────────────────
    Toca el poster → revela botones (ag-active).
    Toca fuera o toca un botón → cierra. */
