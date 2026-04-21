@@ -6328,7 +6328,7 @@ function openPelSheet(title){
   const past=screenings.filter(s=>screeningPassed(s));
   const allScr=[...future,...past];
   const rows=allScr.map(s=>{
-    const dayAbb=DAY_ABB[DAY_KEYS.indexOf(s.day)]||s.day.slice(0,3).toUpperCase();
+    const dayAbb=DAY_SHORT[s.day]||DAY_ABB[DAY_KEYS.indexOf(s.day)]||s.day.slice(0,3).toUpperCase();
     const vc=vcfg(s.venue),sl=sala(s.venue);
     const isPast=screeningPassed(s)&&!festivalEnded();
     return`<div class="pel-sheet-screening"${isPast?' style="opacity:.4"':''}>
