@@ -2657,7 +2657,7 @@ let FESTIVAL_STORAGE_KEY='ficci65_';
 // BUILD_VERSION: cambia en cada deploy.
 // Al cargar, compara con localStorage. Si difiere → reload duro.
 // sessionStorage evita loops infinitos dentro de la misma sesión.
-const BUILD_VERSION='202604211701';
+const BUILD_VERSION='202604211708';
 (function(){
   const _vk='otrofestiv_build';
   const _sk='otrofestiv_reloaded';
@@ -7182,21 +7182,18 @@ function dismissSplash(){
   }
 })();
 
-// ── Init: auto-dismiss splash for returning users ──────────────────
-// The pre-render <script> above already adds html.splash-skip so the splash
-// is display:none from first paint. Here we just load the correct festival.
+// ── Init: returning users skip splash via CSS, load festival directly ─
 (function(){
   const _saved=localStorage.getItem('otrofestiv_festival');
   if(_saved&&FESTIVAL_CONFIG[_saved]){
-    // Returning user: splash already hidden by CSS. Load festival directly.
-    // Also suppress the welcome overlay — returning users already onboarded.
     _splashSelectedFestId=_saved;
-    dismissSplash();
-    // Mark welcome as seen for this festival so overlay doesn't flash
+    // Pre-set welcome_seen to prevent the 400ms overlay flash
     const _festCfg=FESTIVAL_CONFIG[_saved];
     if(_festCfg) localStorage.setItem((_festCfg.storageKey||_saved+'_')+'welcome_seen','1');
+    // Load correct festival state — splash is already CSS-hidden (splash-skip class)
+    loadFestival(_saved);
   }else{
-    // First visit: show splash, fall through to default init
+    // First visit: show splash, standard init path
     loadState();{const _ts=simTodayStr();const _ni=DAY_KEYS.findIndex(d=>FESTIVAL_DATES[d]===_ts);activeDay=_ni>=0?DAY_KEYS[_ni]:DAY_KEYS[0];}
     updateAgTab();showDayView();
   }
