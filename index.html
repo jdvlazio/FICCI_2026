@@ -238,7 +238,7 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:var(--t
 /* Nav row (tabs de días en Planear) */
 .nav-row{display:flex;align-items:stretch;border-bottom:1px solid var(--bdr);margin-top:var(--sp-1)}
 .nav-row.hidden{display:none}
-.nav-tabs{display:flex;flex:1;justify-content:space-evenly;gap:0;padding:0;scrollbar-width:none}
+.nav-tabs{display:flex;flex:1;overflow-x:auto;-webkit-overflow-scrolling:touch;justify-content:flex-start;gap:0;padding:0;scrollbar-width:none;scroll-behavior:smooth}
 .nav-tabs::-webkit-scrollbar{display:none}
 .fdr-filters{display:flex;align-items:center;flex-shrink:0}
 .filter-row{display:flex;align-items:center;border-bottom:1px solid var(--bdr);padding:0 2px}
@@ -1243,9 +1243,14 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:var(--t
   .ag-view{padding-top:var(--sp-2);padding-left:var(--sp-4);padding-right:var(--sp-4);padding-bottom:calc(80px + env(safe-area-inset-bottom))}
   .prio-toast{top:calc(60px + env(safe-area-inset-top) + 4px)}
   .ag-film-grid{grid-template-columns:repeat(4,1fr);gap:var(--sp-2)}
-  
-  
-  
+  /* ── Mobile header: remove visual band separations ───────────────
+     .hdr-fest-bar borders create lines between wordmark/fest/search.
+     Remove borders + match background to make the header one block.
+     #hdr-programa padding-top would show a gap under the sticky hdr. */
+  .hdr-fest-bar{border-top:none;border-bottom:none;background:var(--surf)}
+  #hdr-programa{padding-top:0}
+  /* Remove the margin on nav-row that adds space above day tabs */
+  .nav-row{margin-top:0}
 }
 
 /* ── FESTIVAL BOTTOM SHEET ── */
@@ -1724,7 +1729,7 @@ html.splash-skip #otrofestiv-splash{display:none}
    Visible en Planear cuando no hay plan. 3 pasos no bloqueantes.
    Escalable: basado en watchlist.size y savedAgenda — sin datos del festival. */
 .flow-progress{
-  display:flex;align-items:center;gap:0;
+  display:flex;align-items:center;justify-content:center;gap:0;
   padding:10px var(--sp-4);
   border-bottom:1px solid var(--bdr-l);
   background:var(--surf);
@@ -1754,7 +1759,7 @@ html.splash-skip #otrofestiv-splash{display:none}
   background:var(--amber-10);border-color:var(--orange);color:var(--orange);
 }
 .flow-step-sep{
-  flex:1;min-width:8px;height:1px;background:var(--bdr);
+  width:28px;flex:none;height:1px;background:var(--bdr);
   margin:0 var(--sp-2);
 }
 
@@ -2632,7 +2637,7 @@ let FESTIVAL_STORAGE_KEY='ficci65_';
 // BUILD_VERSION: cambia en cada deploy.
 // Al cargar, compara con localStorage. Si difiere → reload duro.
 // sessionStorage evita loops infinitos dentro de la misma sesión.
-const BUILD_VERSION='202604211430';
+const BUILD_VERSION='202604211449';
 (function(){
   const _vk='otrofestiv_build';
   const _sk='otrofestiv_reloaded';
@@ -5911,7 +5916,6 @@ DAYS.forEach(day=>{
   btn.innerHTML=`<span class="dtab-date">${day.lbl}</span><span class="dtab-name">${day.d}</span>`;
   btn.onclick=()=>{
     activeDay=day.k;activeVenue='all';activeSec='all';selectedIdx=null;
-    if(programaSubMode==='explorar') programaSubMode='hoy';
     cartelaMode='horario';
     document.querySelectorAll('.dtab').forEach(t=>t.classList.toggle('on',t.dataset.day===day.k));
     _renderProgramaContent();
@@ -6612,10 +6616,15 @@ function initProgramaModeBar(){
   // Mostrar/ocultar nav-row (días) y filter-row según modo
   const navRow=document.getElementById('nav-row');
   const filterRow=document.getElementById('filter-row');
-  // nav-row always visible in programa (all modes: explorar, hoy, mañana)
-  if(navRow) navRow.classList.remove('hidden');
-  if(filterRow) filterRow.classList.add('hidden');
-  document.querySelectorAll('.dtab').forEach(t=>t.classList.toggle('on',t.dataset.day===activeDay));
+  // nav-row: hidden in Explorar (accessed via Place filter), visible in Hoy/Mañana
+  if(programaSubMode==='explorar'){
+    if(navRow) navRow.classList.add('hidden');
+    if(filterRow) filterRow.classList.add('hidden');
+  } else {
+    if(navRow) navRow.classList.remove('hidden');
+    if(filterRow) filterRow.classList.add('hidden');
+    document.querySelectorAll('.dtab').forEach(t=>t.classList.toggle('on',t.dataset.day===activeDay));
+  }
   // tag dismissible
   _updateProgramaActiveFilter();
 }
@@ -7069,7 +7078,6 @@ function loadFestival(id){
       btn.innerHTML=`<span class="dtab-date">${day.lbl}</span><span class="dtab-name">${day.d}</span>`;
       btn.onclick=()=>{
         activeDay=day.k;activeVenue='all';activeSec='all';selectedIdx=null;
-        if(programaSubMode==='explorar') programaSubMode='hoy';
         cartelaMode='horario';
         document.querySelectorAll('.dtab').forEach(t=>t.classList.toggle('on',t.dataset.day===day.k));
         _renderProgramaContent();
