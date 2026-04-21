@@ -2859,38 +2859,38 @@ function renderMiPlanCalendar(){
 /* ── STATE: persistencia en localStorage ────────────────────────────── */
 function loadState(){
   try{
-    const wl=localStorage.getItem('ficci65_wl'); if(wl) watchlist=new Set(JSON.parse(wl));
-    const wt=localStorage.getItem('ficci65_watched'); if(wt) watched=new Set(JSON.parse(wt));
-    const _rt=localStorage.getItem('ficci65_ratings'); if(_rt) try{Object.assign(filmRatings,JSON.parse(_rt));}catch(e){}
-    const av=localStorage.getItem('ficci65_av3'); if(av){const p=JSON.parse(av);DAY_KEYS.forEach(d=>{if(p[d]) availability[d]=p[d];});}
-    const sa=localStorage.getItem('ficci65_saved'); if(sa) savedAgenda=JSON.parse(sa);
+    const wl=localStorage.getItem(`${FESTIVAL_STORAGE_KEY}wl`); if(wl) watchlist=new Set(JSON.parse(wl));
+    const wt=localStorage.getItem(`${FESTIVAL_STORAGE_KEY}watched`); if(wt) watched=new Set(JSON.parse(wt));
+    const _rt=localStorage.getItem(`${FESTIVAL_STORAGE_KEY}ratings`); if(_rt) try{Object.assign(filmRatings,JSON.parse(_rt));}catch(e){}
+    const av=localStorage.getItem(`${FESTIVAL_STORAGE_KEY}av3`); if(av){const p=JSON.parse(av);DAY_KEYS.forEach(d=>{if(p[d]) availability[d]=p[d];});}
+    const sa=localStorage.getItem(`${FESTIVAL_STORAGE_KEY}saved`); if(sa) savedAgenda=JSON.parse(sa);
     // Normalizar venues viejos (ej: 'CC Bocagrande' → 'Plaza Bocagrande')
     if(savedAgenda&&savedAgenda.schedule){
       savedAgenda.schedule.forEach(s=>{
         if(s.venue) s.venue=s.venue.replace(/CC Bocagrande/g,'Plaza Bocagrande');
       });
     }
-    const pr=localStorage.getItem('ficci65_prio'); if(pr) prioritized=new Set(JSON.parse(pr));
+    const pr=localStorage.getItem(`${FESTIVAL_STORAGE_KEY}prio`); if(pr) prioritized=new Set(JSON.parse(pr));
     // Heal: garantiza que todo lo que está en prioritized esté en watchlist
     prioritized.forEach(t=>{if(!watchlist.has(t)){watchlist.add(t);}});
     saveWL();
     // Restore reserved slot — persists across refresh, button shows "＋ Añadir" (not "← Restaurar")
-    const rs=localStorage.getItem('ficci65_lastslot');if(rs){try{const p=JSON.parse(rs);lastRemovedSlots=Array.isArray(p)?p:(p?[p]:[]);}catch(e){}}
-    const fd=localStorage.getItem('ficci65_delays');if(fd){try{filmDelays=JSON.parse(fd);}catch(e){}}
-    const _vm=localStorage.getItem('ficci65_viewmodes');if(_vm){try{const _v=JSON.parse(_vm);if(_v.miPlan)miPlanViewMode=_v.miPlan;if(_v.intereses)interesesViewMode=_v.intereses;}catch(e){}}
+    const rs=localStorage.getItem(`${FESTIVAL_STORAGE_KEY}lastslot`);if(rs){try{const p=JSON.parse(rs);lastRemovedSlots=Array.isArray(p)?p:(p?[p]:[]);}catch(e){}}
+    const fd=localStorage.getItem(`${FESTIVAL_STORAGE_KEY}delays`);if(fd){try{filmDelays=JSON.parse(fd);}catch(e){}}
+    const _vm=localStorage.getItem(`${FESTIVAL_STORAGE_KEY}viewmodes`);if(_vm){try{const _v=JSON.parse(_vm);if(_v.miPlan)miPlanViewMode=_v.miPlan;if(_v.intereses)interesesViewMode=_v.intereses;}catch(e){}}
   }catch(e){}
 }
-function saveWL(){try{localStorage.setItem('ficci65_wl',JSON.stringify([...watchlist]));}catch(e){}}
-function saveWatched(){try{localStorage.setItem('ficci65_watched',JSON.stringify([...watched]));}catch(e){}}
+function saveWL(){try{localStorage.setItem(`${FESTIVAL_STORAGE_KEY}wl`,JSON.stringify([...watchlist]));}catch(e){}}
+function saveWatched(){try{localStorage.setItem(`${FESTIVAL_STORAGE_KEY}watched`,JSON.stringify([...watched]));}catch(e){}}
 function saveRating(title,rating){
   if(rating>0) filmRatings[title]=rating; else delete filmRatings[title];
-  try{localStorage.setItem('ficci65_ratings',JSON.stringify(filmRatings));}catch(e){}
+  try{localStorage.setItem(`${FESTIVAL_STORAGE_KEY}ratings`,JSON.stringify(filmRatings));}catch(e){}
 }
-function saveAV(){try{localStorage.setItem('ficci65_av3',JSON.stringify(availability));}catch(e){}}
-function saveSavedAgenda(){try{localStorage.setItem('ficci65_saved',JSON.stringify(savedAgenda));}catch(e){}}
-function savePrio(){try{localStorage.setItem('ficci65_prio',JSON.stringify([...prioritized]));}catch(e){}}
-function saveLastSlot(){try{localStorage.setItem('ficci65_lastslot',JSON.stringify(lastRemovedSlots));}catch(e){}}
-function saveDelays(){try{localStorage.setItem('ficci65_delays',JSON.stringify(filmDelays));}catch(e){}}
+function saveAV(){try{localStorage.setItem(`${FESTIVAL_STORAGE_KEY}av3`,JSON.stringify(availability));}catch(e){}}
+function saveSavedAgenda(){try{localStorage.setItem(`${FESTIVAL_STORAGE_KEY}saved`,JSON.stringify(savedAgenda));}catch(e){}}
+function savePrio(){try{localStorage.setItem(`${FESTIVAL_STORAGE_KEY}prio`,JSON.stringify([...prioritized]));}catch(e){}}
+function saveLastSlot(){try{localStorage.setItem(`${FESTIVAL_STORAGE_KEY}lastslot`,JSON.stringify(lastRemovedSlots));}catch(e){}}
+function saveDelays(){try{localStorage.setItem(`${FESTIVAL_STORAGE_KEY}delays`,JSON.stringify(filmDelays));}catch(e){}}
 function _delayKey(s){return(s._title||s.title||'')+'|'+(s.day||'')+'|'+(s.time||'');}
 function setDelay(title,day,time,addMins){
   const k=title+'|'+day+'|'+time;
@@ -4979,7 +4979,7 @@ function clearSavedAgenda(){
   showDestructiveModal(`${ICONS.alert} Borrar plan`,
     'Se eliminará tu plan completo. Esta acción no se puede deshacer.',
     'Borrar plan',
-    ()=>{savedAgenda=null;localStorage.removeItem('ficci65_saved');renderAgenda();});
+    ()=>{savedAgenda=null;localStorage.removeItem(`${FESTIVAL_STORAGE_KEY}saved`);renderAgenda();});
 }
 
 // ── RESULT HTML ──
@@ -5222,7 +5222,7 @@ function openPostViewRating(title, day, time, venue, duration){
 function savePVRating(){
   if(_pvRating>0){
     filmRatings[_pvTitle]=_pvRating;
-    localStorage.setItem('ficci65_ratings',JSON.stringify(filmRatings));
+    localStorage.setItem(`${FESTIVAL_STORAGE_KEY}ratings`,JSON.stringify(filmRatings));
     const stars=['','★','★★','★★★','★★★★','★★★★★'];
     showToast(stars[Math.round(_pvRating)]||'★ Calificada','info');
   }
@@ -5666,6 +5666,7 @@ let miPlanViewMode='calendar';  // 'calendar' | 'list' para Mi Plan
 let programaViewMode='grid';    // 'grid' | 'list'
 let programaChip='all';         // chip activo en Explorar
 let _programaChipMatchFn=null;  // función de match activa para filtrar
+let _currentChips=[];           // chips dinámicos del festival activo
 
 // Definición de chips de categoría — agrupan las secciones reales de FICCI
 const PROGRAMA_CHIPS=[
@@ -6428,7 +6429,7 @@ function setMiPlanView(mode){
   miPlanViewMode=mode;
   document.getElementById('mpbtn-cal')?.classList.toggle('on',mode==='calendar');
   document.getElementById('mpbtn-list')?.classList.toggle('on',mode==='list');
-  try{const _v=JSON.parse(localStorage.getItem('ficci65_viewmodes')||'{}');_v.miPlan=mode;localStorage.setItem('ficci65_viewmodes',JSON.stringify(_v));}catch(e){}
+  try{const _v=JSON.parse(localStorage.getItem(`${FESTIVAL_STORAGE_KEY}viewmodes`)||'{}');_v.miPlan=mode;localStorage.setItem(`${FESTIVAL_STORAGE_KEY}viewmodes`,JSON.stringify(_v));}catch(e){}
   renderAgenda();
 }
 
@@ -6477,7 +6478,7 @@ function setInteresesView(mode){
   interesesViewMode=mode;
   document.getElementById('ibtn-grid')?.classList.toggle('on',mode==='grid');
   document.getElementById('ibtn-list')?.classList.toggle('on',mode==='list');
-  try{const _v=JSON.parse(localStorage.getItem('ficci65_viewmodes')||'{}');_v.intereses=mode;localStorage.setItem('ficci65_viewmodes',JSON.stringify(_v));}catch(e){}
+  try{const _v=JSON.parse(localStorage.getItem(`${FESTIVAL_STORAGE_KEY}viewmodes`)||'{}');_v.intereses=mode;localStorage.setItem(`${FESTIVAL_STORAGE_KEY}viewmodes`,JSON.stringify(_v));}catch(e){}
   // Re-renderizar sección activa
   const grids=document.querySelectorAll('.ag-film-grid');
   const items=document.querySelectorAll('.ag-film-item:not(.watched-item)');
@@ -6569,7 +6570,7 @@ function setProgramaChip(chipId){
     el.classList.toggle('on',el.dataset.chip===chipId);
   });
   // Guardar la función de match — soporta múltiples secciones
-  const chip=PROGRAMA_CHIPS.find(c=>c.id===chipId);
+  const chip=(_currentChips.length?_currentChips:PROGRAMA_CHIPS).find(c=>c.id===chipId);
   if(chip&&chip.match){
     _programaChipMatchFn=chip.match;
     activeSec='_chip_'; // señal de que el filtro lo maneja el chip
@@ -6605,7 +6606,7 @@ function _updateProgramaActiveFilter(){
   const tagText=document.getElementById('paf-tag-text');
   const countEl=document.getElementById('paf-count');
   if(!af) return;
-  const chip=PROGRAMA_CHIPS.find(c=>c.id===programaChip);
+  const chip=(_currentChips.length?_currentChips:PROGRAMA_CHIPS).find(c=>c.id===programaChip);
   const hasChip=programaChip!=='all'&&chip;
   const hasVenue=activeVenue!=='all';
 
@@ -6633,14 +6634,25 @@ function _updateProgramaActiveFilter(){
 function renderProgramaChips(){
   const el=document.getElementById('programa-chips');
   if(!el) return;
-  // Contar películas únicas por chip
+  // Derivar chips dinámicamente desde secciones del festival activo
   const titleSet={};
   FILMS.forEach(f=>{if(!titleSet[f.title])titleSet[f.title]=f;});
   const allFilms=Object.values(titleSet);
-  el.innerHTML=PROGRAMA_CHIPS.map(chip=>{
-    const count=chip.match?allFilms.filter(f=>chip.match(f.section||'')).length:allFilms.length;
-    const label=chip.id==='all'?chip.label:`${chip.label}<span style="font-size:var(--t-xs);opacity:.6;margin-left:3px">${count}</span>`;
-    return`<div class="pchip${chip.id===programaChip?' on':''}" data-chip="${chip.id}"
+  const secMap={};
+  allFilms.forEach(f=>{const s=f.section||'';if(s) secMap[s]=(secMap[s]||0)+1;});
+  const secChips=Object.entries(secMap)
+    .sort((a,b)=>b[1]-a[1])
+    .map(([sec,cnt])=>({
+      id:'sec_'+sec.replace(/[^a-zA-Z0-9]/g,'_').slice(0,30),
+      label:sec, match:s=>s===sec, count:cnt
+    }));
+  const chips=[{id:'all',label:'Todo',match:null,count:allFilms.length},...secChips];
+  _currentChips=chips;
+  el.innerHTML=chips.map(chip=>{
+    const isOn=chip.id==='all'?programaChip==='all':
+      (_programaChipMatchFn&&chip.match&&_programaChipMatchFn.toString()===chip.match.toString());
+    const label=chip.id==='all'?chip.label:`${chip.label}<span style="font-size:var(--t-xs);opacity:.6;margin-left:3px">${chip.count}</span>`;
+    return`<div class="pchip${isOn?' on':''}" data-chip="${chip.id}"
          onclick="setProgramaChip('${chip.id}')">${label}</div>`;
   }).join('');
 }
