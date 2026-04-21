@@ -811,8 +811,8 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:var(--t
 .prio-limit-cancel{width:calc(100% - 40px);margin:14px 20px 44px;background:none;border:1px solid var(--bdr);border-radius:var(--r-pill);color:var(--gray);font-family:var(--font);font-size:var(--t-base);font-weight:var(--w-semi);padding:12px;cursor:pointer;display:block}
 .plan-confirm-overlay{position:fixed;inset:0;background:var(--overlay-55);z-index:9200;opacity:0;pointer-events:none;transition:opacity .25s}
 .plan-confirm-overlay.open{opacity:1;pointer-events:all}
-.plan-confirm-sheet{position:fixed;bottom:0;left:0;right:0;background:var(--surf-2);border-top:1px solid var(--bdr);border-radius:var(--r-sheet) var(--r-sheet) 0 0;z-index:9201;padding:8px 20px 44px;transform:translateY(100%);transition:transform .32s cubic-bezier(.32,0,.67,0)}
-.plan-confirm-sheet.open{transform:translateY(0)}
+.plan-confirm-sheet{position:fixed;bottom:0;left:0;right:0;background:var(--surf-2);border-top:1px solid var(--bdr);border-radius:var(--r-sheet) var(--r-sheet) 0 0;z-index:9201;padding:8px 20px 44px;display:none;transform:translateY(100%);transition:transform .32s cubic-bezier(.32,0,.67,0)}
+.plan-confirm-sheet.open{display:block;transform:translateY(0)}
 .plan-confirm-handle{width:36px;height:4px;background:rgba(255,255,255,.12);border-radius:var(--r-handle);margin:12px auto 20px}
 .plan-confirm-row{display:flex;align-items:center;gap:14px;margin-bottom:18px}
 .plan-confirm-ico{width:48px;height:48px;background:var(--green-10);border:1px solid var(--green-30);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0}
@@ -5555,14 +5555,16 @@ function swapPriority(removeTitle, addTitle){
 }
 
 function openPlanConfirm(schedule){
-  const{displayTitle}=parseProgramTitle;
-  // Ordenar por día y hora
-  const DAY_ORD={Martes:0,Miércoles:1,Jueves:2,Viernes:3,Sábado:4,Domingo:5};
-  const sorted=[...schedule].sort((a,b)=>(DAY_ORD[a.day]||0)-(DAY_ORD[b.day]||0)||a.time.localeCompare(b.time));
+  // Ordenar por posición en DAY_KEYS (funciona para cualquier festival)
+  const sorted=[...schedule].sort((a,b)=>{
+    const ai=DAY_KEYS.indexOf(a.day),bi=DAY_KEYS.indexOf(b.day);
+    return (ai<0?999:ai)-(bi<0?999:bi)||a.time.localeCompare(b.time);
+  });
   const total=sorted.length;
   const days=[...new Set(sorted.map(s=>s.day))];
-  const DAY_A={Martes:'MAR',Miércoles:'MIÉ',Jueves:'JUE',Viernes:'VIE',Sábado:'SÁB',Domingo:'DOM'};
-  const dayRange=days.length===1?DAY_A[days[0]]:`${DAY_A[days[0]]}–${DAY_A[days[days.length-1]]}`;
+  // Usar DAY_SHORT para mostrar "MAR 21" en lugar de solo "MAR"
+  const dayLabel=d=>DAY_SHORT[d]||DAY_ABBR[d]||d.slice(0,3).toUpperCase();
+  const dayRange=days.length===1?dayLabel(days[0]):`${dayLabel(days[0])}–${dayLabel(days[days.length-1])}`;
 
   // Sub: N películas · DÍAS
   const sub=document.getElementById('plan-confirm-sub');
@@ -5584,13 +5586,18 @@ function openPlanConfirm(schedule){
     }).join('')+(rest>0?`<div class="plan-confirm-film" style="color:var(--gray)"><div class="plan-confirm-dot" style="background:var(--gray)"></div><div class="plan-confirm-name">+ ${rest} más · ${dayRange}</div></div>`:'');
   }
 
+  const _pcSheet=document.getElementById('plan-confirm-sheet');
+  if(_pcSheet){ _pcSheet.style.display=''; requestAnimationFrame(()=>_pcSheet.classList.add('open')); }
   document.getElementById('plan-confirm-overlay').classList.add('open');
-  document.getElementById('plan-confirm-sheet').classList.add('open');
 }
 
 function closePlanConfirm(goToPlan){
   document.getElementById('plan-confirm-overlay').classList.remove('open');
-  document.getElementById('plan-confirm-sheet').classList.remove('open');
+  const _pcSheet=document.getElementById('plan-confirm-sheet');
+  if(_pcSheet){
+    _pcSheet.classList.remove('open');
+    setTimeout(()=>{ if(!_pcSheet.classList.contains('open')) _pcSheet.style.display='none'; },350);
+  }
   if(goToPlan){
     switchMainNav('mnav-miplan');
     showAgView();
