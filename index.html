@@ -2666,14 +2666,14 @@ let FESTIVAL_STORAGE_KEY='ficci65_';
 // BUILD_VERSION: cambia en cada deploy.
 // Al cargar, compara con localStorage. Si difiere → reload duro.
 // sessionStorage evita loops infinitos dentro de la misma sesión.
-const BUILD_VERSION='202604211836';
+const BUILD_VERSION='202604211844';
 (function(){
   const _vk='otrofestiv_build';
   const _sk='otrofestiv_reloaded';
   const _stored=localStorage.getItem(_vk);
   const _reloaded=sessionStorage.getItem(_sk);
-  // Solo recargar si el usuario ya pasó el splash de bienvenida
-  const _splashSeen=localStorage.getItem('otrofestiv-welcomed');
+  // Solo recargar si el usuario ya eligió un festival (no interrumpir primera visita)
+  const _splashSeen=localStorage.getItem('otrofestiv_festival');
   if(_stored && _stored!==BUILD_VERSION && !_reloaded && _splashSeen){
     sessionStorage.setItem(_sk,'1');
     localStorage.setItem(_vk,BUILD_VERSION);
@@ -7073,9 +7073,9 @@ function toggleSplashDropdown(){
   dd.style.display=open?'block':'none';
   btn.classList.toggle('open',open);
 }
-let _splashSelectedFestId='ficci65';
+let _splashSelectedFestId='aff2026'; // matches HTML pre-selection
 function selectSplashFest(name,meta,festId){
-  _splashSelectedFestId=festId||'ficci65';
+  _splashSelectedFestId=festId||'aff2026';
   const n=document.getElementById('splash-sel-name');
   const m=document.getElementById('splash-sel-meta');
   if(n) n.textContent=name;
@@ -7177,8 +7177,8 @@ function dismissSplash(){
   loadFestival(_splashSelectedFestId||'aff2026');
 }
 (function(){
-  // El splash es siempre el punto de entrada — aparece en cada carga.
-  // Solo pre-seleccionamos el festival que el usuario eligió la última vez.
+  // Pre-populate splash selector with previously chosen festival (or default AFF).
+  // Splash is only visible when there's no saved festival (first-time users).
   const storedFest=localStorage.getItem('otrofestiv_festival')||'aff2026';
   _splashSelectedFestId=storedFest;
   const cfg=FESTIVAL_CONFIG[storedFest];
@@ -7187,33 +7187,24 @@ function dismissSplash(){
     const m=document.getElementById('splash-sel-meta');
     if(n) n.textContent=cfg.name;
     if(m) m.textContent=cfg.city+' · '+cfg.dates+' 2026';
-    // Marcar el item del dropdown como seleccionado
     document.querySelectorAll('.splash-drop-item').forEach(el=>{
       el.classList.toggle('selected',el.dataset.fest===storedFest);
     });
   }
 })();
 
-// ── Init: reliable two-phase startup ────────────────────────────────
-// Phase 1: standard init (always works — loadState + showDayView)
-// Phase 2: switch to saved festival if different from default (synchronous)
-// Both phases run before browser paints → user sees only the final state.
+// ── Init: single-phase startup ───────────────────────────────────
+// Returning user (has saved festival): load it directly — one call, correct data from the start.
+// First-time user (no saved festival): splash is visible; dismissSplash() → loadFestival().
+// No two-phase logic. No default FICCI data loading before switching.
 (function(){
   const _saved=localStorage.getItem('otrofestiv_festival');
-  // Pre-set state for returning users
   if(_saved&&FESTIVAL_CONFIG[_saved]){
-    _splashSelectedFestId=_saved;
-    // Suppress welcome overlay for returning users
-    const _festCfg=FESTIVAL_CONFIG[_saved];
-    if(_festCfg) localStorage.setItem((_festCfg.storageKey||_saved+'_')+'welcome_seen','1');
-  }
-  // Phase 1: reliable standard init (default festival)
-  loadState();{const _ts=simTodayStr();const _ni=DAY_KEYS.findIndex(d=>FESTIVAL_DATES[d]===_ts);activeDay=_ni>=0?DAY_KEYS[_ni]:DAY_KEYS[0];}
-  updateAgTab();showDayView();
-  // Phase 2: switch to saved festival if different (all synchronous, one paint)
-  if(_saved&&FESTIVAL_CONFIG[_saved]&&_saved!==_activeFestId){
+    // Suppress welcome overlay — returning user already saw it
+    localStorage.setItem(FESTIVAL_CONFIG[_saved].storageKey+'welcome_seen','1');
     loadFestival(_saved);
   }
+  // else: first-time user, splash covers everything — nothing to render yet
 })();
 /* ── Tap-to-reveal en Intereses mobile ──────────────────────────
    Toca el poster → revela botones (ag-active).
