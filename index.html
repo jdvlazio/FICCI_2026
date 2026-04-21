@@ -2670,7 +2670,7 @@ let FESTIVAL_STORAGE_KEY='ficci65_';
 // BUILD_VERSION: cambia en cada deploy.
 // Al cargar, compara con localStorage. Si difiere → reload duro.
 // sessionStorage evita loops infinitos dentro de la misma sesión.
-const BUILD_VERSION='202604211926';
+const BUILD_VERSION='202604211931';
 (function(){
   const _vk='otrofestiv_build';
   const _sk='otrofestiv_reloaded';
@@ -3834,7 +3834,7 @@ function renderFilmListHTML(){
     const safeT=t.replace(/"/g,'&quot;');
     const{displayTitle,progSuffix}=parseProgramTitle(t);
     const safeTQ=t.replace(/'/g,"\'");
-    return`<div class="ag-film-item${listMode?' list-mode':''}${f?.is_cortos?' ag-prog':''}" onclick="openPelSheet('${safeTQ}')">
+    return`<div class="ag-film-item${listMode?' list-mode':''}" onclick="openPelSheet('${safeTQ}')">
       ${posterHtml}
       <div class="ag-fi-overlay"></div>
       <div class="ag-fi-actions">
@@ -3844,12 +3844,9 @@ function renderFilmListHTML(){
         <div class="ag-fi-flags">${f?f.flags||'🌐':'🌐'}</div>
         <div class="ag-fi-title">${displayTitle}</div>
         ${(()=>{
-          if(!f||f.is_cortos) return '';
-          // Días disponibles — compacto, orientador (no selector)
-          // Escalable: usa DAY_KEYS del festival activo
-          const DAY_A=['MAR','MIÉ','JUE','VIE','SÁB','DOM'];
+          if(!f) return '';
           const filmDays=FILMS.filter(fi=>fi.title===t&&!screeningPassed(fi));
-          const dayChips=[...new Set(filmDays.map(fi=>DAY_A[DAY_KEYS.indexOf(fi.day)]).filter(Boolean))].join(' · ');
+          const dayChips=[...new Set(filmDays.map(fi=>DAY_ABBR[fi.day]).filter(Boolean))].join(' · ');
           const secShort=(f.section||'').replace(/^[^\s]+ /,'').slice(0,22);
           return dayChips?`<div class="ag-fi-days">${dayChips}${secShort?' · '+secShort:''}</div>`:'';
         })()}
@@ -3909,7 +3906,7 @@ function renderFilmListHTML(){
       const safeT=t.replace(/"/g,'&quot;');
       const safeTQ2=t.replace(/'/g,"\'");
       const{displayTitle}=parseProgramTitle(t);
-      const _rating=(!f||f.is_cortos)?0:(filmRatings[t]||0);
+      const _rating=f?(filmRatings[t]||0):0;
       const _stars=_rating?`<div class="ya-vistas-stars">${starsDisplay(_rating,9)}</div>`:'';
       return`<div class="ag-film-item${festivalEnded()?'':' watched-item'}" onclick="openPelSheet('${safeTQ2}')">
         ${posterHtml}
@@ -4458,7 +4455,7 @@ function renderContextualHeader(){
         ${src?`<img src="${src}" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block" onerror="this.style.opacity=0" alt="">`:``}
         <div class="ended-poster-footer">
           ${r?`<div style="font-size:var(--t-xs);color:var(--amber);letter-spacing:1px">${stars}</div>`
-             :f?.is_cortos?`<div></div>`:`<button class="ended-rate-btn" onclick="event.stopPropagation();openPostViewRating('${safeT}','','','','')">★</button>`}
+             :`<button class="ended-rate-btn" onclick="event.stopPropagation();openPostViewRating('${safeT}','','','','')">★</button>`}
           <div class="ended-poster-title">${dt}</div>
         </div>
       </div>`;
@@ -4609,7 +4606,7 @@ function renderContextualHeader(){
           ?`<img class="prio-chip-poster" src="${src}" onerror="this.style.opacity=0" alt="">`
           :`<div class="prio-chip-ph">🎬</div>`}
         ${r?`<div style="position:absolute;bottom:4px;left:0;right:0;text-align:center;font-size:var(--t-xs);color:var(--amber);letter-spacing:1px;text-shadow:0 1px 3px var(--overlay-85)">${stars}</div>`:''}
-        ${(!r&&!f?.is_cortos)?`<div style="position:absolute;bottom:4px;left:0;right:0;text-align:center">
+        ${!r?`<div style="position:absolute;bottom:4px;left:0;right:0;text-align:center">
           <button onclick="event.stopPropagation();openPostViewRating('${safeT}','${s.day||''}','${s.time||''}','${(s.venue||'').replace(/'/g,"\'")}','${s.duration||''}')" style="background:var(--overlay-70);border:1px solid var(--white-15);border-radius:var(--r-pill);color:var(--white);font-size:var(--t-xs);font-weight:var(--w-bold);font-family:var(--font);padding:2px 6px;cursor:pointer">★</button>
         </div>`:''}
       </div>`;
