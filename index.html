@@ -2670,7 +2670,7 @@ let FESTIVAL_STORAGE_KEY='ficci65_';
 // BUILD_VERSION: cambia en cada deploy.
 // Al cargar, compara con localStorage. Si difiere → reload duro.
 // sessionStorage evita loops infinitos dentro de la misma sesión.
-const BUILD_VERSION='202604211935';
+const BUILD_VERSION='202604211937';
 (function(){
   const _vk='otrofestiv_build';
   const _sk='otrofestiv_reloaded';
@@ -3846,7 +3846,7 @@ function renderFilmListHTML(){
         ${(()=>{
           if(!f) return '';
           const filmDays=FILMS.filter(fi=>fi.title===t&&!screeningPassed(fi));
-          const dayChips=[...new Set(filmDays.map(fi=>DAY_ABBR[fi.day]).filter(Boolean))].join(' · ');
+          const dayChips=[...new Set(filmDays.map(fi=>DAY_SHORT[fi.day]).filter(Boolean))].join(' · ');
           const secShort=(f.section||'').replace(/^[^\s]+ /,'').slice(0,22);
           return dayChips?`<div class="ag-fi-days">${dayChips}${secShort?' · '+secShort:''}</div>`:'';
         })()}
@@ -6890,9 +6890,6 @@ function _renderExploreLista(){
     return (a.film.time||'').localeCompare(b.film.time||'');
   });
   if(!entries.length){el.innerHTML=`<div style="text-align:center;padding:var(--sp-6) var(--sp-5);color:var(--gray);font-size:var(--t-base)">Sin películas para este filtro</div>`;return;}
-    // Detectar días ambiguos (ej: MAR 21 y MAR 28 → ambos 'MAR')
-  const _allAbbrs=Object.values(DAY_ABBR);
-  const _hasAmbigDays=new Set(_allAbbrs).size<_allAbbrs.length;
   el.innerHTML=entries.map(({film:f,screenings})=>{
     const inWL=watchlist.has(f.title);
     const isEvent=f.type==='event';
@@ -6900,7 +6897,7 @@ function _renderExploreLista(){
     const{displayTitle:dt}=parseProgramTitle(f.title);
     const src=isEvent?'':(f.is_cortos?makeProgramPoster(f.title,f.duration):(getPosterSrc(f.title,false)||''));
     const allPast=screenings.every(s=>screeningPassed(s));
-    const days=[...new Set(screenings.map(s=>_hasAmbigDays?s.day:(DAY_ABBR[s.day]||s.day)))].join('·');
+    const days=[...new Set(screenings.map(s=>DAY_SHORT[s.day]||s.day))].join(' · ');
     if(isEvent) return`<div class="plist-item plist-event" style="${allPast?'opacity:.35':''}" onclick="openPelSheet('${safeT}')">
       <img class="plist-poster" src="${makeEventPoster(dt,f.duration)}" alt="${dt}">
       <div class="plist-info">
