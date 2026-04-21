@@ -2358,6 +2358,7 @@ function lbUrl(title){
   // Si el slug es una URL completa (shortlink o full), úsala directamente
   if(slug.startsWith('http')) return slug;
   return`https://letterboxd.com/film/${slug}/`;
+}
 
 /* ══════════════════════════════════════════════════════════════
    MULTI-FESTIVAL — AFF 2026 data + config
@@ -2559,7 +2560,7 @@ let FESTIVAL_STORAGE_KEY='ficci65_';
 // BUILD_VERSION: cambia en cada deploy.
 // Al cargar, compara con localStorage. Si difiere → reload duro.
 // sessionStorage evita loops infinitos dentro de la misma sesión.
-const BUILD_VERSION='202604210055';
+const BUILD_VERSION='202604210120';
 (function(){
   const _vk='otrofestiv_build';
   const _sk='otrofestiv_reloaded';
