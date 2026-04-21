@@ -2082,7 +2082,6 @@ html.splash-skip #otrofestiv-splash{display:none}
   <span class="paf-count" id="paf-count"></span>
 </div>
 <!-- Lista Hoy/Mañana -->
-<div class="programa-list" id="programa-list"></div>
 <div class="nav-row" id="nav-row">
   <div class="nav-tabs" id="dtabs"></div>
 </div>
@@ -2100,6 +2099,7 @@ html.splash-skip #otrofestiv-splash{display:none}
     <div style="display:none"><div class="fdr-panel" id="sdr-panel"></div><span id="sdr-label"></span><button id="sdr-btn"></button><span id="sdr-arrow"></span></div>
   </div>
 </div>
+<div class="programa-list" id="programa-list"></div>
 <div id="filter-bars">
   <button id="agtab" style="display:none"><span id="ag-cnt">0</span></button>
 </div>
@@ -2669,7 +2669,7 @@ let FESTIVAL_STORAGE_KEY='ficci65_';
 // BUILD_VERSION: cambia en cada deploy.
 // Al cargar, compara con localStorage. Si difiere → reload duro.
 // sessionStorage evita loops infinitos dentro de la misma sesión.
-const BUILD_VERSION='202604211922';
+const BUILD_VERSION='202604211924';
 (function(){
   const _vk='otrofestiv_build';
   const _sk='otrofestiv_reloaded';
