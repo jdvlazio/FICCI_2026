@@ -2093,9 +2093,9 @@ function _buildPosterSVG(o){
   // Identical internal distribution — only colors and header labels differ.
   const VW=120,VH=180;
   // ── HEADER: 38px, 2 text lines centred mathematically ──────────────
-  // Cap height ≈ 6px for 8px font. Two lines @ 10px line-height.
-  // Block height=18, centre=19 (38/2). y1=16, y2=26.
-  const HDR_H=38,HDR_Y1=16,HDR_Y2=26;
+  // Midpoint of baselines = (y1+y2)/2 = header_center (38/2=19).
+  // y1=14, y2=24 → midpoint=19. Both lines 10px apart (8px font + 2px leading).
+  const HDR_H=38,HDR_Y1=14,HDR_Y2=24;
   // ── INNER BOX ──────────────────────────────────────────────────────
   const BX=10,BY=46,BW=VW-20,BH=VH-56;
   // ── FOOTER ─────────────────────────────────────────────────────────
@@ -2141,11 +2141,14 @@ function makeProgramPoster(title,duration){
   if(t.startsWith('Cortos: ')) t=t.slice(8);
   else{const d=t.indexOf(' \u2014 ');if(d>-1) t=t.slice(0,d)+' \u00b7 '+t.slice(d+3);}
   const festName=((FESTIVAL_CONFIG&&FESTIVAL_CONFIG[_activeFestId])||Object.values(FESTIVAL_CONFIG||{})[0]||{}).shortName||'FESTIVAL';
+  // Header: teal — distinct from Industry Days amber
+  // l1/l2 mirror the INDUSTRY/DAYS split: category / type
+  const _isComp=(FESTIVAL_CONFIG[_activeFestId]&&FESTIVAL_CONFIG[_activeFestId].name||'').includes('AFF');
   return _buildPosterSVG({
-    hc:'#E87B3A',sep:'#7A4020',ht:'#180E06',
-    l1:'COMP.',l2:'CORTOS',
-    bf:'#201810',bs:'#3A2818',
-    accent:'#E87B3A',
+    hc:'#3A8E8E',sep:'#1C5A5A',ht:'#051A1A',
+    l1:_isComp?'COMP.':'PROG.',l2:'CORTOS',
+    bf:'#0D2222',bs:'#1C4444',
+    accent:'#4ABABA',
     title:t,duration:duration||null,
     ft:festName
   });
@@ -2630,7 +2633,7 @@ let FESTIVAL_STORAGE_KEY='ficci65_';
 // BUILD_VERSION: cambia en cada deploy.
 // Al cargar, compara con localStorage. Si difiere → reload duro.
 // sessionStorage evita loops infinitos dentro de la misma sesión.
-const BUILD_VERSION='202604211334';
+const BUILD_VERSION='202604211359';
 (function(){
   const _vk='otrofestiv_build';
   const _sk='otrofestiv_reloaded';
