@@ -286,7 +286,8 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:var(--t
    carta-search-wrap: provee margen externo (está fuera de ag-view)
    ag-search-wrap:    solo margen inferior (ag-view provee márgenes laterales)
 ────────────────────────────────────────────────────────────────────────── */
-.carta-search-wrap{margin:0 var(--sp-4);padding:var(--sp-2) 0 0;position:sticky;top:var(--sticky-top-carta);z-index:121;background:var(--surf)}
+#hdr-programa{position:sticky;top:var(--sticky-top-carta);z-index:121;background:var(--surf)}
+.carta-search-wrap{margin:0 var(--sp-4);padding:var(--sp-2) 0 0}
 .ag-search-wrap{margin-bottom:var(--sp-2);position:relative}
 /* El pill: flex row que contiene ícono + input + clear */
 .carta-search-field,.ag-search-field{
@@ -578,7 +579,7 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:var(--t
 /* ── Toggle Por Horario / Por Película — mismo sistema que fdr-btn ── */
 .carta-mode-toggle{display:none} /* reemplazado por programa-mode-bar */
 /* ── Programa: mode bar Explorar/Hoy/Mañana ── */
-.programa-mode-bar{display:flex;align-items:center;border-bottom:1px solid var(--bdr);padding:0 var(--sp-3);flex-shrink:0;background:var(--surf);position:sticky;top:var(--sticky-top-modebar);z-index:120}
+.programa-mode-bar{display:flex;align-items:center;border-bottom:1px solid var(--bdr);padding:0 var(--sp-3);flex-shrink:0;background:var(--surf)}
 .pmode-tab{padding:var(--sp-btn) var(--sp-3) var(--sp-2);font-size:var(--t-base);font-weight:var(--w-bold);color:var(--gray);border-bottom:2px solid transparent;cursor:pointer;background:none;border-top:none;border-left:none;border-right:none;font-family:var(--font);transition:color .15s,border-color .15s;white-space:nowrap}
 .pmode-tab.on{color:var(--white);border-bottom-color:var(--amber)}
 .pmode-spacer{flex:1}
@@ -589,7 +590,7 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:var(--t
 .pmode-filter-btn{display:flex;align-items:center;gap:4px;font-size:var(--t-sm);font-weight:var(--w-bold);color:var(--gray2);background:none;border:none;cursor:pointer;font-family:var(--font);padding:4px 0;transition:color .15s;white-space:nowrap}
 .pmode-filter-btn.active{color:var(--amber)}
 /* Chips de categoría (solo Explorar) */
-.programa-chips{display:flex;gap:var(--sp-1);padding:var(--sp-2) var(--sp-3);overflow-x:auto;scrollbar-width:none;flex-shrink:0;border-bottom:1px solid var(--bdr-l);background:var(--surf);position:sticky;top:var(--sticky-top-chips);z-index:119}
+.programa-chips{display:flex;gap:var(--sp-1);padding:var(--sp-2) var(--sp-3);overflow-x:auto;scrollbar-width:none;flex-shrink:0;border-bottom:1px solid var(--bdr-l);background:var(--surf)}
 .programa-chips::-webkit-scrollbar{display:none}
 .programa-chips{-webkit-overflow-scrolling:touch}
 .programa-chips.hidden{display:none}
@@ -1998,6 +1999,7 @@ html.splash-skip #otrofestiv-splash{display:none}
   <div class="pel-sheet-topbar"><div class="pel-sheet-handle"></div><button class="pel-sheet-close" onclick="closePelSheet()"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button></div>
   <div class="pel-sheet-inner" id="pel-sheet-inner"></div>
 </div>
+<div id="hdr-programa">
 <div class="carta-search-wrap" id="carta-search-wrap">
   <div class="carta-search-field">
     <span class="carta-search-ico"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></span>
@@ -2033,6 +2035,7 @@ html.splash-skip #otrofestiv-splash{display:none}
   <div class="cartelera-cta">
     <span class="cartelera-cta-text">Toca <span style="color:var(--amber)">♥</span> en cualquier película para añadirla a <b>Intereses</b></span>
   </div>
+</div>
 </div>
 <!-- Tag activo dismissible -->
 <div class="programa-active-filter" id="programa-active-filter">
@@ -2134,7 +2137,7 @@ function makeProgramPoster(title){
     ${subText}
     <text x="${VW/2}" y="${VH-9}" text-anchor="middle"
       font-family="-apple-system,BlinkMacSystemFont,sans-serif"
-      font-size="7" font-weight="500" fill="#443C34" letter-spacing="1.5">${(FESTIVAL_CONFIG[_activeFestId]||{}).name||'FESTIVAL'}</text>
+      font-size="7" font-weight="500" fill="#443C34" letter-spacing="1.5">${(FESTIVAL_CONFIG[_activeFestId]||FESTIVAL_CONFIG[Object.keys(FESTIVAL_CONFIG)[0]]||{}).shortName||(FESTIVAL_CONFIG[_activeFestId]||{}).name||'FESTIVAL'}</text>
     <text x="${VW/2}" y="${VH-2}" text-anchor="middle"
       font-family="-apple-system,BlinkMacSystemFont,sans-serif"
       font-size="5.5" font-weight="400" fill="#2E2820" letter-spacing="1">OTROFESTIV</text>
@@ -2415,7 +2418,7 @@ const POSTERS_AFF={"Belén":"https://image.tmdb.org/t/p/w185/w0DzNvUOjCIqxxifViN
 
 const FESTIVAL_CONFIG={
   'ficci65':{
-    name:'FICCI 65',city:'Cartagena',dates:'14\u201319 ABR',
+    name:'FICCI 65',shortName:'FICCI 65',city:'Cartagena',dates:'14\u201319 ABR',
     storageKey:'ficci65_',
     festivalEndStr:'2026-04-20T02:00:00',
     festivalDates:{'Martes':'2026-04-14','Miércoles':'2026-04-15','Jueves':'2026-04-16','Viernes':'2026-04-17','Sábado':'2026-04-18','Domingo':'2026-04-19'},
@@ -2426,7 +2429,7 @@ const FESTIVAL_CONFIG={
     films:null,posters:null,lbSlugs:null
   },
   'aff2026':{
-    name:'AFF 2026',city:'Medellín',dates:'21\u201329 ABR',
+    name:'AFF 2026',shortName:'ALTERNATIVA',city:'Medellín',dates:'21\u201329 ABR',
     storageKey:'aff2026_',
     festivalEndStr:'2026-04-29T23:00:00',
     festivalDates:{'MAR 21':'2026-04-21','MIÉ 22':'2026-04-22','JUE 23':'2026-04-23','VIE 24':'2026-04-24','SÁB 25':'2026-04-25','DOM 26':'2026-04-26','LUN 27':'2026-04-27','MAR 28':'2026-04-28','MIÉ 29':'2026-04-29','JUE 30':'2026-04-30'},
@@ -2538,6 +2541,27 @@ const VENUES={
 };
 
 /* ── VENUES: configuración, salas, tiempos de viaje ─────────────────── */
+// Venue coordinates for travel time estimation (AFF venues in Medellín)
+const VENUE_COORDS={
+  'MAMM':{lat:6.2338,lon:-75.5733},
+  'MAMM · Plazoleta':{lat:6.2338,lon:-75.5733},
+  'Industry Days':{lat:6.2338,lon:-75.5733},
+  'Colombo Americano':{lat:6.2592,lon:-75.5680},
+  // FICCI venues in Cartagena
+  'Teatro Adolfo Mejía':{lat:10.4238,lon:-75.5503},
+  'Plaza Bocagrande':{lat:10.3987,lon:-75.5600},
+  'CC Caribe Plaza':{lat:10.4071,lon:-75.5124},
+};
+function venueTravelMins(v1,v2){
+  const c1=VENUE_COORDS[v1],c2=VENUE_COORDS[v2];
+  if(!c1||!c2) return 0;
+  const dlat=(c1.lat-c2.lat)*111,dlon=(c1.lon-c2.lon)*111*Math.cos(c1.lat*Math.PI/180);
+  const km=Math.sqrt(dlat*dlat+dlon*dlon);
+  if(km<0.2) return 0;           // same venue / adjacent
+  if(km<0.5) return 10;           // very close: 10 min walk
+  if(km<1.5) return 15;           // close: 15 min walk/transit
+  return Math.round(km/0.25*5);   // ~5min per 250m walking (rough)
+}
 function vcfg(v){
   if(v.includes('Teatro Adolfo'))  return VENUES['Teatro Adolfo Mejía'];
   if(v.includes('Bocagrande'))     return VENUES['Plaza Bocagrande'];
@@ -2576,6 +2600,10 @@ function screensConflict(a,b){
   return true; // solapamiento directo
 }
 function travelMins(venueA,venueB){
+  // First try coordinate-based calculation (works for all festivals)
+  const coordMins=venueTravelMins(venueA,venueB);
+  if(coordMins>0) return coordMins;
+  // Fallback: FICCI Cartagena venue groups
   const g=v=>v.includes('Bocagrande')?'bog':v.includes('Caribe Plaza')?'cp':'centro';
   const g1=g(venueA),g2=g(venueB);
   if(g1===g2) return 0;
@@ -2616,7 +2644,7 @@ let FESTIVAL_STORAGE_KEY='ficci65_';
 // BUILD_VERSION: cambia en cada deploy.
 // Al cargar, compara con localStorage. Si difiere → reload duro.
 // sessionStorage evita loops infinitos dentro de la misma sesión.
-const BUILD_VERSION='202604211214';
+const BUILD_VERSION='202604211216';
 (function(){
   const _vk='otrofestiv_build';
   const _sk='otrofestiv_reloaded';
