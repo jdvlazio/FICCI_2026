@@ -2648,7 +2648,7 @@ let FESTIVAL_STORAGE_KEY='ficci65_';
 // BUILD_VERSION: cambia en cada deploy.
 // Al cargar, compara con localStorage. Si difiere → reload duro.
 // sessionStorage evita loops infinitos dentro de la misma sesión.
-const BUILD_VERSION='202604211626';
+const BUILD_VERSION='202604211637';
 (function(){
   const _vk='otrofestiv_build';
   const _sk='otrofestiv_reloaded';
@@ -7183,14 +7183,14 @@ function dismissSplash(){
 
 // ── Init: auto-dismiss splash for returning users ──────────────────
 // First visit → show splash (user picks festival → dismissSplash())
-// Return visit → skip splash, load saved festival directly
+// Return visit → skip splash instantly via dismissSplash() tested flow
 (function(){
   const _saved=localStorage.getItem('otrofestiv_festival');
   if(_saved&&FESTIVAL_CONFIG[_saved]){
-    // Returning user: hide splash immediately and load their festival
-    const _sp=document.getElementById('otrofestiv-splash');
-    if(_sp){_sp.style.opacity='0';_sp.style.pointerEvents='none';setTimeout(()=>_sp.remove(),50);}
-    loadFestival(_saved);// handles loadState+showDayView internally
+    // Returning user: use the exact same path as manual splash dismiss.
+    // This ensures correct state initialization (same as when user hits Entrar).
+    _splashSelectedFestId=_saved;
+    dismissSplash();
   }else{
     // First visit: show splash, fall through to default init
     loadState();{const _ts=simTodayStr();const _ni=DAY_KEYS.findIndex(d=>FESTIVAL_DATES[d]===_ts);activeDay=_ni>=0?DAY_KEYS[_ni]:DAY_KEYS[0];}
