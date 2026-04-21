@@ -2495,6 +2495,11 @@ function vcfg(v){
   if(/unibac/i.test(v))            return VENUES['Unibac'];
   if(/aecid/i.test(v))             return VENUES['AECID'];
   if(v.includes('Convenciones'))   return VENUES['C. Convenciones'];
+  // AFF 2026 venues
+  if(v.includes('MAMM · Plazoleta')) return {short:'MAMM Plazoleta'};
+  if(v.includes('MAMM'))             return {short:'MAMM'};
+  if(v.includes('Colombo'))          return {short:'Colombo Americano'};
+  if(v.includes('Industry'))         return {short:'Industry Days'};
   return VENUES['C. Convenciones'];
 }
 function sala(v){const m=v.match(/Sala\s*(\d+)/)||v.match(/Sal[oó]n\s*(\d+)/i);return m?'Sala '+m[1]:'';}
@@ -2559,7 +2564,7 @@ let FESTIVAL_STORAGE_KEY='ficci65_';
 // BUILD_VERSION: cambia en cada deploy.
 // Al cargar, compara con localStorage. Si difiere → reload duro.
 // sessionStorage evita loops infinitos dentro de la misma sesión.
-const BUILD_VERSION='202604210132';
+const BUILD_VERSION='202604210144';
 (function(){
   const _vk='otrofestiv_build';
   const _sk='otrofestiv_reloaded';
@@ -6490,10 +6495,14 @@ function _getProgramaPhase(){
   // Retorna qué tabs deben ser visibles y cuál es el default
   if(festivalEnded()) return {tabs:['explorar'],default:'explorar'};
   const now=simNow();
-  const FEST_START=new Date('2026-04-14T09:00:00');
+  // Fecha de inicio dinámica — primer día del festival activo
+  const firstDayKey=DAY_KEYS[0];
+  const firstDayDate=FESTIVAL_DATES[firstDayKey];
+  const FEST_START=firstDayDate?new Date(firstDayDate+'T09:00:00'):new Date('2099-01-01');
   if(now<FEST_START) return {tabs:['explorar'],default:'explorar'};
   const todayStr=simTodayStr();
-  const isLastDay=todayStr===FESTIVAL_DATES['Domingo'];
+  const lastDayKey=DAY_KEYS[DAY_KEYS.length-1];
+  const isLastDay=todayStr===FESTIVAL_DATES[lastDayKey];
   const tabs=isLastDay?['explorar','hoy']:['explorar','hoy','manana'];
   return{tabs,default:'hoy'};
 }
