@@ -723,7 +723,7 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:var(--t
 /* ── Sheet rating post-función desde Mi Plan ── */
 .pv-rating-overlay{position:fixed;inset:0;background:rgba(4,4,4,.78);backdrop-filter:blur(12px);z-index:9300;opacity:0;pointer-events:none;transition:opacity .25s}
 .pv-rating-overlay.open{opacity:1;pointer-events:all}
-.pv-rating-sheet{position:fixed;bottom:0;left:0;right:0;background:var(--surf-2);border-top:1px solid var(--bdr);border-radius:var(--r-sheet) var(--r-sheet) 0 0;z-index:9301;display:none;transform:translateY(100%);transition:transform .32s cubic-bezier(.32,0,.67,0);overflow:hidden}
+.pv-rating-sheet{position:fixed;bottom:0;left:0;right:0;background:var(--surf-2);border-top:1px solid var(--bdr);border-radius:var(--r-sheet) var(--r-sheet) 0 0;z-index:9301;display:none;transition:transform .32s cubic-bezier(.32,0,.67,0);overflow:hidden}
 .pv-rating-sheet.open{display:flex;flex-direction:column;transform:translateY(0)}
 .pv-handle{width:36px;height:4px;background:rgba(255,255,255,.1);border-radius:var(--r-handle);margin:12px auto 0}
 .pv-header{display:flex;gap:14px;align-items:flex-start;padding:20px 20px 16px;border-bottom:1px solid var(--bdr)}
@@ -811,7 +811,7 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:var(--t
 .prio-limit-cancel{width:calc(100% - 40px);margin:14px 20px 44px;background:none;border:1px solid var(--bdr);border-radius:var(--r-pill);color:var(--gray);font-family:var(--font);font-size:var(--t-base);font-weight:var(--w-semi);padding:12px;cursor:pointer;display:block}
 .plan-confirm-overlay{position:fixed;inset:0;background:var(--overlay-55);z-index:9200;opacity:0;pointer-events:none;transition:opacity .25s}
 .plan-confirm-overlay.open{opacity:1;pointer-events:all}
-.plan-confirm-sheet{position:fixed;bottom:0;left:0;right:0;background:var(--surf-2);border-top:1px solid var(--bdr);border-radius:var(--r-sheet) var(--r-sheet) 0 0;z-index:9201;padding:8px 20px 44px;display:none;transform:translateY(100%);transition:transform .32s cubic-bezier(.32,0,.67,0)}
+.plan-confirm-sheet{position:fixed;bottom:0;left:0;right:0;background:var(--surf-2);border-top:1px solid var(--bdr);border-radius:var(--r-sheet) var(--r-sheet) 0 0;z-index:9201;padding:8px 20px 44px;display:none;transition:transform .32s cubic-bezier(.32,0,.67,0)}
 .plan-confirm-sheet.open{display:block;transform:translateY(0)}
 .plan-confirm-handle{width:36px;height:4px;background:rgba(255,255,255,.12);border-radius:var(--r-handle);margin:12px auto 20px}
 .plan-confirm-row{display:flex;align-items:center;gap:14px;margin-bottom:18px}
@@ -1898,7 +1898,7 @@ html.splash-skip #otrofestiv-splash{display:none}
 <div class="carta-mode-toggle" id="carta-mode-toggle" style="display:none"></div>
 <!-- ── Post-View Rating Sheet ── -->
 <div class="pv-rating-overlay" id="pv-rating-overlay" onclick="closePVRating()"></div>
-<div class="pv-rating-sheet" id="pv-rating-sheet">
+<div class="pv-rating-sheet" id="pv-rating-sheet" style="display:none">
   <div class="pv-handle"></div>
   <div class="pv-header">
     <div class="pv-poster-wrap">
@@ -2001,7 +2001,7 @@ html.splash-skip #otrofestiv-splash{display:none}
 </div>
 <!-- ── Plan Confirm Sheet ── -->
 <div class="plan-confirm-overlay" id="plan-confirm-overlay" onclick="closePlanConfirm()"></div>
-<div class="plan-confirm-sheet" id="plan-confirm-sheet">
+<div class="plan-confirm-sheet" id="plan-confirm-sheet" style="display:none">
   <div class="plan-confirm-handle"></div>
   <div class="plan-confirm-row">
     <div class="plan-confirm-ico">
