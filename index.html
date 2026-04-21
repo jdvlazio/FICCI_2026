@@ -2669,7 +2669,7 @@ let FESTIVAL_STORAGE_KEY='ficci65_';
 // BUILD_VERSION: cambia en cada deploy.
 // Al cargar, compara con localStorage. Si difiere → reload duro.
 // sessionStorage evita loops infinitos dentro de la misma sesión.
-const BUILD_VERSION='202604211850';
+const BUILD_VERSION='202604211922';
 (function(){
   const _vk='otrofestiv_build';
   const _sk='otrofestiv_reloaded';
@@ -7324,12 +7324,16 @@ setTimeout(()=>{
 }, 600); // después del welcome check (400ms) y del render inicial
 
 function openFestivalSheet(){
-  document.getElementById('fs-overlay').classList.add('open');
-  document.getElementById('fs-sheet').classList.add('open');
+  const ov=document.getElementById('fs-overlay');
+  const sh=document.getElementById('fs-sheet');
+  if(ov) ov.classList.add('open');
+  if(sh) sh.classList.add('open');
 }
 function closeFestivalSheet(){
-  document.getElementById('fs-overlay').classList.remove('open');
-  document.getElementById('fs-sheet').classList.remove('open');
+  const ov=document.getElementById('fs-overlay');
+  const sh=document.getElementById('fs-sheet');
+  if(ov) ov.classList.remove('open');
+  if(sh) sh.classList.remove('open');
 }
 
 /* ── _fixStickyOffset: correct sticky positions for desktop gap ─────────
