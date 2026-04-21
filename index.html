@@ -1525,6 +1525,8 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:var(--t
   transition:opacity .5s ease, visibility .5s ease;
 }
 #otrofestiv-splash.fade-out{opacity:0;visibility:hidden;pointer-events:none}
+/* Splash skip — clase puesta por script inline en <head> antes del paint */
+html.splash-skip #otrofestiv-splash{display:none}
 .splash-wordmark{
   font-size:var(--t-sm);letter-spacing:3px;color:var(--gray);
   text-transform:uppercase;font-weight:var(--w-semi);margin-bottom:36px;
@@ -1764,6 +1766,19 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:var(--t
 </style>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"WebApplication","name":"Otrofestiv","description":"Tu agenda personal para festivales de cine. Planea, prioriza y saca el máximo de cada festival.","url":"https://otrofestiv.app","applicationCategory":"EntertainmentApplication","operatingSystem":"iOS, Android, Web","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}
+</script>
+<!-- Splash skip check — corre síncrono antes de que el body se pinte.
+     Evita el flash del splash en cada refresh para usuarios que ya entraron. -->
+<script>
+(function(){
+  try{
+    if(localStorage.getItem('otrofestiv-welcomed')||
+       localStorage.getItem('ficci65_wl')||
+       localStorage.getItem('ficci65_saved')){
+      document.documentElement.classList.add('splash-skip');
+    }
+  }catch(e){}
+})();
 </script>
 </head>
 <body>
@@ -2506,7 +2521,7 @@ const FESTIVAL_STORAGE_KEY='ficci65_';
 // BUILD_VERSION: cambia en cada deploy.
 // Al cargar, compara con localStorage. Si difiere → reload duro.
 // sessionStorage evita loops infinitos dentro de la misma sesión.
-const BUILD_VERSION='202604202358';
+const BUILD_VERSION='202604210004';
 (function(){
   const _vk='otrofestiv_build';
   const _sk='otrofestiv_reloaded';
