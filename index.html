@@ -2380,8 +2380,9 @@ function lbUrl(title){
 }
 
 function makeEventPoster(title,duration){
-  // Genera un poster SVG para eventos Industry Days
+  // Poster SVG para eventos Industry Days — fondo visible, estilo institucional
   const VW=120, VH=180;
+  // Partir título en líneas de máx 13 chars
   const words=title.split(/\s+/);
   const lines=[];let cur='';
   for(const w of words){
@@ -2389,24 +2390,24 @@ function makeEventPoster(title,duration){
     else cur=cur?cur+' '+w:w;
   }
   if(cur) lines.push(cur);
-  const blockH=lines.length*14+(duration?10:0);
-  const startY=Math.round((VH-32-blockH)/2)+12*0.88;
+  const blockH=lines.length*13;
+  const startY=Math.round((VH-50-blockH)/2)+52;
   const textLines=lines.map((l,i)=>
-    `<text x="${VW/2}" y="${Math.round(startY+i*14)}" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,sans-serif" font-size="10" font-weight="800" fill="#E8DFD0">${l}</text>`
+    `<text x="${VW/2}" y="${Math.round(startY+i*13)}" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,sans-serif" font-size="10" font-weight="700" fill="#F0EBE0">${l}</text>`
   ).join('');
-  const durY=Math.round(startY+lines.length*14+5);
+  const durY=startY+lines.length*13+9;
   const durText=duration?`<text x="${VW/2}" y="${durY}" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,sans-serif" font-size="8" font-weight="500" fill="#C8963E">${duration}</text>`:'';
   return`data:image/svg+xml,${encodeURIComponent(`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${VW} ${VH}">
-    <rect width="${VW}" height="${VH}" fill="#0A0A0C"/>
-    <rect x="0" y="0" width="${VW}" height="3" fill="#C8963E"/>
-    <rect x="0" y="0" width="3" height="${VH}" fill="#1E1A14"/>
-    <text x="${VW/2}" y="22" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,sans-serif" font-size="18" fill="#2A2520">◼</text>
-    <text x="${VW/2}" y="22" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,sans-serif" font-size="13" fill="#C8963E">🏛</text>
+    <rect width="${VW}" height="${VH}" fill="#1E1B17"/>
+    <rect x="0" y="0" width="${VW}" height="38" fill="#C8963E"/>
+    <rect x="0" y="37" width="${VW}" height="1" fill="#8A6228"/>
+    <text x="${VW/2}" y="25" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,sans-serif" font-size="8" font-weight="700" fill="#1A1410" letter-spacing="1.5">INDUSTRY</text>
+    <text x="${VW/2}" y="34" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,sans-serif" font-size="8" font-weight="700" fill="#1A1410" letter-spacing="1.5">DAYS</text>
+    <rect x="10" y="46" width="${VW-20}" height="${VH-56}" rx="3" fill="#252017" stroke="#3A3228" stroke-width="1"/>
     ${textLines}
     ${durText}
-    <rect x="0" y="${VH-22}" width="${VW}" height="1" fill="#1A1812"/>
-    <text x="${VW/2}" y="${VH-9}" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,sans-serif" font-size="7" font-weight="500" fill="#443C34" letter-spacing="1.5">INDUSTRY</text>
-    <text x="${VW/2}" y="${VH-2}" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,sans-serif" font-size="5.5" font-weight="400" fill="#2E2820" letter-spacing="1">DAYS</text>
+    <rect x="0" y="${VH-16}" width="${VW}" height="16" fill="#161310"/>
+    <text x="${VW/2}" y="${VH-5}" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,sans-serif" font-size="6" font-weight="500" fill="#5A4E40" letter-spacing="1">ALTERNATIVA FILM FESTIVAL</text>
   </svg>`)}`;
 }
 
@@ -2644,7 +2645,7 @@ let FESTIVAL_STORAGE_KEY='ficci65_';
 // BUILD_VERSION: cambia en cada deploy.
 // Al cargar, compara con localStorage. Si difiere → reload duro.
 // sessionStorage evita loops infinitos dentro de la misma sesión.
-const BUILD_VERSION='202604211216';
+const BUILD_VERSION='202604211219';
 (function(){
   const _vk='otrofestiv_build';
   const _sk='otrofestiv_reloaded';
