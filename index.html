@@ -2108,7 +2108,7 @@ html.splash-skip #otrofestiv-splash{display:none}
 <script>
 // ═══════════════════════════════════════════════════════════════
 // 1 · DATOS DEL FESTIVAL
-//     FILMS, POSTERS, CUSTOM_POSTERS, TMDB_IMG, FICCI_POSTER_URL
+//     FILMS, POSTERS, CUSTOM_POSTERS, FICCI_POSTER_URL
 // ═══════════════════════════════════════════════════════════════
 let FILMS=[];
 let POSTERS={};
@@ -2191,7 +2191,7 @@ const SHORT_IMGS={"Ghost Strata": "https://image.tmdb.org/t/p/w92/a03LyOUDzsslvw
    FUENTES (en orden de prioridad):
      1. CUSTOM_POSTERS  — URLs manuales (Maspalomas, AnyMart…)
      2. SHORT_IMGS      — cortos: URLs directas TMDB/FICCI
-     3. POSTERS         — features: paths TMDB → prefijo TMDB_IMG
+     3. POSTERS         — features: URLs completas (TMDB o CDN propio)
 
    NORMALIZACIÓN:
      normKey(s) → convierte apostrofes Unicode → ASCII (U+0027)
