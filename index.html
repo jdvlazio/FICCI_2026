@@ -4668,7 +4668,7 @@ function renderContextualHeader(){
         <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
         ${eyebrowLabel}
       </div>
-      <div class="ctx-next-card">
+      <div class="ctx-next-card" onclick="openPelSheet('${(next._title||'').replace(/'/g,"\\'")}')" style="cursor:pointer">
         ${src?`<img class="ctx-next-poster" src="${src}" onerror="this.style.opacity=0" alt="">`:
               `<div class="ctx-next-poster"></div>`}
         <div style="flex:1;min-width:0">
