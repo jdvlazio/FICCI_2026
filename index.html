@@ -6459,15 +6459,15 @@ function openPelSheet(title){
         ${f.is_cortos&&f.film_list?.length?`<div style="font-size:var(--t-sm);color:var(--orange);margin-top:2px">${f.film_list.length} corto${f.film_list.length!==1?'s':''}</div>`:''}
       </div>
     </div>
-    <div class="pel-sheet-section-lbl">Funciones</div>
+    <div class="pel-sheet-section-lbl">${f.type==='event'?'Horario':allScr.length===1?'Función':'Funciones'}</div>
     <div class="pel-sheet-screenings">${rows}</div>
     <div class="pel-sheet-divider"></div>
     ${f.director?`<div style="font-size:var(--t-sm);color:var(--gray2);margin-bottom:6px;font-weight:var(--w-semi)">Dir. ${f.director}</div>`:''}
-    <div class="pel-sheet-section-lbl">Sinopsis</div>
+    <div class="pel-sheet-section-lbl">${f.type==='event'?'Descripción':'Sinopsis'}</div>
     <div class="pel-sheet-synopsis">${f.synopsis||'Sinopsis disponible próximamente.'}</div>
     ${f.genre?`<div style="font-size:var(--t-xs);color:var(--gray);margin-top:6px">${f.genre}${f.year?' · '+f.year:''}</div>`:''}
     ${cortosHtml}
-    ${!f.is_cortos?`<a class="c-lb" href="${lbUrl(f.title)}" target="_blank" rel="noopener" style="display:inline-flex;margin-top:14px;margin-bottom:2px">${LB_SVG}<span class="c-lb-text">Letterboxd</span></a>`:''}
+    ${(!f.is_cortos&&f.type!=='event')?`<a class="c-lb" href="${lbUrl(f.title)}" target="_blank" rel="noopener" style="display:inline-flex;margin-top:14px;margin-bottom:2px">${LB_SVG}<span class="c-lb-text">Letterboxd</span></a>`:''}
     <div class="pel-sheet-divider" style="margin-top:16px"></div>
     ${inW?`<div style="display:flex;gap:8px;margin-top:12px">
         <button onclick="toggleWatched('${safeT}',event);closePelSheet()" style="flex:1;background:rgba(39,174,96,.08);border:1px solid rgba(39,174,96,.2);border-radius:var(--r-pill);color:var(--green);font-family:var(--font);font-size:var(--t-base);font-weight:var(--w-bold);padding:var(--sp-btn) 0;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:var(--sp-1)">${ICONS.check} Ya vista</button>
@@ -6618,6 +6618,8 @@ function openCortoSheet(title, country, duration, section, flags, director, genr
   if(ps) ps.scrollTop=0;
   _pushSheetState();
   const safeTitle=title.replace(/'/g,"\\'");
+  const inWL=watchlist.has(title);
+  const secLabel=section?section.replace(/^[\p{Emoji}\s]+/u,'').trim():'';
   inner.innerHTML=`
     <div class="pel-sheet-header">
       ${posterHtml}
@@ -6626,14 +6628,16 @@ function openCortoSheet(title, country, duration, section, flags, director, genr
         <div class="pel-sheet-flags">${flgs}</div>
         ${dur?`<div class="pel-sheet-dur">${ICONS.clock} ${dur}</div>`:''}
         ${ctry?`<div style="font-size:var(--t-sm);color:var(--gray2);margin-top:2px">${ctry}</div>`:''}
+        ${secLabel?`<div class="pel-sheet-sec">${secLabel}</div>`:''}
         ${gnr?`<div style="font-size:var(--t-xs);color:var(--orange);margin-top:3px;font-weight:var(--w-semi)">${gnr}</div>`:''}
       </div>
     </div>
     ${dir||syn?`<div class="pel-sheet-divider"></div>`:''}
     ${dir?`<div style="font-size:var(--t-sm);color:var(--gray2);margin-bottom:6px;font-weight:var(--w-semi)">Dir. ${dir}</div>`:''}
-    ${syn?`<div class="pel-sheet-section-lbl">Descripción</div><div class="pel-sheet-synopsis">${syn}</div>`:''}
+    ${syn?`<div class="pel-sheet-section-lbl">Sinopsis</div><div class="pel-sheet-synopsis">${syn}</div>`:''}
     <div class="pel-sheet-divider" style="margin-top:14px"></div>
     <div style="display:flex;gap:var(--sp-1);margin-top:12px">
+      <button id="corto-wl-btn" class="pel-sheet-action-btn${inWL?' act-on':''}" onclick="toggleWL('${safeTitle}',event)" style="display:inline-flex;align-items:center;justify-content:center;gap:var(--sp-1)">${inWL?ICONS.heartFill:ICONS.heart} ${inWL?'En Intereses':'Intereses'}</button>
       <button class="pel-sheet-action-btn${filmRatings[title]?' act-on':''}" onclick="closePelSheet();setTimeout(()=>openRatingSheet('${safeTitle}'),100)" style="display:inline-flex;align-items:center;justify-content:center;gap:var(--sp-1)">${ICONS.star} ${filmRatings[title]?'Cambiar':'Calificar'}</button>
     </div>
   `;
