@@ -231,6 +231,31 @@ body{background:var(--bg);color:var(--white);font-family:var(--font),'Plus Jakar
 .hdr{display:flex;align-items:center;flex-wrap:wrap;padding:0 var(--sp-4);min-height:44px}
 h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:var(--t-lg);font-weight:var(--w-display);line-height:1;letter-spacing:-.03em;color:var(--white);flex:1}
 .hdr-wordmark span{color:var(--amber)}
+/* Auth button */
+.auth-btn{position:relative;width:30px;height:30px;border-radius:50%;border:1px solid var(--white-20);background:transparent;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:border-color .15s}
+.auth-btn:hover{border-color:var(--white-60)}
+.auth-btn svg{opacity:.5;transition:opacity .15s}
+.auth-btn:hover svg,.auth-btn.signed-in svg{opacity:1}
+.auth-btn.signed-in{border-color:var(--amber)}
+.auth-btn.signed-in svg{stroke:var(--amber)}
+.sync-dot{position:absolute;top:2px;right:2px;width:6px;height:6px;border-radius:50%;display:none}
+.sync-dot.sync-ok{display:block;background:var(--amber)}
+.sync-dot.sync-err{display:block;background:#e05}
+/* Auth sheet */
+.auth-sheet{display:none;position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,.6);align-items:flex-end;justify-content:center}
+.auth-sheet.open .auth-sheet-inner{transform:translateY(0)}
+.auth-sheet-inner{background:var(--surf-1);border-radius:20px 20px 0 0;padding:var(--sp-6) var(--sp-5) calc(var(--sp-6) + env(safe-area-inset-bottom));width:100%;max-width:480px;transform:translateY(100%);transition:transform .3s cubic-bezier(.32,.72,0,1)}
+.auth-sheet-title{font-size:var(--t-base);font-weight:var(--w-bold);color:var(--white);margin-bottom:var(--sp-2)}
+.auth-sheet-sub{font-size:var(--t-sm);color:var(--gray2);margin-bottom:var(--sp-5);line-height:1.5}
+.auth-email-inp{width:100%;background:var(--surf-2);border:1px solid var(--bdr);border-radius:10px;padding:12px 14px;font-size:var(--t-base);color:var(--white);outline:none;box-sizing:border-box;margin-bottom:var(--sp-3)}
+.auth-email-inp::placeholder{color:var(--gray3)}
+.auth-email-inp:focus{border-color:var(--amber)}
+.auth-send-btn{width:100%;padding:13px;background:var(--amber);color:#000;border:none;border-radius:10px;font-size:var(--t-base);font-weight:var(--w-bold);cursor:pointer}
+.auth-send-btn:disabled{opacity:.5;cursor:not-allowed}
+.auth-msg{font-size:var(--t-sm);color:#e05;margin-top:var(--sp-2);min-height:18px}
+.auth-cancel{display:block;text-align:center;margin-top:var(--sp-4);font-size:var(--t-sm);color:var(--gray2);cursor:pointer}
+.auth-check-icon{font-size:32px;margin-bottom:var(--sp-3)}
+.auth-signout-btn{width:100%;padding:13px;background:var(--surf-2);color:var(--white-60);border:1px solid var(--bdr);border-radius:10px;font-size:var(--t-base);cursor:pointer;margin-top:var(--sp-3)}
 /* Barra de contexto — Opción C
    Vive dentro de .hdr (padding:var(--sp-5)).
    margin negativo cancela ese padding → barra full-width.
@@ -1804,12 +1829,11 @@ html.splash-skip #otrofestiv-splash{display:none}
 <script>
 (function(){
   try{
-    // El splash siempre se muestra — no auto-dismiss
-    // Solo omitir si está en modo incógnito (sin localStorage)
-    void 0; // no-op
+    void 0;
   }catch(e){}
 })();
 </script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
 </head>
 <body>
 <!-- Splash siempre visible — se pre-selecciona el festival en curso por fecha. -->
@@ -1854,6 +1878,10 @@ html.splash-skip #otrofestiv-splash{display:none}
 <div class="topbar">
 <div class="hdr">
   <h1 class="hdr-wordmark">Otro<span>festiv</span></h1>
+  <button class="auth-btn" id="auth-btn" onclick="openAuthSheet()" title="Sincronizar entre dispositivos" aria-label="Cuenta">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+    <span class="sync-dot" id="sync-dot"></span>
+  </button>
   <div class="hdr-fest-bar" onclick="openFestivalSheet()">
   <div class="hdr-fest-left">
     <div class="hdr-fest-dot"></div>
@@ -2287,6 +2315,170 @@ const FESTIVAL_CONFIG={
 };// Festival data loaded async from festivals/<id>.json via loadFestival()
 
 let _activeFestId='ficci65';
+
+// ═══════════════════════════════════════════════════════════════
+// SUPABASE — Auth + Cloud Sync
+// ═══════════════════════════════════════════════════════════════
+const _SB_URL='https://eytxrvbnwzxuedbmnnqr.supabase.co';
+const _SB_KEY='sb_publishable_-edEGNPRmpsRy7ThJMWtdw_bs6IVZSC';
+let _sb=null,_sbUser=null,_sbReady=false;
+
+// Init — llamado una vez al arrancar
+function _sbInit(){
+  try{
+    _sb=supabase.createClient(_SB_URL,_SB_KEY);
+    _sb.auth.onAuthStateChange(async(event,session)=>{
+      _sbUser=session?.user??null;
+      _sbUpdateUI();
+      if(event==='SIGNED_IN'){
+        await _cloudLoad();
+        _renderAfterSync();
+      }
+      if(event==='SIGNED_OUT') _sbUpdateUI();
+    });
+    _sb.auth.getSession().then(({data:{session}})=>{
+      _sbUser=session?.user??null;
+      _sbReady=true;
+      _sbUpdateUI();
+    });
+  }catch(e){console.warn('Supabase init error:',e);}
+}
+
+// Magic Link — envía email de acceso
+async function _sbSignIn(email){
+  if(!_sb) return {error:'no client'};
+  const{error}=await _sb.auth.signInWithOtp({
+    email,
+    options:{emailRedirectTo:window.location.origin}
+  });
+  return{error};
+}
+
+// Sign out
+async function _sbSignOut(){
+  if(!_sb) return;
+  await _sb.auth.signOut();
+  _sbUser=null;
+  _sbUpdateUI();
+}
+
+// Cargar estado del usuario desde la nube
+async function _cloudLoad(){
+  if(!_sb||!_sbUser) return;
+  try{
+    const{data,error}=await _sb
+      .from('user_festival_state')
+      .select('*')
+      .eq('user_id',_sbUser.id)
+      .eq('festival_id',_activeFestId)
+      .single();
+    if(error||!data) return; // Sin datos en nube — conservar local
+    // Aplicar datos de la nube (tienen prioridad sobre localStorage)
+    if(data.watchlist?.length) watchlist=new Set(data.watchlist);
+    if(data.watched?.length) watched=new Set(data.watched);
+    if(data.ratings&&Object.keys(data.ratings).length) Object.assign(filmRatings,data.ratings);
+    if(data.saved_agenda) savedAgenda=data.saved_agenda;
+    if(data.prioritized?.length) prioritized=new Set(data.prioritized);
+    if(data.availability&&Object.keys(data.availability).length){
+      DAY_KEYS.forEach(d=>{if(data.availability[d]) availability[d]=data.availability[d];});
+    }
+    // Sincronizar también en local
+    saveWL();saveWatched();savePrio();saveSavedAgenda();saveAV();
+  }catch(e){console.warn('Cloud load error:',e);}
+}
+
+// Guardar estado en la nube (debounced 2s)
+let _cloudSaveTimer=null;
+function _cloudSave(){
+  if(!_sb||!_sbUser) return;
+  clearTimeout(_cloudSaveTimer);
+  _cloudSaveTimer=setTimeout(async()=>{
+    try{
+      await _sb.from('user_festival_state').upsert({
+        user_id:_sbUser.id,
+        festival_id:_activeFestId,
+        watchlist:[...watchlist],
+        watched:[...watched],
+        ratings:filmRatings,
+        saved_agenda:savedAgenda,
+        prioritized:[...prioritized],
+        availability,
+        updated_at:new Date().toISOString()
+      },{onConflict:'user_id,festival_id'});
+      _sbShowSyncDot('ok');
+    }catch(e){
+      console.warn('Cloud save error:',e);
+      _sbShowSyncDot('err');
+    }
+  },2000);
+}
+
+// UI helpers
+function _sbUpdateUI(){
+  const btn=document.getElementById('auth-btn');
+  if(!btn) return;
+  if(_sbUser){
+    btn.title=_sbUser.email;
+    btn.classList.add('signed-in');
+  } else {
+    btn.title='Sincronizar entre dispositivos';
+    btn.classList.remove('signed-in');
+  }
+}
+function _sbShowSyncDot(state){
+  const dot=document.getElementById('sync-dot');
+  if(!dot) return;
+  dot.className='sync-dot sync-'+state;
+  if(state==='ok') setTimeout(()=>{dot.className='sync-dot';},3000);
+}
+function _renderAfterSync(){
+  // Re-renderiza la vista activa después de cargar datos de la nube
+  if(typeof showDayView==='function') showDayView();
+  if(typeof _renderProgramaContent==='function') _renderProgramaContent();
+}
+
+// Abrir sheet de login
+function openAuthSheet(){
+  if(_sbUser){_showSignedInSheet();return;}
+  const s=document.getElementById('auth-sheet');
+  if(s){s.style.display='flex';setTimeout(()=>s.classList.add('open'),10);}
+}
+function closeAuthSheet(){
+  const s=document.getElementById('auth-sheet');
+  if(s){s.classList.remove('open');setTimeout(()=>s.style.display='none',300);}
+}
+async function submitAuthEmail(){
+  const inp=document.getElementById('auth-email-inp');
+  const btn=document.getElementById('auth-send-btn');
+  const msg=document.getElementById('auth-msg');
+  const email=(inp?.value||'').trim();
+  if(!email||!email.includes('@')){msg.textContent='Ingresa un email válido.';return;}
+  btn.disabled=true;btn.textContent='Enviando…';
+  const{error}=await _sbSignIn(email);
+  if(error){
+    msg.textContent='Error al enviar. Intenta de nuevo.';
+    btn.disabled=false;btn.textContent='Enviar enlace';
+  } else {
+    msg.textContent='';
+    document.getElementById('auth-sheet-step1').style.display='none';
+    document.getElementById('auth-sheet-step2').style.display='block';
+  }
+}
+function _showSignedInSheet(){
+  const s=document.getElementById('auth-sheet');
+  document.getElementById('auth-sheet-step1').style.display='none';
+  document.getElementById('auth-sheet-step2').style.display='none';
+  document.getElementById('auth-sheet-step3').style.display='block';
+  document.getElementById('auth-signed-email').textContent=_sbUser?.email||'';
+  if(s){s.style.display='flex';setTimeout(()=>s.classList.add('open'),10);}
+}
+async function signOutAndClose(){
+  await _sbSignOut();
+  closeAuthSheet();
+  // Reset steps
+  document.getElementById('auth-sheet-step1').style.display='block';
+  document.getElementById('auth-sheet-step3').style.display='none';
+}
 const LB_SVG=`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="13" height="13" style="display:block;flex-shrink:0"><rect width="64" height="64" rx="9" fill="#2C3440"/><circle cx="21" cy="32" r="12" fill="#00B020" opacity=".9"/><circle cx="32" cy="32" r="12" fill="#3CBEDB" opacity=".85"/><circle cx="43" cy="32" r="12" fill="#FF8000" opacity=".9"/></svg>`;
 
 /* ── Lucide Icons — sistema de íconos Otrofestiv ── */
@@ -2802,15 +2994,15 @@ function loadState(){
     const _vm=localStorage.getItem(`${FESTIVAL_STORAGE_KEY}viewmodes`);if(_vm){try{const _v=JSON.parse(_vm);if(_v.miPlan)miPlanViewMode=_v.miPlan;if(_v.intereses)interesesViewMode=_v.intereses;}catch(e){}}
   }catch(e){}
 }
-function saveWL(){try{localStorage.setItem(`${FESTIVAL_STORAGE_KEY}wl`,JSON.stringify([...watchlist]));}catch(e){}}
-function saveWatched(){try{localStorage.setItem(`${FESTIVAL_STORAGE_KEY}watched`,JSON.stringify([...watched]));}catch(e){}}
+function saveWL(){try{localStorage.setItem(`${FESTIVAL_STORAGE_KEY}wl`,JSON.stringify([...watchlist]));}catch(e){}_cloudSave();}
+function saveWatched(){try{localStorage.setItem(`${FESTIVAL_STORAGE_KEY}watched`,JSON.stringify([...watched]));}catch(e){}_cloudSave();}
 function saveRating(title,rating){
   if(rating>0) filmRatings[title]=rating; else delete filmRatings[title];
   try{localStorage.setItem(`${FESTIVAL_STORAGE_KEY}ratings`,JSON.stringify(filmRatings));}catch(e){}
 }
-function saveAV(){try{localStorage.setItem(`${FESTIVAL_STORAGE_KEY}av3`,JSON.stringify(availability));}catch(e){}}
-function saveSavedAgenda(){try{localStorage.setItem(`${FESTIVAL_STORAGE_KEY}saved`,JSON.stringify(savedAgenda));}catch(e){}}
-function savePrio(){try{localStorage.setItem(`${FESTIVAL_STORAGE_KEY}prio`,JSON.stringify([...prioritized]));}catch(e){}}
+function saveAV(){try{localStorage.setItem(`${FESTIVAL_STORAGE_KEY}av3`,JSON.stringify(availability));}catch(e){}_cloudSave();}
+function saveSavedAgenda(){try{localStorage.setItem(`${FESTIVAL_STORAGE_KEY}saved`,JSON.stringify(savedAgenda));}catch(e){}_cloudSave();}
+function savePrio(){try{localStorage.setItem(`${FESTIVAL_STORAGE_KEY}prio`,JSON.stringify([...prioritized]));}catch(e){}_cloudSave();}
 function saveLastSlot(){try{localStorage.setItem(`${FESTIVAL_STORAGE_KEY}lastslot`,JSON.stringify(lastRemovedSlots));}catch(e){}}
 function saveDelays(){try{localStorage.setItem(`${FESTIVAL_STORAGE_KEY}delays`,JSON.stringify(filmDelays));}catch(e){}}
 function _delayKey(s){return(s._title||s.title||'')+'|'+(s.day||'')+'|'+(s.time||'');}
@@ -7021,6 +7213,8 @@ function dismissSplash(){
   if(s){s.classList.add('fade-out');setTimeout(()=>s.remove(),520);}
   loadFestival(_splashSelectedFestId||'aff2026').catch(e=>console.error('Error init festival:',e));
 }
+// Inicializar Supabase al cargar la página
+_sbInit();
 (function(){
   // Detecta el festival en curso por fecha. Prioridad:
   // 1. Festival que está sucediendo hoy · 2. El próximo más cercano · 3. El más reciente
@@ -7221,6 +7415,31 @@ if('serviceWorker' in navigator){
 </script>
 
 <!-- Festival switcher bottom sheet -->
+<div class="auth-sheet" id="auth-sheet" onclick="if(event.target===this)closeAuthSheet()">
+  <div class="auth-sheet-inner">
+    <div id="auth-sheet-step1">
+      <div class="auth-sheet-title">Sincronizar tu plan</div>
+      <div class="auth-sheet-sub">Ingresa tu email y te enviamos un enlace para acceder. Sin contraseña. Tu plan se sincroniza entre todos tus dispositivos.</div>
+      <input class="auth-email-inp" id="auth-email-inp" type="email" placeholder="tu@email.com" autocomplete="email" onkeydown="if(event.key==='Enter')submitAuthEmail()">
+      <button class="auth-send-btn" id="auth-send-btn" onclick="submitAuthEmail()">Enviar enlace</button>
+      <div class="auth-msg" id="auth-msg"></div>
+      <span class="auth-cancel" onclick="closeAuthSheet()">Cancelar</span>
+    </div>
+    <div id="auth-sheet-step2" style="display:none;text-align:center">
+      <div class="auth-check-icon">✉️</div>
+      <div class="auth-sheet-title">Revisa tu email</div>
+      <div class="auth-sheet-sub">Te enviamos un enlace de acceso. Ábrelo desde este dispositivo para sincronizar tu plan.</div>
+      <span class="auth-cancel" onclick="closeAuthSheet()">Cerrar</span>
+    </div>
+    <div id="auth-sheet-step3" style="display:none">
+      <div class="auth-sheet-title">Tu cuenta</div>
+      <div class="auth-sheet-sub" id="auth-signed-email" style="color:var(--white)"></div>
+      <div class="auth-sheet-sub" style="margin-top:var(--sp-2)">Tu plan se sincroniza automáticamente entre todos tus dispositivos.</div>
+      <button class="auth-signout-btn" onclick="signOutAndClose()">Cerrar sesión</button>
+      <span class="auth-cancel" onclick="closeAuthSheet()">Cancelar</span>
+    </div>
+  </div>
+</div>
 <div class="fs-overlay" id="fs-overlay" onclick="closeFestivalSheet()"></div>
 <div class="fs-sheet" id="fs-sheet">
   <div class="fs-handle"></div>
