@@ -4843,7 +4843,7 @@ function _renderSavedAgendaHTML(){
   const currentDayNum=dayIdx>=0?dayIdx+1:null;
   const viewedCount=all.filter(s=>watched.has(s._title)).length;
   const progressPct=dayIdx>=0?Math.round((dayIdx/5)*100):0;
-  const _mpSwitch=`<button class="mplan-act-btn" onclick="document.getElementById('mplan-detail')?.scrollIntoView({behavior:'smooth',block:'start'})" title="Ir al detalle del día">
+  const _mpSwitch=`<button class="mplan-act-btn" onclick="(()=>{const el=document.getElementById('mplan-detail');if(!el)return;const tbH=parseInt(getComputedStyle(document.documentElement).getPropertyValue('--tb-total'))||100;window.scrollTo({top:el.getBoundingClientRect().top+window.scrollY-tbH-12,behavior:'smooth'});})()" title="Ir al detalle del día">
     <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><polyline points="19 12 12 19 5 12"/></svg>
     Ver día
   </button>`;
