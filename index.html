@@ -1017,7 +1017,7 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:var(--t
    ICONO      .ag-fi-btn .action-btn .film-switch
               sin texto, padding mínimo, bg contextual
 ══════════════════════════════════════════════════════ */
-.av-calc-btn{width:100%;margin-top:var(--sp-3);padding:var(--sp-3) var(--sp-4);border-radius:var(--r-md);background:var(--orange);border:none;color:var(--bg);font-size:var(--t-sm);font-weight:var(--w-display);cursor:pointer;font-family:var(--font);transition:opacity var(--tr-base)}
+.av-calc-btn{width:100%;margin-top:var(--sp-5);padding:var(--sp-btn) var(--sp-4);border-radius:var(--r-md);background:var(--amber);border:none;color:#000;font-size:var(--t-base);font-weight:var(--w-bold);cursor:pointer;font-family:var(--font);transition:opacity var(--tr-base)}
 .av-calc-btn:hover{opacity:.88}
 .av-calc-btn:disabled{opacity:.35;cursor:default}
 
@@ -1859,6 +1859,7 @@ html.splash-skip #otrofestiv-splash{display:none}
 .av-block-rm:hover{color:var(--white)}
 .av-add-unavail{display:inline-flex;align-items:center;gap:var(--sp-1);background:none;border:1px solid var(--bdr);border-radius:var(--r-pill);color:var(--gray2);font-size:var(--t-sm);font-weight:var(--w-semi);font-family:var(--font);padding:var(--sp-2) var(--sp-3);cursor:pointer;transition:color var(--tr-base),border-color var(--tr-base)}
 .av-add-unavail:hover{color:var(--white);border-color:var(--gray)}
+.sec-hdr-opt{font-size:var(--t-xs);color:var(--gray);font-weight:var(--w-regular);letter-spacing:0;text-transform:none;margin-left:4px}
 .av-sheet-overlay{position:fixed;inset:0;background:var(--overlay-70);z-index:9100;display:none;align-items:flex-end;justify-content:center}
 .av-sheet-overlay.open{display:flex}
 .av-sheet{background:var(--surf-2);border-radius:var(--r-sheet) var(--r-sheet) 0 0;padding:8px 20px calc(env(safe-area-inset-bottom) + 32px);width:100%;max-width:480px;box-sizing:border-box}
@@ -6216,8 +6217,8 @@ function renderAgenda(){
         <button class="av-calc-btn" onclick="runCalc()">
           Calcular opciones
         </button>
-        <div style="margin-top:var(--sp-4)">
-          <div class="sec-hdr" style="margin-bottom:var(--sp-2)">${ICONS.clock} Disponibilidad <span style="font-size:var(--t-xs);color:var(--gray);font-weight:var(--w-regular);letter-spacing:0;text-transform:none;margin-left:4px">opcional</span></div>
+        <div style="margin-top:var(--sp-5);border-top:1px solid var(--bdr-l);padding-top:var(--sp-4)">
+          <div class="sec-hdr" style="margin-bottom:var(--sp-2)">${ICONS.clock} Disponibilidad <span class="sec-hdr-opt">opcional</span></div>
           <div style="font-size:var(--t-sm);color:var(--gray2);margin-bottom:var(--sp-3);line-height:1.5">Tu plan no incluirá funciones en estos horarios.</div>
           <div id="av-blocks-list"></div>
           <button class="av-add-unavail" onclick="openAvSheet()">${ICONS.plus} No disponible</button>
