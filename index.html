@@ -2213,11 +2213,17 @@ function _buildPosterSVG(o){
   // Centre title+duration block inside inner box
   const dH=o.duration?19:0;
   const bH=ls.length*LD+dH;
-  const boxCenter=BY+Math.round(BH/2);
-  const sY=boxCenter-Math.round(bH/2)+LD-2;
+  // ZONAS FIJAS — el layout no cambia con el contenido
+  // Duración: siempre en Y=158 (fija, nunca se mueve)
+  // Título: centrado en zona 54-148, ajustado por número de líneas
+  const DUR_Y=158;
+  const TITLE_ZONE_TOP=54,TITLE_ZONE_BOT=o.duration?148:158;
+  const titleZoneCenter=Math.round((TITLE_ZONE_TOP+TITLE_ZONE_BOT)/2);
+  const titleBlockH=ls.length*LD;
+  const sY=titleZoneCenter-Math.round(titleBlockH/2)+LD-4;
 
   const tl=ls.map((l,i)=>`<text x="${VW/2}" y="${sY+i*LD}" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,sans-serif" font-size="10" font-weight="700" fill="#F0EBE0">${l}</text>`).join('');
-  const dT=o.duration?`<text x="${VW/2}" y="${sY+ls.length*LD+8}" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,sans-serif" font-size="8" font-weight="500" fill="${o.accent}">${o.duration}</text>`:'';
+  const dT=o.duration?`<text x="${VW/2}" y="${DUR_Y}" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,sans-serif" font-size="8" font-weight="500" fill="${o.accent}">${o.duration}</text>`:'';
 
   const svg=`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${VW} ${VH}">
     <rect width="${VW}" height="${VH}" fill="#1E1B17"/>
