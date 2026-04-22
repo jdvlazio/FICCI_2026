@@ -4651,6 +4651,10 @@ function renderContextualHeader(){
     const{displayTitle:dt}=parseProgramTitle(next._title||'');
     const vc=vcfg(next.venue);
     const src=getFilmPoster(next)||'';
+    // REGLA — badge ctx-header: solo cuando aporta info específica que el eyebrow no tiene.
+    //   ✅ "En X min" — tiempo exacto; eyebrow solo dice "Próxima función"
+    //   ❌ "Ahora"   — redundante; eyebrow ya dice "En pantalla ahora"
+    //   Todo estado nuevo debe pasar este filtro antes de añadir badge.
     const badge=isNow
       ?''
       :`<span class="ctx-next-badge">En ${minsUntil} min</span>`;
