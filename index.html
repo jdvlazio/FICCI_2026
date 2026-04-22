@@ -2322,7 +2322,7 @@ function getFilmPoster(f){
 // Para cortos individuales dentro de un film_list (no tienen objeto film completo)
 function getCortoItemPoster(item){
   if(!item) return null;
-  return getCortoItemPoster(item);
+  return getPosterSrc(item.title,true)||null;
 }
 
 // ═══════════════════════════════════════════════════════════════
