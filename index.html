@@ -6449,6 +6449,18 @@ function openPelSheet(title){
   document.getElementById('pel-sheet').classList.add('open');
 }
 function closePelSheet(){
+  // Si hay contenido padre guardado, volvemos al programa en lugar de cerrar
+  if(_cortoParentHtml){
+    const inner=document.getElementById('pel-sheet-inner');
+    if(inner){
+      inner.innerHTML=_cortoParentHtml;
+      _cortoParentHtml=null;
+      const ps=document.getElementById('pel-sheet');
+      if(ps) ps.scrollTop=0;
+      return;
+    }
+  }
+  _cortoParentHtml=null;
   document.getElementById('pel-overlay').classList.remove('open');
   document.getElementById('pel-sheet').classList.remove('open');
 }
@@ -6540,9 +6552,18 @@ function countryToFlags(countryStr){
 // SHEET INDIVIDUAL DE CORTOMETRAJE
 // Trata cada corto como película — poster, info, rating, Letterboxd
 // ─────────────────────────────────────────────────────────────
+let _cortoParentHtml=null; // guarda el HTML del programa padre
+
 function openCortoSheet(title, country, duration, section, flags, director, genre, synopsis){
   const inner=document.getElementById('pel-sheet-inner');
   if(!inner) return;
+  // Guardar contenido padre si el sheet ya está abierto (venimos de un programa)
+  const pelSheet=document.getElementById('pel-sheet');
+  if(pelSheet&&pelSheet.classList.contains('open')){
+    _cortoParentHtml=inner.innerHTML;
+  } else {
+    _cortoParentHtml=null;
+  }
   // Find richer data from FILMS film_list if available
   let richItem=null;
   for(const f of FILMS){
