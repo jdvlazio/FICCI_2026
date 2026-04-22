@@ -3859,7 +3859,7 @@ function renderPrioStrip(){
     </div>`;
   const chips=[...prioritized].map(t=>{
     const f=FILMS.find(fi=>fi.title===t);
-    const p=f?.is_cortos?makeProgramPoster(t):getPosterSrc(t,false);
+    const p=f?.is_cortos?(getPosterSrc(t,true)||makeProgramPoster(t)):getPosterSrc(t,false);
     const _safeChipT=t.replace(/'/g,"\'");
     const img=p?`<img class="prio-chip-poster" src="${p}" loading="eager" style="object-fit:cover;cursor:pointer" onclick="event.stopPropagation();openPelSheet('${_safeChipT}')" onerror="this.outerHTML='<div class=prio-chip-ph>🎬</div>'" alt="">`:`<div class="prio-chip-ph">${ICONS.star}</div>`;
     const{displayTitle,progSuffix}=parseProgramTitle(t);
@@ -3888,7 +3888,7 @@ function renderFilmListHTML(){
     const f=FILMS.find(fi=>fi.title===t);
     const hasFuture=FILMS.some(fi=>fi.title===t&&!screeningPassed(fi));
     const FICCI_POSTER_AG='https://ficcifestival.com/sites/default/files/2026-02/logo-ficci65_2.png';
-    const posterSrc=f?(f.is_cortos?makeProgramPoster(t):getPosterSrc(t,false)):null;
+    const posterSrc=f?(f.is_cortos?(getPosterSrc(t,true)||makeProgramPoster(t)):getPosterSrc(t,false)):null;
     const posterHtml=posterSrc?`<img class="ag-fi-poster" src="${posterSrc}" loading="eager" style="object-fit:cover" onerror="this.outerHTML='<div class=ag-fi-poster-ph>🎬</div>'" alt="">`:`<div class="ag-fi-poster-ph">🎬</div>`;
     const isPrio=prioritized.has(t);
     const safeT=t.replace(/"/g,'&quot;');
@@ -3960,7 +3960,7 @@ function renderFilmListHTML(){
     const _sortedW=[...watchedList].sort((a,b)=>(filmRatings[b]||0)-(filmRatings[a]||0));
     html+=`<div class="ag-film-grid">${_sortedW.map(t=>{
       const f=FILMS.find(fi=>fi.title===t);
-      const posterSrc=f?(f.is_cortos?makeProgramPoster(t):getPosterSrc(t,false)):null;
+      const posterSrc=f?(f.is_cortos?(getPosterSrc(t,true)||makeProgramPoster(t)):getPosterSrc(t,false)):null;
       const _yvOp=festivalEnded()?'':';opacity:.55';
       const posterHtml=posterSrc?`<img class="ag-fi-poster" src="${posterSrc}" loading="eager" style="object-fit:cover${_yvOp}" onerror="this.outerHTML='<div class=ag-fi-poster-ph>🎬</div>'" alt="">`:`<div class="ag-fi-poster-ph" style="opacity:${festivalEnded()?1:.55}">🎬</div>`;
       const safeT=t.replace(/"/g,'&quot;');
