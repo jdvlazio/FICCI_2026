@@ -2966,9 +2966,20 @@ function renderMiPlanCalendar(){
 
   // ── Layout constants ──
   const PHDR=44;   // px for sticky day header
-  const PPH=window.innerWidth<=600?40:64; // mobile: 46px/hr, desktop: 64px/hr
-  const SH=9;      // start hour
-  const EH=25;     // end hour (1am = 25 to show late-night films)
+  const PPH=window.innerWidth<=600?40:64; // mobile: 40px/hr, desktop: 64px/hr
+
+  // REGLA: rango dinámico — calcular desde las funciones reales del plan.
+  // Buffer de 45min antes del inicio y después del final, snapped a hora entera.
+  // Límites absolutos: nunca antes de las 8:00, nunca después de las 26:00.
+  const _allMins=schedule.flatMap(s=>{
+    const st=toMin(s.time), en=st+parseDur(s.duration);
+    return[st,en];
+  });
+  const _minStart=Math.min(..._allMins);
+  const _maxEnd=Math.max(..._allMins);
+  const SH=Math.max(8, Math.floor((_minStart-45)/60));
+  const EH=Math.min(26, Math.ceil((_maxEnd+45)/60));
+
   const TOTAL=(EH-SH)*PPH;
   function toPx(min){return(min-SH*60)/60*PPH;}
 
