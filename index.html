@@ -631,7 +631,7 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:var(--t
 /* ── View switch — sistema unificado (Programa / Mi Plan / Intereses) ── */
 .pmode-view-switch,.miplan-view-switch,.intereses-view-switch{display:flex;align-items:center;gap:2px;background:var(--surf-2);border:1px solid var(--bdr);border-radius:var(--r-md);padding:3px}
 .pmode-view-btn,.miplan-view-btn,.intereses-view-btn{width:24px;height:24px;display:flex;align-items:center;justify-content:center;border-radius:var(--r-sm);cursor:pointer;color:var(--gray);background:none;border:none;font-family:var(--font);transition:all var(--tr-base)}
-.pmode-view-btn.on,.miplan-view-btn.on,.intereses-view-btn.on{background:var(--amber);color:var(--black)}
+.pmode-view-btn.on,.miplan-view-btn.on,.intereses-view-btn.on{background:var(--surf);color:var(--white)}
 .pmode-filter-btn{display:flex;align-items:center;gap:4px;font-size:var(--t-sm);font-weight:var(--w-bold);color:var(--gray2);background:none;border:none;cursor:pointer;font-family:var(--font);padding:4px 0;transition:color var(--tr-base);white-space:nowrap}
 .pmode-filter-btn.active{color:var(--amber)}
 /* Chips de categoría (solo Explorar) */
@@ -926,6 +926,9 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:var(--t
 /* Barra de modo Intereses */
 .intereses-mode-bar{display:flex;align-items:center;justify-content:space-between;padding:var(--sp-2) 0;margin-bottom:var(--sp-1)}
 .intereses-mode-title{font-size:var(--t-base);font-weight:var(--w-bold);color:var(--white);display:flex;align-items:center;gap:var(--sp-1)}
+.intereses-cnt{font-size:var(--t-xs);font-weight:var(--w-bold);color:var(--gray);background:var(--surf-2);border:1px solid var(--bdr);border-radius:20px;padding:1px 7px;letter-spacing:.3px}
+.ya-vistas-bar{display:flex;align-items:center;padding:var(--sp-2) 0;margin-bottom:var(--sp-1)}
+.ya-vistas-lbl{font-size:var(--t-base);font-weight:var(--w-bold);color:var(--gray2);display:flex;align-items:center;gap:var(--sp-1)}
 /* Vista Intereses — view switch (estilos base en sistema unificado arriba) */
 .ag-film-item{position:relative;border-radius:var(--r-md);overflow:hidden;background:var(--card-a);border:1px solid var(--bdr);cursor:default}
 .ag-film-item.watched-item{opacity:.55}
@@ -4010,12 +4013,12 @@ function renderFilmListHTML(){
   </div>`;
   const _listMode=interesesViewMode==='list';
   if(prioList.length){
-    html+=`<div class="intereses-mode-bar"><div class="intereses-mode-title">${ICONS.star} Prioridades ${prioList.length}/${PRIO_LIMIT}</div>${_iSwitch}</div>`;
+    html+=`<div class="intereses-mode-bar"><div class="intereses-mode-title">${ICONS.star} Prioridades <span class="intereses-cnt">${prioList.length}/${PRIO_LIMIT}</span></div>${_iSwitch}</div>`;
     html+=`<div class="ag-film-grid${_listMode?' list-mode':''}">${prioList.map(t=>mkItem(t,_listMode)).join('')}</div>`;
   }
   if(nonPrioList.length){
     if(prioList.length) html+=`<div class="ag-list-sep"></div>`;
-    html+=`<div class="intereses-mode-bar"><div class="intereses-mode-title">${ICONS.heart} Intereses ${nonPrioList.length}</div>${prioList.length?'':_iSwitch}</div>`;
+    html+=`<div class="intereses-mode-bar"><div class="intereses-mode-title">${ICONS.heart} Intereses <span class="intereses-cnt">${nonPrioList.length}</span></div>${prioList.length?'':_iSwitch}</div>`;
     html+=`<div class="ag-film-grid${_listMode?' list-mode':''}">${nonPrioList.map(t=>mkItem(t,_listMode)).join('')}</div>`;
   }
   if(!allPending.length&&!watchedList.length){
@@ -4027,13 +4030,13 @@ function renderFilmListHTML(){
     </div>`;
   }
   if(watchedList.length){
-    html+=`<div class="prio-strip-title" style="margin-top:${allPending.length?'10px':'0'};margin-bottom:var(--sp-1);color:var(--green)">${ICONS.check} Ya vistas</div>`;
+    html+=`<div class="ya-vistas-bar"><div class="ya-vistas-lbl">${ICONS.check} Ya vistas</div></div>`;
     const _sortedW=[...watchedList].sort((a,b)=>(filmRatings[b]||0)-(filmRatings[a]||0));
     html+=`<div class="ag-film-grid">${_sortedW.map(t=>{
       const f=FILMS.find(fi=>fi.title===t);
       const posterSrc=f?(getFilmPoster(f)):null;
-      const _yvOp=festivalEnded()?'':';opacity:.55';
-      const posterHtml=posterSrc?`<img class="ag-fi-poster" src="${posterSrc}" loading="eager" style="object-fit:cover${_yvOp}" onerror="this.outerHTML='<div class=ag-fi-poster-ph>🎬</div>'" alt="">`:`<div class="ag-fi-poster-ph" style="opacity:${festivalEnded()?1:.55}">🎬</div>`;
+      const _yvOp=festivalEnded()?'':';opacity:.70';
+      const posterHtml=posterSrc?`<img class="ag-fi-poster" src="${posterSrc}" loading="eager" style="object-fit:cover${_yvOp}" onerror="this.outerHTML='<div class=ag-fi-poster-ph>🎬</div>'" alt="">`:`<div class="ag-fi-poster-ph" style="opacity:${festivalEnded()?1:.70}">🎬</div>`;
       const safeT=t.replace(/"/g,'&quot;');
       const safeTQ2=t.replace(/'/g,"\'");
       const{displayTitle}=parseProgramTitle(t);
