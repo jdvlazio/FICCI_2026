@@ -4799,12 +4799,12 @@ function renderContextualHeader(){
         :'Todo calificado · ¡Gracias por estar!';
     const ratedCount=Object.keys(filmRatings).filter(t=>watched.has(t)||FILMS.some(f=>f.is_cortos&&f.film_list?.some(c=>c.title===t))).length;
     const mainTitle=totalWatched===0
-      ?'FICCI 65 ha terminado'
+      ?((FESTIVAL_CONFIG[_activeFestId]||{}).name||'El festival')+' ha terminado'
       :`Viste ${totalWatched} película${totalWatched!==1?'s':''}`;
     return`<div class="ctx-header" style="background:linear-gradient(180deg,rgba(245,158,11,.08) 0%,transparent 120%);padding-bottom:8px">
       <div class="ctx-eyebrow">
         <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
-        FICCI 65 · 14–19 ABR 2026
+        ${(FESTIVAL_CONFIG[_activeFestId]||{}).name||''} · ${(FESTIVAL_CONFIG[_activeFestId]||{}).dates||''}
       </div>
       <div class="ctx-main-title">${mainTitle}</div>
       <div class="ctx-sub" style="margin-bottom:${totalWatched?'12px':'0'}">${subMsg}</div>
@@ -4839,7 +4839,7 @@ function renderContextualHeader(){
     return`<div class="ctx-header">
       <div class="ctx-eyebrow">
         <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-        FICCI 65
+        ${(FESTIVAL_CONFIG[_activeFestId]||{}).name||''}
       </div>
       <div class="ctx-main-title">El festival empieza ${label}</div>
       <div class="ctx-sub">Cartagena · 14–19 de abril</div>
@@ -4999,7 +4999,7 @@ function renderContextualHeader(){
     return`<div class="ctx-header">
       <div class="ctx-eyebrow" style="color:var(--gray)">
         <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
-        Tu ${dayName.toLowerCase()} en FICCI 65
+        Tu ${dayName.toLowerCase()} en ${(FESTIVAL_CONFIG[_activeFestId]||{}).name||'el festival'}
       </div>
       <div class="ctx-main-title">${total} película${total!==1?'s':''} ${total===1?'vista':'vistas'} hoy</div>
       ${pendingRating.length?`<div class="ctx-sub" style="margin-bottom:12px">${pendingRating.length===1?'Una pendiente de calificar.':'Podés calificarlas ahora.'}</div>`:`<div style="margin-bottom:12px"></div>`}
@@ -6190,7 +6190,7 @@ function renderAgenda(){
       // Post-festival: Planear no tiene función — redirigir a Mi Plan
       view.innerHTML=`<div style="text-align:center;padding:48px 24px">
         <div style="font-size:var(--t-display);margin-bottom:16px">🎬</div>
-        <div style="font-weight:var(--w-bold);color:var(--white);font-size:var(--t-lg);margin-bottom:8px">FICCI 65 ha terminado</div>
+        <div style="font-weight:var(--w-bold);color:var(--white);font-size:var(--t-lg);margin-bottom:8px">${(FESTIVAL_CONFIG[_activeFestId]||{}).name||'El festival'} ha terminado</div>
         <div style="font-size:var(--t-sm);color:var(--gray);line-height:1.6;margin-bottom:24px;max-width:260px;margin-left:auto;margin-right:auto">
           El festival ya concluyó. Revisá las películas que viste en Mi Plan.
         </div>
@@ -6972,7 +6972,6 @@ function _closeTopSheet(){
   // Cerrar en orden de prioridad (el más reciente primero)
   if(document.getElementById('pv-rating-sheet')?.classList.contains('open')){closePVRating();return true;}
   if(document.getElementById('conflict-sheet')?.classList.contains('open')){closeConflictSheet();return true;}
-  if(document.getElementById('wl-add-sheet')?.classList.contains('open')){closeWLAdd();return true;}
   if(document.getElementById('prio-limit-sheet')?.classList.contains('open')){closePrioLimit();return true;}
   if(document.getElementById('rating-overlay')?.classList.contains('open')){closeRatingSheet();return true;}
   if(document.getElementById('pel-sheet')?.classList.contains('open')){closePelSheet();return true;}
