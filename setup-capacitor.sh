@@ -10,6 +10,7 @@ cp sw.js www/
 cp icon-192.png www/
 cp icon-512.png www/
 cp -r festivals www/
+cp -r fonts www/
 echo "  ✓ www/ lista"
 
 # 2. Instalar dependencias
