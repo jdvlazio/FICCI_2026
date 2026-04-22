@@ -1083,6 +1083,7 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:var(--t
 .mplan-nav-day-name{font-size:var(--t-xs);font-weight:var(--w-bold);letter-spacing:.5px;text-transform:uppercase;color:var(--gray2)}
 .mplan-nav-day-num{font-family:var(--font);font-size:var(--t-lg);line-height:1;color:var(--white);font-weight:var(--w-semi)}
 .mplan-wk-col:last-child{border-right:none}
+.mplan-col-overview{min-width:72px;flex:none}
 .mplan-wk-col:hover{background:var(--amber-06)}
 .mplan-wk-col.wk-active{background:var(--amber-06)}
 .mplan-wk-col-hdr{height:44px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;border-bottom:1px solid var(--bdr);background:var(--surf);position:sticky;top:0;z-index:4}
@@ -1286,6 +1287,7 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:var(--t
   .mplan-col-desktop{display:none}
   .mplan-col-mobile{display:flex;flex:1}
   .mplan-col-mobile .mplan-wk-col-hdr{display:none}
+  .mplan-col-overview{display:flex}
 }
 @media(min-width:600px){
   .mplan-col-mobile{display:none}
@@ -2925,6 +2927,7 @@ function renderMiPlanCalendar(){
   // ── Navigation header ──
   const vs=miPlanViewStart;
   const ve=vs+1; // show days vs and ve (2 days)
+  // En overview: no paginador
   const lbl1=dayLabel(DAY_KEYS[vs]); // 'MIÉ 15'
   const lbl2=dayLabel(DAY_KEYS[ve]); // 'MIÉ 15'
   const isPastVs=nowDayIdx>=0&&vs<nowDayIdx;
@@ -3004,7 +3007,9 @@ function renderMiPlanCalendar(){
     </div>`;
   };
   const desktopCols=DAY_KEYS.map((_,i)=>renderCol(i,'mplan-col-desktop')).join('');
-  const mobileCols=[vs,ve].map(i=>renderCol(i,'mplan-col-mobile')).join('');
+  const mobileCols=miPlanViewMode==='overview'
+    ?DAY_KEYS.map((_,i)=>renderCol(i,'mplan-col-overview')).join('')
+    :[vs,ve].map(i=>renderCol(i,'mplan-col-mobile')).join('');
   const colsHtml=desktopCols+mobileCols;
 
   // ── Detail list for active day ──
@@ -4788,11 +4793,14 @@ function _renderSavedAgendaHTML(){
   const viewedCount=all.filter(s=>watched.has(s._title)).length;
   const progressPct=dayIdx>=0?Math.round((dayIdx/5)*100):0;
   const _mpSwitch=`<div class="miplan-view-switch">
-    <button class="miplan-view-btn${miPlanViewMode==='calendar'?' on':''}" id="mpbtn-cal" onclick="setMiPlanView('calendar')" title="Calendario">
-      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="3" y1="10" x2="21" y2="10"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="16" y1="2" x2="16" y2="6"/></svg>
-    </button>
     <button class="miplan-view-btn${miPlanViewMode==='list'?' on':''}" id="mpbtn-list" onclick="setMiPlanView('list')" title="Lista">
       <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="4" y1="6" x2="20" y2="6"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="18" x2="20" y2="18"/></svg>
+    </button>
+    <button class="miplan-view-btn${miPlanViewMode==='calendar'?' on':''}" id="mpbtn-cal" onclick="setMiPlanView('calendar')" title="2 días">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="3" y1="10" x2="21" y2="10"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="16" y1="2" x2="16" y2="6"/></svg>
+    </button>
+    <button class="miplan-view-btn${miPlanViewMode==='overview'?' on':''}" id="mpbtn-ov" onclick="setMiPlanView('overview')" title="Todo el festival">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
     </button>
   </div>`;
   const progressBar=currentDayNum?`<div class="festival-progress" style="display:flex;align-items:center;gap:8px">
@@ -6857,6 +6865,7 @@ function openCortoSheet(title, country, duration, section, flags, director, genr
 
 function setMiPlanView(mode){
   miPlanViewMode=mode;
+  document.getElementById('mpbtn-ov')?.classList.toggle('on',mode==='overview');
   document.getElementById('mpbtn-cal')?.classList.toggle('on',mode==='calendar');
   document.getElementById('mpbtn-list')?.classList.toggle('on',mode==='list');
   try{const _v=JSON.parse(localStorage.getItem(`${FESTIVAL_STORAGE_KEY}viewmodes`)||'{}');_v.miPlan=mode;localStorage.setItem(`${FESTIVAL_STORAGE_KEY}viewmodes`,JSON.stringify(_v));}catch(e){}
