@@ -6376,6 +6376,33 @@ function filterBySection(section){
   },50);
 }
 
+// ═══════════════════════════════════════════════════════════════
+// CARD TEMPLATE CANÓNICO — 3 tipos, misma estructura
+// ───────────────────────────────────────────────────────────────
+// TIPO 1: PELÍCULA (f.type !== 'event', !f.is_cortos)
+//   Header: poster + flags + título + duración + sección
+//   Body:   Función/Funciones · Dir. · Sinopsis · Letterboxd
+//   CTAs:   Intereses · Priorizar · Vista
+//
+// TIPO 2: PROGRAMA DE CORTOS (f.is_cortos === true)
+//   Header: poster + flags + título + duración + sección + N cortos
+//   Body:   Función/Funciones · Sinopsis · lista de cortos individuales
+//   CTAs:   Intereses · Priorizar · Vista
+//   → Cada corto individual abre TIPO 3 (openCortoSheet)
+//
+// TIPO 3: CORTO INDIVIDUAL (openCortoSheet)
+//   Header: poster + flags + título + duración + sección
+//   Body:   Dir. · Sinopsis
+//   CTAs:   Intereses · Calificar
+//
+// TIPO 4: EVENTO / TALLER / CONFERENCIA (f.type === 'event')
+//   Header: poster + título + duración + sección
+//   Body:   Horario · Descripción (sin Letterboxd, sin Dir.)
+//   CTAs:   Intereses · Vista
+//
+// REGLA: nunca agregar campos ad-hoc a un tipo.
+//        Si un festival nuevo tiene un campo nuevo → definir aquí primero.
+// ═══════════════════════════════════════════════════════════════
 function openPelSheet(title){
   const entry=Object.values((()=>{
     const m={};
