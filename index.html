@@ -4652,7 +4652,7 @@ function renderContextualHeader(){
     const vc=vcfg(next.venue);
     const src=getFilmPoster(next)||'';
     const badge=isNow
-      ?`<span class="ctx-next-badge" style="background:var(--green);color:var(--white)">Ahora</span>`
+      ?''
       :`<span class="ctx-next-badge">En ${minsUntil} min</span>`;
     const eyebrowLabel=isNow?'En pantalla ahora':'Próxima función';
 
