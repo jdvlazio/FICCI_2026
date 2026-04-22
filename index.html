@@ -2941,14 +2941,24 @@ function mplanBlockType(s){
 }
 
 
+// REGLA: scroll a mplan-detail — mide el topbar directamente del DOM,
+// no depende de --tb-total (incorrecto en mobile por incluir nav inferior).
+// Usar esta función en TODOS los contextos que necesiten bajar al detalle.
+function _scrollToMplanDetail(){
+  const el=document.getElementById('mplan-detail');
+  if(!el) return;
+  const tb=document.querySelector('.topbar');
+  const tbH=tb?Math.ceil(tb.getBoundingClientRect().height):86;
+  window.scrollTo({top:Math.max(0,el.getBoundingClientRect().top+window.scrollY-tbH-8),behavior:'smooth'});
+}
+
 function selectMiPlanDay(idx){
   activeMiPlanDay=idx;
   if(idx<miPlanViewStart||idx>=miPlanViewStart+2) miPlanViewStart=Math.min(idx,DAY_KEYS.length-2);
   renderAgenda();
   // Scroll to detail section below calendar
   setTimeout(()=>{
-    const detail=document.getElementById('mplan-detail');
-    if(detail) detail.scrollIntoView({behavior:'smooth',block:'start'});
+    _scrollToMplanDetail();
   },80);
 }
 function miPlanNav(dir){
@@ -4992,7 +5002,7 @@ function _renderSavedAgendaHTML(){
   const currentDayNum=dayIdx>=0?dayIdx+1:null;
   const viewedCount=all.filter(s=>watched.has(s._title)).length;
   const progressPct=dayIdx>=0?Math.round((dayIdx/5)*100):0;
-  const _mpSwitch=`<button class="mplan-act-btn" onclick="(()=>{const el=document.getElementById('mplan-detail');if(!el)return;const tbH=parseInt(getComputedStyle(document.documentElement).getPropertyValue('--tb-total'))||100;window.scrollTo({top:el.getBoundingClientRect().top+window.scrollY-tbH-12,behavior:'smooth'});})()" title="Ir al detalle del día">
+  const _mpSwitch=`<button class="mplan-act-btn" onclick="_scrollToMplanDetail()" title="Ir al detalle del día">
     <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><polyline points="19 12 12 19 5 12"/></svg>
     Ver día
   </button>`;
