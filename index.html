@@ -6498,7 +6498,7 @@ function openPelSheet(title){
   if(f.is_cortos&&f.film_list?.length){
     const cortoItems=f.film_list.map((item,n)=>{
       const thumb=getCortoItemPoster(item);
-      const thumbHtml=`<img src="${thumb}" loading="lazy" class="lb-poster" onerror="this.style.opacity=0" alt="">`;
+      const thumbHtml=thumb?`<img src="${thumb}" loading="lazy" class="lb-poster" onerror="this.remove()" alt="">`:`<div class="lb-poster-ph">🎬</div>`;
       const r=filmRatings[item.title]||0;
       const safeCorto=item.title.replace(/'/g,"\'");
       const safeCountry=(item.country||'').replace(/'/g,"\'");
