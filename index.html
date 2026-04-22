@@ -7156,11 +7156,12 @@ function render(){
   grid.innerHTML='<div class="poster-grid">'+films.map((f,i)=>{
     const FICCI_POSTER='https://ficcifestival.com/sites/default/files/2026-02/logo-ficci65_2.png';
     const isProg=f.is_cortos;
+    const isEvent=f.type==='event';
     const passed=screeningPassed(f);
     const inWL=watchlist.has(f.title),inW=watched.has(f.title);
     const isNow=isNowShowing(f);
     const safeT=f.title.replace(/'/g,"\'");
-    const posterSrc=isProg?makeProgramPoster(f.title):(getPosterSrc(f.title,false)||null);
+    const posterSrc=isEvent?makeEventPoster(f.title,f.duration):isProg?(getPosterSrc(f.title,true)||makeProgramPoster(f.title,null,f.section)):(getPosterSrc(f.title,false)||null);
     const posterImg=posterSrc
       ?`<img src="${posterSrc}" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block" onerror="this.style.opacity=0" alt="">`
       :``;
