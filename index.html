@@ -2222,11 +2222,10 @@ function makeProgramPoster(title, duration, section){
 
   const festName=((FESTIVAL_CONFIG&&FESTIVAL_CONFIG[_activeFestId])||Object.values(FESTIVAL_CONFIG||{})[0]||{}).shortName||'FESTIVAL';
 
-  // Detectar tipo desde la sección
-  const sec=(section||'').toLowerCase();
+  // Auto-lookup sección si no se pasa
+  const sec=(section||(FILMS.find(f=>f.title===title)?.section)||'').toLowerCase();
   const isComp=sec.includes('comp')||sec.includes('competencia');
 
-  // Línea 1 / Línea 2 — máx ~15 chars cada una para caber en 120px
   const l1=isComp?'COMPETENCIA':'PROGRAMA';
   const l2='CORTOMETRAJES';
 
@@ -3833,7 +3832,10 @@ function parseProgramTitle(t){
   let displayTitle=t, progSuffix='';
   const f=FILMS.find(fi=>fi.title===t);
   if(f?.is_cortos){
-    if(t.startsWith('Prog.')){
+    // "Cortos: Familia 12+" → displayTitle="Familia 12+"
+    if(t.match(/^Cortos:\s*/i)){
+      displayTitle=t.replace(/^Cortos:\s*/i,'');
+    } else if(t.startsWith('Prog.')){
       const m=t.match(/^(Prog\.[^—–]+)\s*[—–]\s*(.+)$/);
       if(m){displayTitle=m[2].trim();progSuffix=m[1].trim();}
     } else {
@@ -6422,7 +6424,7 @@ function openPelSheet(title){
   if(!entry) return;
   const{film:f,screenings}=entry;
   const inWL=watchlist.has(f.title),inW=watched.has(f.title),inPrio=prioritized.has(f.title);
-  const posterSrc=f.type==='event'?makeEventPoster(f.title,f.duration):(f.is_cortos?makeProgramPoster(f.title,f.duration):getPosterSrc(f.title,false));
+  const posterSrc=f.type==='event'?makeEventPoster(f.title,f.duration):(f.is_cortos?makeProgramPoster(f.title,f.duration,f.section):getPosterSrc(f.title,false));
   const posterHtml=posterSrc
     ?`<img class="pel-sheet-poster" src="${posterSrc}" loading="lazy" onerror="this.outerHTML='<div class=pel-sheet-poster-ph>🎬</div>'" alt="">`
     :`<div class="pel-sheet-poster-ph">🎬</div>`;
