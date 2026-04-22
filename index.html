@@ -1056,7 +1056,7 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:var(--t
 .saved-agenda-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:var(--sp-3)}
 .saved-agenda-clear{background:none;border:none;cursor:pointer;color:var(--gray2);font-size:var(--t-xs);font-weight:var(--w-semi);font-family:var(--font);padding:4px 2px;display:inline-flex;align-items:center;gap:4px;transition:color var(--tr-base)}
 .saved-agenda-clear:hover{color:var(--gray)}
-.mplan-act-row{display:flex;justify-content:flex-end;align-items:center;gap:var(--sp-2);margin-top:var(--sp-2)}
+.mplan-act-row{display:flex;justify-content:space-between;align-items:center;gap:var(--sp-2);margin-top:var(--sp-2)}
 .mplan-act-btn{display:inline-flex;align-items:center;gap:5px;background:none;border:1px solid var(--bdr);border-radius:var(--r-pill);color:var(--gray2);font-size:var(--t-sm);font-weight:var(--w-semi);font-family:var(--font);padding:5px var(--sp-3);cursor:pointer;transition:color var(--tr-base),border-color var(--tr-base);white-space:nowrap}
 .mplan-act-btn:hover{color:var(--white);border-color:var(--gray)}
 .mplan-act-btn:active{opacity:.7}
@@ -4863,9 +4863,9 @@ function _renderSavedAgendaHTML(){
       <div class="festival-progress-text"><span>Día <b>${currentDayNum}</b> de 6</span><span style="color:var(--orange)">${ICONS.check} ${viewedCount} ${viewedCount===1?'vista':'vistas'}</span></div>
       <div class="festival-progress-bar"><div class="festival-progress-fill" style="width:${progressPct}%"></div></div>
     </div>
-    ${_mpSwitch}
   </div>`:'';
   const planActions=`<div class="mplan-act-row">
+    ${_mpSwitch}
     <button class="mplan-act-btn" onclick="sharePlan()">${ICONS.share} Compartir</button>
     <button class="mplan-act-btn" onclick="exportICS()">${ICONS.calendar} Calendario</button>
   </div>`;
