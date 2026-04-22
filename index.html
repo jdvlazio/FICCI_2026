@@ -867,11 +867,17 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:var(--t
 
 .pel-sheet-prio-btn{background:none;border:1px solid var(--bdr);border-radius:var(--r-pill);color:var(--gray2);font-family:var(--font);font-size:var(--t-base);font-weight:var(--w-bold);padding:var(--sp-btn) 0;cursor:pointer;width:100%;margin-top:8px;transition:all var(--tr-base)}
 .pel-sheet-prio-btn.prio-on{background:var(--amber-10);border-color:var(--amber-30);color:var(--amber)}
-.pel-sheet-action-btn{flex:1;background:none;border:1px solid var(--bdr);border-radius:var(--r-pill);color:var(--gray2);font-family:var(--font);font-size:var(--t-caption);font-weight:var(--w-bold);padding:11px 4px;cursor:pointer;white-space:nowrap;min-width:0;transition:all var(--tr-base)}
+.pel-sheet-action-btn{flex:1;background:none;border:1px solid var(--bdr);border-radius:var(--r-pill);color:var(--gray2);font-family:var(--font);font-size:var(--t-caption);font-weight:var(--w-bold);padding:11px 4px;cursor:pointer;white-space:nowrap;min-width:0;transition:all var(--tr-base);display:inline-flex;align-items:center;justify-content:center;gap:var(--sp-1)}
 .pel-sheet-action-btn.act-on{background:rgba(39,174,96,.08);border-color:rgba(39,174,96,.25);color:var(--green)}
 .pel-sheet-action-btn.act-prio{background:var(--amber-10);border-color:var(--amber-30);color:var(--amber)}
 .pel-sheet-action-btn.btn-primary{background:var(--amber);border-color:var(--amber);color:#000}
 .pel-sheet-action-btn.btn-tertiary{background:none;border-color:transparent;color:var(--gray);flex:0;padding:11px 10px}
+.pel-sheet-ctas{display:flex;gap:var(--sp-1)}
+.pel-sheet-ctas-watched{display:flex;gap:8px}
+.pel-sheet-cortos-count{font-size:var(--t-sm);color:var(--orange);margin-top:2px}
+.pel-sheet-lb{display:inline-flex;align-items:center;gap:6px;margin-top:16px;opacity:.6;text-decoration:none}
+.pel-sheet-lb-text{font-size:var(--t-sm);color:var(--gray2)}
+.pel-sheet-remove-plan{width:100%;margin-top:8px;background:none;border:1px solid var(--bdr);border-radius:var(--r-pill);color:var(--gray2);font-family:var(--font);font-size:var(--t-caption);font-weight:var(--w-semi);padding:8px 0;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:var(--sp-1)}
 .pel-sheet-corto-item{display:flex;align-items:baseline;gap:8px;padding:5px 0;border-bottom:1px solid var(--bdr)}
 .pel-sheet-corto-item:last-child{border-bottom:none}
 .c-expand:hover{color:var(--orange)}
@@ -6439,31 +6445,40 @@ function filterBySection(section){
 }
 
 // ═══════════════════════════════════════════════════════════════
-// CARD TEMPLATE CANÓNICO — 3 tipos, misma estructura
+// ═══════════════════════════════════════════════════════════════
+// CARD TEMPLATE CANÓNICO — 4 tipos, misma shell, contenido variable
 // ───────────────────────────────────────────────────────────────
-// TIPO 1: PELÍCULA (f.type !== 'event', !f.is_cortos)
-//   Header: poster + flags + título + duración + sección
-//   Body:   Función/Funciones · Dir. · Sinopsis · Letterboxd
-//   CTAs:   Intereses · Priorizar · Vista
+// DISEÑO VISUAL (aplica a todos los tipos):
+//   Labels:    lowercase · letter-spacing .12em · color gray · .pel-sheet-section-lbl
+//   Dividers:  1px · var(--bdr) · margin 20px · .pel-sheet-divider
+//   Metadata:  director · género · año en una línea · .pel-sheet-metaline
+//   CTAs:      primario=ámbar (.btn-primary) · secundario=borde · terciario=sin borde (.btn-tertiary)
+//
+// TIPO 1: PELÍCULA (!f.is_cortos, f.type !== 'event')
+//   Header: poster + flags + título + duración + director·género·año + sección
+//   Body:   label función/funciones + filas día·hora·venue·única-función
+//           label sinopsis + texto + Letterboxd (link discreto)
+//   CTAs:   Intereses (ámbar si activo) · Priorizar · Vista (terciario)
 //
 // TIPO 2: PROGRAMA DE CORTOS (f.is_cortos === true)
-//   Header: poster + flags + título + duración + sección + N cortos
-//   Body:   Función/Funciones · Sinopsis · lista de cortos individuales
+//   Header: igual TIPO 1 + "N cortos"
+//   Body:   igual TIPO 1 + lista desplegable de cortos individuales
 //   CTAs:   Intereses · Priorizar · Vista
-//   → Cada corto individual abre TIPO 3 (openCortoSheet)
+//   → Cada corto abre openCortoSheet() → TIPO 3
 //
 // TIPO 3: CORTO INDIVIDUAL (openCortoSheet)
-//   Header: poster + flags + título + duración + sección
-//   Body:   Dir. · Sinopsis
-//   CTAs:   Intereses · Calificar
+//   Header: poster + flags + título + duración + director·género + sección
+//   Body:   label sinopsis + texto + Letterboxd
+//   CTAs:   Intereses · Priorizar · Calificar
+//   REGLA:  Intereses/Priorizar empaquetan al PROGRAMA PADRE (_findParentProgram)
 //
 // TIPO 4: EVENTO / TALLER / CONFERENCIA (f.type === 'event')
-//   Header: poster + título + duración + sección
-//   Body:   Horario · Descripción (sin Letterboxd, sin Dir.)
-//   CTAs:   Intereses · Vista
+//   Header: poster + título + duración + sección (sin flags)
+//   Body:   label horario + filas día·hora·venue
+//           label descripción + texto (sin Letterboxd)
+//   CTAs:   Intereses · Priorizar · Asistí (terciario)
 //
-// REGLA: nunca agregar campos ad-hoc a un tipo.
-//        Si un festival nuevo tiene un campo nuevo → definir aquí primero.
+// REGLA GLOBAL: campo nuevo → definir aquí primero, nunca ad-hoc en el template.
 // ═══════════════════════════════════════════════════════════════
 function openPelSheet(title){
   const entry=Object.values((()=>{
@@ -6548,7 +6563,7 @@ function openPelSheet(title){
         <div class="pel-sheet-dur">${ICONS.clock} ${f.duration}</div>
         ${_metaLine?`<div class="pel-sheet-metaline">${_metaLine}</div>`:''}
         ${f.section?`<div class="pel-sheet-sec" data-sec="${f.section.replace(/"/g,'&quot;')}" onclick="filterBySection(this.dataset.sec)">${secLabel} <span class="pel-sheet-sec-arrow">›</span></div>`:''}
-        ${f.is_cortos&&f.film_list?.length?`<div style="font-size:var(--t-sm);color:var(--orange);margin-top:2px">${f.film_list.length} corto${f.film_list.length!==1?'s':''}</div>`:''}
+        ${f.is_cortos&&f.film_list?.length?`<div class="pel-sheet-cortos-count">${f.film_list.length} corto${f.film_list.length!==1?'s':''}</div>`:''}
       </div>
     </div>
     <div class="pel-sheet-divider"></div>
@@ -6558,18 +6573,18 @@ function openPelSheet(title){
     <div class="pel-sheet-section-lbl">${f.type==='event'?'descripción':'sinopsis'}</div>
     <div class="pel-sheet-synopsis">${f.synopsis||'Sinopsis disponible próximamente.'}</div>
     ${cortosHtml}
-    ${(!f.is_cortos&&f.type!=='event')?`<a class="c-lb" href="${lbUrl(f.title)}" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:6px;margin-top:16px;opacity:.6;text-decoration:none">${LB_SVG}<span class="c-lb-text" style="font-size:var(--t-sm);color:var(--gray2)">Letterboxd</span></a>`:''}
+    ${(!f.is_cortos&&f.type!=='event')?`<a class="c-lb pel-sheet-lb" href="${lbUrl(f.title)}" target="_blank" rel="noopener">${LB_SVG}<span class="c-lb-text pel-sheet-lb-text">Letterboxd</span></a>`:''}
     <div class="pel-sheet-divider"></div>
-    ${inW?`<div style="display:flex;gap:8px">
-        <button onclick="toggleWatched('${safeT}',event);closePelSheet()" class="pel-sheet-action-btn act-on" style="display:inline-flex;align-items:center;justify-content:center;gap:var(--sp-1)">${ICONS.check} Ya vista</button>
-        ${!f.is_cortos?`<button onclick="closePelSheet();setTimeout(()=>openRatingSheet('${safeT}'),100)" class="pel-sheet-action-btn" style="display:inline-flex;align-items:center;justify-content:center;gap:var(--sp-1)">${ICONS.star} ${filmRatings['${safeT}']?'Cambiar':'Calificar'}</button>`:``}
+    ${inW?`<div class="pel-sheet-ctas-watched">
+        <button onclick="toggleWatched('${safeT}',event);closePelSheet()" class="pel-sheet-action-btn act-on">${ICONS.check} Ya vista</button>
+        ${!f.is_cortos?`<button onclick="closePelSheet();setTimeout(()=>openRatingSheet('${safeT}'),100)" class="pel-sheet-action-btn">${ICONS.star} ${filmRatings['${safeT}']?'Cambiar':'Calificar'}</button>`:``}
       </div>`
-    :`<div style="display:flex;gap:var(--sp-1)">
+    :`<div class="pel-sheet-ctas">
         <button id="pel-wl-btn" class="pel-sheet-action-btn${inWL?' act-on btn-primary':''}" onclick="togglePelWL('${safeT}',event)" style="display:inline-flex;align-items:center;justify-content:center;gap:var(--sp-1)">${inWL?ICONS.heartFill:ICONS.heart} ${inWL?'En Intereses':'Intereses'}</button>
         <button id="pel-prio-btn" class="pel-sheet-action-btn${inPrio?' act-prio':''}" onclick="togglePelPrio('${safeT}')" style="display:inline-flex;align-items:center;justify-content:center;gap:var(--sp-1)">${inPrio?ICONS.starFill:ICONS.star} ${inPrio?'Priorizada':'Priorizar'}</button>
         <button id="pel-vista-btn" class="pel-sheet-action-btn btn-tertiary" onclick="toggleWatched('${safeT}',event)" style="display:inline-flex;align-items:center;justify-content:center;gap:var(--sp-1)">${ICONS.check} ${f.type==='event'?'Asistí':'Vista'}</button>
       </div>`}
-    ${_inPlan&&activeView==='agenda'?`<button onclick="closePelSheet();removeFromAgenda('${safeT}')" style="width:100%;margin-top:8px;background:none;border:1px solid var(--bdr);border-radius:var(--r-pill);color:var(--gray2);font-family:var(--font);font-size:var(--t-caption);font-weight:var(--w-semi);padding:8px 0;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:var(--sp-1)">${ICONS.x} Quitar del plan</button>`:''}
+    ${_inPlan&&activeView==='agenda'?`<button onclick="closePelSheet();removeFromAgenda('${safeT}')" class="pel-sheet-remove-plan">${ICONS.x} Quitar del plan</button>`:''}
   `;
   document.getElementById('pel-overlay').classList.add('open');
   document.getElementById('pel-sheet').classList.add('open');
