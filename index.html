@@ -2178,6 +2178,13 @@ html.splash-skip #otrofestiv-splash{display:none}
 <div class="ag-view" id="ag-view"></div>
 
 <script>
+// ── Capgo: confirma que el bundle cargó correctamente ──────────
+// Sin esta llamada, Capgo hace rollback automático a los 10s.
+// El guard ?. asegura que en web (GitHub Pages) no hay error.
+if(window.Capacitor?.Plugins?.CapacitorUpdater){
+  window.Capacitor.Plugins.CapacitorUpdater.notifyAppReady();
+}
+
 // ═══════════════════════════════════════════════════════════════
 // 1 · DATOS DEL FESTIVAL
 //     FILMS, POSTERS, CUSTOM_POSTERS, FICCI_POSTER_URL
@@ -7659,9 +7666,9 @@ function dismissSplash(){
   loadFestival(_splashSelectedFestId||'aff2026').catch(e=>console.error('Error init festival:',e));
 }
 // Inicializar Supabase al cargar la página
-// Capgo OTA — notifica que la app arrancó correctamente
-if(window.CapacitorUpdater){
-  window.CapacitorUpdater.notifyAppReady();
+// Capgo OTA — notifica que la app arrancó correctamente (Cap 6)
+if(window.Capacitor?.Plugins?.CapacitorUpdater){
+  window.Capacitor.Plugins.CapacitorUpdater.notifyAppReady();
 }
 _sbInit();
 (function(){
