@@ -547,7 +547,7 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:var(--t
 .empty{grid-column:1/-1}
 .empty span{font-size:var(--t-display);display:block;margin-bottom:var(--sp-3)}
 .ok{color:var(--orange)}
-.conflict-label{color:var(--yellow)}
+.conflict-label{color:var(--gray)}
 .dur-long{color:var(--yellow);font-size:var(--t-sm);font-weight:var(--w-semi)}
 .travel-warn{font-size:var(--t-sm);color:var(--gray);display:flex;align-items:center;gap:var(--sp-1);padding:var(--sp-1) var(--sp-2);background:var(--amber-06);border:1px solid var(--bdr-l);border-radius:var(--r-sm);margin:2px 0}
 
@@ -1027,7 +1027,7 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:var(--t
 .ag-nav-dot.active{background:var(--amber-10);border-color:var(--orange);color:var(--orange)}
 .ag-nav-dot.active-star{background:var(--amber-10);border-color:var(--orange);color:var(--orange);font-size:var(--t-label)}
 .ag-nav-pos{display:none}
-.ag-conflicts{background:var(--surf);border:1px solid #3a2020;border-radius:var(--r);padding:var(--sp-3);margin-bottom:var(--sp-4)}
+.ag-conflicts{background:var(--surf);border:1px solid var(--bdr);border-radius:var(--r);padding:var(--sp-3);margin-bottom:var(--sp-4)}
 .ag-conflict-item{display:flex;align-items:flex-start;justify-content:space-between;gap:var(--sp-2);font-size:var(--t-sm);color:var(--gray);line-height:1.5;padding:var(--sp-2) 0;border-bottom:1px solid var(--white-05)}
 .ag-conflict-item:last-child{border-bottom:none}
 .ag-conflict-info{flex:1;min-width:0}
@@ -5540,7 +5540,7 @@ function buildResultHTML(scenarios){
     <div class="ag-summary-title" style="font-size:${isOptimo?'var(--t-md)':'var(--t-base)'};color:${isOptimo?'var(--white)':'var(--gray)'}">${planLabel}</div>
     <div class="ag-summary-text" style="margin-top:var(--sp-1)">
       <span class="ok"><b>${ok}</b></span> de <b>${total}</b> película${total!==1?'s':''}
-      ${bad?`<span class="conflict-label"> · <b>${bad}</b> con ajustes</span>`:''}
+      ${bad?`<span class="conflict-label"> · <b>${bad}</b> fuera del plan</span>`:''}
     </div>
     ${sc.incompatiblePriorities?`<div style="margin-top:var(--sp-2);font-size:var(--t-sm);color:var(--red)">Las prioridades se solapan entre sí — plan calculado sin forzarlas.</div>`:''}
     ${navHtml}
@@ -5568,13 +5568,13 @@ function buildResultHTML(scenarios){
       const{displayTitle}=parseProgramTitle(t);
       return`<span style="color:var(--gray2)">${displayTitle.length>22?displayTitle.slice(0,20)+'…':displayTitle}</span>`;
     }).join('<span style="color:var(--gray3)"> · </span>');
-    html+=`<div class="ag-conflicts" style="padding:var(--sp-btn) var(--sp-3) 8px">
-      <div style="font-size:var(--t-xs);color:var(--gray);margin-bottom:4px">
-        ${sc.excluded.length} sin encajar en este escenario
+    html+=`<div class="ag-conflicts">
+      <div style="font-size:var(--t-label);font-weight:var(--w-bold);color:var(--gray2);text-transform:uppercase;letter-spacing:.08em;margin-bottom:var(--sp-2)">
+        ${sc.excluded.length} no caben en esta variación
       </div>
-      <div style="font-size:var(--t-sm);line-height:1.5">${excNames}</div>
-      <div style="margin-top:6px;font-size:var(--t-xs);color:var(--gray)">
-        Prueba otro escenario o ajústalas en Mi Plan
+      <div style="font-size:var(--t-sm);color:var(--gray2);line-height:1.5">${excNames}</div>
+      <div style="margin-top:var(--sp-2);font-size:var(--t-xs);color:var(--gray)">
+        Prueba otra variación o ajústalas en Mi Plan
       </div>
     </div>`;
   }
