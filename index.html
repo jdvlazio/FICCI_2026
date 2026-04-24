@@ -2357,6 +2357,11 @@ function getFilmPoster(f){
   if(!f) return null;
   if(f.type==='event') return makeEventPoster(f.title,f.duration);
   if(f.is_cortos) return getPosterSrc(f.title,true)||makeProgramPoster(f.title,f.duration,f.section);
+  // is_programa: programa combinado de largometrajes — usa poster del primer film del program
+  if(f.is_programa&&f.film_list&&f.film_list.length){
+    const first=f.film_list[0];
+    return getPosterSrc(first.title||first,false)||getPosterSrc(f.title,false)||null;
+  }
   return getPosterSrc(f.title,false)||null;
 }
 
@@ -7648,8 +7653,27 @@ async function loadFestival(id){
         if(!r.ok)throw new Error('HTTP '+r.status);
         return r.json();
       });
-      cfg.films=data.films;
-      cfg.posters=data.posters;
+      // ── Explosión de screenings[] → objetos planos por función ──
+      // Si un film tiene screenings[], genera un objeto por función.
+      // Compatibilidad total con el formato plano existente (day/time/venue).
+      const exploded=[];
+      (data.films||[]).forEach(f=>{
+        if(Array.isArray(f.screenings)&&f.screenings.length){
+          const base=Object.assign({},f);
+          delete base.screenings;
+          f.screenings.forEach((s,i)=>{
+            exploded.push(Object.assign({},base,{
+              day:s.day,date:s.date,time:s.time,venue:s.venue||'',
+              day_order:s.day_order!==undefined?s.day_order:i,
+              sala:s.sala||''
+            }));
+          });
+        } else {
+          exploded.push(f);
+        }
+      });
+      cfg.films=exploded;
+      cfg.posters=data.posters||{};
       cfg.customPosters=data.customPosters||{};
       cfg.lbSlugs=data.lbSlugs||{};
     }catch(e){
