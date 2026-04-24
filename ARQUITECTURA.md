@@ -365,3 +365,87 @@ Siempre usar `screensConflict(a, b)` — incluye buffer de ±10 min.
 4. `loadFestival('[id]')` ya maneja el resto
 
 Para avisos de ese festival: agregar entrada en `NOTICES[]` con `festival: '[id]'`.
+
+---
+
+## 11. TIPOS DE FUNCIÓN — REFERENCIA CANÓNICA
+
+Cinco tipos de objeto en `films[]`. El render los detecta automáticamente.
+
+### 1. Largometraje individual
+```json
+{
+  "title": "Eureka",
+  "director": "Lisandro Alonso",
+  "duration": "147 min",
+  "day": "VIE 12", "date": 12, "time": "17:00",
+  "venue": "Biblioteca Juan Carlos Montoya - Sabaneta",
+  "section": "Proyecciones especiales",
+  "flags": "🇦🇷", "year": 2023
+}
+```
+
+### 2. Largometraje con múltiples funciones (formato nuevo — recomendado)
+`loadFestival()` explota `screenings[]` en objetos planos. Sin duplicar metadatos.
+```json
+{
+  "title": "Eureka",
+  "director": "Lisandro Alonso",
+  "duration": "147 min",
+  "section": "Proyecciones especiales",
+  "flags": "🇦🇷", "year": 2023,
+  "screenings": [
+    {"day": "VIE 12", "date": 12, "time": "17:00", "venue": "Biblioteca Juan Carlos Montoya - Sabaneta"},
+    {"day": "SÁB 13", "date": 13, "time": "19:00", "venue": "Teatro Baggenuff II - Copacabana"},
+    {"day": "MAR 16", "date": 16, "time": "19:00", "venue": "Teatro Caribe - Itagüí"}
+  ]
+}
+```
+
+### 3. Programa de cortos
+```json
+{
+  "title": "Competencia de Cortometrajes · Programa 1",
+  "is_cortos": true,
+  "duration": "82 min",
+  "day": "SÁB 13", "date": 13, "time": "17:00",
+  "venue": "La Capilla del Claustro Comfama - Medellín",
+  "film_list": [
+    {"title": "Jirapo", "director": "María Rojas Arias", "duration": "20 min", "country": "Colombia"},
+    {"title": "Kilómetro 126", "director": "Felipe López Gómez", "duration": "17 min", "country": "Colombia"}
+  ]
+}
+```
+
+### 4. Programa combinado de largometrajes
+Dos o más largos en un solo slot. Bloque indivisible. Poster: stack offset del primer y segundo film.
+`duration` se calcula automáticamente si no viene explícita.
+```json
+{
+  "title": "Portales + Las muchas muertes de Antônio Parreiras",
+  "is_programa": true,
+  "day": "VIE 12", "date": 12, "time": "18:30",
+  "venue": "Cine MAMM - Medellín",
+  "section": "Competencia central",
+  "film_list": [
+    {"title": "Portales", "duration": "16 min"},
+    {"title": "As Muitas Mortes de Antônio Parreiras", "duration": "65 min"}
+  ]
+}
+```
+
+### 5. Evento / taller / conversatorio
+```json
+{
+  "title": "Laboratorio internacional de sonido cinematográfico",
+  "type": "event",
+  "duration": "120 min",
+  "day": "LUN 15", "date": 15, "time": "09:00",
+  "venue": "Estudio Archipiélago Sonoro - Medellín",
+  "section": "Programación académica"
+}
+```
+
+### Venue — formato para festivales multi-sede
+`"[Nombre sala] - [Municipio]"` → funciona con el filtro de Lugar existente sin cambios.
+Ejemplo: `"Teatro Otraparte - Envigado"`, `"Cinemas Procinal Las Américas - Medellín"`
