@@ -449,3 +449,69 @@ Dos o más largos en un solo slot. Bloque indivisible. Poster: stack offset del 
 ### Venue — formato para festivales multi-sede
 `"[Nombre sala] - [Municipio]"` → funciona con el filtro de Lugar existente sin cambios.
 Ejemplo: `"Teatro Otraparte - Envigado"`, `"Cinemas Procinal Las Américas - Medellín"`
+
+---
+
+## 12. METADATA ESPECIAL DE FUNCIONES
+
+Campos opcionales que modifican comportamiento y UI. Aplican a cualquier tipo de función.
+
+### `has_qa: true` — Equipo presente / Q&A
+```json
+{
+  "title": "Andariega",
+  "has_qa": true,
+  ...
+}
+```
+**Comportamiento:**
+- El algoritmo de conflictos suma +30 min a `duration` al calcular solapamientos
+- Badge ámbar en card de lista (igual al sistema de notices)
+- Banner en sheet de detalle: "EQUIPO PRESENTE · +30 min estimados"
+- En Mi Plan: aviso junto a la función agendada
+
+**Lógica de duración efectiva:**
+```js
+function effectiveDuration(f) {
+  const base = parseInt(f.duration) || 90;
+  return f.has_qa ? base + 30 : base;
+}
+```
+Usar `effectiveDuration(f)` en `screensConflict` en lugar de `f.duration` directamente.
+
+### `requires_registration: true` — Inscripción previa
+```json
+{
+  "title": "Foro de la crítica · Sesión 1",
+  "type": "event",
+  "requires_registration": true,
+  ...
+}
+```
+**Comportamiento:**
+- Badge informativo en card de lista
+- Banner en sheet de detalle: "INSCRIPCIÓN PREVIA"
+- No bloquea agendar — el usuario decide
+- No afecta el algoritmo de conflictos
+
+### Identidad visual de badges especiales
+Ambos siguen el mismo sistema que `.notice-badge`:
+- Fondo ámbar sólido (`var(--amber)`)
+- Texto negro (`#0A0A0A`)
+- `font-size: var(--t-xs)`, `font-weight: var(--w-display)`
+- `border-radius: var(--r-md)`
+- Misma posición en card: inline antes del título
+
+### Ejemplo completo con ambos campos
+```json
+{
+  "title": "Cartas a mis padres muertos",
+  "director": "Ignacio Agüero",
+  "duration": "106 min",
+  "has_qa": true,
+  "section": "Proyecciones especiales",
+  "screenings": [
+    {"day": "MIÉ 17", "date": 17, "time": "17:00", "venue": "La Capilla del Claustro Comfama - Medellín"}
+  ]
+}
+```
