@@ -2407,9 +2407,10 @@ let FILMS_AFF=[];
 let POSTERS_AFF={};
 // ── Avisos de festival: funciones canceladas o reprogramadas ──────────────
 // type: 'cancelled' | 'rescheduled'
+// date: 'YYYY-MM-DD' de la función original — el banner desaparece al día siguiente
 // Para 'rescheduled': añadir newDay, newTime, newVenue
 const NOTICES=[
-  {title:'Un mundo frágil y maravilloso',festival:'aff2026',type:'cancelled'},
+  {title:'Un mundo frágil y maravilloso',festival:'aff2026',type:'cancelled',date:'2026-04-23'},
 ];
 
 const FESTIVAL_CONFIG={
@@ -7287,7 +7288,18 @@ function renderProgramaChips(){
 let _dismissedNotices=new Set();
 function getActiveNotices(){
   const festId=window._currentFestivalId||'aff2026';
-  return NOTICES.filter(n=>n.festival===festId&&!_dismissedNotices.has(n.title));
+  const today=new Date(); today.setHours(0,0,0,0);
+  return NOTICES.filter(n=>{
+    if(n.festival!==festId) return false;
+    if(_dismissedNotices.has(n.title)) return false;
+    // Banner desaparece al día siguiente de la función cancelada
+    if(n.date){
+      const funcDate=new Date(n.date+'T00:00:00');
+      funcDate.setDate(funcDate.getDate()+1); // día siguiente
+      if(today>=funcDate) return false;
+    }
+    return true;
+  });
 }
 function renderNoticesBanner(){
   const el=document.getElementById('notices-banner');
