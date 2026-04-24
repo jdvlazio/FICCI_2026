@@ -3113,7 +3113,7 @@ function renderMiPlanCalendar(){
         const prev=dayFilms[idx-1];
         const gap=fMin-(toMin(prev.time)+parseDur(prev.duration));
         if(gap>=0&&gap<25) listHtml+=`<div class="mplan-warn-row">\u25b2 ~${gap} min entre funciones</div>`;
-        if(prev.has_qa){const qaGap=gap-30;qaGap<0?listHtml+=`<div class="mplan-warn-row" style="color:var(--red)">Q&A · si te quedas no llegas a la siguiente</div>`:listHtml+=`<div class="mplan-warn-row" style="color:var(--amber)">Q&A · si te quedas tienes ~${qaGap} min</div>`;}
+        if(prev.has_qa){const qaGap=gap-30;qaGap<0?listHtml+=`<div class="mplan-warn-row" style="color:var(--red)">Q&A · si te quedas no llegas a tu siguiente función</div>`:listHtml+=`<div class="mplan-warn-row" style="color:var(--amber)">Q&A · si te quedas tienes ~${qaGap} min</div>`;}
         const tw=travelWarn(prev,s);
         if(tw) listHtml+=`<div class="mplan-warn-row">${tw}</div>`;
       }
