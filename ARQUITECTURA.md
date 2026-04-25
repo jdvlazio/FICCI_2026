@@ -564,8 +564,28 @@ El código las carga en `_FEST_VENUES` al iniciar el festival y las usa para:
 | < 5 km | 25 min | Uber con tráfico |
 | ≥ 5 km | 35 min | Trayecto largo |
 
+### Modo de transporte — campo `transport`
+Define el modo de movilización predominante del festival.
+Vive en el JSON del festival. El código no requiere cambio para nuevos festivales.
+
+```json
+{ "transport": "walking" }   // Festival compacto — Jardín, campus, pueblo
+{ "transport": "transit" }   // Festival en ciudad — Medellín, Cartagena (default)
+```
+
+| Distancia | walking | transit |
+|---|---|---|
+| < 100 m | 0 min | 0 min |
+| < 350 m | 5 min | 8 min |
+| < 800 m | 10 min | 12 min |
+| < 1.5 km | 20 min | 18 min |
+| < 3 km | 35 min | 25 min |
+| ≥ 3 km | 50 min | 35 min |
+
+El aviso en Mi Plan dice "a pie" o "en carro" según el modo.
+
 ### Para agregar un festival nuevo
-Solo definir `venues{}` en el JSON con nombre exacto, lat/lon, y short.
+Solo definir `venues{}` y `transport` en el JSON.
 El código no requiere ningún cambio.
 
 ### Cambios de sede (notices)

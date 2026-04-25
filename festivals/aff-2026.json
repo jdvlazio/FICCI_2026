@@ -927,5 +927,6 @@
       "city": "Medellín",
       "address": "Diagonal 75B #2A-120"
     }
-  }
+  },
+  "transport": "transit"
 }

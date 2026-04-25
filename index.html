@@ -2736,7 +2736,8 @@ function isToday(day){
    _FEST_VENUES se carga desde festivals/*.json en loadFestival().
    Fallback estático cubre FICCI 65 y AFF 2026 (formato legado).
    Para festivales nuevos, definir venues{} en el JSON del festival.  ── */
-let _FEST_VENUES = {};   // cargado dinámicamente desde el JSON del festival
+let _FEST_VENUES = {};      // cargado dinámicamente desde el JSON del festival
+let _FEST_TRANSPORT = 'transit'; // 'walking' | 'transit' — default: transit
 
 // Fallback estático — FICCI 65 (Cartagena)
 const VENUES={
@@ -2764,18 +2765,22 @@ function _resolveVenue(v){
   return null;
 }
 
+// Escalas de tiempo por modo de transporte
+// walking: festival compacto (pueblo, campus) — todo a pie
+// transit: festival en ciudad — Uber/Metro entre sedes
+const _TRAVEL_SCALE = {
+  walking: [{d:0.10,t:0},{d:0.35,t:5},{d:0.8,t:10},{d:1.5,t:20},{d:3.0,t:35},{d:Infinity,t:50}],
+  transit: [{d:0.15,t:0},{d:0.40,t:8},{d:1.0,t:12},{d:2.5,t:18},{d:5.0,t:25},{d:Infinity,t:35}],
+};
 function venueTravelMins(v1,v2){
   const c1=_resolveVenue(v1), c2=_resolveVenue(v2);
   if(!c1?.lat||!c2?.lat) return 0;
   const dlat=(c1.lat-c2.lat)*111;
   const dlon=(c1.lon-c2.lon)*111*Math.cos(c1.lat*Math.PI/180);
   const km=Math.sqrt(dlat*dlat+dlon*dlon);
-  if(km<0.15) return 0;   // misma sede / salida a sala contigua
-  if(km<0.4)  return 8;   // muy cerca: a pie (~8 min)
-  if(km<1.0)  return 12;  // cerca: a pie rápido o transporte (~12 min)
-  if(km<2.5)  return 18;  // medio: Uber/Metro (~18 min)
-  if(km<5.0)  return 25;  // lejos: Uber (~25 min)
-  return 35;               // muy lejos: >5km (~35 min)
+  const scale=_TRAVEL_SCALE[_FEST_TRANSPORT]||_TRAVEL_SCALE.transit;
+  const tier=scale.find(s=>km<=s.d);
+  return tier?tier.t:35;
 }
 
 function vcfg(v){
@@ -2830,7 +2835,8 @@ function travelWarn(s1,s2){
   const travel=travelMins(v1,v2);
   if(travel===0) return null;
   const gap=toMin(s2.time)-(toMin(s1.time)+parseDur(s1.duration));
-  if(gap<travel+10) return`▲ ~${travel} min en carro entre estas sedes`;
+  const _tLabel=_FEST_TRANSPORT==='walking'?'a pie':'en carro';
+  if(gap<travel+10) return`▲ ~${travel} min ${_tLabel} entre sedes`;
   return null;
 }
 
@@ -7738,6 +7744,7 @@ async function loadFestival(id){
       // Si el JSON define venues{}, se usa para resolución de sedes y
       // cálculo de distancias. Reemplaza el sistema estático por festival.
       _FEST_VENUES = {};
+      _FEST_TRANSPORT = data.transport||'transit'; // 'walking' | 'transit'
       if(data.venues&&typeof data.venues==='object'){
         Object.entries(data.venues).forEach(([key,v])=>{
           _FEST_VENUES[key]=Object.assign({short:key},v);
