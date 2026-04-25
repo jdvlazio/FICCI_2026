@@ -416,6 +416,8 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:var(--t
 .notice-banner-body{flex:1;min-width:0}
 .notice-banner-label{font-size:var(--t-xs);font-weight:var(--w-display);color:var(--amber);letter-spacing:.5px;text-transform:uppercase}
 .notice-banner-text{font-size:var(--t-sm);color:var(--white);margin-top:2px;line-height:1.4}.notice-banner-text b{color:var(--white);font-weight:var(--w-bold)}.notice-banner-text span{color:var(--gray)}
+.notice-banner-status{color:var(--gray);font-weight:var(--w-regular)}
+.notice-banner-detail{font-size:var(--t-sm);color:var(--white-60);margin-top:2px;line-height:1.4}
 .notice-banner-close{background:none;border:none;color:var(--gray2);font-size:var(--t-md);cursor:pointer;padding:0;flex-shrink:0;line-height:1;font-family:var(--font)}
 .notice-banner-venue{color:var(--white-60)}
 .plist-title--past{color:var(--gray2);font-weight:var(--w-semi)}

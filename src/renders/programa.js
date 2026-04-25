@@ -277,15 +277,17 @@ function renderNoticesBanner(){
   if(!active.length){el.innerHTML='';return;}
   el.innerHTML=active.map(n=>{
     const label=n.type==='cancelled'?UI.badge.cancelled:UI.badge.rescheduled;
-    const msgCancelled=`<span>Pendiente nueva fecha.</span>`;
-    const msgRescheduled=n.newVenue&&!n.newTime?`Nueva sede: <span class="notice-banner-venue">${n.newVenue}</span>`:n.newDay&&n.newTime?`Nueva sede: <span style="color:var(--white-60)">${n.newDay} · ${n.newTime}${n.newVenue?' · '+n.newVenue:''}</span>`:'';
-    const msg=n.type==='cancelled'?msgCancelled:msgRescheduled;
+    const detailCancelled=`<div class="notice-banner-detail">Pendiente nueva fecha.</div>`;
+    const detailVenue=n.newVenue?`<div class="notice-banner-detail">${n.newVenue}</div>`:'';
+    const detailWhen=n.newDay&&n.newTime?`<div class="notice-banner-detail">${n.newDay} · ${n.newTime}</div>`:'';
+    const detail=n.type==='cancelled'?detailCancelled:(detailWhen+detailVenue);
     const safeTitle=n.title.length>32?n.title.slice(0,30)+'…':n.title;
     return`<div class="notice-banner">
       <div class="notice-banner-dot"></div>
       <div class="notice-banner-body">
         <div class="notice-banner-label">AVISO DEL FESTIVAL</div>
-        <div class="notice-banner-text"><b>${safeTitle}</b> · <span>${label.toLowerCase()}</span>. ${msg}</div>
+        <div class="notice-banner-text"><b>${safeTitle}</b> <span class="notice-banner-status">${label.toLowerCase()}</span></div>
+        ${detail}
       </div>
       <button class="notice-banner-close" onclick="_dismissNotice('${n.title.replace(/'/g,"\\'")}')">${ICONS.x}</button>
     </div>`;
