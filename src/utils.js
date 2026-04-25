@@ -83,62 +83,9 @@ function isToday(day){
    _FEST_VENUES se carga desde festivals/*.json en loadFestival().
    Fallback estático cubre FICCI 65 y AFF 2026 (formato legado).
    Para festivales nuevos, definir venues{} en el JSON del festival.  ── */
-let _FEST_VENUES = {};      // cargado dinámicamente desde el JSON del festival
-let _FEST_TRANSPORT = 'transit'; // 'walking' | 'transit' — default: transit
+// _FEST_VENUES y _FEST_TRANSPORT declarados en config.js
 
 // Fallback estático — FICCI 65 (Cartagena)
-const VENUES={
-  'Teatro Adolfo Mejía': {short:'Teatro Adolfo Mejía', lat:10.4238, lon:-75.5503},
-  'Plaza Bocagrande':    {short:'Plaza Bocagrande',    lat:10.3987, lon:-75.5600},
-  'CC Caribe Plaza':     {short:'CC Caribe Plaza',     lat:10.4071, lon:-75.5124},
-  'Auditorio Nido':      {short:'Auditorio Nido',      lat:10.4250, lon:-75.5490},
-  'Plaza Proclamación':  {short:'Plaza Proclamación',  lat:10.4230, lon:-75.5510},
-  'C. Convenciones':     {short:'C. de Convenciones',  lat:10.4242, lon:-75.5497},
-  'Unibac':              {short:'Unibac',               lat:10.4180, lon:-75.5430},
-  'AECID':               {short:'AECID',                lat:10.4210, lon:-75.5470},
-};
-
-// Resolución de venue: primero _FEST_VENUES (JSON), luego VENUES (fallback)
-function _resolveVenue(v){
-  if(!v) return null;
-  // Búsqueda exacta en venues del festival
-  if(_FEST_VENUES[v]) return _FEST_VENUES[v];
-  // Búsqueda parcial en venues del festival
-  const fk=Object.keys(_FEST_VENUES).find(k=>v.includes(k)||k.includes(v));
-  if(fk) return _FEST_VENUES[fk];
-  // Fallback estático FICCI
-  const sk=Object.keys(VENUES).find(k=>v.includes(k)||k.includes(v));
-  if(sk) return VENUES[sk];
-  return null;
-}
-
-// Escalas de tiempo por modo de transporte
-// walking: festival compacto (pueblo, campus) — todo a pie
-// transit: festival en ciudad — Uber/Metro entre sedes
-// mixed:   híbrido — a pie si < 1km, en carro si > 1km (ej: Cartagena)
-const _TRAVEL_SCALE = {
-  walking: [{d:0.10,t:0},{d:0.35,t:5},{d:0.8,t:10},{d:1.5,t:20},{d:3.0,t:35},{d:Infinity,t:50}],
-  transit: [{d:0.15,t:0},{d:0.40,t:8},{d:1.0,t:12},{d:2.5,t:18},{d:5.0,t:25},{d:Infinity,t:35}],
-  mixed:   [{d:0.10,t:0},{d:0.35,t:5},{d:0.8,t:10},{d:1.0,t:12},{d:2.5,t:18},{d:5.0,t:25},{d:Infinity,t:35}],
-};
-function venueTravelMins(v1,v2){
-  const c1=_resolveVenue(v1), c2=_resolveVenue(v2);
-  if(!c1?.lat||!c2?.lat) return 0;
-  const dlat=(c1.lat-c2.lat)*111;
-  const dlon=(c1.lon-c2.lon)*111*Math.cos(c1.lat*Math.PI/180);
-  const km=Math.sqrt(dlat*dlat+dlon*dlon);
-  const scale=_TRAVEL_SCALE[_FEST_TRANSPORT]||_TRAVEL_SCALE.transit;
-  const tier=scale.find(s=>km<=s.d);
-  return tier?tier.t:35;
-}
-
-function vcfg(v){
-  if(!v) return {short:''};
-  const r=_resolveVenue(v);
-  if(r) return r;
-  return {short:v.split(' · ')[0].trim()};
-}
-function sala(v){const m=v.match(/Sala\s*(\d+)/)||v.match(/Sal[oó]n\s*(\d+)/i);return m?'Sala '+m[1]:'';}
 
 // ════ algo.js ════
 // ══════════════════════════════════════════════════════════════════
