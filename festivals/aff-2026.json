@@ -902,13 +902,13 @@
       "address": "Carrera 44 #19A-100, Ciudad del Río"
     },
     "MAMM · Plazoleta": {
-      "short": "MAMM Plazoleta",
+      "short": "MAMM · Plazoleta",
       "lat": 6.2338,
       "lon": -75.5733,
       "city": "Medellín"
     },
     "Colombo Americano": {
-      "short": "Colombo",
+      "short": "Colombo Americano",
       "lat": 6.2592,
       "lon": -75.568,
       "city": "Medellín",
@@ -928,5 +928,6 @@
       "address": "Diagonal 75B #2A-120"
     }
   },
-  "transport": "transit"
+  "transport": "transit",
+  "_venue_rule": "REGLA: short == nombre completo de la sede, siempre. Sin abreviaciones, sin excepciones. Si no cabe en el UI, se achica la fuente."
 }

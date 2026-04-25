@@ -61,7 +61,24 @@ for (const fn of requiredFns) {
   else ok(`${fn}()`);
 }
 
-// ── 3. Summary ────────────────────────────────────────────────
+// ── 3. Festival JSON — regla de venues ───────────────────────────────
+// REGLA: short == nombre completo. Sin abreviaciones, sin excepciones.
+const festivalsDir = path.join(__dirname, 'festivals');
+console.log('\nVenue checks:');
+if (fs.existsSync(festivalsDir)) {
+  fs.readdirSync(festivalsDir).filter(f => f.endsWith('.json')).forEach(fname => {
+    try {
+      const fest = JSON.parse(fs.readFileSync(path.join(festivalsDir, fname), 'utf8'));
+      Object.entries(fest.venues || {}).forEach(([key, v]) => {
+        if (v.short && v.short !== key)
+          err(`${fname} → "${key}": short="${v.short}" debe ser nombre completo`);
+        else
+          ok(`${fname} → ${key}`);
+      });
+    } catch(e) { err(`${fname}: ${e.message}`); }
+  });
+}
+
 console.log(`\n${pass + fail} checks: ${pass} passed, ${fail} failed`);
 if (fail > 0) { console.error('\n✗ Build verification FAILED'); process.exit(1); }
 else { console.log('\n✓ Build OK'); }

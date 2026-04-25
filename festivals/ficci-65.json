@@ -3752,7 +3752,7 @@
       "city": "Cartagena"
     },
     "CC Caribe Plaza": {
-      "short": "Caribe Plaza",
+      "short": "CC Caribe Plaza",
       "lat": 10.4071,
       "lon": -75.5124,
       "city": "Cartagena"
@@ -3770,7 +3770,7 @@
       "city": "Cartagena"
     },
     "C. Convenciones": {
-      "short": "C. de Convenciones",
+      "short": "C. Convenciones",
       "lat": 10.4242,
       "lon": -75.5497,
       "city": "Cartagena"
@@ -3788,5 +3788,6 @@
       "city": "Cartagena"
     }
   },
-  "transport": "mixed"
+  "transport": "mixed",
+  "_venue_rule": "REGLA: short == nombre completo de la sede, siempre. Sin abreviaciones, sin excepciones. Si no cabe en el UI, se achica la fuente."
 }
