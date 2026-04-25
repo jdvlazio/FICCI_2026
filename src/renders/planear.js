@@ -227,6 +227,7 @@ function openConflictSheet(incomingTitle, incomingScreen, existingEntry){
   _pushSheetState();
 
   // Acción del botón
+  const btn=document.getElementById('cs-replace-btn');
   if(btn) btn.onclick=confirmConflictReplace;
 }
 
