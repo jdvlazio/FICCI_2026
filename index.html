@@ -4714,7 +4714,7 @@ function renderFilmAlternatives(title,day,time){
   }
   if(others.length){
     if(sameTitle.length) html+=`<div style="height:1px;background:var(--bdr-l);margin:4px 0"></div>`;
-    html+=`<div style="padding:6px 14px 4px;font-size:var(--t-xs);color:var(--gray);text-transform:uppercase;letter-spacing:.06em;font-weight:var(--w-bold)">Caben en tu hueco</div>`;
+    html+=`<div style="padding:6px 14px 4px;font-size:var(--t-xs);color:var(--gray);text-transform:uppercase;letter-spacing:.06em;font-weight:var(--w-bold)">Otras opciones · este día</div>`;
     html+=others.slice(0,5).map(f=>mkCard(f,false)).join('');
   }
   if(!sameTitle.length&&!others.length){
