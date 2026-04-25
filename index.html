@@ -1076,6 +1076,7 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:var(--t
 .ag-excl-strip::-webkit-scrollbar{display:none}
 .ag-excl-item{flex-shrink:0;width:52px;cursor:pointer;-webkit-tap-highlight-color:transparent;position:relative}
 .ag-excl-item:active{opacity:.7}
+.ag-excl-item--past{opacity:.35;pointer-events:none}
 .ag-excl-poster{width:52px;height:78px;object-fit:cover;border-radius:var(--r-md);display:block;background:var(--surf-2)}
 .ag-excl-poster-ph{width:52px;height:78px;border-radius:var(--r-md);background:var(--surf-2)}
 .ag-excl-title{font-size:var(--t-xs);color:var(--gray2);margin-top:var(--sp-1);line-height:1.3;text-align:center;overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical}
@@ -5926,13 +5927,11 @@ function buildResultHTML(scenarios){
       const poster=f?getFilmPoster(f):null;
       const short=dt.length>18?dt.slice(0,16)+'…':dt;
       const safeT=t.replace(/'/g,"\\'");
-      // Mostrar + solo si hay al menos una función que cabe (Caso A) o tiene conflicto resolvible (Caso B)
-      // Debe coincidir exactamente con la lógica de _tryAddExcludedToScenario
       const candidateScreens=f?FILMS.filter(fi=>fi.title===t&&!screeningPassed(fi)&&!isScreeningBlocked(fi)):[];
-      const hasScreen=candidateScreens.length>0&&
-        (candidateScreens.some(s=>!sc.schedule.some(c=>screensConflict(c,s)))||  // Caso A
-         candidateScreens.some(s=>sc.schedule.some(c=>screensConflict(c,s))));   // Caso B
-      return`<div class="ag-excl-item" onclick="openPelSheet('${safeT}')">
+      const allPast=f&&candidateScreens.length===0&&FILMS.some(fi=>fi.title===t);
+      // + aparece si hay función futura disponible (pasada o bloqueada = no hay acción posible)
+      const hasScreen=candidateScreens.length>0;
+      return`<div class="ag-excl-item${allPast?' ag-excl-item--past':''}" onclick="openPelSheet('${safeT}')">
         ${poster
           ?`<img class="ag-excl-poster" src="${poster}" onerror="this.outerHTML='<div class=ag-excl-poster-ph></div>'" alt="">`
           :`<div class="ag-excl-poster-ph"></div>`}

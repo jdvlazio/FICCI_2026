@@ -1363,13 +1363,11 @@ function buildResultHTML(scenarios){
       const poster=f?getFilmPoster(f):null;
       const short=dt.length>18?dt.slice(0,16)+'…':dt;
       const safeT=t.replace(/'/g,"\\'");
-      // Mostrar + solo si hay al menos una función que cabe (Caso A) o tiene conflicto resolvible (Caso B)
-      // Debe coincidir exactamente con la lógica de _tryAddExcludedToScenario
       const candidateScreens=f?FILMS.filter(fi=>fi.title===t&&!screeningPassed(fi)&&!isScreeningBlocked(fi)):[];
-      const hasScreen=candidateScreens.length>0&&
-        (candidateScreens.some(s=>!sc.schedule.some(c=>screensConflict(c,s)))||  // Caso A
-         candidateScreens.some(s=>sc.schedule.some(c=>screensConflict(c,s))));   // Caso B
-      return`<div class="ag-excl-item" onclick="openPelSheet('${safeT}')">
+      const allPast=f&&candidateScreens.length===0&&FILMS.some(fi=>fi.title===t);
+      // + aparece si hay función futura disponible (pasada o bloqueada = no hay acción posible)
+      const hasScreen=candidateScreens.length>0;
+      return`<div class="ag-excl-item${allPast?' ag-excl-item--past':''}" onclick="openPelSheet('${safeT}')">
         ${poster
           ?`<img class="ag-excl-poster" src="${poster}" onerror="this.outerHTML='<div class=ag-excl-poster-ph></div>'" alt="">`
           :`<div class="ag-excl-poster-ph"></div>`}
