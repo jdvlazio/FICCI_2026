@@ -483,16 +483,29 @@ function _getFestivalPhase(){
     const gapFromMin=toMin(lastDone.time)+lastDoneDur;
     const gapToMin=nextStartMin;
     const gapMin=gapToMin-gapFromMin;
-    // Buscar sugerencia que quepa en el hueco
-    const gapSuggestion=FILMS.filter(f=>{
+    // Buscar sugerencia que quepa en el hueco, considerando viaje desde lastDone y hacia next
+    const gapCandidates=FILMS.filter(f=>{
       if(f.day!==todayDay) return false;
       if(watched.has(f.title)) return false;
       if(savedAgenda.schedule.some(s=>s._title===f.title)) return false;
-      if(screeningPassed(f)) return false;
+      if(screeningPassed(f)||isScreeningBlocked(f)) return false;
       const fStart=toMin(f.time);
       const fEnd=fStart+(parseInt(f.duration)||90);
-      return fStart>=gapFromMin&&fEnd<=gapToMin+10;
-    })[0]||null;
+      // Verificar viaje desde función anterior
+      const travelFrom=lastDone.venue&&f.venue?travelMins(lastDone.venue,f.venue):0;
+      if(fStart<gapFromMin+travelFrom+FESTIVAL_BUFFER) return false;
+      // Verificar viaje hacia función siguiente
+      const travelTo=f.venue&&next.venue?travelMins(f.venue,next.venue):0;
+      if(fEnd>gapToMin-travelTo-FESTIVAL_BUFFER+10) return false;
+      return true;
+    }).sort((a,b)=>{
+      // Watchlist primero, luego score implícito por unicidad
+      const aWL=watchlist.has(a.title),bWL=watchlist.has(b.title);
+      if(aWL&&!bWL) return -1;
+      if(!aWL&&bWL) return 1;
+      return toMin(a.time)-toMin(b.time);
+    });
+    const gapSuggestion=gapCandidates[0]||null;
     return{phase:'between',next,lastDone,gapMin,gapFromMin,gapToMin,gapSuggestion,minsUntil};
   }
 
