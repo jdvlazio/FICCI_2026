@@ -3852,7 +3852,7 @@ function isScreeningBlocked(s){
   return av.blocks.some(b=>sStart<toMin(b.to)&&sEnd>toMin(b.from));
 }
 
-// ── ALGORITHM — exhaustive max + MRV + random restarts ──
+// ── ALGORITHM — SOURCE: src/algo.js ──
 function shuffle(arr){
   const a=[...arr];
   for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}
@@ -5714,7 +5714,7 @@ function showActionToast(msg,actionLabel,actionFn,duration=4000){
   clearTimeout(t._to);t._to=setTimeout(()=>{t.style.opacity='0';t.style.pointerEvents='none';},duration);
 }
 
-// ── POST-SELECTION SQUEEZE ──
+// ── POST-SELECTION SQUEEZE — SOURCE: src/algo.js ──
 // Tras elegir una opción, intenta insertar películas excluidas de la watchlist
 // que quepan en los huecos reales del plan elegido (usando screensConflict ±10 min).
 // Puede superar trueMax porque ese era el máximo dentro del árbol explorado,
