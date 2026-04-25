@@ -8038,9 +8038,7 @@ window.addEventListener('resize',function(){requestAnimationFrame(_fixStickyOffs
 <script>
 if('serviceWorker' in navigator){
   navigator.serviceWorker.register('/sw.js').then(reg => {
-    // Forzar verificación de actualización inmediata (iOS PWA fix)
     reg.update();
-    // Recargar cuando el SW nuevo tome control
     reg.addEventListener('updatefound', () => {
       const newSW = reg.installing;
       if(!newSW) return;
@@ -8049,13 +8047,29 @@ if('serviceWorker' in navigator){
       });
     });
   }).catch(function(){});
-  // Recargar cuando el SW notifique actualización
   navigator.serviceWorker.addEventListener('message', e => {
     if(e.data && e.data.type==='SW_UPDATED') location.reload();
   });
-  // Recargar si controllerchange (nuevo SW tomó control)
   navigator.serviceWorker.addEventListener('controllerchange', () => location.reload());
 }
+// ── Version check: recarga la PWA si hay una versión nueva en el servidor ──
+// Método más confiable que SW updates en iOS Safari
+(function(){
+  const CURRENT_BUILD = localStorage.getItem('otrofestiv_build');
+  fetch('/version.json?t=' + Date.now(), {cache:'no-store'})
+    .then(r => r.json())
+    .then(data => {
+      if(!data.build) return;
+      if(CURRENT_BUILD && CURRENT_BUILD !== data.build) {
+        // Nueva versión disponible — recargar limpio
+        localStorage.setItem('otrofestiv_build', data.build);
+        location.reload(true);
+      } else {
+        localStorage.setItem('otrofestiv_build', data.build);
+      }
+    })
+    .catch(function(){});
+})();
 </script>
 
 <!-- Festival switcher bottom sheet -->
