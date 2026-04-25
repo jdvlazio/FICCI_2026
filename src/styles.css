@@ -733,6 +733,8 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:var(--t
    Nunca para estados negativos permanentes (cancelada tiene su propio patrón). */
 .pel-sheet-section-lbl--urgent{color:var(--amber);font-weight:var(--w-semi)}
 .pel-sheet-screening{display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid var(--bdr-l)}
+.pel-sheet-add-plan{margin-left:auto;flex-shrink:0;background:none;border:1px solid var(--bdr);border-radius:var(--r-pill);color:var(--amber);padding:3px 8px;cursor:pointer;font-family:var(--font);font-size:var(--t-xs);display:inline-flex;align-items:center;transition:background var(--tr-base),border-color var(--tr-base);-webkit-tap-highlight-color:transparent}
+.pel-sheet-add-plan:active{background:var(--amber-10);border-color:var(--amber-30)}
 .pel-sheet-screenings .pel-sheet-screening:last-child{border-bottom:none}
 .pel-sheet-synopsis{font-size:var(--t-base);color:var(--gray2);line-height:1.6}
 .pel-sheet-wl-btn{background:var(--amber-10);border:1px solid var(--amber-30);border-radius:var(--r-pill);color:var(--amber);font-family:var(--font);font-size:var(--t-base);font-weight:var(--w-bold);padding:var(--sp-btn) 0;cursor:pointer;width:100%;margin-top:16px;transition:background var(--tr-base)}

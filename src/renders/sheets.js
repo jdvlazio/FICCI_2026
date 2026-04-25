@@ -278,14 +278,18 @@ function openPelSheet(title){
   const future=screenings.filter(s=>!screeningPassed(s)).sort((a,b)=>a.day_order-b.day_order||toMin(a.time)-toMin(b.time));
   const past=screenings.filter(s=>screeningPassed(s));
   const allScr=[...future,...past];
+  const _hasPlan=savedAgenda&&savedAgenda.schedule.length>0;
   const rows=allScr.map(s=>{
     const dayAbb=DAY_SHORT[s.day]||DAY_ABB[DAY_KEYS.indexOf(s.day)]||s.day.slice(0,3).toUpperCase();
     const vc=vcfg(s.venue),sl=sala(s.venue);
     const isPast=screeningPassed(s)&&!festivalEnded();
+    const safeDay=s.day.replace(/'/g,"\'");
+    const _showAdd=_hasPlan&&!_inPlan&&!isPast&&f.type!=='event';
     return`<div class="pel-sheet-screening"${isPast?' style="opacity:.4"':''}>
       <span class="pelicula-day">${dayAbb}</span>
       <span class="pelicula-time">${s.time}</span>
       <span class="pelicula-venue" data-venue="${vc.short.replace(/"/g,'&quot;')}" onclick="filterByVenue(this.dataset.venue)">${ICONS.pin} ${vc.short}${sl?' · '+sl:''}  <span style="opacity:.4;font-size:var(--t-xs)">›</span></span>
+      ${_showAdd?`<button class="pel-sheet-add-plan" onclick="event.stopPropagation();addSuggestion('${safeT}','${safeDay}','${s.time}');closePelSheet()" title="Añadir a mi plan">${ICONS.plus}</button>`:''}
     </div>`;
   }).join('');
   // Lista de cortos si es programa
