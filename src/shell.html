@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<link rel="manifest" href="/manifest.json">
+<meta name="theme-color" content="#0A0A0A">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Otrofestiv">
+<link rel="apple-touch-icon" href="/icon-192.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/icon-192.png">
+<link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png">
+<!-- Caching gestionado por el Service Worker (sw.js) — Network First para HTML -->
+<title>Otrofestiv — Tú decides el festival</title>
+<meta name="description" content="Tú decides el festival. FICCI 65, Cartagena, 14–19 abril 2026.">
+<link rel="canonical" href="https://otrofestiv.app">
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://otrofestiv.app">
+<meta property="og:title" content="Otrofestiv — Tú decides el festival">
+<meta property="og:description" content="Tú decides el festival. Más de lo que crees posible.">
+<meta property="og:image" content="https://otrofestiv.app/icon-512.png">
+<meta property="og:image:width" content="512">
+<meta property="og:image:height" content="512">
+<meta property="og:image:alt" content="Otrofestiv — app de festivales de cine">
+<meta property="og:site_name" content="Otrofestiv">
+<meta property="og:locale" content="es_CO">
+<!-- Twitter / X -->
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Otrofestiv — Tú decides el festival">
+<meta name="twitter:description" content="Tú decides el festival. Más de lo que crees posible.">
+<meta name="twitter:image" content="https://otrofestiv.app/icon-512.png">
+<link rel="preconnect" href="https://image.tmdb.org">
+<style>/* __STYLES__ */</style>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"Otrofestiv","description":"Tu agenda personal para festivales de cine. Planea, prioriza y saca el máximo de cada festival.","url":"https://otrofestiv.app","applicationCategory":"EntertainmentApplication","operatingSystem":"iOS, Android, Web","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}
+</script>
+<!-- Splash skip check — corre síncrono antes de que el body se pinte.
+     Evita el flash del splash en cada refresh para usuarios que ya entraron. -->
+<script>
+(function(){
+  try{
+    void 0;
+  }catch(e){}
+})();
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+</head>
+<body>
+<!-- Splash siempre visible — se pre-selecciona el festival en curso por fecha. -->
+<div id="otrofestiv-splash" role="dialog" aria-label="Bienvenida" aria-modal="true">
+  <div class="splash-brand">
+    <div class="splash-wordmark">Otro<span>festiv</span></div>
+    <div class="splash-tagline">
+      <div class="splash-tagline-line">Más de lo que</div>
+      <div class="splash-tagline-line" style="color:var(--white)">crees <span>posible</span><span>.</span></div>
+    </div>
+  </div>
+  <div class="splash-action">
+  <div class="splash-selector">
+    <div class="splash-fest-label">¿A qué festival vas?</div>
+    <button class="splash-sel-btn" id="splash-sel-btn" onclick="toggleSplashDropdown()" aria-haspopup="listbox">
+      <div>
+        <div class="splash-sel-name" id="splash-sel-name">AFF 2026</div>
+        <div class="splash-sel-meta" id="splash-sel-meta">Medellín · 21–29 ABR 2026</div>
+      </div>
+      <div class="splash-sel-chev">▾</div>
+    </button>
+    <div class="splash-dropdown" id="splash-dropdown" style="display:none" role="listbox">
+      <button class="splash-drop-item selected" data-fest="aff2026" role="option" aria-selected="true" onclick="selectSplashFest('AFF 2026','Medellín · 21–29 ABR 2026','aff2026')">
+        <div><div class="splash-drop-item-name">AFF 2026</div><div class="splash-drop-item-meta">Medellín · 21–29 ABR 2026</div></div>
+        <div style="font-size:var(--t-caption);color:var(--amber)"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle"><polyline points="20 6 9 17 4 12"/></svg></div>
+      </button>
+      <button class="splash-drop-item" data-fest="ficci65" role="option" aria-selected="false" onclick="selectSplashFest('FICCI 65','Cartagena · 14–19 ABR 2026','ficci65')">
+        <div><div class="splash-drop-item-name">FICCI 65</div><div class="splash-drop-item-meta">Cartagena · 14–19 ABR 2026</div></div>
+        <div class="splash-drop-item-badge">PASADO</div>
+      </button>
+      <button class="splash-drop-item inactive" role="option" aria-selected="false" aria-disabled="true">
+        <div><div class="splash-drop-item-name">FICCI 66</div><div class="splash-drop-item-meta">Cartagena · Próximamente</div></div>
+        <div class="splash-drop-item-badge">PRONTO</div>
+      </button>
+      <button class="splash-drop-item inactive" role="option" aria-selected="false" aria-disabled="true">
+        <div><div class="splash-drop-item-name">Bogoshorts</div><div class="splash-drop-item-meta">Bogotá · Próximamente</div></div>
+        <div class="splash-drop-item-badge">PRONTO</div>
+      </button>
+    </div>
+  </div>
+  <button class="splash-enter-btn" onclick="dismissSplash()">Entrar</button>
+  </div>
+</div>
+
+
+
+<!-- Bottom sheet disponibilidad -->
+<div class="av-sheet-overlay" id="av-sheet-overlay" style="display:none" onclick="if(event.target===this)closeAvSheet()">
+  <div class="av-sheet">
+    <div class="av-sheet-handle"></div>
+    <div class="av-sheet-title">No disponible</div>
+    <div class="av-sheet-lbl">Día</div>
+    <div class="av-day-chips" id="av-day-chips"></div>
+    <div class="av-sheet-lbl">Tipo</div>
+    <div class="av-type-row">
+      <button class="av-type-btn selected" id="av-type-hours" onclick="setAvType('hours')">Horas específicas</button>
+      <button class="av-type-btn" id="av-type-full" onclick="setAvType('full')">Todo el día</button>
+    </div>
+    <div id="av-time-section">
+      <div class="av-sheet-lbl">Horario</div>
+      <div class="av-time-row">
+        <select class="av-time-sel" id="av-sheet-from"></select>
+        <span style="color:var(--gray)">–</span>
+        <select class="av-time-sel" id="av-sheet-to"></select>
+      </div>
+    </div>
+    <button class="av-sheet-confirm" onclick="confirmAvBlock()">Confirmar</button>
+  </div>
+</div>
+
+<div class="topbar">
+<div class="hdr">
+  <div class="hdr-top">
+    <h1 class="hdr-wordmark">Otro<span>festiv</span></h1>
+    <button class="auth-btn" id="auth-btn" onclick="openAuthSheet()" title="Sincronizar entre dispositivos" aria-label="Cuenta">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+      <span class="auth-avatar" id="auth-avatar"></span>
+      <span class="sync-dot" id="sync-dot"></span>
+    </button>
+  </div>
+  <div class="hdr-fest-bar" onclick="openFestivalSheet()">
+  <div class="hdr-fest-left">
+    <div class="hdr-fest-dot"></div>
+    <div class="hdr-fest-name">FICCI 65</div>
+    <div class="hdr-fest-dates">· 14–19 ABR</div>
+  </div>
+  <div class="hdr-fest-chev">˅</div>
+</div>
+  
+
+</div>
+<div class="main-nav" id="main-nav" role="navigation" aria-label="Navegación principal">
+  <button class="main-nav-tab on" id="mnav-cartelera" onclick="{const _ph=_getProgramaPhase();programaSubMode=_ph.default;switchMainNav('mnav-cartelera');showDayView();}">
+    <span class="main-nav-ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="2.18"/><line x1="7" y1="2" x2="7" y2="22"/><line x1="17" y1="2" x2="17" y2="22"/><line x1="2" y1="12" x2="22" y2="12"/><line x1="2" y1="7" x2="7" y2="7"/><line x1="2" y1="17" x2="7" y2="17"/><line x1="17" y1="17" x2="22" y2="17"/><line x1="17" y1="7" x2="22" y2="7"/></svg></span>
+    <span class="main-nav-lbl">PROGRAMA</span>
+  </button>
+  <button class="main-nav-tab" id="mnav-seleccion" onclick="switchMainNav('mnav-seleccion');showAgView()">
+    <span class="main-nav-ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></span>
+    <span class="main-nav-lbl">INTERESES</span>
+  </button>
+  <button class="main-nav-tab" id="mnav-planner" onclick="switchMainNav('mnav-planner');showAgView()">
+    <span class="main-nav-ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="21" x2="4" y2="14"/><line x1="4" y1="10" x2="4" y2="3"/><line x1="12" y1="21" x2="12" y2="12"/><line x1="12" y1="8" x2="12" y2="3"/><line x1="20" y1="21" x2="20" y2="16"/><line x1="20" y1="12" x2="20" y2="3"/><line x1="1" y1="14" x2="7" y2="14"/><line x1="9" y1="8" x2="15" y2="8"/><line x1="17" y1="16" x2="23" y2="16"/></svg></span>
+    <span class="main-nav-lbl">PLANEAR</span>
+  </button>
+  <button class="main-nav-tab" id="mnav-miplan" onclick="switchMainNav('mnav-miplan');showAgView()">
+    <span class="main-nav-ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></span>
+    <span class="main-nav-lbl">MI PLAN</span>
+  </button>
+</div>
+</div><!-- /topbar -->
+
+<div class="carta-mode-toggle" id="carta-mode-toggle" style="display:none"></div>
+<!-- ── Post-View Rating Sheet ── -->
+<div class="pv-rating-overlay" id="pv-rating-overlay" onclick="closePVRating()"></div>
+<div class="pv-rating-sheet" id="pv-rating-sheet" style="display:none">
+  <div class="pv-handle"></div>
+  <div class="pv-header">
+    <div class="pv-poster-wrap">
+      <img class="pv-poster-img" id="pv-poster" src="" alt="">
+      <div class="pv-poster-check">
+        <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>
+      </div>
+    </div>
+    <div style="flex:1;min-width:0">
+      <div class="pv-eyebrow"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Vista</div>
+      <div class="pv-film-title" id="pv-film-title"></div>
+      <div class="pv-context" id="pv-context"></div>
+    </div>
+  </div>
+  <div class="pv-question">
+    <div class="pv-question-text">¿La calificás?</div>
+    <div class="pv-question-hint" id="pv-hint">Deslizá sobre las estrellas</div>
+  </div>
+  <div class="pv-stars-area">
+    <div class="pv-stars-row" id="pv-stars-row"></div>
+    <input type="range" class="pv-range" id="pv-range" min="0" max="10" step="1" value="0">
+  </div>
+  <div class="pv-actions">
+    <button class="pv-btn-save" id="pv-btn-save" disabled onclick="savePVRating()">Guardar</button>
+    <button class="pv-btn-later" onclick="closePVRating()">Después</button>
+  </div>
+</div>
+<!-- ── Conflict Sheet ── -->
+<div class="conflict-sheet-overlay" id="conflict-sheet-overlay" onclick="closeConflictSheet()"></div>
+<div class="conflict-sheet" id="conflict-sheet">
+  <div class="conflict-handle"></div>
+  <div class="conflict-hdr">
+    <div class="conflict-eyebrow"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>Conflicto de horario</div>
+    <div class="conflict-title">Se solapan en el mismo tramo</div>
+    <div class="conflict-sub">¿Cuál querés en tu plan?</div>
+  </div>
+  <div class="conflict-arena">
+    <div class="conflict-card incoming">
+      <img class="conflict-poster" id="cs-incoming-poster" src="" alt="">
+      <div style="flex:1;min-width:0">
+        <div class="conflict-role">Querés añadir</div>
+        <div class="conflict-name" id="cs-incoming-name"></div>
+        <div class="conflict-when" id="cs-incoming-when"></div>
+      </div>
+    </div>
+    <div class="conflict-vs"><div class="conflict-vs-line"></div><div class="conflict-vs-lbl">vs</div><div class="conflict-vs-line"></div></div>
+    <div class="conflict-card existing">
+      <img class="conflict-poster" id="cs-existing-poster" src="" alt="">
+      <div style="flex:1;min-width:0">
+        <div class="conflict-role">Ya en tu plan</div>
+        <div class="conflict-name" id="cs-existing-name"></div>
+        <div class="conflict-when" id="cs-existing-when"></div>
+      </div>
+    </div>
+  </div>
+  <div class="conflict-actions">
+    <button class="conflict-btn-replace" id="cs-replace-btn"></button>
+    <button class="conflict-btn-cancel" onclick="closeConflictSheet()">Cancelar</button>
+  </div>
+</div>
+<!-- ── Prio Limit Sheet ── -->
+<div class="prio-limit-overlay" id="prio-limit-overlay" onclick="closePrioLimit()"></div>
+<div class="prio-limit-sheet" id="prio-limit-sheet">
+  <div class="prio-limit-handle"></div>
+  <div class="prio-limit-hdr">
+    <div class="prio-limit-eyebrow"><svg width="11" height="11" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1.5"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg><span id="prio-limit-eyebrow-txt"></span></div>
+    <div class="prio-limit-title">Ya tienes <span id="prio-limit-count"></span> prioridades</div>
+    <div class="prio-limit-sub">Cambia una para priorizar esta película</div>
+  </div>
+  <div class="prio-limit-new" id="prio-limit-new-bar">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#F59E0B" stroke-width="2"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
+    <div style="flex:1;min-width:0">
+      <div class="prio-limit-new-lbl">Quieres priorizar</div>
+      <div class="prio-limit-new-title" id="prio-limit-new-title"></div>
+    </div>
+  </div>
+  <div class="prio-limit-list" id="prio-limit-list"></div>
+  <button class="prio-limit-cancel" onclick="closePrioLimit()">Cancelar</button>
+</div>
+<!-- ── Plan Confirm Sheet ── -->
+<div class="plan-confirm-overlay" id="plan-confirm-overlay" onclick="closePlanConfirm()"></div>
+<div class="plan-confirm-sheet" id="plan-confirm-sheet" style="display:none">
+  <div class="plan-confirm-handle"></div>
+  <div class="plan-confirm-row">
+    <div class="plan-confirm-ico">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#3AAA6E" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+    </div>
+    <div>
+      <div class="plan-confirm-title" id="plan-confirm-title">Listo para el festival</div>
+      <div class="plan-confirm-sub" id="plan-confirm-sub"></div>
+    </div>
+  </div>
+  <div class="plan-confirm-films" id="plan-confirm-films"></div>
+  <button class="plan-confirm-cta" onclick="closePlanConfirm(true)">Ver mi plan</button>
+</div>
+<!-- ── Rating Sheet ── -->
+<div class="rating-overlay" id="rating-overlay" onclick="closeRatingSheet()"></div>
+<div class="rating-sheet" id="rating-sheet">
+  <div class="rating-handle"></div>
+  <div class="rating-title">¿Qué te pareció?</div>
+  <div class="rating-film" id="rating-film-title"></div>
+  <div class="rating-stars" id="rating-stars-wrap"><input type="range" id="rating-range" min="0" max="10" step="1" value="0"><div id="rating-stars" style="display:flex;justify-content:center;gap:2px;pointer-events:none"></div></div>
+  <button class="rating-action-btn" id="rating-action-btn" onclick="closeRatingSheet()">Sin calificar</button>
+</div>
+<!-- ── Bottom Sheet Por Película ── -->
+<div class="pel-sheet-overlay" id="pel-overlay" onclick="closePelSheet()"></div>
+<div class="pel-sheet" id="pel-sheet">
+  <div class="pel-sheet-topbar"><div class="pel-sheet-handle"></div><button class="pel-sheet-close" onclick="closePelSheet()"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button></div>
+  <div class="pel-sheet-inner" id="pel-sheet-inner"></div>
+</div>
+<div id="hdr-programa">
+<div class="carta-search-wrap" id="carta-search-wrap">
+  <div class="carta-search-field">
+    <span class="carta-search-ico"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></span>
+    <input type="text" id="carta-search-input" class="carta-search" placeholder="Buscar película…" oninput="onCartaSearch()" autocomplete="off" autocorrect="off" autocapitalize="off">
+    <button class="carta-search-clear" id="carta-search-clear" onclick="clearCartaSearch()"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+  </div>
+  <div id="carta-search-results" class="carta-search-results"></div>
+</div>
+<!-- ── Programa: barra de modos Explorar/Hoy/Mañana ── -->
+<div class="programa-mode-bar" id="programa-mode-bar" style="display:none">
+  <button class="pmode-tab on" id="pmode-explorar" onclick="setProgramaMode('explorar')">Explorar</button>
+  <button class="pmode-tab" id="pmode-hoy" onclick="setProgramaMode('hoy')">Hoy</button>
+  <button class="pmode-tab" id="pmode-manana" onclick="setProgramaMode('manana')">Mañana</button>
+  <div class="pmode-spacer"></div>
+  <div class="pmode-controls">
+    <div class="pmode-view-switch">
+      <button class="pmode-view-btn on" id="pmode-grid" onclick="setProgramaView('grid')" title="Grid">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+      </button>
+      <button class="pmode-view-btn" id="pmode-list" onclick="setProgramaView('list')" title="Lista">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="4" y1="6" x2="20" y2="6"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="18" x2="20" y2="18"/></svg>
+      </button>
+    </div>
+    <button class="pmode-filter-btn" id="pmode-filter-btn" onclick="toggleProgramaFilter()">
+      <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"/></svg>
+      <span id="pmode-filter-lbl">Lugar</span>
+    </button>
+  </div>
+</div>
+<!-- Chips de categoría — solo Explorar -->
+<div class="programa-chips hidden" id="programa-chips"></div>
+<div id="cartelera-cta" style="display:none">
+  <div class="cartelera-cta">
+    <span class="cartelera-cta-text">Toca <span style="color:var(--amber)">♥</span> en cualquier título para añadirlo a <b>Intereses</b></span>
+  </div>
+</div>
+</div>
+<!-- Tag activo dismissible -->
+<div class="programa-active-filter" id="programa-active-filter">
+  <div class="paf-tag" id="paf-tag" onclick="clearProgramaChip()">
+    <span id="paf-tag-text"></span>
+    <span style="opacity:.6;font-size:var(--t-sm)">×</span>
+  </div>
+  <span class="paf-count" id="paf-count"></span>
+</div>
+<!-- Lista Hoy/Mañana -->
+<div class="nav-row" id="nav-row">
+  <div class="nav-tabs" id="dtabs"></div>
+</div>
+
+<div class="filter-row" id="filter-row">
+  <div class="fdr-filters">
+    <div class="fdr-wrap">
+      <button class="fdr-btn" id="vdr-btn" onclick="toggleDropdown('vdr')" title="Filtrar por sede">
+        <span class="fdr-label" id="vdr-label">Lugar</span>
+        <span class="fdr-arrow" id="vdr-arrow"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span>
+      </button>
+      <div class="fdr-panel" id="vdr-panel"></div>
+    </div>
+    <!-- Categoría eliminada — los chips de la barra horizontal la reemplazan -->
+    <div style="display:none"><div class="fdr-panel" id="sdr-panel"></div><span id="sdr-label"></span><button id="sdr-btn"></button><span id="sdr-arrow"></span></div>
+  </div>
+</div>
+<div class="programa-list" id="programa-list"></div>
+<div id="notices-banner"></div>
+<div id="filter-bars">
+  <button id="agtab" style="display:none"><span id="ag-cnt">0</span></button>
+</div>
+<div class="hint" id="hint"></div>
+<div id="cartelera-stepper" style="display:none"></div>
+
+<div class="cnt-line" id="cnt"></div>
+<div class="grid" id="grid"></div>
+<div class="ag-view" id="ag-view"></div>
+
+<script>/* __SCRIPTS__ */</script>
+<script>
+if('serviceWorker' in navigator){
+  navigator.serviceWorker.register('/sw.js').then(reg => {
+    reg.update();
+    reg.addEventListener('updatefound', () => {
+      const newSW = reg.installing;
+      if(!newSW) return;
+      newSW.addEventListener('statechange', () => {
+        if(newSW.state === 'activated') location.reload();
+      });
+    });
+  }).catch(function(){});
+  navigator.serviceWorker.addEventListener('message', e => {
+    if(e.data && e.data.type==='SW_UPDATED') location.reload();
+  });
+  navigator.serviceWorker.addEventListener('controllerchange', () => location.reload());
+}
+
+</script>
+
+<!-- Festival switcher bottom sheet -->
+<div class="auth-sheet" id="auth-sheet" onclick="if(event.target===this)closeAuthSheet()">
+  <div class="auth-sheet-inner">
+    <div id="auth-sheet-step1">
+      <div class="auth-sheet-title">Sincronizar tu plan</div>
+      <div class="auth-sheet-sub">Ingresa tu email y te enviamos un código de 6 dígitos. Sin contraseña. Tu plan se sincroniza entre todos tus dispositivos.</div>
+      <input class="auth-email-inp" id="auth-email-inp" type="email" placeholder="tu@email.com" autocomplete="email" onkeydown="if(event.key==='Enter')submitAuthEmail()">
+      <button class="auth-send-btn" id="auth-send-btn" onclick="submitAuthEmail()">Enviar código</button>
+      <div class="auth-msg" id="auth-msg"></div>
+      <span class="auth-cancel" onclick="closeAuthSheet()">Cancelar</span>
+    </div>
+    <div id="auth-sheet-step2" style="display:none">
+      <div class="auth-sheet-title">Revisa tu email</div>
+      <div class="auth-sheet-sub">Enviamos un código de 6 dígitos a <span id="auth-otp-email" style="color:var(--white)"></span></div>
+      <input class="auth-email-inp" id="auth-otp-inp" type="number" placeholder="123456" inputmode="numeric" maxlength="6" onkeydown="if(event.key==='Enter')submitOTP()" style="letter-spacing:4px;font-size:var(--t-md);text-align:center">
+      <button class="auth-send-btn" id="auth-otp-btn" onclick="submitOTP()">Confirmar</button>
+      <div class="auth-msg" id="auth-otp-msg"></div>
+      <span class="auth-cancel" onclick="closeAuthSheet();document.getElementById('auth-sheet-step1').style.display='block';document.getElementById('auth-sheet-step2').style.display='none'">Cancelar</span>
+    </div>
+    <div id="auth-sheet-step3" style="display:none">
+      <div class="auth-sheet-title">Tu cuenta</div>
+      <div class="auth-sheet-sub" id="auth-signed-email" style="color:var(--white)"></div>
+      <div class="auth-sheet-sub" style="margin-top:var(--sp-2)">Tu plan se sincroniza automáticamente entre todos tus dispositivos.</div>
+      <button class="auth-signout-btn" onclick="signOutAndClose()">Cerrar sesión</button>
+      <span class="auth-cancel" onclick="closeAuthSheet()">Cancelar</span>
+    </div>
+  </div>
+</div>
+<div class="fs-overlay" id="fs-overlay" onclick="closeFestivalSheet()"></div>
+<div class="fs-sheet" id="fs-sheet">
+  <div class="fs-handle"></div>
+  <div class="fs-header">
+    <div class="fs-title">Cambiar festival</div>
+  </div>
+  <div class="fs-section-lbl">Festivales</div>
+  <div class="fs-festival-row" data-fest="aff2026" onclick="loadFestival('aff2026')">
+    <div class="fs-fest-dot" style="background:var(--orange)"></div>
+    <div class="fs-fest-info">
+      <div class="fs-fest-name">AFF 2026</div>
+      <div class="fs-fest-meta">Medellín · 21–30 abril 2026</div>
+    </div>
+    <div class="fs-fest-check" style="display:none">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+    </div>
+  </div>
+  <div class="fs-divider"></div>
+  <div class="fs-festival-row" data-fest="ficci65" onclick="loadFestival('ficci65')">
+    <div class="fs-fest-dot"></div>
+    <div class="fs-fest-info">
+      <div class="fs-fest-name">FICCI 65</div>
+      <div class="fs-fest-meta">Cartagena · 14–19 abril 2026</div>
+    </div>
+    <div class="fs-fest-check" style="display:none">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+    </div>
+  </div>
+  <div class="fs-divider"></div>
+  <div class="fs-section-lbl">Próximamente</div>
+  <div class="fs-soon-row">
+    <div class="fs-soon-dot"></div>
+    <div class="fs-soon-info">
+      <div class="fs-soon-name">Más festivales en camino…</div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+<button id="back-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Volver arriba">↑</button>
+<div id="welcome-overlay" class="welcome-overlay" style="display:none" role="dialog" aria-modal="true">
+  <div class="welcome-sheet">
+    <div class="welcome-wordmark">Otro<span>festiv</span></div>
+    <div class="welcome-title">Tú decides <span style="color:var(--amber)">el festival.</span></div>
+    <div class="welcome-sub">Nosotros planeamos, tú disfrutas.</div>
+    <button class="welcome-cta" onclick="dismissWelcome()">Empezar <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></button>
+  </div>
+</div>
+</body>
+</html>
