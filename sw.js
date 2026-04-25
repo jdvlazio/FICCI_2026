@@ -1,8 +1,9 @@
-// Otrofestiv — Service Worker v11
+// Otrofestiv — Service Worker v12
 // Estrategia: HTML siempre desde red. Assets en caché.
+// v12: auto-reload en cliente cuando SW detecta nueva versión
 
-const CACHE_NAME = 'otrofestiv-v202604251911';
-const BUILD = '202604251911';
+const CACHE_NAME = 'otrofestiv-v202604251913';
+const BUILD = '202604251913';
 
 const STATIC_ASSETS = [
   '/manifest.json',

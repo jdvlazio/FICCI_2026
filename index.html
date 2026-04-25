@@ -13097,6 +13097,10 @@ window.addEventListener('resize',function(){requestAnimationFrame(_fixStickyOffs
 if('serviceWorker' in navigator){
   navigator.serviceWorker.register('/sw.js').then(reg => {
     reg.update();
+    // Forzar chequeo al volver al foco — crítico para iOS PWA standalone
+    document.addEventListener('visibilitychange', () => {
+      if(document.visibilityState === 'visible') reg.update();
+    });
     reg.addEventListener('updatefound', () => {
       const newSW = reg.installing;
       if(!newSW) return;
@@ -13106,11 +13110,10 @@ if('serviceWorker' in navigator){
     });
   }).catch(function(){});
   navigator.serviceWorker.addEventListener('message', e => {
-    if(e.data && e.data.type==='SW_UPDATED') location.reload();
+    if(e.data && e.data.type==='SW_UPDATED') setTimeout(()=>location.reload(),100);
   });
   navigator.serviceWorker.addEventListener('controllerchange', () => location.reload());
 }
-
 </script>
 
 <!-- Festival switcher bottom sheet -->
