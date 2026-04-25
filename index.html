@@ -4325,7 +4325,7 @@ function mkAgendaRow(s, mode='saved'){
   const f=FILMS.find(fi=>fi.title===t);
   const _p=getFilmPoster(f);
   const _safePT=t.replace(/'/g,"\\'");
-  const _ph=_p?`<img class="lb-poster" src="${_p}" loading="lazy" style="cursor:pointer" onclick="event.stopPropagation();openPelSheet('${_safePT}')" onerror="this.style.opacity=0" alt="">`:'<div class="lb-poster-ph">🎬</div>';
+  const _ph=_p?`<img class="lb-poster" src="${_p}" loading="lazy" style="cursor:pointer" onclick="event.stopPropagation();openPelSheet('${_safePT}')" onerror="this.remove()" alt="">`:'<div class="lb-poster-ph">🎬</div>';
   const vc2=vcfg(s.venue),sl=sala(s.venue);
   const safeT=(s._title||'').replace(/"/g,'&quot;');
   const isDone=watched.has(t);
@@ -4646,7 +4646,7 @@ function confirmReplace(removedTitle,newTitle,day,time){
   const modal=document.createElement('div');
   modal.id='conflict-modal';modal.className='conflict-modal';
   modal.innerHTML=`<div class="conflict-modal-box">
-    <div class="conflict-modal-hdr">${removedTitle?'¿Reemplazar función?':'¿Añadir al plan?'}</div>
+    <div class="conflict-modal-hdr">${removedTitle?'¿Reemplazar actividad?':'¿Añadir al plan?'}</div>
     <div class="conflict-modal-body">${removedTitle?`Quitar <b>${shortRem}</b> y añadir`:'Añadir'} <b>${shortNew}</b> a tu plan.</div>
     <div class="conflict-modal-btns">
       <button class="conflict-modal-btn cancel" onclick="document.getElementById('conflict-modal').remove()">Cancelar</button>
@@ -4822,7 +4822,7 @@ function renderContextualHeader(){
       // Posters grandes, plena opacidad — pensado para screenshot
       // Usar poster-card existente — mismo patrón que Hoy/Mañana
       return`<div class="poster-card ended-poster" onclick="openPelSheet('${safeT}')">
-        ${src?`<img src="${src}" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block" onerror="this.style.opacity=0" alt="">`:``}
+        ${src?`<img src="${src}" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block" onerror="this.remove()" alt="">`:``}
         <div class="ended-poster-footer">
           ${r?`<div style="font-size:var(--t-xs);color:var(--amber);letter-spacing:1px">${stars}</div>`
              :`<button class="ended-rate-btn" onclick="event.stopPropagation();openPostViewRating('${safeT}','','','','')">★</button>`}
@@ -4866,7 +4866,7 @@ function renderContextualHeader(){
       const short=dt.length>18?dt.slice(0,16)+'…':dt;
       const src=getFilmPoster(f)||'';
       return`<div class="ctx-prio-chip">
-        ${src?`<img class="ctx-prio-thumb" src="${src}" onerror="this.style.opacity=0" alt="">`:
+        ${src?`<img class="ctx-prio-thumb" src="${src}" onerror="this.remove()" alt="">`:
               `<div class="ctx-prio-thumb"></div>`}
         <div style="flex:1;min-width:0">
           <div class="ctx-prio-name">${short}</div>
@@ -4892,7 +4892,7 @@ function renderContextualHeader(){
     const vc=vcfg(next.venue);
     const src=getFilmPoster(next)||'';
     // REGLA — badge ctx-header: solo cuando aporta info específica que el eyebrow no tiene.
-    //   ✅ "En X min"        — tiempo hasta inicio; eyebrow solo dice "Próxima función"
+    //   ✅ "En X min"        — tiempo hasta inicio; eyebrow solo dice "Próxima actividad"
     //   ✅ "Termina en X min"— tiempo restante en curso; eyebrow solo dice "En curso"
     //   ❌ "Ahora"           — redundante con eyebrow
     //   Todo estado nuevo debe pasar este filtro antes de añadir badge.
@@ -4904,7 +4904,7 @@ function renderContextualHeader(){
       :`<span class="ctx-next-badge">En ${minsUntil} min</span>`;
     const _filmObj=FILMS.find(f=>f.title===next._title);
     const _isEvent=_filmObj&&_filmObj.type==='event';
-    const eyebrowLabel=isNow?'En curso':(_isEvent?'Próximo evento':'Próxima función');
+    const eyebrowLabel=isNow?'En curso':(_isEvent?'Próximo evento':'Próxima actividad');
 
     // ── Delay controls — solo cuando está en curso ──
     let delayHtml='';
@@ -4952,7 +4952,7 @@ function renderContextualHeader(){
         ${eyebrowLabel}
       </div>
       <div class="ctx-next-card" onclick="openPelSheet('${(next._title||'').replace(/'/g,"\\'")}')" style="cursor:pointer">
-        ${src?`<img class="ctx-next-poster" src="${src}" onerror="this.style.opacity=0" alt="">`:
+        ${src?`<img class="ctx-next-poster" src="${src}" onerror="this.remove()" alt="">`:
               `<div class="ctx-next-poster"></div>`}
         <div style="flex:1;min-width:0">
           <div class="ctx-next-title">${dt}</div>
@@ -5025,7 +5025,7 @@ function renderContextualHeader(){
       const stars=r?starsText(r):'';
       return`<div style="position:relative;flex-shrink:0;cursor:pointer" onclick="openPelSheet('${safeT}')">
         ${src
-          ?`<img class="prio-chip-poster" src="${src}" onerror="this.style.opacity=0" alt="">`
+          ?`<img class="prio-chip-poster" src="${src}" onerror="this.remove()" alt="">`
           :`<div class="prio-chip-ph">🎬</div>`}
         ${r?`<div style="position:absolute;bottom:4px;left:0;right:0;text-align:center;font-size:var(--t-xs);color:var(--amber);letter-spacing:1px;text-shadow:0 1px 3px var(--overlay-85)">${stars}</div>`:''}
         ${!r?`<div style="position:absolute;bottom:4px;left:0;right:0;text-align:center">
@@ -5953,7 +5953,7 @@ function openPrioLimit(newTitle){
       const safeSwap=t.replace(/'/g,"\'");
       const safeNew=newTitle.replace(/'/g,"\'");
       return`<div class="prio-limit-item">
-        ${poster?`<img class="prio-limit-thumb" src="${poster}" onerror="this.style.opacity=0" alt="">`:'<div class="prio-limit-thumb"></div>'}
+        ${poster?`<img class="prio-limit-thumb" src="${poster}" onerror="this.remove()" alt="">`:'<div class="prio-limit-thumb"></div>'}
         <div class="prio-limit-info">
           <div class="prio-limit-name">${dt}</div>
           <div class="prio-limit-when">${when}</div>
@@ -6311,7 +6311,7 @@ function onCartaSearch(){
     const inWL=watchlist.has(f.title);
     const onclick=f._isCortoItem?`clearCartaSearch();openCortoSheet('${safeT}','${safeC}','${safeD}','${safeS}','${safeF}')`:`clearCartaSearch();openPelSheet('${safeT}')`;
     return`<div class="carta-sr-item" onclick="${onclick}">
-      ${poster?`<img class="carta-sr-poster" src="${poster}" onerror="this.style.opacity=0" alt="">`:'<div class="carta-sr-poster"></div>'}
+      ${poster?`<img class="carta-sr-poster" src="${poster}" onerror="this.remove()" alt="">`:'<div class="carta-sr-poster"></div>'}
       <div class="carta-sr-info">
         <div class="carta-sr-title">${displayTitle}${progSuffix?` <span style="color:var(--orange);font-size:var(--t-label)">${progSuffix}</span>`:''}</div>
         <div class="carta-sr-meta">${f._isCortoItem
@@ -7138,7 +7138,7 @@ function renderMiPlanList(schedule){
         const isPassed=screeningPassed(s);
         return`<div class="mplan-list-item${isPassed?' past-card':''}" onclick="openPelSheet('${safeT}')">
           ${src
-            ?`<img class="mplan-list-poster" src="${src}" loading="lazy" onerror="this.style.opacity=0" alt="" style="${isPassed?'opacity:.4':''}">`
+            ?`<img class="mplan-list-poster" src="${src}" loading="lazy" onerror="this.remove()" alt="" style="${isPassed?'opacity:.4':''}">`
             :`<div class="mplan-list-poster"></div>`}
           <div class="mplan-list-info">
             <div class="mplan-list-title" style="${isPassed?'opacity:.5':''}">${dt}</div>
@@ -7295,7 +7295,7 @@ function _updateProgramaActiveFilter(){
     // Construir el label del tag — chip + venue si ambos activos
     let parts=[];
     if(hasChip) parts.push(chip.label);
-    if(hasVenue) parts.push('📍 '+activeVenue);
+    if(hasVenue) parts.push(ICONS.pin+' '+activeVenue);
     tagText.textContent=parts.join(' · ');
     // Contar películas que cumplen ambos filtros
     const titleMap={};
@@ -7447,7 +7447,7 @@ function renderProgramaList(){
       const itemStyle=[pastStyle,cancelStyle].filter(Boolean).join(';');
       const _stk=_programaStack(f);
       return`<div class="plist-item" style="${itemStyle}" onclick="openPelSheet('${safeT}')">
-        ${_stk||(src?`<img class="plist-poster" src="${src}" loading="lazy" onerror="this.style.opacity=0" alt="">`:`<div class="plist-poster"></div>`)}
+        ${_stk||(src?`<img class="plist-poster" src="${src}" loading="lazy" onerror="this.remove()" alt="">`:`<div class="plist-poster"></div>`)}
         <div class="plist-info">
           <div class="plist-title">${noticeBadge}${_metaBadges(f)}${dt}${nowBadge}</div>
           <div class="plist-meta" style="${notice&&notice.type==='cancelled'?'text-decoration:line-through':''}">${vc.short}${sala(f.venue)?' · '+sala(f.venue):''} · ${f.duration||'~90 min'}</div>
@@ -7536,7 +7536,7 @@ function _renderExploreLista(){
     </div>`;
     const _stk2=_programaStack(f);
     return`<div class="plist-item${allPast?' past-card':''}" onclick="openPelSheet('${safeT}')">
-      ${_stk2||(src?`<img class="plist-poster" src="${src}" loading="lazy" onerror="this.style.opacity=0" alt="${dt}" style="${allPast&&!festivalEnded()?'opacity:.45':''}">` :`<div class="plist-poster"></div>`)}
+      ${_stk2||(src?`<img class="plist-poster" src="${src}" loading="lazy" onerror="this.remove()" alt="${dt}" style="${allPast&&!festivalEnded()?'opacity:.45':''}">` :`<div class="plist-poster"></div>`)}
       <div class="plist-info">
         ${(()=>{const n=NOTICES.find(nx=>nx.title===f.title&&nx.festival===(window._currentFestivalId||'aff2026'));const nb=n?`<span class="notice-badge">${n.type==='cancelled'?UI.badge.cancelled:UI.badge.rescheduled}</span>`:'';const nn=n&&n.type==='cancelled'?`<div style="font-size:var(--t-xs);color:var(--amber);margin-top:2px;font-weight:var(--w-semi)">Pendiente nueva fecha</div>`:n&&n.type==='rescheduled'&&(n.newTime||n.newVenue)?`<div style="font-size:var(--t-xs);color:var(--green);margin-top:2px;font-weight:var(--w-semi)">${n.newVenue&&!n.newTime?n.newVenue:`${n.newDay||''} · ${n.newTime}${n.newVenue?' · '+n.newVenue:''}`}</div>`:'';return`<div class="plist-title" style="${allPast?'opacity:.5':''}">${nb}${dt}</div><div class="plist-meta" style="${n&&n.type==='cancelled'?'text-decoration:line-through':''}">${f.duration||'~90 min'} · ${days}</div>${nn||`<div class="plist-sec">${f.section||''}</div>`}`;})()}
       </div>
@@ -7661,7 +7661,7 @@ function render(){
     const safeT=f.title.replace(/'/g,"\'");
     const posterSrc=getFilmPoster(f);
     const posterImg=posterSrc
-      ?`<img src="${posterSrc}" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block" onerror="this.style.opacity=0" alt="">`
+      ?`<img src="${posterSrc}" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block" onerror="this.remove()" alt="">`
       :``;
     const progBadge='';//REMOVED
     const nowBadge=isNow?`<div class="poster-now">AHORA</div>`:'';
