@@ -4038,49 +4038,45 @@ function computeScenarios(titles){
 
 // ── SUGGESTIONS after saved agenda ──
 function getSuggestions(){
+  // ── Guards: necesitamos un plan activo ──
+  // Fix Bug 1: no retornar vacío si saved.length===0 — puede haber días futuros libres
   if(!savedAgenda||!savedAgenda.schedule.length) return{};
   const saved=savedAgenda.schedule.filter(s=>!screeningPassed(s));
-  if(!saved.length) return{};
-
+  // Si saved está vacío (todos los planes pasaron), seguimos para mostrar días futuros
   const savedTitles=new Set(saved.map(s=>s._title));
+
+  // hardExclude: global — nunca mostrar lo que ya está en el plan o ya se vio
+  const hardExclude=new Set([...savedTitles,...watched]);
   const byDay={};
 
-  // Excluir siempre: ya en agenda o ya vistas
-  const hardExclude=new Set([...savedTitles,...watched]);
-  // Para descubrimiento (Bloque 1): también excluir watchlist (ya las conoces)
-  const seenDiscover=new Set([...hardExclude,...watchlist]);
-  // Para recuperación (Bloque 2): solo excluir hardExclude
-  const seenRecovery=new Set([...hardExclude]);
-
-  // ── Slots reservados: todas las películas recientemente quitadas ──
-  // Solo muestra "← Restaurar" si el slot original está libre (sin conflicto)
-  // Si el slot está ocupado, la película cae a Bloque 2 para buscar slot alternativo
+  // ── Slots reservados: películas recientemente quitadas ──
   const currentSaved=savedAgenda?savedAgenda.schedule:[];
   lastRemovedSlots.forEach(rs=>{
     if(savedTitles.has(rs._title)||screeningPassed(rs)) return;
     const slotFree=!currentSaved.some(s=>screensConflict(s,rs));
-    if(!slotFree) return; // slot ocupado — cae a Bloque 2
+    if(!slotFree) return;
     const day=rs.day;
     if(!byDay[day]) byDay[day]=[];
     byDay[day].push({...rs,gapCtx:'Restaurar al mismo horario',_isRestored:true});
     hardExclude.add(rs._title);
-    seenDiscover.add(rs._title);
-    seenRecovery.add(rs._title);
   });
 
   DAY_KEYS.forEach(day=>{
+    // Fix Bug 2: seenDiscover y seenRecovery se reinician POR DÍA
+    // Un film puede sugerirse en distintos días (son funciones distintas)
+    // Solo hardExclude es global (ya en plan o ya visto)
+    const seenDay=new Set([...hardExclude]);
+
     const dayItems=saved.filter(s=>s.day===day).sort((a,b)=>toMin(a.time)-toMin(b.time));
 
     // Calcular huecos del día
     const slots=[];
     if(dayItems.length===0){
-      // Día completamente libre — cubre hasta la 1am
-      slots.push({start:0,end:25*60,ctx:'Día libre en tu Plan'});
+      // Día completamente libre — toda la jornada disponible
+      slots.push({start:0,end:25*60,ctx:'Día libre'});
     } else {
-      // Antes de la primera
       if(toMin(dayItems[0].time)>60)
         slots.push({start:0,end:toMin(dayItems[0].time)-FESTIVAL_BUFFER,ctx:`Antes de ${(dayItems[0]._title||'').split(' ').slice(0,3).join(' ')}…`});
-      // Entre funciones — cualquier hueco positivo (el chequeo fStart/fEnd filtra lo imposible)
       for(let i=0;i<dayItems.length-1;i++){
         const a=dayItems[i],b=dayItems[i+1];
         const aEnd=toMin(a.time)+parseDur(a.duration)+FESTIVAL_BUFFER;
@@ -4088,45 +4084,39 @@ function getSuggestions(){
         if(bStart>aEnd)
           slots.push({start:aEnd,end:bStart,ctx:`Entre ${(a._title||'').split(' ').slice(0,3).join(' ')}… y ${(b._title||'').split(' ').slice(0,3).join(' ')}…`});
       }
-      // Después de la última — siempre se crea, extiende hasta la 1am
-      // Bug fix: el if(lastEnd<22*60) cortaba noches con película tardía (ej: 20:00+90min=22:10 → sin slot)
       const last=dayItems[dayItems.length-1];
       const lastEnd=toMin(last.time)+parseDur(last.duration)+FESTIVAL_BUFFER;
       slots.push({start:lastEnd,end:25*60,ctx:`Después de ${(last._title||'').split(' ').slice(0,3).join(' ')}…`});
     }
 
-    // Bloque 1 — Descubrimiento: películas del festival que quepan en huecos
+    // Bloque 1 — Descubrimiento: cualquier film del festival que quepa
+    // Fix Bug 3: watchlist NO excluida de Bloque 1 — se muestra todo lo disponible
+    // El contexto 'De tu lista' se añade si está en watchlist
     if(slots.length){
       FILMS.forEach(f=>{
-        if(seenDiscover.has(f.title)||screeningPassed(f)||f.day!==day||isScreeningBlocked(f)) return;
+        if(seenDay.has(f.title)||screeningPassed(f)||f.day!==day||isScreeningBlocked(f)) return;
         const fStart=toMin(f.time),fEnd=fStart+parseDur(f.duration);
         const slot=slots.find(sl=>fStart>=sl.start&&fEnd<=sl.end&&fEnd-fStart>=20);
         if(slot){
-          seenDiscover.add(f.title);seenRecovery.add(f.title);
+          seenDay.add(f.title);
           if(!byDay[day]) byDay[day]=[];
-          byDay[day].push({...f,gapCtx:slot.ctx});
+          const inWL=watchlist.has(f.title);
+          byDay[day].push({...f,
+            gapCtx: inWL ? 'De tu lista · cabe en tu agenda' : slot.ctx,
+            _inWatchlist: inWL
+          });
         }
       });
     }
-
-    // Bloque 2 — Recuperación: watchlist no en agenda
-    // Usa screensConflict (±10 min) — mismo criterio que el algoritmo de planificación
-    // Solo aparece si genuinamente cabe sin conflicto en el plan actual
-    [...watchlist].filter(t=>!seenRecovery.has(t)).forEach(t=>{
-      FILMS.filter(f=>f.title===t&&f.day===day&&!screeningPassed(f)&&!isScreeningBlocked(f)).forEach(f=>{
-        if(seenRecovery.has(f.title)) return;
-        const noConflict=!saved.some(s=>screensConflict(s,f));
-        if(noConflict){
-          seenRecovery.add(f.title);seenDiscover.add(f.title);
-          if(!byDay[day]) byDay[day]=[];
-          byDay[day].push({...f,gapCtx:'De tu lista · cabe en tu agenda'});
-        }
-      });
-    });
   });
-  // ── Ordenar cronológicamente dentro de cada día ──
+
+  // ── Ordenar: watchlist primero, luego cronológico ──
   Object.keys(byDay).forEach(d=>{
-    byDay[d].sort((a,b)=>toMin(a.time)-toMin(b.time));
+    byDay[d].sort((a,b)=>{
+      if(a._inWatchlist&&!b._inWatchlist) return -1;
+      if(!a._inWatchlist&&b._inWatchlist) return 1;
+      return toMin(a.time)-toMin(b.time);
+    });
   });
   return byDay;
 }
