@@ -289,7 +289,7 @@ function openPelSheet(title){
       <span class="pelicula-day">${dayAbb}</span>
       <span class="pelicula-time">${s.time}</span>
       <span class="pelicula-venue" data-venue="${vc.short.replace(/"/g,'&quot;')}" onclick="filterByVenue(this.dataset.venue)">${ICONS.pin} ${vc.short}${sl?' · '+sl:''}  <span style="opacity:.4;font-size:var(--t-xs)">›</span></span>
-      ${_showAdd?`<button class="pel-sheet-add-plan" onclick="event.stopPropagation();addSuggestion('${safeT}','${safeDay}','${s.time}');closePelSheet()" title="Añadir a mi plan">${ICONS.plus}</button>`:''}
+      ${_showAdd?`<button class="pel-sheet-add-plan" onclick="event.stopPropagation();if(addSuggestion('${safeT}','${safeDay}','${s.time}')==='added')closePelSheet()" title="Añadir a mi plan">${ICONS.plus}</button>`:''}
     </div>`;
   }).join('');
   // Lista de cortos si es programa

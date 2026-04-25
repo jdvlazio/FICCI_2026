@@ -162,30 +162,22 @@ function removeFromAgenda(title){
   });
 }
 function addSuggestion(title,day,time){
-  if(festivalEnded()) return;
+  if(festivalEnded()) return null;
   // 1. Add to watchlist if not already there
   if(!watchlist.has(title)){watchlist.add(title);watched.delete(title);saveState('wl','watched');updateCardState(title);updateAgTab();}
   // 2. Add specific screening to saved agenda
   const screen=FILMS.find(f=>f.title===title&&f.day===day&&f.time===time);
   if(screen){
     if(!savedAgenda) savedAgenda={schedule:[]};
-    // Avoid duplicates
     if(!savedAgenda.schedule.some(s=>s._title===title)){
-      // ── Re-validación en tiempo real ─────────────────────────────
-      // getSuggestions verificó el hueco al renderizar, pero el plan
-      // pudo haber cambiado desde entonces (otra sugerencia añadida
-      // en la misma sesión). Revalidamos contra el estado actual.
       const realConflict=savedAgenda.schedule.find(s=>s.day===day&&screensConflict(s,screen));
       if(realConflict){
         openConflictSheet(title, screen, realConflict);
-        return;
+        return 'conflict'; // caller NO debe cerrar la ficha — conflict sheet necesita el DOM
       }
       savedAgenda.schedule.push({...screen,_title:title});
       savedAgenda.schedule.sort((a,b)=>a.day_order!==b.day_order?a.day_order-b.day_order:toMin(a.time)-toMin(b.time));
       saveSavedAgenda();
-      // ── Toast informativo con día y hora ─────────────────────────
-      // Informa exactamente dónde quedó la película para que el
-      // usuario sepa si coincide con lo que esperaba.
       const{displayTitle:dt}=parseProgramTitle(title);
       const shortT=dt.length>20?dt.slice(0,18)+'…':dt;
       const dayShort=DAY_KEYS.indexOf(day)>=0?['MAR','MIÉ','JUE','VIE','SÁB','DOM'][DAY_KEYS.indexOf(day)]:'';
@@ -195,7 +187,7 @@ function addSuggestion(title,day,time){
   // 3. Quitar de lista de restaurables
   lastRemovedSlots=lastRemovedSlots.filter(r=>r._title!==title);
   saveLastSlot();
-  // 4. Saltar al día de la sugerencia en el calendario y asegurar que sea visible
+  // 4. Saltar al día en el calendario
   const jumpIdx=DAY_KEYS.indexOf(day);
   if(jumpIdx>=0){
     activeMiPlanDay=jumpIdx;
@@ -203,6 +195,7 @@ function addSuggestion(title,day,time){
   }
   // 5. Re-render
   renderAgenda();
+  return 'added'; // caller puede cerrar la ficha
 }
 function closeSearch(){setTimeout(()=>{const r=document.getElementById('ag-search-results');if(r) r.classList.remove('open');},200);}
 
