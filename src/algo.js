@@ -134,8 +134,8 @@ function computeScenarios(titles){
           chosen.push({...s,_title:g.title});bb(idx+1,chosen);chosen.pop();
         }
       }
-      if(!g.priority) bb(idx+1,chosen);
-      else bb(idx+1,chosen);
+      if(!mustIncludeAll||!g.priority) bb(idx+1,chosen);
+      // Si mustIncludeAll=true y el grupo es prioritario, NO se puede saltar
     }
     bb(0,[]);
     return best;

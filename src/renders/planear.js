@@ -50,31 +50,7 @@ function showActionToast(msg,actionLabel,actionFn,duration=4000){
   clearTimeout(t._to);t._to=setTimeout(()=>{t.style.opacity='0';t.style.pointerEvents='none';},duration);
 }
 
-// ── POST-SELECTION SQUEEZE — SOURCE: src/algo.js ──
-// Tras elegir una opción, intenta insertar películas excluidas de la watchlist
-// que quepan en los huecos reales del plan elegido (usando screensConflict ±10 min).
-// Puede superar trueMax porque ese era el máximo dentro del árbol explorado,
-// no el máximo real del calendario.
-function squeezeExcluded(schedule, excludedTitles){
-  const result=[...schedule];
-  // Ordenar excluidas por score descendente — misma lógica que el algoritmo
-  const scored=excludedTitles.map(t=>{
-    const screens=FILMS.filter(f=>f.title===t&&!screeningPassed(f)&&!isScreeningBlocked(f));
-    return{title:t,screens,score:scoreFilm(t,screens,prioritized.has(t),[...watchlist])};
-  }).filter(g=>g.screens.length>0).sort((a,b)=>b.score-a.score);
-
-  scored.forEach(({title,screens})=>{
-    // Ordenar funciones por estrategia — menos conflictos + fin temprano
-    const sorted=sortScreensByStrategy(screens,[...scored]);
-    for(const s of sorted){
-      if(!result.some(c=>screensConflict(c,s))){
-        result.push({...s,_title:title,_squeezed:true});
-        break; // encontró slot, pasar al siguiente título
-      }
-    }
-  });
-  return result;
-}
+// squeezeExcluded — definida en src/algo.js (fuente canónica)
 
 /* ── POST-VIEW RATING SHEET ── */
 let _pvTitle='', _pvRating=0;
@@ -423,7 +399,7 @@ function runCalc(){
       cachedResult={scenarios,currentIdx:0,_algorithmCount:scenarios.length};
       if(res) res.innerHTML=buildResultHTML(scenarios);
     }catch(err){
-      if(res) res.innerHTML=`<div class="ag-calc-prompt ag-calc-error"><strong>Error al calcular:</strong><br><code>${err.message}</code></div>`;
+      if(res){const _em=document.createElement('div');_em.className='ag-calc-prompt ag-calc-error';_em.innerHTML=`<strong>Error al calcular:</strong><br>`;const _code=document.createElement('code');_code.textContent=err.message;_em.appendChild(_code);res.innerHTML='';res.appendChild(_em);}
       /* runCalc error — silent in production */
     }finally{
       if(btn){btn.disabled=false;btn.textContent='Calcular opciones';}
@@ -502,7 +478,7 @@ function renderAgenda(){
       return;
     }
     const _progressHtml=(!savedAgenda||!savedAgenda.schedule||!savedAgenda.schedule.length)?renderFlowProgress('planner'):'';
-    const pending=[...watchlist].filter(t=>!watched.has(t)&&FILMS.some(f=>f.title===t&&!screeningPassed(f)));
+    const pending=[...watchlist].filter(t=>!watched.has(t)&&FILMS.some(f=>f.title===t&&!screeningPassed(f)&&!isScreeningBlocked(f)));
 
     // ── Estado A: sin Intereses — pantalla simple, no mostrar herramienta ──
     if(!pending.length&&!cachedResult){
