@@ -515,3 +515,60 @@ Ambos siguen el mismo sistema que `.notice-badge`:
   ]
 }
 ```
+
+---
+
+## 13. SISTEMA GLOBAL DE SEDES (VENUES)
+
+Las sedes de cada festival se definen en `festivals/*.json` bajo la clave `venues{}`.
+El código las carga en `_FEST_VENUES` al iniciar el festival y las usa para:
+- Mostrar el nombre corto de la sede en cards y Mi Plan
+- Calcular tiempos de viaje entre sedes para `travelWarn()`
+- Detectar conflictos de desplazamiento en `screensConflict()`
+
+### Estructura en el JSON del festival
+```json
+{
+  "venues": {
+    "MAMM": {
+      "short": "MAMM",
+      "lat": 6.2338,
+      "lon": -75.5733,
+      "city": "Medellín",
+      "address": "Carrera 44 #19A-100, Ciudad del Río"
+    },
+    "Cineprox Las Américas": {
+      "short": "Cineprox",
+      "lat": 6.2504,
+      "lon": -75.5800,
+      "city": "Medellín",
+      "address": "Diagonal 75B #2A-120"
+    }
+  }
+}
+```
+
+### Resolución de venue (_resolveVenue)
+1. Búsqueda exacta en `_FEST_VENUES` (JSON del festival)
+2. Búsqueda parcial en `_FEST_VENUES` (por si el string incluye sala: "MAMM · Sala 1")
+3. Fallback estático en `VENUES` (cubre FICCI 65 sin JSON de venues)
+4. Si nada coincide: `{short: primer segmento del string de venue}`
+
+### Escala de tiempos de viaje (venueTravelMins)
+| Distancia | Tiempo estimado | Contexto |
+|---|---|---|
+| < 150 m | 0 min | Misma sede / sala contigua |
+| < 400 m | 8 min | A pie |
+| < 1 km | 12 min | A pie rápido o transporte corto |
+| < 2.5 km | 18 min | Uber / Metro |
+| < 5 km | 25 min | Uber con tráfico |
+| ≥ 5 km | 35 min | Trayecto largo |
+
+### Para agregar un festival nuevo
+Solo definir `venues{}` en el JSON con nombre exacto, lat/lon, y short.
+El código no requiere ningún cambio.
+
+### Cambios de sede (notices)
+Cuando un film tiene `notice.type === 'rescheduled'` con `newVenue`,
+`_effectiveVenue()` devuelve la nueva sede para el cálculo de distancias.
+El sistema refleja automáticamente el cambio en `travelWarn()`.

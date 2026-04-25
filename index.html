@@ -2732,56 +2732,57 @@ function isToday(day){
   return dateStr===today;
 }
 
+/* ── VENUES: sistema global de sedes ────────────────────────────────────
+   _FEST_VENUES se carga desde festivals/*.json en loadFestival().
+   Fallback estático cubre FICCI 65 y AFF 2026 (formato legado).
+   Para festivales nuevos, definir venues{} en el JSON del festival.  ── */
+let _FEST_VENUES = {};   // cargado dinámicamente desde el JSON del festival
+
+// Fallback estático — FICCI 65 (Cartagena)
 const VENUES={
-  'Teatro Adolfo Mejía':{short:'Teatro Adolfo Mejía'},
-  'Plaza Bocagrande':      {short:'Plaza Bocagrande'},
-  'CC Caribe Plaza':    {short:'CC Caribe Plaza'},
-  'Auditorio Nido':     {short:'Auditorio Nido'},
-  'Plaza Proclamación': {short:'Plaza Proclamación'},
-  'C. Convenciones':    {short:'C. de Convenciones'},
-  'Unibac':             {short:'Unibac'},
-  'AECID':              {short:'AECID'},
+  'Teatro Adolfo Mejía': {short:'Teatro Adolfo Mejía', lat:10.4238, lon:-75.5503},
+  'Plaza Bocagrande':    {short:'Plaza Bocagrande',    lat:10.3987, lon:-75.5600},
+  'CC Caribe Plaza':     {short:'CC Caribe Plaza',     lat:10.4071, lon:-75.5124},
+  'Auditorio Nido':      {short:'Auditorio Nido',      lat:10.4250, lon:-75.5490},
+  'Plaza Proclamación':  {short:'Plaza Proclamación',  lat:10.4230, lon:-75.5510},
+  'C. Convenciones':     {short:'C. de Convenciones',  lat:10.4242, lon:-75.5497},
+  'Unibac':              {short:'Unibac',               lat:10.4180, lon:-75.5430},
+  'AECID':               {short:'AECID',                lat:10.4210, lon:-75.5470},
 };
 
-/* ── VENUES: configuración, salas, tiempos de viaje ─────────────────── */
-// Venue coordinates for travel time estimation (AFF venues in Medellín)
-const VENUE_COORDS={
-  'MAMM':{lat:6.2338,lon:-75.5733},
-  'MAMM · Plazoleta':{lat:6.2338,lon:-75.5733},
-  'Industry Days':{lat:6.2338,lon:-75.5733},
-  'Colombo Americano':{lat:6.2592,lon:-75.5680},
-  'Cineprox Las Américas':{lat:6.2504,lon:-75.5800},
-  // FICCI venues in Cartagena
-  'Teatro Adolfo Mejía':{lat:10.4238,lon:-75.5503},
-  'Plaza Bocagrande':{lat:10.3987,lon:-75.5600},
-  'CC Caribe Plaza':{lat:10.4071,lon:-75.5124},
-};
-function venueTravelMins(v1,v2){
-  const c1=VENUE_COORDS[v1],c2=VENUE_COORDS[v2];
-  if(!c1||!c2) return 0;
-  const dlat=(c1.lat-c2.lat)*111,dlon=(c1.lon-c2.lon)*111*Math.cos(c1.lat*Math.PI/180);
-  const km=Math.sqrt(dlat*dlat+dlon*dlon);
-  if(km<0.2) return 0;           // same venue / adjacent
-  if(km<0.5) return 10;           // very close: 10 min walk
-  if(km<1.5) return 15;           // close: 15 min walk/transit
-  return Math.round(km/0.25*5);   // ~5min per 250m walking (rough)
+// Resolución de venue: primero _FEST_VENUES (JSON), luego VENUES (fallback)
+function _resolveVenue(v){
+  if(!v) return null;
+  // Búsqueda exacta en venues del festival
+  if(_FEST_VENUES[v]) return _FEST_VENUES[v];
+  // Búsqueda parcial en venues del festival
+  const fk=Object.keys(_FEST_VENUES).find(k=>v.includes(k)||k.includes(v));
+  if(fk) return _FEST_VENUES[fk];
+  // Fallback estático FICCI
+  const sk=Object.keys(VENUES).find(k=>v.includes(k)||k.includes(v));
+  if(sk) return VENUES[sk];
+  return null;
 }
+
+function venueTravelMins(v1,v2){
+  const c1=_resolveVenue(v1), c2=_resolveVenue(v2);
+  if(!c1?.lat||!c2?.lat) return 0;
+  const dlat=(c1.lat-c2.lat)*111;
+  const dlon=(c1.lon-c2.lon)*111*Math.cos(c1.lat*Math.PI/180);
+  const km=Math.sqrt(dlat*dlat+dlon*dlon);
+  if(km<0.15) return 0;   // misma sede / salida a sala contigua
+  if(km<0.4)  return 8;   // muy cerca: a pie (~8 min)
+  if(km<1.0)  return 12;  // cerca: a pie rápido o transporte (~12 min)
+  if(km<2.5)  return 18;  // medio: Uber/Metro (~18 min)
+  if(km<5.0)  return 25;  // lejos: Uber (~25 min)
+  return 35;               // muy lejos: >5km (~35 min)
+}
+
 function vcfg(v){
-  if(v.includes('Teatro Adolfo'))  return VENUES['Teatro Adolfo Mejía'];
-  if(v.includes('Bocagrande'))     return VENUES['Plaza Bocagrande'];
-  if(v.includes('Caribe Plaza'))   return VENUES['CC Caribe Plaza'];
-  if(/nido/i.test(v))              return VENUES['Auditorio Nido'];
-  if(v.includes('Proclamación'))   return VENUES['Plaza Proclamación'];
-  if(/unibac/i.test(v))            return VENUES['Unibac'];
-  if(/aecid/i.test(v))             return VENUES['AECID'];
-  if(v.includes('Convenciones'))   return VENUES['C. Convenciones'];
-  // AFF 2026 venues
-  if(v.includes('Cineprox')||v.includes('Las Américas')||v.includes('Las Americas')) return {short:'Cineprox Las Américas'};
-  if(v.includes('MAMM · Plazoleta')) return {short:'MAMM Plazoleta'};
-  if(v.includes('MAMM'))             return {short:'MAMM'};
-  if(v.includes('Colombo'))          return {short:'Colombo Americano'};
-  if(v.includes('Industry'))         return {short:'Industry Days'};
-  return VENUES['C. Convenciones'];
+  if(!v) return {short:''};
+  const r=_resolveVenue(v);
+  if(r) return r;
+  return {short:v.split(' · ')[0].trim()};
 }
 function sala(v){const m=v.match(/Sala\s*(\d+)/)||v.match(/Sal[oó]n\s*(\d+)/i);return m?'Sala '+m[1]:'';}
 /* ── UTILS: tiempo, fecha, duración ─────────────────────────────────── */
@@ -7733,6 +7734,15 @@ async function loadFestival(id){
           if(mins>0) f.duration=mins+" min";
         }
       });
+      // ── Carga de venues desde el JSON del festival ──
+      // Si el JSON define venues{}, se usa para resolución de sedes y
+      // cálculo de distancias. Reemplaza el sistema estático por festival.
+      _FEST_VENUES = {};
+      if(data.venues&&typeof data.venues==='object'){
+        Object.entries(data.venues).forEach(([key,v])=>{
+          _FEST_VENUES[key]=Object.assign({short:key},v);
+        });
+      }
       cfg.films=exploded;
       cfg.posters=data.posters||{};
       cfg.customPosters=data.customPosters||{};

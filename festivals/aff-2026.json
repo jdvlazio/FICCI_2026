@@ -892,5 +892,40 @@
     "No hay hombres buenos": "no-good-men-2026",
     "Un mundo frágil y maravilloso": "homebound-2025",
     "Confinados": "cadet-2024"
+  },
+  "venues": {
+    "MAMM": {
+      "short": "MAMM",
+      "lat": 6.2338,
+      "lon": -75.5733,
+      "city": "Medellín",
+      "address": "Carrera 44 #19A-100, Ciudad del Río"
+    },
+    "MAMM · Plazoleta": {
+      "short": "MAMM Plazoleta",
+      "lat": 6.2338,
+      "lon": -75.5733,
+      "city": "Medellín"
+    },
+    "Colombo Americano": {
+      "short": "Colombo",
+      "lat": 6.2592,
+      "lon": -75.568,
+      "city": "Medellín",
+      "address": "Calle 43 #25-30"
+    },
+    "Industry Days": {
+      "short": "Industry Days",
+      "lat": 6.2338,
+      "lon": -75.5733,
+      "city": "Medellín"
+    },
+    "Cineprox Las Américas": {
+      "short": "Cineprox",
+      "lat": 6.2504,
+      "lon": -75.58,
+      "city": "Medellín",
+      "address": "Diagonal 75B #2A-120"
+    }
   }
 }

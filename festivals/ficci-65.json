@@ -3736,5 +3736,56 @@
     "Riochiquito": "rio-chiquito",
     "Gente perra": "dog-people",
     "Los nadadores": "the-swimmers-2026"
+  },
+  "venues": {
+    "Teatro Adolfo Mejía": {
+      "short": "Teatro Adolfo Mejía",
+      "lat": 10.4238,
+      "lon": -75.5503,
+      "city": "Cartagena",
+      "address": "Calle del Tablón #14-34"
+    },
+    "Plaza Bocagrande": {
+      "short": "Plaza Bocagrande",
+      "lat": 10.3987,
+      "lon": -75.56,
+      "city": "Cartagena"
+    },
+    "CC Caribe Plaza": {
+      "short": "Caribe Plaza",
+      "lat": 10.4071,
+      "lon": -75.5124,
+      "city": "Cartagena"
+    },
+    "Auditorio Nido": {
+      "short": "Auditorio Nido",
+      "lat": 10.425,
+      "lon": -75.549,
+      "city": "Cartagena"
+    },
+    "Plaza Proclamación": {
+      "short": "Plaza Proclamación",
+      "lat": 10.423,
+      "lon": -75.551,
+      "city": "Cartagena"
+    },
+    "C. Convenciones": {
+      "short": "C. de Convenciones",
+      "lat": 10.4242,
+      "lon": -75.5497,
+      "city": "Cartagena"
+    },
+    "Unibac": {
+      "short": "Unibac",
+      "lat": 10.418,
+      "lon": -75.543,
+      "city": "Cartagena"
+    },
+    "AECID": {
+      "short": "AECID",
+      "lat": 10.421,
+      "lon": -75.547,
+      "city": "Cartagena"
+    }
   }
 }
