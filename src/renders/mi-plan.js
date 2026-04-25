@@ -1314,15 +1314,12 @@ function buildResultHTML(scenarios){
     const nextLabel=currentIdx===0?'Variación 1':`Variación ${currentIdx+1}`;
     // Dots: un botón por opción, activo destacado
     // Escalable: generado desde scenarios.length sin hardcodear
-    const _algCount=cachedResult._algorithmCount||n;
     const dots=scenarios.map((sc_,di)=>{
       const isActive=di===currentIdx;
       const isOptimoDot=di===0;
-      const isCustom=sc_._custom===true;
-      // Dot base: algoritmo=número, personalizado=✎ para distinguirlos
       const cls=isActive?(isOptimoDot?'ag-nav-dot active-star active':'ag-nav-dot active'):'ag-nav-dot';
-      const label=isOptimoDot?'★':isCustom?'✎':(di).toString();
-      const titleStr=isOptimoDot?'Plan óptimo':isCustom?'Opción personalizada':'Opción '+di;
+      const label=isOptimoDot?'★':di.toString();
+      const titleStr=isOptimoDot?'Plan óptimo':'Variación '+di;
       return`<button class="${cls}" onclick="jumpToScenario(${di})" title="${titleStr}">${label}</button>`;
     }).join('');
     navHtml=`<div class="ag-nav" style="margin-top:8px">${dots}</div>`;
@@ -1363,15 +1360,10 @@ function buildResultHTML(scenarios){
       const poster=f?getFilmPoster(f):null;
       const short=dt.length>18?dt.slice(0,16)+'…':dt;
       const safeT=t.replace(/'/g,"\\'");
-      const candidateScreens=f?FILMS.filter(fi=>fi.title===t&&!screeningPassed(fi)&&!isScreeningBlocked(fi)):[];
-      const allPast=f&&candidateScreens.length===0&&FILMS.some(fi=>fi.title===t);
-      // + aparece si hay función futura disponible (pasada o bloqueada = no hay acción posible)
-      const hasScreen=candidateScreens.length>0;
-      return`<div class="ag-excl-item${allPast?' ag-excl-item--past':''}" onclick="openPelSheet('${safeT}')">
+      return`<div class="ag-excl-item" onclick="openPelSheet('${safeT}')">
         ${poster
           ?`<img class="ag-excl-poster" src="${poster}" onerror="this.outerHTML='<div class=ag-excl-poster-ph></div>'" alt="">`
           :`<div class="ag-excl-poster-ph"></div>`}
-        ${hasScreen?`<div class="ag-excl-add-bar" onclick="event.stopPropagation();_tryAddExcludedToScenario('${safeT}')">${ICONS.plus}</div>`:''}
         <div class="ag-excl-title">${short}</div>
       </div>`;
     }).join('');
