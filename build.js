@@ -9,6 +9,7 @@ const ROOT  = __dirname;
 const SRC   = path.join(ROOT, 'src');
 const DIST  = path.join(ROOT, 'dist');
 const INDEX = path.join(ROOT, 'index.html');
+const SHELL = path.join(SRC, 'shell.html');
 
 const JS_ORDER = [
   'config.js',
@@ -76,19 +77,16 @@ function build() {
   console.log('Building Otrofestiv...\n');
   if (!fs.existsSync(DIST)) fs.mkdirSync(DIST);
 
-  let html = fs.readFileSync(INDEX, 'utf8');
+  let html = fs.readFileSync(SHELL, 'utf8'); // always from clean shell
 
   // 1. Inline CSS from src/styles.css
   const cssFile = path.join(SRC, 'styles.css');
   if (fs.existsSync(cssFile)) {
     const css = fs.readFileSync(cssFile, 'utf8');
     // Replace any <style>...</style> block (handles: two-block legacy, placeholder, or post-build single block)
-    const replaced = html.replace(/<style>[\s\S]*?<\/style>/, '<style>\n' + css + '\n</style>');
-    if (replaced === html) {
-      console.log('  ⚠ CSS: no <style> block found to replace');
-    } else {
-      html = replaced;
-    }
+    const replaced = html.replace('<style>/* __STYLES__ */</style>', '<style>\n' + css + '\n</style>');
+    if (replaced === html) { console.error('  ✗ CSS: __STYLES__ placeholder missing'); process.exit(1); }
+    html = replaced;
     console.log(`  ✓ styles.css (${(css.length/1024).toFixed(0)}kb)`);
   }
 
@@ -109,9 +107,9 @@ function build() {
     }
 
     const js = parts.join('\n');
-    const scriptBlocks = [...html.matchAll(/<script>([\s\S]*?)<\/script>/g)];
-    const mainBlock = scriptBlocks.reduce((a, b) => b[0].length > a[0].length ? b : a);
-    html = html.replace(mainBlock[0], `<script>\n${js}\n</script>`);
+    const r2 = html.replace('<script>/* __SCRIPTS__ */</script>', `<script>\n${js}\n</script>`);
+    if (r2 === html) { console.error('  ✗ JS: __SCRIPTS__ placeholder missing'); process.exit(1); }
+    html = r2;
     console.log(`\n  ✓ ${JS_ORDER.length} modules, ${declared.size} total symbols`);
   }
 
