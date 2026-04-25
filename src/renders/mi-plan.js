@@ -1352,23 +1352,35 @@ function buildResultHTML(scenarios){
     });
   });
 
-  // ── Películas no incluidas — info sin intercambio ──────────────
-  // Los ajustes se hacen en Mi Plan después de elegir la opción base.
-  // Flujo: Planear = elegir base → Mi Plan = ajustar fino.
-  // Escalable: no depende de lógica de swap — solo muestra qué falta.
+  // ── Películas no incluidas — bloque visual con posters ────────────
+  // Regla de diseño: cada película excluida merece identidad visual,
+  // no solo texto. El poster permite reconocimiento inmediato.
+  // CTA claro y accionable — no texto pasivo.
   if(sc.excluded.length){
-    const excNames=sc.excluded.map(t=>{
-      const{displayTitle}=parseProgramTitle(t);
-      return`<span style="color:var(--gray2)">${displayTitle.length>22?displayTitle.slice(0,20)+'…':displayTitle}</span>`;
-    }).join('<span style="color:var(--gray3)"> · </span>');
-    html+=`<div class="ag-conflicts">
-      <div style="font-size:var(--t-label);font-weight:var(--w-bold);color:var(--gray2);text-transform:uppercase;letter-spacing:.08em;margin-bottom:var(--sp-2)">
-        ${sc.excluded.length} no caben en esta variación
+    const excPosters=sc.excluded.map(t=>{
+      const{displayTitle:dt}=parseProgramTitle(t);
+      const f=FILMS.find(fi=>fi.title===t);
+      const poster=f?getFilmPoster(f):null;
+      const short=dt.length>18?dt.slice(0,16)+'…':dt;
+      const safeT=t.replace(/'/g,"\\'");
+      return`<div class="ag-excl-item" onclick="openPelSheet('${safeT}')">
+        ${poster
+          ?`<img class="ag-excl-poster" src="${poster}" onerror="this.outerHTML='<div class=ag-excl-poster-ph></div>'" alt="">`
+          :`<div class="ag-excl-poster-ph"></div>`}
+        <div class="ag-excl-title">${short}</div>
+      </div>`;
+    }).join('');
+    const hasNext=n>1&&currentIdx<n-1;
+    html+=`<div class="ag-excl-block">
+      <div class="ag-excl-eyebrow">
+        <span class="ag-excl-label">No incluidas</span>
+        <span class="ag-excl-count">${sc.excluded.length}</span>
       </div>
-      <div style="font-size:var(--t-sm);color:var(--gray2);line-height:1.5">${excNames}</div>
-      <div style="margin-top:var(--sp-2);font-size:var(--t-xs);color:var(--gray)">
-        Prueba otra variación o ajústalas en Mi Plan
-      </div>
+      <div class="ag-excl-strip">${excPosters}</div>
+      ${hasNext
+        ?`<button class="ag-excl-cta" onclick="jumpToScenario(${currentIdx+1})">${ICONS.switch} Probar siguiente variación</button>`
+        :`<button class="ag-excl-cta" onclick="saveCurrentScenario();switchMainNav('mnav-miplan');showAgView()">${ICONS.calendar} Ajustar en Mi Plan</button>`
+      }
     </div>`;
   }
 
