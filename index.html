@@ -7435,10 +7435,12 @@ function renderProgramaList(){
       const isNow=isNowShowing(f);
       const safeT=f.title.replace(/'/g,"\'");
       const{displayTitle:dt}=parseProgramTitle(f.title);
-      const vc=vcfg(f.venue);
+      const notice=NOTICES.find(n=>n.title===f.title&&n.festival===(window._currentFestivalId||'aff2026'));
+      // Usar sede efectiva: newVenue del notice si existe, venue original si no
+      const _effVenue=notice&&notice.newVenue?notice.newVenue:f.venue;
+      const vc=vcfg(_effVenue);
       const src=getFilmPoster(f)||'';
       const nowBadge=isNow?`<span style="font-size:var(--t-xs);font-weight:var(--w-display);color:var(--green);background:var(--green-10);border:1px solid var(--green-30);border-radius:var(--r);padding:2px 6px;margin-left:4px">AHORA</span>`:'';
-      const notice=NOTICES.find(n=>n.title===f.title&&n.festival===(window._currentFestivalId||'aff2026'));
       const noticeBadge=notice?`<span class="notice-badge">${notice.type==='cancelled'?UI.badge.cancelled:UI.badge.rescheduled}</span>`:'';
       const noticeNote=notice&&notice.type==='cancelled'?`<div style="font-size:var(--t-xs);color:var(--amber);margin-top:2px;font-weight:var(--w-semi)">Pendiente nueva fecha</div>`:
         notice&&notice.type==='rescheduled'&&notice.newTime?`<div style="font-size:var(--t-xs);color:var(--green);margin-top:2px;font-weight:var(--w-semi)">${notice.newDay||''} · ${notice.newTime}${notice.newVenue?' · '+notice.newVenue:''}</div>`:'';
@@ -7450,7 +7452,7 @@ function renderProgramaList(){
         ${_stk||(src?`<img class="plist-poster" src="${src}" loading="lazy" onerror="this.remove()" alt="">`:`<div class="plist-poster"></div>`)}
         <div class="plist-info">
           <div class="plist-title">${noticeBadge}${_metaBadges(f)}${dt}${nowBadge}</div>
-          <div class="plist-meta" style="${notice&&notice.type==='cancelled'?'text-decoration:line-through':''}">${vc.short}${sala(f.venue)?' · '+sala(f.venue):''} · ${f.duration||'~90 min'}</div>
+          <div class="plist-meta" style="${notice&&notice.type==='cancelled'?'text-decoration:line-through':''}">${vc.short}${sala(_effVenue)?' · '+sala(_effVenue):''} · ${f.duration||'~90 min'}</div>
           ${noticeNote||`<div class="plist-sec">${f.section||''}</div>`}
         </div>
         <div class="plist-heart${inWL?'':' empty'}" onclick="event.stopPropagation();_toggleWLFromList('${safeT}',this)">${inWL?ICONS.heartFill:ICONS.heart}</div>
