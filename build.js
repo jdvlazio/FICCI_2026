@@ -82,14 +82,12 @@ function build() {
   const cssFile = path.join(SRC, 'styles.css');
   if (fs.existsSync(cssFile)) {
     const css = fs.readFileSync(cssFile, 'utf8');
-    // Try two-block pattern first (legacy index.html with separate font-face block)
-    // Then fall back to single placeholder pattern (shell.html)
-    const twoBlock = /<style>[\s\S]*?<\/style>\s*<style>[\s\S]*?<\/style>/;
-    const placeholder = /<style>\/\* __STYLES__ \*\/<\/style>/;
-    if (twoBlock.test(html)) {
-      html = html.replace(twoBlock, '<style>\n' + css + '\n</style>');
+    // Replace any <style>...</style> block (handles: two-block legacy, placeholder, or post-build single block)
+    const replaced = html.replace(/<style>[\s\S]*?<\/style>/, '<style>\n' + css + '\n</style>');
+    if (replaced === html) {
+      console.log('  ⚠ CSS: no <style> block found to replace');
     } else {
-      html = html.replace(placeholder, '<style>\n' + css + '\n</style>');
+      html = replaced;
     }
     console.log(`  ✓ styles.css (${(css.length/1024).toFixed(0)}kb)`);
   }
