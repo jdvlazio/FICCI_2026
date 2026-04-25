@@ -284,7 +284,7 @@ function openPelSheet(title){
     const vc=vcfg(s.venue),sl=sala(s.venue);
     const isPast=screeningPassed(s)&&!festivalEnded();
     const safeDay=s.day.replace(/'/g,"\'");
-    const _showAdd=_hasPlan&&!_inPlan&&!isPast&&f.type!=='event';
+    const _showAdd=_hasPlan&&!_inPlan&&!isPast;
     return`<div class="pel-sheet-screening"${isPast?' style="opacity:.4"':''}>
       <span class="pelicula-day">${dayAbb}</span>
       <span class="pelicula-time">${s.time}</span>
