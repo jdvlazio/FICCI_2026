@@ -1,0 +1,102 @@
+{
+  "_comment": "Template JSON para un festival en Otrofestiv. Elimina los campos _comment antes de subir.",
+
+  "name": "Nombre del Festival 2026",
+  "id": "nombre-2026",
+  "city": "Ciudad o región",
+  "dates": "11–20 SEP",
+  "transport": "transit",
+  "_transport_options": "walking (pueblo/campus) | mixed (ciudad con sedes concentradas) | transit (ciudad grande)",
+
+  "venues": {
+    "_comment": "Una entrada por sede. Clave = nombre exacto usado en screenings[].venue",
+    "Nombre Sede - Ciudad": {
+      "short": "Nombre corto para UI",
+      "lat": 6.2338,
+      "lon": -75.5733,
+      "city": "Ciudad",
+      "address": "Dirección exacta (opcional)"
+    }
+  },
+
+  "films": [
+    {
+      "_comment": "Tipo 1: Largometraje con múltiples funciones",
+      "title": "Título original",
+      "title_es": "Título en español (si difiere)",
+      "director": "Nombre Director",
+      "year": 2025,
+      "duration": "90 min",
+      "section": "Nombre de sección",
+      "flags": "🇨🇴",
+      "has_qa": false,
+      "requires_registration": false,
+      "screenings": [
+        {
+          "day": "VIE 12",
+          "date": 12,
+          "time": "17:00",
+          "venue": "Nombre Sede - Ciudad"
+        },
+        {
+          "day": "SÁB 13",
+          "date": 13,
+          "time": "19:00",
+          "venue": "Otra Sede - Ciudad"
+        }
+      ]
+    },
+    {
+      "_comment": "Tipo 2: Programa combinado de largometrajes",
+      "title": "Film A + Film B",
+      "is_programa": true,
+      "section": "Nombre de sección",
+      "day": "VIE 12",
+      "date": 12,
+      "time": "18:30",
+      "venue": "Nombre Sede - Ciudad",
+      "film_list": [
+        { "title": "Film A", "director": "Dir A", "duration": "16 min" },
+        { "title": "Film B", "director": "Dir B", "duration": "65 min" }
+      ]
+    },
+    {
+      "_comment": "Tipo 3: Programa de cortometrajes",
+      "title": "Competencia de Cortometrajes · Programa 1",
+      "is_cortos": true,
+      "duration": "82 min",
+      "section": "Competencia cortometrajes",
+      "day": "SÁB 13",
+      "date": 13,
+      "time": "17:00",
+      "venue": "Nombre Sede - Ciudad",
+      "film_list": [
+        { "title": "Corto 1", "director": "Dir", "duration": "12 min", "country": "Colombia", "flags": "🇨🇴" },
+        { "title": "Corto 2", "director": "Dir", "duration": "18 min", "country": "Argentina", "flags": "🇦🇷" }
+      ]
+    },
+    {
+      "_comment": "Tipo 4: Evento / taller / conversatorio",
+      "title": "Nombre del evento",
+      "type": "event",
+      "duration": "120 min",
+      "section": "Programación académica",
+      "has_qa": false,
+      "requires_registration": true,
+      "day": "LUN 15",
+      "date": 15,
+      "time": "09:00",
+      "venue": "Nombre Sede - Ciudad"
+    }
+  ],
+
+  "posters": {
+    "_comment": "Generado por el enricher. titulo → URL de TMDB. No editar manualmente.",
+    "Título de la película": "https://image.tmdb.org/t/p/w185/xxxx.jpg"
+  },
+
+  "lbSlugs": {
+    "_comment": "Generado por el enricher. titulo → slug de Letterboxd. Verificar siempre.",
+    "Título de la película": "slug-en-letterboxd"
+  }
+}
