@@ -41,7 +41,7 @@ function renderPrioStrip(){
     return`<div class="prio-chip${allPast?' past':''}">
       ${img}
       <button class="prio-chip-rm" data-prio-title="${t.replace(/"/g,'&quot;')}" onclick="event.stopPropagation();togglePriority(this.dataset.prioTitle)" title="Quitar prioridad">${ICONS.x}</button>
-      <div class="prio-chip-title">${short}${progSuffix?`<span style="color:var(--orange);display:block;font-size:var(--t-xs);margin-top:1px">${progSuffix}</span>`:''}</div>
+      <div class="prio-chip-title">${short}${progSuffix?`<span class="prog-suffix">${progSuffix}</span>`:''}</div>
     </div>`;
   }).join('');
   return`<div class="prio-strip">

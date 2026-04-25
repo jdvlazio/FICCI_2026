@@ -16,10 +16,10 @@ const UI = {
     transit: 'en carro',
   },
   empty: {
-    noActivity:  UI.empty.noActivity,
+    noActivity:  'Sin actividades para este día',
     noResults:   'Sin actividades para este filtro',
-    noPending:   UI.empty.noPending,
-    planCovered: UI.empty.planCovered,
+    noPending:   'No hay películas pendientes',
+    planCovered: 'Añade más títulos en Intereses para ver sugerencias adicionales.',
     allPassed:   'Todas las actividades de tu plan ya pasaron',
     overlap:     'Hay actividades con horario solapado',
   },

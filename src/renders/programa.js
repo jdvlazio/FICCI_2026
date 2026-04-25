@@ -278,7 +278,7 @@ function renderNoticesBanner(){
   el.innerHTML=active.map(n=>{
     const label=n.type==='cancelled'?UI.badge.cancelled:UI.badge.rescheduled;
     const msgCancelled=`<span>Pendiente nueva fecha.</span>`;
-    const msgRescheduled=n.newVenue&&!n.newTime?`Nueva sede: <span style="color:var(--white-60)">${n.newVenue}</span>`:n.newDay&&n.newTime?`Nueva sede: <span style="color:var(--white-60)">${n.newDay} · ${n.newTime}${n.newVenue?' · '+n.newVenue:''}</span>`:'';
+    const msgRescheduled=n.newVenue&&!n.newTime?`Nueva sede: <span class="notice-banner-venue">${n.newVenue}</span>`:n.newDay&&n.newTime?`Nueva sede: <span style="color:var(--white-60)">${n.newDay} · ${n.newTime}${n.newVenue?' · '+n.newVenue:''}</span>`:'';
     const msg=n.type==='cancelled'?msgCancelled:msgRescheduled;
     const safeTitle=n.title.length>32?n.title.slice(0,30)+'…':n.title;
     return`<div class="notice-banner">
@@ -332,8 +332,8 @@ function renderProgramaList(){
       const src=getFilmPoster(f)||'';
       const nowBadge=isNow?`<span style="font-size:var(--t-xs);font-weight:var(--w-display);color:var(--green);background:var(--green-10);border:1px solid var(--green-30);border-radius:var(--r);padding:2px 6px;margin-left:4px">AHORA</span>`:'';
       const noticeBadge=notice?`<span class="notice-badge">${notice.type==='cancelled'?UI.badge.cancelled:UI.badge.rescheduled}</span>`:'';
-      const noticeNote=notice&&notice.type==='cancelled'?`<div style="font-size:var(--t-xs);color:var(--amber);margin-top:2px;font-weight:var(--w-semi)">Pendiente nueva fecha</div>`:
-        notice&&notice.type==='rescheduled'&&notice.newTime?`<div style="font-size:var(--t-xs);color:var(--green);margin-top:2px;font-weight:var(--w-semi)">${notice.newDay||''} · ${notice.newTime}${notice.newVenue?' · '+notice.newVenue:''}</div>`:'';
+      const noticeNote=notice&&notice.type==='cancelled'?`<div class="notice-note notice-note--warn">Pendiente nueva fecha</div>`:
+        notice&&notice.type==='rescheduled'&&notice.newTime?`<div class="notice-note notice-note--ok">${notice.newDay||''} · ${notice.newTime}${notice.newVenue?' · '+notice.newVenue:''}</div>`:'';
       const cancelStyle=notice&&notice.type==='cancelled'?'opacity:.5':'';
       const pastStyle=passed&&!isNow&&!festivalEnded()?'opacity:.45':'';
       const itemStyle=[pastStyle,cancelStyle].filter(Boolean).join(';');
@@ -421,7 +421,7 @@ function _renderExploreLista(){
     if(isEvent) return`<div class="plist-item plist-event" style="${allPast?'opacity:.35':''}" onclick="openPelSheet('${safeT}')">
       <img class="plist-poster" src="${makeEventPoster(dt,f.duration)}" alt="${dt}">
       <div class="plist-info">
-        <div class="plist-title" style="color:var(--gray2);font-weight:var(--w-semi)">${dt}</div>
+        <div class="plist-title plist-title--past">${dt}</div>
         <div class="plist-meta">${f.duration||''} · ${days}</div>
         <div class="plist-sec">${f.section||''}</div>
       </div>
@@ -558,7 +558,7 @@ function render(){
     const progBadge='';//REMOVED
     const nowBadge=isNow?`<div class="poster-now">AHORA</div>`:'';
     const _notice=NOTICES.find(n=>n.title===f.title&&n.festival===(_activeFestId||'aff2026'));
-    const pastBadge=_notice?`<div class="poster-past-badge" style="background:var(--amber-60);color:var(--black)">${_notice.type==='cancelled'?UI.badge.cancelled:UI.badge.rescheduled}</div>`:'';
+    const pastBadge=_notice?`<div class="poster-notice-badge">${_notice.type==='cancelled'?UI.badge.cancelled:UI.badge.rescheduled}</div>`:'';
 
     const _fe=festivalEnded();
 return`<div class="poster-card${inWL&&!inW?' in-wl':''}${inW&&!_fe?' in-watched':''}${passed&&!_fe?' past-card':''}" onclick="openPelSheet('${safeT}')">

@@ -303,7 +303,7 @@ function renderFilmAlternatives(title,day,time){
     return`<div class="checkin-opt" onclick="confirmReplace('${isSameTitle?'':''}${safeT}','${safeTNew}','${f.day}','${f.time}')">
       <div class="checkin-opt-info">
         <div class="checkin-opt-time">${dayLabel}${f.time} · ${f.duration}</div>
-        <div class="checkin-opt-title">${short}${inWL?` <span style="color:var(--amber);font-size:var(--t-xs)">♥</span>`:''}</div>
+        <div class="checkin-opt-title">${short}${inWL?` <span class="wl-heart">♥</span>`:''}</div>
         <div class="checkin-opt-venue">${ICONS.pin} ${vc2.short}</div>
       </div>
       <div class="checkin-opt-add">${ICONS.plus}</div>
@@ -407,10 +407,10 @@ function renderGapOptions(gapStartMin,gapEndMin,todayKey,removedTitle){
     const safeT=f.title.replace(/'/g,"\'");
     const fStart=toMin(f.time);const inProg=isLiveDay&&fStart<nowMin;
     const minsIn=inProg?nowMin-fStart:0;
-    const badge=inProg?`<span style="font-size:var(--t-xs);color:var(--green);font-weight:var(--w-bold);display:block;margin-bottom:2px">EN CURSO · entró hace ${minsIn} min</span>`:'';
+    const badge=inProg?`<span class="badge-live">EN CURSO · entró hace ${minsIn} min</span>`:'';
     const inWL=watchlist.has(f.title);
     return`<div class="checkin-opt" onclick="confirmReplace('${safeRem}','${safeT}','${f.day}','${f.time}')">
-      <div class="checkin-opt-info">${badge}<div class="checkin-opt-time">${f.time} · ${f.duration}</div><div class="checkin-opt-title">${short}${inWL?` <span style="color:var(--amber);font-size:var(--t-xs)">♥</span>`:''}</div><div class="checkin-opt-venue">${ICONS.pin} ${vc2.short}</div></div>
+      <div class="checkin-opt-info">${badge}<div class="checkin-opt-time">${f.time} · ${f.duration}</div><div class="checkin-opt-title">${short}${inWL?` <span class="wl-heart">♥</span>`:''}</div><div class="checkin-opt-venue">${ICONS.pin} ${vc2.short}</div></div>
       <div class="checkin-opt-add">${ICONS.plus}</div>
     </div>`;
   }).join('');
@@ -704,7 +704,7 @@ function renderContextualHeader(){
         </div>`;
     })():`<div style="font-size:var(--t-caption);color:var(--gray)">Sin actividades disponibles en este tramo.</div>`;
     return`<div class="ctx-header">
-      <div class="ctx-eyebrow" style="color:var(--green-70)">
+      <div class="ctx-eyebrow ctx-eyebrow--free">
         <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
         Tiempo libre
       </div>
@@ -750,7 +750,7 @@ function renderContextualHeader(){
     }).join('');
     const dayName=DAY_A[todayScreenings[0]?.day]||'Hoy';
     return`<div class="ctx-header">
-      <div class="ctx-eyebrow" style="color:var(--gray)">
+      <div class="ctx-eyebrow ctx-eyebrow--past">
         <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
         Tu ${dayName.toLowerCase()} en ${(FESTIVAL_CONFIG[_activeFestId]||{}).name||'el festival'}
       </div>
@@ -796,7 +796,7 @@ function _renderSavedAgendaHTML(){
   </button>`;
   const progressBar=currentDayNum?`<div class="festival-progress" style="display:flex;align-items:center;gap:8px">
     <div style="flex:1">
-      <div class="festival-progress-text"><span>Día <b>${currentDayNum}</b> de 6</span><span style="color:var(--orange)">${ICONS.check} ${viewedCount} ${viewedCount===1?'vista':'vistas'}</span></div>
+      <div class="festival-progress-text"><span>Día <b>${currentDayNum}</b> de 6</span><span style="color:var(--amber)">${ICONS.check} ${viewedCount} ${viewedCount===1?'vista':'vistas'}</span></div>
       <div class="festival-progress-bar"><div class="festival-progress-fill" style="width:${progressPct}%"></div></div>
     </div>
   </div>`:'';
@@ -1335,7 +1335,7 @@ function buildResultHTML(scenarios){
       <span class="ok"><b>${ok}</b></span> de <b>${total}</b> película${total!==1?'s':''}
       ${bad?`<span class="conflict-label"> · <b>${bad}</b> fuera del plan</span>`:''}
     </div>
-    ${sc.incompatiblePriorities?`<div style="margin-top:var(--sp-2);font-size:var(--t-sm);color:var(--red)">Las prioridades se solapan entre sí — plan calculado sin forzarlas.</div>`:''}
+    ${sc.incompatiblePriorities?`<div class="ag-warn" style="margin-top:var(--sp-2)">${ICONS.alert} Las prioridades se solapan entre sí — plan calculado sin forzarlas.</div>`:''}
     ${navHtml}
   </div>
 `;

@@ -423,7 +423,7 @@ function runCalc(){
       cachedResult={scenarios,currentIdx:0,_algorithmCount:scenarios.length};
       if(res) res.innerHTML=buildResultHTML(scenarios);
     }catch(err){
-      if(res) res.innerHTML=`<div class="ag-calc-prompt" style="color:var(--red)"><strong>Error al calcular:</strong><br><code style="font-size:var(--t-xs)">${err.message}</code></div>`;
+      if(res) res.innerHTML=`<div class="ag-calc-prompt ag-calc-error"><strong>Error al calcular:</strong><br><code>${err.message}</code></div>`;
       /* runCalc error — silent in production */
     }finally{
       if(btn){btn.disabled=false;btn.textContent='Calcular opciones';}
@@ -649,11 +649,11 @@ function onCartaSearch(){
     return`<div class="carta-sr-item" onclick="${onclick}">
       ${poster?`<img class="carta-sr-poster" src="${poster}" onerror="this.style.opacity=0" alt="">`:'<div class="carta-sr-poster"></div>'}
       <div class="carta-sr-info">
-        <div class="carta-sr-title">${displayTitle}${progSuffix?` <span style="color:var(--orange);font-size:var(--t-label)">${progSuffix}</span>`:''}</div>
+        <div class="carta-sr-title">${displayTitle}${progSuffix?` <span class="prog-suffix">${progSuffix}</span>`:''}</div>
         <div class="carta-sr-meta">${f._isCortoItem
           ?`Cortometraje${f._prog?` · ${parseProgramTitle(f._prog.title).displayTitle}`:''}`
           :`${f.duration||''}${f.section?' · '+f.section.replace(/^[^ ]+ /,''):''}`
-        }${inWL?' · <span style="color:var(--amber)">♥</span>':''}</div>
+        }${inWL?' · <span class="wl-heart">♥</span>':''}</div>
       </div>
     </div>`;
   }).join('');

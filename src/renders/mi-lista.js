@@ -34,7 +34,7 @@ function renderFilmListHTML(){
           const secShort=(f.section||'').replace(/^[^\s]+ /,'');
           return dayChips?`<div class="ag-fi-days">${dayChips}${secShort?' · '+secShort:''}</div>`:'';
         })()}
-        ${progSuffix?`<div style="font-size:var(--t-xs);color:var(--orange);font-weight:var(--w-bold);margin-top:1px;line-height:1">${progSuffix}</div>`:''}
+        ${progSuffix?`<div class="prog-suffix">${progSuffix}</div>`:''}
       </div>
     </div>`;
   };
@@ -152,7 +152,7 @@ function mkAgendaRow(s, mode='saved'){
     ${_ph}
     <div class="saved-time">${s.time}</div>
     <div class="saved-info">
-      <div class="saved-title">${displayTitle}</div>${progSuffix?`<div style="font-size:var(--t-sm);color:var(--orange);font-weight:var(--w-bold);margin-top:1px;line-height:1">${progSuffix}</div>`:''}
+      <div class="saved-title">${displayTitle}</div>${progSuffix?`<div class="prog-suffix">${progSuffix}</div>`:''}
       <div class="saved-venue">${ICONS.pin} ${vc2.short}${sl?' · '+sl:''}${s.duration?' · '+s.duration:''}${altBadge}</div>
       ${_progBtn}
     </div>

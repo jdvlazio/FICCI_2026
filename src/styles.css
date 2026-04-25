@@ -419,6 +419,10 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:var(--t
 .notice-banner-label{font-size:var(--t-xs);font-weight:var(--w-display);color:var(--amber);letter-spacing:.5px;text-transform:uppercase}
 .notice-banner-text{font-size:var(--t-sm);color:var(--white);margin-top:2px;line-height:1.4}.notice-banner-text b{color:var(--white);font-weight:var(--w-bold)}.notice-banner-text span{color:var(--gray)}
 .notice-banner-close{background:none;border:none;color:var(--gray2);font-size:var(--t-md);cursor:pointer;padding:0;flex-shrink:0;line-height:1;font-family:var(--font)}
+.notice-banner-venue{color:var(--white-60)}
+.plist-title--past{color:var(--gray2);font-weight:var(--w-semi)}
+.poster-notice-badge{position:absolute;top:5px;left:5px;background:var(--amber-60);color:var(--black);font-size:var(--t-badge);font-weight:var(--w-display);letter-spacing:.5px;padding:2px 5px;border-radius:var(--r-sm);line-height:1.4}
+
 
 /* ── Poster ── */
 .lb-poster{width:var(--poster-xs-w);height:var(--poster-xs-h);object-fit:cover;border-radius:var(--r-sm);flex-shrink:0;display:block;background:var(--surf-2)}
@@ -530,7 +534,7 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:var(--t
 .ok{color:var(--orange)}
 .conflict-label{color:var(--gray)}
 .dur-long{color:var(--yellow);font-size:var(--t-sm);font-weight:var(--w-semi)}
-.travel-warn{font-size:var(--t-sm);color:var(--gray);display:flex;align-items:center;gap:var(--sp-1);padding:var(--sp-1) var(--sp-2);background:var(--amber-06);border:1px solid var(--bdr-l);border-radius:var(--r-sm);margin:2px 0}
+/* .travel-warn removed — use .ag-warn */
 
 /* ════════════════════════════════════════════════════════
    5 · VISTAS
@@ -1030,6 +1034,26 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:var(--t
 .ag-card-btn{background:none;border:1px solid var(--bdr);border-radius:var(--r-md);cursor:pointer;font-size:var(--t-sm);padding:var(--sp-2) var(--sp-3);color:var(--gray2);transition:color var(--tr-base),border-color var(--tr-base);line-height:1}
 .ag-card-btn:hover{border-color:var(--green);color:var(--green)}
 .ag-warn{display:flex;align-items:center;gap:var(--sp-2);padding:var(--sp-1) var(--sp-2);margin-bottom:var(--sp-1);background:var(--yellow-08);border-radius:var(--r-md);font-size:var(--t-sm);color:var(--yellow)}
+.ag-calc-error{color:var(--red)}.ag-calc-error code{font-size:var(--t-xs);opacity:.8}
+/* ── SISTEMA DE AVISOS — clases canónicas ─────────────────────
+   suggestion-travel-warn → aviso de viaje en tarjeta de sugerencia
+   ag-warn--full          → variante fila completa (Mi Plan detalle)
+   wl-heart               → indicador ♥ de watchlist
+   badge-live             → badge EN CURSO en opciones de hueco
+   prog-suffix            → sufijo de programa cortos (naranja)
+   notice-note            → nota inline aviso cancelación/reprogramación
+   ctx-eyebrow--free/past → modificadores semánticos del eyebrow
+──────────────────────────────────────────────────────────────── */
+.suggestion-travel-warn{font-size:var(--t-xs);color:var(--yellow);margin-top:3px;display:flex;align-items:center;gap:var(--sp-1)}
+.ag-warn--full{border-radius:0;margin:0;border-bottom:1px solid var(--bdr-l)}
+.wl-heart{color:var(--amber);font-size:var(--t-xs);flex-shrink:0}
+.badge-live{font-size:var(--t-xs);color:var(--green);font-weight:var(--w-bold);display:block;margin-bottom:2px}
+.prog-suffix{font-size:var(--t-xs);color:var(--orange);font-weight:var(--w-bold);margin-top:1px;line-height:1;display:block}
+.notice-note{font-size:var(--t-xs);font-weight:var(--w-semi);margin-top:2px}
+.notice-note--warn{color:var(--amber)}
+.notice-note--ok{color:var(--green)}
+.ctx-eyebrow--free{color:var(--green-70)}
+.ctx-eyebrow--past{color:var(--gray)}
 
 /* ── MI PLAN ── */
 .saved-agenda{padding:0;margin-bottom:var(--sp-5)}
@@ -1149,7 +1173,7 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:var(--t
 .mplan-rtitle{font-size:var(--t-base);font-weight:var(--w-semi);color:var(--white);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .mplan-rvenue{font-size:var(--t-sm);color:var(--gray);margin-top:2px}
 .mplan-dur{font-size:var(--t-sm);color:var(--gray2);flex-shrink:0;white-space:nowrap}
-.mplan-warn-row{font-size:var(--t-sm);color:var(--yellow);padding:var(--sp-1) var(--sp-3);border-bottom:1px solid var(--bdr-l);display:flex;align-items:center;gap:var(--sp-1);background:var(--amber-06)}
+.mplan-warn-row{font-size:var(--t-sm);color:var(--yellow);padding:var(--sp-1) var(--sp-3);border-bottom:1px solid var(--bdr-l);border-radius:0;display:flex;align-items:center;gap:var(--sp-1);background:var(--yellow-08)}
 
 .mplan-legend{display:flex;gap:var(--sp-4);padding:var(--sp-2) var(--sp-3);border-bottom:1px solid var(--bdr-l);background:var(--surf)}
 .mplan-li{display:flex;align-items:center;gap:var(--sp-2);font-size:var(--t-xs);color:var(--gray2)}
