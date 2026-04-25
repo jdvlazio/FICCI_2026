@@ -42,6 +42,7 @@ try {
 
 // Required functions
 const requiredFns = [
+  'venueTravelMins','_resolveVenue','vcfg',
   'toMin','parseDur','screensConflict','travelMins','travelWarn',
   '_effectiveVenue','isScreeningBlocked',
   'computeScenarios','getSuggestions','squeezeExcluded','greedyFloor',
