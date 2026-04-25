@@ -285,9 +285,9 @@ function renderNoticesBanner(){
       <div class="notice-banner-dot"></div>
       <div class="notice-banner-body">
         <div class="notice-banner-label">AVISO DEL FESTIVAL</div>
-        <div class="notice-banner-text"><b style="color:var(--white-60);font-weight:var(--w-semi)">${safeTitle}</b> · <span>${label.toLowerCase()}</span>. ${msg}</div>
+        <div class="notice-banner-text"><b>${safeTitle}</b> · <span>${label.toLowerCase()}</span>. ${msg}</div>
       </div>
-      <button class="notice-banner-close" onclick="_dismissNotice('${n.title.replace(/'/g,"\\'")}')">✕</button>
+      <button class="notice-banner-close" onclick="_dismissNotice('${n.title.replace(/'/g,"\\'")}')">${ICONS.x}</button>
     </div>`;
   }).join('');
 }
