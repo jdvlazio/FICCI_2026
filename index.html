@@ -2856,6 +2856,11 @@ function _effectiveVenue(s){
   const n=NOTICES.find(nx=>nx.title===s._title&&nx.festival===(window._currentFestivalId||'aff2026')&&nx.type==='rescheduled'&&nx.newVenue);
   return n?n.newVenue:s.venue;
 }
+function _noticeVenue(title, originalVenue){
+  // Returns effective venue for display — newVenue from notice if rescheduled
+  const n=NOTICES.find(nx=>nx.title===title&&nx.festival===(_activeFestId||'aff2026')&&nx.type==='rescheduled'&&nx.newVenue);
+  return n?n.newVenue:originalVenue;
+}
 function travelWarn(s1,s2){
   if(s1.day!==s2.day) return null;
   const v1=_effectiveVenue(s1), v2=_effectiveVenue(s2);
@@ -3107,7 +3112,7 @@ function renderMiPlanCalendar(){
       const{displayTitle}=parseProgramTitle(s._title||'');
       const isPrio=type==='mp-priority';
       const showVenue=blockH>44;
-      const vc2=vcfg(s.venue);
+      const vc2=vcfg(_noticeVenue(s._title,s.venue));
       return`<div class="mplan-wk-block ${type}${stateClass}" style="top:${top.toFixed(0)}px;height:${blockH.toFixed(0)}px" data-fkey="${(s._title||'')}${s.time}" onclick="setActivePlanFilm(this);selectMiPlanDay(${i});event.stopPropagation()" title="${(s._title||'').replace(/"/g,'&quot;')}">
         ${isPrio?`<div class="mplan-wk-badge">${ICONS.star}</div>`:''}
         <div class="mplan-wk-time">${s.time}</div>
@@ -3176,7 +3181,7 @@ function renderMiPlanCalendar(){
         </div>
         <div class="mplan-ri">
           <div>${(()=>{const{displayTitle:_dt,progSuffix:_ps}=parseProgramTitle(s._title||'');const _mfqa=FILMS.find(fi=>fi.title===s._title&&fi.day===s.day&&fi.time===s.time);const _qab=_mfqa?.has_qa?`<span class="meta-badge" style="font-size:8px;padding:1px 4px;margin-right:4px">${UI.badge.qa}</span>`:'';return`<div class="mplan-rtitle">${prioritized.has(s._title)?`<span style="color:var(--orange);margin-right:4px">${ICONS.starFill}</span>`:''} ${_qab}${_dt}</div>${_ps?`<div style="font-size:var(--t-sm);color:var(--orange);font-weight:var(--w-bold);line-height:1;margin-top:2px">${_ps}</div>`:''}`;})()} </div>
-          <div class="mplan-rvenue">${ICONS.pin} ${vcfg(s.venue).short}${sala(s.venue)?' \u00b7 '+sala(s.venue):''}</div>
+          <div class="mplan-rvenue">${ICONS.pin} ${vcfg(_noticeVenue(s._title,s.venue)).short}${sala(_noticeVenue(s._title,s.venue))?' \u00b7 '+sala(_noticeVenue(s._title,s.venue)):''}</div>
           ${(()=>{const _mf=FILMS.find(fi=>fi.title===s._title&&fi.day===s.day&&fi.time===s.time);if(!_mf||!_mf.is_cortos||!_mf.film_list||!_mf.film_list.length) return'';return`<button class="mplan-prog-toggle" onclick="toggleMplanProg(this,event)" style="display:inline-flex;align-items:center;gap:var(--sp-1)">${ICONS.chevronR} Programa</button>`;})()}
         </div>
         <div style="display:flex;flex-direction:column;align-items:flex-end;justify-content:center;flex-shrink:0">
@@ -4326,7 +4331,7 @@ function mkAgendaRow(s, mode='saved'){
   const _p=getFilmPoster(f);
   const _safePT=t.replace(/'/g,"\\'");
   const _ph=_p?`<img class="lb-poster" src="${_p}" loading="lazy" style="cursor:pointer" onclick="event.stopPropagation();openPelSheet('${_safePT}')" onerror="this.remove()" alt="">`:'<div class="lb-poster-ph">🎬</div>';
-  const vc2=vcfg(s.venue),sl=sala(s.venue);
+  const _sv=_noticeVenue(s._title,s.venue);const vc2=vcfg(_sv),sl=sala(_sv);
   const safeT=(s._title||'').replace(/"/g,'&quot;');
   const isDone=watched.has(t);
   const alts=mode==='scenario'?FILMS.filter(fi=>fi.title===t&&!isScreeningBlocked(fi)&&!screeningPassed(fi)&&!(fi.day===s.day&&fi.time===s.time)):[];
@@ -5168,7 +5173,7 @@ function _renderSavedAgendaHTML(){
     suggDays.forEach(day=>{
       html+=`<div class="suggestion-day-lbl">${dayChip(day)}</div>`;
       html+=suggsByDay[day].map(f=>{
-        const vc2=vcfg(f.venue),sl=sala(f.venue);
+        const _fv=_noticeVenue(f.title,f.venue);const vc2=vcfg(_fv),sl=sala(_fv);
         const _sp=getFilmPoster(f);
         const _sph=_sp?`<img class="lb-poster" src="${_sp}" loading="lazy" onerror="this.outerHTML='<div class=lb-poster-ph>🎬</div>'" alt="">`:'<div class="lb-poster-ph">🎬</div>';
         return`<div class="suggestion-item" onclick="openPelSheet('${f.title.replace(/'/g,"\\'")}')">
@@ -7133,7 +7138,7 @@ function renderMiPlanList(schedule){
       <div class="mplan-list-day">${day}</div>
       ${byDay[day].map(s=>{
         const{displayTitle:dt}=parseProgramTitle(s._title||'');
-        const vc=vcfg(s.venue);
+        const vc=vcfg(_noticeVenue(s._title,s.venue));
         const src=getFilmPoster(FILMS.find(fi=>fi.title===s._title&&fi.day===s.day))||'';
         const safeT=(s._title||'').replace(/'/g,"\'");
         const isW=watched.has(s._title);
