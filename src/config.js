@@ -141,7 +141,7 @@ const NOTICES=[
   {title:'La misteriosa mirada del flamenco',festival:'aff2026',type:'rescheduled',date:'2026-04-24',newDay:'VIE 24',newTime:'19:00',newVenue:'Cineprox Las Américas'},
   {title:'Rayas de tigre',festival:'aff2026',type:'rescheduled',date:'2026-04-25',newDay:'SÁB 25',newTime:'16:00',newVenue:'Cineprox Las Américas'},
   {title:'Un mundo frágil y maravilloso',festival:'aff2026',type:'rescheduled',date:'2026-04-26',newDay:'DOM 26',newTime:'13:30',newVenue:'Cineprox Las Américas'},
-  {title:'Confinados',festival:'aff2026',type:'rescheduled',date:'2026-04-26',newVenue:'Cineprox Las Américas'},
+  {title:'Hacia casa',festival:'aff2026',type:'rescheduled',date:'2026-04-26',newDay:'DOM 26',newTime:'17:00',newVenue:'Cineprox Las Américas'},
 ];
 
 const FESTIVAL_CONFIG={
