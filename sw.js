@@ -2,8 +2,8 @@
 // Estrategia: HTML siempre desde red. Assets en caché.
 // v12: auto-reload en cliente cuando SW detecta nueva versión
 
-const CACHE_NAME = 'otrofestiv-v202604261208';
-const BUILD = '202604261208';
+const CACHE_NAME = 'otrofestiv-v202604261214';
+const BUILD = '202604261214';
 
 const STATIC_ASSETS = [
   '/manifest.json',

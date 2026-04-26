@@ -2988,9 +2988,7 @@ _FESTIVAL_DATA["aff2026"] = {
       "director": "Cyril Aris",
       "year": 2025,
       "genre": "Comedia, Drama, Romance",
-      "synopsis": "A lo largo de tres décadas, Nino y Yasmina están unidos por una relación magnética. Atrapados entre el amor y la supervivencia, deben decidir si construir una familia en el Líbano mientras el país atraviesa sus tragedias.",
-      "lb_slug": "a-sad-and-beautiful-world",
-      "tmdb_id": 1376838
+      "synopsis": "A lo largo de tres décadas, Nino y Yasmina están unidos por una relación magnética. Atrapados entre el amor y la supervivencia, deben decidir si construir una familia en el Líbano mientras el país atraviesa sus tragedias."
     },
     {
       "title": "Cortos: Familia 12+",
@@ -3042,9 +3040,7 @@ _FESTIVAL_DATA["aff2026"] = {
       "director": "Neeraj Ghaywan",
       "year": 2025,
       "genre": "Drama",
-      "synopsis": "Dos amigos de la infancia de un pequeño pueblo del norte de India persiguen un trabajo policial que les promete dignidad. Pero la desesperación amenaza el vínculo que los une.",
-      "lb_slug": "homebound-2025",
-      "tmdb_id": 1227739
+      "synopsis": "Dos amigos de la infancia de un pequeño pueblo del norte de India persiguen un trabajo policial que les promete dignidad. Pero la desesperación amenaza el vínculo que los une."
     },
     {
       "title": "Un fantasma para servirte",
@@ -12805,30 +12801,6 @@ async function loadFestival(id){
   FILMS=cfg.films;
   POSTERS=cfg.posters;
   LB_SLUGS=cfg.lbSlugs||{};
-
-  // Fetch TMDB posters para films con tmdb_id — secuencial para evitar race conditions
-  const _tmdbFilms=(cfg.films||[]).filter(f=>f.tmdb_id&&!cfg.posters[f.title]);
-  if(_tmdbFilms.length){
-    (async()=>{
-      let updated=false;
-      for(const f of _tmdbFilms){
-        try{
-          const r=await fetch(`https://api.themoviedb.org/3/movie/${f.tmdb_id}?api_key=38f24e78b2f13970af3430eb0732f0ac`);
-          if(r.ok){
-            const d=await r.json();
-            if(d.poster_path){
-              const url=`https://image.tmdb.org/t/p/w185${d.poster_path}`;
-              cfg.posters[f.title]=url;
-              POSTERS[f.title]=url;
-              _POSTERS_N[normKey(f.title)]=d.poster_path;
-              updated=true;
-            }
-          }
-        }catch(e){}
-      }
-      if(updated) _renderProgramaContent();
-    })();
-  }
   FESTIVAL_DATES=cfg.festivalDates;
   FESTIVAL_END=new Date(cfg.festivalEndStr);
   FESTIVAL_STORAGE_KEY=cfg.storageKey;
