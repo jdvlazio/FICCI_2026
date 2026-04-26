@@ -36,8 +36,13 @@ function togglePriority(title,cost){
 function showToast(msg,type='info',duration=2800){
   let t=document.getElementById('prio-toast');
   if(!t){t=document.createElement('div');t.id='prio-toast';document.body.appendChild(t);}
-  t.className='prio-toast '+type;t.innerHTML=msg;t.style.opacity='1';t.style.pointerEvents='none';
-  clearTimeout(t._to);t._to=setTimeout(()=>{t.style.opacity='0';},duration);
+  t.className='prio-toast '+type;t.innerHTML=msg;t.style.pointerEvents='none';
+  // Animate in
+  t.style.opacity='0';t.style.transform='translateX(-50%) translateY(8px)';
+  requestAnimationFrame(()=>{
+    t.style.opacity='1';t.style.transform='translateX(-50%) translateY(0)';
+  });
+  clearTimeout(t._to);t._to=setTimeout(()=>{t.style.opacity='0';t.style.transform='translateX(-50%) translateY(8px)';},duration);
 }
 let _toastActionFn=null;
 function showActionToast(msg,actionLabel,actionFn,duration=4000){
