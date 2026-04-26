@@ -80,9 +80,11 @@ async function loadFestival(id){
         });
       }
       cfg.films=exploded;
-      cfg.posters=data.posters||{};
-      cfg.customPosters=data.customPosters||{};
-      cfg.lbSlugs=data.lbSlugs||{};
+  // Merge lbSlugs from JSON into config
+  const _jsonLbSlugs=data.lbSlugs||{};
+  cfg.lbSlugs={...(FESTIVAL_CONFIG[id]?.lbSlugs||{}),..._jsonLbSlugs};
+  cfg.posters=data.posters||{};
+  cfg.customPosters=data.customPosters||{};
     }catch(e){
       console.error('Error cargando festival '+id+':',e);
       return;
@@ -93,6 +95,17 @@ async function loadFestival(id){
   FILMS=cfg.films;
   POSTERS=cfg.posters;
   LB_SLUGS=cfg.lbSlugs||{};
+
+  // Fetch posters from TMDB for films with tmdb_id not already in POSTERS
+  const _filmsWithTmdb=(cfg.films||[]).filter(f=>f.tmdb_id&&!cfg.posters[f.title]);
+  if(_filmsWithTmdb.length){
+    Promise.all(_filmsWithTmdb.map(f=>
+      fetch(`https://api.themoviedb.org/3/movie/${f.tmdb_id}?api_key=38f24e78b2f13970af3430eb0732f0ac`)
+        .then(r=>r.ok?r.json():null)
+        .then(d=>{if(d?.poster_path){POSTERS[f.title]=d.poster_path;_POSTERS_N[normKey(f.title)]=d.poster_path;}})
+        .catch(()=>{})
+    )).then(()=>_renderProgramaContent());
+  }
   FESTIVAL_DATES=cfg.festivalDates;
   FESTIVAL_END=new Date(cfg.festivalEndStr);
   FESTIVAL_STORAGE_KEY=cfg.storageKey;
