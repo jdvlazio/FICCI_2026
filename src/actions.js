@@ -40,12 +40,10 @@ function toggleWL(title,e){
     }
   }
   saveState('wl','watched');updateCardState(title);updateAgTab();
-  if(activeView==='agenda'){cachedResult=null;renderAgenda();}
+  if(activeView==='agenda'){cachedResult=null;void document.getElementById('ag-view').offsetHeight;renderAgenda();}
   else if(activeView==='day'&&activeMNav==='mnav-cartelera'){
-    // Re-renderizar el grid de Programa para reflejar el cambio de ♥
     _renderProgramaContent();
   }
-  requestAnimationFrame(()=>window.dispatchEvent(new Event('scroll')));
 }
 function toggleWatched(title,e){
   if(e) e.stopPropagation();
@@ -70,8 +68,7 @@ function toggleWatched(title,e){
         saveWatched();updateCardState(title);updateAgTab();
         cachedResult=null;
         if(activeView==='agenda') renderAgenda();
-        if(activeMNav==='mnav-miplan') renderAgenda();
-        requestAnimationFrame(()=>window.dispatchEvent(new Event('scroll')));
+        if(activeMNav==='mnav-miplan'){void document.getElementById('ag-view').offsetHeight;renderAgenda();}
         showToast('Movida a Ya vistas','info');
         // Los programas de cortos no tienen calificación general
         if(!FILMS.find(fi=>fi.title===title)?.is_cortos) setTimeout(()=>openRatingSheet(title),350);
@@ -160,8 +157,8 @@ function removeFromAgenda(title){
     _ctaRemovedVisible=true;
     if(_ctaRemovedTimer) clearTimeout(_ctaRemovedTimer);
     _ctaRemovedTimer=setTimeout(()=>{_ctaRemovedVisible=false;renderAgenda();},6000);
+    void document.getElementById('ag-view').offsetHeight;
     renderAgenda();
-    requestAnimationFrame(()=>window.dispatchEvent(new Event('scroll')));
     showToast('Quitada de Mi Plan','info');
   });
 }
@@ -197,7 +194,8 @@ function addSuggestion(title,day,time){
     activeMiPlanDay=jumpIdx;
     miPlanViewStart=Math.max(0,Math.min(jumpIdx,DAY_KEYS.length-2));
   }
-  // 5. Re-render
+  // 5. Re-render — offsetHeight fuerza reflow síncrono antes del paint
+  void document.getElementById('ag-view').offsetHeight;
   renderAgenda();
   requestAnimationFrame(()=>window.dispatchEvent(new Event('scroll')));
   return 'added'; // caller puede cerrar la ficha
