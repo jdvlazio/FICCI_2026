@@ -714,6 +714,27 @@
       "film_list": []
     },
     {
+      "title": "Un mundo frágil y maravilloso",
+      "title_en": "A Sad and Beautiful World",
+      "country": "Líbano, Alemania",
+      "flags": "🇱🇧🇩🇪",
+      "duration": "110 min",
+      "day": "DOM 26",
+      "date": 26,
+      "time": "13:30",
+      "venue": "Cineprox Las Américas",
+      "section": "✨ Impact Hits",
+      "day_order": 5,
+      "is_cortos": false,
+      "film_list": [],
+      "director": "Cyril Aris",
+      "year": 2025,
+      "genre": "Comedia, Drama, Romance",
+      "synopsis": "A lo largo de tres décadas, Nino y Yasmina están unidos por una relación magnética. Atrapados entre el amor y la supervivencia, deben decidir si construir una familia en el Líbano mientras el país atraviesa sus tragedias.",
+      "lb_slug": "a-sad-and-beautiful-world",
+      "tmdb_id": 1376838
+    },
+    {
       "title": "Cortos: Familia 12+",
       "title_en": "Short Films: Family 12+",
       "country": "",
@@ -747,30 +768,11 @@
       "genre": "Drama"
     },
     {
-      "title": "Un mundo frágil y maravilloso",
-      "title_en": "A Sad and Beautiful World",
-      "country": "Líbano, Alemania",
-      "flags": "🇱🇧🇩🇪",
-      "duration": "110 min",
-      "day": "DOM 26",
-      "date": 26,
-      "time": "13:30",
-      "venue": "Cineprox Las Américas",
-      "section": "✨ Impact Hits",
-      "day_order": 5,
-      "is_cortos": false,
-      "film_list": [],
-      "director": "Cyril Aris",
-      "year": 2025,
-      "genre": "Drama romántico",
-      "synopsis": "A lo largo de tres décadas, Nino y Yasmina están unidos por una relación magnética. Atrapados entre el amor y la supervivencia, deben decidir si construir una familia en el Líbano mientras el país atraviesa sus tragedias."
-    },
-    {
-      "title": "Hacia casa",
+      "title": "Homebound",
       "title_en": "Homebound",
       "country": "India",
       "flags": "🇮🇳",
-      "duration": "117 min",
+      "duration": "122 min",
       "day": "DOM 26",
       "date": 26,
       "time": "17:00",
@@ -782,7 +784,9 @@
       "director": "Neeraj Ghaywan",
       "year": 2025,
       "genre": "Drama",
-      "synopsis": "Dos amigos de la infancia de un pequeño pueblo del norte de India persiguen un trabajo policial que les promete dignidad. Pero la desesperación amenaza el vínculo que los une."
+      "synopsis": "Dos amigos de la infancia de un pequeño pueblo del norte de India persiguen un trabajo policial que les promete dignidad. Pero la desesperación amenaza el vínculo que los une.",
+      "lb_slug": "homebound-2025",
+      "tmdb_id": 1227739
     },
     {
       "title": "Un fantasma para servirte",
@@ -800,7 +804,7 @@
       "film_list": [],
       "director": "Ratchapoom Boonbunchachoke",
       "year": 2025,
-      "genre": "Sátira",
+      "genre": "Sátira, Drama",
       "synopsis": "En esta sátira sobre el amor, la política y la memoria, un fantasma regresa para habitar una aspiradora y demostrarle su amor a su marido vivo."
     }
   ],
@@ -825,7 +829,6 @@
     "Hacia otra vida": "https://image.tmdb.org/t/p/w185/qefjf5TeM0uRzrFU2c4xYt6ew9z.jpg",
     "No hay hombres buenos": "https://image.tmdb.org/t/p/w185/6zEHD3WRyafwug10AjEIV9k9PXy.jpg",
     "Un mundo frágil y maravilloso": "https://image.tmdb.org/t/p/w185/vyezjSvSdLO0bvr6jSNuFi6yuiw.jpg",
-    "Confinados": "https://image.tmdb.org/t/p/w185/uSJWVlkSTUNR9MUFoX9JTwOeUWb.jpg",
     "Akababuru: Expresión de asombro": "https://admin.alternativa.film/uploads/AKABABURU_POSTER_laura_giraldo_9666ac856d.jpg",
     "Balada de peces y pájaros": "https://admin.alternativa.film/uploads/BLD_FRAME_5_ALTA_RESOLUCION_Balada_peces_y_pajaros_9ed5500d0a.png",
     "Corteza": "https://admin.alternativa.film/uploads/3b5630f6ea_poster_Simon_Acosta_2aece7582f.jpg",
@@ -840,7 +843,8 @@
     "Una vez en un cuerpo": "https://admin.alternativa.film/uploads/Oficial_Poster_Una_Michel_d4a64a67e9.jpg",
     "Pacífico": "https://admin.alternativa.film/uploads/Pacifico_still_6_Daniel_Duque_aaa8ad50ea.jpg",
     "Presente en los grandes eventos": "https://admin.alternativa.film/uploads/Balloon_2_Pam_Martinez_2db918b067.jpg",
-    "Samba infinito": "https://admin.alternativa.film/uploads/SAMBA_INFINITO_POSTER_VERSION_02_LOW_Leonardo_Martinelli_f26536cccd.jpg"
+    "Samba infinito": "https://admin.alternativa.film/uploads/SAMBA_INFINITO_POSTER_VERSION_02_LOW_Leonardo_Martinelli_f26536cccd.jpg",
+    "Homebound": "http://www.impawards.com/intl/india/2025/posters/homebound.jpg"
   },
   "customPosters": {},
   "lbSlugs": {
