@@ -158,12 +158,12 @@ function removeFromAgenda(title){
     if(rem){lastRemovedSlots=lastRemovedSlots.filter(r=>r._title!==rem._title);lastRemovedSlots.unshift({...rem,_isRestored:true});if(lastRemovedSlots.length>MAX_REMEMBERED_SLOTS)lastRemovedSlots.length=MAX_REMEMBERED_SLOTS;saveLastSlot();}
     savedAgenda.schedule=savedAgenda.schedule.filter(s=>s._title!==title);
     if(!savedAgenda.schedule.length)savedAgenda=null;
-    saveSavedAgenda();
+  saveSavedAgenda();
     showToast('Quitada de Mi Plan','info');
     _ctaRemovedVisible=true;
     if(_ctaRemovedTimer) clearTimeout(_ctaRemovedTimer);
     _ctaRemovedTimer=setTimeout(()=>{_ctaRemovedVisible=false;renderAgenda();},6000);
-    setTimeout(()=>renderAgenda(),0);
+    renderAgenda();
   });
 }
 function addSuggestion(title,day,time){
@@ -200,8 +200,8 @@ function addSuggestion(title,day,time){
     activeMiPlanDay=jumpIdx;
     miPlanViewStart=Math.max(0,Math.min(jumpIdx,DAY_KEYS.length-2));
   }
-  // 5. Re-render diferido — libera el hilo principal antes del cálculo pesado
-  setTimeout(()=>renderAgenda(),0);
+  // 5. Re-render
+  renderAgenda();
   return 'added'; // caller puede cerrar la ficha
 }
 function closeSearch(){setTimeout(()=>{const r=document.getElementById('ag-search-results');if(r) r.classList.remove('open');},200);}
