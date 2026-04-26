@@ -8262,6 +8262,8 @@ function removeFromAgenda(title){
   });
 }
 function addSuggestion(title,day,time){
+  // DEBUG TEMPORAL: mostrar estado al añadir
+  showToast(`festivalEnded:${festivalEnded()} FEST_END:${FESTIVAL_END?.toISOString?.()?.slice(0,10)}`,'warn',5000);
   if(festivalEnded()) return null;
   // 1. Add to watchlist if not already there
   if(!watchlist.has(title)){watchlist.add(title);watched.delete(title);saveState('wl','watched');updateCardState(title);updateAgTab();}
