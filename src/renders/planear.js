@@ -461,6 +461,7 @@ function renderFlowProgress(activeTab){
   </div>`;
 }
 function renderAgenda(){
+  try{
   const view=document.getElementById('ag-view');
   if(activeMNav==='mnav-seleccion'){
     // ── Mi Lista: buscador + lista de películas ──
@@ -551,6 +552,10 @@ function renderAgenda(){
         <div id="ag-result">${resultContent}</div>
       </div>`;
     renderAvBlocks();
+  }
+  }catch(e){
+    console.error('renderAgenda error:',e);
+    showToast('Error interno: '+e.message,'warn',5000);
   }
 }
 
