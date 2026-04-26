@@ -117,10 +117,42 @@ function build() {
     festDataJs += 'const _FESTIVAL_DATA = {};\n';
     if (fs.existsSync(FEST_DIR)) {
       fs.readdirSync(FEST_DIR).filter(f => f.endsWith('.json')).forEach(fname => {
-        const data = fs.readFileSync(path.join(FEST_DIR, fname), 'utf8');
-        const id = JSON.parse(data).id || fname.replace('.json','');
-        festDataJs += `_FESTIVAL_DATA[${JSON.stringify(id)}] = ${data};\n`;
-        console.log(`  ✓ festivals/${fname} (${(data.length/1024).toFixed(0)}kb)`);
+        const raw  = fs.readFileSync(path.join(FEST_DIR, fname), 'utf8');
+        const data = JSON.parse(raw);
+        const id   = data.id || fname.replace('.json','');
+
+        // ── Fase 1.3: Deduplicación de títulos en build-time ──────────────
+        // Un film puede tener múltiples funciones (mismo título, distinto día = reposición válida).
+        // Error real: mismo título + mismo día + misma hora.
+        const screeningKeys = (data.films||[]).map(f => `${f.title}||${f.day}||${f.time}`);
+        const dupeScreenings = screeningKeys.filter((k,i) => screeningKeys.indexOf(k) !== i);
+        if (dupeScreenings.length) {
+          console.error(`\n  ✗ ${fname}: funciones exactas duplicadas:`);
+          [...new Set(dupeScreenings)].forEach(k => {
+            const [title,day,time] = k.split('||');
+            console.error(`    - "${title}" ${day} ${time}`);
+          });
+          process.exit(1);
+        }
+
+        // ── Fase 1.1: Validación de schema de films ───────────────────────
+        const REQUIRED = ['title','day','time','venue','duration','section','day_order','is_cortos','film_list'];
+        const schemaErrors = [];
+        (data.films||[]).forEach(f => {
+          REQUIRED.forEach(field => {
+            if (f[field] === undefined || f[field] === null)
+              schemaErrors.push(`"${f.title}": falta campo requerido "${field}"`);
+          });
+        });
+        if (schemaErrors.length) {
+          console.error(`\n  ✗ ${fname}: errores de schema:`);
+          schemaErrors.forEach(e => console.error(`    - ${e}`));
+          process.exit(1);
+        }
+
+        const titles = (data.films||[]).map(f => f.title);
+        festDataJs += `_FESTIVAL_DATA[${JSON.stringify(id)}] = ${raw};\n`;
+        console.log(`  ✓ festivals/${fname} (${(raw.length/1024).toFixed(0)}kb, ${titles.length} films, 0 dupes)`);
       });
     }
 
