@@ -73,8 +73,6 @@ function dedup(code, alreadyDeclared) {
 }
 
 function build() {
-  const version = JSON.parse(fs.readFileSync(path.join(ROOT, 'version.json'), 'utf8'));
-  const BUILD = version.build;
   const start = Date.now();
   console.log('Building Otrofestiv...\n');
   if (!fs.existsSync(DIST)) fs.mkdirSync(DIST);
@@ -127,7 +125,7 @@ function build() {
     }
 
     let r2 = html.replace('<script>/* __SCRIPTS__ */</script>', `<script>\n${festDataJs}\n${js}\n</script>`);
-    r2 = r2.replace('__BUILD__', BUILD);
+
     if (r2 === html) { console.error('  ✗ JS: __SCRIPTS__ placeholder missing'); process.exit(1); }
     html = r2;
     console.log(`\n  ✓ ${JS_ORDER.length} modules, ${declared.size} total symbols`);
