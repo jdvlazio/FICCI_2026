@@ -177,7 +177,9 @@ function addSuggestion(title,day,time){
     if(!savedAgenda.schedule.some(s=>s._title===title)){
       const realConflict=savedAgenda.schedule.find(s=>s.day===day&&screensConflict(s,screen));
       if(realConflict){
-        openConflictSheet(title, screen, realConflict);
+        // Delay para que el action modal se cierre antes de abrir el conflict sheet
+        // Evita que el modal interceda clicks en el conflict sheet
+        setTimeout(()=>openConflictSheet(title, screen, realConflict), 150);
         return 'conflict'; // caller NO debe cerrar la ficha — conflict sheet necesita el DOM
       }
       savedAgenda.schedule.push({...screen,_title:title});

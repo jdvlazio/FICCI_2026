@@ -242,8 +242,11 @@ function confirmConflictReplace(){
   }
 
   // Usuario eligió la incoming — reemplazar existente
-  savedAgenda.schedule=savedAgenda.schedule.filter(s=>!(s._title===existingEntry._title&&s.day===existingEntry.day&&s.time===existingEntry.time));
-  savedAgenda.schedule.push({...incomingScreen,_title:incomingTitle});
+  // Guard: no duplicar si incomingTitle ya está en el schedule
+  savedAgenda.schedule=savedAgenda.schedule.filter(s=>!(s._title===existingEntry._title&&s.day===existingEntry.day&&s.time===existingEntry.time)||(s._title===incomingTitle));
+  if(!savedAgenda.schedule.some(s=>s._title===incomingTitle)){
+    savedAgenda.schedule.push({...incomingScreen,_title:incomingTitle});
+  }
   savedAgenda.schedule.sort((a,b)=>a.day_order!==b.day_order?a.day_order-b.day_order:toMin(a.time)-toMin(b.time));
   saveSavedAgenda();
   const{displayTitle:dt}=parseProgramTitle(incomingTitle);
