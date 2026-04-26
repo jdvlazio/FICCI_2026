@@ -70,6 +70,7 @@ function toggleWatched(title,e){
         cachedResult=null;
         if(activeView==='agenda') renderAgenda();
         if(activeMNav==='mnav-miplan') renderAgenda();
+        requestAnimationFrame(()=>window.dispatchEvent(new Event('scroll')));
         showToast('Movida a Ya vistas','info');
         // Los programas de cortos no tienen calificación general
         if(!FILMS.find(fi=>fi.title===title)?.is_cortos){
@@ -163,7 +164,9 @@ function removeFromAgenda(title){
     _ctaRemovedVisible=true;
     if(_ctaRemovedTimer) clearTimeout(_ctaRemovedTimer);
     _ctaRemovedTimer=setTimeout(()=>{_ctaRemovedVisible=false;renderAgenda();},6000);
-    renderAgenda();showToast('Quitada de Mi Plan','info');
+    renderAgenda();
+    requestAnimationFrame(()=>window.dispatchEvent(new Event('scroll')));
+    showToast('Quitada de Mi Plan','info');
   });
 }
 function addSuggestion(title,day,time){
@@ -200,8 +203,9 @@ function addSuggestion(title,day,time){
     activeMiPlanDay=jumpIdx;
     miPlanViewStart=Math.max(0,Math.min(jumpIdx,DAY_KEYS.length-2));
   }
-  // 5. Re-render
+  // 5. Re-render + forzar composite WebKit
   renderAgenda();
+  requestAnimationFrame(()=>window.dispatchEvent(new Event('scroll')));
   return 'added'; // caller puede cerrar la ficha
 }
 function closeSearch(){setTimeout(()=>{const r=document.getElementById('ag-search-results');if(r) r.classList.remove('open');},200);}
