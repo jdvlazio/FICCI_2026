@@ -159,12 +159,11 @@ function removeFromAgenda(title){
     savedAgenda.schedule=savedAgenda.schedule.filter(s=>s._title!==title);
     if(!savedAgenda.schedule.length)savedAgenda=null;
     saveSavedAgenda();
+    // CTA B: mostrar aviso contextual post-eliminación
     _ctaRemovedVisible=true;
     if(_ctaRemovedTimer) clearTimeout(_ctaRemovedTimer);
     _ctaRemovedTimer=setTimeout(()=>{_ctaRemovedVisible=false;renderAgenda();},6000);
-    renderAgenda();
-    showToast('Quitada de Mi Plan','info');
-    window.scrollTo({top:0,behavior:'smooth'});
+    renderAgenda();showToast('Quitada de Mi Plan','info');
   });
 }
 function addSuggestion(title,day,time){
@@ -173,8 +172,6 @@ function addSuggestion(title,day,time){
   if(!watchlist.has(title)){watchlist.add(title);watched.delete(title);saveState('wl','watched');updateCardState(title);updateAgTab();}
   // 2. Add specific screening to saved agenda
   const screen=FILMS.find(f=>f.title===title&&f.day===day&&f.time===time);
-  // DEBUG: mostrar si se encontró la película
-  showToast(screen?`✓ screen: ${title.slice(0,20)}`:`✗ screen null: ${title.slice(0,20)} ${day} ${time}`,'warn',6000);
   if(screen){
     if(!savedAgenda) savedAgenda={schedule:[]};
     if(!savedAgenda.schedule.some(s=>s._title===title)){
@@ -203,9 +200,8 @@ function addSuggestion(title,day,time){
     activeMiPlanDay=jumpIdx;
     miPlanViewStart=Math.max(0,Math.min(jumpIdx,DAY_KEYS.length-2));
   }
-  // 5. Re-render y scroll al tope para mostrar el plan actualizado
+  // 5. Re-render
   renderAgenda();
-  window.scrollTo({top:0,behavior:'smooth'});
   return 'added'; // caller puede cerrar la ficha
 }
 function closeSearch(){setTimeout(()=>{const r=document.getElementById('ag-search-results');if(r) r.classList.remove('open');},200);}
