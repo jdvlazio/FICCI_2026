@@ -475,7 +475,7 @@
       "title_en": "A Sad and Beautiful World",
       "country": "Líbano, Alemania, Estados Unidos",
       "flags": "🇱🇧🇩🇪🇺🇸",
-      "duration": "109 min",
+      "duration": "110 min",
       "day": "DOM 26",
       "date": 26,
       "time": "13:30",
@@ -486,8 +486,8 @@
       "film_list": [],
       "director": "Cyril Aris",
       "year": 2025,
-      "genre": "Drama",
-      "synopsis": "Dos amigos de la infancia de un pequeño pueblo del norte de India persiguen un trabajo policial que les promete dignidad. La desesperación amenaza el vínculo que los une."
+      "genre": "Drama romántico",
+      "synopsis": "A lo largo de tres décadas, Nino y Yasmina están unidos por una relación magnética. Atrapados entre el amor y la supervivencia, deben decidir si construir una familia en el Líbano mientras el país atraviesa sus tragedias."
     },
     {
       "title": "Confinados",
@@ -831,7 +831,7 @@
       ]
     },
     {
-      "title": "Homebound",
+      "title": "Hacia casa",
       "title_en": "Homebound",
       "country": "India",
       "flags": "🇮🇳",
@@ -847,7 +847,7 @@
       "director": "Neeraj Ghaywan",
       "year": 2025,
       "genre": "Drama",
-      "synopsis": ""
+      "synopsis": "Dos amigos de la infancia de un pequeño pueblo del norte de India persiguen un trabajo policial que les promete dignidad. Pero la desesperación amenaza el vínculo que los une."
     },
     {
       "title": "Territorio",
