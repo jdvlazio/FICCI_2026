@@ -1185,7 +1185,7 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:var(--t
 .conflict-modal-btn.destructive{background:var(--red);color:var(--white)}
 :focus-visible{outline:2px solid var(--orange);outline-offset:2px}
 
-.mplan-list-hdr{display:flex;flex-direction:column;align-items:flex-start;gap:1px;padding:var(--sp-3) var(--sp-3) var(--sp-2);border-bottom:1px solid var(--bdr-l);background:var(--surf)}
+.mplan-list-hdr{display:flex;flex-direction:row;align-items:center;gap:var(--sp-2);padding:var(--sp-3) var(--sp-3) var(--sp-2);border-bottom:1px solid var(--bdr-l);background:var(--surf)}
 .mplan-row{display:flex;align-items:center;gap:var(--sp-3);padding:var(--sp-2) var(--sp-3);border-bottom:1px solid var(--bdr-l);transition:background var(--tr-smooth);cursor:pointer}
 .mplan-row.active{background:var(--amber-08);border-left:2px solid var(--orange);padding-left:var(--sp-3)}
 .mplan-prog-list{display:none;border-top:1px solid var(--bdr-l);padding:var(--sp-2) var(--sp-3)}
@@ -3059,7 +3059,7 @@ function renderMiPlanCalendar(){
   const dayFilms=schedule.filter(s=>s.day===activeKey).sort((a,b)=>toMin(a.time)-toMin(b.time));
   const isPastDay=nowDayIdx>=0&&activeMiPlanDay<nowDayIdx;
 
-  let listHtml=`<div class="mplan-list" id="mplan-detail"><div class="mplan-list-hdr">${dayChip(activeKey)}</div>`;
+  let listHtml=`<div class="mplan-list" id="mplan-detail"><div class="mplan-list-hdr">${dayChip(activeKey)}${dayFilms.length?`<span class="count-badge cb-neutral">${dayFilms.length}</span>`:''}</div>`;
   if(!dayFilms.length){
     if(!isPastDay){
       // CTA C: día futuro sin películas — invita a explorar sugerencias o recalcular
