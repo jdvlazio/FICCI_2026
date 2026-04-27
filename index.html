@@ -1635,9 +1635,9 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:var(--t
 #otrofestiv-splash{
   position:fixed;inset:0;background:var(--bg);
   display:flex;flex-direction:column;
-  align-items:center;justify-content:center;gap:48px;
+  align-items:center;justify-content:space-between;
   z-index:99999;
-  padding:calc(env(safe-area-inset-top) + 20vh) 32px calc(env(safe-area-inset-bottom) + 20vh);
+  padding:calc(env(safe-area-inset-top) + 14vh) 32px calc(env(safe-area-inset-bottom) + 10vh);
   text-align:center;
   transition:opacity .5s ease, visibility .5s ease;
 }
@@ -1646,15 +1646,15 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:var(--t
 html.splash-skip #otrofestiv-splash{display:none}
 .splash-wordmark{
   font-size:var(--t-lg);letter-spacing:-.03em;color:var(--white);
-  font-weight:var(--w-display);line-height:1;margin-bottom:var(--sp-5);
+  font-weight:var(--w-display);line-height:1;
 }
 .splash-brand{display:flex;flex-direction:column;align-items:center}
 .splash-action{width:100%;display:flex;flex-direction:column;align-items:center}
 .splash-wordmark span{color:var(--amber)}
 .splash-tagline{text-align:center;margin-bottom:var(--sp-6)}
 .splash-tagline-line{
-  font-size:24px;font-weight:var(--w-bold);
-  color:var(--white);line-height:1.1;letter-spacing:-.02em;
+  font-size:20px;font-weight:var(--w-bold);
+  color:var(--white);line-height:1.0;letter-spacing:-.02em;
 }
 .splash-tagline-line span{color:var(--orange)}
 .splash-fest-label{
@@ -1913,13 +1913,7 @@ html.splash-skip #otrofestiv-splash{display:none}
 <body>
 <!-- Splash siempre visible — se pre-selecciona el festival en curso por fecha. -->
 <div id="otrofestiv-splash" role="dialog" aria-label="Bienvenida" aria-modal="true">
-  <div class="splash-brand">
-    <div class="splash-wordmark">Otro<span>festiv</span></div>
-    <div class="splash-tagline">
-      <div class="splash-tagline-line">Más de lo que crees</div>
-      <div class="splash-tagline-line" style="color:var(--white)"><span>posible.</span></div>
-    </div>
-  </div>
+  <div class="splash-wordmark">Otro<span>festiv</span></div>
   <div class="splash-action">
   <div class="splash-selector">
     <div class="splash-fest-label">¿A qué festival vas?</div>
@@ -1950,6 +1944,10 @@ html.splash-skip #otrofestiv-splash{display:none}
     </div>
   </div>
   <button class="splash-enter-btn" onclick="dismissSplash()">Entrar</button>
+  </div>
+  <div class="splash-tagline">
+    <div class="splash-tagline-line">Más de lo que crees</div>
+    <div class="splash-tagline-line"><span>posible.</span></div>
   </div>
 </div>
 
