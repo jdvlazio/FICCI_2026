@@ -1289,8 +1289,9 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:var(--t
 .ctx-prio-when{font-size:var(--t-label);color:var(--amber);margin-top:1px}
 .ctx-next-card{display:flex;align-items:center;gap:var(--sp-3);background:var(--surf-2);border:1px solid var(--amber-30);border-radius:var(--r);padding:var(--sp-3);margin-top:var(--sp-3)}
 .ctx-next-poster{width:36px;height:54px;border-radius:var(--r-sm);flex-shrink:0;object-fit:cover;background:var(--surf-3)}
-.ctx-next-title{font-size:var(--t-base);font-weight:var(--w-bold);color:var(--white);letter-spacing:-.1px;margin-bottom:3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.ctx-next-detail{font-size:var(--t-sm);color:var(--gray);margin-bottom:7px}
+.ctx-next-title{font-size:var(--t-base);font-weight:var(--w-bold);color:var(--white);letter-spacing:-.1px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;flex:1;min-width:0}
+.ctx-next-title-row{display:flex;align-items:center;gap:var(--sp-2);margin-bottom:3px}
+.ctx-next-detail{font-size:var(--t-sm);color:var(--gray)}
 .ctx-next-badge{display:inline-flex;align-items:center;gap:4px;background:var(--amber);color:var(--black);border-radius:var(--r-pill);padding:3px 10px;font-size:var(--t-sm);font-weight:var(--w-bold)}
 .ctx-gap-bar{display:flex;align-items:center;gap:var(--sp-1);margin:10px 0 10px}
 .ctx-gap-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
@@ -4880,12 +4881,17 @@ function renderContextualHeader(){
         ${eyebrowLabel}
       </div>
       <div class="ctx-next-card" onclick="openPelSheet('${(next._title||'').replace(/'/g,"\\'")}')" style="cursor:pointer">
-        ${src?`<img class="ctx-next-poster" src="${src}" onerror="this.style.opacity=0" alt="">`:
-              `<div class="ctx-next-poster"></div>`}
+        ${src
+          ?`<img class="ctx-next-poster" src="${src}" onerror="this.remove()" alt="">`
+          :_isEvent
+            ?makeEventPoster(next._title,next.duration).replace('<svg','<svg class="ctx-next-poster" style="width:36px;height:54px;border-radius:var(--r-sm);flex-shrink:0"')
+            :`<div class="ctx-next-poster" style="background:var(--surf-3)"></div>`}
         <div style="flex:1;min-width:0">
-          <div class="ctx-next-title">${dt}</div>
+          <div class="ctx-next-title-row">
+            <div class="ctx-next-title">${dt}</div>
+            ${badge}
+          </div>
           <div class="ctx-next-detail">${next.time} · ${vc.short}</div>
-          ${badge}
         </div>
       </div>
       ${delayHtml}${warnHtml}
@@ -4922,15 +4928,7 @@ function renderContextualHeader(){
         Tiempo libre
       </div>
       <div class="ctx-main-title">${gapLabel} hasta tu siguiente actividad</div>
-      <div class="ctx-gap-bar">
-        <div class="ctx-gap-dot" style="background:var(--green)"></div>
-        <div class="ctx-gap-line"><div class="ctx-gap-fill" style="width:${fillPct}%"></div></div>
-        <div class="ctx-gap-dot" style="background:var(--amber)"></div>
-      </div>
-      <div class="ctx-gap-label-row">
-        <span class="ctx-gap-label" style="color:var(--green)">${fromStr}</span>
-        <span class="ctx-gap-label">${toStr} · ${(()=>{const{displayTitle:dt}=parseProgramTitle(next._title||'');return dt.length>18?dt.slice(0,16)+'…':dt;})()} </span>
-      </div>
+      <div style="font-size:var(--t-sm);color:var(--gray);margin:6px 0 10px">${fromStr} → ${toStr} · ${(()=>{const{displayTitle:dt}=parseProgramTitle(next._title||'');return dt.length>18?dt.slice(0,16)+'…':dt;})()}</div>
       <div style="margin-top:12px">${suggest}</div>
     </div>`;
   }
