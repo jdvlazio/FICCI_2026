@@ -1141,18 +1141,21 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:var(--t
 .mplan-wk-hline.mp-major{background:var(--bdr)}
 .mplan-wk-nowline{position:absolute;left:0;right:0;height:2px;background:var(--green);z-index:10;pointer-events:none}
 .mplan-wk-nowdot{position:absolute;left:-4px;top:-3px;width:8px;height:8px;border-radius:50%;background:var(--green)}
-.mplan-wk-block{position:absolute;left:5px;right:5px;border-radius:var(--r-md);overflow:hidden;padding:var(--sp-2) var(--sp-2) var(--sp-2) var(--sp-3);border-left:3px solid transparent;cursor:pointer;transition:opacity var(--tr-base)}
+.mplan-wk-block{position:absolute;left:5px;right:5px;border-radius:var(--r-md);overflow:hidden;padding:5px 6px 5px 10px;border-left:3px solid transparent;cursor:pointer;transition:opacity var(--tr-base)}
 .mplan-wk-block:hover{opacity:.85}
 .mplan-wk-block.mp-regular{background:var(--amber-10);border-left-color:var(--amber-70)}
 .mplan-wk-block.mp-priority{background:var(--amber-20);border-left-color:var(--orange)}
 .mplan-wk-block.mp-program{background:var(--amber-06);border-left-color:var(--amber-40)}
+.mplan-wk-block.mp-event{background:rgba(107,155,209,.08);border-left-color:rgba(107,155,209,.5)}
 .mplan-wk-block.mp-past{filter:saturate(.2);opacity:.3}
 .mplan-wk-block.mp-active{outline:2px solid var(--orange);outline-offset:-2px;opacity:1}
 .mplan-wk-block.mp-now{opacity:1;border-left-color:var(--green);background:var(--green-12)}
-.mplan-wk-badge{font-size:var(--t-xs);color:var(--orange);line-height:1;margin-bottom:2px}
-.mplan-wk-time{font-size:var(--t-xs);color:var(--gray);line-height:1;margin-bottom:var(--sp-1)}
-.mplan-wk-title{font-size:var(--t-sm);font-weight:var(--w-semi);color:var(--white);line-height:1.3;overflow:hidden;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical}
-.mplan-wk-venue{font-size:var(--t-xs);color:var(--gray);margin-top:var(--sp-1);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.mplan-wk-badge{position:absolute;top:5px;right:6px;font-size:var(--t-xs);color:var(--orange);line-height:1}
+.mplan-wk-time{font-size:var(--t-xs);color:var(--gray);line-height:1;margin-bottom:3px}
+.mplan-wk-time.mp-event-time{color:rgba(107,155,209,.7)}
+.mplan-wk-title{font-size:var(--t-sm);font-weight:var(--w-semi);color:var(--white);line-height:1.3;overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical}
+.mplan-wk-title.mp-event-title{color:rgba(180,210,240,.9)}
+.mplan-wk-venue{font-size:var(--t-xs);color:var(--gray);margin-top:3px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .mplan-body{display:flex;position:relative}
 .mplan-axis-detail{width:36px;flex-shrink:0;position:relative;border-right:1px solid var(--bdr-l);background:var(--surf)}
 .mplan-axis-tick{position:absolute;right:4px;font-size:var(--t-xs);color:var(--gray2);line-height:1;transform:translateY(-50%);white-space:nowrap}
@@ -2884,8 +2887,9 @@ let availability={
 function mplanEndStr(t,d){const m=toMin(t)+d;return String(Math.floor(m/60)%24).padStart(2,'0')+':'+String(m%60).padStart(2,'0');}
 
 function mplanBlockType(s){
-  if(prioritized.has(s._title)) return'mp-priority';
   const f=FILMS.find(fi=>fi.title===s._title);
+  if(f&&f.type==='event') return'mp-event';
+  if(prioritized.has(s._title)) return'mp-priority';
   if(f&&f.is_cortos) return'mp-program';
   return'mp-regular';
 }
@@ -3024,12 +3028,13 @@ function renderMiPlanCalendar(){
       const stateClass=isPast?' mp-past':isNow?' mp-now':isActive?' mp-active':'';
       const{displayTitle}=parseProgramTitle(s._title||'');
       const isPrio=type==='mp-priority';
+      const isEvent=type==='mp-event';
       const showVenue=blockH>44;
       const vc2=vcfg(s.venue);
       return`<div class="mplan-wk-block ${type}${stateClass}" style="top:${top.toFixed(0)}px;height:${blockH.toFixed(0)}px" data-fkey="${(s._title||'')}${s.time}" onclick="setActivePlanFilm(this);selectMiPlanDay(${i});event.stopPropagation()" title="${(s._title||'').replace(/"/g,'&quot;')}">
-        ${isPrio?`<div class="mplan-wk-badge">${ICONS.star}</div>`:''}
-        <div class="mplan-wk-time">${s.time}</div>
-        <div class="mplan-wk-title">${displayTitle}</div>
+        ${isPrio?`<div class="mplan-wk-badge">★</div>`:''}
+        <div class="mplan-wk-time${isEvent?' mp-event-time':''}">${s.time}</div>
+        <div class="mplan-wk-title${isEvent?' mp-event-title':''}">${displayTitle}</div>
         ${showVenue?`<div class="mplan-wk-venue">${ICONS.pin} ${vc2.short}</div>`:''}
       </div>`;
     }).join('');
