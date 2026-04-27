@@ -1602,16 +1602,6 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:var(--t
   #otrofestiv-splash{padding:var(--sp-6) var(--sp-7)}
   .splash-tagline{max-width:560px}
   .splash-selector{max-width:400px}
-
-  /* Welcome modal */
-  .welcome-overlay{align-items:center;justify-content:center}
-  .welcome-sheet{
-    border-radius:var(--r);border-top:none;
-    border:1px solid var(--bdr);
-    padding:var(--sp-6) var(--sp-5);
-    box-shadow:0 24px 80px var(--overlay-60);
-    max-width:420px;
-  }
 }
 /* Touch devices — overlay always visible regardless of screen width */
 @media (hover: none) {
@@ -1774,56 +1764,6 @@ html.splash-skip #otrofestiv-splash{display:none}
    Modal de una sola vez que reencuadra el modelo mental.
    No es un tutorial. Una frase, un botón.
    Escalable: copy cambia por festival, lógica reutilizable. */
-.welcome-overlay{
-  position:fixed;inset:0;z-index:9999;
-  background:var(--overlay-85);
-  display:flex;align-items:flex-end;
-  -webkit-backdrop-filter:blur(4px);
-  backdrop-filter:blur(4px);
-}
-.welcome-sheet{
-  width:100%;max-width:480px;margin:0 auto;
-  background:var(--surf);
-  border-radius:var(--r-sheet) var(--r-sheet) 0 0;
-  border-top:1px solid var(--bdr);
-  padding:var(--sp-6) var(--sp-5) calc(var(--sp-6) + env(safe-area-inset-bottom));
-}
-@media(min-width:600px){
-  .welcome-overlay{align-items:center;justify-content:center}
-  .welcome-sheet{
-    border-radius:var(--r);
-    border-top:none;
-    border:1px solid var(--bdr);
-    padding:var(--sp-6) var(--sp-5);
-    box-shadow:0 24px 80px var(--overlay-60);
-    max-width:420px;
-  }
-}
-.welcome-wordmark{
-  font-family:var(--font);font-size:var(--t-lg);font-weight:var(--w-display);
-  letter-spacing:-.03em;color:var(--white);margin-bottom:var(--sp-4);
-}
-.welcome-wordmark span{color:var(--amber)}
-.welcome-title{
-  font-size:var(--t-display);font-weight:var(--w-bold);
-  font-family:var(--font);
-  color:var(--white);line-height:0.95;margin-bottom:var(--sp-2);
-  letter-spacing:-.02em;white-space:nowrap;
-}
-.welcome-sub{
-  font-size:var(--t-md);color:var(--gray2);line-height:1.5;
-  font-family:var(--font);
-  margin-bottom:var(--sp-5);font-weight:var(--w-reg);
-}
-.welcome-cta{
-  width:100%;padding:var(--sp-btn);
-  background:var(--amber);border:none;border-radius:var(--r);
-  color:#000;font-family:var(--font);font-size:var(--t-base);
-  font-weight:var(--w-bold);cursor:pointer;
-  display:flex;align-items:center;justify-content:center;gap:var(--sp-2);
-  transition:opacity var(--tr-base);
-}
-.welcome-cta:active{opacity:.85}
 /* ── Indicador de progreso de flujo ─────────────────────────────
    Visible en Planear cuando no hay plan. 3 pasos no bloqueantes.
    Escalable: basado en watchlist.size y savedAgenda — sin datos del festival. */
@@ -7936,23 +7876,6 @@ updateAgTab();
 // iOS/Android suspenden setInterval cuando la app va a background.
 // visibilitychange fuerza re-render inmediato al volver,
 // sin esperar al próximo tick del loop.
-// ── Bienvenida primer uso ────────────────────────────────────────
-// Escalable: FESTIVAL_STORAGE_KEY cambia por edición → siempre nuevo
-function showWelcomeIfNeeded(){
-  const key=FESTIVAL_STORAGE_KEY+'welcome_seen';
-  if(localStorage.getItem(key)) return;
-  const el=document.getElementById('welcome-overlay');
-  if(el) el.style.display='flex';
-}
-function dismissWelcome(){
-  localStorage.setItem(FESTIVAL_STORAGE_KEY+'welcome_seen','1');
-  const el=document.getElementById('welcome-overlay');
-  if(el){ el.style.opacity='0';el.style.transition='opacity .25s';
-    setTimeout(()=>el.style.display='none',260); }
-}
-// Mostrar después de que el estado cargue
-setTimeout(showWelcomeIfNeeded, 400);
-
 // ── Back-to-top: solo visible cuando hay scroll ──────────────────
 (function(){
   const btn=document.getElementById('back-top');
@@ -7997,13 +7920,13 @@ function _checkNavigateToMiPlan(){
   return !!upcoming;
 }
 
-// Al arrancar — solo si no estamos en primer uso (welcome overlay visible)
+// Al arrancar — navegar a Mi Plan si hay agenda activa
 setTimeout(()=>{
   if(_checkNavigateToMiPlan()){
     switchMainNav('mnav-miplan');
     showAgView();
   }
-}, 600); // después del welcome check (400ms) y del render inicial
+}, 400);
 
 function openFestivalSheet(){
   const ov=document.getElementById('fs-overlay');
@@ -8116,13 +8039,6 @@ if('serviceWorker' in navigator){
 
 
 <button id="back-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Volver arriba">↑</button>
-<div id="welcome-overlay" class="welcome-overlay" style="display:none" role="dialog" aria-modal="true">
-  <div class="welcome-sheet">
-    <div class="welcome-wordmark">Otro<span>festiv</span></div>
-    <div class="welcome-title">Tú decides <span style="color:var(--amber)">el festival.</span></div>
-    <div class="welcome-sub">Nosotros planeamos, tú disfrutas.</div>
-    <button class="welcome-cta" onclick="dismissWelcome()">Empezar <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></button>
-  </div>
-</div>
+
 </body>
 </html>
