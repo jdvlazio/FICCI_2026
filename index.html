@@ -1203,12 +1203,14 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:var(--t
 .mplan-t1:active{opacity:.6}
 .mplan-t1.mp-past{color:var(--gray2);cursor:default;text-decoration:none}
 .mplan-change-hint{font-size:var(--t-sm);color:var(--gray);padding:6px 0 10px;text-align:center;letter-spacing:.2px}
-.mplan-t2{font-size:var(--t-xs);color:var(--gray2);margin-top:2px}
+.mplan-t2{font-size:var(--t-xs);color:var(--gray2);margin-top:2px;display:flex;align-items:center;gap:3px}
 .mplan-ri{flex:1;min-width:0}
 .mplan-rtitle{font-size:var(--t-base);font-weight:var(--w-semi);color:var(--white);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.mplan-rtitle.mp-event-title{color:rgba(180,210,240,.9)}
 .mplan-rvenue{font-size:var(--t-sm);color:var(--gray);margin-top:2px}
+.mplan-rvenue.mp-event-venue{color:rgba(107,155,209,.6)}
 .mplan-dur{font-size:var(--t-sm);color:var(--gray2);flex-shrink:0;white-space:nowrap}
-.mplan-warn-row{font-size:var(--t-sm);color:var(--yellow);padding:var(--sp-1) var(--sp-3);border-bottom:1px solid var(--bdr-l);display:flex;align-items:center;gap:var(--sp-1);background:var(--amber-06)}
+.mplan-warn-row{font-size:var(--t-xs);color:var(--amber-60);padding:4px var(--sp-3);border-bottom:1px solid var(--bdr-l);border-top:1px solid var(--amber-30);display:flex;align-items:center;gap:var(--sp-1)}
 
 .mplan-legend{display:flex;gap:var(--sp-4);padding:var(--sp-2) var(--sp-3);border-bottom:1px solid var(--bdr-l);background:var(--surf)}
 .mplan-li{display:flex;align-items:center;gap:var(--sp-2);font-size:var(--t-xs);color:var(--gray2)}
@@ -3081,7 +3083,7 @@ function renderMiPlanCalendar(){
       if(idx>0){
         const prev=dayFilms[idx-1];
         const gap=fMin-(toMin(prev.time)+parseDur(prev.duration));
-        if(gap>=0&&gap<25) listHtml+=`<div class="mplan-warn-row">\u25b2 ~${gap} min hasta la siguiente</div>`;
+        if(gap>=0&&gap<25) listHtml+=`<div class="mplan-warn-row">${ICONS.alert} ~${gap} min hasta la siguiente</div>`;
         if(prev.has_qa){const qaGap=gap-30;qaGap<0?listHtml+=`<div class="mplan-warn-row" style="color:var(--red)">Q&A · si te quedas no llegas a la siguiente</div>`:listHtml+=`<div class="mplan-warn-row" style="color:var(--amber)">Q&A · si te quedas tienes ~${qaGap} min</div>`;}
         const tw=travelWarn(prev,s);
         if(tw) listHtml+=`<div class="mplan-warn-row">${tw}</div>`;
@@ -3089,21 +3091,26 @@ function renderMiPlanCalendar(){
       const _rowKey=(s._title||'')+s.time;
       const _safeRowKey=_rowKey.replace(/"/g,'&quot;');
       const _mf=FILMS.find(fi=>fi.title===s._title);const _mp=_mf?getFilmPoster(_mf):null;
-      const _safeMpT=(s._title||"").replace(/'/g,"\'");
-      const _mph=_mp?`<img class="lb-poster" src="${_mp}" loading="lazy" style="cursor:pointer" onclick="event.stopPropagation();openPelSheet('${_safeMpT}')" onerror="this.outerHTML='<div class=lb-poster-ph>🎬</div>'" alt="">`:'<div class="lb-poster-ph">🎬</div>';
+      const _isEventRow=_mf&&_mf.type==='event';
+      const _safeMpT=(s._title||"").replace(/'/g,"\\'");
+      const _mph=_mp
+        ?`<img class="lb-poster" src="${_mp}" loading="lazy" style="cursor:pointer" onclick="event.stopPropagation();openPelSheet('${_safeMpT}')" onerror="this.remove()" alt="">`
+        :_isEventRow
+          ?`<div style="cursor:pointer;flex-shrink:0" onclick="event.stopPropagation();openPelSheet('${_safeMpT}')">${makeEventPoster(_mf.title,_mf.duration).replace('<svg','<svg style="width:50px;height:75px;border-radius:var(--r-sm);display:block"')}</div>`
+          :`<div class="lb-poster-ph" onclick="event.stopPropagation();openPelSheet('${_safeMpT}')">🎬</div>`;
       listHtml+=`<div class="mplan-row${_rowKey===_activeMiPlanFilm?' active':''}" style="cursor:pointer" data-rkey="${_safeRowKey}" onclick="selectFromDetail(this)">
         ${_mph}
         <div class="mplan-tc" onclick="event.stopPropagation()">
           <div class="mplan-t1${isPast?' mp-past':''}" ${!isPast?`onclick="toggleFilmAlternatives('${(s._title||'')+(s.day||'')+(s.time||'')}','${safeT}','${s.day||''}','${s.time||''}');event.stopPropagation()"`:''} title="${!isPast?'Cambiar horario':''}">${s.time}</div>
-          <div class="mplan-t2">${mplanEndStr(s.time,dur)}${isNow?` <span style="color:var(--green);font-weight:var(--w-semi)">en curso</span>`:''}</div>
+          <div class="mplan-t2">${mplanEndStr(s.time,dur)}${prioritized.has(s._title)?` <span style="color:var(--amber-60);font-size:9px">★</span>`:''}${isNow?` <span style="color:var(--green);font-weight:var(--w-semi)">en curso</span>`:''}</div>
         </div>
         <div class="mplan-ri">
-          <div>${(()=>{const{displayTitle:_dt,progSuffix:_ps}=parseProgramTitle(s._title||'');const _mfqa=FILMS.find(fi=>fi.title===s._title&&fi.day===s.day&&fi.time===s.time);const _qab=_mfqa?.has_qa?`<span class="meta-badge" style="font-size:8px;padding:1px 4px;margin-right:4px">Q&A</span>`:'';return`<div class="mplan-rtitle">${prioritized.has(s._title)?`<span style="color:var(--orange);margin-right:4px">${ICONS.starFill}</span>`:''} ${_qab}${_dt}</div>${_ps?`<div style="font-size:var(--t-sm);color:var(--orange);font-weight:var(--w-bold);line-height:1;margin-top:2px">${_ps}</div>`:''}`;})()} </div>
-          <div class="mplan-rvenue">${ICONS.pin} ${vcfg(s.venue).short}${sala(s.venue)?' \u00b7 '+sala(s.venue):''}</div>
+          <div>${(()=>{const{displayTitle:_dt,progSuffix:_ps}=parseProgramTitle(s._title||'');const _mfqa=FILMS.find(fi=>fi.title===s._title&&fi.day===s.day&&fi.time===s.time);const _qab=_mfqa?.has_qa?`<span class="meta-badge" style="font-size:8px;padding:1px 4px;margin-right:4px">Q&A</span>`:'';return`<div class="mplan-rtitle${_isEventRow?' mp-event-title':''}">${_qab}${_dt}</div>${_ps?`<div style="font-size:var(--t-sm);color:var(--orange);font-weight:var(--w-bold);line-height:1;margin-top:2px">${_ps}</div>`:''}`;})()} </div>
+          <div class="mplan-rvenue${_isEventRow?' mp-event-venue':''}">${ICONS.pin} ${vcfg(s.venue).short}${sala(s.venue)?' \u00b7 '+sala(s.venue):''}</div>
           ${(()=>{const _mf=FILMS.find(fi=>fi.title===s._title&&fi.day===s.day&&fi.time===s.time);if(!_mf||!_mf.is_cortos||!_mf.film_list||!_mf.film_list.length) return'';return`<button class="mplan-prog-toggle" onclick="toggleMplanProg(this,event)" style="display:inline-flex;align-items:center;gap:var(--sp-1)">${ICONS.chevronR} Programa</button>`;})()}
         </div>
         <div style="display:flex;flex-direction:column;align-items:flex-end;justify-content:center;flex-shrink:0">
-          <button class="ag-fi-btn del" data-rmt="${safeT}" onclick="removeFromAgenda(this.dataset.rmt);event.stopPropagation()" style="display:inline-flex;align-items:center;justify-content:center;width:30px;height:30px;padding:0">${ICONS.x}</button>
+          <button class="ag-fi-btn del" data-rmt="${safeT}" onclick="removeFromAgenda(this.dataset.rmt);event.stopPropagation()" style="display:inline-flex;align-items:center;justify-content:center;width:30px;height:30px;padding:0;border-radius:50%">${ICONS.x}</button>
         </div>
       </div>${_expandedFilm===(s._title||'')+(s.day||'')+(s.time||'')?`<div class="film-alts">${renderFilmAlternatives(s._title,s.day,s.time)}</div>`:''}${(()=>{const _mf=FILMS.find(fi=>fi.title===s._title&&fi.day===s.day&&fi.time===s.time);if(!_mf||!_mf.is_cortos||!_mf.film_list||!_mf.film_list.length) return'';return`<div class="mplan-prog-list">${_mf.film_list.map((item,n)=>{const _mt=getCortoItemPoster(item);const _mth=_mt?`<img src="${_mt}" class="c-film-thumb" loading="lazy" onerror="this.outerHTML='<div class=c-film-thumb-ph>🎬</div>'" alt="">`:'<div class="c-film-thumb-ph">🎬</div>';const _sc2=item.title.replace(/'/g,"\'");const _sco2=(item.country||"").replace(/'/g,"\'");const _scd2=(item.duration||"");const _scf2=countryToFlags(item.country||"");const _scs2=(_mf.section||"").replace(/'/g,"\'");return`<div class="mplan-prog-item" onclick="event.stopPropagation();openCortoSheet('${_sc2}','${_sco2}','${_scd2}','${_scs2}','${_scf2}')">${_mth}<div class="mplan-prog-num">${n+1}</div><div class="mplan-prog-title">${item.title}</div><div class="mplan-prog-dur">${item.duration}</div></div>`;}).join('')}</div>`;})()}`;
     });
