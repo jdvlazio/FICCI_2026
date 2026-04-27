@@ -7238,9 +7238,9 @@ function _updateProgramaActiveFilter(){
     // Construir el label del tag — chip + venue si ambos activos
     let parts=[];
     if(hasChip) parts.push(chip.label);
-    if(hasVenue) parts.push('📍 '+activeVenue);
-    tagText.textContent=parts.join(' · ');
-    // Contar películas que cumplen ambos filtros
+    if(hasVenue) parts.push(ICONS.pin+' '+activeVenue);
+    tagText.innerHTML=parts.join(' · ');
+    // Contar películas solo en modo Explorar — en Hoy/Mañana el count sería del total, no del día
     const titleMap={};
     FILMS.forEach(f=>{if(!titleMap[f.title])titleMap[f.title]={film:f,screenings:[]};titleMap[f.title].screenings.push(f);});
     const count=Object.values(titleMap).filter(({film:f,screenings})=>{
@@ -7248,7 +7248,7 @@ function _updateProgramaActiveFilter(){
       const venueOk=hasVenue?screenings.some(s=>vcfg(s.venue).short===activeVenue):true;
       return secOk&&venueOk;
     }).length;
-    countEl.innerHTML=`<span class="count-badge cb-neutral">${count}</span>`;
+    countEl.innerHTML=programaSubMode==='explorar'?`<span class="count-badge cb-neutral">${count}</span>`:'';
     af.classList.add('visible');
   } else {
     af.classList.remove('visible');
