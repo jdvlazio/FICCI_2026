@@ -454,6 +454,10 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:var(--t
 /* ── Notices: funciones canceladas / reprogramadas ── */
 .notice-badge{display:inline-block;font-size:var(--t-xs);font-weight:var(--w-display);letter-spacing:.5px;padding:2px var(--sp-2);border-radius:var(--r-md);font-family:var(--font);margin-right:var(--sp-2);vertical-align:middle;flex-shrink:0;background:var(--amber);color:#0A0A0A}
 .meta-badge{display:inline-block;font-size:var(--t-xs);font-weight:var(--w-display);letter-spacing:.4px;padding:2px var(--sp-2);border-radius:var(--r-md);font-family:var(--font);margin-right:var(--sp-2);vertical-align:middle;flex-shrink:0;background:var(--amber);color:#0A0A0A}
+/* count-badge — círculo/píldora para conteos numéricos — regla global */
+.count-badge{display:inline-flex;align-items:center;justify-content:center;min-width:18px;height:18px;padding:0 5px;border-radius:999px;font-size:10px;font-weight:var(--w-bold);font-family:var(--font);line-height:1;vertical-align:middle;flex-shrink:0}
+.count-badge.cb-neutral{background:var(--surf-2);color:var(--gray);border:1px solid var(--bdr)}
+.count-badge.cb-amber{background:var(--amber-10);color:var(--amber);border:1px solid var(--amber-30)}
 .meta-banner{display:flex;align-items:flex-start;gap:var(--sp-2);padding:var(--sp-2) var(--sp-3);background:var(--surf-2);border-radius:var(--r-sm);margin-bottom:var(--sp-2)}
 .meta-banner-dot{width:6px;height:6px;border-radius:50%;background:var(--amber);flex-shrink:0;margin-top:4px}
 .meta-banner-label{font-size:var(--t-xs);font-weight:var(--w-display);color:var(--amber);letter-spacing:.5px;text-transform:uppercase}
@@ -4186,7 +4190,7 @@ function renderFilmListHTML(){
   }
   if(watchedList.length){
     if(allPending.length) html+=`<div class="ag-list-sep"></div>`;
-    html+=`<div class="ya-vistas-bar"><div class="ya-vistas-lbl">${ICONS.check} Ya vistas<span style="margin-left:var(--sp-2);font-size:var(--t-sm);font-weight:var(--w-semi);color:var(--gray)">${watchedList.length}</span></div></div>`;
+    html+=`<div class="ya-vistas-bar"><div class="ya-vistas-lbl">${ICONS.check} Ya vistas<span class="count-badge cb-neutral" style="margin-left:var(--sp-2)">${watchedList.length}</span></div></div>`;
     const _sortedW=[...watchedList].sort((a,b)=>(filmRatings[b]||0)-(filmRatings[a]||0));
     html+=`<div class="ag-film-grid">${_sortedW.map(t=>{
       const f=FILMS.find(fi=>fi.title===t);
@@ -5549,7 +5553,7 @@ function buildResultHTML(scenarios){
   sc.schedule.forEach(s=>{if(!byDay[s.day])byDay[s.day]=[];byDay[s.day].push(s);});
   DAY_KEYS.forEach(day=>{
     const films=byDay[day];if(!films||!films.length) return;
-    html+=`<div class="ag-day-label"><span class="ag-day-name">${dayChip(day)}</span><span class="ag-day-cnt">${films.length} película${films.length!==1?'s':''}</span></div>`;
+    html+=`<div class="ag-day-label"><span class="ag-day-name">${dayChip(day)}</span><span class="count-badge cb-neutral">${films.length}</span></div>`;
     films.forEach((s,i)=>{
       if(i>0){const warn=travelWarn(films[i-1],s);if(warn) html+=`<div class="ag-warn">${warn}</div>`;}
       html+=mkAgendaRow(s,'scenario');
@@ -6832,7 +6836,7 @@ function openPelSheet(title){
       </div>
     </div>
     <div class="pel-sheet-divider"></div>
-    <div class="pel-sheet-section-lbl">${f.type==='event'?'horario':allScr.length===1?'función':'funciones'}${totalFn>1&&f.type!=='event'?`<span style="margin-left:var(--sp-2);font-size:var(--t-xs);font-weight:var(--w-bold);letter-spacing:.06em;color:var(--amber);opacity:.8">${totalFn} FUNCIONES</span>`:''}</div>
+    <div class="pel-sheet-section-lbl">${f.type==='event'?'horario':allScr.length===1?'función':'funciones'}${totalFn>1&&f.type!=='event'?`<span class="count-badge cb-amber" style="margin-left:var(--sp-2)">${totalFn}</span>`:''}</div>
     ${(()=>{const _n=NOTICES.find(n=>n.title===f.title&&n.festival===(_activeFestId||'aff2026'));if(!_n)return'';const _msg=_n.type==='cancelled'?'Función cancelada · Pendiente nueva fecha':`Reprogramada → ${_n.newDay||''} ${_n.newTime||''}${_n.newVenue?' · '+_n.newVenue:''}`;return`<div style="display:flex;align-items:center;gap:var(--sp-2);padding:var(--sp-2) var(--sp-3);background:var(--amber-08);border-radius:var(--r-sm);margin-bottom:var(--sp-2)"><span class="notice-badge">${_n.type==='cancelled'?'CANCELADA':'REPROG.'}</span><span style="font-size:var(--t-sm);color:var(--amber-60)">${_msg}</span></div>`;})()}
     ${_metaBanners(f)}
     <div class="pel-sheet-screenings">${rows}</div>
