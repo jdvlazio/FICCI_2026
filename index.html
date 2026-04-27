@@ -7100,11 +7100,7 @@ function setInteresesView(mode){
   document.getElementById('ibtn-grid')?.classList.toggle('on',mode==='grid');
   document.getElementById('ibtn-list')?.classList.toggle('on',mode==='list');
   try{const _v=JSON.parse(localStorage.getItem(`${FESTIVAL_STORAGE_KEY}viewmodes`)||'{}');_v.intereses=mode;localStorage.setItem(`${FESTIVAL_STORAGE_KEY}viewmodes`,JSON.stringify(_v));}catch(e){}
-  // Re-renderizar sección activa
-  const grids=document.querySelectorAll('.ag-film-grid');
-  const items=document.querySelectorAll('.ag-film-item:not(.watched-item)');
-  grids.forEach(g=>g.classList.toggle('list-mode',mode==='list'));
-  items.forEach(el=>el.classList.toggle('list-mode',mode==='list'));
+  updateAgTab();
 }
 
 function _getProgramaPhase(){
