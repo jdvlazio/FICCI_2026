@@ -7446,7 +7446,16 @@ function _renderExploreLista(){
   const el=document.getElementById('programa-list');
   if(!el) return;
   const titleMap={};
-  FILMS.forEach(f=>{if(!titleMap[f.title])titleMap[f.title]={film:f,screenings:[]};titleMap[f.title].screenings.push(f);});
+  FILMS.forEach(f=>{
+    if(!titleMap[f.title]){titleMap[f.title]={film:f,screenings:[]};}
+    else{
+      const cur=titleMap[f.title].film;
+      const curMin=(cur.day_order||0)*1440+toMin(cur.time||'00:00');
+      const newMin=(f.day_order||0)*1440+toMin(f.time||'00:00');
+      if(newMin<curMin) titleMap[f.title].film=f;
+    }
+    titleMap[f.title].screenings.push(f);
+  });
   let entries=Object.values(titleMap);
   if(activeSec==='_chip_'&&_programaChipMatchFn){
     entries=entries.filter(e=>_programaChipMatchFn(e.film.section||''));
@@ -7521,10 +7530,17 @@ function renderPeliculaView(){
   const cntEl=document.getElementById('cnt');
   if(!grid) return;
 
-  // Agrupar por título único
+  // Agrupar por título único — film representativo = el de primera función cronológica
   const titleMap={};
   FILMS.forEach(f=>{
-    if(!titleMap[f.title]) titleMap[f.title]={film:f,screenings:[]};
+    if(!titleMap[f.title]){titleMap[f.title]={film:f,screenings:[]};}
+    else{
+      // Actualizar film representativo si este screening es anterior
+      const cur=titleMap[f.title].film;
+      const curMin=(cur.day_order||0)*1440+toMin(cur.time||'00:00');
+      const newMin=(f.day_order||0)*1440+toMin(f.time||'00:00');
+      if(newMin<curMin) titleMap[f.title].film=f;
+    }
     titleMap[f.title].screenings.push(f);
   });
 
