@@ -2932,16 +2932,20 @@ function renderMiPlanCalendar(){
   const PHDR=44;   // px for sticky day header
   const PPH=window.innerWidth<=600?40:64; // mobile: 40px/hr, desktop: 64px/hr
 
-  // REGLA: rango dinámico — calcular desde las funciones reales del plan.
-  // Buffer de 45min antes del inicio y después del final, snapped a hora entera.
-  // Límites absolutos: nunca antes de las 8:00, nunca después de las 26:00.
-  const _allMins=schedule.flatMap(s=>{
+  // REGLA: rango dinámico — calcular desde los días visibles solamente.
+  // Si los días visibles están vacíos, fallback al plan completo.
+  // Buffer 30min en cada extremo, snapped a hora entera.
+  // Límites absolutos: nunca antes de las 9:00, nunca después de las 26:00.
+  const _visDays=new Set([DAY_KEYS[vs],DAY_KEYS[ve]]);
+  const _visSched=schedule.filter(s=>_visDays.has(s.day));
+  const _src=_visSched.length?_visSched:schedule;
+  const _allMins=_src.flatMap(s=>{
     const st=toMin(s.time), en=st+parseDur(s.duration);
     return[st,en];
   });
   const _minStart=Math.min(..._allMins);
   const _maxEnd=Math.max(..._allMins);
-  const SH=Math.max(8, Math.floor((_minStart-30)/60));
+  const SH=Math.max(9, Math.floor((_minStart-30)/60));
   const EH=Math.min(26, Math.ceil((_maxEnd+30)/60));
 
   const TOTAL=(EH-SH)*PPH;
