@@ -4191,6 +4191,7 @@ function renderFilmListHTML(){
   if(prioList.length){
     html+=`<div class="intereses-mode-bar"><div class="sec-hdr">${ICONS.star} Prioridades <span class="count-badge cb-amber" style="margin-left:var(--sp-1)">${prioList.length}/${PRIO_LIMIT}</span></div></div>`;
     html+=`<div class="ag-film-grid${_listMode?' list-mode':''}">${prioList.map(t=>mkItem(t,_listMode)).join('')}</div>`;
+  }
   if(nonPrioList.length){
     if(prioList.length) html+=`<div class="ag-list-sep"></div>`;
     html+=`<div class="intereses-mode-bar"><div class="sec-hdr">${ICONS.heart} Intereses <span class="count-badge cb-neutral" style="margin-left:var(--sp-1)">${nonPrioList.length}</span></div></div>`;
