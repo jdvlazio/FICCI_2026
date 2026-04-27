@@ -5928,7 +5928,7 @@ function openPlanConfirm(schedule){
 
   // Sub: N películas · DÍAS
   const sub=document.getElementById('plan-confirm-sub');
-  if(sub) sub.textContent=`${total} película${total!==1?'s':''} · ${dayRange}`;
+  if(sub) sub.innerHTML=`<span class="count-badge cb-neutral" style="margin-right:var(--sp-1)">${total}</span> · ${dayRange}`;
 
   // Lista — máx 3 + resumen del resto
   const show=sorted.slice(0,3);
@@ -6810,7 +6810,7 @@ function openPelSheet(title){
       </div>`;
     }).join('');
     cortosHtml=`<div class="pel-sheet-divider"></div>
-      <div class="pel-sheet-section-lbl">Programa · ${f.film_list.length} cortos</div>
+      <div class="pel-sheet-section-lbl">Programa <span class="count-badge cb-neutral" style="margin-left:var(--sp-1)">${f.film_list.length}</span></div>
       <div class="pel-sheet-cortos-wrap">${cortoItems}</div>`;
   }
   const wlLabel=inWL?`${ICONS.heartFill} En Intereses`:`${ICONS.heart} Intereses`;
@@ -7233,7 +7233,7 @@ function _updateProgramaActiveFilter(){
       const venueOk=hasVenue?screenings.some(s=>vcfg(s.venue).short===activeVenue):true;
       return secOk&&venueOk;
     }).length;
-    countEl.textContent=count+' película'+(count!==1?'s':'');
+    countEl.innerHTML=`<span class="count-badge cb-neutral">${count}</span>`;
     af.classList.add('visible');
   } else {
     af.classList.remove('visible');
@@ -7260,7 +7260,7 @@ function renderProgramaChips(){
   el.innerHTML=chips.map(chip=>{
     const isOn=chip.id==='all'?programaChip==='all':
       (_programaChipMatchFn&&chip.match&&_programaChipMatchFn.toString()===chip.match.toString());
-    const label=chip.id==='all'?chip.label:`${chip.label}<span style="font-size:var(--t-xs);opacity:.6;margin-left:3px">${chip.count}</span>`;
+    const label=chip.id==='all'?chip.label:`${chip.label}<span class="count-badge cb-neutral" style="margin-left:var(--sp-1)">${chip.count}</span>`;
     return`<div class="pchip${isOn?' on':''}" data-chip="${chip.id}"
          onclick="setProgramaChip('${chip.id}')">${label}</div>`;
   }).join('');
@@ -7532,7 +7532,7 @@ function renderPeliculaView(){
     return (a.film.time||'').localeCompare(b.film.time||'');
   });
 
-  cntEl.innerHTML=(activeSec!=='all'||programaChip!=='all')?`<b>${entries.length}</b> película${entries.length!==1?'s':''}`:'';
+  cntEl.innerHTML=(activeSec!=='all'||programaChip!=='all')?`<span class="count-badge cb-neutral">${entries.length}</span>`:'';
 
   const DAY_ABB=['MAR','MIÉ','JUE','VIE','SÁB','DOM'];
 
@@ -7572,7 +7572,7 @@ function render(){
   if(activeSec!=='all') films=films.filter(f=>f.section===activeSec);
   const cntEl=document.getElementById('cnt');
   if(activeVenue!=='all'||activeSec!=='all'){
-    cntEl.innerHTML=`<b>${films.length}</b> actividad${films.length!==1?'es':''}`;
+    cntEl.innerHTML=`<span class="count-badge cb-neutral">${films.length}</span>`;
   } else {
     cntEl.innerHTML='';
   }
