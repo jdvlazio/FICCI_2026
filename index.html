@@ -675,8 +675,8 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:var(--t
 .pmode-controls{display:flex;align-items:center;gap:8px}
 /* ── View switch — sistema unificado (Programa / Mi Plan / Intereses) ── */
 .pmode-view-switch,.miplan-view-switch,.intereses-view-switch{display:flex;align-items:center;gap:2px;background:var(--surf-2);border:1px solid var(--bdr);border-radius:var(--r-md);padding:3px}
-.pmode-view-btn,.miplan-view-btn,.intereses-view-btn{width:24px;height:24px;display:flex;align-items:center;justify-content:center;border-radius:var(--r-sm);cursor:pointer;color:var(--gray);background:none;border:none;font-family:var(--font);transition:all var(--tr-base)}
-.pmode-view-btn.on,.miplan-view-btn.on,.intereses-view-btn.on{background:var(--surf);color:var(--white)}
+.pmode-view-btn,.miplan-view-btn,.intereses-view-btn{width:24px;height:24px;display:flex;align-items:center;justify-content:center;border-radius:var(--r-pill);cursor:pointer;color:var(--gray);background:none;border:1px solid transparent;font-family:var(--font);transition:all var(--tr-base)}
+.pmode-view-btn.on,.miplan-view-btn.on,.intereses-view-btn.on{background:var(--surf);color:var(--white);border-color:var(--bdr)}
 .pmode-filter-btn{display:flex;align-items:center;gap:4px;font-size:var(--t-sm);font-weight:var(--w-bold);color:var(--gray2);background:none;border:none;cursor:pointer;font-family:var(--font);padding:4px 0;transition:color var(--tr-base);white-space:nowrap}
 .pmode-filter-btn.active{color:var(--amber)}
 /* Chips de categoría (solo Explorar) */
@@ -686,6 +686,7 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:var(--t
 .programa-chips.hidden{display:none}
 .pchip{flex-shrink:0;font-size:var(--t-sm);font-weight:var(--w-bold);color:var(--gray);background:none;border:1px solid var(--bdr);border-radius:var(--r-pill);padding:var(--sp-1) var(--sp-3);cursor:pointer;font-family:var(--font);white-space:nowrap;transition:all var(--tr-base)}
 .pchip.on{background:var(--amber-10);border-color:var(--amber-30);color:var(--amber)}
+.pchip[data-chip="all"].on{background:var(--surf-2);border-color:var(--bdr);color:var(--white-60)}
 /* Tag activo dismissible */
 .programa-active-filter{display:none;align-items:center;gap:var(--sp-1);padding:var(--sp-1) var(--sp-3);border-bottom:1px solid var(--bdr-l);background:var(--surf);flex-shrink:0}
 .programa-active-filter.visible{display:flex}
@@ -2372,10 +2373,10 @@ function lbUrl(title){
 function makeEventPoster(title,duration){
   const festName=((FESTIVAL_CONFIG&&FESTIVAL_CONFIG[_activeFestId])||Object.values(FESTIVAL_CONFIG||{})[0]||{}).shortName||'FESTIVAL';
   return _buildPosterSVG({
-    hc:'#C8963E',sep:'#8A6228',ht:'#1A1410',
+    hc:'#6B9BD1',sep:'#3D6490',ht:'#0D1520',
     l1:'INDUSTRY',l2:'DAYS',
-    bf:'#252017',bs:'#3A3228',
-    accent:'#C8963E',
+    bf:'#0D1520',bs:'#132035',
+    accent:'#6B9BD1',
     title,duration,
     ft:festName
   });
@@ -7480,7 +7481,7 @@ function _renderExploreLista(){
     return`<div class="plist-item${allPast?' past-card':''}" onclick="openPelSheet('${safeT}')">
       ${_stk2||(src?`<img class="plist-poster" src="${src}" loading="lazy" onerror="this.style.opacity=0" alt="${dt}" style="${allPast&&!festivalEnded()?'opacity:.45':''}">` :`<div class="plist-poster"></div>`)}
       <div class="plist-info">
-        ${(()=>{const n=NOTICES.find(nx=>nx.title===f.title&&nx.festival===(window._currentFestivalId||'aff2026'));const nb=n?`<span class="notice-badge">${n.type==='cancelled'?'CANCELADA':'REPROG.'}</span>`:'';const nn=n&&n.type==='cancelled'?`<div style="font-size:var(--t-xs);color:var(--amber);margin-top:2px;font-weight:var(--w-semi)">Pendiente nueva fecha</div>`:n&&n.type==='rescheduled'&&n.newTime?`<div style="font-size:var(--t-xs);color:var(--green);margin-top:2px;font-weight:var(--w-semi)">${n.newDay||''} · ${n.newTime}${n.newVenue?' · '+n.newVenue:''}</div>`:'';return`<div class="plist-title" style="${allPast?'opacity:.5':''}">${nb}${dt}</div>${nn||`<div class="plist-sec">${f.section||''}</div>`}<div class="plist-meta" style="${n&&n.type==='cancelled'?'text-decoration:line-through':''}">${days?`<span style="color:var(--gray)">${days}</span> · `:''}${f.duration||'~90 min'}</div>`;})()}
+        ${(()=>{const n=NOTICES.find(nx=>nx.title===f.title&&nx.festival===(window._currentFestivalId||'aff2026'));const nb=n?`<span class="notice-badge">${n.type==='cancelled'?'CANCELADA':'REPROG.'}</span>`:'';const nn=n&&n.type==='cancelled'?`<div style="font-size:var(--t-xs);color:var(--amber);margin-top:2px;font-weight:var(--w-semi)">Pendiente nueva fecha</div>`:n&&n.type==='rescheduled'&&n.newTime?`<div style="font-size:var(--t-xs);color:var(--green);margin-top:2px;font-weight:var(--w-semi)">${n.newDay||''} · ${n.newTime}${n.newVenue?' · '+n.newVenue:''}</div>`:'';return`<div class="plist-title" style="${allPast?'opacity:.5':''}">${nb}${dt}</div>${nn||`<div class="plist-sec">${f.section||''}</div>`}<div class="plist-meta" style="${n&&n.type==='cancelled'?'text-decoration:line-through':''}${allPast?';opacity:.5':''}">${days?`<span style="color:var(--gray)">${days}</span> · `:''}${f.duration||'~90 min'}${_metaBadges(f)?` · ${_metaBadges(f)}`:''}</div>`;})()}
       </div>
       <div class="plist-heart${inWL?'':' empty'}" onclick="event.stopPropagation();_toggleWLFromList('${safeT}',this)">${inWL?ICONS.heartFill:ICONS.heart}</div>
     </div>`;
