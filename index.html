@@ -1098,7 +1098,7 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:var(--t
 
 /* Calendario semanal */
 .mplan-wrap{border:1px solid var(--bdr-l);border-radius:var(--r);overflow:hidden;margin-bottom:var(--sp-4)}
-.mplan-wk-outer{overflow:auto;max-height:540px}
+.mplan-wk-outer{overflow:auto}
 .mplan-wk-outer::-webkit-scrollbar{width:3px;height:3px}
 .mplan-wk-outer::-webkit-scrollbar-thumb{background:var(--bdr)}
 .mplan-wk-inner{display:flex;min-width:480px}
@@ -2873,18 +2873,12 @@ let availability={
   'Viernes':{blocks:[]},'Sábado':{blocks:[]},'Domingo':{blocks:[]}
 };
 
-const MPLAN_START_H=10,MPLAN_END_H=24;
-const MPLAN_TOTAL_MINS=(MPLAN_END_H-MPLAN_START_H)*60;
-const MPLAN_PX_PER_MIN=52/60;
-const MPLAN_DETAIL_H=MPLAN_TOTAL_MINS*MPLAN_PX_PER_MIN;
-
 
 // ═══════════════════════════════════════════════════════════════
 // 6 · MI PLAN — HELPERS & RENDER
 //     mplanPx, mplanPct, renderMiPlanCalendar, selectMiPlanDay
 // ═══════════════════════════════════════════════════════════════
-function mplanPx(min){return(min-MPLAN_START_H*60)*MPLAN_PX_PER_MIN;}
-function mplanPct(min){return((min-MPLAN_START_H*60)/MPLAN_TOTAL_MINS*100);}
+
 function mplanEndStr(t,d){const m=toMin(t)+d;return String(Math.floor(m/60)%24).padStart(2,'0')+':'+String(m%60).padStart(2,'0');}
 
 function mplanBlockType(s){
@@ -3107,7 +3101,7 @@ function renderMiPlanCalendar(){
 
   return `<div class="mplan-wrap">
     ${navHtml}
-    <div class="mplan-wk-outer">
+    <div class="mplan-wk-outer" style="height:${PHDR+TOTAL}px">
       <div class="mplan-wk-inner" style="height:${PHDR+TOTAL}px">
         <div class="mplan-wk-axis" style="height:${PHDR+TOTAL}px">${axisHtml}</div>
         <div class="mplan-wk-cols">${colsHtml}</div>
