@@ -6811,9 +6811,10 @@ function openPelSheet(title){
       const _ss=(item.synopsis||'').replace(/['"]/g,'');
       return`<div class="pel-sheet-corto-item" onclick="openCortoSheet('${safeCorto}','${safeCountry}','${safeDur}','${safeSec}','${safeFlags}','${_sd}','${_sg}','${_ss.slice(0,150)}')">
         ${thumbHtml}
+        <div class="mplan-prog-num">${n+1}</div>
         <div style="flex:1;min-width:0">
-          <div style="font-size:var(--t-caption);font-weight:var(--w-semi);color:var(--white);line-height:1.3;margin-bottom:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${item.title}</div>
-          <div style="font-size:var(--t-sm);color:var(--gray2)">${item.country||''} · ${item.duration}</div>
+          <div class="mplan-prog-title">${item.title}</div>
+          <div class="mplan-prog-dur">${item.country?item.country+' · ':''}${item.duration}</div>
         </div>
         ${ratingEl}
       </div>`;
