@@ -7113,11 +7113,6 @@ function setInteresesView(mode){
   const el=document.getElementById('ag-film-list');
   if(el) el.innerHTML=renderFilmListHTML();
 }
-  const grids=document.querySelectorAll('.ag-film-grid');
-  const items=document.querySelectorAll('.ag-film-item:not(.watched-item)');
-  grids.forEach(g=>g.classList.toggle('list-mode',mode==='list'));
-  items.forEach(el=>el.classList.toggle('list-mode',mode==='list'));
-}
 
 function _getProgramaPhase(){
   // Retorna qué tabs deben ser visibles y cuál es el default
