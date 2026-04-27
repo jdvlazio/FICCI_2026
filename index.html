@@ -92,6 +92,7 @@
   --white-30: rgba(240,237,232,.3);
   --white-45: rgba(240,237,232,.45);
   --white-60: rgba(240,237,232,.6);
+  --white-65: rgba(240,237,232,.65);
   --gray: #888888;
   --gray2: #555555;
 
@@ -700,9 +701,9 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:var(--t
 .plist-poster-stack .ps-front{position:absolute;bottom:0;left:0;width:32px;height:46px;border-radius:var(--r-sm);object-fit:cover;background:var(--surf-3);box-shadow:2px -2px 0 rgba(0,0,0,.5)}
 .plist-info{flex:1;min-width:0}
 .plist-title{font-size:var(--t-base);font-weight:var(--w-bold);color:var(--white);margin-bottom:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.plist-meta{font-size:var(--t-sm);color:var(--gray)}
-.plist-sec{font-size:var(--t-label);color:var(--gray2);margin-top:1px}
-.plist-heart{font-size:var(--t-icon);color:var(--amber);flex-shrink:0;cursor:pointer;padding:4px}
+.plist-meta{font-size:var(--t-sm);color:var(--gray2)}
+.plist-sec{font-size:var(--t-label);color:var(--white-60);font-weight:var(--w-semi);margin-bottom:3px;letter-spacing:.2px}
+.plist-heart{font-size:var(--t-icon);color:var(--amber);flex-shrink:0;cursor:pointer;padding:6px;border-radius:50%;transition:background var(--tr-base)}
 /* Mi Plan — modo lista compacta */
 .mplan-list-view{display:flex;flex-direction:column}
 .mplan-list-day{padding:var(--sp-1) var(--sp-4);font-size:var(--t-xs);font-weight:var(--w-bold);color:var(--amber);letter-spacing:.5px;text-transform:uppercase;background:var(--surf);border-bottom:1px solid var(--bdr-l);position:sticky;top:0;z-index:2}
@@ -716,6 +717,7 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:var(--t
 /* Switch en progress bar */
 .miplan-view-switch{flex-shrink:0}
 .plist-heart.empty{color:var(--gray2)}
+.plist-heart:active{background:var(--amber-10)}
 /* ── Grid Por Película ── */
 /* ── POSTER GRID — sistema unificado 3 col / ratio 2:3 ──────────────── *
  * Matemática: 390px - 20px padding - 16px gaps = 354px / 3 = 118px    *
@@ -986,7 +988,7 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:var(--t
    El día es orientador (¿cuándo puedo verla?) no selector.
    Escalable: generado desde FILMS[] con DAY_KEYS de cada festival. */
 .ag-fi-meta{font-size:var(--t-sm);color:var(--gray2);line-height:1.3;margin-top:2px;display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.ag-fi-days{font-size:var(--t-xs);color:var(--white-45);margin-top:1px;display:block;letter-spacing:.03em}
+.ag-fi-days{font-size:var(--t-xs);color:var(--white-65);margin-top:1px;display:block;letter-spacing:.03em}
 .ag-watched-section{margin-top:var(--sp-3)}
 .ag-watched-item{display:flex;align-items:center;gap:var(--sp-2);padding:var(--sp-2) var(--sp-3);background:var(--card-p);border:1px solid var(--bdr-l);border-radius:var(--r-md);margin-bottom:var(--sp-2);opacity:.6}
 .ag-wi-flag{font-size:var(--t-base);flex-shrink:0}
@@ -7466,7 +7468,7 @@ function _renderExploreLista(){
     return`<div class="plist-item${allPast?' past-card':''}" onclick="openPelSheet('${safeT}')">
       ${_stk2||(src?`<img class="plist-poster" src="${src}" loading="lazy" onerror="this.style.opacity=0" alt="${dt}" style="${allPast&&!festivalEnded()?'opacity:.45':''}">` :`<div class="plist-poster"></div>`)}
       <div class="plist-info">
-        ${(()=>{const n=NOTICES.find(nx=>nx.title===f.title&&nx.festival===(window._currentFestivalId||'aff2026'));const nb=n?`<span class="notice-badge">${n.type==='cancelled'?'CANCELADA':'REPROG.'}</span>`:'';const nn=n&&n.type==='cancelled'?`<div style="font-size:var(--t-xs);color:var(--amber);margin-top:2px;font-weight:var(--w-semi)">Pendiente nueva fecha</div>`:n&&n.type==='rescheduled'&&n.newTime?`<div style="font-size:var(--t-xs);color:var(--green);margin-top:2px;font-weight:var(--w-semi)">${n.newDay||''} · ${n.newTime}${n.newVenue?' · '+n.newVenue:''}</div>`:'';return`<div class="plist-title" style="${allPast?'opacity:.5':''}">${nb}${dt}</div><div class="plist-meta" style="${n&&n.type==='cancelled'?'text-decoration:line-through':''}">${f.duration||'~90 min'} · ${days}</div>${nn||`<div class="plist-sec">${f.section||''}</div>`}`;})()}
+        ${(()=>{const n=NOTICES.find(nx=>nx.title===f.title&&nx.festival===(window._currentFestivalId||'aff2026'));const nb=n?`<span class="notice-badge">${n.type==='cancelled'?'CANCELADA':'REPROG.'}</span>`:'';const nn=n&&n.type==='cancelled'?`<div style="font-size:var(--t-xs);color:var(--amber);margin-top:2px;font-weight:var(--w-semi)">Pendiente nueva fecha</div>`:n&&n.type==='rescheduled'&&n.newTime?`<div style="font-size:var(--t-xs);color:var(--green);margin-top:2px;font-weight:var(--w-semi)">${n.newDay||''} · ${n.newTime}${n.newVenue?' · '+n.newVenue:''}</div>`:'';return`<div class="plist-title" style="${allPast?'opacity:.5':''}">${nb}${dt}</div>${nn||`<div class="plist-sec">${f.section||''}</div>`}<div class="plist-meta" style="${n&&n.type==='cancelled'?'text-decoration:line-through':''}">${days?`<span style="color:var(--gray)">${days}</span> · `:''}${f.duration||'~90 min'}</div>`;})()}
       </div>
       <div class="plist-heart${inWL?'':' empty'}" onclick="event.stopPropagation();_toggleWLFromList('${safeT}',this)">${inWL?ICONS.heartFill:ICONS.heart}</div>
     </div>`;
