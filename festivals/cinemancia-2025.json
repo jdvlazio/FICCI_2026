@@ -106,7 +106,6 @@
       "VIE 19": "Viernes 19",
       "SÁB 20": "Sábado 20"
     },
-    "lbSlugs": {},
     "eventPosterLabel": [
       "PROGRAMACIÓN",
       "ACADÉMICA"
@@ -371,7 +370,9 @@
     "Portales + Las muchas muertes de Antonio Parreiras": "https://pics.filmaffinity.com/portales-112149060-mmed.jpg",
     "Ewelina Rosińska. Nubes del este: reflexiones sobre la imagen y el territorio": "https://cinemanciafestival.com/wp-content/uploads/2025/07/Portada-Ewelina.jpg"
   },
-  "customPosters": {},
+  "customPosters": {
+    "Proyección sorpresa": "assets/proyeccion-sorpresa.svg"
+  },
   "lbSlugs": {
     "La paga": "the-wage",
     "Cobre": "copper-2025",

@@ -7880,7 +7880,11 @@ async function loadFestival(id){
       // Absorber config del JSON si existe — permite festivales sin config hardcodeada
       if(data.config){
         Object.assign(cfg, data.config);
-        cfg.films=exploded;// preservar films ya procesados
+        // Restaurar campos críticos — Object.assign puede pisarlos si config los tiene vacíos
+        cfg.films=exploded;
+        cfg.lbSlugs=data.lbSlugs||cfg.lbSlugs||{};
+        cfg.posters=data.posters||cfg.posters||{};
+        cfg.customPosters=data.customPosters||cfg.customPosters||{};
       }
       // Absorber venues desde raíz del JSON (AFF/FICCI los tienen hardcodeados; otros festivales los traen aquí)
       if(data.venues) cfg.venues=data.venues;
