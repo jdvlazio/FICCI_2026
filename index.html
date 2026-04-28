@@ -345,6 +345,8 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:var(--t
    ag-search-wrap:    solo margen inferior (ag-view provee márgenes laterales)
 ────────────────────────────────────────────────────────────────────────── */
 #hdr-programa{position:sticky;top:var(--sticky-top-carta);z-index:121;background:var(--surf)}
+#hdr-ag{position:sticky;top:var(--sticky-top-carta);z-index:121;background:var(--surf);border-bottom:1px solid var(--bdr)}
+.ag-toggle-bar{display:flex;align-items:center;justify-content:flex-end;padding:0 var(--sp-3);height:36px;border-top:1px solid var(--bdr-l)}
 .carta-search-wrap{margin:0 var(--sp-4);padding:0}
 .ag-search-wrap{margin-bottom:var(--sp-2);position:relative}
 /* El pill: flex row que contiene ícono + input + clear */
@@ -1362,6 +1364,7 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:var(--t
   .topbar{position:sticky;top:0;z-index:200;background:var(--surf)}
   .hdr{background:var(--surf)}
   #hdr-programa{padding-top:var(--sp-2);top:47px}
+  #hdr-ag{top:47px}
 }
 
 /* ── FESTIVAL BOTTOM SHEET ── */
@@ -2164,7 +2167,8 @@ html.splash-skip #otrofestiv-splash{display:none}
 <div class="grid" id="grid"></div>
 
 <!-- ── Intereses: search + toggle — estáticos, fuera de ag-view ── -->
-<div id="ag-intereses-header" style="display:none;background:var(--surf);border-bottom:1px solid var(--bdr)">
+<!-- ── Intereses / Planear: header unificado — fuera de ag-view ── -->
+<div id="hdr-ag" style="display:none">
   <div class="carta-search-wrap">
     <div class="carta-search-field">
       <span class="carta-search-ico"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></span>
@@ -2172,7 +2176,7 @@ html.splash-skip #otrofestiv-splash{display:none}
     </div>
     <div id="ag-search-results" class="ag-search-results"></div>
   </div>
-  <div style="display:flex;justify-content:flex-end;padding:var(--sp-1) var(--sp-4) var(--sp-2)">
+  <div class="ag-toggle-bar" id="ag-toggle-bar" style="display:none">
     <div class="intereses-view-switch">
       <button class="intereses-view-btn on" id="ibtn-grid" onclick="setInteresesView('grid')">
         <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
@@ -6125,15 +6129,6 @@ function renderAgenda(){
     if(!pending.length&&!cachedResult){
       view.innerHTML=`${_progressHtml}
         <div class="ag-section">
-          <div class="ag-search-wrap">
-            <div class="ag-search-field">
-              <span class="ag-search-ico"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></span>
-              <input type="text" id="ag-search-input" class="ag-search"
-                placeholder="Buscar y añadir a Intereses…"
-                oninput="onSearchInput()" onblur="closeSearch()" autocomplete="off" autocapitalize="off">
-            </div>
-            <div id="ag-search-results" class="ag-search-results"></div>
-          </div>
           ${emptyStateHero(ICONS.calendar,'Primero, elige tus títulos','Añade lo que no quieres perderte. Cuando tengas tu lista, armamos tu plan.','Ir a Intereses',"switchMainNav('mnav-seleccion');showAgView()")}
         </div>`;
       return;
@@ -6145,15 +6140,6 @@ function renderAgenda(){
       :`<div class="ag-calc-prompt">Toca <strong>Calcular opciones</strong> para ver tu plan.</div>`;
     view.innerHTML=`${_progressHtml}
       <div class="ag-section">
-        <div class="ag-search-wrap">
-          <div class="ag-search-field">
-            <span class="ag-search-ico"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></span>
-            <input type="text" id="ag-search-input" class="ag-search"
-              placeholder="Buscar y añadir a Intereses…"
-              oninput="onSearchInput()" onblur="closeSearch()" autocomplete="off" autocapitalize="off">
-          </div>
-          <div id="ag-search-results" class="ag-search-results"></div>
-        </div>
         ${renderPrioStrip()}
         <button class="av-calc-btn" onclick="runCalc()">
           Calcular opciones
@@ -6304,7 +6290,7 @@ function showDayView(){
   switchMainNav('mnav-cartelera');
   // Mostrar buscador y mode bar
   const _csw2=document.getElementById('carta-search-wrap');if(_csw2) _csw2.style.display='';
-  document.getElementById('ag-intereses-header')?.style.setProperty('display','none');
+  document.getElementById('hdr-ag')?.style.setProperty('display','none');
   const modeBar=document.getElementById('programa-mode-bar');
   if(modeBar){
     modeBar.style.removeProperty('display');// removeProperty is more reliable than =""
@@ -6332,7 +6318,14 @@ function showAgView(){
   const _paf=document.getElementById('programa-active-filter');if(_paf) _paf.classList.remove('visible');
   const _lista=document.getElementById('programa-list');if(_lista) _lista.classList.remove('visible');
   const _csw=document.getElementById('carta-search-wrap');if(_csw) _csw.style.display='none';
-  const _agss=document.getElementById('ag-intereses-header');if(_agss) _agss.style.display=activeMNav==='mnav-seleccion'?'':'none';
+  const _agH=document.getElementById('hdr-ag');
+  if(_agH){
+    _agH.style.display='';
+    const _inp=document.getElementById('ag-search-input');
+    if(_inp) _inp.placeholder=activeMNav==='mnav-seleccion'?'Buscar y añadir a Intereses…':'Buscar y añadir a Intereses…';
+    const _tb=document.getElementById('ag-toggle-bar');
+    if(_tb) _tb.style.display=activeMNav==='mnav-seleccion'?'flex':'none';
+  }
   document.getElementById('nav-row').classList.add('hidden');
   document.getElementById('filter-row').classList.add('hidden');
   document.getElementById('filter-bars').style.display='none';
