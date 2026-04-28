@@ -2,7 +2,7 @@
 """
 Otrofestiv — Geocodificador de venues via Nominatim/OpenStreetMap
 =================================================================
-Uso: python3 geocode-venues.py festivals/nombre-festival.json
+Uso: python3 geocode-venues.py festivals/cinemancia-2025.json
 
 Obtiene coordenadas verificadas (lat/lng) para cada venue de un festival
 usando la API pública de Nominatim (OpenStreetMap). Sin API key. Gratuito.
@@ -163,6 +163,6 @@ def main(filepath):
 if __name__ == '__main__':
     if len(sys.argv) < 2:
         print(__doc__)
-        print("Uso: python3 geocode-venues.py festivals/nombre-festival.json")
+        print("Uso: python3 geocode-venues.py festivals/cinemancia-2025.json")
         sys.exit(1)
     main(sys.argv[1])
