@@ -5683,6 +5683,8 @@ function togglePriority(title,cost){
         'Quitar prioridad',()=>{
           prioritized.delete(title);savePrio();updateCardState(title);updateAgTab();runCalc();
           showToast(`${ICONS.star} Prioridad quitada`,'info');
+          renderAgenda();
+          switchMainNav('mnav-seleccion');showAgView();
         });return;
     }
     prioritized.delete(title);
