@@ -5631,15 +5631,18 @@ function buildResultHTML(scenarios){
   // Flujo: Planear = elegir base → Mi Plan = ajustar fino.
   // Escalable: no depende de lógica de swap — solo muestra qué falta.
   if(sc.excluded.length){
-    const excPosters=sc.excluded.map(t=>{
+    const _active=sc.excluded.filter(t=>FILMS.some(f=>f.title===t&&!screeningPassed(f)));
+    const _past=sc.excluded.filter(t=>!FILMS.some(f=>f.title===t&&!screeningPassed(f)));
+    const excPosters=[..._active,..._past].map(t=>{
+      const isPast=!FILMS.some(f=>f.title===t&&!screeningPassed(f));
       const{displayTitle:dt}=parseProgramTitle(t);
       const f=FILMS.find(fi=>fi.title===t);
       const poster=f?getFilmPoster(f):null;
       const short=dt.length>18?dt.slice(0,16)+'…':dt;
       const safeT=t.replace(/'/g,"\'");
-      return`<div class="ag-excl-item" onclick="openPelSheet('${safeT}')">
+      return`<div class="ag-excl-item${isPast?' past-card':''}" onclick="openPelSheet('${safeT}')">
         ${poster
-          ?`<img class="ag-excl-poster" src="${poster}" onerror="this.outerHTML='<div class=ag-excl-poster-ph></div>'" alt="">`
+          ?`<img class="ag-excl-poster" src="${poster}" onerror="this.remove()" alt="">`
           :`<div class="ag-excl-poster-ph"></div>`}
         <div class="ag-excl-title">${short}</div>
       </div>`;
@@ -5647,7 +5650,7 @@ function buildResultHTML(scenarios){
     html+=`<div class="ag-excl-block">
       <div class="ag-excl-eyebrow">
         <span class="ag-excl-label">No incluidas</span>
-        <span class="count-badge cb-neutral">${sc.excluded.length}</span>
+        <span class="count-badge cb-neutral">${_active.length||sc.excluded.length}</span>
       </div>
       <div class="ag-excl-strip">${excPosters}</div>
     </div>`;
