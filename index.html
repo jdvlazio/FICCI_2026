@@ -346,7 +346,13 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:var(--t
 ────────────────────────────────────────────────────────────────────────── */
 #hdr-programa{position:sticky;top:var(--sticky-top-carta);z-index:121;background:var(--surf)}
 #hdr-ag{position:sticky;top:var(--sticky-top-carta);z-index:121;background:var(--surf);border-bottom:1px solid var(--bdr)}
-.ag-toggle-bar{display:flex;align-items:center;justify-content:flex-end;padding:0 var(--sp-3);height:36px;border-top:1px solid var(--bdr-l)}
+.ag-toggle-bar{display:flex;align-items:center;gap:var(--sp-2);padding:0 var(--sp-3);height:40px;border-top:1px solid var(--bdr-l);overflow-x:auto}
+.ag-toggle-bar::-webkit-scrollbar{display:none}
+.ag-sec-pill{display:inline-flex;align-items:center;gap:3px;font-size:var(--t-xs);font-weight:var(--w-bold);color:var(--gray);background:none;border:1px solid var(--bdr);border-radius:var(--r-pill);padding:3px 8px;white-space:nowrap;flex-shrink:0;cursor:pointer;font-family:var(--font)}
+.ag-sec-pill.prio{background:var(--amber-10);border-color:var(--amber-30);color:var(--amber)}
+.ag-sec-pill.int{background:var(--surf-2);border-color:var(--bdr);color:var(--white-60)}
+.ag-sec-pill.yv{background:var(--green-10,rgba(58,170,110,.1));border-color:var(--green-30,rgba(58,170,110,.3));color:var(--green,#3AAA6E)}
+.ag-toggle-spacer{flex:1}
 .carta-search-wrap{margin:0 var(--sp-4);padding:0}
 .ag-search-wrap{margin-bottom:var(--sp-2);position:relative}
 /* El pill: flex row que contiene ícono + input + clear */
@@ -2177,6 +2183,19 @@ html.splash-skip #otrofestiv-splash{display:none}
     <div id="ag-search-results" class="ag-search-results"></div>
   </div>
   <div class="ag-toggle-bar" id="ag-toggle-bar" style="display:none">
+    <button class="ag-sec-pill prio" id="pill-prio" onclick="document.getElementById('sec-prio')?.scrollIntoView({behavior:'smooth',block:'start'})">
+      <svg width="9" height="9" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1.5"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
+      <span id="pill-prio-cnt">—</span>
+    </button>
+    <button class="ag-sec-pill int" id="pill-int" onclick="document.getElementById('sec-int')?.scrollIntoView({behavior:'smooth',block:'start'})">
+      <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+      <span id="pill-int-cnt">—</span>
+    </button>
+    <button class="ag-sec-pill yv" id="pill-yv" onclick="document.getElementById('sec-yv')?.scrollIntoView({behavior:'smooth',block:'start'})">
+      <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+      <span id="pill-yv-cnt">—</span>
+    </button>
+    <div class="ag-toggle-spacer"></div>
     <div class="intereses-view-switch">
       <button class="intereses-view-btn on" id="ibtn-grid" onclick="setInteresesView('grid')">
         <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
@@ -4221,12 +4240,12 @@ function renderFilmListHTML(){
   // Switch grid/lista para Intereses
   const _listMode=interesesViewMode==='list';
   if(prioList.length){
-    html+=`<div class="intereses-mode-bar"><div class="sec-hdr">${ICONS.star} Prioridades <span class="count-badge cb-amber" style="margin-left:var(--sp-1)">${prioList.length}/${PRIO_LIMIT}</span></div></div>`;
+    html+=`<div class="intereses-mode-bar" id="sec-prio"><div class="sec-hdr">${ICONS.star} Prioridades <span class="count-badge cb-amber" style="margin-left:var(--sp-1)">${prioList.length}/${PRIO_LIMIT}</span></div></div>`;
     html+=`<div class="ag-film-grid${_listMode?' list-mode':''}">${prioList.map(t=>mkItem(t,_listMode)).join('')}</div>`;
   }
   if(nonPrioList.length){
     if(prioList.length) html+=`<div class="ag-list-sep"></div>`;
-    html+=`<div class="intereses-mode-bar"><div class="sec-hdr">${ICONS.heart} Intereses <span class="count-badge cb-neutral" style="margin-left:var(--sp-1)">${nonPrioList.length}</span></div></div>`;
+    html+=`<div class="intereses-mode-bar" id="sec-int"><div class="sec-hdr">${ICONS.heart} Intereses <span class="count-badge cb-neutral" style="margin-left:var(--sp-1)">${nonPrioList.length}</span></div></div>`;
     html+=`<div class="ag-film-grid${_listMode?' list-mode':''}">${nonPrioList.map(t=>mkItem(t,_listMode)).join('')}</div>`;
   }
   if(!allPending.length&&!watchedList.length){
@@ -4239,7 +4258,7 @@ function renderFilmListHTML(){
   }
   if(watchedList.length){
     if(allPending.length) html+=`<div class="ag-list-sep"></div>`;
-    html+=`<div class="ya-vistas-bar"><div class="ya-vistas-lbl">${ICONS.check} Ya vistas<span class="count-badge cb-neutral" style="margin-left:var(--sp-2)">${watchedList.length}</span></div></div>`;
+    html+=`<div class="ya-vistas-bar" id="sec-yv"><div class="ya-vistas-lbl">${ICONS.check} Ya vistas<span class="count-badge cb-neutral" style="margin-left:var(--sp-2)">${watchedList.length}</span></div></div>`;
     const _sortedW=[...watchedList].sort((a,b)=>(filmRatings[b]||0)-(filmRatings[a]||0));
     html+=`<div class="ag-film-grid" style="grid-template-columns:repeat(4,1fr)">${_sortedW.map(t=>{
       const f=FILMS.find(fi=>fi.title===t);
@@ -4259,6 +4278,15 @@ function renderFilmListHTML(){
       </div>`;
     }).join('')}</div>`;
   }
+  // Actualizar counts en pills de navegación
+  setTimeout(()=>{
+    const _pp=document.getElementById('pill-prio-cnt');if(_pp) _pp.textContent=prioList.length?`${prioList.length}/${PRIO_LIMIT}`:'—';
+    const _pi=document.getElementById('pill-int-cnt');if(_pi) _pi.textContent=nonPrioList.length?String(nonPrioList.length):'—';
+    const _py=document.getElementById('pill-yv-cnt');if(_py) _py.textContent=watchedList.length?String(watchedList.length):'—';
+    document.getElementById('pill-prio')?.style.setProperty('display',prioList.length?'inline-flex':'none');
+    document.getElementById('pill-int')?.style.setProperty('display',nonPrioList.length?'inline-flex':'none');
+    document.getElementById('pill-yv')?.style.setProperty('display',watchedList.length?'inline-flex':'none');
+  },0);
   return html||`<div style="margin-top:8px;padding:var(--sp-5) var(--sp-4);border:1px solid var(--bdr-l);border-radius:var(--r);text-align:center">
       <div class="sec-hdr" style="justify-content:center;margin-bottom:var(--sp-3)">${ICONS.heart} Intereses</div>
       <div style="font-size:var(--t-base);color:var(--gray);line-height:1.6;text-align:center;max-width:240px;margin-left:auto;margin-right:auto;text-wrap:balance">
