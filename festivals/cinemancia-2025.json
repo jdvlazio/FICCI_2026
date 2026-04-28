@@ -113,64 +113,64 @@
       "short": "Colombo S1",
       "city": "Medellín",
       "address": "Calle 43 #54-139",
-      "lat": 6.2598,
-      "lng": -75.5686
+      "lat": 6.2497341,
+      "lng": -75.5627237
     },
     "Colombo Sala 2": {
       "short": "Colombo S2",
       "city": "Medellín",
       "address": "Calle 43 #54-139",
-      "lat": 6.2598,
-      "lng": -75.5686
+      "lat": 6.2497341,
+      "lng": -75.5627237
     },
     "Capilla Comfama": {
       "short": "Capilla Comfama",
       "city": "Medellín",
       "address": "Carrera 44 #48-18",
-      "lat": 6.2487,
-      "lng": -75.5728
+      "lat": 6.247845,
+      "lng": -75.5721182
     },
     "Procinal Las Américas": {
       "short": "Procinal S1",
       "city": "Medellín",
       "address": "Diagonal 75B #2A-120",
-      "lat": 6.2183,
-      "lng": -75.5917
+      "lat": 6.2,
+      "lng": -75.59
     },
     "Procinal Las Américas Sala 3": {
       "short": "Procinal S3",
       "city": "Medellín",
       "address": "Diagonal 75B #2A-120",
-      "lat": 6.2183,
-      "lng": -75.5917
+      "lat": 6.252315,
+      "lng": -75.6027177
     },
     "Cine MAMM": {
       "short": "MAMM",
       "city": "Medellín",
       "address": "Carrera 44 #19A-100",
-      "lat": 6.2338,
-      "lng": -75.5733
+      "lat": 6.2237154,
+      "lng": -75.5740382
     },
     "Teatro Comfama": {
       "short": "T. Comfama",
       "city": "Medellín",
       "address": "Calle 48 #43-87",
-      "lat": 6.2483,
-      "lng": -75.5706
+      "lat": 6.2822377,
+      "lng": -75.5631107
     },
     "Casa de la Memoria": {
       "short": "Casa Memoria",
       "city": "Medellín",
       "address": "Calle 51 #36-66",
-      "lat": 6.2474,
-      "lng": -75.5611
+      "lat": 6.2459198,
+      "lng": -75.5565561
     },
     "Archipiélago Sonoro": {
       "short": "Archipiélago",
       "city": "Medellín",
       "address": "Carrera 80B #18-13",
-      "lat": 6.2317,
-      "lng": -75.6167
+      "lat": 6.2419995,
+      "lng": -75.5958328
     },
     "ITM La Floresta": {
       "short": "ITM",
@@ -183,79 +183,79 @@
       "short": "Planetario",
       "city": "Medellín",
       "address": "Parque de los Deseos",
-      "lat": 6.2635,
-      "lng": -75.5681
+      "lat": 6.26902,
+      "lng": -75.56611
     },
     "Antimateria Libros y Café": {
       "short": "Antimateria",
       "city": "Medellín",
-      "lat": 6.2442,
-      "lng": -75.5667
+      "lat": 6.20062,
+      "lng": -75.56368
     },
     "Parque Bicentenario": {
       "short": "Parque Bicentenario",
       "city": "Medellín",
-      "lat": 6.2562,
-      "lng": -75.5695
+      "lat": 6.24667,
+      "lng": -75.55759
     },
     "Claustro Comfama": {
       "short": "Claustro Comfama",
       "city": "Medellín",
-      "lat": 6.2487,
-      "lng": -75.5728
+      "lat": 6.24575,
+      "lng": -75.56372
     },
     "Terko Bar": {
       "short": "Terko Bar",
       "city": "Copacabana",
       "address": "Calle 50#47-21",
-      "lat": 6.348,
-      "lng": -75.508
+      "lat": 6.34726,
+      "lng": -75.506
     },
     "Teatro Baggenuff": {
       "short": "Baggenuff",
       "city": "Copacabana",
       "address": "Calle 50 #43-84",
-      "lat": 6.3477,
-      "lng": -75.5074
+      "lat": 6.3461,
+      "lng": -75.50803
     },
     "Comfama La Estrella": {
       "short": "Comfama La Estrella",
       "city": "La Estrella",
-      "lat": 6.1583,
-      "lng": -75.528
+      "lat": 6.15431,
+      "lng": -75.65313
     },
     "Museo Casa Consistorial": {
       "short": "Casa Consistorial",
       "city": "La Estrella",
-      "lat": 6.1572,
-      "lng": -75.5273
+      "lat": 6.15777,
+      "lng": -75.64284
     },
     "Biblioteca Comfama Bello": {
       "short": "Bib. Bello",
       "city": "Bello",
       "address": "Carrera 49 #46-57",
-      "lat": 6.331,
-      "lng": -75.558
+      "lat": 6.3361,
+      "lng": -75.56653
     },
     "Procinal Parque Fabricato": {
       "short": "Procinal Bello",
       "city": "Bello",
       "address": "Carrera 50 #38a-185",
-      "lat": 6.328,
-      "lng": -75.56
+      "lat": 6.32434,
+      "lng": -75.55926
     },
     "Academia Municipal Girardota": {
       "short": "AMA Girardota",
       "city": "Girardota",
       "address": "Carrera 14 #8-37",
-      "lat": 6.382,
-      "lng": -75.448
+      "lat": 6.38,
+      "lng": -75.45
     },
     "Parque de la Poesía Girardota": {
       "short": "Parque Poesía",
       "city": "Girardota",
-      "lat": 6.3815,
-      "lng": -75.4478
+      "lat": 6.38,
+      "lng": -75.45
     },
     "Biblioteca Barbosa": {
       "short": "Bib. Barbosa",
@@ -268,21 +268,21 @@
       "short": "Bib. Sabaneta",
       "city": "Sabaneta",
       "address": "Calle 75 sur #45-47",
-      "lat": 6.1493,
-      "lng": -75.6162
+      "lat": 6.15,
+      "lng": -75.613
     },
     "Teatro Caribe": {
       "short": "T. Caribe",
       "city": "Itagüí",
       "address": "Carrera 50 #52-77",
-      "lat": 6.185,
+      "lat": 6.184,
       "lng": -75.599
     },
     "Centro Cultural Echavarría Misas": {
       "short": "Echavarría Misas",
       "city": "Itagüí",
       "address": "Calle 48 No 51-34",
-      "lat": 6.1845,
+      "lat": 6.184,
       "lng": -75.5978
     },
     "Auditorio Ciro Mendía Caldas": {
@@ -309,14 +309,14 @@
     "Fiesta del Libro Jardín Botánico": {
       "short": "Fiesta Libro",
       "city": "Medellín",
-      "lat": 6.2713,
-      "lng": -75.5658
+      "lat": 6.27053,
+      "lng": -75.56353
     },
     "Fiesta del Libro Parque de los Deseos": {
       "short": "Fiesta Libro PD",
       "city": "Medellín",
-      "lat": 6.2635,
-      "lng": -75.5681
+      "lat": 6.26846,
+      "lng": -75.56611
     }
   },
   "transport": "transit",
