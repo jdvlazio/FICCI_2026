@@ -2183,15 +2183,15 @@ html.splash-skip #otrofestiv-splash{display:none}
     <div id="ag-search-results" class="ag-search-results"></div>
   </div>
   <div class="ag-toggle-bar" id="ag-toggle-bar" style="display:none">
-    <button class="ag-sec-pill prio" id="pill-prio" onclick="document.getElementById('sec-prio')?.scrollIntoView({behavior:'smooth',block:'start'})">
+    <button class="ag-sec-pill prio" id="pill-prio" onclick="(()=>{const el=document.getElementById('sec-prio');if(!el)return;const hdr=document.getElementById('hdr-ag');const off=hdr?hdr.offsetHeight:0;window.scrollTo({top:el.getBoundingClientRect().top+window.scrollY-off-4,behavior:'smooth'})})()">
       <svg width="9" height="9" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1.5"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
       <span id="pill-prio-cnt">—</span>
     </button>
-    <button class="ag-sec-pill int" id="pill-int" onclick="document.getElementById('sec-int')?.scrollIntoView({behavior:'smooth',block:'start'})">
+    <button class="ag-sec-pill int" id="pill-int" onclick="(()=>{const el=document.getElementById('sec-int');if(!el)return;const hdr=document.getElementById('hdr-ag');const off=hdr?hdr.offsetHeight:0;window.scrollTo({top:el.getBoundingClientRect().top+window.scrollY-off-4,behavior:'smooth'})})()">
       <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
       <span id="pill-int-cnt">—</span>
     </button>
-    <button class="ag-sec-pill yv" id="pill-yv" onclick="document.getElementById('sec-yv')?.scrollIntoView({behavior:'smooth',block:'start'})">
+    <button class="ag-sec-pill yv" id="pill-yv" onclick="(()=>{const el=document.getElementById('sec-yv');if(!el)return;const hdr=document.getElementById('hdr-ag');const off=hdr?hdr.offsetHeight:0;window.scrollTo({top:el.getBoundingClientRect().top+window.scrollY-off-4,behavior:'smooth'})})()">
       <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
       <span id="pill-yv-cnt">—</span>
     </button>
