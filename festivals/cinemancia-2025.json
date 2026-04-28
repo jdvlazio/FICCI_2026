@@ -106,7 +106,11 @@
       "VIE 19": "Viernes 19",
       "SÁB 20": "Sábado 20"
     },
-    "lbSlugs": {}
+    "lbSlugs": {},
+    "eventPosterLabel": [
+      "PROGRAMACIÓN",
+      "ACADÉMICA"
+    ]
   },
   "venues": {
     "Colombo Sala 1": {

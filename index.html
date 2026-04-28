@@ -2422,10 +2422,12 @@ function lbUrl(title){
 }
 
 function makeEventPoster(title,duration){
-  const festName=((FESTIVAL_CONFIG&&FESTIVAL_CONFIG[_activeFestId])||Object.values(FESTIVAL_CONFIG||{})[0]||{}).shortName||'FESTIVAL';
+  const festCfg=(FESTIVAL_CONFIG&&FESTIVAL_CONFIG[_activeFestId])||Object.values(FESTIVAL_CONFIG||{})[0]||{};
+  const festName=festCfg.shortName||'FESTIVAL';
+  const lbl=festCfg.eventPosterLabel||['EVENTO',''];
   return _buildPosterSVG({
     hc:'#6B9BD1',sep:'#3D6490',ht:'#0D1520',
-    l1:'INDUSTRY',l2:'DAYS',
+    l1:lbl[0],l2:lbl[1]||'',
     bf:'#0D1520',bs:'#132035',
     accent:'#6B9BD1',
     title,duration,
@@ -2455,7 +2457,7 @@ const FESTIVAL_CONFIG={
     dayKeys:['Martes','Miércoles','Jueves','Viernes','Sábado','Domingo'],
     dayShort:{'Martes':'MAR 14','Miércoles':'MIÉ 15','Jueves':'JUE 16','Viernes':'VIE 17','Sábado':'SÁB 18','Domingo':'DOM 19'},
     dayLong:{'Martes':'Martes 14','Miércoles':'Miércoles 15','Jueves':'Jueves 16','Viernes':'Viernes 17','Sábado':'Sábado 18','Domingo':'Domingo 19'},
-    films:null,posters:null,lbSlugs:null
+    films:null,posters:null,lbSlugs:null,eventPosterLabel:['ACADEMIA','']
   },
   'aff2026':{
     name:'AFF 2026',shortName:'ALTERNATIVA',city:'Medellín',dates:'21\u201329 ABR',
@@ -2466,7 +2468,7 @@ const FESTIVAL_CONFIG={
     dayKeys:['MAR 21','MIÉ 22','JUE 23','VIE 24','SÁB 25','DOM 26','LUN 27','MAR 28','MIÉ 29','JUE 30'],
     dayShort:{'MAR 21':'MAR 21','MIÉ 22':'MIÉ 22','JUE 23':'JUE 23','VIE 24':'VIE 24','SÁB 25':'SÁB 25','DOM 26':'DOM 26','LUN 27':'LUN 27','MAR 28':'MAR 28','MIÉ 29':'MIÉ 29','JUE 30':'JUE 30'},
     dayLong:{'MAR 21':'Martes 21','MIÉ 22':'Miércoles 22','JUE 23':'Jueves 23','VIE 24':'Viernes 24','SÁB 25':'Sábado 25','DOM 26':'Domingo 26','LUN 27':'Lunes 27','MAR 28':'Martes 28','MIÉ 29':'Miércoles 29','JUE 30':'Jueves 30'},
-    films:null,posters:null,lbSlugs:{
+    films:null,posters:null,eventPosterLabel:['INDUSTRY','DAYS'],lbSlugs:{
       'Un mundo frágil y maravilloso':'a-sad-and-beautiful-world',
       'Homebound':'homebound-2025'
     }

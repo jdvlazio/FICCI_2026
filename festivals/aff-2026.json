@@ -988,6 +988,10 @@
     "lbSlugs": {
       "Un mundo frágil y maravilloso": "a-sad-and-beautiful-world",
       "Homebound": "homebound-2025"
-    }
+    },
+    "eventPosterLabel": [
+      "INDUSTRY",
+      "DAYS"
+    ]
   }
 }

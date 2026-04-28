@@ -4000,6 +4000,10 @@
       "Sábado": "Sábado",
       "Domingo": "Domingo"
     },
-    "lbSlugs": {}
+    "lbSlugs": {},
+    "eventPosterLabel": [
+      "ACADEMIA",
+      ""
+    ]
   }
 }
