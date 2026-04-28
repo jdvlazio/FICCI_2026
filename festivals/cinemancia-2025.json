@@ -134,15 +134,15 @@
       "short": "Procinal S1",
       "city": "Medellín",
       "address": "Diagonal 75B #2A-120",
-      "lat": 6.2,
-      "lng": -75.59
+      "lat": 6.2145832,
+      "lng": -75.5963458
     },
     "Procinal Las Américas Sala 3": {
       "short": "Procinal S3",
       "city": "Medellín",
       "address": "Diagonal 75B #2A-120",
-      "lat": 6.252315,
-      "lng": -75.6027177
+      "lat": 6.2145832,
+      "lng": -75.5963458
     },
     "Cine MAMM": {
       "short": "MAMM",
@@ -176,8 +176,8 @@
       "short": "ITM",
       "city": "Medellín",
       "address": "Calle 47A #85-20",
-      "lat": 6.2476,
-      "lng": -75.6164
+      "lat": 6.2575168,
+      "lng": -75.6019566
     },
     "Planetario": {
       "short": "Planetario",
@@ -248,63 +248,63 @@
       "short": "AMA Girardota",
       "city": "Girardota",
       "address": "Carrera 14 #8-37",
-      "lat": 6.38,
-      "lng": -75.45
+      "lat": 6.3755727,
+      "lng": -75.4480894
     },
     "Parque de la Poesía Girardota": {
       "short": "Parque Poesía",
       "city": "Girardota",
-      "lat": 6.38,
-      "lng": -75.45
+      "lat": 6.3755727,
+      "lng": -75.4480894
     },
     "Biblioteca Barbosa": {
       "short": "Bib. Barbosa",
       "city": "Barbosa",
       "address": "Calle 16 #10-50",
-      "lat": 6.438,
-      "lng": -75.331
+      "lat": 6.4357587,
+      "lng": -75.3294538
     },
     "Biblioteca Sabaneta": {
       "short": "Bib. Sabaneta",
       "city": "Sabaneta",
       "address": "Calle 75 sur #45-47",
-      "lat": 6.15,
-      "lng": -75.613
+      "lat": 6.1495623,
+      "lng": -75.6187333
     },
     "Teatro Caribe": {
       "short": "T. Caribe",
       "city": "Itagüí",
       "address": "Carrera 50 #52-77",
-      "lat": 6.184,
-      "lng": -75.599
+      "lat": 6.1728219,
+      "lng": -75.6076087
     },
     "Centro Cultural Echavarría Misas": {
       "short": "Echavarría Misas",
       "city": "Itagüí",
       "address": "Calle 48 No 51-34",
-      "lat": 6.184,
-      "lng": -75.5978
+      "lat": 6.1723554,
+      "lng": -75.6112823
     },
     "Auditorio Ciro Mendía Caldas": {
       "short": "Ciro Mendía",
       "city": "Caldas",
       "address": "Carrera 49 #128 Sur-40",
-      "lat": 6.093,
-      "lng": -75.628
+      "lat": 6.0925082,
+      "lng": -75.6352338
     },
     "I.E. Pedro Luis Álvarez Caldas": {
       "short": "I.E. Caldas",
       "city": "Caldas",
       "address": "Calle 132 Sur #44-93",
-      "lat": 6.0925,
-      "lng": -75.6275
+      "lat": 6.0925082,
+      "lng": -75.6352338
     },
     "Teatro Otraparte": {
       "short": "Otraparte",
       "city": "Envigado",
       "address": "Carrera 43a #128 Sur-11",
-      "lat": 6.1735,
-      "lng": -75.5942
+      "lat": 6.1795206,
+      "lng": -75.5836212
     },
     "Fiesta del Libro Jardín Botánico": {
       "short": "Fiesta Libro",
