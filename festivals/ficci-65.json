@@ -3846,12 +3846,12 @@
       "Domingo"
     ],
     "dayShort": {
-      "Martes": "MAR",
-      "Miércoles": "MIÉ",
-      "Jueves": "JUE",
-      "Viernes": "VIE",
-      "Sábado": "SÁB",
-      "Domingo": "DOM"
+      "Martes": "MAR 14",
+      "Miércoles": "MIÉ 15",
+      "Jueves": "JUE 16",
+      "Viernes": "VIE 17",
+      "Sábado": "SÁB 18",
+      "Domingo": "DOM 19"
     },
     "dayLong": {
       "Martes": "Martes",
