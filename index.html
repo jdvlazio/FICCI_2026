@@ -735,7 +735,7 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:var(--t
  * Matemática: 390px - 20px padding - 16px gaps = 354px / 3 = 118px    *
  * Ratio 2:3 → 177px alto. Estándar one-sheet cinematográfico.          */
 .poster-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;padding:10px}
-.poster-card{position:relative;border-radius:var(--r-md);overflow:hidden;cursor:pointer;background:var(--surf-2);aspect-ratio:2/3;display:block}
+.poster-card{position:relative;border-radius:var(--r-md);overflow:hidden;cursor:pointer;background:var(--surf-2);background-size:cover;background-position:center;aspect-ratio:2/3;display:block}
 .ended-poster .ended-poster-footer{position:absolute;bottom:0;left:0;right:0;padding:16px 6px 6px;background:linear-gradient(to top,rgba(0,0,0,.8),transparent);display:flex;flex-direction:column;gap:2px;align-items:center}
 .ended-poster-title{font-size:var(--t-xs);color:rgba(255,255,255,.8);text-align:center;line-height:1.2;overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;max-width:100%}
 .ended-rate-btn{background:var(--overlay-60);border:1px solid var(--white-20);border-radius:var(--r-pill);color:var(--white);font-size:var(--t-xs);font-weight:var(--w-bold);font-family:var(--font);padding:2px 6px;cursor:pointer}
@@ -7739,10 +7739,15 @@ function renderPeliculaView(){
     const{displayTitle}=parseProgramTitle(f.title);
     const progBadge='';//REMOVED: no count badge
     const _ended=festivalEnded();
+    // Si posterSrc es URL HTTP real, el card lleva background-image con el placeholder SVG.
+    // Si el <img> falla (404, ID incorrecto), onerror lo elimina y el placeholder queda visible.
+    // Garantiza que nunca haya un card completamente negro.
+    const _needsBg=posterSrc&&posterSrc.startsWith('http');
+    const _cardBg=_needsBg?` style="background-image:url(${makeFilmPlaceholder(f.title,f.director,f.year)})"`:'';
     const posterImg=posterSrc
       ?`<img src="${posterSrc}" loading="lazy" style="width:100%;height:100%;object-fit:cover${allPast&&!_ended?';opacity:.45':''};display:block" onerror="this.remove()" alt="">`
       :``;
-    return`<div class="poster-card${inWL&&!inW?' in-wl':''}${inW&&!_ended?' in-watched':''}" data-title="${f.title.replace(/"/g,'&quot;')}" onclick="openPelSheet('${safeT}')">
+    return`<div class="poster-card${inWL&&!inW?' in-wl':''}${inW&&!_ended?' in-watched':''}" data-title="${f.title.replace(/"/g,'&quot;')}" onclick="openPelSheet('${safeT}')"${_cardBg}>
       ${posterImg}
       ${progBadge}
       ${inWL?`<div class="poster-wl-dot">${ICONS.heartFill}</div>`:''}
@@ -7783,8 +7788,10 @@ function render(){
     const isNow=isNowShowing(f);
     const safeT=f.title.replace(/'/g,"\'");
     const posterSrc=getFilmPoster(f);
+    const _needsBg2=posterSrc&&posterSrc.startsWith('http');
+    const _cardBg2=_needsBg2?` style="background-image:url(${makeFilmPlaceholder(f.title,f.director,f.year)})"`:'';
     const posterImg=posterSrc
-      ?`<img src="${posterSrc}" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block" onerror="this.style.opacity=0" alt="">`
+      ?`<img src="${posterSrc}" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block" onerror="this.remove()" alt="">`
       :``;
     const progBadge='';//REMOVED
     const nowBadge=isNow?`<div class="poster-now">AHORA</div>`:'';
@@ -7792,7 +7799,7 @@ function render(){
     const pastBadge=_notice?`<div class="poster-past-badge" style="background:var(--amber-60);color:var(--black)">${_notice.type==='cancelled'?'Cancelada':'Reprog.'}</div>`:'';
 
     const _fe=festivalEnded();
-return`<div class="poster-card${inWL&&!inW?' in-wl':''}${inW&&!_fe?' in-watched':''}${passed&&!_fe?' past-card':''}" onclick="openPelSheet('${safeT}')">
+return`<div class="poster-card${inWL&&!inW?' in-wl':''}${inW&&!_fe?' in-watched':''}${passed&&!_fe?' past-card':''}" onclick="openPelSheet('${safeT}')"${_cardBg2}>
       ${posterImg}
       <div class="poster-time">${f.time}</div>
       ${nowBadge||pastBadge||progBadge}
