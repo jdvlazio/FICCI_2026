@@ -1709,10 +1709,26 @@
       "is_cortos": false,
       "film_list": [
         {
-          "title": "Esperando abril"
+          "title": "Esperando abril",
+          "title_en": "En attendant Avril",
+          "director": "Olivier Godin",
+          "year": 2018,
+          "duration": "77 min",
+          "country": "Canadá",
+          "flags": "🇨🇦",
+          "synopsis": "Comedia policial épica y romántica inspirada en fábulas medievales. Un hueso que canta pasa de mano en mano como talismán de poderes malignos. Su dueño legítimo es Mitrídates, actor con un brazo humano y otro de gorila. Solo una apasionada muestra de amor verdadero podrá liberarlo.",
+          "lbSlug": "en-attendant-avril"
         },
         {
-          "title": "Los bandidos del hotel azul"
+          "title": "Los bandidos del hotel azul",
+          "title_en": "Les brigands de l'hotel bleu",
+          "director": "Olivier Godin",
+          "year": 2015,
+          "duration": "15 min",
+          "country": "Canadá",
+          "flags": "🇨🇦",
+          "synopsis": "Mike hará una llamada. Lise contestará. Esta noche, a través de una romántica oda al cine de Kōji Wakamatsu, una conversación tierna y frágil conducirá con la enorme gloria de un amor floreciente. Prepárense para un amante engañado y para el humor negro.",
+          "lbSlug": "les-brigands-de-lhotel-bleu"
         }
       ],
       "synopsis": "Doble función de Olivier Godin: En attendant Avril (2018) y el cortometraje Les brigands de l'hôtel bleu.",
@@ -1938,7 +1954,30 @@
       "venue": "I.E. Pedro Luis Álvarez Caldas",
       "day_order": 6,
       "is_cortos": false,
-      "film_list": [],
+      "film_list": [
+        {
+          "title": "Prefacio para el Dialoguito",
+          "title_en": "Preface to the Little Dialogue",
+          "director": "Matías Piñeiro",
+          "year": 2025,
+          "duration": "6 min",
+          "country": "Argentina",
+          "flags": "🇦🇷",
+          "synopsis": "Un año después de terminar Tú me abrasas, Piñeiro presenta el prefacio que no pudo incluir en el montaje final. Siguiendo a Pavese, quien escribió un prefacio para cada capítulo de Diálogos con Leucó, acá presentamos, finalmente, nuestro prefacio.",
+          "lbSlug": "preface-to-the-little-dialogue"
+        },
+        {
+          "title": "Tú me abrasas",
+          "title_en": "You Burn Me",
+          "director": "Matías Piñeiro",
+          "year": 2024,
+          "duration": "64 min",
+          "country": "Argentina",
+          "flags": "🇦🇷",
+          "synopsis": "Adaptación de Espuma de mar, capítulo de Diálogos con Leucó de Cesare Pavese (1947). La poeta griega Safo y la ninfa Britomartis se encuentran junto al mar y conversan sobre el amor y la muerte, intentando comprender la naturaleza agridulce del deseo.",
+          "lbSlug": "you-burn-me"
+        }
+      ],
       "synopsis": "Doble función de Matías Piñeiro: Prefacio para el Dialoguito y Tú me abrasas."
     },
     {
@@ -2203,7 +2242,30 @@
       "venue": "Colombo Sala 1",
       "day_order": 8,
       "is_cortos": false,
-      "film_list": [],
+      "film_list": [
+        {
+          "title": "La babosa y el caracol",
+          "title_en": "La limace et l escargot",
+          "director": "Anne Benhaïem",
+          "year": 2024,
+          "duration": "57 min",
+          "country": "Francia",
+          "flags": "🇫🇷",
+          "synopsis": "Dos sexagenarios cojos chocan y caen. Van a un café y se vuelven inseparables. La película es sobre este arrebatador encuentro.",
+          "lbSlug": "la-limace-et-lescargot"
+        },
+        {
+          "title": "Molinos del tiempo",
+          "title_en": "Mills of Time",
+          "director": "Pauline Rigal",
+          "year": 2025,
+          "duration": "46 min",
+          "country": "Francia",
+          "flags": "🇫🇷",
+          "synopsis": "En las riberas de un río de las Cevenas, Philip y Tristan restauran el sistema de riego de un molino del siglo XVII. Siguiendo el curso del agua, trabajan juntos, haciendo pausas y compartiendo momentos de calma.",
+          "lbSlug": "mills-of-time-2025"
+        }
+      ],
       "synopsis": "Doble función de la competencia central: La babosa y el caracol (Anne Benhaïem) y Molinos del tiempo (Pauline Rigal)."
     },
     {
@@ -2450,7 +2512,30 @@
       "venue": "Colombo Sala 2",
       "day_order": 8,
       "is_cortos": false,
-      "film_list": [],
+      "film_list": [
+        {
+          "title": "Portales",
+          "title_en": "Portals",
+          "director": "Elena Duque",
+          "year": 2025,
+          "duration": "16 min",
+          "country": "España",
+          "flags": "🇪🇸",
+          "synopsis": "La película sigue el río Guadalete en Cádiz desde la sierra hasta el mar: portales interdimensionales que fusionan acción real y animación, inventando una nueva historia y geografía para un humilde curso de agua.",
+          "lbSlug": "portals-2025"
+        },
+        {
+          "title": "Las muchas muertes de Antonio Parreiras",
+          "title_en": "As Muitas Mortes de Antonio Parreiras",
+          "director": "Lucas Parente",
+          "year": 2025,
+          "duration": "65 min",
+          "country": "Brasil",
+          "flags": "🇧🇷",
+          "synopsis": "Inspirada en la vida y obra del pintor Antonio Parreiras (1860-1937). Su observación de la luz tropical revela una modernidad radicalmente antieuropea. Un viaje por esos bosques tupidos, devoradores.",
+          "lbSlug": "as-muitas-mortes-de-antonio-parreiras"
+        }
+      ],
       "synopsis": "Doble función de competencia: Portales (Elena Duque) y Las muchas muertes de Antônio Parreiras (Lucas Parente)."
     },
     {
