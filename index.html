@@ -7176,14 +7176,9 @@ function _findParentProgram(cortoTitle){
 // ═══════════════════════════════════════════════════════════════════
 // _openCombinedFilmSheet — film individual dentro de un programa combinado
 // ───────────────────────────────────────────────────────────────────
-// Recibe un objeto film_list enriquecido (title, director, year,
-// duration, flags, synopsis, lbSlug). Abre un sub-sheet sobre el
-// sheet del programa padre. Sin CTAs de plan — el programa combinado
-// es la unidad de planificación; este sheet es informativo.
-//
-// Template: cualquier festival con is_programa + film_list enriquecido
-// obtiene este comportamiento automáticamente. No requiere entrada
-// independiente en el array FILMS.
+// Usa el skeleton exacto de openPelSheet. Omite sección de funciones
+// y CTAs — la planificación pertenece al programa padre.
+// Template: cualquier festival con is_programa + film_list enriquecido.
 // ═══════════════════════════════════════════════════════════════════
 function _openCombinedFilmSheet(filmData){
   const inner=document.getElementById('pel-sheet-inner');
@@ -7197,35 +7192,32 @@ function _openCombinedFilmSheet(filmData){
   const posterHtml=posterUrl
     ?`<img class="pel-sheet-poster" src="${posterUrl}" loading="lazy" onerror="this.remove()" alt="">`
     :`<div class="pel-sheet-poster-ph">🎬</div>`;
-  const titleDisplay=title_en&&title_en!==title?`${title}<div style="font-size:var(--t-sm);color:var(--gray);font-weight:var(--w-reg);margin-top:2px">${title_en}</div>`:title;
-  const lbBtn=lbSlug
-    ?`<a class="ps-lb-btn" href="https://letterboxd.com/film/${lbSlug}/" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:5px;font-size:var(--t-sm);color:var(--gray);text-decoration:none;margin-top:4px">${LB_SVG}<span>Letterboxd</span></a>`
-    :'';
-  const meta=[director,year,duration].filter(Boolean).join(' · ');
+  const metaLine=[director,year].filter(Boolean).join(' · ');
+  const lbHref=lbSlug?`https://letterboxd.com/film/${lbSlug}/`:lbUrl(title);
   const ps=document.getElementById('pel-sheet');
   if(ps) ps.scrollTop=0;
   _pushSheetState();
   inner.innerHTML=`
-    <div class="ps-back-row">
-      <button class="ps-back-btn" onclick="_popSheetState()" style="display:flex;align-items:center;gap:4px;background:none;border:none;color:var(--amber);font-size:var(--t-sm);font-weight:var(--w-bold);cursor:pointer;padding:0">
-        ${ICONS.chevronLeft||'‹'} <span>Volver</span>
-      </button>
-    </div>
     <div class="pel-sheet-header">
       ${posterHtml}
-      <div class="pel-sheet-info">
-        <div class="pel-sheet-title">${titleDisplay}</div>
-        <div class="pel-sheet-flags">${flags}</div>
-        ${duration?`<div class="pel-sheet-dur"><span style="color:var(--gray2)">${ICONS.clock||'⏱'}</span> ${duration}</div>`:''}
-        <div class="pel-sheet-meta">${meta}</div>
-        ${lbBtn}
+      <div class="pel-sheet-meta">
+        <div class="pel-sheet-title">${title}</div>
+        ${flags?`<div class="pel-sheet-flags">${flags}</div>`:''}
+        ${duration?`<div class="pel-sheet-dur">${ICONS.clock} ${duration}</div>`:''}
+        ${metaLine?`<div class="pel-sheet-metaline">${metaLine}</div>`:''}
+        ${title_en&&title_en!==title?`<div class="pel-sheet-metaline" style="color:var(--gray);font-weight:var(--w-reg)">${title_en}</div>`:''}
       </div>
     </div>
-    ${synopsis?`<div class="ps-section-lbl">sinopsis</div><div class="ps-synopsis">${synopsis}</div>`:''}
-    <div style="height:32px"></div>
+    <div class="pel-sheet-divider"></div>
+    <div class="pel-sheet-section-lbl">sinopsis</div>
+    <div class="pel-sheet-synopsis">${synopsis||'Sinopsis no disponible.'}</div>
+    <a class="c-lb pel-sheet-lb" href="${lbHref}" target="_blank" rel="noopener">${LB_SVG}<span class="c-lb-text pel-sheet-lb-text">Letterboxd</span></a>
+    <div class="pel-sheet-divider"></div>
   `;
-  openSheet('pel-sheet');
+  document.getElementById('pel-overlay').classList.add('open');
+  document.getElementById('pel-sheet').classList.add('open');
 }
+
 
 function openCortoSheet(title, country, duration, section, flags, director, genre, synopsis){
   const inner=document.getElementById('pel-sheet-inner');
