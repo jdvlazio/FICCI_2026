@@ -7543,7 +7543,11 @@ function renderProgramaList(){
       const passed=screeningPassed(f);
       const isNow=isNowShowing(f);
       const safeT=f.title.replace(/'/g,"\'");
-      const{displayTitle:dt}=parseProgramTitle(f.title);
+      const _isPrograma=f.is_programa&&f.film_list&&f.film_list.length>=2;
+      const{displayTitle:_rawDt}=parseProgramTitle(f.title);
+      const dt=_isPrograma
+        ?((f.film_list[0].title||'').split(' ').slice(0,5).join(' ')+'<span style="font-size:var(--t-xs);background:var(--surf-3);color:var(--amber);border-radius:var(--r);padding:1px 5px;margin-left:5px;font-weight:var(--w-bold)">+1</span>')
+        :_rawDt;
       const vc=vcfg(f.venue);
       const src=getFilmPoster(f)||'';
       const nowBadge=isNow?`<span style="font-size:var(--t-xs);font-weight:var(--w-display);color:var(--green);background:var(--green-10);border:1px solid var(--green-30);border-radius:var(--r);padding:2px 6px;margin-left:4px">AHORA</span>`:'';
