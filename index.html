@@ -735,7 +735,7 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:var(--t
  * Matemática: 390px - 20px padding - 16px gaps = 354px / 3 = 118px    *
  * Ratio 2:3 → 177px alto. Estándar one-sheet cinematográfico.          */
 .poster-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;padding:10px}
-.poster-card{position:relative;border-radius:var(--r-md);overflow:hidden;cursor:pointer;background:var(--surf-2);background-size:cover;background-position:center;aspect-ratio:2/3;display:block}.poster-card:has(.poster-card-stack){overflow:visible;background:none}
+.poster-card{position:relative;border-radius:var(--r-md);overflow:hidden;cursor:pointer;background:var(--surf-2);background-size:cover;background-position:center;aspect-ratio:2/3;display:block}
 .poster-card-stack{width:100%;height:100%;position:relative}
 .pcs-back{position:absolute;top:-4%;right:-4%;width:80%;height:88%;object-fit:cover;border-radius:var(--r-sm);opacity:.85;display:block;z-index:1;transform:rotate(6deg);box-shadow:0 2px 8px rgba(0,0,0,.6)}
 .pcs-front{position:absolute;bottom:0;left:0;width:88%;height:96%;object-fit:cover;border-radius:var(--r-md);box-shadow:4px -4px 12px rgba(0,0,0,.8);display:block;z-index:2}
@@ -7830,7 +7830,7 @@ function renderPeliculaView(){
         ?`<img src="${posterSrc}" loading="lazy" style="width:100%;height:100%;object-fit:cover${allPast&&!_ended?';opacity:.45':''};display:block" onerror="this.remove()" alt="">`
         :``;
     }
-    return`<div class="poster-card${inWL&&!inW?' in-wl':''}${inW&&!_ended?' in-watched':''}" data-title="${f.title.replace(/"/g,'&quot;')}" onclick="openPelSheet('${safeT}')"${_cardBg}>
+    return`<div class="poster-card${inWL&&!inW?' in-wl':''}${inW&&!_ended?' in-watched':''}" data-title="${f.title.replace(/"/g,'&quot;')}" onclick="openPelSheet('${safeT}')"${_isPrograma?' style="overflow:visible;background:none"':_cardBg}>
       ${posterImg}
       ${progBadge}
       ${inWL?`<div class="poster-wl-dot">${ICONS.heartFill}</div>`:''}
