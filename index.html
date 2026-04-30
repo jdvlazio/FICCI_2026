@@ -738,11 +738,11 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:var(--t
 .poster-card{position:relative;border-radius:var(--r-md);overflow:hidden;cursor:pointer;background:var(--surf-2);background-size:cover;background-position:center;aspect-ratio:2/3;display:block}
 .poster-card-stack{width:100%;height:100%;display:flex;gap:1px;background:var(--bdr)}
 .pcs-back,.pcs-front{flex:1;height:100%;object-fit:cover;object-position:center;display:block;min-width:0}
-.pel-sheet-poster-stage{position:relative;flex-shrink:0;width:var(--poster-lg-w)}
-.pel-sheet-poster-stage .pel-sheet-poster{position:absolute;top:0;left:0;transition:opacity 200ms ease}
+.pel-sheet-poster-stage{position:relative;flex-shrink:0;width:var(--poster-lg-w);height:var(--poster-lg-h)}
+.pel-sheet-poster-stage .pel-sheet-poster{position:absolute;top:0;left:0;width:var(--poster-lg-w);height:var(--poster-lg-h);transition:opacity 200ms ease}
 .pel-sheet-poster-stage .pel-sheet-poster.psp-hidden{opacity:0;pointer-events:none}
-.pel-sheet-poster-stage .pel-sheet-poster.psp-visible{opacity:1;position:relative}
-.psp-dots{display:flex;justify-content:center;gap:5px;margin-top:6px}
+.pel-sheet-poster-stage .pel-sheet-poster.psp-visible{opacity:1}
+.psp-dots{display:flex;justify-content:center;gap:5px;margin-top:calc(var(--poster-lg-h) + 6px)}
 .psp-dot{width:6px;height:6px;border-radius:50%;border:none;padding:0;cursor:pointer;background:var(--white-30);transition:background 150ms,transform 150ms}
 .psp-dot.active{background:var(--amber);transform:scale(1.2)}
 .ended-poster .ended-poster-footer{position:absolute;bottom:0;left:0;right:0;padding:16px 6px 6px;background:linear-gradient(to top,rgba(0,0,0,.8),transparent);display:flex;flex-direction:column;gap:2px;align-items:center}
