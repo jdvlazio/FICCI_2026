@@ -2492,9 +2492,14 @@ function lbUrl(title){
   const _cfg=FESTIVAL_CONFIG[_activeFestId]||{};
   const _slugMap=_cfg.lbSlugs||LB_SLUGS;
   const slug=_slugMap[title]||LB_SLUGS[title];
-  if(!slug) return`https://letterboxd.com/search/films/${encodeURIComponent(title)}/`;
+  if(!slug) return null;
   if(slug.startsWith('http')) return slug;
   return`https://letterboxd.com/film/${slug}/`;
+}
+function lbLink(title){
+  const url=lbUrl(title);
+  if(!url) return'';
+  return`<a class="c-lb pel-sheet-lb" href="${url}" target="_blank" rel="noopener">${LB_SVG}<span class="c-lb-text pel-sheet-lb-text">Letterboxd</span></a>`;
 }
 
 function makeEventPoster(title,duration,eventKind){
@@ -7047,7 +7052,7 @@ function openPelSheet(title){
     <div class="pel-sheet-section-lbl">${f.type==='event'?'descripción':'sinopsis'}</div>
     <div class="pel-sheet-synopsis">${f.synopsis||'Sinopsis disponible próximamente.'}</div>
     ${cortosHtml}
-    ${(!f.is_cortos&&!f.is_programa&&f.type!=='event')?`<a class="c-lb pel-sheet-lb" href="${lbUrl(f.title)}" target="_blank" rel="noopener">${LB_SVG}<span class="c-lb-text pel-sheet-lb-text">Letterboxd</span></a>`:''}
+    ${(!f.is_cortos&&!f.is_programa&&f.type!=='event')?lbLink(f.title):''}
     <div class="pel-sheet-divider"></div>
     ${inW?`<div class="pel-sheet-ctas-watched">
         <button onclick="toggleWatched('${safeT}',event);closePelSheet()" class="pel-sheet-action-btn act-on">${ICONS.check} Ya vista</button>
@@ -7305,7 +7310,7 @@ function openCortoSheet(title, country, duration, section, flags, director, genr
     </div>
     <div class="pel-sheet-divider"></div>
     ${syn?`<div class="pel-sheet-section-lbl">sinopsis</div><div class="pel-sheet-synopsis">${syn}</div><div class="pel-sheet-divider"></div>`:''}
-    <a class="c-lb pel-sheet-lb" href="${lbUrl(title)}" target="_blank" rel="noopener">${LB_SVG}<span class="c-lb-text pel-sheet-lb-text">Letterboxd</span></a>
+    <a class="c-lb pel-sheet-lb" href="${lbUrl(title)||'#'}" target="_blank" rel="noopener"${!lbUrl(title)?' style="display:none"':''}>${LB_SVG}<span class="c-lb-text pel-sheet-lb-text">Letterboxd</span></a>
     <div class="pel-sheet-divider"></div>
     ${parentTitle?`<div style="font-size:var(--t-xs);color:var(--gray);margin-bottom:8px">Al agregar un corto se incluye el programa completo</div>`:''}
     <div style="display:flex;gap:var(--sp-1);margin-top:4px">
