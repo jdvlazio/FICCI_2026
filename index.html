@@ -6648,7 +6648,7 @@ function renderVbar(){
     // Group by city, sort cities alphabetically, venues by count desc
     const byCityObj={};
     Object.entries(venueData).forEach(([short,d])=>{
-      const c=d.city||'Otros';
+      const c=d.city||'Sin ciudad';
       if(!byCityObj[c]) byCityObj[c]=[];
       byCityObj[c].push({short,count:d.count});
     });

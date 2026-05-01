@@ -3925,6 +3925,83 @@
       "lat": 10.4242,
       "lon": -75.5497,
       "city": "Cartagena"
+    },
+    "Auditorio nido": {
+      "short": "Auditorio Nido",
+      "city": "Cartagena",
+      "address": "Cartagena",
+      "lat": 10.391,
+      "lng": -75.4794
+    },
+    "CC Caribe Plaza ‒ Sala 2": {
+      "short": "CC Caribe Plaza",
+      "city": "Cartagena",
+      "address": "Av. Pedro de Heredia, Cartagena",
+      "lat": 10.4061,
+      "lng": -75.5005
+    },
+    "CC Caribe Plaza ‒ Sala 5": {
+      "short": "CC Caribe Plaza",
+      "city": "Cartagena",
+      "address": "Av. Pedro de Heredia, Cartagena",
+      "lat": 10.4061,
+      "lng": -75.5005
+    },
+    "CC Caribe Plaza ‒ Sala 6": {
+      "short": "CC Caribe Plaza",
+      "city": "Cartagena",
+      "address": "Av. Pedro de Heredia, Cartagena",
+      "lat": 10.4061,
+      "lng": -75.5005
+    },
+    "Plaza Bocagrande ‒ Sala 1": {
+      "short": "Plaza Bocagrande",
+      "city": "Cartagena",
+      "address": "Av. San Martín, Bocagrande, Cartagena",
+      "lat": 10.3979,
+      "lng": -75.5499
+    },
+    "Plaza Bocagrande ‒ Sala 2": {
+      "short": "Plaza Bocagrande",
+      "city": "Cartagena",
+      "address": "Av. San Martín, Bocagrande, Cartagena",
+      "lat": 10.3979,
+      "lng": -75.5499
+    },
+    "Plaza Bocagrande ‒ Sala 3": {
+      "short": "Plaza Bocagrande",
+      "city": "Cartagena",
+      "address": "Av. San Martín, Bocagrande, Cartagena",
+      "lat": 10.3979,
+      "lng": -75.5499
+    },
+    "Plaza Bocagrande ‒ Sala 4": {
+      "short": "Plaza Bocagrande",
+      "city": "Cartagena",
+      "address": "Av. San Martín, Bocagrande, Cartagena",
+      "lat": 10.3979,
+      "lng": -75.5499
+    },
+    "Plaza Bocagrande ‒ Sala 5": {
+      "short": "Plaza Bocagrande",
+      "city": "Cartagena",
+      "address": "Av. San Martín, Bocagrande, Cartagena",
+      "lat": 10.3979,
+      "lng": -75.5499
+    },
+    "Salón 1 ‒ Miguel Sebastián Guerrero, unibac": {
+      "short": "UNIBAC",
+      "city": "Cartagena",
+      "address": "Universidad de Cartagena, Cartagena",
+      "lat": 10.4,
+      "lng": -75.507
+    },
+    "aecid": {
+      "short": "AECID",
+      "city": "Cartagena",
+      "address": "Cartagena",
+      "lat": 10.4236,
+      "lng": -75.5484
     }
   },
   "transport": "mixed",

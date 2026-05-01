@@ -320,6 +320,20 @@
       "city": "Medellín",
       "lat": 6.26846,
       "lng": -75.56611
+    },
+    "Centro Colombo Americano": {
+      "short": "Colombo Americano",
+      "city": "Medellín",
+      "address": "Calle 43 #54-139",
+      "lat": 6.2497341,
+      "lng": -75.5627237
+    },
+    "La Capilla del Claustro Comfama": {
+      "short": "La Capilla Comfama",
+      "city": "Medellín",
+      "address": "Carrera 45 #52-101",
+      "lat": 6.2474,
+      "lng": -75.568
     }
   },
   "transport": "transit",
