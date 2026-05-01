@@ -334,6 +334,20 @@
       "address": "Carrera 45 #52-101",
       "lat": 6.2474,
       "lng": -75.568
+    },
+    "Centro Colombo Americano Sede centro. Sala 2": {
+      "short": "Colombo Americano",
+      "city": "Medellín",
+      "address": "Calle 43 #54-139",
+      "lat": 6.2497341,
+      "lng": -75.5627237
+    },
+    "Cinemas Procinal Las Américas": {
+      "short": "Procinal Las Américas",
+      "city": "Medellín",
+      "address": "Diagonal 75B #2A-120",
+      "lat": 6.2145832,
+      "lng": -75.5963458
     }
   },
   "transport": "transit",
@@ -2175,7 +2189,7 @@
       "time": "19:00",
       "venue": "Colombo Sala 1",
       "day_order": 7,
-      "is_cortos": true,
+      "is_cortos": false,
       "synopsis": "Programa de cortometrajes de proyecciones especiales de Cinemancia 2025.",
       "film_list": []
     },
@@ -2592,7 +2606,7 @@
       "time": "17:00",
       "venue": "Biblioteca Sabaneta",
       "day_order": 8,
-      "is_cortos": true,
+      "is_cortos": false,
       "synopsis": "Programa de cortometrajes de proyecciones especiales de Cinemancia 2025.",
       "film_list": []
     },
