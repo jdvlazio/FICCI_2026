@@ -715,8 +715,57 @@
       "venue": "MAMM",
       "section": "🏆 Competencia Cortometrajes",
       "day_order": 5,
-      "is_cortos": false,
-      "film_list": [],
+      "is_cortos": true,
+      "film_list": [
+        {
+          "title": "Akababuru: Expresión de asombro",
+          "title_en": "Akababuru: Expression of Astonishment",
+          "country": "Colombia",
+          "duration": "13 min",
+          "director": "Irati Dojura Landa Yagarí",
+          "flags": "🇨🇴"
+        },
+        {
+          "title": "Balada de peces y pájaros",
+          "title_en": "Ballad of Fishes and Birds",
+          "country": "Colombia/España",
+          "duration": "7 min",
+          "director": "Anny Uribe, Juan José Arévalo",
+          "flags": "🇨🇴🇪🇸"
+        },
+        {
+          "title": "El monstruo del miedo",
+          "title_en": "The Fear Monster",
+          "country": "Brasil",
+          "duration": "10 min",
+          "director": "Andrew Gledson, Eduardo Padrão",
+          "flags": "🇧🇷"
+        },
+        {
+          "title": "Gris",
+          "title_en": "Grey",
+          "country": "Colombia/EEUU",
+          "duration": "15 min",
+          "director": "Loren Escandón",
+          "flags": "🇨🇴🇺🇸"
+        },
+        {
+          "title": "Una isla",
+          "title_en": "An Island",
+          "country": "Venezuela/México",
+          "duration": "11 min",
+          "director": "Ricardo Muñoz Senior",
+          "flags": "🇻🇪🇲🇽"
+        },
+        {
+          "title": "Samba infinito",
+          "title_en": "Samba Infinito",
+          "country": "Brasil/Francia",
+          "duration": "15 min",
+          "director": "Leonardo Martinelli",
+          "flags": "🇧🇷🇫🇷"
+        }
+      ],
       "synopsis": "Cortometrajes dirigidos a jóvenes y a los adultos significativos en sus vidas que desean compartir una experiencia cinematográfica. Estas obras, atractivas y reveladoras, abren espacios de diálogo sobre temas como la protección del territorio y la identidad, la superación del prejuicio racial, el manejo de las incertidumbres del mundo contemporáneo y la búsqueda de fortaleza en la solidaridad, la empatía e incluso el humor."
     },
     {
