@@ -678,7 +678,7 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:var(--t
 .carta-mode-toggle{display:none} /* reemplazado por programa-mode-bar */
 /* ── Programa: mode bar Explorar/Hoy/Mañana ── */
 .programa-mode-bar{display:flex;align-items:center;border-bottom:1px solid var(--bdr);padding:0 var(--sp-3);flex-shrink:0;background:var(--surf)}
-.pmode-tab{padding:var(--sp-btn) var(--sp-3) var(--sp-2);font-size:var(--t-base);font-weight:var(--w-bold);color:var(--gray);border-bottom:2px solid transparent;cursor:pointer;background:none;border-top:none;border-left:none;border-right:none;font-family:var(--font);transition:color var(--tr-base),border-color var(--tr-base);white-space:nowrap}
+.pmode-tab{padding:var(--sp-2) var(--sp-3);font-size:var(--t-sm);font-weight:var(--w-semi);color:var(--gray);border-bottom:2px solid transparent;min-height:38px;cursor:pointer;background:none;border-top:none;border-left:none;border-right:none;font-family:var(--font);transition:color var(--tr-base),border-color var(--tr-base);white-space:nowrap;display:inline-flex;align-items:center}
 .pmode-tab.on{color:var(--white);border-bottom-color:var(--amber)}
 .pmode-spacer{flex:1}
 .pmode-controls{display:flex;align-items:center;gap:8px}
@@ -1134,7 +1134,7 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:var(--t
 .mplan-nav{display:none;align-items:stretch;border-bottom:1px solid var(--bdr)}
 .mplan-nav-btn-wrap{width:44px;flex-shrink:0;display:flex;align-items:center;justify-content:center;border-right:1px solid var(--bdr-l);padding:var(--sp-2) 0}
 .mplan-nav-btn-wrap.right{border-right:none;border-left:1px solid var(--bdr-l);width:36px}
-.mplan-nav-btn{background:none;border:none;color:var(--white);font-size:var(--t-base);width:28px;height:28px;cursor:pointer;display:flex;align-items:center;justify-content:center;border-radius:var(--r-md);transition:background var(--tr-base)}
+.mplan-nav-btn{background:none;border:none;color:var(--white-60);width:28px;height:28px;cursor:pointer;display:flex;align-items:center;justify-content:center;border-radius:var(--r-md);transition:background var(--tr-base)}
 .mplan-nav-btn:active{background:var(--surf-2)}
 .mplan-nav-btn:disabled{opacity:.25;cursor:default}
 .mplan-nav-labels{display:flex;flex:1}
@@ -3216,7 +3216,7 @@ function renderMiPlanCalendar(){
   const isPastVe=nowDayIdx>=0&&ve<nowDayIdx;
   const navHtml=`<div class="mplan-nav">
     <div class="mplan-nav-btn-wrap">
-      <button class="mplan-nav-btn" aria-label="Día anterior" onclick="miPlanNav(-1)" ${vs===0?'disabled':''}>◀</button>
+      <button class="mplan-nav-btn" aria-label="Día anterior" onclick="miPlanNav(-1)" ${vs===0?'disabled':''}><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg></button>
     </div>
     <div class="mplan-nav-labels">
       <div class="mplan-nav-day${isPastVs?' past':''}" onclick="selectMiPlanDay(${vs})">
