@@ -2389,7 +2389,7 @@ function makeFilmPlaceholder(title, director, year){
 
 function makeProgramPoster(title, duration, section){
   // Usa _buildPosterV16 — motor tipográfico consistente con eventos y sorpresa
-  const sec=(section||(FILMS.find(f=>f.title===title)?.section)||'').toLowerCase();
+  const sec=(section||((typeof FILMS!=='undefined'&&FILMS.find(f=>f.title===title))?.section)||'').toLowerCase();
   let accent='#F59E0B';
   if(sec.includes('nuevas voces')) accent='#3AAA6E';
   else if(sec.includes('ficción')||sec.includes('ficcion')) accent='#E5A020';
@@ -2566,6 +2566,7 @@ function _buildPosterV16({accent, headerLabel, title, num}){
   return `data:image/svg+xml,${encodeURIComponent(svg)}`;
 }
 function makeEventPoster(title,duration,eventKind){
+  const festCfg=(FESTIVAL_CONFIG&&FESTIVAL_CONFIG[_activeFestId])||Object.values(FESTIVAL_CONFIG||{})[0]||{};
   const _kindMap={
     'ponencia':     {accent:'#F59E0B', headerLabel:'PONENCIA'},
     'masterclass':  {accent:'#7F77DD', headerLabel:'MASTERCLASS'},
@@ -2575,7 +2576,7 @@ function makeEventPoster(title,duration,eventKind){
   const kind=_kindMap[eventKind];
   if(kind) return _buildPosterV16({...kind, title, num:null});
   // Fallback — usa eventPosterLabel del config del festival
-  const lbl=(festCfg.eventPosterLabel||['EVENTO',''])[0];
+  const lbl=((festCfg.eventPosterLabel)||['EVENTO',''])[0];
   return _buildPosterV16({accent:'#6B9BD1', headerLabel:lbl, title, num:null});
 }
 
