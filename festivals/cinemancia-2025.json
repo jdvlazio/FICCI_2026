@@ -892,44 +892,6 @@
       "synopsis": "En el misterioso reino de Letonia, el joven y atractivo príncipe Egon se pasa las noches tocando la batería. Durante el día, su obsesión es colarse en el reino perdido de Kentz y despertar a la Bella Durmiente. Pero su padre, el Rey, quien no cree en los cuentos de hadas, se opone firmemente. Con la ayuda de la arqueóloga de la UNESCO, Maggie Jerkins, el príncipe intentará romper el hechizo."
     },
     {
-      "title": "La durmiente",
-      "title_en": "The Sleeping One",
-      "country": "Portugal",
-      "flags": "🇵🇹",
-      "duration": "86 min",
-      "director": "Maria Inês Gonçalves",
-      "year": 2025,
-      "genre": "Drama",
-      "section": "🏆 Competencia central",
-      "day": "SÁB 13",
-      "date": 13,
-      "time": "15:00",
-      "venue": "Colombo Sala 2",
-      "day_order": 2,
-      "is_cortos": false,
-      "film_list": [],
-      "synopsis": "Reinterpretación de la historia de la infanta Beatriz de Portugal a través de la fabulación y la imaginación infantil, filmada en el Monasterio de Sancti Spiritus de Toro."
-    },
-    {
-      "title": "Las reglas del juego",
-      "title_en": "Las reglas del juego",
-      "country": "Argentina",
-      "flags": "🇦🇷",
-      "duration": "86 min",
-      "director": "Matías Szulanski",
-      "year": 2025,
-      "genre": "Comedia",
-      "section": "🏆 Competencia central",
-      "day": "SÁB 13",
-      "date": 13,
-      "time": "15:00",
-      "venue": "Colombo Sala 2",
-      "day_order": 2,
-      "is_cortos": false,
-      "film_list": [],
-      "synopsis": "Laura es la novia de Juan. Cuando Juan se entera de que Marcos, su ex amigo, tiene una nueva novia, intentará conquistarla para vengarse de él por el pasado."
-    },
-    {
       "title": "Andariega",
       "title_en": "Andariega",
       "country": "Colombia",
@@ -1432,25 +1394,6 @@
       "is_cortos": false,
       "film_list": [],
       "synopsis": "En la nueva película de Jem Cohen, un astrónomo austríaco llamado Karl, que ha estado reevaluando su trabajo y su vida después de cumplir 70 años, viaja a la cima de una montaña en una isla griega en busca del cielo más oscuro para observar el cosmos. Espera encontrar un cielo lo suficientemente oscuro como para reconectar con las estrellas."
-    },
-    {
-      "title": "La durmiente",
-      "title_en": "The Sleeping One",
-      "country": "Portugal",
-      "flags": "🇵🇹",
-      "duration": "86 min",
-      "director": "Maria Inês Gonçalves",
-      "year": 2025,
-      "genre": "Drama",
-      "section": "🏆 Competencia central",
-      "day": "LUN 15",
-      "date": 15,
-      "time": "19:00",
-      "venue": "Procinal Las Américas Sala 3",
-      "day_order": 4,
-      "is_cortos": false,
-      "film_list": [],
-      "synopsis": "Reinterpretación de la historia de la infanta Beatriz de Portugal a través de la fabulación y la imaginación infantil, filmada en el Monasterio de Sancti Spiritus de Toro."
     },
     {
       "title": "Cortos: Competencia Nuevas Voces 1",
@@ -2987,6 +2930,56 @@
           "synopsis": "Ani, una ciudad situada en la frontera turcoarmenia, se encuentra en absoluto abandono tras siglos de continuas invasiones. Alÿs dio instrumentos para imitar el sonido de los pájaros a adolescentes de los pueblos de alrededor, quienes atravesaron los límites de la ciudad y llamaron a los pájaros, creando la ilusión de que la ciudad había vuelto a la vida."
         }
       ]
+    },
+    {
+      "title": "La durmiente + Las reglas del juego",
+      "country": "Portugal, Argentina",
+      "flags": "🇵🇹🇦🇷",
+      "duration": "86 min",
+      "director": "Maria Inês Gonçalves, Matías Szulanski",
+      "year": 2025,
+      "section": "🏆 Competencia central",
+      "synopsis": "Doble función. La durmiente (2025): reinterpretación de la infanta Beatriz de Portugal a través de la imaginación infantil, filmada en el Monasterio de Sancti Spiritus de Toro. Las reglas del juego (2025): Laura y Juan juegan a los celos con sus ex en un enredo de amor y venganza.",
+      "is_programa": true,
+      "film_list": [
+        {
+          "title": "La durmiente",
+          "director": "Maria Inês Gonçalves",
+          "year": 2025,
+          "country": "Portugal",
+          "duration": "20 min",
+          "synopsis": "La película reinterpreta la historia de la infanta Beatriz de Portugal, de la época medieval, a través de la fabulación y la imaginación infantil. Filmada íntegramente en el Monasterio de Sancti Spiritus de Toro, lugar que antaño habitó Beatriz y donde se encuentra su tumba."
+        },
+        {
+          "title": "Las reglas del juego",
+          "director": "Matías Szulanski",
+          "year": 2025,
+          "country": "Argentina",
+          "duration": "66 min",
+          "synopsis": "Laura es la novia de Juan. Cuando Juan se entera de que Marcos, su ex amigo, tiene una nueva novia, intentará conquistarla para vengarse de él por el pasado. Laura, celosa, recurre a su ex para intentar darle celos a Juan."
+        }
+      ],
+      "sessions": [
+        {
+          "day": "SÁB 13",
+          "date": 13,
+          "time": "15:00",
+          "venue": "Centro Colombo Americano Sede centro. Sala 2",
+          "day_order": 2
+        },
+        {
+          "day": "LUN 15",
+          "date": 15,
+          "time": "19:00",
+          "venue": "Cinemas Procinal Las Américas",
+          "day_order": 4
+        }
+      ],
+      "day": "SÁB 13",
+      "date": 13,
+      "time": "15:00",
+      "venue": "Colombo Sala 2",
+      "day_order": 2
     }
   ],
   "_lbSlugsSource": "https://letterboxd.com/cinemancia/list/cinemancia-2025/detail/ — extraído via Chrome, NO inferir slugs"
