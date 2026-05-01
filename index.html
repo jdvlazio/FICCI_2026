@@ -7952,8 +7952,12 @@ function renderPeliculaView(){
       const _if=_p1?`<img class="pcs-front" src="${_p1}" loading="lazy" onerror="this.remove()" alt="">`:`<div class="pcs-front"></div>`;
       posterImg=`<div class="poster-card-stack">${_ib}${_if}</div>`;
     } else {
-      const _needsBg=posterSrc&&posterSrc.startsWith('http');
-      _cardBg=_needsBg?` style="background-image:url(${makeFilmPlaceholder(f.title,f.director,f.year)})"`:'';
+      _cardBg='';
+      posterImg=posterSrc&&posterSrc.startsWith('http')
+        ?`<img src="${posterSrc}" loading="lazy" style="width:100%;height:100%;object-fit:cover${allPast&&!_ended?';opacity:.45':''};display:block" onerror="this.remove()" alt="">`
+        :posterSrc
+          ?`<img src="${posterSrc}" style="width:100%;height:100%;object-fit:cover;display:block" alt="">`
+          :``;
       posterImg=posterSrc
         ?`<img src="${posterSrc}" loading="lazy" style="width:100%;height:100%;object-fit:cover${allPast&&!_ended?';opacity:.45':''};display:block" onerror="this.remove()" alt="">`
         :``;
@@ -7999,7 +8003,6 @@ function render(){
     const isNow=isNowShowing(f);
     const safeT=f.title.replace(/'/g,"\'");
     const posterSrc=getFilmPoster(f);
-    const _needsBg2=posterSrc&&posterSrc.startsWith('http');
     const _cardBg2='';
     const posterImg=posterSrc&&posterSrc.startsWith('http')
       ?`<img src="${posterSrc}" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block" onerror="this.remove()" alt="">`
