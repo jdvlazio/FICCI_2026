@@ -2189,7 +2189,7 @@
       "time": "19:00",
       "venue": "Colombo Sala 1",
       "day_order": 7,
-      "is_cortos": false,
+      "is_cortos": true,
       "synopsis": "Programa de cortometrajes de proyecciones especiales de Cinemancia 2025.",
       "film_list": []
     },
@@ -2606,7 +2606,7 @@
       "time": "17:00",
       "venue": "Biblioteca Sabaneta",
       "day_order": 8,
-      "is_cortos": false,
+      "is_cortos": true,
       "synopsis": "Programa de cortometrajes de proyecciones especiales de Cinemancia 2025.",
       "film_list": []
     },
