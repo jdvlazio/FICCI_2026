@@ -3690,22 +3690,15 @@ function toggleWatched(title,e){
     if(activeView==='agenda') renderAgenda();
     showToast('Movida a pendientes','info');
   } else {
-    // Confirmar antes de marcar como vista
-    const short=title.length>36?title.slice(0,34)+'…':title;
-    showActionModal(
-      `¿Ya viste esta película?`,
-      `<b>${short}</b><br><br>Se moverá a <b>Ya vistas</b> en Intereses.`,
-      'Sí, ya la vi',
-      ()=>{
-        watched.add(title);
-        saveWatched();updateCardState(title);updateAgTab();
-        cachedResult=null;
-        if(activeView==='agenda') renderAgenda();
-        if(activeMNav==='mnav-miplan') renderAgenda();
-        showToast('Movida a Ya vistas','info');
-        // Los programas de cortos no tienen calificación general
-        if(!FILMS.find(fi=>fi.title===title)?.is_cortos) setTimeout(()=>openRatingSheet(title),350);
-      }
+    // Sin modal — acción directa
+    watched.add(title);
+    saveWatched();updateCardState(title);updateAgTab();
+    cachedResult=null;
+    _reRenderIntereses();
+    if(activeView==='agenda') renderAgenda();
+    if(activeMNav==='mnav-miplan') renderAgenda();
+    showToast('Movida a Ya vistas','info');
+    if(!FILMS.find(fi=>fi.title===title)?.is_cortos) setTimeout(()=>openRatingSheet(title),350);
     );
   }
 }
@@ -4611,7 +4604,7 @@ function renderFilmListHTML(){
     const safeT=title.replace(/'/g,"\'");
     const poster=f?getFilmPoster(f):null;
     const posterHtml=poster
-      ?`<img class="int-item-poster" src="${poster}" onerror="this.style.background='var(--surf-2)'" alt="">`
+      ?`<img class="int-item-poster" src="${poster}" onerror="_posterErr(this)" alt="">`
       :`<div class="int-item-poster"></div>`;
     const secLabel=(f?.section||'').replace(/^\S+ /,'')||f?.section||'';
     const nextHtml=next
