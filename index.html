@@ -8037,16 +8037,11 @@ function renderPeliculaView(){
       posterImg=`<div class="poster-card-stack">${_ib}${_if}</div>`;
     } else {
       _cardBg='';
-      // Generativo como CSS background del card — el img real lo cubre si carga
-      // Si el img falla y se elimina (onerror), el background aparece automáticamente
-      const _genSrc=posterSrc&&!posterSrc.startsWith('http')?posterSrc:getFilmPoster({...f,title:f.title,is_cortos:f.is_cortos,type:f.type,section:f.section,director:f.director,year:f.year})||'';
-      _cardBg=_genSrc?`style="background-image:url('${_genSrc.replace(/'/g,'%27')}');background-size:cover;background-position:center"`:'';
+      _cardBg='';
       const _opacity=allPast&&!_ended?';opacity:.45':'';
-      posterImg=posterSrc&&posterSrc.startsWith('http')
-        ?`<img src="${posterSrc}" loading="lazy" style="width:100%;height:100%;object-fit:cover${_opacity};display:block" onerror="this.remove()" alt="">`
-        :posterSrc
-          ?`<img src="${posterSrc}" style="width:100%;height:100%;object-fit:cover;display:block" alt="">`
-          :``;
+      posterImg=posterSrc
+        ?`<img src="${posterSrc}" loading="lazy" data-title="${f.title.replace(/"/g,'&quot;')}" style="width:100%;height:100%;object-fit:cover${_opacity};display:block" onerror="_posterErr(this)" alt="">`
+        :``;
     }
     return`<div class="poster-card${inWL&&!inW?' in-wl':''}${inW&&!_ended?' in-watched':''}" data-title="${f.title.replace(/"/g,'&quot;')}" onclick="openPelSheet('${safeT}')"${_isPrograma?' style="background:var(--surf-2)"':_cardBg}>
       ${posterImg}
@@ -8085,13 +8080,10 @@ function render(){
     const isNow=isNowShowing(f);
     const safeT=f.title.replace(/'/g,"\'");
     const posterSrc=getFilmPoster(f);
-    const _genSrc2=posterSrc&&!posterSrc.startsWith('http')?posterSrc:getFilmPoster(f)||'';
-    const _cardBg2=_genSrc2?`style="background-image:url('${_genSrc2.replace(/'/g,'%27')}');background-size:cover;background-position:center"`:'';
-    const posterImg=posterSrc&&posterSrc.startsWith('http')
-      ?`<img src="${posterSrc}" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block" onerror="this.remove()" alt="">`
-      :posterSrc
-        ?`<img src="${posterSrc}" style="width:100%;height:100%;object-fit:cover;display:block" alt="">`
-        :``;
+    const _cardBg2='';
+    const posterImg=posterSrc
+      ?`<img src="${posterSrc}" loading="lazy" data-title="${f.title.replace(/"/g,'&quot;')}" style="width:100%;height:100%;object-fit:cover;display:block" onerror="_posterErr(this)" alt="">`
+      :``;
     const progBadge='';//REMOVED
     const nowBadge=isNow?`<div class="poster-now">AHORA</div>`:'';
     const _notice=NOTICES.find(n=>n.title===f.title&&n.festival===(_activeFestId||'aff2026'));
@@ -8877,6 +8869,22 @@ function seccionToggle(){
   if(document.getElementById('lugar-drop')) lugarClose();
   if(document.getElementById('seccion-drop')) seccionClose();
   else seccionOpen();
+}
+
+// ── Poster error handler — una función, un comportamiento ────────────────
+// Llamado desde onerror en cualquier img de poster.
+// data-title en el img → busca el film → muestra generativo.
+// Si no hay generativo → fondo surf-2 (nunca negro).
+function _posterErr(img){
+  const title = img.dataset.title || '';
+  const f = title ? FILMS.find(fi=>fi.title===title) : null;
+  const gen = f ? getFilmPoster(f) : null;
+  if(gen){
+    img.onerror = null; // evita loop si el generativo también falla
+    img.src = gen;
+  } else {
+    img.style.display = 'none';
+  }
 }
 </script>
 
