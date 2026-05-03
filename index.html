@@ -2648,6 +2648,9 @@ function getPosterSrc(title, isCortos, section){
 // ═══════════════════════════════════════════════════════════════
 function getFilmPoster(f){
   if(!f) return null;
+  // Custom poster siempre primero — cubre casos especiales como Proyección sorpresa
+  const _cn=normKey(f.title||'');
+  if(_CUSTOM_N[_cn]) return _CUSTOM_N[_cn];
   if(f.type==='event') return makeEventPoster(f.title,f.duration,f.event_kind);
   // Proyección sorpresa — poster generativo con signo de interrogación
   if(f.title&&f.title.toLowerCase().includes('sorpresa')) return makeSorpresaPoster();
