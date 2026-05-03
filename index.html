@@ -7649,7 +7649,7 @@ function _updateProgramaActiveFilter(){
   if(!hasSec&&!hasVenue){af.classList.remove('visible');return;}
   let pills='';
   if(hasSec){
-    const lbl=_seccionLabel(activeSec);
+    const lbl=_seccionPillLabel(activeSec);
     pills+='<div class="paf-pill" onclick="_pafClearSec()">'+lbl+'<span class="paf-pill-x">×</span></div>';
   }
   if(hasVenue){
@@ -8716,15 +8716,20 @@ if(window.visualViewport){
 // activeSec: 'all' | nombre exacto de sección (f.section)
 
 function _seccionLabel(sec){
-  // Emoji + primera palabra, máx 14 chars total
+  // Botón mode bar: emoji + primera palabra, máx 14 chars
   if(!sec||sec==='all') return 'Sección';
-  // Buscar emoji en PROGRAMA_CHIPS
   const chip = PROGRAMA_CHIPS.find(c=>c.match&&c.match(sec));
-  const parts = sec.split(' ');
-  const firstWord = parts[0]||sec;
   const emoji = chip ? chip.label.split(' ')[0] : '';
+  const firstWord = (sec.split(' ')[0])||sec;
   const label = emoji ? (emoji+' '+firstWord) : firstWord;
   return label.length>14 ? label.slice(0,13)+'…' : label;
+}
+function _seccionPillLabel(sec){
+  // Pill: emoji + nombre completo de sección
+  if(!sec||sec==='all') return sec;
+  const chip = PROGRAMA_CHIPS.find(c=>c.match&&c.match(sec));
+  const emoji = chip ? chip.label.split(' ')[0] : '';
+  return emoji ? (emoji+' '+sec) : sec;
 }
 
 function seccionOpen(){
