@@ -422,7 +422,7 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:var(--t
 .fdr-arrow{font-size:var(--t-sm);transition:transform var(--tr-smooth);flex-shrink:0;font-family:var(--font)}
 .fdr-arrow.open{transform:rotate(180deg)}
 .fdr-label{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.fdr-panel{display:none;position:absolute;top:calc(100% + 2px);right:0;background:var(--surf);border:1px solid var(--bdr);border-radius:var(--r);z-index:200;min-width:190px;max-height:60vh;overflow-y:auto;box-shadow:0 8px 24px var(--overlay-55)}
+.fdr-panel{display:none;position:absolute;top:calc(100% + 2px);right:0;background:var(--surf);border:1px solid var(--bdr);border-radius:var(--r);z-index:210;min-width:190px;max-height:60vh;overflow-y:auto;box-shadow:0 8px 24px var(--overlay-55)}
 .fdr-panel.open{display:block}
 .fdr-opt{display:block;width:100%;background:none;border:none;border-bottom:1px solid var(--bdr-l);text-align:left;padding:var(--sp-3) var(--sp-4);font-size:var(--t-sm);font-weight:var(--w-regular);color:var(--gray);cursor:pointer;font-family:var(--font);transition:background var(--tr-fast),color var(--tr-fast);white-space:nowrap}
 .fdr-opt:last-child{border-bottom:none}
@@ -6754,7 +6754,6 @@ function toggleDropdown(id){
 function closeDropdowns(){
   document.querySelectorAll('.fdr-panel').forEach(p=>{p.classList.remove('open');});
   document.querySelectorAll('.fdr-arrow').forEach(a=>a.classList.remove('open'));
-  const pb=document.getElementById('pmode-filter-btn');if(pb) pb.classList.remove('active');
 }
 
 /* ── RENDER — CARTELERA: filtros, grid horario, grid película ────────── */
@@ -7741,6 +7740,15 @@ function toggleProgramaFilter(){
     renderVbar();
     panel.classList.add('open');
     if(btn) btn.classList.add('active');
+    // Close on outside click
+    const onOutside=e=>{
+      if(!panel.contains(e.target)&&e.target!==btn){
+        panel.classList.remove('open');
+        if(btn) btn.classList.remove('active');
+        document.removeEventListener('click',onOutside,true);
+      }
+    };
+    setTimeout(()=>document.addEventListener('click',onOutside,true),0);
   } else {
     if(btn) btn.classList.remove('active');
   }
