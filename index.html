@@ -3699,7 +3699,6 @@ function toggleWatched(title,e){
     if(activeMNav==='mnav-miplan') renderAgenda();
     showToast('Movida a Ya vistas','info');
     if(!FILMS.find(fi=>fi.title===title)?.is_cortos) setTimeout(()=>openRatingSheet(title),350);
-    );
   }
 }
 function updateCardState(title){
