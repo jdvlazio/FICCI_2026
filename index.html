@@ -1987,13 +1987,33 @@ html.splash-skip #otrofestiv-splash{display:none}
       <span class="sync-dot" id="sync-dot"></span>
     </button>
   </div>
-  <div class="hdr-fest-bar" onclick="openFestivalSheet()">
-  <div class="hdr-fest-left">
-    <div class="hdr-fest-dot"></div>
-    <div class="hdr-fest-name">FICCI 65</div>
-    <div class="hdr-fest-dates">· 14–19 ABR</div>
+  <div class="hdr-fest-bar" id="hdr-fest-bar">
+  <!-- Selector — tap opens festival sheet -->
+  <div class="hdr-fest-selector" onclick="openFestivalSheet()">
+    <div class="hdr-fest-left">
+      <div class="hdr-fest-dot"></div>
+      <div class="hdr-fest-name">FICCI 65</div>
+      <div class="hdr-fest-dates">· 14–19 ABR</div>
+    </div>
+    <div class="hdr-fest-chev"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></div>
   </div>
-  <div class="hdr-fest-chev"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></div>
+  <!-- Search icon — tap expands inline -->
+  <button class="hdr-search-btn" id="hdr-search-btn" onclick="openGlobalSearch()" aria-label="Buscar">
+    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+  </button>
+  <!-- Expanded search field — hidden by default -->
+  <div class="hdr-search-expanded" id="hdr-search-expanded">
+    <button class="hdr-search-back" onclick="closeGlobalSearch()" aria-label="Cancelar">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+    </button>
+    <div class="hdr-search-field">
+      <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      <input type="text" id="global-search-input" placeholder="Buscar…" oninput="onGlobalSearch()" autocomplete="off" autocorrect="off" autocapitalize="off">
+    </div>
+    <button class="hdr-search-cancel" onclick="closeGlobalSearch()">Cancelar</button>
+  </div>
+  <!-- Results dropdown -->
+  <div class="hdr-search-results" id="hdr-search-results"></div>
 </div>
   
 
