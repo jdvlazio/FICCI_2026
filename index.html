@@ -6800,7 +6800,7 @@ function renderSbar(){
   if(activeVenue!=='all') dayF=dayF.filter(f=>vcfg(f.venue).short===activeVenue);
   const secs=[...new Set(dayF.map(f=>f.section))].sort();
   // Siempre mostrar 'Categoría' cuando el filtro viene de chip
-  if(lbl) lbl.textContent=activeSec==='all'||activeSec==='_chip_'?'Categoría':(activeSec.length>18?activeSec.slice(0,16)+'…':activeSec);
+  if(lbl) lbl.textContent=activeSec==='all'||activeSec==='_chip_'?'Sección':(activeSec.length>18?activeSec.slice(0,16)+'…':activeSec);
   if(trigBtn) trigBtn.classList.toggle('active',activeSec!=='all'&&activeSec!=='_chip_');
   const mkOpt=(html,isOn,cb)=>{
     const b=document.createElement('button');
