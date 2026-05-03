@@ -7632,22 +7632,27 @@ function clearProgramaChip(){
 
 
 
+function _pafClearSec(){
+  activeSec='all';seccionClose();_updateProgramaActiveFilter();
+  if(programaSubMode==='explorar')_renderProgramaContent();else render();
+}
+function _pafClearVenue(){
+  activeVenue='all';lugarClose();_updateProgramaActiveFilter();
+  if(programaSubMode==='explorar')_renderProgramaContent();else render();
+}
 function _updateProgramaActiveFilter(){
   const af=document.getElementById('programa-active-filter');
   if(!af) return;
   const hasSec=activeSec!=='all';
   const hasVenue=activeVenue!=='all';
-  if(!hasSec&&!hasVenue){ af.classList.remove('visible'); return; }
-  // Build pills
+  if(!hasSec&&!hasVenue){af.classList.remove('visible');return;}
   let pills='';
   if(hasSec){
     const lbl=_seccionLabel(activeSec);
-    pills+='<div class="paf-pill" onclick="activeSec='all';seccionClose();_updateProgramaActiveFilter();if(programaSubMode==='explorar')_renderProgramaContent();else render();">'
-      +lbl+'<span class="paf-pill-x">×</span></div>';
+    pills+='<div class="paf-pill" onclick="_pafClearSec()">'+lbl+'<span class="paf-pill-x">×</span></div>';
   }
   if(hasVenue){
-    pills+='<div class="paf-pill" onclick="activeVenue='all';lugarClose();_updateProgramaActiveFilter();if(programaSubMode==='explorar')_renderProgramaContent();else render();">'
-      +ICONS.pin+' '+activeVenue+'<span class="paf-pill-x">×</span></div>';
+    pills+='<div class="paf-pill" onclick="_pafClearVenue()">'+ICONS.pin+' '+activeVenue+'<span class="paf-pill-x">×</span></div>';
   }
   af.innerHTML=pills;
   af.classList.add('visible');
