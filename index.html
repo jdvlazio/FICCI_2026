@@ -695,7 +695,7 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:var(--t
 .view-toggle-btn:active{color:var(--white)}
 
 /* Chips de categoría (solo Explorar) */
-.programa-chips{display:flex;gap:var(--sp-1);padding:var(--sp-2) var(--sp-3);overflow-x:auto;scrollbar-width:none;flex-shrink:0;border-bottom:1px solid var(--bdr-l);background:var(--surf)}
+.programa-chips{display:none!important} /* reemplazado por seccion-btn dropdown */
 .programa-chips::-webkit-scrollbar{display:none}
 .programa-chips{-webkit-overflow-scrolling:touch}
 .programa-chips.hidden{display:none}
@@ -7856,9 +7856,7 @@ function _renderExploreLista(){
     titleMap[f.title].screenings.push(f);
   });
   let entries=Object.values(titleMap);
-  if(activeSec==='_chip_'&&_programaChipMatchFn){
-    entries=entries.filter(e=>_programaChipMatchFn(e.film.section||''));
-  } else if(activeSec!=='all'){
+  if(activeSec!=='all'){
     entries=entries.filter(e=>e.film.section===activeSec);
   }
   if(activeVenue!=='all'){
