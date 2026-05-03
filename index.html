@@ -698,10 +698,12 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:var(--t
 .pmode-spacer{flex:1}
 .pmode-controls{display:flex;align-items:center;gap:8px}
 /* ── View switch — sistema unificado (Programa / Mi Plan / Intereses) ── */
-.pmode-view-switch,.miplan-view-switch,.intereses-view-switch{display:flex;align-items:center;gap:2px;background:var(--surf-2);border:1px solid var(--bdr);border-radius:var(--r-md);padding:3px}
-.pmode-view-btn,.miplan-view-btn,.intereses-view-btn{width:24px;height:24px;display:flex;align-items:center;justify-content:center;border-radius:var(--r-pill);cursor:pointer;color:var(--gray);background:none;border:1px solid transparent;font-family:var(--font);transition:all var(--tr-base)}
-.pmode-view-btn,.miplan-view-btn,.intereses-view-btn{color:var(--white-60)}
-.pmode-view-btn.on,.miplan-view-btn.on,.intereses-view-btn.on{background:var(--surf);color:var(--white);border-color:var(--bdr)}
+/* view toggle — icono único, sin contenedor, mismo peso visual que lupa */
+.pmode-view-switch,.miplan-view-switch,.intereses-view-switch{display:flex}
+.pmode-view-btn,.miplan-view-btn,.intereses-view-btn{display:none} /* ocultar botones legacy */
+.view-toggle-btn{width:38px;min-height:36px;display:flex;align-items:center;justify-content:center;background:none;border:none;cursor:pointer;color:var(--gray);flex-shrink:0;-webkit-tap-highlight-color:transparent;font-family:var(--font);transition:color var(--tr-base);position:relative}
+.view-toggle-btn::before{content:'';position:absolute;left:0;top:15%;bottom:15%;width:1px;background:var(--bdr)}
+.view-toggle-btn:active{color:var(--white)}
 .pmode-filter-btn{display:flex;align-items:center;gap:4px;font-size:var(--t-sm);font-weight:var(--w-bold);color:var(--gray);background:none;border:none;cursor:pointer;font-family:var(--font);padding:4px 0;transition:color var(--tr-base);white-space:nowrap}
 .pmode-filter-btn.active{color:var(--amber)}
 /* Chips de categoría (solo Explorar) */
@@ -2170,18 +2172,20 @@ html.splash-skip #otrofestiv-splash{display:none}
   <button class="pmode-tab" id="pmode-manana" onclick="setProgramaMode('manana')">Mañana</button>
   <div class="pmode-spacer"></div>
   <div class="pmode-controls">
-    <div class="pmode-view-switch">
-      <button class="pmode-view-btn on" id="pmode-grid" onclick="setProgramaView('grid')" title="Grid">
-        <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
-      </button>
-      <button class="pmode-view-btn" id="pmode-list" onclick="setProgramaView('list')" title="Lista">
-        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="4" y1="6" x2="20" y2="6"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="18" x2="20" y2="18"/></svg>
-      </button>
-    </div>
     <button class="pmode-filter-btn" id="pmode-filter-btn" onclick="toggleProgramaFilter()">
       <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"/></svg>
       <span id="pmode-filter-lbl">Lugar</span>
     </button>
+    <!-- single toggle btn — icono refleja estado actual -->
+    <button class="view-toggle-btn" id="view-toggle-btn" onclick="toggleProgramaView()" title="Cambiar vista" aria-label="Cambiar vista">
+      <svg id="view-toggle-ico-grid" width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+      <svg id="view-toggle-ico-list" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" style="display:none"><line x1="4" y1="6" x2="20" y2="6"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="18" x2="20" y2="18"/></svg>
+    </button>
+    <!-- legacy btns kept hidden for JS compat -->
+    <div class="pmode-view-switch" style="display:none">
+      <button class="pmode-view-btn on" id="pmode-grid"></button>
+      <button class="pmode-view-btn" id="pmode-list"></button>
+    </div>
   </div>
 </div>
 <div id="cartelera-cta" style="display:none">
@@ -7657,10 +7661,18 @@ function setProgramaMode(mode){
   _renderProgramaContent();
 }
 
+function toggleProgramaView(){
+  setProgramaView(programaViewMode==='grid'?'list':'grid');
+}
 function setProgramaView(view){
   programaViewMode=view;
   document.getElementById('pmode-grid').classList.toggle('on',view==='grid');
   document.getElementById('pmode-list').classList.toggle('on',view==='list');
+  // Sync single toggle icon
+  const icoG=document.getElementById('view-toggle-ico-grid');
+  const icoL=document.getElementById('view-toggle-ico-list');
+  if(icoG) icoG.style.display=view==='grid'?'':'none';
+  if(icoL) icoL.style.display=view==='list'?'':'none';
   _renderProgramaContent();
 }
 
