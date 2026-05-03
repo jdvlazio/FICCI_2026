@@ -2211,11 +2211,10 @@ html.splash-skip #otrofestiv-splash{display:none}
   <div class="nav-tabs" id="dtabs"></div>
 </div>
 
-<!-- filter-row: solo panel, sin botón duplicado -->
-<div class="filter-row hidden" id="filter-row" style="position:relative;display:none">
-  <button id="vdr-btn" style="display:none"><span id="vdr-label"></span><span id="vdr-arrow"></span></button>
-  <div class="fdr-panel" id="vdr-panel" style="position:fixed;top:auto;right:16px;left:auto;min-width:220px"></div>
-</div>
+<!-- filter-row y vdr-btn: solo IDs para compat JS -->
+<div id="filter-row" style="display:none"><button id="vdr-btn" style="display:none"><span id="vdr-label"></span><span id="vdr-arrow"></span></button></div>
+<!-- vdr-panel: en body, position:fixed, posicionado por JS -->
+<div class="fdr-panel" id="vdr-panel" style="position:fixed;display:none;min-width:220px;z-index:9999"></div>
 <div class="programa-list" id="programa-list"></div>
 <div id="notices-banner"></div>
 <div id="filter-bars">
@@ -7703,19 +7702,26 @@ function toggleProgramaFilter(){
   const btn=document.getElementById('pmode-filter-btn');
   const panel=document.getElementById('vdr-panel');
   if(!panel) return;
-  const isOpen=panel.classList.contains('open');
-  closeDropdowns();
+  const isOpen=panel.style.display==='block';
+  // Close all other dropdowns first
+  document.querySelectorAll('.fdr-panel').forEach(p=>{p.classList.remove('open');p.style.display='none';});
   if(!isOpen){
     renderVbar();
-    // Position panel below the Lugar button
     const btnRect=btn?btn.getBoundingClientRect():null;
     if(btnRect){
       panel.style.top=(btnRect.bottom+4)+'px';
       panel.style.right=(window.innerWidth-btnRect.right)+'px';
+      panel.style.left='auto';
     }
-    panel.classList.add('open');
+    panel.style.display='block';
     if(btn) btn.classList.add('active');
+    // Close on outside tap
+    setTimeout(()=>{
+      const close=e=>{if(!panel.contains(e.target)&&e.target!==btn){panel.style.display='none';if(btn)btn.classList.remove('active');document.removeEventListener('click',close);}};
+      document.addEventListener('click',close);
+    },0);
   } else {
+    panel.style.display='none';
     if(btn) btn.classList.remove('active');
   }
 }
