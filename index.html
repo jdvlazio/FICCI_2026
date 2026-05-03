@@ -1407,6 +1407,7 @@ body.search-active::before{content:'';position:fixed;inset:0;background:rgba(0,0
      - #hdr-programa: sticky below topbar (47px = measured .hdr height)
        --sticky-top-carta is undefined in mobile so override directly */
   .topbar{position:sticky;top:0;z-index:200;background:var(--surf)}
+  body.search-active .topbar{position:fixed;top:0;left:0;right:0}
   .hdr{background:var(--surf)}
   #hdr-programa{padding-top:var(--sp-2);top:47px}
   #hdr-ag{top:47px}
