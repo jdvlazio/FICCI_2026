@@ -1883,6 +1883,10 @@ html.splash-skip #otrofestiv-splash{display:none}
 .av-time-sel{flex:1;background:var(--surf);border:1px solid var(--bdr);border-radius:var(--r-md);color:var(--white);font-size:var(--t-base);font-family:var(--font);padding:10px var(--sp-3);cursor:pointer}
 .av-sheet-confirm{width:100%;background:var(--amber);border:none;border-radius:var(--r-md);padding:var(--sp-btn) 0;font-size:var(--t-base);font-weight:var(--w-bold);color:#000;cursor:pointer;font-family:var(--font)}
 
+/* Sección + Lugar — filtros dropdown ────────────────────── */
+.seccion-btn{display:flex;align-items:center;gap:4px;font-size:var(--t-sm);font-weight:var(--w-bold);color:var(--gray);background:none;border:none;cursor:pointer;font-family:var(--font);padding:4px 0;transition:color var(--tr-base);white-space:nowrap;-webkit-tap-highlight-color:transparent;position:relative}
+.seccion-btn::before{content:'';position:absolute;left:0;top:20%;bottom:20%;width:1px;background:var(--bdr)}
+.seccion-btn.active{color:var(--amber)}
 /* Lugar filter — nuevo sistema ────────────────────────── */
 .lugar-btn{display:flex;align-items:center;gap:4px;font-size:var(--t-sm);font-weight:var(--w-bold);color:var(--gray);background:none;border:none;cursor:pointer;font-family:var(--font);padding:4px 0;transition:color var(--tr-base);white-space:nowrap;-webkit-tap-highlight-color:transparent}
 .lugar-btn.active{color:var(--amber)}
