@@ -704,7 +704,11 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:var(--t
 .pchip.on{background:var(--amber-10);border-color:var(--amber-30);color:var(--amber)}
 .pchip[data-chip="all"].on{background:var(--surf-2);border-color:var(--bdr);color:var(--white-60)}
 /* Tag activo dismissible */
-.programa-active-filter{display:none!important}
+.programa-active-filter{display:none;align-items:center;gap:var(--sp-2);padding:var(--sp-2) var(--sp-3);border-bottom:1px solid var(--bdr-l);background:var(--surf);flex-shrink:0;flex-wrap:wrap}
+.programa-active-filter.visible{display:flex}
+.paf-pill{display:inline-flex;align-items:center;gap:var(--sp-1);background:var(--amber-10);border:1px solid var(--amber-30);border-radius:var(--r-pill);padding:3px 6px 3px 8px;font-size:var(--t-sm);font-weight:var(--w-bold);color:var(--amber);cursor:pointer;-webkit-tap-highlight-color:transparent}
+.paf-pill:active{opacity:.7}
+.paf-pill-x{opacity:.6;font-size:11px;line-height:1;margin-left:2px}
 .programa-active-filter.visible{display:flex}
 .paf-tag{display:flex;align-items:center;gap:var(--sp-1);font-size:var(--t-sm);font-weight:var(--w-bold);color:var(--amber);background:var(--amber-10);border:1px solid var(--amber-30);border-radius:var(--r-pill);padding:3px 8px 3px 10px;cursor:pointer}
 .paf-count{font-size:var(--t-sm);color:var(--gray)}
@@ -7630,23 +7634,23 @@ function clearProgramaChip(){
 
 function _updateProgramaActiveFilter(){
   const af=document.getElementById('programa-active-filter');
-  const tagText=document.getElementById('paf-tag-text');
-  const countEl=document.getElementById('paf-count');
   if(!af) return;
-  const chip=(_currentChips.length?_currentChips:PROGRAMA_CHIPS).find(c=>c.id===programaChip);
-  const hasChip=programaChip!=='all'&&chip;
+  const hasSec=activeSec!=='all';
   const hasVenue=activeVenue!=='all';
-
-  // Tag visible solo cuando CHIP y VENUE están activos simultáneamente
-  // Cuando solo hay venue: lugar-btn ya muestra el nombre
-  // Cuando solo hay chip: el chip mismo muestra el estado
-  if(hasChip && hasVenue){
-    tagText.innerHTML=chip.label+' · '+ICONS.pin+' '+activeVenue;
-    countEl.innerHTML='';
-    af.classList.add('visible');
-  } else {
-    af.classList.remove('visible');
+  if(!hasSec&&!hasVenue){ af.classList.remove('visible'); return; }
+  // Build pills
+  let pills='';
+  if(hasSec){
+    const lbl=_seccionLabel(activeSec);
+    pills+='<div class="paf-pill" onclick="activeSec='all';seccionClose();_updateProgramaActiveFilter();if(programaSubMode==='explorar')_renderProgramaContent();else render();">'
+      +lbl+'<span class="paf-pill-x">×</span></div>';
   }
+  if(hasVenue){
+    pills+='<div class="paf-pill" onclick="activeVenue='all';lugarClose();_updateProgramaActiveFilter();if(programaSubMode==='explorar')_renderProgramaContent();else render();">'
+      +ICONS.pin+' '+activeVenue+'<span class="paf-pill-x">×</span></div>';
+  }
+  af.innerHTML=pills;
+  af.classList.add('visible');
 }
 
 function renderProgramaChips(){
