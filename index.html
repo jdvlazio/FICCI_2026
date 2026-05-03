@@ -7635,22 +7635,12 @@ function _updateProgramaActiveFilter(){
   const hasChip=programaChip!=='all'&&chip;
   const hasVenue=activeVenue!=='all';
 
-  if(hasVenue){
-    // Tag solo visible cuando hay filtro de Lugar activo
-    // Los chips ya muestran su propio estado seleccionado
-    let parts=[];
-    if(hasChip) parts.push(chip.label);
-    if(hasVenue) parts.push(ICONS.pin+' '+activeVenue);
-    tagText.innerHTML=parts.join(' · ');
-    // Contar películas solo en modo Explorar — en Hoy/Mañana el count sería del total, no del día
-    const titleMap={};
-    FILMS.forEach(f=>{if(!titleMap[f.title])titleMap[f.title]={film:f,screenings:[]};titleMap[f.title].screenings.push(f);});
-    const count=Object.values(titleMap).filter(({film:f,screenings})=>{
-      const secOk=hasChip?(chip.match&&chip.match(f.section||'')):true;
-      const venueOk=hasVenue?screenings.some(s=>vcfg(s.venue).short===activeVenue):true;
-      return secOk&&venueOk;
-    }).length;
-    countEl.innerHTML=programaSubMode==='explorar'?`<span class="count-badge cb-neutral">${count}</span>`:'';
+  // Tag visible solo cuando CHIP y VENUE están activos simultáneamente
+  // Cuando solo hay venue: lugar-btn ya muestra el nombre
+  // Cuando solo hay chip: el chip mismo muestra el estado
+  if(hasChip && hasVenue){
+    tagText.innerHTML=chip.label+' · '+ICONS.pin+' '+activeVenue;
+    countEl.innerHTML='';
     af.classList.add('visible');
   } else {
     af.classList.remove('visible');
@@ -7971,7 +7961,7 @@ function renderPeliculaView(){
   });
 
   // Count badge: solo cuando hay filtro de Lugar (sin chip activo muestra el count de la sección en el chip)
-  cntEl.innerHTML=(activeVenue!=='all')?`<span class="count-badge cb-neutral">${entries.length}</span>`:'';
+  cntEl.innerHTML=''; // count visible en chip y en lugar-btn — cnt-line redundante
 
   const DAY_ABB=['MAR','MIÉ','JUE','VIE','SÁB','DOM'];
 
@@ -8151,6 +8141,9 @@ async function _autoResolveFestivalPosters(){
   }
 }
 async function loadFestival(id){
+  // Resetear filtros al cambiar festival
+  activeVenue='all';activeSec='all';programaChip='all';_programaChipMatchFn=null;
+  lugarClose();
   // Si no está en FESTIVAL_CONFIG, intentar cargar config desde JSON
   if(!FESTIVAL_CONFIG[id]){
     FESTIVAL_CONFIG[id]={films:null,posters:null};
