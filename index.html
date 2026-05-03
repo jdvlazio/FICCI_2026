@@ -301,9 +301,7 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:var(--t
 .hdr-search-field input{flex:1;background:none;border:none;color:var(--white);font-family:var(--font);font-size:16px;outline:none}
 .hdr-search-field input::placeholder{color:var(--gray2)}
 .hdr-search-cancel{font-size:var(--t-sm);font-weight:var(--w-semi);color:var(--gray);cursor:pointer;flex-shrink:0;background:none;border:none;font-family:var(--font);padding:var(--sp-1)}
-.hdr-search-results{position:fixed;top:var(--search-res-top,120px);left:0;right:0;bottom:0;background:var(--surf);z-index:299;overflow-y:auto;display:none}
-/* Overlay backdrop when search is open */
-body.search-active::before{content:'';position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:298;pointer-events:none}
+.hdr-search-results{position:fixed;top:var(--search-res-top,120px);left:0;right:0;background:var(--surf);border-bottom:1px solid var(--bdr);z-index:201;overflow-y:auto;display:none;max-height:50vh}
 .hdr-fest-left{display:flex;align-items:center;gap:var(--sp-2)}
 .hdr-fest-dot{width:5px;height:5px;border-radius:50%;background:var(--amber);flex-shrink:0}
 .hdr-fest-name{font-size:var(--t-xs);font-weight:var(--w-bold);letter-spacing:.08em;text-transform:uppercase;color:var(--white)}
@@ -1407,7 +1405,6 @@ body.search-active::before{content:'';position:fixed;inset:0;background:rgba(0,0
      - #hdr-programa: sticky below topbar (47px = measured .hdr height)
        --sticky-top-carta is undefined in mobile so override directly */
   .topbar{position:sticky;top:0;z-index:200;background:var(--surf)}
-  body.search-active .topbar{position:fixed;top:0;left:0;right:0}
   .hdr{background:var(--surf)}
   #hdr-programa{padding-top:var(--sp-2);top:47px}
   #hdr-ag{top:47px}
@@ -6463,16 +6460,13 @@ function openGlobalSearch(){
   const bar=document.getElementById('hdr-fest-bar');
   const inp=document.getElementById('global-search-input');
   if(bar) bar.classList.add('search-open');
-  // Scroll to top so topbar is fully visible before measuring
   window.scrollTo({top:0,behavior:'instant'});
-  // Measure topbar height AFTER scroll
   requestAnimationFrame(()=>{
     const tb=document.querySelector('.topbar');
     if(tb){
       const bottom=Math.ceil(tb.getBoundingClientRect().bottom);
       document.documentElement.style.setProperty('--search-res-top',bottom+'px');
     }
-    document.body.classList.add('search-active');
     if(inp) inp.focus();
   });
 }
@@ -6483,7 +6477,6 @@ function closeGlobalSearch(){
   if(bar) bar.classList.remove('search-open');
   if(inp){inp.value='';inp.blur();}
   if(res) res.style.display='none';
-  document.body.classList.remove('search-active');
 }
 function onGlobalSearch(){
   const inp=document.getElementById('global-search-input');
