@@ -681,7 +681,7 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:var(--t
 /* ── Toggle Por Horario / Por Película — mismo sistema que fdr-btn ── */
 .carta-mode-toggle{display:none} /* reemplazado por programa-mode-bar */
 /* ── Programa: mode bar Explorar/Hoy/Mañana ── */
-.programa-mode-bar{display:flex;align-items:center;border-bottom:1px solid var(--bdr);padding:0 32px 0 var(--sp-3);flex-shrink:0;background:var(--surf);position:relative}
+.programa-mode-bar{display:flex;align-items:center;border-bottom:1px solid var(--bdr);padding:0 0 0 var(--sp-3);flex-shrink:0;background:var(--surf)}
 .pmode-tab{padding:var(--sp-2) var(--sp-3);font-size:var(--t-sm);font-weight:var(--w-semi);color:var(--gray);border-bottom:2px solid transparent;min-height:36px;cursor:pointer;background:none;border-top:none;border-left:none;border-right:none;font-family:var(--font);transition:color var(--tr-base),border-color var(--tr-base);white-space:nowrap;display:inline-flex;align-items:center}
 .pmode-tab.on{color:var(--white);border-bottom-color:var(--amber)}
 .pmode-spacer{flex:1}
@@ -690,7 +690,7 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:var(--t
 /* view toggle — icono único, sin contenedor, mismo peso visual que lupa */
 .pmode-view-switch,.miplan-view-switch,.intereses-view-switch{display:flex}
 .pmode-view-btn,.miplan-view-btn,.intereses-view-btn{display:none} /* ocultar botones legacy */
-.view-toggle-btn{width:32px;position:absolute;right:0;top:0;bottom:0;display:flex;align-items:center;justify-content:center;padding-right:4px;background:none;border:none;cursor:pointer;color:var(--gray);-webkit-tap-highlight-color:transparent;font-family:var(--font);transition:color var(--tr-base)}
+.view-toggle-btn{width:32px;min-height:34px;display:flex;align-items:center;justify-content:center;padding-right:4px;background:none;border:none;cursor:pointer;color:var(--gray);flex-shrink:0;-webkit-tap-highlight-color:transparent;font-family:var(--font);transition:color var(--tr-base);position:relative}
 .view-toggle-btn::before{content:'';position:absolute;left:0;top:15%;bottom:15%;width:1px;background:var(--bdr)}
 .view-toggle-btn:active{color:var(--white)}
 
