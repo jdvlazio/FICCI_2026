@@ -4549,11 +4549,19 @@ function renderPrioStrip(){
 /* ── RENDER — MI LISTA ──────────────────────────────────────────────── */
 
 // ── Intereses — collapse/expand secciones ────────────────────────────────
-function _intToggleSection(hdrEl, listId){
+function _intToggleSection(hdrEl){
+  const listId = hdrEl.dataset.list;
+  if(!listId) return;
   hdrEl.classList.toggle('collapsed');
   const list = document.getElementById(listId);
   if(list) list.classList.toggle('hidden');
 }
+
+// Event delegation — más confiable en iOS que onclick inline en divs
+document.addEventListener('click', function(e){
+  const hdr = e.target.closest('.int-section-hdr');
+  if(hdr) _intToggleSection(hdr);
+});
 
 // Preserva el estado colapsado al re-renderizar la lista de Intereses
 function _reRenderIntereses(){
@@ -4644,7 +4652,7 @@ function renderFilmListHTML(){
   let html='';
 
   if(prioList.length){
-    html+=`<div class="int-section-hdr" onclick="_intToggleSection(this,'int-prio-list')">
+    html+=`<div class="int-section-hdr" data-list="int-prio-list">
       <span class="int-section-hdr-ico">${ICONS.star}</span>
       <span class="int-section-hdr-lbl">Prioridades</span>
       <span class="count-badge cb-amber">${prioList.length}/${PRIO_LIMIT}</span>
@@ -4655,7 +4663,7 @@ function renderFilmListHTML(){
 
   if(nonPrioList.length){
     if(prioList.length) html+=`<div style="height:1px;background:var(--bdr);margin:0"></div>`;
-    html+=`<div class="int-section-hdr" onclick="_intToggleSection(this,'int-interes-list')">
+    html+=`<div class="int-section-hdr" data-list="int-interes-list">
       <span class="int-section-hdr-ico">${ICONS.heart}</span>
       <span class="int-section-hdr-lbl">Intereses</span>
       <span class="count-badge cb-neutral">${nonPrioList.length}</span>
@@ -4667,7 +4675,7 @@ function renderFilmListHTML(){
   if(watchedList.length){
     if(prioList.length||nonPrioList.length) html+=`<div style="height:1px;background:var(--bdr);margin:0"></div>`;
     const sortedW=[...watchedList].sort((a,b)=>(filmRatings[b]||0)-(filmRatings[a]||0));
-    html+=`<div class="int-section-hdr collapsed" onclick="_intToggleSection(this,'int-vistas-list')">
+    html+=`<div class="int-section-hdr collapsed" data-list="int-vistas-list">
       <span class="int-section-hdr-ico">${ICONS.check}</span>
       <span class="int-section-hdr-lbl">Ya vistas</span>
       <span class="count-badge cb-neutral">${watchedList.length}</span>
