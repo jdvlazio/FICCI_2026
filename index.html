@@ -7695,6 +7695,9 @@ function clearProgramaChip(){
   // Resetear label del venue dropdown
   const vl=document.getElementById('vdr-label');if(vl) vl.textContent='Lugar';
   const vb=document.getElementById('vdr-btn');if(vb) vb.classList.remove('active');
+  // Cerrar panel y quitar estado activo del botón Lugar
+  const panel=document.getElementById('vdr-panel');if(panel) panel.style.display='none';
+  const pb=document.getElementById('pmode-filter-btn');if(pb) pb.classList.remove('active');
   setProgramaChip('all');
 }
 
