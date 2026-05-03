@@ -2245,7 +2245,7 @@ html.splash-skip #otrofestiv-splash{display:none}
     </div>
     <div id="ag-search-results" class="ag-search-results"></div>
   </div>
-  <div class="ag-toggle-bar" id="ag-toggle-bar" style="display:none">
+  <div class="ag-toggle-bar" id="ag-toggle-bar">
     <button class="ag-sec-pill prio" id="pill-prio" onclick="(()=>{const el=document.getElementById('sec-prio');if(!el)return;const hdr=document.getElementById('hdr-ag');const off=hdr?hdr.getBoundingClientRect().bottom:0;const y=el.getBoundingClientRect().top+window.scrollY-off-8;window.scrollTo({top:y,behavior:'smooth'})})()">
       Prioridad <span id="pill-prio-cnt" style="opacity:.6;font-size:var(--t-xs)">—</span>
     </button>
@@ -6672,7 +6672,7 @@ function showAgView(){
   if(_agH){
     _agH.style.display='';
     const _tb=document.getElementById('ag-toggle-bar');
-    if(_tb) _tb.style.display=activeMNav==='mnav-seleccion'?'flex':'none';
+    if(_tb) _tb.style.removeProperty('display'); // siempre visible — CSS controla
   }
   document.getElementById('nav-row').classList.add('hidden');
   document.getElementById('filter-row').classList.add('hidden');
