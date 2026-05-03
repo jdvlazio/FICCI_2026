@@ -2174,13 +2174,10 @@ html.splash-skip #otrofestiv-splash{display:none}
   <button class="pmode-tab" id="pmode-manana" onclick="setProgramaMode('manana')">Mañana</button>
   <div class="pmode-spacer"></div>
   <div class="pmode-controls">
-    <div style="position:relative">
-      <button class="pmode-filter-btn" id="pmode-filter-btn" onclick="toggleDropdown('vdr')">
-        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"/></svg>
-        <span id="pmode-filter-lbl">Lugar</span>
-      </button>
-      <div class="fdr-panel" id="vdr-panel"></div>
-    </div>
+    <button class="pmode-filter-btn" id="pmode-filter-btn" onclick="toggleProgramaFilter()">
+      <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"/></svg>
+      <span id="pmode-filter-lbl">Lugar</span>
+    </button>
     <!-- single toggle btn — icono refleja estado actual -->
     <button class="view-toggle-btn" id="view-toggle-btn" onclick="toggleProgramaView()" title="Cambiar vista" aria-label="Cambiar vista">
       <svg id="view-toggle-ico-grid" width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
@@ -2214,10 +2211,16 @@ html.splash-skip #otrofestiv-splash{display:none}
   <div class="nav-tabs" id="dtabs"></div>
 </div>
 
-<!-- filter-row eliminada — IDs conservados para compat JS -->
-<div id="filter-row" style="display:none">
-  <span id="sdr-label"></span><button id="sdr-btn"></button><span id="sdr-arrow"></span>
-  <div id="sdr-panel"></div>
+<div class="filter-row hidden" id="filter-row">
+  <div class="fdr-filters">
+    <div class="fdr-wrap">
+      <button class="fdr-btn" id="vdr-btn" onclick="toggleDropdown('vdr')" title="Filtrar por sede">
+        <span class="fdr-label" id="vdr-label">Lugar</span>
+        <span class="fdr-arrow" id="vdr-arrow"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span>
+      </button>
+      <div class="fdr-panel" id="vdr-panel"></div>
+    </div>
+  </div>
 </div>
 <div class="programa-list" id="programa-list"></div>
 <div id="notices-banner"></div>
@@ -7703,7 +7706,13 @@ function clearProgramaChip(){
 }
 
 function toggleProgramaFilter(){
-  // Legacy shim — pmode-filter-btn now calls toggleDropdown directly
+  const btn=document.getElementById('pmode-filter-btn');
+  const filterRow=document.getElementById('filter-row');
+  if(!filterRow) return;
+  const visible=filterRow.classList.contains('hidden');
+  filterRow.classList.toggle('hidden',!visible);
+  if(btn) btn.classList.toggle('active',visible);
+  if(visible){renderVbar();renderSbar();}
 }
 
 function _updateProgramaActiveFilter(){
