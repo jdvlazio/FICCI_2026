@@ -292,6 +292,7 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:var(--t
 .hdr-search-btn{width:44px;min-height:36px;display:flex;align-items:center;justify-content:center;cursor:pointer;color:var(--gray);flex-shrink:0;-webkit-tap-highlight-color:transparent;background:none;border:none;font-family:var(--font);transition:color var(--tr-base);position:relative}
 .hdr-search-btn::before{content:'';position:absolute;left:0;top:15%;bottom:15%;width:1px;background:var(--bdr)}
 .hdr-search-btn:active{color:var(--white);background:rgba(255,255,255,.04)}
+.hdr-fest-left{display:flex;align-items:center;gap:var(--sp-2);flex:1;min-width:0}
 .hdr-fest-dot{width:5px;height:5px;border-radius:50%;background:var(--amber);flex-shrink:0}
 .hdr-fest-name{font-size:var(--t-xs);font-weight:var(--w-bold);letter-spacing:.08em;text-transform:uppercase;color:var(--white)}
 .hdr-fest-dates{font-size:var(--t-xs);font-weight:var(--w-semi);letter-spacing:.05em;text-transform:uppercase;color:var(--white-60)}
@@ -703,7 +704,7 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:var(--t
 .pchip.on{background:var(--amber-10);border-color:var(--amber-30);color:var(--amber)}
 .pchip[data-chip="all"].on{background:var(--surf-2);border-color:var(--bdr);color:var(--white-60)}
 /* Tag activo dismissible */
-.programa-active-filter{display:none;align-items:center;gap:var(--sp-1);padding:var(--sp-1) var(--sp-3);border-bottom:1px solid var(--bdr-l);background:var(--surf);flex-shrink:0}
+.programa-active-filter{display:none!important}
 .programa-active-filter.visible{display:flex}
 .paf-tag{display:flex;align-items:center;gap:var(--sp-1);font-size:var(--t-sm);font-weight:var(--w-bold);color:var(--amber);background:var(--amber-10);border:1px solid var(--amber-30);border-radius:var(--r-pill);padding:3px 8px 3px 10px;cursor:pointer}
 .paf-count{font-size:var(--t-sm);color:var(--gray)}
@@ -8014,11 +8015,7 @@ function render(){
   if(activeSec!=='all') films=films.filter(f=>f.section===activeSec);
   films.sort((a,b)=>toMin(a.time)-toMin(b.time));
   const cntEl=document.getElementById('cnt');
-  if(activeVenue!=='all'||activeSec!=='all'){
-    cntEl.innerHTML=`<span class="count-badge cb-neutral">${films.length}</span>`;
-  } else {
-    cntEl.innerHTML='';
-  }
+  cntEl.innerHTML=''; // count eliminado — redundante con lugar-btn y chips
   const grid=document.getElementById('grid');
   if(!films.length){grid.innerHTML=emptyState(ICONS.search,'Sin actividades para este filtro.','Ajusta los filtros de sección o sede.');return;}
   // ── Vista horario: poster-grid 3 col + overlay de hora ──
@@ -8595,9 +8592,10 @@ function searchPositionOverlay(){
   const tb = document.querySelector('.topbar');
   const top = tb ? Math.ceil(tb.getBoundingClientRect().bottom) : 88;
   const vv = window.visualViewport;
-  const bottom = vv ? window.innerHeight - vv.height - vv.offsetTop : 0;
+  const availH = vv ? vv.height : window.innerHeight;
   overlay.style.top = top + 'px';
-  overlay.style.bottom = Math.max(0, bottom) + 'px';
+  overlay.style.height = (availH - top) + 'px';
+  overlay.style.bottom = 'auto';
 }
 
 function searchOpen(){
