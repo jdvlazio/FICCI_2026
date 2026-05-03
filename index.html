@@ -285,21 +285,7 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:var(--t
    Vive dentro de .hdr (padding:var(--sp-5)).
    margin negativo cancela ese padding → barra full-width.
    padding propio var(--sp-5) → contenido alineado con el wordmark. */
-.hdr-fest-bar{display:flex;align-items:center;background:var(--surf-2);border-top:1px solid var(--bdr);border-bottom:1px solid var(--bdr);width:100%;flex-basis:100%;min-height:36px}
-.hdr-fest-selector{display:flex;align-items:center;flex:1;gap:var(--sp-2);padding:var(--sp-2) var(--sp-4);cursor:pointer;-webkit-tap-highlight-color:transparent}
-.hdr-fest-selector:active{opacity:.7}
-.hdr-search-btn{width:44px;min-height:36px;display:flex;align-items:center;justify-content:center;border-left:1px solid var(--bdr);cursor:pointer;color:var(--gray);flex-shrink:0;-webkit-tap-highlight-color:transparent;background:none;border-top:none;border-bottom:none;border-right:none;font-family:var(--font);transition:color var(--tr-base)}
-.hdr-search-btn:active{color:var(--white);background:rgba(255,255,255,.04)}
-.hdr-fest-bar.search-open .hdr-fest-selector{display:none}
-.hdr-fest-bar.search-open .hdr-search-btn{display:none}
-.hdr-search-expanded{display:none;align-items:center;gap:var(--sp-2);flex:1;padding:0 var(--sp-3)}
-.hdr-fest-bar.search-open .hdr-search-expanded{display:flex}
-.hdr-search-back{width:28px;height:36px;display:flex;align-items:center;justify-content:center;color:var(--gray);cursor:pointer;flex-shrink:0;background:none;border:none;font-family:var(--font);-webkit-tap-highlight-color:transparent}
-.hdr-search-field{flex:1;display:flex;align-items:center;gap:var(--sp-2);background:var(--surf);border:1px solid var(--bdr);border-radius:var(--r-md);height:26px;padding:0 var(--sp-2)}
-.hdr-search-field input{flex:1;background:none;border:none;color:var(--white);font-family:var(--font);font-size:var(--t-sm);outline:none}
-.hdr-search-field input::placeholder{color:var(--gray2)}
-.hdr-search-cancel{font-size:var(--t-sm);font-weight:var(--w-semi);color:var(--gray);cursor:pointer;flex-shrink:0;background:none;border:none;font-family:var(--font);padding:var(--sp-1) var(--sp-1)}
-.hdr-search-results{position:absolute;top:100%;left:0;right:0;background:var(--surf);border-bottom:1px solid var(--bdr);z-index:199;max-height:60vh;overflow-y:auto}
+.hdr-fest-bar{display:flex;align-items:center;justify-content:space-between;background:var(--surf-2);border-top:1px solid var(--bdr);border-bottom:1px solid var(--bdr);padding:var(--sp-2) var(--sp-4);cursor:pointer;-webkit-tap-highlight-color:transparent;width:100%;flex-basis:100%}
 .hdr-fest-bar:active{background:var(--surf-2)}
 .hdr-fest-left{display:flex;align-items:center;gap:var(--sp-2)}
 .hdr-fest-dot{width:5px;height:5px;border-radius:50%;background:var(--amber);flex-shrink:0}
@@ -1439,12 +1425,12 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:var(--t
     --content-w:960px;
     --content-pad:var(--sp-5);
     --tb-h:44px;
-    --fest-h:36px; /* fue 42px — search bar ahora está en hdr-fest-bar expandible */
+    --fest-h:42px;
     --nav-h:44px;
     --tb-total:calc(var(--tb-h) + var(--fest-h) + var(--nav-h));
     --sticky-top-carta:var(--tb-total);
-    --sticky-top-modebar:calc(var(--tb-total) + 38px);
-    --sticky-top-chips:calc(var(--tb-total) + 38px + 38px);
+    --sticky-top-modebar:calc(var(--tb-total) + 44px);
+    --sticky-top-chips:calc(var(--tb-total) + 44px + 42px);
     --poster-lg-w:112px;
     --poster-lg-h:168px;
   }
@@ -1987,33 +1973,13 @@ html.splash-skip #otrofestiv-splash{display:none}
       <span class="sync-dot" id="sync-dot"></span>
     </button>
   </div>
-  <div class="hdr-fest-bar" id="hdr-fest-bar">
-  <!-- Selector de festival (izquierda) -->
-  <div class="hdr-fest-selector" onclick="openFestivalSheet()">
-    <div class="hdr-fest-left">
-      <div class="hdr-fest-dot"></div>
-      <div class="hdr-fest-name">FICCI 65</div>
-      <div class="hdr-fest-dates">· 14–19 ABR</div>
-    </div>
-    <div class="hdr-fest-chev"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></div>
+  <div class="hdr-fest-bar" onclick="openFestivalSheet()">
+  <div class="hdr-fest-left">
+    <div class="hdr-fest-dot"></div>
+    <div class="hdr-fest-name">FICCI 65</div>
+    <div class="hdr-fest-dates">· 14–19 ABR</div>
   </div>
-  <!-- Lupa (derecha) -->
-  <button class="hdr-search-btn" id="hdr-search-btn" onclick="openGlobalSearch()" aria-label="Buscar">
-    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-  </button>
-  <!-- Campo expandido (oculto por defecto) -->
-  <div class="hdr-search-expanded" id="hdr-search-expanded">
-    <button class="hdr-search-back" onclick="closeGlobalSearch()" aria-label="Cerrar búsqueda">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
-    </button>
-    <div class="hdr-search-field">
-      <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-      <input type="text" id="global-search-input" placeholder="Buscar…" oninput="onGlobalSearch()" autocomplete="off" autocorrect="off" autocapitalize="off">
-    </div>
-    <button class="hdr-search-cancel" onclick="closeGlobalSearch()">Cancelar</button>
-  </div>
-  <!-- Resultados -->
-  <div class="hdr-search-results" id="hdr-search-results" style="display:none"></div>
+  <div class="hdr-fest-chev"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></div>
 </div>
   
 
@@ -2154,6 +2120,14 @@ html.splash-skip #otrofestiv-splash{display:none}
   <div class="pel-sheet-inner" id="pel-sheet-inner"></div>
 </div>
 <div id="hdr-programa">
+<div class="carta-search-wrap" id="carta-search-wrap">
+  <div class="carta-search-field">
+    <span class="carta-search-ico"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></span>
+    <input type="text" id="carta-search-input" class="carta-search" placeholder="Buscar…" oninput="onCartaSearch()" autocomplete="off" autocorrect="off" autocapitalize="off">
+    <button class="carta-search-clear" id="carta-search-clear" onclick="clearCartaSearch()"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+  </div>
+  <div id="carta-search-results" class="carta-search-results"></div>
+</div>
 <!-- ── Programa: barra de modos Explorar/Hoy/Mañana ── -->
 <div class="programa-mode-bar" id="programa-mode-bar" style="display:none">
   <button class="pmode-tab on" id="pmode-explorar" onclick="setProgramaMode('explorar')">Explorar</button>
@@ -2223,6 +2197,13 @@ html.splash-skip #otrofestiv-splash{display:none}
 <!-- ── Intereses: search + toggle — estáticos, fuera de ag-view ── -->
 <!-- ── Intereses / Planear: header unificado — fuera de ag-view ── -->
 <div id="hdr-ag" style="display:none">
+  <div class="carta-search-wrap">
+    <div class="carta-search-field">
+      <span class="carta-search-ico"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></span>
+      <input type="text" id="ag-search-input" class="carta-search" placeholder="Buscar…" oninput="onSearchInput()" onblur="closeSearch()" autocomplete="off" autocapitalize="off">
+    </div>
+    <div id="ag-search-results" class="ag-search-results"></div>
+  </div>
   <div class="ag-toggle-bar" id="ag-toggle-bar" style="display:none">
     <button class="ag-sec-pill prio" id="pill-prio" onclick="(()=>{const el=document.getElementById('sec-prio');if(!el)return;const hdr=document.getElementById('hdr-ag');const off=hdr?hdr.getBoundingClientRect().bottom:0;const y=el.getBoundingClientRect().top+window.scrollY-off-8;window.scrollTo({top:y,behavior:'smooth'})})()">
       Prioridad <span id="pill-prio-cnt" style="opacity:.6;font-size:var(--t-xs)">—</span>
@@ -3604,11 +3585,9 @@ function searchFilms(query){
     .slice(0,8);
 }
 function onSearchInput(){
-  // ag-search-input eliminado — búsqueda ahora en onGlobalSearch()
-  return;
-  const q=document.getElementById('ag-search-input')?.value.trim()||'';
+  const q=document.getElementById('ag-search-input').value.trim();
   const res=document.getElementById('ag-search-results');
-  if(!q||q.length<2){if(res) res.classList.remove('open');return;}
+  if(!q||q.length<2){res.classList.remove('open');return;}
   const films=searchFilms(q);
   if(!films.length){res.innerHTML=emptyState(ICONS.search,'Sin resultados.');res.classList.add('open');return;}
   res.innerHTML=films.map(f=>{
@@ -3627,7 +3606,7 @@ function onSearchInput(){
 }
 function addFromSearch(title){
   if(!watchlist.has(title)){watchlist.add(title);watched.delete(title);saveState('wl','watched');updateCardState(title);updateAgTab();}
-  closeGlobalSearch();
+  onSearchInput();
   const listEl=document.getElementById('ag-film-list');if(listEl) listEl.innerHTML=renderFilmListHTML();
 }
 function removeFromAgenda(title){
@@ -3687,7 +3666,7 @@ function addSuggestion(title,day,time){
   // 5. Re-render
   renderAgenda();
 }
-function closeSearch(){closeGlobalSearch();}
+function closeSearch(){setTimeout(()=>{const r=document.getElementById('ag-search-results');if(r) r.classList.remove('open');},200);}
 
 // ── AVAILABILITY ──
 // ─────────────────────────────────────────────────────────────────────────────
@@ -6444,94 +6423,7 @@ const PROGRAMA_CHIPS=[
 let expandedPelicula=''; // título expandido en vista Por Película
 
 /* ── BÚSQUEDA EN CARTELERA ── */
-// ── BÚSQUEDA GLOBAL — reemplaza onCartaSearch + onSearchInput ────────────────
-function openGlobalSearch(){
-  const bar=document.getElementById('hdr-fest-bar');
-  const inp=document.getElementById('global-search-input');
-  if(!bar) return;
-  bar.classList.add('search-open');
-  if(inp) setTimeout(()=>inp.focus(),50);
-}
-function closeGlobalSearch(){
-  const bar=document.getElementById('hdr-fest-bar');
-  const inp=document.getElementById('global-search-input');
-  const res=document.getElementById('hdr-search-results');
-  if(bar) bar.classList.remove('search-open');
-  if(inp) inp.value='';
-  if(res){res.style.display='none';res.innerHTML='';}
-}
-function onGlobalSearch(){
-  const inp=document.getElementById('global-search-input');
-  const res=document.getElementById('hdr-search-results');
-  if(!inp||!res) return;
-  const q=inp.value.trim().toLowerCase();
-  if(!q){res.style.display='none';res.innerHTML='';return;}
-
-  // Buscar en programas + cortos individuales (lógica de onCartaSearch)
-  const titleMap={};
-  FILMS.forEach(f=>{if(!titleMap[f.title]) titleMap[f.title]=f;});
-  const progMatches=Object.values(titleMap).filter(f=>{
-    const{displayTitle}=parseProgramTitle(f.title);
-    const secShort=(f.section||'').replace(/^[^ ]+ /,'').toLowerCase();
-    return displayTitle.toLowerCase().includes(q)
-      ||f.title.toLowerCase().includes(q)
-      ||secShort.includes(q)
-      ||(f.country||'').toLowerCase().includes(q);
-  });
-  const cortoMatches=[];
-  FILMS.filter(f=>f.is_cortos&&f.film_list?.length).forEach(prog=>{
-    prog.film_list.forEach(item=>{
-      if(item.title.toLowerCase().includes(q)){
-        cortoMatches.push({
-          _isCortoItem:true,_prog:prog,
-          title:item.title,country:item.country,duration:item.duration,
-          flags:countryToFlags(item.country||''),section:prog.section,is_cortos:false
-        });
-      }
-    });
-  });
-  const seen=new Set();
-  const matches=[...progMatches,...cortoMatches]
-    .filter(f=>{if(seen.has(f.title))return false;seen.add(f.title);return true;})
-    .slice(0,10);
-
-  if(!matches.length){
-    res.innerHTML='<div style="padding:var(--sp-btn);text-align:center;color:var(--gray);font-size:var(--t-base)">Sin resultados</div>';
-    res.style.display='block';return;
-  }
-  res.innerHTML=matches.map(f=>{
-    const{displayTitle,progSuffix}=parseProgramTitle(f.title);
-    const poster=getFilmPoster(f)||'';
-    const safeT=f.title.replace(/'/g,"\'");
-    const safeC=(f.country||'').replace(/'/g,"\'");
-    const safeD=(f.duration||'').replace(/'/g,"\'");
-    const safeS=(f.section||'').replace(/'/g,"\'");
-    const safeF=(f.flags||'🌍').replace(/'/g,"\'");
-    const onclick=f._isCortoItem
-      ?`closeGlobalSearch();openCortoSheet('${safeT}','${safeC}','${safeD}','${safeS}','${safeF}')`
-      :`closeGlobalSearch();openPelSheet('${safeT}')`;
-    return`<div class="carta-sr-item" onclick="${onclick}">
-      ${poster?`<img class="carta-sr-poster" src="${poster}" onerror="this.style.opacity=0" alt="">`:'<div class="carta-sr-poster"></div>'}
-      <div class="carta-sr-info">
-        <div class="carta-sr-title">${displayTitle}${progSuffix?` <span style="color:var(--orange);font-size:var(--t-label)">${progSuffix}</span>`:''}</div>
-        <div class="carta-sr-meta">${f._isCortoItem
-          ?`Cortometraje${f._prog?' · '+parseProgramTitle(f._prog.title).displayTitle:''}` 
-          :`${f.duration||''} ${f.section?' · '+f.section.replace(/^[^ ]+ /,''):''}`
-        }</div>
-      </div>
-    </div>`;
-  }).join('');
-  res.style.display='block';
-}
-// Cerrar al tocar fuera
-document.addEventListener('click',e=>{
-  const bar=document.getElementById('hdr-fest-bar');
-  if(bar&&bar.classList.contains('search-open')&&!bar.contains(e.target)) closeGlobalSearch();
-});
-
 function onCartaSearch(){
-  // Legacy — búsqueda ahora en onGlobalSearch(). Redirigir si se llama.
-  onGlobalSearch(); return;
   const inp=document.getElementById('carta-search-input');
   const res=document.getElementById('carta-search-results');
   const clr=document.getElementById('carta-search-clear');
@@ -6602,12 +6494,19 @@ function onCartaSearch(){
 }
 
 function clearCartaSearch(){
-  // Redirige al nuevo sistema global
-  closeGlobalSearch();
+  const inp=document.getElementById('carta-search-input');
+  const res=document.getElementById('carta-search-results');
+  const clr=document.getElementById('carta-search-clear');
+  if(inp) inp.value='';
+  if(res){res.classList.remove('open');res.innerHTML='';}
+  if(clr) clr.classList.remove('visible');
 }
 
 // Cerrar al tocar fuera
-// click-outside handled by global search listener
+document.addEventListener('click',e=>{
+  const wrap=document.getElementById('carta-search-wrap');
+  if(wrap&&!wrap.contains(e.target)) clearCartaSearch();
+});
 
 /* ── NAV: navegación principal entre tabs ────────────────────────────── */
 function switchMainNav(id){
@@ -6620,6 +6519,7 @@ function showDayView(){
   activeView='day';
   switchMainNav('mnav-cartelera');
   // Mostrar buscador y mode bar
+  const _csw2=document.getElementById('carta-search-wrap');if(_csw2) _csw2.style.display='';
   document.getElementById('hdr-ag')?.style.setProperty('display','none');
   const modeBar=document.getElementById('programa-mode-bar');
   if(modeBar){
@@ -6647,6 +6547,7 @@ function showAgView(){
   const _chips=document.getElementById('programa-chips');if(_chips) _chips.classList.add('hidden');
   const _paf=document.getElementById('programa-active-filter');if(_paf) _paf.classList.remove('visible');
   const _lista=document.getElementById('programa-list');if(_lista) _lista.classList.remove('visible');
+  const _csw=document.getElementById('carta-search-wrap');if(_csw) _csw.style.display='none';
   const _agH=document.getElementById('hdr-ag');
   if(_agH){
     _agH.style.display='';
