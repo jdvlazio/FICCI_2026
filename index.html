@@ -313,9 +313,8 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:var(--t
 .nav-row.hidden{display:none}
 .nav-tabs{display:flex;flex:1;overflow-x:auto;-webkit-overflow-scrolling:touch;justify-content:flex-start;gap:0;padding:0;scrollbar-width:none;scroll-behavior:smooth;touch-action:pan-x;overscroll-behavior-x:contain}
 .nav-tabs::-webkit-scrollbar{display:none}
-.fdr-filters{display:flex;align-items:center;flex-shrink:0}
-.filter-row{display:flex;align-items:center;border-bottom:1px solid var(--bdr);padding:0 2px}
-.filter-row.hidden{display:none}
+
+
 /* ══════════════════════════════════════════════════════
    DAY-CHIP — componente apilado de día
    ABREV (9px, gray2) arriba / NÚMERO (20px, white) abajo
@@ -413,17 +412,12 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:var(--t
 /* ── Filtros de sección ── */
 .fdr-row{display:flex;gap:0;padding:0 var(--sp-2);border-bottom:1px solid var(--bdr)}
 .fdr-row::-webkit-scrollbar{display:none}
-.fdr-wrap{position:relative}
-.fdr-btn{flex-shrink:0;background:none;border:none;border-bottom:2px solid transparent;margin-bottom:-1px;padding:var(--sp-2) var(--sp-2) var(--sp-2);cursor:pointer;color:var(--gray);font-family:var(--font);font-size:var(--t-xs);font-weight:var(--w-bold);letter-spacing:.07em;text-transform:uppercase;display:inline-flex;align-items:center;gap:var(--sp-1);transition:color var(--tr-base),border-color var(--tr-base);white-space:nowrap;min-height:36px}
-.fdr-btn:hover{color:var(--white)}
-.fdr-btn+.fdr-btn{position:relative}
-.fdr-btn+.fdr-btn::before{content:'';position:absolute;left:0;top:15%;bottom:15%;width:1px;background:var(--bdr)}
-.fdr-btn.active{border-bottom-color:var(--orange);color:var(--orange)}.fdr-btn.active .fdr-arrow{color:var(--orange)}.filter-row .fdr-btn:not(.active) .fdr-label::after{content:" ▾";font-size:var(--t-xs);opacity:.4;letter-spacing:0}
+
+
 .fdr-arrow{font-size:var(--t-sm);transition:transform var(--tr-smooth);flex-shrink:0;font-family:var(--font)}
 .fdr-arrow.open{transform:rotate(180deg)}
 .fdr-label{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.fdr-panel{display:none;position:absolute;top:calc(100% + 2px);right:0;background:var(--surf);border:1px solid var(--bdr);border-radius:var(--r);z-index:210;min-width:190px;max-height:60vh;overflow-y:auto;box-shadow:0 8px 24px var(--overlay-55)}
-.fdr-panel.open{display:block}
+
 .fdr-opt{display:block;width:100%;background:none;border:none;border-bottom:1px solid var(--bdr-l);text-align:left;padding:var(--sp-3) var(--sp-4);font-size:var(--t-sm);font-weight:var(--w-regular);color:var(--gray);cursor:pointer;font-family:var(--font);transition:background var(--tr-fast),color var(--tr-fast);white-space:nowrap}
 .fdr-opt:last-child{border-bottom:none}
 .fdr-opt:hover{background:var(--card-b);color:var(--white)}
@@ -709,8 +703,7 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:var(--t
 .view-toggle-btn{width:38px;min-height:36px;display:flex;align-items:center;justify-content:center;background:none;border:none;cursor:pointer;color:var(--gray);flex-shrink:0;-webkit-tap-highlight-color:transparent;font-family:var(--font);transition:color var(--tr-base);position:relative}
 .view-toggle-btn::before{content:'';position:absolute;left:0;top:15%;bottom:15%;width:1px;background:var(--bdr)}
 .view-toggle-btn:active{color:var(--white)}
-.pmode-filter-btn{display:flex;align-items:center;gap:4px;font-size:var(--t-sm);font-weight:var(--w-bold);color:var(--gray);background:none;border:none;cursor:pointer;font-family:var(--font);padding:4px 0;transition:color var(--tr-base);white-space:nowrap}
-.pmode-filter-btn.active{color:var(--amber)}
+
 /* Chips de categoría (solo Explorar) */
 .programa-chips{display:flex;gap:var(--sp-1);padding:var(--sp-2) var(--sp-3);overflow-x:auto;scrollbar-width:none;flex-shrink:0;border-bottom:1px solid var(--bdr-l);background:var(--surf)}
 .programa-chips::-webkit-scrollbar{display:none}
@@ -1899,6 +1892,17 @@ html.splash-skip #otrofestiv-splash{display:none}
 .av-time-row{display:flex;align-items:center;gap:var(--sp-2);margin-bottom:20px}
 .av-time-sel{flex:1;background:var(--surf);border:1px solid var(--bdr);border-radius:var(--r-md);color:var(--white);font-size:var(--t-base);font-family:var(--font);padding:10px var(--sp-3);cursor:pointer}
 .av-sheet-confirm{width:100%;background:var(--amber);border:none;border-radius:var(--r-md);padding:var(--sp-btn) 0;font-size:var(--t-base);font-weight:var(--w-bold);color:#000;cursor:pointer;font-family:var(--font)}
+
+/* Lugar filter — nuevo sistema ────────────────────────── */
+.lugar-btn{display:flex;align-items:center;gap:4px;font-size:var(--t-sm);font-weight:var(--w-bold);color:var(--gray);background:none;border:none;cursor:pointer;font-family:var(--font);padding:4px 0;transition:color var(--tr-base);white-space:nowrap;-webkit-tap-highlight-color:transparent}
+.lugar-btn.active{color:var(--amber)}
+.lugar-opt{display:flex;align-items:center;gap:var(--sp-2);padding:10px var(--sp-4);cursor:pointer;font-size:var(--t-base);color:var(--gray);border-bottom:1px solid var(--bdr-l);transition:background var(--tr-base)}
+.lugar-opt:last-child{border-bottom:none}
+.lugar-opt:active,.lugar-opt:hover{background:var(--surf-2)}
+.lugar-opt.on{color:var(--white);font-weight:var(--w-semi)}
+.lugar-opt span{flex:1}
+.lugar-cnt{font-size:var(--t-sm);color:var(--gray2);flex:none!important}
+@keyframes lugarFadeIn{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:translateY(0)}}
 </style>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"WebApplication","name":"Otrofestiv","description":"Tu agenda personal para festivales de cine. Planea, prioriza y saca el máximo de cada festival.","url":"https://otrofestiv.app","applicationCategory":"EntertainmentApplication","operatingSystem":"iOS, Android, Web","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}
@@ -2177,9 +2181,9 @@ html.splash-skip #otrofestiv-splash{display:none}
   <button class="pmode-tab" id="pmode-manana" onclick="setProgramaMode('manana')">Mañana</button>
   <div class="pmode-spacer"></div>
   <div class="pmode-controls" style="position:relative">
-    <button class="pmode-filter-btn" id="pmode-filter-btn" onclick="toggleProgramaFilter()">
+    <button class="lugar-btn" id="lugar-btn" onclick="lugarToggle()">
       <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"/></svg>
-      <span id="pmode-filter-lbl">Lugar</span>
+      <span id="lugar-lbl">Lugar</span>
     </button>
     <!-- single toggle btn — icono refleja estado actual -->
     <button class="view-toggle-btn" id="view-toggle-btn" onclick="toggleProgramaView()" title="Cambiar vista" aria-label="Cambiar vista">
@@ -2214,8 +2218,6 @@ html.splash-skip #otrofestiv-splash{display:none}
   <div class="nav-tabs" id="dtabs"></div>
 </div>
 
-<!-- filter-row y vdr-btn: solo IDs para compat JS -->
-<div id="filter-row" style="display:none"><button id="vdr-btn" style="display:none"><span id="vdr-label"></span><span id="vdr-arrow"></span></button></div>
 
 <div class="programa-list" id="programa-list"></div>
 <div id="notices-banner"></div>
@@ -6741,121 +6743,12 @@ DAYS.forEach(day=>{
 })();
 
 
-function toggleDropdown(id){
-  const panel=document.getElementById(id+'-panel');
-  const arrow=document.getElementById(id+'-arrow');
-  const isOpen=panel.classList.contains('open');
-  closeDropdowns();
-  if(!isOpen){
-    // Render panel contents before opening
-    if(id==='vdr') renderVbar();
-    else if(id==='sdr') renderSbar();
-    panel.classList.add('open');
-    if(arrow) arrow.classList.add('open');
-  }
-}
-function closeDropdowns(){
-  document.querySelectorAll('.fdr-panel').forEach(p=>{p.classList.remove('open');p.style.display='none';});
-  document.querySelectorAll('.fdr-arrow').forEach(a=>a.classList.remove('open'));
-  const pb=document.getElementById('pmode-filter-btn');
-  if(pb&&activeVenue==='all') pb.classList.remove('active');
-}
+
+
 
 /* ── RENDER — CARTELERA: filtros, grid horario, grid película ────────── */
-function renderVbar(){
-  const panel=document.getElementById('vdr-panel');
-  const trigBtn=document.getElementById('vdr-btn');
-  const lbl=document.getElementById('vdr-label');
-  if(!panel) return;
-  panel.innerHTML='';
-  const dayFilms=programaSubMode==='explorar'?FILMS:FILMS.filter(f=>f.day===activeDay);
-  const vs=[...new Set(dayFilms.map(f=>vcfg(f.venue).short))];
-  const mkOpt=(html,isOn,cb)=>{
-    const b=document.createElement('button');
-    b.className='fdr-opt'+(isOn?' on':'');
-    b.innerHTML=html;
-    b.onclick=e=>{
-      e.stopPropagation();
-      cb();
-      const vp=document.getElementById('vdr-panel');
-      if(vp) vp.style.display='none';
-      const pb=document.getElementById('pmode-filter-btn');
-      if(pb) pb.classList.toggle('active',activeVenue!=='all');
-    };
-    panel.appendChild(b);
-  };
-  mkOpt(`Todos los lugares <span class="fdr-cnt">${dayFilms.length}</span>`,activeVenue==='all',()=>{activeVenue='all';selectedIdx=null;setHint(null);closeDropdowns();_updateProgramaActiveFilter();if(programaSubMode==='explorar')_renderProgramaContent();else render();});
-  // Build venue list with city grouping from active festival's venues config
-  const festVenues=(FESTIVAL_CONFIG[_activeFestId]||{}).venues||{};
-  const venueData={};
-  dayFilms.forEach(f=>{
-    const cfg=vcfg(f.venue);
-    const short=cfg.short||f.venue;
-    if(!venueData[short]) venueData[short]={city:cfg.city||'',count:0};
-    venueData[short].count++;
-  });
-  // Check if multi-city festival
-  const cities=[...new Set(Object.values(venueData).map(v=>v.city).filter(Boolean))];
-  const multiCity=cities.length>1;
-  if(multiCity){
-    // Group by city, sort cities alphabetically, venues by count desc
-    const byCityObj={};
-    Object.entries(venueData).forEach(([short,d])=>{
-      const c=d.city||'Sin ciudad';
-      if(!byCityObj[c]) byCityObj[c]=[];
-      byCityObj[c].push({short,count:d.count});
-    });
-    Object.entries(byCityObj).sort(([a],[b])=>a.localeCompare(b,'es')).forEach(([city,venues])=>{
-      const sep=document.createElement('span');
-      sep.className='fdr-city-sep';
-      sep.textContent=city;
-      panel.appendChild(sep);
-      venues.sort((a,b)=>b.count-a.count).forEach(({short,count})=>{
-        mkOpt(`${ICONS.pin} ${short} <span class="fdr-cnt">${count}</span>`,activeVenue===short,()=>{activeVenue=activeVenue===short?'all':short;selectedIdx=null;setHint(null);closeDropdowns();_updateProgramaActiveFilter();if(programaSubMode==='explorar')_renderProgramaContent();else render();});
-      });
-    });
-  } else {
-    // Single city — flat list sorted by count
-    Object.entries(venueData).sort(([,a],[,b])=>b.count-a.count).forEach(([short,{count}])=>{
-      mkOpt(`${ICONS.pin} ${short} <span class="fdr-cnt">${count}</span>`,activeVenue===short,()=>{activeVenue=activeVenue===short?'all':short;selectedIdx=null;setHint(null);closeDropdowns();_updateProgramaActiveFilter();if(programaSubMode==='explorar')_renderProgramaContent();else render();});
-    });
-  }
-  if(lbl) lbl.textContent=activeVenue==='all'?'Lugar':activeVenue;
-  if(trigBtn) trigBtn.classList.toggle('active',activeVenue!=='all');
-}
-function renderSbar(){
-  const panel=document.getElementById('sdr-panel');
-  const trigBtn=document.getElementById('sdr-btn');
-  const lbl=document.getElementById('sdr-label');
-  if(!panel) return;
-  panel.innerHTML='';
-  // En Explorar: mostrar todas las secciones. En Hoy/Mañana: filtrar por día
-  const isExplorar=programaSubMode==='explorar';
-  let dayF=isExplorar?FILMS:FILMS.filter(f=>f.day===activeDay);
-  if(activeVenue!=='all') dayF=dayF.filter(f=>vcfg(f.venue).short===activeVenue);
-  const secs=[...new Set(dayF.map(f=>f.section))].sort();
-  // Siempre mostrar 'Categoría' cuando el filtro viene de chip
-  if(lbl) lbl.textContent=activeSec==='all'||activeSec==='_chip_'?'Sección':(activeSec.length>18?activeSec.slice(0,16)+'…':activeSec);
-  if(trigBtn) trigBtn.classList.toggle('active',activeSec!=='all'&&activeSec!=='_chip_');
-  const mkOpt=(html,isOn,cb)=>{
-    const b=document.createElement('button');
-    b.className='fdr-opt'+(isOn?' on':'');
-    b.innerHTML=html;
-    b.onclick=e=>{
-      e.stopPropagation();
-      cb();
-      const vp=document.getElementById('vdr-panel');
-      if(vp) vp.style.display='none';
-    };
-    panel.appendChild(b);
-  };
-  mkOpt(`Todas las categorías <span class="fdr-cnt">${dayF.length}</span>`,activeSec==='all',()=>{activeSec='all';selectedIdx=null;setHint(null);closeDropdowns();render();});
-  secs.forEach(sec=>{
-    const cnt=dayF.filter(f=>f.section===sec).length;
-    mkOpt(`${sec} <span class="fdr-cnt">${cnt}</span>`,activeSec===sec,()=>{activeSec=activeSec===sec?'all':sec;selectedIdx=null;setHint(null);closeDropdowns();render();});
-  });
-  // label y active ya seteados al principio
-}
+
+
 function setHint(film){
   const el=document.getElementById('hint');
   if(!film){el.textContent='';el.classList.remove('active');el.style.padding='0 18px';return;}
@@ -7119,11 +7012,8 @@ function filterByVenue(venue){
   programaChip='all';_programaChipMatchFn=null;
   switchMainNav('mnav-cartelera');
   showDayView();
-  // Actualizar label del dropdown de Lugar
-  const lbl=document.getElementById('vdr-label');
-  const btn=document.getElementById('vdr-btn');
-  if(lbl) lbl.textContent=venue.length>14?venue.slice(0,12)+'…':venue;
-  if(btn) btn.classList.add('active');
+  // Actualizar label del filtro Lugar
+  lugarClose();
 }
 
 function filterBySection(section){
@@ -7693,7 +7583,7 @@ function setProgramaMode(mode){
     activeDay=_pti>=0&&_pti<DAY_KEYS.length-1?DAY_KEYS[_pti+1]:DAY_KEYS[DAY_KEYS.length-1];
   }
   // filter-row visibility handled by initProgramaModeBar() below
-  if(mode==='explorar'){renderVbar();renderSbar();}
+  // filter updates handled by lugarOpen()
   _updateProgramaActiveFilter();
   initProgramaModeBar();
   _renderProgramaContent();
@@ -7738,45 +7628,11 @@ function setProgramaChip(chipId){
 function clearProgramaChip(){
   _programaChipMatchFn=null;
   activeVenue='all';
-  // Resetear label del venue dropdown
-  const vl=document.getElementById('vdr-label');if(vl) vl.textContent='Lugar';
-  const vb=document.getElementById('vdr-btn');if(vb) vb.classList.remove('active');
-  // Cerrar panel y quitar estado activo del botón Lugar
-  const panel=document.getElementById('vdr-panel');if(panel) panel.style.display='none';
-  const pb=document.getElementById('pmode-filter-btn');if(pb) pb.classList.remove('active');
+  lugarClose();
   setProgramaChip('all');
 }
 
-function toggleProgramaFilter(){
-  const btn=document.getElementById('pmode-filter-btn');
-  const panel=document.getElementById('vdr-panel');
-  if(!panel) return;
-  const isOpen=panel.style.display==='block';
-  // Close if already open
-  if(isOpen){
-    panel.style.display='none';
-    if(btn) btn.classList.remove('active');
-    return;
-  }
-  // Fill panel
-  renderVbar();
-  // Position using fixed coords from button rect
-  const r=btn?btn.getBoundingClientRect():{bottom:100,right:window.innerWidth-16};
-  panel.style.top=(r.bottom+4)+'px';
-  panel.style.right=(window.innerWidth-r.right)+'px';
-  panel.style.left='auto';
-  panel.style.display='block';
-  if(btn) btn.classList.add('active');
-  // Close on outside tap — capture phase so it fires before anything else
-  const onOutside=e=>{
-    if(!panel.contains(e.target)&&e.target!==btn){
-      panel.style.display='none';
-      if(btn) btn.classList.remove('active');
-      document.removeEventListener('click',onOutside,true);
-    }
-  };
-  setTimeout(()=>document.addEventListener('click',onOutside,true),10);
-}
+
 
 function _updateProgramaActiveFilter(){
   const af=document.getElementById('programa-active-filter');
@@ -8170,7 +8026,7 @@ function render(){
     cartelaMode='horario';
   }
   if(cartelaMode==='pelicula'){renderSbar();renderPeliculaView();return;}
-  renderVbar();renderSbar();
+  lugarClose(); // refresh label if open
   let films=FILMS.filter(f=>f.day===activeDay);
   if(activeVenue!=='all') films=films.filter(f=>vcfg(f.venue).short===activeVenue);
   if(activeSec!=='all') films=films.filter(f=>f.section===activeSec);
@@ -8576,7 +8432,7 @@ document.addEventListener('visibilitychange', function(){
 }); // visibilitychange
 
 // html2canvas eliminado — Canvas API puro
-document.addEventListener('click',e=>{if(!e.target.closest('.fdr-wrap')) closeDropdowns();});
+// lugar click-outside handled by lugarOutside()
 updateAgTab();render();
 
 // ── Auto-navegar a Mi Plan si hay función próxima ──────────────
@@ -8650,6 +8506,98 @@ if('serviceWorker' in navigator){
   navigator.serviceWorker.addEventListener('message', e => {
     if(e.data && e.data.type==='SW_UPDATED') location.reload();
   });
+}
+
+// ── FILTRO LUGAR — implementación desde cero ─────────────────────────────
+// 40 líneas. Un dropdown simple. Sin dependencias externas.
+
+function lugarOpen(){
+  const btn = document.getElementById('lugar-btn');
+  const r = btn.getBoundingClientRect();
+
+  // Build dropdown
+  const drop = document.createElement('div');
+  drop.id = 'lugar-drop';
+  drop.style.cssText = [
+    'position:fixed',
+    'top:'+(r.bottom+4)+'px',
+    'right:'+(window.innerWidth-r.right)+'px',
+    'min-width:200px',
+    'max-width:min(280px,90vw)',
+    'max-height:50vh',
+    'overflow-y:auto',
+    'background:var(--surf)',
+    'border:1px solid var(--bdr)',
+    'border-radius:var(--r)',
+    'box-shadow:0 8px 24px rgba(0,0,0,.55)',
+    'z-index:9999',
+    'animation:lugarFadeIn .12s ease'
+  ].join(';');
+
+  // Collect unique venues from FILMS
+  const venueMap = {};
+  (programaSubMode==='explorar'?FILMS:FILMS.filter(f=>f.day===activeDay))
+    .forEach(f=>{
+      const cfg = vcfg(f.venue);
+      const short = cfg.short||f.venue;
+      if(!venueMap[short]) venueMap[short] = {label:short, count:0, city:cfg.city||''};
+      venueMap[short].count++;
+    });
+
+  const venues = Object.values(venueMap).sort((a,b)=>b.count-a.count);
+  const total = venues.reduce((s,v)=>s+v.count,0);
+
+  // Render options
+  const opts = [{label:'Todos los lugares', count:total, short:'all'}, ...venues.map(v=>({...v,short:v.label}))];
+  drop.innerHTML = opts.map(v=>{
+    const isActive = (v.short==='all' && activeVenue==='all') || (activeVenue===v.short);
+    return '<div class="lugar-opt'+(isActive?' on':'')+'" data-v="'+v.short+'">'
+      +(v.short!=='all'?'<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>':'')
+      +'<span>'+v.label+'</span>'
+      +'<span class="lugar-cnt">'+v.count+'</span>'
+      +'</div>';
+  }).join('');
+
+  drop.addEventListener('click', e=>{
+    const opt = e.target.closest('.lugar-opt');
+    if(!opt) return;
+    const v = opt.dataset.v;
+    activeVenue = (v==='all'||v===activeVenue)?'all':v;
+    lugarClose();
+    _updateProgramaActiveFilter();
+    if(programaSubMode==='explorar') _renderProgramaContent(); else render();
+  });
+
+  document.body.appendChild(drop);
+  btn.classList.add('active');
+
+  // Close on outside click
+  setTimeout(()=>{
+    document.addEventListener('click', lugarOutside);
+  }, 0);
+}
+
+function lugarOutside(e){
+  const drop = document.getElementById('lugar-drop');
+  const btn = document.getElementById('lugar-btn');
+  if(drop && !drop.contains(e.target) && e.target!==btn && !btn?.contains(e.target)){
+    lugarClose();
+  }
+}
+
+function lugarClose(){
+  const drop = document.getElementById('lugar-drop');
+  if(drop) drop.remove();
+  document.removeEventListener('click', lugarOutside);
+  const btn = document.getElementById('lugar-btn');
+  if(btn) btn.classList.toggle('active', activeVenue!=='all');
+  const lbl = document.getElementById('lugar-lbl');
+  if(lbl) lbl.textContent = activeVenue==='all'?'Lugar':activeVenue;
+}
+
+function lugarToggle(){
+  if(document.getElementById('lugar-drop')) lugarClose();
+  else lugarOpen();
 }
 </script>
 
@@ -8734,7 +8682,5 @@ if('serviceWorker' in navigator){
 
 <button id="back-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Volver arriba">↑</button>
 
-<!-- vdr-panel: body-level, position:fixed, positioned by JS -->
-<div class="fdr-panel" id="vdr-panel" style="position:fixed;min-width:200px;max-width:min(260px,90vw);max-height:50vh;z-index:9999;display:none"></div>
 </body>
 </html>
