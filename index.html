@@ -1502,9 +1502,11 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:var(--t
 
   /* Toast: en desktop sin bottom-nav, colocar en esquina inferior derecha */
   .prio-toast{bottom:20px;left:auto;right:20px;width:auto;max-width:360px;text-align:left;}
-  /* Fila 3 — nav: revertir el fixed-bottom de mobile a fila estática del topbar */
+  /* Fila 3 — nav: sticky bajo el topbar en desktop */
   .main-nav{
-    position:static;
+    position:sticky;
+    top:var(--tb-no-nav, 86px);
+    z-index:199;
     display:flex;
     justify-content:center;
     background:var(--surf);
@@ -8472,18 +8474,19 @@ function _fixStickyOffset(){
   const tb=document.querySelector('.topbar');
   if(!tb) return;
   const isMobile=window.innerWidth<768;
-  const tbH=Math.ceil(tb.getBoundingClientRect().height)||(isMobile?47:130);
-  const modeH=38; // .pmode-tab min-height
-  const chipsH=44; // .programa-chips approx
+  const tbH=Math.ceil(tb.getBoundingClientRect().height)||(isMobile?47:86);
+  const navH=44; // main-nav height on desktop
+  const modeH=38;
   const r=document.documentElement.style;
   if(!isMobile){
-    r.setProperty('--tb-total',tbH+'px');
-    r.setProperty('--sticky-top-carta',tbH+'px');
-    r.setProperty('--sticky-top-modebar',(tbH+modeH)+'px');
+    // Topbar (wordmark+fest-bar) without nav
+    r.setProperty('--tb-no-nav',tbH+'px');
+    // Topbar + nav = where #hdr-programa sticks
+    r.setProperty('--tb-total',(tbH+navH)+'px');
+    r.setProperty('--sticky-top-carta',(tbH+navH)+'px');
+    r.setProperty('--sticky-top-modebar',(tbH+navH+modeH)+'px');
   }
-  // --sticky-top-chips: runs on both mobile and desktop
-  const modeBarH=document.getElementById('programa-mode-bar')?.offsetHeight||modeH;
-  const hdrH=document.getElementById('hdr-programa')?.offsetHeight||tbH;
+  const hdrH=document.getElementById('hdr-programa')?.offsetHeight||(tbH+(isMobile?0:navH));
   r.setProperty('--sticky-top-chips',hdrH+'px');
 }
 // Run after layout is complete (fonts + CSS painted)
