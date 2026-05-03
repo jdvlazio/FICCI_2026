@@ -2214,17 +2214,10 @@ html.splash-skip #otrofestiv-splash{display:none}
   <div class="nav-tabs" id="dtabs"></div>
 </div>
 
-<div class="filter-row" id="filter-row">
-  <div class="fdr-filters">
-    <!-- vdr-panel moved to pmode-controls in mode-bar -->
-    <div class="fdr-wrap">
-      <button class="fdr-btn" id="sdr-btn" onclick="toggleDropdown('sdr')" title="Filtrar por sección">
-        <span class="fdr-label" id="sdr-label">Sección</span>
-        <span class="fdr-arrow" id="sdr-arrow"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span>
-      </button>
-      <div class="fdr-panel" id="sdr-panel"></div>
-    </div>
-  </div>
+<!-- filter-row eliminada — IDs conservados para compat JS -->
+<div id="filter-row" style="display:none">
+  <span id="sdr-label"></span><button id="sdr-btn"></button><span id="sdr-arrow"></span>
+  <div id="sdr-panel"></div>
 </div>
 <div class="programa-list" id="programa-list"></div>
 <div id="notices-banner"></div>
@@ -6674,7 +6667,6 @@ function showAgView(){
     // ag-toggle-bar eliminado de Intereses (solo en Explorar)
   }
   document.getElementById('nav-row').classList.add('hidden');
-  document.getElementById('filter-row').classList.add('hidden');
   document.getElementById('filter-bars').style.display='none';
   ['hint','cnt','grid','cartelera-stepper'].forEach(id=>{const el=document.getElementById(id);if(el) el.style.display='none';});
   const _av=document.getElementById('ag-view');
@@ -7635,14 +7627,11 @@ function initProgramaModeBar(){
   }
   // Mostrar/ocultar nav-row (días) y filter-row según modo
   const navRow=document.getElementById('nav-row');
-  const filterRow=document.getElementById('filter-row');
-  // nav-row (dtabs): solo en Hoy/Mañana. filter-row (Lugar+Sección): solo en Explorar.
+  // nav-row: hidden in Explorar, visible in Hoy/Mañana
   if(programaSubMode==='explorar'){
     if(navRow) navRow.classList.add('hidden');
-    if(filterRow) filterRow.classList.remove('hidden');
   } else {
     if(navRow) navRow.classList.remove('hidden');
-    if(filterRow) filterRow.classList.add('hidden');
     document.querySelectorAll('.dtab').forEach(t=>t.classList.toggle('on',t.dataset.day===activeDay));
   }
   // tag dismissible
