@@ -6522,11 +6522,12 @@ function onGlobalSearch(){
     .filter(f=>{if(seen.has(f.title))return false;seen.add(f.title);return true;})
     .slice(0,10);
   if(!matches.length){
-    res.innerHTML='<div style="padding:var(--sp-btn);text-align:center;color:var(--gray);font-size:var(--t-base)">Sin resultados</div>';
+    res.innerHTML='<div class="carta-sr-empty"><div class="carta-sr-empty-ico">🔍</div>Sin resultados para <strong style="color:var(--white-60)">&ldquo;'+q+'&rdquo;</strong></div>';
     res.style.display='block';
+    _updateSearchResultsHeight();
   return;
   }
-  res.innerHTML=matches.map(f=>{
+  res.innerHTML='<div class="carta-sr-section">Películas</div>'+matches.map(f=>{
     const{displayTitle,progSuffix}=parseProgramTitle(f.title);
     const poster=getFilmPoster(f)||'';
     const safeT=f.title.replace(/'/g,"\\'");
@@ -6548,7 +6549,9 @@ function onGlobalSearch(){
       +(progSuffix?'<span style="color:var(--orange);font-size:var(--t-label)"> '+progSuffix+'</span>':'')
       +'</div>'
       +'<div class="carta-sr-meta">'+meta+'</div>'
-      +'</div></div>';
+      +'</div>'
+      +'<div class="carta-sr-arrow">›</div>'
+      +'</div>';
   }).join('');
   res.style.display='block';
   _updateSearchResultsHeight();
@@ -6599,7 +6602,7 @@ function onCartaSearch(){
   const matches=allMatches.filter(f=>{if(seen.has(f.title))return false;seen.add(f.title);return true;}).slice(0,10);
 
   if(!matches.length){
-    res.innerHTML='<div style="padding:var(--sp-btn);text-align:center;color:var(--gray);font-size:var(--t-base)">Sin resultados</div>';
+    res.innerHTML='<div class="carta-sr-empty"><div class="carta-sr-empty-ico">🔍</div>Sin resultados</div>';
     res.classList.add('open');
     return;
   }
