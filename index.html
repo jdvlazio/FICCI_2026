@@ -4555,6 +4555,9 @@ function _intToggleSection(hdrEl){
   hdrEl.classList.toggle('collapsed');
   const list = document.getElementById(listId);
   if(list) list.classList.toggle('hidden');
+  // Persistir estado para sobrevivir re-renders
+  if(_interesesCollapsed.has(listId)) _interesesCollapsed.delete(listId);
+  else _interesesCollapsed.add(listId);
 }
 
 // section headers usan <button> con onclick directo
@@ -4563,10 +4566,9 @@ function _intToggleSection(hdrEl){
 function _reRenderIntereses(){
   const lel=document.getElementById('ag-film-list');
   if(!lel) return;
-  const collapsed=new Set([...lel.querySelectorAll('.int-section-hdr.collapsed')]
-    .map(el=>el.nextElementSibling?.id).filter(Boolean));
   lel.innerHTML=renderFilmListHTML();
-  collapsed.forEach(id=>{
+  // Restaurar estado desde variable persistente
+  _interesesCollapsed.forEach(id=>{
     const el=document.getElementById(id);
     if(el){el.classList.add('hidden');el.previousElementSibling?.classList.add('collapsed');}
   });
@@ -6540,6 +6542,11 @@ function renderAgenda(){
       <div class="ag-section">
         <div id="ag-film-list">${renderFilmListHTML()}</div>
       </div>`;
+    // Restaurar estado colapsado
+    _interesesCollapsed.forEach(id=>{
+      const el=document.getElementById(id);
+      if(el){el.classList.add('hidden');el.previousElementSibling?.classList.add('collapsed');}
+    });
   } else if(activeMNav==='mnav-miplan'){
     // ── Mi Plan: stepper de progreso + calendario + sugerencias ──
     const _progressHtmlPlan=(!festivalEnded()&&(!savedAgenda||!savedAgenda.schedule||!savedAgenda.schedule.length))?renderFlowProgress('miplan'):'';
@@ -7772,6 +7779,7 @@ function _programaStack(f){
 
 // ── Notices: banner de funciones canceladas/reprogramadas ────────────────
 let _dismissedNotices=new Set();
+let _interesesCollapsed=new Set(); // secciones colapsadas en Intereses
 function getActiveNotices(){
   const festId=window._currentFestivalId||'aff2026';
   const today=new Date(); today.setHours(0,0,0,0);
