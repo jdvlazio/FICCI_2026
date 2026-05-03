@@ -2211,16 +2211,10 @@ html.splash-skip #otrofestiv-splash{display:none}
   <div class="nav-tabs" id="dtabs"></div>
 </div>
 
-<div class="filter-row hidden" id="filter-row">
-  <div class="fdr-filters">
-    <div class="fdr-wrap">
-      <button class="fdr-btn" id="vdr-btn" onclick="toggleDropdown('vdr')" title="Filtrar por sede">
-        <span class="fdr-label" id="vdr-label">Lugar</span>
-        <span class="fdr-arrow" id="vdr-arrow"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span>
-      </button>
-      <div class="fdr-panel" id="vdr-panel"></div>
-    </div>
-  </div>
+<!-- filter-row: solo panel, sin botón duplicado -->
+<div class="filter-row hidden" id="filter-row" style="position:relative;display:none">
+  <button id="vdr-btn" style="display:none"><span id="vdr-label"></span><span id="vdr-arrow"></span></button>
+  <div class="fdr-panel" id="vdr-panel" style="position:fixed;top:auto;right:16px;left:auto;min-width:220px"></div>
 </div>
 <div class="programa-list" id="programa-list"></div>
 <div id="notices-banner"></div>
@@ -7707,12 +7701,23 @@ function clearProgramaChip(){
 
 function toggleProgramaFilter(){
   const btn=document.getElementById('pmode-filter-btn');
-  const filterRow=document.getElementById('filter-row');
-  if(!filterRow) return;
-  const visible=filterRow.classList.contains('hidden');
-  filterRow.classList.toggle('hidden',!visible);
-  if(btn) btn.classList.toggle('active',visible);
-  if(visible){renderVbar();renderSbar();}
+  const panel=document.getElementById('vdr-panel');
+  if(!panel) return;
+  const isOpen=panel.classList.contains('open');
+  closeDropdowns();
+  if(!isOpen){
+    renderVbar();
+    // Position panel below the Lugar button
+    const btnRect=btn?btn.getBoundingClientRect():null;
+    if(btnRect){
+      panel.style.top=(btnRect.bottom+4)+'px';
+      panel.style.right=(window.innerWidth-btnRect.right)+'px';
+    }
+    panel.classList.add('open');
+    if(btn) btn.classList.add('active');
+  } else {
+    if(btn) btn.classList.remove('active');
+  }
 }
 
 function _updateProgramaActiveFilter(){
