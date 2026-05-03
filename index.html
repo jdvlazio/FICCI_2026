@@ -8148,6 +8148,7 @@ async function loadFestival(id){
   activeVenue='all';activeSec='all';programaChip='all';_programaChipMatchFn=null;
   lugarClose();
   seccionClose();
+  requestAnimationFrame(_fixStickyOffset); // recalculate after festival name changes topbar height
   // Si no está en FESTIVAL_CONFIG, intentar cargar config desde JSON
   if(!FESTIVAL_CONFIG[id]){
     FESTIVAL_CONFIG[id]={films:null,posters:null};
@@ -8485,7 +8486,8 @@ function _fixStickyOffset(){
   const hdrH=document.getElementById('hdr-programa')?.offsetHeight||tbH;
   r.setProperty('--sticky-top-chips',hdrH+'px');
 }
-_fixStickyOffset();
+// Run after layout is complete (fonts + CSS painted)
+requestAnimationFrame(()=>requestAnimationFrame(_fixStickyOffset));
 window.addEventListener('resize',function(){requestAnimationFrame(_fixStickyOffset);});
 </script>
 <script>
