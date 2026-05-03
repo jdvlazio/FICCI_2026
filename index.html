@@ -6461,13 +6461,18 @@ let expandedPelicula=''; // título expandido en vista Por Película
 function _updateSearchResultsHeight(){
   const res=document.getElementById('hdr-search-results');
   if(!res||res.style.display==='none') return;
-  const resTop=parseInt(getComputedStyle(document.documentElement).getPropertyValue('--search-res-top'))||88;
-  const vvH=window.visualViewport?window.visualViewport.height:window.innerHeight;
-  res.style.height=(vvH-resTop)+'px';
+  // Recalculate topbar bottom every time — topbar may have moved
+  const tb=document.querySelector('.topbar');
+  const topbarBottom=tb?Math.ceil(tb.getBoundingClientRect().bottom):88;
+  // Visual viewport height accounts for keyboard
+  const vvH=window.visualViewport?window.visualViewport.height+window.visualViewport.offsetTop:window.innerHeight;
+  res.style.top=topbarBottom+'px';
+  res.style.height=(vvH-topbarBottom)+'px';
 }
-// Update results height when keyboard appears/disappears
+// Update on keyboard appear/disappear and scroll
 if(window.visualViewport){
   window.visualViewport.addEventListener('resize',_updateSearchResultsHeight);
+  window.visualViewport.addEventListener('scroll',_updateSearchResultsHeight);
 }
 function openGlobalSearch(){
   const bar=document.getElementById('hdr-fest-bar');
@@ -6475,12 +6480,11 @@ function openGlobalSearch(){
   if(bar) bar.classList.add('search-open');
   window.scrollTo({top:0,behavior:'instant'});
   requestAnimationFrame(()=>{
-    const tb=document.querySelector('.topbar');
-    if(tb){
-      const bottom=Math.ceil(tb.getBoundingClientRect().bottom);
-      document.documentElement.style.setProperty('--search-res-top',bottom+'px');
+    if(inp){
+      inp.focus();
+      // Update position after focus (keyboard may appear)
+      inp.addEventListener('focus',_updateSearchResultsHeight,{once:false});
     }
-    if(inp) inp.focus();
   });
 }
 function closeGlobalSearch(){
