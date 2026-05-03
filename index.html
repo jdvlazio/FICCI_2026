@@ -4571,6 +4571,19 @@ function renderFilmListHTML(){
     return future[0]||null;
   }
 
+  // ── Label de día relativo: hoy→solo hora, mañana→MAÑANA, otro→label ──
+  function _relDayLabel(screening){
+    const todayStr=simTodayStr();
+    const todayKey=DAY_KEYS.find(d=>FESTIVAL_DATES[d]===todayStr);
+    const todayLabel=todayKey?DAY_SHORT[todayKey]:'';
+    const tomorrowIdx=todayKey?DAY_KEYS.indexOf(todayKey)+1:-1;
+    const tomorrowKey=tomorrowIdx>0&&tomorrowIdx<DAY_KEYS.length?DAY_KEYS[tomorrowIdx]:null;
+    const tomorrowLabel=tomorrowKey?DAY_SHORT[tomorrowKey]:'';
+    if(screening.day===todayLabel) return screening.time+(screening.venue?' · '+screening.venue:'');
+    if(tomorrowLabel&&screening.day===tomorrowLabel) return'MAÑANA · '+screening.time+(screening.venue?' · '+screening.venue:'');
+    return screening.day+' · '+screening.time+(screening.venue?' · '+screening.venue:'');
+  }
+
   // ── Detecta conflicto con agenda guardada ──────────────────────────────
   function _hasConflict(title){
     if(!savedAgenda?.schedule?.length) return null;
@@ -4603,7 +4616,7 @@ function renderFilmListHTML(){
     const nextHtml=next
       ?`<div class="int-item-next">
           <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-          ${next.day} · ${next.time}${next.venue?' · '+next.venue:''}
+          ${_relDayLabel(next)}
         </div>`
       :`<div class="int-item-gone">Sin funciones disponibles</div>`;
     const conflictHtml=conflict
