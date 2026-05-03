@@ -298,10 +298,12 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:var(--t
 .hdr-fest-bar.search-open .hdr-search-expanded{display:flex}
 .hdr-search-back{width:28px;height:36px;display:flex;align-items:center;justify-content:center;color:var(--gray);cursor:pointer;flex-shrink:0;background:none;border:none;font-family:var(--font);-webkit-tap-highlight-color:transparent}
 .hdr-search-field{flex:1;display:flex;align-items:center;gap:var(--sp-2);background:var(--surf);border:1px solid var(--bdr);border-radius:var(--r-md);height:26px;padding:0 var(--sp-2)}
-.hdr-search-field input{flex:1;background:none;border:none;color:var(--white);font-family:var(--font);font-size:var(--t-sm);outline:none}
+.hdr-search-field input{flex:1;background:none;border:none;color:var(--white);font-family:var(--font);font-size:16px;outline:none}
 .hdr-search-field input::placeholder{color:var(--gray2)}
 .hdr-search-cancel{font-size:var(--t-sm);font-weight:var(--w-semi);color:var(--gray);cursor:pointer;flex-shrink:0;background:none;border:none;font-family:var(--font);padding:var(--sp-1)}
-.hdr-search-results{position:fixed;top:0;left:0;right:0;background:var(--surf);border-bottom:1px solid var(--bdr);z-index:299;overflow-y:auto;display:none;padding-top:var(--search-res-top,120px)}
+.hdr-search-results{position:fixed;top:var(--search-res-top,120px);left:0;right:0;bottom:0;background:var(--surf);z-index:299;overflow-y:auto;display:none}
+/* Overlay backdrop when search is open */
+body.search-active::before{content:'';position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:298;pointer-events:none}
 .hdr-fest-left{display:flex;align-items:center;gap:var(--sp-2)}
 .hdr-fest-dot{width:5px;height:5px;border-radius:50%;background:var(--amber);flex-shrink:0}
 .hdr-fest-name{font-size:var(--t-xs);font-weight:var(--w-bold);letter-spacing:.08em;text-transform:uppercase;color:var(--white)}
@@ -6460,21 +6462,27 @@ function openGlobalSearch(){
   const bar=document.getElementById('hdr-fest-bar');
   const inp=document.getElementById('global-search-input');
   if(bar) bar.classList.add('search-open');
-  // Measure topbar height for fixed results positioning
-  const tb=document.querySelector('.topbar');
-  if(tb){
-    const bottom=Math.ceil(tb.getBoundingClientRect().bottom);
-    document.documentElement.style.setProperty('--search-res-top',bottom+'px');
-  }
-  if(inp) setTimeout(()=>inp.focus(),60);
+  // Scroll to top so topbar is fully visible before measuring
+  window.scrollTo({top:0,behavior:'instant'});
+  // Measure topbar height AFTER scroll
+  requestAnimationFrame(()=>{
+    const tb=document.querySelector('.topbar');
+    if(tb){
+      const bottom=Math.ceil(tb.getBoundingClientRect().bottom);
+      document.documentElement.style.setProperty('--search-res-top',bottom+'px');
+    }
+    document.body.classList.add('search-active');
+    if(inp) inp.focus();
+  });
 }
 function closeGlobalSearch(){
   const bar=document.getElementById('hdr-fest-bar');
   const inp=document.getElementById('global-search-input');
   const res=document.getElementById('hdr-search-results');
   if(bar) bar.classList.remove('search-open');
-  if(inp) inp.value='';
+  if(inp){inp.value='';inp.blur();}
   if(res) res.style.display='none';
+  document.body.classList.remove('search-active');
 }
 function onGlobalSearch(){
   const inp=document.getElementById('global-search-input');
@@ -6508,7 +6516,6 @@ function onGlobalSearch(){
   if(!matches.length){
     res.innerHTML='<div style="padding:var(--sp-btn);text-align:center;color:var(--gray);font-size:var(--t-base)">Sin resultados</div>';
     res.style.display='block';
-  res.style.maxHeight=(window.visualViewport?window.visualViewport.height*0.6:window.innerHeight*0.6)+'px';
   return;
   }
   res.innerHTML=matches.map(f=>{
@@ -6536,7 +6543,6 @@ function onGlobalSearch(){
       +'</div></div>';
   }).join('');
   res.style.display='block';
-  res.style.maxHeight=(window.visualViewport?window.visualViewport.height*0.6:window.innerHeight*0.6)+'px';
 }
 document.addEventListener('click',e=>{
   const bar=document.getElementById('hdr-fest-bar');
