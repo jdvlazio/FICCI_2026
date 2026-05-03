@@ -301,7 +301,7 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:var(--t
 .hdr-search-field input{flex:1;background:none;border:none;color:var(--white);font-family:var(--font);font-size:var(--t-sm);outline:none}
 .hdr-search-field input::placeholder{color:var(--gray2)}
 .hdr-search-cancel{font-size:var(--t-sm);font-weight:var(--w-semi);color:var(--gray);cursor:pointer;flex-shrink:0;background:none;border:none;font-family:var(--font);padding:var(--sp-1)}
-.hdr-search-results{position:absolute;left:0;right:0;background:var(--surf);border-bottom:1px solid var(--bdr);z-index:199;max-height:60vh;overflow-y:auto;display:none}
+.hdr-search-results{position:fixed;top:0;left:0;right:0;background:var(--surf);border-bottom:1px solid var(--bdr);z-index:299;overflow-y:auto;display:none;padding-top:var(--search-res-top,120px)}
 .hdr-fest-left{display:flex;align-items:center;gap:var(--sp-2)}
 .hdr-fest-dot{width:5px;height:5px;border-radius:50%;background:var(--amber);flex-shrink:0}
 .hdr-fest-name{font-size:var(--t-xs);font-weight:var(--w-bold);letter-spacing:.08em;text-transform:uppercase;color:var(--white)}
@@ -6460,6 +6460,12 @@ function openGlobalSearch(){
   const bar=document.getElementById('hdr-fest-bar');
   const inp=document.getElementById('global-search-input');
   if(bar) bar.classList.add('search-open');
+  // Measure topbar height for fixed results positioning
+  const tb=document.querySelector('.topbar');
+  if(tb){
+    const bottom=Math.ceil(tb.getBoundingClientRect().bottom);
+    document.documentElement.style.setProperty('--search-res-top',bottom+'px');
+  }
   if(inp) setTimeout(()=>inp.focus(),60);
 }
 function closeGlobalSearch(){
@@ -6501,7 +6507,9 @@ function onGlobalSearch(){
     .slice(0,10);
   if(!matches.length){
     res.innerHTML='<div style="padding:var(--sp-btn);text-align:center;color:var(--gray);font-size:var(--t-base)">Sin resultados</div>';
-    res.style.display='block';return;
+    res.style.display='block';
+  res.style.maxHeight=(window.visualViewport?window.visualViewport.height*0.6:window.innerHeight*0.6)+'px';
+  return;
   }
   res.innerHTML=matches.map(f=>{
     const{displayTitle,progSuffix}=parseProgramTitle(f.title);
@@ -6528,6 +6536,7 @@ function onGlobalSearch(){
       +'</div></div>';
   }).join('');
   res.style.display='block';
+  res.style.maxHeight=(window.visualViewport?window.visualViewport.height*0.6:window.innerHeight*0.6)+'px';
 }
 document.addEventListener('click',e=>{
   const bar=document.getElementById('hdr-fest-bar');
