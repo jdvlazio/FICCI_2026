@@ -8583,7 +8583,7 @@ function lugarClose(){
   const btn = document.getElementById('lugar-btn');
   if(btn) btn.classList.toggle('active', activeVenue!=='all');
   const lbl = document.getElementById('lugar-lbl');
-  if(lbl) lbl.textContent = activeVenue==='all'?'Lugar':activeVenue;
+  if(lbl) lbl.textContent = activeVenue==='all'?'Lugar':''; // icono ⊙ suficiente — nombre completo en pill
 }
 
 function lugarToggle(){
