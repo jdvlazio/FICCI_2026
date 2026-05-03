@@ -8876,15 +8876,19 @@ function seccionToggle(){
 // data-title en el img → busca el film → muestra generativo.
 // Si no hay generativo → fondo surf-2 (nunca negro).
 function _posterErr(img){
+  // Llama al generativo directamente — nunca a getFilmPoster
+  // getFilmPoster devolvería la misma URL real que ya falló
+  img.onerror = null;
   const title = img.dataset.title || '';
   const f = title ? FILMS.find(fi=>fi.title===title) : null;
-  const gen = f ? getFilmPoster(f) : null;
-  if(gen){
-    img.onerror = null; // evita loop si el generativo también falla
-    img.src = gen;
-  } else {
-    img.style.display = 'none';
-  }
+  if(!f){ img.style.display='none'; return; }
+  let gen = null;
+  if(f.title&&f.title.toLowerCase().includes('sorpresa')) gen=makeSorpresaPoster();
+  else if(f.type==='event') gen=makeEventPoster(f.title,f.duration,f.event_kind);
+  else if(f.is_cortos) gen=makeProgramPoster(f.title,f.duration,f.section);
+  else gen=makeFilmPlaceholder(f.title,f.director,f.year);
+  if(gen) img.src=gen;
+  else img.style.display='none';
 }
 </script>
 
