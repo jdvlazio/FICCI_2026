@@ -8716,13 +8716,11 @@ if(window.visualViewport){
 // activeSec: 'all' | nombre exacto de sección (f.section)
 
 function _seccionLabel(sec){
-  // Botón mode bar: emoji + primera palabra, máx 14 chars
+  // Botón mode bar: emoji + nombre completo
   if(!sec||sec==='all') return 'Sección';
   const chip = PROGRAMA_CHIPS.find(c=>c.match&&c.match(sec));
   const emoji = chip ? chip.label.split(' ')[0] : '';
-  const firstWord = (sec.split(' ')[0])||sec;
-  const label = emoji ? (emoji+' '+firstWord) : firstWord;
-  return label.length>14 ? label.slice(0,13)+'…' : label;
+  return emoji ? (emoji+' '+sec) : sec;
 }
 function _seccionPillLabel(sec){
   // Pill: emoji + nombre completo de sección
