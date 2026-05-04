@@ -4524,7 +4524,7 @@ function renderPrioStrip(){
     const f=FILMS.find(fi=>fi.title===t);
     const p=getFilmPoster(f);
     const _safeChipT=t.replace(/'/g,"\'");
-    const img=p?`<img class="prio-chip-poster" src="${p}" loading="eager" style="object-fit:cover;cursor:pointer" onclick="event.stopPropagation();openPelSheet('${_safeChipT}')" onerror="this.remove()" alt="">`:`<div class="prio-chip-ph">${ICONS.star}</div>`;
+    const img=p?`<img class="prio-chip-poster" src="${p}" data-title="${t.replace(/"/g,'&quot;')}" loading="eager" style="object-fit:cover;cursor:pointer" onclick="event.stopPropagation();openPelSheet('${_safeChipT}')" onerror="_posterErr(this)" alt="">`:`<div class="prio-chip-ph">${ICONS.star}</div>`;
     const{displayTitle,progSuffix}=parseProgramTitle(t);
     const short=displayTitle.length>16?displayTitle.slice(0,14)+'…':displayTitle;
     const allPast=!festivalEnded()&&!FILMS.some(f=>f.title===t&&!screeningPassed(f));
@@ -6066,7 +6066,7 @@ function buildResultHTML(scenarios){
       const safeT=t.replace(/'/g,"\'");
       return`<div class="ag-excl-item${isPast?' past-card':''}" onclick="openPelSheet('${safeT}')">
         ${poster
-          ?`<img class="ag-excl-poster" src="${poster}" onerror="this.remove()" alt="">`
+          ?`<img class="ag-excl-poster" src="${poster}" data-title="${t.replace(/"/g,'&quot;')}" onerror="_posterErr(this)" alt="">`
           :`<div class="ag-excl-poster-ph"></div>`}
         <div class="ag-excl-title">${short}</div>
       </div>`;
