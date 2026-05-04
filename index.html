@@ -6897,24 +6897,11 @@ function showAgView(){
 }
 
 const dtabs=document.getElementById('dtabs');
-const DAYS=[{k:'Martes',d:14,lbl:'MAR'},{k:'Miércoles',d:15,lbl:'MIÉ'},{k:'Jueves',d:16,lbl:'JUE'},{k:'Viernes',d:17,lbl:'VIE'},{k:'Sábado',d:18,lbl:'SÁB'},{k:'Domingo',d:19,lbl:'DOM'}];
-const DAY_ABBR=Object.fromEntries(DAYS.map(d=>[d.k,d.lbl])); // {Martes:'MAR',...}
-const DAY_NUM =Object.fromEntries(DAYS.map(d=>[d.k,d.d]));  // {Martes:14,...}
-DAYS.forEach(day=>{
-  const cnt=FILMS.filter(f=>f.day===day.k).length;
-  const btn=document.createElement('button');
-  btn.className='dtab'+(day.k===activeDay?' on':'')+(dayFullyPassed(day.k)?' past':'');
-  btn.dataset.day=day.k;
-  btn.innerHTML=`<span class="dtab-date">${day.lbl}</span><span class="dtab-name">${day.d}</span>`;
-  btn.onclick=()=>{
-    activeDay=day.k;activeVenue='all';activeSec='all';selectedIdx=null;
-    cartelaMode='horario';
-    document.querySelectorAll('.dtab').forEach(t=>t.classList.toggle('on',t.dataset.day===day.k));
-    _renderProgramaContent();
-    if(activeMNav!=='mnav-cartelera') switchMainNav('mnav-cartelera');
-  };
-  dtabs.appendChild(btn);
-});
+// DAYS, DAY_ABBR, DAY_NUM — populated by loadFestival(), never hardcoded aquí.
+// El glitch de los días de FICCI apareciendo brevemente era causado por este bloque.
+const DAYS=[];
+const DAY_ABBR={};
+const DAY_NUM ={};
 
 // Auto-posicionar en el primer día vigente al cargar
 // Los días pasados siguen accesibles con scroll hacia la izquierda
