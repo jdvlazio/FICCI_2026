@@ -783,7 +783,8 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:var(--t
 /* ── Franja de acciones en tarjetas ── */
 
 /* ── Expansión inline de funciones ── */
-.pelicula-day{font-size:var(--t-label);font-weight:var(--w-bold);color:var(--amber);letter-spacing:.8px;text-transform:uppercase;min-width:42px;flex-shrink:0;white-space:nowrap}
+.pelicula-day{font-size:var(--t-label);font-weight:var(--w-bold);color:var(--amber);letter-spacing:.8px;text-transform:uppercase;min-width:42px;flex-shrink:0;white-space:nowrap;cursor:pointer;-webkit-tap-highlight-color:transparent;transition:opacity var(--tr-base)}
+.pelicula-day:active{opacity:.6}
 .pelicula-time{font-size:var(--t-base);font-weight:var(--w-bold);color:var(--white);flex-shrink:0;width:42px}
 .pelicula-venue{font-size:var(--t-caption);color:rgba(240,237,232,.6);flex:1;min-width:0;cursor:pointer;transition:color var(--tr-base);display:flex;align-items:flex-start;gap:4px}
 .pelicula-venue:active{color:var(--amber)}
@@ -7170,6 +7171,26 @@ function filterByVenue(venue){
   lugarClose();
 }
 
+function filterByDay(day){
+  closePelSheet();
+  activeDay=day;activeVenue='all';activeSec='all';selectedIdx=null;
+  cartelaMode='horario';
+  programaSubMode='explorar';
+  document.querySelectorAll('.dtab').forEach(t=>t.classList.toggle('on',t.dataset.day===day));
+  requestAnimationFrame(()=>{
+    const activeBtn=document.querySelector('.dtab.on');
+    if(activeBtn){const dt=document.getElementById('dtabs');if(dt)dt.scrollLeft=activeBtn.offsetLeft-dt.offsetLeft;}
+  });
+  switchMainNav('mnav-cartelera');
+  _renderProgramaContent();
+}
+
+// ── pelicula-day tap → filterByDay ──────────────────────────
+document.addEventListener('click', function(e){
+  const day=e.target.closest('.pelicula-day');
+  if(day&&day.dataset.day) filterByDay(day.dataset.day);
+});
+
 function filterBySection(section){
   // Navegar a Programa · Explorar con esa sección activa
   closePelSheet();
@@ -7267,7 +7288,7 @@ function openPelSheet(title){
     const _city=vc.city&&vc.city!=='Medellín'?vc.city:'';
     const isPast=screeningPassed(s)&&!festivalEnded();
     return`<div class="pel-sheet-screening"${isPast?' style="opacity:.4"':''}>
-      <span class="pelicula-day">${dayAbb}</span>
+      <span class="pelicula-day" data-day="${s.day}">${dayAbb}</span>
       <span class="pelicula-time">${s.time}</span>
       <span class="pelicula-venue" data-venue="${vc.short.replace(/"/g,'&quot;')}" onclick="filterByVenue(this.dataset.venue)">${ICONS.pin} <span class="venue-text">${vc.short}${sl?' · '+sl:''}${_city?`<span class="venue-municipio">${_city}</span>`:''}</span></span>
     </div>`;
