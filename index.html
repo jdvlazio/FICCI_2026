@@ -1101,6 +1101,8 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:var(--t
 .ag-nav-dot{width:32px;height:32px;border-radius:50%;border:1px solid var(--bdr);background:none;color:var(--gray);font-size:var(--t-xs);font-weight:var(--w-bold);cursor:pointer;transition:all var(--tr-base);display:flex;align-items:center;justify-content:center;flex-shrink:0}
 .ag-nav-dot:hover:not(.active){border-color:var(--orange);color:var(--orange)}
 .ag-nav-dot.active{background:var(--amber-10);border-color:var(--orange);color:var(--orange)}
+.ag-nav-dot.optimo{border-color:var(--amber-30);color:var(--amber)}
+.ag-nav-dot.optimo.active{background:var(--amber);border-color:var(--amber);color:#000}
 .ag-nav-pos{display:none}
 .ag-conflicts{background:var(--surf);border:1px solid var(--bdr);border-radius:var(--r);padding:var(--sp-3);margin-bottom:var(--sp-4)}
 .ag-conflict-item{display:flex;align-items:flex-start;justify-content:space-between;gap:var(--sp-2);font-size:var(--t-sm);color:var(--gray);line-height:1.5;padding:var(--sp-2) 0;border-bottom:1px solid var(--white-05)}
@@ -6019,7 +6021,7 @@ function buildResultHTML(scenarios){
       const isOptimoDot=di===0;
       const isCustom=sc_._custom===true;
       // Dot base: algoritmo=número, personalizado=✎ para distinguirlos
-      const cls=isActive?(isOptimoDot?'ag-nav-dot active':'ag-nav-dot active'):'ag-nav-dot';
+      const cls=(isOptimoDot?'ag-nav-dot optimo':'ag-nav-dot')+(isActive?' active':'');
       const label=isOptimoDot?'★':isCustom?'✎':(di).toString();
       const titleStr=isOptimoDot?'Plan óptimo':isCustom?'Opción personalizada':'Opción '+di;
       return`<button class="${cls}" onclick="jumpToScenario(${di})" title="${titleStr}">${label}</button>`;
