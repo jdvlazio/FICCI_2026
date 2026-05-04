@@ -5497,16 +5497,16 @@ function _renderSavedAgendaHTML(){
   const byDay={};
   futureItems.forEach(s=>{if(!byDay[s.day])byDay[s.day]=[];byDay[s.day].push(s);});
 
-  const festDays=['Martes','Miércoles','Jueves','Viernes','Sábado','Domingo'];
   const today=simTodayStr();
-  const dayIdx=festDays.findIndex(d=>FESTIVAL_DATES[d]===today);
+  const dayIdx=DAY_KEYS.findIndex(d=>FESTIVAL_DATES[d]===today);
   const currentDayNum=dayIdx>=0?dayIdx+1:null;
+  const totalDays=Math.max(1,DAY_KEYS.length);
   const viewedCount=all.filter(s=>watched.has(s._title)).length;
-  const progressPct=dayIdx>=0?Math.round((dayIdx/5)*100):0;
+  const progressPct=dayIdx>=0?Math.round((dayIdx/(totalDays-1))*100):0;
   const _mpSwitch=`<button class="mplan-act-btn primary" onclick="_scrollToMplanDetail()" title="Ir al detalle del día">${ICONS.chevronD} Ver día</button>`;
   const progressBar=currentDayNum?`<div class="festival-progress" style="display:flex;align-items:center;gap:8px">
     <div style="flex:1">
-      <div class="festival-progress-text"><span>Día <b>${currentDayNum}</b> de 6</span><span style="color:var(--orange)">${ICONS.check} ${viewedCount} ${viewedCount===1?'vista':'vistas'}</span></div>
+      <div class="festival-progress-text"><span>Día <b>${currentDayNum}</b> de ${totalDays}</span><span style="color:var(--orange)">${ICONS.check} ${viewedCount} ${viewedCount===1?'vista':'vistas'}</span></div>
       <div class="festival-progress-bar"><div class="festival-progress-fill" style="width:${progressPct}%"></div></div>
     </div>
   </div>`:'';
