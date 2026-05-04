@@ -2831,7 +2831,7 @@ const FESTIVAL_CONFIG={
   }
 };// Festival data loaded async from festivals/<id>.json via loadFestival()
 
-let _activeFestId='ficci65';
+let _activeFestId=localStorage.getItem('otrofestiv_festival')||'aff2026';
 
 // ═══════════════════════════════════════════════════════════════
 // SUPABASE — Auth + Cloud Sync
@@ -3229,7 +3229,7 @@ let PRIO_LIMIT=5; // Updated by loadFestival per festival
 /* ── Clave de almacenamiento — cambiar por edición del festival ──
    Formato: {nombre}{año}_ → prefija todas las keys de localStorage.
    Garantiza que cada edición empiece limpia sin datos residuales. */
-let FESTIVAL_STORAGE_KEY='ficci65_';
+let FESTIVAL_STORAGE_KEY=(localStorage.getItem('otrofestiv_festival')||'aff2026')+'_';
 // ── Reset agresivo de caché — independiente del SW ────────────────
 // BUILD_VERSION: cambia en cada deploy.
 // Al cargar, compara con localStorage. Si difiere → reload duro.
@@ -6954,26 +6954,6 @@ function applyStates(vis){
   });
 }
 
-// ── Orden oficial FICCI 65 (Letterboxd) ── largometrajes primero, cortos al final
-const SECTION_ORDER_LF=[
-  '🇨🇴 Comp. Colombia',
-  '🌎 Comp. Iberoamérica',
-  '⏳ (s)paces of Time',
-  '🌍 Internacional',
-  '✊ Cine Afro',
-  '🪶 Cine Indígena',
-  '🏆 Comp. Cine en los Barrios',
-  '🌙 Medianoche',
-  '🇪🇸 Muestra España',
-  '🇨🇭 Muestra Suiza',
-  '🇦🇷 Muestra Argentina',
-  '📽️ Retrospectiva Ruth Beckermann',
-  '📽️ Retrospectiva FICCI Años 60',
-  '📽️ Retrospectiva Clásicos – Ópera Prima',
-  '🎖️ Tributo Ben Rivers',
-  '🇧🇷 Casa Brasil',
-  '⭐ Proyecciones Especiales',
-];
 
 function updateHorarioPrioBtn(title){
   const inPrio=prioritized.has(title);
@@ -8326,7 +8306,8 @@ async function loadFestival(id){
   if(!cfg){console.warn('Festival desconocido:',id);return;}
   // ── Fase 1: cargar datos del festival desde JSON si no están en memoria ──
   if(!cfg.films){
-    const festFile=id==='ficci65'?'ficci-65':id==='aff2026'?'aff-2026':id==='cinemancia2025'?'cinemancia-2025':id;
+    // Convierte festivalId a nombre de archivo: ficci65→ficci-65, aff2026→aff-2026
+    const festFile=id.replace(/([a-zA-Z]+)(\d+)$/,'$1-$2');
     try{
       const data=await fetch('festivals/'+festFile+'.json').then(r=>{
         if(!r.ok)throw new Error('HTTP '+r.status);
