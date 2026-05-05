@@ -1694,9 +1694,9 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:var(--t
   z-index:99999;
   padding:calc(env(safe-area-inset-top) + 14vh) 32px calc(env(safe-area-inset-bottom) + 10vh);
   text-align:center;
-  transition:opacity .5s ease-out, visibility .5s ease-out;
+  transition:opacity .5s ease-out, transform .5s ease-out, visibility .5s ease-out;
 }
-#otrofestiv-splash.fade-out{opacity:0;visibility:hidden;pointer-events:none}
+#otrofestiv-splash.fade-out{opacity:0;transform:scale(1.04);visibility:hidden;pointer-events:none}
 .splash-wordmark{
   font-size:var(--t-lg);letter-spacing:-.03em;color:var(--white);
   font-weight:var(--w-display);line-height:1;
@@ -8491,8 +8491,10 @@ function dismissSplash(){
   const s=document.getElementById('otrofestiv-splash');
   loadFestival(_splashSelectedFestId)
     .then(()=>{
-      // Contenido ya renderizado y estable — ahora fade del splash
-      if(s){s.classList.add('fade-out');setTimeout(()=>s.remove(),560);}
+      // 150ms para que el compositor de iOS se asiente antes de revelar
+      setTimeout(()=>{
+        if(s){s.classList.add('fade-out');setTimeout(()=>s.remove(),560);}
+      },150);
     })
     .catch(e=>console.error('Error init festival:',e));
 }
