@@ -1401,6 +1401,7 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:var(--t
      Altura calculada dinámicamente por _fixStickyOffset.
      Los sticky son transparentes — no blurean, solo muestran contenido. */
   #chrome-blur{display:block;position:fixed;top:0;left:0;right:0;height:0;background:rgba(20,20,20,0.72);backdrop-filter:blur(24px) saturate(180%);-webkit-backdrop-filter:blur(24px) saturate(180%);z-index:198;pointer-events:none}
+  #chrome-blur::after{content:'';position:absolute;top:100%;left:0;right:0;height:20px;background:linear-gradient(to bottom,rgba(0,0,0,0.20) 0%,transparent 100%);pointer-events:none}
   .topbar{position:sticky;top:0;z-index:200;background:transparent}
   .hdr{background:transparent}
   .hdr-fest-bar{background:transparent}
