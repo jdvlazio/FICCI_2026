@@ -1396,18 +1396,18 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:var(--t
   /* Remove the margin on nav-row that adds space above day tabs */
   .nav-row{margin-top:0}
 
-  /* ── Mobile: unified sticky header — frosted glass Apple Music ────
-     Dos zonas visuales via pseudo-elementos:
-     ::before → zona status bar (Dynamic Island/notch): sólido sin blur
-     ::after  → zona contenido (filas wordmark + festival): vidrio esmerilado
-     Los hijos (.hdr, .hdr-fest-bar) deben ser transparent para
-     que el blur sea visible a través de ellas. ─────────────────────── */
+  /* ── Mobile: frosted glass continuo — un solo canvas de blur ────────
+     Un único ::after cubre todo el topbar (incluye safe-area/island).
+     iOS renderiza el status bar (reloj, batería) encima de la capa web
+     → el blur corre libre bajo el island sin problema.
+     #hdr-programa recibe el mismo tratamiento para continuidad visual.
+     Elementos adyacentes con valores idénticos = chrome unificado. ─── */
   .topbar{position:sticky;top:0;z-index:200;background:transparent}
-  .topbar::before{content:'';position:absolute;inset:0 0 auto 0;height:env(safe-area-inset-top);background:rgba(14,14,14,0.97);z-index:-1}
-  .topbar::after{content:'';position:absolute;inset:env(safe-area-inset-top) 0 0 0;background:rgba(20,20,20,0.88);backdrop-filter:blur(20px) saturate(160%);-webkit-backdrop-filter:blur(20px) saturate(160%);z-index:-1}
+  .topbar::after{content:'';position:absolute;inset:0;background:rgba(20,20,20,0.72);backdrop-filter:blur(24px) saturate(180%);-webkit-backdrop-filter:blur(24px) saturate(180%);z-index:-1}
   .hdr{background:transparent}
   .hdr-fest-bar{background:transparent}
-  #hdr-programa{padding-top:0} /* top viene de --sticky-top-carta via _fixStickyOffset */
+  #hdr-programa{padding-top:0;background:transparent} /* top viene de --sticky-top-carta via _fixStickyOffset */
+  #hdr-programa::after{content:'';position:absolute;inset:0;background:rgba(20,20,20,0.72);backdrop-filter:blur(24px) saturate(180%);-webkit-backdrop-filter:blur(24px) saturate(180%);z-index:-1}
   #hdr-ag{top:47px}
 }
 
