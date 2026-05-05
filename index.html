@@ -1391,18 +1391,22 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:var(--t
      .hdr-fest-bar borders create lines between wordmark/fest/search.
      Remove borders + match background to make the header one block.
      #hdr-programa padding-top would show a gap under the sticky hdr. */
-  .hdr-fest-bar{border-top:none;border-bottom:none;background:var(--surf)}
+  .hdr-fest-bar{border-top:none;border-bottom:none}
   #hdr-programa{padding-top:0}
   /* Remove the margin on nav-row that adds space above day tabs */
   .nav-row{margin-top:0}
 
-  /* ── Mobile: unified sticky header ────────────────────────────────
-     - .topbar: sticky at top:0, background matches surface
-     - .hdr: remove transparent bg so wordmark row matches fest-bar
-     - #hdr-programa: sticky below topbar (47px = measured .hdr height)
-       --sticky-top-carta is undefined in mobile so override directly */
-  .topbar{position:sticky;top:0;z-index:200;background:rgba(20,20,20,0.88);backdrop-filter:blur(20px) saturate(160%);-webkit-backdrop-filter:blur(20px) saturate(160%)}
-  .hdr{background:var(--surf)}
+  /* ── Mobile: unified sticky header — frosted glass Apple Music ────
+     Dos zonas visuales via pseudo-elementos:
+     ::before → zona status bar (Dynamic Island/notch): sólido sin blur
+     ::after  → zona contenido (filas wordmark + festival): vidrio esmerilado
+     Los hijos (.hdr, .hdr-fest-bar) deben ser transparent para
+     que el blur sea visible a través de ellas. ─────────────────────── */
+  .topbar{position:sticky;top:0;z-index:200;background:transparent}
+  .topbar::before{content:'';position:absolute;inset:0 0 auto 0;height:env(safe-area-inset-top);background:rgba(14,14,14,0.97);z-index:-1}
+  .topbar::after{content:'';position:absolute;inset:env(safe-area-inset-top) 0 0 0;background:rgba(20,20,20,0.88);backdrop-filter:blur(20px) saturate(160%);-webkit-backdrop-filter:blur(20px) saturate(160%);z-index:-1}
+  .hdr{background:transparent}
+  .hdr-fest-bar{background:transparent}
   #hdr-programa{padding-top:0} /* top viene de --sticky-top-carta via _fixStickyOffset */
   #hdr-ag{top:47px}
 }
