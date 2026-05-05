@@ -1406,8 +1406,8 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:var(--t
   .topbar::after{content:'';position:absolute;inset:0;background:rgba(20,20,20,0.72);backdrop-filter:blur(24px) saturate(180%);-webkit-backdrop-filter:blur(24px) saturate(180%);z-index:-1}
   .hdr{background:transparent}
   .hdr-fest-bar{background:transparent}
-  #hdr-programa{padding-top:0;background:transparent} /* top viene de --sticky-top-carta via _fixStickyOffset */
-  #hdr-programa::after{content:'';position:absolute;inset:0;background:rgba(20,20,20,0.72);backdrop-filter:blur(24px) saturate(180%);-webkit-backdrop-filter:blur(24px) saturate(180%);z-index:-1}
+  #hdr-programa{padding-top:0;background:rgba(20,20,20,0.72);backdrop-filter:blur(24px) saturate(180%);-webkit-backdrop-filter:blur(24px) saturate(180%)} /* top via _fixStickyOffset */
+  .programa-mode-bar{background:transparent}
   #hdr-ag{top:47px}
 }
 
