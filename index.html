@@ -1694,7 +1694,7 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:var(--t
   z-index:99999;
   padding:calc(env(safe-area-inset-top) + 14vh) 32px calc(env(safe-area-inset-bottom) + 10vh);
   text-align:center;
-  transition:opacity .3s ease, visibility .3s ease;
+  transition:opacity .5s ease-out, visibility .5s ease-out;
 }
 #otrofestiv-splash.fade-out{opacity:0;visibility:hidden;pointer-events:none}
 /* Splash skip — clase puesta por script inline en <head> antes del paint */
@@ -8491,10 +8491,10 @@ async function loadFestival(id){
   });
   // Persist choice
   localStorage.setItem('otrofestiv_festival',id);
-  // Render — defer un frame para evitar flash de contenido previo
+  // Render — await dos rAFs: primero renderiza, segundo confirma el paint
   closeFestivalSheet();
   switchMainNav('mnav-cartelera');
-  requestAnimationFrame(()=>showDayView());
+  await new Promise(resolve=>requestAnimationFrame(()=>{showDayView();requestAnimationFrame(resolve);}));
   // Resolver posters via TMDB en background — no bloquea la UI
   _autoResolveFestivalPosters().catch(()=>{});
 }
@@ -8503,7 +8503,7 @@ function dismissSplash(){
   loadFestival(_splashSelectedFestId||'aff2026')
     .then(()=>{
       // Contenido ya renderizado y estable — ahora fade del splash
-      if(s){s.classList.add('fade-out');setTimeout(()=>s.remove(),350);}
+      if(s){s.classList.add('fade-out');setTimeout(()=>s.remove(),560);}
     })
     .catch(e=>console.error('Error init festival:',e));
 }
