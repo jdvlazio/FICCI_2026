@@ -1697,6 +1697,11 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:var(--t
   transition:opacity .5s ease, visibility .5s ease;
 }
 #otrofestiv-splash.fade-out{opacity:0;visibility:hidden;pointer-events:none}
+/* ── App fade — cubre el contenido hasta que loadFestival renderiza ──
+   z-index justo bajo el splash (99999). Fade-out suave tras showDayView.
+   Convierte el brinco en un crossfade: splash baja, contenido emerge. */
+#app-fade{position:fixed;inset:0;background:var(--bg);z-index:99998;pointer-events:none;transition:opacity 0.38s ease}
+#app-fade.done{opacity:0}
 /* Splash skip — clase puesta por script inline en <head> antes del paint */
 html.splash-skip #otrofestiv-splash{display:none}
 .splash-wordmark{
@@ -2115,7 +2120,7 @@ html.splash-skip #otrofestiv-splash{display:none}
     <div class="splash-tagline-line"><span>posible.</span></div>
   </div>
 </div>
-
+<div id="app-fade" aria-hidden="true"></div>
 
 
 <!-- Bottom sheet disponibilidad -->
@@ -8495,7 +8500,14 @@ async function loadFestival(id){
   // Render — defer un frame para evitar flash de contenido previo
   closeFestivalSheet();
   switchMainNav('mnav-cartelera');
-  requestAnimationFrame(()=>showDayView());
+  requestAnimationFrame(()=>{
+    showDayView();
+    // Crossfade: contenido emerge mientras el splash termina de irse
+    requestAnimationFrame(()=>{
+      const f=document.getElementById('app-fade');
+      if(f){f.classList.add('done');setTimeout(()=>f.remove(),420);}
+    });
+  });
   // Resolver posters via TMDB en background — no bloquea la UI
   _autoResolveFestivalPosters().catch(()=>{});
 }
