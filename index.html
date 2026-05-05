@@ -61,6 +61,16 @@
 ════════════════════════════════════════════════════════ */
 :root{
 
+/* ── REGLA DE SISTEMA ──────────────────────────────────────────────────────
+   Todo valor de spacing, tipografía y radio DEBE usar var(--).
+   Valores hardcodeados solo en excepciones documentadas:
+     · font-size:16px  en <input>        → previene auto-zoom iOS
+     · font-size:28/32px en íconos emoji → elementos decorativos, no tipografía
+     · gap/margin: 1px, 2px, 3px        → micro-separadores de layout
+     · padding:10px en .poster-grid     → ritmo intencional entre sp-2 y sp-3
+   Para auditar: correr ./audit.sh desde la raíz del repo.
+─────────────────────────────────────────────────────────────────────────── */
+
   /* ── Superficies ── */
   --bg: #0A0A0A;
   --surf: #141414;
