@@ -1694,7 +1694,7 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:var(--t
   z-index:99999;
   padding:calc(env(safe-area-inset-top) + 14vh) 32px calc(env(safe-area-inset-bottom) + 10vh);
   text-align:center;
-  transition:opacity .18s ease, visibility .18s ease;
+  transition:opacity .3s ease, visibility .3s ease;
 }
 #otrofestiv-splash.fade-out{opacity:0;visibility:hidden;pointer-events:none}
 /* Splash skip — clase puesta por script inline en <head> antes del paint */
@@ -8500,8 +8500,12 @@ async function loadFestival(id){
 }
 function dismissSplash(){
   const s=document.getElementById('otrofestiv-splash');
-  if(s){s.classList.add('fade-out');setTimeout(()=>s.remove(),220);}
-  loadFestival(_splashSelectedFestId||'aff2026').catch(e=>console.error('Error init festival:',e));
+  loadFestival(_splashSelectedFestId||'aff2026')
+    .then(()=>{
+      // Contenido ya renderizado y estable — ahora fade del splash
+      if(s){s.classList.add('fade-out');setTimeout(()=>s.remove(),350);}
+    })
+    .catch(e=>console.error('Error init festival:',e));
 }
 // Inicializar Supabase al cargar la página
 // Capgo OTA — notifica que la app arrancó correctamente (Cap 6)
