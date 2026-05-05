@@ -5221,14 +5221,13 @@ function _getFestivalPhase(){
   const now=simNow();
   if(festivalEnded()){
     // ENDED: resumen post-festival
-    const totalWatched=[...watched].length;
+    // Solo películas regulares cuentan en el conteo y en pendientes de calificación.
+    // Cortos (is_cortos) son contenedores — sus ratings van a nivel de corto individual.
+    // Eventos (type==='event') no tienen mecanismo de calificación.
+    const _isRegular=t=>{const f=FILMS.find(fi=>fi.title===t);return f&&!f.is_cortos&&f.type!=='event';};
+    const totalWatched=[...watched].filter(_isRegular).length;
     const totalPlanned=savedAgenda&&savedAgenda.schedule?savedAgenda.schedule.length:0;
-    // Calificaciones pendientes: solo films no-cortos sin rating
-    // (is_cortos no tienen botón Calificar — contar cortos individuales sería cifra irresoluble)
-    const pendingRatings=[...watched].filter(t=>{
-      const f=FILMS.find(fi=>fi.title===t);
-      return f&&!f.is_cortos&&!filmRatings[t];
-    }).length;
+    const pendingRatings=[...watched].filter(t=>_isRegular(t)&&!filmRatings[t]).length;
     return{phase:'ended',totalWatched,totalPlanned,pendingRatings};
   }
   if(!savedAgenda||!savedAgenda.schedule||!savedAgenda.schedule.length) return null;
@@ -5331,7 +5330,6 @@ function renderContextualHeader(){
       :pendingRatings>0
         ?`${pendingRatings} sin calificar`
         :'Todo calificado';
-    const ratedCount=Object.keys(filmRatings).filter(t=>watched.has(t)||FILMS.some(f=>f.is_cortos&&f.film_list?.some(c=>c.title===t))).length;
     const mainTitle=totalWatched===0
       ?((FESTIVAL_CONFIG[_activeFestId]||{}).name||'El festival')+' ha terminado'
       :`Viste ${totalWatched} película${totalWatched!==1?'s':''}`;
