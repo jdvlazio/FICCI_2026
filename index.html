@@ -1392,23 +1392,21 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:var(--t
      Remove borders + match background to make the header one block.
      #hdr-programa padding-top would show a gap under the sticky hdr. */
   .hdr-fest-bar{border-top:none;border-bottom:none}
-  #hdr-programa{padding-top:0}
   /* Remove the margin on nav-row that adds space above day tabs */
   .nav-row{margin-top:0}
 
-  /* ── Mobile: frosted glass continuo — un solo canvas de blur ────────
-     Un único ::after cubre todo el topbar (incluye safe-area/island).
-     iOS renderiza el status bar (reloj, batería) encima de la capa web
-     → el blur corre libre bajo el island sin problema.
-     #hdr-programa recibe el mismo tratamiento para continuidad visual.
-     Elementos adyacentes con valores idénticos = chrome unificado. ─── */
+  /* ── Mobile: frosted glass — canvas único position:fixed ─────────────
+     Un solo #chrome-blur cubre topbar + barra secundaria activa.
+     Sin seam posible: un elemento, un backdrop-filter.
+     Altura calculada dinámicamente por _fixStickyOffset.
+     Los sticky son transparentes — no blurean, solo muestran contenido. */
+  #chrome-blur{display:block;position:fixed;top:0;left:0;right:0;height:0;background:rgba(20,20,20,0.72);backdrop-filter:blur(24px) saturate(180%);-webkit-backdrop-filter:blur(24px) saturate(180%);z-index:198;pointer-events:none}
   .topbar{position:sticky;top:0;z-index:200;background:transparent}
-  .topbar::after{content:'';position:absolute;inset:0;background:rgba(20,20,20,0.72);backdrop-filter:blur(24px) saturate(180%);-webkit-backdrop-filter:blur(24px) saturate(180%);z-index:-1}
   .hdr{background:transparent}
   .hdr-fest-bar{background:transparent}
-  #hdr-programa{padding-top:0;background:rgba(20,20,20,0.72);backdrop-filter:blur(24px) saturate(180%);-webkit-backdrop-filter:blur(24px) saturate(180%)} /* top via _fixStickyOffset */
+  #hdr-programa{padding-top:0;background:transparent} /* top via _fixStickyOffset */
   .programa-mode-bar{background:transparent}
-  #hdr-ag{top:47px}
+  #hdr-ag{top:47px;background:transparent;border-bottom:none}
 }
 
 /* ── FESTIVAL BOTTOM SHEET ── */
@@ -2143,6 +2141,7 @@ html.splash-skip #otrofestiv-splash{display:none}
   </div>
 </div>
 
+<div id="chrome-blur" aria-hidden="true"></div>
 <div class="topbar">
 <div class="hdr">
   <div class="hdr-top">
@@ -6883,6 +6882,7 @@ function showDayView(){
   // Inicializar el sistema de modos
   initProgramaModeBar();
   _renderProgramaContent();
+  requestAnimationFrame(_fixStickyOffset); // actualiza altura del chrome-blur
 }
 function showAgView(){
   activeView='agenda';
@@ -6909,6 +6909,7 @@ function showAgView(){
   document.getElementById('agtab').classList.add('on');
   document.querySelectorAll('.dtab').forEach(t=>t.classList.remove('on'));
   renderAgenda();
+  requestAnimationFrame(_fixStickyOffset); // actualiza altura del chrome-blur
 }
 
 const dtabs=document.getElementById('dtabs');
@@ -8686,6 +8687,18 @@ function _fixStickyOffset(){
   }
   const hdrH=document.getElementById('hdr-programa')?.offsetHeight||(tbH+(isMobile?0:navH));
   r.setProperty('--sticky-top-chips',hdrH+'px');
+  // ── Chrome blur overlay: cubre topbar + barra secundaria activa ──
+  if(isMobile){
+    const cb=document.getElementById('chrome-blur');
+    if(cb){
+      const prog=document.getElementById('hdr-programa');
+      const ag=document.getElementById('hdr-ag');
+      let secH=0;
+      if(prog && getComputedStyle(prog).display!=='none') secH=prog.offsetHeight;
+      else if(ag && getComputedStyle(ag).display!=='none') secH=ag.offsetHeight;
+      cb.style.height=(tbH+secH)+'px';
+    }
+  }
 }
 // Run after layout is complete (fonts + CSS painted)
 requestAnimationFrame(()=>requestAnimationFrame(_fixStickyOffset));
