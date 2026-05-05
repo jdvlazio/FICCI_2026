@@ -101,7 +101,7 @@
       "time": "18:00",
       "venue": "NOMBRE VENUE",
       "section": "🏆 Competencia Largometrajes",
-      "_section_note": "Emoji + nombre. El emoji es el identificador visual de sección.",
+      "_section_note": "Emoji + nombre. REGLAS: (1) cada sección tiene UN emoji único — no puede repetirse en otra sección del mismo festival. (2) el string completo debe ser idéntico en todas las películas de esa sección. (3) sin abreviaciones — nombre completo siempre.",
       "day_order": 0,
       "_day_order_note": "Índice numérico del día (0 = primer día). Usado para ordenamiento.",
       "is_cortos": false,
