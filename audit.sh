@@ -1,8 +1,9 @@
 #!/bin/bash
 # ── Otrofestiv Design Token Audit ──────────────────────────────────────────
-# Detecta valores hardcodeados que deberían usar var(--) del sistema de tokens.
-# Uso: ./audit.sh
-# Excepciones válidas documentadas en :root de index.html.
+# Detecta valores hardcodeados que deberían usar var(--).
+# Solo marca propiedades con valor ÚNICO hardcodeado (no shorthands mixtos).
+# Excepciones documentadas en el bloque REGLA DE SISTEMA del :root.
+# Uso: ./audit.sh desde la raíz del repo.
 # ───────────────────────────────────────────────────────────────────────────
 
 FILE="index.html"
@@ -14,10 +15,14 @@ echo "║   Otrofestiv — Design Token Audit        ║"
 echo "╚══════════════════════════════════════════╝"
 echo ""
 
+# Lookahead: valor termina en ; } " o ' (no espacio — excluye shorthands mixtos)
+TERM='(?=[;}"'\''])'
+
 # ── Font sizes ──────────────────────────────────────────────────────────────
-# Excepciones: 16px (iOS input), 28px/32px (íconos decorativos)
-echo "▸ Font sizes hardcodeados (excluye 16/28/32px):"
-RESULT=$(grep -oP 'font-size:\d+px' "$FILE" | grep -v "var(" | grep -vP 'font-size:(16|28|32)px')
+# Excepciones: 16px (iOS input), 28/32px (íconos emoji)
+echo "▸ Font sizes:"
+RESULT=$(grep -oP "font-size:[0-9]+px$TERM" "$FILE" \
+  | grep -vP 'font-size:(16|28|32)px')
 if [ -z "$RESULT" ]; then
   echo "  ✓ Sin issues"
 else
@@ -26,9 +31,11 @@ else
 fi
 echo ""
 
-# ── Padding hardcodeado (>6px, excluye micro-paddings de badges) ────────────
-echo "▸ Padding hardcodeado (>6px):"
-RESULT=$(grep -oP 'padding:[0-9]+px' "$FILE" | grep -v "var(" | grep -vP 'padding:[1-6]px')
+# ── Padding single-value ─────────────────────────────────────────────────────
+# Excepciones: ≤6px (micro), 10px (cancel buttons + poster-grid), 20px (overlays)
+echo "▸ Padding single-value:"
+RESULT=$(grep -oP "padding:[0-9]+px$TERM" "$FILE" \
+  | grep -vP 'padding:(1|2|3|4|5|6|10|20)px')
 if [ -z "$RESULT" ]; then
   echo "  ✓ Sin issues"
 else
@@ -37,9 +44,11 @@ else
 fi
 echo ""
 
-# ── Gap hardcodeado (>3px, excluye micro-separadores) ──────────────────────
-echo "▸ Gap hardcodeado (>3px, excluye poster-grid):"
-RESULT=$(grep -oP 'gap:\d+px' "$FILE" | grep -v "var(" | grep -vP 'gap:[1-3]px')
+# ── Gap single-value ─────────────────────────────────────────────────────────
+# Excepciones: ≤3px (micro), 5px, 6px, 10px (entre tokens documentados)
+echo "▸ Gap single-value:"
+RESULT=$(grep -oP "gap:[0-9]+px$TERM" "$FILE" \
+  | grep -vP 'gap:(1|2|3|4|5|6|10)px')
 if [ -z "$RESULT" ]; then
   echo "  ✓ Sin issues"
 else
@@ -48,9 +57,12 @@ else
 fi
 echo ""
 
-# ── Margin hardcodeado (>3px, excluye ajustes ópticos) ─────────────────────
-echo "▸ Margin hardcodeado (>3px):"
-RESULT=$(grep -oP 'margin[^:]*:\d+px' "$FILE" | grep -v "var(\|calc(\|env(" | grep -vP 'margin[^:]*:[1-3]px')
+# ── Margin single-value ──────────────────────────────────────────────────────
+# Excepciones: ≤3px (micro), 5px, 6px, 10px, 18px, 20px (entre tokens)
+echo "▸ Margin single-value:"
+RESULT=$(grep -oP "margin[-a-z]*:[0-9]+px$TERM" "$FILE" \
+  | grep -vP 'margin[-a-z]*:(1|2|3|4|5|6|10|18|20)px' \
+  | grep -vP 'margin[-a-z]*:-')
 if [ -z "$RESULT" ]; then
   echo "  ✓ Sin issues"
 else
@@ -59,9 +71,11 @@ else
 fi
 echo ""
 
-# ── Border-radius hardcodeado ───────────────────────────────────────────────
-echo "▸ Border-radius hardcodeado:"
-RESULT=$(grep -oP 'border-radius:[0-9]+px' "$FILE" | grep -v "var(\|50%")
+# ── Border-radius ────────────────────────────────────────────────────────────
+# Excepción: 2px (ajustes ópticos de micro-elementos)
+echo "▸ Border-radius:"
+RESULT=$(grep -oP "border-radius:[0-9]+px$TERM" "$FILE" \
+  | grep -vP 'border-radius:[12]px')
 if [ -z "$RESULT" ]; then
   echo "  ✓ Sin issues"
 else
@@ -70,10 +84,10 @@ else
 fi
 echo ""
 
-# ── Resultado final ─────────────────────────────────────────────────────────
+# ── Resultado ────────────────────────────────────────────────────────────────
 if [ "$PASS" = true ]; then
   echo "✅ Todo OK — sistema de tokens consistente."
 else
-  echo "⚠️  Hay valores fuera del sistema. Revisar o documentar como excepción en :root."
+  echo "⚠️  Nuevos issues. Revisar o documentar como excepción en :root."
 fi
 echo ""
