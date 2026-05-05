@@ -1694,9 +1694,19 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:var(--t
   z-index:99999;
   padding:calc(env(safe-area-inset-top) + 14vh) 32px calc(env(safe-area-inset-bottom) + 10vh);
   text-align:center;
-  transition:opacity .5s ease-out, transform .5s ease-out, visibility .5s ease-out;
+  will-change:opacity,transform,filter;
+  transition:opacity .55s cubic-bezier(.4,0,.2,1),
+             transform .65s cubic-bezier(.4,0,.2,1),
+             filter .55s cubic-bezier(.4,0,.2,1),
+             visibility .55s;
 }
-#otrofestiv-splash.fade-out{opacity:0;transform:scale(1.04);visibility:hidden;pointer-events:none}
+#otrofestiv-splash.fade-out{
+  opacity:0;
+  transform:scale(1.08);
+  filter:blur(14px);
+  visibility:hidden;
+  pointer-events:none;
+}
 .splash-wordmark{
   font-size:var(--t-lg);letter-spacing:-.03em;color:var(--white);
   font-weight:var(--w-display);line-height:1;
