@@ -3687,7 +3687,7 @@ function toggleWL(title,e){
     }
     // Now safe to remove from watchlist
     watchlist.delete(title);watched.delete(title);prioritized.delete(title);
-    showToast('Fuera de tus intereses.','info');
+    showToast('Fuera de tus intereses','info');
   }
   else{
     watchlist.add(title);watched.delete(title);
@@ -3815,7 +3815,7 @@ function removeFromAgenda(title){
     _ctaRemovedVisible=true;
     if(_ctaRemovedTimer) clearTimeout(_ctaRemovedTimer);
     _ctaRemovedTimer=setTimeout(()=>{_ctaRemovedVisible=false;renderAgenda();},6000);
-    renderAgenda();showToast('Fuera de tu plan.','info');
+    renderAgenda();showToast('Fuera de tu plan','info');
   });
 }
 function addSuggestion(title,day,time){
@@ -4166,7 +4166,7 @@ function confirmAvBlock(){
     // Verificar solapamiento con bloques existentes (no solo igualdad exacta)
     const av=availability[_avSheetDay];
     if(av.blocks.some(b=>toMin(from)<toMin(b.to)&&toMin(to)>toMin(b.from))){
-      showToast('Este horario coincide con un bloque existente','warn');return;
+      showToast('Este horario coincide con otro bloque','warn');return;
     }
     // ── CASO 1: detectar conflictos con el plan antes de confirmar ──
     const _conflicts=checkPlanConflictsWithBlock(_avSheetDay,from,to);
@@ -4762,7 +4762,7 @@ function removeFilmFromScenario(title,e){
       watched.delete(title);
       saveState('wl','prio','watched');
       updateAgTab();
-      showToast('Fuera de tus intereses.','info');
+      showToast('Fuera de tus intereses','info');
       runCalc(); // recalcula directamente, no borra la vista
     }
   );
@@ -5285,7 +5285,7 @@ function renderContextualHeader(){
       ?'Explorá el programa del próximo festival'
       :pendingRatings>0
         ?`${pendingRatings} sin calificar`
-        :'Todo calificado · ¡Gracias por estar!';
+        :'Todo calificado';
     const ratedCount=Object.keys(filmRatings).filter(t=>watched.has(t)||FILMS.some(f=>f.is_cortos&&f.film_list?.some(c=>c.title===t))).length;
     const mainTitle=totalWatched===0
       ?((FESTIVAL_CONFIG[_activeFestId]||{}).name||'El festival')+' ha terminado'
@@ -6066,7 +6066,7 @@ function forceInclude(title){
 
   if(existingIdx>-1){
     cachedResult.currentIdx=existingIdx;
-    showToast('Ya existe','info');
+    showToast('Escenario ya existente','info');
   } else {
     cachedResult.scenarios.push(newScenario);
     cachedResult.currentIdx=cachedResult.scenarios.length-1;
@@ -6603,7 +6603,7 @@ function invalidateCalcResult(){
   const pending=[...watchlist].filter(t=>!watched.has(t)&&FILMS.some(f=>f.title===t&&!screeningPassed(f)));
   res.innerHTML=pending.length
     ?`<div class="ag-calc-prompt">Toca <strong>Ver opciones</strong> para ver tu plan.</div>`
-    :`<div class="ag-calc-prompt">Añade lo que no quieres perderte en <strong>Intereses</strong>.</div>`;
+    :`<div class="ag-calc-prompt">Añadí lo que no querés perderte en <strong>Intereses</strong>.</div>`;
 }
 function runCalc(){
   if(festivalEnded()){showToast('El festival ya terminó','info');return;}
@@ -6703,7 +6703,7 @@ function renderAgenda(){
     if(!pending.length&&!cachedResult){
       view.innerHTML=`${_progressHtml}
         <div class="ag-section">
-          ${emptyStateHero(ICONS.calendar,'Tu plan calculado aparece aquí.','Añade lo que no quieres perderte. Cuando tengas tu lista, armamos tu plan.','Ir a Intereses',"switchMainNav('mnav-seleccion');showAgView()")}
+          ${emptyStateHero(ICONS.calendar,'Tu plan calculado aparece aquí.','Añadí lo que no querés perderte. Cuando tengas tu lista, armamos tu plan.','Ir a Intereses',"switchMainNav('mnav-seleccion');showAgView()")}
         </div>`;
       return;
     }
