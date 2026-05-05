@@ -7407,7 +7407,6 @@ function openPelSheet(title){
         <div class="pel-sheet-dur">${ICONS.clock} ${f.duration}</div>
         ${f.type!=='event'&&_metaLine?`<div class="pel-sheet-metaline">${_metaLine}</div>`:''}
         ${f.section?`<div class="pel-sheet-sec" data-sec="${f.section.replace(/"/g,'&quot;')}" onclick="filterBySection(this.dataset.sec)">${secLabel} <span class="pel-sheet-sec-arrow">›</span></div>`:''}
-        ${f.is_cortos&&f.film_list?.length?`<div class="pel-sheet-cortos-count"><span class="count-badge cb-neutral">${f.film_list.length}</span></div>`:''}
       </div>
     </div>
     <div class="pel-sheet-divider"></div>
