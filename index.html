@@ -3575,7 +3575,7 @@ function renderMiPlanCalendar(){
         <div style="display:flex;flex-direction:column;align-items:flex-end;justify-content:center;flex-shrink:0">
           <button class="ag-fi-btn del" data-rmt="${safeT}" onclick="removeFromAgenda(this.dataset.rmt);event.stopPropagation()" style="display:inline-flex;align-items:center;justify-content:center;width:30px;height:30px;padding:0;border-radius:50%;border:none;opacity:.5">${ICONS.x}</button>
         </div>
-      </div>${_expandedFilm===(s._title||'')+(s.day||'')+(s.time||'')?`<div class="film-alts">${renderFilmAlternatives(s._title,s.day,s.time)}</div>`:''}${(()=>{const _mf=FILMS.find(fi=>fi.title===s._title&&fi.day===s.day&&fi.time===s.time);if(!_mf||!_mf.is_cortos||!_mf.film_list||!_mf.film_list.length) return'';return`<div class="mplan-prog-list">${_mf.film_list.map((item,n)=>{const _mt=getCortoItemPoster(item);const _mth=_mt?`<img src="${_mt}" class="c-film-thumb" loading="lazy" onerror="this.remove()" alt="">`:'<div class="c-film-thumb-ph">🎬</div>';const _sc2=item.title.replace(/'/g,"\'");const _sco2=(item.country||"").replace(/'/g,"\'");const _scd2=(item.duration||"");const _scf2=countryToFlags(item.country||"");const _scs2=(_mf.section||"").replace(/'/g,"\'");return`<div class="mplan-prog-item" onclick="event.stopPropagation();openCortoSheet('${_sc2}','${_sco2}','${_scd2}','${_scs2}','${_scf2}')">${_mth}<div class="mplan-prog-num">${n+1}</div><div class="mplan-prog-title">${item.title}</div><div class="mplan-prog-dur">${item.duration}</div></div>`;}).join('')}</div>`;})()}`;
+      </div>${_expandedFilm===(s._title||'')+(s.day||'')+(s.time||'')?`<div class="film-alts">${renderFilmAlternatives(s._title,s.day,s.time)}</div>`:''}${(()=>{const _mf=FILMS.find(fi=>fi.title===s._title&&fi.day===s.day&&fi.time===s.time);if(!_mf||!_mf.is_cortos||!_mf.film_list||!_mf.film_list.length) return'';return`<div class="mplan-prog-list">${_mf.film_list.map((item,n)=>{const _sc2=item.title.replace(/'/g,"\'");const _sco2=(item.country||"").replace(/'/g,"\'");const _scd2=(item.duration||"");const _scf2=countryToFlags(item.country||"");const _scs2=(_mf.section||"").replace(/'/g,"\'");return _mkCortoItemHtml(item,n,{onclick:`event.stopPropagation();openCortoSheet('${_sc2}','${_sco2}','${_scd2}','${_scs2}','${_scf2}')`});}).join('')}</div>`;})()}`;
     });
   }
   listHtml+='</div>';
@@ -4810,7 +4810,7 @@ function mkAgendaRow(s, mode='saved'){
     :'';
   const altsHtml=isExpanded&&mode==='saved'?renderFilmAlternatives(t,s.day,s.time):'';
   const _progBtn=(()=>{const _mf=f;if(!_mf||!_mf.is_cortos||!_mf.film_list||!_mf.film_list.length)return'';return`<button class="mplan-prog-toggle" onclick="toggleMplanProg(this,event)" style="display:inline-flex;align-items:center;gap:var(--sp-1)">${ICONS.chevronR} Programa</button>`;})();
-  const _progList=(()=>{const _mf=f;if(!_mf||!_mf.is_cortos||!_mf.film_list||!_mf.film_list.length)return'';return`<div class="mplan-prog-list">${_mf.film_list.map((item,n)=>{const _mt=getCortoItemPoster(item);const _mth=_mt?`<img src="${_mt}" class="c-film-thumb" loading="lazy" onerror="this.remove()" alt="">`:'<div class="c-film-thumb-ph">🎬</div>';const _sc=item.title.replace(/'/g,"\'");const _sco=item.country||'';const _scd=item.duration||'';const _scf=countryToFlags(item.country||'');const _scs=f?.section||'';return`<div class="mplan-prog-item" onclick="event.stopPropagation();openCortoSheet('${_sc}','${_sco}','${_scd}','${_scs}','${_scf}')">${_mth}<div class="mplan-prog-num">${n+1}</div><div class="mplan-prog-title">${item.title}</div><div class="mplan-prog-dur">${item.duration}</div></div>`;}).join('')}</div>`;})();
+  const _progList=(()=>{const _mf=f;if(!_mf||!_mf.is_cortos||!_mf.film_list||!_mf.film_list.length)return'';return`<div class="mplan-prog-list">${_mf.film_list.map((item,n)=>{const _sc=item.title.replace(/'/g,"\'");const _sco=item.country||'';const _scd=item.duration||'';const _scf=countryToFlags(item.country||'');const _scs=f?.section||'';return _mkCortoItemHtml(item,n,{onclick:`event.stopPropagation();openCortoSheet('${_sc}','${_sco}','${_scd}','${_scs}','${_scf}')`});}).join('')}</div>`;})();
   return`<div class="saved-item${isDone?' done':''}">
     ${_ph}
     <div class="saved-time">${s.time}</div>
@@ -4825,6 +4825,30 @@ function mkAgendaRow(s, mode='saved'){
 
 
 /* ── RENDER — MI PLAN / AGENDA ──────────────────────────────────────── */
+// ── _mkCortoItemHtml ───────────────────────────────────────────────────────
+// Fuente única de verdad para el item de corto en lista.
+// Usado en: pel-sheet (cortos list), Mi Plan (mplan-prog-list x2).
+// opts.cls      → clase CSS del row (default: 'mplan-prog-item')
+// opts.onclick  → atributo onclick completo
+// opts.ratingEl → HTML del botón de calificación (opcional)
+function _mkCortoItemHtml(item, n, {cls='mplan-prog-item', onclick='', ratingEl=''}={}){
+  const thumb=getCortoItemPoster(item);
+  const thumbHtml=thumb
+    ?`<img src="${thumb}" class="c-film-thumb" loading="lazy" onerror="this.remove()" alt="">`
+    :'<div class="c-film-thumb-ph">🎬</div>';
+  return`<div class="${cls}" onclick="${onclick}">
+    ${thumbHtml}
+    <div style="flex:1;min-width:0">
+      <div style="display:flex;align-items:baseline;gap:var(--sp-2)">
+        <span class="mplan-prog-num">${n+1}</span>
+        <span class="mplan-prog-title">${item.title}</span>
+      </div>
+      <div class="mplan-prog-dur" style="padding-left:calc(var(--sp-4) + var(--sp-2))">${item.country?item.country+' · ':''}${item.duration}</div>
+    </div>
+    ${ratingEl}
+  </div>`;
+}
+
 function renderSavedAgendaHTML(){
   // ⚠️ FIX CRÍTICO — NO REMOVER (Apr 2026)
   // try/catch permanente: un error en renderMiPlanCalendar u otras subfunciones
@@ -7343,13 +7367,10 @@ function openPelSheet(title){
   let cortosHtml='';
   if(f.is_cortos&&f.film_list?.length){
     const cortoItems=f.film_list.map((item,n)=>{
-      const thumb=getCortoItemPoster(item);
-      const thumbHtml=thumb?`<img src="${thumb}" loading="lazy" class="lb-poster" onerror="this.remove()" alt="">`:`<div class="lb-poster-ph">🎬</div>`;
       const r=filmRatings[item.title]||0;
       const safeCorto=item.title.replace(/'/g,"\'");
       const safeCountry=(item.country||'').replace(/'/g,"\'");
       const safeDur=(item.duration||'').replace(/'/g,"\'");
-      // Usar banderas reales del corto individual, no las del programa
       const _cortoFlags=countryToFlags(item.country||'');
       const safeFlags=_cortoFlags.replace(/'/g,"\'");
       const safeSec=(f.section||'').replace(/'/g,"\'");
@@ -7359,17 +7380,11 @@ function openPelSheet(title){
       const _sd=(item.director||'').replace(/['"]/g,'');
       const _sg=(item.genre||'').replace(/['"]/g,'');
       const _ss=(item.synopsis||'').replace(/['"]/g,'');
-      return`<div class="pel-sheet-corto-item" onclick="openCortoSheet('${safeCorto}','${safeCountry}','${safeDur}','${safeSec}','${safeFlags}','${_sd}','${_sg}','${_ss.slice(0,150)}')">
-        ${thumbHtml}
-        <div style="flex:1;min-width:0">
-          <div style="display:flex;align-items:baseline;gap:var(--sp-2)">
-            <span class="mplan-prog-num">${n+1}</span>
-            <span class="mplan-prog-title">${item.title}</span>
-          </div>
-          <div class="mplan-prog-dur" style="padding-left:calc(16px + var(--sp-2))">${item.country?item.country+' · ':''}${item.duration}</div>
-        </div>
-        ${ratingEl}
-      </div>`;
+      return _mkCortoItemHtml(item,n,{
+        cls:'pel-sheet-corto-item',
+        onclick:`openCortoSheet('${safeCorto}','${safeCountry}','${safeDur}','${safeSec}','${safeFlags}','${_sd}','${_sg}','${_ss.slice(0,150)}')`,
+        ratingEl
+      });
     }).join('');
     cortosHtml=`<div class="pel-sheet-divider"></div>
       <div class="pel-sheet-section-lbl">Programa <span class="count-badge cb-neutral" style="margin-left:var(--sp-1)">${f.film_list.length}</span></div>
