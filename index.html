@@ -1700,7 +1700,7 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:var(--t
 /* ── App fade — cubre el contenido hasta que loadFestival renderiza ──
    z-index justo bajo el splash (99999). Fade-out suave tras showDayView.
    Convierte el brinco en un crossfade: splash baja, contenido emerge. */
-#app-fade{position:fixed;inset:0;background:var(--bg);z-index:99998;pointer-events:none;transition:opacity 0.7s cubic-bezier(0.4,0,0.6,1)}
+#app-fade{position:fixed;inset:0;background:var(--bg);z-index:99998;pointer-events:none;transition:opacity 0.9s ease-out}
 #app-fade.done{opacity:0}
 /* Splash skip — clase puesta por script inline en <head> antes del paint */
 html.splash-skip #otrofestiv-splash{display:none}
@@ -8505,7 +8505,7 @@ async function loadFestival(id){
     // Crossfade: esperar que el splash avance antes de emerger el contenido
     requestAnimationFrame(()=>{
       const f=document.getElementById('app-fade');
-      if(f){setTimeout(()=>{f.classList.add('done');setTimeout(()=>f.remove(),780);},250);}
+      if(f){f.classList.add('done');setTimeout(()=>f.remove(),1000);}
     });
   });
   // Resolver posters via TMDB en background — no bloquea la UI
