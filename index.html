@@ -976,7 +976,7 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:var(--t
 .pel-sheet-lb{display:inline-flex;align-items:center;gap:6px;margin-top:var(--sp-4);opacity:.6;text-decoration:none}
 .pel-sheet-lb-text{font-size:var(--t-sm);color:var(--gray2)}
 .pel-sheet-remove-plan{width:100%;margin-top:var(--sp-2);background:none;border:1px solid var(--bdr);border-radius:var(--r-pill);color:var(--gray2);font-family:var(--font);font-size:var(--t-caption);font-weight:var(--w-semi);padding:8px 0;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:var(--sp-1)}
-.pel-sheet-corto-item{display:flex;align-items:baseline;gap:var(--sp-2);padding:5px 0;border-bottom:1px solid var(--bdr)}
+.pel-sheet-corto-item{display:flex;align-items:center;gap:var(--sp-3);padding:var(--sp-2) 0;border-bottom:1px solid var(--bdr);cursor:pointer;transition:background var(--tr-base);border-radius:var(--r-sm);margin:0 -6px;padding-left:6px;padding-right:6px}
 .pel-sheet-corto-item:last-child{border-bottom:none}
 .c-expand:hover{color:var(--orange)}
 .c-expand-arrow{font-size:var(--t-sm);transition:transform var(--tr-smooth);display:inline-block}
@@ -986,7 +986,6 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:var(--t
 .c-film-list{display:none;border-top:1px solid var(--bdr-l);padding:var(--sp-1) var(--sp-4) var(--sp-1) var(--sp-4)}
 .c-film-list.visible{display:block}
 .c-film-thumb{width:var(--poster-xs-w);height:var(--poster-xs-h);object-fit:cover;border-radius:var(--r-sm);flex-shrink:0;display:block}
-.pel-sheet-corto-item{display:flex;cursor:pointer;transition:background var(--tr-base);border-radius:var(--r-sm);margin:0 -6px;padding-left:6px;padding-right:6px}
 .pel-sheet-corto-item:active{background:var(--surf-2)}
 .corto-rating-stars{font-size:var(--t-sm);color:var(--amber);flex-shrink:0;letter-spacing:1px}
 .corto-rate-btn{background:none;border:1px solid var(--bdr);border-radius:var(--r-pill);color:var(--gray);font-size:var(--t-label);font-weight:var(--w-bold);font-family:var(--font);padding:2px 8px;cursor:pointer;flex-shrink:0;white-space:nowrap}
@@ -1256,7 +1255,7 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:var(--t
 .mplan-prog-list.open{display:block}
 .mplan-prog-item{display:flex;align-items:center;gap:var(--sp-2);padding:var(--sp-3) 0;border-bottom:1px solid var(--bdr-l);cursor:pointer;transition:background var(--tr-fast)}.mplan-prog-item:active{background:var(--surf-2)}
 .mplan-prog-item:last-child{border-bottom:none}
-.mplan-prog-num{font-size:var(--t-sm);color:var(--gray2);min-width:16px;text-align:right;flex-shrink:0}
+.mplan-prog-num{font-size:var(--t-sm);color:var(--gray2);min-width:16px;text-align:right;flex-shrink:0;font-variant-numeric:tabular-nums}
 .mplan-prog-title{font-size:var(--t-sm);color:var(--white);flex:1;min-width:0;line-height:1.35}
 .mplan-prog-dur{font-size:var(--t-sm);color:var(--gray);flex-shrink:0}
 .mplan-prog-toggle{background:none;border:none;color:var(--orange);font-size:var(--t-sm);font-weight:var(--w-semi);cursor:pointer;font-family:var(--font);padding:0;margin-top:var(--sp-1);display:inline-flex;align-items:center;gap:var(--sp-1);touch-action:manipulation;line-height:1}
@@ -7362,10 +7361,12 @@ function openPelSheet(title){
       const _ss=(item.synopsis||'').replace(/['"]/g,'');
       return`<div class="pel-sheet-corto-item" onclick="openCortoSheet('${safeCorto}','${safeCountry}','${safeDur}','${safeSec}','${safeFlags}','${_sd}','${_sg}','${_ss.slice(0,150)}')">
         ${thumbHtml}
-        <div class="mplan-prog-num">${n+1}</div>
         <div style="flex:1;min-width:0">
-          <div class="mplan-prog-title">${item.title}</div>
-          <div class="mplan-prog-dur">${item.country?item.country+' · ':''}${item.duration}</div>
+          <div style="display:flex;align-items:baseline;gap:var(--sp-2)">
+            <span class="mplan-prog-num">${n+1}</span>
+            <span class="mplan-prog-title">${item.title}</span>
+          </div>
+          <div class="mplan-prog-dur" style="padding-left:calc(16px + var(--sp-2))">${item.country?item.country+' · ':''}${item.duration}</div>
         </div>
         ${ratingEl}
       </div>`;
