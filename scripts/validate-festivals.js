@@ -1,0 +1,249 @@
+#!/usr/bin/env node
+/**
+ * validate-festivals.js
+ * Valida la integridad de los JSONs de festival antes de commit.
+ *
+ * Uso: node scripts/validate-festivals.js [festival-id]
+ * Ejemplo: node scripts/validate-festivals.js aff-2026
+ *          node scripts/validate-festivals.js  (valida todos)
+ *
+ * Exit code 0 = OK | Exit code 1 = errores encontrados
+ */
+
+const fs = require('fs');
+const path = require('path');
+
+// ── Mapa de países → emoji bandera ───────────────────────────────────────────
+const FLAGS_MAP = {
+  'Colombia':'🇨🇴','UK':'🇬🇧','Chile':'🇨🇱','Brasil':'🇧🇷','Bolivia':'🇧🇴',
+  'México':'🇲🇽','Guatemala':'🇬🇹','Francia':'🇫🇷','EEUU':'🇺🇸','Panamá':'🇵🇦',
+  'Venezuela':'🇻🇪','Haití':'🇭🇹','España':'🇪🇸','Argentina':'🇦🇷','Uruguay':'🇺🇾',
+  'Perú':'🇵🇪','Ecuador':'🇪🇨','Cuba':'🇨🇺','Paraguay':'🇵🇾','Costa Rica':'🇨🇷',
+  'Alemania':'🇩🇪','Italia':'🇮🇹','Portugal':'🇵🇹','Suiza':'🇨🇭','Bélgica':'🇧🇪',
+  'Países Bajos':'🇳🇱','Suecia':'🇸🇪','Noruega':'🇳🇴','Dinamarca':'🇩🇰',
+  'Polonia':'🇵🇱','Austria':'🇦🇹','Grecia':'🇬🇷','Turquía':'🇹🇷','Israel':'🇮🇱',
+  'Irán':'🇮🇷','Corea del Sur':'🇰🇷','Japón':'🇯🇵','China':'🇨🇳','Taiwán':'🇹🇼',
+  'India':'🇮🇳','Australia':'🇦🇺','Senegal':'🇸🇳','Palestina':'🇵🇸',
+  'Rep. Dominicana':'🇩🇴','Nicaragua':'🇳🇮','Canadá':'🇨🇦','Eslovaquia':'🇸🇰',
+  'Estonia':'🇪🇪','Vietnam':'🇻🇳','Bolivia':'🇧🇴','Reino Unido':'🇬🇧',
+  'Inglaterra':'🇬🇧','Rumania':'🇷🇴','Hungría':'🇭🇺','Finlandia':'🇫🇮',
+  'Namibia':'🇳🇦','Nigeria':'🇳🇬','Marruecos':'🇲🇦','Sudáfrica':'🇿🇦',
+  'Estados Unidos':'🇺🇸','Nueva Zelanda':'🇳🇿','USA':'🇺🇸','US':'🇺🇸',
+  'Honduras':'🇭🇳','El Salvador':'🇸🇻','Puerto Rico':'🇵🇷','Jamaica':'🇯🇲',
+};
+
+// Emojis que NO son banderas de país — usados como sección, no como flags
+const NON_FLAG_EMOJIS = new Set([
+  '🎬','🎞️','🌐','🌍','🌎','🌊','🎨','⏳','📽️','🏆','⭐','📋','✨','🪶','✊',
+  '🎭','🎖️','🏛️','🌙','🌿','💡','🌱','🌸','📖',
+]);
+
+// Categorías que legítimamente comparten emoji (subcategorías del mismo concepto)
+const SHARED_EMOJI_ALLOWED = ['retrospectiva','retrospect','ciclo','cicl','muestra'];
+const isSharedAllowed = (secName) =>
+  SHARED_EMOJI_ALLOWED.some(w => secName.toLowerCase().includes(w));
+
+// ── Helpers ──────────────────────────────────────────────────────────────────
+function getFlagsFromList(filmList) {
+  const seen = [];
+  for (const film of filmList) {
+    for (const country of (film.country || '').split('/')) {
+      const c = country.trim();
+      if (c && FLAGS_MAP[c] && !seen.includes(FLAGS_MAP[c])) seen.push(FLAGS_MAP[c]);
+    }
+  }
+  return seen.join('');
+}
+
+function sectionEmoji(sec) {
+  return sec ? sec.split(' ')[0] : '';
+}
+
+// ── Validar un festival ──────────────────────────────────────────────────────
+function validateFestival(fname, data) {
+  const errors = [];
+  const warnings = [];
+
+  const cfg = data.config || {};
+  const films = data.films || [];
+  const dayKeys = cfg.dayKeys || [];
+
+  // CONFIG required fields
+  // year+timezoneOffset viven en FESTIVAL_CONFIG de index.html, no en el JSON
+  const cfgRequired = ['name','shortName','city','dates','storageKey','festivalEndStr'];
+  for (const k of cfgRequired) {
+    if (!cfg[k]) errors.push(`config.${k} es requerido`);
+  }
+
+  // dayKeys must match festivalDates
+  const festDates = cfg.festivalDates || {};
+  for (const k of dayKeys) {
+    if (!festDates[k]) errors.push(`dayKeys tiene '${k}' pero festivalDates no lo tiene`);
+  }
+
+  // Track sections
+  const emojiToSections = {}; // emoji → [section names]
+  const sectionStrings = {};  // sec_name → Set of exact strings
+
+  for (const film of films) {
+    const title = film.title || '?';
+    const sec = film.section || '';
+    const isEvent = film.type === 'event';
+    const isCortos = !!film.is_cortos;
+
+    // ── RULE 1: day must exist in dayKeys ─────────────────────────────────
+    if (film.day && dayKeys.length && !dayKeys.includes(film.day)) {
+      errors.push(`"${title}": day='${film.day}' no existe en dayKeys`);
+    }
+
+    // ── RULE 2: is_cortos must have film_list ─────────────────────────────
+    if (isCortos && (!film.film_list || film.film_list.length === 0)) {
+      warnings.push(`"${title}": is_cortos:true pero film_list vacío`);
+    }
+
+    // ── RULE 3: is_cortos flags must be derived from film_list ────────────
+    if (isCortos && film.film_list && film.film_list.length > 0) {
+      const derived = getFlagsFromList(film.film_list);
+      const current = film.flags || '';
+      if (derived && (NON_FLAG_EMOJIS.has(current) || current === '' || current === 'Varios')) {
+        warnings.push(`"${title}": flags='${current}' debería ser '${derived}' (derivado de film_list)`);
+      }
+    }
+
+    // ── RULE 4: section emoji uniqueness ──────────────────────────────────
+    if (sec) {
+      const emoji = sectionEmoji(sec);
+      const secName = sec.slice(emoji.length).trim();
+      if (emoji && !NON_FLAG_EMOJIS.has(emoji)) {
+        // Flag emojis as section emoji — OK if section name references a country/place
+        // e.g. "🇨🇴 Comp. Colombia", "🇨🇭 Muestra Suiza" — deliberate and correct
+        // Only warn if section name doesn't reference the country the flag represents
+        const secNameLower = secName.toLowerCase();
+        const isCountrySection = ['muestra','comp.','casa','cortos','cine'].some(w => secNameLower.includes(w));
+        if (!isCountrySection) {
+          warnings.push(`"${title}": sección usa emoji de bandera como identificador: ${emoji}`);
+        }
+      }
+      if (emoji) {
+        if (!emojiToSections[emoji]) emojiToSections[emoji] = new Set();
+        emojiToSections[emoji].add(secName);
+      }
+      if (secName) {
+        if (!sectionStrings[secName]) sectionStrings[secName] = new Set();
+        sectionStrings[secName].add(sec);
+      }
+    }
+
+    // ── RULE 5: required film fields ──────────────────────────────────────
+    if (!film.day) errors.push(`"${title}": campo 'day' requerido`);
+    if (!film.time) errors.push(`"${title}": campo 'time' requerido`);
+    if (!film.venue) warnings.push(`"${title}": campo 'venue' vacío`);
+    if (!film.section) warnings.push(`"${title}": campo 'section' vacío`);
+    if (film.day_order === undefined) warnings.push(`"${title}": falta 'day_order'`);
+
+    // ── RULE 6: event without type:event ──────────────────────────────────
+    if (!isEvent && !isCortos && !film.director) {
+      const secLower = (sec || '').toLowerCase();
+      const isEventSec = ['industry','taller','panel','workshop','masterclass',
+        'clausura','inaugurac','conferencia','ceremonia','academia'].some(w => secLower.includes(w));
+      if (isEventSec) {
+        warnings.push(`"${title}": parece un evento (sección=${sec}) pero no tiene type:'event'`);
+      }
+    }
+
+    // ── RULE 7: flags con non-flag emojis ────────────────────────────────
+    if (!isEvent && !isCortos && film.flags) {
+      for (const char of [...film.flags]) {
+        if (NON_FLAG_EMOJIS.has(char)) {
+          warnings.push(`"${title}": flags='${film.flags}' contiene emoji no-bandera '${char}'`);
+          break;
+        }
+      }
+    }
+  }
+
+  // ── RULE 4 (cont): check emoji clashes ───────────────────────────────────
+  for (const [emoji, secNames] of Object.entries(emojiToSections)) {
+    if (secNames.size > 1) {
+      const names = [...secNames];
+      const allShared = names.every(isSharedAllowed);
+      if (!allShared) {
+        errors.push(`Emoji '${emoji}' compartido por secciones distintas: ${names.map(s=>`'${s}'`).join(', ')}`);
+      }
+      // Retrospectivas y ciclos pueden compartir emoji — solo warning
+      else {
+        warnings.push(`Emoji '${emoji}' compartido por subcategorías (permitido): ${names.map(s=>`'${s}'`).join(', ')}`);
+      }
+    }
+  }
+
+  // ── RULE 8: section string must be identical across all films ─────────────
+  for (const [secName, strings] of Object.entries(sectionStrings)) {
+    if (strings.size > 1) {
+      errors.push(`Sección '${secName}' tiene strings distintos: ${[...strings].map(s=>`'${s}'`).join(' | ')}`);
+    }
+  }
+
+  return { errors, warnings };
+}
+
+// ── Main ─────────────────────────────────────────────────────────────────────
+const festivalsDir = path.join(__dirname, '..', 'festivals');
+const targetId = process.argv[2]; // optional: validate single festival
+
+const files = fs.readdirSync(festivalsDir)
+  .filter(f => f.endsWith('.json') && !f.startsWith('_'))
+  .filter(f => !targetId || f === targetId + '.json' || f === targetId);
+
+if (files.length === 0) {
+  console.error(`No se encontró festival: ${targetId}`);
+  process.exit(1);
+}
+
+let totalErrors = 0;
+let totalWarnings = 0;
+const results = [];
+
+for (const fname of files) {
+  const fpath = path.join(festivalsDir, fname);
+  let data;
+  try {
+    data = JSON.parse(fs.readFileSync(fpath, 'utf8'));
+  } catch (e) {
+    console.error(`✗ ${fname}: JSON inválido — ${e.message}`);
+    totalErrors++;
+    continue;
+  }
+
+  const { errors, warnings } = validateFestival(fname, data);
+  totalErrors += errors.length;
+  totalWarnings += warnings.length;
+  results.push({ fname, errors, warnings });
+}
+
+// ── Output ───────────────────────────────────────────────────────────────────
+let hasIssues = false;
+for (const { fname, errors, warnings } of results) {
+  if (errors.length === 0 && warnings.length === 0) {
+    console.log(`✓ ${fname}`);
+    continue;
+  }
+  hasIssues = true;
+  console.log(`\n── ${fname} ──`);
+  for (const e of errors)   console.log(`  ✗ ERROR:   ${e}`);
+  for (const w of warnings) console.log(`  ⚠ WARNING: ${w}`);
+}
+
+console.log(`\n${'─'.repeat(50)}`);
+console.log(`Festivales: ${files.length} | Errores: ${totalErrors} | Warnings: ${totalWarnings}`);
+
+if (totalErrors > 0) {
+  console.log('\n✗ Validación fallida — corregir errores antes de commit\n');
+  process.exit(1);
+} else if (totalWarnings > 0) {
+  console.log('\n⚠ Validación OK con warnings — revisar antes de publicar\n');
+  process.exit(0);
+} else {
+  console.log('\n✓ Validación completa — todos los festivales OK\n');
+  process.exit(0);
+}
