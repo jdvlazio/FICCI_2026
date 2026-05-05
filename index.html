@@ -4587,7 +4587,7 @@ function renderFilmListHTML(){
   const watchedList=[...watched];
 
   if(!prioList.length&&!nonPrioList.length&&!watchedList.length){
-    return emptyStateHero(ICONS.heart,'Lo que agregás aparece aquí.','Agregá lo que te interesa.','Ir al programa',"switchMainNav('mnav-cartelera');showDayView()");
+    return emptyStateHero(ICONS.heart,'Lo que agregás aparece aquí.','Agregá lo que te interesa.','Ir al Programa',"switchMainNav('mnav-cartelera');showDayView()");
   }
 
   // ── Próxima función futura de un film ──────────────────────────────────
@@ -5505,7 +5505,7 @@ function _renderSavedAgendaHTML(){
     }
     // Sin películas vistas: empty state canónico
     const _festNameMp=(FESTIVAL_CONFIG[_activeFestId]||{}).name||'El festival';
-    return emptyStateHero(ICONS.check,`${_festNameMp} ha terminado`,'No marcaste ninguna película como vista.','Ir al programa',"switchMainNav('mnav-cartelera');showDayView()");
+    return emptyStateHero(ICONS.check,`${_festNameMp} ha terminado`,'No marcaste ninguna película como vista.','Ir al Programa',"switchMainNav('mnav-cartelera');showDayView()");
   }
   if(!savedAgenda||!savedAgenda.schedule.length) return emptyStateHero(ICONS.calendar,'Tu plan aparece aquí.','Agregá lo que te interesa para armar tu plan.','Ir a Planear',"switchMainNav('mnav-planner');showAgView()");
   const all=savedAgenda.schedule;
