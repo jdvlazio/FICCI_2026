@@ -1697,8 +1697,6 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:var(--t
   transition:opacity .5s ease-out, visibility .5s ease-out;
 }
 #otrofestiv-splash.fade-out{opacity:0;visibility:hidden;pointer-events:none}
-/* Splash skip — clase puesta por script inline en <head> antes del paint */
-html.splash-skip #otrofestiv-splash{display:none}
 .splash-wordmark{
   font-size:var(--t-lg);letter-spacing:-.03em;color:var(--white);
   font-weight:var(--w-display);line-height:1;
@@ -2059,15 +2057,6 @@ html.splash-skip #otrofestiv-splash{display:none}
 </style>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"WebApplication","name":"Otrofestiv","description":"Tu agenda personal para festivales de cine. Planea, prioriza y saca el máximo de cada festival.","url":"https://otrofestiv.app","applicationCategory":"EntertainmentApplication","operatingSystem":"iOS, Android, Web","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}
-</script>
-<!-- Splash skip check — corre síncrono antes de que el body se pinte.
-     Evita el flash del splash en cada refresh para usuarios que ya entraron. -->
-<script>
-(function(){
-  try{
-    void 0;
-  }catch(e){}
-})();
 </script>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
 </head>
@@ -8500,7 +8489,7 @@ async function loadFestival(id){
 }
 function dismissSplash(){
   const s=document.getElementById('otrofestiv-splash');
-  loadFestival(_splashSelectedFestId||'aff2026')
+  loadFestival(_splashSelectedFestId)
     .then(()=>{
       // Contenido ya renderizado y estable — ahora fade del splash
       if(s){s.classList.add('fade-out');setTimeout(()=>s.remove(),560);}
