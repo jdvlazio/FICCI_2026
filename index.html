@@ -7519,7 +7519,7 @@ function openPelSheet(title){
       </div>`
     :`<div class="pel-sheet-ctas">
         <button id="pel-wl-btn" class="pel-sheet-action-btn${inWL?' act-on btn-primary':' btn-primary'}" onclick="togglePelWL('${safeT}',event)" style="display:inline-flex;align-items:center;justify-content:center;gap:var(--sp-1)">${inWL?ICONS.heartFill:ICONS.heart} ${inWL?'En Intereses':'Intereses'}</button>
-        <button id="pel-prio-btn" class="pel-sheet-action-btn${inPrio?' act-prio':'  btn-secondary'}" onclick="togglePelPrio('${safeT}')" style="display:inline-flex;align-items:center;justify-content:center;gap:var(--sp-1)">${inPrio?ICONS.starFill:ICONS.star} ${inPrio?'Priorizada':'Priorizar'}</button>
+        <button id="pel-prio-btn" class="pel-sheet-action-btn${inPrio?' act-prio':' btn-secondary'}" onclick="togglePelPrio('${safeT}')" style="display:inline-flex;align-items:center;justify-content:center;gap:var(--sp-1)">${inPrio?ICONS.starFill:ICONS.star} ${inPrio?'Priorizada':'Priorizar'}</button>
         <button id="pel-vista-btn" class="pel-sheet-action-btn btn-tertiary" onclick="toggleWatched('${safeT}',event)" style="display:inline-flex;align-items:center;justify-content:center;gap:var(--sp-1)">${ICONS.check} ${f.type==='event'?'Asistí':'Vista'}</button>
       </div>`}
     ${_inPlan&&activeView==='agenda'?`<button onclick="closePelSheet();removeFromAgenda('${safeT}')" class="pel-sheet-remove-plan">${ICONS.x} Quitar del plan</button>`:''}
