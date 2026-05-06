@@ -152,12 +152,13 @@ async function tmdbSearch(title, year, apiKey){
   const q = encodeURIComponent(title);
   const yr = year ? `&year=${year}` : '';
   const url = `${TMDB_BASE}/search/movie?api_key=${apiKey}&query=${q}&language=es-MX${yr}`;
-  const r = await fetch(url);
+  const OPTS = {signal: AbortSignal.timeout(8000)};
+  const r = await fetch(url, OPTS);
   if(!r.ok) return null;
   const d = await r.json();
   let results = d.results || [];
   if(!results.length && year){
-    const r2 = await fetch(`${TMDB_BASE}/search/movie?api_key=${apiKey}&query=${q}&language=es-MX`);
+    const r2 = await fetch(`${TMDB_BASE}/search/movie?api_key=${apiKey}&query=${q}&language=es-MX`, OPTS);
     if(r2.ok){ const d2 = await r2.json(); results = d2.results||[]; }
   }
   return results[0] || null;
@@ -165,7 +166,7 @@ async function tmdbSearch(title, year, apiKey){
 
 async function tmdbDetails(id, apiKey){
   const url = `${TMDB_BASE}/movie/${id}?api_key=${apiKey}&language=es-MX&append_to_response=credits`;
-  const r = await fetch(url);
+  const r = await fetch(url, {signal: AbortSignal.timeout(8000)});
   return r.ok ? r.json() : null;
 }
 
@@ -222,7 +223,7 @@ async function enrichFilm(film, needs, apiKey, existingPosters){
   if(needs.includes('synopsis') && !film.synopsis){
     let syn = details?.overview || '';
     if(!syn){
-      const r2 = await fetch(`${TMDB_BASE}/movie/${result.id}?api_key=${apiKey}&language=en-US`);
+      const r2 = await fetch(`${TMDB_BASE}/movie/${result.id}?api_key=${apiKey}&language=en-US`, {signal: AbortSignal.timeout(8000)});
       if(r2.ok){ const d2 = await r2.json(); syn = d2.overview||''; }
     }
     if(isLikelyEnglish(syn)) syn = '⚠️ INGLÉS — ' + syn;
