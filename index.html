@@ -2346,7 +2346,7 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:var(--t
   <div class="prio-limit-hdr">
     <div class="prio-limit-eyebrow"><svg width="11" height="11" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1.5"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg><span id="prio-limit-eyebrow-txt"></span></div>
     <div class="prio-limit-title">Ya tienes <span id="prio-limit-count"></span> prioridades</div>
-    <div class="prio-limit-sub">Cambia una para priorizar esta película</div>
+    <div class="prio-limit-sub">Cambiá una para priorizar esta película</div>
   </div>
   <div class="prio-limit-new" id="prio-limit-new-bar">
     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#F59E0B" stroke-width="2"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
@@ -2367,12 +2367,12 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:var(--t
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#3AAA6E" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
     </div>
     <div>
-      <div class="plan-confirm-title" id="plan-confirm-title">Listo para el festival</div>
+      <div class="plan-confirm-title" id="plan-confirm-title">¡Tu plan está listo!</div>
       <div class="plan-confirm-sub" id="plan-confirm-sub"></div>
     </div>
   </div>
   <div class="plan-confirm-films" id="plan-confirm-films"></div>
-  <button class="plan-confirm-cta" onclick="closePlanConfirm(true)">Ver mi plan</button>
+  <button class="plan-confirm-cta" onclick="closePlanConfirm(true)">Ver Mi Plan</button>
 </div>
 <!-- ── Rating Sheet ── -->
 <div class="rating-overlay" id="rating-overlay" onclick="closeRatingSheet()"></div>
@@ -2427,7 +2427,7 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:var(--t
 </div>
 <div id="cartelera-cta" style="display:none">
   <div class="cartelera-cta">
-    <span class="cartelera-cta-text">Toca <span style="color:var(--amber)">♥</span> en cualquier título para añadirlo a <b>Intereses</b></span>
+    <span class="cartelera-cta-text">Tocá <span style="color:var(--amber)">♥</span> en cualquier título para añadirlo a <b>Intereses</b></span>
   </div>
 </div>
 </div>
@@ -3656,7 +3656,7 @@ function renderMiPlanCalendar(){
       const _hintSeen=localStorage.getItem('otrofestiv_hint_cambiar');
       const _hasFuture=savedAgenda&&savedAgenda.schedule.some(s=>!screeningPassed(s));
       if(_hintSeen||!_hasFuture) return '';
-      return`<div class="mplan-change-hint">${ICONS.clock} Toca la hora para cambiar la película</div>`;
+      return`<div class="mplan-change-hint">${ICONS.clock} Tocá la hora para cambiar la película</div>`;
     })()}
   </div>`
 }
@@ -6712,7 +6712,7 @@ function invalidateCalcResult(){
   const res=document.getElementById('ag-result');
   const pending=[...watchlist].filter(t=>!watched.has(t)&&FILMS.some(f=>f.title===t&&!screeningPassed(f)));
   res.innerHTML=pending.length
-    ?`<div class="ag-calc-prompt">Toca <strong>Ver opciones</strong> para ver tu plan.</div>`
+    ?`<div class="ag-calc-prompt">Tocá <strong>Ver opciones</strong> para ver tu plan.</div>`
     :`<div class="ag-calc-prompt">Añadí lo que no querés perderte en <strong>Intereses</strong>.</div>`;
 }
 function runCalc(){
@@ -6826,7 +6826,7 @@ function renderAgenda(){
     // ── Estado B: con Intereses — herramienta completa ──
     const resultContent=cachedResult
       ?buildResultHTML(cachedResult.scenarios)
-      :`<div class="ag-calc-prompt">Toca <strong>Ver opciones</strong> para ver tu plan.</div>`;
+      :`<div class="ag-calc-prompt">Tocá <strong>Ver opciones</strong> para ver tu plan.</div>`;
     view.innerHTML=`${_progressHtml}
       <div class="ag-section">
         ${renderPrioStrip()}
