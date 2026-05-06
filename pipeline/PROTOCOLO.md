@@ -163,6 +163,9 @@ Abrir la app en mobile (390px) con el festival nuevo activo y verificar las 7 pa
 **Si algo falla:** documentar en el chat antes de continuar. No hacer deploy parcial.
 
 ### Paso 7 · Deploy
+```bash
+node scripts/bump-version.js   # sincroniza sw.js y version.json — obligatorio antes de push
+```
 **Yo hago:** push directo al repo `jdvlazio/Otrofestiv.app` via GitHub API.
 **Resultado:** festival disponible en `otrofestiv.app` en ~2 minutos.
 

@@ -2497,6 +2497,10 @@ const TMDB_IMG="https://image.tmdb.org/t/p/w185";
 // Default '-05:00' = Colombia. Festivals internacionales usan su propio offset.
 // Ejemplo: Tribeca NYC junio = '-04:00'
 let TZ_OFFSET='-05:00';
+// FESTIVAL_TRANSPORT: modo de movilización del festival activo.
+// Valores: 'transit' (Uber/Metro) · 'walking' (a pie) · 'mixed' (depende de la sede)
+// Afecta el texto de aviso de viaje en Mi Plan. Se actualiza en loadFestival().
+let FESTIVAL_TRANSPORT='transit';
 function _festDate(dateStr,time){
   return new Date(dateStr+'T'+time+':00'+TZ_OFFSET);
 }
@@ -3245,17 +3249,8 @@ const VENUES={
 };
 
 /* ── VENUES: configuración, salas, tiempos de viaje ─────────────────── */
-// Venue coordinates for travel time estimation (AFF venues in Medellín)
-const VENUE_COORDS={
-  'MAMM':{lat:6.2338,lon:-75.5733},
-  'MAMM · Plazoleta':{lat:6.2338,lon:-75.5733},
-  'Industry Days':{lat:6.2338,lon:-75.5733},
-  'Colombo Americano':{lat:6.2592,lon:-75.5680},
-  // FICCI venues in Cartagena
-  'Teatro Adolfo Mejía':{lat:10.4238,lon:-75.5503},
-  'Plaza Bocagrande':{lat:10.3987,lon:-75.5600},
-  'CC Caribe Plaza':{lat:10.4071,lon:-75.5124},
-};
+// Las coordenadas de sedes viven en festivals/*.json bajo venues{}.
+// venueTravelMins() las lee directamente de FESTIVAL_CONFIG[id].venues.
 function venueTravelMins(v1,v2){
   // Data-driven: uses coords from active festival's venues JSON
   const festVenues=(FESTIVAL_CONFIG[_activeFestId]||{}).venues||{};
@@ -3331,7 +3326,10 @@ function travelWarn(s1,s2){
   const travel=travelMins(s1.venue,s2.venue);
   if(travel===0) return null;
   const gap=toMin(s2.time)-(toMin(s1.time)+parseDur(s1.duration));
-  if(gap<travel+10) return`${ICONS.alert} ~${travel} min en carro entre estas sedes`;
+  if(gap<travel+10){
+    const _modo=FESTIVAL_TRANSPORT==='walking'?'a pie':FESTIVAL_TRANSPORT==='mixed'?null:'en carro';
+    return`${ICONS.alert} ~${travel} min${_modo?' '+_modo:''} entre estas sedes`;
+  }
   return null;
 }
 
@@ -8911,6 +8909,7 @@ async function loadFestival(id){
       }
       // Absorber venues desde raíz del JSON (AFF/FICCI los tienen hardcodeados; otros festivales los traen aquí)
       if(data.venues) cfg.venues=data.venues;
+      if(data.transport) cfg.transport=data.transport;
     }catch(e){
       console.error('Error cargando festival '+id+':',e);
       showToast('No se pudo cargar el festival. Verificá tu conexión.','error',5000);
@@ -8996,6 +8995,7 @@ async function loadFestival(id){
     programaSubMode='hoy'; // Durante el festival → ir directo a Hoy
   }
   TZ_OFFSET=cfg.timezoneOffset||'-05:00';
+  FESTIVAL_TRANSPORT=cfg.transport||'transit';
   // Update fest-bar
   const _fn=document.querySelector('.hdr-fest-name');
   const _fd=document.querySelector('.hdr-fest-dates');
