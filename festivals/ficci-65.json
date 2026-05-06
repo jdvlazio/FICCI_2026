@@ -87,7 +87,9 @@
       "day_order": 0,
       "is_cortos": false,
       "film_list": [],
-      "synopsis": "Gugu tiene 12 años y crece en una pequeña comunidad a orillas del embalse Araújo-Lima, cuyo nivel desciende gradualmente revelando las ruinas de una ciudad sumergida. Vive con su abuela Dilma, rodeado de ternura, picardía y tardes de fútbol."
+      "synopsis": "Gugu tiene 12 años y crece en una pequeña comunidad a orillas del embalse Araújo-Lima, cuyo nivel desciende gradualmente revelando las ruinas de una ciudad sumergida. Vive con su abuela Dilma, rodeado de ternura, picardía y tardes de fútbol.",
+      "director": "Allan Deberton",
+      "year": 2026
     },
     {
       "title": "Queimada",
@@ -103,7 +105,9 @@
       "day_order": 1,
       "is_cortos": false,
       "film_list": [],
-      "synopsis": "Realizada en 1969 por Gillo Pontecorvo, Queimada! propone una de las representaciones más incisivas del colonialismo en el cine moderno."
+      "synopsis": "Realizada en 1969 por Gillo Pontecorvo, Queimada! propone una de las representaciones más incisivas del colonialismo en el cine moderno.",
+      "director": "Sébastien Vaniček",
+      "year": 2026
     },
     {
       "title": "O Riso e a Faca",
@@ -119,7 +123,9 @@
       "day_order": 1,
       "is_cortos": false,
       "film_list": [],
-      "synopsis": "Pedro Filipe Marques construye un retrato íntimo de una familia portuguesa en Lisboa, observando con delicadeza las tensiones generacionales y los silencios que definen sus vínculos."
+      "synopsis": "Pedro Filipe Marques construye un retrato íntimo de una familia portuguesa en Lisboa, observando con delicadeza las tensiones generacionales y los silencios que definen sus vínculos.",
+      "director": "Pedro Pinho",
+      "year": 2025
     },
     {
       "title": "Vetre, pričaj sa mnom",
@@ -135,7 +141,9 @@
       "day_order": 1,
       "is_cortos": false,
       "film_list": [],
-      "synopsis": "El sonido de los árboles parece atenuar el desasosiego en el que habita Stefan. La necesidad de enfrentar el dolor por la muerte de su madre lo lleva a regresar a su pueblo natal."
+      "synopsis": "El sonido de los árboles parece atenuar el desasosiego en el que habita Stefan. La necesidad de enfrentar el dolor por la muerte de su madre lo lleva a regresar a su pueblo natal.",
+      "director": "Stefan Đorđević",
+      "year": 2025
     },
     {
       "title": "Geu Jayeoni Nege Mworago Hani",
@@ -151,7 +159,9 @@
       "day_order": 1,
       "is_cortos": false,
       "film_list": [],
-      "synopsis": "Hong Sang-soo regresa al Festival de Berlín con una película en blanco y negro que sigue a una directora que viaja a la playa con su familia y que, en sus conversaciones con extraños, reflexiona sobre el amor, el arte y la naturaleza humana."
+      "synopsis": "Hong Sang-soo regresa al Festival de Berlín con una película en blanco y negro que sigue a una directora que viaja a la playa con su familia y que, en sus conversaciones con extraños, reflexiona sobre el amor, el arte y la naturaleza humana.",
+      "director": "Hong Sang-soo",
+      "year": 2025
     },
     {
       "title": "Costas — Prog. 4",
@@ -276,7 +286,9 @@
       "day_order": 1,
       "is_cortos": false,
       "film_list": [],
-      "synopsis": "El juego constituye uno de los ejes fundamentales de este documental de Eliza Capai. Situado en la ciudad de Guaribas, en el nordeste brasileño, el filme acompaña a un grupo de niñas invitadas a imaginar cómo se ven a sí mismas en el futuro."
+      "synopsis": "El juego constituye uno de los ejes fundamentales de este documental de Eliza Capai. Situado en la ciudad de Guaribas, en el nordeste brasileño, el filme acompaña a un grupo de niñas invitadas a imaginar cómo se ven a sí mismas en el futuro.",
+      "director": "Eliza Capai",
+      "year": 2026
     },
     {
       "title": "Die papierene Brücke",
@@ -292,7 +304,9 @@
       "day_order": 1,
       "is_cortos": false,
       "film_list": [],
-      "synopsis": "Ruth Beckermann rastrea la trayectoria de su familia judía entre Austria y Israel, entrelazando testimonios, archivos y viajes para construir un retrato íntimo de la memoria, la identidad y el exilio."
+      "synopsis": "Ruth Beckermann rastrea la trayectoria de su familia judía entre Austria y Israel, entrelazando testimonios, archivos y viajes para construir un retrato íntimo de la memoria, la identidad y el exilio.",
+      "director": "Ruth Beckermann",
+      "year": 1987
     },
     {
       "title": "Si no ardemos, cómo iluminar la noche",
@@ -308,7 +322,9 @@
       "day_order": 1,
       "is_cortos": false,
       "film_list": [],
-      "synopsis": "Este coming of age que transita entre fábula y crónica, sigue a Laura, adolescente de 13 años que se muda a una zona rural de Costa Rica."
+      "synopsis": "Este coming of age que transita entre fábula y crónica, sigue a Laura, adolescente de 13 años que se muda a una zona rural de Costa Rica.",
+      "director": "Kim Torres",
+      "year": 2025
     },
     {
       "title": "Iván & Hadoum",
@@ -324,7 +340,9 @@
       "day_order": 1,
       "is_cortos": false,
       "film_list": [],
-      "synopsis": "Iván trabaja en una empresa agrícola y aspira a un ascenso que le permita mejorar la situación económica de su familia."
+      "synopsis": "Iván trabaja en una empresa agrícola y aspira a un ascenso que le permita mejorar la situación económica de su familia.",
+      "director": "Ian de la Rosa",
+      "year": 2026
     },
     {
       "title": "Cine Indígena — Prog. 2",
@@ -382,7 +400,9 @@
       "day_order": 1,
       "is_cortos": false,
       "film_list": [],
-      "synopsis": "Lina tiene 34 años, es diseñadora de moda y acaba de recibir un premio. Poco después de la ceremonia, se encierra en un baño, sale corriendo y se lanza a un río helado. Sobrevive."
+      "synopsis": "Lina tiene 34 años, es diseñadora de moda y acaba de recibir un premio. Poco después de la ceremonia, se encierra en un baño, sale corriendo y se lanza a un río helado. Sobrevive.",
+      "director": "Zhedan Deng",
+      "year": 2024
     },
     {
       "title": "ojoboca — Prog. 1 · 16mm",
@@ -486,7 +506,9 @@
       "day_order": 1,
       "is_cortos": false,
       "film_list": [],
-      "synopsis": "Yeka, de 12 años, ama y admira a su hermano, un cantante emergente de reguetón que le promete a ella y a su familia sacarlos del contexto precario en el que viven."
+      "synopsis": "Yeka, de 12 años, ama y admira a su hermano, un cantante emergente de reguetón que le promete a ella y a su familia sacarlos del contexto precario en el que viven.",
+      "director": "Juan Cáceres",
+      "year": 2025
     },
     {
       "title": "Esa otra selva blanca",
@@ -502,7 +524,9 @@
       "day_order": 1,
       "is_cortos": false,
       "film_list": [],
-      "synopsis": "Las mariposas son bioindicadores de la salud de un ecosistema: su aparición tras un incendio permite medir cuánto tarda un bosque en recuperarse."
+      "synopsis": "Las mariposas son bioindicadores de la salud de un ecosistema: su aparición tras un incendio permite medir cuánto tarda un bosque en recuperarse.",
+      "director": "Teresa Arredondo",
+      "year": 2025
     },
     {
       "title": "Chicas tristes",
@@ -518,7 +542,9 @@
       "day_order": 1,
       "is_cortos": false,
       "film_list": [],
-      "synopsis": "Decir “ternura” y que sean varias las cosas que salen de la boca: miel, abrazo, risa. Amiga, sangre, ardor. Paula y La Maestra tienen 16 años, ambas son nadadoras y se preparan para ir al Campeonato Panamericano de Natación Junior."
+      "synopsis": "Decir “ternura” y que sean varias las cosas que salen de la boca: miel, abrazo, risa. Amiga, sangre, ardor. Paula y La Maestra tienen 16 años, ambas son nadadoras y se preparan para ir al Campeonato Panamericano de Natación Junior.",
+      "director": "Fernanda Tovar",
+      "year": 2026
     },
     {
       "title": "Frío metal",
@@ -534,7 +560,9 @@
       "day_order": 1,
       "is_cortos": false,
       "film_list": [],
-      "synopsis": "¿Cómo escribir una historia que se desprende de la vida? Es decir, que queda colgando, como un pedazo de piel, un soporte fotosensible que lleva registrada en sus pliegues la luz."
+      "synopsis": "¿Cómo escribir una historia que se desprende de la vida? Es decir, que queda colgando, como un pedazo de piel, un soporte fotosensible que lleva registrada en sus pliegues la luz.",
+      "director": "Clemente Castor Reyes",
+      "year": 2025
     },
     {
       "title": "Aro berria",
@@ -550,7 +578,9 @@
       "day_order": 1,
       "is_cortos": false,
       "film_list": [],
-      "synopsis": "En un gesto de rebeldía y poética, un grupo de trabajadores inicia una huelga silenciosa. Sin embargo, el impacto de esta pequeña revolución no trasciende: el colectivo no comparte los ideales de los más jóvenes."
+      "synopsis": "En un gesto de rebeldía y poética, un grupo de trabajadores inicia una huelga silenciosa. Sin embargo, el impacto de esta pequeña revolución no trasciende: el colectivo no comparte los ideales de los más jóvenes.",
+      "director": "Farah Khan",
+      "year": 2014
     },
     {
       "title": "Bosque arriba en la montaña",
@@ -566,7 +596,9 @@
       "day_order": 1,
       "is_cortos": false,
       "film_list": [],
-      "synopsis": "En 2017, Rafael Nahuel, un joven mapuche, fue asesinado por la Prefectura Naval Argentina en el bosque andino de Villa Mascardi, en la Patagonia."
+      "synopsis": "En 2017, Rafael Nahuel, un joven mapuche, fue asesinado por la Prefectura Naval Argentina en el bosque andino de Villa Mascardi, en la Patagonia.",
+      "director": "Sofía Bordenave",
+      "year": 2026
     },
     {
       "title": "Puntos de fuga",
@@ -582,7 +614,9 @@
       "day_order": 1,
       "is_cortos": false,
       "film_list": [],
-      "synopsis": "Lina Rodriguez entreteje la historia de su madre con la suya propia, entrelazándolas con episodios de la historia de Colombia."
+      "synopsis": "Lina Rodriguez entreteje la historia de su madre con la suya propia, entrelazándolas con episodios de la historia de Colombia.",
+      "director": "Leo Schatzl",
+      "year": 2005
     },
     {
       "title": "Feito Pipa",
@@ -598,7 +632,9 @@
       "day_order": 1,
       "is_cortos": false,
       "film_list": [],
-      "synopsis": "Gugu tiene 12 años y crece en una pequeña comunidad a orillas del embalse Araújo-Lima, cuyo nivel desciende gradualmente revelando las ruinas de una ciudad sumergida. Vive con su abuela Dilma, rodeado de ternura, picardía y tardes de fútbol."
+      "synopsis": "Gugu tiene 12 años y crece en una pequeña comunidad a orillas del embalse Araújo-Lima, cuyo nivel desciende gradualmente revelando las ruinas de una ciudad sumergida. Vive con su abuela Dilma, rodeado de ternura, picardía y tardes de fútbol.",
+      "director": "Allan Deberton",
+      "year": 2026
     },
     {
       "title": "Animación Porosa — Prog. de Cortos",
@@ -676,7 +712,9 @@
       "day_order": 1,
       "is_cortos": false,
       "film_list": [],
-      "synopsis": "Rodeada por la sofisticada escena gastronómica de São Paulo, Isabel, una sommelière de un exclusivo restaurante, disfruta reinventar las normas, empujar los límites y desafiar las reglas establecidas. Una pasión que se desborda con la noche."
+      "synopsis": "Rodeada por la sofisticada escena gastronómica de São Paulo, Isabel, una sommelière de un exclusivo restaurante, disfruta reinventar las normas, empujar los límites y desafiar las reglas establecidas. Una pasión que se desborda con la noche.",
+      "director": "Matthew Murdoch",
+      "year": 2019
     },
     {
       "title": "Tóc, Giấy và Nước…",
@@ -692,7 +730,9 @@
       "day_order": 1,
       "is_cortos": false,
       "film_list": [],
-      "synopsis": "A través de tres elementos — cabello, papel y agua — la película entrelaza historias de mujeres en Vietnam, Bélgica y Francia, explorando la memoria, el cuerpo y la herencia cultural en una poética visual de gran delicadeza."
+      "synopsis": "A través de tres elementos — cabello, papel y agua — la película entrelaza historias de mujeres en Vietnam, Bélgica y Francia, explorando la memoria, el cuerpo y la herencia cultural en una poética visual de gran delicadeza.",
+      "director": "Nicolas Graux",
+      "year": 2026
     },
     {
       "title": "Queen at Sea",
@@ -708,7 +748,9 @@
       "day_order": 1,
       "is_cortos": false,
       "film_list": [],
-      "synopsis": "Leslie padece demencia avanzada y vive con Martin, su esposo y principal cuidador. Amanda, la hija de Leslie, acaba de mudarse a Londres para tomarse un año sabático y estar más cerca de su madre."
+      "synopsis": "Leslie padece demencia avanzada y vive con Martin, su esposo y principal cuidador. Amanda, la hija de Leslie, acaba de mudarse a Londres para tomarse un año sabático y estar más cerca de su madre.",
+      "director": "Lance Hammer",
+      "year": 2026
     },
     {
       "title": "Piedras preciosas",
@@ -724,7 +766,9 @@
       "day_order": 1,
       "is_cortos": false,
       "film_list": [],
-      "synopsis": "Machado, un joven inmigrante colombiano, trabaja cosechando uvas en la campiña francesa."
+      "synopsis": "Machado, un joven inmigrante colombiano, trabaja cosechando uvas en la campiña francesa.",
+      "director": "Sriram Raja",
+      "year": 2019
     },
     {
       "title": "Blue Heron",
@@ -740,7 +784,9 @@
       "day_order": 1,
       "is_cortos": false,
       "film_list": [],
-      "synopsis": "Violeta Parra cantaba que después de vivir un siglo se puede volver a tener 17 años."
+      "synopsis": "Violeta Parra cantaba que después de vivir un siglo se puede volver a tener 17 años.",
+      "director": "Sophy Romvari",
+      "year": 2026
     },
     {
       "title": "Jóhanna af örk",
@@ -756,7 +802,9 @@
       "day_order": 1,
       "is_cortos": false,
       "film_list": [],
-      "synopsis": "Hlynur Pálmason reinterpreta el mito de Juana de Arco situando la historia en el presente. Una joven recorre Islandia a caballo, sola, en un viaje que oscila entre lo espiritual y lo físico."
+      "synopsis": "Hlynur Pálmason reinterpreta el mito de Juana de Arco situando la historia en el presente. Una joven recorre Islandia a caballo, sola, en un viaje que oscila entre lo espiritual y lo físico.",
+      "director": "Luc Besson",
+      "year": 1999
     },
     {
       "title": "Internacional — Prog. de Cortos",
@@ -813,7 +861,9 @@
       "day_order": 2,
       "is_cortos": false,
       "film_list": [],
-      "synopsis": "En 1990 se produjo un cambio fundamental en el cine independiente colombiano."
+      "synopsis": "En 1990 se produjo un cambio fundamental en el cine independiente colombiano.",
+      "director": "Víctor Gaviria",
+      "year": 1990
     },
     {
       "title": "Khmeli Potoli",
@@ -829,7 +879,9 @@
       "day_order": 2,
       "is_cortos": false,
       "film_list": [],
-      "synopsis": "Alexandre Koberidze filma en Georgia y Alemania una historia de amor construida desde la observación y el tiempo lento, donde dos personas se encuentran y se pierden en la textura cotidiana de sus días."
+      "synopsis": "Alexandre Koberidze filma en Georgia y Alemania una historia de amor construida desde la observación y el tiempo lento, donde dos personas se encuentran y se pierden en la textura cotidiana de sus días.",
+      "director": "Alexandre Koberidze",
+      "year": 2026
     },
     {
       "title": "A Fabulosa Máquina do Tempo",
@@ -845,7 +897,9 @@
       "day_order": 2,
       "is_cortos": false,
       "film_list": [],
-      "synopsis": "El juego constituye uno de los ejes fundamentales de este documental de Eliza Capai. Situado en la ciudad de Guaribas, en el nordeste brasileño, el filme acompaña a un grupo de niñas invitadas a imaginar cómo se ven a sí mismas en el futuro."
+      "synopsis": "El juego constituye uno de los ejes fundamentales de este documental de Eliza Capai. Situado en la ciudad de Guaribas, en el nordeste brasileño, el filme acompaña a un grupo de niñas invitadas a imaginar cómo se ven a sí mismas en el futuro.",
+      "director": "Eliza Capai",
+      "year": 2026
     },
     {
       "title": "Cine Afro — Prog. de Cortos",
@@ -892,7 +946,9 @@
       "day_order": 2,
       "is_cortos": false,
       "film_list": [],
-      "synopsis": "En un gesto de rebeldía y poética, un grupo de trabajadores inicia una huelga silenciosa. Sin embargo, el impacto de esta pequeña revolución no trasciende: el colectivo no comparte los ideales de los más jóvenes."
+      "synopsis": "En un gesto de rebeldía y poética, un grupo de trabajadores inicia una huelga silenciosa. Sin embargo, el impacto de esta pequeña revolución no trasciende: el colectivo no comparte los ideales de los más jóvenes.",
+      "director": "Farah Khan",
+      "year": 2014
     },
     {
       "title": "Se Eu Fosse Vivo… Vivia",
@@ -908,7 +964,9 @@
       "day_order": 2,
       "is_cortos": false,
       "film_list": [],
-      "synopsis": "André Novais Oliveira construye una elegía familiar sobre la pérdida y la memoria a través de imágenes íntimas de su propia familia en Brasil."
+      "synopsis": "André Novais Oliveira construye una elegía familiar sobre la pérdida y la memoria a través de imágenes íntimas de su propia familia en Brasil.",
+      "director": "Dmitry Peskov",
+      "year": null
     },
     {
       "title": "Anoche conquisté Tebas",
@@ -924,7 +982,9 @@
       "day_order": 2,
       "is_cortos": false,
       "film_list": [],
-      "synopsis": "Un grupo de jóvenes portugueses cruza la frontera para pasar la noche en unas antiguas termales, en medio de las ruinas de un antiguo fuerte romano."
+      "synopsis": "Un grupo de jóvenes portugueses cruza la frontera para pasar la noche en unas antiguas termales, en medio de las ruinas de un antiguo fuerte romano.",
+      "director": "Gabriel Azorín",
+      "year": 2025
     },
     {
       "title": "El príncipe de Nanawa",
@@ -940,7 +1000,9 @@
       "day_order": 2,
       "is_cortos": false,
       "film_list": [],
-      "synopsis": "El paso de la infancia a la adultez es un tema poderoso y este documental resonante de Clarisa Navas nos invita a verlo a través de un niño carismático y parlanchín en un pueblo fronterizo entre Argentina y Paraguay."
+      "synopsis": "El paso de la infancia a la adultez es un tema poderoso y este documental resonante de Clarisa Navas nos invita a verlo a través de un niño carismático y parlanchín en un pueblo fronterizo entre Argentina y Paraguay.",
+      "director": "Clarisa Navas",
+      "year": 2025
     },
     {
       "title": "Risa y la cabina del viento",
@@ -956,7 +1018,9 @@
       "day_order": 2,
       "is_cortos": false,
       "film_list": [],
-      "synopsis": "Los paisajes de Tierra del Fuego poseen una cualidad conmovedora en su sobriedad, más aún vistos desde la exuberancia tropical."
+      "synopsis": "Los paisajes de Tierra del Fuego poseen una cualidad conmovedora en su sobriedad, más aún vistos desde la exuberancia tropical.",
+      "director": "Juan Cabral",
+      "year": 2026
     },
     {
       "title": "Cortos Colombia — Prog. 1",
@@ -1034,7 +1098,9 @@
       "day_order": 2,
       "is_cortos": false,
       "film_list": [],
-      "synopsis": "«DAO es el movimiento perpetuo y circular que fluye en todo y une al mundo». La película comienza con la presentación del concepto que le da nombre, introduciendo al espectador en el ritmo de la experiencia audiovisual que propone a continuación."
+      "synopsis": "«DAO es el movimiento perpetuo y circular que fluye en todo y une al mundo». La película comienza con la presentación del concepto que le da nombre, introduciendo al espectador en el ritmo de la experiencia audiovisual que propone a continuación.",
+      "director": "Alain Gomis",
+      "year": 2026
     },
     {
       "title": "Historias del buen valle",
@@ -1050,7 +1116,9 @@
       "day_order": 2,
       "is_cortos": false,
       "film_list": [],
-      "synopsis": "De nuevo, José Luis Guerín ofrece una lección de cine documental, como lo reconoció el jurado del Festival de Cine de San Sebastián, que le otorgó su Premio Especial."
+      "synopsis": "De nuevo, José Luis Guerín ofrece una lección de cine documental, como lo reconoció el jurado del Festival de Cine de San Sebastián, que le otorgó su Premio Especial.",
+      "director": "José Luis Guerín",
+      "year": 2025
     },
     {
       "title": "Two Years at Sea",
@@ -1066,7 +1134,9 @@
       "day_order": 2,
       "is_cortos": false,
       "film_list": [],
-      "synopsis": "En medio del bosque escocés, un hombre establece sus propias reglas en relación con el territorio."
+      "synopsis": "En medio del bosque escocés, un hombre establece sus propias reglas en relación con el territorio.",
+      "director": "Ben Rivers",
+      "year": 2012
     },
     {
       "title": "ojoboca — Prog. 2 · 16mm",
@@ -1113,7 +1183,9 @@
       "day_order": 2,
       "is_cortos": false,
       "film_list": [],
-      "synopsis": "Milo, un niño carismático que baila malambo, se escapa de su casa y viaja a la ciudad de Buenos Aires en busca de una nueva vida, en esta fascinante película donde conviven, de manera armónica, lo documental y lo absurdo."
+      "synopsis": "Milo, un niño carismático que baila malambo, se escapa de su casa y viaja a la ciudad de Buenos Aires en busca de una nueva vida, en esta fascinante película donde conviven, de manera armónica, lo documental y lo absurdo.",
+      "director": "Lorenzo Ferro",
+      "year": 2026
     },
     {
       "title": "Iván & Hadoum",
@@ -1129,7 +1201,9 @@
       "day_order": 2,
       "is_cortos": false,
       "film_list": [],
-      "synopsis": "Iván trabaja en una empresa agrícola y aspira a un ascenso que le permita mejorar la situación económica de su familia."
+      "synopsis": "Iván trabaja en una empresa agrícola y aspira a un ascenso que le permita mejorar la situación económica de su familia.",
+      "director": "Ian de la Rosa",
+      "year": 2026
     },
     {
       "title": "Cortos Colombia — Prog. 2",
@@ -1181,7 +1255,9 @@
       "day_order": 2,
       "is_cortos": false,
       "film_list": [],
-      "synopsis": "Mustafa Uzuner sigue a un grupo de músicos que recorren Turquía y Canadá preservando tradiciones sonoras que corren el riesgo de desaparecer."
+      "synopsis": "Mustafa Uzuner sigue a un grupo de músicos que recorren Turquía y Canadá preservando tradiciones sonoras que corren el riesgo de desaparecer.",
+      "director": "Mustafa Uzuner",
+      "year": 2025
     },
     {
       "title": "Staatsschutz",
@@ -1197,7 +1273,9 @@
       "day_order": 2,
       "is_cortos": false,
       "film_list": [],
-      "synopsis": "Faraz Shariat construye un thriller político en Alemania sobre un joven abogado iraní que defiende a solicitantes de asilo mientras enfrenta su propia identidad y las contradicciones del sistema legal europeo."
+      "synopsis": "Faraz Shariat construye un thriller político en Alemania sobre un joven abogado iraní que defiende a solicitantes de asilo mientras enfrenta su propia identidad y las contradicciones del sistema legal europeo.",
+      "director": "Billy Wilder",
+      "year": 1957
     },
     {
       "title": "Crocodile",
@@ -1213,7 +1291,9 @@
       "day_order": 2,
       "is_cortos": false,
       "film_list": [],
-      "synopsis": "Documental sobre el auge del cine nigeriano Nollywood y su impacto global, filmado entre Lagos y Auckland."
+      "synopsis": "Documental sobre el auge del cine nigeriano Nollywood y su impacto global, filmado entre Lagos y Auckland.",
+      "director": "Peter Faiman",
+      "year": 1986
     },
     {
       "title": "Señoritas",
@@ -1229,7 +1309,9 @@
       "day_order": 2,
       "is_cortos": false,
       "film_list": [],
-      "synopsis": "En Señoritas, Lina Rodríguez sigue a Alejandra, una joven bogotana que habita su ciudad entre la intimidad doméstica del apartamento junto a su madre y la vida nocturna compartida con un círculo cercano, intenso y a veces contradictorio."
+      "synopsis": "En Señoritas, Lina Rodríguez sigue a Alejandra, una joven bogotana que habita su ciudad entre la intimidad doméstica del apartamento junto a su madre y la vida nocturna compartida con un círculo cercano, intenso y a veces contradictorio.",
+      "director": "Fernando Méndez",
+      "year": 1959
     },
     {
       "title": "Piedras preciosas",
@@ -1245,7 +1327,9 @@
       "day_order": 2,
       "is_cortos": false,
       "film_list": [],
-      "synopsis": "Machado, un joven inmigrante colombiano, trabaja cosechando uvas en la campiña francesa."
+      "synopsis": "Machado, un joven inmigrante colombiano, trabaja cosechando uvas en la campiña francesa.",
+      "director": "Sriram Raja",
+      "year": 2019
     },
     {
       "title": "Los cruces",
@@ -1261,7 +1345,9 @@
       "day_order": 2,
       "is_cortos": false,
       "film_list": [],
-      "synopsis": "Los Cruces parte de una premisa sencilla y enigmática: la búsqueda de un sueño."
+      "synopsis": "Los Cruces parte de una premisa sencilla y enigmática: la búsqueda de un sueño.",
+      "director": "Simon Payne",
+      "year": 2017
     },
     {
       "title": "Mare’s Nest",
@@ -1277,7 +1363,9 @@
       "day_order": 2,
       "is_cortos": false,
       "film_list": [],
-      "synopsis": "Moon recoge una tortuga en la carretera. Instantes antes ha logrado esquivarla mientras conducía, saliendo completamente ilesa de un accidente que nos introduce en este —quizá utópico— mundo sin adultos."
+      "synopsis": "Moon recoge una tortuga en la carretera. Instantes antes ha logrado esquivarla mientras conducía, saliendo completamente ilesa de un accidente que nos introduce en este —quizá utópico— mundo sin adultos.",
+      "director": "Ben Rivers",
+      "year": 2026
     },
     {
       "title": "Cine Indígena — Prog. 2",
@@ -1319,7 +1407,9 @@
       "day_order": 2,
       "is_cortos": false,
       "film_list": [],
-      "synopsis": "El fantasma de un proyecto económico nacional se ve desestabilizado por un hombre que, en lugar de buscar trabajo, se queda jugando en la calle y sigue viviendo con su madre."
+      "synopsis": "El fantasma de un proyecto económico nacional se ve desestabilizado por un hombre que, en lugar de buscar trabajo, se queda jugando en la calle y sigue viviendo con su madre.",
+      "director": "Jack Benjamin Gill",
+      "year": 2019
     },
     {
       "title": "Costas — Prog. 2",
@@ -1361,7 +1451,9 @@
       "day_order": 2,
       "is_cortos": false,
       "film_list": [],
-      "synopsis": "En un viejo apartamento de Viena se acumulan las memorias materiales y afectivas de Al Cook, un hombre de 80 años que ha dedicado su vida al blues y al country, a la melancolía evocadora de los sonidos de Robert Johnson y Elvis Presley."
+      "synopsis": "En un viejo apartamento de Viena se acumulan las memorias materiales y afectivas de Al Cook, un hombre de 80 años que ha dedicado su vida al blues y al country, a la melancolía evocadora de los sonidos de Robert Johnson y Elvis Presley.",
+      "director": "Tizza Covi",
+      "year": 2026
     },
     {
       "title": "Sehnsucht in Sangerhausen",
@@ -1377,7 +1469,9 @@
       "day_order": 2,
       "is_cortos": false,
       "film_list": [],
-      "synopsis": "Julian Radlmaier filma en un resort de lujo alemán una comedia de enredos marxista donde turistas, trabajadores y fantasmas coexisten en un verano que nunca termina."
+      "synopsis": "Julian Radlmaier filma en un resort de lujo alemán una comedia de enredos marxista donde turistas, trabajadores y fantasmas coexisten en un verano que nunca termina.",
+      "director": "Julian Radlmaier",
+      "year": 2025
     },
     {
       "title": "Tehran Bedoune Mojavez",
@@ -1393,7 +1487,9 @@
       "day_order": 2,
       "is_cortos": false,
       "film_list": [],
-      "synopsis": "Sepideh Farsi documenta la vida cotidiana en Gaza a través de imágenes filmadas por sus propios habitantes, construyendo un testimonio colectivo de resistencia y humanidad."
+      "synopsis": "Sepideh Farsi documenta la vida cotidiana en Gaza a través de imágenes filmadas por sus propios habitantes, construyendo un testimonio colectivo de resistencia y humanidad.",
+      "director": "Sepideh Farsi",
+      "year": 2025
     },
     {
       "title": "Dracula",
@@ -1409,7 +1505,9 @@
       "day_order": 2,
       "is_cortos": false,
       "film_list": [],
-      "synopsis": "Radu Jude adapta el mito de Drácula en clave de comedia política rumana, interrogando la historia, el poder y la corrupción con su característica ironía radical."
+      "synopsis": "Radu Jude adapta el mito de Drácula en clave de comedia política rumana, interrogando la historia, el poder y la corrupción con su característica ironía radical.",
+      "director": "Luc Besson",
+      "year": 2025
     },
     {
       "title": "Planas, testimonio de un etnocidio",
@@ -1425,7 +1523,9 @@
       "day_order": 3,
       "is_cortos": false,
       "film_list": [],
-      "synopsis": "Marta Rodríguez y Jorge Silva documentan la violencia ejercida contra las comunidades indígenas del Llano colombiano en los años 70, en una de las obras fundacionales del cine político latinoamericano."
+      "synopsis": "Marta Rodríguez y Jorge Silva documentan la violencia ejercida contra las comunidades indígenas del Llano colombiano en los años 70, en una de las obras fundacionales del cine político latinoamericano.",
+      "director": "Marta Rodríguez",
+      "year": 1971
     },
     {
       "title": "Campesinos",
@@ -1441,7 +1541,9 @@
       "day_order": 3,
       "is_cortos": false,
       "film_list": [],
-      "synopsis": "A partir de la denuncia por la brecha de posesión de tierra en el país, y con un retrato y seguimiento a los movimientos sociales anti-latifundistas, Martha Rodríguez y Jorge Silva elaboran un complejo manifiesto tejido con voces, datos, registros y…"
+      "synopsis": "A partir de la denuncia por la brecha de posesión de tierra en el país, y con un retrato y seguimiento a los movimientos sociales anti-latifundistas, Martha Rodríguez y Jorge Silva elaboran un complejo manifiesto tejido con voces, datos, registros y…",
+      "director": "Ken Jacobs",
+      "year": 1975
     },
     {
       "title": "Ben Rivers — Prog. 1",
@@ -1529,7 +1631,9 @@
       "day_order": 3,
       "is_cortos": false,
       "film_list": [],
-      "synopsis": "Las mariposas son bioindicadores de la salud de un ecosistema: su aparición tras un incendio permite medir cuánto tarda un bosque en recuperarse."
+      "synopsis": "Las mariposas son bioindicadores de la salud de un ecosistema: su aparición tras un incendio permite medir cuánto tarda un bosque en recuperarse.",
+      "director": "Teresa Arredondo",
+      "year": 2025
     },
     {
       "title": "El pagador de promesas",
@@ -1545,7 +1649,9 @@
       "day_order": 3,
       "is_cortos": false,
       "film_list": [],
-      "synopsis": "Zé y Rosa, una pareja campesina, arriban de madrugada a una ciudad intermedia. El hombre carga una cruz y ambos llevan horas de caminata."
+      "synopsis": "Zé y Rosa, una pareja campesina, arriban de madrugada a una ciudad intermedia. El hombre carga una cruz y ambos llevan horas de caminata.",
+      "director": "Ujkan Hysaj",
+      "year": 2016
     },
     {
       "title": "Prog. Cortometrajes — Jorge Cadena",
@@ -1623,7 +1729,9 @@
       "day_order": 3,
       "is_cortos": false,
       "film_list": [],
-      "synopsis": "Decir “ternura” y que sean varias las cosas que salen de la boca: miel, abrazo, risa. Amiga, sangre, ardor. Paula y La Maestra tienen 16 años, ambas son nadadoras y se preparan para ir al Campeonato Panamericano de Natación Junior."
+      "synopsis": "Decir “ternura” y que sean varias las cosas que salen de la boca: miel, abrazo, risa. Amiga, sangre, ardor. Paula y La Maestra tienen 16 años, ambas son nadadoras y se preparan para ir al Campeonato Panamericano de Natación Junior.",
+      "director": "Fernanda Tovar",
+      "year": 2026
     },
     {
       "title": "Queen at Sea",
@@ -1639,7 +1747,9 @@
       "day_order": 3,
       "is_cortos": false,
       "film_list": [],
-      "synopsis": "Leslie padece demencia avanzada y vive con Martin, su esposo y principal cuidador. Amanda, la hija de Leslie, acaba de mudarse a Londres para tomarse un año sabático y estar más cerca de su madre."
+      "synopsis": "Leslie padece demencia avanzada y vive con Martin, su esposo y principal cuidador. Amanda, la hija de Leslie, acaba de mudarse a Londres para tomarse un año sabático y estar más cerca de su madre.",
+      "director": "Lance Hammer",
+      "year": 2026
     },
     {
       "title": "Cortos Colombia — Prog. 3",
@@ -1696,7 +1806,9 @@
       "day_order": 3,
       "is_cortos": false,
       "film_list": [],
-      "synopsis": "David Bingong sigue a un grupo de inmigrantes cameruneses en España, retratando con cercanía sus vidas, sueños y el peso del desplazamiento."
+      "synopsis": "David Bingong sigue a un grupo de inmigrantes cameruneses en España, retratando con cercanía sus vidas, sueños y el peso del desplazamiento.",
+      "director": "Robert Schwentke",
+      "year": 2009
     },
     {
       "title": "Nuit Obscure - Ain’t I a Child?",
@@ -1712,7 +1824,9 @@
       "day_order": 3,
       "is_cortos": false,
       "film_list": [],
-      "synopsis": "Sylvain George filma durante varios años a jóvenes migrantes en Calais, construyendo un poema visual sobre la resistencia, el cuerpo y la frontera."
+      "synopsis": "Sylvain George filma durante varios años a jóvenes migrantes en Calais, construyendo un poema visual sobre la resistencia, el cuerpo y la frontera.",
+      "director": "Sylvain George",
+      "year": 2025
     },
     {
       "title": "Tehran Bedoune Mojavez",
@@ -1728,7 +1842,9 @@
       "day_order": 3,
       "is_cortos": false,
       "film_list": [],
-      "synopsis": "Sepideh Farsi documenta la vida cotidiana en Gaza a través de imágenes filmadas por sus propios habitantes, construyendo un testimonio colectivo de resistencia y humanidad."
+      "synopsis": "Sepideh Farsi documenta la vida cotidiana en Gaza a través de imágenes filmadas por sus propios habitantes, construyendo un testimonio colectivo de resistencia y humanidad.",
+      "director": "Sepideh Farsi",
+      "year": 2025
     },
     {
       "title": "El mundo al revés",
@@ -1744,7 +1860,9 @@
       "day_order": 3,
       "is_cortos": false,
       "film_list": [],
-      "synopsis": "Son muchas las formas cotidianas en las que la luz nos hace partícipes de su milagro: el fogón de la cocina, las estrellas en el cielo, el reflejo de las formas sobre el agua."
+      "synopsis": "Son muchas las formas cotidianas en las que la luz nos hace partícipes de su milagro: el fogón de la cocina, las estrellas en el cielo, el reflejo de las formas sobre el agua.",
+      "director": "Joyce Trozzo",
+      "year": 2016
     },
     {
       "title": "Nuestra tierra",
@@ -1760,7 +1878,9 @@
       "day_order": 3,
       "is_cortos": false,
       "film_list": [],
-      "synopsis": "La directora argentina Lucrecia Martel es una de las maestras del cine contemporáneo y su capacidad de juntar imágenes y sonidos para lograr efectos inesperados, a menudo perturbadores, brilla en su primer largometraje documental."
+      "synopsis": "La directora argentina Lucrecia Martel es una de las maestras del cine contemporáneo y su capacidad de juntar imágenes y sonidos para lograr efectos inesperados, a menudo perturbadores, brilla en su primer largometraje documental.",
+      "director": "",
+      "year": 1997
     },
     {
       "title": "Anoche conquisté Tebas",
@@ -1776,7 +1896,9 @@
       "day_order": 3,
       "is_cortos": false,
       "film_list": [],
-      "synopsis": "Un grupo de jóvenes portugueses cruza la frontera para pasar la noche en unas antiguas termales, en medio de las ruinas de un antiguo fuerte romano."
+      "synopsis": "Un grupo de jóvenes portugueses cruza la frontera para pasar la noche en unas antiguas termales, en medio de las ruinas de un antiguo fuerte romano.",
+      "director": "Gabriel Azorín",
+      "year": 2025
     },
     {
       "title": "ojoboca — Prog. 2 · 16mm",
@@ -1823,7 +1945,9 @@
       "day_order": 3,
       "is_cortos": false,
       "film_list": [],
-      "synopsis": "Pedro Filipe Marques construye un retrato íntimo de una familia portuguesa en Lisboa, observando con delicadeza las tensiones generacionales y los silencios que definen sus vínculos."
+      "synopsis": "Pedro Filipe Marques construye un retrato íntimo de una familia portuguesa en Lisboa, observando con delicadeza las tensiones generacionales y los silencios que definen sus vínculos.",
+      "director": "Pedro Pinho",
+      "year": 2025
     },
     {
       "title": "Una escritura en apariencias",
@@ -1922,7 +2046,9 @@
       "day_order": 3,
       "is_cortos": false,
       "film_list": [],
-      "synopsis": "Ruth Beckermann documenta el escándalo político que estalló en Austria cuando se reveló el pasado nazi de Kurt Waldheim durante su campaña presidencial de 1986."
+      "synopsis": "Ruth Beckermann documenta el escándalo político que estalló en Austria cuando se reveló el pasado nazi de Kurt Waldheim durante su campaña presidencial de 1986.",
+      "director": "Ruth Beckermann",
+      "year": 2018
     },
     {
       "title": "Historias del buen valle",
@@ -1938,7 +2064,9 @@
       "day_order": 3,
       "is_cortos": false,
       "film_list": [],
-      "synopsis": "De nuevo, José Luis Guerín ofrece una lección de cine documental, como lo reconoció el jurado del Festival de Cine de San Sebastián, que le otorgó su Premio Especial."
+      "synopsis": "De nuevo, José Luis Guerín ofrece una lección de cine documental, como lo reconoció el jurado del Festival de Cine de San Sebastián, que le otorgó su Premio Especial.",
+      "director": "José Luis Guerín",
+      "year": 2025
     },
     {
       "title": "La noche está marchándose ya",
@@ -1954,7 +2082,9 @@
       "day_order": 3,
       "is_cortos": false,
       "film_list": [],
-      "synopsis": "Esta es una comedia cinéfila atravesada por la crisis, a la vez solitaria y solidaria."
+      "synopsis": "Esta es una comedia cinéfila atravesada por la crisis, a la vez solitaria y solidaria.",
+      "director": "Ramiro Sonzini",
+      "year": 2025
     },
     {
       "title": "Tóc, Giấy và Nước…",
@@ -1970,7 +2100,9 @@
       "day_order": 3,
       "is_cortos": false,
       "film_list": [],
-      "synopsis": "A través de tres elementos — cabello, papel y agua — la película entrelaza historias de mujeres en Vietnam, Bélgica y Francia, explorando la memoria, el cuerpo y la herencia cultural en una poética visual de gran delicadeza."
+      "synopsis": "A través de tres elementos — cabello, papel y agua — la película entrelaza historias de mujeres en Vietnam, Bélgica y Francia, explorando la memoria, el cuerpo y la herencia cultural en una poética visual de gran delicadeza.",
+      "director": "Nicolas Graux",
+      "year": 2026
     },
     {
       "title": "Cortos Iberoamérica — Prog. 1",
@@ -2047,7 +2179,9 @@
       "day_order": 3,
       "is_cortos": false,
       "film_list": [],
-      "synopsis": "Deimer Quintero Vertel documenta las memorias de comunidades colombianas desplazadas por la violencia, que intentan reconstruir su identidad y sus raíces en tierras que ya no les pertenecen."
+      "synopsis": "Deimer Quintero Vertel documenta las memorias de comunidades colombianas desplazadas por la violencia, que intentan reconstruir su identidad y sus raíces en tierras que ya no les pertenecen.",
+      "director": "Deimer Quintero Vertel",
+      "year": 2026
     },
     {
       "title": "Se Eu Fosse Vivo… Vivia",
@@ -2063,7 +2197,9 @@
       "day_order": 3,
       "is_cortos": false,
       "film_list": [],
-      "synopsis": "André Novais Oliveira construye una elegía familiar sobre la pérdida y la memoria a través de imágenes íntimas de su propia familia en Brasil."
+      "synopsis": "André Novais Oliveira construye una elegía familiar sobre la pérdida y la memoria a través de imágenes íntimas de su propia familia en Brasil.",
+      "director": "Dmitry Peskov",
+      "year": null
     },
     {
       "title": "Pequenas Criaturas",
@@ -2079,7 +2215,9 @@
       "day_order": 3,
       "is_cortos": false,
       "film_list": [],
-      "synopsis": "Helena se muda a Brasilia con sus hijos, de 15 y 7 años. Cada uno afronta a su manera la ausencia de su padre, que permanece en un viaje de negocios sin fecha clara de regreso."
+      "synopsis": "Helena se muda a Brasilia con sus hijos, de 15 y 7 años. Cada uno afronta a su manera la ausencia de su padre, que permanece en un viaje de negocios sin fecha clara de regreso.",
+      "director": "",
+      "year": 2005
     },
     {
       "title": "Cine Afro — Prog. de Cortos",
@@ -2126,7 +2264,9 @@
       "day_order": 3,
       "is_cortos": false,
       "film_list": [],
-      "synopsis": "En medio de la creciente apertura del cine hacia las historias de la comunidad LGTBIQ+, un relato sobre la homosexualidad en la vejez continúa siendo poco frecuente."
+      "synopsis": "En medio de la creciente apertura del cine hacia las historias de la comunidad LGTBIQ+, un relato sobre la homosexualidad en la vejez continúa siendo poco frecuente.",
+      "director": "Aitor Arregi",
+      "year": 2025
     },
     {
       "title": "Jóhanna af örk",
@@ -2142,7 +2282,9 @@
       "day_order": 3,
       "is_cortos": false,
       "film_list": [],
-      "synopsis": "Hlynur Pálmason reinterpreta el mito de Juana de Arco situando la historia en el presente. Una joven recorre Islandia a caballo, sola, en un viaje que oscila entre lo espiritual y lo físico."
+      "synopsis": "Hlynur Pálmason reinterpreta el mito de Juana de Arco situando la historia en el presente. Una joven recorre Islandia a caballo, sola, en un viaje que oscila entre lo espiritual y lo físico.",
+      "director": "Luc Besson",
+      "year": 1999
     },
     {
       "title": "Internacional — Prog. de Cortos",
@@ -2199,7 +2341,9 @@
       "day_order": 3,
       "is_cortos": false,
       "film_list": [],
-      "synopsis": "Con esta película, la guionista y directora Ralitza Petrova construye un universo cerrado y distante de relaciones fracturadas, emociones frustradas y melancolía existencial."
+      "synopsis": "Con esta película, la guionista y directora Ralitza Petrova construye un universo cerrado y distante de relaciones fracturadas, emociones frustradas y melancolía existencial.",
+      "director": "Hank Hoffman",
+      "year": 2021
     },
     {
       "title": "AnyMart",
@@ -2215,7 +2359,9 @@
       "day_order": 3,
       "is_cortos": false,
       "film_list": [],
-      "synopsis": "Los minimercados en Japón (conocidos como konbini) son parte fundamental del tejido urbano local: abiertos 24 horas, con comida higiénicamente empacada, lista para servir y una variedad de servicios adicionales, como correo y papelería."
+      "synopsis": "Los minimercados en Japón (conocidos como konbini) son parte fundamental del tejido urbano local: abiertos 24 horas, con comida higiénicamente empacada, lista para servir y una variedad de servicios adicionales, como correo y papelería.",
+      "director": "Iwasaki Yusuke",
+      "year": 2026
     },
     {
       "title": "Alborada en Cartagena",
@@ -2346,7 +2492,9 @@
       "day_order": 4,
       "is_cortos": false,
       "film_list": [],
-      "synopsis": "En las grietas de una ciudad civilizada (esa que desde un inicio nació muerta) respira el colapso."
+      "synopsis": "En las grietas de una ciudad civilizada (esa que desde un inicio nació muerta) respira el colapso.",
+      "director": "Sally El Hosaini",
+      "year": 2022
     },
     {
       "title": "Crocodile",
@@ -2362,7 +2510,9 @@
       "day_order": 4,
       "is_cortos": false,
       "film_list": [],
-      "synopsis": "Documental sobre el auge del cine nigeriano Nollywood y su impacto global, filmado entre Lagos y Auckland."
+      "synopsis": "Documental sobre el auge del cine nigeriano Nollywood y su impacto global, filmado entre Lagos y Auckland.",
+      "director": "Peter Faiman",
+      "year": 1986
     },
     {
       "title": "Bosque arriba en la montaña",
@@ -2378,7 +2528,9 @@
       "day_order": 4,
       "is_cortos": false,
       "film_list": [],
-      "synopsis": "En 2017, Rafael Nahuel, un joven mapuche, fue asesinado por la Prefectura Naval Argentina en el bosque andino de Villa Mascardi, en la Patagonia."
+      "synopsis": "En 2017, Rafael Nahuel, un joven mapuche, fue asesinado por la Prefectura Naval Argentina en el bosque andino de Villa Mascardi, en la Patagonia.",
+      "director": "Sofía Bordenave",
+      "year": 2026
     },
     {
       "title": "Cortos Colombia — Prog. 1",
@@ -2471,7 +2623,9 @@
       "day_order": 4,
       "is_cortos": false,
       "film_list": [],
-      "synopsis": "En la cultura etíope, Wax & Gold refiere a la ambigüedad del lenguaje: el significado literal y su dimensión simbólica."
+      "synopsis": "En la cultura etíope, Wax & Gold refiere a la ambigüedad del lenguaje: el significado literal y su dimensión simbólica.",
+      "director": "Britton Caillouette",
+      "year": 2020
     },
     {
       "title": "De Indias — Ángeles somos",
@@ -2533,7 +2687,9 @@
       "day_order": 4,
       "is_cortos": false,
       "film_list": [],
-      "synopsis": "Lina tiene 34 años, es diseñadora de moda y acaba de recibir un premio. Poco después de la ceremonia, se encierra en un baño, sale corriendo y se lanza a un río helado. Sobrevive."
+      "synopsis": "Lina tiene 34 años, es diseñadora de moda y acaba de recibir un premio. Poco después de la ceremonia, se encierra en un baño, sale corriendo y se lanza a un río helado. Sobrevive.",
+      "director": "Zhedan Deng",
+      "year": 2024
     },
     {
       "title": "Vetre, pričaj sa mnom",
@@ -2549,7 +2705,9 @@
       "day_order": 4,
       "is_cortos": false,
       "film_list": [],
-      "synopsis": "El sonido de los árboles parece atenuar el desasosiego en el que habita Stefan. La necesidad de enfrentar el dolor por la muerte de su madre lo lleva a regresar a su pueblo natal."
+      "synopsis": "El sonido de los árboles parece atenuar el desasosiego en el que habita Stefan. La necesidad de enfrentar el dolor por la muerte de su madre lo lleva a regresar a su pueblo natal.",
+      "director": "Stefan Đorđević",
+      "year": 2025
     },
     {
       "title": "Staatsschutz",
@@ -2565,7 +2723,9 @@
       "day_order": 4,
       "is_cortos": false,
       "film_list": [],
-      "synopsis": "Faraz Shariat construye un thriller político en Alemania sobre un joven abogado iraní que defiende a solicitantes de asilo mientras enfrenta su propia identidad y las contradicciones del sistema legal europeo."
+      "synopsis": "Faraz Shariat construye un thriller político en Alemania sobre un joven abogado iraní que defiende a solicitantes de asilo mientras enfrenta su propia identidad y las contradicciones del sistema legal europeo.",
+      "director": "Billy Wilder",
+      "year": 1957
     },
     {
       "title": "Puntos de fuga",
@@ -2581,7 +2741,9 @@
       "day_order": 4,
       "is_cortos": false,
       "film_list": [],
-      "synopsis": "Lina Rodriguez entreteje la historia de su madre con la suya propia, entrelazándolas con episodios de la historia de Colombia."
+      "synopsis": "Lina Rodriguez entreteje la historia de su madre con la suya propia, entrelazándolas con episodios de la historia de Colombia.",
+      "director": "Leo Schatzl",
+      "year": 2005
     },
     {
       "title": "Lo demás es ruido",
@@ -2597,7 +2759,9 @@
       "day_order": 4,
       "is_cortos": false,
       "film_list": [],
-      "synopsis": "En un cruce congestionado, los vehículos parecen bailar al ritmo del chelo de Teresa, componiendo una melodía incesante donde el ruido nunca se apaga. Teresa presta su casa a Rosa para la grabación de una entrevista televisiva."
+      "synopsis": "En un cruce congestionado, los vehículos parecen bailar al ritmo del chelo de Teresa, componiendo una melodía incesante donde el ruido nunca se apaga. Teresa presta su casa a Rosa para la grabación de una entrevista televisiva.",
+      "director": "Zev Robinson",
+      "year": 2012
     },
     {
       "title": "La noche está marchándose ya",
@@ -2613,7 +2777,9 @@
       "day_order": 4,
       "is_cortos": false,
       "film_list": [],
-      "synopsis": "Esta es una comedia cinéfila atravesada por la crisis, a la vez solitaria y solidaria."
+      "synopsis": "Esta es una comedia cinéfila atravesada por la crisis, a la vez solitaria y solidaria.",
+      "director": "Ramiro Sonzini",
+      "year": 2025
     },
     {
       "title": "El príncipe de Nanawa",
@@ -2629,7 +2795,9 @@
       "day_order": 4,
       "is_cortos": false,
       "film_list": [],
-      "synopsis": "El paso de la infancia a la adultez es un tema poderoso y este documental resonante de Clarisa Navas nos invita a verlo a través de un niño carismático y parlanchín en un pueblo fronterizo entre Argentina y Paraguay."
+      "synopsis": "El paso de la infancia a la adultez es un tema poderoso y este documental resonante de Clarisa Navas nos invita a verlo a través de un niño carismático y parlanchín en un pueblo fronterizo entre Argentina y Paraguay.",
+      "director": "Clarisa Navas",
+      "year": 2025
     },
     {
       "title": "Los cruces",
@@ -2645,7 +2813,9 @@
       "day_order": 4,
       "is_cortos": false,
       "film_list": [],
-      "synopsis": "Los Cruces parte de una premisa sencilla y enigmática: la búsqueda de un sueño."
+      "synopsis": "Los Cruces parte de una premisa sencilla y enigmática: la búsqueda de un sueño.",
+      "director": "Simon Payne",
+      "year": 2017
     },
     {
       "title": "El tren fluvial",
@@ -2661,7 +2831,9 @@
       "day_order": 4,
       "is_cortos": false,
       "film_list": [],
-      "synopsis": "Milo, un niño carismático que baila malambo, se escapa de su casa y viaja a la ciudad de Buenos Aires en busca de una nueva vida, en esta fascinante película donde conviven, de manera armónica, lo documental y lo absurdo."
+      "synopsis": "Milo, un niño carismático que baila malambo, se escapa de su casa y viaja a la ciudad de Buenos Aires en busca de una nueva vida, en esta fascinante película donde conviven, de manera armónica, lo documental y lo absurdo.",
+      "director": "Lorenzo Ferro",
+      "year": 2026
     },
     {
       "title": "Cortos Iberoamérica — Prog. 1",
@@ -2738,7 +2910,9 @@
       "day_order": 4,
       "is_cortos": false,
       "film_list": [],
-      "synopsis": "Mustafa Uzuner sigue a un grupo de músicos que recorren Turquía y Canadá preservando tradiciones sonoras que corren el riesgo de desaparecer."
+      "synopsis": "Mustafa Uzuner sigue a un grupo de músicos que recorren Turquía y Canadá preservando tradiciones sonoras que corren el riesgo de desaparecer.",
+      "director": "Mustafa Uzuner",
+      "year": 2025
     },
     {
       "title": "Khmeli Potoli",
@@ -2754,7 +2928,9 @@
       "day_order": 4,
       "is_cortos": false,
       "film_list": [],
-      "synopsis": "Alexandre Koberidze filma en Georgia y Alemania una historia de amor construida desde la observación y el tiempo lento, donde dos personas se encuentran y se pierden en la textura cotidiana de sus días."
+      "synopsis": "Alexandre Koberidze filma en Georgia y Alemania una historia de amor construida desde la observación y el tiempo lento, donde dos personas se encuentran y se pierden en la textura cotidiana de sus días.",
+      "director": "Alexandre Koberidze",
+      "year": 2026
     },
     {
       "title": "ojoboca — Prog. 3 · 35mm",
@@ -2812,7 +2988,9 @@
       "day_order": 4,
       "is_cortos": false,
       "film_list": [],
-      "synopsis": "Rodeada por la sofisticada escena gastronómica de São Paulo, Isabel, una sommelière de un exclusivo restaurante, disfruta reinventar las normas, empujar los límites y desafiar las reglas establecidas. Una pasión que se desborda con la noche."
+      "synopsis": "Rodeada por la sofisticada escena gastronómica de São Paulo, Isabel, una sommelière de un exclusivo restaurante, disfruta reinventar las normas, empujar los límites y desafiar las reglas establecidas. Una pasión que se desborda con la noche.",
+      "director": "Matthew Murdoch",
+      "year": 2019
     },
     {
       "title": "Risa y la cabina del viento",
@@ -2828,7 +3006,9 @@
       "day_order": 4,
       "is_cortos": false,
       "film_list": [],
-      "synopsis": "Los paisajes de Tierra del Fuego poseen una cualidad conmovedora en su sobriedad, más aún vistos desde la exuberancia tropical."
+      "synopsis": "Los paisajes de Tierra del Fuego poseen una cualidad conmovedora en su sobriedad, más aún vistos desde la exuberancia tropical.",
+      "director": "Juan Cabral",
+      "year": 2026
     },
     {
       "title": "El mundo al revés",
@@ -2844,7 +3024,9 @@
       "day_order": 4,
       "is_cortos": false,
       "film_list": [],
-      "synopsis": "Son muchas las formas cotidianas en las que la luz nos hace partícipes de su milagro: el fogón de la cocina, las estrellas en el cielo, el reflejo de las formas sobre el agua."
+      "synopsis": "Son muchas las formas cotidianas en las que la luz nos hace partícipes de su milagro: el fogón de la cocina, las estrellas en el cielo, el reflejo de las formas sobre el agua.",
+      "director": "Joyce Trozzo",
+      "year": 2016
     },
     {
       "title": "(s)paces Cortos — Prog. 1",
@@ -2901,7 +3083,9 @@
       "day_order": 4,
       "is_cortos": false,
       "film_list": [],
-      "synopsis": "Ben Rivers filma en Marruecos durante el rodaje de una película de Arturo Ripstein, creando un ensayo sobre el cine, el poder y la mirada colonial."
+      "synopsis": "Ben Rivers filma en Marruecos durante el rodaje de una película de Arturo Ripstein, creando un ensayo sobre el cine, el poder y la mirada colonial.",
+      "director": "Ben Rivers",
+      "year": 2015
     },
     {
       "title": "The Chronology of Water",
@@ -2917,7 +3101,9 @@
       "day_order": 4,
       "is_cortos": false,
       "film_list": [],
-      "synopsis": "La ópera prima de la actriz Kristen Stewart es una adaptación del best seller autobiográfico de la exnadadora Lidia Yuknavitch, una mujer que carga con las cicatrices de una infancia atravesada por abusos y de una juventud marcada por la…"
+      "synopsis": "La ópera prima de la actriz Kristen Stewart es una adaptación del best seller autobiográfico de la exnadadora Lidia Yuknavitch, una mujer que carga con las cicatrices de una infancia atravesada por abusos y de una juventud marcada por la…",
+      "director": "Kristen Stewart",
+      "year": 2025
     },
     {
       "title": "Blue Heron",
@@ -2933,7 +3119,9 @@
       "day_order": 4,
       "is_cortos": false,
       "film_list": [],
-      "synopsis": "Violeta Parra cantaba que después de vivir un siglo se puede volver a tener 17 años."
+      "synopsis": "Violeta Parra cantaba que después de vivir un siglo se puede volver a tener 17 años.",
+      "director": "Sophy Romvari",
+      "year": 2026
     },
     {
       "title": "Los caifanes",
@@ -2949,7 +3137,9 @@
       "day_order": 4,
       "is_cortos": false,
       "film_list": [],
-      "synopsis": "Paloma y Jaime, una pareja joven y rica, quieren seguir de fiesta cuando la reunión nocturna y aburrida de sus amigos burgueses termina temprano."
+      "synopsis": "Paloma y Jaime, una pareja joven y rica, quieren seguir de fiesta cuando la reunión nocturna y aburrida de sus amigos burgueses termina temprano.",
+      "director": "Juan Ibáñez",
+      "year": 1967
     },
     {
       "title": "Matapanki",
@@ -2965,7 +3155,9 @@
       "day_order": 4,
       "is_cortos": false,
       "film_list": [],
-      "synopsis": "Hay algo chispeante en esta ópera prima del chileno Diego Fuentes; algo como una fiesta que se salió de control, como un pogo poderoso que hace tambalear las paredes, como la energía rara de la rabia alegre."
+      "synopsis": "Hay algo chispeante en esta ópera prima del chileno Diego Fuentes; algo como una fiesta que se salió de control, como un pogo poderoso que hace tambalear las paredes, como la energía rara de la rabia alegre.",
+      "director": "Diego \"Mapache\" Fuentes",
+      "year": 2025
     },
     {
       "title": "A la salida nos vemos",
@@ -3064,7 +3256,9 @@
       "day_order": 5,
       "is_cortos": false,
       "film_list": [],
-      "synopsis": "En medio de la creciente apertura del cine hacia las historias de la comunidad LGTBIQ+, un relato sobre la homosexualidad en la vejez continúa siendo poco frecuente."
+      "synopsis": "En medio de la creciente apertura del cine hacia las historias de la comunidad LGTBIQ+, un relato sobre la homosexualidad en la vejez continúa siendo poco frecuente.",
+      "director": "Aitor Arregi",
+      "year": 2025
     },
     {
       "title": "Costas — Prog. 3",
@@ -3106,7 +3300,9 @@
       "day_order": 5,
       "is_cortos": false,
       "film_list": [],
-      "synopsis": "Moon recoge una tortuga en la carretera. Instantes antes ha logrado esquivarla mientras conducía, saliendo completamente ilesa de un accidente que nos introduce en este —quizá utópico— mundo sin adultos."
+      "synopsis": "Moon recoge una tortuga en la carretera. Instantes antes ha logrado esquivarla mientras conducía, saliendo completamente ilesa de un accidente que nos introduce en este —quizá utópico— mundo sin adultos.",
+      "director": "Ben Rivers",
+      "year": 2026
     },
     {
       "title": "De Indias — Ángeles somos",
@@ -3168,7 +3364,9 @@
       "day_order": 5,
       "is_cortos": false,
       "film_list": [],
-      "synopsis": "En un cruce congestionado, los vehículos parecen bailar al ritmo del chelo de Teresa, componiendo una melodía incesante donde el ruido nunca se apaga. Teresa presta su casa a Rosa para la grabación de una entrevista televisiva."
+      "synopsis": "En un cruce congestionado, los vehículos parecen bailar al ritmo del chelo de Teresa, componiendo una melodía incesante donde el ruido nunca se apaga. Teresa presta su casa a Rosa para la grabación de una entrevista televisiva.",
+      "director": "Zev Robinson",
+      "year": 2012
     },
     {
       "title": "El lugar más pequeño",
@@ -3184,7 +3382,9 @@
       "day_order": 5,
       "is_cortos": false,
       "film_list": [],
-      "synopsis": "Tatiana Huezo documenta la vida de un pequeño pueblo salvadoreño que reconstruye su comunidad después de la guerra civil, a través de voces que narran el trauma y la memoria colectiva."
+      "synopsis": "Tatiana Huezo documenta la vida de un pequeño pueblo salvadoreño que reconstruye su comunidad después de la guerra civil, a través de voces que narran el trauma y la memoria colectiva.",
+      "director": "Tatiana Huezo",
+      "year": 2011
     },
     {
       "title": "Mu-Ki-Ra",
@@ -3200,7 +3400,9 @@
       "day_order": 5,
       "is_cortos": false,
       "film_list": [],
-      "synopsis": "Tras los muros que protegen la aldea se extiende una selva mágica y misteriosa, habitada por criaturas consideradas peligrosas. Durante años, los habitantes se han formado como guerreros desde jóvenes."
+      "synopsis": "Tras los muros que protegen la aldea se extiende una selva mágica y misteriosa, habitada por criaturas consideradas peligrosas. Durante años, los habitantes se han formado como guerreros desde jóvenes.",
+      "director": "",
+      "year": null
     },
     {
       "title": "Frío metal",
@@ -3216,7 +3418,9 @@
       "day_order": 5,
       "is_cortos": false,
       "film_list": [],
-      "synopsis": "¿Cómo escribir una historia que se desprende de la vida? Es decir, que queda colgando, como un pedazo de piel, un soporte fotosensible que lleva registrada en sus pliegues la luz."
+      "synopsis": "¿Cómo escribir una historia que se desprende de la vida? Es decir, que queda colgando, como un pedazo de piel, un soporte fotosensible que lleva registrada en sus pliegues la luz.",
+      "director": "Clemente Castor Reyes",
+      "year": 2025
     },
     {
       "title": "Ben Rivers — Prog. 3 · 16mm",
@@ -3309,7 +3513,9 @@
       "day_order": 5,
       "is_cortos": false,
       "film_list": [],
-      "synopsis": "Con esta película, la guionista y directora Ralitza Petrova construye un universo cerrado y distante de relaciones fracturadas, emociones frustradas y melancolía existencial."
+      "synopsis": "Con esta película, la guionista y directora Ralitza Petrova construye un universo cerrado y distante de relaciones fracturadas, emociones frustradas y melancolía existencial.",
+      "director": "Hank Hoffman",
+      "year": 2021
     },
     {
       "title": "Cortos Iberoamérica — Prog. 2",
@@ -3356,7 +3562,9 @@
       "day_order": 5,
       "is_cortos": false,
       "film_list": [],
-      "synopsis": "En las grietas de una ciudad civilizada (esa que desde un inicio nació muerta) respira el colapso."
+      "synopsis": "En las grietas de una ciudad civilizada (esa que desde un inicio nació muerta) respira el colapso.",
+      "director": "Sally El Hosaini",
+      "year": 2022
     },
     {
       "title": "El dependiente",
@@ -3372,7 +3580,9 @@
       "day_order": 5,
       "is_cortos": false,
       "film_list": [],
-      "synopsis": "Fernández es un hombre adulto que parece no tener un propósito en la vida. Lleva 25 años trabajando en la misma ferretería junto a Don Vila, un anciano solitario e igual de cansado, que le ha prometido dejarle todo cuando muera."
+      "synopsis": "Fernández es un hombre adulto que parece no tener un propósito en la vida. Lleva 25 años trabajando en la misma ferretería junto a Don Vila, un anciano solitario e igual de cansado, que le ha prometido dejarle todo cuando muera.",
+      "director": "Leonardo Favio",
+      "year": 1969
     },
     {
       "title": "Geu Jayeoni Nege Mworago Hani",
@@ -3388,7 +3598,9 @@
       "day_order": 5,
       "is_cortos": false,
       "film_list": [],
-      "synopsis": "Hong Sang-soo regresa al Festival de Berlín con una película en blanco y negro que sigue a una directora que viaja a la playa con su familia y que, en sus conversaciones con extraños, reflexiona sobre el amor, el arte y la naturaleza humana."
+      "synopsis": "Hong Sang-soo regresa al Festival de Berlín con una película en blanco y negro que sigue a una directora que viaja a la playa con su familia y que, en sus conversaciones con extraños, reflexiona sobre el amor, el arte y la naturaleza humana.",
+      "director": "Hong Sang-soo",
+      "year": 2025
     },
     {
       "title": "Sehnsucht in Sangerhausen",
@@ -3404,7 +3616,9 @@
       "day_order": 5,
       "is_cortos": false,
       "film_list": [],
-      "synopsis": "Julian Radlmaier filma en un resort de lujo alemán una comedia de enredos marxista donde turistas, trabajadores y fantasmas coexisten en un verano que nunca termina."
+      "synopsis": "Julian Radlmaier filma en un resort de lujo alemán una comedia de enredos marxista donde turistas, trabajadores y fantasmas coexisten en un verano que nunca termina.",
+      "director": "Julian Radlmaier",
+      "year": 2025
     },
     {
       "title": "El hogar fue sepultado en esa tierra",
@@ -3420,7 +3634,9 @@
       "day_order": 5,
       "is_cortos": false,
       "film_list": [],
-      "synopsis": "Deimer Quintero Vertel documenta las memorias de comunidades colombianas desplazadas por la violencia, que intentan reconstruir su identidad y sus raíces en tierras que ya no les pertenecen."
+      "synopsis": "Deimer Quintero Vertel documenta las memorias de comunidades colombianas desplazadas por la violencia, que intentan reconstruir su identidad y sus raíces en tierras que ya no les pertenecen.",
+      "director": "Deimer Quintero Vertel",
+      "year": 2026
     },
     {
       "title": "Les Voyageurs",
@@ -3436,7 +3652,9 @@
       "day_order": 5,
       "is_cortos": false,
       "film_list": [],
-      "synopsis": "David Bingong sigue a un grupo de inmigrantes cameruneses en España, retratando con cercanía sus vidas, sueños y el peso del desplazamiento."
+      "synopsis": "David Bingong sigue a un grupo de inmigrantes cameruneses en España, retratando con cercanía sus vidas, sueños y el peso del desplazamiento.",
+      "director": "Robert Schwentke",
+      "year": 2009
     },
     {
       "title": "Ben Rivers — Prog. 2",
@@ -3483,7 +3701,9 @@
       "day_order": 5,
       "is_cortos": false,
       "film_list": [],
-      "synopsis": "Gugu tiene 12 años y crece en una pequeña comunidad a orillas del embalse Araújo-Lima, cuyo nivel desciende gradualmente revelando las ruinas de una ciudad sumergida. Vive con su abuela Dilma, rodeado de ternura, picardía y tardes de fútbol."
+      "synopsis": "Gugu tiene 12 años y crece en una pequeña comunidad a orillas del embalse Araújo-Lima, cuyo nivel desciende gradualmente revelando las ruinas de una ciudad sumergida. Vive con su abuela Dilma, rodeado de ternura, picardía y tardes de fútbol.",
+      "director": "Allan Deberton",
+      "year": 2026
     },
     {
       "title": "Dao",
@@ -3499,7 +3719,9 @@
       "day_order": 5,
       "is_cortos": false,
       "film_list": [],
-      "synopsis": "«DAO es el movimiento perpetuo y circular que fluye en todo y une al mundo». La película comienza con la presentación del concepto que le da nombre, introduciendo al espectador en el ritmo de la experiencia audiovisual que propone a continuación."
+      "synopsis": "«DAO es el movimiento perpetuo y circular que fluye en todo y une al mundo». La película comienza con la presentación del concepto que le da nombre, introduciendo al espectador en el ritmo de la experiencia audiovisual que propone a continuación.",
+      "director": "Alain Gomis",
+      "year": 2026
     },
     {
       "title": "The Loneliest Man in Town",
@@ -3515,7 +3737,9 @@
       "day_order": 5,
       "is_cortos": false,
       "film_list": [],
-      "synopsis": "En un viejo apartamento de Viena se acumulan las memorias materiales y afectivas de Al Cook, un hombre de 80 años que ha dedicado su vida al blues y al country, a la melancolía evocadora de los sonidos de Robert Johnson y Elvis Presley."
+      "synopsis": "En un viejo apartamento de Viena se acumulan las memorias materiales y afectivas de Al Cook, un hombre de 80 años que ha dedicado su vida al blues y al country, a la melancolía evocadora de los sonidos de Robert Johnson y Elvis Presley.",
+      "director": "Tizza Covi",
+      "year": 2026
     },
     {
       "title": "Pequenas Criaturas",
@@ -3531,7 +3755,9 @@
       "day_order": 5,
       "is_cortos": false,
       "film_list": [],
-      "synopsis": "Helena se muda a Brasilia con sus hijos, de 15 y 7 años. Cada uno afronta a su manera la ausencia de su padre, que permanece en un viaje de negocios sin fecha clara de regreso."
+      "synopsis": "Helena se muda a Brasilia con sus hijos, de 15 y 7 años. Cada uno afronta a su manera la ausencia de su padre, que permanece en un viaje de negocios sin fecha clara de regreso.",
+      "director": "",
+      "year": 2005
     },
     {
       "title": "Nuit Obscure - Ain’t I a Child?",
@@ -3547,7 +3773,9 @@
       "day_order": 5,
       "is_cortos": false,
       "film_list": [],
-      "synopsis": "Sylvain George filma durante varios años a jóvenes migrantes en Calais, construyendo un poema visual sobre la resistencia, el cuerpo y la frontera."
+      "synopsis": "Sylvain George filma durante varios años a jóvenes migrantes en Calais, construyendo un poema visual sobre la resistencia, el cuerpo y la frontera.",
+      "director": "Sylvain George",
+      "year": 2025
     },
     {
       "title": "Doggerland",
@@ -3563,7 +3791,9 @@
       "day_order": 5,
       "is_cortos": false,
       "film_list": [],
-      "synopsis": "El fantasma de un proyecto económico nacional se ve desestabilizado por un hombre que, en lugar de buscar trabajo, se queda jugando en la calle y sigue viviendo con su madre."
+      "synopsis": "El fantasma de un proyecto económico nacional se ve desestabilizado por un hombre que, en lugar de buscar trabajo, se queda jugando en la calle y sigue viviendo con su madre.",
+      "director": "Jack Benjamin Gill",
+      "year": 2019
     },
     {
       "title": "De Indias — Ángeles somos",
