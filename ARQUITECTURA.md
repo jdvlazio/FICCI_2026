@@ -1,6 +1,6 @@
 # OTROFESTIV — Documento de Arquitectura
 > Referencia canónica para implementación. Leer antes de tocar código.
-> Última actualización: MAY 2026 · `index.html` @ commit `db363e4`
+> Última actualización: MAY 2026 · `index.html` @ commit `474b4a0`
 
 ---
 
@@ -8,13 +8,26 @@
 
 ```
 /
-├── index.html              ← App completa (8 000+ líneas, single-file)
-├── sw.js                   ← Service Worker (cacheo, versión con BUILD)
-├── manifest.json           ← PWA manifest
+├── index.html                  ← App completa (~9.700 líneas, single-file, fuente única)
+├── sw.js                       ← Service Worker
+├── manifest.json               ← PWA manifest
+├── enricher.html               ← Herramienta de enriquecimiento TMDB
+├── ARQUITECTURA.md             ← Este documento
 ├── festivals/
-│   ├── aff-2026.json       ← Datos AFF 2026
-│   └── ficci-65.json       ← Datos FICCI 65
-└── fonts/                  ← Plus Jakarta Sans (400–800)
+│   ├── ficci-65.json           ← FICCI 65 (archivado)
+│   ├── aff-2026.json           ← AFF 2026 (archivado)
+│   └── cinemancia-2025.json    ← Cinemancia 2025 (test)
+├── pipeline/
+│   ├── PROTOCOLO.md            ← Proceso completo para montar un festival
+│   ├── festival-template.json  ← Plantilla JSON para festival nuevo
+│   └── csv-template.csv        ← Template para organizadores
+├── scripts/
+│   ├── generate-config.js      ← Genera entrada FESTIVAL_CONFIG
+│   ├── validate-festivals.js   ← Validador (corre en CI)
+│   ├── enrich-festival.py      ← Enricher TMDB (CLI)
+│   └── geocode-venues.py       ← Geocodifica venues via Nominatim
+└── assets/
+    └── proyeccion-sorpresa.svg ← Poster especial
 ```
 
 Los datos de cada festival viven en su propio JSON, **no** en `index.html`. Se cargan en `loadFestival(id)` la primera vez y se cachean en `FESTIVAL_CONFIG[id].films`.
@@ -361,7 +374,7 @@ Ver protocolo completo en `pipeline/PROTOCOLO.md`. Resumen:
 4. Pegar el bloque generado en `FESTIVAL_CONFIG` en `index.html`
 5. Validar: `node scripts/validate-festivals.js [id]`
 6. QA visual P1–P7 (ver PROTOCOLO.md)
-7. Agregar entrada en `enricher.html → FESTIVALS` con `needs` del festival
+7. Agregar entrada en `enricher.html → FESTIVALS` (registro paralelo intencional — ver comentario en el archivo)
 
 El splash dropdown y el selector se generan dinámicamente desde `FESTIVAL_CONFIG` — no tocar el HTML.  
 Para avisos: agregar entrada en `NOTICES[]` en `index.html` con `festival: '[id]'`.

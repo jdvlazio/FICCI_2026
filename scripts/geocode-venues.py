@@ -94,7 +94,7 @@ def main(filepath):
 
     if not venues:
         print("\n  ⚠ No hay venues en el JSON. Añadir sección 'venues' primero.")
-        print("  Ver FESTIVAL_GUIDE.md para el formato.")
+        print("  Ver pipeline/festival-template.json para el formato.")
         sys.exit(1)
 
     # Filtrar venues sin coordenadas
