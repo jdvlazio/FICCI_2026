@@ -223,6 +223,23 @@ for (const fname of files) {
   }
 
   const { errors, warnings } = validateFestival(fname, data);
+
+  // ── Poster coverage check ─────────────────────────────────────────────────
+  // Un festival sin posters reales sale con todos los placeholders generativos.
+  // Esto no es un error (generativo es el fallback válido) pero sí es un warning.
+  const filmableFilms = (data.films || []).filter(f =>
+    f.type !== 'event' && !f.is_cortos
+  );
+  const filmsWithPoster = filmableFilms.filter(f => f.poster && f.poster !== '');
+  const legacyPosters   = Object.keys(data.posters || {}).length;
+  const totalPosters    = filmsWithPoster.length + legacyPosters;
+  if (filmableFilms.length > 0 && totalPosters === 0) {
+    warnings.push(
+      `Sin posters: ${filmableFilms.length} films sin film.poster y sin posters{} ` +
+      `— se mostrarán placeholders generativos. Correr enrich-festival.py para resolver.`
+    );
+  }
+
   totalErrors += errors.length;
   totalWarnings += warnings.length;
   results.push({ fname, errors, warnings });

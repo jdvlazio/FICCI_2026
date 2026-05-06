@@ -135,7 +135,7 @@ thead th{font-size:10px;font-weight:600;color:var(--gray2);text-transform:upperc
 <div class="progress"><div class="progress-fill" id="prog"></div></div>
 
 <div class="help">
-  Pega la lista de películas en formato JSON. Cada película necesita al menos: <b>title</b>, <b>year</b>, <b>director</b>. Opcional: <b>title_es</b>, <b>country</b>, <b>section</b>, <b>flags</b>, <b>duration</b>.
+  Pega la lista de películas en formato JSON. Cada película necesita al menos: <b>title</b>, <b>year</b>, <b>director</b>. Opcional: <b>title_en</b> (título original en inglés — mejora búsqueda TMDB), <b>country</b>, <b>section</b>, <b>flags</b>, <b>duration</b>.
 </div>
 
 <div class="input-area">
@@ -190,14 +190,14 @@ let state = {};
 // ── Sample data ────────────────────────────────────────────────────────────
 const SAMPLE = [
   {title:'Andariega',director:'Raúl Soto Rodríguez',year:2025,country:'Colombia',section:'Competencia central',flags:'🇨🇴',duration:'96 min'},
-  {title:'As Muitas Mortes de Antônio Parreiras',title_es:'Las muchas muertes de Antônio Parreiras',director:'Lucas Parente',year:2025,country:'Brasil',section:'Competencia central',flags:'🇧🇷',duration:'65 min'},
+  {title:'As Muitas Mortes de Antônio Parreiras',title_en:'As Muitas Mortes de Antônio Parreiras',director:'Lucas Parente',year:2025,country:'Brasil',section:'Competencia central',flags:'🇧🇷',duration:'65 min'},
   {title:'Bluish',director:'Lilith Kraxner, Milena Czernovsky',year:2024,country:'Austria',section:'Competencia central',flags:'🇦🇹',duration:'84 min'},
   {title:'Ensayos y errores',director:'Ignacio Rojas Vallejo',year:2024,country:'Chile',section:'Competencia central',flags:'🇨🇱',duration:'70 min'},
   {title:'Las reglas del juego',director:'Matías Szulanski',year:2025,country:'Argentina',section:'Competencia central',flags:'🇦🇷',duration:'66 min'},
-  {title:'Summer Songs',title_es:'Canciones de verano',director:'Jorge Suárez Quiñones',year:2024,country:'España/Japón',section:'Competencia central',flags:'🇪🇸🇯🇵',duration:'95 min'},
+  {title:'Summer Songs',title_en:'Summer Songs',director:'Jorge Suárez Quiñones',year:2024,country:'España/Japón',section:'Competencia central',flags:'🇪🇸🇯🇵',duration:'95 min'},
   {title:'Tres hermanas',director:'Joyce Ventura',year:2025,country:'Colombia',section:'Competencia central',flags:'🇨🇴',duration:'80 min'},
   {title:'Eureka',director:'Lisandro Alonso',year:2023,country:'Argentina',section:'Proyecciones especiales',flags:'🇦🇷',duration:'147 min'},
-  {title:'The Moon Has Risen',title_es:'La luna se levanta',director:'Kinuyo Tanaka',year:1955,country:'Japón',section:'Iluminaciones',flags:'🇯🇵',duration:'102 min'},
+  {title:'The Moon Has Risen',title_en:'The Moon Has Risen',director:'Kinuyo Tanaka',year:1955,country:'Japón',section:'Iluminaciones',flags:'🇯🇵',duration:'102 min'},
   {title:'Memoria',director:'Apichatpong Weerasethakul',year:2021,country:'Colombia',section:'Especiales',flags:'🇨🇴',duration:'136 min'},
 ];
 
@@ -248,7 +248,7 @@ function renderTable() {
 function renderRow(title) {
   const s = state[title];
   const f = s.film;
-  const display = f.title_es || f.title;
+  const display = f.title;
   const safe = escJs(title);
 
   const poster = s.posterUrl
@@ -329,7 +329,7 @@ async function searchTMDB(film) {
   };
   try {
     return await search(film.title, film.year)
-      || (film.title_es ? await search(film.title_es, film.year) : null)
+      || (film.title_en ? await search(film.title_en, film.year) : null)
       || await search(film.title, null);
   } catch(e) { return null; }
 }
@@ -426,7 +426,7 @@ function confirmSlug(title) {
 function showExport() {
   const posters = {}, lbSlugs = {};
   Object.values(state).forEach(s => {
-    const key = s.film.title_es || s.film.title;
+    const key = s.film.title; // siempre usar title — es la clave que usa el app para lookup
     if (s.posterUrl) posters[key] = s.posterUrl;
     if (s.lbSlug) lbSlugs[key] = s.lbSlug;
   });

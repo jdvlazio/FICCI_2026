@@ -56,9 +56,12 @@ Al agregar un nuevo festival:
 **Opción A — Script (recomendado para festivales grandes):**
 ```bash
 pip install requests
+export TMDB_API_KEY=tu_key_de_tmdb
 python3 scripts/enrich-festival.py festivals/<id>.json
 ```
-El script rellena `director`, `genre`, `year`, `synopsis` sin sobreescribir datos existentes. También enriquece `film_list` items de programas de cortos.
+El script rellena `director`, `genre`, `year`, `synopsis`, **`poster`** (URL TMDB completa) sin sobreescribir datos existentes. También enriquece `film_list` items de programas de cortos.
+
+> **`lbSlug` no se puede automatizar** — requiere buscar manualmente cada película en [letterboxd.com](https://letterboxd.com) y copiar el slug de la URL (ej: `barbie-2023`). Hacerlo después del script, directo en el JSON. Sin él, las cards no tienen enlace Letterboxd — funcional pero incompleto.
 
 **Opción B — Enricher web:**
 Abrir `otrofestiv.app/_dev/enricher/index.html`, cargar los films, correr TMDB automáticamente, y resolver slugs de Letterboxd desde la tab del browser.

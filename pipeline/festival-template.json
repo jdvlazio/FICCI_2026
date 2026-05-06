@@ -11,7 +11,6 @@
     "5. Formato de venue: 'Nombre Sede - Ciudad' (clave exacta, sin abreviaciones).",
     "6. Validar antes de subir: node scripts/validate-festivals.js <id>"
   ],
-
   "venues": {
     "_instruccion": "Una entrada por sede. La clave debe coincidir EXACTAMENTE con films[].venue",
     "Sala de Cine - Ciudad": {
@@ -22,7 +21,6 @@
       "address": "Dirección exacta (opcional)"
     }
   },
-
   "films": [
     {
       "_tipo": "Tipo 1 — Largometraje (una función)",
@@ -87,16 +85,28 @@
       "is_cortos": false,
       "film_list": [
         {
-          "title": "Film A", "title_en": "Film A",
-          "director": "Directora A", "year": 2025, "duration": "16 min",
-          "country": "Colombia", "flags": "🇨🇴", "synopsis": "Sinopsis.",
-          "poster": "", "lbSlug": ""
+          "title": "Film A",
+          "title_en": "Film A",
+          "director": "Directora A",
+          "year": 2025,
+          "duration": "16 min",
+          "country": "Colombia",
+          "flags": "🇨🇴",
+          "synopsis": "Sinopsis.",
+          "poster": "",
+          "lbSlug": ""
         },
         {
-          "title": "Film B", "title_en": "Film B",
-          "director": "Director B", "year": 2024, "duration": "65 min",
-          "country": "Francia", "flags": "🇫🇷", "synopsis": "Sinopsis.",
-          "poster": "", "lbSlug": ""
+          "title": "Film B",
+          "title_en": "Film B",
+          "director": "Director B",
+          "year": 2024,
+          "duration": "65 min",
+          "country": "Francia",
+          "flags": "🇫🇷",
+          "synopsis": "Sinopsis.",
+          "poster": "",
+          "lbSlug": ""
         }
       ]
     },
@@ -113,14 +123,24 @@
       "day_order": 1,
       "film_list": [
         {
-          "title": "Corto 1", "director": "Dir", "duration": "12 min",
-          "country": "Colombia", "flags": "🇨🇴", "synopsis": "Sinopsis.",
-          "poster": "", "lbSlug": ""
+          "title": "Corto 1",
+          "director": "Dir",
+          "duration": "12 min",
+          "country": "Colombia",
+          "flags": "🇨🇴",
+          "synopsis": "Sinopsis.",
+          "poster": "",
+          "lbSlug": ""
         },
         {
-          "title": "Corto 2", "director": "Dir", "duration": "18 min",
-          "country": "Argentina", "flags": "🇦🇷", "synopsis": "Sinopsis.",
-          "poster": "", "lbSlug": ""
+          "title": "Corto 2",
+          "director": "Dir",
+          "duration": "18 min",
+          "country": "Argentina",
+          "flags": "🇦🇷",
+          "synopsis": "Sinopsis.",
+          "poster": "",
+          "lbSlug": ""
         }
       ]
     },
@@ -139,7 +159,9 @@
       "venue": "Sala de Cine - Ciudad",
       "day_order": 2,
       "is_cortos": false,
-      "film_list": null
+      "film_list": null,
+      "event_kind": "",
+      "_event_kind_nota": "Opcional. Valores: 'ponencia', 'masterclass', 'encuentro', 'cineconcierto'. Controla el estilo del poster generativo."
     }
   ]
 }

@@ -3,9 +3,15 @@
 Otrofestiv — TMDB Enricher
 Uso: python3 scripts/enrich-festival.py festivals/<id>.json
 
-Enriquece director, género, año, sinopsis para films sin esos datos.
-No sobreescribe campos existentes. Requiere TMDB_API_KEY en el entorno
-o editar la línea TMDB_KEY abajo.
+Enriquece director, género, año, sinopsis y poster para films sin esos datos.
+No sobreescribe campos existentes. Requiere TMDB_API_KEY en el entorno.
+
+Campos que popula en film{}:
+  director, genre, year, synopsis  → texto editorial
+  poster                            → URL completa TMDB (https://image.tmdb.org/t/p/w185/...)
+
+Campo NO automatizable (requiere lookup manual en Letterboxd):
+  lbSlug → dejar vacío aquí, completar a mano o con el enricher web
 
 Requiere: pip install requests
 """
@@ -55,6 +61,8 @@ def get_genres(details):
     names = [mapping.get(g['name'], g['name']) for g in genres[:2]]
     return ', '.join(names)
 
+TMDB_IMG = 'https://image.tmdb.org/t/p/w185'
+
 def enrich_film_obj(film):
     """Enriquece un objeto film. Devuelve dict con campos encontrados o None."""
     result = tmdb_search(film.get('title', ''), film.get('year') or None)
@@ -69,12 +77,15 @@ def enrich_film_obj(film):
         params = {'api_key': TMDB_KEY, 'language': 'en-US', 'append_to_response': 'credits'}
         r2 = requests.get(f'{BASE}/movie/{result["id"]}', params=params, timeout=8)
         synopsis = r2.json().get('overview', '')
-    return {'director': director, 'genre': genre, 'year': year, 'synopsis': synopsis}
+    # poster_path viene directamente del resultado de búsqueda — no requiere llamada extra
+    poster_path = result.get('poster_path', '')
+    poster = (TMDB_IMG + poster_path) if poster_path else ''
+    return {'director': director, 'genre': genre, 'year': year, 'synopsis': synopsis, 'poster': poster}
 
 def apply_enrichment(film, data):
     """Aplica enriquecimiento sin sobreescribir campos existentes."""
     changed = False
-    for field in ('director', 'genre', 'year', 'synopsis'):
+    for field in ('director', 'genre', 'year', 'synopsis', 'poster'):
         if not film.get(field) and data.get(field):
             film[field] = data[field]
             changed = True
