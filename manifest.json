@@ -1,7 +1,7 @@
 {
   "name": "Otrofestiv",
   "short_name": "Otrofestiv",
-  "description": "Tu agenda para el FICCI 65 — Cartagena, 14–19 abril 2026",
+  "description": "Tu agenda personal para festivales de cine.",
   "start_url": "/",
   "scope": "/",
   "display": "standalone",

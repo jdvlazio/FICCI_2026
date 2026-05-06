@@ -13,7 +13,7 @@
 <link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png">
 <!-- Caching gestionado por el Service Worker (sw.js) — Network First para HTML -->
 <title>Otrofestiv — Tú decides el festival</title>
-<meta name="description" content="Tú decides el festival. FICCI 65, Cartagena, 14–19 abril 2026.">
+<meta name="description" content="Tu agenda personal para festivales de cine. Explorá, planificá y sacá el máximo de cada festival.">
 <link rel="canonical" href="https://otrofestiv.app">
 <!-- Open Graph -->
 <meta property="og:type" content="website">
@@ -33,11 +33,11 @@
 <meta name="twitter:image" content="https://otrofestiv.app/icon-512.png">
 <link rel="preconnect" href="https://image.tmdb.org">
 <style>
-@font-face{font-family:'Plus Jakarta Sans';font-style:normal;font-weight:400;font-display:block;src:url('/fonts/plus-jakarta-sans-latin-400-normal.woff2') format('woff2')}
-@font-face{font-family:'Plus Jakarta Sans';font-style:normal;font-weight:500;font-display:block;src:url('/fonts/plus-jakarta-sans-latin-500-normal.woff2') format('woff2')}
-@font-face{font-family:'Plus Jakarta Sans';font-style:normal;font-weight:600;font-display:block;src:url('/fonts/plus-jakarta-sans-latin-600-normal.woff2') format('woff2')}
-@font-face{font-family:'Plus Jakarta Sans';font-style:normal;font-weight:700;font-display:block;src:url('/fonts/plus-jakarta-sans-latin-700-normal.woff2') format('woff2')}
-@font-face{font-family:'Plus Jakarta Sans';font-style:normal;font-weight:800;font-display:block;src:url('/fonts/plus-jakarta-sans-latin-800-normal.woff2') format('woff2')}
+@font-face{font-family:'Plus Jakarta Sans';font-style:normal;font-weight:400;font-display:swap;src:url(/fonts/plus-jakarta-sans-latin-400-normal.woff2') format('woff2')}
+@font-face{font-family:'Plus Jakarta Sans';font-style:normal;font-weight:500;font-display:swap;src:url(/fonts/plus-jakarta-sans-latin-500-normal.woff2') format('woff2')}
+@font-face{font-family:'Plus Jakarta Sans';font-style:normal;font-weight:600;font-display:swap;src:url(/fonts/plus-jakarta-sans-latin-600-normal.woff2') format('woff2')}
+@font-face{font-family:'Plus Jakarta Sans';font-style:normal;font-weight:700;font-display:swap;src:url(/fonts/plus-jakarta-sans-latin-700-normal.woff2') format('woff2')}
+@font-face{font-family:'Plus Jakarta Sans';font-style:normal;font-weight:800;font-display:swap;src:url(/fonts/plus-jakarta-sans-latin-800-normal.woff2') format('woff2')}
 
 /* ── No incluidas — posters en scroll horizontal ── */
 .ag-excl-item{flex-shrink:0;width:52px;cursor:pointer;-webkit-tap-highlight-color:transparent;position:relative;touch-action:manipulation}
@@ -306,7 +306,7 @@
 *{box-sizing:border-box;margin:0;padding:0}
 html,body{-webkit-text-size-adjust:100%;text-size-adjust:100%}
 html{-webkit-tap-highlight-color:transparent}
-body{background:var(--bg);color:var(--white);font-family:var(--font),'Plus Jakarta Sans Fallback',system-ui,sans-serif;min-height:100vh}
+body{background:var(--bg);color:var(--white);font-family:var(--font),'Plus Jakarta Sans Fallback',system-ui,sans-serif;min-height:100dvh}
 
 /* ════════════════════════════════════════════════════════
    3 · LAYOUT
@@ -445,7 +445,7 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:var(--t
 .carta-search-results,.ag-search-results{
   position:absolute;top:calc(100% + var(--sp-1));left:0;right:0;
   background:var(--surf);border:1px solid var(--bdr);border-radius:var(--r);
-  z-index:200;max-height:300px;overflow-y:auto;display:none;
+  z-index:200;max-height:300px;overflow-y:auto;overscroll-behavior:contain;display:none;
   box-shadow:0 8px 24px var(--overlay-40)
 }
 .carta-search-results.open,.ag-search-results.open{display:block}
@@ -782,7 +782,7 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:var(--t
 .paf-tag{display:flex;align-items:center;gap:var(--sp-1);font-size:var(--t-sm);font-weight:var(--w-bold);color:var(--amber);background:var(--amber-10);border:1px solid var(--amber-30);border-radius:var(--r-pill);padding:3px 8px 3px 10px;cursor:pointer}
 .paf-count{font-size:var(--t-sm);color:var(--gray)}
 /* Lista Hoy/Mañana */
-.programa-list{display:none;flex-direction:column;overflow-y:auto;flex:1;padding-bottom:calc(72px + env(safe-area-inset-bottom))}
+.programa-list{display:none;flex-direction:column;overflow-y:auto;overscroll-behavior:contain;flex:1;padding-bottom:calc(72px + env(safe-area-inset-bottom))}
 .programa-list.visible{display:flex}
 .plist-time-hdr{padding:var(--sp-1) var(--sp-3) var(--sp-1);font-size:var(--t-label);font-weight:var(--w-display);color:var(--amber);letter-spacing:.5px;background:var(--surf);border-bottom:1px solid var(--bdr-l);position:sticky;top:0;z-index:2;flex-shrink:0}
 .plist-item{display:flex;align-items:center;gap:var(--sp-3);padding:var(--sp-3);border-bottom:1px solid var(--bdr-l);cursor:pointer}
@@ -866,7 +866,7 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:var(--t
 /* ── Bottom Sheet ── */
 .pel-sheet-overlay{position:fixed;inset:0;background:var(--overlay-blur-70);backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);z-index:9000;opacity:0;transition:opacity var(--tr-smooth);pointer-events:none}
 .pel-sheet-overlay.open{opacity:1;pointer-events:all}
-.pel-sheet{position:fixed;bottom:0;left:0;right:0;background:var(--surf-2);border-radius:var(--r-sheet) var(--r-sheet) 0 0;z-index:9001;max-height:88vh;overflow-y:auto;transform:translateY(100%);transition:transform .3s cubic-bezier(.32,0,.67,0)}
+.pel-sheet{position:fixed;bottom:0;left:0;right:0;background:var(--surf-2);border-radius:var(--r-sheet) var(--r-sheet) 0 0;z-index:9001;max-height:88vh;overflow-y:auto;overscroll-behavior:contain;transform:translateY(100%);transition:transform .3s cubic-bezier(.32,0,.67,0)}
 .pel-sheet.open{transform:translateY(0);transition:transform .38s cubic-bezier(.34,1.56,.64,1)}
 .pel-sheet-topbar{display:flex;align-items:center;justify-content:center;padding:var(--sp-btn) var(--sp-4) var(--sp-2);position:relative;flex-shrink:0;cursor:grab;touch-action:none}
 .pel-sheet-handle{width:36px;height:4px;background:var(--bdr);border-radius:var(--r-handle)}
@@ -1534,7 +1534,7 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:var(--t
     margin:0 auto;
     border-left:1px solid var(--bdr);
     border-right:1px solid var(--bdr);
-    min-height:100vh;
+    min-height:100dvh;
     box-sizing:border-box;
     background:var(--bg);
   }
@@ -2079,7 +2079,7 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:var(--t
 }
 
 #search-results{
-  flex:1;overflow-y:auto;
+  flex:1;overflow-y:auto;overscroll-behavior:contain;
   -webkit-overflow-scrolling:touch;
 }
 .search-section-hdr{
@@ -9251,7 +9251,7 @@ function _posterErr(img){
     <div id="auth-sheet-step2" style="display:none">
       <div class="auth-sheet-title">Revisá tu email</div>
       <div class="auth-sheet-sub">Enviamos un código de 6 dígitos a <span id="auth-otp-email" style="color:var(--white)"></span></div>
-      <input class="auth-email-inp" id="auth-otp-inp" type="number" placeholder="123456" inputmode="numeric" maxlength="6" onkeydown="if(event.key==='Enter')submitOTP()" style="letter-spacing:4px;font-size:var(--t-md);text-align:center">
+      <input class="auth-email-inp" id="auth-otp-inp" type="number" placeholder="123456" inputmode="numeric" maxlength="6" onkeydown="if(event.key==='Enter')submitOTP()" style="letter-spacing:4px;font-size:16px;text-align:center"><!-- 16px: prevents iOS auto-zoom -->
       <button class="auth-send-btn" id="auth-otp-btn" onclick="submitOTP()">Confirmar</button>
       <div class="auth-msg" id="auth-otp-msg"></div>
       <span class="auth-cancel" onclick="closeAuthSheet();document.getElementById('auth-sheet-step1').style.display='block';document.getElementById('auth-sheet-step2').style.display='none'">Cancelar</span>
