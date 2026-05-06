@@ -342,45 +342,38 @@ async function runEnrichment(){
 
     let festEnriched = 0;
 
-    // Procesamos uno por uno con setTimeout para no bloquear el event loop
-    await new Promise(resolveAll => {
-      function processNext(i){
-        if(shouldStop || i >= targets.length){
-          if(shouldStop) log('  ⏹ Detenido por el usuario', 'log-warn');
-          resolveAll();
-          return;
+    for(let i = 0; i < targets.length; i++){
+      if(shouldStop){ log('  ⏹ Detenido por el usuario', 'log-warn'); break; }
+      const film = targets[i];
+      const title = (film.title||'').slice(0,45);
+      try {
+        // withTimeout evita que un fetch colgado paralice el loop indefinidamente
+        const enriched = await Promise.race([
+          enrichFilm(film, UNIVERSAL_NEEDS, apiKey, existingPosters),
+          new Promise((_,rej) => setTimeout(() => rej(new Error('timeout')), 12000))
+        ]);
+        if(enriched){
+          Object.assign(film, enriched);
+          festEnriched++;
+          stats.enriched++;
+          const summary = Object.entries(enriched)
+            .map(([k,v]) => k==='synopsis' ? 'syn' : k==='poster' ? '🖼' : `${k}:${v}`)
+            .join(' | ');
+          log(`  ✓ [${i+1}/${targets.length}] ${title}\n      ${summary}`, 'log-ok');
+        } else {
+          stats.notFound++;
+          log(`  ✗ [${i+1}/${targets.length}] ${title} — no encontrado en TMDB`, 'log-warn');
         }
-        const film = targets[i];
-        const title = (film.title||'').slice(0,45);
-
-        enrichFilm(film, UNIVERSAL_NEEDS, apiKey, existingPosters)
-          .then(enriched => {
-            if(enriched){
-              Object.assign(film, enriched);
-              festEnriched++;
-              stats.enriched++;
-              const summary = Object.entries(enriched)
-                .map(([k,v]) => k==='synopsis' ? 'syn' : k==='poster' ? '🖼' : `${k}:${v}`)
-                .join(' | ');
-              log(`  ✓ [${i+1}/${targets.length}] ${title}\n      ${summary}`, 'log-ok');
-            } else {
-              stats.notFound++;
-              log(`  ✗ [${i+1}/${targets.length}] ${title} — no encontrado en TMDB`, 'log-warn');
-            }
-          })
-          .catch(e => {
-            stats.notFound++;
-            log(`  ✗ [${i+1}/${targets.length}] ${title} — error: ${e.message}`, 'log-err');
-          })
-          .finally(() => {
-            stats.skipped = stats.total - stats.enriched - stats.notFound;
-            updateStats();
-            setProgress(i+1, targets.length);
-            setTimeout(() => processNext(i+1), 300);
-          });
+      } catch(e) {
+        stats.notFound++;
+        log(`  ✗ [${i+1}/${targets.length}] ${title} — ${e.message}`, 'log-err');
       }
-      processNext(0);
-    });
+      stats.skipped = stats.total - stats.enriched - stats.notFound;
+      updateStats();
+      setProgress(i+1, targets.length);
+      // Pausa mínima entre requests — cede el hilo al browser y respeta rate limits
+      await new Promise(r => setTimeout(r, 300));
+    }
 
     results[festKey] = data;
     log(`  ✅ ${cfg.name}: ${festEnriched} enriquecidos`, 'log-ok');
