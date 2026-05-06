@@ -2262,7 +2262,7 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:var(--t
   <div class="pv-handle"></div>
   <div class="pv-header">
     <div class="pv-poster-wrap">
-      <img class="pv-poster-img" id="pv-poster" src="" alt="">
+      <img class="pv-poster-img" id="pv-poster" src="" alt="" loading="lazy">
       <div class="pv-poster-check">
         <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>
       </div>
@@ -2297,7 +2297,7 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:var(--t
   </div>
   <div class="conflict-arena">
     <div class="conflict-card incoming">
-      <img class="conflict-poster" id="cs-incoming-poster" src="" alt="">
+      <img class="conflict-poster" id="cs-incoming-poster" src="" alt="" loading="lazy">
       <div style="flex:1;min-width:0">
         <div class="conflict-role">Querés añadir</div>
         <div class="conflict-name" id="cs-incoming-name"></div>
@@ -2306,7 +2306,7 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:var(--t
     </div>
     <div class="conflict-vs"><div class="conflict-vs-line"></div><div class="conflict-vs-lbl">vs</div><div class="conflict-vs-line"></div></div>
     <div class="conflict-card existing">
-      <img class="conflict-poster" id="cs-existing-poster" src="" alt="">
+      <img class="conflict-poster" id="cs-existing-poster" src="" alt="" loading="lazy">
       <div style="flex:1;min-width:0">
         <div class="conflict-role">Ya en tu plan</div>
         <div class="conflict-name" id="cs-existing-name"></div>
@@ -4735,7 +4735,7 @@ function renderFilmListHTML(){
     const safeT=title.replace(/'/g,"\'");
     const poster=f?getFilmPoster(f):null;
     const posterHtml=poster
-      ?`<img class="int-item-poster" src="${poster}" data-title="${title.replace(/"/g,'&quot;')}" onerror="_posterErr(this)" alt="">`
+      ?`<img class="int-item-poster" src="${poster}" data-title="${title.replace(/"/g,'&quot;')}" onerror="_posterErr(this)" alt="" loading="lazy">`
       :`<div class="int-item-poster"></div>`;
     const secLabel=(f?.section||'').replace(/^\S+ /,'')||f?.section||'';
     const nextHtml=next
@@ -4772,7 +4772,7 @@ function renderFilmListHTML(){
     const safeT=title.replace(/'/g,"\'");
     const poster=f?getFilmPoster(f):null;
     const posterHtml=poster
-      ?`<img class="int-item-poster" src="${poster}" data-title="${title.replace(/"/g,'&quot;')}" onerror="_posterErr(this)" alt="">`
+      ?`<img class="int-item-poster" src="${poster}" data-title="${title.replace(/"/g,'&quot;')}" onerror="_posterErr(this)" alt="" loading="lazy">`
       :`<div class="int-item-poster"></div>`;
     const secLabel=(f?.section||'').replace(/^\S+ /,'')||f?.section||'';
     const rating=filmRatings[title]||0;
@@ -4872,7 +4872,7 @@ function mkAgendaRow(s, mode='saved'){
   const f=FILMS.find(fi=>fi.title===t);
   const _p=getFilmPoster(f);
   const _safePT=t.replace(/'/g,"\\'");
-  const _ph=_p?`<img class="lb-poster" src="${_p}" loading="lazy" style="cursor:pointer" onclick="event.stopPropagation();openPelSheet('${_safePT}')" onerror="this.style.opacity=0" alt="">`:'<div class="lb-poster-ph">🎬</div>';
+  const _ph=_p?`<img class="lb-poster" src="${_p}" loading="lazy" style="cursor:pointer" onclick="event.stopPropagation();openPelSheet('${_safePT}')" onerror="this.remove()" alt="">`:'<div class="lb-poster-ph">🎬</div>';
   const vc2=vcfg(s.venue),sl=sala(s.venue);
   const safeT=(s._title||'').replace(/"/g,'&quot;');
   const isDone=watched.has(t);
@@ -5399,7 +5399,7 @@ function renderContextualHeader(){
       // Posters grandes, plena opacidad — pensado para screenshot
       // Usar poster-card existente — mismo patrón que Hoy/Mañana
       return`<div class="poster-card ended-poster" onclick="openPelSheet('${safeT}')">
-        ${src?`<img src="${src}" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block" onerror="this.style.opacity=0" alt="">`:``}
+        ${src?`<img src="${src}" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block" onerror="this.remove()" alt="">`:``}
         <div class="ended-poster-footer">
           ${r?`<div style="font-size:var(--t-xs);color:var(--amber);letter-spacing:1px">${stars}</div>`
              :`<button class="ended-rate-btn" onclick="event.stopPropagation();openPostViewRating('${safeT}','','','','')">★</button>`}
@@ -5442,7 +5442,7 @@ function renderContextualHeader(){
       const short=dt.length>18?dt.slice(0,16)+'…':dt;
       const src=getFilmPoster(f)||'';
       return`<div class="ctx-prio-chip">
-        ${src?`<img class="ctx-prio-thumb" src="${src}" onerror="this.style.opacity=0" alt="">`:
+        ${src?`<img class="ctx-prio-thumb" src="${src}" onerror="this.remove()" alt="" loading="lazy">`:
               `<div class="ctx-prio-thumb"></div>`}
         <div style="flex:1;min-width:0">
           <div class="ctx-prio-name">${short}</div>
@@ -5529,7 +5529,7 @@ function renderContextualHeader(){
       </div>
       <div class="ctx-next-card" onclick="openPelSheet('${(next._title||'').replace(/'/g,"\\'")}')" style="cursor:pointer">
         ${src
-          ?`<img class="ctx-next-poster" src="${src}" data-title="${(next._title||'').replace(/"/g,'&quot;')}" onerror="_posterErr(this)" alt="">`
+          ?`<img class="ctx-next-poster" src="${src}" data-title="${(next._title||'').replace(/"/g,'&quot;')}" onerror="_posterErr(this)" alt="" loading="lazy">`
           :_isEvent
             ?makeEventPoster(next._title,next.duration,_filmObj?.event_kind).replace('<svg','<svg class="ctx-next-poster" style="width:36px;height:54px;border-radius:var(--r-sm);flex-shrink:0"')
             :`<div class="ctx-next-poster" style="background:var(--surf-3)"></div>`}
@@ -5598,7 +5598,7 @@ function renderContextualHeader(){
       const stars=r?starsText(r):'';
       return`<div style="position:relative;flex-shrink:0;cursor:pointer" onclick="openPelSheet('${safeT}')">
         ${src
-          ?`<img class="prio-chip-poster" src="${src}" onerror="this.style.opacity=0" alt="">`
+          ?`<img class="prio-chip-poster" src="${src}" onerror="this.remove()" alt="" loading="lazy">`
           :`<div class="prio-chip-ph">🎬</div>`}
         ${r?`<div style="position:absolute;bottom:4px;left:0;right:0;text-align:center;font-size:var(--t-xs);color:var(--amber);letter-spacing:1px;text-shadow:0 1px 3px var(--overlay-85)">${stars}</div>`:''}
         ${!r?`<div style="position:absolute;bottom:4px;left:0;right:0;text-align:center">
@@ -6266,7 +6266,7 @@ function buildResultHTML(scenarios){
       const secLabel=f?(f.section||'').replace(/^\S+ /,'')||f.section||'':'';
       const safeT=t.replace(/'/g,"\'");
       const posterHtml=poster
-        ?`<img class="int-item-poster" src="${poster}" data-title="${t.replace(/"/g,'&quot;')}" onerror="_posterErr(this)" alt="">`
+        ?`<img class="int-item-poster" src="${poster}" data-title="${t.replace(/"/g,'&quot;')}" onerror="_posterErr(this)" alt="" loading="lazy">`
         :`<div class="int-item-poster"></div>`;
       // Detectar razón usando screensConflict contra el schedule activo
       const screens=FILMS.filter(fi=>fi.title===t&&!screeningPassed(fi)&&!isScreeningBlocked(fi));
@@ -6614,7 +6614,7 @@ function openPrioLimit(newTitle){
       const safeSwap=t.replace(/'/g,"\'");
       const safeNew=newTitle.replace(/'/g,"\'");
       return`<div class="prio-limit-item">
-        ${poster?`<img class="prio-limit-thumb" src="${poster}" onerror="this.style.opacity=0" alt="">`:'<div class="prio-limit-thumb"></div>'}
+        ${poster?`<img class="prio-limit-thumb" src="${poster}" onerror="this.remove()" alt="" loading="lazy">`:'<div class="prio-limit-thumb"></div>'}
         <div class="prio-limit-info">
           <div class="prio-limit-name">${dt}</div>
           <div class="prio-limit-when">${when}</div>
@@ -7228,7 +7228,7 @@ function onCartaSearch(){
     const inWL=watchlist.has(f.title);
     const onclick=f._isCortoItem?`clearCartaSearch();openCortoSheet('${safeT}','${safeC}','${safeD}','${safeS}','${safeF}')`:`clearCartaSearch();openPelSheet('${safeT}')`;
     return`<div class="carta-sr-item" onclick="${onclick}">
-      ${poster?`<img class="carta-sr-poster" src="${poster}" onerror="this.style.opacity=0" alt="">`:'<div class="carta-sr-poster"></div>'}
+      ${poster?`<img class="carta-sr-poster" src="${poster}" onerror="this.remove()" alt="" loading="lazy">`:'<div class="carta-sr-poster"></div>'}
       <div class="carta-sr-info">
         <div class="carta-sr-title">${displayTitle}${progSuffix?` <span style="color:var(--amber);font-size:var(--t-label)">${progSuffix}</span>`:''}</div>
         <div class="carta-sr-meta">${f._isCortoItem
@@ -7700,10 +7700,10 @@ function openPelSheet(title){
     const _fd1=JSON.stringify(f.film_list[0]).replace(/"/g,'&quot;');
     const _fd2=JSON.stringify(f.film_list[1]).replace(/"/g,'&quot;');
     const _c1=_sp1
-      ?`<img class="psp-card psp-front" src="${_sp1}" loading="lazy" onerror="this.style.opacity=0" alt="" onclick="_openCombinedFilmSheet(JSON.parse(this.dataset.film))" data-film="${_fd1}">`
+      ?`<img class="psp-card psp-front" src="${_sp1}" loading="lazy" onerror="this.remove()" alt="" onclick="_openCombinedFilmSheet(JSON.parse(this.dataset.film))" data-film="${_fd1}">`
       :`<div class="psp-card-ph" onclick="_openCombinedFilmSheet(JSON.parse(this.dataset.film))" data-film="${_fd1}">🎬</div>`;
     const _c2=_sp2
-      ?`<img class="psp-card psp-back" src="${_sp2}" loading="lazy" onerror="this.style.opacity=0" alt="" onclick="_openCombinedFilmSheet(JSON.parse(this.dataset.film))" data-film="${_fd2}">`
+      ?`<img class="psp-card psp-back" src="${_sp2}" loading="lazy" onerror="this.remove()" alt="" onclick="_openCombinedFilmSheet(JSON.parse(this.dataset.film))" data-film="${_fd2}">`
       :`<div class="psp-card-ph" onclick="_openCombinedFilmSheet(JSON.parse(this.dataset.film))" data-film="${_fd2}">🎬</div>`;
     posterHtml=`<div class="pel-sheet-poster-stage">${_c1}${_c2}</div>`;
   } else {
@@ -8402,7 +8402,7 @@ function renderProgramaList(){
       const itemStyle=[pastStyle,cancelStyle].filter(Boolean).join(';');
       const _stk=_programaStack(f);
       return`<div class="plist-item" style="${itemStyle}" onclick="openPelSheet('${safeT}')">
-        ${_stk||(src?`<img class="plist-poster" src="${src}" loading="lazy" onerror="this.style.opacity=0" alt="">`:`<div class="plist-poster"></div>`)}
+        ${_stk||(src?`<img class="plist-poster" src="${src}" loading="lazy" onerror="this.remove()" alt="">`:`<div class="plist-poster"></div>`)}
         <div class="plist-info">
           <div class="plist-title">${noticeBadge}${_metaBadges(f)}${dt}${nowBadge}</div>
           <div class="plist-meta" style="${notice&&notice.type==='cancelled'?'text-decoration:line-through':''}">${vc.short}${sala(f.venue)?' · '+sala(f.venue):''}${f.duration?' · '+f.duration:''}</div>
@@ -8495,7 +8495,7 @@ function _renderExploreLista(){
     const days=[...new Set(screenings.map(s=>DAY_SHORT[s.day]||s.day))].join(' · ');
     const daysHtml=_dayChips(screenings);
     if(isEvent) return`<div class="plist-item plist-event" style="${allPast?'opacity:.35':''}" onclick="openPelSheet('${safeT}')">
-      <img class="plist-poster" src="${makeEventPoster(dt,f.duration,f.event_kind)}" alt="${dt}">
+      <img class="plist-poster" src="${makeEventPoster(dt,f.duration,f.event_kind)}" alt="${dt}" loading="lazy">
       <div class="plist-info">
         <div class="plist-title">${dt}</div>
         <div class="plist-meta">${days?`${daysHtml} · `:''}${f.duration||''}</div>
@@ -8505,7 +8505,7 @@ function _renderExploreLista(){
     </div>`;
     const _stk2=_programaStack(f);
     return`<div class="plist-item${allPast?' past-card':''}" onclick="openPelSheet('${safeT}')">
-      ${_stk2||(src?`<img class="plist-poster" src="${src}" loading="lazy" onerror="this.style.opacity=0" alt="${dt}" style="${allPast&&!festivalEnded()?'opacity:.45':''}">` :`<div class="plist-poster"></div>`)}
+      ${_stk2||(src?`<img class="plist-poster" src="${src}" loading="lazy" onerror="this.remove()" alt="${dt}" style="${allPast&&!festivalEnded()?'opacity:.45':''}">` :`<div class="plist-poster"></div>`)}
       <div class="plist-info">
         ${(()=>{const n=NOTICES.find(nx=>nx.title===f.title&&nx.festival===((_activeFestId||_DEFAULT_FEST_ID)));const nb=n?`<span class="notice-badge">${n.type==='cancelled'?'CANCELADA':'REPROG.'}</span>`:'';const nn=n&&n.type==='cancelled'?`<div style="font-size:var(--t-xs);color:var(--amber);margin-top:2px;font-weight:var(--w-semi)">Pendiente nueva fecha</div>`:n&&n.type==='rescheduled'&&n.newTime?`<div style="font-size:var(--t-xs);color:var(--green);margin-top:2px;font-weight:var(--w-semi)">${n.newDay||''} · ${n.newTime}${n.newVenue?' · '+n.newVenue:''}</div>`:'';return`<div class="plist-title" style="${allPast?'opacity:.5':''}">${nb}${dt}</div><div class="plist-meta" style="${n&&n.type==='cancelled'?'text-decoration:line-through':''}${allPast?';opacity:.5':''}">${daysHtml?`${daysHtml} · `:''}${f.duration||''}${_metaBadges(f)?` · ${_metaBadges(f)}`:''}</div>${nn||`<div class="plist-sec">${f.section||''}</div>`}`;})()}
       </div>
@@ -9438,7 +9438,7 @@ function searchQuery(){
         ?`searchClose();openCortoSheet('${safeT}','${safeC}','${safeD}','${safeS}','${safeF}')`
         :`searchClose();openPelSheet('${safeT}')`;
       return '<div class="search-item" onclick="'+onclick+'">'
-        +(poster?'<img class="search-item-poster" src="'+poster+'" onerror="this.style.opacity=0" alt="">'
+        +(poster?'<img class="search-item-poster" src="'+poster+'" onerror="this.remove()" alt="" loading="lazy">'
                 :'<div class="search-item-poster"></div>')
         +'<div class="search-item-info">'
         +'<div class="search-item-title">'+displayTitle

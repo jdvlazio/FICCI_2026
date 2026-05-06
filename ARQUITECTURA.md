@@ -350,7 +350,9 @@ Siempre usar `screensConflict(a, b)` — incluye buffer de viaje y extiende 30 m
 ## 9. REGLAS DE DISEÑO (no negociables)
 
 1. **CTA primario**: fondo amber sólido (`--amber`), texto negro (`#0A0A0A` o `--black`).
-2. **Badges**: clases existentes. Nunca inline ad-hoc.
+2. **Imágenes**: toda `<img>` lleva `loading="lazy"` y `onerror="this.remove()"`. Sin excepción.
+3. **Inline styles**: prohibidos en templates nuevos. Si el valor no tiene token CSS, crear el token primero. Los 152 inline styles existentes son deuda conocida — no agregar más.
+4. **Badges**: clases existentes. Nunca inline ad-hoc.
 3. **Nuevo componente**: reutilizar tokens y clases antes de crear nuevos.
 4. **Tipografía**: verificar escala de tokens antes de aplicar `font-size`.
 5. **Iconografía**: solo Lucide pack para íconos de venue/tiempo. Flags de países y emojis de categoría son la única excepción permitida.

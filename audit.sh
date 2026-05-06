@@ -84,6 +84,28 @@ else
 fi
 echo ""
 
+
+# ── Patrones prohibidos — reglas canónicas de imagen ──────────────────────────
+echo "▸ onerror (debe ser this.remove(), nunca this.style.opacity=0):"
+RESULT=$(grep -n 'onerror="this.style.opacity=0"' "$FILE")
+if [ -z "$RESULT" ]; then
+  echo "  ✓ Sin issues"
+else
+  echo "$RESULT" | sed 's/^/  ✗ /'
+  PASS=false
+fi
+echo ""
+
+echo "▸ loading=\"lazy\" (toda <img> debe tenerlo):"
+RESULT=$(grep -oP '<img(?![^>]*loading=)[^>]*>' "$FILE" | head -5)
+if [ -z "$RESULT" ]; then
+  echo "  ✓ Sin issues"
+else
+  echo "$RESULT" | sed 's/^/  ✗ /'
+  PASS=false
+fi
+echo ""
+
 # ── Resultado ────────────────────────────────────────────────────────────────
 if [ "$PASS" = true ]; then
   echo "✅ Todo OK — sistema de tokens consistente."
