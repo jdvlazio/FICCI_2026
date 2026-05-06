@@ -221,8 +221,35 @@ for (const fname of files) {
   results.push({ fname, errors, warnings });
 }
 
-// ── Output ───────────────────────────────────────────────────────────────────
+// ── Cross-festival checks ────────────────────────────────────────────────────
 let hasIssues = false;
+// storageKey debe ser único entre todos los festivales — colisión = datos mezclados
+const storageKeyMap = {}; // storageKey → [fnames that use it]
+for (const { fname } of results) {
+  const fpath = path.join(festivalsDir, fname);
+  try {
+    const data = JSON.parse(fs.readFileSync(fpath, 'utf8'));
+    const sk = (data.config || {}).storageKey;
+    if (sk) {
+      if (!storageKeyMap[sk]) storageKeyMap[sk] = [];
+      storageKeyMap[sk].push(fname);
+    }
+  } catch (e) { /* JSON parse errors already reported above */ }
+}
+const skErrors = [];
+for (const [sk, fnames] of Object.entries(storageKeyMap)) {
+  if (fnames.length > 1) {
+    skErrors.push(`storageKey '${sk}' compartida por: ${fnames.join(', ')}`);
+    totalErrors++;
+  }
+}
+if (skErrors.length) {
+  hasIssues = true;
+  console.log('\n── Cross-festival ──');
+  for (const e of skErrors) console.log(`  ✗ ERROR:   ${e}`);
+}
+
+// ── Output ───────────────────────────────────────────────────────────────────
 for (const { fname, errors, warnings } of results) {
   if (errors.length === 0 && warnings.length === 0) {
     console.log(`✓ ${fname}`);
