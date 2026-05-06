@@ -487,8 +487,8 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:var(--t
 .apertura-badge{display:inline-block;font-size:var(--t-xs);background:var(--orange);color:var(--white);font-weight:var(--w-bold);letter-spacing:1px;padding:2px var(--sp-2);border-radius:var(--r-md);font-family:var(--font);margin-right:var(--sp-2);vertical-align:middle;flex-shrink:0}
 .past-badge{display:inline-flex;align-items:center;font-size:var(--t-xs);color:var(--gray2);font-weight:var(--w-semi);letter-spacing:.03em}
 /* ── Notices: funciones canceladas / reprogramadas ── */
+.meta-badge{display:inline-block;font-size:var(--t-xs);font-weight:var(--w-display);letter-spacing:.5px;padding:2px var(--sp-2);border-radius:var(--r-md);font-family:var(--font);margin-right:var(--sp-2);vertical-align:middle;flex-shrink:0;background:var(--amber);color:#0A0A0A}
 .notice-badge{display:inline-block;font-size:var(--t-xs);font-weight:var(--w-display);letter-spacing:.5px;padding:2px var(--sp-2);border-radius:var(--r-md);font-family:var(--font);margin-right:var(--sp-2);vertical-align:middle;flex-shrink:0;background:var(--amber);color:#0A0A0A}
-.meta-badge{display:inline-block;font-size:var(--t-xs);font-weight:var(--w-display);letter-spacing:.4px;padding:2px var(--sp-2);border-radius:var(--r-md);font-family:var(--font);margin-right:var(--sp-2);vertical-align:middle;flex-shrink:0;background:var(--amber);color:#0A0A0A}
 /* count-badge — círculo/píldora para conteos numéricos — regla global */
 .count-badge{display:inline-flex;align-items:center;justify-content:center;min-width:18px;height:18px;padding:0 5px;border-radius:var(--r-pill);font-size:var(--t-label);font-weight:var(--w-bold);font-family:var(--font);line-height:1;vertical-align:middle;flex-shrink:0}
 .count-badge.cb-neutral{background:var(--surf-2);color:var(--gray);border:1px solid var(--bdr)}
@@ -1361,6 +1361,7 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:var(--t
 .ctx-next-title-row{display:flex;align-items:center;gap:var(--sp-2);margin-bottom:3px}
 .ctx-next-detail{font-size:var(--t-sm);color:var(--gray)}
 .ctx-next-badge{display:inline-flex;align-items:center;gap:var(--sp-1);background:var(--amber);color:var(--black);border-radius:var(--r-pill);padding:3px 10px;font-size:var(--t-sm);font-weight:var(--w-bold)}
+.ctx-next-badge.ending{background:var(--surf);color:var(--white-60);border:1px solid var(--bdr)}
 .ctx-gap-bar{display:flex;align-items:center;gap:var(--sp-1);margin:10px 0 10px}
 .ctx-gap-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
 .ctx-gap-line{flex:1;height:2px;background:var(--bdr);border-radius:var(--r-handle);position:relative;overflow:hidden}
@@ -5413,7 +5414,7 @@ function renderContextualHeader(){
     const _endMin=toMin(next.time)+parseDur(next.duration)+(filmDelays[_delayKey(next)]||0);
     const _leftMin=Math.max(0,_endMin-_nowMin);
     const badge=isNow
-      ?`<span class="ctx-next-badge" style="background:var(--surf);color:var(--white-60);border:1px solid var(--bdr)">Termina en ${_leftMin} min</span>`
+      ?`<span class="ctx-next-badge ending">Termina en ${_leftMin} min</span>`
       :`<span class="ctx-next-badge">En ${minsUntil} min</span>`;
     const _filmObj=FILMS.find(f=>f.title===next._title);
     const _isEvent=_filmObj&&_filmObj.type==='event';
