@@ -2326,7 +2326,7 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:var(--t
   <div class="prio-limit-handle"></div>
   <div class="prio-limit-hdr">
     <div class="prio-limit-eyebrow"><svg width="11" height="11" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" stroke-width="1.5"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg><span id="prio-limit-eyebrow-txt"></span></div>
-    <div class="prio-limit-title">Ya tienes <span id="prio-limit-count"></span> prioridades</div>
+    <div class="prio-limit-title">Ya tenés <span id="prio-limit-count"></span> prioridades</div>
     <div class="prio-limit-sub">Cambiá una para priorizar esta película</div>
   </div>
   <div class="prio-limit-new" id="prio-limit-new-bar">
@@ -3596,7 +3596,7 @@ function renderMiPlanCalendar(){
         <div class="cta-ctx-ico">${ICONS.calendar}</div>
         <div class="cta-ctx-body">
           <div class="cta-ctx-title cta-ctx-title-c">Día libre en tu plan</div>
-          <div class="cta-ctx-sub">No hay funciones para este día. Añade desde Sugerencias abajo, o recalcula en Planear.</div>
+          <div class="cta-ctx-sub">No hay funciones para este día. Añadí desde Sugerencias abajo, o recalculá en Planear.</div>
         </div>
         <div class="cta-ctx-arr cta-ctx-arr-c">${ICONS.chevronD}</div>
       </div>`;
@@ -4117,7 +4117,7 @@ function toggleFullDay(day){
 function addBlock(day){
   const f=document.getElementById(`av-from-${day}`).value;
   const t=document.getElementById(`av-to-${day}`).value;
-  if(!f||!t){showToast('Selecciona hora de inicio y fin','warn');return;}
+  if(!f||!t){showToast('Seleccioná hora de inicio y fin','warn');return;}
   if(toMin(f)>=toMin(t)){showToast('La hora de inicio debe ser menor que la de fin','warn');return;}
   const av=availability[day];
   if(av.blocks.some(b=>toMin(f)<toMin(b.to)&&toMin(t)>toMin(b.from))){showToast('Este horario coincide con otro bloque','warn');return;}
@@ -5807,7 +5807,7 @@ function _promptDisplayName(onSave){
   el.style.cssText='position:fixed;inset:0;background:var(--overlay-70);z-index:9999;display:flex;align-items:flex-end;justify-content:center';
   el.innerHTML=`<div style="background:var(--surf-2);border-radius:var(--r-sheet) var(--r-sheet) 0 0;padding:24px 20px 40px;width:100%;max-width:480px;box-sizing:border-box">
     <div style="width:36px;height:4px;background:var(--bdr);border-radius:2px;margin:0 auto 20px"></div>
-    <div style="font-size:var(--t-base);font-weight:var(--w-bold);color:var(--white);margin-bottom:6px">¿Cómo quieres aparecer en tu plan?</div>
+    <div style="font-size:var(--t-base);font-weight:var(--w-bold);color:var(--white);margin-bottom:6px">¿Cómo querés aparecer en tu plan?</div>
     <div style="font-size:var(--t-sm);color:var(--gray);margin-bottom:var(--sp-4)">Aparecerá en la imagen cuando la compartas.</div>
     <input id="dname-input" type="text" maxlength="30" placeholder="Tu nombre" autocomplete="name"
       style="width:100%;background:var(--surf);border:1px solid var(--bdr);border-radius:var(--r-md);padding:12px 14px;font-size:var(--t-base);color:var(--white);outline:none;box-sizing:border-box;font-family:var(--font);margin-bottom:var(--sp-3)">
@@ -8842,7 +8842,7 @@ async function loadFestival(id){
   // Guard: storageKey es crítico — sin él los datos van a localStorage con clave 'undefined'
   if(!cfg.storageKey){
     console.error(`[loadFestival] '${id}' no tiene storageKey en FESTIVAL_CONFIG — abortando.`);
-    showToast(`Error de configuración: falta storageKey para '${id}'`,'error');
+    showToast(`Este festival no está disponible todavía.`,'error');
     return false;
   }
   // ── Fase 1: cargar datos del festival desde JSON si no están en memoria ──
@@ -8928,7 +8928,7 @@ async function loadFestival(id){
   // Guard: dayKeys y days son requeridos — sin ellos el UI de calendario crashea
   if(!cfg.dayKeys||!cfg.days||!cfg.days.length){
     console.error(`[loadFestival] '${id}' no tiene dayKeys/days en FESTIVAL_CONFIG.`);
-    showToast(`Festival '${id}' incompleto: faltan dayKeys/days en FESTIVAL_CONFIG.`,'error',6000);
+    showToast(`Este festival no está disponible todavía.`,'error',6000);
     return false;
   }
   // Reconstruir lookup de posters para el festival activo

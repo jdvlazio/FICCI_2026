@@ -63,6 +63,19 @@ def get_genres(details):
 
 TMDB_IMG = 'https://image.tmdb.org/t/p/w185'
 
+def is_likely_english(text):
+    """Heurística simple: detecta si un texto es probablemente inglés vs español."""
+    if not text:
+        return False
+    text_lower = text.lower()
+    # Palabras funcionales que raramente aparecen en español con estas formas
+    en_markers = [' the ', ' and ', ' of the ', ' in the ', ' is ', ' are ', ' was ', ' were ', ' his ', ' her ']
+    es_markers = [' la ', ' el ', ' los ', ' las ', ' una ', ' que ', ' de ', ' en ', ' se ', ' del ']
+    en_score = sum(text_lower.count(m) for m in en_markers)
+    es_score = sum(text_lower.count(m) for m in es_markers)
+    return en_score > es_score + 2  # margen para evitar falsos positivos
+
+
 def enrich_film_obj(film):
     """Enriquece un objeto film. Devuelve dict con campos encontrados o None."""
     result = tmdb_search(film.get('title', ''), film.get('year') or None)
@@ -124,7 +137,8 @@ def enrich_festival(path):
                 if data_found:
                     apply_enrichment(film, data_found)
                     enriched += 1
-                    print(f"✓ {data_found.get('director') or '—'} · {data_found.get('year') or '—'}")
+                    syn_lang = ' ⚠️ sinopsis en INGLÉS — traducir manualmente' if is_likely_english(data_found.get('synopsis','')) else ''
+                    print(f"✓ {data_found.get('director') or '—'} · {data_found.get('year') or '—'}{syn_lang}")
                 else:
                     not_found += 1
                     print('✗ no encontrado en TMDB')
