@@ -8148,12 +8148,13 @@ function _renderExploreLista(){
         <div class="plist-sec">${f.section||''}</div>
         <div class="plist-meta">${days?`<span style="color:var(--gray)">${days}</span> · `:''}${f.duration||''}</div>
       </div>
+      <div class="plist-heart${inWL?'':' empty'}" onclick="event.stopPropagation();_toggleWLFromList('${safeT}',this)">${inWL?ICONS.heartFill:ICONS.heart}</div>
     </div>`;
     const _stk2=_programaStack(f);
     return`<div class="plist-item${allPast?' past-card':''}" onclick="openPelSheet('${safeT}')">
       ${_stk2||(src?`<img class="plist-poster" src="${src}" loading="lazy" onerror="this.style.opacity=0" alt="${dt}" style="${allPast&&!festivalEnded()?'opacity:.45':''}">` :`<div class="plist-poster"></div>`)}
       <div class="plist-info">
-        ${(()=>{const n=NOTICES.find(nx=>nx.title===f.title&&nx.festival===((_activeFestId||_DEFAULT_FEST_ID)));const nb=n?`<span class="notice-badge">${n.type==='cancelled'?'CANCELADA':'REPROG.'}</span>`:'';const nn=n&&n.type==='cancelled'?`<div style="font-size:var(--t-xs);color:var(--amber);margin-top:2px;font-weight:var(--w-semi)">Pendiente nueva fecha</div>`:n&&n.type==='rescheduled'&&n.newTime?`<div style="font-size:var(--t-xs);color:var(--green);margin-top:2px;font-weight:var(--w-semi)">${n.newDay||''} · ${n.newTime}${n.newVenue?' · '+n.newVenue:''}</div>`:'';return`<div class="plist-title" style="${allPast?'opacity:.5':''}">${nb}${dt}</div>${nn||`<div class="plist-sec">${f.section||''}</div>`}<div class="plist-meta" style="${n&&n.type==='cancelled'?'text-decoration:line-through':''}${allPast?';opacity:.5':''}">${days?`<span style="color:var(--gray)">${days}</span> · `:''}${f.duration||'~90 min'}${_metaBadges(f)?` · ${_metaBadges(f)}`:''}</div>`;})()}
+        ${(()=>{const n=NOTICES.find(nx=>nx.title===f.title&&nx.festival===((_activeFestId||_DEFAULT_FEST_ID)));const nb=n?`<span class="notice-badge">${n.type==='cancelled'?'CANCELADA':'REPROG.'}</span>`:'';const nn=n&&n.type==='cancelled'?`<div style="font-size:var(--t-xs);color:var(--amber);margin-top:2px;font-weight:var(--w-semi)">Pendiente nueva fecha</div>`:n&&n.type==='rescheduled'&&n.newTime?`<div style="font-size:var(--t-xs);color:var(--green);margin-top:2px;font-weight:var(--w-semi)">${n.newDay||''} · ${n.newTime}${n.newVenue?' · '+n.newVenue:''}</div>`:'';return`<div class="plist-title" style="${allPast?'opacity:.5':''}">${nb}${dt}</div>${nn||`<div class="plist-sec">${f.section||''}</div>`}<div class="plist-meta" style="${n&&n.type==='cancelled'?'text-decoration:line-through':''}${allPast?';opacity:.5':''}">${days?`<span style="color:var(--gray)">${days}</span> · `:''}${f.duration||''}${_metaBadges(f)?` · ${_metaBadges(f)}`:''}</div>`;})()}
       </div>
       <div class="plist-heart${inWL?'':' empty'}" onclick="event.stopPropagation();_toggleWLFromList('${safeT}',this)">${inWL?ICONS.heartFill:ICONS.heart}</div>
     </div>`;
