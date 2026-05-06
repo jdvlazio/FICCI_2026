@@ -607,3 +607,21 @@ El código no requiere ningún cambio.
 Cuando un film tiene `notice.type === 'rescheduled'` con `newVenue`,
 `_effectiveVenue()` devuelve la nueva sede para el cálculo de distancias.
 El sistema refleja automáticamente el cambio en `travelWarn()`.
+
+## Regla: Columnas de tiempo/día en listas
+
+**Principio:** Todo elemento que ancle visualmente una columna de tiempo o fecha dentro de un flex row debe tener ancho fijo. Sin ancho fijo, cada carácter diferente produce un desplazamiento en las columnas adyacentes.
+
+**Aplicación:** puede ser en el elemento mismo o en su contenedor directo.
+
+| Clase | Ancho fijo en | Valor |
+|---|---|---|
+| `.pelicula-day` | el elemento | `width:48px; flex-shrink:0` |
+| `.pelicula-time` | el elemento | `width:42px; flex-shrink:0` |
+| `.saved-time` | el elemento | tiene `min-width` propio |
+| `.suggestion-time` | el elemento | tiene `min-width` propio |
+| `.av-row-dayname` | contenedor `.av-row-lbl` | `width:42px` |
+| `.mplan-t1` | contenedor `.mplan-tc` | `min-width:50px` |
+
+**Regla para componentes nuevos:** si un label de día/hora abre una fila en flex, definir `width` o `min-width` fijo — ya sea en el label o en su contenedor — antes de hacer PR. Validar visualmente con el día más ancho del festival (`MIÉ` tiene acento, es el más ancho en Plus Jakarta Sans).
+
