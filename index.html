@@ -488,7 +488,7 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:var(--t
 .fbar-wrap{overflow-x:auto;scrollbar-width:none;border-bottom:1px solid var(--bdr);-webkit-overflow-scrolling:touch}
 .fbar-wrap::-webkit-scrollbar{display:none}
 .fbar{display:flex;gap:0;padding:0 var(--sp-4);width:max-content;min-width:100%;align-items:center}
-.fbar-lbl,.agbar-lbl{font-size:var(--t-xs);color:var(--gray2);text-transform:uppercase;letter-spacing:1.2px;white-space:nowrap;flex-shrink:0;min-width:44px;font-weight:var(--w-semi);opacity:.6}
+.fbar-lbl,.agbar-lbl{font-size:var(--t-xs);color:var(--gray);text-transform:uppercase;letter-spacing:1.2px;white-space:nowrap;flex-shrink:0;min-width:44px;font-weight:var(--w-semi)}
 .fbtn{flex-shrink:0;padding:var(--sp-2) var(--sp-3) var(--sp-2);border-radius:0;border:none;border-bottom:2px solid transparent;margin-bottom:-1px;background:none;color:var(--gray);font-size:var(--t-sm);font-weight:var(--w-regular);cursor:pointer;font-family:var(--font);transition:color var(--tr-base),border-color var(--tr-base);white-space:nowrap;min-height:30px;display:inline-flex;align-items:center;gap:var(--sp-1)}
 .fbtn:active{opacity:.7}
 .fbtn.on{border-bottom-color:var(--amber);color:var(--white)}
@@ -534,6 +534,7 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:var(--t
 .past-badge{display:inline-flex;align-items:center;font-size:var(--t-xs);color:var(--gray2);font-weight:var(--w-semi);letter-spacing:.03em}
 /* ── Notices: funciones canceladas / reprogramadas ── */
 .meta-badge{display:inline-block;font-size:var(--t-xs);font-weight:var(--w-display);letter-spacing:.5px;padding:2px var(--sp-2);border-radius:var(--r-md);font-family:var(--font);margin-right:var(--sp-2);vertical-align:middle;flex-shrink:0;background:var(--amber);color:#0A0A0A}
+.meta-badge.sm{font-size:var(--t-badge);padding:1px 4px;margin-right:var(--sp-1)}
 .notice-badge{display:inline-block;font-size:var(--t-xs);font-weight:var(--w-display);letter-spacing:.5px;padding:2px var(--sp-2);border-radius:var(--r-md);font-family:var(--font);margin-right:var(--sp-2);vertical-align:middle;flex-shrink:0;background:var(--amber);color:#0A0A0A}
 /* count-badge — círculo/píldora para conteos numéricos — regla global */
 .count-badge{display:inline-flex;align-items:center;justify-content:center;min-width:18px;height:18px;padding:0 5px;border-radius:var(--r-pill);font-size:var(--t-label);font-weight:var(--w-bold);font-family:var(--font);line-height:1;vertical-align:middle;flex-shrink:0}
@@ -794,7 +795,7 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:var(--t
 .plist-title{font-size:var(--t-base);font-weight:var(--w-bold);color:var(--white);margin-bottom:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .plist-meta{font-size:var(--t-sm);color:var(--gray2)}
 .plist-sec{font-size:var(--t-label);color:var(--gray2);font-weight:var(--w-semi);margin-top:2px;letter-spacing:.2px}
-.plist-heart{font-size:var(--t-icon);color:var(--amber);flex-shrink:0;cursor:pointer;padding:6px;border-radius:50%;transition:background var(--tr-base),transform 200ms cubic-bezier(.34,1.56,.64,1);display:flex;align-items:center;justify-content:center}
+.plist-heart{font-size:var(--t-icon);color:var(--amber);flex-shrink:0;cursor:pointer;padding:6px;border-radius:50%;transition:background var(--tr-base),transform 200ms cubic-bezier(.34,1.56,.64,1)/* bounce intencional */;display:flex;align-items:center;justify-content:center}
 /* Mi Plan — modo lista compacta */
 .mplan-list-view{display:flex;flex-direction:column}
 .mplan-list-day{padding:var(--sp-1) var(--sp-4);font-size:var(--t-xs);font-weight:var(--w-bold);color:var(--amber);letter-spacing:.5px;text-transform:uppercase;background:var(--surf);border-bottom:1px solid var(--bdr-l);position:sticky;top:0;z-index:2}
@@ -861,7 +862,7 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:var(--t
 .venue-text{line-height:1.4}
 .venue-pin{color:var(--white-30);flex-shrink:0;margin-top:1px}
 /* municipio — subordinado al venue, solo ciudades distintas a la sede principal del festival */
-.venue-municipio{display:block;font-size:var(--t-xs);color:rgba(240,237,232,.3);margin-top:1px;letter-spacing:.02em}
+.venue-municipio{display:block;font-size:var(--t-xs);color:var(--white-45);margin-top:1px;letter-spacing:.02em}
 /* ── Bottom Sheet ── */
 .pel-sheet-overlay{position:fixed;inset:0;background:var(--overlay-blur-70);backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);z-index:9000;opacity:0;transition:opacity var(--tr-smooth);pointer-events:none}
 .pel-sheet-overlay.open{opacity:1;pointer-events:all}
@@ -885,7 +886,7 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:var(--t
 .pel-sheet-sec:active{opacity:.6}
 .pel-sheet-sec-arrow{opacity:.5;font-size:var(--t-label)}
 .pel-sheet-divider{height:0;margin:var(--sp-5) 0}
-.pel-sheet-section-lbl{font-size:var(--t-xs);letter-spacing:.12em;color:rgba(255,255,255,.2);text-transform:uppercase;font-weight:var(--w-bold);margin-bottom:var(--sp-3)}
+.pel-sheet-section-lbl{font-size:var(--t-xs);letter-spacing:.12em;color:var(--white-30);text-transform:uppercase;font-weight:var(--w-bold);margin-bottom:var(--sp-3)}
 .pel-sheet-screening{display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid var(--bdr-l)}
 .pel-sheet-screenings .pel-sheet-screening:last-child{border-bottom:none}
 .pel-sheet-synopsis{font-size:var(--t-base);color:var(--white-65);line-height:1.6}
@@ -2143,9 +2144,9 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:var(--t
 .int-item-gone{font-size:var(--t-xs);color:var(--gray2);font-style:italic}
 .int-item-conflict{display:inline-flex;align-items:center;gap:3px;font-size:var(--t-xs);font-weight:var(--w-semi);color:var(--red);background:var(--red-08);border:1px solid var(--red-20);border-radius:var(--r-pill);padding:1px 6px;margin-top:3px}
 .int-item-actions{display:flex;flex-direction:column;align-items:center;gap:var(--sp-2);flex-shrink:0;align-self:center}
-.int-prio-btn{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;border:1px solid transparent;cursor:pointer;transition:all var(--tr-base);font-size:var(--t-base);background:var(--surf-2);color:var(--gray2);font-family:var(--font);-webkit-tap-highlight-color:transparent}
+.int-prio-btn{width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center;border:1px solid transparent;cursor:pointer;transition:all var(--tr-base);font-size:var(--t-base);background:var(--surf-2);color:var(--gray2);font-family:var(--font);-webkit-tap-highlight-color:transparent}
 .int-prio-btn.on{background:var(--amber-10);color:var(--amber);border-color:var(--amber-30)}
-.int-seen-btn{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;border:1px solid transparent;cursor:pointer;background:var(--surf-2);color:var(--gray2);transition:all var(--tr-base);font-size:var(--t-label);font-weight:var(--w-bold);font-family:var(--font);-webkit-tap-highlight-color:transparent}
+.int-seen-btn{width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center;border:1px solid transparent;cursor:pointer;background:var(--surf-2);color:var(--gray2);transition:all var(--tr-base);font-size:var(--t-label);font-weight:var(--w-bold);font-family:var(--font);-webkit-tap-highlight-color:transparent}
 .int-seen-btn.on{background:var(--green-10);color:var(--green);border-color:var(--green-30)}
 .int-vistas-collapsed{padding:var(--sp-2) var(--sp-4);display:flex;align-items:center;gap:var(--sp-2)}
 .int-vistas-collapsed-txt{font-size:var(--t-sm);color:var(--gray2)}
@@ -3276,7 +3277,7 @@ function vcfg(v){
 function sala(v){const m=v.match(/Sala\s*(\d+)/)||v.match(/Sal[oó]n\s*(\d+)/i);return m?'Sala '+m[1]:'';}
 /* ── UTILS: tiempo, fecha, duración ─────────────────────────────────── */
 function toMin(t){const[h,m]=t.split(':').map(Number);return h*60+m;}
-function parseDur(d){const m=d&&d.replace('~','').match(/(\d+)/);return m?parseInt(m[1]):90;}
+function parseDur(d){const m=d&&d.replace('~','').match(/(\d+)/);return m?parseInt(m[1]):DEFAULT_DURATION_MIN;}
 // Duración efectiva: parseDur + 30 min si has_qa (Q&A alarga la función)
 function effectiveDuration(f){return parseDur(f&&f.duration)+(f&&f.has_qa?30:0);}
 function minToStr(m){
@@ -3630,7 +3631,7 @@ function renderMiPlanCalendar(){
           <div class="mplan-t2">${mplanEndStr(s.time,dur)}${prioritized.has(s._title)?` <span style="color:var(--amber-60);font-size:var(--t-xs)">★</span>`:''}${isNow?` <span style="color:var(--green);font-weight:var(--w-semi)">en curso</span>`:''}</div>
         </div>
         <div class="mplan-ri">
-          <div>${(()=>{const{displayTitle:_dt,progSuffix:_ps}=parseProgramTitle(s._title||'');const _mfqa=FILMS.find(fi=>fi.title===s._title&&fi.day===s.day&&fi.time===s.time);const _qab=_mfqa?.has_qa?`<span class="meta-badge" style="font-size:var(--t-badge);padding:1px 4px;margin-right:var(--sp-1)">Q&A</span>`:'';return`<div class="mplan-rtitle${_isEventRow?' mp-event-title':''}">${_qab}${_dt}</div>${_ps?`<div style="font-size:var(--t-sm);color:var(--amber);font-weight:var(--w-bold);line-height:1;margin-top:2px">${_ps}</div>`:''}`;})()} </div>
+          <div>${(()=>{const{displayTitle:_dt,progSuffix:_ps}=parseProgramTitle(s._title||'');const _mfqa=FILMS.find(fi=>fi.title===s._title&&fi.day===s.day&&fi.time===s.time);const _qab=_mfqa?.has_qa?`<span class="meta-badge sm">Q&A</span>`:'';return`<div class="mplan-rtitle${_isEventRow?' mp-event-title':''}">${_qab}${_dt}</div>${_ps?`<div style="font-size:var(--t-sm);color:var(--amber);font-weight:var(--w-bold);line-height:1;margin-top:2px">${_ps}</div>`:''}`;})()} </div>
           <div class="mplan-rvenue${_isEventRow?' mp-event-venue':''}">${ICONS.pin} ${vcfg(s.venue).short}${sala(s.venue)?' \u00b7 '+sala(s.venue):''}</div>
           ${(()=>{const _mf=FILMS.find(fi=>fi.title===s._title&&fi.day===s.day&&fi.time===s.time);if(!_mf||!_mf.is_cortos||!_mf.film_list||!_mf.film_list.length) return'';return`<button class="mplan-prog-toggle" onclick="toggleMplanProg(this,event)" style="display:inline-flex;align-items:center;gap:var(--sp-1)">${ICONS.chevronR} Programa</button>`;})()}
         </div>
