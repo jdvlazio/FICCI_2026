@@ -64,18 +64,25 @@ function validateFestival(fname, data) {
   const errors = [];
   const warnings = [];
 
+  const hasConfigBlock = !!data.config;
   const cfg = data.config || {};
   const films = data.films || [];
   const dayKeys = cfg.dayKeys || [];
 
   // CONFIG required fields
-  // year+timezoneOffset viven en FESTIVAL_CONFIG de index.html, no en el JSON
-  const cfgRequired = ['name','shortName','city','dates','storageKey','festivalEndStr'];
-  for (const k of cfgRequired) {
-    if (!cfg[k]) errors.push(`config.${k} es requerido`);
+  // Festivales NUEVOS (desde Mujeres 2026): config en FESTIVAL_CONFIG de index.html, no en el JSON.
+  // Festivales LEGADOS (FICCI 65, Cinemancia 2025): config en el bloque config{} del JSON.
+  if (!hasConfigBlock) {
+    warnings.push('Sin bloque config{} — se asume que la configuración está en FESTIVAL_CONFIG en index.html (formato nuevo ✓)');
+  } else {
+    // Solo verificar campos si el JSON tiene bloque config (formato legado)
+    const cfgRequired = ['name','shortName','city','dates','storageKey','festivalEndStr'];
+    for (const k of cfgRequired) {
+      if (!cfg[k]) errors.push(`config.${k} es requerido`);
+    }
   }
 
-  // dayKeys must match festivalDates
+  // dayKeys must match festivalDates (solo si el JSON define config)
   const festDates = cfg.festivalDates || {};
   for (const k of dayKeys) {
     if (!festDates[k]) errors.push(`dayKeys tiene '${k}' pero festivalDates no lo tiene`);
@@ -223,7 +230,9 @@ for (const fname of files) {
 
 // ── Cross-festival checks ────────────────────────────────────────────────────
 let hasIssues = false;
-// storageKey debe ser único entre todos los festivales — colisión = datos mezclados
+// storageKey debe ser único entre todos los festivales — colisión = datos mezclados.
+// NOTA: festivales nuevos (sin config{} en JSON) tienen storageKey en FESTIVAL_CONFIG.
+// Esta check solo cubre festivales legados con config{} en el JSON.
 const storageKeyMap = {}; // storageKey → [fnames that use it]
 for (const { fname } of results) {
   const fpath = path.join(festivalsDir, fname);

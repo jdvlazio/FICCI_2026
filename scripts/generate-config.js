@@ -17,6 +17,12 @@
  *     [--endtime  "23:00:00"]           \
  *     [--test]                          (marca como grupo 'test')
  *
+ * Restricciones del --id:
+ *   - Solo letras minúsculas + dígitos, termina en 4 dígitos de año
+ *   - Válido:   mujeres2026, bogoshorts2026, jardin2026
+ *   - Inválido: Mujeres2026 (mayúscula), mujeres-2026 (guión), mujeres26 (año corto)
+ *   El nombre del archivo JSON se deriva del id: mujeres2026 → festivals/mujeres-2026.json
+ *
  * Salida: bloque JS listo para pegar en FESTIVAL_CONFIG en index.html.
  * Copia la salida entre los comentarios de inserción.
  */

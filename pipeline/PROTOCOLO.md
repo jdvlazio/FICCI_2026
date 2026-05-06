@@ -99,7 +99,16 @@ node scripts/validate-festivals.js <id>
 Verifica: campos requeridos, consistencia de días, secciones sin duplicados de emoji, `film_list` en programas de cortos. Exit 0 = listo. Exit 1 = corregir antes de continuar.
 
 ### Paso 5 · Ensamblaje
-**Yo produzco:** `festivals/nombre-año.json` completo, listo para QA.
+
+**Yo produzco dos artefactos:**
+
+**A. `festivals/<id>.json`** — datos de películas completos y enriquecidos, listo para subir al repo.
+
+**B. Bloque FESTIVAL_CONFIG** — generado con el script en el Paso 3.5, listo para pegar en `index.html`.
+
+**Tú haces:**
+1. Subir `festivals/<id>.json` al repo (drag & drop en GitHub o push)
+2. Pegar el bloque en `FESTIVAL_CONFIG` en `index.html` (buscar el cierre `};` y pegar antes)
 
 ### Paso 6 · QA Visual — OBLIGATORIO antes de deploy
 
