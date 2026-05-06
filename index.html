@@ -852,7 +852,7 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:var(--t
 /* ── Franja de acciones en tarjetas ── */
 
 /* ── Expansión inline de funciones ── */
-.pelicula-day{font-size:var(--t-label);font-weight:var(--w-bold);color:var(--amber);letter-spacing:.8px;text-transform:uppercase;min-width:42px;flex-shrink:0;white-space:nowrap;cursor:pointer;-webkit-tap-highlight-color:transparent;transition:opacity var(--tr-base)}
+.pelicula-day{font-size:var(--t-label);font-weight:var(--w-bold);color:var(--amber);letter-spacing:.8px;text-transform:uppercase;white-space:nowrap;cursor:pointer;-webkit-tap-highlight-color:transparent;transition:opacity var(--tr-base);display:inline}
 .pelicula-day:active{opacity:.6}
 .pelicula-time{font-size:var(--t-base);font-weight:var(--w-bold);color:var(--white);flex-shrink:0;width:42px}
 .pelicula-venue{font-size:var(--t-caption);color:rgba(240,237,232,.6);flex:1;min-width:0;cursor:pointer;transition:color var(--tr-base);display:flex;align-items:flex-start;gap:var(--sp-1)}
@@ -7300,11 +7300,26 @@ function togglePelWL(title,e){
     showActionToast(`${ICONS.heartFill} En Intereses`,`${ICONS.star} Priorizar`,()=>togglePriority(title));
   }
 }
+// _dayChips — renderiza días únicos de un film como spans tappables (filtran por día)
+function _dayChips(screenings){
+  const seen=new Set();
+  return screenings
+    .map(s=>s.day)
+    .filter(d=>{if(seen.has(d))return false;seen.add(d);return true;})
+    .map(d=>`<span class="pelicula-day" data-day="${d}">${DAY_SHORT[d]||d}</span>`)
+    .join('<span style="color:var(--gray2)"> · </span>');
+}
+
 function filterByVenue(venue){
   closePelSheet();
   activeVenue=venue;activeSec='all';selectedIdx=null;
   programaSubMode='explorar';programaViewMode='grid';
   programaChip='all';_programaChipMatchFn=null;
+  // Si el día activo ya pasó, ir al primer día vigente
+  if(dayFullyPassed(activeDay)){
+    const _ff=DAY_KEYS.find(d=>!dayFullyPassed(d));
+    if(_ff) activeDay=_ff;
+  }
   switchMainNav('mnav-cartelera');
   showDayView();
   // Actualizar label del filtro Lugar
@@ -7336,9 +7351,13 @@ function filterBySection(section){
   closePelSheet();
   activeSec=section;activeVenue='all';selectedIdx=null;
   programaSubMode='explorar';programaViewMode='grid';
-  // activeSec = sección directa
   programaChip='all';
   _programaChipMatchFn=null;
+  // Si el día activo ya pasó, ir al primer día vigente
+  if(dayFullyPassed(activeDay)){
+    const _ff=DAY_KEYS.find(d=>!dayFullyPassed(d));
+    if(_ff) activeDay=_ff;
+  }
   switchMainNav('mnav-cartelera');
   showDayView();
   // Actualizar chips visualmente después del render
@@ -8195,11 +8214,12 @@ function _renderExploreLista(){
     const src=isEvent?'':getFilmPoster(f)||'';
     const allPast=screenings.every(s=>screeningPassed(s));
     const days=[...new Set(screenings.map(s=>DAY_SHORT[s.day]||s.day))].join(' · ');
+    const daysHtml=_dayChips(screenings);
     if(isEvent) return`<div class="plist-item plist-event" style="${allPast?'opacity:.35':''}" onclick="openPelSheet('${safeT}')">
       <img class="plist-poster" src="${makeEventPoster(dt,f.duration,f.event_kind)}" alt="${dt}">
       <div class="plist-info">
         <div class="plist-title">${dt}</div>
-        <div class="plist-meta">${days?`<span style="color:var(--gray)">${days}</span> · `:''}${f.duration||''}</div>
+        <div class="plist-meta">${days?`${daysHtml} · `:''}${f.duration||''}</div>
         <div class="plist-sec">${f.section||''}</div>
       </div>
       <div class="plist-heart${inWL?'':' empty'}" onclick="event.stopPropagation();_toggleWLFromList('${safeT}',this)">${inWL?ICONS.heartFill:ICONS.heart}</div>
@@ -8208,7 +8228,7 @@ function _renderExploreLista(){
     return`<div class="plist-item${allPast?' past-card':''}" onclick="openPelSheet('${safeT}')">
       ${_stk2||(src?`<img class="plist-poster" src="${src}" loading="lazy" onerror="this.style.opacity=0" alt="${dt}" style="${allPast&&!festivalEnded()?'opacity:.45':''}">` :`<div class="plist-poster"></div>`)}
       <div class="plist-info">
-        ${(()=>{const n=NOTICES.find(nx=>nx.title===f.title&&nx.festival===((_activeFestId||_DEFAULT_FEST_ID)));const nb=n?`<span class="notice-badge">${n.type==='cancelled'?'CANCELADA':'REPROG.'}</span>`:'';const nn=n&&n.type==='cancelled'?`<div style="font-size:var(--t-xs);color:var(--amber);margin-top:2px;font-weight:var(--w-semi)">Pendiente nueva fecha</div>`:n&&n.type==='rescheduled'&&n.newTime?`<div style="font-size:var(--t-xs);color:var(--green);margin-top:2px;font-weight:var(--w-semi)">${n.newDay||''} · ${n.newTime}${n.newVenue?' · '+n.newVenue:''}</div>`:'';return`<div class="plist-title" style="${allPast?'opacity:.5':''}">${nb}${dt}</div><div class="plist-meta" style="${n&&n.type==='cancelled'?'text-decoration:line-through':''}${allPast?';opacity:.5':''}">${days?`<span style="color:var(--gray)">${days}</span> · `:''}${f.duration||''}${_metaBadges(f)?` · ${_metaBadges(f)}`:''}</div>${nn||`<div class="plist-sec">${f.section||''}</div>`}`;})()}
+        ${(()=>{const n=NOTICES.find(nx=>nx.title===f.title&&nx.festival===((_activeFestId||_DEFAULT_FEST_ID)));const nb=n?`<span class="notice-badge">${n.type==='cancelled'?'CANCELADA':'REPROG.'}</span>`:'';const nn=n&&n.type==='cancelled'?`<div style="font-size:var(--t-xs);color:var(--amber);margin-top:2px;font-weight:var(--w-semi)">Pendiente nueva fecha</div>`:n&&n.type==='rescheduled'&&n.newTime?`<div style="font-size:var(--t-xs);color:var(--green);margin-top:2px;font-weight:var(--w-semi)">${n.newDay||''} · ${n.newTime}${n.newVenue?' · '+n.newVenue:''}</div>`:'';return`<div class="plist-title" style="${allPast?'opacity:.5':''}">${nb}${dt}</div><div class="plist-meta" style="${n&&n.type==='cancelled'?'text-decoration:line-through':''}${allPast?';opacity:.5':''}">${daysHtml?`${daysHtml} · `:''}${f.duration||''}${_metaBadges(f)?` · ${_metaBadges(f)}`:''}</div>${nn||`<div class="plist-sec">${f.section||''}</div>`}`;})()}
       </div>
       <div class="plist-heart${inWL?'':' empty'}" onclick="event.stopPropagation();_toggleWLFromList('${safeT}',this)">${inWL?ICONS.heartFill:ICONS.heart}</div>
     </div>`;
