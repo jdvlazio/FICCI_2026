@@ -1,6 +1,6 @@
 # OTROFESTIV — Documento de Arquitectura
 > Referencia canónica para implementación. Leer antes de tocar código.
-> Última actualización: ABR 2026 · `index.html` @ commit `567f216`
+> Última actualización: MAY 2026 · `index.html` @ commit `db363e4`
 
 ---
 
@@ -134,28 +134,21 @@ Los datos de cada festival viven en su propio JSON, **no** en `index.html`. Se c
 > `day_order`: índice del día (0 = primer día del festival). `is_cortos`: true si es programa de cortos. `type: 'event'`: talleres/industry days.
 
 ### Festival JSON (estructura completa)
+
+> **Formato nuevo (desde Jardín 2026):**  y  van dentro de cada objeto film.  
+> No crear  ni  al nivel raíz — eso es formato legado (FICCI, Cinemancia).
+
 ```json
 {
-  "id": "aff2026",
-  "name": "Alternativa Film Festival",
-  "shortName": "AFF 2026",
-  "city": "Medellín",
-  "dates": "21–29 ABR",
-  "storageKey": "aff2026_",
-  "festivalEndStr": "2026-04-30T02:00:00",
-  "festivalDates": { "MAR 21": "2026-04-21", ... },
-  "days": [{ "k": "MAR 21", "lbl": "MAR", "d": 21 }, ...],
-  "dayKeys": ["MAR 21", "MIÉ 22", ...],
-  "dayShort": { "MAR 21": "MAR 21", ... },
-  "dayLong": { "MAR 21": "Martes 21", ... },
-  "prioLimit": 5,
-  "festivalPosterUrl": "...",
+  "venues": { "Sala - Ciudad": { "short": "...", "lat": 0, "lng": 0, "city": "..." } },
+  "customPosters": { "Título": "url-override" },
   "films": [...],
-  "posters": { "Título": "https://image.tmdb.org/..." },
-  "customPosters": { "Título": "url-custom" },
-  "lbSlugs": { "Título": "slug-en-letterboxd" }
+  "transport": "transit"
 }
 ```
+
+La configuración del festival (nombre, fechas, días, storageKey, etc.) vive en  en ,  
+no en el JSON. Usar  para generar esa entrada.
 
 ### NOTICES (en `index.html`, editable directamente)
 ```js
@@ -300,10 +293,11 @@ getCortoItemPoster(item) // para cortos individuales en film_list
 Nunca llamar `getPosterSrc()`, `makeProgramPoster()` o `makeEventPoster()` directamente en templates.
 
 Prioridad interna:
-1. `CUSTOM_POSTERS[title]` (override manual)
-2. `POSTERS[title]` (TMDB o URL directa)
-3. Poster generativo (solo si `is_cortos` o `type === 'event'`)
-4. `null` → no render (nunca fondo negro, usar `--surf-2`)
+1. `CUSTOM_POSTERS[title]` (override manual — incluye cortos individuales de FICCI)
+2. `f.poster` (nuevo formato — URL directa en el objeto film)
+3. `POSTERS[title]` (legado — mapa raíz del JSON)
+4. Poster generativo (solo si `is_cortos` o `type === 'event'`)
+5. `null` → no render (nunca fondo negro, usar `--surf-2`)
 
 ### Letterboxd URL
 ```js
@@ -335,7 +329,7 @@ saveState()   // escribe a localStorage (con debounce interno)
 
 ## 8. CONFLICTOS DE HORARIO
 
-Siempre usar `screensConflict(a, b)` — incluye buffer de ±10 min.  
+Siempre usar `screensConflict(a, b)` — incluye buffer de viaje y extiende 30 min si `has_qa: true`.  
 **Nunca** ad-hoc con comparaciones de minutos directas.
 
 ---
@@ -359,12 +353,18 @@ Siempre usar `screensConflict(a, b)` — incluye buffer de ±10 min.
 
 ## 10. AGREGAR UN FESTIVAL NUEVO
 
-1. Crear `festivals/[id].json` con la estructura completa
-2. Agregar entrada en `FESTIVAL_CONFIG` en `index.html`
-3. Agregar opción en el splash dropdown y en `fs-sheet`
-4. `loadFestival('[id]')` ya maneja el resto
+Ver protocolo completo en `pipeline/PROTOCOLO.md`. Resumen:
 
-Para avisos de ese festival: agregar entrada en `NOTICES[]` con `festival: '[id]'`.
+1. Crear `festivals/[id].json` usando `pipeline/festival-template.json` como base
+2. Correr enrichment: `python3 scripts/enrich-festival.py festivals/[id].json`
+3. Generar config: `node scripts/generate-config.js --id [id] ...`
+4. Pegar el bloque generado en `FESTIVAL_CONFIG` en `index.html`
+5. Validar: `node scripts/validate-festivals.js [id]`
+6. QA visual P1–P7 (ver PROTOCOLO.md)
+7. Agregar entrada en `enricher.html → FESTIVALS` con `needs` del festival
+
+El splash dropdown y el selector se generan dinámicamente desde `FESTIVAL_CONFIG` — no tocar el HTML.  
+Para avisos: agregar entrada en `NOTICES[]` en `index.html` con `festival: '[id]'`.
 
 ---
 

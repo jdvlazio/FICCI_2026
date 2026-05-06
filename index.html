@@ -2766,7 +2766,16 @@ function makeSorpresaPoster(){
 // Para cortos individuales dentro de un film_list (no tienen objeto film completo)
 function getCortoItemPoster(item){
   if(!item) return null;
+  // Nuevo formato (Jardín 2026+): poster directo en el objeto
+  if(item.poster) return item.poster.startsWith('http')?item.poster:TMDB_IMG+item.poster;
   return getPosterSrc(item.title,true)||null;
+}
+// Poster de film_list item de largometraje (is_programa).
+// No genera placeholder — devuelve null si no hay poster real.
+function _getItemPoster(item){
+  if(!item) return '';
+  if(item.poster) return item.poster.startsWith('http')?item.poster:TMDB_IMG+item.poster;
+  return getPosterSrc((item.title||item),false)||'';
 }
 
 // ═══════════════════════════════════════════════════════════════
@@ -3295,9 +3304,10 @@ function minToStr(m){
 /* ── CONFLICTS: detección de solapamientos entre funciones ──────────── */
 function screensConflict(a,b){
   if(a.day!==b.day) return false;
-  const aS=toMin(a.time), aE=aS+parseDur(a.duration);
-  const bS=toMin(b.time), bE=bS+parseDur(b.duration);
-  // Gap requerido: tiempo de viaje entre sedes + 5min margen (mínimo 10min)
+  // effectiveDuration: suma 30 min si has_qa:true (Q&A extiende la función)
+  const aS=toMin(a.time), aE=aS+effectiveDuration(a);
+  const bS=toMin(b.time), bE=bS+effectiveDuration(b);
+  // Gap requerido: tiempo de viaje entre sedes + buffer mínimo
   const travel=(a.venue&&b.venue)?travelMins(a.venue,b.venue):0;
   const minGap=Math.max(FESTIVAL_BUFFER, travel+FESTIVAL_BUFFER);
   if(aE<=bS) return (bS-aE)<minGap; // a antes que b
@@ -6742,17 +6752,6 @@ function _festDate(dateStr,time){return new Date(dateStr+'T'+time+':00'+TZ_OFFSE
 function simNow(){return SIM_TIME?new Date(SIM_TIME):new Date();}
 function festivalEnded(){return simNow()>new Date(FESTIVAL_END_TS);}
 
-function screensConflict(a,b){
-  if(a.day!==b.day) return false;
-  const aS=toMin(a.time),aE=aS+parseDur(a.duration);
-  const bS=toMin(b.time),bE=bS+parseDur(b.duration);
-  const travel=(a.venue&&b.venue)?travelMins(a.venue,b.venue):0;
-  const minGap=Math.max(FESTIVAL_BUFFER,travel+FESTIVAL_BUFFER);
-  if(aE<=bS) return (bS-aE)<minGap;
-  if(bE<=aS) return (aS-bE)<minGap;
-  return true;
-}
-
 function venueTravelMins(v1,v2){
   if(!_venueCoords||!_venueCoords[v1]||!_venueCoords[v2]) return 0;
   const c1=_venueCoords[v1],c2=_venueCoords[v2];
@@ -7698,8 +7697,8 @@ function openPelSheet(title){
   const posterSrc=getFilmPoster(f);
   let posterHtml;
   if(f.is_programa&&f.film_list&&f.film_list.length>=2){
-    const _sp1=getPosterSrc(f.film_list[0].title||f.film_list[0],false);
-    const _sp2=getPosterSrc(f.film_list[1].title||f.film_list[1],false);
+    const _sp1=_getItemPoster(f.film_list[0]);
+    const _sp2=_getItemPoster(f.film_list[1]);
     const _fd1=JSON.stringify(f.film_list[0]).replace(/"/g,'&quot;');
     const _fd2=JSON.stringify(f.film_list[1]).replace(/"/g,'&quot;');
     const _c1=_sp1
@@ -7972,8 +7971,8 @@ function _openCombinedFilmSheet(filmData){
   if(pelSheet&&pelSheet.classList.contains('open')){
     _cortoParentHtml=inner.innerHTML;
   }
-  const{title='',director='',year='',duration='',flags='🌐',country='',synopsis='',lbSlug=''}=filmData;
-  const posterUrl=getPosterSrc(title,false)||null;
+  const{title='',director='',year='',duration='',flags='🌐',country='',synopsis='',lbSlug='',poster:_fPoster=''}=filmData;
+  const posterUrl=_fPoster?(_fPoster.startsWith('http')?_fPoster:TMDB_IMG+_fPoster):getPosterSrc(title,false)||null;
   const posterHtml=posterUrl
     ?`<img class="pel-sheet-poster" src="${posterUrl}" data-title="${(title||"").replace(/"/g,'&quot;')}" loading="lazy" onerror="_posterErr(this)" alt="">`
     :`<div class="pel-sheet-poster-ph">🎬</div>`;
@@ -8022,7 +8021,7 @@ function openCortoSheet(title, country, duration, section, flags, director, genr
   const ctry=country||(richItem&&richItem.country)||'';
   const dur=duration||(richItem&&richItem.duration)||'';
   const flgs=flags||countryToFlags(ctry)||'🌐';
-  const posterUrl=getPosterSrc(title,true)||null;
+  const posterUrl=(richItem&&richItem.poster)?(richItem.poster.startsWith("http")?richItem.poster:TMDB_IMG+richItem.poster):getPosterSrc(title,true)||null;
   const posterHtml=posterUrl
     ?`<img class="pel-sheet-poster" src="${posterUrl}" data-title="${(title||"").replace(/"/g,'&quot;')}" loading="lazy" onerror="_posterErr(this)" alt="">`
     :`<div class="pel-sheet-poster-ph">🎬</div>`;
@@ -8309,8 +8308,8 @@ function _metaBanners(f){
 // ── Stack poster para programas combinados ───────────────────────────────
 function _programaStack(f){
   if(!f.is_programa||!f.film_list||f.film_list.length<2) return null;
-  const p1=getPosterSrc(f.film_list[0].title||f.film_list[0],false)||"";
-  const p2=getPosterSrc(f.film_list[1].title||f.film_list[1],false)||"";
+  const p1=_getItemPoster(f.film_list[0]);
+  const p2=_getItemPoster(f.film_list[1]);
   const imgB=p2?`<img class="ps-back" src="${p2}" loading="lazy" onerror="this.remove()" alt="">`:"<div class='ps-back'></div>";
   const imgF=p1?`<img class="ps-front" src="${p1}" loading="lazy" onerror="this.remove()" alt="">`:"<div class='ps-front'></div>";
   return`<div class="plist-poster-stack">${imgB}${imgF}</div>`;
@@ -8604,8 +8603,8 @@ function renderPeliculaView(){
     const _isPrograma=f.is_programa&&f.film_list&&f.film_list.length>=2;
     let posterImg,_cardBg='';
     if(_isPrograma){
-      const _p1=getPosterSrc(f.film_list[0].title||f.film_list[0],false)||'';
-      const _p2=getPosterSrc(f.film_list[1].title||f.film_list[1],false)||'';
+      const _p1=_getItemPoster(f.film_list[0]);
+      const _p2=_getItemPoster(f.film_list[1]);
       const _ib=_p2?`<img class="pcs-back" src="${_p2}" loading="lazy" onerror="this.remove()" alt="">`:`<div class="pcs-back"></div>`;
       const _if=_p1?`<img class="pcs-front" src="${_p1}" loading="lazy" onerror="this.remove()" alt="">`:`<div class="pcs-front"></div>`;
       posterImg=`<div class="poster-card-stack">${_ib}${_if}</div>`;
