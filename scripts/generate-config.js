@@ -1,0 +1,150 @@
+#!/usr/bin/env node
+/**
+ * generate-config.js — Generador de entrada FESTIVAL_CONFIG
+ *
+ * Uso:
+ *   node scripts/generate-config.js \
+ *     --id        mujeres2026           \
+ *     --name      "Mujeres Film Festival" \
+ *     --short     MUJERES               \
+ *     --city      Circasia              \
+ *     --start     2026-08-05            \
+ *     --days      5                     \
+ *     --storage   mujeres2026_          \
+ *     [--priolimit 5]                   \
+ *     [--event    "EVENTO,"]            \
+ *     [--tz       "-05:00"]             \
+ *     [--endtime  "23:00:00"]           \
+ *     [--test]                          (marca como grupo 'test')
+ *
+ * Salida: bloque JS listo para pegar en FESTIVAL_CONFIG en index.html.
+ * Copia la salida entre los comentarios de inserción.
+ */
+
+const DAYS_ES   = ['DOM','LUN','MAR','MIÉ','JUE','VIE','SÁB'];
+const DAYS_LONG = ['Domingo','Lunes','Martes','Miércoles','Jueves','Viernes','Sábado'];
+
+const MONTH_ES = {
+  '01':'ENE','02':'FEB','03':'MAR','04':'ABR','05':'MAY','06':'JUN',
+  '07':'JUL','08':'AGO','09':'SEP','10':'OCT','11':'NOV','12':'DIC',
+};
+
+// ── Parse args ────────────────────────────────────────────────────────────────
+function parseArgs() {
+  const args = process.argv.slice(2);
+  const opts = {
+    id: null, name: null, short: null, city: null,
+    start: null, days: null, storage: null,
+    priolimit: 5, event: 'EVENTO,', tz: '-05:00',
+    endtime: '23:00:00', test: false,
+  };
+  for (let i = 0; i < args.length; i++) {
+    const k = args[i].replace(/^--/, '');
+    if (k === 'test') { opts.test = true; continue; }
+    opts[k] = args[++i];
+  }
+  return opts;
+}
+
+// ── Validate ──────────────────────────────────────────────────────────────────
+function validate(opts) {
+  const required = ['id','name','short','city','start','days','storage'];
+  const missing = required.filter(k => !opts[k]);
+  if (missing.length) {
+    console.error('❌  Faltan argumentos obligatorios: ' + missing.map(k => '--'+k).join(', '));
+    console.error('\nUso:');
+    console.error('  node scripts/generate-config.js \\');
+    console.error('    --id mujeres2026 --name "Mujeres Film Festival" --short MUJERES \\');
+    console.error('    --city Circasia --start 2026-08-05 --days 5 --storage mujeres2026_');
+    process.exit(1);
+  }
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(opts.start)) {
+    console.error('❌  --start debe tener formato YYYY-MM-DD. Ejemplo: 2026-08-05');
+    process.exit(1);
+  }
+  if (isNaN(parseInt(opts.days)) || parseInt(opts.days) < 1) {
+    console.error('❌  --days debe ser un número entero ≥ 1');
+    process.exit(1);
+  }
+  if (!/^\w+_$/.test(opts.storage)) {
+    console.error('❌  --storage debe terminar en guión bajo. Ejemplo: mujeres2026_');
+    process.exit(1);
+  }
+  if (!/^[a-z][a-z0-9]+\d{4}$/.test(opts.id)) {
+    console.error('❌  --id debe ser camelCase + año sin guiones. Ejemplo: mujeres2026');
+    process.exit(1);
+  }
+}
+
+// ── Build day objects ─────────────────────────────────────────────────────────
+function buildDays(startStr, numDays) {
+  const days = [];
+  const [y, m, d] = startStr.split('-').map(Number);
+  for (let i = 0; i < numDays; i++) {
+    const date = new Date(y, m - 1, d + i);
+    const dow  = date.getDay(); // 0=DOM … 6=SÁB
+    const num  = date.getDate();
+    const lbl  = DAYS_ES[dow];
+    const long = DAYS_LONG[dow];
+    const key  = `${lbl} ${num}`;
+    const iso  = `${y}-${String(m).padStart(2,'0')}-${String(d+i).padStart(2,'0')}`;
+    days.push({ key, iso, lbl, num, long });
+  }
+  return days;
+}
+
+// ── Format output ─────────────────────────────────────────────────────────────
+function formatConfig(opts, days) {
+  const d0   = days[0];
+  const dn   = days[days.length - 1];
+  const mm   = opts.start.slice(5, 7);
+  const mon  = MONTH_ES[mm] || mm;
+  const datesStr = `${d0.lbl} ${d0.num}\u2013${dn.lbl} ${dn.num} ${mon}`;
+  const year     = parseInt(opts.start.slice(0, 4));
+  const endDate  = days[days.length - 1].iso;
+  const endStr   = `${endDate}T${opts.endtime}`;
+
+  // eventPosterLabel: "EVENTO," → ['EVENTO','']
+  const epParts  = opts.event.split(',');
+  const ep0      = (epParts[0] || 'EVENTO').trim();
+  const ep1      = (epParts[1] !== undefined ? epParts[1] : '').trim();
+
+  const fd  = days.map(d => `'${d.key}':'${d.iso}'`).join(',');
+  const da  = days.map(d => `{k:'${d.key}',d:${d.num},lbl:'${d.lbl}'}`).join(',');
+  const dk  = days.map(d => `'${d.key}'`).join(',');
+  const ds  = days.map(d => `'${d.key}':'${d.key}'`).join(',');
+  const dl  = days.map(d => `'${d.key}':'${d.long} ${d.num}'`).join(',');
+
+  const group = opts.test ? "\n  group:'test'," : '';
+
+  return [
+    `'${opts.id}': {`,
+    `  name:'${opts.name}',shortName:'${opts.short}',city:'${opts.city}',`,
+    `  dates:'${datesStr}',year:${year},timezoneOffset:'${opts.tz}',`,
+    `  storageKey:'${opts.storage}',festivalEndStr:'${endStr}',${group}`,
+    `  festivalDates:{${fd}},`,
+    `  days:[${da}],`,
+    `  dayKeys:[${dk}],`,
+    `  dayShort:{${ds}},`,
+    `  dayLong:{${dl}},`,
+    `  prioLimit:${parseInt(opts.priolimit)||5},eventPosterLabel:['${ep0}','${ep1}'],`,
+    `  films:null,posters:null,lbSlugs:{}`,
+    `},`,
+  ].join('\n');
+}
+
+// ── Main ──────────────────────────────────────────────────────────────────────
+const opts = parseArgs();
+validate(opts);
+const days   = buildDays(opts.start, parseInt(opts.days));
+const output = formatConfig(opts, days);
+
+console.log('\n// ── Pegar en FESTIVAL_CONFIG en index.html (antes del cierre }; ) ──────────\n');
+console.log(output);
+console.log('\n// ─────────────────────────────────────────────────────────────────────────────');
+console.log(`\n✅  ${opts.id} generado — ${days.length} días (${days[0].key} → ${days[days.length-1].key})`);
+console.log(`   Próximos pasos:`);
+console.log(`   1. Pegar el bloque en FESTIVAL_CONFIG en index.html`);
+console.log(`   2. Crear festivals/${opts.id.replace(/([a-z]+)(\d+)/, '$1-$2')}.json`);
+console.log(`   3. node scripts/validate-festivals.js ${opts.id.replace(/([a-z]+)(\d+)/, '$1-$2')}`);
+console.log(`   4. QA visual P1-P7\n`);

@@ -8925,6 +8925,12 @@ async function loadFestival(id){
   DAY_SHORT=cfg.dayShort;
   DAY_LONG=cfg.dayLong;
   PRIO_LIMIT=cfg.prioLimit||5;
+  // Guard: dayKeys y days son requeridos — sin ellos el UI de calendario crashea
+  if(!cfg.dayKeys||!cfg.days||!cfg.days.length){
+    console.error(`[loadFestival] '${id}' no tiene dayKeys/days en FESTIVAL_CONFIG.`);
+    showToast(`Festival '${id}' incompleto: faltan dayKeys/days en FESTIVAL_CONFIG.`,'error',6000);
+    return;
+  }
   // Reconstruir lookup de posters para el festival activo
   CUSTOM_POSTERS=cfg.customPosters||{};
   _CUSTOM_N=Object.fromEntries(Object.entries(CUSTOM_POSTERS).map(([k,v])=>[normKey(k),v]));

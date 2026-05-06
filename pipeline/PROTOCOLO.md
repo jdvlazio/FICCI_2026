@@ -74,6 +74,21 @@ Abrir `otrofestiv.app/_dev/enricher/index.html`, cargar los films, correr TMDB a
 
 **Tú revisas:** que los nombres de las sedes coincidan exactamente con los del JSON de films.
 
+### Paso 3.5 · Generar entrada FESTIVAL_CONFIG
+
+```bash
+node scripts/generate-config.js \
+  --id        mujeres2026             \
+  --name      "Mujeres Film Festival" \
+  --short     MUJERES                 \
+  --city      Circasia                \
+  --start     2026-08-05              \
+  --days      5                       \
+  --storage   mujeres2026_
+```
+
+Salida: bloque JS completo con los 5 objetos de días calculados — listo para pegar en `FESTIVAL_CONFIG` en `index.html`. Sin errores manuales.
+
 ### Paso 4 · Validación — OBLIGATORIO antes de deploy
 
 ```bash
@@ -205,11 +220,11 @@ Siempre emoji de banderas: `"🇨🇴"`, `"🇦🇷🇫🇷"`
 
 1. Crear `festivals/<id>.json` con `films[]` (Paso 1 del pipeline)
 2. Correr enrichment: `python3 scripts/enrich-festival.py festivals/<id>.json` (Paso 2)
-3. Agregar entrada en `FESTIVAL_CONFIG` en `index.html` — **solo esto, nada más**
-4. Validar: `node scripts/validate-festivals.js <id>` (Paso 4)
-5. Push → deploy automático en ~2 minutos
-
-El splash y el selector de festivales se generan automáticamente desde `FESTIVAL_CONFIG`.
+3. Generar config: `node scripts/generate-config.js --id <id> ...` (Paso 3.5)
+4. Pegar el bloque generado en `FESTIVAL_CONFIG` en `index.html` — **solo esto, nada más**
+5. Validar: `node scripts/validate-festivals.js <id>` (Paso 4)
+6. QA visual P1-P7 (Paso 6)
+7. Push → deploy automático en ~2 minutos
 
 ---
 
