@@ -4733,7 +4733,7 @@ function renderFilmListHTML(){
           Conflicto con ${conflict}
         </div>`
       :'';
-    return`<div class="int-item${!next?' gone':''}" onclick="openPelSheet('${safeT}')">
+    return`<div class="int-item${!next?' gone':''}" style="${!next&&!festivalEnded()?'opacity:.35':''}" onclick="openPelSheet('${safeT}')">
       ${posterHtml}
       <div class="int-item-info">
         <div class="int-item-title">${displayTitle}${progSuffix?` <span style="color:var(--amber);font-size:var(--t-xs)">${progSuffix}</span>`:''}</div>
