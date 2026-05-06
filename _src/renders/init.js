@@ -174,8 +174,19 @@ async function loadFestival(id){
 }
 function dismissSplash(){
   const s=document.getElementById('otrofestiv-splash');
-  if(s){s.classList.add('fade-out');setTimeout(()=>s.remove(),520);}
-  loadFestival(_splashSelectedFestId||'aff2026').catch(e=>console.error('Error init festival:',e));
+  const btn=document.querySelector('.splash-enter-btn');
+  if(btn) btn.classList.add('loading');
+  // FIX iOS render regression (Apr 2026): esperar a que loadFestival complete
+  // antes de animar el splash. Sin el .then(), las mutaciones globales
+  // (FILMS, DAY_KEYS, etc.) ocurren en un microtask separado del frame
+  // de render de iOS — el DOM muta pero WebKit no repinta hasta cambio de contexto.
+  loadFestival(_splashSelectedFestId||'aff2026')
+    .then(()=>{
+      setTimeout(()=>{
+        if(s){s.classList.add('fade-out');setTimeout(()=>s.remove(),560);}
+      },150); // 150ms: margen para que el compositor de iOS se asiente
+    })
+    .catch(e=>console.error('Error init festival:',e));
 }
 // Inicializar Supabase al cargar la página
 // Capgo OTA — notifica que la app arrancó correctamente (Cap 6)

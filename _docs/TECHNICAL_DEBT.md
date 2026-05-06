@@ -111,24 +111,58 @@ Todo en un objeto. El poster se resuelve de `tmdb_id` en build-time. El link de 
 ## 4. Sistema de Build Modular — Regresión de Render
 
 **Fecha:** 26 Abr 2026  
-**Prioridad:** Crítica  
+**Prioridad:** Crítica → **CAUSA IDENTIFICADA** (Mayo 2026)
 
 ### Qué pasó
-El 25 Abr se refactorizó el monolito `index.html` en archivos modulares (`src/`). El sistema de build concatena esos archivos en `dist/index.html`. Esta refactorización introdujo un problema de render en iOS/WebKit: las acciones (Añadir, Quitar, Intereses, Vista) ejecutaban su lógica correctamente pero el DOM no se repintaba visualmente hasta que el usuario cambiaba de tab o contexto.
+El 25 Abr se refactorizó el monolito `index.html` en archivos modulares (`_src/`). El sistema de build concatena esos archivos en `dist/index.html`. Esta refactorización introdujo un problema de render en iOS/WebKit: las acciones (Añadir, Quitar, Intereses, Vista) ejecutaban su lógica correctamente pero el DOM no se repintaba visualmente hasta que el usuario cambiaba de tab o contexto.
 
-### Causa identificada
-El `index.html` monolítico original (Apr 24) funcionaba porque el JS se ejecutaba en un contexto de página completa donde los reflows eran síncronos. La refactorización no introdujo diferencias en la lógica, pero sí en algún aspecto del entorno de ejecución que aún no fue identificado con precisión.
+### Causa identificada (Mayo 2026)
 
-### Solución temporal
-Se restauró el `index.html` de Apr 24 (commit `211ec2a`) como base, editándolo directamente. Los datos del festival se inyectan manualmente via script.
+**`dismissSplash()` disparaba `loadFestival()` como fire-and-forget.**
 
-### Riesgo activo
-Editar `index.html` directamente no es sostenible. Cualquier feature nueva toca el monolito sin el sistema de build. No hay validación automática (`verify.js`), no hay separación de responsabilidades.
+`_src/renders/init.js` (versión April 2026 original):
+```js
+function dismissSplash(){
+  const s=document.getElementById('otrofestiv-splash');
+  if(s){s.classList.add('fade-out');setTimeout(()=>s.remove(),520);}
+  loadFestival(_splashSelectedFestId||'aff2026').catch(e=>console.error(e));
+  //                                              ↑ fire-and-forget — no .then()
+}
+```
 
-### Próximos pasos
-1. Comparar el output del build modular con el Apr 24 monolito línea por línea — encontrar la diferencia exacta que causa el problema de render
-2. Corregir el build system
-3. Volver al flujo `src/` → `node build.js` → push
+Sin `.then()`, las mutaciones globales (`FILMS=`, `DAY_KEYS=`, `FESTIVAL_DATES=`, etc.) ocurrían en un microtask separado del frame de render de iOS. El splash se eliminaba del DOM antes de que el festival estuviera cargado. WebKit interpretaba este estado de transición como un contexto de render completo — las mutaciones JS posteriores (toggle ♥, toggle ★, etc.) no disparaban un repaint hasta que el usuario cambiaba de contexto.
+
+**Fix aplicado en producción** (presente en `index.html` desde abril 2026, ausente en `_src/` hasta ahora):
+```js
+loadFestival(_splashSelectedFestId)
+  .then(()=>{
+    setTimeout(()=>{
+      if(s){s.classList.add('fade-out');setTimeout(()=>s.remove(),560);}
+    },150); // 150ms: margen para que el compositor de iOS se asiente
+  })
+  .catch(e=>console.error('Error init festival:',e));
+```
+
+### Estado del test (Mayo 2026)
+
+- ✓ Fix aplicado a `_src/renders/init.js`
+- ✓ Build corre correctamente: `dist/index.html` producido (845KB, JS syntax válido)
+- ✓ `dismissSplash` con `.then()` + 150ms presente en build output
+- ✓ `_FESTIVAL_DATA` embebido correctamente para los 3 festivales
+- ⚠️ `_src/actions.js` contiene hacks `void offsetHeight` — reliquias del intento de fix de abril que nunca se limpiaron. Estos hacks no están en producción y deben eliminarse antes de activar el build
+- ⚠️ `_src/` tiene 3.538 líneas de delta con `index.html` actual (38 funciones nuevas, 13 eliminadas)
+- ⚠️ `verify.js` requiere actualización: 3 funciones requeridas ya no existen, 9 falsas duplicaciones por el Worker blob
+
+### Pendiente para activar el build system
+
+1. Limpiar `void offsetHeight` hacks de `_src/actions.js` (no son necesarios con el fix de `dismissSplash`)
+2. Sincronizar `_src/` con `index.html` actual (38 funciones nuevas a distribuir en módulos)
+3. Actualizar `verify.js`: remover funciones muertas, corregir duplicaciones del Worker, ampliar CSS checks
+4. Activar como CI en GitHub Actions post-Jardín 2026
+
+### Cuándo implementar
+Post-Jardín 2026. No tocar antes — el monolito actual es estable.
+
 
 ---
 
