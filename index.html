@@ -2876,7 +2876,12 @@ const FESTIVAL_CONFIG={
   }
 };// Festival data loaded async from festivals/<id>.json via loadFestival()
 
-let _activeFestId=localStorage.getItem('otrofestiv_festival')||'aff2026';
+// Festival por defecto — primer festival registrado en FESTIVAL_CONFIG.
+// Usado como fallback cuando localStorage está vacío o no hay festival en rango de fechas.
+// Al agregar un nuevo festival como primero en el config, este fallback se actualiza solo.
+const _DEFAULT_FEST_ID=Object.keys(FESTIVAL_CONFIG)[0];
+
+let _activeFestId=localStorage.getItem('otrofestiv_festival')||_DEFAULT_FEST_ID;
 
 // ═══════════════════════════════════════════════════════════════
 // SUPABASE — Auth + Cloud Sync
@@ -3274,7 +3279,7 @@ let PRIO_LIMIT=5; // Updated by loadFestival per festival
 /* ── Clave de almacenamiento — cambiar por edición del festival ──
    Formato: {nombre}{año}_ → prefija todas las keys de localStorage.
    Garantiza que cada edición empiece limpia sin datos residuales. */
-let FESTIVAL_STORAGE_KEY=(localStorage.getItem('otrofestiv_festival')||'aff2026')+'_';
+let FESTIVAL_STORAGE_KEY=(localStorage.getItem('otrofestiv_festival')||_DEFAULT_FEST_ID)+'_';
 // ── Reset agresivo de caché — independiente del SW ────────────────
 // BUILD_VERSION: cambia en cada deploy.
 // Al cargar, compara con localStorage. Si difiere → reload duro.
@@ -7411,7 +7416,7 @@ function openPelSheet(title){
     </div>
     <div class="pel-sheet-divider"></div>
     <div class="pel-sheet-section-lbl">${f.type==='event'?'horario':allScr.length===1?'función':'funciones'}${totalFn>1&&f.type!=='event'?`<span class="count-badge cb-amber" style="margin-left:var(--sp-2)">${totalFn}</span>`:''}</div>
-    ${(()=>{const _n=NOTICES.find(n=>n.title===f.title&&n.festival===(_activeFestId||'aff2026'));if(!_n)return'';const _msg=_n.type==='cancelled'?'Función cancelada · Pendiente nueva fecha':`Reprogramada → ${_n.newDay||''} ${_n.newTime||''}${_n.newVenue?' · '+_n.newVenue:''}`;return`<div style="display:flex;align-items:center;gap:var(--sp-2);padding:var(--sp-2) var(--sp-3);background:var(--amber-08);border-radius:var(--r-sm);margin-bottom:var(--sp-2)"><span class="notice-badge">${_n.type==='cancelled'?'CANCELADA':'REPROG.'}</span><span style="font-size:var(--t-sm);color:var(--amber-60)">${_msg}</span></div>`;})()}
+    ${(()=>{const _n=NOTICES.find(n=>n.title===f.title&&n.festival===(_activeFestId||_DEFAULT_FEST_ID));if(!_n)return'';const _msg=_n.type==='cancelled'?'Función cancelada · Pendiente nueva fecha':`Reprogramada → ${_n.newDay||''} ${_n.newTime||''}${_n.newVenue?' · '+_n.newVenue:''}`;return`<div style="display:flex;align-items:center;gap:var(--sp-2);padding:var(--sp-2) var(--sp-3);background:var(--amber-08);border-radius:var(--r-sm);margin-bottom:var(--sp-2)"><span class="notice-badge">${_n.type==='cancelled'?'CANCELADA':'REPROG.'}</span><span style="font-size:var(--t-sm);color:var(--amber-60)">${_msg}</span></div>`;})()}
     ${_metaBanners(f)}
     <div class="pel-sheet-screenings">${rows}</div>
     <div class="pel-sheet-divider"></div>
@@ -7946,7 +7951,7 @@ function _programaStack(f){
 // ── Notices: banner de funciones canceladas/reprogramadas ────────────────
 let _dismissedNotices=new Set();
 function getActiveNotices(){
-  const festId=(_activeFestId||'aff2026');
+  const festId=(_activeFestId||_DEFAULT_FEST_ID);
   const today=new Date(); today.setHours(0,0,0,0);
   return NOTICES.filter(n=>{
     if(n.festival!==festId) return false;
@@ -8023,7 +8028,7 @@ function renderProgramaList(){
       const vc=vcfg(f.venue);
       const src=getFilmPoster(f)||'';
       const nowBadge=isNow?`<span style="font-size:var(--t-xs);font-weight:var(--w-display);color:var(--green);background:var(--green-10);border:1px solid var(--green-30);border-radius:var(--r);padding:2px 6px;margin-left:var(--sp-1)">AHORA</span>`:'';
-      const notice=NOTICES.find(n=>n.title===f.title&&n.festival===((_activeFestId||'aff2026')));
+      const notice=NOTICES.find(n=>n.title===f.title&&n.festival===((_activeFestId||_DEFAULT_FEST_ID)));
       const noticeBadge=notice?`<span class="notice-badge">${notice.type==='cancelled'?'CANCELADA':'REPROG.'}</span>`:'';
       const noticeNote=notice&&notice.type==='cancelled'?`<div style="font-size:var(--t-xs);color:var(--amber);margin-top:2px;font-weight:var(--w-semi)">Pendiente nueva fecha</div>`:
         notice&&notice.type==='rescheduled'&&notice.newTime?`<div style="font-size:var(--t-xs);color:var(--green);margin-top:2px;font-weight:var(--w-semi)">${notice.newDay||''} · ${notice.newTime}${notice.newVenue?' · '+notice.newVenue:''}</div>`:'';
@@ -8135,7 +8140,7 @@ function _renderExploreLista(){
     return`<div class="plist-item${allPast?' past-card':''}" onclick="openPelSheet('${safeT}')">
       ${_stk2||(src?`<img class="plist-poster" src="${src}" loading="lazy" onerror="this.style.opacity=0" alt="${dt}" style="${allPast&&!festivalEnded()?'opacity:.45':''}">` :`<div class="plist-poster"></div>`)}
       <div class="plist-info">
-        ${(()=>{const n=NOTICES.find(nx=>nx.title===f.title&&nx.festival===((_activeFestId||'aff2026')));const nb=n?`<span class="notice-badge">${n.type==='cancelled'?'CANCELADA':'REPROG.'}</span>`:'';const nn=n&&n.type==='cancelled'?`<div style="font-size:var(--t-xs);color:var(--amber);margin-top:2px;font-weight:var(--w-semi)">Pendiente nueva fecha</div>`:n&&n.type==='rescheduled'&&n.newTime?`<div style="font-size:var(--t-xs);color:var(--green);margin-top:2px;font-weight:var(--w-semi)">${n.newDay||''} · ${n.newTime}${n.newVenue?' · '+n.newVenue:''}</div>`:'';return`<div class="plist-title" style="${allPast?'opacity:.5':''}">${nb}${dt}</div>${nn||`<div class="plist-sec">${f.section||''}</div>`}<div class="plist-meta" style="${n&&n.type==='cancelled'?'text-decoration:line-through':''}${allPast?';opacity:.5':''}">${days?`<span style="color:var(--gray)">${days}</span> · `:''}${f.duration||'~90 min'}${_metaBadges(f)?` · ${_metaBadges(f)}`:''}</div>`;})()}
+        ${(()=>{const n=NOTICES.find(nx=>nx.title===f.title&&nx.festival===((_activeFestId||_DEFAULT_FEST_ID)));const nb=n?`<span class="notice-badge">${n.type==='cancelled'?'CANCELADA':'REPROG.'}</span>`:'';const nn=n&&n.type==='cancelled'?`<div style="font-size:var(--t-xs);color:var(--amber);margin-top:2px;font-weight:var(--w-semi)">Pendiente nueva fecha</div>`:n&&n.type==='rescheduled'&&n.newTime?`<div style="font-size:var(--t-xs);color:var(--green);margin-top:2px;font-weight:var(--w-semi)">${n.newDay||''} · ${n.newTime}${n.newVenue?' · '+n.newVenue:''}</div>`:'';return`<div class="plist-title" style="${allPast?'opacity:.5':''}">${nb}${dt}</div>${nn||`<div class="plist-sec">${f.section||''}</div>`}<div class="plist-meta" style="${n&&n.type==='cancelled'?'text-decoration:line-through':''}${allPast?';opacity:.5':''}">${days?`<span style="color:var(--gray)">${days}</span> · `:''}${f.duration||'~90 min'}${_metaBadges(f)?` · ${_metaBadges(f)}`:''}</div>`;})()}
       </div>
       <div class="plist-heart${inWL?'':' empty'}" onclick="event.stopPropagation();_toggleWLFromList('${safeT}',this)">${inWL?ICONS.heartFill:ICONS.heart}</div>
     </div>`;
@@ -8285,7 +8290,7 @@ function render(){
       :``;
     const progBadge='';//REMOVED
     const nowBadge=isNow?`<div class="poster-now">AHORA</div>`:'';
-    const _notice=NOTICES.find(n=>n.title===f.title&&n.festival===(_activeFestId||'aff2026'));
+    const _notice=NOTICES.find(n=>n.title===f.title&&n.festival===(_activeFestId||_DEFAULT_FEST_ID));
     const pastBadge=_notice?`<div class="poster-past-badge" style="background:var(--amber-60);color:var(--black)">${_notice.type==='cancelled'?'Cancelada':'Reprog.'}</div>`:'';
 
     const _fe=festivalEnded();
@@ -8322,7 +8327,7 @@ function toggleSplashDropdown(){
 }
 let _splashSelectedFestId='aff2026'; // matches HTML pre-selection
 function selectSplashFest(name,meta,festId){
-  _splashSelectedFestId=festId||'aff2026';
+  _splashSelectedFestId=festId||_DEFAULT_FEST_ID;
   const n=document.getElementById('splash-sel-name');
   const m=document.getElementById('splash-sel-meta');
   if(n) n.textContent=name;
@@ -8582,7 +8587,7 @@ _sbInit();
         if(!mostRecentEnd||end>mostRecentEnd){mostRecent=id;mostRecentEnd=end;}
       }
     });
-    return inProgress||nextUp||mostRecent||'aff2026';
+    return inProgress||nextUp||mostRecent||_DEFAULT_FEST_ID;
   }
   const activeFest=detectActiveFest();
   _splashSelectedFestId=activeFest;
