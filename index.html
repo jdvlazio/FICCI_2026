@@ -833,8 +833,7 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:var(--t
 
 .pel-sheet-meta{flex:1;min-width:0;display:flex;flex-direction:column;gap:var(--sp-1);padding-top:2px}
 .pel-sheet-title{font-size:var(--t-md);font-weight:var(--w-display);color:var(--white);line-height:1.25;letter-spacing:-.03em}
-.pel-sheet-flags{font-size:var(--t-base);color:var(--gray2)}
-.pel-sheet-dur{font-size:var(--t-caption);color:var(--gray2)}
+.pel-sheet-flags-dur{font-size:var(--t-sm);color:var(--gray2);display:flex;align-items:center;gap:var(--sp-1);flex-wrap:wrap}
 .pel-sheet-metaline{font-size:var(--t-sm);color:var(--gray2);margin-top:2px}
 .pel-sheet-sec{font-size:var(--t-sm);color:var(--orange);font-weight:var(--w-semi);margin-top:2px;cursor:pointer;display:inline-flex;align-items:center;gap:3px;transition:opacity var(--tr-base)}
 .pel-sheet-sec:active{opacity:.6}
@@ -7421,8 +7420,9 @@ function openPelSheet(title){
       ${posterHtml}
       <div class="pel-sheet-meta">
         <div class="pel-sheet-title">${displayTitle}</div>
-        ${f.type!=='event'?`<div class="pel-sheet-flags">${f.flags||'🌐'}</div>`:''}
-        <div class="pel-sheet-dur">${ICONS.clock} ${f.duration}</div>
+        ${f.type!=='event'
+          ?`<div class="pel-sheet-flags-dur">${f.flags||'🌐'}${f.duration?` · ${f.duration}`:''}</div>`
+          :(f.duration?`<div class="pel-sheet-flags-dur">${f.duration}</div>`:'')}
         ${f.type!=='event'&&_metaLine?`<div class="pel-sheet-metaline">${_metaLine}</div>`:''}
         ${f.section?`<div class="pel-sheet-sec" data-sec="${f.section.replace(/"/g,'&quot;')}" onclick="filterBySection(this.dataset.sec)">${secLabel} <span class="pel-sheet-sec-arrow">›</span></div>`:''}
       </div>
@@ -7630,8 +7630,7 @@ function _openCombinedFilmSheet(filmData){
       ${posterHtml}
       <div class="pel-sheet-meta">
         <div class="pel-sheet-title">${title}</div>
-        ${flags?`<div class="pel-sheet-flags">${flags}</div>`:''}
-        ${duration?`<div class="pel-sheet-dur">${ICONS.clock} ${duration}</div>`:''}
+        ${(flags||duration)?`<div class="pel-sheet-flags-dur">${flags||''}${flags&&duration?' · ':''}${duration||''}</div>`:''}
         ${metaLine?`<div class="pel-sheet-metaline">${metaLine}</div>`:''}
         ${(()=>{const _parent=FILMS.find(f=>f.film_list&&f.film_list.some(c=>c.title===title));const _sec=_parent?.section;if(!_sec)return'';const _lbl=_sec.replace(/^[^ ]+ /,'');return`<div class="pel-sheet-sec" style="cursor:default">${_lbl}</div>`;})()}
       </div>
@@ -7686,8 +7685,7 @@ function openCortoSheet(title, country, duration, section, flags, director, genr
       ${posterHtml}
       <div class="pel-sheet-meta">
         <div class="pel-sheet-title">${title}</div>
-        <div class="pel-sheet-flags">${flgs}</div>
-        ${dur?`<div class="pel-sheet-dur">${ICONS.clock} ${dur}</div>`:''}
+        <div class="pel-sheet-flags-dur">${flgs}${dur?` · ${dur}`:''}</div>
         ${(dir||gnr)?`<div class="pel-sheet-metaline">${[dir,gnr].filter(Boolean).join(' · ')}</div>`:''}
         ${secLabel?`<div class="pel-sheet-sec">${secLabel}</div>`:''}
       </div>
