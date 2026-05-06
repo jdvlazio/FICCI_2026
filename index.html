@@ -2799,7 +2799,6 @@ function getCortoItemPoster(item){
    Replicable: extraer desde la lista oficial del festival en LB.
 ──────────────────────────────────────────────────────────────── */
 let LB_SLUGS={};
-let LB_SLUGS_AFF={};
 function lbUrl(title){
   // Use festival-specific slug map from active festival config
   const _cfg=FESTIVAL_CONFIG[_activeFestId]||{};
@@ -2894,11 +2893,6 @@ function makeEventPoster(title,duration,eventKind){
   return _buildPosterV16({accent:'#6B9BD1', headerLabel, title, num:null});
 }
 
-/* ══════════════════════════════════════════════════════════════
-   MULTI-FESTIVAL — AFF 2026 data + config
-══════════════════════════════════════════════════════════════ */
-let FILMS_AFF=[];
-let POSTERS_AFF={};
 // ── Avisos de festival: funciones canceladas o reprogramadas ──────────────
 // type: 'cancelled' | 'rescheduled'
 // date: 'YYYY-MM-DD' de la función original — el banner desaparece al día siguiente
@@ -3676,7 +3670,7 @@ function loadState(){
   try{
     const wl=localStorage.getItem(`${FESTIVAL_STORAGE_KEY}wl`); if(wl) watchlist=new Set(JSON.parse(wl));
     const wt=localStorage.getItem(`${FESTIVAL_STORAGE_KEY}watched`); if(wt) watched=new Set(JSON.parse(wt));
-    const _rt=localStorage.getItem(`${FESTIVAL_STORAGE_KEY}ratings`); if(_rt) try{Object.assign(filmRatings,JSON.parse(_rt));}catch(e){}
+    const _rt=localStorage.getItem(`${FESTIVAL_STORAGE_KEY}ratings`); if(_rt) try{Object.assign(filmRatings,JSON.parse(_rt));}catch(e){console.warn('[loadState] ratings parse failed',e);}
     const av=localStorage.getItem(`${FESTIVAL_STORAGE_KEY}av3`); if(av){const p=JSON.parse(av);DAY_KEYS.forEach(d=>{if(p[d]) availability[d]=p[d];});}
     const sa=localStorage.getItem(`${FESTIVAL_STORAGE_KEY}saved`); if(sa) savedAgenda=JSON.parse(sa);
     // Normalizar venues viejos (ej: 'CC Bocagrande' → 'Plaza Bocagrande')
@@ -3690,10 +3684,10 @@ function loadState(){
     prioritized.forEach(t=>{if(!watchlist.has(t)){watchlist.add(t);}});
     saveWL();
     // Restore reserved slot — persists across refresh, button shows "＋ Añadir" (not "← Restaurar")
-    const rs=localStorage.getItem(`${FESTIVAL_STORAGE_KEY}lastslot`);if(rs){try{const p=JSON.parse(rs);lastRemovedSlots=Array.isArray(p)?p:(p?[p]:[]);}catch(e){}}
-    const fd=localStorage.getItem(`${FESTIVAL_STORAGE_KEY}delays`);if(fd){try{filmDelays=JSON.parse(fd);}catch(e){}}
-    const _vm=localStorage.getItem(`${FESTIVAL_STORAGE_KEY}viewmodes`);if(_vm){try{const _v=JSON.parse(_vm);if(_v.miPlan)miPlanViewMode=_v.miPlan;if(_v.intereses)interesesViewMode=_v.intereses;}catch(e){}}
-  }catch(e){}
+    const rs=localStorage.getItem(`${FESTIVAL_STORAGE_KEY}lastslot`);if(rs){try{const p=JSON.parse(rs);lastRemovedSlots=Array.isArray(p)?p:(p?[p]:[]);}catch(e){console.warn('[loadState] lastslot parse failed',e);}}
+    const fd=localStorage.getItem(`${FESTIVAL_STORAGE_KEY}delays`);if(fd){try{filmDelays=JSON.parse(fd);}catch(e){console.warn('[loadState] delays parse failed',e);}}
+    const _vm=localStorage.getItem(`${FESTIVAL_STORAGE_KEY}viewmodes`);if(_vm){try{const _v=JSON.parse(_vm);if(_v.miPlan)miPlanViewMode=_v.miPlan;if(_v.intereses)interesesViewMode=_v.intereses;}catch(e){console.warn('[loadState] viewmodes parse failed',e);}}
+  }catch(e){console.warn('[loadState] failed',e);}
 }
 function saveWL(){try{localStorage.setItem(`${FESTIVAL_STORAGE_KEY}wl`,JSON.stringify([...watchlist]));}catch(e){}_cloudSave();}
 function saveWatched(){try{localStorage.setItem(`${FESTIVAL_STORAGE_KEY}watched`,JSON.stringify([...watched]));}catch(e){}_cloudSave();}
@@ -5796,7 +5790,7 @@ async function _saveDisplayName(name){
   if(!n) return;
   localStorage.setItem('otrofestiv_display_name',n);
   if(_sb&&_sbUser){
-    try{ await _sb.auth.updateUser({data:{display_name:n}}); }catch(e){}
+    try{ await _sb.auth.updateUser({data:{display_name:n}}); }catch(e){console.warn('[auth] updateUser failed',e);}
   }
 }
 
@@ -7544,7 +7538,7 @@ function _pspAttach(){
       e.stopPropagation();
       const front=parseInt(stage.dataset.front||'0');
       if(i!==front) return; // solo responde si es el frontal
-      try{_openCombinedFilmSheet(JSON.parse(stage.dataset['film'+i]));}catch(err){}
+      try{_openCombinedFilmSheet(JSON.parse(stage.dataset['film'+i]));}catch(err){console.warn('[psp] combined sheet parse failed',err);}
     });
   });
   // Swap zone — franja dedicada de 44px bajo el poster frontal
@@ -7602,7 +7596,7 @@ window.addEventListener('popstate',function(e){
   }
 });
 function _pushSheetState(){
-  try{history.pushState({sheet:true},'','');}catch(e){}
+  try{history.pushState({sheet:true},'','');}catch(e){console.warn('[sheet] pushState failed',e);}
 }
 // ESC cierra el sheet activo (útil en desktop/tablet)
 document.addEventListener('keydown',function(e){
@@ -8479,7 +8473,7 @@ async function _autoResolveFestivalPosters(){
   }
   if(updated>0){
     _POSTERS_N=Object.fromEntries(Object.entries(POSTERS).map(([k,v])=>[normKey(k),v]));
-    requestAnimationFrame(()=>{try{render();}catch(e){}});
+    requestAnimationFrame(()=>{try{render();}catch(e){console.warn('[render] rAF render failed',e);}});
     console.log('[Otrofestiv] '+updated+' posters actualizados via TMDB (lbSlug→search)');
   }
 }
