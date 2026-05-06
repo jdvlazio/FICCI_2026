@@ -8843,7 +8843,7 @@ async function loadFestival(id){
   if(!cfg.storageKey){
     console.error(`[loadFestival] '${id}' no tiene storageKey en FESTIVAL_CONFIG — abortando.`);
     showToast(`Error de configuración: falta storageKey para '${id}'`,'error');
-    return;
+    return false;
   }
   // ── Fase 1: cargar datos del festival desde JSON si no están en memoria ──
   if(!cfg.films){
@@ -8906,7 +8906,7 @@ async function loadFestival(id){
     }catch(e){
       console.error('Error cargando festival '+id+':',e);
       showToast('No se pudo cargar el festival. Verificá tu conexión.','error',5000);
-      return;
+      return false;
     }
   }
   _activeFestId=id;
@@ -8929,7 +8929,7 @@ async function loadFestival(id){
   if(!cfg.dayKeys||!cfg.days||!cfg.days.length){
     console.error(`[loadFestival] '${id}' no tiene dayKeys/days en FESTIVAL_CONFIG.`);
     showToast(`Festival '${id}' incompleto: faltan dayKeys/days en FESTIVAL_CONFIG.`,'error',6000);
-    return;
+    return false;
   }
   // Reconstruir lookup de posters para el festival activo
   CUSTOM_POSTERS=cfg.customPosters||{};
@@ -9008,13 +9008,18 @@ function dismissSplash(){
   const btn=document.querySelector('.splash-enter-btn');
   if(btn) btn.classList.add('loading');
   loadFestival(_splashSelectedFestId)
-    .then(()=>{
+    .then(ok=>{
+      if(ok===false) return; // loadFestival falló — mantener splash visible
       // 150ms para que el compositor de iOS se asiente antes de revelar
       setTimeout(()=>{
         if(s){s.classList.add('fade-out');setTimeout(()=>s.remove(),560);}
+        if(btn) btn.classList.remove('loading');
       },150);
     })
-    .catch(e=>console.error('Error init festival:',e));
+    .catch(e=>{
+      console.error('Error init festival:',e);
+      if(btn) btn.classList.remove('loading');
+    });
 }
 // Inicializar Supabase al cargar la página
 // Capgo OTA — notifica que la app arrancó correctamente (Cap 6)
