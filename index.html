@@ -8149,8 +8149,8 @@ function _renderExploreLista(){
       <img class="plist-poster" src="${makeEventPoster(dt,f.duration,f.event_kind)}" alt="${dt}">
       <div class="plist-info">
         <div class="plist-title">${dt}</div>
-        <div class="plist-sec">${f.section||''}</div>
         <div class="plist-meta">${days?`<span style="color:var(--gray)">${days}</span> · `:''}${f.duration||''}</div>
+        <div class="plist-sec">${f.section||''}</div>
       </div>
       <div class="plist-heart${inWL?'':' empty'}" onclick="event.stopPropagation();_toggleWLFromList('${safeT}',this)">${inWL?ICONS.heartFill:ICONS.heart}</div>
     </div>`;
