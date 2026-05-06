@@ -2519,7 +2519,11 @@ let TZ_OFFSET='-05:00';
 function _festDate(dateStr,time){
   return new Date(dateStr+'T'+time+':00'+TZ_OFFSET);
 }
-const TMDB_API_KEY=''; // key removida del bundle — usar enricher para enriquecimiento offline
+/* TMDB: key vacía en producción — las funciones de enriquecimiento
+   degradan silenciosamente. Para enriquecer posters localmente:
+   TMDB_API_KEY en scripts/enrich-festival.py (no commit al repo público).
+   Rotar key en: https://www.themoviedb.org/settings/api */
+const TMDB_API_KEY='';
 const TMDB_API_BASE='https://api.themoviedb.org/3';
 const TMDB_POSTER_BASE='https://image.tmdb.org/t/p/w500';
 const _POSTER_CACHE_PFX='orf_poster_v1_';
@@ -9220,7 +9224,8 @@ function _posterErr(img){
   // Show generative immediately
   _posterGenFallback(img,f);
 
-  // Search TMDB async for real poster
+  // Search TMDB async for real poster (only if key available — not in production bundle)
+  if(!TMDB_API_KEY) return;
   const query=encodeURIComponent(f.title_en||f.title);
   const yearParam=f.year?'&year='+f.year:'';
   fetch(`${TMDB_API_BASE}/search/movie?api_key=${TMDB_API_KEY}&query=${query}${yearParam}&language=es`)

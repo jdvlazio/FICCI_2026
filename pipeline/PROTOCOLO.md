@@ -22,6 +22,17 @@ Pide al organizador que llene el archivo `/pipeline/csv-template.csv`. Si no es 
 
 ---
 
+## Regla de arquitectura — Fuente única para configuración de festival
+
+**`FESTIVAL_CONFIG` en `index.html` es el único lugar donde se agrega un festival.**
+
+Nunca crear datos de configuración (nombre, ciudad, fechas, venues, días) en los JSONs de `festivals/`. Los JSONs solo contienen datos de películas (`films[]`).
+
+Al agregar un nuevo festival:
+1. Agregar entrada en `FESTIVAL_CONFIG` en `index.html`
+2. Crear `festivals/<id>.json` con `films[]`
+3. Correr el Paso 2 del pipeline (enrichment)
+
 ## El pipeline — siempre en este orden
 
 > ⚠️ **Regla global: ningún festival llega a producción sin completar los 5 pasos.**

@@ -11,7 +11,12 @@ Requiere: pip install requests
 """
 import json, time, requests, sys, os
 
-TMDB_KEY = os.environ.get('TMDB_API_KEY', '38f24e78b2f13970af3430eb0732f0ac')
+TMDB_KEY = os.environ.get('TMDB_API_KEY', '')
+if not TMDB_KEY:
+    print("⚠️  TMDB_API_KEY no definida. Exportala antes de correr:")
+    print("   export TMDB_API_KEY=tu_key_de_tmdb")
+    print("   Obtené una en: https://www.themoviedb.org/settings/api")
+    sys.exit(1)
 BASE = 'https://api.themoviedb.org/3'
 
 def tmdb_search(title, year=None):
