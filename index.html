@@ -7765,7 +7765,8 @@ function openPelSheet(title){
   if(_ps) _ps.scrollTop=0;
   _pushSheetState();
   // Metadata consolidada: director · género · año
-  const _metaLine=[f.director?`${f.director}`:'',f.genre?(f.genre+(f.year?' · '+f.year:'')):'',(!f.director&&!f.genre&&f.year)?f.year:''].filter(Boolean).join(' · ');
+  const _yr=f.year?String(f.year):'';const _gnYr=f.genre?f.genre+(_yr?' · '+_yr:''):_yr;
+  const _metaLine=[f.director||'',_gnYr].filter(Boolean).join(' · ');
 
   document.getElementById('pel-sheet-inner').innerHTML=`
     <div class="pel-sheet-header">
