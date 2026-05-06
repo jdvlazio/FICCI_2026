@@ -61,7 +61,7 @@ python3 scripts/enrich-festival.py festivals/<id>.json
 El script rellena `director`, `genre`, `year`, `synopsis` sin sobreescribir datos existentes. También enriquece `film_list` items de programas de cortos.
 
 **Opción B — Enricher web:**
-Abrir `otrofestiv.app/enricher/`, cargar los films, correr TMDB automáticamente, y resolver slugs de Letterboxd desde la tab del browser.
+Abrir `otrofestiv.app/_dev/enricher/index.html`, cargar los films, correr TMDB automáticamente, y resolver slugs de Letterboxd desde la tab del browser.
 
 **Tú produces:** JSON con `posters{}`, `lbSlugs{}`, `director`, `genre`, `year`, `synopsis` listos.
 
@@ -84,9 +84,54 @@ node scripts/validate-festivals.js <id>
 Verifica: campos requeridos, consistencia de días, secciones sin duplicados de emoji, `film_list` en programas de cortos. Exit 0 = listo. Exit 1 = corregir antes de continuar.
 
 ### Paso 5 · Ensamblaje
-**Yo produzco:** `festivals/nombre-año.json` completo, listo para deploy.
+**Yo produzco:** `festivals/nombre-año.json` completo, listo para QA.
 
-### Paso 5 · Deploy
+### Paso 6 · QA Visual — OBLIGATORIO antes de deploy
+
+Abrir la app en mobile (390px) con el festival nuevo activo y verificar las 7 pantallas en orden. **Sin excepción — si alguna falla, no se hace deploy.**
+
+#### P1 · Splash y selector
+- [ ] Festival aparece en el dropdown del splash con nombre, ciudad y fechas correctas
+- [ ] Badge correcto: vacío si está activo, `PASADO` si terminó, `TEST` si `group:'test'`
+- [ ] Festival aparece en el selector interno (topbar → chevron)
+
+#### P2 · Explorar — grid de posters
+- [ ] Posters reales visibles (no todos generativos)
+- [ ] Ningún poster negro ni roto — fallback generativo si no hay poster real
+- [ ] Filtros Sección y Lugar funcionan y muestran las secciones del festival
+- [ ] Tab de días muestra todos los días del festival
+
+#### P3 · Pel-sheet
+- [ ] Header: flags · duración en una línea
+- [ ] Metaline: director · género · año
+- [ ] Sección tappable en ámbar
+- [ ] FUNCIÓN: día y hora en ámbar, venue correcto (sin ciudad si el festival tiene `city` definido)
+- [ ] SINOPSIS visible
+- [ ] Letterboxd solo aparece si hay slug — sin enlace roto
+- [ ] CTAs: Intereses (ámbar), Priorizar (secundario), Vista (terciario)
+
+#### P4 · Planear — disponibilidad y algoritmo
+- [ ] Bloques de disponibilidad se pueden crear y guardar
+- [ ] "Ver opciones" genera escenarios (sin freeze — Web Worker activo)
+- [ ] Escenarios muestran películas del festival actual (no de otro festival)
+
+#### P5 · Mi Plan
+- [ ] Plan guardado muestra películas en orden cronológico
+- [ ] Días correctos del festival
+- [ ] CTA "Ver Mi Plan" / "Ir al Programa" según si hay plan
+
+#### P6 · Intereses — lista
+- [ ] Films agregados aparecen con poster, director, siguiente función
+- [ ] Films sin funciones futuras aparecen con `opacity:.35`
+- [ ] Botones Priorizar y Vista funcionan
+
+#### P7 · Cambio de festival
+- [ ] Cambiar a otro festival desde el selector limpia el estado correctamente
+- [ ] Volver al festival nuevo mantiene los datos
+
+**Si algo falla:** documentar en el chat antes de continuar. No hacer deploy parcial.
+
+### Paso 7 · Deploy
 **Yo hago:** push directo al repo `jdvlazio/Otrofestiv.app` via GitHub API.
 **Resultado:** festival disponible en `otrofestiv.app` en ~2 minutos.
 
