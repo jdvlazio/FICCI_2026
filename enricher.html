@@ -113,10 +113,12 @@ const REPO_RAW  = 'https://raw.githubusercontent.com/jdvlazio/Otrofestiv.app/mai
 //   2. Agregar entrada aquí con el archivo JSON y los campos que necesita enriquecer
 // Campos disponibles para `needs`: 'synopsis' | 'director' | 'year' | 'poster'
 const FESTIVALS = {
-  ficci65:       { file:'ficci-65.json',      name:'FICCI 65',        needs:['director','year'] },
-  aff2026:       { file:'aff-2026.json',       name:'AFF 2026',        needs:['synopsis'] },
-  cinemancia2025:{ file:'cinemancia-2025.json',name:'Cinemancia 2025', needs:['poster'] },
+  ficci65:       { file:'ficci-65.json',      name:'FICCI 65'        },
+  aff2026:       { file:'aff-2026.json',       name:'AFF 2026'        },
+  cinemancia2025:{ file:'cinemancia-2025.json',name:'Cinemancia 2025' },
 };
+// needs universal — el enricher salta el campo si ya existe en el film
+const UNIVERSAL_NEEDS = ['synopsis','director','year','poster','genre'];
 
 let running = false;
 let shouldStop = false;
@@ -331,7 +333,7 @@ async function runEnrichment(){
       !f.is_cortos &&
       !f.is_programa &&
       !(f.title||'').toLowerCase().includes('sorpresa') &&
-      needsEnrichment(f, cfg.needs, existingPosters)
+      needsEnrichment(f, UNIVERSAL_NEEDS, existingPosters)
     );
 
     log(`  ${targets.length} films necesitan enrichment (${films.length - targets.length} saltados)`, 'log-dim');
@@ -351,7 +353,7 @@ async function runEnrichment(){
         const film = targets[i];
         const title = (film.title||'').slice(0,45);
 
-        enrichFilm(film, cfg.needs, apiKey, existingPosters)
+        enrichFilm(film, UNIVERSAL_NEEDS, apiKey, existingPosters)
           .then(enriched => {
             if(enriched){
               Object.assign(film, enriched);
