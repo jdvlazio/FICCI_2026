@@ -93,7 +93,7 @@ function buildDays(startStr, numDays) {
     const lbl  = DAYS_ES[dow];
     const long = DAYS_LONG[dow];
     const key  = `${lbl} ${num}`;
-    const iso  = `${y}-${String(m).padStart(2,'0')}-${String(d+i).padStart(2,'0')}`;
+    const iso  = `${date.getFullYear()}-${String(date.getMonth()+1).padStart(2,'0')}-${String(date.getDate()).padStart(2,'0')}`;
     days.push({ key, iso, lbl, num, long });
   }
   return days;
@@ -103,9 +103,16 @@ function buildDays(startStr, numDays) {
 function formatConfig(opts, days) {
   const d0   = days[0];
   const dn   = days[days.length - 1];
-  const mm   = opts.start.slice(5, 7);
-  const mon  = MONTH_ES[mm] || mm;
-  const datesStr = `${d0.lbl} ${d0.num}\u2013${dn.lbl} ${dn.num} ${mon}`;
+  const mm0  = d0.iso.slice(5, 7);
+  const mmN  = dn.iso.slice(5, 7);
+  const mon0 = MONTH_ES[mm0] || mm0;
+  const monN = MONTH_ES[mmN] || mmN;
+  // Formato consistente con festivales existentes (FICCI: '14\u201319 ABR', AFF: '21\u201329 ABR'):
+  // - Mismo mes:    '5\u20139 AGO'
+  // - Cruza de mes: '28 SEP\u20132 OCT'
+  const datesStr = mm0 === mmN
+    ? `${d0.num}\u2013${dn.num} ${mon0}`
+    : `${d0.num} ${mon0}\u2013${dn.num} ${monN}`;
   const year     = parseInt(opts.start.slice(0, 4));
   const endDate  = days[days.length - 1].iso;
   const endStr   = `${endDate}T${opts.endtime}`;
