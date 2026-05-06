@@ -7223,7 +7223,7 @@ function togglePelPrio(title){
   if(!btn) return;
   const inPrio=prioritized.has(title);
   btn.innerHTML=(inPrio?ICONS.starFill:ICONS.star)+' '+(inPrio?'Priorizada':'Priorizar');
-  btn.className='pel-sheet-action-btn'+(inPrio?' act-prio':'');
+  btn.className='pel-sheet-action-btn'+(inPrio?' act-prio':' btn-secondary');
   // Priorizar auto-añade a watchlist — sincronizar el botón de Intereses
   const inWL=watchlist.has(title);
   const pelWlBtn=document.getElementById('pel-wl-btn');
@@ -7234,7 +7234,7 @@ function togglePelPrio(title){
   const cortoWlBtn=document.getElementById('corto-wl-btn');
   if(cortoWlBtn){
     cortoWlBtn.innerHTML=(inWL?ICONS.heartFill:ICONS.heart)+' '+(inWL?'En Intereses':'Intereses');
-    cortoWlBtn.className='pel-sheet-action-btn'+(inWL?' act-on':'');
+    cortoWlBtn.className='pel-sheet-action-btn'+(inWL?' act-on btn-primary':' btn-primary');
   }
 }
 
@@ -7703,8 +7703,8 @@ function openCortoSheet(title, country, duration, section, flags, director, genr
     <div class="pel-sheet-divider"></div>
     ${parentTitle?`<div style="font-size:var(--t-xs);color:var(--gray);margin-bottom:var(--sp-2)">Al agregar un corto se incluye el programa completo</div>`:''}
     <div style="display:flex;gap:var(--sp-1);margin-top:var(--sp-1)">
-      <button id="corto-wl-btn" class="pel-sheet-action-btn${inWL?' act-on':''}" onclick="toggleWL('${safeParent}',event)" style="display:inline-flex;align-items:center;justify-content:center;gap:var(--sp-1)">${inWL?ICONS.heartFill:ICONS.heart} ${inWL?'En Intereses':'Intereses'}</button>
-      <button id="corto-prio-btn" class="pel-sheet-action-btn${inPrio?' act-prio':''}" onclick="togglePelPrio('${safeParent}')" style="display:inline-flex;align-items:center;justify-content:center;gap:var(--sp-1)">${inPrio?ICONS.starFill:ICONS.star} ${inPrio?'Priorizada':'Priorizar'}</button>
+      <button id="corto-wl-btn" class="pel-sheet-action-btn${inWL?' act-on btn-primary':' btn-primary'}" onclick="toggleWL('${safeParent}',event)" style="display:inline-flex;align-items:center;justify-content:center;gap:var(--sp-1)">${inWL?ICONS.heartFill:ICONS.heart} ${inWL?'En Intereses':'Intereses'}</button>
+      <button id="corto-prio-btn" class="pel-sheet-action-btn${inPrio?' act-prio':' btn-secondary'}" onclick="togglePelPrio('${safeParent}')" style="display:inline-flex;align-items:center;justify-content:center;gap:var(--sp-1)">${inPrio?ICONS.starFill:ICONS.star} ${inPrio?'Priorizada':'Priorizar'}</button>
       <button class="pel-sheet-action-btn${filmRatings[title]?' act-on':''}" onclick="closePelSheet();setTimeout(()=>openRatingSheet('${safeTitle}'),100)" style="display:inline-flex;align-items:center;justify-content:center;gap:var(--sp-1)">${ICONS.star} ${filmRatings[title]?'Cambiar':'Calificar'}</button>
     </div>
   `;
