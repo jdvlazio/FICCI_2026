@@ -5561,7 +5561,7 @@ function _renderSavedAgendaHTML(){
     }
     // Sin películas vistas: empty state canónico
     const _festNameMp=(FESTIVAL_CONFIG[_activeFestId]||{}).name||'El festival';
-    return emptyStateHero(ICONS.check,`${_festNameMp} ha terminado`,'No marcaste ninguna película como vista.','Ir al Programa',"switchMainNav('mnav-cartelera');showDayView()");
+    return emptyStateHero(ICONS.sparkles,`${_festNameMp} ha terminado`,'No marcaste ninguna película como vista.','Ir al Programa',"switchMainNav('mnav-cartelera');showDayView()");
   }
   if(!savedAgenda||!savedAgenda.schedule.length) return emptyStateHero(ICONS.calendar,'Tu plan aparece aquí.','Agregá lo que te interesa para armar tu plan.','Ir a Planear',"switchMainNav('mnav-planner');showAgView()");
   const all=savedAgenda.schedule;
@@ -6724,12 +6724,15 @@ function renderAgenda(){
     // ── Post-festival: redirigir a Mi Plan ──
     if(festivalEnded()){
       const _festName=(FESTIVAL_CONFIG[_activeFestId]||{}).name||'El festival';
+      const _hasMiPlan=watched.size>0||(savedAgenda&&savedAgenda.schedule&&savedAgenda.schedule.length>0);
+      const _agHi=document.getElementById('hdr-ag');if(_agHi)_agHi.style.display='none';
+      requestAnimationFrame(_fixStickyOffset);
       view.innerHTML=emptyStateHero(
-        ICONS.check,
+        ICONS.sparkles,
         `${_festName} ha terminado`,
-        'Revisá las películas que agendaste y marcaste como vistas en Mi Plan.',
-        'Ver Mi Plan',
-        "switchMainNav('mnav-miplan');showAgView()"
+        _hasMiPlan?'Revisá lo que planeaste y las películas que marcaste como vistas.':'Explorá el programa completo del festival.',
+        _hasMiPlan?'Ver Mi Plan':'Ir al Programa',
+        _hasMiPlan?"switchMainNav('mnav-miplan');showAgView()":"switchMainNav('mnav-cartelera');showDayView()"
       );
       return;
     }
@@ -6749,7 +6752,9 @@ function renderAgenda(){
     if(festivalEnded()){
       // Post-festival: Planear no tiene función — redirigir a Mi Plan
       const _festNamePl=(FESTIVAL_CONFIG[_activeFestId]||{}).name||'El festival';
-      view.innerHTML=emptyStateHero(ICONS.check,`${_festNamePl} ha terminado`,'Revisá las películas que agendaste y marcaste como vistas en Mi Plan.',"Ver Mi Plan","switchMainNav('mnav-miplan');showAgView()");
+      const _agHpl=document.getElementById('hdr-ag');if(_agHpl)_agHpl.style.display='none';
+      requestAnimationFrame(_fixStickyOffset);
+      view.innerHTML=emptyStateHero(ICONS.sparkles,`${_festNamePl} ha terminado`,'Revisá lo que planeaste y las películas que marcaste como vistas.','Ver Mi Plan',"switchMainNav('mnav-miplan');showAgView()");
       return;
     }
     const _progressHtml=(!savedAgenda||!savedAgenda.schedule||!savedAgenda.schedule.length)?renderFlowProgress('planner'):'';
