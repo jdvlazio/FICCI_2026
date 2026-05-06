@@ -8706,7 +8706,7 @@ function _renderSplashDropdown(activeFestId){
     const end=cfg.festivalEndStr?new Date(cfg.festivalEndStr):null;
     const isPast=end&&today>end;
     const isActive=id===activeFestId;
-    const badge=isPast?'PASADO':isTest?'TEST':'';
+    const badge=isTest?'TEST':isPast?'PASADO':'';
     const meta=`${cfg.city} · ${cfg.dates} ${cfg.year||''}`.trim();
     return`<button class="splash-drop-item${isActive?' selected':''}" data-fest="${id}" role="option" aria-selected="${isActive}" onclick="selectSplashFest('${cfg.name}','${meta}','${id}')">
       <div><div class="splash-drop-item-name">${cfg.name}</div><div class="splash-drop-item-meta">${meta}</div></div>
