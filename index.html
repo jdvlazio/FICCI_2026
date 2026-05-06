@@ -9009,7 +9009,10 @@ function dismissSplash(){
   if(btn) btn.classList.add('loading');
   loadFestival(_splashSelectedFestId)
     .then(ok=>{
-      if(ok===false) return; // loadFestival falló — mantener splash visible
+      if(ok===false){
+        if(btn) btn.classList.remove('loading'); // reset spinner — el error ya se mostró con toast
+        return;
+      }
       // 150ms para que el compositor de iOS se asiente antes de revelar
       setTimeout(()=>{
         if(s){s.classList.add('fade-out');setTimeout(()=>s.remove(),560);}
