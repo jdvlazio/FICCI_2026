@@ -2762,6 +2762,8 @@ function getFilmPoster(f){
   // Custom poster siempre primero — cubre casos especiales como Proyección sorpresa
   const _cn=normKey(f.title||'');
   if(_CUSTOM_N[_cn]) return _CUSTOM_N[_cn];
+  // Nuevo formato: poster directo en el objeto film (festivales desde Jardín 2026)
+  if(f.poster) return f.poster.startsWith('http')?f.poster:TMDB_IMG+f.poster;
   if(f.type==='event') return makeEventPoster(f.title,f.duration,f.event_kind);
   // Proyección sorpresa — poster generativo con signo de interrogación
   if(f.title&&f.title.toLowerCase().includes('sorpresa')) return makeSorpresaPoster();
@@ -2769,6 +2771,8 @@ function getFilmPoster(f){
   // is_programa: programa combinado de largometrajes — usa poster del primer film del program
   if(f.is_programa&&f.film_list&&f.film_list.length){
     const first=f.film_list[0];
+    // Nuevo formato: poster en film_list item
+    if(first.poster) return first.poster.startsWith('http')?first.poster:TMDB_IMG+first.poster;
     return getPosterSrc(first.title||first,false)||getPosterSrc(f.title,false)||null;
   }
   return getPosterSrc(f.title,false)||makeFilmPlaceholder(f.title,f.director,f.year);
@@ -2808,8 +2812,14 @@ function lbUrl(title){
   if(slug.startsWith('http')) return slug;
   return`https://letterboxd.com/film/${slug}/`;
 }
-function lbLink(title){
-  const url=lbUrl(title);
+// Nuevo formato: lee lbSlug directamente del objeto film si existe
+function lbUrlForFilm(f){
+  if(!f) return null;
+  if(f.lbSlug) return f.lbSlug.startsWith('http')?f.lbSlug:`https://letterboxd.com/film/${f.lbSlug}/`;
+  return lbUrl(f.title);
+}
+function lbLink(title,film){
+  const url=film?lbUrlForFilm(film):lbUrl(title);
   if(!url) return'';
   return`<a class="c-lb pel-sheet-lb" href="${url}" target="_blank" rel="noopener">${LB_SVG}<span class="c-lb-text pel-sheet-lb-text">Letterboxd</span></a>`;
 }
@@ -7783,7 +7793,7 @@ function openPelSheet(title){
     <div class="pel-sheet-section-lbl">${f.type==='event'?'descripción':'sinopsis'}</div>
     <div class="pel-sheet-synopsis">${f.synopsis}</div>`:''}
     ${cortosHtml}
-    ${(!f.is_cortos&&!f.is_programa&&f.type!=='event')?lbLink(f.title):''}
+    ${(!f.is_cortos&&!f.is_programa&&f.type!=='event')?lbLink(f.title,f):''}
     <div class="pel-sheet-divider"></div>
     ${inW?`<div class="pel-sheet-ctas-watched">
         <button onclick="toggleWatched('${safeT}',event);closePelSheet()" class="pel-sheet-action-btn act-on">${ICONS.check} Ya vista</button>

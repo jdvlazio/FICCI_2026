@@ -210,7 +210,10 @@ Sin `country` ni campos de película. `type: "event"` es obligatorio para el tra
 
 ## 5. Secciones auxiliares
 
-### `posters`
+### `posters` ⚠️ Formato legacy
+
+> **Desde Jardín 2026:** usar `film.poster` y `film.lbSlug` directamente en el objeto film (ver abajo). El mapa `posters{}` sigue funcionando como fallback para festivales anteriores.
+
 Mapa `"Título"` → URL de imagen. Para películas cuyo poster no está en TMDB.
 
 ```json
@@ -222,7 +225,10 @@ Mapa `"Título"` → URL de imagen. Para películas cuyo poster no está en TMDB
 ### `customPosters`
 Igual que `posters` pero con mayor prioridad. Para overrides manuales.
 
-### `lbSlugs`
+### `lbSlugs` ⚠️ Formato legacy
+
+> **Desde Jardín 2026:** usar `film.lbSlug` directamente en el objeto film (ver abajo).
+
 Mapa de títulos en la app → slugs en Letterboxd. Solo para películas que existen en Letterboxd con título diferente al usado en la app.
 
 ```json
@@ -230,6 +236,25 @@ Mapa de títulos en la app → slugs en Letterboxd. Solo para películas que exi
   "Un mundo frágil y maravilloso": "a-sad-and-beautiful-world"
 }
 ```
+
+### Nuevo formato: `film.poster` y `film.lbSlug` (desde Jardín 2026)
+
+Para festivales nuevos, los datos de poster y Letterboxd van **directamente en el objeto film**:
+
+```json
+{
+  "title": "Mi Película",
+  "director": "Ana García",
+  "poster": "/xy1234abcd.jpg",
+  "lbSlug": "mi-pelicula-2026",
+  ...
+}
+```
+
+- `film.poster`: path de TMDB (ej: `/xy1234.jpg`) o URL completa. El sistema añade la base de TMDB automáticamente si no empieza por `http`.
+- `film.lbSlug`: slug de Letterboxd (ej: `mi-pelicula-2026`) o URL completa.
+- Con este formato **no se necesitan** `posters{}` ni `lbSlugs{}` en el JSON.
+- El enricher (`scripts/enrich-festival.py`) ya produce este formato.
 
 ### `venues`
 Mapa de nombre de venue → configuración de visualización:

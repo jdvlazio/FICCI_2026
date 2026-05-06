@@ -85,7 +85,18 @@ Abrir `otrofestiv.app/enricher/`, cargar los films, correr TMDB automáticamente
 
 ## Convenciones que nunca cambian
 
-### FESTIVAL_CONFIG — única fuente de verdad para festivales
+### Objeto film — formato canónico (desde Jardín 2026)
+
+Poster y Letterboxd van **en el objeto film**, no en mapas separados:
+
+```json
+{ "title": "...", "poster": "/path.jpg", "lbSlug": "titulo-2026", ... }
+```
+
+El script `scripts/enrich-festival.py` produce este formato automáticamente.
+**No crear `posters{}` ni `lbSlugs{}` en festivales nuevos.**
+
+
 
 Para agregar un festival nuevo, el único lugar que se edita es `FESTIVAL_CONFIG` en `index.html`. **Nunca** hardcodear IDs de festival en otro lugar del código.
 
