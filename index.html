@@ -6915,12 +6915,30 @@ self.onmessage=function(e){
 function _mkCalcWorker(){
   try{
     const blob=new Blob([_CALC_WORKER_SRC],{type:'application/javascript'});
-    return new Worker(URL.createObjectURL(blob));
+    const url=URL.createObjectURL(blob);
+    const w=new Worker(url);
+    URL.revokeObjectURL(url); // revocar inmediatamente — Worker ya está cargado
+    return w;
   }catch(e){return null;}
 }
 
+// Worker activo — referencia para cancelar si el tab va a background
+let _activeCalcWorker=null;
+
+// iOS: si el tab va a background con Worker corriendo, limpiar estado
+document.addEventListener('visibilitychange',function(){
+  if(document.hidden&&_activeCalcWorker){
+    _activeCalcWorker.terminate();
+    _activeCalcWorker=null;
+    const btn=document.querySelector('.av-calc-btn');
+    if(btn){btn.disabled=false;btn.textContent='Ver opciones';}
+  }
+});
+
 function runCalc(){
   if(festivalEnded()){showToast('El festival ya terminó','info');return;}
+  // Cancelar Worker previo si existe
+  if(_activeCalcWorker){_activeCalcWorker.terminate();_activeCalcWorker=null;}
   cachedResult=null;
   const btn=document.querySelector('.av-calc-btn');
   const res=document.getElementById('ag-result');
@@ -6934,8 +6952,20 @@ function runCalc(){
 
   const worker=_mkCalcWorker();
   if(worker){
+    _activeCalcWorker=worker;
+    // Watchdog: 15s timeout — previene Worker colgado en mobile
+    const watchdog=setTimeout(()=>{
+      if(_activeCalcWorker===worker){
+        worker.terminate();
+        _activeCalcWorker=null;
+        console.warn('[Worker] timeout — falling back to main thread');
+        _runCalcSync(btn,res);
+      }
+    },15000);
     // Web Worker path — non-blocking
     worker.onmessage=function(e){
+      clearTimeout(watchdog);
+      _activeCalcWorker=null;
       worker.terminate();
       if(btn){btn.disabled=false;btn.textContent='Ver opciones';}
       if(e.data.ok){
@@ -6947,9 +6977,11 @@ function runCalc(){
       }
     };
     worker.onerror=function(err){
+      clearTimeout(watchdog);
+      _activeCalcWorker=null;
       worker.terminate();
       console.warn('[Worker] error, falling back to main thread',err);
-      _runCalcSync(btn,res); // fallback
+      _runCalcSync(btn,res);
     };
     worker.postMessage({
       titles:[...watchlist],
