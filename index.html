@@ -129,6 +129,15 @@
   --green-30: rgba(58,170,110,.3);
   --green-70: rgba(58,170,110,.7);
 
+  /* ── Azul evento — Mi Plan calendar (talleres, industria, eventos especiales) ── */
+  --event-blue: rgba(107,155,209,1);
+  --event-blue-06: rgba(107,155,209,.06);
+  --event-blue-08: rgba(107,155,209,.08);
+  --event-blue-50: rgba(107,155,209,.5);
+  --event-blue-60: rgba(107,155,209,.6);
+  --event-blue-70: rgba(107,155,209,.7);
+  --event-blue-title: rgba(180,210,240,.9); /* título evento — más claro por legibilidad */
+
   /* ── Rojo ── */
   --red: #E05252;
   --red-03: rgba(224,80,80,.03);
@@ -221,6 +230,42 @@
   --overlay-75: rgba(0,0,0,.75);
   --overlay-85: rgba(0,0,0,.85);
   --overlay-92: rgba(0,0,0,.92);
+  --overlay-blur-70: rgba(4,4,4,0.70);
+  --overlay-blur-72: rgba(4,4,4,0.72);
+  --overlay-blur-75: rgba(5,5,5,0.75);
+  --overlay-blur-78: rgba(4,4,4,0.78);
+
+  /* ── Sistema de capas Z-INDEX ─────────────────────────────────────────────
+     Capas sticky (header, nav): 100–200
+       198  chrome-blur (frosted glass fijo)
+       199  topbar sticky
+       200  main-nav sticky / hdr-ag sticky
+     Capas flotantes bajas (nav móvil, festival selector): 1000–2001
+       1000 main-nav fixed mobile
+       2000 fs-overlay (festival selector)
+       2001 fs-sheet
+     Capas de sheets principales: 9000–9001
+       9000 pel-sheet-overlay
+       9001 pel-sheet
+     Capas de overlays secundarios: 9100–9301
+       9100 rating-overlay
+       9101 rating-sheet
+       9180 conflict-sheet-overlay
+       9181 conflict-sheet
+       9200 prio-limit-overlay / plan-confirm-overlay
+       9201 prio-limit-sheet / plan-confirm-sheet
+       9300 pv-rating-overlay
+       9301 pv-rating-sheet
+     Capas globales (auth, modales críticos, toasts): 9999
+       9999 auth-sheet, conflict-modal, prio-toast, export overlay
+     Splash (siempre encima de todo): 99999
+  ──────────────────────────────────────────────────────────────────────── */
+  /* Overlays con backdrop-filter: fondo casi negro (no puro negro) para que el blur
+     no tire hacia gris. rgba(4,4,4) en lugar de rgba(0,0,0). */
+  --overlay-blur-70: rgba(4,4,4,0.70);
+  --overlay-blur-72: rgba(4,4,4,0.72);
+  --overlay-blur-75: rgba(5,5,5,0.75);
+  --overlay-blur-78: rgba(4,4,4,0.78);
 
   /* ── Blanco — opacidades extendidas ── */
   --white-20: rgba(255,255,255,.20);
@@ -274,7 +319,7 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:var(--t
 .hdr-wordmark span{color:var(--amber)}
 /* Auth button */
 .auth-btn{position:relative;width:32px;height:32px;border-radius:50%;border:none;background:transparent;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;-webkit-tap-highlight-color:transparent}
-.auth-btn svg{opacity:.8;transition:opacity .2s;stroke:var(--amber)}
+.auth-btn svg{opacity:.8;transition:opacity var(--tr-smooth);stroke:var(--amber)}
 .auth-btn:hover svg{opacity:1}
 .auth-btn.signed-in svg{display:none}
 .auth-btn .auth-avatar{display:none;width:28px;height:28px;border-radius:50%;background:var(--amber);align-items:center;justify-content:center;font-size:var(--t-caption);font-weight:var(--w-bold);color:#000;letter-spacing:0}
@@ -290,7 +335,7 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:var(--t
 .sync-dot.sync-ok{display:block;background:var(--amber)}
 .sync-dot.sync-err{display:block;background:#e05}
 /* Auth sheet */
-.auth-sheet{display:none;position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,.6);align-items:flex-end;justify-content:center}
+.auth-sheet{display:none;position:fixed;inset:0;z-index:9999;background:var(--overlay-60);align-items:flex-end;justify-content:center}
 .auth-sheet.open .auth-sheet-inner{transform:translateY(0)}
 .auth-sheet-inner{background:#1C1C1C;border-radius:var(--r-sheet) var(--r-sheet) 0 0;padding:var(--sp-5) var(--sp-5) calc(var(--sp-4) + env(safe-area-inset-bottom));width:100%;max-width:480px;transform:translateY(100%);transition:transform .3s cubic-bezier(.32,.72,0,1)}
 .auth-sheet-title{font-size:var(--t-md);font-weight:var(--w-bold);color:var(--white);margin-bottom:var(--sp-3);line-height:1.2}
@@ -768,7 +813,7 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:var(--t
 /* ── POSTER GRID — sistema unificado 3 col / ratio 2:3 ──────────────── *
  * Matemática: 390px - 20px padding - 16px gaps = 354px / 3 = 118px    *
  * Ratio 2:3 → 177px alto. Estándar one-sheet cinematográfico.          */
-.poster-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--sp-2);padding:10px;transition:opacity 120ms ease}
+.poster-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--sp-2);padding:10px;transition:opacity var(--tr-fast)}
 .poster-card{position:relative;border-radius:var(--r);overflow:hidden;cursor:pointer;background:var(--surf-2);background-size:cover;background-position:center;aspect-ratio:2/3;display:block}
 .poster-card-stack{width:100%;height:100%;display:flex;gap:1px;background:var(--bdr)}
 .pcs-back,.pcs-front{flex:1;height:100%;object-fit:cover;object-position:center;display:block;min-width:0}
@@ -814,11 +859,11 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:var(--t
 .pelicula-venue>svg{margin-top:3px}
 .saved-venue svg,.next-film-venue svg,.mplan-rvenue svg,.mplan-wk-venue svg,.checkin-opt-venue svg{vertical-align:middle}
 .venue-text{line-height:1.4}
-.venue-pin{color:rgba(240,237,232,.3);flex-shrink:0;margin-top:1px}
+.venue-pin{color:var(--white-30);flex-shrink:0;margin-top:1px}
 /* municipio — subordinado al venue, solo ciudades distintas a la sede principal del festival */
 .venue-municipio{display:block;font-size:var(--t-xs);color:rgba(240,237,232,.3);margin-top:1px;letter-spacing:.02em}
 /* ── Bottom Sheet ── */
-.pel-sheet-overlay{position:fixed;inset:0;background:rgba(4,4,4,0.70);backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);z-index:9000;opacity:0;transition:opacity .25s;pointer-events:none}
+.pel-sheet-overlay{position:fixed;inset:0;background:var(--overlay-blur-70);backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);z-index:9000;opacity:0;transition:opacity var(--tr-smooth);pointer-events:none}
 .pel-sheet-overlay.open{opacity:1;pointer-events:all}
 .pel-sheet{position:fixed;bottom:0;left:0;right:0;background:var(--surf-2);border-radius:var(--r-sheet) var(--r-sheet) 0 0;z-index:9001;max-height:88vh;overflow-y:auto;transform:translateY(100%);transition:transform .3s cubic-bezier(.32,0,.67,0)}
 .pel-sheet.open{transform:translateY(0);transition:transform .38s cubic-bezier(.34,1.56,.64,1)}
@@ -843,12 +888,12 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:var(--t
 .pel-sheet-section-lbl{font-size:var(--t-xs);letter-spacing:.12em;color:rgba(255,255,255,.2);text-transform:uppercase;font-weight:var(--w-bold);margin-bottom:var(--sp-3)}
 .pel-sheet-screening{display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid var(--bdr-l)}
 .pel-sheet-screenings .pel-sheet-screening:last-child{border-bottom:none}
-.pel-sheet-synopsis{font-size:var(--t-base);color:rgba(240,237,232,.7);line-height:1.6}
+.pel-sheet-synopsis{font-size:var(--t-base);color:var(--white-65);line-height:1.6}
 .pel-sheet-wl-btn{background:var(--amber-10);border:1px solid var(--amber-30);border-radius:var(--r-pill);color:var(--amber);font-family:var(--font);font-size:var(--t-base);font-weight:var(--w-bold);padding:var(--sp-btn) 0;cursor:pointer;width:100%;margin-top:var(--sp-4);transition:background var(--tr-base)}
 .pel-sheet-wl-btn:active{background:var(--amber-20)}
 .pel-sheet-wl-btn.in-wl{background:rgba(39,174,96,.1);border-color:rgba(39,174,96,.3);color:var(--green)}
 /* ── Rating sheet ── */
-.rating-overlay{position:fixed;inset:0;background:var(--overlay-50);z-index:9100;opacity:0;transition:opacity .2s;pointer-events:none}
+.rating-overlay{position:fixed;inset:0;background:var(--overlay-50);z-index:9100;opacity:0;transition:opacity var(--tr-smooth);pointer-events:none}
 .rating-overlay.open{opacity:1;pointer-events:all}
 .rating-sheet{position:fixed;bottom:0;left:0;right:0;background:var(--surf-2);border-radius:var(--r-sheet) var(--r-sheet) 0 0;z-index:9101;padding:16px 20px 40px;transform:translateY(100%);transition:transform .28s cubic-bezier(.32,0,.67,0)}
 .rating-sheet.open{transform:translateY(0)}
@@ -867,7 +912,7 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:var(--t
 /* ── Sheet añadir a Intereses desde Programa ── */
 /* ── Sheet conflicto de horario ── */
 /* ── Sheet rating post-función desde Mi Plan ── */
-.pv-rating-overlay{position:fixed;inset:0;background:rgba(4,4,4,.78);backdrop-filter:blur(12px);z-index:9300;opacity:0;pointer-events:none;transition:opacity .25s}
+.pv-rating-overlay{position:fixed;inset:0;background:var(--overlay-blur-78);backdrop-filter:blur(12px);z-index:9300;opacity:0;pointer-events:none;transition:opacity .25s}
 .pv-rating-overlay.open{opacity:1;pointer-events:all}
 .pv-rating-sheet{position:fixed;bottom:0;left:0;right:0;background:var(--surf-2);border-top:1px solid var(--bdr);border-radius:var(--r-sheet) var(--r-sheet) 0 0;z-index:9301;display:none;transition:transform .32s cubic-bezier(.32,0,.67,0);overflow:hidden}
 .pv-rating-sheet.open{display:flex;flex-direction:column;transform:translateY(0)}
@@ -891,7 +936,7 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:var(--t
 .pv-btn-save{flex:2;background:var(--amber);color:var(--black);border:none;border-radius:var(--r-pill);font-family:var(--font);font-size:var(--t-base);font-weight:var(--w-display);padding:var(--sp-btn);cursor:pointer;transition:opacity var(--tr-base)}
 .pv-btn-save:disabled{opacity:.3;cursor:default}
 .pv-btn-later{flex:1;background:none;border:1px solid var(--bdr);border-radius:var(--r-pill);color:var(--gray);font-family:var(--font);font-size:var(--t-base);font-weight:var(--w-semi);padding:var(--sp-btn);cursor:pointer;white-space:nowrap}
-.conflict-sheet-overlay{position:fixed;inset:0;background:rgba(4,4,4,.72);backdrop-filter:blur(10px);z-index:9180;opacity:0;pointer-events:none;transition:opacity .25s}
+.conflict-sheet-overlay{position:fixed;inset:0;background:var(--overlay-blur-72);backdrop-filter:blur(10px);z-index:9180;opacity:0;pointer-events:none;transition:opacity .25s}
 .conflict-sheet-overlay.open{opacity:1;pointer-events:all}
 .conflict-sheet{position:fixed;bottom:0;left:0;right:0;background:var(--surf-2);border-top:1px solid var(--bdr);border-radius:var(--r-sheet) var(--r-sheet) 0 0;z-index:9181;transform:translateY(100%);transition:transform .32s cubic-bezier(.32,0,.67,0)}
 .conflict-sheet.open{transform:translateY(0)}
@@ -921,7 +966,7 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:var(--t
 .conflict-btn-keep{width:100%;background:none;border:1px solid var(--bdr);border-radius:var(--r-pill);color:var(--white-60);font-family:var(--font);font-size:var(--t-sm);font-weight:var(--w-semi);padding:var(--sp-btn);cursor:pointer}
 .conflict-btn-cancel{width:100%;background:none;border:none;color:var(--gray);font-family:var(--font);font-size:var(--t-sm);font-weight:var(--w-semi);padding:10px;cursor:pointer}
 
-.prio-limit-overlay{position:fixed;inset:0;background:rgba(5,5,5,.75);backdrop-filter:blur(8px);z-index:9200;opacity:0;pointer-events:none;transition:opacity .25s}
+.prio-limit-overlay{position:fixed;inset:0;background:var(--overlay-blur-75);backdrop-filter:blur(8px);z-index:9200;opacity:0;pointer-events:none;transition:opacity .25s}
 .prio-limit-overlay.open{opacity:1;pointer-events:all}
 .prio-limit-sheet{position:fixed;bottom:0;left:0;right:0;background:var(--surf-2);border-top:1px solid var(--bdr);border-radius:var(--r-sheet) var(--r-sheet) 0 0;z-index:9201;transform:translateY(100%);transition:transform .32s cubic-bezier(.32,0,.67,0)}
 .prio-limit-sheet.open{transform:translateY(0)}
@@ -1210,15 +1255,15 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:var(--t
 .mplan-wk-block.mp-regular{background:var(--amber-10);border-left-color:var(--amber-70)}
 .mplan-wk-block.mp-priority{background:var(--amber-20);border-left-color:var(--amber)}
 .mplan-wk-block.mp-program{background:var(--amber-06);border-left-color:var(--amber-40)}
-.mplan-wk-block.mp-event{background:rgba(107,155,209,.08);border-left-color:rgba(107,155,209,.5)}
+.mplan-wk-block.mp-event{background:var(--event-blue-08);border-left-color:var(--event-blue-50)}
 .mplan-wk-block.mp-past{filter:saturate(.2);opacity:.35}
 .mplan-wk-block.mp-active{outline:2px solid var(--amber);outline-offset:-2px;opacity:1}
 .mplan-wk-block.mp-now{opacity:1;border-left-color:var(--green);background:var(--green-12)}
 .mplan-wk-badge{position:absolute;top:5px;right:6px;font-size:var(--t-xs);color:var(--amber);line-height:1}
 .mplan-wk-time{font-size:var(--t-xs);color:var(--gray);line-height:1;margin-bottom:3px}
-.mplan-wk-time.mp-event-time{color:rgba(107,155,209,.7)}
+.mplan-wk-time.mp-event-time{color:var(--event-blue-70)}
 .mplan-wk-title{font-size:var(--t-sm);font-weight:var(--w-semi);color:var(--white);line-height:1.3;overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical}
-.mplan-wk-title.mp-event-title{color:rgba(180,210,240,.9)}
+.mplan-wk-title.mp-event-title{color:var(--event-blue-title)}
 .mplan-wk-venue{font-size:var(--t-xs);color:var(--gray);margin-top:3px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .mplan-body{display:flex;position:relative}
 .mplan-axis-detail{width:36px;flex-shrink:0;position:relative;border-right:1px solid var(--bdr-l);background:var(--surf)}
@@ -1270,9 +1315,9 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:var(--t
 .mplan-t2{font-size:var(--t-xs);color:var(--gray2);margin-top:2px;display:flex;align-items:center;gap:3px}
 .mplan-ri{flex:1;min-width:0}
 .mplan-rtitle{font-size:var(--t-base);font-weight:var(--w-bold);color:var(--white);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.mplan-rtitle.mp-event-title{color:rgba(180,210,240,.9)}
+.mplan-rtitle.mp-event-title{color:var(--event-blue-title)}
 .mplan-rvenue{font-size:var(--t-sm);color:var(--gray);margin-top:2px}
-.mplan-rvenue.mp-event-venue{color:rgba(107,155,209,.6)}
+.mplan-rvenue.mp-event-venue{color:var(--event-blue-60)}
 .mplan-dur{font-size:var(--t-sm);color:var(--gray2);flex-shrink:0;white-space:nowrap}
 .mplan-warn-row{font-size:var(--t-xs);color:var(--amber-60);padding:4px var(--sp-3);border-bottom:1px solid var(--bdr-l);border-top:1px solid var(--amber-30);display:flex;align-items:center;gap:var(--sp-1)}
 
@@ -1792,7 +1837,7 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:var(--t
   color:#000;font-family:var(--font);font-size:var(--t-base);
   font-weight:var(--w-bold);padding:14px 0;border-radius:var(--r);
   cursor:pointer;letter-spacing:.3px;
-  position:relative;transition:opacity .15s;
+  position:relative;transition:opacity var(--tr-fast);
 }
 .splash-enter-btn:active{opacity:.75}
 .splash-enter-btn.loading{pointer-events:none;color:transparent}
@@ -1821,12 +1866,12 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:var(--t
   align-items:center;
   justify-content:center;
   cursor:pointer;
-  z-index:997;
+  z-index:199; /* capa sticky: sobre topbar, bajo nav móvil */
   box-shadow:0 2px 8px var(--overlay-40);
   font-family:var(--font);
 }
 @media(max-width:767px){
-  #back-top{ display:flex; opacity:0; pointer-events:none; transition:opacity .2s; }
+  #back-top{ display:flex; opacity:0; pointer-events:none; transition:opacity var(--tr-smooth); }
   #back-top.visible{ opacity:1; pointer-events:auto; }
 }
 
@@ -1855,7 +1900,7 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:var(--t
 @media(hover:none){
   .ag-fi-overlay,
   .ag-fi-bottom,
-  .ag-fi-actions{opacity:0;pointer-events:none;transition:opacity .2s ease}
+  .ag-fi-actions{opacity:0;pointer-events:none;transition:opacity var(--tr-smooth)}
   .ag-film-item.ag-active .ag-fi-overlay,
   .ag-film-item.ag-active .ag-fi-bottom,
   .ag-film-item.ag-active .ag-fi-actions{opacity:1;pointer-events:all}
@@ -1986,7 +2031,7 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:var(--t
   position:fixed;
   left:0;right:0;
   background:var(--surf);
-  z-index:290;
+  z-index:201; /* capa flotante: sobre topbar, bajo sheets */
   display:none;
   flex-direction:column;
   overflow:hidden;
@@ -7646,7 +7691,7 @@ function _openCombinedFilmSheet(filmData){
     </div>
     <div class="pel-sheet-divider"></div>
     <div class="pel-sheet-section-lbl">sinopsis</div>
-    <div class="pel-sheet-synopsis">${synopsis||'Sinopsis no disponible.'}</div>
+    <div class="pel-sheet-synopsis">${synopsis||''}</div>
     <a class="c-lb pel-sheet-lb" href="${lbHref}" target="_blank" rel="noopener">${LB_SVG}<span class="c-lb-text pel-sheet-lb-text">Letterboxd</span></a>
     <div class="pel-sheet-divider"></div>
   `;
