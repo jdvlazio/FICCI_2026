@@ -101,6 +101,8 @@ Controla el comportamiento del motor del festival.
 | `dayLong` | object | Mapa `key` → texto largo (ej. `"Jueves 12"`) |
 | `lbSlugs` | object | Mapa `título en app` → slug en Letterboxd para enlazar reviews |
 
+> **⚠️ Formato canónico de dayKeys:** `"MAR 14"`, `"MIÉ 15"` (abreviación + número). FICCI 65 usa nombres completos (`"Martes"`, `"Miércoles"`) porque fue creado antes de estandarizar el formato — funciona correctamente pero es **LEGADO**. Para festivales nuevos, usar siempre `node scripts/generate-config.js` que produce el formato canónico automáticamente.
+
 ---
 
 ## 3. Sección `films`
@@ -350,40 +352,46 @@ El agente usa `festival_slug` para construir la URL directamente, sin necesidad 
 
 ## 7. Registrar el festival en la app
 
-Una vez creado el JSON, agregar **una sola entrada** en `FESTIVAL_CONFIG` en `index.html`. El splash, el selector y el orden se generan automáticamente.
+Una vez creado el JSON, generar la entrada con el script y pegarla en `index.html`:
+
+```bash
+node scripts/generate-config.js \
+  --id mujeres2026 --name "Mujeres Film Festival" --short MUJERES \
+  --city Circasia --start 2026-08-05 --days 5 --storage mujeres2026_
+```
+
+El script produce el bloque completo — copiar y pegar en `FESTIVAL_CONFIG` en `index.html` antes del cierre `};`:
 
 ```js
-// index.html → buscar: const FESTIVAL_CONFIG = {
-// Agregar al final, antes del cierre };
-
 'mujeres2026': {
-  name:            'Mujeres Film Festival', // Nombre completo — aparece en splash y topbar
-  shortName:       'MUJERES',              // Nombre corto — para badges y título compacto
-  city:            'Circasia',             // Ciudad/región — aparece en meta del selector
-  dates:           '5–9 AGO',              // Rango de fechas — sin el año
-  year:            2026,                   // Año — se combina con dates en la UI
-  timezoneOffset:  '-05:00',              // UTC offset de Colombia
-  storageKey:      'mujeres2026_',         // Prefijo localStorage — NUNCA reutilizar
-  festivalEndStr:  '2026-08-09T23:00:00', // ISO: último día + hora de cierre
-  eventPosterLabel: ['EVENTO', ''],        // Etiquetas del poster generativo para eventos
-  prioLimit:       5,                      // Máx. películas priorizables. Default: 5
-  films:           null,                   // null = se carga del JSON en loadFestival()
-  posters:         null,                   // null = se carga del JSON en loadFestival()
-  lbSlugs:         {}                      // Vacío = sin slugs precargados
-  // group: 'test'  ← descomentar para que aparezca en sección "Pruebas" del selector
+  name:'Mujeres Film Festival',shortName:'MUJERES',city:'Circasia',
+  dates:'5–9 AGO',year:2026,timezoneOffset:'-05:00',
+  storageKey:'mujeres2026_',festivalEndStr:'2026-08-09T23:00:00',
+  festivalDates:{'MIÉ 5':'2026-08-05','JUE 6':'2026-08-06','VIE 7':'2026-08-07','SÁB 8':'2026-08-08','DOM 9':'2026-08-09'},
+  days:[{k:'MIÉ 5',d:5,lbl:'MIÉ'},{k:'JUE 6',d:6,lbl:'JUE'},{k:'VIE 7',d:7,lbl:'VIE'},{k:'SÁB 8',d:8,lbl:'SÁB'},{k:'DOM 9',d:9,lbl:'DOM'}],
+  dayKeys:['MIÉ 5','JUE 6','VIE 7','SÁB 8','DOM 9'],
+  dayShort:{'MIÉ 5':'MIÉ 5','JUE 6':'JUE 6','VIE 7':'VIE 7','SÁB 8':'SÁB 8','DOM 9':'DOM 9'},
+  dayLong:{'MIÉ 5':'Miércoles 5','JUE 6':'Jueves 6','VIE 7':'Viernes 7','SÁB 8':'Sábado 8','DOM 9':'Domingo 9'},
+  prioLimit:5,eventPosterLabel:['EVENTO',''],
+  films:null,posters:null,lbSlugs:{}
 },
 ```
 
-**Campos obligatorios:** `name`, `shortName`, `city`, `dates`, `year`, `timezoneOffset`, `storageKey`, `festivalEndStr`.
+**Campos obligatorios generados automáticamente:** `festivalDates`, `days`, `dayKeys`, `dayShort`, `dayLong` — nunca escribirlos a mano.
 
-**`prioLimit`:** cuántas películas puede priorizar el usuario. Por defecto 5 — suficiente para festivales de 5-10 días. Para festivales muy cortos (2-3 días) considerar 3.
+**Campos opcionales en `generate-config.js`:**
+- `--priolimit N` — máx. películas priorizables (default: 5)
+- `--event "LABEL1,LABEL2"` — etiquetas del poster generativo de eventos (default: `EVENTO,`)
+- `--test` — marca el festival como `group:'test'` (aparece en sección "Pruebas" del selector)
 
-**Orden en el selector:** los festivales se muestran por `festivalEndStr` descendente — el más reciente primero, automáticamente. No hay que ordenar manualmente.
+**`prioLimit`:** para festivales cortos (2-3 días) considerar 3. Para festivales de 5+ días, 5 es correcto.
 
-**El archivo JSON:**  
-El nombre del archivo se deriva del id: `mujeres2026` → `festivals/mujeres2026.json`. Formato canónico: sin guiones en el id, con guiones en el nombre del archivo solo si el id los tiene.
+**Orden en el selector:** automático por `festivalEndStr` descendente — el más reciente primero.
 
-**No crear:** bloque `config{}` dentro del JSON — eso es formato legado de FICCI 65 y Cinemancia 2025. Toda la configuración va en `FESTIVAL_CONFIG`.
+**El archivo JSON:**
+El nombre del archivo se deriva del id: `mujeres2026` → `festivals/mujeres-2026.json`.
+
+**No crear:** bloque `config{}` dentro del JSON — formato legado de FICCI 65 y Cinemancia 2025. Toda la configuración va en `FESTIVAL_CONFIG`.
 
 ---
 
