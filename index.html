@@ -2327,7 +2327,7 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:var(--t
   <div class="rating-title">¿Qué te pareció?</div>
   <div class="rating-film" id="rating-film-title"></div>
   <div class="rating-stars" id="rating-stars-wrap"><input type="range" id="rating-range" min="0" max="10" step="1" value="0"><div id="rating-stars" style="display:flex;justify-content:center;gap:2px;pointer-events:none"></div></div>
-  <button class="rating-action-btn" id="rating-action-btn" onclick="closeRatingSheet()">Sin calificar</button>
+  <button class="rating-action-btn" id="rating-action-btn" onclick="closeRatingSheet()">Omitir</button>
 </div>
 <!-- ── Bottom Sheet Por Película ── -->
 <div class="pel-sheet-overlay" id="pel-overlay" onclick="closePelSheet()"></div>
@@ -3031,7 +3031,7 @@ async function submitAuthEmail(){
   btn.disabled=true;btn.textContent='Enviando…';
   const{error}=await _sbSignIn(email);
   if(error){
-    msg.textContent='Error al enviar. Intenta de nuevo.';
+    msg.textContent='Error al enviar. Intentá de nuevo.';
     btn.disabled=false;btn.textContent='Enviar código';
   } else {
     msg.textContent='';
@@ -3053,7 +3053,7 @@ async function submitOTP(){
   try{
     const{data,error}=await _sb.auth.verifyOtp({email,token,type:'email'});
     if(error){
-      msg.textContent='Código incorrecto o expirado. Intenta de nuevo.';
+      msg.textContent='Código incorrecto o expirado. Intentá de nuevo.';
       btn.disabled=false;btn.textContent='Confirmar';
     } else {
       closeAuthSheet();
@@ -3063,7 +3063,7 @@ async function submitOTP(){
       document.getElementById('auth-otp-inp').value='';
     }
   }catch(e){
-    msg.textContent='Error. Intenta de nuevo.';
+    msg.textContent='Algo salió mal. Intentá de nuevo.';
     btn.disabled=false;btn.textContent='Confirmar';
   }
 }
@@ -5772,7 +5772,7 @@ function _promptDisplayName(onSave){
 /* ── SHARE/EXPORT: imagen, ICS ──────────────────────────────────────── */
 async function sharePlan(){
   if(!savedAgenda||!savedAgenda.schedule||!savedAgenda.schedule.length){
-    showToast('No tienes un plan guardado','warn');return;
+    showToast('No tenés un plan guardado','warn');return;
   }
   // Pedir nombre si no existe — solo la primera vez
   if(!_getDisplayName()){
@@ -5811,7 +5811,7 @@ async function sharePlan(){
 /* ── SHARE/EXPORT: imagen, ICS ──────────────────────────────────────── */
 function shareAsImage(){
   if(!savedAgenda||!savedAgenda.schedule||!savedAgenda.schedule.length){
-    showToast('No tienes un plan guardado','warn'); return;
+    showToast('No tenés un plan guardado','warn'); return;
   }
 
   // ── Guardia de integridad del plan ────────────────────────────
@@ -6008,7 +6008,7 @@ function _showImageModal(dataUrl,canvas){
   ov.style.cssText='position:fixed;inset:0;background:var(--overlay-92);z-index:9999;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:20px;box-sizing:border-box;gap:var(--sp-btn)';
   const hint=document.createElement('p');
   hint.style.cssText='color:var(--gray);font-size:var(--t-caption);font-family:system-ui;text-align:center;margin:0;line-height:1.6';
-  hint.textContent=isIOS?'Mantén presionada la imagen — Añadir a Fotos':'Toca Descargar para guardar';
+  hint.textContent=isIOS?'Mantené presionada la imagen — Añadir a Fotos':'Tocá Descargar para guardar';
   ov.appendChild(hint);
   const img=document.createElement('img');
   img.src=dataUrl;
@@ -6050,7 +6050,7 @@ function _dlDirect(dataUrl){
   setTimeout(()=>{document.body.removeChild(a);showToast('Imagen guardada ✓','info');},200);
 }
 function exportICS(){
-  if(!savedAgenda||!savedAgenda.schedule.length){showToast('No tienes un plan guardado','warn');return;}
+  if(!savedAgenda||!savedAgenda.schedule.length){showToast('No tenés un plan guardado','warn');return;}
   const pad=n=>String(n).padStart(2,'0');
   const fmt=dt=>`${dt.getFullYear()}${pad(dt.getMonth()+1)}${pad(dt.getDate())}T${pad(dt.getHours())}${pad(dt.getMinutes())}00`;
   const _icsCfg=FESTIVAL_CONFIG[_activeFestId]||{};
@@ -6643,7 +6643,7 @@ function saveCurrentScenario(){
     const n=savedAgenda.schedule.length;
     showActionModal(
       `${ICONS.calendar} Reemplazar plan`,
-      `Ya tienes un plan con <b>${n} película${n!==1?'s':''}</b>.<br><br>¿Reemplazarlo con esta nueva opción? Tu plan actual se perderá.`,
+      `Ya tenés un plan con <b>${n} película${n!==1?'s':''}</b>.<br><br>¿Reemplazarlo con esta nueva opción? Tu plan actual se perderá.`,
       'Sí, reemplazar',
       _doSave,
       'Conservar mi plan actual'
@@ -7018,7 +7018,7 @@ function setHint(film){
     return s2>s&&s2<e;
   }).length:0;
   const conflictInfo=conflictCount>0?` · ${conflictCount} función${conflictCount>1?'es':''}  solapan`:'';
-  el.innerHTML=`${ICONS.clock} ${minToStr(toMin(film.time))} – ${minToStr(end)}${conflictInfo} · Toca de nuevo para cerrar`;
+  el.innerHTML=`${ICONS.clock} ${minToStr(toMin(film.time))} – ${minToStr(end)}${conflictInfo} · Tocá de nuevo para cerrar`;
   el.style.padding='8px 18px';
   el.classList.add('active');
 }
@@ -7111,7 +7111,7 @@ function setRating(val){
   const btn=document.getElementById('rating-action-btn');
   if(btn){
     if(val>0){btn.textContent='Guardar';btn.className='rating-action-btn save';}
-    else{btn.textContent='Sin calificar';btn.className='rating-action-btn skip';}
+    else{btn.textContent='Omitir';btn.className='rating-action-btn skip';}
   }
 }
 
@@ -7144,7 +7144,7 @@ function openRatingSheet(title){
   const _btn=document.getElementById('rating-action-btn');
   if(_btn){
     if(_currentRating>0){_btn.textContent='Guardar';_btn.className='rating-action-btn save';}
-    else{_btn.textContent='Sin calificar';_btn.className='rating-action-btn skip';}
+    else{_btn.textContent='Omitir';_btn.className='rating-action-btn skip';}
   }
   document.getElementById('rating-overlay').classList.add('open');
   document.getElementById('rating-sheet').classList.add('open');
@@ -9161,7 +9161,7 @@ function _posterErr(img){
 <div class="auth-sheet" id="auth-sheet" onclick="if(event.target===this)closeAuthSheet()">
   <div class="auth-sheet-inner">
     <div id="auth-sheet-step1">
-      <div class="auth-sheet-title">Sincronizar tu plan</div>
+      <div class="auth-sheet-title">Guardá tu plan</div>
       <div class="auth-sheet-sub">Ingresa tu email y te enviamos un código de 6 dígitos. Sin contraseña. Tu plan se sincroniza entre todos tus dispositivos.</div>
       <input class="auth-email-inp" id="auth-email-inp" type="email" placeholder="tu@email.com" autocomplete="email" onkeydown="if(event.key==='Enter')submitAuthEmail()">
       <button class="auth-send-btn" id="auth-send-btn" onclick="submitAuthEmail()">Enviar código</button>
@@ -9169,7 +9169,7 @@ function _posterErr(img){
       <span class="auth-cancel" onclick="closeAuthSheet()">Cancelar</span>
     </div>
     <div id="auth-sheet-step2" style="display:none">
-      <div class="auth-sheet-title">Revisa tu email</div>
+      <div class="auth-sheet-title">Revisá tu email</div>
       <div class="auth-sheet-sub">Enviamos un código de 6 dígitos a <span id="auth-otp-email" style="color:var(--white)"></span></div>
       <input class="auth-email-inp" id="auth-otp-inp" type="number" placeholder="123456" inputmode="numeric" maxlength="6" onkeydown="if(event.key==='Enter')submitOTP()" style="letter-spacing:4px;font-size:var(--t-md);text-align:center">
       <button class="auth-send-btn" id="auth-otp-btn" onclick="submitOTP()">Confirmar</button>
