@@ -7946,7 +7946,7 @@ function _programaStack(f){
 // ── Notices: banner de funciones canceladas/reprogramadas ────────────────
 let _dismissedNotices=new Set();
 function getActiveNotices(){
-  const festId=window._currentFestivalId||'aff2026';
+  const festId=(_activeFestId||'aff2026');
   const today=new Date(); today.setHours(0,0,0,0);
   return NOTICES.filter(n=>{
     if(n.festival!==festId) return false;
@@ -8023,7 +8023,7 @@ function renderProgramaList(){
       const vc=vcfg(f.venue);
       const src=getFilmPoster(f)||'';
       const nowBadge=isNow?`<span style="font-size:var(--t-xs);font-weight:var(--w-display);color:var(--green);background:var(--green-10);border:1px solid var(--green-30);border-radius:var(--r);padding:2px 6px;margin-left:var(--sp-1)">AHORA</span>`:'';
-      const notice=NOTICES.find(n=>n.title===f.title&&n.festival===(window._currentFestivalId||'aff2026'));
+      const notice=NOTICES.find(n=>n.title===f.title&&n.festival===((_activeFestId||'aff2026')));
       const noticeBadge=notice?`<span class="notice-badge">${notice.type==='cancelled'?'CANCELADA':'REPROG.'}</span>`:'';
       const noticeNote=notice&&notice.type==='cancelled'?`<div style="font-size:var(--t-xs);color:var(--amber);margin-top:2px;font-weight:var(--w-semi)">Pendiente nueva fecha</div>`:
         notice&&notice.type==='rescheduled'&&notice.newTime?`<div style="font-size:var(--t-xs);color:var(--green);margin-top:2px;font-weight:var(--w-semi)">${notice.newDay||''} · ${notice.newTime}${notice.newVenue?' · '+notice.newVenue:''}</div>`:'';
@@ -8135,7 +8135,7 @@ function _renderExploreLista(){
     return`<div class="plist-item${allPast?' past-card':''}" onclick="openPelSheet('${safeT}')">
       ${_stk2||(src?`<img class="plist-poster" src="${src}" loading="lazy" onerror="this.style.opacity=0" alt="${dt}" style="${allPast&&!festivalEnded()?'opacity:.45':''}">` :`<div class="plist-poster"></div>`)}
       <div class="plist-info">
-        ${(()=>{const n=NOTICES.find(nx=>nx.title===f.title&&nx.festival===(window._currentFestivalId||'aff2026'));const nb=n?`<span class="notice-badge">${n.type==='cancelled'?'CANCELADA':'REPROG.'}</span>`:'';const nn=n&&n.type==='cancelled'?`<div style="font-size:var(--t-xs);color:var(--amber);margin-top:2px;font-weight:var(--w-semi)">Pendiente nueva fecha</div>`:n&&n.type==='rescheduled'&&n.newTime?`<div style="font-size:var(--t-xs);color:var(--green);margin-top:2px;font-weight:var(--w-semi)">${n.newDay||''} · ${n.newTime}${n.newVenue?' · '+n.newVenue:''}</div>`:'';return`<div class="plist-title" style="${allPast?'opacity:.5':''}">${nb}${dt}</div>${nn||`<div class="plist-sec">${f.section||''}</div>`}<div class="plist-meta" style="${n&&n.type==='cancelled'?'text-decoration:line-through':''}${allPast?';opacity:.5':''}">${days?`<span style="color:var(--gray)">${days}</span> · `:''}${f.duration||'~90 min'}${_metaBadges(f)?` · ${_metaBadges(f)}`:''}</div>`;})()}
+        ${(()=>{const n=NOTICES.find(nx=>nx.title===f.title&&nx.festival===((_activeFestId||'aff2026')));const nb=n?`<span class="notice-badge">${n.type==='cancelled'?'CANCELADA':'REPROG.'}</span>`:'';const nn=n&&n.type==='cancelled'?`<div style="font-size:var(--t-xs);color:var(--amber);margin-top:2px;font-weight:var(--w-semi)">Pendiente nueva fecha</div>`:n&&n.type==='rescheduled'&&n.newTime?`<div style="font-size:var(--t-xs);color:var(--green);margin-top:2px;font-weight:var(--w-semi)">${n.newDay||''} · ${n.newTime}${n.newVenue?' · '+n.newVenue:''}</div>`:'';return`<div class="plist-title" style="${allPast?'opacity:.5':''}">${nb}${dt}</div>${nn||`<div class="plist-sec">${f.section||''}</div>`}<div class="plist-meta" style="${n&&n.type==='cancelled'?'text-decoration:line-through':''}${allPast?';opacity:.5':''}">${days?`<span style="color:var(--gray)">${days}</span> · `:''}${f.duration||'~90 min'}${_metaBadges(f)?` · ${_metaBadges(f)}`:''}</div>`;})()}
       </div>
       <div class="plist-heart${inWL?'':' empty'}" onclick="event.stopPropagation();_toggleWLFromList('${safeT}',this)">${inWL?ICONS.heartFill:ICONS.heart}</div>
     </div>`;
