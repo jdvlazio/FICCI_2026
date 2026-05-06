@@ -7229,7 +7229,7 @@ function togglePelPrio(title){
   const pelWlBtn=document.getElementById('pel-wl-btn');
   if(pelWlBtn){
     pelWlBtn.innerHTML=(inWL?ICONS.heartFill:ICONS.heart)+' '+(inWL?'En Intereses':'Intereses');
-    pelWlBtn.className='pel-sheet-action-btn'+(inWL?' act-on btn-primary':'');
+    pelWlBtn.className='pel-sheet-action-btn'+(inWL?' act-on btn-primary':' btn-primary');
   }
   const cortoWlBtn=document.getElementById('corto-wl-btn');
   if(cortoWlBtn){
@@ -7246,7 +7246,7 @@ function togglePelWL(title,e){
   if(!btn) return;
   const inWL=watchlist.has(title);
   btn.innerHTML=(inWL?ICONS.heartFill:ICONS.heart)+' '+(inWL?'En Intereses':'Intereses');
-  btn.className='pel-sheet-action-btn'+(inWL?' act-on btn-primary':'');
+  btn.className='pel-sheet-action-btn'+(inWL?' act-on btn-primary':' btn-primary');
   // Abrir WLAdd solo al AÑADIR — no al quitar (modal async deja wasInWL=true)
   if(!wasInWL&&inWL){
     showActionToast(`${ICONS.heartFill} En Intereses`,`${ICONS.star} Priorizar`,()=>togglePriority(title));
@@ -7447,7 +7447,7 @@ function openPelSheet(title){
     <div class="pel-sheet-divider"></div>
     ${inW?`<div class="pel-sheet-ctas-watched">
         <button onclick="toggleWatched('${safeT}',event);closePelSheet()" class="pel-sheet-action-btn act-on">${ICONS.check} Ya vista</button>
-        ${!f.is_cortos?`<button onclick="closePelSheet();setTimeout(()=>openRatingSheet('${safeT}'),100)" class="pel-sheet-action-btn">${ICONS.star} ${filmRatings['${safeT}']?'Cambiar':'Calificar'}</button>`:``}
+        ${!f.is_cortos?`<button onclick="closePelSheet();setTimeout(()=>openRatingSheet('${safeT}'),100)" class="pel-sheet-action-btn btn-secondary">${ICONS.star} ${filmRatings['${safeT}']?'Cambiar':'Calificar'}</button>`:``}
       </div>`
     :`<div class="pel-sheet-ctas">
         <button id="pel-wl-btn" class="pel-sheet-action-btn${inWL?' act-on btn-primary':''}" onclick="togglePelWL('${safeT}',event)" style="display:inline-flex;align-items:center;justify-content:center;gap:var(--sp-1)">${inWL?ICONS.heartFill:ICONS.heart} ${inWL?'En Intereses':'Intereses'}</button>
@@ -7705,7 +7705,7 @@ function openCortoSheet(title, country, duration, section, flags, director, genr
     <div style="display:flex;gap:var(--sp-1);margin-top:var(--sp-1)">
       <button id="corto-wl-btn" class="pel-sheet-action-btn${inWL?' act-on btn-primary':' btn-primary'}" onclick="toggleWL('${safeParent}',event)" style="display:inline-flex;align-items:center;justify-content:center;gap:var(--sp-1)">${inWL?ICONS.heartFill:ICONS.heart} ${inWL?'En Intereses':'Intereses'}</button>
       <button id="corto-prio-btn" class="pel-sheet-action-btn${inPrio?' act-prio':' btn-secondary'}" onclick="togglePelPrio('${safeParent}')" style="display:inline-flex;align-items:center;justify-content:center;gap:var(--sp-1)">${inPrio?ICONS.starFill:ICONS.star} ${inPrio?'Priorizada':'Priorizar'}</button>
-      <button class="pel-sheet-action-btn${filmRatings[title]?' act-on':''}" onclick="closePelSheet();setTimeout(()=>openRatingSheet('${safeTitle}'),100)" style="display:inline-flex;align-items:center;justify-content:center;gap:var(--sp-1)">${ICONS.star} ${filmRatings[title]?'Cambiar':'Calificar'}</button>
+      <button class="pel-sheet-action-btn${filmRatings[title]?' act-on':' btn-secondary'}" onclick="closePelSheet();setTimeout(()=>openRatingSheet('${safeTitle}'),100)" style="display:inline-flex;align-items:center;justify-content:center;gap:var(--sp-1)">${ICONS.star} ${filmRatings[title]?'Cambiar':'Calificar'}</button>
     </div>
   `;
   document.getElementById('pel-overlay').classList.add('open');
