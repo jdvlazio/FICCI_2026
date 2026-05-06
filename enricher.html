@@ -332,37 +332,46 @@ async function runEnrichment(){
     updateStats();
 
     let festEnriched = 0;
-    for(let i=0; i<targets.length; i++){
-      if(shouldStop){ log('  ⏹ Detenido por el usuario', 'log-warn'); break; }
 
-      const film = targets[i];
-      const title = (film.title||'').slice(0,45);
-      process.stdout && process.stdout.write;  // noop
-
-      try{
-        const enriched = await enrichFilm(film, cfg.needs, apiKey, existingPosters);
-        if(enriched){
-          Object.assign(film, enriched);
-          festEnriched++;
-          stats.enriched++;
-          const summary = Object.entries(enriched).map(([k,v])=>
-            k==='synopsis' ? 'syn' : k==='poster' ? '🖼' : `${k}:${v}`
-          ).join(' | ');
-          log(`  ✓ [${i+1}/${targets.length}] ${title}\n      ${summary}`, 'log-ok');
-        } else {
-          stats.notFound++;
-          log(`  ✗ [${i+1}/${targets.length}] ${title} — no encontrado en TMDB`, 'log-warn');
+    // Procesamos uno por uno con setTimeout para no bloquear el event loop
+    await new Promise(resolveAll => {
+      function processNext(i){
+        if(shouldStop || i >= targets.length){
+          if(shouldStop) log('  ⏹ Detenido por el usuario', 'log-warn');
+          resolveAll();
+          return;
         }
-      } catch(e){
-        stats.notFound++;
-        log(`  ✗ [${i+1}/${targets.length}] ${title} — error: ${e.message}`, 'log-err');
-      }
+        const film = targets[i];
+        const title = (film.title||'').slice(0,45);
 
-      stats.skipped = stats.total - stats.enriched - stats.notFound;
-      updateStats();
-      setProgress(i+1, targets.length);
-      await new Promise(r=>setTimeout(r, 260));  // respetar rate limit TMDB
-    }
+        enrichFilm(film, cfg.needs, apiKey, existingPosters)
+          .then(enriched => {
+            if(enriched){
+              Object.assign(film, enriched);
+              festEnriched++;
+              stats.enriched++;
+              const summary = Object.entries(enriched)
+                .map(([k,v]) => k==='synopsis' ? 'syn' : k==='poster' ? '🖼' : `${k}:${v}`)
+                .join(' | ');
+              log(`  ✓ [${i+1}/${targets.length}] ${title}\n      ${summary}`, 'log-ok');
+            } else {
+              stats.notFound++;
+              log(`  ✗ [${i+1}/${targets.length}] ${title} — no encontrado en TMDB`, 'log-warn');
+            }
+          })
+          .catch(e => {
+            stats.notFound++;
+            log(`  ✗ [${i+1}/${targets.length}] ${title} — error: ${e.message}`, 'log-err');
+          })
+          .finally(() => {
+            stats.skipped = stats.total - stats.enriched - stats.notFound;
+            updateStats();
+            setProgress(i+1, targets.length);
+            setTimeout(() => processNext(i+1), 300);
+          });
+      }
+      processNext(0);
+    });
 
     results[festKey] = data;
     log(`  ✅ ${cfg.name}: ${festEnriched} enriquecidos`, 'log-ok');
