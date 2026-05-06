@@ -67,12 +67,15 @@ Abrir `otrofestiv.app/_dev/enricher/index.html`, cargar los films, correr TMDB a
 
 > Sin este paso: las cards de películas quedan sin director, año ni sinopsis. No deploy.
 
-### Paso 3 · Venues
+### Paso 3 · Venues — OBLIGATORIO si el festival tiene más de una sede
+
 **Yo produzco:** bloque `venues{}` con coordenadas via Nominatim para cada sede.
 - Formato de nombre: `"Nombre Sede - Ciudad"` (canónico, siempre igual)
 - Coordenadas exactas de la dirección física, no del centro de la ciudad
 
 **Tú revisas:** que los nombres de las sedes coincidan exactamente con los del JSON de films.
+
+> Sin `venues{}`, el algoritmo de planificación calcula tiempo de traslado = 0 entre todas las sedes. Para festivales con sede única (o sedes en el mismo predio) esto es correcto. Para festivales con sedes en distintos barrios o ciudades, es imprescindible.
 
 ### Paso 3.5 · Generar entrada FESTIVAL_CONFIG
 
@@ -124,6 +127,7 @@ Abrir la app en mobile (390px) con el festival nuevo activo y verificar las 7 pa
 - [ ] Ningún poster negro ni roto — fallback generativo si no hay poster real
 - [ ] Filtros Sección y Lugar funcionan y muestran las secciones del festival
 - [ ] Tab de días muestra todos los días del festival
+- [ ] **Cada tab de día muestra films de ese día** — tocar cada día y confirmar que el grid no queda vacío (valida que `film.day` coincide con `dayKeys` en FESTIVAL_CONFIG)
 
 #### P3 · Pel-sheet
 - [ ] Header: flags · duración en una línea

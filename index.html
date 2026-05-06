@@ -8965,6 +8965,7 @@ async function loadFestival(id){
   activeVenue='all';activeSec='all';selectedIdx=null;
   watchlist=new Set();watched=new Set();filmRatings={};savedAgenda=null;
   prioritized=new Set();lastRemovedSlots=[];filmDelays={};
+  cachedResult=null; // invalidar cache del festival anterior — evita mostrar escenarios de otro festival
   // Rebuild availability for new festival days (keep blocks if already set)
   const _newAv={};
   DAY_KEYS.forEach(d=>{_newAv[d]=availability[d]&&availability[d].blocks?availability[d]:{blocks:[]}});
