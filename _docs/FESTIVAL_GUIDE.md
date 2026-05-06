@@ -350,33 +350,40 @@ El agente usa `festival_slug` para construir la URL directamente, sin necesidad 
 
 ## 7. Registrar el festival en la app
 
-Una vez creado el JSON, añadir el festival al selector en `index.html`. Son dos lugares:
+Una vez creado el JSON, agregar **una sola entrada** en `FESTIVAL_CONFIG` en `index.html`. El splash, el selector y el orden se generan automáticamente.
 
-**1. Splash screen (selector inicial):**
-```html
-<button class="splash-drop-item" data-fest="jardin2026"
-  onclick="selectSplashFest('Festival de Jardín','Jardín · 12–15 SEP 2026','jardin2026')">
-  <div>
-    <div class="splash-drop-item-name">Festival de Jardín</div>
-    <div class="splash-drop-item-meta">Jardín · 12–15 SEP 2026</div>
-  </div>
-</button>
-```
-
-**2. Festival switcher (dentro de la app):**
-```html
-<div class="fs-festival-row" data-fest="jardin2026"
-  onclick="loadFestival('jardin2026')">
-  ...
-</div>
-```
-
-**3. Nombre del archivo JSON:**  
-El nombre del archivo debe coincidir con el `id` del festival. El mapeo está en `loadFestival()`:
 ```js
-const festFile = id === 'ficci65' ? 'ficci-65' : id === 'aff2026' ? 'aff-2026' : id;
+// index.html → buscar: const FESTIVAL_CONFIG = {
+// Agregar al final, antes del cierre };
+
+'mujeres2026': {
+  name:            'Mujeres Film Festival', // Nombre completo — aparece en splash y topbar
+  shortName:       'MUJERES',              // Nombre corto — para badges y título compacto
+  city:            'Circasia',             // Ciudad/región — aparece en meta del selector
+  dates:           '5–9 AGO',              // Rango de fechas — sin el año
+  year:            2026,                   // Año — se combina con dates en la UI
+  timezoneOffset:  '-05:00',              // UTC offset de Colombia
+  storageKey:      'mujeres2026_',         // Prefijo localStorage — NUNCA reutilizar
+  festivalEndStr:  '2026-08-09T23:00:00', // ISO: último día + hora de cierre
+  eventPosterLabel: ['EVENTO', ''],        // Etiquetas del poster generativo para eventos
+  prioLimit:       5,                      // Máx. películas priorizables. Default: 5
+  films:           null,                   // null = se carga del JSON en loadFestival()
+  posters:         null,                   // null = se carga del JSON en loadFestival()
+  lbSlugs:         {}                      // Vacío = sin slugs precargados
+  // group: 'test'  ← descomentar para que aparezca en sección "Pruebas" del selector
+},
 ```
-Para festivales nuevos el nombre del archivo puede ser el mismo que el id (ej. `jardin2026.json`).
+
+**Campos obligatorios:** `name`, `shortName`, `city`, `dates`, `year`, `timezoneOffset`, `storageKey`, `festivalEndStr`.
+
+**`prioLimit`:** cuántas películas puede priorizar el usuario. Por defecto 5 — suficiente para festivales de 5-10 días. Para festivales muy cortos (2-3 días) considerar 3.
+
+**Orden en el selector:** los festivales se muestran por `festivalEndStr` descendente — el más reciente primero, automáticamente. No hay que ordenar manualmente.
+
+**El archivo JSON:**  
+El nombre del archivo se deriva del id: `mujeres2026` → `festivals/mujeres2026.json`. Formato canónico: sin guiones en el id, con guiones en el nombre del archivo solo si el id los tiene.
+
+**No crear:** bloque `config{}` dentro del JSON — eso es formato legado de FICCI 65 y Cinemancia 2025. Toda la configuración va en `FESTIVAL_CONFIG`.
 
 ---
 
@@ -402,8 +409,9 @@ El texto curatorial del bloque (qué une a esos cortos temáticamente) va en `sy
 ## 9. Checklist de lanzamiento
 
 ```
-[ ] JSON creado en festivals/nombre-año.json
-[ ] config completo con todos los días y dayShort con números
+[ ] JSON creado en festivals/nombre-año.json (SIN bloque config{})
+[ ] Entrada agregada en FESTIVAL_CONFIG en index.html
+[ ] Todos los campos obligatorios presentes en FESTIVAL_CONFIG
 [ ] Todas las películas con title, day, time, venue, section, day_order
 [ ] festival_slug añadido para películas con título en idioma no latino
 [ ] Sinopsis en español, máximo 250 chars, para todas las películas

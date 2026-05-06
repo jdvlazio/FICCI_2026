@@ -2934,7 +2934,13 @@ const FESTIVAL_CONFIG={
 // Festival por defecto — primer festival registrado en FESTIVAL_CONFIG.
 // Usado como fallback cuando localStorage está vacío o no hay festival en rango de fechas.
 // Al agregar un nuevo festival como primero en el config, este fallback se actualiza solo.
-const _DEFAULT_FEST_ID=Object.keys(FESTIVAL_CONFIG)[0];
+// _DEFAULT_FEST_ID: el festival más reciente por fecha de cierre — no el primero por inserción.
+// Esto garantiza que agregar un festival nuevo no cambia silenciosamente el default.
+const _DEFAULT_FEST_ID=(()=>{
+  const entries=Object.entries(FESTIVAL_CONFIG).filter(([,c])=>c.festivalEndStr);
+  if(!entries.length) return Object.keys(FESTIVAL_CONFIG)[0]||'aff2026';
+  return entries.sort((a,b)=>new Date(b[1].festivalEndStr)-new Date(a[1].festivalEndStr))[0][0];
+})();
 
 let _activeFestId=localStorage.getItem('otrofestiv_festival')||_DEFAULT_FEST_ID;
 
@@ -8733,7 +8739,7 @@ function _renderFestivalSelector(activeFestId){
   const tests=entries.filter(([,cfg])=>cfg.name&&cfg.group==='test');
   function mkRow([id,cfg],isActive){
     const meta=`${cfg.city} · ${cfg.dates} ${cfg.year||''}`.trim();
-    return`<div class="fs-festival-row" data-fest="${id}" onclick="loadFestival('${id}');closeFestivalSheet()">
+    return`<div class="fs-festival-row" data-fest="${id}" onclick="loadFestival('${id}')">
       <div class="fs-fest-dot"></div>
       <div class="fs-fest-info">
         <div class="fs-fest-name">${cfg.name}</div>
@@ -8875,7 +8881,11 @@ async function loadFestival(id){
       cfg.posters=data.posters||{};
       cfg.customPosters=data.customPosters||{};
       cfg.lbSlugs=data.lbSlugs||{};
-      // Absorber config del JSON si existe — permite festivales sin config hardcodeada
+      // ── Absorber config del JSON si existe ──────────────────────────────────
+      // LEGADO: FICCI 65 y Cinemancia 2025 tienen bloque config{} en el JSON.
+      // Festivales nuevos (desde Mujeres 2026) NO deben incluir config{} en el JSON —
+      // toda la configuración va en FESTIVAL_CONFIG en index.html.
+      // Este bloque existe solo para compatibilidad con festivales anteriores.
       if(data.config){
         Object.assign(cfg, data.config);
         // Restaurar campos críticos — Object.assign puede pisarlos si config los tiene vacíos
