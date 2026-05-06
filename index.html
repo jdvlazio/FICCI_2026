@@ -5224,6 +5224,10 @@ function renderGapOptions(gapStartMin,gapEndMin,todayKey,removedTitle){
 // HEADER CONTEXTUAL DE MI PLAN
 // Responde: ¿Qué hago ahora? Cambia según el momento del festival.
 // ─────────────────────────────────────────────────────────────
+// Duración por defecto en minutos cuando el film no tiene duración en el JSON.
+// Usado en el scheduling engine para calcular gaps y conflictos.
+const DEFAULT_DURATION_MIN=90;
+
 function _getFestivalPhase(){
   const _fsDStr=DAY_KEYS[0]?FESTIVAL_DATES[DAY_KEYS[0]]||'':'';
   const FESTIVAL_START=_fsDStr?new Date(_fsDStr+'T00:00:00'):new Date(0);
@@ -5261,11 +5265,11 @@ function _getFestivalPhase(){
 
   // Clasificar funciones de hoy
   const done=todayScreenings.filter(s=>{
-    const dur=parseInt(s.duration)||90;
+    const dur=parseInt(s.duration)||DEFAULT_DURATION_MIN;
     return toMin(s.time)+dur<=nowMin;
   });
   const active=todayScreenings.filter(s=>{
-    const dur=parseInt(s.duration)||90;
+    const dur=parseInt(s.duration)||DEFAULT_DURATION_MIN;
     const start=toMin(s.time);
     return start<=nowMin&&start+dur>nowMin;
   });
@@ -5284,7 +5288,7 @@ function _getFestivalPhase(){
 
   // BETWEEN: hay hueco de más de 45 min entre función terminada y la próxima
   if(lastDone&&!active.length&&minsUntil>45){
-    const lastDoneDur=parseInt(lastDone.duration)||90;
+    const lastDoneDur=parseInt(lastDone.duration)||DEFAULT_DURATION_MIN;
     const gapFromMin=toMin(lastDone.time)+lastDoneDur;
     const gapToMin=nextStartMin;
     const gapMin=gapToMin-gapFromMin;
@@ -5295,7 +5299,7 @@ function _getFestivalPhase(){
       if(savedAgenda.schedule.some(s=>s._title===f.title)) return false;
       if(screeningPassed(f)) return false;
       const fStart=toMin(f.time);
-      const fEnd=fStart+(parseInt(f.duration)||90);
+      const fEnd=fStart+(parseInt(f.duration)||DEFAULT_DURATION_MIN);
       return fStart>=gapFromMin&&fEnd<=gapToMin+10;
     })[0]||null;
     return{phase:'between',next,lastDone,gapMin,gapFromMin,gapToMin,gapSuggestion,minsUntil};
@@ -5485,7 +5489,7 @@ function renderContextualHeader(){
     const suggest=gapSuggestion?(()=>{
       const{displayTitle:dt}=parseProgramTitle(gapSuggestion.title);
       const vc2=vcfg(gapSuggestion.venue);
-      const dur=parseInt(gapSuggestion.duration)||90;
+      const dur=parseInt(gapSuggestion.duration)||DEFAULT_DURATION_MIN;
       const safeT=gapSuggestion.title.replace(/'/g,"\'");
       return`<div style="font-size:var(--t-sm);color:var(--gray);margin-bottom:var(--sp-1)">Cabe en tu hueco</div>
         <div class="ctx-suggest-card" onclick="openPelSheet('${safeT}')" style="cursor:pointer">
@@ -7423,9 +7427,9 @@ function openPelSheet(title){
     ${(()=>{const _n=NOTICES.find(n=>n.title===f.title&&n.festival===(_activeFestId||_DEFAULT_FEST_ID));if(!_n)return'';const _msg=_n.type==='cancelled'?'Función cancelada · Pendiente nueva fecha':`Reprogramada → ${_n.newDay||''} ${_n.newTime||''}${_n.newVenue?' · '+_n.newVenue:''}`;return`<div style="display:flex;align-items:center;gap:var(--sp-2);padding:var(--sp-2) var(--sp-3);background:var(--amber-08);border-radius:var(--r-sm);margin-bottom:var(--sp-2)"><span class="notice-badge">${_n.type==='cancelled'?'CANCELADA':'REPROG.'}</span><span style="font-size:var(--t-sm);color:var(--amber-60)">${_msg}</span></div>`;})()}
     ${_metaBanners(f)}
     <div class="pel-sheet-screenings">${rows}</div>
-    <div class="pel-sheet-divider"></div>
+    ${f.synopsis?`<div class="pel-sheet-divider"></div>
     <div class="pel-sheet-section-lbl">${f.type==='event'?'descripción':'sinopsis'}</div>
-    <div class="pel-sheet-synopsis">${f.synopsis||'Sinopsis disponible próximamente.'}</div>
+    <div class="pel-sheet-synopsis">${f.synopsis}</div>`:''}
     ${cortosHtml}
     ${(!f.is_cortos&&!f.is_programa&&f.type!=='event')?lbLink(f.title):''}
     <div class="pel-sheet-divider"></div>
@@ -7714,7 +7718,7 @@ function renderMiPlanList(schedule){
       const db=_festDate(FESTIVAL_DATES[b.day],b.time);
       return da-db;
     });
-  if(!upcoming.length) return '<div style="padding:var(--sp-5) var(--sp-4);text-align:center;color:var(--gray);font-size:var(--t-base)">Sin actividades pendientes</div>';
+  if(!upcoming.length) return '<div style="padding:var(--sp-5) var(--sp-4);text-align:center;color:var(--gray);font-size:var(--t-base)">No tenés funciones próximas</div>';
   
   // Agrupar por día
   const byDay={};
@@ -8044,7 +8048,7 @@ function renderProgramaList(){
         ${_stk||(src?`<img class="plist-poster" src="${src}" loading="lazy" onerror="this.style.opacity=0" alt="">`:`<div class="plist-poster"></div>`)}
         <div class="plist-info">
           <div class="plist-title">${noticeBadge}${_metaBadges(f)}${dt}${nowBadge}</div>
-          <div class="plist-meta" style="${notice&&notice.type==='cancelled'?'text-decoration:line-through':''}">${vc.short}${sala(f.venue)?' · '+sala(f.venue):''} · ${f.duration||'~90 min'}</div>
+          <div class="plist-meta" style="${notice&&notice.type==='cancelled'?'text-decoration:line-through':''}">${vc.short}${sala(f.venue)?' · '+sala(f.venue):''}${f.duration?' · '+f.duration:''}</div>
           ${noticeNote||`<div class="plist-sec">${f.section||''}</div>`}
         </div>
         <div class="plist-heart${inWL?'':' empty'}" onclick="event.stopPropagation();_toggleWLFromList('${safeT}',this)">${inWL?ICONS.heartFill:ICONS.heart}</div>
