@@ -838,8 +838,8 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:var(--t
 .pel-sheet-sec{font-size:var(--t-sm);color:var(--orange);font-weight:var(--w-semi);margin-top:2px;cursor:pointer;display:inline-flex;align-items:center;gap:3px;transition:opacity var(--tr-base)}
 .pel-sheet-sec:active{opacity:.6}
 .pel-sheet-sec-arrow{opacity:.5;font-size:var(--t-label)}
-.pel-sheet-divider{height:1px;background:var(--bdr);margin:20px 0}
-.pel-sheet-section-lbl{font-size:var(--t-label);letter-spacing:.12em;color:var(--gray);text-transform:lowercase;font-weight:var(--w-regular);margin-bottom:10px}
+.pel-sheet-divider{height:0;margin:var(--sp-5) 0}
+.pel-sheet-section-lbl{font-size:var(--t-xs);letter-spacing:.12em;color:rgba(255,255,255,.2);text-transform:uppercase;font-weight:var(--w-bold);margin-bottom:var(--sp-3)}
 .pel-sheet-screening{display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid var(--bdr-l)}
 .pel-sheet-screenings .pel-sheet-screening:last-child{border-bottom:none}
 .pel-sheet-synopsis{font-size:var(--t-base);color:rgba(240,237,232,.7);line-height:1.6}
@@ -967,9 +967,10 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:var(--t
 .pel-sheet-action-btn{flex:1;background:none;border:1px solid var(--bdr);border-radius:var(--r-pill);color:var(--gray2);font-family:var(--font);font-size:var(--t-caption);font-weight:var(--w-bold);padding:11px 4px;cursor:pointer;white-space:nowrap;min-width:0;transition:all var(--tr-base);display:inline-flex;align-items:center;justify-content:center;gap:var(--sp-1)}
 .pel-sheet-action-btn.act-on{background:rgba(39,174,96,.08);border-color:rgba(39,174,96,.25);color:var(--green)}
 .pel-sheet-action-btn.act-prio{background:var(--amber-10);border-color:var(--amber-30);color:var(--amber)}
-.pel-sheet-action-btn.btn-primary{background:var(--amber);border-color:var(--amber);color:#000}
-.pel-sheet-action-btn.btn-tertiary{background:none;border-color:transparent;color:var(--gray)}
-.pel-sheet-ctas{display:flex;gap:var(--sp-1);align-items:center}
+.pel-sheet-action-btn.btn-primary{background:var(--amber);border-color:var(--amber);color:#000;font-size:var(--t-sm);padding:13px 4px}
+.pel-sheet-action-btn.btn-secondary{background:var(--surf-3);border-color:transparent;color:rgba(255,255,255,.5);font-size:var(--t-sm);padding:13px 4px}
+.pel-sheet-action-btn.btn-tertiary{background:none;border-color:transparent;color:var(--gray2);flex:none;padding:13px var(--sp-3)}
+.pel-sheet-ctas{display:flex;gap:var(--sp-2);align-items:center}
 .pel-sheet-ctas-watched{display:flex;gap:var(--sp-2)}
 .pel-sheet-cortos-count{margin-top:2px}
 .pel-sheet-lb{display:inline-flex;align-items:center;gap:6px;margin-top:var(--sp-4);opacity:.6;text-decoration:none}
@@ -7450,7 +7451,7 @@ function openPelSheet(title){
       </div>`
     :`<div class="pel-sheet-ctas">
         <button id="pel-wl-btn" class="pel-sheet-action-btn${inWL?' act-on btn-primary':''}" onclick="togglePelWL('${safeT}',event)" style="display:inline-flex;align-items:center;justify-content:center;gap:var(--sp-1)">${inWL?ICONS.heartFill:ICONS.heart} ${inWL?'En Intereses':'Intereses'}</button>
-        <button id="pel-prio-btn" class="pel-sheet-action-btn${inPrio?' act-prio':''}" onclick="togglePelPrio('${safeT}')" style="display:inline-flex;align-items:center;justify-content:center;gap:var(--sp-1)">${inPrio?ICONS.starFill:ICONS.star} ${inPrio?'Priorizada':'Priorizar'}</button>
+        <button id="pel-prio-btn" class="pel-sheet-action-btn${inPrio?' act-prio':'  btn-secondary'}" onclick="togglePelPrio('${safeT}')" style="display:inline-flex;align-items:center;justify-content:center;gap:var(--sp-1)">${inPrio?ICONS.starFill:ICONS.star} ${inPrio?'Priorizada':'Priorizar'}</button>
         <button id="pel-vista-btn" class="pel-sheet-action-btn btn-tertiary" onclick="toggleWatched('${safeT}',event)" style="display:inline-flex;align-items:center;justify-content:center;gap:var(--sp-1)">${ICONS.check} ${f.type==='event'?'Asistí':'Vista'}</button>
       </div>`}
     ${_inPlan&&activeView==='agenda'?`<button onclick="closePelSheet();removeFromAgenda('${safeT}')" class="pel-sheet-remove-plan">${ICONS.x} Quitar del plan</button>`:''}
