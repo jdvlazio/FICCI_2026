@@ -2171,26 +2171,7 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:var(--t
       <div class="splash-sel-chev"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></div>
     </button>
     <div class="splash-dropdown" id="splash-dropdown" style="display:none" role="listbox">
-      <button class="splash-drop-item selected" data-fest="aff2026" role="option" aria-selected="true" onclick="selectSplashFest('AFF 2026','Medellín · 21–29 ABR 2026','aff2026')">
-        <div><div class="splash-drop-item-name">AFF 2026</div><div class="splash-drop-item-meta">Medellín · 21–29 ABR 2026</div></div>
-        <div class="splash-drop-item-badge">PASADO</div>
-      </button>
-      <button class="splash-drop-item" data-fest="ficci65" role="option" aria-selected="false" onclick="selectSplashFest('FICCI 65','Cartagena · 14–19 ABR 2026','ficci65')">
-        <div><div class="splash-drop-item-name">FICCI 65</div><div class="splash-drop-item-meta">Cartagena · 14–19 ABR 2026</div></div>
-        <div class="splash-drop-item-badge">PASADO</div>
-      </button>
-      <button class="splash-drop-item inactive" role="option" aria-selected="false" aria-disabled="true">
-        <div><div class="splash-drop-item-name">FICCI 66</div><div class="splash-drop-item-meta">Cartagena · Próximamente</div></div>
-        <div class="splash-drop-item-badge">PRONTO</div>
-      </button>
-      <button class="splash-drop-item inactive" role="option" aria-selected="false" aria-disabled="true">
-        <div><div class="splash-drop-item-name">Bogoshorts</div><div class="splash-drop-item-meta">Bogotá · Próximamente</div></div>
-        <div class="splash-drop-item-badge">PRONTO</div>
-      </button>
-      <button class="splash-drop-item" data-fest="cinemancia2025" role="option" aria-selected="false" onclick="selectSplashFest('Cinemancia 2025','Valle de Aburrá · 11–20 SEP 2025','cinemancia2025')">
-        <div><div class="splash-drop-item-name">Cinemancia 2025</div><div class="splash-drop-item-meta">Valle de Aburrá · 11–20 SEP 2025</div></div>
-        <div class="splash-drop-item-badge">TEST</div>
-      </button>
+      <!-- Generado dinámicamente por _renderSplashDropdown() en init -->
     </div>
   </div>
   <button class="splash-enter-btn" onclick="dismissSplash()">Entrar</button>
@@ -2939,6 +2920,21 @@ const FESTIVAL_CONFIG={
       'Un mundo frágil y maravilloso':'a-sad-and-beautiful-world',
       'Homebound':'homebound-2025'
     }
+  },
+  'ficci65':{
+    name:'FICCI 65',shortName:'FICCI 65',city:'Cartagena',dates:'14–19 ABR',year:2026,timezoneOffset:'-05:00',
+    storageKey:'ficci65_',festivalEndStr:'2026-04-20T02:00:00',
+    eventPosterLabel:['ACADEMIA',''],
+    films:null,posters:null,lbSlugs:{}
+    // dayKeys/days/festivalDates se absorben del JSON config block en loadFestival()
+  },
+  'cinemancia2025':{
+    name:'Cinemancia 2025',shortName:'CINEMANCIA',city:'Valle de Aburrá',dates:'11–20 SEP',year:2025,timezoneOffset:'-05:00',
+    storageKey:'cinemancia2025_',festivalEndStr:'2025-09-20T23:00:00',
+    eventPosterLabel:['PROGRAMACIÓN','ACADÉMICA'],
+    group:'test',
+    films:null,posters:null,lbSlugs:{}
+    // dayKeys/days/festivalDates se absorben del JSON config block en loadFestival()
   }
 };// Festival data loaded async from festivals/<id>.json via loadFestival()
 
@@ -8695,6 +8691,63 @@ function toggleSplashDropdown(){
   dd.style.display=open?'block':'none';
   btn.classList.toggle('open',open);
 }
+
+// ── Genera el splash dropdown y el festival selector desde FESTIVAL_CONFIG ──
+// Agregar un festival = una entrada en FESTIVAL_CONFIG. Nada más que tocar.
+const CHECK_SVG=`<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>`;
+function _renderSplashDropdown(activeFestId){
+  const dd=document.getElementById('splash-dropdown');
+  if(!dd) return;
+  const today=new Date();today.setHours(12,0,0,0);
+  const entries=Object.entries(FESTIVAL_CONFIG);
+  const html=entries.map(([id,cfg])=>{
+    if(!cfg.name) return '';
+    const isTest=cfg.group==='test';
+    const end=cfg.festivalEndStr?new Date(cfg.festivalEndStr):null;
+    const isPast=end&&today>end;
+    const isActive=id===activeFestId;
+    const badge=isPast?'PASADO':isTest?'TEST':'';
+    const meta=`${cfg.city} · ${cfg.dates} ${cfg.year||''}`.trim();
+    return`<button class="splash-drop-item${isActive?' selected':''}" data-fest="${id}" role="option" aria-selected="${isActive}" onclick="selectSplashFest('${cfg.name}','${meta}','${id}')">
+      <div><div class="splash-drop-item-name">${cfg.name}</div><div class="splash-drop-item-meta">${meta}</div></div>
+      ${badge?`<div class="splash-drop-item-badge">${badge}</div>`:''}
+    </button>`;
+  }).filter(Boolean).join('');
+  dd.innerHTML=html;
+}
+
+function _renderFestivalSelector(activeFestId){
+  const container=document.getElementById('fs-festival-list');
+  if(!container) return;
+  const today=new Date();today.setHours(12,0,0,0);
+  const entries=Object.entries(FESTIVAL_CONFIG);
+  // Group: regular vs test
+  const regular=entries.filter(([,cfg])=>cfg.name&&cfg.group!=='test');
+  const tests=entries.filter(([,cfg])=>cfg.name&&cfg.group==='test');
+  function mkRow([id,cfg],isActive){
+    const meta=`${cfg.city} · ${cfg.dates} ${cfg.year||''}`.trim();
+    return`<div class="fs-festival-row" data-fest="${id}" onclick="loadFestival('${id}');closeFestivalSheet()">
+      <div class="fs-fest-dot"></div>
+      <div class="fs-fest-info">
+        <div class="fs-fest-name">${cfg.name}</div>
+        <div class="fs-fest-meta">${meta}</div>
+      </div>
+      <div class="fs-fest-check" style="display:${isActive?'':'none'}">${CHECK_SVG}</div>
+    </div>`;
+  }
+  let html='';
+  if(regular.length){
+    html+=`<div class="fs-section-lbl">Festivales</div>`;
+    html+=regular.map(e=>mkRow(e,e[0]===activeFestId)).join('<div class="fs-divider"></div>');
+  }
+  if(tests.length){
+    html+=`<div class="fs-divider"></div><div class="fs-section-lbl">Pruebas</div>`;
+    html+=tests.map(e=>mkRow(e,e[0]===activeFestId)).join('<div class="fs-divider"></div>');
+  }
+  container.innerHTML=html;
+}
+// ─────────────────────────────────────────────────────────────────────────────
+
 let _splashSelectedFestId='aff2026'; // matches HTML pre-selection
 function selectSplashFest(name,meta,festId){
   _splashSelectedFestId=festId||_DEFAULT_FEST_ID;
@@ -8904,11 +8957,8 @@ async function loadFestival(id){
   const _fd=document.querySelector('.hdr-fest-dates');
   if(_fn) _fn.textContent=cfg.name;
   if(_fd) _fd.textContent='\u00b7 '+cfg.dates;
-  // Update fs-sheet active row
-  document.querySelectorAll('.fs-festival-row[data-fest]').forEach(row=>{
-    const isActive=row.dataset.fest===id;
-    row.querySelector('.fs-fest-check').style.display=isActive?'':'none';
-  });
+  // Re-render festival selector con el nuevo festival activo
+  _renderFestivalSelector(id);
   // Persist choice
   localStorage.setItem('otrofestiv_festival',id);
   // Render — await dos rAFs: primero renderiza, segundo confirma el paint
@@ -8961,15 +9011,15 @@ _sbInit();
   }
   const activeFest=detectActiveFest();
   _splashSelectedFestId=activeFest;
+  // Render dinámico — agregar festival = solo FESTIVAL_CONFIG, nada más
+  _renderSplashDropdown(activeFest);
+  _renderFestivalSelector(activeFest);
   const cfg=FESTIVAL_CONFIG[activeFest];
   if(cfg){
     const n=document.getElementById('splash-sel-name');
     const m=document.getElementById('splash-sel-meta');
     if(n) n.textContent=cfg.name;
-    if(m) m.textContent=cfg.city+' \u00b7 '+cfg.dates+(cfg.year?' '+cfg.year:'');
-    document.querySelectorAll('.splash-drop-item').forEach(el=>{
-      el.classList.toggle('selected',el.dataset.fest===activeFest);
-    });
+    if(m) m.textContent=cfg.city+'\u00b7 '+cfg.dates+(cfg.year?' '+cfg.year:'');
   }
 })();
 
@@ -9554,38 +9604,8 @@ function _posterErr(img){
   <div class="fs-header">
     <div class="fs-title">Cambiar festival</div>
   </div>
-  <div class="fs-section-lbl">Festivales</div>
-  <div class="fs-festival-row" data-fest="aff2026" onclick="loadFestival('aff2026')">
-    <div class="fs-fest-dot" style="background:var(--amber)"></div>
-    <div class="fs-fest-info">
-      <div class="fs-fest-name">AFF 2026</div>
-      <div class="fs-fest-meta">Medellín · 21–30 abril 2026</div>
-    </div>
-    <div class="fs-fest-check" style="display:none">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-    </div>
-  </div>
-  <div class="fs-divider"></div>
-  <div class="fs-festival-row" data-fest="ficci65" onclick="loadFestival('ficci65')">
-    <div class="fs-fest-dot"></div>
-    <div class="fs-fest-info">
-      <div class="fs-fest-name">FICCI 65</div>
-      <div class="fs-fest-meta">Cartagena · 14–19 abril 2026</div>
-    </div>
-    <div class="fs-fest-check" style="display:none">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-    </div>
-  </div>
-  <div class="fs-divider"></div>
-  <div class="fs-section-lbl">Pruebas</div>
-  <div class="fs-festival-row" data-fest="cinemancia2025" onclick="loadFestival('cinemancia2025')">
-    <div class="fs-fest-dot"></div>
-    <div class="fs-fest-info">
-      <div class="fs-fest-name">Cinemancia 2025</div>
-      <div class="fs-fest-meta">Valle de Aburrá · 11–20 septiembre 2025</div>
-    </div>
-    <div class="fs-fest-check" style="display:none"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
-  </div>
+  <!-- Generado dinámicamente por _renderFestivalSelector() en init -->
+  <div id="fs-festival-list"></div>
   <div class="fs-divider"></div>
   <div class="fs-section-lbl">Próximamente</div>
   <div class="fs-soon-row">

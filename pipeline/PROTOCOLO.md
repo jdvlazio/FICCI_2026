@@ -74,7 +74,16 @@ Abrir `otrofestiv.app/enricher/`, cargar los films, correr TMDB automáticamente
 
 **Tú revisas:** que los nombres de las sedes coincidan exactamente con los del JSON de films.
 
-### Paso 4 · Ensamblaje
+### Paso 4 · Validación — OBLIGATORIO antes de deploy
+
+```bash
+node scripts/validate-festivals.js <id>
+# Ejemplo: node scripts/validate-festivals.js mujeres-2026
+```
+
+Verifica: campos requeridos, consistencia de días, secciones sin duplicados de emoji, `film_list` en programas de cortos. Exit 0 = listo. Exit 1 = corregir antes de continuar.
+
+### Paso 5 · Ensamblaje
 **Yo produzco:** `festivals/nombre-año.json` completo, listo para deploy.
 
 ### Paso 5 · Deploy
@@ -143,15 +152,19 @@ Siempre emoji de banderas: `"🇨🇴"`, `"🇦🇷🇫🇷"`
 
 | Festival | ID | Archivo | Estado |
 |---|---|---|---|
-| AFF 2026 | `aff2026` | `festivals/aff-2026.json` | ✓ Activo |
+| AFF 2026 | `aff2026` | `festivals/aff-2026.json` | ✓ Archivado |
 | FICCI 65 | `ficci65` | `festivals/ficci-65.json` | ✓ Archivado |
+| Cinemancia 2025 | `cinemancia2025` | `festivals/cinemancia-2025.json` | 🧪 Test |
 
-## Próximos festivales
+## Agregar un festival nuevo — checklist
 
-| Festival | Fecha estimada | Estado |
-|---|---|---|
-| Festival de Cine de Jardín | Sep 2026 | Por confirmar |
-| Cinemancia 6ta edición | Sep 2026 | Por confirmar |
+1. Crear `festivals/<id>.json` con `films[]` (Paso 1 del pipeline)
+2. Correr enrichment: `python3 scripts/enrich-festival.py festivals/<id>.json` (Paso 2)
+3. Agregar entrada en `FESTIVAL_CONFIG` en `index.html` — **solo esto, nada más**
+4. Validar: `node scripts/validate-festivals.js <id>` (Paso 4)
+5. Push → deploy automático en ~2 minutos
+
+El splash y el selector de festivales se generan automáticamente desde `FESTIVAL_CONFIG`.
 
 ---
 
