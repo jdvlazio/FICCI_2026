@@ -870,7 +870,7 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:var(--t
 .pel-sheet.open{transform:translateY(0);transition:transform .38s cubic-bezier(.34,1.56,.64,1)}
 .pel-sheet-topbar{display:flex;align-items:center;justify-content:center;padding:var(--sp-btn) var(--sp-4) var(--sp-2);position:relative;flex-shrink:0;cursor:grab;touch-action:none}
 .pel-sheet-handle{width:36px;height:4px;background:var(--bdr);border-radius:var(--r-handle)}
-.pel-sheet-close{position:absolute;right:12px;top:6px;background:var(--surf-2);border:none;color:var(--gray2);width:28px;height:28px;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:var(--t-md);line-height:1}
+.pel-sheet-close{position:absolute;right:12px;top:6px;background:var(--surf-2);border:none;color:var(--gray2);width:44px;height:44px;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:var(--t-md);line-height:1}
 .pel-sheet-close:active{background:var(--bdr)}
 .pel-sheet-inner{padding:var(--sp-btn) var(--sp-4) var(--sp-6)}
 .pel-sheet-poster{width:var(--poster-lg-w);height:var(--poster-lg-h);object-fit:cover;border-radius:var(--r-md);flex-shrink:0;display:block;background:var(--surf-2)}
@@ -1220,7 +1220,7 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:var(--t
 .mplan-nav{display:none;align-items:stretch;border-bottom:1px solid var(--bdr)}
 .mplan-nav-btn-wrap{width:44px;flex-shrink:0;display:flex;align-items:center;justify-content:center;border-right:1px solid var(--bdr-l);padding:var(--sp-2) 0}
 .mplan-nav-btn-wrap.right{border-right:none;border-left:1px solid var(--bdr-l);width:36px}
-.mplan-nav-btn{background:none;border:none;color:var(--white-60);width:28px;height:28px;cursor:pointer;display:flex;align-items:center;justify-content:center;border-radius:var(--r-md);transition:background var(--tr-base)}
+.mplan-nav-btn{background:none;border:none;color:var(--white-60);width:44px;height:44px;cursor:pointer;display:flex;align-items:center;justify-content:center;border-radius:var(--r-md);transition:background var(--tr-base)}
 .mplan-nav-btn:active{background:var(--surf-2)}
 .mplan-nav-btn:disabled{opacity:.25;cursor:default}
 .mplan-nav-labels{display:flex;flex:1}
@@ -7425,7 +7425,8 @@ function openPelSheet(title){
   const rows=allScr.map(s=>{
     const dayAbb=DAY_SHORT[s.day]||DAY_ABB[DAY_KEYS.indexOf(s.day)]||s.day.slice(0,3).toUpperCase();
     const vc=vcfg(s.venue),sl=sala(s.venue);
-    const _city=vc.city&&vc.city!=='Medellín'?vc.city:'';
+    const _festCity=(FESTIVAL_CONFIG[_activeFestId]||{}).city||'';
+    const _city=vc.city&&vc.city!==_festCity?vc.city:'';
     const isPast=screeningPassed(s)&&!festivalEnded();
     return`<div class="pel-sheet-screening"${isPast?' style="opacity:.4"':''}>
       <span class="pelicula-day" data-day="${s.day}">${dayAbb}</span>
