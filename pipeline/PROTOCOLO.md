@@ -24,6 +24,9 @@ Pide al organizador que llene el archivo `/pipeline/csv-template.csv`. Si no es 
 
 ## El pipeline — siempre en este orden
 
+> ⚠️ **Regla global: ningún festival llega a producción sin completar los 5 pasos.**
+> El Paso 2 (Enrichment) es obligatorio sin excepción — no es opcional ni se pospone.
+
 ### Paso 1 · Parseo
 **Yo produzco:** JSON de films con estructura canónica.
 - Cada film único con sus metadatos
@@ -35,9 +38,23 @@ Pide al organizador que llene el archivo `/pipeline/csv-template.csv`. Si no es 
 
 **Tú revisas:** que los títulos, directores, horarios y venues sean correctos.
 
-### Paso 2 · Enrichment (TMDB + Letterboxd)
-**Yo hago:** abrir `otrofestiv.app/enricher/`, cargar los films, correr TMDB automáticamente, y resolver slugs de Letterboxd desde la tab del browser.
-**Tú produces:** JSON con `posters{}` y `lbSlugs{}` listos.
+### Paso 2 · Enrichment (TMDB + Letterboxd) — OBLIGATORIO
+
+**Dos opciones equivalentes — usar la que sea más cómoda:**
+
+**Opción A — Script (recomendado para festivales grandes):**
+```bash
+pip install requests
+python3 scripts/enrich-festival.py festivals/<id>.json
+```
+El script rellena `director`, `genre`, `year`, `synopsis` sin sobreescribir datos existentes. También enriquece `film_list` items de programas de cortos.
+
+**Opción B — Enricher web:**
+Abrir `otrofestiv.app/enricher/`, cargar los films, correr TMDB automáticamente, y resolver slugs de Letterboxd desde la tab del browser.
+
+**Tú produces:** JSON con `posters{}`, `lbSlugs{}`, `director`, `genre`, `year`, `synopsis` listos.
+
+> Sin este paso: las cards de películas quedan sin director, año ni sinopsis. No deploy.
 
 ### Paso 3 · Venues
 **Yo produzco:** bloque `venues{}` con coordenadas via Nominatim para cada sede.
