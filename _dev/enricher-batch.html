@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Otrofestiv — Enricher</title>
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#111;color:#e5e5e5;min-height:100vh;padding:24px}
+  h1{font-size:22px;font-weight:700;color:#fff;margin-bottom:4px}
+  .sub{font-size:13px;color:#666;margin-bottom:24px}
+  .wordmark span{color:#f59e0b}
+  .card{background:#1a1a1a;border:1px solid #2a2a2a;border-radius:10px;padding:20px;margin-bottom:16px}
+  label{font-size:12px;color:#888;letter-spacing:.06em;text-transform:uppercase;display:block;margin-bottom:6px}
+  input,select{width:100%;background:#0d0d0d;border:1px solid #333;border-radius:6px;color:#e5e5e5;font-size:14px;padding:9px 12px;outline:none;font-family:inherit}
+  input:focus,select:focus{border-color:#f59e0b44}
+  .row{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px}
+  .btn{display:inline-flex;align-items:center;gap:8px;padding:10px 20px;border-radius:8px;border:none;font-size:14px;font-weight:600;cursor:pointer;font-family:inherit;transition:opacity .15s}
+  .btn-primary{background:#f59e0b;color:#000}
+  .btn-primary:hover{opacity:.85}
+  .btn-primary:disabled{opacity:.4;cursor:default}
+  .btn-secondary{background:#2a2a2a;color:#ccc;border:1px solid #333}
+  .btn-secondary:hover{background:#333}
+  .btn-success{background:#059669;color:#fff}
+  .btn-success:hover{opacity:.85}
+  .log{background:#0d0d0d;border:1px solid #1e1e1e;border-radius:8px;padding:12px 16px;font-family:'SF Mono','Fira Code',monospace;font-size:12px;line-height:1.8;max-height:400px;overflow-y:auto;white-space:pre-wrap}
+  .log-ok{color:#34d399}
+  .log-warn{color:#fbbf24}
+  .log-err{color:#f87171}
+  .log-info{color:#60a5fa}
+  .log-dim{color:#555}
+  .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:12px 0}
+  .stat{background:#141414;border:1px solid #222;border-radius:8px;padding:10px 12px;text-align:center}
+  .stat-n{font-size:22px;font-weight:700;color:#f59e0b}
+  .stat-l{font-size:11px;color:#555;margin-top:2px}
+  .progress-wrap{height:6px;background:#1e1e1e;border-radius:3px;overflow:hidden;margin:10px 0}
+  .progress-bar{height:100%;background:#f59e0b;border-radius:3px;transition:width .3s;width:0}
+  .tag{display:inline-block;padding:2px 8px;border-radius:12px;font-size:11px;font-weight:600}
+  .tag-ok{background:#064e3b;color:#34d399}
+  .tag-skip{background:#1e293b;color:#64748b}
+  .tag-err{background:#450a0a;color:#f87171}
+  .actions{display:flex;gap:8px;flex-wrap:wrap}
+  .sep{height:1px;background:#222;margin:16px 0}
+  details summary{cursor:pointer;font-size:13px;color:#888;user-select:none}
+  details summary:hover{color:#ccc}
+  details[open] summary{color:#ccc;margin-bottom:8px}
+  .chip{display:inline-block;background:#1e1e1e;border:1px solid #2a2a2a;border-radius:6px;padding:4px 10px;font-size:12px;color:#888;margin:2px}
+  .chip.active{border-color:#f59e0b44;color:#f59e0b;background:#1a1500}
+</style>
+</head>
+<body>
+
+<h1 class="wordmark">Otro<span>festiv</span> — Enricher</h1>
+<p class="sub">Enriquece festivales con datos de TMDB. Corre desde tu browser — no necesita setup local.</p>
+
+<div class="card">
+  <label>TMDB API Key</label>
+  <input id="apikey" type="password" value="38f24e78b2f13970af3430eb0732f0ac" placeholder="tu_tmdb_api_key">
+  <div style="margin-top:12px">
+    <label>Festivales a enriquecer</label>
+    <div style="margin-top:6px">
+      <span class="chip active" data-fest="ficci65" onclick="toggleFest(this)">FICCI 65 <small>(director, año, poster)</small></span>
+      <span class="chip active" data-fest="aff2026" onclick="toggleFest(this)">AFF 2026 <small>(sinopsis faltante)</small></span>
+      <span class="chip active" data-fest="cinemancia2025" onclick="toggleFest(this)">Cinemancia 2025 <small>(posters)</small></span>
+    </div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="actions">
+    <button class="btn btn-primary" id="btnRun" onclick="runEnrichment()">▶ Enriquecer ahora</button>
+    <button class="btn btn-secondary" id="btnStop" onclick="stopEnrichment()" style="display:none">⏹ Detener</button>
+    <button class="btn btn-success" id="btnDownload" style="display:none" onclick="downloadAll()">↓ Descargar JSONs</button>
+  </div>
+  <div class="progress-wrap" id="progressWrap" style="display:none">
+    <div class="progress-bar" id="progressBar"></div>
+  </div>
+  <div class="stats" id="statsRow" style="display:none">
+    <div class="stat"><div class="stat-n" id="sEnriched">0</div><div class="stat-l">enriquecidos</div></div>
+    <div class="stat"><div class="stat-n" id="sNotFound">0</div><div class="stat-l">no encontrados</div></div>
+    <div class="stat"><div class="stat-n" id="sSkipped">0</div><div class="stat-l">saltados</div></div>
+    <div class="stat"><div class="stat-n" id="sTotal">0</div><div class="stat-l">total</div></div>
+  </div>
+  <div id="logContainer" style="display:none;margin-top:12px">
+    <div class="log" id="log"></div>
+  </div>
+</div>
+
+<div class="card" id="helpCard">
+  <details>
+    <summary>¿Cómo funciona?</summary>
+    <div style="font-size:13px;color:#888;line-height:1.7;margin-top:8px">
+      <p>1. Descarga los JSONs desde GitHub directamente.</p>
+      <p>2. Para cada película, llama a la API de TMDB y obtiene director, año, sinopsis y poster.</p>
+      <p>3. Solo completa campos vacíos — no sobreescribe datos existentes.</p>
+      <p>4. Descargá los JSONs enriquecidos y subílos al repo (arrastrando en GitHub.com).</p>
+      <div class="sep"></div>
+      <p style="color:#f59e0b;font-size:12px">Ruta en GitHub: <code style="color:#e5e5e5">festivals/ficci-65.json</code> etc.</p>
+    </div>
+  </details>
+</div>
+
+<script>
+const TMDB_BASE = 'https://api.themoviedb.org/3';
+const TMDB_IMG  = 'https://image.tmdb.org/t/p/w185';
+const REPO_RAW  = 'https://raw.githubusercontent.com/jdvlazio/Otrofestiv.app/main/festivals';
+
+const FESTIVALS = {
+  ficci65:       { file:'ficci-65.json',      name:'FICCI 65',        needs:['director','year'] },
+  aff2026:       { file:'aff-2026.json',       name:'AFF 2026',        needs:['synopsis'] },
+  cinemancia2025:{ file:'cinemancia-2025.json',name:'Cinemancia 2025', needs:['poster'] },
+};
+
+let running = false;
+let shouldStop = false;
+let results = {};  // festKey → enriched data object
+let stats = { enriched:0, notFound:0, skipped:0, total:0 };
+
+function getKey(){ return document.getElementById('apikey').value.trim(); }
+
+function toggleFest(el){
+  el.classList.toggle('active');
+}
+
+function activeFests(){
+  return [...document.querySelectorAll('.chip[data-fest]')]
+    .filter(c=>c.classList.contains('active'))
+    .map(c=>c.dataset.fest);
+}
+
+function log(msg, cls=''){
+  const el = document.getElementById('log');
+  const line = document.createElement('div');
+  line.className = cls;
+  line.textContent = msg;
+  el.appendChild(line);
+  el.scrollTop = el.scrollHeight;
+}
+
+function setProgress(n, total){
+  document.getElementById('progressBar').style.width = total ? Math.round(n/total*100)+'%' : '0%';
+}
+
+function updateStats(){
+  document.getElementById('sEnriched').textContent = stats.enriched;
+  document.getElementById('sNotFound').textContent = stats.notFound;
+  document.getElementById('sSkipped').textContent = stats.skipped;
+  document.getElementById('sTotal').textContent = stats.total;
+}
+
+async function tmdbSearch(title, year, apiKey){
+  const q = encodeURIComponent(title);
+  const yr = year ? `&year=${year}` : '';
+  const url = `${TMDB_BASE}/search/movie?api_key=${apiKey}&query=${q}&language=es-MX${yr}`;
+  const r = await fetch(url);
+  if(!r.ok) return null;
+  const d = await r.json();
+  let results = d.results || [];
+  if(!results.length && year){
+    const r2 = await fetch(`${TMDB_BASE}/search/movie?api_key=${apiKey}&query=${q}&language=es-MX`);
+    if(r2.ok){ const d2 = await r2.json(); results = d2.results||[]; }
+  }
+  return results[0] || null;
+}
+
+async function tmdbDetails(id, apiKey){
+  const url = `${TMDB_BASE}/movie/${id}?api_key=${apiKey}&language=es-MX&append_to_response=credits`;
+  const r = await fetch(url);
+  return r.ok ? r.json() : null;
+}
+
+function getDirector(details){
+  if(!details?.credits?.crew) return '';
+  const d = details.credits.crew.find(p=>p.job==='Director');
+  return d ? d.name : '';
+}
+
+function getGenre(details){
+  const map={'Drama':'Drama','Comedy':'Comedia','Thriller':'Thriller','Horror':'Terror',
+    'Action':'Acción','Romance':'Romance','Documentary':'Documental','Animation':'Animación',
+    'Science Fiction':'Ciencia Ficción','Fantasy':'Fantasía','Mystery':'Misterio',
+    'Crime':'Crimen','History':'Historia','Adventure':'Aventura','Family':'Familia',
+    'Music':'Música','War':'Guerra','Western':'Western'};
+  return (details?.genres||[]).slice(0,2).map(g=>map[g.name]||g.name).join(', ');
+}
+
+function isLikelyEnglish(text){
+  if(!text) return false;
+  const t = text.toLowerCase();
+  const en = [' the ',' and ',' of the ',' in the ',' is ',' are ',' was ',' his ',' her '];
+  const es = [' la ',' el ',' los ',' las ',' que ',' de ',' en ',' se ',' del '];
+  const enS = en.reduce((acc,m)=>acc+(t.split(m).length-1),0);
+  const esS = es.reduce((acc,m)=>acc+(t.split(m).length-1),0);
+  return enS > esS + 2;
+}
+
+function needsEnrichment(film, needs, existingPosters){
+  for(const f of needs){
+    if(f === 'poster'){
+      if(!film.poster && !existingPosters[film.title]) return true;
+    } else {
+      if(!film[f] || String(film[f]).trim() === '') return true;
+    }
+  }
+  return false;
+}
+
+async function enrichFilm(film, needs, apiKey, existingPosters){
+  const title_en = film.title_en || film.title;
+  const result = await tmdbSearch(title_en, film.year, apiKey);
+  if(!result) return null;
+
+  const details = await tmdbDetails(result.id, apiKey);
+  const out = {};
+
+  if(needs.includes('director') && !film.director){
+    out.director = getDirector(details);
+  }
+  if(needs.includes('year') && !film.year){
+    out.year = result.release_date ? parseInt(result.release_date.slice(0,4)) : null;
+  }
+  if(needs.includes('synopsis') && !film.synopsis){
+    let syn = details?.overview || '';
+    if(!syn){
+      const r2 = await fetch(`${TMDB_BASE}/movie/${result.id}?api_key=${apiKey}&language=en-US`);
+      if(r2.ok){ const d2 = await r2.json(); syn = d2.overview||''; }
+    }
+    if(isLikelyEnglish(syn)) syn = '⚠️ INGLÉS — ' + syn;
+    out.synopsis = syn;
+  }
+  if(needs.includes('poster') && !film.poster && !existingPosters[film.title]){
+    const path = result.poster_path || details?.poster_path;
+    out.poster = path ? TMDB_IMG + path : '';
+  }
+  if(needs.includes('genre') && !film.genre && details){
+    out.genre = getGenre(details);
+  }
+
+  return Object.keys(out).length ? out : null;
+}
+
+async function runEnrichment(){
+  if(running) return;
+  const apiKey = getKey();
+  if(!apiKey){ alert('Ingresá la TMDB API Key'); return; }
+
+  const fests = activeFests();
+  if(!fests.length){ alert('Seleccioná al menos un festival'); return; }
+
+  running = true; shouldStop = false;
+  stats = {enriched:0, notFound:0, skipped:0, total:0};
+  results = {};
+  document.getElementById('log').innerHTML = '';
+  document.getElementById('btnRun').disabled = true;
+  document.getElementById('btnStop').style.display = 'inline-flex';
+  document.getElementById('btnDownload').style.display = 'none';
+  document.getElementById('progressWrap').style.display = 'block';
+  document.getElementById('statsRow').style.display = 'grid';
+  document.getElementById('logContainer').style.display = 'block';
+
+  log(`▶ Iniciando enrichment — ${new Date().toLocaleTimeString('es-CO')}`, 'log-info');
+  log(`  API Key: ${apiKey.slice(0,8)}...`, 'log-dim');
+
+  // Test de conectividad antes de empezar
+  log('  Verificando acceso a TMDB...', 'log-dim');
+  try {
+    const testR = await fetch(`https://api.themoviedb.org/3/movie/550?api_key=${apiKey}`, {cache:'no-cache'});
+    if(!testR.ok) throw new Error('TMDB HTTP '+testR.status+' — API key inválida o sin acceso');
+    log('  ✓ TMDB accesible', 'log-ok');
+  } catch(e) {
+    log('  ✗ TMDB no accesible: '+e.message, 'log-err');
+    log('  Abrí esta herramienta desde HTTPS, no desde file://', 'log-warn');
+    running = false;
+    document.getElementById('btnRun').disabled = false;
+    document.getElementById('btnStop').style.display = 'none';
+    return;
+  }
+
+  // Test GitHub
+  log('  Verificando acceso a GitHub...', 'log-dim');
+  try {
+    const ghR = await fetch('https://raw.githubusercontent.com/jdvlazio/Otrofestiv.app/main/festivals/aff-2026.json', {cache:'no-cache'});
+    if(!ghR.ok) throw new Error('GitHub HTTP '+ghR.status);
+    log('  ✓ GitHub accesible', 'log-ok');
+  } catch(e) {
+    log('  ✗ GitHub no accesible: '+e.message, 'log-err');
+    running = false;
+    document.getElementById('btnRun').disabled = false;
+    document.getElementById('btnStop').style.display = 'none';
+    return;
+  }
+
+  for(const festKey of fests){
+    if(shouldStop) break;
+    const cfg = FESTIVALS[festKey];
+    log(`\n──── ${cfg.name} (${cfg.file}) ────`, 'log-info');
+
+    let data;
+    try{
+      const r = await fetch(`${REPO_RAW}/${cfg.file}`);
+      if(!r.ok) throw new Error('HTTP '+r.status);
+      data = await r.json();
+      log(`  ${data.films.length} entradas descargadas desde GitHub`, 'log-dim');
+    } catch(e){
+      log(`  ERROR descargando: ${e.message}`, 'log-err');
+      continue;
+    }
+
+    const existingPosters = data.posters || {};
+    const films = data.films || [];
+    const targets = films.filter(f =>
+      f.type !== 'event' &&
+      !f.is_cortos &&
+      !f.is_programa &&
+      !(f.title||'').toLowerCase().includes('sorpresa') &&
+      needsEnrichment(f, cfg.needs, existingPosters)
+    );
+
+    log(`  ${targets.length} films necesitan enrichment (${films.length - targets.length} saltados)`, 'log-dim');
+    stats.total += targets.length;
+    updateStats();
+
+    let festEnriched = 0;
+    for(let i=0; i<targets.length; i++){
+      if(shouldStop){ log('  ⏹ Detenido por el usuario', 'log-warn'); break; }
+
+      const film = targets[i];
+      const title = (film.title||'').slice(0,45);
+      process.stdout && process.stdout.write;  // noop
+
+      try{
+        const enriched = await enrichFilm(film, cfg.needs, apiKey, existingPosters);
+        if(enriched){
+          Object.assign(film, enriched);
+          festEnriched++;
+          stats.enriched++;
+          const summary = Object.entries(enriched).map(([k,v])=>
+            k==='synopsis' ? 'syn' : k==='poster' ? '🖼' : `${k}:${v}`
+          ).join(' | ');
+          log(`  ✓ [${i+1}/${targets.length}] ${title}\n      ${summary}`, 'log-ok');
+        } else {
+          stats.notFound++;
+          log(`  ✗ [${i+1}/${targets.length}] ${title} — no encontrado en TMDB`, 'log-warn');
+        }
+      } catch(e){
+        stats.notFound++;
+        log(`  ✗ [${i+1}/${targets.length}] ${title} — error: ${e.message}`, 'log-err');
+      }
+
+      stats.skipped = stats.total - stats.enriched - stats.notFound;
+      updateStats();
+      setProgress(i+1, targets.length);
+      await new Promise(r=>setTimeout(r, 260));  // respetar rate limit TMDB
+    }
+
+    results[festKey] = data;
+    log(`  ✅ ${cfg.name}: ${festEnriched} enriquecidos`, 'log-ok');
+  }
+
+  log(`\nListo — ${new Date().toLocaleTimeString('es-CO')}`, 'log-info');
+  running = false;
+  document.getElementById('btnRun').disabled = false;
+  document.getElementById('btnStop').style.display = 'none';
+  if(Object.keys(results).length){
+    document.getElementById('btnDownload').style.display = '';
+  }
+}
+
+function stopEnrichment(){
+  shouldStop = true;
+}
+
+function downloadAll(){
+  for(const [festKey, data] of Object.entries(results)){
+    const cfg = FESTIVALS[festKey];
+    const blob = new Blob([JSON.stringify(data, null, 2)], {type:'application/json'});
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = cfg.file;
+    a.click();
+    URL.revokeObjectURL(url);
+  }
+}
+</script>
+</body>
+</html>
