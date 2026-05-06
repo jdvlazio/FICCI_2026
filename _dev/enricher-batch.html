@@ -165,9 +165,19 @@ async function tmdbSearch(title, year, apiKey){
 }
 
 async function tmdbDetails(id, apiKey){
-  const url = `${TMDB_BASE}/movie/${id}?api_key=${apiKey}&language=es-MX&append_to_response=credits`;
-  const r = await fetch(url, {signal: AbortSignal.timeout(8000)});
-  return r.ok ? r.json() : null;
+  // Dos calls separadas en paralelo — evita el payload enorme de append_to_response=credits
+  const OPTS = {signal: AbortSignal.timeout(8000), cache:'no-store'};
+  const [detR, crR] = await Promise.all([
+    fetch(`${TMDB_BASE}/movie/${id}?api_key=${apiKey}&language=es-MX`, OPTS),
+    fetch(`${TMDB_BASE}/movie/${id}/credits?api_key=${apiKey}`, OPTS)
+  ]);
+  if(!detR.ok) return null;
+  const [details, credits] = await Promise.all([
+    detR.json(),
+    crR.ok ? crR.json() : Promise.resolve(null)
+  ]);
+  if(details && credits) details.credits = credits;
+  return details || null;
 }
 
 function getDirector(details){
