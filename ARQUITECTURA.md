@@ -289,9 +289,9 @@ showConflictModal(conflicts, onConfirm)  // conflicto de horario
 ```
 PDF del festival
       ↓
-Enriquecimiento manual (director, año, país, Letterboxd slug, TMDB poster)
+Enrichment via script (director, año, género, sinopsis, poster TMDB, lbSlug Letterboxd)
       ↓
-festivals/[id].json  (films[], posters{}, lbSlugs{})
+festivals/[id].json  (films[] con poster y lbSlug inline — nuevo formato)
       ↓
 loadFestival(id)  →  swapea globals FILMS, POSTERS, LB_SLUGS, etc.
       ↓
