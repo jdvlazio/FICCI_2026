@@ -74,7 +74,27 @@ Abrir `otrofestiv.app/enricher/`, cargar los films, correr TMDB automáticamente
 
 ## Convenciones que nunca cambian
 
-### Nombres de venues
+### FESTIVAL_CONFIG — única fuente de verdad para festivales
+
+Para agregar un festival nuevo, el único lugar que se edita es `FESTIVAL_CONFIG` en `index.html`. **Nunca** hardcodear IDs de festival en otro lugar del código.
+
+```js
+// index.html — FESTIVAL_CONFIG
+'jardin2026': {
+  name: 'Festival de Jardín',
+  city: 'Jardín',
+  dates: '10–14 SEP 2026',
+  // ...
+}
+```
+
+El festival queda disponible automáticamente en el selector y en `_DEFAULT_FEST_ID`.
+
+> **Seguridad:** La TMDB API key NO debe incluirse en el bundle de producción (`index.html`).
+> Solo pertenece en herramientas de enriquecimiento offline (`_dev/enricher/`, `scripts/enrich-festival.py`).
+> La key en producción debe ser `''` (string vacío) — los fallbacks la manejan silenciosamente.
+
+
 Siempre: `"Nombre de la Sede - Ciudad"`
 ```
 "Cine MAMM - Medellín"
