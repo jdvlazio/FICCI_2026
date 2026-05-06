@@ -589,7 +589,6 @@
     "Soñar una serpiente": "dreaming-a-serpent",
     "Paroles/Images/Vitez": "paroles-images-vitecz"
   },
-  "notices": [],
   "films": [
     {
       "title": "La paga",
@@ -3013,5 +3012,6 @@
       "day_order": 2
     }
   ],
-  "_lbSlugsSource": "https://letterboxd.com/cinemancia/list/cinemancia-2025/detail/ — extraído via Chrome, NO inferir slugs"
+  "_lbSlugsSource": "https://letterboxd.com/cinemancia/list/cinemancia-2025/detail/ — extraído via Chrome, NO inferir slugs",
+  "prioLimit": 5
 }

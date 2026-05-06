@@ -107,7 +107,6 @@
     "JUE 30": "Jueves 30"
   },
   "prioLimit": 7,
-  "festivalPosterUrl": "",
   "films": [
     {
       "title": "Belén",
@@ -927,7 +926,6 @@
   },
   "transport": "transit",
   "_venue_rule": "REGLA: short == nombre completo de la sede, siempre. Sin abreviaciones, sin excepciones. Si no cabe en el UI, se achica la fuente.",
-  "notices": [],
   "config": {
     "name": "AFF 2026",
     "shortName": "ALTERNATIVA",

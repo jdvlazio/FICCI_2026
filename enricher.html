@@ -105,6 +105,13 @@ const TMDB_BASE = 'https://api.themoviedb.org/3';
 const TMDB_IMG  = 'https://image.tmdb.org/t/p/w185';
 const REPO_RAW  = 'https://raw.githubusercontent.com/jdvlazio/Otrofestiv.app/main/festivals';
 
+// ⚠️  REGISTRO DE FESTIVALES — ACTUALIZAR AQUÍ AL AGREGAR UN FESTIVAL EN FESTIVAL_CONFIG
+// Este registro es independiente de index.html por diseño: el enricher es una herramienta
+// de dev que corre en el browser y no tiene acceso al runtime de la app.
+// Al agregar un festival nuevo:
+//   1. Agregar entrada en FESTIVAL_CONFIG (index.html)
+//   2. Agregar entrada aquí con el archivo JSON y los campos que necesita enriquecer
+// Campos disponibles para `needs`: 'synopsis' | 'director' | 'year' | 'poster'
 const FESTIVALS = {
   ficci65:       { file:'ficci-65.json',      name:'FICCI 65',        needs:['director','year'] },
   aff2026:       { file:'aff-2026.json',       name:'AFF 2026',        needs:['synopsis'] },
