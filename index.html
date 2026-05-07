@@ -2253,7 +2253,7 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:var(--t
 </head>
 <body>
 <!-- Splash siempre visible — se pre-selecciona el festival en curso por fecha. -->
-<div id="otrofestiv-splash" role="dialog" aria-label="${t('aria_bienvenida')}" aria-modal="true">
+<div id="otrofestiv-splash" role="dialog" aria-label="Bienvenida" aria-modal="true">
   <div class="splash-wordmark">Otro<span>festiv</span></div>
   <div class="splash-action">
   <div class="splash-selector">
@@ -2269,7 +2269,7 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:var(--t
       <!-- Generado dinámicamente por _renderSplashDropdown() en init -->
     </div>
   </div>
-  <button class="splash-enter-btn" onclick="dismissSplash()">${t('auth_entrar')}</button>
+  <button class="splash-enter-btn" onclick="dismissSplash()">Entrar</button>
   </div>
   <div class="splash-tagline">
     <div class="splash-tagline-line">Más de lo que crees</div>
@@ -2282,23 +2282,23 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:var(--t
 <div class="av-sheet-overlay" id="av-sheet-overlay" style="display:none" onclick="if(event.target===this)closeAvSheet()">
   <div class="av-sheet">
     <div class="av-sheet-handle"></div>
-    <div class="av-sheet-title">${t('misc_no_disp')}</div>
+    <div class="av-sheet-title">No disponible</div>
     <div class="av-sheet-lbl">Día</div>
     <div class="av-day-chips" id="av-day-chips"></div>
-    <div class="av-sheet-lbl">${t('av_tipo')}</div>
+    <div class="av-sheet-lbl">Tipo</div>
     <div class="av-type-row">
-      <button class="av-type-btn selected" id="av-type-hours" onclick="setAvType('hours')">${t('av_horas')}</button>
-      <button class="av-type-btn" id="av-type-full" onclick="setAvType('full')">${t('av_todo_el_dia')}</button>
+      <button class="av-type-btn selected" id="av-type-hours" onclick="setAvType('hours')">Horas específicas</button>
+      <button class="av-type-btn" id="av-type-full" onclick="setAvType('full')">Todo el día</button>
     </div>
     <div id="av-time-section">
-      <div class="av-sheet-lbl">${t('av_horario')}</div>
+      <div class="av-sheet-lbl">Horario</div>
       <div class="av-time-row">
         <select class="av-time-sel" id="av-sheet-from"></select>
         <span style="color:var(--gray)">–</span>
         <select class="av-time-sel" id="av-sheet-to"></select>
       </div>
     </div>
-    <button class="av-sheet-confirm" onclick="confirmAvBlock()">${t('av_confirmar')}</button>
+    <button class="av-sheet-confirm" onclick="confirmAvBlock()">Confirmar</button>
   </div>
 </div>
 
@@ -2307,7 +2307,7 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:var(--t
 <div class="hdr">
   <div class="hdr-top">
     <h1 class="hdr-wordmark">Otro<span>festiv</span></h1>
-    <button class="auth-btn" id="auth-btn" onclick="openAuthSheet()" title=t('aria_sincronizar') aria-label="${t('aria_cuenta')}">
+    <button class="auth-btn" id="auth-btn" onclick="openAuthSheet()" title="Sincronizar entre dispositivos" aria-label="Cuenta">
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z"/></svg>
       <span class="auth-avatar" id="auth-avatar"></span>
       <span class="sync-dot" id="sync-dot"></span>
@@ -2322,7 +2322,7 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:var(--t
     </div>
     <div class="hdr-fest-chev"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5"/></svg></div>
   </div>
-  <button class="hdr-search-icon" id="hdr-search-icon" onclick="searchOpen()" aria-label="${t('aria_buscar')}">
+  <button class="hdr-search-icon" id="hdr-search-icon" onclick="searchOpen()" aria-label="Buscar">
     <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"/></svg>
   </button>
 </div>
@@ -2330,7 +2330,7 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:var(--t
 
 </div>
 </div><!-- /topbar -->
-<div class="main-nav" id="main-nav" role="navigation" aria-label="${t('aria_nav_ppal')}">
+<div class="main-nav" id="main-nav" role="navigation" aria-label="Navegación principal">
   <button class="main-nav-tab on" id="mnav-cartelera" onclick="{const _ph=_getProgramaPhase();programaSubMode=_ph.default;switchMainNav('mnav-cartelera');showDayView();}">
     <span class="main-nav-ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="2.18"/><line x1="7" y1="2" x2="7" y2="22"/><line x1="17" y1="2" x2="17" y2="22"/><line x1="2" y1="12" x2="22" y2="12"/><line x1="2" y1="7" x2="7" y2="7"/><line x1="2" y1="17" x2="7" y2="17"/><line x1="17" y1="17" x2="22" y2="17"/><line x1="17" y1="7" x2="22" y2="7"/></svg></span>
     <span class="main-nav-lbl" id="lbl-nav-programa">PROGRAMA</span>
@@ -2370,14 +2370,14 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:var(--t
   </div>
   <div class="pv-question">
     <div class="pv-question-text">¿La calificás?</div>
-    <div class="pv-question-hint" id="pv-hint">${t('misc_deslizar')}</div>
+    <div class="pv-question-hint" id="pv-hint">Deslizá sobre las estrellas</div>
   </div>
   <div class="pv-stars-area">
     <div class="pv-stars-row" id="pv-stars-row"></div>
     <input type="range" class="pv-range" id="pv-range" min="0" max="10" step="1" value="0">
   </div>
   <div class="pv-actions">
-    <button class="pv-btn-save" id="pv-btn-save" disabled onclick="savePVRating()">${t('misc_guardar')}</button>
+    <button class="pv-btn-save" id="pv-btn-save" disabled onclick="savePVRating()">Guardar</button>
     <button class="pv-btn-later" onclick="closePVRating()">Después</button>
   </div>
 </div>
@@ -2412,7 +2412,7 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:var(--t
   <div class="conflict-actions">
     <button class="conflict-btn-replace" id="cs-replace-btn">Añadir</button>
     <button class="conflict-btn-keep" id="cs-keep-btn">Conservar</button>
-    <button class="conflict-btn-cancel" onclick="closeConflictSheet()">${t('search_cancelar')}</button>
+    <button class="conflict-btn-cancel" onclick="closeConflictSheet()">Cancelar</button>
   </div>
 </div>
 <!-- ── Prio Limit Sheet ── -->
@@ -2432,7 +2432,7 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:var(--t
     </div>
   </div>
   <div class="prio-limit-list" id="prio-limit-list"></div>
-  <button class="prio-limit-cancel" onclick="closePrioLimit()">${t('search_cancelar')}</button>
+  <button class="prio-limit-cancel" onclick="closePrioLimit()">Cancelar</button>
 </div>
 <!-- ── Plan Confirm Sheet ── -->
 <div class="plan-confirm-overlay" id="plan-confirm-overlay" onclick="closePlanConfirm()"></div>
@@ -2469,16 +2469,16 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:var(--t
 <div class="carta-search-wrap" id="carta-search-wrap">
   <div class="carta-search-field">
     <span class="carta-search-ico"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"/></svg></span>
-    <input type="text" id="carta-search-input" class="carta-search" placeholder="${t('search_placeholder')}" oninput="onCartaSearch()" autocomplete="off" autocorrect="off" autocapitalize="off">
+    <input type="text" id="carta-search-input" class="carta-search" placeholder="Buscar…" oninput="onCartaSearch()" autocomplete="off" autocorrect="off" autocapitalize="off">
     <button class="carta-search-clear" id="carta-search-clear" onclick="clearCartaSearch()"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg></button>
   </div>
   <div id="carta-search-results" class="carta-search-results"></div>
 </div>
 <!-- ── Programa: barra de modos Explorar/Hoy/Mañana ── -->
 <div class="programa-mode-bar" id="programa-mode-bar" style="display:none">
-  <button class="pmode-tab on" id="pmode-explorar" onclick="setProgramaMode('explorar')">${t('bar_explorar')}</button>
-  <button class="pmode-tab" id="pmode-hoy" onclick="setProgramaMode('hoy')">${t('bar_hoy')}</button>
-  <button class="pmode-tab" id="pmode-manana" onclick="setProgramaMode('manana')">${t('bar_manana')}</button>
+  <button class="pmode-tab on" id="pmode-explorar" onclick="setProgramaMode('explorar')">Explorar</button>
+  <button class="pmode-tab" id="pmode-hoy" onclick="setProgramaMode('hoy')">Hoy</button>
+  <button class="pmode-tab" id="pmode-manana" onclick="setProgramaMode('manana')">Mañana</button>
   <div class="pmode-spacer"></div>
   <div class="pmode-controls" style="position:relative">
     <button class="seccion-btn" id="seccion-btn" onclick="seccionToggle()">
@@ -2490,7 +2490,7 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:var(--t
       <span id="lugar-lbl">Lugar</span>
     </button>
     <!-- single toggle btn — icono refleja estado actual -->
-    <button class="view-toggle-btn" id="view-toggle-btn" onclick="toggleProgramaView()" title=t('aria_cambiar_vista') aria-label=t('aria_cambiar_vista')>
+    <button class="view-toggle-btn" id="view-toggle-btn" onclick="toggleProgramaView()" title="Cambiar vista" aria-label="Cambiar vista">
       <svg id="view-toggle-ico-grid" width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
       <svg id="view-toggle-ico-list" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" style="display:none"><line x1="4" y1="6" x2="20" y2="6"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="18" x2="20" y2="18"/></svg>
     </button>
@@ -2540,7 +2540,7 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:var(--t
   <div class="carta-search-wrap">
     <div class="carta-search-field">
       <span class="carta-search-ico"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"/></svg></span>
-      <input type="text" id="ag-search-input" class="carta-search" placeholder="${t('search_placeholder')}" oninput="onSearchInput()" onblur="closeSearch()" autocomplete="off" autocapitalize="off">
+      <input type="text" id="ag-search-input" class="carta-search" placeholder="Buscar…" oninput="onSearchInput()" onblur="closeSearch()" autocomplete="off" autocapitalize="off">
     </div>
     <div id="ag-search-results" class="ag-search-results"></div>
   </div>
@@ -2568,7 +2568,7 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:var(--t
 
 <div class="ag-view" id="ag-view"></div>
 
-<script>
+<script data-i18n="plan_sincroniza">
 // ── i18n — sistema de traducción ─────────────────────────────────────────
 // Idioma determinado por preferencia del usuario, persistido en localStorage.
 // Cambio de idioma: setLang(code) escribe localStorage y recarga la app.
@@ -2851,7 +2851,7 @@ function setLang(code){
 // ── Fin i18n ──────────────────────────────────────────────────────────────
 
 function _applyI18nDOM(){
-  // Patch static HTML labels that can't use t() directly
+  // 1. Nav labels
   const ids={
     'lbl-nav-programa':'nav_programa',
     'lbl-nav-intereses':'nav_intereses',
@@ -2861,6 +2861,24 @@ function _applyI18nDOM(){
   for(const[id,key] of Object.entries(ids)){
     const el=document.getElementById(id);
     if(el) el.textContent=t(key);
+  }
+  // 2. data-i18n elements — translate textContent
+  document.querySelectorAll('[data-i18n]').forEach(el=>{
+    const key=el.getAttribute('data-i18n');
+    const val=t(key);
+    if(val && val!==key) el.textContent=val;
+  });
+  // 3. Aria-labels and placeholders (accessibility)
+  const attrMap={
+    'aria_bienvenida':['[aria-label="Bienvenida"]','ariaLabel'],
+    'aria_cuenta':['[aria-label="Cuenta"]','ariaLabel'],
+    'aria_buscar':['[aria-label="Buscar"]','ariaLabel'],
+    'aria_nav_ppal':['[aria-label="Navegación principal"]','ariaLabel'],
+  };
+  for(const[key,[sel,attr]] of Object.entries(attrMap)){
+    document.querySelectorAll(sel).forEach(el=>{
+      if(attr==='ariaLabel') el.setAttribute('aria-label',t(key));
+    });
   }
   // Restore tab after lang switch
   const restoreTab=localStorage.getItem('otrofestiv_restore_tab');
@@ -3910,7 +3928,7 @@ function renderMiPlanCalendar(){
   const isPastVe=nowDayIdx>=0&&ve<nowDayIdx;
   const navHtml=`<div class="mplan-nav">
     <div class="mplan-nav-btn-wrap">
-      <button class="mplan-nav-btn" aria-label=t('aria_dia_ant') onclick="miPlanNav(-1)" ${vs===0?'disabled':''}><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5"/></svg></button>
+      <button class="mplan-nav-btn" aria-label="Día anterior" onclick="miPlanNav(-1)" ${vs===0?'disabled':''}><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5"/></svg></button>
     </div>
     <div class="mplan-nav-labels">
       <div class="mplan-nav-day${isPastVs?' past':''}" onclick="selectMiPlanDay(${vs})">
@@ -4549,7 +4567,7 @@ function renderAvDay(day){
 
   const pillsHtml=fullBlocked
     ?`<span class="av-pill full">${t('av_todo_el_dia')}</span>`
-    :visibleBlocks.map(b=>`<span class="av-pill">${b.from}–${b.to}<button class="av-pill-rm" aria-label=t('av_eliminar') onclick="removeBlock('${day}','${b.from}','${b.to}');event.stopPropagation()">×</button></span>`).join('');
+    :visibleBlocks.map(b=>`<span class="av-pill">${b.from}–${b.to}<button class="av-pill-rm" aria-label="Eliminar bloque" onclick="removeBlock('${day}','${b.from}','${b.to}');event.stopPropagation()">×</button></span>`).join('');
 
   // Inline form — always shows when addOpen, with 15-min slot dropdowns
   const timeOpts=`<option value="08:00">08:00</option><option value="08:15">08:15</option><option value="08:30">08:30</option><option value="08:45">08:45</option><option value="09:00">09:00</option><option value="09:15">09:15</option><option value="09:30">09:30</option><option value="09:45">09:45</option><option value="10:00">10:00</option><option value="10:15">10:15</option><option value="10:30">10:30</option><option value="10:45">10:45</option><option value="11:00">11:00</option><option value="11:15">11:15</option><option value="11:30">11:30</option><option value="11:45">11:45</option><option value="12:00">12:00</option><option value="12:15">12:15</option><option value="12:30">12:30</option><option value="12:45">12:45</option><option value="13:00">13:00</option><option value="13:15">13:15</option><option value="13:30">13:30</option><option value="13:45">13:45</option><option value="14:00">14:00</option><option value="14:15">14:15</option><option value="14:30">14:30</option><option value="14:45">14:45</option><option value="15:00">15:00</option><option value="15:15">15:15</option><option value="15:30">15:30</option><option value="15:45">15:45</option><option value="16:00">16:00</option><option value="16:15">16:15</option><option value="16:30">16:30</option><option value="16:45">16:45</option><option value="17:00">17:00</option><option value="17:15">17:15</option><option value="17:30">17:30</option><option value="17:45">17:45</option><option value="18:00">18:00</option><option value="18:15">18:15</option><option value="18:30">18:30</option><option value="18:45">18:45</option><option value="19:00">19:00</option><option value="19:15">19:15</option><option value="19:30">19:30</option><option value="19:45">19:45</option><option value="20:00">20:00</option><option value="20:15">20:15</option><option value="20:30">20:30</option><option value="20:45">20:45</option><option value="21:00">21:00</option><option value="21:15">21:15</option><option value="21:30">21:30</option><option value="21:45">21:45</option><option value="22:00">22:00</option><option value="22:15">22:15</option><option value="22:30">22:30</option><option value="22:45">22:45</option><option value="23:00">23:00</option><option value="23:15">23:15</option><option value="23:30">23:30</option><option value="23:45">23:45</option><option value="00:00">00:00</option><option value="00:15">00:15</option><option value="00:30">00:30</option><option value="00:45">00:45</option><option value="01:00">01:00</option>`;
@@ -4686,14 +4704,14 @@ function renderAvBlocks(){
       items.push(`<div class="av-block-item is-full">
         <span class="av-block-day">${lbl} ${num}</span>
         <span class="av-block-time">${t('av_todo_el_dia')}</span>
-        <button class="av-block-rm" onclick="toggleFullDay('${day}')" title=t('aria_quitar')>${ICONS.x}</button>
+        <button class="av-block-rm" onclick="toggleFullDay('${day}')" title="Quitar">${ICONS.x}</button>
       </div>`);
     } else {
       visible.forEach(b=>{
         items.push(`<div class="av-block-item">
           <span class="av-block-day">${lbl} ${num}</span>
           <span class="av-block-time">${b.from} – ${b.to}</span>
-          <button class="av-block-rm" onclick="removeBlock('${day}','${b.from}','${b.to}')" title=t('aria_quitar')>${ICONS.x}</button>
+          <button class="av-block-rm" onclick="removeBlock('${day}','${b.from}','${b.to}')" title="Quitar">${ICONS.x}</button>
         </div>`);
       });
     }
@@ -5080,7 +5098,7 @@ function renderPrioStrip(){
     const allPast=!festivalEnded()&&!FILMS.some(f=>f.title===t&&!screeningPassed(f));
     return`<div class="prio-chip${allPast?' past':''}">
       ${img}
-      <button class="prio-chip-rm" data-prio-title="${t.replace(/"/g,'&quot;')}" onclick="event.stopPropagation();togglePriority(this.dataset.prioTitle)" title=t('aria_quitar_prio')>${ICONS.x}</button>
+      <button class="prio-chip-rm" data-prio-title="${t.replace(/"/g,'&quot;')}" onclick="event.stopPropagation();togglePriority(this.dataset.prioTitle)" title="Quitar prioridad">${ICONS.x}</button>
       <div class="prio-chip-title">${short}${progSuffix?`<span class="poster-label-amber">${progSuffix}</span>`:''}</div>
     </div>`;
   }).join('');
@@ -5181,7 +5199,7 @@ function renderFilmListHTML(){
       </div>
       <div class="int-item-actions">
         <button class="int-prio-btn${isPrio?' on':''}" onclick="togglePriority('${safeT}');event.stopPropagation()" aria-label="Priorizar">★</button>
-        <button class="int-seen-btn${isWatched?' on':''}" onclick="toggleWatched('${safeT}',event)" aria-label=t('aria_marcar_vista')>✓</button>
+        <button class="int-seen-btn${isWatched?' on':''}" onclick="toggleWatched('${safeT}',event)" aria-label="Marcar vista">✓</button>
       </div>
     </div>`;
   }
@@ -5211,7 +5229,7 @@ function renderFilmListHTML(){
         ${ratingHtml}
       </div>
       <div class="int-item-actions">
-        <button class="int-seen-btn on" onclick="toggleWatched('${safeT}',event)" aria-label=t('aria_quitar_vista')>✓</button>
+        <button class="int-seen-btn on" onclick="toggleWatched('${safeT}',event)" aria-label="Quitar de vistas">✓</button>
       </div>
     </div>`;
   }
@@ -5482,7 +5500,7 @@ function renderNextStrip(schedule){
       delayHtml=`<div class="delay-row">
         <span class="delay-lbl">+${delayMins} min</span>
         ${[10,15,20,30].map(m=>`<button class="delay-btn" onclick="setDelay('${safeT}','${item.day}','${item.time}',${m})" title="+${m} min">+${m}</button>`).join('')}
-        <button class="delay-clear" onclick="undoDelay('${safeT}','${item.day}','${item.time}')" title=t('aria_deshacer')>${ICONS.undo}</button>
+        <button class="delay-clear" onclick="undoDelay('${safeT}','${item.day}','${item.time}')" title="Deshacer último">${ICONS.undo}</button>
         <button class="delay-clear" onclick="clearDelay('${safeT}','${item.day}','${item.time}')" title="Quitar retraso">${ICONS.x}</button>
       </div>`;
     } else {
@@ -5914,7 +5932,7 @@ function renderContextualHeader(){
         delayHtml=`<div class="delay-row">
           <span class="delay-lbl">+${delayMins} min</span>
           ${[10,15,20,30].map(m=>`<button class="delay-btn" onclick="setDelay('${safeT}','${next.day}','${next.time}',${m})" title="+${m} min">+${m}</button>`).join('')}
-          <button class="delay-clear" onclick="undoDelay('${safeT}','${next.day}','${next.time}')" title=t('aria_deshacer')>${ICONS.undo}</button>
+          <button class="delay-clear" onclick="undoDelay('${safeT}','${next.day}','${next.time}')" title="Deshacer último">${ICONS.undo}</button>
           <button class="delay-clear" onclick="clearDelay('${safeT}','${next.day}','${next.time}')" title="Quitar retraso">${ICONS.x}</button>
         </div>`;
         // Warning si el retraso come el buffer
@@ -6074,7 +6092,7 @@ function _renderSavedAgendaHTML(){
   const totalDays=Math.max(1,DAY_KEYS.length);
   const viewedCount=all.filter(s=>watched.has(s._title)).length;
   const progressPct=dayIdx>=0?Math.round((dayIdx/(totalDays-1))*100):0;
-  const _mpSwitch=`<button class="mplan-act-btn primary" onclick="_scrollToMplanDetail()" title=t('aria_ir_detalle')>${ICONS.chevronD} Ver día</button>`;
+  const _mpSwitch=`<button class="mplan-act-btn primary" onclick="_scrollToMplanDetail()" title="Ir al detalle del día">${ICONS.chevronD} Ver día</button>`;
   const progressBar=currentDayNum?`<div class="row-sm festival-progress">
     <div style="flex:1">
       <div class="festival-progress-text"><span>Día <b>${currentDayNum}</b> de ${totalDays}</span><span style="color:var(--amber)">${ICONS.check} ${viewedCount} ${viewedCount===1?'vista':'vistas'}</span></div>
@@ -6242,7 +6260,7 @@ function _promptDisplayName(onSave){
     <div class="sheet-handle-bar"></div>
     <div class="sheet-title">¿Cómo querés aparecer en tu plan?</div>
     <div class="sheet-subtitle">Aparecerá en la imagen cuando la compartas.</div>
-    <input class="sheet-input" id="dname-input" type="text" maxlength="30" placeholder="${t('auth_nombre')}" autocomplete="name"
+    <input class="sheet-input" id="dname-input" type="text" maxlength="30" placeholder="Tu nombre" autocomplete="name"
      >
     <button class="sheet-cta" id="dname-save">Guardar y compartir</button>
   </div>`;
@@ -10049,7 +10067,7 @@ function _posterErr(img){
     <div id="auth-sheet-step1">
       <div class="auth-sheet-title">Guardá tu plan</div>
       <div class="auth-sheet-sub">Ingresa tu email y te enviamos un código de 6 dígitos. Sin contraseña. Tu plan se sincroniza entre todos tus dispositivos.</div>
-      <input class="auth-email-inp" id="auth-email-inp" type="email" placeholder="${t('auth_email')}" autocomplete="email" onkeydown="if(event.key==='Enter')submitAuthEmail()">
+      <input class="auth-email-inp" id="auth-email-inp" type="email" placeholder="tu@email.com" autocomplete="email" onkeydown="if(event.key==='Enter')submitAuthEmail()">
       <button class="auth-send-btn" id="auth-send-btn" onclick="submitAuthEmail()">Enviar código</button>
       <div class="auth-msg" id="auth-msg"></div>
       <span class="auth-cancel" onclick="closeAuthSheet()">Cancelar</span>
@@ -10058,14 +10076,14 @@ function _posterErr(img){
       <div class="auth-sheet-title">Revisá tu email</div>
       <div class="auth-sheet-sub">Enviamos un código de 6 dígitos a <span id="auth-otp-email" style="color:var(--white)"></span></div>
       <input class="pin-display auth-email-inp" id="auth-otp-inp" type="number" placeholder="123456" inputmode="numeric" maxlength="6" onkeydown="if(event.key==='Enter')submitOTP()"><!-- 16px: prevents iOS auto-zoom -->
-      <button class="auth-send-btn" id="auth-otp-btn" onclick="submitOTP()">${t('av_confirmar')}</button>
+      <button class="auth-send-btn" id="auth-otp-btn" onclick="submitOTP()">Confirmar</button>
       <div class="auth-msg" id="auth-otp-msg"></div>
       <span class="auth-cancel" onclick="closeAuthSheet();document.getElementById('auth-sheet-step1').style.display='block';document.getElementById('auth-sheet-step2').style.display='none'">Cancelar</span>
     </div>
     <div id="auth-sheet-step3" style="display:none">
       <div class="auth-sheet-title">Tu cuenta</div>
       <div class="auth-sheet-sub" id="auth-signed-email" style="color:var(--white)"></div>
-      <div class="mt-2 auth-sheet-sub">${t('plan_sincroniza')}</div>
+      <div class="mt-2 auth-sheet-sub">Tu plan se sincroniza automáticamente entre todos tus dispositivos.</div>
       <button class="auth-signout-btn" onclick="signOutAndClose()">Cerrar sesión</button>
       <span class="auth-cancel" onclick="closeAuthSheet()">Cancelar</span>
     </div>
@@ -10080,7 +10098,7 @@ function _posterErr(img){
   <!-- Generado dinámicamente por _renderFestivalSelector() en init -->
   <div id="fs-festival-list"></div>
   <div class="fs-divider"></div>
-  <div class="fs-section-lbl">${t('misc_proxi')}</div>
+  <div class="fs-section-lbl">Próximamente</div>
   <div class="fs-soon-row">
     <div class="fs-soon-dot"></div>
     <div class="fs-soon-info">
@@ -10094,7 +10112,7 @@ function _posterErr(img){
 
 
 
-<button id="back-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label=t('aria_volver_arriba')>↑</button>
+<button id="back-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Volver arriba">↑</button>
 
 <!-- ── SEARCH OVERLAY ── position:fixed, cubre pantalla desde topbar ── -->
 <div id="search-overlay">
@@ -10104,9 +10122,9 @@ function _posterErr(img){
     </button>
     <div class="search-input-wrap">
       <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"/></svg>
-      <input type="search" id="search-input" placeholder="${t('search_placeholder')}" oninput="searchQuery()" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" incremental>
+      <input type="search" id="search-input" placeholder="Buscar…" oninput="searchQuery()" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" incremental>
     </div>
-    <button class="search-cancel" onclick="searchClose()">${t('search_cancelar')}</button>
+    <button class="search-cancel" onclick="searchClose()">Cancelar</button>
   </div>
   <div id="search-results"></div>
 </div>
