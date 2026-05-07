@@ -2422,7 +2422,7 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:var(--t
   <div class="conflict-actions">
     <button class="conflict-btn-replace" id="cs-replace-btn">Añadir</button>
     <button class="conflict-btn-keep" id="cs-keep-btn">Conservar</button>
-    <button class="conflict-btn-cancel" onclick="closeConflictSheet()">Cancelar</button>
+    <button class="conflict-btn-cancel" onclick="closeConflictSheet()" data-i18n="misc_cancelar">Cancelar</button>
   </div>
 </div>
 <!-- ── Prio Limit Sheet ── -->
@@ -2442,7 +2442,7 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:var(--t
     </div>
   </div>
   <div class="prio-limit-list" id="prio-limit-list"></div>
-  <button class="prio-limit-cancel" onclick="closePrioLimit()">Cancelar</button>
+  <button class="prio-limit-cancel" onclick="closePrioLimit()" data-i18n="misc_cancelar">Cancelar</button>
 </div>
 <!-- ── Plan Confirm Sheet ── -->
 <div class="plan-confirm-overlay" id="plan-confirm-overlay" onclick="closePlanConfirm()"></div>
@@ -2665,7 +2665,6 @@ const _I18N = {
     "toast_calif_elim": "Calificación eliminada",
     "toast_horario_lib": "Horario liberado — podrían caber más títulos",
     "toast_conexion": "No se pudo cargar el festival. Verificá tu conexión.",
-    "toast_sin_plan": "No tenés un plan guardado",
     "notice_funcion_canc": "Función cancelada · Pendiente nueva fecha",
     "notice_extension": "La función puede extenderse",
     "notice_fest_term": "El festival ya terminó",
@@ -2795,7 +2794,6 @@ const _I18N = {
     "toast_calif_elim": "Rating removed",
     "toast_horario_lib": "Time slot freed — more films may fit",
     "toast_conexion": "Couldn't load the festival. Check your connection.",
-    "toast_sin_plan": "No saved plan",
     "notice_funcion_canc": "Screening cancelled · New date pending",
     "notice_extension": "Screening may run long",
     "notice_fest_term": "The festival has ended",
@@ -4470,7 +4468,7 @@ function _showModal(title,body,label,cb,cls,cancelLabel){
     <div class="conflict-modal-hdr">${title}</div>
     <div class="conflict-modal-body">${body}</div>
     <div class="conflict-modal-btns">
-      <button class="conflict-modal-btn cancel" id="cm-c">${cancelLabel||'Cancelar'}</button>
+      <button class="conflict-modal-btn cancel" id="cm-c">${cancelLabel||t('misc_cancelar')}</button>
       <button class="conflict-modal-btn ${cls}" id="cm-ok">${label}</button>
     </div></div>`;
   document.body.appendChild(m);
@@ -10099,7 +10097,7 @@ function _posterErr(img){
       <input class="auth-email-inp" id="auth-email-inp" type="email" placeholder="tu@email.com" data-i18n-ph="auth_email" autocomplete="email" onkeydown="if(event.key==='Enter')submitAuthEmail()">
       <button class="auth-send-btn" id="auth-send-btn" onclick="submitAuthEmail()">Enviar código</button>
       <div class="auth-msg" id="auth-msg"></div>
-      <span class="auth-cancel" onclick="closeAuthSheet()">Cancelar</span>
+      <span class="auth-cancel" onclick="closeAuthSheet()" data-i18n="misc_cancelar">Cancelar</span>
     </div>
     <div id="auth-sheet-step2" style="display:none">
       <div class="auth-sheet-title">Revisá tu email</div>
@@ -10107,14 +10105,14 @@ function _posterErr(img){
       <input class="pin-display auth-email-inp" id="auth-otp-inp" type="number" placeholder="123456" inputmode="numeric" maxlength="6" onkeydown="if(event.key==='Enter')submitOTP()"><!-- 16px: prevents iOS auto-zoom -->
       <button class="auth-send-btn" id="auth-otp-btn" onclick="submitOTP()">Confirmar</button>
       <div class="auth-msg" id="auth-otp-msg"></div>
-      <span class="auth-cancel" onclick="closeAuthSheet();document.getElementById('auth-sheet-step1').style.display='block';document.getElementById('auth-sheet-step2').style.display='none'">Cancelar</span>
+      <span class="auth-cancel" onclick="closeAuthSheet();document.getElementById('auth-sheet-step1').style.display='block';document.getElementById('auth-sheet-step2').style.display='none'" data-i18n="misc_cancelar">Cancelar</span>
     </div>
     <div id="auth-sheet-step3" style="display:none">
       <div class="auth-sheet-title">Tu cuenta</div>
       <div class="auth-sheet-sub" id="auth-signed-email" style="color:var(--white)"></div>
       <div class="mt-2 auth-sheet-sub"><span data-i18n="plan_sincroniza">Tu plan se sincroniza automáticamente entre todos tus dispositivos.</div>
       <button class="auth-signout-btn" onclick="signOutAndClose()">Cerrar sesión</button>
-      <span class="auth-cancel" onclick="closeAuthSheet()">Cancelar</span>
+      <span class="auth-cancel" onclick="closeAuthSheet()" data-i18n="misc_cancelar">Cancelar</span>
     </div>
   </div>
 </div>
@@ -10153,7 +10151,7 @@ function _posterErr(img){
       <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"/></svg>
       <input type="search" id="search-input" placeholder="Buscar…" data-i18n-ph="search_placeholder" oninput="searchQuery()" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" incremental>
     </div>
-    <button class="search-cancel" onclick="searchClose()">Cancelar</button>
+    <button class="search-cancel" onclick="searchClose()" data-i18n="misc_cancelar">Cancelar</button>
   </div>
   <div id="search-results"></div>
 </div>

@@ -369,11 +369,6 @@
     "en": "Couldn't load the festival. Check your connection.",
     "ctx": "Network error"
   },
-  "toast_sin_plan": {
-    "es": "No tenés un plan guardado",
-    "en": "No saved plan",
-    "ctx": "Mi Plan toast"
-  },
   "notice_funcion_canc": {
     "es": "Función cancelada · Pendiente nueva fecha",
     "en": "Screening cancelled · New date pending",
