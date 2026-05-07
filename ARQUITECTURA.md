@@ -625,3 +625,19 @@ El sistema refleja automáticamente el cambio en `travelWarn()`.
 
 **Regla para componentes nuevos:** si un label de día/hora abre una fila en flex, definir `width` o `min-width` fijo — ya sea en el label o en su contenedor — antes de hacer PR. Validar visualmente con el día más ancho del festival (`MIÉ` tiene acento, es el más ancho en Plus Jakarta Sans).
 
+## Regla: transformaciones masivas de código
+
+**Nunca usar regex sobre index.html completo para reemplazar patrones estructurales.**
+
+index.html mezcla CSS, JS y HTML en ~9.700 líneas. Un regex que busca `<[^>]+style="..."[^>]*>` puede matchear el `<` de una comparación JS (`fStart<nowMin`) como inicio de tag HTML. El resultado es corrupción silenciosa de JS que pasa el syntax check solo si el error está en un template literal.
+
+**Regla:** cualquier transformación de más de 10 ocurrencias que toque atributos HTML usa un parser (`beautifulsoup4` en Python, `cheerio` en Node), no regex.
+
+**Regla iOS Safari:** antes de commitear cualquier cambio que use `overflow`, `position:sticky`, `touch-action`, `overscroll-behavior`, o `-webkit-*`, verificar en dispositivo físico iOS. Estas propiedades tienen comportamiento diferente a Chrome DevTools mobile.
+
+Propiedades con comportamiento documentado distinto en iOS Safari:
+- `overscroll-behavior:contain` sin height constraint → consume scroll events, ventana no scrollea
+- `position:sticky` dentro de `overflow:auto` sin height → no stickea
+- `AbortSignal.timeout()` → no disponible en Safari < 16, fetch cuelga indefinidamente
+- `100vh` → incluye chrome del browser en Safari < 15 (usar `100dvh`)
+

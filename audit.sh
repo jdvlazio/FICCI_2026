@@ -106,6 +106,20 @@ else
 fi
 echo ""
 
+# ── programa-list: no overflow-y sin height constraint ────────────────────────
+# Si overflow-y:auto aparece en .programa-list sin height/max-height,
+# el scroll en lista mode queda roto en iOS Safari.
+echo "▸ programa-list scroll (no overflow-y:auto sin height):"
+RESULT=$(grep -oP "\.programa-list\{[^}]*overflow-y:auto[^}]*\}" "$FILE" | grep -v "height:")
+if [ -z "$RESULT" ]; then
+  echo "  ✓ Sin issues"
+else
+  echo "  ✗ .programa-list tiene overflow-y:auto — verificar que tiene height constraint"
+  echo "$RESULT" | sed 's/^/  /'
+  PASS=false
+fi
+echo ""
+
 # ── Resultado ────────────────────────────────────────────────────────────────
 if [ "$PASS" = true ]; then
   echo "✅ Todo OK — sistema de tokens consistente."
