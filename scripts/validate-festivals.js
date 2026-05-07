@@ -171,6 +171,7 @@ function validateFestival(fname, data) {
 
   // ── RULE 8: venues GPS completeness ─────────────────────────────────────────
   const venuesDef = data.venues || {};
+  const venueKeys = Object.keys(venuesDef);
   for (const [vname, vdata] of Object.entries(venuesDef)) {
     const hasLat = vdata.lat !== null && vdata.lat !== undefined;
     const hasLng = vdata.lng !== null && vdata.lng !== undefined;
@@ -184,6 +185,30 @@ function validateFestival(fname, data) {
     }
     if (!hasLat && !hasLng) {
       warnings.push(`venue "${vname}": sin coordenadas GPS — travelWarn usará tiempo por defecto`);
+    }
+  }
+
+  // ── RULE 9: film.venue match en venues{} ─────────────────────────────────
+  // Garantiza que el worker (exact match) y el main thread (prefix) coincidan
+  const sortedKeys = [...venueKeys].sort((a,b) => b.length - a.length);
+  function findVenueKey(v) {
+    if (venuesDef[v]) return v;
+    return sortedKeys.find(k => v.startsWith(k) || v.includes(k)) || null;
+  }
+  if (venueKeys.length > 0) {
+    for (const film of data.films || []) {
+      const v = film.venue;
+      if (!v) continue;
+      if (!venuesDef[v]) {
+        // No exact match — check prefix
+        const prefixMatch = findVenueKey(v);
+        if (!prefixMatch) {
+          errors.push(`"${(film.title||'?').slice(0,40)}": venue "${v}" no encontrado en venues{}`);
+          totalErrors++;
+        } else {
+          warnings.push(`"${(film.title||'?').slice(0,40)}": venue "${v}" → prefix match a "${prefixMatch}" (worker usará prefix match)`);
+        }
+      }
     }
   }
 

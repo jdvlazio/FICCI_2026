@@ -6837,9 +6837,16 @@ function _festDate(dateStr,time){return new Date(dateStr+'T'+time+':00'+TZ_OFFSE
 function simNow(){return SIM_TIME?new Date(SIM_TIME):new Date();}
 function festivalEnded(){return simNow()>new Date(FESTIVAL_END_TS);}
 
+function _workerFindCoords(v){
+  if(!_venueCoords) return null;
+  if(_venueCoords[v]) return _venueCoords[v];
+  // Prefix match — idéntico al main thread para consistencia
+  const keys=Object.keys(_venueCoords).sort((a,b)=>b.length-a.length);
+  const k=keys.find(k=>v.startsWith(k)||v.includes(k));
+  return k?_venueCoords[k]:null;
+}
 function venueTravelMins(v1,v2){
-  if(!_venueCoords||!_venueCoords[v1]||!_venueCoords[v2]) return 0;
-  const c1=_venueCoords[v1],c2=_venueCoords[v2];
+  const c1=_workerFindCoords(v1),c2=_workerFindCoords(v2);
   if(!c1||!c2) return 0;
   const dlat=(c1.lat-c2.lat)*111,dlon=(c1.lng-c2.lng)*111*Math.cos(c1.lat*Math.PI/180);
   const km=Math.sqrt(dlat*dlat+dlon*dlon);
