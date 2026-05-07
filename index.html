@@ -3083,6 +3083,16 @@ function _applyI18nDOM(){
     'auth-btn'        :['aria_sincronizar',['title']],
     'back-top'        :['aria_volver_arriba',['ariaLabel']],
   };
+  // Prio-limit static HTML elements — patch on init and lang switch
+  const _prioElIds={
+    'prio-limit-ya-tenes-txt':'plan_ya_tenes_prio',
+    'prio-limit-prio-word':'misc_prioridades',
+    'prio-limit-quieres':'plan_quieres_prio',
+  };
+  for(const[id,key] of Object.entries(_prioElIds)){
+    const el=document.getElementById(id);
+    if(el) el.textContent=t(key);
+  }
   for(const[id,[key,attrs]] of Object.entries(ariaIds)){
     const el=document.getElementById(id);
     if(!el) continue;
