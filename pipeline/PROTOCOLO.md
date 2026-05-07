@@ -80,6 +80,8 @@ Abrir `otrofestiv.app/enricher.html`, cargar los films, correr TMDB automáticam
 
 > Sin `venues{}`, el algoritmo de planificación calcula tiempo de traslado = 0 entre todas las sedes. Para festivales con sede única (o sedes en el mismo predio) esto es correcto. Para festivales con sedes en distintos barrios o ciudades, es imprescindible.
 
+> ⚠️ **Regla GPS — BLOQUEANTE:** cada venue debe tener `lat` **y** `lng`. Un venue con solo uno de los dos campos es equivalente a no tener coordenadas (el app usa el tiempo por defecto) y bloquea el CI. Verificar siempre con `node scripts/validate-festivals.js` antes de commit.
+
 ### Paso 3.5 · Generar entrada FESTIVAL_CONFIG
 
 ```bash

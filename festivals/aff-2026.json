@@ -805,7 +805,8 @@
       "genre": "Drama",
       "synopsis": "Dos amigos de la infancia de un pequeño pueblo del norte de India persiguen un trabajo policial que les promete dignidad. Pero la desesperación amenaza el vínculo que los une.",
       "tmdb_id": 1227739,
-      "lb_slug": "homebound-2025"
+      "lb_slug": "homebound-2025",
+      "lbSlug": "homebound-2025"
     },
     {
       "title": "Un fantasma para servirte",
@@ -895,33 +896,38 @@
       "lat": 6.2338,
       "lon": -75.5733,
       "city": "Medellín",
-      "address": "Carrera 44 #19A-100, Ciudad del Río"
+      "address": "Carrera 44 #19A-100, Ciudad del Río",
+      "lng": -75.5697
     },
     "MAMM · Plazoleta": {
       "short": "MAMM · Plazoleta",
       "lat": 6.2338,
       "lon": -75.5733,
-      "city": "Medellín"
+      "city": "Medellín",
+      "lng": -75.5697
     },
     "Colombo Americano": {
       "short": "Colombo Americano",
       "lat": 6.2592,
       "lon": -75.568,
       "city": "Medellín",
-      "address": "Calle 43 #25-30"
+      "address": "Calle 43 #25-30",
+      "lng": -75.5682
     },
     "Industry Days": {
       "short": "Industry Days",
       "lat": 6.2338,
       "lon": -75.5733,
-      "city": "Medellín"
+      "city": "Medellín",
+      "lng": -75.5697
     },
     "Cineprox Las Américas": {
       "short": "Cineprox Las Américas",
       "lat": 6.2504,
       "lon": -75.58,
       "city": "Medellín",
-      "address": "Diagonal 75B #2A-120"
+      "address": "Diagonal 75B #2A-120",
+      "lng": -75.5892
     }
   },
   "transport": "transit",

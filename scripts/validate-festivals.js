@@ -169,6 +169,24 @@ function validateFestival(fname, data) {
     }
   }
 
+  // ── RULE 8: venues GPS completeness ─────────────────────────────────────────
+  const venuesDef = data.venues || {};
+  for (const [vname, vdata] of Object.entries(venuesDef)) {
+    const hasLat = vdata.lat !== null && vdata.lat !== undefined;
+    const hasLng = vdata.lng !== null && vdata.lng !== undefined;
+    if (hasLat && !hasLng) {
+      errors.push(`venue "${vname}": tiene lat pero falta lng — geocoding incompleto. Correr scripts/geocode-venues.py`);
+      totalErrors++;
+    }
+    if (!hasLat && hasLng) {
+      errors.push(`venue "${vname}": tiene lng pero falta lat — geocoding incompleto`);
+      totalErrors++;
+    }
+    if (!hasLat && !hasLng) {
+      warnings.push(`venue "${vname}": sin coordenadas GPS — travelWarn usará tiempo por defecto`);
+    }
+  }
+
   // ── RULE 4 (cont): check emoji clashes ───────────────────────────────────
   for (const [emoji, secNames] of Object.entries(emojiToSections)) {
     if (secNames.size > 1) {

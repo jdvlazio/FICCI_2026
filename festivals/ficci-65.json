@@ -4195,61 +4195,71 @@
       "lat": 10.4238,
       "lon": -75.5503,
       "city": "Cartagena",
-      "address": "Calle del Tablón #14-34"
+      "address": "Calle del Tablón #14-34",
+      "lng": -75.5503
     },
     "Plaza Bocagrande": {
       "short": "Plaza Bocagrande",
       "lat": 10.3987,
       "lon": -75.56,
-      "city": "Cartagena"
+      "city": "Cartagena",
+      "lng": -75.5499
     },
     "CC Caribe Plaza": {
       "short": "CC Caribe Plaza",
       "lat": 10.4071,
       "lon": -75.5124,
-      "city": "Cartagena"
+      "city": "Cartagena",
+      "lng": -75.5005
     },
     "Auditorio Nido": {
       "short": "Auditorio Nido",
       "lat": 10.425,
       "lon": -75.549,
-      "city": "Cartagena"
+      "city": "Cartagena",
+      "lng": -75.5481
     },
     "Plaza Proclamación": {
       "short": "Plaza Proclamación",
       "lat": 10.423,
       "lon": -75.551,
-      "city": "Cartagena"
+      "city": "Cartagena",
+      "lng": -75.548
     },
     "C. Convenciones": {
       "short": "C. Convenciones",
       "lat": 10.4242,
       "lon": -75.5497,
-      "city": "Cartagena"
+      "city": "Cartagena",
+      "lng": -75.5505
     },
     "Unibac": {
       "short": "Unibac",
       "lat": 10.418,
       "lon": -75.543,
-      "city": "Cartagena"
+      "city": "Cartagena",
+      "lng": -75.507
     },
     "AECID": {
       "short": "AECID",
       "lat": 10.421,
       "lon": -75.547,
-      "city": "Cartagena"
+      "city": "Cartagena",
+      "lng": -75.5484
     },
     "Plaza de la Proclamación": {
       "short": "Plaza Proclamación",
       "lat": 10.423,
       "lon": -75.551,
-      "city": "Cartagena"
+      "city": "Cartagena",
+      "lng": -75.548
     },
     "C. de Convenciones · Patio de Banderas": {
       "short": "C. Convenciones",
       "lat": 10.4242,
       "lon": -75.5497,
-      "city": "Cartagena"
+      "city": "Cartagena",
+      "lng": -75.5505
     },
     "Auditorio nido": {
       "short": "Auditorio Nido",
