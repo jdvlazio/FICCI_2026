@@ -3537,12 +3537,19 @@ function _buildPosterV16({accent, headerLabel, title, num}){
 }
 function makeEventPoster(title,duration,eventKind){
   const festCfg=(FESTIVAL_CONFIG&&FESTIVAL_CONFIG[_activeFestId])||Object.values(FESTIVAL_CONFIG||{})[0]||{};
-  const _kindMap={
+  const _kindMapES={
     'ponencia':     {accent:'#F59E0B', headerLabel:'PONENCIA'},
     'masterclass':  {accent:'#7F77DD', headerLabel:'MASTERCLASS'},
     'encuentro':    {accent:'#378ADD', headerLabel:'ENCUENTRO'},
     'cineconcierto':{accent:'#D85A30', headerLabel:'CINECONCIERTO'},
   };
+  const _kindMapEN={
+    'ponencia':     {accent:'#F59E0B', headerLabel:'TALK'},
+    'masterclass':  {accent:'#7F77DD', headerLabel:'MASTERCLASS'},
+    'encuentro':    {accent:'#378ADD', headerLabel:'MEETING'},
+    'cineconcierto':{accent:'#D85A30', headerLabel:'FILM CONCERT'},
+  };
+  const _kindMap=_lang==='en'?_kindMapEN:_kindMapES;
   const kind=_kindMap[eventKind];
   if(kind) return _buildPosterV16({...kind, title, num:null});
   // Fallback — usa eventPosterLabel del config del festival (puede ser ['INDUSTRY','DAYS'])
