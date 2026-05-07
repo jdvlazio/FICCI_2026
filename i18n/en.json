@@ -192,5 +192,10 @@
   "av_todo_el_dia_btn": "All day",
   "error_festival_nd": "This festival isn't available yet.",
   "plan_vista_hoy": "seen today",
-  "plan_vistas_hoy": "seen today"
+  "plan_vistas_hoy": "seen today",
+  "cta_en_intereses": "In Interests",
+  "cta_priorizada": "Prioritized",
+  "cta_asistio": "Attended",
+  "misc_conservar": "Keep",
+  "misc_omitir": "Skip"
 }

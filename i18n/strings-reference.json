@@ -948,5 +948,30 @@
     "es": "Este festival no está disponible todavía.",
     "en": "This festival isn't available yet.",
     "context": "Aprobado Content+UX — error_festival_nd"
+  },
+  "cta_en_intereses": {
+    "es": "En Intereses",
+    "en": "In Interests",
+    "context": "CTA estado activo — aprobado Content+UX"
+  },
+  "cta_priorizada": {
+    "es": "Priorizada",
+    "en": "Prioritized",
+    "context": "CTA estado activo — aprobado Content+UX"
+  },
+  "cta_asistio": {
+    "es": "Asistí",
+    "en": "Attended",
+    "context": "CTA estado activo — aprobado Content+UX"
+  },
+  "misc_conservar": {
+    "es": "Conservar",
+    "en": "Keep",
+    "context": "CTA estado activo — aprobado Content+UX"
+  },
+  "misc_omitir": {
+    "es": "Omitir",
+    "en": "Skip",
+    "context": "CTA estado activo — aprobado Content+UX"
   }
 }

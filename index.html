@@ -2373,7 +2373,7 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:var(--t
       </div>
     </div>
     <div style="flex:1;min-width:0">
-      <div class="pv-eyebrow"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>Vista</div>
+      <div class="pv-eyebrow"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>${t('cta_vista')}</div>
       <div class="pv-film-title" id="pv-film-title"></div>
       <div class="pv-context" id="pv-context"></div>
     </div>
@@ -2421,7 +2421,7 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:var(--t
   </div>
   <div class="conflict-actions">
     <button class="conflict-btn-replace" id="cs-replace-btn" data-i18n="conflict_anadir_btn">Añadir</button>
-    <button class="conflict-btn-keep" id="cs-keep-btn">Conservar</button>
+    <button class="conflict-btn-keep" id="cs-keep-btn" data-i18n="misc_conservar">Conservar</button>
     <button class="conflict-btn-cancel" onclick="closeConflictSheet()" data-i18n="misc_cancelar">Cancelar</button>
   </div>
 </div>
@@ -2467,7 +2467,7 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:var(--t
   <div class="rating-title" data-i18n="rating_parecio">¿Qué te pareció?</div>
   <div class="rating-film" id="rating-film-title"></div>
   <div class="rating-stars" id="rating-stars-wrap"><input type="range" id="rating-range" min="0" max="10" step="1" value="0"><div class="stars-row" id="rating-stars"></div></div>
-  <button class="rating-action-btn" id="rating-action-btn" onclick="closeRatingSheet()">Omitir</button>
+  <button class="rating-action-btn" id="rating-action-btn" onclick="closeRatingSheet()" data-i18n="misc_omitir">Omitir</button>
 </div>
 <!-- ── Bottom Sheet Por Película ── -->
 <div class="pel-sheet-overlay" id="pel-overlay" onclick="closePelSheet()"></div>
@@ -2599,6 +2599,11 @@ const _I18N = {
     "cta_intereses": "Interés",
     "cta_priorizar": "Priorizar",
     "cta_vista": "Vista",
+    "cta_en_intereses": "En Intereses",
+    "cta_priorizada": "Priorizada",
+    "cta_asistio": "Asistí",
+    "misc_conservar": "Conservar",
+    "misc_omitir": "Omitir",
     "cta_calificar": "Calificar",
     "cta_anadir": "Añadir a Intereses",
     "label_director": "Director",
@@ -2797,6 +2802,11 @@ const _I18N = {
     "cta_intereses": "Interest",
     "cta_priorizar": "Prioritize",
     "cta_vista": "Seen",
+    "cta_en_intereses": "In Interests",
+    "cta_priorizada": "Prioritized",
+    "cta_asistio": "Attended",
+    "misc_conservar": "Keep",
+    "misc_omitir": "Skip",
     "cta_calificar": "Rate",
     "cta_anadir": "Add to Interests",
     "label_director": "Director",
@@ -5444,7 +5454,7 @@ function renderFilmListHTML(){
     const _sortedInt=[...nonPrioList].sort((a,b)=>(!!_nextScreening(b))-(!!_nextScreening(a)));
     html+=`<div class="int-section-hdr">
       <span class="int-section-hdr-ico">${ICONS.heart}</span>
-      <span class="int-section-hdr-lbl">Intereses</span>
+      <span class="int-section-hdr-lbl" data-i18n="nav_intereses">Intereses</span>
       <span class="count-badge cb-neutral">${nonPrioList.length}</span>
     </div>
     <div>${_sortedInt.map(_mkItem).join('')}</div>`;
@@ -8087,8 +8097,8 @@ function setRating(val){
   updateRatingStars(val); // rápido, sin recrear DOM
   const btn=document.getElementById('rating-action-btn');
   if(btn){
-    if(val>0){btn.textContent='Guardar';btn.className='rating-action-btn save';}
-    else{btn.textContent='Omitir';btn.className='rating-action-btn skip';}
+    if(val>0){btn.textContent=t('misc_guardar');btn.className='rating-action-btn save';}
+    else{btn.textContent=t('misc_omitir');btn.className='rating-action-btn skip';}
   }
 }
 
@@ -8114,8 +8124,8 @@ function openRatingSheet(title){
   renderRatingStars(_currentRating);
   const _btn=document.getElementById('rating-action-btn');
   if(_btn){
-    if(_currentRating>0){_btn.textContent='Guardar';_btn.className='rating-action-btn save';}
-    else{_btn.textContent='Omitir';_btn.className='rating-action-btn skip';}
+    if(_currentRating>0){_btn.textContent=t('misc_guardar');_btn.className='rating-action-btn save';}
+    else{_btn.textContent=t('misc_omitir');_btn.className='rating-action-btn skip';}
   }
   document.getElementById('rating-overlay').classList.add('open');
   document.getElementById('rating-sheet').classList.add('open');
@@ -8182,18 +8192,18 @@ function togglePelPrio(title){
   const btn=document.getElementById('pel-prio-btn')||document.getElementById('corto-prio-btn');
   if(!btn) return;
   const inPrio=prioritized.has(title);
-  btn.innerHTML=(inPrio?ICONS.starFill:ICONS.star)+' '+(inPrio?'Priorizada':t('cta_priorizar'));
+  btn.innerHTML=(inPrio?ICONS.starFill:ICONS.star)+' '+(inPrio?t('cta_priorizada'):t('cta_priorizar'));
   btn.className='pel-sheet-action-btn'+(inPrio?' act-prio':' btn-secondary');
   // Priorizar auto-añade a watchlist — sincronizar el botón de Intereses
   const inWL=watchlist.has(title);
   const pelWlBtn=document.getElementById('pel-wl-btn');
   if(pelWlBtn){
-    pelWlBtn.innerHTML=(inWL?ICONS.heartFill:ICONS.heart)+' '+(inWL?'En Intereses':'Intereses');
+    pelWlBtn.innerHTML=(inWL?ICONS.heartFill:ICONS.heart)+' '+(inWL?t('cta_en_intereses'):'Intereses');
     pelWlBtn.className='pel-sheet-action-btn'+(inWL?' act-on btn-primary':' btn-primary');
   }
   const cortoWlBtn=document.getElementById('corto-wl-btn');
   if(cortoWlBtn){
-    cortoWlBtn.innerHTML=(inWL?ICONS.heartFill:ICONS.heart)+' '+(inWL?'En Intereses':'Intereses');
+    cortoWlBtn.innerHTML=(inWL?ICONS.heartFill:ICONS.heart)+' '+(inWL?t('cta_en_intereses'):'Intereses');
     cortoWlBtn.className='pel-sheet-action-btn'+(inWL?' act-on btn-primary':' btn-primary');
   }
 }
@@ -8205,7 +8215,7 @@ function togglePelWL(title,e){
   const btn=document.getElementById('pel-wl-btn');
   if(!btn) return;
   const inWL=watchlist.has(title);
-  btn.innerHTML=(inWL?ICONS.heartFill:ICONS.heart)+' '+(inWL?'En Intereses':'Intereses');
+  btn.innerHTML=(inWL?ICONS.heartFill:ICONS.heart)+' '+(inWL?t('cta_en_intereses'):'Intereses');
   btn.className='pel-sheet-action-btn'+(inWL?' act-on btn-primary':' btn-primary');
   // Abrir WLAdd solo al AÑADIR — no al quitar (modal async deja wasInWL=true)
   if(!wasInWL&&inWL){
@@ -8431,9 +8441,9 @@ function openPelSheet(title){
         ${!f.is_cortos?`<button onclick="closePelSheet();setTimeout(()=>openRatingSheet('${safeT}'),100)" class="pel-sheet-action-btn btn-secondary">${ICONS.star} ${filmRatings['${safeT}']?'Cambiar':t('cta_calificar')}</button>`:``}
       </div>`
     :`<div class="pel-sheet-ctas">
-        <button id="pel-wl-btn" class="row-center-xs pel-sheet-action-btn${inWL?' act-on btn-primary':' btn-primary'}" onclick="togglePelWL('${safeT}',event)">${inWL?ICONS.heartFill:ICONS.heart} ${inWL?'En Intereses':'Intereses'}</button>
-        <button id="pel-prio-btn" class="row-center-xs pel-sheet-action-btn${inPrio?' act-prio':' btn-secondary'}" onclick="togglePelPrio('${safeT}')">${inPrio?ICONS.starFill:ICONS.star} ${inPrio?'Priorizada':t('cta_priorizar')}</button>
-        <button id="pel-vista-btn" class="row-center-xs pel-sheet-action-btn btn-tertiary" onclick="toggleWatched('${safeT}',event)">${ICONS.check} ${f.type==='event'?'Asistí':'Vista'}</button>
+        <button id="pel-wl-btn" class="row-center-xs pel-sheet-action-btn${inWL?' act-on btn-primary':' btn-primary'}" onclick="togglePelWL('${safeT}',event)">${inWL?ICONS.heartFill:ICONS.heart} ${inWL?t('cta_en_intereses'):'Intereses'}</button>
+        <button id="pel-prio-btn" class="row-center-xs pel-sheet-action-btn${inPrio?' act-prio':' btn-secondary'}" onclick="togglePelPrio('${safeT}')">${inPrio?ICONS.starFill:ICONS.star} ${inPrio?t('cta_priorizada'):t('cta_priorizar')}</button>
+        <button id="pel-vista-btn" class="row-center-xs pel-sheet-action-btn btn-tertiary" onclick="toggleWatched('${safeT}',event)">${ICONS.check} ${f.type==='event'?t('cta_asistio'):t('cta_vista')}</button>
       </div>`}
     ${_inPlan&&activeView==='agenda'?`<button onclick="closePelSheet();removeFromAgenda('${safeT}')" class="pel-sheet-remove-plan">${ICONS.x} ${t('plan_quitar_plan')}</button>`:''}
   `;
@@ -8685,8 +8695,8 @@ function openCortoSheet(title, country, duration, section, flags, director, genr
     <div class="pel-sheet-divider"></div>
     ${parentTitle?`<div class="meta-xs-gray">Al agregar un corto se incluye el programa completo</div>`:''}
     <div class="flex-gap1-mt1">
-      <button id="corto-wl-btn" class="row-center-xs pel-sheet-action-btn${inWL?' act-on btn-primary':' btn-primary'}" onclick="toggleWL('${safeParent}',event)">${inWL?ICONS.heartFill:ICONS.heart} ${inWL?'En Intereses':'Intereses'}</button>
-      <button id="corto-prio-btn" class="row-center-xs pel-sheet-action-btn${inPrio?' act-prio':' btn-secondary'}" onclick="togglePelPrio('${safeParent}')">${inPrio?ICONS.starFill:ICONS.star} ${inPrio?'Priorizada':t('cta_priorizar')}</button>
+      <button id="corto-wl-btn" class="row-center-xs pel-sheet-action-btn${inWL?' act-on btn-primary':' btn-primary'}" onclick="toggleWL('${safeParent}',event)">${inWL?ICONS.heartFill:ICONS.heart} ${inWL?t('cta_en_intereses'):'Intereses'}</button>
+      <button id="corto-prio-btn" class="row-center-xs pel-sheet-action-btn${inPrio?' act-prio':' btn-secondary'}" onclick="togglePelPrio('${safeParent}')">${inPrio?ICONS.starFill:ICONS.star} ${inPrio?t('cta_priorizada'):t('cta_priorizar')}</button>
       <button class="row-center-xs pel-sheet-action-btn${filmRatings[title]?' act-on':' btn-secondary'}" onclick="closePelSheet();setTimeout(()=>openRatingSheet('${safeTitle}'),100)">${ICONS.star} ${filmRatings[title]?'Cambiar':t('cta_calificar')}</button>
     </div>
   `;
