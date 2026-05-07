@@ -116,7 +116,7 @@
   },
   "plan_calcular": {
     "es": "Calcular plan",
-    "en": "Find options",
+    "en": "Make my plan",
     "ctx": "Primary CTA in Planear"
   },
   "plan_calculando": {
@@ -581,7 +581,7 @@
   },
   "misc_deslizar": {
     "es": "Deslizá sobre las estrellas",
-    "en": "Slide over the stars",
+    "en": "Drag to rate",
     "ctx": "Rating hint"
   },
   "misc_mantener": {
