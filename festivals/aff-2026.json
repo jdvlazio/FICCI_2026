@@ -146,7 +146,8 @@
       "director": "Akio Fujimoto",
       "year": 2025,
       "genre": "Drama",
-      "synopsis": "Shafi, de 4 años, y su hermana Somira, de 9, salen de un campamento Rohingya en Bangladesh en un peligroso viaje hacia Malasia para reunirse con su familia."
+      "synopsis": "Shafi, de 4 años, y su hermana Somira, de 9, salen de un campamento Rohingya en Bangladesh en un peligroso viaje hacia Malasia para reunirse con su familia.",
+      "synopsis_en": "Four-year-old Shafi and his nine-year-old sister Somira leave a Rohingya refugee camp in Bangladesh on a perilous journey to Malaysia to reunite with their family."
     },
     {
       "title": "Brigitte, Planeta B",
@@ -207,7 +208,8 @@
       "director": "Simón Vélez",
       "year": 2026,
       "genre": "Acción, Aventura",
-      "synopsis": "Machado, colombiano radicado en Francia, regresa a Medellín para robar una esmeralda. Mientras ejecuta el plan, se enreda en una serie de eventos que lo llevan a reconsiderar su misión."
+      "synopsis": "Machado, colombiano radicado en Francia, regresa a Medellín para robar una esmeralda. Mientras ejecuta el plan, se enreda en una serie de eventos que lo llevan a reconsiderar su misión.",
+      "synopsis_en": "Machado, a Colombian living in France, returns to Medellín to steal an emerald. As he executes his plan, he becomes entangled in a series of events that force him to reconsider his mission."
     },
     {
       "title": "Amar bajo las espinas",
@@ -226,7 +228,8 @@
       "director": "Rohan Parashuram Kanawade",
       "year": 2025,
       "genre": "Drama",
-      "synopsis": "Anand, obligado a pasar un periodo de duelo en el campo de India, entabla una tierna relación con un agricultor local que lucha por mantenerse soltero."
+      "synopsis": "Anand, obligado a pasar un periodo de duelo en el campo de India, entabla una tierna relación con un agricultor local que lucha por mantenerse soltero.",
+      "synopsis_en": "Anand, compelled to spend a mourning period in the Indian countryside, strikes up a tender relationship with a local farmer determined to remain single."
     },
     {
       "title": "Cómo ser millonario antes que muera la abuela",
@@ -286,7 +289,8 @@
       "director": "Pablo Pérez Lombardini",
       "year": 2025,
       "genre": "Thriller",
-      "synopsis": "Una guardabosques convence a su comunidad de expulsar a un grupo de invasores de su reserva natural, provocando una amenaza mucho mayor."
+      "synopsis": "Una guardabosques convence a su comunidad de expulsar a un grupo de invasores de su reserva natural, provocando una amenaza mucho mayor.",
+      "synopsis_en": "A park ranger convinces her community to expel a group of intruders from their nature reserve, only to trigger a far greater threat."
     },
     {
       "title": "Rayas de tigre",
@@ -326,7 +330,8 @@
       "director": "Nurzhamal Karamoldoeva",
       "year": 2025,
       "genre": "Drama",
-      "synopsis": "En Chicago, una inmigrante kirguiza busca a su marido desaparecido y descubre deudas, traición y verdades ocultas que la llevan por un camino inesperado de libertad."
+      "synopsis": "En Chicago, una inmigrante kirguiza busca a su marido desaparecido y descubre deudas, traición y verdades ocultas que la llevan por un camino inesperado de libertad.",
+      "synopsis_en": "In Chicago, a Kyrgyz immigrant searches for her missing husband and uncovers debts, betrayal, and hidden truths that lead her down an unexpected path toward freedom."
     },
     {
       "title": "Queer y punk",
@@ -365,7 +370,8 @@
       "director": "Ketevan Vashagashvili",
       "year": 2025,
       "genre": "Documental",
-      "synopsis": "Una madre georgiana recurre a la subrogación para conseguir un techo para su hija. Lo que comienza como una solución rápida se convierte en un sacrificio profundo."
+      "synopsis": "Una madre georgiana recurre a la subrogación para conseguir un techo para su hija. Lo que comienza como una solución rápida se convierte en un sacrificio profundo.",
+      "synopsis_en": "A Georgian mother turns to surrogacy to secure a home for her daughter. What begins as a quick solution becomes a profound sacrifice."
     },
     {
       "title": "Runa Simi",
@@ -384,7 +390,8 @@
       "director": "Augusto Zegarra",
       "year": 2025,
       "genre": "Documental",
-      "synopsis": "Un actor de doblaje peruano busca convencer a Disney de doblar El Rey León al quechua. El viaje se convierte en una odisea personal de paternidad y activismo."
+      "synopsis": "Un actor de doblaje peruano busca convencer a Disney de doblar El Rey León al quechua. El viaje se convierte en una odisea personal de paternidad y activismo.",
+      "synopsis_en": "A Peruvian voice actor sets out to convince Disney to dub The Lion King into Quechua. The journey becomes a personal odyssey of fatherhood and activism."
     },
     {
       "title": "Nuevos horizontes",
@@ -403,7 +410,8 @@
       "director": "Zhannat Alshanova",
       "year": 2025,
       "genre": "Drama",
-      "synopsis": "En Kazajistán, Mila, de 17 años, escapa de su hogar caótico uniéndose a un equipo de natación en aguas abiertas. Cuando su lugar se ve amenazado, arriesga todo."
+      "synopsis": "En Kazajistán, Mila, de 17 años, escapa de su hogar caótico uniéndose a un equipo de natación en aguas abiertas. Cuando su lugar se ve amenazado, arriesga todo.",
+      "synopsis_en": "In Kazakhstan, seventeen-year-old Mila escapes her chaotic home life by joining an open-water swimming team. When her place on the team is threatened, she risks everything."
     },
     {
       "title": "Hacia otra vida",
@@ -422,7 +430,8 @@
       "director": "Sara Khaki, Mohammadreza Eyni",
       "year": 2025,
       "genre": "Documental",
-      "synopsis": "Sara Shahverdi, primera concejala electa de su pueblo iraní, entrena adolescentes en moto para detener matrimonios infantiles. Acusaciones ponen en crisis su identidad."
+      "synopsis": "Sara Shahverdi, primera concejala electa de su pueblo iraní, entrena adolescentes en moto para detener matrimonios infantiles. Acusaciones ponen en crisis su identidad.",
+      "synopsis_en": "Sara Shahverdi, the first elected council member of her Iranian village, trains teenage girls in motorcycling to help stop child marriages. When accusations arise, her sense of identity is thrown into crisis."
     },
     {
       "title": "No hay hombres buenos",
@@ -441,7 +450,8 @@
       "director": "Shahrbanoo Sadat",
       "year": 2026,
       "genre": "Comedia, Romance",
-      "synopsis": "Naru, cámarógrafa en Kabul, cree que no existen hombres buenos en Afganistán. Película de clausura."
+      "synopsis": "Naru, cámarógrafa en Kabul, cree que no existen hombres buenos en Afganistán. Película de clausura.",
+      "synopsis_en": "Naru, a camerawoman in Kabul, believes no good men exist in Afghanistan. Closing night film."
     },
     {
       "title": "BAM × Alternativa: Coproducción",
@@ -712,7 +722,8 @@
       "year": 2025,
       "genre": "Comedia, Drama, Romance",
       "synopsis": "A lo largo de tres décadas, Nino y Yasmina están unidos por una relación magnética. Atrapados entre el amor y la supervivencia, deben decidir si construir una familia en el Líbano mientras el país atraviesa sus tragedias.",
-      "lb_slug": "a-sad-and-beautiful-world"
+      "lb_slug": "a-sad-and-beautiful-world",
+      "synopsis_en": "Over three decades, Nino and Yasmina are bound by a magnetic connection. Caught between love and survival, they must decide whether to build a family in Lebanon as the country endures its tragedies."
     },
     {
       "title": "Cortos: Familia 12+",
@@ -796,7 +807,8 @@
       "director": "Matías Rojas Valencia",
       "year": 2025,
       "genre": "Drama",
-      "synopsis": "Gloria, una niña de diez años, pasa sus vacaciones en el hospital donde trabaja su madre como enfermera. Mientras explora el lugar, conoce a Sofía, una chica convencida de que el internamiento ha empeorado la salud de su bisabuela. Unidas por las ganas de irse, las dos encuentran refugio la una en la otra. Cuando la partida se vuelve inevitable, las niñas y sus madres se marchan a una casa de campo para vivir los últimos días de un verano inolvidable."
+      "synopsis": "Gloria, una niña de diez años, pasa sus vacaciones en el hospital donde trabaja su madre como enfermera. Mientras explora el lugar, conoce a Sofía, una chica convencida de que el internamiento ha empeorado la salud de su bisabuela. Unidas por las ganas de irse, las dos encuentran refugio la una en la otra. Cuando la partida se vuelve inevitable, las niñas y sus madres se marchan a una casa de campo para vivir los últimos días de un verano inolvidable.",
+      "synopsis_en": "Ten-year-old Gloria spends her vacation at the hospital where her mother works as a nurse. While exploring the wards, she meets Sofía, a girl convinced that hospitalization has worsened her great-grandmother's health. Drawn together by their shared desire to leave, the two find solace in each other. When departure becomes inevitable, the girls and their mothers retreat to a country house to live out the final days of an unforgettable summer."
     },
     {
       "title": "Homebound",
@@ -818,7 +830,8 @@
       "synopsis": "Dos amigos de la infancia de un pequeño pueblo del norte de India persiguen un trabajo policial que les promete dignidad. Pero la desesperación amenaza el vínculo que los une.",
       "tmdb_id": 1227739,
       "lb_slug": "homebound-2025",
-      "lbSlug": "homebound-2025"
+      "lbSlug": "homebound-2025",
+      "synopsis_en": "Two childhood friends from a small town in northern India pursue a police job that promises them dignity. But desperation threatens the bond between them."
     },
     {
       "title": "Un fantasma para servirte",
@@ -837,7 +850,8 @@
       "director": "Ratchapoom Boonbunchachoke",
       "year": 2025,
       "genre": "Sátira, Drama",
-      "synopsis": "En esta sátira sobre el amor, la política y la memoria, un fantasma regresa para habitar una aspiradora y demostrarle su amor a su marido vivo."
+      "synopsis": "En esta sátira sobre el amor, la política y la memoria, un fantasma regresa para habitar una aspiradora y demostrarle su amor a su marido vivo.",
+      "synopsis_en": "In this satire about love, politics, and memory, a ghost returns to inhabit a vacuum cleaner and prove his love to his living husband."
     }
   ],
   "posters": {
