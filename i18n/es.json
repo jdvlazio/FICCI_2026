@@ -204,5 +204,11 @@
   "plan_ir_programa": "Ir al Programa",
   "plan_fest_terminado": "ha terminado",
   "misc_prioridades": "prioridades",
-  "badge_pasado": "PASADO"
+  "badge_pasado": "PASADO",
+  "plan_quitar_prioridad": "Quitar prioridad",
+  "plan_reemplazar_funcion": "¿Reemplazar función?",
+  "plan_anadir_plan": "¿Añadir al plan?",
+  "plan_sigue_intereses": "Sigue en Intereses, deja de ser prioritaria.",
+  "plan_hint_opciones": "Tocá Ver opciones para ver tu plan.",
+  "misc_no_disponible": "No disponible"
 }

@@ -2763,6 +2763,12 @@ const _I18N = {
     "av_hora_invalida": "La hora de inicio debe ser menor que la de fin",
     "plan_quitar_intereses": "Quitar de Intereses",
     "misc_quitar": "Quitar",
+    "plan_quitar_prioridad": "Quitar prioridad",
+    "plan_reemplazar_funcion": "¿Reemplazar función?",
+    "plan_anadir_plan": "¿Añadir al plan?",
+    "plan_sigue_intereses": "Sigue en Intereses, deja de ser prioritaria.",
+    "plan_hint_opciones": "Tocá Ver opciones para ver tu plan.",
+    "misc_no_disponible": "No disponible",
     "misc_prioridades": "prioridades",
     "misc_cerrar": "Cerrar",
     "misc_si": "Sí",
@@ -2778,7 +2784,7 @@ const _I18N = {
     "plan_vistas_hoy": "vistas hoy",
     "plan_sin_horario": "Sin horario disponible",
     "plan_anadir_titulos": "o añadí más títulos.",
-    "plan_solapan": "${t('plan_solapan')}",
+    "plan_solapan": "se solapan en todas sus funciones. El plan omitió una de las dos.",
     "av_liberar_dia": "Liberar día",
     "av_todo_el_dia_btn": "Todo el día",
     "error_festival_nd": "Este festival no está disponible todavía.",
@@ -2973,6 +2979,12 @@ const _I18N = {
     "av_hora_invalida": "Start time must be before end time",
     "plan_quitar_intereses": "Remove from Interests",
     "misc_quitar": "Remove",
+    "plan_quitar_prioridad": "Remove priority",
+    "plan_reemplazar_funcion": "Replace screening?",
+    "plan_anadir_plan": "Add to plan?",
+    "plan_sigue_intereses": "Stays in Interests, no longer prioritized.",
+    "plan_hint_opciones": "Tap “See options” to view your plan.",
+    "misc_no_disponible": "Not available",
     "misc_prioridades": "priorities",
     "misc_cerrar": "Close",
     "misc_si": "Yes",
@@ -4400,7 +4412,7 @@ function toggleWL(title,e){
   if(watchlist.has(title)){
     // If film is in saved agenda, ask first
     if(savedAgenda&&savedAgenda.schedule.some(s=>s._title===title)){
-      showActionModal(`Quitar de Intereses`,
+      showActionModal(t('plan_quitar_intereses'),
         `<b>${title.length>36?title.slice(0,34)+'…':title}</b> ${t('plan_en_tu_plan')}<br><br>${t('plan_quitar_tmb')}`,
         'Sí, quitar de todo',()=>{
           savedAgenda.schedule=savedAgenda.schedule.filter(s=>s._title!==title);
@@ -4425,7 +4437,7 @@ function toggleWL(title,e){
       const _short=displayTitle.length>28?displayTitle.slice(0,26)+'…':displayTitle;
       setTimeout(()=>showToast(`"${_short}" cae en horarios no disponibles — no podrá incluirse en el plan`,'warn',5000),300);
     } else if(activeMNav==='mnav-cartelera'||activeMNav==='mnav-seleccion'){
-      showActionToast(`${ICONS.heartFill} En Intereses`,`${ICONS.star} ${t('cta_priorizar')}`,()=>togglePriority(title));
+      showActionToast(`${ICONS.heartFill} ${t('cta_en_intereses')}`,`${ICONS.star} ${t('cta_priorizar')}`,()=>togglePriority(title));
     } else {
       showToast(`${ICONS.heartFill} En Intereses`,'info');
     }
@@ -4470,7 +4482,7 @@ function updateCardState(title){
     const prioBtn=card.querySelector('.prio-btn');
     if(wlBtn){wlBtn.innerHTML=inWL?ICONS.heartFill:ICONS.heart;wlBtn.classList.toggle('wl-on',inWL);wlBtn.title=inWL?t('plan_quitar_intereses'):t('cta_anadir');}
     if(wBtn){wBtn.classList.toggle('w-on',inW);wBtn.title=inW?'Marcar como pendiente':'Marcar como vista';}
-    if(prioBtn){prioBtn.classList.toggle('prio-on',inPrio);prioBtn.title=inPrio?'Quitar prioridad':t('cta_priorizar');}
+    if(prioBtn){prioBtn.classList.toggle('prio-on',inPrio);prioBtn.title=inPrio?t('plan_quitar_prioridad'):t('cta_priorizar');}
   });
 }
 
@@ -5804,7 +5816,7 @@ function renderUnconfirmed(schedule){
         const st=s._title.replace(/'/g,"\'");
         return`<div class="checkin-item">
           <div class="checkin-info"><div class="checkin-title">${sh}</div><div class="checkin-time">${dayLabel(s.day)} · ${s.time}</div></div>
-          <div class="checkin-btns"><button class="row-xs checkin-btn yes" onclick="checkinLaVi('${st}')">${ICONS.check} Vista</button><button class="checkin-btn no" onclick="checkinNoLaVi('${st}')">Luego</button></div>
+          <div class="checkin-btns"><button class="row-xs checkin-btn yes" onclick="checkinLaVi('${st}')">${ICONS.check} ${t('cta_vista')}</button><button class="checkin-btn no" onclick="checkinNoLaVi('${st}')">Luego</button></div>
         </div>`;
       }).join('')}
     </div>
@@ -5819,7 +5831,7 @@ function renderUnconfirmed(schedule){
     <div class="checkin-item">
       <div class="checkin-info"><div class="checkin-title">${short}</div><div class="checkin-time">${timeDesc}</div></div>
       <div class="checkin-btns">
-        <button class="row-xs checkin-btn yes" onclick="checkinLaVi('${safeLast}')">${ICONS.check} Vista</button>
+        <button class="row-xs checkin-btn yes" onclick="checkinLaVi('${safeLast}')">${ICONS.check} ${t('cta_vista')}</button>
         <button class="checkin-btn no" onclick="checkinNoLaVi('${safeLast}')">Luego</button>
       </div>
     </div>${olderHtml}
@@ -5875,7 +5887,7 @@ function renderFilmAlternatives(title,day,time){
   return`<div class="film-alts">
     ${optsHtml||`<div class="scenario-label">No hay alternativas en este horario — revisa Sugerencias.</div>`}
     <div class="scenario-footer">
-      <button class="w-full-sm checkin-result-btn secondary" onclick="_expandedFilm='';renderAgenda()">Cerrar</button>
+      <button class="w-full-sm checkin-result-btn secondary" onclick="_expandedFilm='';renderAgenda()}">${t('misc_cerrar')}</button>
     </div>
   </div>`;
 }
@@ -5890,7 +5902,7 @@ function confirmReplace(removedTitle,newTitle,day,time){
   const modal=document.createElement('div');
   modal.id='conflict-modal';modal.className='conflict-modal';
   modal.innerHTML=`<div class="conflict-modal-box">
-    <div class="conflict-modal-hdr">${removedTitle?'¿Reemplazar función?':'¿Añadir al plan?'}</div>
+    <div class="conflict-modal-hdr">${removedTitle?t('plan_reemplazar_funcion'):t('plan_anadir_plan')}</div>
     <div class="conflict-modal-body">${removedTitle?`Quitar <b>${shortRem}</b> y añadir`:'Añadir'} <b>${shortNew}</b> a tu plan.</div>
     <div class="conflict-modal-btns">
       <button class="conflict-modal-btn cancel" onclick="document.getElementById('conflict-modal').remove()">${t('search_cancelar')}</button>
@@ -7016,7 +7028,8 @@ function togglePriority(title,cost){
     if(activeMNav==='mnav-planner'){
       const short=title.length>40?title.slice(0,38)+'…':title;
       showActionModal(`Quitar prioridad`,
-        `<b>${short}</b><br><br>Sigue en Intereses, deja de ser prioritaria.`,
+        `<b>${short}</b><br><br>${t('plan_sigue_intereses')}`,
+
         'Quitar prioridad',()=>{
           prioritized.delete(title);savePrio();updateCardState(title);updateAgTab();runCalc();
           showToast(`${ICONS.star} Prioridad quitada`,'info');
@@ -7034,7 +7047,7 @@ function togglePriority(title,cost){
     prioritized.add(title);
     if(!watchlist.has(title)){watchlist.add(title);watched.delete(title);saveWL();saveWatched();}
     savePrio();updateCardState(title);updateAgTab();
-    showToast(`${ICONS.starFill} Priorizada · ${prioritized.size}/${PRIO_LIMIT}`,'info');
+    showToast(`${ICONS.starFill} ${t('cta_priorizada')} · ${prioritized.size}/${PRIO_LIMIT}`,'info');
     runCalc();
   }
   if(activeView==='agenda') renderAgenda();
@@ -7414,8 +7427,8 @@ function invalidateCalcResult(){
   const res=document.getElementById('ag-result');
   const pending=[...watchlist].filter(t=>!watched.has(t)&&FILMS.some(f=>f.title===t&&!screeningPassed(f)));
   res.innerHTML=pending.length
-    ?`<div class="ag-calc-prompt">Tocá <strong>Ver opciones</strong> para ver tu plan.</div>`
-    :`<div class="ag-calc-prompt">Añadí lo que no querés perderte en <strong>Intereses</strong>.</div>`;
+    ?`<div class="ag-calc-prompt">${t('plan_hint_opciones')}</div>`
+    :`<div class="ag-calc-prompt">${t('empty_intereses_3')}</div>`;
 }
 // ── Worker blob — computeScenarios fuera del main thread ──────
 const _CALC_WORKER_SRC=`
@@ -7830,7 +7843,7 @@ function renderAgenda(){
           <div class="mb-2 sec-hdr">${ICONS.clock} ${t('av_disponibilidad')} <span class="sec-hdr-opt">opcional</span></div>
           <div class="txt-gray2-sm-lh">${t('av_no_incluir')}</div>
           <div id="av-blocks-list"></div>
-          <button class="av-add-unavail" onclick="openAvSheet()">${ICONS.plus} No disponible</button>
+          <button class="av-add-unavail" onclick="openAvSheet()">${ICONS.plus} ${t('misc_no_disponible')}</button>
         </div>
         <div class="av-calc-wrap">
           <button class="av-calc-btn" onclick="runCalc()">
@@ -8256,7 +8269,7 @@ function togglePelWL(title,e){
   btn.className='pel-sheet-action-btn'+(inWL?' act-on btn-primary':' btn-primary');
   // Abrir WLAdd solo al AÑADIR — no al quitar (modal async deja wasInWL=true)
   if(!wasInWL&&inWL){
-    showActionToast(`${ICONS.heartFill} En Intereses`,`${ICONS.star} ${t('cta_priorizar')}`,()=>togglePriority(title));
+    showActionToast(`${ICONS.heartFill} ${t('cta_en_intereses')}`,`${ICONS.star} ${t('cta_priorizar')}`,()=>togglePriority(title));
   }
 }
 // _dayChips — renderiza días únicos de un film como spans tappables (filtran por día)
@@ -8439,7 +8452,7 @@ function openPelSheet(title){
       <div class="pel-sheet-section-lbl">Programa <span class="ml-1 count-badge cb-neutral">${f.film_list.length}</span></div>
       <div class="pel-sheet-cortos-wrap">${cortoItems}</div>`;
   }
-  const wlLabel=inWL?`${ICONS.heartFill} En Intereses`:`${ICONS.heart} Intereses`;
+  const wlLabel=inWL?`${ICONS.heartFill} ${t('cta_en_intereses')}`:`${ICONS.heart} ${t('nav_intereses')}`;
   const safeT=f.title.replace(/'/g,"\'");
   const _inPlan=savedAgenda&&savedAgenda.schedule.some(s=>s._title===f.title);
   const _planEntry=_inPlan?savedAgenda.schedule.find(s=>s._title===f.title):null;
@@ -9174,7 +9187,7 @@ function _renderExploreLista(){
     const{displayTitle:dt}=parseProgramTitle(f.title);
     const src=isEvent?'':getFilmPoster(f)||'';
     const allPast=screenings.every(s=>screeningPassed(s));
-    const days=[...new Set(screenings.map(s=>DAY_SHORT[s.day]||s.day))].join(' · ');
+    const days=[...new Set(screenings.map(s=>dayLabel(s.day)||s.day))].join(' · ');
     const daysHtml=_dayChips(screenings);
     if(isEvent) return`<div class="plist-item plist-event" style="${allPast?'opacity:.35':''}" onclick="openPelSheet('${safeT}')">
       <img class="plist-poster" src="${makeEventPoster(dt,f.duration,f.event_kind)}" alt="${dt}" loading="lazy">
