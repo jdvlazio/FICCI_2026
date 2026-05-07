@@ -2748,9 +2748,9 @@ const _I18N = {
     "badge_inscripcion": "INSCRIPCIÓN",
     "badge_inscripcion_prev": "INSCRIPCIÓN PREVIA",
     "filter_sin_peliculas": "Sin películas para este filtro",
-    "plan_quitar_tmb": "${t('plan_quitar_tmb')}",
-    "plan_se_quitara": "${t('plan_se_quitara')}",
-    "plan_reemplazar": "${t('plan_reemplazar')}",
+    "plan_quitar_tmb": "¿Quitarla también del plan guardado?",
+    "plan_se_quitara": "Se quitará de Intereses y las opciones se recalcularán",
+    "plan_reemplazar": "¿Reemplazarlo con esta nueva opción? Tu plan actual se perderá",
     "plan_no_intereses": "película ya no están en Intereses",
     "misc_deslizar": "Deslizá sobre las estrellas",
     "misc_mantener": "Mantené presionada la imagen — Añadir a Fotos",
@@ -5273,10 +5273,10 @@ function renderFilmListHTML(){
   function _relDayLabel(screening){
     const todayStr=simTodayStr();
     const todayKey=DAY_KEYS.find(d=>FESTIVAL_DATES[d]===todayStr);
-    const todayLabel=todayKey?DAY_SHORT[todayKey]:'';
+    const todayLabel=todayKey?dayLabel(todayKey):'';
     const tomorrowIdx=todayKey?DAY_KEYS.indexOf(todayKey)+1:-1;
     const tomorrowKey=tomorrowIdx>0&&tomorrowIdx<DAY_KEYS.length?DAY_KEYS[tomorrowIdx]:null;
-    const tomorrowLabel=tomorrowKey?DAY_SHORT[tomorrowKey]:'';
+    const tomorrowLabel=tomorrowKey?dayLabel(tomorrowKey):'';
     if(screening.day===todayLabel) return screening.time+(screening.venue?' · '+screening.venue:'');
     if(tomorrowLabel&&screening.day===tomorrowLabel) return'MAÑANA · '+screening.time+(screening.venue?' · '+screening.venue:'');
     return screening.day+' · '+screening.time+(screening.venue?' · '+screening.venue:'');
@@ -6860,7 +6860,7 @@ function buildResultHTML(scenarios){
             if(screensConflict(s,c)){
               const{displayTitle:ct}=parseProgramTitle(c._title||'');
               conflictWith=ct;
-              const _ds=(DAY_SHORT&&DAY_SHORT[c.day])||c.day||'';
+              const _ds=dayLabel(c.day)||c.day||'';
               conflictWhen=_ds+(c.time?' '+c.time:'');
               break;
             }
@@ -7238,8 +7238,6 @@ function openPlanConfirm(schedule){
   });
   const total=sorted.length;
   const days=[...new Set(sorted.map(s=>s.day))];
-  // Usar DAY_SHORT para mostrar "MAR 21" en lugar de solo "MAR"
-  const dayLabel=d=>DAY_SHORT[d]||DAY_ABBR[d]||d.slice(0,3).toUpperCase();
   const dayRange=days.length===1?dayLabel(days[0]):`${dayLabel(days[0])}–${dayLabel(days[days.length-1])}`;
 
   // Sub: N películas · DÍAS

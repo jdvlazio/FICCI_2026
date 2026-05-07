@@ -748,5 +748,115 @@
     "es": "película ya no están en Intereses",
     "en": "film(s) no longer in Interests",
     "context": "Aprobado Content+UX — plan_no_intereses"
+  },
+  "av_disponibilidad": {
+    "es": "Disponibilidad",
+    "en": "Availability",
+    "context": "Added automatically — verify context"
+  },
+  "av_no_incluir": {
+    "es": "Tu plan no incluirá funciones en estos horarios.",
+    "en": "Your plan won't include screenings during these hours.",
+    "context": "Added automatically — verify context"
+  },
+  "empty_sin_funciones": {
+    "es": "Sin funciones disponibles",
+    "en": "No screenings available",
+    "context": "Added automatically — verify context"
+  },
+  "error_funciones": {
+    "es": "Error al cargar funciones",
+    "en": "Error loading screenings",
+    "context": "Added automatically — verify context"
+  },
+  "export_aparecera": {
+    "es": "Aparecerá en la imagen cuando la compartas.",
+    "en": "Shows in the image when you share your plan.",
+    "context": "Added automatically — verify context"
+  },
+  "export_como_aparecer": {
+    "es": "¿Cómo querés aparecer en tu plan?",
+    "en": "What name should appear on your plan?",
+    "context": "Added automatically — verify context"
+  },
+  "intereses_onboard": {
+    "es": "Añadí lo que no querés perderte en",
+    "en": "Add what you don't want to miss at",
+    "context": "Added automatically — verify context"
+  },
+  "misc_mas": {
+    "es": "+ más ·",
+    "en": "+ more ·",
+    "context": "Added automatically — verify context"
+  },
+  "misc_pelicula": {
+    "es": "película",
+    "en": "film",
+    "context": "Added automatically — verify context"
+  },
+  "misc_toca": {
+    "es": "Tocá",
+    "en": "Tap",
+    "context": "Added automatically — verify context"
+  },
+  "plan_choca": {
+    "es": "Choca con otras películas de tu plan",
+    "en": "Conflicts with films in your plan",
+    "context": "Added automatically — verify context"
+  },
+  "plan_empty_dia": {
+    "es": "No hay funciones para este día. Añadí desde Sugerencias.",
+    "en": "No screenings for this day. Add from Suggestions.",
+    "context": "Added automatically — verify context"
+  },
+  "plan_empty_hueco": {
+    "es": "No hay funciones disponibles para este hueco.",
+    "en": "No screenings available for this gap.",
+    "context": "Added automatically — verify context"
+  },
+  "plan_en_curso": {
+    "es": "EN CURSO · entró hace",
+    "en": "NOW SHOWING · started",
+    "context": "Added automatically — verify context"
+  },
+  "plan_en_tu_plan": {
+    "es": "está en tu plan.",
+    "en": "is in your plan.",
+    "context": "Added automatically — verify context"
+  },
+  "plan_nada_dia": {
+    "es": "Nada en tu plan este día",
+    "en": "Nothing planned for this day",
+    "context": "Added automatically — verify context"
+  },
+  "plan_otra_cosa": {
+    "es": "¿Querés poner otra cosa ahí?",
+    "en": "Want to add something else there?",
+    "context": "Added automatically — verify context"
+  },
+  "plan_sin_combos": {
+    "es": "No hay combinaciones posibles. Ajusta la disponibilidad.",
+    "en": "No combinations found. Adjust your availability.",
+    "context": "Added automatically — verify context"
+  },
+  "plan_sin_proximas": {
+    "es": "No tenés funciones próximas",
+    "en": "No upcoming screenings",
+    "context": "Added automatically — verify context"
+  },
+  "plan_ver_dia": {
+    "es": "Ver día",
+    "en": "See day",
+    "context": "Added automatically — verify context"
+  },
+  "planear_peliculas": {
+    "es": "Películas",
+    "en": "Films",
+    "context": "Added automatically — verify context"
+  },
+  "splash_tagline_2": {
+    "es": "posible.",
+    "en": "possible.",
+    "context": "Added automatically — verify context"
   }
 }
