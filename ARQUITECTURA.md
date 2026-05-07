@@ -1,6 +1,6 @@
 # OTROFESTIV — Documento de Arquitectura
 > Referencia canónica para implementación. Leer antes de tocar código.
-> Última actualización: MAY 2026 · `index.html` @ commit `474b4a0`
+> Última actualización: MAY 2026 · `index.html` @ commit `6a4d9be` · ~10.150 líneas
 
 ---
 
@@ -8,26 +8,33 @@
 
 ```
 /
-├── index.html                  ← App completa (~9.700 líneas, single-file, fuente única)
-├── sw.js                       ← Service Worker
+├── index.html                  ← App completa (~10.150 líneas, single-file, fuente única)
+├── sw.js                       ← Service Worker (actualizar con bump-version.js antes de deploy)
 ├── manifest.json               ← PWA manifest
+├── version.json                ← Build timestamp — sincronizado por bump-version.js
 ├── enricher.html               ← Herramienta de enriquecimiento TMDB
 ├── ARQUITECTURA.md             ← Este documento
+├── i18n/
+│   ├── es.json                 ← Strings en español (fuente de verdad)
+│   ├── en.json                 ← Strings en inglés
+│   └── strings-reference.json ← Inventario completo con contexto
 ├── festivals/
 │   ├── ficci-65.json           ← FICCI 65 (archivado)
 │   ├── aff-2026.json           ← AFF 2026 (archivado)
-│   └── cinemancia-2025.json    ← Cinemancia 2025 (test)
+│   ├── cinemancia-2025.json    ← Cinemancia 2025 (test)
+│   └── tribeca-2026.json       ← Tribeca 2026 (draft — no en FESTIVAL_CONFIG aún)
 ├── pipeline/
 │   ├── PROTOCOLO.md            ← Proceso completo para montar un festival
 │   ├── festival-template.json  ← Plantilla JSON para festival nuevo
 │   └── csv-template.csv        ← Template para organizadores
 ├── scripts/
+│   ├── bump-version.js         ← Actualiza sw.js y version.json — correr antes de cada deploy
 │   ├── generate-config.js      ← Genera entrada FESTIVAL_CONFIG
 │   ├── validate-festivals.js   ← Validador (corre en CI)
 │   ├── enrich-festival.py      ← Enricher TMDB (CLI)
 │   └── geocode-venues.py       ← Geocodifica venues via Nominatim
 └── assets/
-    └── proyeccion-sorpresa.svg ← Poster especial
+    └── proyeccion-sorpresa.svg ← Poster especial Cinemancia
 ```
 
 Los datos de cada festival viven en su propio JSON, **no** en `index.html`. Se cargan en `loadFestival(id)` la primera vez y se cachean en `FESTIVAL_CONFIG[id].films`.
@@ -58,7 +65,6 @@ Los datos de cada festival viven en su propio JSON, **no** en `index.html`. Se c
 |---|---|---|
 | `--amber` | `#F59E0B` | CTA primario, badges, acentos |
 | `--amber-d` | `#D97706` | Hover de amber |
-| `--amber-08…60` | rgba | Fondos tenues, bordes amber |
 | `--green` | `#3AAA6E` | Confirmación, "en curso", nueva fecha |
 | `--red` | `#E05252` | Error, conflicto |
 | `--yellow` | `#E5A020` | Advertencia |
@@ -111,6 +117,14 @@ Los datos de cada festival viven en su propio JSON, **no** en `index.html`. Se c
 | `--r-sheet` | `20px` | Bottom sheets |
 | `--r-pill` | `999px` | Pills |
 
+### Transiciones
+| Token | Valor | Uso |
+|---|---|---|
+| `--tr-fast` | `100ms ease` | Feedback inmediato: hover color |
+| `--tr-base` | `150ms ease` | Micro-interacción: botones, badges |
+| `--tr-smooth` | `200ms ease` | Overlays, opacidades, estados |
+| `--tr-enter` | `300ms ease-out` | Entradas al DOM: paneles, drawers |
+
 ### Pósters (ratio 2:3)
 | Token | Dimensiones | Uso |
 |---|---|---|
@@ -148,11 +162,12 @@ Los datos de cada festival viven en su propio JSON, **no** en `index.html`. Se c
 
 ### Festival JSON (estructura completa)
 
-> **Formato nuevo (desde Jardín 2026):**  y  van dentro de cada objeto film.  
-> No crear  ni  al nivel raíz — eso es formato legado (FICCI, Cinemancia).
+> **Formato nuevo (desde Jardín 2026):** `poster` y `lbSlug` van dentro de cada objeto film.
+> No crear `posters{}` ni `lbSlugs{}` al nivel raíz — eso es formato legado (FICCI, Cinemancia).
 
 ```json
 {
+  "config": { ... },
   "venues": { "Sala - Ciudad": { "short": "...", "lat": 0, "lng": 0, "city": "..." } },
   "customPosters": { "Título": "url-override" },
   "films": [...],
@@ -160,8 +175,11 @@ Los datos de cada festival viven en su propio JSON, **no** en `index.html`. Se c
 }
 ```
 
-La configuración del festival (nombre, fechas, días, storageKey, etc.) vive en  en ,  
-no en el JSON. Usar  para generar esa entrada.
+La configuración del festival (nombre, fechas, días, storageKey, etc.) vive en:
+- `FESTIVAL_CONFIG` en `index.html` — para carga inicial antes del fetch del JSON
+- `config{}` dentro del JSON del festival — generado por `generate-config.js`
+
+Ambas fuentes deben estar sincronizadas. Usar `generate-config.js` para producir la entrada de `FESTIVAL_CONFIG`. **No editar ninguna de las dos a mano.**
 
 ### NOTICES (en `index.html`, editable directamente)
 ```js
@@ -173,18 +191,52 @@ const NOTICES = [
 
 ### Globals en runtime (swapeados por `loadFestival()`)
 ```
-FILMS[]         ← array activo de funciones
-POSTERS{}       ← title → URL de poster
-LB_SLUGS{}      ← title → slug de Letterboxd
-FESTIVAL_DATES  ← { "DÍA KEY": "YYYY-MM-DD" }
-FESTIVAL_END    ← Date object
+FILMS[]              ← array activo de funciones
+POSTERS{}            ← title → URL de poster (formato legado)
+LB_SLUGS{}           ← title → slug de Letterboxd
+FESTIVAL_DATES       ← { "DÍA KEY": "YYYY-MM-DD" }
+FESTIVAL_END         ← Date object
 FESTIVAL_STORAGE_KEY ← prefijo para localStorage
-DAY_KEYS[]      ← orden canónico de días
+DAY_KEYS[]           ← orden canónico de días (ej: ["MAR 21", "MIÉ 22"])
+DAY_SHORT{}          ← { "MAR 21": "MAR 21" } — label corto para chips de día
+DAY_LONG{}           ← { "MAR 21": "Martes 21" } — label largo para headers
+TZ_OFFSET            ← offset de timezone del festival (ej: "-05:00", "-04:00")
+FESTIVAL_TRANSPORT   ← modo de transporte: "walking" | "transit" | "mixed"
 ```
 
 ---
 
-## 4. COMPONENTES CSS
+## 4. SISTEMA i18n
+
+La app soporta español (ES) e inglés (EN). El idioma activo se persiste en `localStorage('otrofestiv_lang')`.
+
+### Funciones principales
+```js
+t('key')           // devuelve el string en el idioma activo; fallback a ES si no existe EN
+setLang('en')      // cambia idioma in-place — muta _lang, actualiza DOM, re-renderiza vista activa
+_applyI18nDOM()    // parchea elementos del DOM estático (nav labels, filtros, etc.)
+```
+
+### Archivos de strings
+```
+i18n/es.json                ← fuente de verdad para español
+i18n/en.json                ← strings en inglés
+i18n/strings-reference.json ← inventario completo con contexto — leer antes de wiring
+```
+
+### Cómo conectar un string nuevo
+1. Verificar que la key existe en `es.json` y `en.json`
+2. Si es en un **template JS** (backtick): reemplazar con `t('key')`
+3. Si es en **HTML estático con ID**: añadir a los `ids{}` en `_applyI18nDOM()`
+4. Si es en **HTML estático sin ID**: añadir `data-i18n="key"` al elemento
+5. **Nunca** añadir `data-i18n` a elementos `<script>` o `<style>` — `_applyI18nDOM` tiene guard, pero la regla es no hacerlo en primer lugar
+
+### Regla de proceso — inamovible
+**Toda decisión de traducción** (nueva key, corrección, ajuste de copy EN o ES) requiere discusión semántica y sintáctica con **Content Designer y UX Writer** antes de entrar al código. Sin excepción.
+
+---
+
+## 5. COMPONENTES CSS
 
 ### Badges (inline en texto o título)
 | Clase | Descripción | Estilo |
@@ -195,28 +247,6 @@ DAY_KEYS[]      ← orden canónico de días
 | `.poster-past-badge` | Sobre póster en grid | Overlay oscuro, texto gray |
 
 > **Regla:** Todo badge nuevo → extender este sistema. Nunca estilos inline ad-hoc.
-
-### Banner global (descartable)
-```
-.notice-banner          ← contenedor flex, surf-2, bdr-l bottom
-.notice-banner-dot      ← círculo 6px amber
-.notice-banner-body     ← flex:1
-.notice-banner-label    ← "AVISO DEL FESTIVAL" en amber, t-xs, w-display
-.notice-banner-text     ← t-sm, white; <span> para texto gris
-.notice-banner-close    ← botón ✕ gray2
-```
-
-### Cards de lista (plist — vista Hoy/Mañana y Explorar)
-```
-.plist-item             ← flex, gap sp-3, padding sp-3, bdr-l bottom
-.plist-poster           ← 32×48px, r-sm, surf-3 como placeholder
-.plist-info             ← flex:1, min-width:0
-.plist-title            ← t-base, w-bold, white — contiene badges inline
-.plist-meta             ← t-sm, gray — venue · sala · duración
-.plist-sec              ← t-label, gray2 — sección
-.plist-heart            ← ícono corazón amber (watchlist toggle)
-.plist-event            ← variante para eventos/industry days
-```
 
 ### Bottom Sheet
 ```
@@ -234,410 +264,189 @@ showActionToast(msg, label, fn, duration)   // con botón de acción
 
 ### Modales de confirmación
 ```js
-showDestructiveModal(title, body, label, cb)  // acción destructiva (rojo)
-showActionModal(title, body, label, cb, cancelLabel)  // acción neutra
-showConflictModal(conflicts, onConfirm)  // conflicto de horario
+showDestructiveModal(title, body, label, cb)
+showActionModal(title, body, label, cb, cancelLabel)
+showConflictModal(conflicts, onConfirm)
 ```
 
 ---
 
-## 5. MAPA DE FUNCIONES DE RENDER
+## 6. MAPA DE FUNCIONES DE RENDER
 
 ### Mi Plan (tab)
 | Función | Qué hace |
 |---|---|
-| `renderAgenda()` | Orquestador principal — llama a los sub-renders |
-| `renderContextualHeader()` | Panel de fase (próxima función, entre funciones, etc.) |
+| `renderAgenda()` | Orquestador principal |
+| `renderContextualHeader()` | Panel de fase (próxima función, etc.) |
 | `renderNextStrip(schedule)` | Tira de próxima función con countdown |
-| `renderUnconfirmed(schedule)` | Check-ins pendientes de funciones pasadas |
-| `renderSavedAgendaHTML()` | Agenda guardada completa |
-| `_renderSavedAgendaHTML()` | Implementación interna |
+| `renderUnconfirmed(schedule)` | Check-ins pendientes |
 | `renderMiPlanList(schedule)` | Vista lista compacta |
 | `renderMiPlanCalendar()` | Vista calendario |
-
-### Selección (tab)
-| Función | Qué hace |
-|---|---|
-| `renderFilmListHTML()` | Grid de watchlist |
-| `renderPrioStrip()` | Strip de películas priorizadas |
-| `renderFlowProgress(tab)` | Stepper ① INTERESES → ② PLANEAR → ③ MI PLAN |
 
 ### Programa / Cartelera (tab)
 | Función | Qué hace |
 |---|---|
-| `_renderProgramaContent()` | Orquestador — decide qué sub-render usar |
+| `_renderProgramaContent()` | Orquestador |
 | `renderProgramaList()` | Lista cronológica Hoy/Mañana |
-| `_renderExploreLista()` | Lista catálogo completo (Explorar) |
+| `_renderExploreLista()` | Lista catálogo completo |
 | `renderPeliculaView()` | Grid por película |
 | `render()` | Grid por horario |
-| `renderVbar()` | Filtro de venue |
-| `renderSbar()` | Filtro de sección |
-| `renderProgramaChips()` | Chips de categoría (Explorar) |
-| `renderNoticesBanner()` | Banner de avisos (cancelaciones) |
+| `renderProgramaChips()` | Chips de categoría |
+| `renderNoticesBanner()` | Banner de avisos |
 
 ### Planear (tab)
 | Función | Qué hace |
 |---|---|
 | `renderSimPanel()` | Panel de escenarios calculados |
-| `renderGapOptions()` | Sugerencias para huecos en el plan |
-| `renderFilmAlternatives()` | Alternativas para una función específica |
+| `renderGapOptions()` | Sugerencias para huecos |
+| `renderFilmAlternatives()` | Alternativas para una función |
 
 ---
 
-## 6. FLUJO DE DATOS
+## 7. FLUJO DE DATOS
 
 ```
 PDF del festival
       ↓
 Enrichment via script (director, año, género, sinopsis, poster TMDB, lbSlug Letterboxd)
       ↓
-festivals/[id].json  (films[] con poster y lbSlug inline — nuevo formato)
+festivals/[id].json  (films[] con poster y lbSlug inline)
       ↓
-loadFestival(id)  →  swapea globals FILMS, POSTERS, LB_SLUGS, etc.
+loadFestival(id)  →  swapea globals FILMS, POSTERS, LB_SLUGS, DAY_KEYS, DAY_SHORT, etc.
       ↓
 render functions  →  DOM
 ```
 
 ### Posters — cadena de prioridad
 ```js
-getFilmPoster(f)       // para cualquier film completo
-getCortoItemPoster(item) // para cortos individuales en film_list
+getFilmPoster(f)          // para cualquier film completo
+getCortoItemPoster(item)  // para cortos individuales en film_list
 ```
-Nunca llamar `getPosterSrc()`, `makeProgramPoster()` o `makeEventPoster()` directamente en templates.
+Nunca llamar `getPosterSrc()`, `makeProgramPoster()` o `makeEventPoster()` directamente.
 
 Prioridad interna:
-1. `CUSTOM_POSTERS[title]` (override manual — incluye cortos individuales de FICCI)
-2. `f.poster` (nuevo formato — URL directa en el objeto film)
-3. `POSTERS[title]` (legado — mapa raíz del JSON)
+1. `CUSTOM_POSTERS[title]`
+2. `f.poster` (nuevo formato)
+3. `POSTERS[title]` (legado)
 4. Poster generativo (solo si `is_cortos` o `type === 'event'`)
 5. `null` → no render (nunca fondo negro, usar `--surf-2`)
 
-### Letterboxd URL
-```js
-`https://letterboxd.com/film/${LB_SLUGS[title]}/`
-```
-
 ---
 
-## 7. STATE & STORAGE
+## 8. STATE & STORAGE
 
 ### Claves de localStorage (prefijadas por festival)
 ```
-{key}_wl        ← watchlist (Set de títulos)
+{key}_wl        ← watchlist
 {key}_watched   ← películas vistas
-{key}_av3       ← bloques de no-disponibilidad por día
+{key}_av3       ← bloques de no-disponibilidad
 {key}_saved     ← agenda guardada { schedule: [...] }
 {key}_prio      ← set de priorizadas
-{key}_lastslot  ← array de últimos slots removidos (hasta 5)
+{key}_lastslot  ← últimos slots removidos (hasta 5)
 ```
-El prefijo `{key}` viene de `FESTIVAL_STORAGE_KEY` (e.g. `aff2026_`).
 
-### Funciones de estado
-```js
-loadState()   // carga desde localStorage al iniciar / cambiar festival
-saveState()   // escribe a localStorage (con debounce interno)
+### Claves de localStorage (globales)
+```
+otrofestiv_festival   ← ID del festival activo
+otrofestiv_lang       ← idioma activo: 'es' | 'en'
+otrofestiv_build      ← build version (para invalidación de cache)
 ```
 
 ---
 
-## 8. CONFLICTOS DE HORARIO
+## 9. CONFLICTOS DE HORARIO
 
-Siempre usar `screensConflict(a, b)` — incluye buffer de viaje y extiende 30 min si `has_qa: true`.  
-**Nunca** ad-hoc con comparaciones de minutos directas.
+Siempre usar `screensConflict(a, b)`. Nunca comparaciones de minutos directas.
 
 ---
 
-## 9. REGLAS DE DISEÑO (no negociables)
+## 10. REGLAS DE DISEÑO (no negociables)
 
-1. **CTA primario**: fondo amber sólido (`--amber`), texto negro (`#0A0A0A` o `--black`).
-2. **Imágenes**: toda `<img>` lleva `loading="lazy"` y `onerror="this.remove()"`. Sin excepción.
-3. **Inline styles**: prohibidos en templates nuevos. Si el valor no tiene token CSS, crear el token primero. Los 152 inline styles existentes son deuda conocida — no agregar más.
+1. **CTA primario**: fondo amber sólido (`--amber`), texto negro.
+2. **Imágenes**: toda `<img>` lleva `loading="lazy"` y `onerror="this.remove()"`.
+3. **Inline styles**: prohibidos en templates nuevos. Crear token antes de usar valor raw.
 4. **Badges**: clases existentes. Nunca inline ad-hoc.
-3. **Nuevo componente**: reutilizar tokens y clases antes de crear nuevos.
-4. **Tipografía**: verificar escala de tokens antes de aplicar `font-size`.
-5. **Iconografía**: solo Lucide pack para íconos de venue/tiempo. Flags de países y emojis de categoría son la única excepción permitida.
-6. **Conflictos**: siempre `screensConflict()`.
-7. **Pósters**: siempre `getFilmPoster()` o `getCortoItemPoster()`. Nunca `onerror` con fondo negro — usar `this.remove()` o placeholder `--surf-2`.
-8. **Cards** — 4 tipos canónicos:
-   - Película: poster + flags + título + dur + sección, funciones + dir + sinopsis + Letterboxd, CTAs
-   - Programa de cortos: igual + lista de cortos, sin Letterboxd
-   - Corto individual (`openCortoSheet`): igual, solo Intereses + Calificar
-   - Evento/taller: sin flags, horario + descripción, sin Letterboxd
+5. **Nuevo componente**: reutilizar tokens y clases antes de crear nuevos.
+6. **Tipografía**: verificar escala de tokens antes de aplicar `font-size`.
+7. **Iconografía**: solo Lucide pack. Flags de países y emojis de categoría son la única excepción.
+8. **Conflictos**: siempre `screensConflict()`.
+9. **Pósters**: siempre `getFilmPoster()` o `getCortoItemPoster()`. `onerror` → `this.remove()`.
+10. **Tap targets iOS**: todo elemento interactivo ≥ 44×44pt. Para elementos pequeños usar:
+    ```css
+    .elemento { position: relative; }
+    .elemento::after { content: ''; position: absolute; inset: -Xpx; }
+    /* X = (44 - tamaño_visual) / 2   |   Ejemplo: emoji 22px → inset: -11px */
+    ```
+11. **Cards** — 4 tipos canónicos (no agregar campos sin pasar por arquitectura):
+    - Película: poster + flags + título + dur + sección, funciones + dir + sinopsis + Letterboxd, CTAs
+    - Programa de cortos: igual + lista de cortos, sin Letterboxd
+    - Corto individual (`openCortoSheet`): igual, solo Intereses + Calificar
+    - Evento/taller: sin flags, horario + descripción, sin Letterboxd
 
 ---
 
-## 10. AGREGAR UN FESTIVAL NUEVO
+## 11. AGREGAR UN FESTIVAL NUEVO
 
-Ver protocolo completo en `pipeline/PROTOCOLO.md`. Resumen:
+Ver protocolo completo en `pipeline/PROTOCOLO.md`.
 
-1. Crear `festivals/[id].json` usando `pipeline/festival-template.json` como base
+1. Crear `festivals/[id].json`
 2. Correr enrichment: `python3 scripts/enrich-festival.py festivals/[id].json`
 3. Generar config: `node scripts/generate-config.js --id [id] ...`
-4. Pegar el bloque generado en `FESTIVAL_CONFIG` en `index.html`
+4. Pegar bloque generado en `FESTIVAL_CONFIG` en `index.html`
 5. Validar: `node scripts/validate-festivals.js [id]`
-6. QA visual P1–P7 (ver PROTOCOLO.md)
-7. Agregar entrada en `enricher.html → FESTIVALS` (registro paralelo intencional — ver comentario en el archivo)
-
-El splash dropdown y el selector se generan dinámicamente desde `FESTIVAL_CONFIG` — no tocar el HTML.  
-Para avisos: agregar entrada en `NOTICES[]` en `index.html` con `festival: '[id]'`.
+6. QA visual P1–P7
+7. `node scripts/bump-version.js` → push
 
 ---
 
-## 11. TIPOS DE FUNCIÓN — REFERENCIA CANÓNICA
+## 12. TIPOS DE FUNCIÓN — REFERENCIA CANÓNICA
 
-Cinco tipos de objeto en `films[]`. El render los detecta automáticamente.
-
-### 1. Largometraje individual
-```json
-{
-  "title": "Eureka",
-  "director": "Lisandro Alonso",
-  "duration": "147 min",
-  "day": "VIE 12", "date": 12, "time": "17:00",
-  "venue": "Biblioteca Juan Carlos Montoya - Sabaneta",
-  "section": "Proyecciones especiales",
-  "flags": "🇦🇷", "year": 2023
-}
-```
-
-### 2. Largometraje con múltiples funciones (formato nuevo — recomendado)
-`loadFestival()` explota `screenings[]` en objetos planos. Sin duplicar metadatos.
-```json
-{
-  "title": "Eureka",
-  "director": "Lisandro Alonso",
-  "duration": "147 min",
-  "section": "Proyecciones especiales",
-  "flags": "🇦🇷", "year": 2023,
-  "screenings": [
-    {"day": "VIE 12", "date": 12, "time": "17:00", "venue": "Biblioteca Juan Carlos Montoya - Sabaneta"},
-    {"day": "SÁB 13", "date": 13, "time": "19:00", "venue": "Teatro Baggenuff II - Copacabana"},
-    {"day": "MAR 16", "date": 16, "time": "19:00", "venue": "Teatro Caribe - Itagüí"}
-  ]
-}
-```
-
-### 3. Programa de cortos
-```json
-{
-  "title": "Competencia de Cortometrajes · Programa 1",
-  "is_cortos": true,
-  "duration": "82 min",
-  "day": "SÁB 13", "date": 13, "time": "17:00",
-  "venue": "La Capilla del Claustro Comfama - Medellín",
-  "film_list": [
-    {"title": "Jirapo", "director": "María Rojas Arias", "duration": "20 min", "country": "Colombia"},
-    {"title": "Kilómetro 126", "director": "Felipe López Gómez", "duration": "17 min", "country": "Colombia"}
-  ]
-}
-```
-
-### 4. Programa combinado de largometrajes
-Dos o más largos en un solo slot. Bloque indivisible. Poster: stack offset del primer y segundo film.
-`duration` se calcula automáticamente si no viene explícita.
-```json
-{
-  "title": "Portales + Las muchas muertes de Antônio Parreiras",
-  "is_programa": true,
-  "day": "VIE 12", "date": 12, "time": "18:30",
-  "venue": "Cine MAMM - Medellín",
-  "section": "Competencia central",
-  "film_list": [
-    {"title": "Portales", "duration": "16 min"},
-    {"title": "As Muitas Mortes de Antônio Parreiras", "duration": "65 min"}
-  ]
-}
-```
-
-### 5. Evento / taller / conversatorio
-```json
-{
-  "title": "Laboratorio internacional de sonido cinematográfico",
-  "type": "event",
-  "duration": "120 min",
-  "day": "LUN 15", "date": 15, "time": "09:00",
-  "venue": "Estudio Archipiélago Sonoro - Medellín",
-  "section": "Programación académica"
-}
-```
-
-### Venue — formato para festivales multi-sede
-`"[Nombre sala] - [Municipio]"` → funciona con el filtro de Lugar existente sin cambios.
-Ejemplo: `"Teatro Otraparte - Envigado"`, `"Cinemas Procinal Las Américas - Medellín"`
+Ver sección completa arriba. Cinco tipos: largometraje individual, largometraje multi-función (recomendado), programa de cortos, programa combinado, evento/taller.
 
 ---
 
-## 12. METADATA ESPECIAL DE FUNCIONES
+## 13. METADATA ESPECIAL DE FUNCIONES
 
-Campos opcionales que modifican comportamiento y UI. Aplican a cualquier tipo de función.
+### `has_qa: true`
+- Algoritmo suma +30 min para conflictos
+- Usar `effectiveDuration(f)` en `screensConflict`, nunca `f.duration` directamente
 
-### `has_qa: true` — Equipo presente / Q&A
-```json
-{
-  "title": "Andariega",
-  "has_qa": true,
-  ...
-}
-```
-**Comportamiento:**
-- El algoritmo de conflictos suma +30 min a `duration` al calcular solapamientos
-- Badge ámbar en card de lista (igual al sistema de notices)
-- Banner en sheet de detalle: "EQUIPO PRESENTE · +30 min estimados"
-- En Mi Plan: aviso junto a la función agendada
-
-**Lógica de duración efectiva:**
-```js
-function effectiveDuration(f) {
-  const base = parseInt(f.duration) || 90;
-  return f.has_qa ? base + 30 : base;
-}
-```
-Usar `effectiveDuration(f)` en `screensConflict` en lugar de `f.duration` directamente.
-
-### `requires_registration: true` — Inscripción previa
-```json
-{
-  "title": "Foro de la crítica · Sesión 1",
-  "type": "event",
-  "requires_registration": true,
-  ...
-}
-```
-**Comportamiento:**
-- Badge informativo en card de lista
-- Banner en sheet de detalle: "INSCRIPCIÓN PREVIA"
-- No bloquea agendar — el usuario decide
-- No afecta el algoritmo de conflictos
-
-### Identidad visual de badges especiales
-Ambos siguen el mismo sistema que `.notice-badge`:
-- Fondo ámbar sólido (`var(--amber)`)
-- Texto negro (`#0A0A0A`)
-- `font-size: var(--t-xs)`, `font-weight: var(--w-display)`
-- `border-radius: var(--r-md)`
-- Misma posición en card: inline antes del título
-
-### Ejemplo completo con ambos campos
-```json
-{
-  "title": "Cartas a mis padres muertos",
-  "director": "Ignacio Agüero",
-  "duration": "106 min",
-  "has_qa": true,
-  "section": "Proyecciones especiales",
-  "screenings": [
-    {"day": "MIÉ 17", "date": 17, "time": "17:00", "venue": "La Capilla del Claustro Comfama - Medellín"}
-  ]
-}
-```
+### `requires_registration: true`
+- Badge informativo. No afecta algoritmo.
 
 ---
 
-## 13. SISTEMA GLOBAL DE SEDES (VENUES)
+## 14. SISTEMA GLOBAL DE SEDES (VENUES)
 
-Las sedes de cada festival se definen en `festivals/*.json` bajo la clave `venues{}`.
-El código las carga en `_FEST_VENUES` al iniciar el festival y las usa para:
-- Mostrar el nombre corto de la sede en cards y Mi Plan
-- Calcular tiempos de viaje entre sedes para `travelWarn()`
-- Detectar conflictos de desplazamiento en `screensConflict()`
+Formato de nombre: `"[Nombre sala] - [Ciudad]"` — siempre igual.
 
-### Estructura en el JSON del festival
+### Modo de transporte
 ```json
-{
-  "venues": {
-    "MAMM": {
-      "short": "MAMM",
-      "lat": 6.2338,
-      "lon": -75.5733,
-      "city": "Medellín",
-      "address": "Carrera 44 #19A-100, Ciudad del Río"
-    },
-    "Cineprox Las Américas": {
-      "short": "Cineprox",
-      "lat": 6.2504,
-      "lon": -75.5800,
-      "city": "Medellín",
-      "address": "Diagonal 75B #2A-120"
-    }
-  }
-}
+{ "transport": "walking" }   // Festival compacto
+{ "transport": "transit" }   // Festival en ciudad (default)
 ```
 
 ### Resolución de venue (_resolveVenue)
-1. Búsqueda exacta en `_FEST_VENUES` (JSON del festival)
-2. Búsqueda parcial en `_FEST_VENUES` (por si el string incluye sala: "MAMM · Sala 1")
-3. Fallback estático en `VENUES` (cubre FICCI 65 sin JSON de venues)
-4. Si nada coincide: `{short: primer segmento del string de venue}`
+1. Búsqueda exacta → 2. Búsqueda parcial → 3. Fallback estático → 4. Primer segmento del string
 
-### Escala de tiempos de viaje (venueTravelMins)
-| Distancia | Tiempo estimado | Contexto |
-|---|---|---|
-| < 150 m | 0 min | Misma sede / sala contigua |
-| < 400 m | 8 min | A pie |
-| < 1 km | 12 min | A pie rápido o transporte corto |
-| < 2.5 km | 18 min | Uber / Metro |
-| < 5 km | 25 min | Uber con tráfico |
-| ≥ 5 km | 35 min | Trayecto largo |
+---
 
-### Modo de transporte — campo `transport`
-Define el modo de movilización predominante del festival.
-Vive en el JSON del festival. El código no requiere cambio para nuevos festivales.
+## 15. REGLAS TÉCNICAS
 
-```json
-{ "transport": "walking" }   // Festival compacto — Jardín, campus, pueblo
-{ "transport": "transit" }   // Festival en ciudad — Medellín, Cartagena (default)
-```
+### Columnas tiempo/día en listas
+Todo label de día/hora que ancle una columna flex debe tener `width` o `min-width` fijo. Validar con `MIÉ` (el día más ancho en Plus Jakarta Sans).
 
-| Distancia | walking | transit |
-|---|---|---|
-| < 100 m | 0 min | 0 min |
-| < 350 m | 5 min | 8 min |
-| < 800 m | 10 min | 12 min |
-| < 1.5 km | 20 min | 18 min |
-| < 3 km | 35 min | 25 min |
-| ≥ 3 km | 50 min | 35 min |
+### Transformaciones masivas de código
+Nunca regex sobre index.html completo para patrones estructurales. Usar parser para transformaciones de >10 ocurrencias que toquen atributos HTML.
 
-El aviso en Mi Plan dice "a pie" o "en carro" según el modo.
+### iOS Safari — propiedades críticas
+Verificar en dispositivo físico antes de commitear cambios con: `overflow`, `position:sticky`, `touch-action`, `overscroll-behavior`, `-webkit-*`.
 
-### Para agregar un festival nuevo
-Solo definir `venues{}` y `transport` en el JSON.
-El código no requiere ningún cambio.
-
-### Cambios de sede (notices)
-Cuando un film tiene `notice.type === 'rescheduled'` con `newVenue`,
-`_effectiveVenue()` devuelve la nueva sede para el cálculo de distancias.
-El sistema refleja automáticamente el cambio en `travelWarn()`.
-
-## Regla: Columnas de tiempo/día en listas
-
-**Principio:** Todo elemento que ancle visualmente una columna de tiempo o fecha dentro de un flex row debe tener ancho fijo. Sin ancho fijo, cada carácter diferente produce un desplazamiento en las columnas adyacentes.
-
-**Aplicación:** puede ser en el elemento mismo o en su contenedor directo.
-
-| Clase | Ancho fijo en | Valor |
-|---|---|---|
-| `.pelicula-day` | el elemento | `width:48px; flex-shrink:0` |
-| `.pelicula-time` | el elemento | `width:42px; flex-shrink:0` |
-| `.saved-time` | el elemento | tiene `min-width` propio |
-| `.suggestion-time` | el elemento | tiene `min-width` propio |
-| `.av-row-dayname` | contenedor `.av-row-lbl` | `width:42px` |
-| `.mplan-t1` | contenedor `.mplan-tc` | `min-width:50px` |
-
-**Regla para componentes nuevos:** si un label de día/hora abre una fila en flex, definir `width` o `min-width` fijo — ya sea en el label o en su contenedor — antes de hacer PR. Validar visualmente con el día más ancho del festival (`MIÉ` tiene acento, es el más ancho en Plus Jakarta Sans).
-
-## Regla: transformaciones masivas de código
-
-**Nunca usar regex sobre index.html completo para reemplazar patrones estructurales.**
-
-index.html mezcla CSS, JS y HTML en ~9.700 líneas. Un regex que busca `<[^>]+style="..."[^>]*>` puede matchear el `<` de una comparación JS (`fStart<nowMin`) como inicio de tag HTML. El resultado es corrupción silenciosa de JS que pasa el syntax check solo si el error está en un template literal.
-
-**Regla:** cualquier transformación de más de 10 ocurrencias que toque atributos HTML usa un parser (`beautifulsoup4` en Python, `cheerio` en Node), no regex.
-
-**Regla iOS Safari:** antes de commitear cualquier cambio que use `overflow`, `position:sticky`, `touch-action`, `overscroll-behavior`, o `-webkit-*`, verificar en dispositivo físico iOS. Estas propiedades tienen comportamiento diferente a Chrome DevTools mobile.
-
-Propiedades con comportamiento documentado distinto en iOS Safari:
-- `overscroll-behavior:contain` sin height constraint → consume scroll events, ventana no scrollea
-- `position:sticky` dentro de `overflow:auto` sin height → no stickea
-- `AbortSignal.timeout()` → no disponible en Safari < 16, fetch cuelga indefinidamente
-- `100vh` → incluye chrome del browser en Safari < 15 (usar `100dvh`)
-
+| Propiedad | Comportamiento en iOS Safari |
+|---|---|
+| `overscroll-behavior:contain` sin height | consume scroll events |
+| `position:sticky` dentro de `overflow:auto` sin height | no stickea |
+| `AbortSignal.timeout()` | no disponible en Safari < 16 |
+| `100vh` | incluye chrome del browser en < 15 (usar `100dvh`) |
+| Modificar `aria-label` en `role="dialog"` activo | puede triggear reposicionamiento de foco |
+| `data-i18n` en `<script>` o `<style>` | nunca — `_applyI18nDOM` tiene guard pero la regla es no hacerlo |

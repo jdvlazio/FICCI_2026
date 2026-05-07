@@ -22,16 +22,14 @@ Pide al organizador que llene el archivo `/pipeline/csv-template.csv`. Si no es 
 
 ---
 
-## Regla de arquitectura — Fuente única para configuración de festival
+## Regla de arquitectura — Configuración de festival
 
-**`FESTIVAL_CONFIG` en `index.html` es el único lugar donde se agrega un festival.**
+La configuración de un festival (nombre, fechas, días, storageKey, etc.) vive en **dos lugares sincronizados**:
 
-Nunca crear datos de configuración (nombre, ciudad, fechas, venues, días) en los JSONs de `festivals/`. Los JSONs solo contienen datos de películas (`films[]`).
+1. `FESTIVAL_CONFIG` en `index.html` — para carga inicial antes del fetch del JSON
+2. `config{}` dentro del JSON del festival — generado automáticamente por `generate-config.js`
 
-Al agregar un nuevo festival:
-1. Agregar entrada en `FESTIVAL_CONFIG` en `index.html`
-2. Crear `festivals/<id>.json` con `films[]`
-3. Correr el Paso 2 del pipeline (enrichment)
+`generate-config.js` produce ambas. No editar ninguna a mano. El pipeline garantiza la sincronía.
 
 ## El pipeline — siempre en este orden
 
@@ -216,7 +214,9 @@ Siempre: `"Nombre de la Sede - Ciudad"`
 ```
 
 ### Días
-Siempre el formato del festival en español con número: `"VIE 12"`, `"SÁB 13"`, `"DOM 14"`
+Para festivales en español: `"VIE 12"`, `"SÁB 13"`, `"DOM 14"` (abreviatura en español + número).
+Para festivales en inglés (ej: Tribeca): `"TUE 3"`, `"WED 4"` — usar abreviaturas EN desde el inicio.
+`generate-config.js` produce los objetos `dayShort` y `dayLong` según el idioma configurado.
 
 ### Horarios
 Siempre 24h con dos dígitos: `"17:00"`, `"09:30"`, `"21:00"`
@@ -233,9 +233,10 @@ Siempre emoji de banderas: `"🇨🇴"`, `"🇦🇷🇫🇷"`
 
 | Festival | ID | Archivo | Estado |
 |---|---|---|---|
-| AFF 2026 | `aff2026` | `festivals/aff-2026.json` | ✓ Archivado |
 | FICCI 65 | `ficci65` | `festivals/ficci-65.json` | ✓ Archivado |
+| AFF 2026 | `aff2026` | `festivals/aff-2026.json` | ✓ Archivado |
 | Cinemancia 2025 | `cinemancia2025` | `festivals/cinemancia-2025.json` | 🧪 Test |
+| Tribeca 2026 | `tribeca2026` | `festivals/tribeca-2026.json` | 📋 Draft |
 
 ## Agregar un festival nuevo — checklist
 
