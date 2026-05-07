@@ -2753,6 +2753,7 @@ const _I18N = {
     "badge_inscripcion": "INSCRIPCIÓN",
     "badge_inscripcion_prev": "INSCRIPCIÓN PREVIA",
     "filter_sin_peliculas": "Sin películas para este filtro",
+    "badge_pasado": "PASADO",
     "filter_todos_lugares": "Todos los lugares",
     "filter_todo_programa": "Todo el programa",
     "plan_recalcular_suffix": "o recalculá en Planear.",
@@ -2962,6 +2963,7 @@ const _I18N = {
     "badge_inscripcion": "RSVP",
     "badge_inscripcion_prev": "RSVP REQUIRED",
     "filter_sin_peliculas": "No films match this filter",
+    "badge_pasado": "PAST",
     "filter_todos_lugares": "All venues",
     "filter_todo_programa": "All sections",
     "plan_recalcular_suffix": "or recalculate in Planner.",
@@ -3572,7 +3574,7 @@ const FESTIVAL_CONFIG={
     }
   },
   'cinemancia2025':{
-    name:'Cinemancia 2025',shortName:'CINEMANCIA',city:'Valle de Aburrá',dates:'11–20 SEP',dates_en:'SEP 11–20, 2025',year:2025,timezoneOffset:'-05:00',
+    name:'Cinemancia 2025',shortName:'CINEMANCIA',city:'Valle de Aburrá',dates:'11–20 SEP',dates_en:'SEP 11–20',year:2025,timezoneOffset:'-05:00',
     storageKey:'cinemancia2025_',festivalEndStr:'2025-09-20T23:00:00',
     eventPosterLabel:['PROGRAMACIÓN','ACADÉMICA'],
     group:'test',
@@ -9379,7 +9381,7 @@ function _renderSplashDropdown(activeFestId){
     const end=cfg.festivalEndStr?new Date(cfg.festivalEndStr):null;
     const isPast=end&&today>end;
     const isActive=id===activeFestId;
-    const badge=isTest?'TEST':isPast?'PASADO':'';
+    const badge=isTest?'TEST':isPast?t('badge_pasado'):'';
     const meta=`${cfg.city} · ${_lang==='en'&&cfg.dates_en?cfg.dates_en:cfg.dates} ${cfg.year||''}`.trim();
     return`<button class="splash-drop-item${isActive?' selected':''}" data-fest="${id}" role="option" aria-selected="${isActive}" onclick="selectSplashFest('${cfg.name}','${meta}','${id}')">
       <div><div class="splash-drop-item-name">${cfg.name}</div><div class="splash-drop-item-meta">${meta}</div></div>
