@@ -2849,11 +2849,15 @@ function t(key){
 function setLang(code){
   if(!_I18N[code]) return;
   if(code === _lang) return;
+  _lang = code;
   localStorage.setItem('otrofestiv_lang', code);
-  // Marca que el reload viene de un cambio de idioma — el init saltará el splash
-  const festId = localStorage.getItem('otrofestiv_festival');
-  if(festId) localStorage.setItem('otrofestiv_lang_reload', festId);
-  location.reload();
+  _applyI18nDOM();
+  // Re-render vista activa para que los templates JS reflejen el nuevo idioma
+  const nav = activeMNav || 'mnav-cartelera';
+  if(nav === 'mnav-cartelera')      { typeof showDayView === 'function'         && showDayView(); }
+  else if(nav === 'mnav-seleccion') { typeof renderAgenda === 'function'        && renderAgenda(); }
+  else if(nav === 'mnav-planner')   { typeof renderSimPanel === 'function'      && renderSimPanel(); }
+  else if(nav === 'mnav-miplan')    { typeof renderMiPlanCalendar === 'function' && renderMiPlanCalendar(); }
 }
 
 // ── Fin i18n ──────────────────────────────────────────────────────────────
@@ -9494,13 +9498,6 @@ _sbInit();
   // Render dinámico — agregar festival = solo FESTIVAL_CONFIG, nada más
   _renderSplashDropdown(activeFest);
   _renderFestivalSelector(activeFest);
-  // Si viene de un cambio de idioma, auto-cargar el festival sin mostrar el splash
-  const _langReloadFest = localStorage.getItem('otrofestiv_lang_reload');
-  if(_langReloadFest && FESTIVAL_CONFIG[_langReloadFest]){
-    localStorage.removeItem('otrofestiv_lang_reload');
-    _splashSelectedFestId = _langReloadFest;
-    dismissSplash();
-  }
   const cfg=FESTIVAL_CONFIG[activeFest];
   if(cfg){
     const n=document.getElementById('splash-sel-name');
