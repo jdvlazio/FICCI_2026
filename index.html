@@ -5300,6 +5300,11 @@ function parseProgramTitle(t){
 // filmDisplayTitle(f) — patrón Letterboxd
 // EN: title_en como principal, title como original (solo si difieren)
 // ES: title siempre, sin secundario
+// _langDates(cfg) — devuelve fechas en el idioma activo
+function _langDates(cfg) {
+  return (_lang==='en' && cfg && cfg.dates_en) ? cfg.dates_en : (cfg && cfg.dates)||'';
+}
+
 function filmDisplayTitle(f) {
   if (_lang === 'en' && f.title_en && f.title_en !== f.title) {
     return { main: f.title_en, original: f.title };
@@ -6084,7 +6089,7 @@ function renderContextualHeader(){
     return`<div class="pad-sm">
       <div class="ctx-eyebrow">
         <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
-        ${(FESTIVAL_CONFIG[_activeFestId]||{}).name||''} · ${(FESTIVAL_CONFIG[_activeFestId]||{}).dates||''}
+        ${(FESTIVAL_CONFIG[_activeFestId]||{}).name||''} · ${_langDates(FESTIVAL_CONFIG[_activeFestId])}
       </div>
       <div class="ctx-main-title">${mainTitle}</div>
       <div class="ctx-sub" style="margin-bottom:${totalWatched?'12px':'0'}">${subMsg}</div>
@@ -6122,7 +6127,7 @@ function renderContextualHeader(){
         ${(FESTIVAL_CONFIG[_activeFestId]||{}).name||''}
       </div>
       <div class="ctx-main-title">El festival empieza ${label}</div>
-      <div class="ctx-sub">${(FESTIVAL_CONFIG[_activeFestId]||{}).city||''} · ${(FESTIVAL_CONFIG[_activeFestId]||{}).dates||''}</div>
+      <div class="ctx-sub">${(FESTIVAL_CONFIG[_activeFestId]||{}).city||''} · ${_langDates(FESTIVAL_CONFIG[_activeFestId])}</div>
       ${prioHtml?`<div class="ctx-prio-row">${prioHtml}</div>`:''}
     </div>`;
   }
@@ -9389,6 +9394,14 @@ function _renderSplashDropdown(activeFestId){
     </button>`;
   }).filter(Boolean).join('');
   dd.innerHTML=html;
+  // Update selected button meta with language-aware dates
+  const _activeCfg=FESTIVAL_CONFIG[activeFestId];
+  const _selMeta=document.getElementById('splash-sel-meta');
+  const _selName=document.getElementById('splash-sel-name');
+  if(_activeCfg && _selMeta){
+    _selMeta.textContent=`${_activeCfg.city} · ${_langDates(_activeCfg)} ${_activeCfg.year||''}`.trim();
+  }
+  if(_activeCfg && _selName) _selName.textContent=_activeCfg.name;
 }
 
 function _renderFestivalSelector(activeFestId){
