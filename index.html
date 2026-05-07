@@ -3359,13 +3359,13 @@ function venueTravelMins(v1,v2){
   const c1=findCoords(v1),c2=findCoords(v2);
   if(!c1||!c2) return 0;
   const lat1=c1.lat,lng1=c1.lng??c1.lon,lat2=c2.lat,lng2=c2.lng??c2.lon;
-  if(!lat1||!lat2) return 0;
+  if(!lat1||!lng1||!lat2||!lng2) return 0;
   const dlat=(lat1-lat2)*111,dlon=(lng1-lng2)*111*Math.cos(lat1*Math.PI/180);
   const km=Math.sqrt(dlat*dlat+dlon*dlon);
-  if(km<0.2) return 0;
-  if(km<0.5) return 10;
-  if(km<1.5) return 15;
-  return Math.round(km/0.25*5);
+  if(km<0.15) return 0;
+  // Velocidad efectiva por modo de transporte (km/h, incluye overhead puerta-a-puerta)
+  const spd=FESTIVAL_TRANSPORT==='walking'?4:FESTIVAL_TRANSPORT==='transit'?15:10;
+  return Math.max(5,Math.round(km/spd*60/5)*5);
 }
 function vcfg(v){
   if(!v) return{short:''};
@@ -3405,16 +3405,8 @@ function screensConflict(a,b){
   return true; // solapamiento directo
 }
 function travelMins(venueA,venueB){
-  // First try coordinate-based calculation (works for all festivals)
-  const coordMins=venueTravelMins(venueA,venueB);
-  if(coordMins>0) return coordMins;
-  // Fallback: FICCI Cartagena venue groups
-  const g=v=>v.includes('Bocagrande')?'bog':v.includes('Caribe Plaza')?'cp':'centro';
-  const g1=g(venueA),g2=g(venueB);
-  if(g1===g2) return 0;
-  if((g1==='bog'&&g2==='cp')||(g1==='cp'&&g2==='bog')) return 13;
-  if(g1==='centro'||g2==='centro') return g1==='cp'||g2==='cp'?16:12;
-  return 0;
+  // Coordinate-based — all festivals provide venues with lat+lng
+  return venueTravelMins(venueA,venueB);
 }
 function travelWarn(s1,s2){
   if(s1.day!==s2.day) return null;
@@ -6849,25 +6841,18 @@ function venueTravelMins(v1,v2){
   if(!_venueCoords||!_venueCoords[v1]||!_venueCoords[v2]) return 0;
   const c1=_venueCoords[v1],c2=_venueCoords[v2];
   if(!c1||!c2) return 0;
-  const R=6371000;
-  const dLat=(c2.lat-c1.lat)*Math.PI/180;
-  const dLon=(c2.lng-c1.lng)*Math.PI/180;
-  const a=Math.sin(dLat/2)**2+Math.cos(c1.lat*Math.PI/180)*Math.cos(c2.lat*Math.PI/180)*Math.sin(dLon/2)**2;
-  const dist=R*2*Math.atan2(Math.sqrt(a),Math.sqrt(1-a));
-  if(dist<50) return 0;
-  return Math.ceil(dist/60);
+  const dlat=(c1.lat-c2.lat)*111,dlon=(c1.lng-c2.lng)*111*Math.cos(c1.lat*Math.PI/180);
+  const km=Math.sqrt(dlat*dlat+dlon*dlon);
+  if(km<0.15) return 0;
+  // Velocidad efectiva por modo de transporte — sincronizado con main thread
+  const spd=_transport==='walking'?4:_transport==='transit'?15:10;
+  return Math.max(5,Math.round(km/spd*60/5)*5);
 }
 let _venueCoords={};
+let _transport='transit';
 
 function travelMins(venueA,venueB){
-  const coordMins=venueTravelMins(venueA,venueB);
-  if(coordMins>0) return coordMins;
-  const g=v=>v.includes('Bocagrande')?'bog':v.includes('Caribe Plaza')?'cp':'centro';
-  const g1=g(venueA),g2=g(venueB);
-  if(g1===g2) return 0;
-  if((g1==='bog'&&g2==='cp')||(g1==='cp'&&g2==='bog')) return 13;
-  if(g1==='centro'||g2==='centro') return g1==='cp'||g2==='cp'?16:12;
-  return 0;
+  return venueTravelMins(venueA,venueB);
 }
 
 function screeningPassed(s){
@@ -7004,6 +6989,7 @@ self.onmessage=function(e){
   FESTIVAL_END_TS=d.festivalEndTs;
   SIM_TIME=d.simTime;
   _venueCoords=d.venueCoords||{};
+  _transport=d.transport||'transit';
   try{
     const scenarios=computeScenarios(d.titles);
     self.postMessage({ok:true,scenarios});
@@ -7094,7 +7080,8 @@ function runCalc(){
       tzOffset:TZ_OFFSET,
       festivalEndTs:FESTIVAL_END.getTime(),
       simTime:_simTime,
-      venueCoords:_vcoords
+      venueCoords:_vcoords,
+      transport:FESTIVAL_TRANSPORT
     });
   }else{
     // Fallback: main thread con setTimeout
