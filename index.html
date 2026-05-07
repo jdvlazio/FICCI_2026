@@ -2849,10 +2849,10 @@ function t(key){
 function setLang(code){
   if(!_I18N[code]) return;
   if(code === _lang) return;
-  // Preserve state across reload
-  const activeTab = document.querySelector('.main-nav-tab.active')?.dataset?.tab || 'programa';
   localStorage.setItem('otrofestiv_lang', code);
-  localStorage.setItem('otrofestiv_restore_tab', activeTab);
+  // Marca que el reload viene de un cambio de idioma — el init saltará el splash
+  const festId = localStorage.getItem('otrofestiv_festival');
+  if(festId) localStorage.setItem('otrofestiv_lang_reload', festId);
   location.reload();
 }
 
@@ -9494,6 +9494,13 @@ _sbInit();
   // Render dinámico — agregar festival = solo FESTIVAL_CONFIG, nada más
   _renderSplashDropdown(activeFest);
   _renderFestivalSelector(activeFest);
+  // Si viene de un cambio de idioma, auto-cargar el festival sin mostrar el splash
+  const _langReloadFest = localStorage.getItem('otrofestiv_lang_reload');
+  if(_langReloadFest && FESTIVAL_CONFIG[_langReloadFest]){
+    localStorage.removeItem('otrofestiv_lang_reload');
+    _splashSelectedFestId = _langReloadFest;
+    dismissSplash();
+  }
   const cfg=FESTIVAL_CONFIG[activeFest];
   if(cfg){
     const n=document.getElementById('splash-sel-name');
