@@ -327,8 +327,8 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:var(--t
 .sync-dot{position:absolute;bottom:0;right:0;width:7px;height:7px;border-radius:50%;border:1.5px solid var(--surf);display:none}
 .sync-dot.sync-ok{display:block;background:var(--amber)}
 .sync-dot.sync-err{display:block;background:#e05}
-.lang-toggle{display:flex;align-items:center;gap:2px;margin-left:var(--sp-2);flex-shrink:0}
-.lang-btn{background:none;border:none;cursor:pointer;font-size:var(--t-md);line-height:1;padding:var(--sp-1) 2px;border-radius:var(--r-sm);opacity:.35;-webkit-tap-highlight-color:transparent;transition:opacity .15s}
+.lang-toggle{display:flex;align-items:center;gap:var(--sp-1);margin-left:var(--sp-2);flex-shrink:0}
+.lang-btn{background:none;border:none;cursor:pointer;font-size:var(--t-md);line-height:1;padding:var(--sp-1) 2px;min-width:32px;min-height:32px;display:flex;align-items:center;justify-content:center;border-radius:var(--r-sm);opacity:.35;-webkit-tap-highlight-color:transparent;transition:opacity var(--tr-base)}
 .lang-btn.active{opacity:1}
 /* Fila wordmark + account */
 .hdr-top{display:flex;align-items:center;padding:var(--sp-2) var(--sp-4);min-height:36px}
@@ -337,9 +337,7 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:var(--t
 .sync-dot{position:absolute;top:2px;right:2px;width:6px;height:6px;border-radius:50%;display:none}
 .sync-dot.sync-ok{display:block;background:var(--amber)}
 .sync-dot.sync-err{display:block;background:#e05}
-.lang-toggle{display:flex;align-items:center;gap:2px;margin-left:var(--sp-2);flex-shrink:0}
-.lang-btn{background:none;border:none;cursor:pointer;font-size:var(--t-md);line-height:1;padding:var(--sp-1) 2px;border-radius:var(--r-sm);opacity:.35;-webkit-tap-highlight-color:transparent;transition:opacity .15s}
-.lang-btn.active{opacity:1}
+
 /* Auth sheet */
 .auth-sheet{display:none;position:fixed;inset:0;z-index:9999;background:var(--overlay-60);align-items:flex-end;justify-content:center}
 .auth-sheet.open .auth-sheet-inner{transform:translateY(0)}
