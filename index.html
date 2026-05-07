@@ -9752,7 +9752,7 @@ _sbInit();
     const n=document.getElementById('splash-sel-name');
     const m=document.getElementById('splash-sel-meta');
     if(n) n.textContent=cfg.name;
-    if(m) m.textContent=cfg.city+'\u00b7 '+cfg.dates+(cfg.year?' '+cfg.year:'');
+    if(m) m.textContent=`${cfg.city}· ${_langDates(cfg)}${cfg.year?' '+cfg.year:''}`.trimEnd();
   }
 })();
 
