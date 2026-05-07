@@ -328,7 +328,8 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:var(--t
 .sync-dot.sync-ok{display:block;background:var(--amber)}
 .sync-dot.sync-err{display:block;background:#e05}
 .lang-toggle{display:flex;align-items:center;gap:var(--sp-1);margin-left:var(--sp-2);flex-shrink:0}
-.lang-btn{background:none;border:none;cursor:pointer;font-size:var(--t-md);line-height:1;padding:var(--sp-1) var(--sp-1);border-radius:var(--r-sm);opacity:.35;-webkit-tap-highlight-color:transparent;transition:opacity var(--tr-base)}
+.lang-btn{background:none;border:none;cursor:pointer;font-size:var(--t-md);line-height:1;padding:var(--sp-1) var(--sp-1);border-radius:var(--r-sm);opacity:.35;-webkit-tap-highlight-color:transparent;transition:opacity var(--tr-base);position:relative}
+.lang-btn::after{content:'';position:absolute;inset:-11px}
 .lang-btn.active{opacity:1}
 /* Fila wordmark + account */
 .hdr-top{display:flex;align-items:center;padding:var(--sp-2) var(--sp-4);min-height:36px;width:100%}
