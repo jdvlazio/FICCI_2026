@@ -9929,7 +9929,7 @@ if(window.visualViewport){
 function _seccionLabel(sec){
   // Botón mode bar: solo el emoji que ya viene en el nombre de sección
   // Las secciones tienen formato "🏆 Nombre" en todos los festivales
-  if(!sec||sec==='all') return 'Sección';
+  if(!sec||sec==='all') return t('label_seccion');
   return sec.match(/^\S+/)?.[0] || sec.slice(0,4);
 }
 function _seccionPillLabel(sec){
