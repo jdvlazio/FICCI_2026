@@ -197,5 +197,10 @@
   "cta_priorizada": "Prioritized",
   "cta_asistio": "Attended",
   "misc_conservar": "Keep",
-  "misc_omitir": "Skip"
+  "misc_omitir": "Skip",
+  "plan_ya_tenes_prio": "You have",
+  "plan_quieres_prio": "Want to prioritize",
+  "plan_revisa_planeaste": "Review what you planned and the films you marked as seen.",
+  "plan_ir_programa": "Go to Program",
+  "plan_fest_terminado": "has ended"
 }

@@ -973,5 +973,30 @@
     "es": "Omitir",
     "en": "Skip",
     "context": "CTA estado activo — aprobado Content+UX"
+  },
+  "plan_ya_tenes_prio": {
+    "es": "Ya tenés",
+    "en": "You have",
+    "context": "Empty states + prio modal — aprobado Content+UX"
+  },
+  "plan_quieres_prio": {
+    "es": "Querés priorizar",
+    "en": "Want to prioritize",
+    "context": "Empty states + prio modal — aprobado Content+UX"
+  },
+  "plan_revisa_planeaste": {
+    "es": "Revisá lo que planeaste y las películas que marcaste como vistas.",
+    "en": "Review what you planned and the films you marked as seen.",
+    "context": "Empty states + prio modal — aprobado Content+UX"
+  },
+  "plan_ir_programa": {
+    "es": "Ir al Programa",
+    "en": "Go to Program",
+    "context": "Empty states + prio modal — aprobado Content+UX"
+  },
+  "plan_fest_terminado": {
+    "es": "ha terminado",
+    "en": "has ended",
+    "context": "Empty states + prio modal — aprobado Content+UX"
   }
 }

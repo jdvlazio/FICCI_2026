@@ -197,5 +197,10 @@
   "cta_priorizada": "Priorizada",
   "cta_asistio": "Asistí",
   "misc_conservar": "Conservar",
-  "misc_omitir": "Omitir"
+  "misc_omitir": "Omitir",
+  "plan_ya_tenes_prio": "Ya tenés",
+  "plan_quieres_prio": "Querés priorizar",
+  "plan_revisa_planeaste": "Revisá lo que planeaste y las películas que marcaste como vistas.",
+  "plan_ir_programa": "Ir al Programa",
+  "plan_fest_terminado": "ha terminado"
 }
