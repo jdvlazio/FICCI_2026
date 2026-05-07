@@ -2253,7 +2253,7 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:var(--t
 </head>
 <body>
 <!-- Splash siempre visible — se pre-selecciona el festival en curso por fecha. -->
-<div id="otrofestiv-splash" role="dialog" aria-label="Bienvenida" aria-modal="true">
+<div id="otrofestiv-splash" role="dialog" aria-label="${t('aria_bienvenida')}" aria-modal="true">
   <div class="splash-wordmark">Otro<span>festiv</span></div>
   <div class="splash-action">
   <div class="splash-selector">
@@ -2269,7 +2269,7 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:var(--t
       <!-- Generado dinámicamente por _renderSplashDropdown() en init -->
     </div>
   </div>
-  <button class="splash-enter-btn" onclick="dismissSplash()">Entrar</button>
+  <button class="splash-enter-btn" onclick="dismissSplash()">${t('auth_entrar')}</button>
   </div>
   <div class="splash-tagline">
     <div class="splash-tagline-line">Más de lo que crees</div>
@@ -2282,23 +2282,23 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:var(--t
 <div class="av-sheet-overlay" id="av-sheet-overlay" style="display:none" onclick="if(event.target===this)closeAvSheet()">
   <div class="av-sheet">
     <div class="av-sheet-handle"></div>
-    <div class="av-sheet-title">No disponible</div>
+    <div class="av-sheet-title">${t('misc_no_disp')}</div>
     <div class="av-sheet-lbl">Día</div>
     <div class="av-day-chips" id="av-day-chips"></div>
-    <div class="av-sheet-lbl">Tipo</div>
+    <div class="av-sheet-lbl">${t('av_tipo')}</div>
     <div class="av-type-row">
-      <button class="av-type-btn selected" id="av-type-hours" onclick="setAvType('hours')">Horas específicas</button>
-      <button class="av-type-btn" id="av-type-full" onclick="setAvType('full')">Todo el día</button>
+      <button class="av-type-btn selected" id="av-type-hours" onclick="setAvType('hours')">${t('av_horas')}</button>
+      <button class="av-type-btn" id="av-type-full" onclick="setAvType('full')">${t('av_todo_el_dia')}</button>
     </div>
     <div id="av-time-section">
-      <div class="av-sheet-lbl">Horario</div>
+      <div class="av-sheet-lbl">${t('av_horario')}</div>
       <div class="av-time-row">
         <select class="av-time-sel" id="av-sheet-from"></select>
         <span style="color:var(--gray)">–</span>
         <select class="av-time-sel" id="av-sheet-to"></select>
       </div>
     </div>
-    <button class="av-sheet-confirm" onclick="confirmAvBlock()">Confirmar</button>
+    <button class="av-sheet-confirm" onclick="confirmAvBlock()">${t('av_confirmar')}</button>
   </div>
 </div>
 
@@ -2307,7 +2307,7 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:var(--t
 <div class="hdr">
   <div class="hdr-top">
     <h1 class="hdr-wordmark">Otro<span>festiv</span></h1>
-    <button class="auth-btn" id="auth-btn" onclick="openAuthSheet()" title="Sincronizar entre dispositivos" aria-label="Cuenta">
+    <button class="auth-btn" id="auth-btn" onclick="openAuthSheet()" title=t('aria_sincronizar') aria-label="${t('aria_cuenta')}">
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z"/></svg>
       <span class="auth-avatar" id="auth-avatar"></span>
       <span class="sync-dot" id="sync-dot"></span>
@@ -2322,7 +2322,7 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:var(--t
     </div>
     <div class="hdr-fest-chev"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5"/></svg></div>
   </div>
-  <button class="hdr-search-icon" id="hdr-search-icon" onclick="searchOpen()" aria-label="Buscar">
+  <button class="hdr-search-icon" id="hdr-search-icon" onclick="searchOpen()" aria-label="${t('aria_buscar')}">
     <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"/></svg>
   </button>
 </div>
@@ -2330,22 +2330,22 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:var(--t
 
 </div>
 </div><!-- /topbar -->
-<div class="main-nav" id="main-nav" role="navigation" aria-label="Navegación principal">
+<div class="main-nav" id="main-nav" role="navigation" aria-label="${t('aria_nav_ppal')}">
   <button class="main-nav-tab on" id="mnav-cartelera" onclick="{const _ph=_getProgramaPhase();programaSubMode=_ph.default;switchMainNav('mnav-cartelera');showDayView();}">
     <span class="main-nav-ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="2.18"/><line x1="7" y1="2" x2="7" y2="22"/><line x1="17" y1="2" x2="17" y2="22"/><line x1="2" y1="12" x2="22" y2="12"/><line x1="2" y1="7" x2="7" y2="7"/><line x1="2" y1="17" x2="7" y2="17"/><line x1="17" y1="17" x2="22" y2="17"/><line x1="17" y1="7" x2="22" y2="7"/></svg></span>
-    <span class="main-nav-lbl">PROGRAMA</span>
+    <span class="main-nav-lbl" id="lbl-nav-programa">PROGRAMA</span>
   </button>
   <button class="main-nav-tab" id="mnav-seleccion" onclick="switchMainNav('mnav-seleccion');showAgView()">
     <span class="main-nav-ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z"/></svg></span>
-    <span class="main-nav-lbl">INTERESES</span>
+    <span class="main-nav-lbl" id="lbl-nav-intereses">INTERESES</span>
   </button>
   <button class="main-nav-tab" id="mnav-planner" onclick="switchMainNav('mnav-planner');showAgView()">
     <span class="main-nav-ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="21" x2="4" y2="14"/><line x1="4" y1="10" x2="4" y2="3"/><line x1="12" y1="21" x2="12" y2="12"/><line x1="12" y1="8" x2="12" y2="3"/><line x1="20" y1="21" x2="20" y2="16"/><line x1="20" y1="12" x2="20" y2="3"/><line x1="1" y1="14" x2="7" y2="14"/><line x1="9" y1="8" x2="15" y2="8"/><line x1="17" y1="16" x2="23" y2="16"/></svg></span>
-    <span class="main-nav-lbl">PLANEAR</span>
+    <span class="main-nav-lbl" id="lbl-nav-planear">PLANEAR</span>
   </button>
   <button class="main-nav-tab" id="mnav-miplan" onclick="switchMainNav('mnav-miplan');showAgView()">
     <span class="main-nav-ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5"/></svg></span>
-    <span class="main-nav-lbl">MI PLAN</span>
+    <span class="main-nav-lbl" id="lbl-nav-miplan">MI PLAN</span>
   </button>
 </div>
 
@@ -2370,14 +2370,14 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:var(--t
   </div>
   <div class="pv-question">
     <div class="pv-question-text">¿La calificás?</div>
-    <div class="pv-question-hint" id="pv-hint">Deslizá sobre las estrellas</div>
+    <div class="pv-question-hint" id="pv-hint">${t('misc_deslizar')}</div>
   </div>
   <div class="pv-stars-area">
     <div class="pv-stars-row" id="pv-stars-row"></div>
     <input type="range" class="pv-range" id="pv-range" min="0" max="10" step="1" value="0">
   </div>
   <div class="pv-actions">
-    <button class="pv-btn-save" id="pv-btn-save" disabled onclick="savePVRating()">Guardar</button>
+    <button class="pv-btn-save" id="pv-btn-save" disabled onclick="savePVRating()">${t('misc_guardar')}</button>
     <button class="pv-btn-later" onclick="closePVRating()">Después</button>
   </div>
 </div>
@@ -2412,7 +2412,7 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:var(--t
   <div class="conflict-actions">
     <button class="conflict-btn-replace" id="cs-replace-btn">Añadir</button>
     <button class="conflict-btn-keep" id="cs-keep-btn">Conservar</button>
-    <button class="conflict-btn-cancel" onclick="closeConflictSheet()">Cancelar</button>
+    <button class="conflict-btn-cancel" onclick="closeConflictSheet()">${t('search_cancelar')}</button>
   </div>
 </div>
 <!-- ── Prio Limit Sheet ── -->
@@ -2432,7 +2432,7 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:var(--t
     </div>
   </div>
   <div class="prio-limit-list" id="prio-limit-list"></div>
-  <button class="prio-limit-cancel" onclick="closePrioLimit()">Cancelar</button>
+  <button class="prio-limit-cancel" onclick="closePrioLimit()">${t('search_cancelar')}</button>
 </div>
 <!-- ── Plan Confirm Sheet ── -->
 <div class="plan-confirm-overlay" id="plan-confirm-overlay" onclick="closePlanConfirm()"></div>
@@ -2469,16 +2469,16 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:var(--t
 <div class="carta-search-wrap" id="carta-search-wrap">
   <div class="carta-search-field">
     <span class="carta-search-ico"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"/></svg></span>
-    <input type="text" id="carta-search-input" class="carta-search" placeholder="Buscar…" oninput="onCartaSearch()" autocomplete="off" autocorrect="off" autocapitalize="off">
+    <input type="text" id="carta-search-input" class="carta-search" placeholder="${t('search_placeholder')}" oninput="onCartaSearch()" autocomplete="off" autocorrect="off" autocapitalize="off">
     <button class="carta-search-clear" id="carta-search-clear" onclick="clearCartaSearch()"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg></button>
   </div>
   <div id="carta-search-results" class="carta-search-results"></div>
 </div>
 <!-- ── Programa: barra de modos Explorar/Hoy/Mañana ── -->
 <div class="programa-mode-bar" id="programa-mode-bar" style="display:none">
-  <button class="pmode-tab on" id="pmode-explorar" onclick="setProgramaMode('explorar')">Explorar</button>
-  <button class="pmode-tab" id="pmode-hoy" onclick="setProgramaMode('hoy')">Hoy</button>
-  <button class="pmode-tab" id="pmode-manana" onclick="setProgramaMode('manana')">Mañana</button>
+  <button class="pmode-tab on" id="pmode-explorar" onclick="setProgramaMode('explorar')">${t('bar_explorar')}</button>
+  <button class="pmode-tab" id="pmode-hoy" onclick="setProgramaMode('hoy')">${t('bar_hoy')}</button>
+  <button class="pmode-tab" id="pmode-manana" onclick="setProgramaMode('manana')">${t('bar_manana')}</button>
   <div class="pmode-spacer"></div>
   <div class="pmode-controls" style="position:relative">
     <button class="seccion-btn" id="seccion-btn" onclick="seccionToggle()">
@@ -2490,7 +2490,7 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:var(--t
       <span id="lugar-lbl">Lugar</span>
     </button>
     <!-- single toggle btn — icono refleja estado actual -->
-    <button class="view-toggle-btn" id="view-toggle-btn" onclick="toggleProgramaView()" title="Cambiar vista" aria-label="Cambiar vista">
+    <button class="view-toggle-btn" id="view-toggle-btn" onclick="toggleProgramaView()" title=t('aria_cambiar_vista') aria-label=t('aria_cambiar_vista')>
       <svg id="view-toggle-ico-grid" width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
       <svg id="view-toggle-ico-list" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" style="display:none"><line x1="4" y1="6" x2="20" y2="6"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="18" x2="20" y2="18"/></svg>
     </button>
@@ -2540,7 +2540,7 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:var(--t
   <div class="carta-search-wrap">
     <div class="carta-search-field">
       <span class="carta-search-ico"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"/></svg></span>
-      <input type="text" id="ag-search-input" class="carta-search" placeholder="Buscar…" oninput="onSearchInput()" onblur="closeSearch()" autocomplete="off" autocapitalize="off">
+      <input type="text" id="ag-search-input" class="carta-search" placeholder="${t('search_placeholder')}" oninput="onSearchInput()" onblur="closeSearch()" autocomplete="off" autocapitalize="off">
     </div>
     <div id="ag-search-results" class="ag-search-results"></div>
   </div>
@@ -2569,6 +2569,311 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:var(--t
 <div class="ag-view" id="ag-view"></div>
 
 <script>
+// ── i18n — sistema de traducción ─────────────────────────────────────────
+// Idioma determinado por preferencia del usuario, persistido en localStorage.
+// Cambio de idioma: setLang(code) escribe localStorage y recarga la app.
+// El contenido del festival (títulos, sinopsis, secciones) NO se traduce —
+// se muestra en el idioma en que está escrito en el JSON del festival.
+const _I18N = {
+  es: {
+    "nav_programa": "PROGRAMA",
+    "nav_intereses": "INTERESES",
+    "nav_planear": "PLANEAR",
+    "nav_miplan": "MI PLAN",
+    "bar_explorar": "Explorar",
+    "bar_hoy": "Hoy",
+    "bar_manana": "Mañana",
+    "bar_todas": "Todas",
+    "bar_seccion": "Sección",
+    "bar_lugar": "Lugar",
+    "cta_intereses": "Interés",
+    "cta_priorizar": "Priorizar",
+    "cta_vista": "Vista",
+    "cta_calificar": "Calificar",
+    "cta_letterboxd": "Ver en Letterboxd",
+    "cta_anadir": t('cta_anadir'),
+    "label_director": "Director",
+    "label_synopsis": "Sinopsis",
+    "label_duracion": "Duración",
+    "label_funciones": "Funciones",
+    "label_min": "min",
+    "label_seccion": "Sección",
+    "label_valoracion": "Tu valoración",
+    "plan_calcular": "Calcular plan",
+    "plan_calculando": "Calculando…",
+    "plan_calculando_ops": "Calculando opciones…",
+    "plan_disponibilidad": "Mi disponibilidad",
+    "plan_tu_plan": "Tu plan",
+    "plan_guardar": "Guardar plan",
+    "plan_borrar": "Borrar plan",
+    "plan_compartir": "Compartir",
+    "plan_optimo": "Plan óptimo",
+    "plan_sin_plan": "No tenés un plan guardado",
+    "plan_dia_libre": "Día libre en tu Plan",
+    "plan_desactualizado": "Tu plan puede estar desactualizado",
+    "plan_sincroniza": "Tu plan se sincroniza automáticamente entre todos tus dispositivos.",
+    "av_inicio": "hora de inicio",
+    "av_fin": "hora de fin",
+    "av_seleccionar": "Seleccioná hora de inicio y fin",
+    "av_eliminar": t('av_eliminar'),
+    "av_todo_el_dia": "Todo el día",
+    "av_horario": "Horario",
+    "av_confirmar": "Confirmar",
+    "av_tipo": "Tipo",
+    "av_dia": "Día",
+    "av_horas": "Horas específicas",
+    "av_opcion_pers": "Opción personalizada",
+    "auth_entrar": "Entrar",
+    "auth_cuenta": "Cuenta",
+    "auth_email": "tu@email.com",
+    "auth_nombre": "Tu nombre",
+    "auth_enviar_cod": "Enviar código",
+    "auth_enviando": "Enviando…",
+    "auth_cod_hint": "Ingresa el código de 6 dígitos.",
+    "auth_email_hint": "Ingresa un email válido.",
+    "search_placeholder": "Buscar…",
+    "search_cancelar": "Cancelar",
+    "search_sin_res": t('search_sin_res'),
+    "search_sin_res_para": "Sin resultados para",
+    "empty_intereses": "Agregá lo que te interesa para armar tu plan.",
+    "empty_intereses_2": "Agregá lo que te interesa.",
+    "empty_intereses_3": "Añadí lo que no querés perderte. Cuando tengas tu lista, armamos tu plan.",
+    "empty_lo_que_agg": "Lo que agregás aparece aquí.",
+    "empty_vistas": "No marcaste ninguna película como vista.",
+    "empty_calificar": "Podés calificarlas ahora.",
+    "empty_todo_calif": "Todo calificado",
+    "empty_programa": "Explorá el programa completo del festival.",
+    "empty_prox_fest": "Explorá el programa del próximo festival",
+    "empty_filtros": "Ajusta los filtros de sección o sede.",
+    "toast_algo_mal": "Algo salió mal. Intentá de nuevo.",
+    "toast_cod_mal": "Código incorrecto o expirado. Intentá de nuevo.",
+    "toast_envio_err": "Error al enviar. Intentá de nuevo.",
+    "toast_calif_elim": "Calificación eliminada",
+    "toast_horario_lib": "Horario liberado — podrían caber más títulos",
+    "toast_conexion": "No se pudo cargar el festival. Verificá tu conexión.",
+    "toast_sin_plan": "No tenés un plan guardado",
+    "notice_funcion_canc": "Función cancelada · Pendiente nueva fecha",
+    "notice_extension": "La función puede extenderse",
+    "notice_fest_term": "El festival ya terminó",
+    "notice_ya_tenes": "Ya tenés",
+    "aria_bienvenida": "Bienvenida",
+    "aria_nav_ppal": "Navegación principal",
+    "aria_cambiar_vista": t('aria_cambiar_vista'),
+    "aria_volver_arriba": t('aria_volver_arriba'),
+    "aria_dia_ant": t('aria_dia_ant'),
+    "aria_buscar": "Buscar",
+    "aria_cancelar": "Cancelar",
+    "aria_priorizar": "Priorizar",
+    "aria_quitar": t('aria_quitar'),
+    "aria_quitar_prio": t('aria_quitar_prio'),
+    "aria_deshacer": t('aria_deshacer'),
+    "aria_marcar_vista": t('aria_marcar_vista'),
+    "aria_quitar_vista": t('aria_quitar_vista'),
+    "aria_sincronizar": t('aria_sincronizar'),
+    "aria_ir_detalle": t('aria_ir_detalle'),
+    "day_lun": "Lunes",
+    "day_mar": "Martes",
+    "day_mie": "Miércoles",
+    "day_jue": "Jueves",
+    "day_vie": "Viernes",
+    "day_sab": "Sábado",
+    "day_dom": "Domingo",
+    "day_short_lun": "LUN",
+    "day_short_mar": "MAR",
+    "day_short_mie": "MIÉ",
+    "day_short_jue": "JUE",
+    "day_short_vie": "VIE",
+    "day_short_sab": "SÁB",
+    "day_short_dom": "DOM",
+    "misc_guardar": "Guardar",
+    "misc_cancelar": "Cancelar",
+    "misc_ver_todo": "Ver todo",
+    "misc_prox_funcion": "Próxima función",
+    "misc_prox_evento": "Próximo evento",
+    "misc_proxi": "Próximamente",
+    "misc_ya_vista": "Ya vista",
+    "misc_deslizar": "Deslizá sobre las estrellas",
+    "misc_mantener": "Mantené presionada la imagen — Añadir a Fotos",
+    "misc_no_disp": "No disponible",
+    "misc_otra": "Otro",
+    "lang_es": "Español",
+    "lang_en": "English",
+    "lang_idioma": "Idioma"
+    },
+  en: {
+    "nav_programa": "PROGRAM",
+    "nav_intereses": "INTERESTS",
+    "nav_planear": "SCHEDULE",
+    "nav_miplan": "MY PLAN",
+    "bar_explorar": "Browse",
+    "bar_hoy": "Today",
+    "bar_manana": "Tomorrow",
+    "bar_todas": "All",
+    "bar_seccion": "Section",
+    "bar_lugar": "Venue",
+    "cta_intereses": "Interest",
+    "cta_priorizar": "Prioritize",
+    "cta_vista": "Seen",
+    "cta_calificar": "Rate",
+    "cta_letterboxd": "View on Letterboxd",
+    "cta_anadir": "Add to Interests",
+    "label_director": "Director",
+    "label_synopsis": "Synopsis",
+    "label_duracion": "Duration",
+    "label_funciones": "Screenings",
+    "label_min": "min",
+    "label_seccion": "Section",
+    "label_valoracion": "Your rating",
+    "plan_calcular": "Find options",
+    "plan_calculando": "Finding options…",
+    "plan_calculando_ops": "Finding options…",
+    "plan_disponibilidad": "My availability",
+    "plan_tu_plan": "Your plan",
+    "plan_guardar": "Save plan",
+    "plan_borrar": "Delete plan",
+    "plan_compartir": "Share",
+    "plan_optimo": "Best option",
+    "plan_sin_plan": "You don't have a saved plan",
+    "plan_dia_libre": "Free day in your plan",
+    "plan_desactualizado": "Your plan may be outdated",
+    "plan_sincroniza": "Your plan syncs automatically across all your devices.",
+    "av_inicio": "start time",
+    "av_fin": "end time",
+    "av_seleccionar": "Select start and end time",
+    "av_eliminar": "Remove block",
+    "av_todo_el_dia": "All day",
+    "av_horario": "Schedule",
+    "av_confirmar": "Confirm",
+    "av_tipo": "Type",
+    "av_dia": "Day",
+    "av_horas": "Specific hours",
+    "av_opcion_pers": "Custom",
+    "auth_entrar": "Sign in",
+    "auth_cuenta": "Account",
+    "auth_email": "your@email.com",
+    "auth_nombre": "Your name",
+    "auth_enviar_cod": "Send code",
+    "auth_enviando": "Sending…",
+    "auth_cod_hint": "Enter the 6-digit code.",
+    "auth_email_hint": "Enter a valid email.",
+    "search_placeholder": "Search…",
+    "search_cancelar": "Cancel",
+    "search_sin_res": "No results",
+    "search_sin_res_para": "No results for",
+    "empty_intereses": "Add films you're interested in to build your plan.",
+    "empty_intereses_2": "Add films you're interested in.",
+    "empty_intereses_3": "Add what you don't want to miss. Once you have your list, we'll build your plan.",
+    "empty_lo_que_agg": "What you add shows up here.",
+    "empty_vistas": "You haven't marked any films as seen.",
+    "empty_calificar": "You can rate them now.",
+    "empty_todo_calif": "All rated",
+    "empty_programa": "Explore the full festival program.",
+    "empty_prox_fest": "Explore the upcoming festival program",
+    "empty_filtros": "Try adjusting your section or venue filters.",
+    "toast_algo_mal": "Something went wrong. Try again.",
+    "toast_cod_mal": "Incorrect or expired code. Try again.",
+    "toast_envio_err": "Failed to send. Try again.",
+    "toast_calif_elim": "Rating removed",
+    "toast_horario_lib": "Time slot freed — more films may fit",
+    "toast_conexion": "Couldn't load the festival. Check your connection.",
+    "toast_sin_plan": "No saved plan",
+    "notice_funcion_canc": "Screening cancelled · New date pending",
+    "notice_extension": "Screening may run long",
+    "notice_fest_term": "The festival has ended",
+    "notice_ya_tenes": "You already have",
+    "aria_bienvenida": "Welcome",
+    "aria_nav_ppal": "Main navigation",
+    "aria_cambiar_vista": "Change view",
+    "aria_volver_arriba": "Back to top",
+    "aria_dia_ant": "Previous day",
+    "aria_buscar": "Search",
+    "aria_cancelar": "Cancel",
+    "aria_priorizar": "Prioritize",
+    "aria_quitar": "Remove",
+    "aria_quitar_prio": "Remove priority",
+    "aria_deshacer": "Undo last",
+    "aria_marcar_vista": "Mark as seen",
+    "aria_quitar_vista": "Remove from seen",
+    "aria_sincronizar": "Sync across devices",
+    "aria_ir_detalle": "Go to day detail",
+    "day_lun": "Monday",
+    "day_mar": "Tuesday",
+    "day_mie": "Wednesday",
+    "day_jue": "Thursday",
+    "day_vie": "Friday",
+    "day_sab": "Saturday",
+    "day_dom": "Sunday",
+    "day_short_lun": "MON",
+    "day_short_mar": "TUE",
+    "day_short_mie": "WED",
+    "day_short_jue": "THU",
+    "day_short_vie": "FRI",
+    "day_short_sab": "SAT",
+    "day_short_dom": "SUN",
+    "misc_guardar": "Save",
+    "misc_cancelar": "Cancel",
+    "misc_ver_todo": "See all",
+    "misc_prox_funcion": "Next screening",
+    "misc_prox_evento": "Next event",
+    "misc_proxi": "Coming soon",
+    "misc_ya_vista": "Already seen",
+    "misc_deslizar": "Slide over the stars",
+    "misc_mantener": "Press and hold the image — Save to Photos",
+    "misc_no_disp": "Not available",
+    "misc_otra": "Other",
+    "lang_es": "Español",
+    "lang_en": "English",
+    "lang_idioma": "Language"
+    }
+};
+
+let _lang = (()=>{
+  const saved = localStorage.getItem('otrofestiv_lang');
+  if(saved && _I18N[saved]) return saved;
+  // Auto-detect: si el primer festival activo es en inglés, usar inglés
+  return 'es'; // default
+})();
+
+function t(key){
+  return (_I18N[_lang] && _I18N[_lang][key]) || (_I18N['es'][key]) || key;
+}
+
+function setLang(code){
+  if(!_I18N[code]) return;
+  if(code === _lang) return;
+  // Preserve state across reload
+  const activeTab = document.querySelector('.main-nav-tab.active')?.dataset?.tab || 'programa';
+  localStorage.setItem('otrofestiv_lang', code);
+  localStorage.setItem('otrofestiv_restore_tab', activeTab);
+  location.reload();
+}
+
+// ── Fin i18n ──────────────────────────────────────────────────────────────
+
+function _applyI18nDOM(){
+  // Patch static HTML labels that can't use t() directly
+  const ids={
+    'lbl-nav-programa':'nav_programa',
+    'lbl-nav-intereses':'nav_intereses',
+    'lbl-nav-planear':'nav_planear',
+    'lbl-nav-miplan':'nav_miplan',
+  };
+  for(const[id,key] of Object.entries(ids)){
+    const el=document.getElementById(id);
+    if(el) el.textContent=t(key);
+  }
+  // Restore tab after lang switch
+  const restoreTab=localStorage.getItem('otrofestiv_restore_tab');
+  if(restoreTab){
+    localStorage.removeItem('otrofestiv_restore_tab');
+    // switchMainNav is defined later — defer
+    setTimeout(()=>{
+      const btn=document.getElementById('mnav-'+restoreTab);
+      if(btn) btn.click();
+    },0);
+  }
+}
+
 // ── Capgo: confirma que el bundle cargó correctamente ──────────
 // Sin esta llamada, Capgo hace rollback automático a los 10s.
 // El guard ?. asegura que en web (GitHub Pages) no hay error.
@@ -3196,12 +3501,12 @@ async function submitAuthEmail(){
   const btn=document.getElementById('auth-send-btn');
   const msg=document.getElementById('auth-msg');
   const email=(inp?.value||'').trim();
-  if(!email||!email.includes('@')){msg.textContent='Ingresa un email válido.';return;}
-  btn.disabled=true;btn.textContent='Enviando…';
+  if(!email||!email.includes('@')){msg.textContent=t('auth_email_hint');return;}
+  btn.disabled=true;btn.textContent=t('auth_enviando');
   const{error}=await _sbSignIn(email);
   if(error){
-    msg.textContent='Error al enviar. Intentá de nuevo.';
-    btn.disabled=false;btn.textContent='Enviar código';
+    msg.textContent=t('toast_envio_err');
+    btn.disabled=false;btn.textContent=t('auth_enviar_cod');
   } else {
     msg.textContent='';
     // Guardar email para verificación OTP
@@ -3217,12 +3522,12 @@ async function submitOTP(){
   const token=(document.getElementById('auth-otp-inp')?.value||'').trim();
   const btn=document.getElementById('auth-otp-btn');
   const msg=document.getElementById('auth-otp-msg');
-  if(!token||token.length<6){msg.textContent='Ingresa el código de 6 dígitos.';return;}
+  if(!token||token.length<6){msg.textContent=t('auth_cod_hint');return;}
   btn.disabled=true;btn.textContent='Verificando…';
   try{
     const{data,error}=await _sb.auth.verifyOtp({email,token,type:'email'});
     if(error){
-      msg.textContent='Código incorrecto o expirado. Intentá de nuevo.';
+      msg.textContent=t('toast_cod_mal');
       btn.disabled=false;btn.textContent='Confirmar';
     } else {
       closeAuthSheet();
@@ -3232,7 +3537,7 @@ async function submitOTP(){
       document.getElementById('auth-otp-inp').value='';
     }
   }catch(e){
-    msg.textContent='Algo salió mal. Intentá de nuevo.';
+    msg.textContent=t('toast_algo_mal');
     btn.disabled=false;btn.textContent='Confirmar';
   }
 }
@@ -3605,7 +3910,7 @@ function renderMiPlanCalendar(){
   const isPastVe=nowDayIdx>=0&&ve<nowDayIdx;
   const navHtml=`<div class="mplan-nav">
     <div class="mplan-nav-btn-wrap">
-      <button class="mplan-nav-btn" aria-label="Día anterior" onclick="miPlanNav(-1)" ${vs===0?'disabled':''}><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5"/></svg></button>
+      <button class="mplan-nav-btn" aria-label=t('aria_dia_ant') onclick="miPlanNav(-1)" ${vs===0?'disabled':''}><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5"/></svg></button>
     </div>
     <div class="mplan-nav-labels">
       <div class="mplan-nav-day${isPastVs?' past':''}" onclick="selectMiPlanDay(${vs})">
@@ -3968,7 +4273,7 @@ function onSearchInput(){
   const res=document.getElementById('ag-search-results');
   if(!q||q.length<2){res.classList.remove('open');return;}
   const films=searchFilms(q);
-  if(!films.length){res.innerHTML=emptyState(ICONS.search,'Sin resultados.');res.classList.add('open');return;}
+  if(!films.length){res.innerHTML=emptyState(ICONS.search,t('search_sin_res')+'.');res.classList.add('open');return;}
   res.innerHTML=films.map(f=>{
     const inWL=watchlist.has(f.title);
     return`<div class="ag-sr-item">
@@ -4147,7 +4452,7 @@ function _checkRecalcOpportunity(){
     return screens.length&&screens.some(s=>!isScreeningBlocked(s));
   });
   if(hasOpportunity){
-    showActionToast('Horario liberado — podrían caber más títulos','Recalcular',()=>{
+    showActionToast(t('toast_horario_lib'),'Recalcular',()=>{
       switchMainNav('mnav-planner');showAgView();setTimeout(runCalc,300);
     },5000);
   }
@@ -4186,7 +4491,7 @@ function showConflictModal(conflicts, onConfirm){
       ¿Continuar y quitar ${conflicts.length===1?'esta actividad':'estas actividades'} del plan?
     </div>
     <div class="conflict-modal-btns">
-      <button class="conflict-modal-btn cancel" id="conflict-cancel">Cancelar</button>
+      <button class="conflict-modal-btn cancel" id="conflict-cancel">${t('search_cancelar')}</button>
       <button class="conflict-modal-btn confirm" id="conflict-ok">Quitar y continuar</button>
     </div>
   </div>`;
@@ -4243,8 +4548,8 @@ function renderAvDay(day){
   const addOpen=!!avAddOpen[day];
 
   const pillsHtml=fullBlocked
-    ?`<span class="av-pill full">Todo el día</span>`
-    :visibleBlocks.map(b=>`<span class="av-pill">${b.from}–${b.to}<button class="av-pill-rm" aria-label="Eliminar bloque" onclick="removeBlock('${day}','${b.from}','${b.to}');event.stopPropagation()">×</button></span>`).join('');
+    ?`<span class="av-pill full">${t('av_todo_el_dia')}</span>`
+    :visibleBlocks.map(b=>`<span class="av-pill">${b.from}–${b.to}<button class="av-pill-rm" aria-label=t('av_eliminar') onclick="removeBlock('${day}','${b.from}','${b.to}');event.stopPropagation()">×</button></span>`).join('');
 
   // Inline form — always shows when addOpen, with 15-min slot dropdowns
   const timeOpts=`<option value="08:00">08:00</option><option value="08:15">08:15</option><option value="08:30">08:30</option><option value="08:45">08:45</option><option value="09:00">09:00</option><option value="09:15">09:15</option><option value="09:30">09:30</option><option value="09:45">09:45</option><option value="10:00">10:00</option><option value="10:15">10:15</option><option value="10:30">10:30</option><option value="10:45">10:45</option><option value="11:00">11:00</option><option value="11:15">11:15</option><option value="11:30">11:30</option><option value="11:45">11:45</option><option value="12:00">12:00</option><option value="12:15">12:15</option><option value="12:30">12:30</option><option value="12:45">12:45</option><option value="13:00">13:00</option><option value="13:15">13:15</option><option value="13:30">13:30</option><option value="13:45">13:45</option><option value="14:00">14:00</option><option value="14:15">14:15</option><option value="14:30">14:30</option><option value="14:45">14:45</option><option value="15:00">15:00</option><option value="15:15">15:15</option><option value="15:30">15:30</option><option value="15:45">15:45</option><option value="16:00">16:00</option><option value="16:15">16:15</option><option value="16:30">16:30</option><option value="16:45">16:45</option><option value="17:00">17:00</option><option value="17:15">17:15</option><option value="17:30">17:30</option><option value="17:45">17:45</option><option value="18:00">18:00</option><option value="18:15">18:15</option><option value="18:30">18:30</option><option value="18:45">18:45</option><option value="19:00">19:00</option><option value="19:15">19:15</option><option value="19:30">19:30</option><option value="19:45">19:45</option><option value="20:00">20:00</option><option value="20:15">20:15</option><option value="20:30">20:30</option><option value="20:45">20:45</option><option value="21:00">21:00</option><option value="21:15">21:15</option><option value="21:30">21:30</option><option value="21:45">21:45</option><option value="22:00">22:00</option><option value="22:15">22:15</option><option value="22:30">22:30</option><option value="22:45">22:45</option><option value="23:00">23:00</option><option value="23:15">23:15</option><option value="23:30">23:30</option><option value="23:45">23:45</option><option value="00:00">00:00</option><option value="00:15">00:15</option><option value="00:30">00:30</option><option value="00:45">00:45</option><option value="01:00">01:00</option>`;
@@ -4252,7 +4557,7 @@ function renderAvDay(day){
       <select id="av-from-${day}" class="av-time-input">${timeOpts}</select>
       <span class="av-sep">–</span>
       <select id="av-to-${day}" class="av-time-input">${timeOpts}</select>
-      <button class="av-add-btn" onclick="addBlock('${day}')">Confirmar</button>
+      <button class="av-add-btn" onclick="addBlock('${day}')">${t('av_confirmar')}</button>
       <button class="av-plus-btn" onclick="avAddOpen['${day}']=false;renderAvDay('${day}')">${ICONS.x}</button>
     </div>`:'';
 
@@ -4380,15 +4685,15 @@ function renderAvBlocks(){
     if(fullBlocked){
       items.push(`<div class="av-block-item is-full">
         <span class="av-block-day">${lbl} ${num}</span>
-        <span class="av-block-time">Todo el día</span>
-        <button class="av-block-rm" onclick="toggleFullDay('${day}')" title="Quitar">${ICONS.x}</button>
+        <span class="av-block-time">${t('av_todo_el_dia')}</span>
+        <button class="av-block-rm" onclick="toggleFullDay('${day}')" title=t('aria_quitar')>${ICONS.x}</button>
       </div>`);
     } else {
       visible.forEach(b=>{
         items.push(`<div class="av-block-item">
           <span class="av-block-day">${lbl} ${num}</span>
           <span class="av-block-time">${b.from} – ${b.to}</span>
-          <button class="av-block-rm" onclick="removeBlock('${day}','${b.from}','${b.to}')" title="Quitar">${ICONS.x}</button>
+          <button class="av-block-rm" onclick="removeBlock('${day}','${b.from}','${b.to}')" title=t('aria_quitar')>${ICONS.x}</button>
         </div>`);
       });
     }
@@ -4680,7 +4985,7 @@ function getSuggestions(){
     const slots=[];
     if(dayItems.length===0){
       // Día completamente libre — cubre hasta la 1am
-      slots.push({start:0,end:25*60,ctx:'Día libre en tu Plan'});
+      slots.push({start:0,end:25*60,ctx:t('plan_dia_libre')});
     } else {
       // Antes de la primera
       if(toMin(dayItems[0].time)>60)
@@ -4775,7 +5080,7 @@ function renderPrioStrip(){
     const allPast=!festivalEnded()&&!FILMS.some(f=>f.title===t&&!screeningPassed(f));
     return`<div class="prio-chip${allPast?' past':''}">
       ${img}
-      <button class="prio-chip-rm" data-prio-title="${t.replace(/"/g,'&quot;')}" onclick="event.stopPropagation();togglePriority(this.dataset.prioTitle)" title="Quitar prioridad">${ICONS.x}</button>
+      <button class="prio-chip-rm" data-prio-title="${t.replace(/"/g,'&quot;')}" onclick="event.stopPropagation();togglePriority(this.dataset.prioTitle)" title=t('aria_quitar_prio')>${ICONS.x}</button>
       <div class="prio-chip-title">${short}${progSuffix?`<span class="poster-label-amber">${progSuffix}</span>`:''}</div>
     </div>`;
   }).join('');
@@ -4802,7 +5107,7 @@ function renderFilmListHTML(){
   const watchedList=[...watched];
 
   if(!prioList.length&&!nonPrioList.length&&!watchedList.length){
-    return emptyStateHero(ICONS.heart,'Lo que agregás aparece aquí.','Agregá lo que te interesa.','Ir al Programa',"switchMainNav('mnav-cartelera');showDayView()");
+    return emptyStateHero(ICONS.heart,t('empty_lo_que_agg'),t('empty_intereses_2'),'Ir al Programa',"switchMainNav('mnav-cartelera');showDayView()");
   }
 
   // ── Próxima función futura de un film ──────────────────────────────────
@@ -4876,7 +5181,7 @@ function renderFilmListHTML(){
       </div>
       <div class="int-item-actions">
         <button class="int-prio-btn${isPrio?' on':''}" onclick="togglePriority('${safeT}');event.stopPropagation()" aria-label="Priorizar">★</button>
-        <button class="int-seen-btn${isWatched?' on':''}" onclick="toggleWatched('${safeT}',event)" aria-label="Marcar vista">✓</button>
+        <button class="int-seen-btn${isWatched?' on':''}" onclick="toggleWatched('${safeT}',event)" aria-label=t('aria_marcar_vista')>✓</button>
       </div>
     </div>`;
   }
@@ -4906,7 +5211,7 @@ function renderFilmListHTML(){
         ${ratingHtml}
       </div>
       <div class="int-item-actions">
-        <button class="int-seen-btn on" onclick="toggleWatched('${safeT}',event)" aria-label="Quitar de vistas">✓</button>
+        <button class="int-seen-btn on" onclick="toggleWatched('${safeT}',event)" aria-label=t('aria_quitar_vista')>✓</button>
       </div>
     </div>`;
   }
@@ -5177,7 +5482,7 @@ function renderNextStrip(schedule){
       delayHtml=`<div class="delay-row">
         <span class="delay-lbl">+${delayMins} min</span>
         ${[10,15,20,30].map(m=>`<button class="delay-btn" onclick="setDelay('${safeT}','${item.day}','${item.time}',${m})" title="+${m} min">+${m}</button>`).join('')}
-        <button class="delay-clear" onclick="undoDelay('${safeT}','${item.day}','${item.time}')" title="Deshacer último">${ICONS.undo}</button>
+        <button class="delay-clear" onclick="undoDelay('${safeT}','${item.day}','${item.time}')" title=t('aria_deshacer')>${ICONS.undo}</button>
         <button class="delay-clear" onclick="clearDelay('${safeT}','${item.day}','${item.time}')" title="Quitar retraso">${ICONS.x}</button>
       </div>`;
     } else {
@@ -5338,7 +5643,7 @@ function confirmReplace(removedTitle,newTitle,day,time){
     <div class="conflict-modal-hdr">${removedTitle?'¿Reemplazar función?':'¿Añadir al plan?'}</div>
     <div class="conflict-modal-body">${removedTitle?`Quitar <b>${shortRem}</b> y añadir`:'Añadir'} <b>${shortNew}</b> a tu plan.</div>
     <div class="conflict-modal-btns">
-      <button class="conflict-modal-btn cancel" onclick="document.getElementById('conflict-modal').remove()">Cancelar</button>
+      <button class="conflict-modal-btn cancel" onclick="document.getElementById('conflict-modal').remove()">${t('search_cancelar')}</button>
       <button class="conflict-modal-btn confirm" id="replace-ok">Sí${removedTitle?', reemplazar':', añadir'}</button>
     </div>
   </div>`;
@@ -5524,10 +5829,10 @@ function renderContextualHeader(){
       </div>`;
     }).join('');
     const subMsg=totalWatched===0
-      ?'Explorá el programa del próximo festival'
+      ?t('empty_prox_fest')
       :pendingRatings>0
         ?`${pendingRatings} sin calificar`
-        :'Todo calificado';
+        :t('empty_todo_calif');
     const mainTitle=totalWatched===0
       ?((FESTIVAL_CONFIG[_activeFestId]||{}).name||'El festival')+' ha terminado'
       :`Viste ${totalWatched} película${totalWatched!==1?'s':''}`;
@@ -5596,7 +5901,7 @@ function renderContextualHeader(){
       :`<span class="ctx-next-badge">En ${minsUntil} min</span>`;
     const _filmObj=FILMS.find(f=>f.title===next._title);
     const _isEvent=_filmObj&&_filmObj.type==='event';
-    const eyebrowLabel=isNow?'En curso':(_isEvent?'Próximo evento':'Próxima función');
+    const eyebrowLabel=isNow?'En curso':(_isEvent?t('misc_prox_evento'):t('misc_prox_funcion'));
 
     // ── Delay controls — solo cuando está en curso ──
     let delayHtml='';
@@ -5609,7 +5914,7 @@ function renderContextualHeader(){
         delayHtml=`<div class="delay-row">
           <span class="delay-lbl">+${delayMins} min</span>
           ${[10,15,20,30].map(m=>`<button class="delay-btn" onclick="setDelay('${safeT}','${next.day}','${next.time}',${m})" title="+${m} min">+${m}</button>`).join('')}
-          <button class="delay-clear" onclick="undoDelay('${safeT}','${next.day}','${next.time}')" title="Deshacer último">${ICONS.undo}</button>
+          <button class="delay-clear" onclick="undoDelay('${safeT}','${next.day}','${next.time}')" title=t('aria_deshacer')>${ICONS.undo}</button>
           <button class="delay-clear" onclick="clearDelay('${safeT}','${next.day}','${next.time}')" title="Quitar retraso">${ICONS.x}</button>
         </div>`;
         // Warning si el retraso come el buffer
@@ -5729,7 +6034,7 @@ function renderContextualHeader(){
         Tu ${dayName.toLowerCase()} en ${(FESTIVAL_CONFIG[_activeFestId]||{}).name||'el festival'}
       </div>
       <div class="ctx-main-title">${total} película${total!==1?'s':''} ${total===1?'vista':'vistas'} hoy</div>
-      ${pendingRating.length?`<div class="mb-3 ctx-sub">${pendingRating.length===1?'Una pendiente de calificar.':'Podés calificarlas ahora.'}</div>`:`<div class="mb-3"></div>`}
+      ${pendingRating.length?`<div class="mb-3 ctx-sub">${pendingRating.length===1?'Una pendiente de calificar.':t('empty_calificar')}</div>`:`<div class="mb-3"></div>`}
       <div class="hscroll-strip">${filmRows}</div>
     </div>`;
   }
@@ -5746,9 +6051,9 @@ function _renderSavedAgendaHTML(){
     }
     // Sin películas vistas: empty state canónico
     const _festNameMp=(FESTIVAL_CONFIG[_activeFestId]||{}).name||'El festival';
-    return emptyStateHero(ICONS.sparkles,`${_festNameMp} ha terminado`,'No marcaste ninguna película como vista.','Ir al Programa',"switchMainNav('mnav-cartelera');showDayView()");
+    return emptyStateHero(ICONS.sparkles,`${_festNameMp} ha terminado`,t('empty_vistas'),'Ir al Programa',"switchMainNav('mnav-cartelera');showDayView()");
   }
-  if(!savedAgenda||!savedAgenda.schedule.length) return emptyStateHero(ICONS.calendar,'Tu plan aparece aquí.','Agregá lo que te interesa para armar tu plan.','Ir a Planear',"switchMainNav('mnav-planner');showAgView()");
+  if(!savedAgenda||!savedAgenda.schedule.length) return emptyStateHero(ICONS.calendar,'Tu plan aparece aquí.',t('empty_intereses'),'Ir a Planear',"switchMainNav('mnav-planner');showAgView()");
   const all=savedAgenda.schedule;
   const planTitles=new Set(all.map(s=>s._title));
   const archive=all.filter(s=>screeningPassed(s)||watched.has(s._title));
@@ -5769,7 +6074,7 @@ function _renderSavedAgendaHTML(){
   const totalDays=Math.max(1,DAY_KEYS.length);
   const viewedCount=all.filter(s=>watched.has(s._title)).length;
   const progressPct=dayIdx>=0?Math.round((dayIdx/(totalDays-1))*100):0;
-  const _mpSwitch=`<button class="mplan-act-btn primary" onclick="_scrollToMplanDetail()" title="Ir al detalle del día">${ICONS.chevronD} Ver día</button>`;
+  const _mpSwitch=`<button class="mplan-act-btn primary" onclick="_scrollToMplanDetail()" title=t('aria_ir_detalle')>${ICONS.chevronD} Ver día</button>`;
   const progressBar=currentDayNum?`<div class="row-sm festival-progress">
     <div style="flex:1">
       <div class="festival-progress-text"><span>Día <b>${currentDayNum}</b> de ${totalDays}</span><span style="color:var(--amber)">${ICONS.check} ${viewedCount} ${viewedCount===1?'vista':'vistas'}</span></div>
@@ -5937,7 +6242,7 @@ function _promptDisplayName(onSave){
     <div class="sheet-handle-bar"></div>
     <div class="sheet-title">¿Cómo querés aparecer en tu plan?</div>
     <div class="sheet-subtitle">Aparecerá en la imagen cuando la compartas.</div>
-    <input class="sheet-input" id="dname-input" type="text" maxlength="30" placeholder="Tu nombre" autocomplete="name"
+    <input class="sheet-input" id="dname-input" type="text" maxlength="30" placeholder="${t('auth_nombre')}" autocomplete="name"
      >
     <button class="sheet-cta" id="dname-save">Guardar y compartir</button>
   </div>`;
@@ -5957,7 +6262,7 @@ function _promptDisplayName(onSave){
 /* ── SHARE/EXPORT: imagen, ICS ──────────────────────────────────────── */
 async function sharePlan(){
   if(!savedAgenda||!savedAgenda.schedule||!savedAgenda.schedule.length){
-    showToast('No tenés un plan guardado','warn');return;
+    showToast(t('plan_sin_plan'),'warn');return;
   }
   // Pedir nombre si no existe — solo la primera vez
   if(!_getDisplayName()){
@@ -5996,7 +6301,7 @@ async function sharePlan(){
 /* ── SHARE/EXPORT: imagen, ICS ──────────────────────────────────────── */
 function shareAsImage(){
   if(!savedAgenda||!savedAgenda.schedule||!savedAgenda.schedule.length){
-    showToast('No tenés un plan guardado','warn'); return;
+    showToast(t('plan_sin_plan'),'warn'); return;
   }
 
   // ── Guardia de integridad del plan ────────────────────────────
@@ -6034,7 +6339,7 @@ function shareAsImage(){
 
   // Si hay problemas: mostrar advertencia con opción de continuar igual
   if(issues.length){
-    const msg=`<b>Tu plan puede estar desactualizado</b><br><br>`
+    const msg=`<b>${t('plan_desactualizado')}</b><br><br>`
       +issues.map(i=>`• ${i}`).join('<br>')
       +`<br><br>¿Compartir la imagen de todas formas?`;
     showActionModal(
@@ -6193,7 +6498,7 @@ function _showImageModal(dataUrl,canvas){
   ov.style.cssText='position:fixed;inset:0;background:var(--overlay-92);z-index:9999;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:20px;box-sizing:border-box;gap:var(--sp-btn)';
   const hint=document.createElement('p');
   hint.style.cssText='color:var(--gray);font-size:var(--t-caption);font-family:system-ui;text-align:center;margin:0;line-height:1.6';
-  hint.textContent=isIOS?'Mantené presionada la imagen — Añadir a Fotos':'Tocá Descargar para guardar';
+  hint.textContent=isIOS?t('misc_mantener'):'Tocá Descargar para guardar';
   ov.appendChild(hint);
   const img=document.createElement('img');
   img.src=dataUrl;
@@ -6235,7 +6540,7 @@ function _dlDirect(dataUrl){
   setTimeout(()=>{document.body.removeChild(a);showToast('Imagen guardada ✓','info');},200);
 }
 function exportICS(){
-  if(!savedAgenda||!savedAgenda.schedule.length){showToast('No tenés un plan guardado','warn');return;}
+  if(!savedAgenda||!savedAgenda.schedule.length){showToast(t('plan_sin_plan'),'warn');return;}
   const pad=n=>String(n).padStart(2,'0');
   const fmt=dt=>`${dt.getFullYear()}${pad(dt.getMonth()+1)}${pad(dt.getDate())}T${pad(dt.getHours())}${pad(dt.getMinutes())}00`;
   const _icsCfg=FESTIVAL_CONFIG[_activeFestId]||{};
@@ -6261,7 +6566,7 @@ function exportICS(){
 function clearSavedAgenda(){
   showDestructiveModal(`Borrar plan`,
     'Se eliminará tu plan completo. Esta acción no se puede deshacer.',
-    'Borrar plan',
+    t('plan_borrar'),
     ()=>{savedAgenda=null;localStorage.removeItem(`${FESTIVAL_STORAGE_KEY}saved`);renderAgenda();});
 }
 
@@ -6271,7 +6576,7 @@ let cachedResult=null;
 
 // ── forceInclude — crea variante custom con la película forzada ──────
 function forceInclude(title){
-  if(festivalEnded()){showToast('El festival ya terminó','info');return;}
+  if(festivalEnded()){showToast(t('notice_fest_term'),'info');return;}
   if(!cachedResult||!cachedResult.scenarios.length) return;
   const sc=cachedResult.scenarios[cachedResult.currentIdx];
 
@@ -6343,7 +6648,7 @@ function buildResultHTML(scenarios){
       // Dot base: algoritmo=número, personalizado=✎ para distinguirlos
       const cls=(isOptimoDot?'ag-nav-dot optimo':'ag-nav-dot')+(isActive?' active':'');
       const label=isOptimoDot?'★':isCustom?'✎':(di).toString();
-      const titleStr=isOptimoDot?'Plan óptimo':isCustom?'Opción personalizada':'Opción '+di;
+      const titleStr=isOptimoDot?t('plan_optimo'):isCustom?'Opción personalizada':'Opción '+di;
       return`<button class="${cls}" onclick="jumpToScenario(${di})" title="${titleStr}">${label}</button>`;
     }).join('');
     navHtml=`<div class="mt-2 ag-nav">${dots}</div>`;
@@ -7099,14 +7404,14 @@ document.addEventListener('visibilitychange',function(){
 });
 
 function runCalc(){
-  if(festivalEnded()){showToast('El festival ya terminó','info');return;}
+  if(festivalEnded()){showToast(t('notice_fest_term'),'info');return;}
   // Cancelar Worker previo si existe
   if(_activeCalcWorker){_activeCalcWorker.terminate();_activeCalcWorker=null;}
   cachedResult=null;
   const btn=document.querySelector('.av-calc-btn');
   const res=document.getElementById('ag-result');
-  if(btn){btn.disabled=true;btn.textContent='Calculando…';}
-  if(res) res.innerHTML=`<div class="ag-calc-prompt" style="opacity:.6">Calculando opciones…</div>`;
+  if(btn){btn.disabled=true;btn.textContent=t('plan_calculando');}
+  if(res) res.innerHTML=`<div class="ag-calc-prompt" style="opacity:.6">${t('plan_calculando_ops')}</div>`;
 
   // Build venue coords for Worker
   const _vcoords={};
@@ -7220,7 +7525,7 @@ function renderAgenda(){
       view.innerHTML=emptyStateHero(
         ICONS.sparkles,
         `${_festName} ha terminado`,
-        _hasMiPlan?'Revisá lo que planeaste y las películas que marcaste como vistas.':'Explorá el programa completo del festival.',
+        _hasMiPlan?'Revisá lo que planeaste y las películas que marcaste como vistas.':t('empty_programa'),
         _hasMiPlan?'Ver Mi Plan':'Ir al Programa',
         _hasMiPlan?"switchMainNav('mnav-miplan');showAgView()":"switchMainNav('mnav-cartelera');showDayView()"
       );
@@ -7254,7 +7559,7 @@ function renderAgenda(){
     if(!pending.length&&!cachedResult){
       view.innerHTML=`${_progressHtml}
         <div class="ag-section">
-          ${emptyStateHero(ICONS.calendar,'Tu plan calculado aparece aquí.','Añadí lo que no querés perderte. Cuando tengas tu lista, armamos tu plan.','Ir a Intereses',"switchMainNav('mnav-seleccion');showAgView()")}
+          ${emptyStateHero(ICONS.calendar,'Tu plan calculado aparece aquí.',t('empty_intereses_3'),'Ir a Intereses',"switchMainNav('mnav-seleccion');showAgView()")}
         </div>`;
       return;
     }
@@ -7621,7 +7926,7 @@ function closeRatingSheet(){
   } else {
     if(filmRatings[_ratingTitle]){
       saveRating(_ratingTitle,0);
-      showToast('Calificación eliminada','info');
+      showToast(t('toast_calif_elim'),'info');
     }
   }
   document.getElementById('rating-overlay').classList.remove('open');
@@ -7904,7 +8209,7 @@ function openPelSheet(title){
     </div>
     <div class="pel-sheet-divider"></div>
     <div class="pel-sheet-section-lbl">${f.type==='event'?'horario':allScr.length===1?'función':'funciones'}${totalFn>1&&f.type!=='event'?`<span class="ml-2 count-badge cb-neutral">${totalFn}</span>`:''}</div>
-    ${(()=>{const _n=NOTICES.find(n=>n.title===f.title&&n.festival===(_activeFestId||_DEFAULT_FEST_ID));if(!_n)return'';const _msg=_n.type==='cancelled'?'Función cancelada · Pendiente nueva fecha':`Reprogramada → ${_n.newDay||''} ${_n.newTime||''}${_n.newVenue?' · '+_n.newVenue:''}`;return`<div class="notice-banner-row"><span class="notice-badge">${_n.type==='cancelled'?'CANCELADA':'REPROG.'}</span><span class="notice-banner-txt">${_msg}</span></div>`;})()}
+    ${(()=>{const _n=NOTICES.find(n=>n.title===f.title&&n.festival===(_activeFestId||_DEFAULT_FEST_ID));if(!_n)return'';const _msg=_n.type==='cancelled'?t('notice_funcion_canc'):`Reprogramada → ${_n.newDay||''} ${_n.newTime||''}${_n.newVenue?' · '+_n.newVenue:''}`;return`<div class="notice-banner-row"><span class="notice-badge">${_n.type==='cancelled'?'CANCELADA':'REPROG.'}</span><span class="notice-banner-txt">${_msg}</span></div>`;})()}
     ${_metaBanners(f)}
     <div class="pel-sheet-screenings">${rows}</div>
     ${f.synopsis?`<div class="pel-sheet-divider"></div>
@@ -7914,7 +8219,7 @@ function openPelSheet(title){
     ${(!f.is_cortos&&!f.is_programa&&f.type!=='event')?lbLink(f.title,f):''}
     <div class="pel-sheet-divider"></div>
     ${inW?`<div class="pel-sheet-ctas-watched">
-        <button onclick="toggleWatched('${safeT}',event);closePelSheet()" class="pel-sheet-action-btn act-on">${ICONS.check} Ya vista</button>
+        <button onclick="toggleWatched('${safeT}',event);closePelSheet()" class="pel-sheet-action-btn act-on">${ICONS.check} ${t('cta_vista')}</button>
         ${!f.is_cortos?`<button onclick="closePelSheet();setTimeout(()=>openRatingSheet('${safeT}'),100)" class="pel-sheet-action-btn btn-secondary">${ICONS.star} ${filmRatings['${safeT}']?'Cambiar':'Calificar'}</button>`:``}
       </div>`
     :`<div class="pel-sheet-ctas">
@@ -8006,7 +8311,8 @@ document.addEventListener('keydown',function(e){
 });
 (function(){
   let _startY=0,_dragging=false;
-  document.addEventListener('DOMContentLoaded',()=>{});
+  document.addEventListener('DOMContentLoaded',()=>{
+  _applyI18nDOM();});
   // Swipe-down en el topbar para cerrar el sheet
   function _initSheetSwipe(){
     const topbar=document.querySelector('.pel-sheet-topbar');
@@ -8419,7 +8725,7 @@ function _metaBadges(f){
 }
 function _metaBanners(f){
   let b='';
-  if(f.has_qa) b+=`<div class="meta-banner"><div class="meta-banner-dot"></div><div><div class="meta-banner-label">Q&A · EQUIPO PRESENTE</div><div class="meta-banner-text">La función puede extenderse <span>· +30 min estimados</span></div></div></div>`;
+  if(f.has_qa) b+=`<div class="meta-banner"><div class="meta-banner-dot"></div><div><div class="meta-banner-label">Q&A · EQUIPO PRESENTE</div><div class="meta-banner-text">${t('notice_extension')} <span>· +30 min estimados</span></div></div></div>`;
   if(f.requires_registration) b+=`<div class="meta-banner"><div class="meta-banner-dot"></div><div><div class="meta-banner-label">INSCRIPCIÓN PREVIA</div><div class="meta-banner-text">Requiere registro antes del evento</div></div></div>`;
   return b;
 }
@@ -8752,7 +9058,7 @@ function render(){
   const cntEl=document.getElementById('cnt');
   cntEl.innerHTML=''; // count eliminado — redundante con lugar-btn y chips
   const grid=document.getElementById('grid');
-  if(!films.length){grid.innerHTML=emptyState(ICONS.search,'Sin actividades para este filtro.','Ajusta los filtros de sección o sede.');return;}
+  if(!films.length){grid.innerHTML=emptyState(ICONS.search,'Sin actividades para este filtro.',t('empty_filtros'));return;}
   // ── Vista horario: poster-grid 3 col + overlay de hora ──
   grid.innerHTML='<div class="poster-grid">'+films.map((f,i)=>{
     const isProg=f.is_cortos;
@@ -9024,7 +9330,7 @@ async function loadFestival(id){
       if(data.transport) cfg.transport=data.transport;
     }catch(e){
       console.error('Error cargando festival '+id+':',e);
-      showToast('No se pudo cargar el festival. Verificá tu conexión.','error',5000);
+      showToast(t('toast_conexion'),'error',5000);
       return false;
     }
   }
@@ -9743,7 +10049,7 @@ function _posterErr(img){
     <div id="auth-sheet-step1">
       <div class="auth-sheet-title">Guardá tu plan</div>
       <div class="auth-sheet-sub">Ingresa tu email y te enviamos un código de 6 dígitos. Sin contraseña. Tu plan se sincroniza entre todos tus dispositivos.</div>
-      <input class="auth-email-inp" id="auth-email-inp" type="email" placeholder="tu@email.com" autocomplete="email" onkeydown="if(event.key==='Enter')submitAuthEmail()">
+      <input class="auth-email-inp" id="auth-email-inp" type="email" placeholder="${t('auth_email')}" autocomplete="email" onkeydown="if(event.key==='Enter')submitAuthEmail()">
       <button class="auth-send-btn" id="auth-send-btn" onclick="submitAuthEmail()">Enviar código</button>
       <div class="auth-msg" id="auth-msg"></div>
       <span class="auth-cancel" onclick="closeAuthSheet()">Cancelar</span>
@@ -9752,14 +10058,14 @@ function _posterErr(img){
       <div class="auth-sheet-title">Revisá tu email</div>
       <div class="auth-sheet-sub">Enviamos un código de 6 dígitos a <span id="auth-otp-email" style="color:var(--white)"></span></div>
       <input class="pin-display auth-email-inp" id="auth-otp-inp" type="number" placeholder="123456" inputmode="numeric" maxlength="6" onkeydown="if(event.key==='Enter')submitOTP()"><!-- 16px: prevents iOS auto-zoom -->
-      <button class="auth-send-btn" id="auth-otp-btn" onclick="submitOTP()">Confirmar</button>
+      <button class="auth-send-btn" id="auth-otp-btn" onclick="submitOTP()">${t('av_confirmar')}</button>
       <div class="auth-msg" id="auth-otp-msg"></div>
       <span class="auth-cancel" onclick="closeAuthSheet();document.getElementById('auth-sheet-step1').style.display='block';document.getElementById('auth-sheet-step2').style.display='none'">Cancelar</span>
     </div>
     <div id="auth-sheet-step3" style="display:none">
       <div class="auth-sheet-title">Tu cuenta</div>
       <div class="auth-sheet-sub" id="auth-signed-email" style="color:var(--white)"></div>
-      <div class="mt-2 auth-sheet-sub">Tu plan se sincroniza automáticamente entre todos tus dispositivos.</div>
+      <div class="mt-2 auth-sheet-sub">${t('plan_sincroniza')}</div>
       <button class="auth-signout-btn" onclick="signOutAndClose()">Cerrar sesión</button>
       <span class="auth-cancel" onclick="closeAuthSheet()">Cancelar</span>
     </div>
@@ -9774,7 +10080,7 @@ function _posterErr(img){
   <!-- Generado dinámicamente por _renderFestivalSelector() en init -->
   <div id="fs-festival-list"></div>
   <div class="fs-divider"></div>
-  <div class="fs-section-lbl">Próximamente</div>
+  <div class="fs-section-lbl">${t('misc_proxi')}</div>
   <div class="fs-soon-row">
     <div class="fs-soon-dot"></div>
     <div class="fs-soon-info">
@@ -9788,7 +10094,7 @@ function _posterErr(img){
 
 
 
-<button id="back-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Volver arriba">↑</button>
+<button id="back-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label=t('aria_volver_arriba')>↑</button>
 
 <!-- ── SEARCH OVERLAY ── position:fixed, cubre pantalla desde topbar ── -->
 <div id="search-overlay">
@@ -9798,9 +10104,9 @@ function _posterErr(img){
     </button>
     <div class="search-input-wrap">
       <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"/></svg>
-      <input type="search" id="search-input" placeholder="Buscar…" oninput="searchQuery()" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" incremental>
+      <input type="search" id="search-input" placeholder="${t('search_placeholder')}" oninput="searchQuery()" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" incremental>
     </div>
-    <button class="search-cancel" onclick="searchClose()">Cancelar</button>
+    <button class="search-cancel" onclick="searchClose()">${t('search_cancelar')}</button>
   </div>
   <div id="search-results"></div>
 </div>
