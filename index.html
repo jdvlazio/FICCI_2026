@@ -782,9 +782,9 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:var(--t
 .paf-tag{display:flex;align-items:center;gap:var(--sp-1);font-size:var(--t-sm);font-weight:var(--w-bold);color:var(--amber);background:var(--amber-10);border:1px solid var(--amber-30);border-radius:var(--r-pill);padding:3px 8px 3px 10px;cursor:pointer}
 .paf-count{font-size:var(--t-sm);color:var(--gray)}
 /* Lista Hoy/Mañana */
-.programa-list{display:none;flex-direction:column;overflow-y:auto;overscroll-behavior:contain;flex:1;padding-bottom:calc(72px + env(safe-area-inset-bottom))}
+.programa-list{display:none;flex-direction:column;padding-bottom:calc(72px + env(safe-area-inset-bottom))}
 .programa-list.visible{display:flex}
-.plist-time-hdr{padding:var(--sp-1) var(--sp-3) var(--sp-1);font-size:var(--t-label);font-weight:var(--w-display);color:var(--amber);letter-spacing:.5px;background:var(--surf);border-bottom:1px solid var(--bdr-l);position:sticky;top:0;z-index:2;flex-shrink:0}
+.plist-time-hdr{padding:var(--sp-1) var(--sp-3) var(--sp-1);font-size:var(--t-label);font-weight:var(--w-display);color:var(--amber);letter-spacing:.5px;background:var(--surf);border-bottom:1px solid var(--bdr-l);position:sticky;top:var(--sticky-top-lista,0px);z-index:2;flex-shrink:0}
 .plist-item{display:flex;align-items:center;gap:var(--sp-3);padding:var(--sp-3);border-bottom:1px solid var(--bdr-l);cursor:pointer}
 .plist-item:active{background:var(--surf-2)}
 .plist-poster{width:40px;height:60px;border-radius:var(--r-sm);flex-shrink:0;object-fit:cover;background:var(--surf-3)}
@@ -9306,6 +9306,9 @@ function _fixStickyOffset(){
   }
   const hdrH=document.getElementById('hdr-programa')?.offsetHeight||(tbH+(isMobile?0:navH));
   r.setProperty('--sticky-top-chips',hdrH+'px');
+  // --sticky-top-lista: offset para .plist-time-hdr en lista mode (window scroll)
+  // = topbar + hdr-programa — el chrome total por encima de la lista
+  if(isMobile) r.setProperty('--sticky-top-lista',(tbH+hdrH)+'px');
   // ── Chrome blur overlay: cubre topbar + barra secundaria activa ──
   if(isMobile){
     const cb=document.getElementById('chrome-blur');
