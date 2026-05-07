@@ -36,6 +36,11 @@ const MONTH_ES = {
   '07':'JUL','08':'AGO','09':'SEP','10':'OCT','11':'NOV','12':'DIC',
 };
 
+const MONTH_EN = {
+  '01':'JAN','02':'FEB','03':'MAR','04':'APR','05':'MAY','06':'JUN',
+  '07':'JUL','08':'AUG','09':'SEP','10':'OCT','11':'NOV','12':'DEC',
+};
+
 // ── Parse args ────────────────────────────────────────────────────────────────
 function parseArgs() {
   const args = process.argv.slice(2);
@@ -115,6 +120,12 @@ function formatConfig(opts, days) {
   const datesStr = mm0 === mmN
     ? `${d0.num}\u2013${dn.num} ${mon0}`
     : `${d0.num} ${mon0}\u2013${dn.num} ${monN}`;
+  // EN format: APR 21–29 (month before day, EN abbreviation)
+  const mon0EN = MONTH_EN[mm0] || mm0;
+  const monNEN = MONTH_EN[mmN] || mmN;
+  const datesStrEN = mm0 === mmN
+    ? `${mon0EN} ${d0.num}\u2013${dn.num}`
+    : `${mon0EN} ${d0.num}\u2013${monNEN} ${dn.num}`;
   const year     = parseInt(opts.start.slice(0, 4));
   const endDate  = days[days.length - 1].iso;
   const endStr   = `${endDate}T${opts.endtime}`;
@@ -135,7 +146,7 @@ function formatConfig(opts, days) {
   return [
     `'${opts.id}': {`,
     `  name:'${opts.name}',shortName:'${opts.short}',city:'${opts.city}',`,
-    `  dates:'${datesStr}',year:${year},timezoneOffset:'${opts.tz}',`,
+    `  dates:'${datesStr}',dates_en:'${datesStrEN}',year:${year},timezoneOffset:'${opts.tz}',`,
     `  storageKey:'${opts.storage}',festivalEndStr:'${endStr}',${group}`,
     `  festivalDates:{${fd}},`,
     `  days:[${da}],`,
