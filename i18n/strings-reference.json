@@ -236,7 +236,7 @@
   },
   "auth_entrar": {
     "es": "Entrar",
-    "en": "Sign in",
+    "en": "Enter",
     "ctx": "Auth CTA"
   },
   "auth_cuenta": {
