@@ -3008,8 +3008,9 @@ const _I18N = {
 let _lang = (()=>{
   const saved = localStorage.getItem('otrofestiv_lang');
   if(saved && _I18N[saved]) return saved;
-  // Auto-detect: si el primer festival activo es en inglés, usar inglés
-  return 'es'; // default
+  // Auto-detect por idioma del navegador — solo en primer uso
+  const nav = (navigator.language || navigator.userLanguage || 'es').toLowerCase();
+  return nav.startsWith('en') ? 'en' : 'es';
 })();
 
 function t(key){
@@ -3544,7 +3545,7 @@ const NOTICES=[
 // Al agregar festival: también actualizar FESTIVALS en enricher.html
 const FESTIVAL_CONFIG={
   'ficci65':{
-    name:'FICCI 65',shortName:'FICCI 65',city:'Cartagena',dates:'14\u201319 ABR',year:2026,timezoneOffset:'-05:00',
+    name:'FICCI 65',shortName:'FICCI 65',city:'Cartagena',dates:'14\u201319 ABR',dates_en:'APR 14–19',year:2026,timezoneOffset:'-05:00',
     storageKey:'ficci65_',
     festivalEndStr:'2026-04-20T02:00:00',
     festivalDates:{'Martes':'2026-04-14','Miércoles':'2026-04-15','Jueves':'2026-04-16','Viernes':'2026-04-17','Sábado':'2026-04-18','Domingo':'2026-04-19'},
@@ -3556,7 +3557,7 @@ const FESTIVAL_CONFIG={
     films:null,posters:null,lbSlugs:null,eventPosterLabel:['ACADEMIA','']
   },
   'aff2026':{
-    name:'AFF 2026',shortName:'ALTERNATIVA',city:'Medellín',dates:'21\u201329 ABR',year:2026,timezoneOffset:'-05:00',
+    name:'AFF 2026',shortName:'ALTERNATIVA',city:'Medellín',dates:'21\u201329 ABR',dates_en:'APR 21–29',year:2026,timezoneOffset:'-05:00',
     storageKey:'aff2026_',
     festivalEndStr:'2026-04-29T23:00:00',
     festivalDates:{'MAR 21':'2026-04-21','MIÉ 22':'2026-04-22','JUE 23':'2026-04-23','VIE 24':'2026-04-24','SÁB 25':'2026-04-25','DOM 26':'2026-04-26','LUN 27':'2026-04-27','MAR 28':'2026-04-28','MIÉ 29':'2026-04-29','JUE 30':'2026-04-30'},
@@ -3571,7 +3572,7 @@ const FESTIVAL_CONFIG={
     }
   },
   'cinemancia2025':{
-    name:'Cinemancia 2025',shortName:'CINEMANCIA',city:'Valle de Aburrá',dates:'11–20 SEP',year:2025,timezoneOffset:'-05:00',
+    name:'Cinemancia 2025',shortName:'CINEMANCIA',city:'Valle de Aburrá',dates:'11–20 SEP',dates_en:'SEP 11–20, 2025',year:2025,timezoneOffset:'-05:00',
     storageKey:'cinemancia2025_',festivalEndStr:'2025-09-20T23:00:00',
     eventPosterLabel:['PROGRAMACIÓN','ACADÉMICA'],
     group:'test',
@@ -9379,7 +9380,7 @@ function _renderSplashDropdown(activeFestId){
     const isPast=end&&today>end;
     const isActive=id===activeFestId;
     const badge=isTest?'TEST':isPast?'PASADO':'';
-    const meta=`${cfg.city} · ${cfg.dates} ${cfg.year||''}`.trim();
+    const meta=`${cfg.city} · ${_lang==='en'&&cfg.dates_en?cfg.dates_en:cfg.dates} ${cfg.year||''}`.trim();
     return`<button class="splash-drop-item${isActive?' selected':''}" data-fest="${id}" role="option" aria-selected="${isActive}" onclick="selectSplashFest('${cfg.name}','${meta}','${id}')">
       <div><div class="splash-drop-item-name">${cfg.name}</div><div class="splash-drop-item-meta">${meta}</div></div>
       ${badge?`<div class="splash-drop-item-badge">${badge}</div>`:''}
@@ -9404,7 +9405,7 @@ function _renderFestivalSelector(activeFestId){
   const regular=entries.filter(([,cfg])=>cfg.name&&cfg.group!=='test');
   const tests=entries.filter(([,cfg])=>cfg.name&&cfg.group==='test');
   function mkRow([id,cfg],isActive){
-    const meta=`${cfg.city} · ${cfg.dates} ${cfg.year||''}`.trim();
+    const meta=`${cfg.city} · ${_lang==='en'&&cfg.dates_en?cfg.dates_en:cfg.dates} ${cfg.year||''}`.trim();
     return`<div class="fs-festival-row" data-fest="${id}" onclick="loadFestival('${id}')">
       <div class="fs-fest-dot"></div>
       <div class="fs-fest-info">
