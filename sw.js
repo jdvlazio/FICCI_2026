@@ -2,13 +2,15 @@
 // Estrategia: HTML siempre desde red. Assets en caché.
 // v12: auto-reload en cliente cuando SW detecta nueva versión
 
-const CACHE_NAME = 'otrofestiv-v202605072035';
-const BUILD = '202605072035';
+const CACHE_NAME = 'otrofestiv-v202605072037';
+const BUILD = '202605072037';
 
 const STATIC_ASSETS = [
   '/manifest.json',
   '/icon-192.png',
   '/icon-512.png',
+  '/i18n/es.json',
+  '/i18n/en.json',
 ];
 
 self.addEventListener('install', () => {
@@ -48,6 +50,23 @@ self.addEventListener('fetch', event => {
         .catch(() => caches.match(request)
           .then(c => c || new Response(OFFLINE_HTML, {headers:{'Content-Type':'text/html;charset=utf-8'}}))
         )
+    );
+    return;
+  }
+
+  // i18n JSONs → cache-first (cambian solo en deploy, SW se actualiza)
+  if (url.pathname.startsWith('/i18n/')) {
+    event.respondWith(
+      caches.match(request).then(cached => {
+        const networkFetch = fetch(request).then(res => {
+          if (res.ok) {
+            const clone = res.clone();
+            caches.open(CACHE_NAME).then(c => c.put(request, clone));
+          }
+          return res;
+        });
+        return cached || networkFetch;
+      })
     );
     return;
   }
