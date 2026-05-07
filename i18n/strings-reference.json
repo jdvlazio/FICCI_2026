@@ -858,5 +858,95 @@
     "es": "posible.",
     "en": "possible.",
     "context": "Added automatically — verify context"
+  },
+  "plan_recalcular_suffix": {
+    "es": "o recalculá en Planear.",
+    "en": "or recalculate in Planner.",
+    "context": "Aprobado Content+UX — plan_recalcular_suffix"
+  },
+  "plan_hint_hora": {
+    "es": "Tocá la hora para cambiar la",
+    "en": "Tap the time to change the",
+    "context": "Aprobado Content+UX — plan_hint_hora"
+  },
+  "plan_quitar_plan": {
+    "es": "Quitar del plan",
+    "en": "Remove from plan",
+    "context": "Aprobado Content+UX — plan_quitar_plan"
+  },
+  "plan_quitar_continuar": {
+    "es": "Quitar y continuar",
+    "en": "Remove and continue",
+    "context": "Aprobado Content+UX — plan_quitar_continuar"
+  },
+  "av_hora_invalida": {
+    "es": "La hora de inicio debe ser menor que la de fin",
+    "en": "Start time must be before end time",
+    "context": "Aprobado Content+UX — av_hora_invalida"
+  },
+  "plan_quitar_intereses": {
+    "es": "Quitar de Intereses",
+    "en": "Remove from Interests",
+    "context": "Aprobado Content+UX — plan_quitar_intereses"
+  },
+  "misc_quitar": {
+    "es": "Quitar",
+    "en": "Remove",
+    "context": "Aprobado Content+UX — misc_quitar"
+  },
+  "misc_cerrar": {
+    "es": "Cerrar",
+    "en": "Close",
+    "context": "Aprobado Content+UX — misc_cerrar"
+  },
+  "misc_si": {
+    "es": "Sí",
+    "en": "Yes",
+    "context": "Aprobado Content+UX — misc_si"
+  },
+  "misc_si_reemplazar": {
+    "es": "Sí, reemplazar",
+    "en": "Yes, replace",
+    "context": "Aprobado Content+UX — misc_si_reemplazar"
+  },
+  "misc_si_anadir": {
+    "es": "Sí, añadir",
+    "en": "Yes, add",
+    "context": "Aprobado Content+UX — misc_si_anadir"
+  },
+  "plan_pelicula_hoy": {
+    "es": "película hoy",
+    "en": "film today",
+    "context": "Aprobado Content+UX — plan_pelicula_hoy"
+  },
+  "plan_sin_horario": {
+    "es": "Sin horario disponible",
+    "en": "No schedule available",
+    "context": "Aprobado Content+UX — plan_sin_horario"
+  },
+  "plan_anadir_titulos": {
+    "es": "o añadí más títulos.",
+    "en": "or add more titles.",
+    "context": "Aprobado Content+UX — plan_anadir_titulos"
+  },
+  "plan_solapan": {
+    "es": "se solapan en todas sus funciones. El plan omitió una de las dos.",
+    "en": "overlap in all their screenings. The plan left one out.",
+    "context": "Aprobado Content+UX — plan_solapan"
+  },
+  "av_liberar_dia": {
+    "es": "Liberar día",
+    "en": "Free up the day",
+    "context": "Aprobado Content+UX — av_liberar_dia"
+  },
+  "av_todo_el_dia_btn": {
+    "es": "Todo el día",
+    "en": "All day",
+    "context": "Aprobado Content+UX — av_todo_el_dia_btn"
+  },
+  "error_festival_nd": {
+    "es": "Este festival no está disponible todavía.",
+    "en": "This festival isn't available yet.",
+    "context": "Aprobado Content+UX — error_festival_nd"
   }
 }
