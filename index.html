@@ -7480,37 +7480,6 @@ const DAY_NUM ={};
 /* ── RENDER — CARTELERA: filtros, grid horario, grid película ────────── */
 
 
-function setHint(film){
-  const el=document.getElementById('hint');
-  if(!film){el.textContent='';el.classList.remove('active');el.style.padding='0 18px';return;}
-  const end=toMin(film.time)+parseDur(film.duration)+10;
-  // Info de conflicto: cuántas otras funciones solapan en este horario
-  const conflictCount=vis?vis.filter((f2,j)=>{
-    if(j===selectedIdx) return false;
-    const s2=toMin(f2.time),e2=s2+parseDur(f2.duration);
-    const s=toMin(film.time)-10,e=toMin(film.time)+parseDur(film.duration)+10;
-    return s2>s&&s2<e;
-  }).length:0;
-  const conflictInfo=conflictCount>0?` · ${conflictCount} función${conflictCount>1?'es':''}  solapan`:'';
-  el.innerHTML=`${ICONS.clock} ${minToStr(toMin(film.time))} – ${minToStr(end)}${conflictInfo} · Tocá de nuevo para cerrar`;
-  el.style.padding='8px 18px';
-  el.classList.add('active');
-}
-
-function applyStates(vis){
-  document.querySelectorAll('.card').forEach((card,i)=>{
-    card.classList.remove('selected','conflict');
-    if(selectedIdx===null) return;
-    if(i===selectedIdx) card.classList.add('selected');
-    else{
-      const fStart=toMin(vis[i].time),sel=vis[selectedIdx];
-      const s=toMin(sel.time)-10,e=toMin(sel.time)+parseDur(sel.duration)+10;
-      if(fStart>s&&fStart<e) card.classList.add('conflict');
-    }
-  });
-}
-
-
 function updateHorarioPrioBtn(title){
   const inPrio=prioritized.has(title);
   document.querySelectorAll('.horario-prio-btn[data-title="'+CSS.escape(title)+'"]').forEach(btn=>{
@@ -7587,12 +7556,6 @@ function setRating(val){
     if(val>0){btn.textContent='Guardar';btn.className='rating-action-btn save';}
     else{btn.textContent='Omitir';btn.className='rating-action-btn skip';}
   }
-}
-
-function _ratingFromX(el,clientX){
-  const rect=el.getBoundingClientRect();
-  const x=Math.max(0,Math.min(clientX-rect.left,rect.width));
-  return Math.min(5,Math.max(0.5,Math.round((x/rect.width)*10)/2));
 }
 
 // Pointer Events API — unificado mouse+touch, con setPointerCapture
@@ -8669,15 +8632,6 @@ function _toggleWLFromList(title,btn){
     }
   },50);
 }
-
-function setCartelaMode(mode){
-  // Mantenida por compatibilidad — el nuevo sistema usa programaSubMode
-  cartelaMode=mode;
-  expandedPelicula='';
-}
-
-
-
 
 function renderPeliculaView(){
   const grid=document.getElementById('grid');
