@@ -2431,7 +2431,7 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:var(--t
   <div class="prio-limit-handle"></div>
   <div class="prio-limit-hdr">
     <div class="prio-limit-eyebrow"><svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1.75"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg><span id="prio-limit-eyebrow-txt"></span></div>
-    <div class="prio-limit-title">${t('plan_ya_tenes_prio')} <span id="prio-limit-count"></span> prioridades</div>
+    <div class="prio-limit-title">${t('plan_ya_tenes_prio')} <span id="prio-limit-count"></span> ${t('misc_prioridades')}</div>
     <div class="prio-limit-sub" data-i18n="conflict_cambiar">Cambiá una para priorizar esta ${t('misc_pelicula')}</div>
   </div>
   <div class="prio-limit-new" id="prio-limit-new-bar">
@@ -2762,6 +2762,7 @@ const _I18N = {
     "av_hora_invalida": "La hora de inicio debe ser menor que la de fin",
     "plan_quitar_intereses": "Quitar de Intereses",
     "misc_quitar": "Quitar",
+    "misc_prioridades": "prioridades",
     "misc_cerrar": "Cerrar",
     "misc_si": "Sí",
     "misc_si_reemplazar": "Sí, reemplazar",
@@ -2970,6 +2971,7 @@ const _I18N = {
     "av_hora_invalida": "Start time must be before end time",
     "plan_quitar_intereses": "Remove from Interests",
     "misc_quitar": "Remove",
+    "misc_prioridades": "priorities",
     "misc_cerrar": "Close",
     "misc_si": "Yes",
     "misc_si_reemplazar": "Yes, replace",
@@ -6895,7 +6897,7 @@ function buildResultHTML(scenarios){
       const pairs=sc.conflictingPriorityPairs||[];
       const pairMsg=pairs.length
         ?pairs.map(([a,b])=>{const{displayTitle:da}=parseProgramTitle(a);const{displayTitle:db}=parseProgramTitle(b);return`<span class="txt-white60">${da}</span> y <span class="txt-white60">${db}</span>`;}).join(', ')
-        :'algunas de tus prioridades';
+        :`algunas de tus ${t('misc_prioridades')}`;
       return`<div class="ag-excl-incompat">${pairMsg} se solapan en todas sus funciones. El plan omitió una de las dos — revisá cuál querés priorizar.</div>`;
     })():''}
     ${navHtml}
