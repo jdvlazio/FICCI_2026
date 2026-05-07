@@ -4615,6 +4615,16 @@ function computeScenarios(titles){
   }
   // Ordenar: primero los más balanceados (menor desviación estándar)
   allScenarios.sort((a,b)=>dayBalance(a)-dayBalance(b));
+  const conflictingPriorityPairs=[];
+  if(incompatiblePriorities){
+    const prioGroups=baseGroups.filter(g=>g.priority);
+    for(let i=0;i<prioGroups.length;i++){
+      for(let j=i+1;j<prioGroups.length;j++){
+        const allConflict=prioGroups[i].screens.every(s1=>prioGroups[j].screens.every(s2=>screensConflict(s1,s2)));
+        if(allConflict) conflictingPriorityPairs.push([prioGroups[i].title,prioGroups[j].title]);
+      }
+    }
+  }
 
   return allScenarios.map(sc=>{
     const included=new Set(sc.map(s=>s._title));
@@ -4622,6 +4632,7 @@ function computeScenarios(titles){
       schedule:sc,
       excluded:pending.filter(t=>!included.has(t)),
       incompatiblePriorities,
+      conflictingPriorityPairs,
       trueMax,
       maxWithPriorities,
       priorityCost,
@@ -7028,7 +7039,17 @@ function computeScenarios(titles){
   allScenarios.forEach(sc=>sc.sort((a,b)=>a.day_order!==b.day_order?a.day_order-b.day_order:toMin(a.time)-toMin(b.time)));
   function dayBalance(sc){const counts={};sc.forEach(s=>{counts[s.day]=(counts[s.day]||0)+1;});const vals=Object.values(counts);if(vals.length<=1) return 0;const mean=vals.reduce((a,b)=>a+b,0)/vals.length;const variance=vals.reduce((a,v)=>a+Math.pow(v-mean,2),0)/vals.length;return Math.sqrt(variance);}
   allScenarios.sort((a,b)=>dayBalance(a)-dayBalance(b));
-  return allScenarios.map(sc=>{const included=new Set(sc.map(s=>s._title));return{schedule:sc,excluded:pending.filter(t=>!included.has(t)),incompatiblePriorities,trueMax,maxWithPriorities,priorityCost,dayBalance:Math.round(dayBalance(sc)*10)/10};});
+  const conflictingPriorityPairs=[];
+  if(incompatiblePriorities){
+    const prioGroups=baseGroups.filter(g=>g.priority);
+    for(let i=0;i<prioGroups.length;i++){
+      for(let j=i+1;j<prioGroups.length;j++){
+        const allConflict=prioGroups[i].screens.every(s1=>prioGroups[j].screens.every(s2=>screensConflict(s1,s2)));
+        if(allConflict) conflictingPriorityPairs.push([prioGroups[i].title,prioGroups[j].title]);
+      }
+    }
+  }
+  return allScenarios.map(sc=>{const included=new Set(sc.map(s=>s._title));return{schedule:sc,excluded:pending.filter(t=>!included.has(t)),incompatiblePriorities,conflictingPriorityPairs,trueMax,maxWithPriorities,priorityCost,dayBalance:Math.round(dayBalance(sc)*10)/10};});
 }
 
 // ── Message handler ───────────────────────────────────────────
