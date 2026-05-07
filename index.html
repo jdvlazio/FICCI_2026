@@ -4404,9 +4404,27 @@ function isScreeningBlocked(s){
 }
 
 // ── ALGORITHM — exhaustive max + MRV + random restarts ──
-function shuffle(arr){
+function _djb2(str){
+  let h=5381;
+  for(let i=0;i<str.length;i++) h=(Math.imul(31,h)+str.charCodeAt(i))|0;
+  return h;
+}
+function _titleSeed(titles){
+  return _djb2([...titles].sort().join('|'));
+}
+function _mulberry32(seed){
+  let s=seed|0;
+  return function(){
+    s=s+0x6D2B79F5|0;
+    let t=Math.imul(s^s>>>15,1|s);
+    t=t+Math.imul(t^t>>>7,61|t)^t;
+    return((t^t>>>14)>>>0)/4294967296;
+  };
+}
+function shuffle(arr,rand){
   const a=[...arr];
-  for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}
+  const r=rand||Math.random.bind(Math);
+  for(let i=a.length-1;i>0;i--){const j=Math.floor(r()*(i+1));[a[i],a[j]]=[a[j],a[i]];}
   return a;
 }
 
@@ -6327,7 +6345,13 @@ function buildResultHTML(scenarios){
       <span style="display:inline-flex;align-items:center;justify-content:center;height:20px;padding:0 7px;border-radius:var(--r-pill);font-size:var(--t-label);font-weight:var(--w-bold);font-family:var(--font);line-height:1;background:${isOptimo?'var(--amber-10)':'transparent'};color:${isOptimo?'var(--amber)':'var(--gray)'};border:1px solid ${isOptimo?'var(--amber-30)':'var(--bdr)'}">${ok}/${total}</span>
       ${bad?`<span class="row-xs"><span class="count-badge cb-red">${bad}</span><span class="txt-gray2-sm">fuera</span></span>`:''}
     </div>
-    ${sc.incompatiblePriorities?`<div class="txt-error-sm">Las prioridades se solapan entre sí — plan calculado sin forzarlas.</div>`:''}
+    ${sc.incompatiblePriorities?(()=>{
+      const pairs=sc.conflictingPriorityPairs||[];
+      const pairMsg=pairs.length
+        ?pairs.map(([a,b])=>{const{displayTitle:da}=parseProgramTitle(a);const{displayTitle:db}=parseProgramTitle(b);return`<span class="txt-white60">${da}</span> y <span class="txt-white60">${db}</span>`;}).join(', ')
+        :'algunas de tus prioridades';
+      return`<div class="txt-error-sm">Prioridades incompatibles: ${pairMsg} se solapan en todas sus funciones. El plan se calculó sin forzarlas.</div>`;
+    })():''}
     ${navHtml}
   </div>
 `;
@@ -6362,21 +6386,26 @@ function buildResultHTML(scenarios){
         reason=`<div class="excl-reason">Sin funciones disponibles</div>`;
       } else {
         // Buscar conflicto con el schedule actual
-        let conflictWith=null;
+        let conflictWith=null,conflictWhen=null;
         for(const s of screens){
           for(const c of sc.schedule){
             if(screensConflict(s,c)){
               const{displayTitle:ct}=parseProgramTitle(c._title||'');
-              conflictWith=ct;break;
+              conflictWith=ct;
+              const _ds=(DAY_SHORT&&DAY_SHORT[c.day])||c.day||'';
+              conflictWhen=_ds+(c.time?' '+c.time:'');
+              break;
             }
           }
           if(conflictWith) break;
         }
         if(conflictWith){
-          reason=`<div class="excl-reason conflict">Conflicto con ${conflictWith}</div>`;
+          reason=`<div class="excl-reason conflict">Conflicto con ${conflictWith}${conflictWhen?' · '+conflictWhen:''}</div>`;
           canInclude=true;
+        } else if(screens.length){
+          reason=`<div class="excl-reason">Sus funciones coinciden con otras películas en tu plan</div>`;
         } else {
-          reason=`<div class="excl-reason">No pudo incluirse</div>`;
+          reason=`<div class="excl-reason">Sin funciones disponibles en tu horario</div>`;
         }
       }
       const includeBtn=canInclude
@@ -6877,9 +6906,27 @@ function isScreeningBlocked(s){
   return av.blocks.some(b=>sStart<toMin(b.to)&&sEnd>toMin(b.from));
 }
 
-function shuffle(arr){
+function _djb2(str){
+  let h=5381;
+  for(let i=0;i<str.length;i++) h=(Math.imul(31,h)+str.charCodeAt(i))|0;
+  return h;
+}
+function _titleSeed(titles){
+  return _djb2([...titles].sort().join('|'));
+}
+function _mulberry32(seed){
+  let s=seed|0;
+  return function(){
+    s=s+0x6D2B79F5|0;
+    let t=Math.imul(s^s>>>15,1|s);
+    t=t+Math.imul(t^t>>>7,61|t)^t;
+    return((t^t>>>14)>>>0)/4294967296;
+  };
+}
+function shuffle(arr,rand){
   const a=[...arr];
-  for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}
+  const r=rand||Math.random.bind(Math);
+  for(let i=a.length-1;i>0;i--){const j=Math.floor(r()*(i+1));[a[i],a[j]]=[a[j],a[i]];}
   return a;
 }
 
@@ -6967,16 +7014,17 @@ function computeScenarios(titles){
   const prioritySorted=[...baseGroups].sort((a,b)=>{
     if(a.priority&&!b.priority) return -1;if(!a.priority&&b.priority) return 1;return a.screens.length-b.screens.length;
   });
+  const _seed=_titleSeed(titles);
   if(hasPriorities&&maxWithPriorities>0){
     collectAt(prioritySorted,maxWithPriorities,true);
-    for(let i=0;i<20&&allScenarios.length<4;i++) collectAt(shuffle(baseGroups),maxWithPriorities,true);
+    for(let i=0;i<20&&allScenarios.length<4;i++) collectAt(shuffle(baseGroups,_mulberry32(_seed^i*7919)),maxWithPriorities,true);
   }
   if(!allScenarios.length&&hasPriorities){
     incompatiblePriorities=true;
     collectAt(prioritySorted,trueMax,false);
-    for(let i=0;i<20&&allScenarios.length<4;i++) collectAt(shuffle(baseGroups),trueMax,false);
+    for(let i=0;i<20&&allScenarios.length<4;i++) collectAt(shuffle(baseGroups,_mulberry32(_seed^(i+100)*7919)),trueMax,false);
   }
-  for(let i=0;i<30&&allScenarios.length<8;i++) collectAt(shuffle(baseGroups),trueMax,false);
+  for(let i=0;i<30&&allScenarios.length<8;i++) collectAt(shuffle(baseGroups,_mulberry32(_seed^(i+200)*7919)),trueMax,false);
   allScenarios.forEach(sc=>sc.sort((a,b)=>a.day_order!==b.day_order?a.day_order-b.day_order:toMin(a.time)-toMin(b.time)));
   function dayBalance(sc){const counts={};sc.forEach(s=>{counts[s.day]=(counts[s.day]||0)+1;});const vals=Object.values(counts);if(vals.length<=1) return 0;const mean=vals.reduce((a,b)=>a+b,0)/vals.length;const variance=vals.reduce((a,v)=>a+Math.pow(v-mean,2),0)/vals.length;return Math.sqrt(variance);}
   allScenarios.sort((a,b)=>dayBalance(a)-dayBalance(b));
