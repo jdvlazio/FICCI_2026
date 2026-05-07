@@ -4412,17 +4412,15 @@ function closeSearch(){setTimeout(()=>{const r=document.getElementById('ag-searc
    NIVEL 2 — LABEL (inline, 1 línea)
      Uso: separadores de lista, etiquetas de sección
      Corto: DAY_SHORT[key] → 'MAR 14'    (.saved-day-lbl, .ag-day-name, .suggestion-day-lbl)
-     Largo: DAY_LONG[key]  → 'Martes 14' (.mplan-list-hdr — header primario únicamente)
+
 
    FUENTE: todo deriva de DAYS[] (definido en el bloque de render de tabs)
 ══════════════════════════════════════════════════════ */
 let DAY_KEYS =['Martes','Miércoles','Jueves','Viernes','Sábado','Domingo'];
-let DAY_LONG ={Martes:'Martes 14', Miércoles:'Miércoles 15', Jueves:'Jueves 16',
-                 Viernes:'Viernes 17', Sábado:'Sábado 18',  Domingo:'Domingo 19'};
 let DAY_SHORT={Martes:'MAR 14',    Miércoles:'MIÉ 15',    Jueves:'JUE 16',
                  Viernes:'VIE 17',   Sábado:'SÁB 18',       Domingo:'DOM 19'};
 let DAY_SHORT_EN={}; // swapeado por loadFestival() — valores en inglés
-let DAY_LONG_EN={};
+
 
 /* dayChip(key) — componente apilado: ABREV arriba / NÚMERO abajo — FORMATO ÚNICO */
 const dayChip = key => {
@@ -4433,7 +4431,6 @@ const dayChip = key => {
 };
 /* dayLabel/dayHeader — mantenidos para compatibilidad, internamente usan dayChip */
 const dayLabel  = key => (_lang==='en' ? DAY_SHORT_EN : DAY_SHORT)[key] || key;
-const dayHeader = key => (_lang==='en' ? DAY_LONG_EN  : DAY_LONG)[key]  || key;
 
 /* ══════════════════════════════════════════════════════
    emptyState(icon, title, sub) — componente vacío unificado
@@ -9393,8 +9390,6 @@ async function loadFestival(id){
   DAY_KEYS=cfg.dayKeys;
   DAY_SHORT=cfg.dayShort;
   DAY_SHORT_EN=cfg.dayShort_en||cfg.dayShort;
-  DAY_LONG=cfg.dayLong;
-  DAY_LONG_EN=cfg.dayLong_en||cfg.dayLong;
   PRIO_LIMIT=cfg.prioLimit||5;
   // Guard: dayKeys y days son requeridos — sin ellos el UI de calendario crashea
   if(!cfg.dayKeys||!cfg.days||!cfg.days.length){
