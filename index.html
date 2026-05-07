@@ -2397,7 +2397,7 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:var(--t
   <div class="conflict-handle"></div>
   <div class="conflict-hdr">
     <div class="conflict-eyebrow"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126zM12 15.75h.007v.008H12v-.008z"/></svg>Conflicto de horario</div>
-    <div class="conflict-title">Se solapan en el mismo tramo</div>
+    <div class="conflict-title" id="conflict-title-el">Se solapan en el mismo tramo</div>
     <div class="conflict-sub" data-i18n="conflict_cual">¿Cuál querés en tu plan?</div>
   </div>
   <div class="conflict-arena">
@@ -2741,6 +2741,7 @@ const _I18N = {
     "rating_despues": "Después",
     "rating_parecio": "¿Qué te pareció?",
     "conflict_cual": "¿Cuál querés en tu plan?",
+    "conflict_titulo": "Se solapan en el mismo tramo",
     "conflict_anadir_verb": "Querés añadir",
     "conflict_anadir_btn": "Añadir",
     "conflict_cambiar": "Cambiá una para priorizar esta película",
@@ -2957,6 +2958,7 @@ const _I18N = {
     "rating_despues": "Later",
     "rating_parecio": "What did you think?",
     "conflict_cual": "Which one for your plan?",
+    "conflict_titulo": "Scheduling conflict",
     "conflict_anadir_verb": "You're adding",
     "conflict_anadir_btn": "Add",
     "conflict_cambiar": "Change one to prioritize this film",
@@ -3091,6 +3093,9 @@ function _applyI18nDOM(){
     if(val && val!==key) el.placeholder=val;
   });
   // 5. Aria-label + title patches via known element IDs
+  // Conflict title patch
+  const _conflictTitle=document.getElementById('conflict-title-el');
+  if(_conflictTitle) _conflictTitle.textContent=t('conflict_titulo');
   const ariaIds={
     'hdr-search-icon' :['aria_buscar',    ['ariaLabel','title']],
     'view-toggle-btn' :['aria_cambiar_vista',['ariaLabel','title']],

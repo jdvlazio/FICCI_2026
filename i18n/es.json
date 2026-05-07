@@ -210,5 +210,6 @@
   "plan_anadir_plan": "¿Añadir al plan?",
   "plan_sigue_intereses": "Sigue en Intereses, deja de ser prioritaria.",
   "plan_hint_opciones": "Tocá Ver opciones para ver tu plan.",
-  "misc_no_disponible": "No disponible"
+  "misc_no_disponible": "No disponible",
+  "conflict_titulo": "Se solapan en el mismo tramo"
 }

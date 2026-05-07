@@ -210,5 +210,6 @@
   "plan_anadir_plan": "Add to plan?",
   "plan_sigue_intereses": "Stays in Interests, no longer prioritized.",
   "plan_hint_opciones": "Tap “See options” to view your plan.",
-  "misc_no_disponible": "Not available"
+  "misc_no_disponible": "Not available",
+  "conflict_titulo": "Scheduling conflict"
 }
