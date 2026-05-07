@@ -2432,7 +2432,7 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:var(--t
   <div class="prio-limit-hdr">
     <div class="prio-limit-eyebrow"><svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1.75"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg><span id="prio-limit-eyebrow-txt"></span></div>
     <div class="prio-limit-title">Ya tenés <span id="prio-limit-count"></span> prioridades</div>
-    <div class="prio-limit-sub">Cambiá una para priorizar esta película</div>
+    <div class="prio-limit-sub">Cambiá una para priorizar esta ${t('misc_pelicula')}</div>
   </div>
   <div class="prio-limit-new" id="prio-limit-new-bar">
     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
@@ -2513,7 +2513,7 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:var(--t
 </div>
 <div id="cartelera-cta" style="display:none">
   <div class="cartelera-cta">
-    <span class="cartelera-cta-text">Tocá <span style="color:var(--amber)">♥</span> en cualquier título para añadirlo a <b>Intereses</b></span>
+    <span class="cartelera-cta-text">${t('misc_toca')} <span style="color:var(--amber)">♥</span> en cualquier título para añadirlo a <b>Intereses</b></span>
   </div>
 </div>
 </div>
@@ -2623,7 +2623,7 @@ const _I18N = {
     "plan_compartir": "Compartir",
     "plan_optimo": "Plan óptimo",
     "plan_sin_plan": "No tenés un plan guardado",
-    "plan_dia_libre": "Día libre en tu Plan",
+    "plan_dia_libre": "Día libre en tu plan",
     "plan_desactualizado": "Tu plan puede estar desactualizado",
     "plan_sincroniza": "Tu plan se sincroniza automáticamente entre todos tus dispositivos.",
     "av_inicio": "hora de inicio",
@@ -2706,6 +2706,28 @@ const _I18N = {
     "misc_proxi": "Próximamente",
     "misc_ya_vista": "Ya vista",
     "misc_ya_vistas": "Ya vistas",
+    "plan_dia_libre": "Día libre en tu plan",
+    "plan_empty_dia": "No hay funciones para este día. Añadí desde Sugerencias.",
+    "plan_nada_dia": "Nada en tu plan este día",
+    "plan_en_tu_plan": "está en tu plan.",
+    "empty_sin_funciones": "Sin funciones disponibles",
+    "plan_empty_hueco": "No hay funciones disponibles para este hueco.",
+    "plan_en_curso": "EN CURSO · entró hace",
+    "misc_pelicula": "película",
+    "plan_ver_dia": "Ver día",
+    "plan_otra_cosa": "¿Querés poner otra cosa ahí?",
+    "export_aparecera": "Aparecerá en la imagen cuando la compartas.",
+    "export_como_aparecer": "¿Cómo querés aparecer en tu plan?",
+    "plan_sin_combos": "No hay combinaciones posibles. Ajusta la disponibilidad.",
+    "plan_choca": "Choca con otras películas de tu plan",
+    "misc_mas": "+ más ·",
+    "misc_toca": "Tocá",
+    "intereses_onboard": "Añadí lo que no querés perderte en",
+    "av_disponibilidad": "Disponibilidad",
+    "av_no_incluir": "Tu plan no incluirá funciones en estos horarios.",
+    "plan_sin_proximas": "No tenés funciones próximas",
+    "error_funciones": "Error al cargar funciones",
+    "planear_peliculas": "Películas",
     "misc_deslizar": "Deslizá sobre las estrellas",
     "misc_mantener": "Mantené presionada la imagen — Añadir a Fotos",
     "misc_no_disp": "No disponible",
@@ -2835,6 +2857,28 @@ const _I18N = {
     "misc_proxi": "Coming soon",
     "misc_ya_vista": "Already seen",
     "misc_ya_vistas": "Already seen",
+    "plan_dia_libre": "Free day in your plan",
+    "plan_empty_dia": "No screenings for this day. Add from Suggestions.",
+    "plan_nada_dia": "Nothing planned for this day",
+    "plan_en_tu_plan": "is in your plan.",
+    "empty_sin_funciones": "No screenings available",
+    "plan_empty_hueco": "No screenings available for this gap.",
+    "plan_en_curso": "NOW SHOWING · started",
+    "misc_pelicula": "film",
+    "plan_ver_dia": "See day",
+    "plan_otra_cosa": "Want to add something else there?",
+    "export_aparecera": "Shows in the image when you share your plan.",
+    "export_como_aparecer": "What name should appear on your plan?",
+    "plan_sin_combos": "No combinations found. Adjust your availability.",
+    "plan_choca": "Conflicts with films in your plan",
+    "misc_mas": "+ more ·",
+    "misc_toca": "Tap",
+    "intereses_onboard": "Add what you don't want to miss at",
+    "av_disponibilidad": "Availability",
+    "av_no_incluir": "Your plan won't include screenings during these hours.",
+    "plan_sin_proximas": "No upcoming screenings",
+    "error_funciones": "Error loading screenings",
+    "planear_peliculas": "Films",
     "misc_deslizar": "Drag to rate",
     "misc_mantener": "Press and hold the image — Save to Photos",
     "misc_no_disp": "Not available",
@@ -4059,13 +4103,13 @@ function renderMiPlanCalendar(){
       listHtml+=`<div class="cta-ctx cta-ctx-c" onclick="document.querySelector('.suggestion-wrap')?.scrollIntoView({behavior:'smooth',block:'start'})">
         <div class="cta-ctx-ico">${ICONS.calendar}</div>
         <div class="cta-ctx-body">
-          <div class="cta-ctx-title cta-ctx-title-c">Día libre en tu plan</div>
-          <div class="cta-ctx-sub">No hay funciones para este día. Añadí desde Sugerencias abajo, o recalculá en Planear.</div>
+          <div class="cta-ctx-title cta-ctx-title-c">${t('plan_dia_libre')}</div>
+          <div class="cta-ctx-sub">${t('plan_empty_dia')} o recalculá en Planear.</div>
         </div>
         <div class="cta-ctx-arr cta-ctx-arr-c">${ICONS.chevronD}</div>
       </div>`;
     } else {
-      listHtml+=`<div class="mplan-empty">Nada en tu plan este día</div>`;
+      listHtml+=`<div class="mplan-empty">${t('plan_nada_dia')}</div>`;
     }
   } else {
     dayFilms.forEach((s,idx)=>{
@@ -4123,7 +4167,7 @@ function renderMiPlanCalendar(){
       const _hintSeen=localStorage.getItem('otrofestiv_hint_cambiar');
       const _hasFuture=savedAgenda&&savedAgenda.schedule.some(s=>!screeningPassed(s));
       if(_hintSeen||!_hasFuture) return '';
-      return`<div class="mplan-change-hint">${ICONS.clock} Tocá la hora para cambiar la película</div>`;
+      return`<div class="mplan-change-hint">${ICONS.clock} Tocá la hora para cambiar la ${t('misc_pelicula')}</div>`;
     })()}
   </div>`
 }
@@ -4226,7 +4270,7 @@ function toggleWL(title,e){
     // If film is in saved agenda, ask first
     if(savedAgenda&&savedAgenda.schedule.some(s=>s._title===title)){
       showActionModal(`Quitar de Intereses`,
-        `<b>${title.length>36?title.slice(0,34)+'…':title}</b> está en tu plan.<br><br>¿Quitarla también del plan guardado?`,
+        `<b>${title.length>36?title.slice(0,34)+'…':title}</b> ${t('plan_en_tu_plan')}<br><br>¿Quitarla también del plan guardado?`,
         'Sí, quitar de todo',()=>{
           savedAgenda.schedule=savedAgenda.schedule.filter(s=>s._title!==title);
           if(!savedAgenda.schedule.length)savedAgenda=null;
@@ -5224,7 +5268,7 @@ function renderFilmListHTML(){
           <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
           ${_relDayLabel(next)}
         </div>`
-      :`<div class="int-item-gone">Sin funciones disponibles</div>`;
+      :`<div class="int-item-gone">${t('empty_sin_funciones')}</div>`;
     const conflictHtml=conflict
       ?`<div class="int-item-conflict">
           <svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126zM12 15.75h.007v.008H12v-.008z"/></svg>
@@ -5756,14 +5800,14 @@ function renderGapOptions(gapStartMin,gapEndMin,todayKey,removedTitle){
     if(aFuture&&bFuture) return aStart-bStart;
     return(bStart+parseDur(b.duration))-(aStart+parseDur(a.duration));
   }).slice(0,4);
-  if(!opts.length) return`<div class="sim-section-hdr">No hay funciones disponibles para este hueco.</div>`;
+  if(!opts.length) return`<div class="sim-section-hdr">${t('plan_empty_hueco')}</div>`;
   return opts.map(f=>{
     const vc2=vcfg(f.venue);const{displayTitle}=parseProgramTitle(f.title);
     const short=displayTitle.length>26?displayTitle.slice(0,24)+'…':displayTitle;
     const safeT=f.title.replace(/'/g,"\'");
     const fStart=toMin(f.time);const inProg=isLiveDay&&fStart<nowMin;
     const minsIn=inProg?nowMin-fStart:0;
-    const badge=inProg?`<span class="label-confirmed">EN CURSO · entró hace ${minsIn} min</span>`:'';
+    const badge=inProg?`<span class="label-confirmed">${t('plan_en_curso')} ${minsIn} min</span>`:'';
     return`<div class="checkin-opt" onclick="confirmReplace('${safeRem}','${safeT}','${f.day}','${f.time}')">
       <div class="checkin-opt-info">${badge}<div class="checkin-opt-time">${f.time} · ${f.duration}</div><div class="checkin-opt-title">${short}</div><div class="checkin-opt-venue">${ICONS.pin} ${vc2.short}</div></div>
       <div class="checkin-opt-add">${ICONS.plus}</div>
@@ -6134,7 +6178,7 @@ function _renderSavedAgendaHTML(){
   const totalDays=Math.max(1,DAY_KEYS.length);
   const viewedCount=all.filter(s=>watched.has(s._title)).length;
   const progressPct=dayIdx>=0?Math.round((dayIdx/(totalDays-1))*100):0;
-  const _mpSwitch=`<button class="mplan-act-btn primary" onclick="_scrollToMplanDetail()" title="${t('aria_ir_detalle')}">${ICONS.chevronD} Ver día</button>`;
+  const _mpSwitch=`<button class="mplan-act-btn primary" onclick="_scrollToMplanDetail()" title="${t('aria_ir_detalle')}">${ICONS.chevronD} ${t('plan_ver_dia')}</button>`;
   const progressBar=currentDayNum?`<div class="row-sm festival-progress">
     <div style="flex:1">
       <div class="festival-progress-text"><span>Día <b>${currentDayNum}</b> de ${totalDays}</span><span style="color:var(--amber)">${ICONS.check} ${viewedCount} ${viewedCount===1?'vista':'vistas'}</span></div>
@@ -6160,7 +6204,7 @@ function _renderSavedAgendaHTML(){
     html+=`<div class="cta-ctx cta-ctx-b" onclick="switchMainNav('mnav-planner');showAgView()">
       <div class="flex-center cta-ctx-ico">${ICONS.undo}</div>
       <div class="cta-ctx-body">
-        <div class="cta-ctx-title cta-ctx-title-b">¿Quieres poner otra cosa ahí?</div>
+        <div class="cta-ctx-title cta-ctx-title-b">${t('plan_otra_cosa')}</div>
         <div class="cta-ctx-sub">Hay sugerencias abajo que caben en ese hueco, o recalcula en Planear.</div>
       </div>
       <div class="cta-ctx-arr cta-ctx-arr-b">${ICONS.chevronR}</div>
@@ -6300,8 +6344,8 @@ function _promptDisplayName(onSave){
   el.style.cssText='position:fixed;inset:0;background:var(--overlay-70);z-index:9999;display:flex;align-items:flex-end;justify-content:center';
   el.innerHTML=`<div class="auth-sheet-body">
     <div class="sheet-handle-bar"></div>
-    <div class="sheet-title">¿Cómo querés aparecer en tu plan?</div>
-    <div class="sheet-subtitle">Aparecerá en la imagen cuando la compartas.</div>
+    <div class="sheet-title">${t('export_como_aparecer')}</div>
+    <div class="sheet-subtitle">${t('export_aparecera')}</div>
     <input class="sheet-input" id="dname-input" type="text" maxlength="30" placeholder="${t('auth_nombre')}" autocomplete="name"
      >
     <button class="sheet-cta" id="dname-save">Guardar y compartir</button>
@@ -6682,7 +6726,7 @@ function forceInclude(title){
 
 function buildResultHTML(scenarios){
   if(!scenarios||!scenarios.length)
-    return`<div class="ag-calc-prompt">No hay combinaciones posibles. Ajusta la disponibilidad o añade más títulos.</div>`;
+    return`<div class="ag-calc-prompt">${t('plan_sin_combos')} o añade más títulos.</div>`;
   const{currentIdx}=cachedResult;
   const sc=scenarios[currentIdx],n=scenarios.length;
   const pending=[...watchlist].filter(t=>!watched.has(t)&&FILMS.some(f=>f.title===t&&!screeningPassed(f)));
@@ -6779,7 +6823,7 @@ function buildResultHTML(scenarios){
           reason=`<div class="excl-reason conflict">Choca con ${conflictWith}${conflictWhen?' · '+conflictWhen:''}</div>`;
           canInclude=true;
         } else if(screens.length){
-          reason=`<div class="excl-reason">Choca con otras películas de tu plan</div>`;
+          reason=`<div class="excl-reason">${t('plan_choca')}</div>`;
         } else {
           reason=`<div class="excl-reason">Sin funciones disponibles</div>`;
         }
@@ -7632,8 +7676,8 @@ function renderAgenda(){
       <div class="ag-section">
         ${renderPrioStrip()}
         <div class="section-div">
-          <div class="mb-2 sec-hdr">${ICONS.clock} Disponibilidad <span class="sec-hdr-opt">opcional</span></div>
-          <div class="txt-gray2-sm-lh">Tu plan no incluirá funciones en estos horarios.</div>
+          <div class="mb-2 sec-hdr">${ICONS.clock} ${t('av_disponibilidad')} <span class="sec-hdr-opt">opcional</span></div>
+          <div class="txt-gray2-sm-lh">${t('av_no_incluir')}</div>
           <div id="av-blocks-list"></div>
           <button class="av-add-unavail" onclick="openAvSheet()">${ICONS.plus} No disponible</button>
         </div>
@@ -8562,7 +8606,7 @@ function renderMiPlanList(schedule){
       const db=_festDate(FESTIVAL_DATES[b.day],b.time);
       return da-db;
     });
-  if(!upcoming.length) return '<div class="empty-msg-2">No tenés funciones próximas</div>';
+  if(!upcoming.length) return `<div class="empty-msg-2">${t('plan_sin_proximas')}</div>`;
   
   // Agrupar por día
   const byDay={};
@@ -8899,7 +8943,7 @@ function renderProgramaList(){
       </div>`;
     }).join('')}
   `).join('');
-  }catch(e){return '<div class="pad-muted">Error al cargar funciones</div>';}
+  }catch(e){return `<div class="pad-muted">${t('error_funciones')}</div>`;}
 }
 function _renderProgramaContent(){
   const grid=document.getElementById('grid');
@@ -9903,7 +9947,7 @@ function searchQuery(){
     return;
   }
 
-  results.innerHTML = '<div class="search-section-hdr">Películas</div>'
+  results.innerHTML = `<div class="search-section-hdr">${t('planear_peliculas')}</div>`
     + top10.map(f=>{
       const{displayTitle,progSuffix}=parseProgramTitle(f.title);
       const poster=getFilmPoster(f)||'';
