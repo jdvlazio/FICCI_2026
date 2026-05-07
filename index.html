@@ -2274,7 +2274,7 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:var(--t
       <!-- Generado dinámicamente por _renderSplashDropdown() en init -->
     </div>
   </div>
-  <button class="splash-enter-btn" onclick="dismissSplash()">Entrar</button>
+  <button class="splash-enter-btn" data-i18n="auth_entrar" onclick="dismissSplash()">Entrar</button>
   </div>
   <div class="splash-tagline">
     <div class="splash-tagline-line">Más de lo que crees</div>
@@ -2288,15 +2288,15 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:var(--t
   <div class="av-sheet">
     <div class="av-sheet-handle"></div>
     <div class="av-sheet-title">No disponible</div>
-    <div class="av-sheet-lbl">Día</div>
+    <div class="av-sheet-lbl" data-i18n="av_dia">Día</div>
     <div class="av-day-chips" id="av-day-chips"></div>
-    <div class="av-sheet-lbl">Tipo</div>
+    <div class="av-sheet-lbl" data-i18n="av_tipo">Tipo</div>
     <div class="av-type-row">
       <button class="av-type-btn selected" id="av-type-hours" onclick="setAvType('hours')">Horas específicas</button>
       <button class="av-type-btn" id="av-type-full" onclick="setAvType('full')">Todo el día</button>
     </div>
     <div id="av-time-section">
-      <div class="av-sheet-lbl">Horario</div>
+      <div class="av-sheet-lbl" data-i18n="av_horario">Horario</div>
       <div class="av-time-row">
         <select class="av-time-sel" id="av-sheet-from"></select>
         <span style="color:var(--gray)">–</span>
@@ -2873,12 +2873,18 @@ function setLang(code){
 // ── Fin i18n ──────────────────────────────────────────────────────────────
 
 function _applyI18nDOM(){
-  // 1. Nav labels
+  // 1. Nav labels + static UI elements with known IDs
   const ids={
-    'lbl-nav-programa':'nav_programa',
-    'lbl-nav-intereses':'nav_intereses',
-    'lbl-nav-planear':'nav_planear',
-    'lbl-nav-miplan':'nav_miplan',
+    'lbl-nav-programa' :'nav_programa',
+    'lbl-nav-intereses' :'nav_intereses',
+    'lbl-nav-planear'  :'nav_planear',
+    'lbl-nav-miplan'   :'nav_miplan',
+    'pmode-explorar'   :'bar_explorar',
+    'pmode-hoy'        :'bar_hoy',
+    'pmode-manana'     :'bar_manana',
+    'seccion-lbl'      :'bar_seccion',
+    'lugar-lbl'        :'bar_lugar',
+    'av-type-hours'    :'av_horas',
   };
   for(const[id,key] of Object.entries(ids)){
     const el=document.getElementById(id);
