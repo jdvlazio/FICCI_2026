@@ -8193,9 +8193,11 @@ document.addEventListener('keydown',function(e){
 (function(){
   let _startY=0,_dragging=false;
   _loadI18n(_lang, () => {
-  document.addEventListener('DOMContentLoaded',()=>{
-    _applyI18nDOM();
-  });
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', _applyI18nDOM);
+  } else {
+    _applyI18nDOM(); // DOM ya listo — aplicar inmediatamente
+  }
 });
   // Swipe-down en el topbar para cerrar el sheet
   function _initSheetSwipe(){
