@@ -116,7 +116,7 @@
   },
   "plan_calculando": {
     "es": "Calculando…",
-    "en": "Finding options…",
+    "en": "Calculating…",
     "ctx": "Loading state"
   },
   "plan_calculando_ops": {
@@ -300,7 +300,7 @@
     "ctx": "Intereses empty state short"
   },
   "empty_intereses_3": {
-    "es": "Añadí lo que no querés perderte. Cuando tengas tu lista, armamos tu plan.",
+    "es": "Agregá lo que no querés perderte. Cuando tengas tu lista, armamos tu plan.",
     "en": "Add what you don't want to miss. Once you have your list, we'll build your plan.",
     "ctx": "Intereses onboarding"
   },
