@@ -2617,6 +2617,7 @@ const _I18N = {
     "label_funcion": "función",
     "label_funciones_pl": "funciones",
     "label_sinopsis": "sinopsis",
+    "label_programa": "Programa",
     "label_descripcion": "descripción",
     "plan_calcular": "Calcular plan",
     "plan_calculando": "Calculando…",
@@ -2835,6 +2836,7 @@ const _I18N = {
     "label_funcion": "screening",
     "label_funciones_pl": "screenings",
     "label_sinopsis": "synopsis",
+    "label_programa": "Program",
     "label_descripcion": "description",
     "plan_calcular": "Make my plan",
     "plan_calculando": "Calculating…",
@@ -4294,7 +4296,7 @@ function renderMiPlanCalendar(){
         <div class="mplan-ri">
           <div>${(()=>{const{displayTitle:_dt,progSuffix:_ps}=parseProgramTitle(s._title||'');const _mfqa=FILMS.find(fi=>fi.title===s._title&&fi.day===s.day&&fi.time===s.time);const _qab=_mfqa?.has_qa?`<span class="meta-badge sm">Q&A</span>`:'';return`<div class="mplan-rtitle${_isEventRow?' mp-event-title':''}">${_qab}${_dt}</div>${_ps?`<div class="prog-suffix">${_ps}</div>`:''}`;})()} </div>
           <div class="mplan-rvenue${_isEventRow?' mp-event-venue':''}">${ICONS.pin} ${vcfg(s.venue).short}${sala(s.venue)?' \u00b7 '+sala(s.venue):''}</div>
-          ${(()=>{const _mf=FILMS.find(fi=>fi.title===s._title&&fi.day===s.day&&fi.time===s.time);if(!_mf||!_mf.is_cortos||!_mf.film_list||!_mf.film_list.length) return'';return`<button class="row-xs mplan-prog-toggle" onclick="toggleMplanProg(this,event)">${ICONS.chevronR} Programa</button>`;})()}
+          ${(()=>{const _mf=FILMS.find(fi=>fi.title===s._title&&fi.day===s.day&&fi.time===s.time);if(!_mf||!_mf.is_cortos||!_mf.film_list||!_mf.film_list.length) return'';return`<button class="row-xs mplan-prog-toggle" onclick="toggleMplanProg(this,event)">${ICONS.chevronR} ${t('label_programa')}</button>`;})()}
         </div>
         <div class="col-end">
           <button class="icon-btn-circle ag-fi-btn del" data-rmt="${safeT}" onclick="removeFromAgenda(this.dataset.rmt);event.stopPropagation()">${ICONS.x}</button>
@@ -5592,7 +5594,7 @@ function mkAgendaRow(s, mode='saved'){
     ?`<button class="film-switch${isExpanded?' open':''}" onclick="toggleFilmAlternatives('${filmKey}','${safeT}','${s.day||''}','${s.time||''}');event.stopPropagation()">Cambiar</button>`
     :'';
   const altsHtml=isExpanded&&mode==='saved'?renderFilmAlternatives(t,s.day,s.time):'';
-  const _progBtn=(()=>{const _mf=f;if(!_mf||!_mf.is_cortos||!_mf.film_list||!_mf.film_list.length)return'';return`<button class="row-xs mplan-prog-toggle" onclick="toggleMplanProg(this,event)">${ICONS.chevronR} Programa</button>`;})();
+  const _progBtn=(()=>{const _mf=f;if(!_mf||!_mf.is_cortos||!_mf.film_list||!_mf.film_list.length)return'';return`<button class="row-xs mplan-prog-toggle" onclick="toggleMplanProg(this,event)">${ICONS.chevronR} ${t('label_programa')}</button>`;})();
   const _progList=(()=>{const _mf=f;if(!_mf||!_mf.is_cortos||!_mf.film_list||!_mf.film_list.length)return'';return`<div class="mplan-prog-list">${_mf.film_list.map((item,n)=>{const _sc=item.title.replace(/'/g,"\'");const _sco=item.country||'';const _scd=item.duration||'';const _scf=countryToFlags(item.country||'');const _scs=f?.section||'';return _mkCortoItemHtml(item,n,{onclick:`event.stopPropagation();openCortoSheet('${_sc}','${_sco}','${_scd}','${_scs}','${_scf}')`});}).join('')}</div>`;})();
   return`<div class="saved-item${isDone?' done':''}">
     ${_ph}
@@ -8471,7 +8473,7 @@ function openPelSheet(title){
       });
     }).join('');
     cortosHtml=`<div class="pel-sheet-divider"></div>
-      <div class="pel-sheet-section-lbl">Programa <span class="ml-1 count-badge cb-neutral">${f.film_list.length}</span></div>
+      <div class="pel-sheet-section-lbl">${t('label_programa')} <span class="ml-1 count-badge cb-neutral">${f.film_list.length}</span></div>
       <div class="pel-sheet-cortos-wrap">${cortoItems}</div>`;
   }
   const wlLabel=inWL?`${ICONS.heartFill} ${t('cta_en_intereses')}`:`${ICONS.heart} ${t('nav_intereses')}`;
