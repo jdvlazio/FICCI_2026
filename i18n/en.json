@@ -211,5 +211,6 @@
   "plan_sigue_intereses": "Stays in Interests, no longer prioritized.",
   "plan_hint_opciones": "Tap “See options” to view your plan.",
   "misc_no_disponible": "Not available",
-  "conflict_titulo": "Scheduling conflict"
+  "conflict_titulo": "Scheduling conflict",
+  "cta_mi_plan": "View My Plan"
 }

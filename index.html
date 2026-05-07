@@ -2781,6 +2781,7 @@ const _I18N = {
     "plan_quieres_prio": "Querés priorizar",
     "plan_revisa_planeaste": "Revisá lo que planeaste y las películas que marcaste como vistas.",
     "plan_ir_programa": "Ir al Programa",
+    "cta_mi_plan": "Ver Mi Plan",
     "plan_fest_terminado": "ha terminado",
     "plan_vistas_hoy": "vistas hoy",
     "plan_sin_horario": "Sin horario disponible",
@@ -2998,6 +2999,7 @@ const _I18N = {
     "plan_quieres_prio": "Want to prioritize",
     "plan_revisa_planeaste": "Review what you planned and the films you marked as seen.",
     "plan_ir_programa": "Go to Program",
+    "cta_mi_plan": "View My Plan",
     "plan_fest_terminado": "has ended",
     "plan_vistas_hoy": "seen today",
     "plan_sin_horario": "No schedule available",
@@ -7799,7 +7801,7 @@ function renderAgenda(){
         ICONS.sparkles,
         `${_festName} ${t('plan_fest_terminado')}`,
         _hasMiPlan?t('plan_revisa_planeaste'):t('empty_programa'),
-        _hasMiPlan?t('nav_miplan'):t('plan_ir_programa'),
+        _hasMiPlan?t('cta_mi_plan'):t('plan_ir_programa'),
         _hasMiPlan?"switchMainNav('mnav-miplan');showAgView()":"switchMainNav('mnav-cartelera');showDayView()"
       );
       return;
@@ -7822,7 +7824,7 @@ function renderAgenda(){
       const _festNamePl=(FESTIVAL_CONFIG[_activeFestId]||{}).name||'El festival';
       const _agHpl=document.getElementById('hdr-ag');if(_agHpl)_agHpl.style.display='none';
       requestAnimationFrame(_fixStickyOffset);
-      view.innerHTML=emptyStateHero(ICONS.sparkles,`${_festNamePl} ${t('plan_fest_terminado')}`,t('plan_revisa_planeaste'),t('nav_miplan'),"switchMainNav('mnav-miplan');showAgView()");
+      view.innerHTML=emptyStateHero(ICONS.sparkles,`${_festNamePl} ${t('plan_fest_terminado')}`,t('plan_revisa_planeaste'),t('cta_mi_plan'),"switchMainNav('mnav-miplan');showAgView()");
       return;
     }
     const _progressHtml=(!savedAgenda||!savedAgenda.schedule||!savedAgenda.schedule.length)?renderFlowProgress('planner'):'';
