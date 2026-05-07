@@ -1046,6 +1046,30 @@
     "eventPosterLabel": [
       "INDUSTRY",
       "DAYS"
-    ]
+    ],
+    "dayShort_en": {
+      "MAR 21": "TUE 21",
+      "MIÉ 22": "WED 22",
+      "JUE 23": "THU 23",
+      "VIE 24": "FRI 24",
+      "SÁB 25": "SAT 25",
+      "DOM 26": "SUN 26",
+      "LUN 27": "MON 27",
+      "MAR 28": "TUE 28",
+      "MIÉ 29": "WED 29",
+      "JUE 30": "THU 30"
+    },
+    "dayLong_en": {
+      "MAR 21": "Tuesday 21",
+      "MIÉ 22": "Wednesday 22",
+      "JUE 23": "Thursday 23",
+      "VIE 24": "Friday 24",
+      "SÁB 25": "Saturday 25",
+      "DOM 26": "Sunday 26",
+      "LUN 27": "Monday 27",
+      "MAR 28": "Tuesday 28",
+      "MIÉ 29": "Wednesday 29",
+      "JUE 30": "Thursday 30"
+    }
   }
 }

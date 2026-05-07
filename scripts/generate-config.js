@@ -27,8 +27,10 @@
  * Copia la salida entre los comentarios de inserción.
  */
 
-const DAYS_ES   = ['DOM','LUN','MAR','MIÉ','JUE','VIE','SÁB'];
-const DAYS_LONG = ['Domingo','Lunes','Martes','Miércoles','Jueves','Viernes','Sábado'];
+const DAYS_ES      = ['DOM','LUN','MAR','MIÉ','JUE','VIE','SÁB'];
+const DAYS_LONG    = ['Domingo','Lunes','Martes','Miércoles','Jueves','Viernes','Sábado'];
+const DAYS_EN      = ['SUN','MON','TUE','WED','THU','FRI','SAT'];
+const DAYS_LONG_EN = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
 
 const MONTH_ES = {
   '01':'ENE','02':'FEB','03':'MAR','04':'ABR','05':'MAY','06':'JUN',
@@ -94,7 +96,9 @@ function buildDays(startStr, numDays) {
     const long = DAYS_LONG[dow];
     const key  = `${lbl} ${num}`;
     const iso  = `${date.getFullYear()}-${String(date.getMonth()+1).padStart(2,'0')}-${String(date.getDate()).padStart(2,'0')}`;
-    days.push({ key, iso, lbl, num, long });
+    const lblEn  = DAYS_EN[dow];
+    const longEn = DAYS_LONG_EN[dow];
+    days.push({ key, iso, lbl, num, long, lblEn, longEn });
   }
   return days;
 }
@@ -125,8 +129,10 @@ function formatConfig(opts, days) {
   const fd  = days.map(d => `'${d.key}':'${d.iso}'`).join(',');
   const da  = days.map(d => `{k:'${d.key}',d:${d.num},lbl:'${d.lbl}'}`).join(',');
   const dk  = days.map(d => `'${d.key}'`).join(',');
-  const ds  = days.map(d => `'${d.key}':'${d.key}'`).join(',');
-  const dl  = days.map(d => `'${d.key}':'${d.long} ${d.num}'`).join(',');
+  const ds    = days.map(d => `'${d.key}':'${d.key}'`).join(',');
+  const dl    = days.map(d => `'${d.key}':'${d.long} ${d.num}'`).join(',');
+  const dsen  = days.map(d => `'${d.key}':'${d.lblEn} ${d.num}'`).join(',');
+  const dlen  = days.map(d => `'${d.key}':'${d.longEn} ${d.num}'`).join(',');
 
   const group = opts.test ? "\n  group:'test'," : '';
 
@@ -139,7 +145,9 @@ function formatConfig(opts, days) {
     `  days:[${da}],`,
     `  dayKeys:[${dk}],`,
     `  dayShort:{${ds}},`,
+    `  dayShort_en:{${dsen}},`,
     `  dayLong:{${dl}},`,
+    `  dayLong_en:{${dlen}},`,
     `  prioLimit:${parseInt(opts.priolimit)||5},eventPosterLabel:['${ep0}','${ep1}'],`,
     `  films:null,posters:null,lbSlugs:{}`,
     `},`,

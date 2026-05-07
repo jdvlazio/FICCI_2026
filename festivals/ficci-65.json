@@ -4416,6 +4416,22 @@
     "eventPosterLabel": [
       "ACADEMIA",
       ""
-    ]
+    ],
+    "dayShort_en": {
+      "Martes": "TUE 14",
+      "Miércoles": "WED 15",
+      "Jueves": "THU 16",
+      "Viernes": "FRI 17",
+      "Sábado": "SAT 18",
+      "Domingo": "SUN 19"
+    },
+    "dayLong_en": {
+      "Martes": "Tuesday 14",
+      "Miércoles": "Wednesday 15",
+      "Jueves": "Thursday 16",
+      "Viernes": "Friday 17",
+      "Sábado": "Saturday 18",
+      "Domingo": "Sunday 19"
+    }
   }
 }

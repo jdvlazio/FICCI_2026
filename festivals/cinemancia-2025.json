@@ -110,7 +110,31 @@
       "PROGRAMACIÓN",
       "ACADÉMICA"
     ],
-    "test": true
+    "test": true,
+    "dayShort_en": {
+      "JUE 11": "THU 11",
+      "VIE 12": "FRI 12",
+      "SÁB 13": "SAT 13",
+      "DOM 14": "SUN 14",
+      "LUN 15": "MON 15",
+      "MAR 16": "TUE 16",
+      "MIÉ 17": "WED 17",
+      "JUE 18": "THU 18",
+      "VIE 19": "FRI 19",
+      "SÁB 20": "SAT 20"
+    },
+    "dayLong_en": {
+      "JUE 11": "Thursday 11",
+      "VIE 12": "Friday 12",
+      "SÁB 13": "Saturday 13",
+      "DOM 14": "Sunday 14",
+      "LUN 15": "Monday 15",
+      "MAR 16": "Tuesday 16",
+      "MIÉ 17": "Wednesday 17",
+      "JUE 18": "Thursday 18",
+      "VIE 19": "Friday 19",
+      "SÁB 20": "Saturday 20"
+    }
   },
   "venues": {
     "Colombo Sala 1": {

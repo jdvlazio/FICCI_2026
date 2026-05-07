@@ -4421,16 +4421,19 @@ let DAY_LONG ={Martes:'Martes 14', Miércoles:'Miércoles 15', Jueves:'Jueves 16
                  Viernes:'Viernes 17', Sábado:'Sábado 18',  Domingo:'Domingo 19'};
 let DAY_SHORT={Martes:'MAR 14',    Miércoles:'MIÉ 15',    Jueves:'JUE 16',
                  Viernes:'VIE 17',   Sábado:'SÁB 18',       Domingo:'DOM 19'};
+let DAY_SHORT_EN={}; // swapeado por loadFestival() — valores en inglés
+let DAY_LONG_EN={};
 
 /* dayChip(key) — componente apilado: ABREV arriba / NÚMERO abajo — FORMATO ÚNICO */
 const dayChip = key => {
-  const abr = DAY_ABBR[key] || (DAY_SHORT[key]||'').split(' ')[0] || key;
-  const num = DAY_NUM[key]  || (DAY_SHORT[key]||'').split(' ')[1] || '';
+  const _ds = _lang==='en' ? DAY_SHORT_EN : DAY_SHORT;
+  const abr = DAY_ABBR[key] || (_ds[key]||'').split(' ')[0] || key;
+  const num = DAY_NUM[key]  || (_ds[key]||'').split(' ')[1] || '';
   return `<span class="day-chip-abr">${abr}</span><span class="day-chip-num">${num}</span>`;
 };
 /* dayLabel/dayHeader — mantenidos para compatibilidad, internamente usan dayChip */
-const dayLabel  = key => DAY_SHORT[key] || key;
-const dayHeader = key => DAY_LONG[key]  || key;
+const dayLabel  = key => (_lang==='en' ? DAY_SHORT_EN : DAY_SHORT)[key] || key;
+const dayHeader = key => (_lang==='en' ? DAY_LONG_EN  : DAY_LONG)[key]  || key;
 
 /* ══════════════════════════════════════════════════════
    emptyState(icon, title, sub) — componente vacío unificado
@@ -9389,7 +9392,9 @@ async function loadFestival(id){
   FESTIVAL_STORAGE_KEY=cfg.storageKey;
   DAY_KEYS=cfg.dayKeys;
   DAY_SHORT=cfg.dayShort;
+  DAY_SHORT_EN=cfg.dayShort_en||cfg.dayShort;
   DAY_LONG=cfg.dayLong;
+  DAY_LONG_EN=cfg.dayLong_en||cfg.dayLong;
   PRIO_LIMIT=cfg.prioLimit||5;
   // Guard: dayKeys y days son requeridos — sin ellos el UI de calendario crashea
   if(!cfg.dayKeys||!cfg.days||!cfg.days.length){
