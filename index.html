@@ -2431,13 +2431,13 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:var(--t
   <div class="prio-limit-handle"></div>
   <div class="prio-limit-hdr">
     <div class="prio-limit-eyebrow"><svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1.75"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg><span id="prio-limit-eyebrow-txt"></span></div>
-    <div class="prio-limit-title">${t('plan_ya_tenes_prio')} <span id="prio-limit-count"></span> ${t('misc_prioridades')}</div>
+    <div class="prio-limit-title" id="prio-limit-ya-tenes"><span id="prio-limit-ya-tenes-txt">Ya tenés</span> <span id="prio-limit-count"></span> <span id="prio-limit-prio-word">prioridades</span></div>
     <div class="prio-limit-sub" data-i18n="conflict_cambiar">Cambiá una para priorizar esta ${t('misc_pelicula')}</div>
   </div>
   <div class="prio-limit-new" id="prio-limit-new-bar">
     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
     <div style="flex:1;min-width:0">
-      <div class="prio-limit-new-lbl">${t('plan_quieres_prio')}</div>
+      <div class="prio-limit-new-lbl" id="prio-limit-quieres">Querés priorizar</div>
       <div class="prio-limit-new-title" id="prio-limit-new-title"></div>
     </div>
   </div>
@@ -7260,6 +7260,13 @@ function openPrioLimit(newTitle){
   const count=document.getElementById('prio-limit-count');
   if(eyebrow) eyebrow.textContent=`Prioridades · ${PRIO_LIMIT}/${PRIO_LIMIT}`;
   if(count) count.textContent=PRIO_LIMIT;
+  // i18n patches for static prio-limit elements
+  const _yaTenes=document.getElementById('prio-limit-ya-tenes-txt');
+  const _prioWord=document.getElementById('prio-limit-prio-word');
+  const _quieres=document.getElementById('prio-limit-quieres');
+  if(_yaTenes) _yaTenes.textContent=t('plan_ya_tenes_prio');
+  if(_prioWord) _prioWord.textContent=t('misc_prioridades');
+  if(_quieres)  _quieres.textContent=t('plan_quieres_prio');
 
   // Título de la nueva película
   const{displayTitle}=parseProgramTitle(newTitle);
