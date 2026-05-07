@@ -9420,7 +9420,7 @@ function _renderSplashDropdown(activeFestId){
   const today=new Date();today.setHours(12,0,0,0);
   // Ordenar: más reciente primero (por festivalEndStr descendente)
   const entries=Object.entries(FESTIVAL_CONFIG)
-    .filter(([,cfg])=>cfg.name)
+    .filter(([,cfg])=>cfg.name&&cfg.group!=='test')
     .sort((a,b)=>{
       const ea=new Date(a[1].festivalEndStr||'2000-01-01');
       const eb=new Date(b[1].festivalEndStr||'2000-01-01');
@@ -9481,10 +9481,7 @@ function _renderFestivalSelector(activeFestId){
     html+=`<div class="fs-section-lbl">Festivales</div>`;
     html+=regular.map(e=>mkRow(e,e[0]===activeFestId)).join('<div class="fs-divider"></div>');
   }
-  if(tests.length){
-    html+=`<div class="fs-divider"></div><div class="fs-section-lbl">Pruebas</div>`;
-    html+=tests.map(e=>mkRow(e,e[0]===activeFestId)).join('<div class="fs-divider"></div>');
-  }
+  // test festivals (group:'test') are hidden from the selector — data preserved for reuse
   container.innerHTML=html;
 }
 // ─────────────────────────────────────────────────────────────────────────────
