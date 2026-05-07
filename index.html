@@ -2915,6 +2915,21 @@ function _applyI18nDOM(){
     const val=t(key);
     if(val && val!==key) el.placeholder=val;
   });
+  // 5. Aria-label + title patches via known element IDs
+  const ariaIds={
+    'hdr-search-icon' :['aria_buscar',    ['ariaLabel','title']],
+    'view-toggle-btn' :['aria_cambiar_vista',['ariaLabel','title']],
+    'main-nav'        :['aria_nav_ppal',  ['ariaLabel']],
+    'auth-btn'        :['aria_sincronizar',['title']],
+    'back-top'        :['aria_volver_arriba',['ariaLabel']],
+  };
+  for(const[id,[key,attrs]] of Object.entries(ariaIds)){
+    const el=document.getElementById(id);
+    if(!el) continue;
+    const val=t(key);
+    if(attrs.includes('ariaLabel')) el.setAttribute('aria-label',val);
+    if(attrs.includes('title'))     el.title=val;
+  }
 
 
 }
@@ -3515,7 +3530,7 @@ function _sbUpdateUI(){
     btn.classList.add('signed-in');
   } else {
     if(av) av.textContent='';
-    btn.title='Sincronizar entre dispositivos';
+    btn.title=t('aria_sincronizar');
     btn.classList.remove('signed-in');
   }
 }
@@ -3955,7 +3970,7 @@ function renderMiPlanCalendar(){
   const isPastVe=nowDayIdx>=0&&ve<nowDayIdx;
   const navHtml=`<div class="mplan-nav">
     <div class="mplan-nav-btn-wrap">
-      <button class="mplan-nav-btn" aria-label="Día anterior" onclick="miPlanNav(-1)" ${vs===0?'disabled':''}><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5"/></svg></button>
+      <button class="mplan-nav-btn" aria-label="${t('aria_dia_ant')}" onclick="miPlanNav(-1)" ${vs===0?'disabled':''}><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5"/></svg></button>
     </div>
     <div class="mplan-nav-labels">
       <div class="mplan-nav-day${isPastVs?' past':''}" onclick="selectMiPlanDay(${vs})">
@@ -5125,7 +5140,7 @@ function renderPrioStrip(){
     const allPast=!festivalEnded()&&!FILMS.some(f=>f.title===t&&!screeningPassed(f));
     return`<div class="prio-chip${allPast?' past':''}">
       ${img}
-      <button class="prio-chip-rm" data-prio-title="${t.replace(/"/g,'&quot;')}" onclick="event.stopPropagation();togglePriority(this.dataset.prioTitle)" title="Quitar prioridad">${ICONS.x}</button>
+      <button class="prio-chip-rm" data-prio-title="${t.replace(/"/g,'&quot;')}" onclick="event.stopPropagation();togglePriority(this.dataset.prioTitle)" title="${t('aria_quitar_prio')}">${ICONS.x}</button>
       <div class="prio-chip-title">${short}${progSuffix?`<span class="poster-label-amber">${progSuffix}</span>`:''}</div>
     </div>`;
   }).join('');
@@ -5225,8 +5240,8 @@ function renderFilmListHTML(){
         ${conflictHtml}
       </div>
       <div class="int-item-actions">
-        <button class="int-prio-btn${isPrio?' on':''}" onclick="togglePriority('${safeT}');event.stopPropagation()" aria-label="Priorizar">★</button>
-        <button class="int-seen-btn${isWatched?' on':''}" onclick="toggleWatched('${safeT}',event)" aria-label="Marcar vista">✓</button>
+        <button class="int-prio-btn${isPrio?' on':''}" onclick="togglePriority('${safeT}');event.stopPropagation()" aria-label="${t('aria_priorizar')}">★</button>
+        <button class="int-seen-btn${isWatched?' on':''}" onclick="toggleWatched('${safeT}',event)" aria-label="${t('aria_marcar_vista')}">✓</button>
       </div>
     </div>`;
   }
@@ -5256,7 +5271,7 @@ function renderFilmListHTML(){
         ${ratingHtml}
       </div>
       <div class="int-item-actions">
-        <button class="int-seen-btn on" onclick="toggleWatched('${safeT}',event)" aria-label="Quitar de vistas">✓</button>
+        <button class="int-seen-btn on" onclick="toggleWatched('${safeT}',event)" aria-label="${t('aria_quitar_vista')}">✓</button>
       </div>
     </div>`;
   }
@@ -5527,7 +5542,7 @@ function renderNextStrip(schedule){
       delayHtml=`<div class="delay-row">
         <span class="delay-lbl">+${delayMins} min</span>
         ${[10,15,20,30].map(m=>`<button class="delay-btn" onclick="setDelay('${safeT}','${item.day}','${item.time}',${m})" title="+${m} min">+${m}</button>`).join('')}
-        <button class="delay-clear" onclick="undoDelay('${safeT}','${item.day}','${item.time}')" title="Deshacer último">${ICONS.undo}</button>
+        <button class="delay-clear" onclick="undoDelay('${safeT}','${item.day}','${item.time}')" title="${t('aria_deshacer')}">${ICONS.undo}</button>
         <button class="delay-clear" onclick="clearDelay('${safeT}','${item.day}','${item.time}')" title="Quitar retraso">${ICONS.x}</button>
       </div>`;
     } else {
@@ -5959,7 +5974,7 @@ function renderContextualHeader(){
         delayHtml=`<div class="delay-row">
           <span class="delay-lbl">+${delayMins} min</span>
           ${[10,15,20,30].map(m=>`<button class="delay-btn" onclick="setDelay('${safeT}','${next.day}','${next.time}',${m})" title="+${m} min">+${m}</button>`).join('')}
-          <button class="delay-clear" onclick="undoDelay('${safeT}','${next.day}','${next.time}')" title="Deshacer último">${ICONS.undo}</button>
+          <button class="delay-clear" onclick="undoDelay('${safeT}','${next.day}','${next.time}')" title="${t('aria_deshacer')}">${ICONS.undo}</button>
           <button class="delay-clear" onclick="clearDelay('${safeT}','${next.day}','${next.time}')" title="Quitar retraso">${ICONS.x}</button>
         </div>`;
         // Warning si el retraso come el buffer
@@ -6119,7 +6134,7 @@ function _renderSavedAgendaHTML(){
   const totalDays=Math.max(1,DAY_KEYS.length);
   const viewedCount=all.filter(s=>watched.has(s._title)).length;
   const progressPct=dayIdx>=0?Math.round((dayIdx/(totalDays-1))*100):0;
-  const _mpSwitch=`<button class="mplan-act-btn primary" onclick="_scrollToMplanDetail()" title="Ir al detalle del día">${ICONS.chevronD} Ver día</button>`;
+  const _mpSwitch=`<button class="mplan-act-btn primary" onclick="_scrollToMplanDetail()" title="${t('aria_ir_detalle')}">${ICONS.chevronD} Ver día</button>`;
   const progressBar=currentDayNum?`<div class="row-sm festival-progress">
     <div style="flex:1">
       <div class="festival-progress-text"><span>Día <b>${currentDayNum}</b> de ${totalDays}</span><span style="color:var(--amber)">${ICONS.check} ${viewedCount} ${viewedCount===1?'vista':'vistas'}</span></div>
