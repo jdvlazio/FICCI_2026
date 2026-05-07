@@ -2387,7 +2387,7 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:var(--t
     <input type="range" class="pv-range" id="pv-range" min="0" max="10" step="1" value="0">
   </div>
   <div class="pv-actions">
-    <button class="pv-btn-save" id="pv-btn-save" disabled onclick="savePVRating()">Guardar</button>
+    <button class="pv-btn-save" id="pv-btn-save" data-i18n="misc_guardar" disabled onclick="savePVRating()">Guardar</button>
     <button class="pv-btn-later" onclick="closePVRating()">Después</button>
   </div>
 </div>
@@ -2479,7 +2479,7 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:var(--t
 <div class="carta-search-wrap" id="carta-search-wrap">
   <div class="carta-search-field">
     <span class="carta-search-ico"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"/></svg></span>
-    <input type="text" id="carta-search-input" class="carta-search" placeholder="Buscar…" oninput="onCartaSearch()" autocomplete="off" autocorrect="off" autocapitalize="off">
+    <input type="text" id="carta-search-input" class="carta-search" placeholder="Buscar…" data-i18n-ph="search_placeholder" oninput="onCartaSearch()" autocomplete="off" autocorrect="off" autocapitalize="off">
     <button class="carta-search-clear" id="carta-search-clear" onclick="clearCartaSearch()"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg></button>
   </div>
   <div id="carta-search-results" class="carta-search-results"></div>
@@ -2550,7 +2550,7 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:var(--t
   <div class="carta-search-wrap">
     <div class="carta-search-field">
       <span class="carta-search-ico"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"/></svg></span>
-      <input type="text" id="ag-search-input" class="carta-search" placeholder="Buscar…" oninput="onSearchInput()" onblur="closeSearch()" autocomplete="off" autocapitalize="off">
+      <input type="text" id="ag-search-input" class="carta-search" placeholder="Buscar…" data-i18n-ph="search_placeholder" oninput="onSearchInput()" onblur="closeSearch()" autocomplete="off" autocapitalize="off">
     </div>
     <div id="ag-search-results" class="ag-search-results"></div>
   </div>
@@ -2908,6 +2908,12 @@ function _applyI18nDOM(){
     const key=el.getAttribute('data-i18n');
     const val=t(key);
     if(val && val!==key) el.textContent=val;
+  });
+  // 4. data-i18n-ph elements — translate placeholder attribute
+  document.querySelectorAll('[data-i18n-ph]').forEach(el=>{
+    const key=el.getAttribute('data-i18n-ph');
+    const val=t(key);
+    if(val && val!==key) el.placeholder=val;
   });
 
 
@@ -4560,7 +4566,7 @@ function toggleFullDay(day){
 function addBlock(day){
   const f=document.getElementById(`av-from-${day}`).value;
   const t=document.getElementById(`av-to-${day}`).value;
-  if(!f||!t){showToast('Seleccioná hora de inicio y fin','warn');return;}
+  if(!f||!t){showToast(t('av_seleccionar'),'warn');return;}
   if(toMin(f)>=toMin(t)){showToast('La hora de inicio debe ser menor que la de fin','warn');return;}
   const av=availability[day];
   if(av.blocks.some(b=>toMin(f)<toMin(b.to)&&toMin(t)>toMin(b.from))){showToast('Este horario coincide con otro bloque','warn');return;}
@@ -4588,7 +4594,7 @@ function renderAvDay(day){
 
   const pillsHtml=fullBlocked
     ?`<span class="av-pill full">${t('av_todo_el_dia')}</span>`
-    :visibleBlocks.map(b=>`<span class="av-pill">${b.from}–${b.to}<button class="av-pill-rm" aria-label="Eliminar bloque" onclick="removeBlock('${day}','${b.from}','${b.to}');event.stopPropagation()">×</button></span>`).join('');
+    :visibleBlocks.map(b=>`<span class="av-pill">${b.from}–${b.to}<button class="av-pill-rm" aria-label="${t('av_eliminar')}" onclick="removeBlock('${day}','${b.from}','${b.to}');event.stopPropagation()">×</button></span>`).join('');
 
   // Inline form — always shows when addOpen, with 15-min slot dropdowns
   const timeOpts=`<option value="08:00">08:00</option><option value="08:15">08:15</option><option value="08:30">08:30</option><option value="08:45">08:45</option><option value="09:00">09:00</option><option value="09:15">09:15</option><option value="09:30">09:30</option><option value="09:45">09:45</option><option value="10:00">10:00</option><option value="10:15">10:15</option><option value="10:30">10:30</option><option value="10:45">10:45</option><option value="11:00">11:00</option><option value="11:15">11:15</option><option value="11:30">11:30</option><option value="11:45">11:45</option><option value="12:00">12:00</option><option value="12:15">12:15</option><option value="12:30">12:30</option><option value="12:45">12:45</option><option value="13:00">13:00</option><option value="13:15">13:15</option><option value="13:30">13:30</option><option value="13:45">13:45</option><option value="14:00">14:00</option><option value="14:15">14:15</option><option value="14:30">14:30</option><option value="14:45">14:45</option><option value="15:00">15:00</option><option value="15:15">15:15</option><option value="15:30">15:30</option><option value="15:45">15:45</option><option value="16:00">16:00</option><option value="16:15">16:15</option><option value="16:30">16:30</option><option value="16:45">16:45</option><option value="17:00">17:00</option><option value="17:15">17:15</option><option value="17:30">17:30</option><option value="17:45">17:45</option><option value="18:00">18:00</option><option value="18:15">18:15</option><option value="18:30">18:30</option><option value="18:45">18:45</option><option value="19:00">19:00</option><option value="19:15">19:15</option><option value="19:30">19:30</option><option value="19:45">19:45</option><option value="20:00">20:00</option><option value="20:15">20:15</option><option value="20:30">20:30</option><option value="20:45">20:45</option><option value="21:00">21:00</option><option value="21:15">21:15</option><option value="21:30">21:30</option><option value="21:45">21:45</option><option value="22:00">22:00</option><option value="22:15">22:15</option><option value="22:30">22:30</option><option value="22:45">22:45</option><option value="23:00">23:00</option><option value="23:15">23:15</option><option value="23:30">23:30</option><option value="23:45">23:45</option><option value="00:00">00:00</option><option value="00:15">00:15</option><option value="00:30">00:30</option><option value="00:45">00:45</option><option value="01:00">01:00</option>`;
@@ -4610,7 +4616,7 @@ function renderAvDay(day){
       ${pillsHtml?`<div class="av-pills">${pillsHtml}</div>`:''}
       ${inlineForm}
       <div class="av-row-btns" style="margin-top:${pillsHtml||addOpen?'6px':'0'}">
-        ${!fullBlocked&&!addOpen?`<button class="av-plus-btn" onclick="avAddOpen['${day}']=true;renderAvDay('${day}')">${ICONS.plus} No disponible</button>`:''}
+        ${!fullBlocked&&!addOpen?`<button class="av-plus-btn" onclick="avAddOpen['${day}']=true;renderAvDay('${day}')">${ICONS.plus} ${t('misc_no_disp')}</button>`:''}
         ${!addOpen?`<button class="row-xs av-full-btn${fullBlocked?' active':''}" onclick="toggleFullDay('${day}')">
           ${fullBlocked?ICONS.x+' Liberar día':ICONS.plus+' Todo el día'}
         </button>`:''}
@@ -6281,7 +6287,7 @@ function _promptDisplayName(onSave){
     <div class="sheet-handle-bar"></div>
     <div class="sheet-title">¿Cómo querés aparecer en tu plan?</div>
     <div class="sheet-subtitle">Aparecerá en la imagen cuando la compartas.</div>
-    <input class="sheet-input" id="dname-input" type="text" maxlength="30" placeholder="Tu nombre" autocomplete="name"
+    <input class="sheet-input" id="dname-input" type="text" maxlength="30" placeholder="${t('auth_nombre')}" autocomplete="name"
      >
     <button class="sheet-cta" id="dname-save">Guardar y compartir</button>
   </div>`;
@@ -6670,7 +6676,7 @@ function buildResultHTML(scenarios){
 
   // ── Header: Plan óptimo vs Variación ──
   const isCustom=sc._custom===true;
-  const planLabel=isOptimo?`${ICONS.calendar} Plan óptimo`:isCustom?'Opción personalizada':`Variación ${currentIdx}`;
+  const planLabel=isOptimo?`${ICONS.calendar} Plan óptimo`:isCustom?t('av_opcion_pers'):`Variación ${currentIdx}`;
 
   // ── Navigation ──
   let navHtml='';
@@ -10088,7 +10094,7 @@ function _posterErr(img){
     <div id="auth-sheet-step1">
       <div class="auth-sheet-title">Guardá tu plan</div>
       <div class="auth-sheet-sub">Ingresa tu email y te enviamos un código de 6 dígitos. Sin contraseña. Tu plan se sincroniza entre todos tus dispositivos.</div>
-      <input class="auth-email-inp" id="auth-email-inp" type="email" placeholder="tu@email.com" autocomplete="email" onkeydown="if(event.key==='Enter')submitAuthEmail()">
+      <input class="auth-email-inp" id="auth-email-inp" type="email" placeholder="tu@email.com" data-i18n-ph="auth_email" autocomplete="email" onkeydown="if(event.key==='Enter')submitAuthEmail()">
       <button class="auth-send-btn" id="auth-send-btn" onclick="submitAuthEmail()">Enviar código</button>
       <div class="auth-msg" id="auth-msg"></div>
       <span class="auth-cancel" onclick="closeAuthSheet()">Cancelar</span>
@@ -10104,7 +10110,7 @@ function _posterErr(img){
     <div id="auth-sheet-step3" style="display:none">
       <div class="auth-sheet-title">Tu cuenta</div>
       <div class="auth-sheet-sub" id="auth-signed-email" style="color:var(--white)"></div>
-      <div class="mt-2 auth-sheet-sub">Tu plan se sincroniza automáticamente entre todos tus dispositivos.</div>
+      <div class="mt-2 auth-sheet-sub"><span data-i18n="plan_sincroniza">Tu plan se sincroniza automáticamente entre todos tus dispositivos.</div>
       <button class="auth-signout-btn" onclick="signOutAndClose()">Cerrar sesión</button>
       <span class="auth-cancel" onclick="closeAuthSheet()">Cancelar</span>
     </div>
@@ -10119,7 +10125,7 @@ function _posterErr(img){
   <!-- Generado dinámicamente por _renderFestivalSelector() en init -->
   <div id="fs-festival-list"></div>
   <div class="fs-divider"></div>
-  <div class="fs-section-lbl">Próximamente</div>
+  <div class="fs-section-lbl" data-i18n="misc_proxi">Próximamente</div>
   <div class="fs-soon-row">
     <div class="fs-soon-dot"></div>
     <div class="fs-soon-info">
@@ -10143,7 +10149,7 @@ function _posterErr(img){
     </button>
     <div class="search-input-wrap">
       <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"/></svg>
-      <input type="search" id="search-input" placeholder="Buscar…" oninput="searchQuery()" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" incremental>
+      <input type="search" id="search-input" placeholder="Buscar…" data-i18n-ph="search_placeholder" oninput="searchQuery()" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" incremental>
     </div>
     <button class="search-cancel" onclick="searchClose()">Cancelar</button>
   </div>
