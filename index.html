@@ -5316,6 +5316,21 @@ function parseProgramTitle(t){
   return{displayTitle,progSuffix};
 }
 
+
+// _genreEN(g) — traduce género al idioma activo
+// Opera sobre strings compuestos: "Comedia, Drama" → "Comedy, Drama"
+const _GENRE_EN = {
+  'Acción':'Action','Aventura':'Adventure','Comedia':'Comedy',
+  'Drama':'Drama','Documental':'Documentary','Experimental':'Experimental',
+  'Romance':'Romance','Sátira':'Satire','Terror':'Horror','Thriller':'Thriller',
+  'Animación':'Animation','Ciencia Ficción':'Science Fiction',
+  'Fantasía':'Fantasy','Misterio':'Mystery','Musical':'Musical',
+};
+function _genreEN(g) {
+  if (!g || _lang !== 'en') return g;
+  return g.split(',').map(s => _GENRE_EN[s.trim()] || s.trim()).join(', ');
+}
+
 // filmDisplayTitle(f) — patrón Letterboxd
 // EN: title_en como principal, title como original (solo si difieren)
 // ES: title siempre, sin secundario
@@ -8467,7 +8482,7 @@ function openPelSheet(title){
   if(_ps) _ps.scrollTop=0;
   _pushSheetState();
   // Metadata consolidada: director · género · año
-  const _yr=f.year?String(f.year):'';const _gnYr=f.genre?f.genre+(_yr?' · '+_yr:''):_yr;
+  const _yr=f.year?String(f.year):'';const _gnYr=f.genre?_genreEN(f.genre)+(_yr?' · '+_yr:''):_yr;
   const _metaLine=[f.director||'',_gnYr].filter(Boolean).join(' · ');
 
   document.getElementById('pel-sheet-inner').innerHTML=`
@@ -8716,7 +8731,7 @@ function openCortoSheet(title, country, duration, section, flags, director, genr
     if(f.film_list){const found=f.film_list.find(c=>c.title===title);if(found){richItem=found;break;}}
   }
   const dir=director||(richItem&&richItem.director)||'';
-  const gnr=genre||(richItem&&richItem.genre)||'';
+  const gnr=_genreEN(genre||(richItem&&richItem.genre)||'');
   const syn=synopsis||(richItem&&richItem.synopsis)||'';
   const ctry=country||(richItem&&richItem.country)||'';
   const dur=duration||(richItem&&richItem.duration)||'';
