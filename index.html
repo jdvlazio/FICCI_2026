@@ -327,6 +327,9 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:var(--t
 .sync-dot{position:absolute;bottom:0;right:0;width:7px;height:7px;border-radius:50%;border:1.5px solid var(--surf);display:none}
 .sync-dot.sync-ok{display:block;background:var(--amber)}
 .sync-dot.sync-err{display:block;background:#e05}
+.lang-toggle{display:flex;align-items:center;gap:2px;margin-left:var(--sp-2);flex-shrink:0}
+.lang-btn{background:none;border:none;cursor:pointer;font-size:var(--t-md);line-height:1;padding:var(--sp-1) 2px;border-radius:var(--r-sm);opacity:.35;-webkit-tap-highlight-color:transparent;transition:opacity .15s}
+.lang-btn.active{opacity:1}
 /* Fila wordmark + account */
 .hdr-top{display:flex;align-items:center;padding:var(--sp-2) var(--sp-4);min-height:36px}
 .hdr-top .hdr-wordmark{flex:1;margin:0}
@@ -334,6 +337,9 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:var(--t
 .sync-dot{position:absolute;top:2px;right:2px;width:6px;height:6px;border-radius:50%;display:none}
 .sync-dot.sync-ok{display:block;background:var(--amber)}
 .sync-dot.sync-err{display:block;background:#e05}
+.lang-toggle{display:flex;align-items:center;gap:2px;margin-left:var(--sp-2);flex-shrink:0}
+.lang-btn{background:none;border:none;cursor:pointer;font-size:var(--t-md);line-height:1;padding:var(--sp-1) 2px;border-radius:var(--r-sm);opacity:.35;-webkit-tap-highlight-color:transparent;transition:opacity .15s}
+.lang-btn.active{opacity:1}
 /* Auth sheet */
 .auth-sheet{display:none;position:fixed;inset:0;z-index:9999;background:var(--overlay-60);align-items:flex-end;justify-content:center}
 .auth-sheet.open .auth-sheet-inner{transform:translateY(0)}
@@ -2312,6 +2318,10 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:var(--t
       <span class="auth-avatar" id="auth-avatar"></span>
       <span class="sync-dot" id="sync-dot"></span>
     </button>
+    <div class="lang-toggle" id="lang-toggle" aria-label="Idioma / Language">
+      <button class="lang-btn" id="lang-btn-es" onclick="setLang('es')" aria-label="Español">🇪🇸</button>
+      <button class="lang-btn" id="lang-btn-en" onclick="setLang('en')" aria-label="English">🇺🇸</button>
+    </div>
   </div>
   <div class="hdr-fest-bar" id="hdr-fest-bar">
   <div class="hdr-fest-selector" onclick="openFestivalSheet()">
@@ -2862,7 +2872,10 @@ function _applyI18nDOM(){
     const el=document.getElementById(id);
     if(el) el.textContent=t(key);
   }
-  // 2. data-i18n elements — translate textContent
+  // 2. Lang toggle — mark active button
+  document.getElementById('lang-btn-es')?.classList.toggle('active', _lang==='es');
+  document.getElementById('lang-btn-en')?.classList.toggle('active', _lang==='en');
+  // 3. data-i18n elements — translate textContent
   document.querySelectorAll('[data-i18n]').forEach(el=>{
     const key=el.getAttribute('data-i18n');
     const val=t(key);
