@@ -9681,7 +9681,7 @@ async function loadFestival(id){
   const _fn=document.querySelector('.hdr-fest-name');
   const _fd=document.querySelector('.hdr-fest-dates');
   if(_fn) _fn.textContent=cfg.name;
-  if(_fd) _fd.textContent='· '+(_lang==='en'&&cfg.dates_en?cfg.dates_en:cfg.dates);
+  if(_fd) _fd.textContent=' · '+(_lang==='en'&&cfg.dates_en?cfg.dates_en:cfg.dates);
   // Re-render festival selector con el nuevo festival activo
   _renderFestivalSelector(id);
   // Persist choice
@@ -9752,7 +9752,7 @@ _sbInit();
     const n=document.getElementById('splash-sel-name');
     const m=document.getElementById('splash-sel-meta');
     if(n) n.textContent=cfg.name;
-    if(m) m.textContent=`${cfg.city}· ${_langDates(cfg)}${cfg.year?' '+cfg.year:''}`.trimEnd();
+    if(m) m.textContent=`${cfg.city} · ${_langDates(cfg)}${cfg.year?' '+cfg.year:''}`.trimEnd();
   }
 })();
 
