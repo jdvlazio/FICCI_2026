@@ -831,8 +831,8 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:var(--t
 .poster-card.in-watched{opacity:.45}
 .poster-card.past-card{opacity:.35}
 .ag-excl-item.past-card{opacity:.35}
-.excl-reason{font-size:var(--t-xs);color:var(--gray2);font-style:italic}
-.excl-reason.conflict{color:var(--red);font-style:normal;font-weight:var(--w-semi)}
+.excl-reason{font-size:var(--t-xs);color:var(--gray2)}
+.excl-reason.conflict{color:var(--amber-60);font-weight:var(--w-semi)}
 .excl-include-btn{flex-shrink:0;height:28px;padding:0 10px;border-radius:var(--r-pill);border:1px solid var(--bdr);background:none;color:var(--gray);font-size:var(--t-xs);font-weight:var(--w-bold);font-family:var(--font);cursor:pointer;white-space:nowrap;transition:border-color var(--tr-base),color var(--tr-base);-webkit-tap-highlight-color:transparent}
 .poster-card:active{opacity:.85;transform:scale(.97)}
 /* Overlay de hora (Por Horario) */
@@ -2217,7 +2217,7 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:var(--t
 .sheet-cta{width:100%;background:var(--amber);border:none;border-radius:var(--r-md);padding:var(--sp-btn) 0;font-size:var(--t-base);font-weight:var(--w-bold);color:#000;cursor:pointer;font-family:var(--font)}
 .tags-row{margin-top:var(--sp-1);display:flex;align-items:center;gap:var(--sp-2);flex-wrap:wrap}
 .txt-gray2-sm{font-size:var(--t-sm);color:var(--gray2)}
-.txt-error-sm{margin-top:var(--sp-2);font-size:var(--t-sm);color:var(--red)}
+.txt-error-sm{margin-top:var(--sp-2);font-size:var(--t-sm);color:var(--red)}.ag-excl-incompat{margin-top:var(--sp-2);font-size:var(--t-sm);color:var(--amber-60);line-height:1.5}
 .pad-flush{padding:0;overflow:hidden}
 .mt-4{margin-top:var(--sp-4)}
 .mr-1{margin-right:var(--sp-1)}
@@ -6350,7 +6350,7 @@ function buildResultHTML(scenarios){
       const pairMsg=pairs.length
         ?pairs.map(([a,b])=>{const{displayTitle:da}=parseProgramTitle(a);const{displayTitle:db}=parseProgramTitle(b);return`<span class="txt-white60">${da}</span> y <span class="txt-white60">${db}</span>`;}).join(', ')
         :'algunas de tus prioridades';
-      return`<div class="txt-error-sm">Prioridades incompatibles: ${pairMsg} se solapan en todas sus funciones. El plan se calculó sin forzarlas.</div>`;
+      return`<div class="ag-excl-incompat">${pairMsg} se solapan en todas sus funciones. El plan omitió una de las dos — revisá cuál querés priorizar.</div>`;
     })():''}
     ${navHtml}
   </div>
@@ -6400,12 +6400,12 @@ function buildResultHTML(scenarios){
           if(conflictWith) break;
         }
         if(conflictWith){
-          reason=`<div class="excl-reason conflict">Conflicto con ${conflictWith}${conflictWhen?' · '+conflictWhen:''}</div>`;
+          reason=`<div class="excl-reason conflict">Choca con ${conflictWith}${conflictWhen?' · '+conflictWhen:''}</div>`;
           canInclude=true;
         } else if(screens.length){
-          reason=`<div class="excl-reason">Sus funciones coinciden con otras películas en tu plan</div>`;
+          reason=`<div class="excl-reason">Choca con otras películas de tu plan</div>`;
         } else {
-          reason=`<div class="excl-reason">Sin funciones disponibles en tu horario</div>`;
+          reason=`<div class="excl-reason">Sin funciones disponibles</div>`;
         }
       }
       const includeBtn=canInclude
