@@ -125,5 +125,6 @@
   "label_funcion": "screening",
   "label_funciones_pl": "screenings",
   "label_sinopsis": "synopsis",
-  "label_descripcion": "description"
+  "label_descripcion": "description",
+  "misc_ya_vistas": "Already seen"
 }

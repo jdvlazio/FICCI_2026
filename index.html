@@ -2706,6 +2706,7 @@ const _I18N = {
     "misc_prox_evento": "Próximo evento",
     "misc_proxi": "Próximamente",
     "misc_ya_vista": "Ya vista",
+    "misc_ya_vistas": "Ya vistas",
     "misc_deslizar": "Deslizá sobre las estrellas",
     "misc_mantener": "Mantené presionada la imagen — Añadir a Fotos",
     "misc_no_disp": "No disponible",
@@ -2835,6 +2836,7 @@ const _I18N = {
     "misc_prox_evento": "Next event",
     "misc_proxi": "Coming soon",
     "misc_ya_vista": "Already seen",
+    "misc_ya_vistas": "Already seen",
     "misc_deslizar": "Drag to rate",
     "misc_mantener": "Press and hold the image — Save to Photos",
     "misc_no_disp": "Not available",
@@ -5290,7 +5292,7 @@ function renderFilmListHTML(){
     const sortedW=[...watchedList].sort((a,b)=>(filmRatings[b]||0)-(filmRatings[a]||0));
     html+=`<div class="int-section-hdr">
       <span class="int-section-hdr-ico">${ICONS.check}</span>
-      <span class="int-section-hdr-lbl">Ya vistas</span>
+      <span class="int-section-hdr-lbl">${t('misc_ya_vistas')}</span>
       <span class="count-badge cb-neutral">${watchedList.length}</span>
     </div>
     <div>${sortedW.map(_mkItemWatched).join('')}</div>`;

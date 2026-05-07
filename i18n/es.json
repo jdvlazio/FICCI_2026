@@ -125,5 +125,6 @@
   "label_funcion": "función",
   "label_funciones_pl": "funciones",
   "label_sinopsis": "sinopsis",
-  "label_descripcion": "descripción"
+  "label_descripcion": "descripción",
+  "misc_ya_vistas": "Already seen"
 }

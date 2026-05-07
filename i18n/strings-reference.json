@@ -633,5 +633,10 @@
     "es": "descripción",
     "en": "description",
     "context": "pel-sheet section header (lowercase)"
+  },
+  "misc_ya_vistas": {
+    "es": "Ya vistas",
+    "en": "Already seen",
+    "context": "Header sección Intereses — películas vistas (plural)"
   }
 }
