@@ -69,11 +69,6 @@
     "en": "Rate",
     "ctx": "Card CTA"
   },
-  "cta_letterboxd": {
-    "es": "Ver en Letterboxd",
-    "en": "View on Letterboxd",
-    "ctx": "Card link"
-  },
   "cta_anadir": {
     "es": "Añadir a Intereses",
     "en": "Add to Interests",
