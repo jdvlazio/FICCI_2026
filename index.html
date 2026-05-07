@@ -328,7 +328,7 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:var(--t
 .sync-dot.sync-ok{display:block;background:var(--amber)}
 .sync-dot.sync-err{display:block;background:#e05}
 .lang-toggle{display:flex;align-items:center;gap:var(--sp-1);margin-left:var(--sp-2);flex-shrink:0}
-.lang-btn{background:none;border:none;cursor:pointer;font-size:var(--t-md);line-height:1;padding:var(--sp-1) var(--sp-1);border-radius:var(--r-sm);opacity:.35;-webkit-tap-highlight-color:transparent;transition:opacity var(--tr-base);position:relative}
+.lang-btn{background:none;border:none;cursor:pointer;font-size:var(--t-md);line-height:1;padding:var(--sp-1) var(--sp-1);border-radius:var(--r-sm);opacity:.55;-webkit-tap-highlight-color:transparent;transition:opacity var(--tr-base);position:relative}
 .lang-btn::after{content:'';position:absolute;inset:-11px}
 .lang-btn.active{opacity:1}
 /* Fila wordmark + account */
@@ -9668,7 +9668,7 @@ async function loadFestival(id){
   const _fn=document.querySelector('.hdr-fest-name');
   const _fd=document.querySelector('.hdr-fest-dates');
   if(_fn) _fn.textContent=cfg.name;
-  if(_fd) _fd.textContent='\u00b7 '+cfg.dates;
+  if(_fd) _fd.textContent='· '+(_lang==='en'&&cfg.dates_en?cfg.dates_en:cfg.dates);
   // Re-render festival selector con el nuevo festival activo
   _renderFestivalSelector(id);
   // Persist choice
