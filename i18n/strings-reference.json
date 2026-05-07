@@ -633,5 +633,120 @@
     "es": "Ya vistas",
     "en": "Already seen",
     "context": "Header sección Intereses — películas vistas (plural)"
+  },
+  "splash_festival": {
+    "es": "¿A qué festival vas?",
+    "en": "Which festival?",
+    "context": "Aprobado Content+UX — splash_festival"
+  },
+  "splash_tagline": {
+    "es": "Más de lo que crees",
+    "en": "More than you think",
+    "context": "Aprobado Content+UX — splash_tagline"
+  },
+  "splash_proximamente": {
+    "es": "Más festivales en camino…",
+    "en": "More festivals coming…",
+    "context": "Aprobado Content+UX — splash_proximamente"
+  },
+  "rating_califica": {
+    "es": "¿La calificás?",
+    "en": "Rate it?",
+    "context": "Aprobado Content+UX — rating_califica"
+  },
+  "rating_despues": {
+    "es": "Después",
+    "en": "Later",
+    "context": "Aprobado Content+UX — rating_despues"
+  },
+  "rating_parecio": {
+    "es": "¿Qué te pareció?",
+    "en": "What did you think?",
+    "context": "Aprobado Content+UX — rating_parecio"
+  },
+  "conflict_cual": {
+    "es": "¿Cuál querés en tu plan?",
+    "en": "Which one for your plan?",
+    "context": "Aprobado Content+UX — conflict_cual"
+  },
+  "conflict_anadir_verb": {
+    "es": "Querés añadir",
+    "en": "You're adding",
+    "context": "Aprobado Content+UX — conflict_anadir_verb"
+  },
+  "conflict_anadir_btn": {
+    "es": "Añadir",
+    "en": "Add",
+    "context": "Aprobado Content+UX — conflict_anadir_btn"
+  },
+  "conflict_cambiar": {
+    "es": "Cambiá una para priorizar esta película",
+    "en": "Change one to prioritize this film",
+    "context": "Aprobado Content+UX — conflict_cambiar"
+  },
+  "plan_listo": {
+    "es": "¡Tu plan está listo!",
+    "en": "Your plan is ready!",
+    "context": "Aprobado Content+UX — plan_listo"
+  },
+  "auth_titulo": {
+    "es": "Guardá tu plan",
+    "en": "Save your plan",
+    "context": "Aprobado Content+UX — auth_titulo"
+  },
+  "auth_desc": {
+    "es": "Ingresa tu email y te enviamos un código de 6 dígitos. Sin contraseña.",
+    "en": "Enter your email and we'll send you a 6-digit code. No password needed.",
+    "context": "Aprobado Content+UX — auth_desc"
+  },
+  "auth_enviar": {
+    "es": "Enviar código",
+    "en": "Send code",
+    "context": "Aprobado Content+UX — auth_enviar"
+  },
+  "auth_revisa": {
+    "es": "Revisá tu email",
+    "en": "Check your email",
+    "context": "Aprobado Content+UX — auth_revisa"
+  },
+  "auth_cerrar": {
+    "es": "Cerrar sesión",
+    "en": "Sign out",
+    "context": "Aprobado Content+UX — auth_cerrar"
+  },
+  "badge_inscripcion": {
+    "es": "INSCRIPCIÓN",
+    "en": "RSVP",
+    "context": "Aprobado Content+UX — badge_inscripcion"
+  },
+  "badge_inscripcion_prev": {
+    "es": "INSCRIPCIÓN PREVIA",
+    "en": "RSVP REQUIRED",
+    "context": "Aprobado Content+UX — badge_inscripcion_prev"
+  },
+  "filter_sin_peliculas": {
+    "es": "Sin películas para este filtro",
+    "en": "No films match this filter",
+    "context": "Aprobado Content+UX — filter_sin_peliculas"
+  },
+  "plan_quitar_tmb": {
+    "es": "¿Quitarla también del plan guardado?",
+    "en": "Remove it from your saved plan too?",
+    "context": "Aprobado Content+UX — plan_quitar_tmb"
+  },
+  "plan_se_quitara": {
+    "es": "Se quitará de Intereses y las opciones se recalcularán",
+    "en": "It'll be removed from Interests and options will update",
+    "context": "Aprobado Content+UX — plan_se_quitara"
+  },
+  "plan_reemplazar": {
+    "es": "¿Reemplazarlo con esta nueva opción? Tu plan actual se perderá",
+    "en": "Replace it with this option? Your current plan will be lost",
+    "context": "Aprobado Content+UX — plan_reemplazar"
+  },
+  "plan_no_intereses": {
+    "es": "película ya no están en Intereses",
+    "en": "film(s) no longer in Interests",
+    "context": "Aprobado Content+UX — plan_no_intereses"
   }
 }

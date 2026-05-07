@@ -2263,7 +2263,7 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:var(--t
   <div class="splash-wordmark">Otro<span>festiv</span></div>
   <div class="splash-action">
   <div class="splash-selector">
-    <div class="splash-fest-label">¿A qué festival vas?</div>
+    <div class="splash-fest-label" data-i18n="splash_festival">¿A qué festival vas?</div>
     <button class="splash-sel-btn" id="splash-sel-btn" onclick="toggleSplashDropdown()" aria-haspopup="listbox">
       <div>
         <div class="splash-sel-name" id="splash-sel-name">AFF 2026</div>
@@ -2278,7 +2278,7 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:var(--t
   <button class="splash-enter-btn" data-i18n="auth_entrar" onclick="dismissSplash()">Entrar</button>
   </div>
   <div class="splash-tagline">
-    <div class="splash-tagline-line">Más de lo que crees</div>
+    <div class="splash-tagline-line" data-i18n="splash_tagline">Más de lo que crees</div>
     <div class="splash-tagline-line"><span>posible.</span></div>
   </div>
 </div>
@@ -2379,7 +2379,7 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:var(--t
     </div>
   </div>
   <div class="pv-question">
-    <div class="pv-question-text">¿La calificás?</div>
+    <div class="pv-question-text" data-i18n="rating_califica">¿La calificás?</div>
     <div class="pv-question-hint" id="pv-hint">Deslizá sobre las estrellas</div>
   </div>
   <div class="pv-stars-area">
@@ -2388,7 +2388,7 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:var(--t
   </div>
   <div class="pv-actions">
     <button class="pv-btn-save" id="pv-btn-save" data-i18n="misc_guardar" disabled onclick="savePVRating()">Guardar</button>
-    <button class="pv-btn-later" onclick="closePVRating()">Después</button>
+    <button class="pv-btn-later" onclick="closePVRating()" data-i18n="rating_despues">Después</button>
   </div>
 </div>
 <!-- ── Conflict Sheet ── -->
@@ -2398,13 +2398,13 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:var(--t
   <div class="conflict-hdr">
     <div class="conflict-eyebrow"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126zM12 15.75h.007v.008H12v-.008z"/></svg>Conflicto de horario</div>
     <div class="conflict-title">Se solapan en el mismo tramo</div>
-    <div class="conflict-sub">¿Cuál querés en tu plan?</div>
+    <div class="conflict-sub" data-i18n="conflict_cual">¿Cuál querés en tu plan?</div>
   </div>
   <div class="conflict-arena">
     <div class="conflict-card incoming">
       <img class="conflict-poster" id="cs-incoming-poster" src="" alt="" loading="lazy">
       <div style="flex:1;min-width:0">
-        <div class="conflict-role">Querés añadir</div>
+        <div class="conflict-role" data-i18n="conflict_anadir_verb">Querés añadir</div>
         <div class="conflict-name" id="cs-incoming-name"></div>
         <div class="conflict-when" id="cs-incoming-when"></div>
       </div>
@@ -2420,7 +2420,7 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:var(--t
     </div>
   </div>
   <div class="conflict-actions">
-    <button class="conflict-btn-replace" id="cs-replace-btn">Añadir</button>
+    <button class="conflict-btn-replace" id="cs-replace-btn" data-i18n="conflict_anadir_btn">Añadir</button>
     <button class="conflict-btn-keep" id="cs-keep-btn">Conservar</button>
     <button class="conflict-btn-cancel" onclick="closeConflictSheet()" data-i18n="misc_cancelar">Cancelar</button>
   </div>
@@ -2432,7 +2432,7 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:var(--t
   <div class="prio-limit-hdr">
     <div class="prio-limit-eyebrow"><svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1.75"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg><span id="prio-limit-eyebrow-txt"></span></div>
     <div class="prio-limit-title">Ya tenés <span id="prio-limit-count"></span> prioridades</div>
-    <div class="prio-limit-sub">Cambiá una para priorizar esta ${t('misc_pelicula')}</div>
+    <div class="prio-limit-sub" data-i18n="conflict_cambiar">Cambiá una para priorizar esta ${t('misc_pelicula')}</div>
   </div>
   <div class="prio-limit-new" id="prio-limit-new-bar">
     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
@@ -2453,7 +2453,7 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:var(--t
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#3AAA6E" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>
     </div>
     <div>
-      <div class="plan-confirm-title" id="plan-confirm-title">¡Tu plan está listo!</div>
+      <div class="plan-confirm-title" id="plan-confirm-title" data-i18n="plan_listo">¡Tu plan está listo!</div>
       <div class="plan-confirm-sub" id="plan-confirm-sub"></div>
     </div>
   </div>
@@ -2464,7 +2464,7 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:var(--t
 <div class="rating-overlay" id="rating-overlay" onclick="closeRatingSheet()"></div>
 <div class="rating-sheet" id="rating-sheet">
   <div class="rating-handle"></div>
-  <div class="rating-title">¿Qué te pareció?</div>
+  <div class="rating-title" data-i18n="rating_parecio">¿Qué te pareció?</div>
   <div class="rating-film" id="rating-film-title"></div>
   <div class="rating-stars" id="rating-stars-wrap"><input type="range" id="rating-range" min="0" max="10" step="1" value="0"><div class="stars-row" id="rating-stars"></div></div>
   <button class="rating-action-btn" id="rating-action-btn" onclick="closeRatingSheet()">Omitir</button>
@@ -2728,6 +2728,29 @@ const _I18N = {
     "plan_sin_proximas": "No tenés funciones próximas",
     "error_funciones": "Error al cargar funciones",
     "planear_peliculas": "Películas",
+    "splash_festival": "¿A qué festival vas?",
+    "splash_tagline": "Más de lo que crees",
+    "splash_proximamente": "Más festivales en camino…",
+    "rating_califica": "¿La calificás?",
+    "rating_despues": "Después",
+    "rating_parecio": "¿Qué te pareció?",
+    "conflict_cual": "¿Cuál querés en tu plan?",
+    "conflict_anadir_verb": "Querés añadir",
+    "conflict_anadir_btn": "Añadir",
+    "conflict_cambiar": "Cambiá una para priorizar esta película",
+    "plan_listo": "¡Tu plan está listo!",
+    "auth_titulo": "Guardá tu plan",
+    "auth_desc": "Ingresa tu email y te enviamos un código de 6 dígitos. Sin contraseña.",
+    "auth_enviar": "Enviar código",
+    "auth_revisa": "Revisá tu email",
+    "auth_cerrar": "Cerrar sesión",
+    "badge_inscripcion": "INSCRIPCIÓN",
+    "badge_inscripcion_prev": "INSCRIPCIÓN PREVIA",
+    "filter_sin_peliculas": "Sin películas para este filtro",
+    "plan_quitar_tmb": "${t('plan_quitar_tmb')}",
+    "plan_se_quitara": "${t('plan_se_quitara')}",
+    "plan_reemplazar": "${t('plan_reemplazar')}",
+    "plan_no_intereses": "película ya no están en Intereses",
     "misc_deslizar": "Deslizá sobre las estrellas",
     "misc_mantener": "Mantené presionada la imagen — Añadir a Fotos",
     "misc_no_disp": "No disponible",
@@ -2879,6 +2902,29 @@ const _I18N = {
     "plan_sin_proximas": "No upcoming screenings",
     "error_funciones": "Error loading screenings",
     "planear_peliculas": "Films",
+    "splash_festival": "Which festival?",
+    "splash_tagline": "More than you think",
+    "splash_proximamente": "More festivals coming…",
+    "rating_califica": "Rate it?",
+    "rating_despues": "Later",
+    "rating_parecio": "What did you think?",
+    "conflict_cual": "Which one for your plan?",
+    "conflict_anadir_verb": "You're adding",
+    "conflict_anadir_btn": "Add",
+    "conflict_cambiar": "Change one to prioritize this film",
+    "plan_listo": "Your plan is ready!",
+    "auth_titulo": "Save your plan",
+    "auth_desc": "Enter your email and we'll send you a 6-digit code. No password needed.",
+    "auth_enviar": "Send code",
+    "auth_revisa": "Check your email",
+    "auth_cerrar": "Sign out",
+    "badge_inscripcion": "RSVP",
+    "badge_inscripcion_prev": "RSVP REQUIRED",
+    "filter_sin_peliculas": "No films match this filter",
+    "plan_quitar_tmb": "Remove it from your saved plan too?",
+    "plan_se_quitara": "It'll be removed from Interests and options will update",
+    "plan_reemplazar": "Replace it with this option? Your current plan will be lost",
+    "plan_no_intereses": "film(s) no longer in Interests",
     "misc_deslizar": "Drag to rate",
     "misc_mantener": "Press and hold the image — Save to Photos",
     "misc_no_disp": "Not available",
@@ -4270,7 +4316,7 @@ function toggleWL(title,e){
     // If film is in saved agenda, ask first
     if(savedAgenda&&savedAgenda.schedule.some(s=>s._title===title)){
       showActionModal(`Quitar de Intereses`,
-        `<b>${title.length>36?title.slice(0,34)+'…':title}</b> ${t('plan_en_tu_plan')}<br><br>¿Quitarla también del plan guardado?`,
+        `<b>${title.length>36?title.slice(0,34)+'…':title}</b> ${t('plan_en_tu_plan')}<br><br>${t('plan_quitar_tmb')}`,
         'Sí, quitar de todo',()=>{
           savedAgenda.schedule=savedAgenda.schedule.filter(s=>s._title!==title);
           if(!savedAgenda.schedule.length)savedAgenda=null;
@@ -5378,7 +5424,7 @@ function removeFilmFromScenario(title,e){
   const short=title.length>36?title.slice(0,34)+'…':title;
   showActionModal(
     `Quitar de Intereses`,
-    `<b>${short}</b><br><br>Se quitará de Intereses y las opciones se recalcularán.`,
+    `<b>${short}</b><br><br>${t('plan_se_quitara')}.`,
     'Quitar',
     ()=>{
       watchlist.delete(title);
@@ -5657,7 +5703,7 @@ function renderUnconfirmed(schedule){
         const sh=dt.length>26?dt.slice(0,24)+'…':dt;
         const st=s._title.replace(/'/g,"\'");
         return`<div class="checkin-item">
-          <div class="checkin-info"><div class="checkin-title">${sh}</div><div class="checkin-time">${s.day} · ${s.time}</div></div>
+          <div class="checkin-info"><div class="checkin-title">${sh}</div><div class="checkin-time">${dayLabel(s.day)} · ${s.time}</div></div>
           <div class="checkin-btns"><button class="row-xs checkin-btn yes" onclick="checkinLaVi('${st}')">${ICONS.check} Vista</button><button class="checkin-btn no" onclick="checkinNoLaVi('${st}')">Luego</button></div>
         </div>`;
       }).join('')}
@@ -5907,7 +5953,7 @@ function renderContextualHeader(){
   const ph=_getFestivalPhase();
   if(!ph) return '';
   const DAY_A={Martes:'MAR',Miércoles:'MIÉ',Jueves:'JUE',Viernes:'VIE',Sábado:'SÁB',Domingo:'DOM'};
-  const _dayAbbr=k=>DAY_A[k]||(k?k.split(' ')[0]:'');
+  const _dayAbbr=k=>(dayLabel(k)||k).split(' ')[0]||'';
 
   // ── ENDED ─────────────────────────────────────────────────
   if(ph.phase==='ended'){
@@ -6419,7 +6465,7 @@ function shareAsImage(){
   const notInWL=savedAgenda.schedule.filter(s=>!watchlist.has(s._title));
   if(notInWL.length){
     const names=notInWL.map(s=>s._title.length>20?s._title.slice(0,18)+'…':s._title).join(', ');
-    issues.push(`${notInWL.length} película${notInWL.length>1?'s':''} ya no están en Intereses: ${names}`);
+    issues.push(`${notInWL.length} película${notInWL.length>1?'s':''} ${t('plan_no_intereses')}: ${names}`);
   }
 
   // 2. Conflictos internos entre funciones del plan
@@ -7248,7 +7294,7 @@ function saveCurrentScenario(){
     const n=savedAgenda.schedule.length;
     showActionModal(
       `${ICONS.calendar} Reemplazar plan`,
-      `${t('notice_ya_tenes')} un plan con <b>${n} película${n!==1?'s':''}</b>.<br><br>¿Reemplazarlo con esta nueva opción? Tu plan actual se perderá.`,
+      `${t('notice_ya_tenes')} un plan con <b>${n} película${n!==1?'s':''}</b>.<br><br>${t('plan_reemplazar')}.`,
       'Sí, reemplazar',
       _doSave,
       'Conservar mi plan actual'
@@ -8114,7 +8160,7 @@ function _dayChips(screenings){
   return screenings
     .map(s=>s.day)
     .filter(d=>{if(seen.has(d))return false;seen.add(d);return true;})
-    .map(d=>`<span class="pelicula-day" data-day="${d}">${DAY_SHORT[d]||d}</span>`)
+    .map(d=>`<span class="pelicula-day" data-day="${d}">${dayLabel(d)}</span>`)
     .join('<span style="color:var(--gray2)"> · </span>');
 }
 
@@ -8250,7 +8296,7 @@ function openPelSheet(title){
   const past=screenings.filter(s=>screeningPassed(s));
   const allScr=[...future,...past];
   const rows=allScr.map(s=>{
-    const dayAbb=DAY_SHORT[s.day]||DAY_ABB[DAY_KEYS.indexOf(s.day)]||s.day.slice(0,3).toUpperCase();
+    const dayAbb=dayLabel(s.day)||s.day;
     const vc=vcfg(s.venue),sl=sala(s.venue);
     const _festCity=(FESTIVAL_CONFIG[_activeFestId]||{}).city||'';
     const _city=_festCity&&vc.city&&vc.city!==_festCity?vc.city:'';
@@ -8824,13 +8870,13 @@ function renderProgramaChips(){
 function _metaBadges(f){
   let b='';
   if(f.has_qa) b+=`<span class="meta-badge">Q&A</span>`;
-  if(f.requires_registration) b+=`<span class="meta-badge">INSCRIPCIÓN</span>`;
+  if(f.requires_registration) b+=`<span class="meta-badge">${t('badge_inscripcion')}</span>`;
   return b;
 }
 function _metaBanners(f){
   let b='';
   if(f.has_qa) b+=`<div class="meta-banner"><div class="meta-banner-dot"></div><div><div class="meta-banner-label">Q&A · EQUIPO PRESENTE</div><div class="meta-banner-text">${t('notice_extension')} <span>· +30 min estimados</span></div></div></div>`;
-  if(f.requires_registration) b+=`<div class="meta-banner"><div class="meta-banner-dot"></div><div><div class="meta-banner-label">INSCRIPCIÓN PREVIA</div><div class="meta-banner-text">Requiere registro antes del evento</div></div></div>`;
+  if(f.requires_registration) b+=`<div class="meta-banner"><div class="meta-banner-dot"></div><div><div class="meta-banner-label">${t('badge_inscripcion_prev')}</div><div class="meta-banner-text">Requiere registro antes del evento</div></div></div>`;
   return b;
 }
 
@@ -9015,7 +9061,7 @@ function _renderExploreLista(){
     if(do_diff!==0) return do_diff;
     return (a.film.time||'').localeCompare(b.film.time||'');
   });
-  if(!entries.length){el.innerHTML=`<div class="empty-msg">Sin películas para este filtro</div>`;return;}
+  if(!entries.length){el.innerHTML=`<div class="empty-msg">${t('filter_sin_peliculas')}</div>`;return;}
   el.innerHTML=entries.map(({film:f,screenings})=>{
     const inWL=watchlist.has(f.title);
     const isEvent=f.type==='event';
@@ -10151,15 +10197,15 @@ function _posterErr(img){
 <div class="auth-sheet" id="auth-sheet" onclick="if(event.target===this)closeAuthSheet()">
   <div class="auth-sheet-inner">
     <div id="auth-sheet-step1">
-      <div class="auth-sheet-title">Guardá tu plan</div>
+      <div class="auth-sheet-title" data-i18n="auth_titulo">Guardá tu plan</div>
       <div class="auth-sheet-sub">Ingresa tu email y te enviamos un código de 6 dígitos. Sin contraseña. Tu plan se sincroniza entre todos tus dispositivos.</div>
       <input class="auth-email-inp" id="auth-email-inp" type="email" placeholder="tu@email.com" data-i18n-ph="auth_email" autocomplete="email" onkeydown="if(event.key==='Enter')submitAuthEmail()">
-      <button class="auth-send-btn" id="auth-send-btn" onclick="submitAuthEmail()">Enviar código</button>
+      <button class="auth-send-btn" id="auth-send-btn" onclick="submitAuthEmail()" data-i18n="auth_enviar">Enviar código</button>
       <div class="auth-msg" id="auth-msg"></div>
       <span class="auth-cancel" onclick="closeAuthSheet()" data-i18n="misc_cancelar">Cancelar</span>
     </div>
     <div id="auth-sheet-step2" style="display:none">
-      <div class="auth-sheet-title">Revisá tu email</div>
+      <div class="auth-sheet-title" data-i18n="auth_revisa">Revisá tu email</div>
       <div class="auth-sheet-sub">Enviamos un código de 6 dígitos a <span id="auth-otp-email" style="color:var(--white)"></span></div>
       <input class="pin-display auth-email-inp" id="auth-otp-inp" type="number" placeholder="123456" inputmode="numeric" maxlength="6" onkeydown="if(event.key==='Enter')submitOTP()"><!-- 16px: prevents iOS auto-zoom -->
       <button class="auth-send-btn" id="auth-otp-btn" onclick="submitOTP()">Confirmar</button>
@@ -10170,7 +10216,7 @@ function _posterErr(img){
       <div class="auth-sheet-title">Tu cuenta</div>
       <div class="auth-sheet-sub" id="auth-signed-email" style="color:var(--white)"></div>
       <div class="mt-2 auth-sheet-sub"><span data-i18n="plan_sincroniza">Tu plan se sincroniza automáticamente entre todos tus dispositivos.</div>
-      <button class="auth-signout-btn" onclick="signOutAndClose()">Cerrar sesión</button>
+      <button class="auth-signout-btn" onclick="signOutAndClose()" data-i18n="auth_cerrar">Cerrar sesión</button>
       <span class="auth-cancel" onclick="closeAuthSheet()" data-i18n="misc_cancelar">Cancelar</span>
     </div>
   </div>
@@ -10188,7 +10234,7 @@ function _posterErr(img){
   <div class="fs-soon-row">
     <div class="fs-soon-dot"></div>
     <div class="fs-soon-info">
-      <div class="fs-soon-name">Más festivales en camino…</div>
+      <div class="fs-soon-name" data-i18n="splash_proximamente">Más festivales en camino…</div>
     </div>
   </div>
 </div>
