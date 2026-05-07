@@ -121,5 +121,10 @@
   "misc_otra": "Otro",
   "lang_es": "Español",
   "lang_en": "English",
-  "lang_idioma": "Idioma"
+  "lang_idioma": "Idioma",
+  "label_horario": "horario",
+  "label_funcion": "función",
+  "label_funciones_pl": "funciones",
+  "label_sinopsis": "sinopsis",
+  "label_descripcion": "descripción"
 }

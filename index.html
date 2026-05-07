@@ -2608,6 +2608,11 @@ const _I18N = {
     "label_min": "min",
     "label_seccion": "Sección",
     "label_valoracion": "Tu valoración",
+    "label_horario": "horario",
+    "label_funcion": "función",
+    "label_funciones_pl": "funciones",
+    "label_sinopsis": "sinopsis",
+    "label_descripcion": "descripción",
     "plan_calcular": "Calcular plan",
     "plan_calculando": "Calculando…",
     "plan_calculando_ops": "Calculando opciones…",
@@ -2733,6 +2738,11 @@ const _I18N = {
     "label_min": "min",
     "label_seccion": "Section",
     "label_valoracion": "Your rating",
+    "label_horario": "schedule",
+    "label_funcion": "screening",
+    "label_funciones_pl": "screenings",
+    "label_sinopsis": "synopsis",
+    "label_descripcion": "description",
     "plan_calcular": "Make my plan",
     "plan_calculando": "Finding options…",
     "plan_calculando_ops": "Finding options…",
@@ -8238,12 +8248,12 @@ function openPelSheet(title){
       </div>
     </div>
     <div class="pel-sheet-divider"></div>
-    <div class="pel-sheet-section-lbl">${f.type==='event'?'horario':allScr.length===1?'función':'funciones'}${totalFn>1&&f.type!=='event'?`<span class="ml-2 count-badge cb-neutral">${totalFn}</span>`:''}</div>
+    <div class="pel-sheet-section-lbl">${f.type==='event'?t('label_horario'):allScr.length===1?t('label_funcion'):t('label_funciones_pl')}${totalFn>1&&f.type!=='event'?`<span class="ml-2 count-badge cb-neutral">${totalFn}</span>`:''}</div>
     ${(()=>{const _n=NOTICES.find(n=>n.title===f.title&&n.festival===(_activeFestId||_DEFAULT_FEST_ID));if(!_n)return'';const _msg=_n.type==='cancelled'?t('notice_funcion_canc'):`Reprogramada → ${_n.newDay||''} ${_n.newTime||''}${_n.newVenue?' · '+_n.newVenue:''}`;return`<div class="notice-banner-row"><span class="notice-badge">${_n.type==='cancelled'?'CANCELADA':'REPROG.'}</span><span class="notice-banner-txt">${_msg}</span></div>`;})()}
     ${_metaBanners(f)}
     <div class="pel-sheet-screenings">${rows}</div>
     ${f.synopsis?`<div class="pel-sheet-divider"></div>
-    <div class="pel-sheet-section-lbl">${f.type==='event'?'descripción':'sinopsis'}</div>
+    <div class="pel-sheet-section-lbl">${f.type==='event'?t('label_descripcion'):t('label_sinopsis')}</div>
     <div class="pel-sheet-synopsis">${f.synopsis}</div>`:''}
     ${cortosHtml}
     ${(!f.is_cortos&&!f.is_programa&&f.type!=='event')?lbLink(f.title,f):''}

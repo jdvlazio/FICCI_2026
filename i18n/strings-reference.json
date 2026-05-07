@@ -613,5 +613,30 @@
     "es": "Idioma",
     "en": "Language",
     "ctx": "Language selector label"
+  },
+  "label_horario": {
+    "es": "horario",
+    "en": "schedule",
+    "context": "pel-sheet section header (lowercase)"
+  },
+  "label_funcion": {
+    "es": "función",
+    "en": "screening",
+    "context": "pel-sheet section header (lowercase)"
+  },
+  "label_funciones_pl": {
+    "es": "funciones",
+    "en": "screenings",
+    "context": "pel-sheet section header (lowercase)"
+  },
+  "label_sinopsis": {
+    "es": "sinopsis",
+    "en": "synopsis",
+    "context": "pel-sheet section header (lowercase)"
+  },
+  "label_descripcion": {
+    "es": "descripción",
+    "en": "description",
+    "context": "pel-sheet section header (lowercase)"
   }
 }

@@ -121,5 +121,10 @@
   "misc_otra": "Other",
   "lang_es": "Español",
   "lang_en": "English",
-  "lang_idioma": "Language"
+  "lang_idioma": "Language",
+  "label_horario": "schedule",
+  "label_funcion": "screening",
+  "label_funciones_pl": "screenings",
+  "label_sinopsis": "synopsis",
+  "label_descripcion": "description"
 }
