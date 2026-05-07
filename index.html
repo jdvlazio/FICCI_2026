@@ -2279,7 +2279,7 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:var(--t
   </div>
   <div class="splash-tagline">
     <div class="splash-tagline-line" data-i18n="splash_tagline">Más de lo que crees</div>
-    <div class="splash-tagline-line"><span>posible.</span></div>
+    <div class="splash-tagline-line"><span data-i18n="splash_tagline_2">posible.</span></div>
   </div>
 </div>
 
@@ -2730,6 +2730,7 @@ const _I18N = {
     "planear_peliculas": "Películas",
     "splash_festival": "¿A qué festival vas?",
     "splash_tagline": "Más de lo que crees",
+    "splash_tagline_2": "posible.",
     "splash_proximamente": "Más festivales en camino…",
     "rating_califica": "¿La calificás?",
     "rating_despues": "Después",
@@ -2904,6 +2905,7 @@ const _I18N = {
     "planear_peliculas": "Films",
     "splash_festival": "Which festival?",
     "splash_tagline": "More than you think",
+    "splash_tagline_2": "possible.",
     "splash_proximamente": "More festivals coming…",
     "rating_califica": "Rate it?",
     "rating_despues": "Later",
@@ -9898,7 +9900,7 @@ function lugarClose(){
   const btn = document.getElementById('lugar-btn');
   if(btn) btn.classList.toggle('active', activeVenue!=='all');
   const lbl = document.getElementById('lugar-lbl');
-  if(lbl) lbl.textContent = activeVenue==='all'?'Lugar':''; // icono ⊙ suficiente — nombre completo en pill
+  if(lbl) lbl.textContent = activeVenue==='all'?t('bar_lugar'):''; // icono ⊙ suficiente — nombre completo en pill
 }
 
 function lugarToggle(){
