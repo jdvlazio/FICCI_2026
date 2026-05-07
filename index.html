@@ -2601,6 +2601,7 @@ const _I18N = {
     "cta_vista": "Vista",
     "cta_en_intereses": "En Intereses",
     "cta_priorizada": "Priorizada",
+    "toast_prioridad_quitada": "Prioridad quitada",
     "cta_asistio": "Asistí",
     "misc_conservar": "Conservar",
     "misc_omitir": "Omitir",
@@ -2765,6 +2766,7 @@ const _I18N = {
     "av_hora_invalida": "La hora de inicio debe ser menor que la de fin",
     "plan_quitar_intereses": "Quitar de Intereses",
     "misc_quitar": "Quitar",
+    "misc_anadir": "Añadir",
     "plan_quitar_prioridad": "Quitar prioridad",
     "plan_reemplazar_funcion": "¿Reemplazar función?",
     "plan_anadir_plan": "¿Añadir al plan?",
@@ -2820,6 +2822,7 @@ const _I18N = {
     "cta_vista": "Seen",
     "cta_en_intereses": "In Interests",
     "cta_priorizada": "Prioritized",
+    "toast_prioridad_quitada": "Priority removed",
     "cta_asistio": "Attended",
     "misc_conservar": "Keep",
     "misc_omitir": "Skip",
@@ -2984,6 +2987,7 @@ const _I18N = {
     "av_hora_invalida": "Start time must be before end time",
     "plan_quitar_intereses": "Remove from Interests",
     "misc_quitar": "Remove",
+    "misc_anadir": "Add",
     "plan_quitar_prioridad": "Remove priority",
     "plan_reemplazar_funcion": "Replace screening?",
     "plan_anadir_plan": "Add to plan?",
@@ -4535,10 +4539,10 @@ function onSearchInput(){
     return`<div class="ag-sr-item">
       <div>
         <div class="ag-sr-title">${f.title}</div>
-        <div class="ag-sr-meta">${f.flags||''} ${f.duration||''}${f.is_cortos?' · Programa':''}${inWL?' · <span style="color:var(--amber)">${ICONS.heartFill}</span>':''}</div>
+        <div class="ag-sr-meta">${f.flags||''} ${f.duration||''}${f.is_cortos?` · ${t('label_programa')}`:''}${inWL?' · <span style="color:var(--amber)">${ICONS.heartFill}</span>':''}</div>
       </div>
       <button class="row-xs ag-sr-add${inWL?' added':''}" data-title="${f.title.replace(/"/g,'&quot;')}" onclick="addFromSearch(this.dataset.title)">
-        ${inWL?`${ICONS.check} En Intereses`:`${ICONS.plus} Añadir`}
+        ${inWL?`${ICONS.check} ${t('cta_en_intereses')}`:`${ICONS.plus} ${t('misc_anadir')}`}
       </button>
     </div>`;
   }).join('');
@@ -5559,9 +5563,9 @@ function removeFilmFromScenario(title,e){
   if(e) e.stopPropagation();
   const short=title.length>36?title.slice(0,34)+'…':title;
   showActionModal(
-    `Quitar de Intereses`,
+    t('plan_quitar_intereses'),
     `<b>${short}</b><br><br>${t('plan_se_quitara')}.`,
-    'Quitar',
+    t('misc_quitar'),
     ()=>{
       watchlist.delete(title);
       prioritized.delete(title);
@@ -7051,19 +7055,19 @@ function togglePriority(title,cost){
     // Si estamos en Planear, confirmar antes de quitar
     if(activeMNav==='mnav-planner'){
       const short=title.length>40?title.slice(0,38)+'…':title;
-      showActionModal(`Quitar prioridad`,
+      showActionModal(t('plan_quitar_prioridad'),
         `<b>${short}</b><br><br>${t('plan_sigue_intereses')}`,
 
-        'Quitar prioridad',()=>{
+        t('plan_quitar_prioridad'),()=>{
           prioritized.delete(title);savePrio();updateCardState(title);updateAgTab();runCalc();
-          showToast(`${ICONS.star} Prioridad quitada`,'info');
+          showToast(`${ICONS.star} ${t('toast_prioridad_quitada')}`,'info');
           renderAgenda();
           switchMainNav('mnav-seleccion');showAgView();
         });return;
     }
     prioritized.delete(title);
     savePrio();updateCardState(title);updateAgTab();runCalc();
-    showToast(`${ICONS.star} Prioridad quitada`,'info');
+    showToast(`${ICONS.star} ${t('toast_prioridad_quitada')}`,'info');
   } else {
     if(prioritized.size>=PRIO_LIMIT){
       openPrioLimit(title);return;

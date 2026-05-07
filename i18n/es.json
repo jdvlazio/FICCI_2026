@@ -213,5 +213,7 @@
   "misc_no_disponible": "No disponible",
   "conflict_titulo": "Se solapan en el mismo tramo",
   "cta_mi_plan": "Ver Mi Plan",
-  "label_programa": "Programa"
+  "label_programa": "Programa",
+  "toast_prioridad_quitada": "Prioridad quitada",
+  "misc_anadir": "Añadir"
 }
