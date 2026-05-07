@@ -404,6 +404,7 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:var(--t
 
 /* Vistas */
 .ag-view{padding:var(--sp-2) var(--sp-4) 60px;display:none}
+.lang-fade{opacity:0;transition:opacity var(--tr-smooth)}
 .ag-view.visible{display:block}
 .hint{padding:0 var(--sp-5);font-size:var(--t-sm);color:var(--gray);min-height:0}
 .hint.active{
@@ -2849,15 +2850,24 @@ function t(key){
 function setLang(code){
   if(!_I18N[code]) return;
   if(code === _lang) return;
-  _lang = code;
-  localStorage.setItem('otrofestiv_lang', code);
-  _applyI18nDOM();
-  // Re-render vista activa para que los templates JS reflejen el nuevo idioma
-  const nav = activeMNav || 'mnav-cartelera';
-  if(nav === 'mnav-cartelera')      { typeof showDayView === 'function'         && showDayView(); }
-  else if(nav === 'mnav-seleccion') { typeof renderAgenda === 'function'        && renderAgenda(); }
-  else if(nav === 'mnav-planner')   { typeof renderSimPanel === 'function'      && renderSimPanel(); }
-  else if(nav === 'mnav-miplan')    { typeof renderMiPlanCalendar === 'function' && renderMiPlanCalendar(); }
+  // Fade out content containers
+  const _fadeEls=['programa-list','ag-view','grid'].map(id=>document.getElementById(id)).filter(Boolean);
+  _fadeEls.forEach(el=>el.classList.add('lang-fade'));
+  setTimeout(()=>{
+    _lang = code;
+    localStorage.setItem('otrofestiv_lang', code);
+    _applyI18nDOM();
+    // Re-render vista activa
+    const nav = activeMNav || 'mnav-cartelera';
+    if(nav === 'mnav-cartelera')      { typeof showDayView === 'function'         && showDayView(); }
+    else if(nav === 'mnav-seleccion') { typeof renderAgenda === 'function'        && renderAgenda(); }
+    else if(nav === 'mnav-planner')   { typeof renderSimPanel === 'function'      && renderSimPanel(); }
+    else if(nav === 'mnav-miplan')    { typeof renderMiPlanCalendar === 'function' && renderMiPlanCalendar(); }
+    // Fade in
+    requestAnimationFrame(()=>{
+      _fadeEls.forEach(el=>el.classList.remove('lang-fade'));
+    });
+  }, 200); // --tr-smooth = 200ms
 }
 
 // ── Fin i18n ──────────────────────────────────────────────────────────────
