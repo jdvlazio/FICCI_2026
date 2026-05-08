@@ -228,7 +228,8 @@
       "posterPosition": "center",
       "day_order": 10,
       "flags": "🇺🇸",
-      "genre": "Documental"
+      "genre": "Documental",
+      "year": 2026
     },
     {
       "title": "Opening Night: Earth, Wind & Fire (To Be Celestial VS That’s the Weight of the World)",
@@ -270,7 +271,8 @@
       "posterPosition": "center",
       "day_order": 0,
       "flags": "🇺🇸",
-      "genre": "Documental"
+      "genre": "Documental",
+      "year": 2026
     },
     {
       "title": "Sara Bareilles: Good Grief",
@@ -405,7 +407,9 @@
       "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/7107/large_Alejandro-Sanz-WhenNoOneSeesMe-alberto-castro_clean-16x9-01.jpg",
       "posterPosition": "center",
       "day_order": 1,
-      "flags": "🇪🇸🇺🇸"
+      "flags": "🇪🇸🇺🇸",
+      "genre": "Documental",
+      "year": 2026
     },
     {
       "title": "Doc Meets World",
@@ -443,7 +447,7 @@
       "date": "2026-06-06",
       "time": "1:30 PM",
       "venue": "Spring Studios",
-      "year": null,
+      "year": 2026,
       "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/6969/large_Doc_Meets_World-Clean-16x9-01.jpg",
       "genre": "Documental",
       "posterPosition": "center",
@@ -789,7 +793,7 @@
       "date": "2026-06-06",
       "time": "5:00 PM",
       "venue": "Spring Studios",
-      "year": null,
+      "year": 2026,
       "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/6950/large_Playing_POTUS-Clean-16x9-01.jpg",
       "genre": "Documental",
       "posterPosition": "center",
@@ -833,7 +837,7 @@
       "date": "2026-06-07",
       "time": "5:00 PM",
       "venue": "Spring Studios",
-      "year": null,
+      "year": 2026,
       "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/6976/large_The_Symphony_of_Dance-Bug-16x9-01.jpg",
       "genre": "Documental",
       "posterPosition": "center",
@@ -955,7 +959,9 @@
       "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/7113/large_Adults-clean-16x9-01.jpg",
       "posterPosition": "center",
       "day_order": 8,
-      "flags": "🇺🇸"
+      "flags": "🇺🇸",
+      "genre": "Documental",
+      "year": 2026
     },
     {
       "title": "Alice and Steve",
@@ -984,7 +990,8 @@
       "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/7093/large_Alice_and_Steve-clean-16x9-01.jpg",
       "posterPosition": "center",
       "day_order": 1,
-      "flags": "🇬🇧🇺🇸"
+      "flags": "🇬🇧🇺🇸",
+      "genre": "Documental"
     },
     {
       "title": "Clean Hands",
@@ -1501,7 +1508,7 @@
       "date": "2026-06-06",
       "time": "5:00 PM",
       "venue": "SVA Theatre",
-      "year": null,
+      "year": 2026,
       "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/6936/large_Rain_Reign-Clean-16x9-01.jpg",
       "genre": "Aventura, Drama",
       "posterPosition": "center",
@@ -1846,7 +1853,7 @@
       "date": "2026-06-05",
       "time": "5:00 PM",
       "venue": "OKX Theater at BMCC TPAC",
-      "year": null,
+      "year": 2026,
       "poster": "",
       "genre": "Drama",
       "day_order": 2,
@@ -2012,7 +2019,7 @@
       "date": "2026-06-10",
       "time": "5:30 PM",
       "venue": "Village East by Angelika",
-      "year": null,
+      "year": 2026,
       "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/6860/large_4000_Days_clean_16x9.jpg",
       "genre": "Documental",
       "posterPosition": "center",
@@ -2056,7 +2063,7 @@
       "date": "2026-06-06",
       "time": "5:00 PM",
       "venue": "Village East by Angelika",
-      "year": null,
+      "year": 2026,
       "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/7032/large_TF26_Web_ComingSoon_1920x1080.jpg",
       "genre": "Documental",
       "posterPosition": "center",
@@ -2137,7 +2144,7 @@
       "date": "2026-06-12",
       "time": "8:00 PM",
       "venue": "SVA Theatre",
-      "year": null,
+      "year": 2026,
       "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/7056/large_Carmelo_Anthony-Clean-16x9-01.jpg",
       "genre": "Documental",
       "posterPosition": "center",
@@ -2181,7 +2188,7 @@
       "date": "2026-06-10",
       "time": "5:00 PM",
       "venue": "SVA Theatre",
-      "year": null,
+      "year": 2026,
       "poster": "",
       "genre": "Documental",
       "day_order": 7,
@@ -2213,7 +2220,9 @@
       "time": "7:30 PM",
       "venue": "SVA Theatre",
       "day_order": 5,
-      "flags": "🇺🇸"
+      "flags": "🇺🇸",
+      "genre": "Documental",
+      "year": 2026
     },
     {
       "title": "Full Circle: The First All Black Everest Ascent",
@@ -2290,7 +2299,9 @@
       "time": "2:30 PM",
       "venue": "SVA Theatre",
       "day_order": 4,
-      "flags": "🇺🇸"
+      "flags": "🇺🇸",
+      "genre": "Documental",
+      "year": 2026
     },
     {
       "title": "Guggi",
@@ -2407,7 +2418,7 @@
       "date": "2026-06-07",
       "time": "5:30 PM",
       "venue": "SVA Theatre",
-      "year": null,
+      "year": 2026,
       "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/6910/large_HollywoodDoesAbortion-1_clean_16x9.jpg",
       "genre": "Documental",
       "posterPosition": "center",
@@ -2451,7 +2462,7 @@
       "date": "2026-06-12",
       "time": "5:30 PM",
       "venue": "Village East by Angelika",
-      "year": null,
+      "year": 2026,
       "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/6959/large_Houseofcriticism-melindapinecone-1_clean_16x9.jpg",
       "genre": "Documental",
       "posterPosition": "center",
@@ -2543,7 +2554,8 @@
       "posterPosition": "center",
       "day_order": 3,
       "flags": "🇬🇧🇺🇸",
-      "genre": "Documental"
+      "genre": "Documental",
+      "year": 2026
     },
     {
       "title": "IX XI",
@@ -2581,7 +2593,7 @@
       "date": "2026-06-04",
       "time": "8:45 PM",
       "venue": "Village East by Angelika",
-      "year": null,
+      "year": 2026,
       "poster": "",
       "genre": "Documental",
       "day_order": 1,
@@ -2673,7 +2685,7 @@
       "date": "2026-06-08",
       "time": "5:00 PM",
       "venue": "Village East by Angelika",
-      "year": null,
+      "year": 2026,
       "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/6975/large_March_Forth-Clean-16x9-01.jpg",
       "genre": "Documental",
       "posterPosition": "center",
@@ -2889,7 +2901,7 @@
       "date": "2026-06-09",
       "time": "5:30 PM",
       "venue": "Village East by Angelika",
-      "year": null,
+      "year": 2026,
       "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/6881/large_Spin_Wars-Clean-16x9-01.jpg",
       "genre": "Documental",
       "posterPosition": "center",
@@ -2933,7 +2945,7 @@
       "date": "2026-06-05",
       "time": "5:00 PM",
       "venue": "Village East by Angelika",
-      "year": null,
+      "year": 2026,
       "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/6994/large_Stealing_Magic-1_clean_16x9.jpg",
       "genre": "Documental",
       "posterPosition": "center",
@@ -2977,7 +2989,7 @@
       "date": "2026-06-05",
       "time": "5:30 PM",
       "venue": "SVA Theatre",
-      "year": null,
+      "year": 2026,
       "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/7047/large_The_A-Word_-_The_Future_of_Aging-Clean-16x9-01.jpg",
       "genre": "Documental",
       "posterPosition": "center",
@@ -3149,7 +3161,7 @@
       "date": "2026-06-07",
       "time": "5:00 PM",
       "venue": "SVA Theatre",
-      "year": null,
+      "year": 2026,
       "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/6971/large_threesASFOUR-Clean-16x9-01.jpg",
       "genre": "Documental",
       "posterPosition": "center",
@@ -3236,7 +3248,7 @@
       "date": "2026-06-12",
       "time": "5:00 PM",
       "venue": "SVA Theatre",
-      "year": null,
+      "year": 2026,
       "poster": "",
       "genre": "Documental",
       "day_order": 9,
@@ -3365,7 +3377,7 @@
       "date": "2026-06-09",
       "time": "8:00 PM",
       "venue": "Village East by Angelika",
-      "year": null,
+      "year": 2026,
       "poster": "",
       "genre": "Documental",
       "day_order": 6,
@@ -3451,7 +3463,7 @@
       "date": "2026-06-06",
       "time": "8:15 PM",
       "venue": "AMC 19th St. East 6",
-      "year": null,
+      "year": 2026,
       "poster": "https://image.tmdb.org/t/p/w185/crGynSiPjF5Tn5XG8B11QrlNZ3X.jpg",
       "genre": "Terror, Misterio",
       "day_order": 3,
@@ -3666,7 +3678,7 @@
       "date": "2026-06-07",
       "time": "6:15 PM",
       "venue": "Village East by Angelika",
-      "year": null,
+      "year": 2026,
       "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/6983/large_Crooks-Clean-16x9-01.jpg",
       "genre": "Crimen, Suspense",
       "posterPosition": "center",
@@ -3710,7 +3722,7 @@
       "date": "2026-06-06",
       "time": "5:30 PM",
       "venue": "Village East by Angelika",
-      "year": null,
+      "year": 2026,
       "poster": "https://image.tmdb.org/t/p/w185/i6mtsJKENKOknAoK8C7Acq4o1mW.jpg",
       "genre": "Comedia",
       "day_order": 3,
@@ -3753,7 +3765,7 @@
       "date": "2026-06-06",
       "time": "2:30 PM",
       "venue": "Village East by Angelika",
-      "year": null,
+      "year": 2026,
       "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/6939/large_Human_Theories-Clean-16x9-01.jpg",
       "genre": "Comedia",
       "posterPosition": "center",
@@ -3841,7 +3853,7 @@
       "date": "2026-06-05",
       "time": "5:45 PM",
       "venue": "Village East by Angelika",
-      "year": null,
+      "year": 2026,
       "poster": "",
       "genre": "Comedia",
       "day_order": 2,
@@ -4014,7 +4026,9 @@
       "time": "5:30 PM",
       "venue": "SVA Theatre",
       "day_order": 6,
-      "flags": "🇺🇸"
+      "flags": "🇺🇸",
+      "genre": "Documental",
+      "year": 2026
     },
     {
       "title": "The Wedding Entertainer (The Tale of Moishe Badhan)",
@@ -4052,7 +4066,7 @@
       "date": "2026-06-04",
       "time": "5:45 PM",
       "venue": "Village East by Angelika",
-      "year": null,
+      "year": 2026,
       "poster": "",
       "genre": "",
       "day_order": 1,
@@ -4360,7 +4374,7 @@
       "date": "2026-06-06",
       "time": "8:30 PM",
       "venue": "SVA Theatre",
-      "year": null,
+      "year": 2026,
       "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/7033/large_Here_I_m_Alive-Clean-16x9-01-v2.jpg",
       "genre": "",
       "posterPosition": "center",
@@ -4490,7 +4504,7 @@
       "date": "2026-06-05",
       "time": "8:45 PM",
       "venue": "Village East by Angelika",
-      "year": null,
+      "year": 2026,
       "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/6887/large_Mother_Future_Self-Clean-16x9-01.jpg",
       "genre": "",
       "posterPosition": "center",
@@ -4534,7 +4548,7 @@
       "date": "2026-06-06",
       "time": "8:30 PM",
       "venue": "Village East by Angelika",
-      "year": null,
+      "year": 2026,
       "poster": "https://image.tmdb.org/t/p/w185/hGy8hODGfne7Eh41hNVDv1AZw4M.jpg",
       "genre": "",
       "day_order": 3,
@@ -4576,7 +4590,7 @@
       "date": "2026-06-04",
       "time": "8:30 PM",
       "venue": "Village East by Angelika",
-      "year": null,
+      "year": 2026,
       "poster": "",
       "genre": "Drama",
       "day_order": 1,
@@ -4798,7 +4812,7 @@
       "date": "2026-06-07",
       "time": "5:15 PM",
       "venue": "Village East by Angelika",
-      "year": null,
+      "year": 2026,
       "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/6930/large_COLORSOFWHITEROCK_PETITE_MAISON_PRODUCTION_1_clean_16x9.jpg",
       "genre": "Documental",
       "posterPosition": "center",
@@ -5230,7 +5244,7 @@
       "date": "2026-06-07",
       "time": "2:30 PM",
       "venue": "AMC 19th St. East 6",
-      "year": null,
+      "year": 2026,
       "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/6962/large_Against_the_Flow-Clean-16x9-01.jpg",
       "genre": "",
       "posterPosition": "center",
@@ -5736,7 +5750,9 @@
       "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/7139/large_911Reunited-clean-16x9-01.jpg",
       "posterPosition": "center",
       "day_order": 10,
-      "flags": "🇺🇸"
+      "flags": "🇺🇸",
+      "genre": "Documental",
+      "year": 2026
     },
     {
       "title": "Bound: 30th Anniversary",
@@ -5765,7 +5781,9 @@
       "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/7054/large_BOUND-clean-16x9-01.jpg",
       "posterPosition": "center",
       "day_order": 4,
-      "flags": "🇺🇸"
+      "flags": "🇺🇸",
+      "genre": "Drama",
+      "year": 1996
     },
     {
       "title": "Bridget Jones's Diary with Renee Zellweger and Sharon Maguire",
@@ -5823,7 +5841,9 @@
       "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/7140/large_Daftpunk-clean-16x9-01.jpg",
       "posterPosition": "center",
       "day_order": 5,
-      "flags": "🇫🇷🇺🇸"
+      "flags": "🇫🇷🇺🇸",
+      "genre": "Ciencia ficción, Drama",
+      "year": 2026
     },
     {
       "title": "Small Town Gay Bar",
@@ -5914,7 +5934,8 @@
       "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/7112/large_DearEngland-clean-16x9-01.jpg",
       "posterPosition": "center",
       "day_order": 9,
-      "flags": "🇬🇧"
+      "flags": "🇬🇧",
+      "genre": "Documental"
     },
     {
       "title": "ESPN Deportes, ESPN, & Tribeca Studios Presents: 13.4 Seconds To Nowhere + Shooting Stars: The Adrián Solano Story",
@@ -6188,7 +6209,8 @@
       "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/7126/large_TF26_LiveShows_NYTCANNONBALL_1920x1080.jpg",
       "posterPosition": "center",
       "day_order": 9,
-      "flags": "🇺🇸"
+      "flags": "🇺🇸",
+      "year": 2026
     },
     {
       "title": "Concert & Conversation: Hrishikesh Hirway Moderated By Adam Scott",
@@ -6216,7 +6238,8 @@
       "venue": "Le Poisson Rouge",
       "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/7133/large_TF26_LiveShows_HRISHIKESH_NEW.jpg",
       "posterPosition": "center",
-      "day_order": 10
+      "day_order": 10,
+      "year": 2026
     },
     {
       "title": "Death Sex & Money Live with Guests Peter Dinklage & Erica Schmidt",
@@ -6244,7 +6267,8 @@
       "venue": "SVA Theatre",
       "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/7130/large_TF26_LiveShows_DEATHSEXMONEY_NEW.jpg",
       "posterPosition": "center",
-      "day_order": 7
+      "day_order": 7,
+      "year": 2026
     },
     {
       "title": "Fashion Neurosis Live with Guest Laurie Anderson",
@@ -6279,7 +6303,8 @@
       "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/7125/large_TF26_LiveShows_FASHIONNEUROSIS_1920x1080.jpg",
       "posterPosition": "center",
       "day_order": 6,
-      "flags": "🇬🇧"
+      "flags": "🇬🇧",
+      "year": 2026
     },
     {
       "title": "Lemme Say This Live with Guest Sydney Lemmon",
@@ -6307,7 +6332,8 @@
       "venue": "SVA Theatre",
       "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/7129/large_TF26_LiveShows_LEMMESAYTHIS_1920x1080.jpg",
       "posterPosition": "center",
-      "day_order": 8
+      "day_order": 8,
+      "year": 2026
     },
     {
       "title": "New Yorker Radio Hour Live with David Remnick",
@@ -6336,7 +6362,8 @@
       "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/7131/large_TF26_LiveShows_NEWYORKERRADIOHOUR_1920x1080.jpg",
       "posterPosition": "center",
       "day_order": 7,
-      "flags": "🇺🇸"
+      "flags": "🇺🇸",
+      "year": 2026
     },
     {
       "title": "On With Kara Swisher with Guest Marc Maron",
@@ -6365,7 +6392,8 @@
       "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/7127/large_TF26_LiveShows_ONWITHKARA_NEW.jpg",
       "posterPosition": "center",
       "day_order": 5,
-      "flags": "🇺🇸"
+      "flags": "🇺🇸",
+      "year": 2026
     },
     {
       "title": "Radiolab Live with Latif Nasser & Lulu Miller",
@@ -6394,7 +6422,8 @@
       "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/7124/large_TF26_LiveShows_RADIOLAB_NEW.jpg",
       "posterPosition": "center",
       "day_order": 6,
-      "flags": "🇺🇸"
+      "flags": "🇺🇸",
+      "year": 2026
     },
     {
       "title": "2026 Indie TV Documentary Showcase",
@@ -7992,7 +8021,8 @@
       "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/7037/large_5SOS-CLEAN-16x9-01.jpg",
       "posterPosition": "center",
       "day_order": 6,
-      "flags": "🇺🇸"
+      "flags": "🇺🇸",
+      "year": 2026
     },
     {
       "title": "\"Fingers Crossed\" - The Moth & The Flame",
@@ -8021,7 +8051,8 @@
       "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/6946/large_Fingers_Crossed_-_The_Moth___The_Flame-Clean-16x9-01.jpg",
       "posterPosition": "center",
       "day_order": 6,
-      "flags": "🇺🇸"
+      "flags": "🇺🇸",
+      "year": 2026
     },
     {
       "title": "\"Grave\" - Kid Cudi",
@@ -8050,7 +8081,8 @@
       "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/7036/large_TF26_Web_ComingSoon_1920x1080.jpg",
       "posterPosition": "center",
       "day_order": 6,
-      "flags": "🇺🇸"
+      "flags": "🇺🇸",
+      "year": 2026
     },
     {
       "title": "\"Kill Me Fast\" - Three Days Grace",
@@ -8166,7 +8198,8 @@
       "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/6863/large_New_York_Is_Dead_-_LP_Giobi-Clean-16x9-01.jpg",
       "posterPosition": "center",
       "day_order": 6,
-      "flags": "🇺🇸"
+      "flags": "🇺🇸",
+      "year": 2026
     },
     {
       "title": "32 B",
@@ -8249,7 +8282,7 @@
       "venue": "Spring Studios",
       "year": 2026,
       "poster": "https://image.tmdb.org/t/p/w185/xyJc46QkEAE35PVyyCT8JguQrTO.jpg",
-      "genre": "",
+      "genre": "Drama",
       "day_order": 2,
       "flags": "🇺🇸",
       "synopsis_en": "When a small-town crime goes awry, the evidence is scattered across four picturesque landscapes in the Southern American countryside - inviting viewers to piece together what happened."
@@ -8286,7 +8319,7 @@
       "venue": "Spring Studios",
       "year": 2012,
       "poster": "https://image.tmdb.org/t/p/w185/qqk2Gw7XB3oNGL7TuppcL4JaRax.jpg",
-      "genre": "",
+      "genre": "Drama",
       "day_order": 1,
       "flags": "🇺🇸",
       "synopsis_en": "When a mother and daughter tour film festivals in Europe and decide to part ways, they must confront life-changing choices alone, before returning home."
@@ -8440,7 +8473,7 @@
       "venue": "Spring Studios",
       "year": 1990,
       "poster": "https://image.tmdb.org/t/p/w185/gW3SqK4V14p1Avx7VivI0mDQBpO.jpg",
-      "genre": "",
+      "genre": "Drama",
       "day_order": 3,
       "flags": "🇨🇴",
       "synopsis_en": "Border Brujo is a ritual-linguistic journey across the U.S./Mexico border written and performed by artist Guillermo Gómez-Peña. In the guise of a cross-cultural shaman, Gómez Peña shifts into 15 different personas, each speaking a different language. The personas are symbolic of the borders between North and South, Anglo and Latino; myth and reality; legality and illegality; art and life. Border Brujo assaults and exorcises the demons of dominant cultures. He articulates fear, desire, trauma sublimation, anger and misplacement embodying ruptured and defiant communities with multilingual dexterity and humor."
@@ -8487,9 +8520,9 @@
       "date": "2026-06-05",
       "time": "8:30 PM",
       "venue": "Spring Studios",
-      "year": null,
+      "year": 2026,
       "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/6903/large_Buckets-Clean-16x9-01.jpg",
-      "genre": "",
+      "genre": "Drama",
       "posterPosition": "center",
       "day_order": 2,
       "flags": "🇺🇸"
@@ -8528,7 +8561,8 @@
       "posterPosition": "center",
       "day_order": 3,
       "flags": "🇺🇸",
-      "genre": "Animación"
+      "genre": "Animación",
+      "year": 2026
     },
     {
       "title": "Child of the Rouge",
@@ -8569,7 +8603,9 @@
       "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/6868/large_ChildOfTheRouge-CLEAN-16x9-01.jpg",
       "posterPosition": "center",
       "day_order": 2,
-      "flags": "🇺🇸"
+      "flags": "🇺🇸",
+      "genre": "Drama",
+      "year": 2026
     },
     {
       "title": "Cookie, Love",
@@ -8719,7 +8755,7 @@
       "date": "2026-06-06",
       "time": "12:15 PM",
       "venue": "Spring Studios",
-      "year": null,
+      "year": 2026,
       "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/7019/large_Dear_Upstairs_Neighbors-Clean-16x9-01.jpg",
       "genre": "Animación",
       "posterPosition": "center",
@@ -8889,7 +8925,8 @@
       "posterPosition": "center",
       "day_order": 10,
       "flags": "🇺🇸",
-      "genre": "Documental"
+      "genre": "Documental",
+      "year": 2026
     },
     {
       "title": "Fault",
@@ -9064,7 +9101,7 @@
       "venue": "Spring Studios",
       "year": 2021,
       "poster": "https://image.tmdb.org/t/p/w185/fv1KZVziar0T56AQFHlqElqPgyV.jpg",
-      "genre": "",
+      "genre": "Drama",
       "day_order": 2,
       "flags": "🇺🇸",
       "synopsis_en": "A movie directed by Jeffrey Hidalgo starring Jasmine Curtis-Smith."
@@ -9108,7 +9145,9 @@
       "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/7020/large_Getar_Hero-Clean-16x9-01.jpg",
       "posterPosition": "center",
       "day_order": 2,
-      "flags": "🇺🇸🇮🇳"
+      "flags": "🇺🇸🇮🇳",
+      "genre": "Drama",
+      "year": 2026
     },
     {
       "title": "Greetings from Sumatra",
@@ -9388,7 +9427,7 @@
       "date": "2026-06-04",
       "time": "8:30 PM",
       "venue": "Spring Studios",
-      "year": null,
+      "year": 2026,
       "poster": "https://image.tmdb.org/t/p/w185/bHx1gKtymZ6Vd2vCr4jlyPYzr2e.jpg",
       "genre": "Suspense",
       "day_order": 1,
@@ -9431,7 +9470,7 @@
       "date": "2026-06-06",
       "time": "8:45 PM",
       "venue": "Spring Studios",
-      "year": null,
+      "year": 2026,
       "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/6944/large_ImNotHome-clean-16x9-01.jpg",
       "genre": "Documental",
       "posterPosition": "center",
@@ -9484,7 +9523,9 @@
       "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/6883/large_I__of_an_Accident_or_of_Love-Clean-16x9-01.jpg",
       "posterPosition": "center",
       "day_order": 2,
-      "flags": "🇫🇷"
+      "flags": "🇫🇷",
+      "genre": "Drama",
+      "year": 2026
     },
     {
       "title": "Imprint",
@@ -9568,7 +9609,9 @@
       "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/7012/large_Insufficient_Fare-Clean-16x9-01.jpg",
       "posterPosition": "center",
       "day_order": 3,
-      "flags": "🇺🇸"
+      "flags": "🇺🇸",
+      "genre": "Drama",
+      "year": 2026
     },
     {
       "title": "Kaya (ᜃᜌ)",
@@ -9652,7 +9695,7 @@
       "venue": "Spring Studios",
       "year": 2026,
       "poster": "https://image.tmdb.org/t/p/w185/deBNC4AYcIWn5PDOzQIyE3YDQEY.jpg",
-      "genre": "",
+      "genre": "Drama",
       "day_order": 3,
       "flags": "🇬🇧",
       "synopsis_en": "Kiloran Bay is written and directed by Michael Bruce: A musical short film starring Alan Cumming and Jack Wolfe. After decades away, a gay man returns home to Scotland to attend a traditional wedding and faces a past he spent a lifetime avoiding."
@@ -9695,7 +9738,7 @@
       "venue": "Spring Studios",
       "year": 2026,
       "poster": "https://image.tmdb.org/t/p/w185/ph8COLT1urTUa59Ze0xef1bPI2b.jpg",
-      "genre": "",
+      "genre": "Drama",
       "day_order": 1,
       "flags": "🇲🇽",
       "synopsis_en": "Lucía “La Guerrera”, a 16-year-old Mexican lucha libre wrestler, as she struggles to find herself in the wrestling world that she grew up in. Her Father, “El Patron Enmascarado”, who has trained her from a young age, believes that she must maintain the tactics of a ruda (a wrestler who plays dirty to win) in order to have a successful wrestling career. A persona that has laid the foundation of their family’s legacy for generations and been the key to their success. Lucía is determined to challenge her family’s ways. She is left to decide if she will trust her own intuition and put up a real fight or play by the unspoken rules of the game, surrendering to the strategy that has been forced upon her."
@@ -9777,7 +9820,8 @@
       "posterPosition": "center",
       "day_order": 3,
       "flags": "🇧🇷",
-      "genre": "Animación"
+      "genre": "Animación",
+      "year": 2026
     },
     {
       "title": "Listen",
@@ -9965,7 +10009,8 @@
       "venue": "Spring Studios",
       "day_order": 4,
       "flags": "🇫🇷🇸🇳🇺🇸",
-      "genre": "Documental"
+      "genre": "Documental",
+      "year": 2026
     },
     {
       "title": "Odessa",
@@ -10165,7 +10210,8 @@
       "venue": "Spring Studios",
       "day_order": 4,
       "flags": "🇵🇹🇺🇸",
-      "genre": "Documental"
+      "genre": "Documental",
+      "year": 2026
     }
   ]
 }
