@@ -3466,7 +3466,7 @@ const SECTION_ORDER_LIST=[
   '🌍 International Narrative Competition','🏅 Documentary Competition',
   '🎬 Spotlight Narrative','📹 Spotlight Documentary','👁️ Viewpoints',
   '🌙 Escape From Tribeca','📽️ Reunions & Retrospectives','🎭 Storytellers',
-  '💡 Talks','⭐ Special Events','📱 NOW','📺 TV','🎨 Shorts Programs',
+  '🎙️ Podcasts','⭐ Special Events','📱 NOW','📺 TV','🎨 Shorts Programs',
   '🌿 Free Outdoor Screenings','✂️ Shorts',
   // Sin emoji (festivales legacy)
   'Gala','Spotlight+','U.S. Narrative Competition',
@@ -3493,7 +3493,7 @@ const SECTION_COLORS={
   '🌙 Escape From Tribeca':'#E24B4A',
   '📽️ Reunions & Retrospectives':'#888780',
   '🎭 Storytellers':'#FAC775',
-  '💡 Talks':'#85B7EB',
+  '🎙️ Podcasts':'#85B7EB',
   '📱 NOW':'#5DCAA5',
   '📺 TV':'#B4B2A9',
   '⭐ Special Events':'#EF9F27',
@@ -9361,7 +9361,8 @@ function renderPeliculaView(){
       if(_isEditorial){
         const _accent=_sectionColor(f.section||'');
         const _edSecLbl=_secLabel(f.section||'');
-        posterImg=`<div class="ed-hdr" style="background:${_accent}"><div class="ed-lbl">${_edSecLbl}</div></div><div class="ed-img"><img src="${posterSrc}" loading="lazy" onerror="this.remove()" alt="" onload="this.style.opacity='1'"></div><div class="ed-body"><div class="ed-title">${displayTitle}</div></div>`;
+        const _edBodyTitle=(()=>{const pfx=_edSecLbl+' - ';return displayTitle.startsWith(pfx)?displayTitle.slice(pfx.length):displayTitle;})();
+        posterImg=`<div class="ed-hdr" style="background:${_accent}"><div class="ed-lbl">${_edSecLbl}</div></div><div class="ed-img"><img src="${posterSrc}" loading="lazy" onerror="this.remove()" alt="" onload="this.style.opacity='1'"></div><div class="ed-body"><div class="ed-title">${_edBodyTitle}</div></div>`;
       } else {
         posterImg=posterSrc
           ?`<img src="${posterSrc}" loading="lazy" data-title="${f.title.replace(/"/g,'&quot;')}" style="width:100%;height:100%;object-fit:cover${_opacity};display:block;opacity:0;transition:opacity 250ms ease" onload="this.style.opacity='1'" onerror="_posterErr(this)" alt="">`

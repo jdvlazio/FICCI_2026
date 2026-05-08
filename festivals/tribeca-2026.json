@@ -6134,7 +6134,7 @@
     {
       "title": "Cannonball Live with Wesley Morris",
       "slug": "cannonball-live-with-wesley-morris",
-      "section": "💡 Talks",
+      "section": "🎙️ Podcasts",
       "type": "event",
       "filmType": "",
       "director": "",
@@ -6164,7 +6164,7 @@
     {
       "title": "Concert & Conversation: Hrishikesh Hirway Moderated By Adam Scott",
       "slug": "concert-conversation-hrishikesh-hirway-moderated-by-adam-scott",
-      "section": "💡 Talks",
+      "section": "🎙️ Podcasts",
       "type": "event",
       "filmType": "",
       "director": "",
@@ -6193,7 +6193,7 @@
     {
       "title": "Death Sex & Money Live with Guests Peter Dinklage & Erica Schmidt",
       "slug": "death-sex-money-live-with-guests-peter-dinklage-erica-schmidt",
-      "section": "💡 Talks",
+      "section": "🎙️ Podcasts",
       "type": "event",
       "filmType": "",
       "director": "",
@@ -6222,7 +6222,7 @@
     {
       "title": "Fashion Neurosis Live with Guest Laurie Anderson",
       "slug": "fashion-neurosis-live-with-guest-laurie-anderson",
-      "section": "💡 Talks",
+      "section": "🎙️ Podcasts",
       "type": "event",
       "filmType": "",
       "director": "",
@@ -6258,7 +6258,7 @@
     {
       "title": "Lemme Say This Live with Guest Sydney Lemmon",
       "slug": "lemme-say-this-live-with-guest-sydney-lemmon",
-      "section": "💡 Talks",
+      "section": "🎙️ Podcasts",
       "type": "event",
       "filmType": "",
       "director": "",
@@ -6287,7 +6287,7 @@
     {
       "title": "New Yorker Radio Hour Live with David Remnick",
       "slug": "new-yorker-radio-hour-live-with-david-remnick",
-      "section": "💡 Talks",
+      "section": "🎙️ Podcasts",
       "type": "event",
       "filmType": "",
       "director": "",
@@ -6317,7 +6317,7 @@
     {
       "title": "On With Kara Swisher with Guest Marc Maron",
       "slug": "on-with-kara-swisher-with-guest-marc-maron",
-      "section": "💡 Talks",
+      "section": "🎙️ Podcasts",
       "type": "event",
       "filmType": "",
       "director": "",
@@ -6347,7 +6347,7 @@
     {
       "title": "Radiolab Live with Latif Nasser & Lulu Miller",
       "slug": "radiolab-live-with-latif-nasser-lulu-miller",
-      "section": "💡 Talks",
+      "section": "🎙️ Podcasts",
       "type": "event",
       "filmType": "",
       "director": "",
@@ -10403,6 +10403,223 @@
       "day": "2026-06-14",
       "time": "6:00 PM",
       "day_order": 11
+    },
+    {
+      "title": "Storytellers - Este Haim",
+      "slug": "storytellers-este-haim-2026",
+      "section": "🎭 Storytellers",
+      "type": "event",
+      "filmType": "",
+      "director": "",
+      "duration": 60,
+      "country": "",
+      "language": "",
+      "premiere": "",
+      "screenings": [
+        {
+          "date": "2026-06-13",
+          "time": "2:00 PM",
+          "venue": "Spring Studios",
+          "day_order": 10
+        }
+      ],
+      "day": "2026-06-13",
+      "date": "2026-06-13",
+      "time": "2:00 PM",
+      "venue": "Spring Studios",
+      "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/7116/large_EsteHaim_1080x1920_v2.jpg",
+      "posterPosition": "center",
+      "day_order": 10,
+      "flags": "",
+      "year": 2026,
+      "synopsis": "Este Haim es conocida como bajista y vocalista del trío HAIM, que fundó con sus hermanas en 2006. La banda es nominada cinco veces al Grammy. Su álbum I quit fue nominado al Grammy al Mejor Álbum de Rock, siendo la primera banda femenina en esa categoría. Haim ha compuesto música para la serie Maid de Netflix, fue consultora musical en The White Lotus de HBO, y co-compuso las bandas sonoras de Suncoast y Anyone But You.",
+      "synopsis_en": "Este Haim is best known as the bassist and vocalist of the rock trio HAIM, which she formed with her sisters in 2006. The band is a five-time Grammy nominee. Their album I quit was nominated for Best Rock Album, making them the first all-female band in the category. Haim has composed the score for Netflix's Maid, served as music consultant on HBO's The White Lotus, and co-scored Suncoast and Anyone But You."
+    },
+    {
+      "title": "Storytellers - Bruce Springsteen Receives The Harry Belafonte Voices for Social Justice Award",
+      "slug": "storytellers-bruce-springsteen-receives-the-harry-belafonte-voices-for-social-justice-award-2026",
+      "section": "🎭 Storytellers",
+      "type": "event",
+      "filmType": "",
+      "director": "",
+      "duration": 60,
+      "country": "",
+      "language": "",
+      "premiere": "",
+      "screenings": [
+        {
+          "date": "2026-06-13",
+          "time": "4:30 PM",
+          "venue": "OKX Theater at BMCC TPAC",
+          "day_order": 10
+        }
+      ],
+      "day": "2026-06-13",
+      "date": "2026-06-13",
+      "time": "4:30 PM",
+      "venue": "OKX Theater at BMCC TPAC",
+      "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/7114/large_Bruce_Bono_1080x1920_.jpg",
+      "posterPosition": "center",
+      "day_order": 10,
+      "flags": "",
+      "year": 2026,
+      "synopsis": "Bruce Springsteen recibirá el Premio Harry Belafonte Voices for Social Justice 2026, en una velada que incluirá una conversación con su amigo y activista Bono, con tributos de Robert De Niro y Patti Smith.",
+      "synopsis_en": "Bruce Springsteen will receive the 2026 Harry Belafonte Voices for Social Justice Award. The evening will include a conversation between Springsteen and his longtime friend and fellow activist Bono, with additional tributes from Robert De Niro and Patti Smith."
+    },
+    {
+      "title": "Audio Flux Presents: Trash or Treasure",
+      "slug": "audio-flux-presents-trash-or-treasure-2026",
+      "section": "🎙️ Podcasts",
+      "type": "event",
+      "filmType": "",
+      "director": "",
+      "duration": 90,
+      "country": "United States",
+      "language": "English",
+      "premiere": "World Premiere",
+      "screenings": [
+        {
+          "date": "2026-06-14",
+          "time": "2:30 PM",
+          "venue": "SVA Theatre",
+          "day_order": 11
+        }
+      ],
+      "day": "2026-06-14",
+      "date": "2026-06-14",
+      "time": "2:30 PM",
+      "venue": "SVA Theatre",
+      "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/7128/large_TF26_LiveShows_AUDIOFLUX_New.jpg",
+      "posterPosition": "center",
+      "day_order": 11,
+      "flags": "🇺🇸",
+      "year": 2026,
+      "synopsis": "Audio Flux es un espacio para el audio innovador y la narración audaz. Los cofundadores Julie Shapiro y John DeLore presentan el debut de ocho nuevos 'fluxworks' —historias sonoras de tres minutos inspiradas en el artista keniano Cyrus Kabiru, quien transforma materiales desechados en obras de arte provocadoras.",
+      "synopsis_en": "Audio Flux is a home for innovative, short-form audio and bold storytelling. Join co-founders Julie Shapiro and John DeLore for the debut of eight new fluxworks—three-minute audio stories inspired by Kenya-based artist Cyrus Kabiru, who transforms trash and other discarded materials into stunning, provocative works of art."
+    },
+    {
+      "title": "Official Selections: Timbre",
+      "slug": "official-selections-timbre-2026",
+      "section": "🎙️ Podcasts",
+      "type": "event",
+      "filmType": "",
+      "director": "",
+      "duration": 90,
+      "country": "",
+      "language": "",
+      "premiere": "World Premiere",
+      "screenings": [
+        {
+          "date": "2026-06-08",
+          "time": "3:00 PM",
+          "venue": "Shorts Theater at Spring Studios",
+          "day_order": 5
+        }
+      ],
+      "day": "2026-06-08",
+      "date": "2026-06-08",
+      "time": "3:00 PM",
+      "venue": "Shorts Theater at Spring Studios",
+      "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/7134/large_Selections-Timbre.jpg",
+      "posterPosition": "center",
+      "day_order": 5,
+      "flags": "",
+      "year": 2026,
+      "synopsis": "En este show en vivo con creadores presentes, voces audaces y originales muestran ingenio, profundidad y experimentación con la forma.",
+      "synopsis_en": "In this live show with creators in attendance, experience bold, original voices showcasing wit and depth and experimenting with form."
+    },
+    {
+      "title": "The Showcase List: Texture",
+      "slug": "showcase-list-texture-2026",
+      "section": "🎙️ Podcasts",
+      "type": "event",
+      "filmType": "",
+      "director": "",
+      "duration": 90,
+      "country": "",
+      "language": "",
+      "premiere": "World Premiere",
+      "screenings": [
+        {
+          "date": "2026-06-09",
+          "time": "2:30 PM",
+          "venue": "Shorts Theater at Spring Studios",
+          "day_order": 6
+        }
+      ],
+      "day": "2026-06-09",
+      "date": "2026-06-09",
+      "time": "2:30 PM",
+      "venue": "Shorts Theater at Spring Studios",
+      "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/7136/large_Showcase-Texture.jpg",
+      "posterPosition": "center",
+      "day_order": 6,
+      "flags": "",
+      "year": 2026,
+      "synopsis": "En este show en vivo con creadores presentes, exploramos historias de compasión y resistencia.",
+      "synopsis_en": "In this live show with creators in attendance, we explore stories of compassion and endurance."
+    },
+    {
+      "title": "Official Selections: Tone",
+      "slug": "official-selections-tone-2026",
+      "section": "🎙️ Podcasts",
+      "type": "event",
+      "filmType": "",
+      "director": "",
+      "duration": 90,
+      "country": "",
+      "language": "",
+      "premiere": "World Premiere",
+      "screenings": [
+        {
+          "date": "2026-06-10",
+          "time": "2:30 PM",
+          "venue": "Shorts Theater at Spring Studios",
+          "day_order": 7
+        }
+      ],
+      "day": "2026-06-10",
+      "date": "2026-06-10",
+      "time": "2:30 PM",
+      "venue": "Shorts Theater at Spring Studios",
+      "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/7135/large_Selections-Tone.jpg",
+      "posterPosition": "center",
+      "day_order": 7,
+      "flags": "",
+      "year": 2026,
+      "synopsis": "En este show en vivo con creadores presentes, sondeamos las profundidades de la experiencia humana a través de la investigación y la indagación.",
+      "synopsis_en": "In this live show with creators in attendance, we probe the depths of the human experience through investigation and inquiry."
+    },
+    {
+      "title": "The Showcase List: Tempo",
+      "slug": "showcase-list-tempo-2026",
+      "section": "🎙️ Podcasts",
+      "type": "event",
+      "filmType": "",
+      "director": "",
+      "duration": 90,
+      "country": "",
+      "language": "",
+      "premiere": "World Premiere",
+      "screenings": [
+        {
+          "date": "2026-06-11",
+          "time": "2:30 PM",
+          "venue": "Shorts Theater at Spring Studios",
+          "day_order": 8
+        }
+      ],
+      "day": "2026-06-11",
+      "date": "2026-06-11",
+      "time": "2:30 PM",
+      "venue": "Shorts Theater at Spring Studios",
+      "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/7137/large_Showcase-Tempo.jpg",
+      "posterPosition": "center",
+      "day_order": 8,
+      "flags": "",
+      "year": 2026,
+      "synopsis": "En este show en vivo con creadores presentes, narradores únicos y singulares son destacados.",
+      "synopsis_en": "In this live show with creators in attendance, unique, singular storytellers are highlighted."
     }
   ]
 }
