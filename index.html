@@ -822,13 +822,13 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:var(--t
  * Ratio 2:3 → 177px alto. Estándar one-sheet cinematográfico.          */
 .poster-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--sp-2);padding:10px 20px 10px 10px;transition:opacity var(--tr-fast)}
 .poster-card{position:relative;border-radius:var(--r);overflow:hidden;cursor:pointer;background:var(--surf-2);background-size:cover;background-position:center;aspect-ratio:2/3;display:block}
-.poster-card.editorial{background:#1A1A1A;display:flex;flex-direction:column}
+.poster-card.editorial{background:var(--surf-3,#1A1A1A);display:flex;flex-direction:column}
 .poster-card.editorial .ed-hdr{height:28.89%;flex-shrink:0;display:flex;flex-direction:column;justify-content:center;padding:0 8px}
 .poster-card.editorial .ed-hdr .ed-lbl{font-family:-apple-system,BlinkMacSystemFont,sans-serif;font-size:6.5px;font-weight:800;letter-spacing:.7px;color:#0A0A0A;line-height:1.35;text-transform:uppercase}
 .poster-card.editorial .ed-img{width:100%;flex-shrink:0;overflow:hidden}
 .poster-card.editorial .ed-img img{width:100%;aspect-ratio:16/9;object-fit:cover;display:block;opacity:0;transition:opacity 250ms ease}
 .poster-card.editorial .ed-body{flex:1;display:flex;flex-direction:column;justify-content:flex-end;padding:0 8px 8px}
-.poster-card.editorial .ed-body .ed-title{font-family:-apple-system,BlinkMacSystemFont,sans-serif;font-size:11px;font-weight:800;letter-spacing:-.3px;color:#F0EDE8;line-height:1.27;display:-webkit-box;-webkit-line-clamp:4;-webkit-box-orient:vertical;overflow:hidden}
+.poster-card.editorial .ed-body .ed-title{font-family:-apple-system,BlinkMacSystemFont,sans-serif;font-size:9px;font-weight:800;letter-spacing:-.2px;color:#F0EDE8;line-height:1.3;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
 .poster-card-stack{width:100%;height:100%;display:flex;gap:1px;background:var(--bdr)}
 .pcs-back,.pcs-front{flex:1;height:100%;object-fit:cover;object-position:center;display:block;min-width:0}
 .pel-sheet-poster-stage{display:flex;gap:1px;background:var(--bdr);flex-shrink:0;width:var(--poster-lg-w);height:var(--poster-lg-h);border-radius:var(--r-md);overflow:hidden}
@@ -888,6 +888,13 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:var(--t
 .pel-sheet-inner{padding:var(--sp-btn) var(--sp-4) var(--sp-6)}
 .pel-sheet-poster{width:var(--poster-lg-w);height:var(--poster-lg-h);object-fit:cover;border-radius:var(--r-md);flex-shrink:0;display:block;background:var(--surf-2)}
 .pel-sheet-poster-ph{width:var(--poster-lg-w);height:var(--poster-lg-h);border-radius:var(--r-md);background:var(--surf-2);flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:var(--t-display)}
+/* Poster editorial en sheet: sólido de sección + imagen 16:9 — misma regla que el card de grilla */
+.psp-editorial{width:var(--poster-lg-w);height:var(--poster-lg-h);border-radius:var(--r-md);overflow:hidden;flex-shrink:0;display:flex;flex-direction:column;background:#1A1A1A}
+.psp-editorial .psp-ed-hdr{height:28.89%;flex-shrink:0;display:flex;align-items:center;padding:0 6px}
+.psp-editorial .psp-ed-hdr span{font-size:5.5px;font-weight:800;letter-spacing:.7px;color:#0A0A0A;text-transform:uppercase;line-height:1.3}
+.psp-editorial .psp-ed-img{width:100%;flex-shrink:0;overflow:hidden}
+.psp-editorial .psp-ed-img img{width:100%;aspect-ratio:16/9;object-fit:cover;display:block}
+.pel-sheet.compact .psp-editorial{width:72px;height:108px}
 .pel-sheet-header{display:flex;gap:var(--sp-btn);margin-bottom:var(--sp-4)}
 /* Modo compacto: films con 3+ funciones reducen el poster para que CTAs sean visibles */
 .pel-sheet.compact .pel-sheet-poster,.pel-sheet.compact .pel-sheet-poster-ph,.pel-sheet.compact .pel-sheet-poster-stage{width:72px;height:108px}
@@ -3265,56 +3272,6 @@ function _buildPosterSVG(o){
     <text x="${VW/2}" y="${VH-5}" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,sans-serif" font-size="6" font-weight="500" fill="#5A4E40" letter-spacing="1">${o.ft}</text>
   </svg>`;
 
-  return `data:image/svg+xml,${encodeURIComponent(svg)}`;
-}
-function makeFilmPlaceholder(title, director, year, section){
-  // Poster generativo para films sin imagen real.
-  // Header gris #2C2C2A (único para films, no confundible con ningún otro tipo).
-  // Año en header centrado — información útil y diferenciador visual.
-  // Título adaptativo + director truncado en caja interior.
-  // En el enricher aparece en gris → diagnóstico visual inmediato de lo pendiente.
-  // NOTA: section se acepta para compatibilidad de firma pero NO modifica el diseño.
-  const VW=120,VH=180,HDR_H=38,BX=10,BY=46,BW=VW-20,BH=VH-56,FY=VH-16,DUR_Y=148;
-  const festName=((FESTIVAL_CONFIG&&FESTIVAL_CONFIG[_activeFestId])||Object.values(FESTIVAL_CONFIG||{})[0]||{}).shortName||'FESTIVAL';
-
-  // Título: mismo sistema adaptativo de _buildPosterSVG
-  const rawWords=(title||'').split(/\s+/);
-  const words=[];
-  rawWords.forEach(w=>{const p=w.split(/-(?=\S)/);p.forEach((x,i)=>words.push(i<p.length-1?x+'-':x));});
-  const fontConfigs=[{MAX:13,fs:10,ld:13,maxLines:3},{MAX:15,fs:9,ld:12,maxLines:5},{MAX:17,fs:8,ld:11,maxLines:9}];
-  let ls=[],FS=10,LD=13;
-  for(const cfg of fontConfigs){
-    const raw=[];let c='';
-    for(const w of words){if(c&&(c+' '+w).length>cfg.MAX){raw.push(c);c=w;}else c=c?c+' '+w:w;}
-    if(c)raw.push(c);
-    ls=[];raw.forEach(l=>{if(l.length>cfg.MAX){for(let i=0;i<l.length;i+=cfg.MAX)ls.push(l.slice(i,i+cfg.MAX));}else ls.push(l);});
-    FS=cfg.fs;LD=cfg.ld;
-    if(ls.length<=cfg.maxLines||cfg.fs===8)break;
-  }
-  const TITLE_ZONE_TOP=54,TITLE_ZONE_BOT=director?140:158;
-  const tzc=Math.round((TITLE_ZONE_TOP+TITLE_ZONE_BOT)/2);
-  const sY=tzc-Math.round(ls.length*LD/2)+LD-4;
-  const tl=ls.map((l,i)=>`<text x="${VW/2}" y="${sY+i*LD}" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,sans-serif" font-size="${FS}" font-weight="700" fill="#B4B2A9">${l}</text>`).join('');
-
-  // Director: primer nombre, máx 20 chars
-  const dir=director?(director.split(',')[0].trim().slice(0,20)):'';
-  const dirEl=dir?`<text x="${VW/2}" y="${TITLE_ZONE_BOT+8}" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,sans-serif" font-size="7" fill="#5F5E5A">${dir}</text>`:'';
-
-  // Año en header centrado (y=22 = una línea centrada en 38px)
-  const yearEl=year?`<text x="${VW/2}" y="22" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,sans-serif" font-size="10" font-weight="700" fill="#D3D1C7" letter-spacing="1">${year}</text>`
-    :`<text x="${VW/2}" y="22" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,sans-serif" font-size="7" fill="#888780" letter-spacing="0.5">SIN POSTER</text>`;
-
-  const svg=`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${VW} ${VH}">
-    <rect width="${VW}" height="${VH}" fill="#1E1B17"/>
-    <rect x="0" y="0" width="${VW}" height="${HDR_H}" fill="#2C2C2A"/>
-    <rect x="0" y="${HDR_H}" width="${VW}" height="1" fill="#444441"/>
-    ${yearEl}
-    <rect x="${BX}" y="${BY}" width="${BW}" height="${BH}" rx="3" fill="#0A0A09" stroke="#2C2C2A" stroke-width="1"/>
-    ${tl}
-    ${dirEl}
-    <rect x="0" y="${FY}" width="${VW}" height="16" fill="#161310"/>
-    <text x="${VW/2}" y="${VH-5}" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,sans-serif" font-size="6" font-weight="500" fill="#5A4E40" letter-spacing="1">${festName}</text>
-  </svg>`;
   return `data:image/svg+xml,${encodeURIComponent(svg)}`;
 }
 
@@ -8521,9 +8478,15 @@ function openPelSheet(title){
       :`<div class="psp-card-ph" onclick="_openCombinedFilmSheet(JSON.parse(this.dataset.film))" data-film="${_fd2}">🎬</div>`;
     posterHtml=`<div class="pel-sheet-poster-stage">${_c1}${_c2}</div>`;
   } else {
-    posterHtml=posterSrc
-      ?`<img class="pel-sheet-poster"${_posterStyle(f)} src="${posterSrc}" data-title="${f.title.replace(/"/g,'&quot;')}" loading="lazy" onerror="_posterErr(this)" alt="">`
-      :`<div class="pel-sheet-poster-ph">🎬</div>`;
+    if(_isEditorialPoster(f)){
+      const _accent=_sectionColor(f.section||'');
+      const _secLbl=_secLabel(f.section||'').toUpperCase();
+      posterHtml=`<div class="psp-editorial"><div class="psp-ed-hdr" style="background:${_accent}"><span>${_secLbl}</span></div><div class="psp-ed-img"><img src="${posterSrc}" loading="lazy" onerror="this.parentElement.style.display='none'" alt=""></div></div>`;
+    } else {
+      posterHtml=posterSrc
+        ?`<img class="pel-sheet-poster"${_posterStyle(f)} src="${posterSrc}" data-title="${f.title.replace(/"/g,'&quot;')}" loading="lazy" onerror="_posterErr(this)" alt="">`
+        :`<div class="pel-sheet-poster-ph">🎬</div>`;
+    }
   }
   const{displayTitle}=parseProgramTitle(f.title);
   const secLabel=_secLabel(f.section);
