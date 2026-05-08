@@ -626,7 +626,7 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:var(--t
 .prio-strip{margin-bottom:var(--sp-3)}
 .sec-hdr{font-size:var(--t-base);font-weight:var(--w-bold);color:var(--white-60);display:flex;align-items:center;gap:var(--sp-1);margin-bottom:var(--sp-2);width:100%}
 .prio-strip-title{font-size:var(--t-base);font-weight:var(--w-bold);color:var(--white-60);display:flex;align-items:center;gap:var(--sp-1);margin-bottom:var(--sp-2);width:100%}
-.prio-strip-row{display:flex;gap:var(--sp-2);overflow-x:auto;padding-bottom:var(--sp-1)}
+.prio-strip-row{display:flex;gap:var(--sp-2);overflow-x:auto;padding-bottom:var(--sp-1);-webkit-overflow-scrolling:touch;scrollbar-width:none}
 .prio-chip{flex-shrink:0;width:var(--poster-md-w);position:relative;cursor:pointer}
 .prio-chip-poster{width:var(--poster-md-w);height:var(--poster-md-h);object-fit:cover;border-radius:var(--r-md);display:block;background:var(--surf-2)}
 .prio-chip-ph{width:72px;height:108px;border-radius:var(--r-md);background:var(--surf-2);display:flex;align-items:center;justify-content:center;font-size:var(--t-lg);opacity:.3}
@@ -820,7 +820,7 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:var(--t
 /* ── POSTER GRID — sistema unificado 3 col / ratio 2:3 ──────────────── *
  * Matemática: 390px - 20px padding - 16px gaps = 354px / 3 = 118px    *
  * Ratio 2:3 → 177px alto. Estándar one-sheet cinematográfico.          */
-.poster-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--sp-2);padding:10px;transition:opacity var(--tr-fast)}
+.poster-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--sp-2);padding:10px 20px 10px 10px;transition:opacity var(--tr-fast)}
 .poster-card{position:relative;border-radius:var(--r);overflow:hidden;cursor:pointer;background:var(--surf-2);background-size:cover;background-position:center;aspect-ratio:2/3;display:block}
 .poster-card.editorial{background:#1A1A1A;display:flex;flex-direction:column}
 .poster-card.editorial .ed-hdr{height:52px;flex-shrink:0;display:flex;flex-direction:column;justify-content:center;padding:0 8px}
@@ -882,7 +882,7 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:var(--t
 /* ── Bottom Sheet ── */
 .pel-sheet-overlay{position:fixed;inset:0;background:var(--overlay-blur-70);backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);z-index:9000;opacity:0;transition:opacity var(--tr-smooth);pointer-events:none}
 .pel-sheet-overlay.open{opacity:1;pointer-events:all}
-.pel-sheet{position:fixed;bottom:0;left:0;right:0;background:var(--surf-2);border-radius:var(--r-sheet) var(--r-sheet) 0 0;z-index:9001;max-height:88vh;overflow-y:auto;overscroll-behavior:contain;transform:translateY(100%);transition:transform .3s cubic-bezier(.32,0,.67,0)}
+.pel-sheet{position:fixed;bottom:0;left:0;right:0;background:var(--surf-2);border-radius:var(--r-sheet) var(--r-sheet) 0 0;z-index:9001;max-height:88vh;overflow-y:auto;-webkit-overflow-scrolling:touch;overscroll-behavior:contain;transform:translateY(100%);transition:transform .3s cubic-bezier(.32,0,.67,0)}
 .pel-sheet.open{transform:translateY(0);transition:transform .38s cubic-bezier(.34,1.56,.64,1)}
 .pel-sheet-topbar{display:flex;align-items:center;justify-content:center;padding:var(--sp-btn) var(--sp-4) var(--sp-2);position:relative;flex-shrink:0;cursor:grab;touch-action:none}
 .pel-sheet-handle{width:36px;height:4px;background:var(--bdr);border-radius:var(--r-handle)}
@@ -892,6 +892,9 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:var(--t
 .pel-sheet-poster{width:var(--poster-lg-w);height:var(--poster-lg-h);object-fit:cover;border-radius:var(--r-md);flex-shrink:0;display:block;background:var(--surf-2)}
 .pel-sheet-poster-ph{width:var(--poster-lg-w);height:var(--poster-lg-h);border-radius:var(--r-md);background:var(--surf-2);flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:var(--t-display)}
 .pel-sheet-header{display:flex;gap:var(--sp-btn);margin-bottom:var(--sp-4)}
+/* Modo compacto: films con 3+ funciones reducen el poster para que CTAs sean visibles */
+.pel-sheet.compact .pel-sheet-poster,.pel-sheet.compact .pel-sheet-poster-ph,.pel-sheet.compact .pel-sheet-poster-stage{width:72px;height:108px}
+.pel-sheet.compact .pel-sheet-header{margin-bottom:var(--sp-3)}
 
 
 .pel-sheet-meta{flex:1;min-width:0;display:flex;flex-direction:column;gap:var(--sp-1);padding-top:2px}
@@ -1225,7 +1228,7 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:var(--t
 
 /* Calendario semanal */
 .mplan-wrap{border:1px solid var(--bdr-l);border-radius:var(--r);overflow:hidden;margin-bottom:var(--sp-4)}
-.mplan-wk-outer{overflow:auto}
+.mplan-wk-outer{overflow:auto;-webkit-overflow-scrolling:touch}
 .mplan-wk-outer::-webkit-scrollbar{width:3px;height:3px}
 .mplan-wk-outer::-webkit-scrollbar-thumb{background:var(--bdr)}
 .mplan-wk-inner{display:flex;min-width:480px}
@@ -2223,7 +2226,7 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:var(--t
 .prio-overlay-label{position:absolute;bottom:4px;left:0;right:0;text-align:center;font-size:var(--t-xs);color:var(--amber);letter-spacing:1px;text-shadow:0 1px 3px var(--overlay-85)}
 .prio-overlay-center{position:absolute;bottom:4px;left:0;right:0;text-align:center}
 .prio-star-pill{background:var(--overlay-70);border:1px solid var(--white-15);border-radius:var(--r-pill);color:var(--white);font-size:var(--t-xs);font-weight:var(--w-bold);font-family:var(--font);padding:2px 6px;cursor:pointer}
-.hscroll-strip{display:flex;gap:10px;overflow-x:auto;padding-bottom:2px}
+.hscroll-strip{display:flex;gap:10px;overflow-x:auto;padding-bottom:2px;-webkit-overflow-scrolling:touch;scrollbar-width:none}
 .flex-center{display:flex;align-items:center;justify-content:center}
 .auth-sheet-body{background:var(--surf-2);border-radius:var(--r-sheet) var(--r-sheet) 0 0;padding:24px 20px 40px;width:100%;max-width:480px;box-sizing:border-box}
 .sheet-handle-bar{width:36px;height:4px;background:var(--bdr);border-radius:2px;margin:0 auto 20px}
@@ -3302,7 +3305,7 @@ function makeFilmPlaceholder(title, director, year, section){
 
   // Año en header centrado (y=22 = una línea centrada en 38px)
   const yearEl=year?`<text x="${VW/2}" y="22" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,sans-serif" font-size="10" font-weight="700" fill="${hdrTextFill}" letter-spacing="1">${year}</text>`
-    :`<text x="${VW/2}" y="22" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,sans-serif" font-size="7" fill="${hdrTextFill}" letter-spacing="0.5">NO POSTER</text>`;
+    :'';
 
   const svg=`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${VW} ${VH}">
     <rect width="${VW}" height="${VH}" fill="#1E1B17"/>
@@ -3486,6 +3489,18 @@ function lbLink(title,film){
   return`<a class="c-lb pel-sheet-lb" href="${url}" target="_blank" rel="noopener">${LB_SVG}<span class="c-lb-text pel-sheet-lb-text">Letterboxd</span></a>`;
 }
 
+// ── Orden canónico de secciones — de mayor a menor importancia editorial
+// Aplica en: filtro Sección, sort de grilla, renderSbar.
+// Las secciones no listadas aquí se ordenan alfabéticamente al final.
+const SECTION_ORDER_LIST=[
+  'Gala','Spotlight+','U.S. Narrative Competition',
+  'International Narrative Competition','Documentary Competition',
+  'Spotlight Narrative','Spotlight Documentary','Viewpoints',
+  'Escape From Tribeca','Reunions & Retrospectives','Storytellers',
+  'Talks','Special Events','NOW','TV','Shorts Programs',
+  'Free Outdoor Screenings','Shorts'
+];
+
 // ── Mapa canónico de colores por sección ────────────────────────────────────
 // Usado en cards editoriales y posters generativos.
 // Consistente entre festivales: misma sección → mismo color.
@@ -3510,6 +3525,15 @@ const SECTION_COLORS={
   'Shorts':'#888780',
 };
 function _sectionColor(sec){return SECTION_COLORS[sec]||'#2C2C2A';}
+// Detecta si un poster viene de una fuente editorial (imagen 16:9 del festival)
+// Usa el campo explícito posterSource si existe, si no, fallback a detección por URL.
+// Regla: nuevos festivales deben usar posterSource en el JSON — no depender de la URL.
+function _isEditorialPoster(f){
+  if(!f) return false;
+  if(f.posterSource==='editorial') return true;
+  if(f.posterSource==='tmdb'||f.posterSource==='custom') return false;
+  return !!(f.poster&&f.poster.includes('cloudfront.net'));
+}
 // Elimina el prefijo emoji de una sección (ej. "🎬 Competencia" → "Competencia")
 // NO elimina palabras — "U.S. Narrative Competition" se mantiene intacto
 function _secLabel(sec){
@@ -7055,7 +7079,7 @@ function buildResultHTML(scenarios){
       const screens=FILMS.filter(fi=>fi.title===t&&!screeningPassed(fi)&&!isScreeningBlocked(fi));
       let reason='',canInclude=false;
       if(!screens.length){
-        reason=`<div class="excl-reason">Sin funciones disponibles</div>`;
+        reason=`<div class="excl-reason">${t('empty_sin_funciones')}</div>`;
       } else {
         // Buscar conflicto con el schedule actual
         let conflictWith=null,conflictWhen=null;
@@ -7077,7 +7101,7 @@ function buildResultHTML(scenarios){
         } else if(screens.length){
           reason=`<div class="excl-reason">${t('plan_choca')}</div>`;
         } else {
-          reason=`<div class="excl-reason">Sin funciones disponibles</div>`;
+          reason=`<div class="excl-reason">${t('empty_sin_funciones')}</div>`;
         }
       }
       const includeBtn=canInclude
@@ -8592,7 +8616,9 @@ function openPelSheet(title){
     ${_inPlan&&activeView==='agenda'?`<button onclick="closePelSheet();removeFromAgenda('${safeT}')" class="pel-sheet-remove-plan">${ICONS.x} ${t('plan_quitar_plan')}</button>`:''}
   `;
   document.getElementById('pel-overlay').classList.add('open');
-  document.getElementById('pel-sheet').classList.add('open');
+  const _ps=document.getElementById('pel-sheet');
+  _ps.classList.add('open');
+  _ps.classList.toggle('compact', totalFn>=3);
   _pspAttach();
 }
 function _pspAttach(){
@@ -8776,7 +8802,7 @@ function _openCombinedFilmSheet(filmData){
         <div class="pel-sheet-title">${title}</div>
         ${(flags||duration)?`<div class="pel-sheet-flags-dur">${flags||''}${flags&&duration?' · ':''}${duration||''}</div>`:''}
         ${metaLine?`<div class="pel-sheet-metaline">${metaLine}</div>`:''}
-        ${(()=>{const _parent=FILMS.find(f=>f.film_list&&f.film_list.some(c=>c.title===title));const _sec=_parent?.section;if(!_sec)return'';const _lbl=_sec.replace(/^[^ ]+ /,'');return`<div class="pel-sheet-sec" style="cursor:default">${_lbl}</div>`;})()}
+        ${(()=>{const _parent=FILMS.find(f=>f.film_list&&f.film_list.some(c=>c.title===title));const _sec=_parent?.section;if(!_sec)return'';const _lbl=_secLabel(_sec);return`<div class="pel-sheet-sec" style="cursor:default">${_lbl}</div>`;})()}
       </div>
     </div>
     <div class="pel-sheet-divider"></div>
@@ -8823,7 +8849,7 @@ function openCortoSheet(title, country, duration, section, flags, director, genr
   const safeParent=parentTitle?parentTitle.replace(/'/g,"\\'"):safeTitle;
   const inWL=watchlist.has(parentTitle||title);
   const inPrio=prioritized.has(parentTitle||title);
-  const secLabel=section?section.replace(/^[^ ]+ /,'').trim():'';
+  const secLabel=_secLabel(section||'');
   inner.innerHTML=`
     <div class="pel-sheet-header">
       ${posterHtml}
@@ -9091,10 +9117,10 @@ function _metaBanners(f){
   if(f.premiere){
     const _premIcons={'World Premiere':'🌍','International Premiere':'🌎','U.S. Premiere':'🇺🇸','New York Premiere':'🗽'};
     const _premIcon=_premIcons[f.premiere]||'★';
-    b+=`<div class="meta-banner premiere-banner"><div class="meta-banner-dot" style="background:#EF9F27"></div><div><div class="meta-banner-label" style="color:#EF9F27">${_premIcon} ${f.premiere.toUpperCase()}</div></div></div>`;
+    b+=`<div class="meta-banner premiere-banner"><div class="meta-banner-dot" style="background:#EF9F27"></div><div><div class="meta-banner-label" style="color:#EF9F27">${_premIcon} ${f.premiere}</div></div></div>`;
   }
-  if(f.has_qa) b+=`<div class="meta-banner"><div class="meta-banner-dot"></div><div><div class="meta-banner-label">Q&A · EQUIPO PRESENTE</div><div class="meta-banner-text">${t('notice_extension')} <span>· +30 min estimados</span></div></div></div>`;
-  if(f.requires_registration) b+=`<div class="meta-banner"><div class="meta-banner-dot"></div><div><div class="meta-banner-label">${t('badge_inscripcion_prev')}</div><div class="meta-banner-text">Requiere registro antes del evento</div></div></div>`;
+  if(f.has_qa) b+=`<div class="meta-banner"><div class="meta-banner-dot"></div><div><div class="meta-banner-label">${t('meta_qa_label')}</div><div class="meta-banner-text">${t('notice_extension')} <span>${t('meta_qa_time')}</span></div></div></div>`;
+  if(f.requires_registration) b+=`<div class="meta-banner"><div class="meta-banner-dot"></div><div><div class="meta-banner-label">${t('badge_inscripcion_prev')}</div><div class="meta-banner-text">${t('meta_registro_text')}</div></div></div>`;
   return b;
 }
 
@@ -9396,7 +9422,7 @@ function renderPeliculaView(){
       _cardBg='';
       _cardBg='';
       const _opacity=allPast&&!_ended?';opacity:.45':'';
-      const _isEditorial=posterSrc&&posterSrc.includes('cloudfront.net');
+      const _isEditorial=_isEditorialPoster(f);
       if(_isEditorial){
         const _accent=_sectionColor(f.section||'');
         const _secLabel=(f.section||'').toUpperCase();
@@ -9408,7 +9434,7 @@ function renderPeliculaView(){
       }
     }
     const _typeBadge=f.type==='short'?`<div class="pc-type-badge type-short">SHORT</div>`:f.type==='event'?`<div class="pc-type-badge type-event">EVENT</div>`:'';
-    return`<div class="bg-surf-2 poster-card${inWL&&!inW?' in-wl':''}${inW&&!_ended?' in-watched':''}${(_isPrograma?false:posterSrc&&posterSrc.includes('cloudfront.net'))?' editorial':''}" data-title="${f.title.replace(/"/g,'&quot;')}" onclick="openPelSheet('${safeT}')"${_isPrograma?'':_cardBg}>
+    return`<div class="bg-surf-2 poster-card${inWL&&!inW?' in-wl':''}${inW&&!_ended?' in-watched':''}${(_isPrograma?false:_isEditorialPoster(f))?' editorial':''}" data-title="${f.title.replace(/"/g,'&quot;')}" onclick="openPelSheet('${safeT}')"${_isPrograma?'':_cardBg}>
       ${posterImg}
       ${_typeBadge}
       ${progBadge}
@@ -9427,14 +9453,6 @@ function renderSbar(){
   const isExplorar=programaSubMode==='explorar';
   let dayF=isExplorar?FILMS:FILMS.filter(f=>f.day===activeDay);
   if(activeVenue!=='all') dayF=dayF.filter(f=>vcfg(f.venue).short===activeVenue);
-  const SECTION_ORDER_LIST=[
-    'Gala','Spotlight+','U.S. Narrative Competition',
-    'International Narrative Competition','Documentary Competition',
-    'Spotlight Narrative','Spotlight Documentary','Viewpoints',
-    'Escape From Tribeca','Reunions & Retrospectives','Storytellers',
-    'Talks','Special Events','NOW','TV','Shorts Programs',
-    'Free Outdoor Screenings','Shorts'
-  ];
   const secs=[...new Set(dayF.map(f=>f.section))].sort((a,b)=>{
     const ia=SECTION_ORDER_LIST.indexOf(a),ib=SECTION_ORDER_LIST.indexOf(b);
     if(ia>=0&&ib>=0) return ia-ib;
@@ -9664,7 +9682,6 @@ async function _autoResolveFestivalPosters(){
   if(updated>0){
     _POSTERS_N=Object.fromEntries(Object.entries(POSTERS).map(([k,v])=>[normKey(k),v]));
     requestAnimationFrame(()=>{try{render();}catch(e){console.warn('[render] rAF render failed',e);}});
-    console.log('[Otrofestiv] '+updated+' posters actualizados via TMDB (lbSlug→search)');
   }
 }
 async function loadFestival(id){

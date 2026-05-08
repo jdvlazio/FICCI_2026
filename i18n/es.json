@@ -218,5 +218,12 @@
   "misc_anadir": "Añadir",
   "plan_tu_plan_empty": "Tu plan aparece aquí.",
   "cta_ir_planear": "Ir a Planear",
-  "cta_ir_intereses": "Ir a Intereses"
+  "cta_ir_intereses": "Ir a Intereses",
+  "meta_qa_label": "Q&A · EQUIPO PRESENTE",
+  "meta_qa_time": "· +30 min estimados",
+  "meta_registro_text": "Requiere registro antes del evento",
+  "premiere_world": "World Premiere",
+  "premiere_intl": "International Premiere",
+  "premiere_us": "U.S. Premiere",
+  "premiere_ny": "New York Premiere"
 }
