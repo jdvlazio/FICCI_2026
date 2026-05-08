@@ -829,6 +829,9 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:var(--t
 .poster-card.editorial .ed-img img{width:100%;aspect-ratio:16/9;object-fit:cover;display:block;opacity:0;transition:opacity 250ms ease}
 .poster-card.editorial .ed-body{flex:1;display:flex;flex-direction:column;justify-content:flex-end;padding:0 8px 8px}
 .poster-card.editorial .ed-body .ed-title{font-family:-apple-system,BlinkMacSystemFont,sans-serif;font-size:11px;font-weight:800;letter-spacing:-.3px;color:#F0EDE8;line-height:1.27;display:-webkit-box;-webkit-line-clamp:4;-webkit-box-orient:vertical;overflow:hidden}
+.pc-type-badge{position:absolute;top:6px;left:6px;font-size:6px;font-weight:700;letter-spacing:.12em;padding:2px 5px;border-radius:3px;pointer-events:none;z-index:2}
+.pc-type-badge.type-short{background:rgba(93,202,165,.92);color:#0A1A15}
+.pc-type-badge.type-event{background:rgba(239,159,39,.92);color:#1A1000}
 .poster-card-stack{width:100%;height:100%;display:flex;gap:1px;background:var(--bdr)}
 .pcs-back,.pcs-front{flex:1;height:100%;object-fit:cover;object-position:center;display:block;min-width:0}
 .pel-sheet-poster-stage{display:flex;gap:1px;background:var(--bdr);flex-shrink:0;width:var(--poster-lg-w);height:var(--poster-lg-h);border-radius:var(--r-md);overflow:hidden}
@@ -867,7 +870,7 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:var(--t
 /* ── Expansión inline de funciones ── */
 .pelicula-day{font-size:var(--t-label);font-weight:var(--w-bold);color:var(--amber);letter-spacing:.8px;text-transform:uppercase;white-space:nowrap;cursor:pointer;-webkit-tap-highlight-color:transparent;transition:opacity var(--tr-base);flex-shrink:0;width:48px}
 .pelicula-day:active{opacity:.6}
-.pelicula-time{font-size:var(--t-base);font-weight:var(--w-bold);color:var(--white);flex-shrink:0;width:42px}
+.pelicula-time{font-size:var(--t-base);font-weight:var(--w-bold);color:var(--white);flex-shrink:0;white-space:nowrap;min-width:58px}
 .pelicula-venue{font-size:var(--t-caption);color:rgba(240,237,232,.6);flex:1;min-width:0;cursor:pointer;transition:color var(--tr-base);display:flex;align-items:flex-start;gap:var(--sp-1)}
 .pelicula-venue:active{color:var(--amber)}
 .pelicula-venue>svg{margin-top:3px}
@@ -3264,14 +3267,15 @@ function _buildPosterSVG(o){
 
   return `data:image/svg+xml,${encodeURIComponent(svg)}`;
 }
-function makeFilmPlaceholder(title, director, year){
+function makeFilmPlaceholder(title, director, year, section){
   // Poster generativo para films sin imagen real.
-  // Header gris #2C2C2A (único para films, no confundible con ningún otro tipo).
-  // Año en header centrado — información útil y diferenciador visual.
+  // Header con color de sección (sistema _sectionColor) — coherente con cards editoriales.
   // Título adaptativo + director truncado en caja interior.
   // En el enricher aparece en gris → diagnóstico visual inmediato de lo pendiente.
   const VW=120,VH=180,HDR_H=38,BX=10,BY=46,BW=VW-20,BH=VH-56,FY=VH-16,DUR_Y=148;
   const festName=((FESTIVAL_CONFIG&&FESTIVAL_CONFIG[_activeFestId])||Object.values(FESTIVAL_CONFIG||{})[0]||{}).shortName||'FESTIVAL';
+  const accent=section?_sectionColor(section):'#2C2C2A';
+  const hdrTextFill=accent==='#2C2C2A'?'#D3D1C7':'#0A0A0A';
 
   // Título: mismo sistema adaptativo de _buildPosterSVG
   const rawWords=(title||'').split(/\s+/);
@@ -3297,12 +3301,12 @@ function makeFilmPlaceholder(title, director, year){
   const dirEl=dir?`<text x="${VW/2}" y="${TITLE_ZONE_BOT+8}" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,sans-serif" font-size="7" fill="#5F5E5A">${dir}</text>`:'';
 
   // Año en header centrado (y=22 = una línea centrada en 38px)
-  const yearEl=year?`<text x="${VW/2}" y="22" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,sans-serif" font-size="10" font-weight="700" fill="#D3D1C7" letter-spacing="1">${year}</text>`
-    :`<text x="${VW/2}" y="22" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,sans-serif" font-size="7" fill="#888780" letter-spacing="0.5">SIN POSTER</text>`;
+  const yearEl=year?`<text x="${VW/2}" y="22" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,sans-serif" font-size="10" font-weight="700" fill="${hdrTextFill}" letter-spacing="1">${year}</text>`
+    :`<text x="${VW/2}" y="22" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,sans-serif" font-size="7" fill="${hdrTextFill}" letter-spacing="0.5">NO POSTER</text>`;
 
   const svg=`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${VW} ${VH}">
     <rect width="${VW}" height="${VH}" fill="#1E1B17"/>
-    <rect x="0" y="0" width="${VW}" height="${HDR_H}" fill="#2C2C2A"/>
+    <rect x="0" y="0" width="${VW}" height="${HDR_H}" fill="${accent}"/>
     <rect x="0" y="${HDR_H}" width="${VW}" height="1" fill="#444441"/>
     ${yearEl}
     <rect x="${BX}" y="${BY}" width="${BW}" height="${BH}" rx="3" fill="#0A0A09" stroke="#2C2C2A" stroke-width="1"/>
@@ -3424,7 +3428,7 @@ function getFilmPoster(f){
     if(first.poster) return first.poster.startsWith('http')?first.poster:TMDB_IMG+first.poster;
     return getPosterSrc(first.title||first,false)||getPosterSrc(f.title,false)||null;
   }
-  return getPosterSrc(f.title,false)||makeFilmPlaceholder(f.title,f.director,f.year);
+  return getPosterSrc(f.title,false)||makeFilmPlaceholder(f.title,f.director,f.year,f.section);
 }
 function makeSorpresaPoster(){
   return _buildPosterV16({
@@ -3506,6 +3510,14 @@ const SECTION_COLORS={
   'Shorts':'#888780',
 };
 function _sectionColor(sec){return SECTION_COLORS[sec]||'#2C2C2A';}
+// Elimina el prefijo emoji de una sección (ej. "🎬 Competencia" → "Competencia")
+// NO elimina palabras — "U.S. Narrative Competition" se mantiene intacto
+function _secLabel(sec){
+  if(!sec) return '';
+  const first=sec.split(' ')[0];
+  const isEmoji=/^\p{Emoji}/u.test(first)&&!/^[A-Za-z0-9.]/u.test(first);
+  return isEmoji?sec.slice(first.length).trim():sec;
+}
 function _buildPosterV16({accent, headerLabel, title, num}){
   // ── Motor de poster tipográfico v16 ──────────────────────────
   // Sistema único para eventos, programas, sorpresa.
@@ -5502,7 +5514,7 @@ function renderFilmListHTML(){
     const posterHtml=poster
       ?`<img class="int-item-poster"${_posterStyle(f)} src="${poster}" data-title="${title.replace(/"/g,'&quot;')}" onerror="_posterErr(this)" alt="" loading="lazy">`
       :`<div class="int-item-poster"></div>`;
-    const secLabel=(f?.section||'').replace(/^\S+ /,'')||f?.section||'';
+    const secLabel=_secLabel(f?.section||'');
     const nextHtml=next
       ?`<div class="int-item-next">
           <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
@@ -5539,7 +5551,7 @@ function renderFilmListHTML(){
     const posterHtml=poster
       ?`<img class="int-item-poster"${_posterStyle(f)} src="${poster}" data-title="${title.replace(/"/g,'&quot;')}" onerror="_posterErr(this)" alt="" loading="lazy">`
       :`<div class="int-item-poster"></div>`;
-    const secLabel=(f?.section||'').replace(/^\S+ /,'')||f?.section||'';
+    const secLabel=_secLabel(f?.section||'');
     const rating=filmRatings[title]||0;
     const stars=rating>0
       ?'★'.repeat(Math.floor(rating))+(rating%1?'½':'')
@@ -7034,7 +7046,7 @@ function buildResultHTML(scenarios){
       const{displayTitle:dt}=parseProgramTitle(t);
       const f=FILMS.find(fi=>fi.title===t);
       const poster=f?getFilmPoster(f):null;
-      const secLabel=f?(f.section||'').replace(/^\S+ /,'')||f.section||'':'';
+      const secLabel=f?_secLabel(f.section||''):'';
       const safeT=t.replace(/'/g,"\'");
       const posterHtml=poster
         ?`<img class="int-item-poster" src="${poster}" data-title="${t.replace(/"/g,'&quot;')}" onerror="_posterErr(this)" alt="" loading="lazy">`
@@ -8488,7 +8500,7 @@ function openPelSheet(title){
       :`<div class="pel-sheet-poster-ph">🎬</div>`;
   }
   const{displayTitle}=parseProgramTitle(f.title);
-  const secLabel=f.section?f.section.replace(/^[^ ]+ /,''):'';
+  const secLabel=_secLabel(f.section);
   const totalFn=FILMS.filter(fi=>fi.title===f.title).length;
   const unica=totalFn===1;
   const DAY_ABB=['MAR','MIÉ','JUE','VIE','SÁB','DOM'];
@@ -8564,7 +8576,7 @@ function openPelSheet(title){
     <div class="pel-sheet-screenings">${rows}</div>
     ${f.synopsis?`<div class="pel-sheet-divider"></div>
     <div class="pel-sheet-section-lbl">${f.type==='event'?t('label_descripcion'):t('label_sinopsis')}</div>
-    <div class="pel-sheet-synopsis">${_lang==='en'&&f.synopsis_en?f.synopsis_en:f.synopsis}</div>`:''}
+    <div class="pel-sheet-synopsis">${(_lang==='en'&&f.synopsis_en?f.synopsis_en:f.synopsis).replace(/^⚠️\s*INGLÉS\s*[—-]\s*/,'')}</div>`:''}
     ${cortosHtml}
     ${(!f.is_cortos&&!f.is_programa&&f.type!=='event')?lbLink(f.title,f):''}
     <div class="pel-sheet-divider"></div>
@@ -9076,6 +9088,11 @@ function _metaBadges(f){
 }
 function _metaBanners(f){
   let b='';
+  if(f.premiere){
+    const _premIcons={'World Premiere':'🌍','International Premiere':'🌎','U.S. Premiere':'🇺🇸','New York Premiere':'🗽'};
+    const _premIcon=_premIcons[f.premiere]||'★';
+    b+=`<div class="meta-banner premiere-banner"><div class="meta-banner-dot" style="background:#EF9F27"></div><div><div class="meta-banner-label" style="color:#EF9F27">${_premIcon} ${f.premiere.toUpperCase()}</div></div></div>`;
+  }
   if(f.has_qa) b+=`<div class="meta-banner"><div class="meta-banner-dot"></div><div><div class="meta-banner-label">Q&A · EQUIPO PRESENTE</div><div class="meta-banner-text">${t('notice_extension')} <span>· +30 min estimados</span></div></div></div>`;
   if(f.requires_registration) b+=`<div class="meta-banner"><div class="meta-banner-dot"></div><div><div class="meta-banner-label">${t('badge_inscripcion_prev')}</div><div class="meta-banner-text">Requiere registro antes del evento</div></div></div>`;
   return b;
@@ -9390,8 +9407,10 @@ function renderPeliculaView(){
           :``;
       }
     }
+    const _typeBadge=f.type==='short'?`<div class="pc-type-badge type-short">SHORT</div>`:f.type==='event'?`<div class="pc-type-badge type-event">EVENT</div>`:'';
     return`<div class="bg-surf-2 poster-card${inWL&&!inW?' in-wl':''}${inW&&!_ended?' in-watched':''}${(_isPrograma?false:posterSrc&&posterSrc.includes('cloudfront.net'))?' editorial':''}" data-title="${f.title.replace(/"/g,'&quot;')}" onclick="openPelSheet('${safeT}')"${_isPrograma?'':_cardBg}>
       ${posterImg}
+      ${_typeBadge}
       ${progBadge}
       ${inWL?`<div class="poster-wl-dot">${ICONS.heartFill}</div>`:''}
     </div>`;
@@ -10409,7 +10428,7 @@ function _posterGenFallback(img, f){
   if(f.title&&f.title.toLowerCase().includes('sorpresa')) gen=makeSorpresaPoster();
   else if(f.type==='event') gen=makeEventPoster(f.title,f.duration,f.event_kind);
   else if(f.is_cortos) gen=makeProgramPoster(f.title,f.duration,f.section);
-  else gen=makeFilmPlaceholder(f.title,f.director,f.year);
+  else gen=makeFilmPlaceholder(f.title,f.director,f.year,f.section);
   if(gen) img.src=gen; else img.style.display='none';
 }
 
