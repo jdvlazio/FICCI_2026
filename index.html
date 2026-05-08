@@ -9633,7 +9633,7 @@ async function loadFestival(id){
           delete base.screenings;
           f.screenings.forEach((s,i)=>{
             exploded.push(Object.assign({},base,{
-              day:s.day,date:s.date,time:s.time,venue:s.venue||'',
+              day:s.day||s.date,date:s.date||s.day,time:s.time,venue:s.venue||'',
               day_order:s.day_order!==undefined?s.day_order:i,
               sala:s.sala||''
             }));
