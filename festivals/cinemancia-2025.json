@@ -515,8 +515,8 @@
       "day_order": 1,
       "is_cortos": false,
       "film_list": [],
-      "synopsis": "La película aborda las causas que originaron la rebelión de la Iglesia Católica contra el Estado surgido de la Revolución Mexicana, periodo conocido como la Guerra Cristera, entre 1926 y 1929, y cuyo escenario predominante fue el Bajío y el occidente de México. Resaltando la imposibilidad de ser fiel a la Iglesia y al Estado, un general de la época, con problemas al interior de su devota familia, debe combatir contra los creyentes alzados.",
-      "synopsis_en": "The film addresses the causes of the Catholic Church's rebellion against the State born of the Mexican Revolution — the period known as the Cristero War, between 1926 and 1929, set primarily in the Bajío and western Mexico. Highlighting the impossibility of remaining loyal to both Church and State, a general of the era, facing tensions within his devout family, is forced to fight against the risen faithful."
+      "synopsis": "Un general mexicano debe combatir a los creyentes alzados en la Guerra Cristera (1926–1929) mientras su familia devota lo enfrenta. La lealtad al Estado y la fe entran en contradicción irresoluble.",
+      "synopsis_en": "A Mexican general is ordered to fight the Catholic rebels of the Cristero War while his devout family stands against him. Loyalty to the state and to faith pull in opposite directions."
     },
     {
       "title": "Una visita a Producciones Ogawa",
@@ -555,8 +555,8 @@
       "day_order": 1,
       "is_cortos": false,
       "film_list": [],
-      "synopsis": "Bombero anacrónico, poeta cotidiano y experto en sopas, Ducarmel también juega en una liga competitiva de baloncesto. Solo hay un problema con sus aficiones: encontrar una niñera que cuide a su hija. Además, cuando se queda dormido por la noche, sueña con demasiada intensidad. En su extraño mundo de sueños, reina un cautivador libro azul, el amor acecha, y él es el mejor jugador de baloncesto de todos los tiempos.",
-      "synopsis_en": "An anachronistic firefighter, everyday poet, and soup expert, Ducarmel also plays in a competitive basketball league. There is only one problem with his passions: finding a babysitter for his daughter. And when he falls asleep at night, he dreams too intensely. In his strange dream world, a captivating blue book reigns, love lurks, and he is the greatest basketball player of all time.",
+      "synopsis": "Ducarmel es bombero anacrónico, poeta cotidiano y jugador de baloncesto competitivo. Su único problema: encontrar niñera. Cuando duerme, un libro azul cautivador reina en sus sueños junto al amor y la gloria deportiva.",
+      "synopsis_en": "Ducarmel is a poet-fireman who plays competitive basketball and can't find a babysitter. When he finally sleeps, an enchanting blue book rules his dreams alongside love and athletic glory.",
       "language": "fr"
     },
     {
@@ -576,8 +576,8 @@
       "day_order": 1,
       "is_cortos": false,
       "film_list": [],
-      "synopsis": "Soledad está profundamente enamorada de Román, el propietario de un pequeño rancho cercano a Bellavista, la gran hacienda de su padre. Sin embargo, las familias de ambos tienen una gran rivalidad, por lo que mantienen su relación en secreto, hasta que ella se entera de que desean casarla con Ernesto, un hombre muy adinerado de la región. Una pelea en el pueblo desencadenará varias muertes que afectarán la ya difícil e imposible relación.",
-      "synopsis_en": "Soledad is deeply in love with Román, the owner of a small ranch near Bellavista, her father's great estate. Their families are rivals, so they keep their relationship secret — until she learns that her family plans to marry her off to Ernesto, a wealthy man from the region. A brawl in the village will trigger several deaths that complicate their already impossible relationship."
+      "synopsis": "Soledad ama a Román en secreto, pero sus familias son rivales y su padre quiere casarla con otro. Una pelea en el pueblo desencadena muertes que hacen imposible lo que ya era difícil.",
+      "synopsis_en": "Soledad loves Román in secret — their families are rivals and her father has chosen another man for her. A village brawl sets off a chain of deaths that makes an already impossible love fatal."
     },
     {
       "title": "Proyección sorpresa",
@@ -654,8 +654,8 @@
       "day_order": 1,
       "is_cortos": false,
       "film_list": [],
-      "synopsis": "Un vaquero llega a un pueblo en busca de su hija; una policía nativa abrumada por su trabajo arresta a varios delincuentes en un paisaje nevado, mientras su sobrina, entrenadora de baloncesto, se reúne con su abuelo para un viaje decisivo que moldeará su futuro; un pájaro vuela a través del tiempo y el espacio y comienza a entrar en las mentes y los sueños de una tribu nativa en una selva amazónica.",
-      "synopsis_en": "A cowboy arrives in a town searching for his daughter; an overwhelmed Native police officer arrests criminals in a snowy landscape while her niece, a basketball coach, reunites with her grandfather for a decisive journey; a bird flies through time and space and begins to enter the minds and dreams of a Native tribe in the Amazon rainforest.",
+      "synopsis": "Tres historias en paralelo: un vaquero busca a su hija, una policía nativa trabaja en un paisaje nevado, y un pájaro viaja por el tiempo hacia una tribu amazónica. Cada trayecto transforma a quien lo recorre.",
+      "synopsis_en": "Three parallel stories: a cowboy searching for his daughter, a Native American officer working a snowy landscape, and a bird traveling through time to an Amazonian tribe. Each journey reshapes the one who takes it.",
       "language": "English"
     },
     {
@@ -776,8 +776,8 @@
       "day_order": 1,
       "is_cortos": false,
       "film_list": [],
-      "synopsis": "Documental muy poco visto que muestra el inicio de las protestas estudiantiles a finales de los años 60 en Japón. Los estudiantes de la Universidad de Takasaki se atrincheran en el campus como resultado de las intimidaciones y la violencia por parte de la administración universitaria. Filmada a lo largo de un año, esta película documenta la naturaleza de la discusión y la organización política, así como los feroces debates que tienen lugar entre los estudiantes.",
-      "synopsis_en": "A rarely seen documentary capturing the beginning of student protests in late 1960s Japan. Students at Takasaki University barricade themselves on campus in response to intimidation and violence from the administration. Filmed over a year, the film documents the nature of political discussion and organization, as well as the fierce debates that take place among the students."
+      "synopsis": "Estudiantes de una universidad japonesa se atrinchera en el campus para resistir la violencia de la administración durante las protestas de finales de los 60. La película documenta un año de organización política y debate.",
+      "synopsis_en": "Japanese university students barricade themselves on campus against administrative violence during the late 1960s protests. Shot over a year, the film documents political organizing and the fierce debates that shape it."
     },
     {
       "title": "Un poco demasiada ficción",
@@ -796,9 +796,10 @@
       "day_order": 2,
       "is_cortos": false,
       "film_list": [],
-      "synopsis": "Ponencia de Gerwin Tamsma (Países Bajos). Tamsma trabajó en el Festival de Cine de Rotterdam - IFFR desde 1996 hasta 2023, ocupando puestos de alta responsabilidad en programación. Ha concebido y desarrollado programas recurrentes en festivales como la Viennale, así como retrospectivas en instituciones alrededor del mundo, concentrando su experticia en los cines de Corea del Sur y China. Actualmente trabaja como programador, escritor y consultor freelance.",
+      "synopsis": "Ponencia del programador Gerwin Tamsma sobre su trayectoria en festivales de cine, con foco en los cines de Corea del Sur y China. Una reflexión sobre programación, curaduría y el rol de los festivales.",
       "type": "event",
-      "event_kind": "ponencia"
+      "event_kind": "ponencia",
+      "synopsis_en": "Film programmer Gerwin Tamsma reflects on 27 years at the Rotterdam festival and his expertise in South Korean and Chinese cinema. A meditation on curation, programming, and what festivals are for."
     },
     {
       "title": "La bella durmiente",
@@ -817,8 +818,8 @@
       "day_order": 2,
       "is_cortos": false,
       "film_list": [],
-      "synopsis": "En el misterioso reino de Letonia, el joven y atractivo príncipe Egon se pasa las noches tocando la batería. Durante el día, su obsesión es colarse en el reino perdido de Kentz y despertar a la Bella Durmiente. Pero su padre, el Rey, quien no cree en los cuentos de hadas, se opone firmemente. Con la ayuda de la arqueóloga de la UNESCO, Maggie Jerkins, el príncipe intentará romper el hechizo.",
-      "synopsis_en": "In the mysterious kingdom of Latvia, the young and handsome Prince Egon spends his nights playing drums. By day, his obsession is sneaking into the lost kingdom of Kentz to awaken Sleeping Beauty. But his father, the King, who doesn't believe in fairy tales, firmly opposes him. With the help of UNESCO archaeologist Maggie Jerkins, the prince will attempt to break the spell."
+      "synopsis": "El príncipe Egon toca batería de noche y de día busca colarse al reino perdido de Kentz para despertar a la Bella Durmiente. Su padre, el rey, no cree en los cuentos. Una arqueóloga de la UNESCO complica todo.",
+      "synopsis_en": "Prince Egon plays drums at night and schemes to cross into the lost kingdom of Kentz to wake Sleeping Beauty by day. His father the king doesn't believe in fairy tales. A UNESCO archaeologist complicates everything."
     },
     {
       "title": "Andariega",
@@ -837,8 +838,8 @@
       "day_order": 2,
       "is_cortos": false,
       "film_list": [],
-      "synopsis": "Chena es una madre soltera de 26 años; cada año se une a la diáspora de campesinos errantes que caminan cientos de kilómetros desde sus hogares para trabajar como jornaleros o recolectores de café en Colombia. A pesar del arduo trabajo, abraza este estilo de vida nómada. Su supervivencia depende de su capacidad para realizar tareas físicamente exigentes, su temple para enfrentarse a un mundo de hombres y la fortaleza de su propio cuerpo, que comienza a mostrar signos de debilitamiento debido al esfuerzo diario. Tras ocho años trabajando en los cultivos, no ha podido ahorrar dinero ni lograr independencia económica. Espera regresar a casa a finales de año, justo a tiempo para celebrar el cumpleaños de su hijo.",
-      "synopsis_en": "Chena is a 26-year-old single mother who each year joins the diaspora of wandering peasants walking hundreds of kilometers from their homes to work as day laborers and coffee harvesters in Colombia. Despite the grueling work, she embraces this nomadic lifestyle. Her survival depends on her capacity for physically demanding tasks, her resilience in a man's world, and the strength of her own body — which is beginning to show signs of wear. After eight years working the crops, she has been unable to save money or achieve financial independence, and hopes to return home by year's end, just in time for her son's birthday.",
+      "synopsis": "Chena, 26 años, recorre cada año cientos de kilómetros para trabajar como jornalera en los cultivos colombianos. Lleva ocho años sin ahorrar ni alcanzar independencia. Su cuerpo y su voluntad son todo lo que tiene.",
+      "synopsis_en": "Every year, 26-year-old Chena walks hundreds of kilometers to work as a day laborer on Colombian crops. Eight years in, she has saved nothing. Her body and her will are all she has.",
       "language": "es"
     },
     {
@@ -858,8 +859,8 @@
       "day_order": 2,
       "is_cortos": false,
       "film_list": [],
-      "synopsis": "En el segundo largometraje de Ted Fendt, un tratado ultracinéfilo sobre lengua, literatura y teología, un grupo de jóvenes intelectuales participa en divertidas rondas de debate académico. Entre grupos de discusión sobre Dante y ejercicios lingüísticos en solitario, Cal involucra a sus amigos en una serie de debates discursivos que, si bien abarcan diferentes momentos de la Historia, terminan por correlacionarse con preocupaciones más inmediatas y personales.",
-      "synopsis_en": "In Ted Fendt's second feature — an ultra-cinephile treatise on language, literature, and theology — a group of young intellectuals engages in lively rounds of academic debate. Between discussion groups on Dante and solo linguistic exercises, Cal draws his friends into a series of discursive debates that, while spanning different moments in history, ultimately connect to more immediate and personal concerns."
+      "synopsis": "Un grupo de jóvenes intelectuales se reúne en rondas de debate académico sobre Dante, teología y lingüística. Cal guía las conversaciones, que van de la Historia a las preocupaciones más personales e inmediatas.",
+      "synopsis_en": "Young intellectuals gather for rounds of academic debate on Dante, theology, and linguistics. Cal steers the conversations, which drift from history toward the more immediate and personal."
     },
     {
       "title": "Noticias, noticias",
@@ -878,8 +879,8 @@
       "day_order": 2,
       "is_cortos": false,
       "film_list": [],
-      "synopsis": "Muy cerca de la época navideña, una retorcida bruja llamada Melissa le ordena a su ahijado que encuentre al hombre conocido como Lamirande, el libertador fatal, un héroe nacional que se creía muerto. Tiene rock hablantinoso, un saxofón sollozante, vagabundeos poéticos y un café-bar atrapado entre la realidad y el sueño.",
-      "synopsis_en": "Close to Christmas, a twisted witch named Melissa orders her godson to find the man known as Lamirande — the fatal liberator, a national hero believed dead. It has fast-talking rock, a sobbing saxophone, poetic wanderings, and a café-bar caught between reality and dream."
+      "synopsis": "Una bruja encarga a su ahijado que encuentre al mítico libertador Lamirande, que se creía muerto. La búsqueda transita entre realidad y sueño, con rock, saxofón y vagabundeos poéticos cerca de la Navidad.",
+      "synopsis_en": "A witch sends her godson to find the legendary Lamirande — the fatal liberator, believed dead. The search moves between reality and dream, fueled by rock music, a sobbing saxophone, and poetic wandering."
     },
     {
       "title": "The Sealed Soil",
@@ -918,8 +919,8 @@
       "day_order": 2,
       "is_cortos": false,
       "film_list": [],
-      "synopsis": "Koroviev es un muy peculiar policía cuyo principal oficio es enseñar poesía a los miembros de una brigada formada por poetas policiales o policías poetas. Él busca una preciosa y legendaria vieja Biblia anotada por Pierre Maheu, el capitán del Saint-Elías, un barco célebre y proverbial. Su búsqueda lo lleva a hacerse amigo de un joven bandido que le presenta a una misteriosa mujer llamada Coriander.",
-      "synopsis_en": "Koroviev is a most peculiar police officer whose main occupation is teaching poetry to members of a brigade of police-poets and poet-police. He searches for a precious legendary old Bible annotated by Pierre Maheu, captain of the Saint-Elias, a celebrated and proverbial ship. His search leads him to befriend a young bandit who introduces him to a mysterious woman named Coriander."
+      "synopsis": "Koroviev es un policía que enseña poesía a sus colegas y busca una Biblia anotada por un célebre capitán de barco. La búsqueda lo acerca a un joven bandido y a la misteriosa Coriander.",
+      "synopsis_en": "Koroviev is a peculiar officer who teaches poetry to his colleagues while hunting a legendary annotated Bible. The search leads him to a young bandit — and to the mysterious Coriander."
     },
     {
       "title": "Sanrizuka: Campesinos de la segunda fortaleza",
@@ -938,8 +939,8 @@
       "day_order": 2,
       "is_cortos": false,
       "film_list": [],
-      "synopsis": "Esta película documenta el movimiento de protesta contra la construcción de un nuevo aeropuerto en Narita: se adentra con valentía en el corazón de la lucha y sigue los preparativos, acompañan a los agricultores a través de los oscuros túneles subterráneos que simbolizaron su resistencia constante. Levantaron barricadas y construyeron fortalezas para protegerse, excavando túneles subterráneos, y las campesinas, en primera línea desde el comienzo del conflicto, se encadenaron a los árboles. Entre momentos de gran tensión y batalla, escuchamos atentamente a los campesinos expresar su ira, miedos y esperanzas, y discutir por qué resisten.",
-      "synopsis_en": "This film documents the protest movement against the construction of a new airport at Narita, going boldly into the heart of the struggle and following the preparations as farmers move through the dark underground tunnels that symbolize their ongoing resistance. They built barricades and fortresses, dug underground tunnels, and women — at the front lines from the start — chained themselves to trees. Amid moments of great tension and battle, we hear the farmers express their anger, fears, and hopes, and debate why they resist."
+      "synopsis": "Documento del movimiento de resistencia contra el aeropuerto de Narita. Campesinos cavan túneles, levantan barricadas y se encadenan a árboles mientras comparten su ira, sus miedos y sus esperanzas.",
+      "synopsis_en": "Document of the resistance against Narita airport. Farmers dig tunnels, build barricades, and chain themselves to trees — and in the pauses between confrontations, share their anger, their fears, and their hopes."
     },
     {
       "title": "El frente de batalla por la liberación de Japón – Verano en Sanrizuka",
@@ -958,8 +959,8 @@
       "day_order": 2,
       "is_cortos": false,
       "film_list": [],
-      "synopsis": "En el pueblo de Heta, las protestas contra la construcción de un nuevo aeropuerto en su tierra son férreas, la edificación se considera ilegítima. Campesinos y estudiantes luchan contra la policía antidisturbios, enviada para proteger a los topógrafos que trabajan en el proyecto. La película despliega una estética estridente, tanto en fotografía como en edición, y se centra en los enfrentamientos entre los empleados del aeropuerto, sus escoltas policiales y los manifestantes.",
-      "synopsis_en": "In the village of Heta, the protests against a new airport being built on their land are fierce — the construction is considered illegitimate. Farmers and students clash with riot police sent to protect the surveyors working on the project. The film deploys a strident aesthetic, both in photography and editing, focusing on confrontations between airport employees, their police escorts, and protesters."
+      "synopsis": "En el pueblo de Heta, campesinos y estudiantes combaten a la policía antidisturbios enviada a proteger los trabajos del aeropuerto. La película registra el conflicto con una estética estridente y combativa.",
+      "synopsis_en": "In the village of Heta, farmers and students clash with riot police sent to protect airport surveyors. The film captures the conflict with a confrontational aesthetic that matches the fight it documents."
     },
     {
       "title": "Cortos: Competencia Nuevas Voces 1",
@@ -1032,8 +1033,8 @@
       "day_order": 2,
       "is_cortos": false,
       "film_list": [],
-      "synopsis": "Tras visitar la ciudad de Yamagata en Japón, donde descubrió el trabajo de Ogawa Productions y conoció a Shiraishi Yoko, la viuda de Shinsuke Ogawa, Barbara Hammer decidió realizar una película sobre las complejas y jerárquicas relaciones que se habían desarrollado entre los miembros del colectivo. El resultado ofrece una perspectiva a veces dolorosa y a veces agridulce de la dinámica de Ogawa Productions. Con testimonios de Nagisa Oshima, Sumiko Haneda, Kazuo Hara y Robert Kramer, entre otros.",
-      "synopsis_en": "After visiting the city of Yamagata in Japan, where she discovered the work of Ogawa Productions and met Shiraishi Yoko, Shinsuke Ogawa's widow, Barbara Hammer decided to make a film about the complex and hierarchical relationships that had developed among the collective's members. The result offers a sometimes painful, sometimes bittersweet perspective on the dynamics of Ogawa Productions, featuring testimonies from Nagisa Oshima, Sumiko Haneda, Kazuo Hara, and Robert Kramer, among others."
+      "synopsis": "Retrato de las relaciones internas del colectivo Ogawa Productions, visitado por la directora tras conocer a la viuda de Shinsuke Ogawa en Yamagata. Una mirada agridulce sobre jerarquía, devoción y cine colectivo.",
+      "synopsis_en": "Portrait of the inner life of the Ogawa Productions collective, made after the director met founder Shinsuke Ogawa's widow in Yamagata. A bittersweet look at hierarchy, devotion, and collective filmmaking."
     },
     {
       "title": "Prefacio para el Dialoguito",
@@ -1072,9 +1073,10 @@
       "day_order": 3,
       "is_cortos": false,
       "film_list": [],
-      "synopsis": "Ponencia de Matías Piñeiro (Argentina). Nació en Buenos Aires y reside en Nueva York. Director y guionista, sus cortometrajes y largometrajes se han estrenado en la Berlinale, Toronto, Locarno, Cannes y el Festival de Cine de Nueva York. Su obra se basa a menudo en fuentes literarias como Shakespeare, Safo y D.F. Sarmiento. Es profesor asociado del Pratt Institute de Nueva York y coordina el programa de cine de la Elías Querejeta Zine Eskola de San Sebastián.",
+      "synopsis": "Ponencia del cineasta Matías Piñeiro sobre su práctica cinematográfica, su relación con la literatura y su trabajo entre Buenos Aires y Nueva York. Una reflexión sobre el tiempo, el cine y las fuentes literarias.",
       "type": "event",
-      "event_kind": "ponencia"
+      "event_kind": "ponencia",
+      "synopsis_en": "Filmmaker Matías Piñeiro reflects on his practice, his relationship with literature, and his life between Buenos Aires and New York. A meditation on time, cinema, and the sources that feed his work."
     },
     {
       "title": "Memoria",
@@ -1114,8 +1116,8 @@
       "day_order": 3,
       "is_cortos": false,
       "film_list": [],
-      "synopsis": "Cuando se conoció la intención del Gobierno de construir un aeropuerto en Narita, los campesinos y los estudiantes iniciaron una fuerte campaña de movilizaciones. Los violentos enfrentamientos en los campos de Sanrizuka cobraron numerosas víctimas y, finalmente, el suicidio de un joven activista, lo que dejó profundas cicatrices en quienes aún vivían en los campos. Los agricultores eran arrestados constantemente y se les impedía trabajar durante la temporada de cosecha. En esta película, Ogawa documenta cómo los miembros restantes de la comunidad buscan juntos consuelo y perseverancia.",
-      "synopsis_en": "When the government's plan to build an airport at Narita became known, farmers and students launched a powerful campaign of mobilizations. The violent clashes in the Sanrizuka fields claimed many victims, including the suicide of a young activist, leaving deep scars on those still living in the fields. Farmers were constantly arrested and prevented from working during harvest season. In this film, Ogawa documents how the remaining community members seek solace and perseverance together."
+      "synopsis": "El suicidio de un joven activista dejó cicatrices en los que resistieron la construcción del aeropuerto de Narita. Los agricultores, arrestados y sin poder trabajar en cosecha, buscan juntos consuelo y perseverancia.",
+      "synopsis_en": "An activist's suicide leaves deep wounds in the Narita airport resistance. Farmers arrested during harvest season look to each other for consolation and the will to keep going."
     },
     {
       "title": "Tres hermanas",
@@ -1134,8 +1136,8 @@
       "day_order": 3,
       "is_cortos": false,
       "film_list": [],
-      "synopsis": "\"Soy una cineasta colombiana en la antesala de la vejez, busco a mis dos hermanas mayores, una vive en Francia y otra en Israel, para reseñar las diferentes formas que tenemos de enfrentar la vejez y la muerte\". Con franqueza, delicadeza y humor, la película pretende derribar el tabú que la sociedad occidental impone en estos temas y filma cómo la propia directora se dispone a enfrentar, con curiosidad y empatía, esta última etapa de la vida.",
-      "synopsis_en": "'I am a Colombian filmmaker on the threshold of old age, and I am looking for my two older sisters — one lives in France, the other in Israel — to examine the different ways we each face aging and death.' With candor, delicacy, and humor, the film attempts to break the taboo Western society imposes on these subjects, filming the director herself as she prepares to face this final stage of life with curiosity and empathy.",
+      "synopsis": "Una cineasta colombiana en la antesala de la vejez busca a sus dos hermanas —una en Francia, otra en Israel— para explorar cómo cada una enfrenta el envejecimiento y la muerte. Con humor y sin tabúes.",
+      "synopsis_en": "A Colombian filmmaker approaching old age seeks out her two sisters — one in France, one in Israel — to explore how each faces aging and death. Honest, tender, and occasionally funny.",
       "language": "es"
     },
     {
@@ -1263,8 +1265,8 @@
       "day_order": 4,
       "is_cortos": false,
       "film_list": [],
-      "synopsis": "En la nueva película de Jem Cohen, un astrónomo austríaco llamado Karl, que ha estado reevaluando su trabajo y su vida después de cumplir 70 años, viaja a la cima de una montaña en una isla griega en busca del cielo más oscuro para observar el cosmos. Espera encontrar un cielo lo suficientemente oscuro como para reconectar con las estrellas.",
-      "synopsis_en": "In Jem Cohen's new film, an Austrian astronomer named Karl — who has been reassessing his work and life after turning 70 — travels to a mountaintop on a Greek island in search of the darkest sky to observe the cosmos, hoping to reconnect with the stars."
+      "synopsis": "Karl, astrónomo austriaco de 70 años, viaja a una isla griega en busca del cielo más oscuro para observar el cosmos. Una revisión silenciosa de su trabajo y su vida bajo las estrellas.",
+      "synopsis_en": "Karl, a 70-year-old Austrian astronomer, travels to a Greek island to find the darkest sky for stargazing. A quiet reassessment of his work and his life, conducted under the cosmos."
     },
     {
       "title": "7 caminadas con Mark Brown",
@@ -1323,8 +1325,8 @@
       "day_order": 5,
       "is_cortos": false,
       "film_list": [],
-      "synopsis": "La película es sobre la preparación de un espectáculo teatral que hicieron dos actores, Damien Houssier y Maxime Kerzanet, a partir de textos de Antoine Vitez, gran dramaturgo francés. Esta es una película de un flujo constante, como un río, del que se puede salir pero en el que al volver a entrar te arrastra la corriente. Los actores se preparan rigurosamente. Dominique Baumard los filma durante todas las fases del trabajo.",
-      "synopsis_en": "The film follows the preparation of a theatrical performance by actors Damien Houssier and Maxime Kerzanet, based on texts by Antoine Vitez, the great French playwright. It is a film of constant flow, like a river — you can step out of it, but when you return the current pulls you back. The actors prepare rigorously, and Dominique Baumard films them through every phase of their work."
+      "synopsis": "Dos actores preparan un espectáculo a partir de textos de Antoine Vitez, gran dramaturgo francés. La cámara los sigue en cada fase del trabajo con la constancia de un río que arrastra lo que toca.",
+      "synopsis_en": "Two actors prepare a performance from texts by French playwright Antoine Vitez. The camera follows every phase of their work with the quiet persistence of a current that carries everything it touches."
     },
     {
       "title": "Canciones de verano",
@@ -1343,8 +1345,8 @@
       "day_order": 5,
       "is_cortos": false,
       "film_list": [],
-      "synopsis": "Es verano en Ubuyama-mura. Por todas partes se oyen canciones. Reverberan en el paisaje del pueblo de montaña. Algunas son de ahora, otras son de hace más de mil años. Las hay profanas, las hay sagradas. Desgarradoras, románticas, infantiles, melancólicas... Masae recorre el pueblo de montaña recolectando esas canciones. Parece que está buscando algo.",
-      "synopsis_en": "It is summer in Ubuyama-mura. Songs can be heard everywhere, reverberating across the mountain village landscape. Some are new; others are more than a thousand years old. Sacred and profane, heartbreaking, romantic, childlike, melancholic... Masae wanders the mountain village collecting these songs. It seems she is searching for something."
+      "synopsis": "Masae recorre Ubuyama-mura recolectando canciones: profanas y sagradas, de ahora y de hace mil años, desgarradoras y melancólicas. Parece buscar algo más que canciones en ese pueblo de montaña.",
+      "synopsis_en": "Masae wanders through the mountain village of Ubuyama-mura collecting songs — sacred and profane, ancient and new, heartbreaking and tender. She seems to be looking for something beyond the music."
     },
     {
       "title": "Selectito",
@@ -1383,8 +1385,8 @@
       "day_order": 5,
       "is_cortos": false,
       "film_list": [],
-      "synopsis": "En La Barra, un alejado y húmedo pueblo de la costa pacífica colombiana, Cerebro, líder de los nativos Afrodescendientes, enfrenta fuertes contradicciones con El Paisa, poderoso terrateniente que planea la construcción de un hotel en la playa. Daniel, un citadino extraño y silencioso, llega una tarde cualquiera y permanece varios días en el sitio a la espera de una lancha que pueda sacarlo del país. Obligado a partir, tendrá que ser parte de la lucha del pueblo que se resiste a desaparecer con la inminente llegada del progreso.",
-      "synopsis_en": "In La Barra, a remote and humid village on Colombia's Pacific coast, Cerebro — leader of the Afro-descendant community — faces deep tensions with El Paisa, a powerful landowner planning to build a hotel on the beach. Daniel, a strange and silent city dweller, arrives one afternoon and stays several days waiting for a boat to take him out of the country. Forced to leave, he will have to join the community's struggle to resist the inevitable arrival of so-called progress."
+      "synopsis": "En La Barra, costa pacífica colombiana, el líder afrodescendiente Cerebro se enfrenta a un terrateniente que quiere construir un hotel en la playa. Un forastero de paso queda atrapado en la resistencia del pueblo.",
+      "synopsis_en": "In La Barra on Colombia's Pacific coast, Afro-descendant leader Cerebro faces a landowner planning a beach hotel. A passing stranger gets caught in the community's fight to remain."
     },
     {
       "title": "Programa Ewelina Rosińska",
@@ -1449,9 +1451,10 @@
       "day_order": 6,
       "is_cortos": false,
       "film_list": [],
-      "synopsis": "Ponencia de Pablo García Canga (España). Se diplomó en Dirección de Cine en La Fémis de París. Ha dirigido varios cortometrajes y ha sido guionista de films de cineastas como Gonzalo García Pelayo, Santos Díaz o Ángel Santos. Trabaja en la programación del Festival Punto de Vista, escribe crítica en revistas como Lumière, Détour, Foco o SoFilm, ha traducido varios libros y ha publicado uno dedicado a Yasujirō Ozu.",
+      "synopsis": "Ponencia del cineasta y programador Pablo García Canga sobre su trayectoria entre la dirección, la crítica y la curaduría. Una reflexión sobre los cruces entre el cine y la escritura.",
       "type": "event",
-      "event_kind": "ponencia"
+      "event_kind": "ponencia",
+      "synopsis_en": "Filmmaker and programmer Pablo García Canga reflects on a career spanning direction, criticism, and curation. A meditation on the crossings between cinema and writing."
     },
     {
       "title": "Las tierras del cielo",
@@ -1470,8 +1473,8 @@
       "day_order": 6,
       "is_cortos": false,
       "film_list": [],
-      "synopsis": "Una noche. Una ciudad. Madrid. Cinco conversaciones. Nueve personajes. Cuentan historias personales, cuentan historias inventadas y cuentan, también, una vieja historia que va de conversación en conversación. Es la historia de una vieja película japonesa. La historia de un panadero poeta y una joven que trabaja en una tienda de alimentación…",
-      "synopsis_en": "One night. One city. Madrid. Five conversations. Nine characters. They tell personal stories, invented stories, and also an old story that passes from one conversation to the next — the story of an old Japanese film. The story of a poet-baker and a young woman who works in a food shop."
+      "synopsis": "Una noche en Madrid. Cinco conversaciones entre nueve personajes que cuentan historias personales, inventadas y una vieja historia japonesa que circula de boca en boca como una corriente subterránea.",
+      "synopsis_en": "One night in Madrid. Five conversations between nine people — personal stories, invented stories, and an old Japanese story that passes from mouth to mouth like an underground current."
     },
     {
       "title": "Esperando abril + Los bandidos del hotel azul",
@@ -1513,9 +1516,9 @@
           "lbSlug": "les-brigands-de-lhotel-bleu"
         }
       ],
-      "synopsis": "Doble función de Olivier Godin. En attendant Avril (2018): comedia policial épica inspirada en fábulas medievales, un hueso que canta y un actor con un brazo de gorila que solo el amor verdadero puede liberar. Les brigands de l'hôtel bleu (2015): una llamada, una noche, una conversación tierna entre dos desconocidos.",
+      "synopsis": "Doble función de Olivier Godin: una comedia épica con un hueso que canta y un actor de brazo de gorila, y una llamada nocturna entre dos desconocidos que se vuelve una conversación tierna e inesperada.",
       "is_programa": true,
-      "synopsis_en": "Double bill by Olivier Godin. En attendant Avril (2018): an epic police comedy inspired by medieval fables, a singing bone, and an actor with a gorilla arm that only true love can free. Les brigands de l'hôtel bleu (2015): a call, a night, a tender conversation between two strangers."
+      "synopsis_en": "Double bill from Olivier Godin: an epic comedy featuring a singing bone and an actor with a gorilla arm, and a late-night call between two strangers that turns unexpectedly tender."
     },
     {
       "title": "Cartas a mis padres muertos",
@@ -1555,8 +1558,8 @@
       "day_order": 6,
       "is_cortos": false,
       "film_list": [],
-      "synopsis": "Errol y Sasha son dos veinteañeras en apariencia algo desorientadas, vagan sin rumbo por los sombríos días invernales de una ciudad. La película contempla con dulzura fragmentos de sus vidas cotidianas, haciendo que, inevitablemente, personas, historias, lugares y realidades se superpongan y se entrelacen con algo de misterio y algo de humor. Bluish describe un estado físico y anímico frágil, una condición o, mejor dicho, una atmósfera de ambigüedad y anhelo.",
-      "synopsis_en": "Errol and Sasha are two young women in their twenties, somewhat adrift, wandering through the gray winter days of a city. The film watches with tenderness fragments of their everyday lives, inevitably allowing people, stories, places, and realities to overlap and intertwine with a touch of mystery and humor. Bluish describes a fragile physical and emotional state — a condition, or rather an atmosphere, of ambiguity and longing.",
+      "synopsis": "Errol y Sasha vagan por los días invernales de una ciudad sin rumbo claro. La película observa fragmentos de sus vidas cotidianas con dulzura, dejando que las historias y realidades se entrelacen con misterio y humor.",
+      "synopsis_en": "Errol and Sasha drift through the gray winter days of a city with no clear direction. The film watches fragments of their daily lives tenderly, letting stories and realities weave together with mystery and quiet humor.",
       "language": "de"
     },
     {
@@ -1798,8 +1801,8 @@
       "day_order": 7,
       "is_cortos": false,
       "film_list": [],
-      "synopsis": "Un joven llamado Julian Castronovo se muda a Nueva York. Alquila una pequeña habitación a un comerciante de arte llamado Ely Sakhai. Un día, mientras pinta la habitación, el joven encuentra un libro y un dibujo a lápiz de un ciervo ocultos en la pared. Tras una investigación preliminar, se da cuenta de que estos objetos podrían haber sido dejados por un falsificador de pinturas que aparentemente desapareció dos décadas antes.",
-      "synopsis_en": "A young man named Julian Castronovo moves to New York and rents a small room from an art dealer named Ely Sakhai. One day, while painting the room, he finds a book and a pencil drawing of a deer hidden in the wall. After a preliminary investigation, he realizes these objects may have been left by a painting forger who apparently disappeared two decades earlier."
+      "synopsis": "Julian se muda a Nueva York y alquila un cuarto a un comerciante de arte. Pintando la habitación, descubre un libro y un dibujo ocultos en la pared que podrían pertenecer a un falsificador desaparecido hace veinte años.",
+      "synopsis_en": "Julian moves to New York and rents a room from an art dealer. Painting the walls, he finds a book and a pencil drawing hidden inside — possibly left by a forger who vanished two decades ago."
     },
     {
       "title": "Ewelina Rosińska. Nubes del este: reflexiones sobre la imagen y el territorio",
@@ -1901,8 +1904,8 @@
       "day_order": 8,
       "is_cortos": false,
       "film_list": [],
-      "synopsis": "Además de su fascinante registro de un estilo de vida en desaparición y las agraciadas anécdotas sobre la inventiva humana, esta es una película de una belleza deslumbrante. Sus escenas devotas al paso del tiempo, ya sea revelando los magníficos tonos rojo y anaranjados intensos de la fruta en plena floración, o al secar la fruta después de ser pelada, inundan la pantalla de una sensación estética radiante.",
-      "synopsis_en": "Beyond its fascinating record of a disappearing way of life and the graceful anecdotes about human ingenuity, this is a film of dazzling beauty. Its devotional scenes given over to the passage of time — revealing the magnificent deep reds and intense oranges of the fruit in full bloom, or showing the fruit being dried after peeling — flood the screen with a radiant aesthetic sensation."
+      "synopsis": "Documento sobre la producción artesanal de caquis en Japón, donde el paso del tiempo se vuelve imagen: la fruta en plena floración, los tonos rojos y anaranjados intensos, la piel pelada colgando a secar.",
+      "synopsis_en": "A document of traditional persimmon production in Japan, where time itself becomes image: fruit in full bloom, deep reds and oranges, skins stripped and hung to dry in the autumn air."
     },
     {
       "title": "Proyecciones especiales",

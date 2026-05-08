@@ -168,7 +168,7 @@
       "year": 2025,
       "genre": "Documental",
       "synopsis": "Brigitte Baptiste, Ph.D., se ha consolidado como una de las principales expertas ambientales de Colombia y también como un ícono transgénero influyente e inesperado.",
-      "synopsis_en": "Brigitte Baptiste is a female transgender ecologist whose groundbreaking research has challenged scientific and social conventions for years. With the help of tracking, archive footage and digital animation, the film weaves an intimate soliloquy and a richly nuanced portrait around an extraordinary protagonist, whose refreshing ideas about life, family and current issues may, perhaps, rekindle hope for the future of our planet.",
+      "synopsis_en": "Brigitte Baptiste is a transgender ecologist, TV host, and one of Colombia's leading environmental experts. A portrait of a woman who has redefined what it means to be a scientist and a public figure.",
       "tmdb_id": 1498786,
       "language": "es"
     },
@@ -190,7 +190,7 @@
       "year": 2025,
       "genre": "Drama",
       "synopsis": "Clara, adolescente de una pequeña comunidad indígena en los Andes, criada por su madre adoptiva partera, sueña con ser estrella de música folclórica en la ciudad.",
-      "synopsis_en": "Clara is a teenager growing up in a small indigenous community high in the Andes. Her adoptive mother, a midwife who took her in as a baby, has taught her everything about natural medicine and the power of plants. When a condor chick falls from the mountain, Clara begins to question her own identity and her connection to a world that exists beyond the village.",
+      "synopsis_en": "Clara, a teenager in an Andean indigenous community, learns she was adopted from a sacred condor. As her eighteenth birthday approaches, she must choose between the human world she knows and the one she came from.",
       "tmdb_id": 1459062
     },
     {
@@ -595,7 +595,7 @@
     },
     {
       "title": "Cortos: Territorio",
-      "synopsis": "Selección de 5 cortometrajes —4 documentales y una ficción— que dan cuenta de la relación entre los cuerpos de los habitantes y el territorio que los acoge. Las dualidades entre el campo y la ciudad, el afán por proteger tradiciones amenazadas por el progreso capitalista, la memoria como eje del acto de habitar un lugar y los actos políticos de las migraciones y los desarraigos.",
+      "synopsis": "Cinco cortometrajes sobre la relación entre los cuerpos y el territorio que los acoge. Campo y ciudad, tradición amenazada, memoria del lugar y el acto político del desarraigo como formas de habitar el mundo.",
       "title_en": "Short Films: Territory",
       "country": "Colombia/UK/Chile/Brasil/Bolivia/México/Guatemala/Francia",
       "flags": "🇨🇴🇬🇧🇨🇱🇧🇷🇧🇴🇲🇽🇬🇹🇫🇷",
@@ -653,11 +653,12 @@
           "genre": "Documental",
           "synopsis": "Pacífico es el nombre de una región, pero también de una fuerza. Una tierra donde la música acompaña la vida y donde uno puede renacer."
         }
-      ]
+      ],
+      "synopsis_en": "Five shorts exploring the bond between bodies and the land that holds them. Rural and urban tensions, threatened traditions, memory as belonging, and displacement as a political act."
     },
     {
       "title": "Cortos: Identidad",
-      "synopsis": "Cinco cortometrajes iberoamericanos que presentan reflexiones diversas y arriesgadas sobre lo que entendemos como identidad y la manera en que ésta se construye en contacto con los demás. Navegando la hibridez entre ficción, animación y no ficción, reflexionan sobre las transformaciones del cuerpo, la muerte como detonante de auto-cuestionamiento y los encuentros inesperados que revelan lo que no nos atrevíamos a mirar de nosotros mismos.",
+      "synopsis": "Cinco cortometrajes iberoamericanos sobre cómo se construye la identidad en contacto con los demás. Mezclan ficción, animación y documental para explorar el cuerpo, la muerte y los encuentros que revelan lo que preferimos no ver de nosotros mismos.",
       "title_en": "Short Films: Identity",
       "country": "Brasil/Colombia/EEUU/Panamá/Venezuela/Haití/Francia",
       "flags": "🇧🇷🇨🇴🇺🇸🇵🇦🇻🇪🇭🇹🇫🇷",
@@ -706,7 +707,8 @@
           "genre": "Ficción",
           "synopsis": "Marianne y Pétion, en Haití, esperan la llamada de su hijo que emigró al sueño americano. El silencio revela el quiebre en sus propias vidas."
         }
-      ]
+      ],
+      "synopsis_en": "Five Ibero-American shorts on identity built through contact with others. Blending fiction, animation, and documentary, they explore the body, death, and the encounters that force us to confront what we'd rather not see in ourselves."
     },
     {
       "title": "Un mundo frágil y maravilloso",
@@ -792,7 +794,8 @@
           "flags": "🇧🇷🇫🇷"
         }
       ],
-      "synopsis": "Cortometrajes dirigidos a jóvenes y a los adultos significativos en sus vidas que desean compartir una experiencia cinematográfica. Estas obras, atractivas y reveladoras, abren espacios de diálogo sobre temas como la protección del territorio y la identidad, la superación del prejuicio racial, el manejo de las incertidumbres del mundo contemporáneo y la búsqueda de fortaleza en la solidaridad, la empatía e incluso el humor."
+      "synopsis": "Cortometrajes para jóvenes y adultos que quieran compartir una experiencia cinematográfica. Abren diálogo sobre identidad, territorio, prejuicio racial e incertidumbre contemporánea, y encuentran en la solidaridad y el humor un lugar de fortaleza.",
+      "synopsis_en": "Short films for young audiences and the adults who want to share a cinema experience with them. Sparking conversations about identity, territory, racial prejudice, and uncertainty — finding strength in solidarity, empathy, and humor."
     },
     {
       "title": "La naturaleza de las cosas invisibles",
@@ -811,8 +814,8 @@
       "director": "Matías Rojas Valencia",
       "year": 2025,
       "genre": "Drama",
-      "synopsis": "Gloria, una niña de diez años, pasa sus vacaciones en el hospital donde trabaja su madre como enfermera. Mientras explora el lugar, conoce a Sofía, una chica convencida de que el internamiento ha empeorado la salud de su bisabuela. Unidas por las ganas de irse, las dos encuentran refugio la una en la otra. Cuando la partida se vuelve inevitable, las niñas y sus madres se marchan a una casa de campo para vivir los últimos días de un verano inolvidable.",
-      "synopsis_en": "Ten-year-old Gloria spends her vacation at the hospital where her mother works as a nurse. While exploring the wards, she meets Sofía, a girl convinced that hospitalization has worsened her great-grandmother's health. Drawn together by their shared desire to leave, the two find solace in each other. When departure becomes inevitable, the girls and their mothers retreat to a country house to live out the final days of an unforgettable summer."
+      "synopsis": "Gloria, de diez años, pasa el verano en el hospital donde trabaja su madre. Allí conoce a Sofía, convencida de que la internación daña a su bisabuela. Las dos niñas se refugian la una en la otra antes del final del verano.",
+      "synopsis_en": "Ten-year-old Gloria spends summer at her mother's hospital, where she meets Sofía, who believes the ward is worsening her great-grandmother's condition. Bound by a shared need to escape, the two girls find solace in each other before summer ends."
     },
     {
       "title": "Homebound",
