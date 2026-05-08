@@ -6353,68 +6353,26 @@
       "is_cortos": true,
       "film_list": [
         {
-          "title": "APART",
-          "director": "Pola Maneli",
-          "country": "🇺🇸🇿🇦",
-          "duration": 19,
-          "year": 2025,
-          "synopsis": "Cuando Violet acepta una invitación a una isla privada con algunos de los influencers sociales más famosos del mundo, espera un fin de semana de oportunidades virales inigualables. Pronto se convierte en parte de su propio y horrible reality show cuando los invitados se enfrentan entre sí para capturar a los legendarios perros devoradores de hombres de la isla antes de que se conviertan en víctimas de los monstruosos caninos."
-        },
-        {
           "title": "Me, Myself, and Mary",
-          "director": "John Michell",
-          "country": "🇬🇧🇮🇪",
-          "duration": 13,
-          "year": 2026,
-          "synopsis": "Chris O'Dowd and Aisling Bea star in the viral, true story of Séamas O'Reilly, who got his days mixed up and ended up alone with his boss and the President of Ireland while high on drugs."
+          "slug": "me-myself-and-mary",
+          "director": "John Michell"
         },
         {
-          "title": "Dear Upstairs Neighbors",
-          "director": "Connie Qin He",
-          "country": "🇺🇸",
-          "duration": 6,
-          "year": null,
-          "synopsis": ""
+          "title": "violet-and-marlowe-rob-a-bank",
+          "slug": "violet-and-marlowe-rob-a-bank"
         },
         {
-          "title": "ChikaBOOM!",
-          "director": "c. Craig Patterson",
-          "country": "🇺🇸",
-          "duration": 9,
-          "year": 2026,
-          "synopsis": ""
+          "title": "under-the-lake",
+          "slug": "under-the-lake"
         },
         {
-          "title": "Eeny, Meeny, Miny, Moe!",
-          "director": "Andrea Szelesová",
-          "country": "🇨🇿🇸🇰",
-          "duration": 12,
-          "year": 2011,
-          "synopsis": "My choices determine my life."
+          "title": "saba",
+          "slug": "saba"
         },
         {
-          "title": "Grounded",
-          "director": "Chris Callus",
-          "country": "🇳🇿",
-          "duration": 4,
-          "year": 2003,
-          "synopsis": "Young backpacker Henry inadvertently becomes the custodian of an old lady's suitcase at the airport. Moments later, Henry's surrounded by police and accused of being a terrorist. Things only get worse when Detective Harrigan arrives; a hard-nosed cop in no mood to listen. Can Henry find some way out of this mess... alive?"
-        },
-        {
-          "title": "Leg Day",
-          "director": "João Lauro Fonte",
-          "country": "🇧🇷",
-          "duration": 4,
-          "year": 2026,
-          "synopsis": ""
-        },
-        {
-          "title": "Lost Touch",
-          "director": "Justine Klaiber",
-          "country": "🇨🇭",
-          "duration": 12,
-          "year": 2025,
-          "synopsis": "Amelia is the sole survivor on a damaged spaceship. Caught in the gravitational pull of a planet, she struggles with grief and isolation. When a mysterious presence appears, she is torn between the past and the future."
+          "title": "APART",
+          "slug": "apart",
+          "director": "Pola Maneli"
         }
       ]
     },
@@ -6461,35 +6419,31 @@
       "film_list": [
         {
           "title": "Last Minute",
-          "director": "Michael Cusumano",
-          "country": "🇺🇸",
-          "duration": 15,
-          "year": 2002,
-          "synopsis": "The clock is ticking towards The Last Minute, but no one knows it. No one except Billy Byrne - young, cool and talented, he's the Next Big Thing. At least that's what the London glitterazzi are saying, on the streets, in the clubs, in the Business. But the glitterazzi turn out to be wrong and Billy Byrne is all over in a split second. His world detonates. His self-esteem splinters. Suddenly he's on a rollercoaster ride into the London underworld - a dangerous land of murderers, thieves and talent agents."
+          "slug": "last-minute",
+          "director": "Michael Cusumano"
         },
         {
-          "title": "Daddy's Little Meatball",
-          "director": "Yael Grunseit",
-          "country": "🇦🇺🇺🇸",
-          "duration": 14,
-          "year": 2026,
-          "synopsis": "On a trip to New York, an Australian period-underwear salesman and his teenage daughter navigate the city and their strained relationship."
+          "title": "32 B",
+          "slug": "32-b",
+          "director": "Mohamed Taher"
         },
         {
-          "title": "Cookie, Love",
-          "director": "Sari Arambulo",
-          "country": "🇫🇷🇺🇸",
-          "duration": 9,
-          "year": 1998,
-          "synopsis": "Down at the docks a very enterprising but dangerous element is making life miserable for Sheriff Marga. But she is distracted by a series of puzzling kidnappings that is plaguing her parish. Could the culprit be the mysterious Queen - the dance hall queen of the docks? Or could it be an even more sinister figure: The Killer Tarantula?"
+          "title": "His House, Home",
+          "slug": "his-house-home",
+          "director": "Aisling O'Regan Sargent"
         },
         {
-          "title": "Child of the Rouge",
-          "director": "Taz F. Stark",
-          "country": "🇺🇸",
-          "duration": 14,
-          "year": 2026,
-          "synopsis": ""
+          "title": "sandy-fannies",
+          "slug": "sandy-fannies"
+        },
+        {
+          "title": "pale-sun",
+          "slug": "pale-sun"
+        },
+        {
+          "title": "Kiloran Bay",
+          "slug": "kiloran-bay",
+          "director": "Michael Bruce"
         }
       ]
     },
@@ -6535,20 +6489,33 @@
       "is_cortos": true,
       "film_list": [
         {
-          "title": "I Think About Killing You",
-          "director": "Ran Ran Wang",
-          "country": "🇺🇸",
-          "duration": 14,
-          "year": null,
-          "synopsis": "Team captain Dani is plagued by invasive fantasies of killing her abusive coach. When the coach pushes the team too far, Dani must choose whether or not to act on her fantasies of violence."
+          "title": "Kaya (ᜃᜌ)",
+          "slug": "kaya",
+          "director": "Isabel Lamers"
         },
         {
-          "title": "A Crime Across Four Landscapes",
-          "director": "Aidan Weaver",
-          "country": "🇺🇸",
-          "duration": 6,
-          "year": 2026,
-          "synopsis": "When a small-town crime goes awry, the evidence is scattered across four picturesque landscapes in the Southern American countryside - inviting viewers to piece together what happened."
+          "title": "Freestyle",
+          "slug": "freestyle",
+          "director": "Jordan Britt"
+        },
+        {
+          "title": "Fault",
+          "slug": "fault",
+          "director": "Misha Calvert"
+        },
+        {
+          "title": "I Think About Killing You",
+          "slug": "i-think-about-killing-you",
+          "director": "Ran Ran Wang"
+        },
+        {
+          "title": "La Lucha de Lucía",
+          "slug": "lucha-de-lucia",
+          "director": "Maria Sofia Hernandez"
+        },
+        {
+          "title": "ultimatum",
+          "slug": "ultimatum"
         }
       ]
     },
@@ -6588,28 +6555,18 @@
       "is_cortos": true,
       "film_list": [
         {
-          "title": "Couture to the Max",
-          "director": "Dori Berinstein",
-          "country": "🇺🇸",
-          "duration": 35,
-          "year": 2026,
-          "synopsis": "At just 9-years-old, fashion prodigy Max Alexander fearlessly fuses his boundless imagination with an unwavering commitment to sustainability, inspiring us to dream boldly and act responsibly."
-        },
-        {
           "title": "Farm to Fashion",
-          "director": "Oliver Halfin",
-          "country": "🇺🇸",
-          "duration": 23,
-          "year": 2026,
-          "synopsis": ""
+          "slug": "farm-to-fashion",
+          "director": "Oliver Halfin"
         },
         {
-          "title": "Fabric",
-          "director": "Frank Sun",
-          "country": "🇺🇸",
-          "duration": 14,
-          "year": 2018,
-          "synopsis": "Rebajas en un gran almacén inglés, Sheila ronda estanterías, sopesa prendas y, de repente, un vestido rojo sangre de seda la hipnotiza. Ya no hay nada que ella quiera salvo ese vestido, nada salvo acariciarlo, tantearlo, adorarlo... Parece que pesa una maldición sobre cada persona que ha poseído esa prenda fetiche."
+          "title": "oscar-de-la-renta-a-life-well-lived",
+          "slug": "oscar-de-la-renta-a-life-well-lived"
+        },
+        {
+          "title": "Couture to the Max",
+          "slug": "couture-to-the-max",
+          "director": "Dori Berinstein"
         }
       ]
     },
@@ -6647,32 +6604,7 @@
       "posterPosition": "center",
       "day_order": 1,
       "is_cortos": true,
-      "film_list": [
-        {
-          "title": "Homesick",
-          "director": "Nadia Bedj",
-          "country": "🇺🇸",
-          "duration": 13,
-          "year": 2022,
-          "synopsis": "\"Homesick\" is an absurdist thriller about an unhappy man who attends a retreat offering adults a second chance at a happy childhood."
-        },
-        {
-          "title": "Because Today is Saturday",
-          "director": "Alice Eça Guimarães",
-          "country": "🇵🇹🇫🇷🇪🇸",
-          "duration": 12,
-          "year": 2026,
-          "synopsis": "It is Saturday, a day of rest. A woman wakes up early so that she can give herself a birthday present: some time to write. But whenever an inspirational moment occurs, it is interrupted by domestic situations that claim her attention: the children, laundry, the meals. The mental load of those tasks ends up being unbearable and she reaches a breaking point."
-        },
-        {
-          "title": "Insufficient Fare",
-          "director": "Michael Gugger and Varvara Kanellakopoulou",
-          "country": "🇺🇸",
-          "duration": 5,
-          "year": 2026,
-          "synopsis": ""
-        }
-      ]
+      "film_list": []
     },
     {
       "title": "Shorts: Love Fictionally",
@@ -6722,44 +6654,37 @@
       "is_cortos": true,
       "film_list": [
         {
-          "title": "Kiloran Bay",
-          "director": "Michael Bruce",
-          "country": "🇬🇧",
-          "duration": 13,
-          "year": 2026,
-          "synopsis": "Kiloran Bay is written and directed by Michael Bruce: A musical short film starring Alan Cumming and Jack Wolfe. After decades away, a gay man returns home to Scotland to attend a traditional wedding and faces a past he spent a lifetime avoiding."
+          "title": "General Admission",
+          "slug": "general-admission",
+          "director": "Kaily Morgan Smith"
+        },
+        {
+          "title": "Buckets",
+          "slug": "buckets",
+          "director": "Drew Van Steenbergen"
+        },
+        {
+          "title": "DISC",
+          "slug": "disc",
+          "director": "Blake Winston Rice"
         },
         {
           "title": "One Night",
-          "director": "Maggie Brown and Tyler Brown",
-          "country": "🇺🇸",
-          "duration": 13,
-          "year": 2026,
-          "synopsis": "Dos desconocidos, ávidos de amor, se topan por casualidad en la única noche del año en que las personas solteras tienen permitido tener relaciones sexuales."
+          "slug": "one-night",
+          "director": "Maggie Brown and Tyler Brown"
         },
         {
-          "title": "Fault",
-          "director": "Misha Calvert",
-          "country": "🇺🇸",
-          "duration": 14,
-          "year": 2025,
-          "synopsis": "Noah, de 18 años, se muda de Estados Unidos a Londres con su madre y William, un empresario británico adinerado. Noah conoce al hijo de William, un chico malo llamado Nick, y crece entre ellos una atracción innegable. Mientras Noah se adapta a su nueva vida y se enamora por primera vez, su devastador pasado la alcanzará."
+          "title": "she-s-nonbinary",
+          "slug": "she-s-nonbinary"
         },
         {
-          "title": "Am I a Bad Person?",
-          "director": "Alanna Longo",
-          "country": "🇺🇸",
-          "duration": 13,
-          "year": 2012,
-          "synopsis": "When a mother and daughter tour film festivals in Europe and decide to part ways, they must confront life-changing choices alone, before returning home."
+          "title": "I, of an Accident or of love",
+          "slug": "i-of-an-accident-or-of-love",
+          "director": "Khalil Cherti"
         },
         {
-          "title": "Found&Lost",
-          "director": "Reza Rasouli",
-          "country": "🇦🇹",
-          "duration": 17,
-          "year": 1999,
-          "synopsis": "In order to impress his beautiful French neighbor, Dylan Ramsey dognaps her pet pooch so he can return him and become a hero."
+          "title": "you-tryna-say-you-love-me",
+          "slug": "you-tryna-say-you-love-me"
         }
       ]
     },
@@ -6793,92 +6718,59 @@
       "is_cortos": true,
       "film_list": [
         {
+          "title": "\"Animus Ignis\" - Shawty Sweat",
+          "slug": "animus-ignis-shawty-sweat",
+          "director": "Rui Wang and Yu-Ming Huang"
+        },
+        {
           "title": "\"Archbishop Harold Holmes” - Jack White",
-          "director": "Gilbert Trejo",
-          "country": "🇺🇸",
-          "duration": 2,
-          "year": 2026,
-          "synopsis": ""
+          "slug": "archbishop-harold-holmes-jack-white",
+          "director": "Gilbert Trejo"
         },
         {
           "title": "\"Beautiful\" - Linda Perry",
-          "director": "Sara Gilbert",
-          "country": "🇺🇸",
-          "duration": 4,
-          "year": 2026,
-          "synopsis": ""
-        },
-        {
-          "title": "\"Everyone’s A Star\" - 5 Seconds of Summer",
-          "director": "Ivy Tellin",
-          "country": "🇺🇸",
-          "duration": 3,
-          "year": 2026,
-          "synopsis": ""
-        },
-        {
-          "title": "\"Mr Electric Blue\" - Benson Boone",
-          "director": "Matt Eastin",
-          "country": "🇺🇸",
-          "duration": 5,
-          "year": 2026,
-          "synopsis": ""
-        },
-        {
-          "title": "\"Grave\" - Kid Cudi",
-          "director": "Samuel  Bayer",
-          "country": "🇺🇸",
-          "duration": 3,
-          "year": 2026,
-          "synopsis": ""
+          "slug": "beautiful-linda-perry",
+          "director": "Sara Gilbert"
         },
         {
           "title": "\"Elegantly Wasted\" - Hermanos Gutiérrez x Leon Bridges",
-          "director": "Matt Muir",
-          "country": "🇺🇸",
-          "duration": 3,
-          "year": 2026,
-          "synopsis": ""
+          "slug": "elegantly-wasted-hermanos-gutierrez-x-leon-bridges",
+          "director": "Matt Muir"
         },
         {
-          "title": "\"Animus Ignis\" - Shawty Sweat",
-          "director": "Rui Wang and Yu-Ming Huang",
-          "country": "🇨🇳",
-          "duration": 3,
-          "year": 2026,
-          "synopsis": ""
+          "title": "\"Everyone’s A Star\" - 5 Seconds of Summer",
+          "slug": "everyone-s-a-star-5-seconds-of-summer",
+          "director": "Ivy Tellin"
         },
         {
           "title": "\"Fingers Crossed\" - The Moth & The Flame",
-          "director": "Rebecca Thomas",
-          "country": "🇺🇸",
-          "duration": 3,
-          "year": 2026,
-          "synopsis": ""
+          "slug": "fingers-crossed-the-moth-the-flame",
+          "director": "Rebecca Thomas"
+        },
+        {
+          "title": "\"Grave\" - Kid Cudi",
+          "slug": "grave-kid-cudi",
+          "director": "Samuel  Bayer"
         },
         {
           "title": "\"Kill Me Fast\" - Three Days Grace",
-          "director": "Jose Lun",
-          "country": "🇺🇸",
-          "duration": 3,
-          "year": 2026,
-          "synopsis": ""
+          "slug": "kill-me-fast-three-days-grace",
+          "director": "Jose Lun"
         },
         {
           "title": "\"Long Way To Go\" - The What Four",
-          "director": "Julius Charles Ritter",
-          "country": "🇺🇸",
-          "duration": 2,
-          "year": 2026,
-          "synopsis": ""
+          "slug": "long-way-to-go-the-what-four",
+          "director": "Julius Charles Ritter"
+        },
+        {
+          "title": "\"Mr Electric Blue\" - Benson Boone",
+          "slug": "mr-electric-blue-benson-boone",
+          "director": "Matt Eastin"
         },
         {
           "title": "\"NEW YORK IS DEAD\" - LP Giobbi feat. little boots",
-          "director": "Richard Burrowes",
-          "country": "🇺🇸",
-          "duration": 4,
-          "year": 2026,
-          "synopsis": ""
+          "slug": "new-york-is-dead-lp-giobbi-feat-little-boots",
+          "director": "Richard Burrowes"
         }
       ]
     },
@@ -6922,48 +6814,7 @@
       "posterPosition": "center",
       "day_order": 3,
       "is_cortos": true,
-      "film_list": [
-        {
-          "title": "DISC",
-          "director": "Blake Winston Rice",
-          "country": "🇺🇸",
-          "duration": 13,
-          "year": 2024,
-          "synopsis": "A street rapper, tries to promote his latest single in the big apple, but he is challenge by the arrogant competition around the block."
-        },
-        {
-          "title": "Freestyle",
-          "director": "Jordan Britt",
-          "country": "🇺🇸",
-          "duration": 13,
-          "year": 2023,
-          "synopsis": "Una promesa del rap con un pasado delictivo decide vender droga para saldar su deuda con el estudio de grabación. Pero su arriesgado plan podría costarle muy caro."
-        },
-        {
-          "title": "Buckets",
-          "director": "Drew Van Steenbergen",
-          "country": "🇺🇸",
-          "duration": 10,
-          "year": null,
-          "synopsis": ""
-        },
-        {
-          "title": "General Admission",
-          "director": "Kaily Morgan Smith",
-          "country": "🇺🇸",
-          "duration": 10,
-          "year": 2021,
-          "synopsis": "A movie directed by Jeffrey Hidalgo starring Jasmine Curtis-Smith."
-        },
-        {
-          "title": "The Barbershop",
-          "director": "Diêm Camille and Diêm Camille",
-          "country": "🇩🇰",
-          "duration": 12,
-          "year": 2016,
-          "synopsis": "Tras diez años la barbería de Calvin ha cambiado, la llegada de mujeres le ha dado un nuevo aire. Pero ese ambiente de camaradería y diversión no dura para siempre y Calvin, Eddie y el resto de la pandilla deben trabajar juntos para salvar su tienda y el vecindario de una pandilla que deambula por las calles."
-        }
-      ]
+      "film_list": []
     },
     {
       "title": "Shorts: Power to the People",
@@ -7007,36 +6858,17 @@
       "is_cortos": true,
       "film_list": [
         {
+          "title": "second-life-of-freddie-nole",
+          "slug": "second-life-of-freddie-nole"
+        },
+        {
+          "title": "when-the-revolution-doesn-t-come",
+          "slug": "when-the-revolution-doesn-t-come"
+        },
+        {
           "title": "The Baddest Speechwriter of All",
-          "director": "Ben Proudfoot and Stephen Curry",
-          "country": "🇺🇸",
-          "duration": 29,
-          "year": 2026,
-          "synopsis": "Now 93, Martin Luther King Jr.’s lawyer and speechwriter reflects on the personal cost and surprising truths of making history, offering an intimate insider’s view of the Civil Rights Movement."
-        },
-        {
-          "title": "Imprint",
-          "director": "Ran Jing",
-          "country": "🇺🇸",
-          "duration": 15,
-          "year": 2007,
-          "synopsis": "Shayla Stonefeather, a Native American attorney prosecuting a Lakota teen in a controversial murder trial, returns to the reservation to say goodbye to her dying father. After the teen is killed, she hears ghostly voices and sees strange visions that cause her to re-examine beliefs she thought she left behind."
-        },
-        {
-          "title": "La Lucha de Lucía",
-          "director": "Maria Sofia Hernandez",
-          "country": "🇲🇽",
-          "duration": 14,
-          "year": 2026,
-          "synopsis": "Lucía “La Guerrera”, a 16-year-old Mexican lucha libre wrestler, as she struggles to find herself in the wrestling world that she grew up in. Her Father, “El Patron Enmascarado”, who has trained her from a young age, believes that she must maintain the tactics of a ruda (a wrestler who plays dirty to win) in order to have a successful wrestling career. A persona that has laid the foundation of their family’s legacy for generations and been the key to their success. Lucía is determined to challenge her family’s ways. She is left to decide if she will trust her own intuition and put up a real fight or play by the unspoken rules of the game, surrendering to the strategy that has been forced upon her."
-        },
-        {
-          "title": "Hope",
-          "director": "Javier Cruz-Ginez",
-          "country": "🇺🇸🇲🇽",
-          "duration": 15,
-          "year": 2013,
-          "synopsis": "Una niña llamada So Won se convierte en víctima de la violencia. Su familia pasa por la desesperación y el dolor al intentar abrir otra puerta en su vida."
+          "slug": "baddest-speechwriter-of-all",
+          "director": "Ben Proudfoot and Stephen Curry"
         }
       ]
     },
@@ -7082,28 +6914,32 @@
       "is_cortos": true,
       "film_list": [
         {
+          "title": "Lost Touch",
+          "slug": "lost-touch",
+          "director": "Justine Klaiber"
+        },
+        {
+          "title": "sleep-call",
+          "slug": "sleep-call"
+        },
+        {
+          "title": "Imprint",
+          "slug": "imprint",
+          "director": "Ran Jing"
+        },
+        {
+          "title": "Brujo",
+          "slug": "brujo",
+          "director": "Juan Zuleta"
+        },
+        {
           "title": "Holo",
-          "director": "Alexander DeSouza",
-          "country": "🇨🇦",
-          "duration": 12,
-          "year": 2022,
-          "synopsis": "One day he'll be the best trainer. For now, he just needs to find a Charizard. It's a matter of life or death."
+          "slug": "holo",
+          "director": "Alexander DeSouza"
         },
         {
-          "title": "The Dark Knot at the Center",
-          "director": "Inês Pedrosa e Melo",
-          "country": "🇵🇹🇺🇸",
-          "duration": 17,
-          "year": 2026,
-          "synopsis": ""
-        },
-        {
-          "title": "NIO KO BOKK (This Belongs to All of Us)",
-          "director": "David Clancy and David Clancy",
-          "country": "🇫🇷🇸🇳🇺🇸",
-          "duration": 10,
-          "year": 2026,
-          "synopsis": ""
+          "title": "verse",
+          "slug": "verse"
         }
       ]
     },
@@ -7149,20 +6985,32 @@
       "is_cortos": true,
       "film_list": [
         {
-          "title": "32 B",
-          "director": "Mohamed Taher",
-          "country": "🇪🇬",
-          "duration": 18,
-          "year": 2011,
-          "synopsis": "A couple moves into a new house and observe a series of strange and possibly paranormal events that leads them to setup surveillance cameras, recording everything that takes place. The found footage reveals what took place."
+          "title": "A Crime Across Four Landscapes",
+          "slug": "crime-across-four-landscapes",
+          "director": "Aidan Weaver"
         },
         {
-          "title": "Born to Kill",
-          "director": "Sally Tran",
-          "country": "🇺🇸",
-          "duration": 17,
-          "year": 1947,
-          "synopsis": "En Reno (Nevada), Helen Brent (Claire Trevor), una mujer fría y calculadora, acaba de divorciarse. Esa misma noche, en la casa donde se aloja, descubre un doble asesinato. Como iba a regresar a San Francisco, prefiere irse sin avisar a la policía para no involucrarse. En el tren se encuentra con Sam Wild (Lawrence Tierney), un atractivo psicópata. Él es el asesino que ha matado a la pareja por celos, y también va para San Francisco huyendo del lugar del crimen."
+          "title": "Child of the Rouge",
+          "slug": "child-of-the-rouge",
+          "director": "Taz F. Stark"
+        },
+        {
+          "title": "winter-psalm",
+          "slug": "winter-psalm"
+        },
+        {
+          "title": "Found&Lost",
+          "slug": "found-lost",
+          "director": "Reza Rasouli"
+        },
+        {
+          "title": "rare-birds",
+          "slug": "rare-birds"
+        },
+        {
+          "title": "Getar Hero",
+          "slug": "getar-hero",
+          "director": "Teddy Stern"
         }
       ]
     },
@@ -7202,12 +7050,30 @@
       "is_cortos": true,
       "film_list": [
         {
-          "title": "Brujo",
-          "director": "Juan Zuleta",
-          "country": "🇨🇴",
-          "duration": 11,
-          "year": 1990,
-          "synopsis": "Border Brujo is a ritual-linguistic journey across the U.S./Mexico border written and performed by artist Guillermo Gómez-Peña. In the guise of a cross-cultural shaman, Gómez Peña shifts into 15 different personas, each speaking a different language. The personas are symbolic of the borders between North and South, Anglo and Latino; myth and reality; legality and illegality; art and life. Border Brujo assaults and exorcises the demons of dominant cultures. He articulates fear, desire, trauma sublimation, anger and misplacement embodying ruptured and defiant communities with multilingual dexterity and humor."
+          "title": "Cookie, Love",
+          "slug": "cookie-love",
+          "director": "Sari Arambulo"
+        },
+        {
+          "title": "white-belt",
+          "slug": "white-belt"
+        },
+        {
+          "title": "theatre-of-dreams",
+          "slug": "theatre-of-dreams"
+        },
+        {
+          "title": "The Dark Knot at the Center",
+          "slug": "dark-knot-at-the-center",
+          "director": "Inês Pedrosa e Melo"
+        },
+        {
+          "title": "run-in-beauty",
+          "slug": "run-in-beauty"
+        },
+        {
+          "title": "panther-pat",
+          "slug": "panther-pat"
         }
       ]
     },
@@ -7247,36 +7113,33 @@
       "is_cortos": true,
       "film_list": [
         {
-          "title": "Greetings from Sumatra",
-          "director": "Karolina Fronik and Marta Kowalska",
-          "country": "🇵🇱",
-          "duration": 12,
-          "year": 2025,
-          "synopsis": "Aga, is a popular journalist who reports on world conflicts. She travels all over the world and is close to the people she meets. She doesn't keep her distance with her viewers; she speaks to them through her phone screen, even when she is in danger. Unfortunately, during one of her reports, this time from Indonesia, through a mistake by the filmmaker, her secret comes out. Aga's life changes suddenly, and she has to save her reputation. The events make her think, is her work ethical?​​"
+          "title": "Born to Kill",
+          "slug": "born-to-kill",
+          "director": "Sally Tran"
         },
         {
-          "title": "His House, Home",
-          "director": "Aisling O'Regan Sargent",
-          "country": "🇮🇪",
-          "duration": 14,
-          "year": 2025,
-          "synopsis": "Luke, a closeted young man caring for his father with MS, must confront his fears of coming out when a queer healthcare assistant enters their lives."
+          "title": "NIO KO BOKK (This Belongs to All of Us)",
+          "slug": "nio-ko-bokk-this-belongs-to-all-of-us",
+          "director": "David Clancy and David Clancy"
         },
         {
-          "title": "I'm Not Home",
-          "director": "Elena Parasco",
-          "country": "🇺🇸",
-          "duration": 12,
-          "year": null,
-          "synopsis": "“I’m Not Home”: Follows Shau, an ex-Mumbai Mafia member, on a poignant journey to reconnect with his family, questioning themes of freedom and belonging."
+          "title": "Mon Taxi",
+          "slug": "mon-taxi",
+          "director": "Meriem Sakrouhi"
         },
         {
-          "title": "Odessa",
-          "director": "Harald Swinkels",
-          "country": "🇳🇱",
-          "duration": 19,
-          "year": 1994,
-          "synopsis": "Joshua, un asesino profesional, vuelve a su ciudad natal por cuestiones de trabajo. El retorno a la población de inmigrantes rusos donde pasó su juventud despierta en él recuerdos dolorosos y confusos."
+          "title": "paving-the-way",
+          "slug": "paving-the-way"
+        },
+        {
+          "title": "Listen",
+          "slug": "listen",
+          "director": "Taliesin Black Brown"
+        },
+        {
+          "title": "Hope",
+          "slug": "hope",
+          "director": "Javier Cruz-Ginez"
         }
       ]
     },
@@ -7316,44 +7179,37 @@
       "is_cortos": true,
       "film_list": [
         {
-          "title": "Mon Taxi",
-          "director": "Meriem Sakrouhi",
-          "country": "🇺🇸🇲🇦",
-          "duration": 8,
-          "year": 1952,
-          "synopsis": "A happily married pair of taxicabs are delighted when Junior enters their lives, but this delight turns to consternation when he states his ambition to become a hotrodder.."
+          "title": "roar",
+          "slug": "roar"
         },
         {
-          "title": "Getar Hero",
-          "director": "Teddy Stern",
-          "country": "🇺🇸🇮🇳",
-          "duration": 15,
-          "year": 2026,
-          "synopsis": ""
+          "title": "ChikaBOOM!",
+          "slug": "chikaboom",
+          "director": "c. Craig Patterson"
         },
         {
-          "title": "Listen",
-          "director": "Taliesin Black Brown",
-          "country": "🇺🇸",
-          "duration": 14,
-          "year": 1982,
-          "synopsis": "A demonstration of sound in Dolby Stereo."
+          "title": "Dear Upstairs Neighbors",
+          "slug": "dear-upstairs-neighbors",
+          "director": "Connie Qin He"
         },
         {
-          "title": "I, of an Accident or of love",
-          "director": "Khalil Cherti",
-          "country": "🇫🇷",
-          "duration": 14,
-          "year": 2026,
-          "synopsis": ""
+          "title": "Eeny, Meeny, Miny, Moe!",
+          "slug": "eeny-meeny-miny-moe",
+          "director": "Andrea Szelesová"
         },
         {
-          "title": "Kaya (ᜃᜌ)",
-          "director": "Isabel Lamers",
-          "country": "🇵🇭",
-          "duration": 11,
-          "year": 2026,
-          "synopsis": ""
+          "title": "Grounded",
+          "slug": "grounded",
+          "director": "Chris Callus"
+        },
+        {
+          "title": "Leg Day",
+          "slug": "leg-day",
+          "director": "João Lauro Fonte"
+        },
+        {
+          "title": "whale-52-suite-for-man-boy-and-whale",
+          "slug": "whale-52-suite-for-man-boy-and-whale"
         }
       ]
     },
