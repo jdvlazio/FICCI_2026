@@ -5414,6 +5414,8 @@ function parseProgramTitle(t){
     // "Cortos: Familia 12+" → displayTitle="Familia 12+"
     if(t.match(/^Cortos:\s*/i)){
       displayTitle=t.replace(/^Cortos:\s*/i,'');
+    } else if(t.match(/^Shorts:\s*/i)){
+      displayTitle=t.replace(/^Shorts:\s*/i,'');
     } else if(t.startsWith('Prog.')){
       const m=t.match(/^(Prog\.[^—–]+)\s*[—–]\s*(.+)$/);
       if(m){displayTitle=m[2].trim();progSuffix=m[1].trim();}
