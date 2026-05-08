@@ -9361,6 +9361,31 @@ function renderPeliculaView(){
   requestAnimationFrame(()=>window.dispatchEvent(new Event('scroll')));// trigger lazy load
 }
 
+function renderSbar(){
+  const panel=document.getElementById('sdr-panel');
+  const trigBtn=document.getElementById('sdr-btn');
+  const lbl=document.getElementById('sdr-label');
+  if(!panel) return;
+  panel.innerHTML='';
+  const isExplorar=programaSubMode==='explorar';
+  let dayF=isExplorar?FILMS:FILMS.filter(f=>f.day===activeDay);
+  if(activeVenue!=='all') dayF=dayF.filter(f=>vcfg(f.venue).short===activeVenue);
+  const secs=[...new Set(dayF.map(f=>f.section))].sort();
+  if(lbl) lbl.textContent=activeSec==='all'||activeSec==='_chip_'?'Sección':(activeSec.length>18?activeSec.slice(0,16)+'…':activeSec);
+  if(trigBtn) trigBtn.classList.toggle('active',activeSec!=='all'&&activeSec!=='_chip_');
+  const mkOpt=(html,isOn,cb)=>{
+    const b=document.createElement('button');
+    b.className='fdr-opt'+(isOn?' on':'');
+    b.innerHTML=html;
+    b.onclick=e=>{e.stopPropagation();cb();};
+    panel.appendChild(b);
+  };
+  mkOpt(`Todas las categorías <span class="fdr-cnt">${dayF.length}</span>`,activeSec==='all',()=>{activeSec='all';selectedIdx=null;setHint(null);closeDropdowns();render();});
+  secs.forEach(sec=>{
+    const cnt=dayF.filter(f=>f.section===sec).length;
+    mkOpt(`${sec} <span class="fdr-cnt">${cnt}</span>`,activeSec===sec,()=>{activeSec=activeSec===sec?'all':sec;selectedIdx=null;setHint(null);closeDropdowns();render();});
+  });
+}
 function render(){
   if(activeView==='agenda') return;
   // Si estamos en Cartelera con el nuevo sistema, _renderProgramaContent lo maneja
