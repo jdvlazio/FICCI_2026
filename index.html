@@ -9368,7 +9368,10 @@ function _renderExploreLista(){
     entries=entries.filter(e=>e.film.section===activeSec);
   }
   if(activeVenue!=='all'){
-    entries=entries.filter(e=>e.screenings.some(s=>vcfg(s.venue).short===activeVenue));
+    entries=entries.filter(e=>e.screenings.some(s=>{
+      if(s.screenings&&s.screenings.length) return s.screenings.some(sc=>vcfg(sc.venue).short===activeVenue);
+      return vcfg(s.venue).short===activeVenue;
+    }));
   }
   // Sort: Movies → Cortos → Industry (category), within each: day_order → time
   const _typeOrder=f=>f.type==='event'?2:f.is_cortos?1:0;
@@ -9454,7 +9457,10 @@ function renderPeliculaView(){
   }
   // Aplicar filtro de venue — incluir film si alguna función es en ese lugar
   if(activeVenue!=='all'){
-    entries=entries.filter(e=>e.screenings.some(s=>vcfg(s.venue).short===activeVenue));
+    entries=entries.filter(e=>e.screenings.some(s=>{
+      if(s.screenings&&s.screenings.length) return s.screenings.some(sc=>vcfg(sc.venue).short===activeVenue);
+      return vcfg(s.venue).short===activeVenue;
+    }));
   }
 
   // Sort: Movies → Cortos → Industry (category order)
@@ -10201,13 +10207,28 @@ function lugarOpen(){
   ].join(';');
 
   // Collect unique venues from FILMS
+  // Embedded screenings[] format (Tribeca): expand all screenings, dedupe by title.
+  // Flat format (FICCI/AFF): one row per screening, use f.venue directly.
   const venueMap = {};
+  const _vSeen = new Set();
   (programaSubMode==='explorar'?FILMS:FILMS.filter(f=>f.day===activeDay))
     .forEach(f=>{
-      const cfg = vcfg(f.venue);
-      const short = cfg.short||f.venue;
-      if(!venueMap[short]) venueMap[short] = {label:short, count:0, city:cfg.city||''};
-      venueMap[short].count++;
+      if(f.screenings&&f.screenings.length){
+        if(_vSeen.has(f.title)) return;
+        _vSeen.add(f.title);
+        const rel=programaSubMode==='explorar'?f.screenings:f.screenings.filter(s=>s.date===activeDay||s.day===activeDay);
+        rel.forEach(s=>{
+          const cfg=vcfg(s.venue);const short=cfg.short||s.venue;
+          if(!short) return;
+          if(!venueMap[short]) venueMap[short]={label:short,count:0,city:cfg.city||''};
+          venueMap[short].count++;
+        });
+      } else {
+        const cfg=vcfg(f.venue);const short=cfg.short||f.venue;
+        if(!short) return;
+        if(!venueMap[short]) venueMap[short]={label:short,count:0,city:cfg.city||''};
+        venueMap[short].count++;
+      }
     });
 
   const venues = Object.values(venueMap).sort((a,b)=>b.count-a.count);
@@ -10258,7 +10279,7 @@ function lugarClose(){
   const btn = document.getElementById('lugar-btn');
   if(btn) btn.classList.toggle('active', activeVenue!=='all');
   const lbl = document.getElementById('lugar-lbl');
-  if(lbl) lbl.textContent = activeVenue==='all'?t('bar_lugar'):''; // icono ⊙ suficiente — nombre completo en pill
+  if(lbl) lbl.textContent = t('bar_lugar');
 }
 
 function lugarToggle(){

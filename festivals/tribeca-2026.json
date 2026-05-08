@@ -10207,7 +10207,8 @@
       "country": "United States",
       "flags": "🇺🇸",
       "synopsis": "Encore screening of the winner of the Founders Award for Best U.S. Narrative Feature.",
-      "synopsis_en": "Encore screening of the winner of the Founders Award for Best U.S. Narrative Feature."
+      "synopsis_en": "Encore screening of the winner of the Founders Award for Best U.S. Narrative Feature.",
+      "venue": "AMC 19th St. East 6"
     },
     {
       "title": "Award Screening: Best Documentary Feature",
@@ -10228,7 +10229,8 @@
       "country": "",
       "flags": "",
       "synopsis": "Encore screening of the winner of the Best Documentary Feature Award.",
-      "synopsis_en": "Encore screening of the winner of the Best Documentary Feature Award."
+      "synopsis_en": "Encore screening of the winner of the Best Documentary Feature Award.",
+      "venue": "AMC 19th St. East 6"
     },
     {
       "title": "Award Screening: Best International Narrative Feature",
@@ -10249,7 +10251,8 @@
       "country": "",
       "flags": "",
       "synopsis": "Encore screening of the winner of the Best International Narrative Feature Award.",
-      "synopsis_en": "Encore screening of the winner of the Best International Narrative Feature Award."
+      "synopsis_en": "Encore screening of the winner of the Best International Narrative Feature Award.",
+      "venue": "AMC 19th St. East 6"
     },
     {
       "title": "Award Screening: Best New Narrative Director",
@@ -10270,7 +10273,8 @@
       "country": "",
       "flags": "",
       "synopsis": "Encore screening of the winner of the Best New Narrative Director Award.",
-      "synopsis_en": "Encore screening of the winner of the Best New Narrative Director Award."
+      "synopsis_en": "Encore screening of the winner of the Best New Narrative Director Award.",
+      "venue": "AMC 19th St. East 6"
     },
     {
       "title": "Award Screening: Audience Award — Narrative First Place",
@@ -10291,7 +10295,8 @@
       "country": "",
       "flags": "",
       "synopsis": "Encore screening of the winner of the Audience Award for Best Narrative Feature.",
-      "synopsis_en": "Encore screening of the winner of the Audience Award for Best Narrative Feature."
+      "synopsis_en": "Encore screening of the winner of the Audience Award for Best Narrative Feature.",
+      "venue": "AMC 19th St. East 6"
     },
     {
       "title": "Award Screening: The Albert Maysles Award — Best New Documentary Director",
@@ -10312,7 +10317,8 @@
       "country": "",
       "flags": "",
       "synopsis": "Encore screening of the winner of the Albert Maysles Award for Best New Documentary Director.",
-      "synopsis_en": "Encore screening of the winner of the Albert Maysles Award for Best New Documentary Director."
+      "synopsis_en": "Encore screening of the winner of the Albert Maysles Award for Best New Documentary Director.",
+      "venue": "AMC 19th St. East 6"
     },
     {
       "title": "Award Screening: The Nora Ephron Award",
@@ -10333,7 +10339,8 @@
       "country": "",
       "flags": "",
       "synopsis": "Encore screening of the winner of the Nora Ephron Award.",
-      "synopsis_en": "Encore screening of the winner of the Nora Ephron Award."
+      "synopsis_en": "Encore screening of the winner of the Nora Ephron Award.",
+      "venue": "AMC 19th St. East 6"
     },
     {
       "title": "Award Screening: Viewpoints Winner",
@@ -10354,7 +10361,8 @@
       "country": "",
       "flags": "",
       "synopsis": "Encore screening of the winner of the Tribeca Viewpoints Award.",
-      "synopsis_en": "Encore screening of the winner of the Tribeca Viewpoints Award."
+      "synopsis_en": "Encore screening of the winner of the Tribeca Viewpoints Award.",
+      "venue": "AMC 19th St. East 6"
     }
   ]
 }
