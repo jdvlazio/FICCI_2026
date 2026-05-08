@@ -822,6 +822,14 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:var(--t
  * Ratio 2:3 → 177px alto. Estándar one-sheet cinematográfico.          */
 .poster-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--sp-2);padding:10px;transition:opacity var(--tr-fast)}
 .poster-card{position:relative;border-radius:var(--r);overflow:hidden;cursor:pointer;background:var(--surf-2);background-size:cover;background-position:center;aspect-ratio:2/3;display:block}
+.poster-card.editorial{background:#1E1B17;display:flex;flex-direction:column;justify-content:space-between;padding:0}
+.poster-card.editorial .ed-img-wrap{width:100%;overflow:hidden;flex-shrink:0}
+.poster-card.editorial .ed-img-wrap img{width:100%;aspect-ratio:16/9;object-fit:cover;display:block;opacity:0;transition:opacity 250ms ease}
+.poster-card.editorial .ed-body{flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;padding:6px 8px;text-align:center;gap:3px}
+.poster-card.editorial .ed-title{font-size:8px;font-weight:700;color:#B4B2A9;line-height:1.3;display:-webkit-box;-webkit-line-clamp:4;-webkit-box-orient:vertical;overflow:hidden}
+.poster-card.editorial .ed-dir{font-size:7px;color:#5F5E5A;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100%}
+.poster-card.editorial .ed-foot{padding:4px 0;border-top:1px solid #2C2C2A;text-align:center;flex-shrink:0}
+.poster-card.editorial .ed-foot span{font-size:6px;font-weight:500;letter-spacing:.12em;color:#5A4E40}
 .poster-card-stack{width:100%;height:100%;display:flex;gap:1px;background:var(--bdr)}
 .pcs-back,.pcs-front{flex:1;height:100%;object-fit:cover;object-position:center;display:block;min-width:0}
 .pel-sheet-poster-stage{display:flex;gap:1px;background:var(--bdr);flex-shrink:0;width:var(--poster-lg-w);height:var(--poster-lg-h);border-radius:var(--r-md);overflow:hidden}
@@ -9348,11 +9356,18 @@ function renderPeliculaView(){
       _cardBg='';
       _cardBg='';
       const _opacity=allPast&&!_ended?';opacity:.45':'';
-      posterImg=posterSrc
-        ?`<img src="${posterSrc}" loading="lazy" data-title="${f.title.replace(/"/g,'&quot;')}" style="width:100%;height:100%;object-fit:cover${_opacity};display:block;opacity:0;transition:opacity 250ms ease" onload="this.style.opacity='1'" onerror="_posterErr(this)" alt="">`
-        :``;
+      const _isEditorial=posterSrc&&posterSrc.includes('cloudfront.net');
+      if(_isEditorial){
+        const _festShort=((FESTIVAL_CONFIG&&FESTIVAL_CONFIG[_activeFestId])||{}).shortName||'FESTIVAL';
+        const _dir=f.director?(f.director.split(',')[0].trim().slice(0,22)):'';
+        posterImg=`<div class="ed-img-wrap"><img src="${posterSrc}" loading="lazy" onerror="this.remove()" alt="" onload="this.style.opacity='1'" style="${_opacity?'opacity:.45':''}"></div><div class="ed-body"><div class="ed-title">${displayTitle}</div>${_dir?`<div class="ed-dir">${_dir}</div>`:''}</div><div class="ed-foot"><span>${_festShort}</span></div>`;
+      } else {
+        posterImg=posterSrc
+          ?`<img src="${posterSrc}" loading="lazy" data-title="${f.title.replace(/"/g,'&quot;')}" style="width:100%;height:100%;object-fit:cover${_opacity};display:block;opacity:0;transition:opacity 250ms ease" onload="this.style.opacity='1'" onerror="_posterErr(this)" alt="">`
+          :``;
+      }
     }
-    return`<div class="bg-surf-2 poster-card${inWL&&!inW?' in-wl':''}${inW&&!_ended?' in-watched':''}" data-title="${f.title.replace(/"/g,'&quot;')}" onclick="openPelSheet('${safeT}')"${_isPrograma?'':_cardBg}>
+    return`<div class="bg-surf-2 poster-card${inWL&&!inW?' in-wl':''}${inW&&!_ended?' in-watched':''}${(_isPrograma?false:posterSrc&&posterSrc.includes('cloudfront.net'))?' editorial':''}" data-title="${f.title.replace(/"/g,'&quot;')}" onclick="openPelSheet('${safeT}')"${_isPrograma?'':_cardBg}>
       ${posterImg}
       ${progBadge}
       ${inWL?`<div class="poster-wl-dot">${ICONS.heartFill}</div>`:''}
