@@ -227,7 +227,8 @@
       "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/7038/large_Alicia_Keys_-_Girl_From_Hell_s_Kitchen-Clean-16x9-01.jpg",
       "posterPosition": "center",
       "day_order": 10,
-      "flags": "🇺🇸"
+      "flags": "🇺🇸",
+      "genre": "Documental"
     },
     {
       "title": "Opening Night: Earth, Wind & Fire (To Be Celestial VS That’s the Weight of the World)",
@@ -268,7 +269,8 @@
       "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/6845/large_Earth_Wind___Fire-Bug-16x9-01-v2.jpg",
       "posterPosition": "center",
       "day_order": 0,
-      "flags": "🇺🇸"
+      "flags": "🇺🇸",
+      "genre": "Documental"
     },
     {
       "title": "Sara Bareilles: Good Grief",
@@ -442,7 +444,7 @@
       "venue": "Spring Studios",
       "year": null,
       "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/6969/large_Doc_Meets_World-Clean-16x9-01.jpg",
-      "genre": "",
+      "genre": "Documental",
       "posterPosition": "center",
       "day_order": 3,
       "flags": "🇺🇸"
@@ -653,7 +655,7 @@
       "venue": "SVA Theatre",
       "year": 2026,
       "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/6915/large_Miss_Representation_-_Rise_Up-Bug-16x9-01.jpg",
-      "genre": "",
+      "genre": "Documental",
       "posterPosition": "center",
       "day_order": 4,
       "flags": "🇺🇸"
@@ -823,7 +825,7 @@
       "venue": "Spring Studios",
       "year": null,
       "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/6976/large_The_Symphony_of_Dance-Bug-16x9-01.jpg",
-      "genre": "",
+      "genre": "Documental",
       "posterPosition": "center",
       "day_order": 4,
       "flags": "🇺🇸"
@@ -2019,7 +2021,7 @@
       "venue": "Village East by Angelika",
       "year": null,
       "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/7032/large_TF26_Web_ComingSoon_1920x1080.jpg",
-      "genre": "",
+      "genre": "Documental",
       "posterPosition": "center",
       "day_order": 3,
       "flags": "🇬🇧"
@@ -2098,7 +2100,7 @@
       "venue": "SVA Theatre",
       "year": null,
       "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/7056/large_Carmelo_Anthony-Clean-16x9-01.jpg",
-      "genre": "",
+      "genre": "Documental",
       "posterPosition": "center",
       "day_order": 9,
       "flags": "🇺🇸"
@@ -2141,7 +2143,7 @@
       "venue": "SVA Theatre",
       "year": null,
       "poster": "",
-      "genre": "",
+      "genre": "Documental",
       "day_order": 7,
       "flags": "🇺🇸"
     },
@@ -2363,7 +2365,7 @@
       "venue": "SVA Theatre",
       "year": null,
       "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/6910/large_HollywoodDoesAbortion-1_clean_16x9.jpg",
-      "genre": "",
+      "genre": "Documental",
       "posterPosition": "center",
       "day_order": 4,
       "flags": "🇺🇸"
@@ -2406,7 +2408,7 @@
       "venue": "Village East by Angelika",
       "year": null,
       "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/6959/large_Houseofcriticism-melindapinecone-1_clean_16x9.jpg",
-      "genre": "",
+      "genre": "Documental",
       "posterPosition": "center",
       "day_order": 9,
       "flags": "🇺🇸"
@@ -2493,7 +2495,8 @@
       "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/7166/large_Humpty-Dumpty-X-01-16x9.png",
       "posterPosition": "center",
       "day_order": 3,
-      "flags": "🇬🇧🇺🇸"
+      "flags": "🇬🇧🇺🇸",
+      "genre": "Documental"
     },
     {
       "title": "IX XI",
@@ -2533,7 +2536,7 @@
       "venue": "Village East by Angelika",
       "year": null,
       "poster": "",
-      "genre": "",
+      "genre": "Documental",
       "day_order": 1,
       "flags": "🇺🇸"
     },
@@ -2623,7 +2626,7 @@
       "venue": "Village East by Angelika",
       "year": null,
       "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/6975/large_March_Forth-Clean-16x9-01.jpg",
-      "genre": "",
+      "genre": "Documental",
       "posterPosition": "center",
       "day_order": 5,
       "flags": "🇺🇸"
@@ -2834,7 +2837,7 @@
       "venue": "Village East by Angelika",
       "year": null,
       "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/6881/large_Spin_Wars-Clean-16x9-01.jpg",
-      "genre": "",
+      "genre": "Documental",
       "posterPosition": "center",
       "day_order": 6,
       "flags": "🇺🇸"
@@ -2877,7 +2880,7 @@
       "venue": "Village East by Angelika",
       "year": null,
       "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/6994/large_Stealing_Magic-1_clean_16x9.jpg",
-      "genre": "",
+      "genre": "Documental",
       "posterPosition": "center",
       "day_order": 2,
       "flags": "🇺🇸"
@@ -2920,7 +2923,7 @@
       "venue": "SVA Theatre",
       "year": null,
       "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/7047/large_The_A-Word_-_The_Future_of_Aging-Clean-16x9-01.jpg",
-      "genre": "",
+      "genre": "Documental",
       "posterPosition": "center",
       "day_order": 2,
       "flags": "🇺🇸"
@@ -3088,7 +3091,7 @@
       "venue": "SVA Theatre",
       "year": null,
       "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/6971/large_threesASFOUR-Clean-16x9-01.jpg",
-      "genre": "",
+      "genre": "Documental",
       "posterPosition": "center",
       "day_order": 4,
       "flags": "🇺🇸"
@@ -3173,7 +3176,7 @@
       "venue": "SVA Theatre",
       "year": null,
       "poster": "",
-      "genre": "",
+      "genre": "Documental",
       "day_order": 9,
       "flags": "🇺🇸"
     },
@@ -4658,7 +4661,7 @@
       "venue": "SVA Theatre",
       "year": 2026,
       "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/7009/large_Bang_My_Box_The_Robin_Byrd_Story-Clean-16x9-01.jpg",
-      "genre": "",
+      "genre": "Documental",
       "posterPosition": "center",
       "day_order": 6,
       "flags": "🇺🇸"
@@ -4701,7 +4704,7 @@
       "venue": "Village East by Angelika",
       "year": null,
       "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/6930/large_COLORSOFWHITEROCK_PETITE_MAISON_PRODUCTION_1_clean_16x9.jpg",
-      "genre": "",
+      "genre": "Documental",
       "posterPosition": "center",
       "day_order": 4,
       "flags": "🇫🇷🇲🇳"
@@ -8385,7 +8388,8 @@
       "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/6948/large_ChikaBOOM_-Clean-16x9-01.jpg",
       "posterPosition": "center",
       "day_order": 3,
-      "flags": "🇺🇸"
+      "flags": "🇺🇸",
+      "genre": "Animación"
     },
     {
       "title": "Child of the Rouge",
@@ -8575,7 +8579,7 @@
       "venue": "Spring Studios",
       "year": null,
       "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/7019/large_Dear_Upstairs_Neighbors-Clean-16x9-01.jpg",
-      "genre": "",
+      "genre": "Animación",
       "posterPosition": "center",
       "day_order": 3,
       "flags": "🇺🇸"
@@ -8660,7 +8664,7 @@
       "venue": "Spring Studios",
       "year": 2011,
       "poster": "https://image.tmdb.org/t/p/w185/Xc0DIw8r6NYWaB1U1YGmTfVBkp.jpg",
-      "genre": "",
+      "genre": "Animación",
       "day_order": 3,
       "flags": "🇨🇿🇸🇰"
     },
@@ -8739,7 +8743,8 @@
       "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/7063/large_FarmToFashion-clean-16x9-01.jpg",
       "posterPosition": "center",
       "day_order": 10,
-      "flags": "🇺🇸"
+      "flags": "🇺🇸",
+      "genre": "Documental"
     },
     {
       "title": "Fault",
@@ -9607,7 +9612,8 @@
       "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/7029/large_Leg_Day-Clean-16x9-01.jpg",
       "posterPosition": "center",
       "day_order": 3,
-      "flags": "🇧🇷"
+      "flags": "🇧🇷",
+      "genre": "Animación"
     },
     {
       "title": "Listen",
@@ -9641,7 +9647,7 @@
       "venue": "Spring Studios",
       "year": 1982,
       "poster": "https://image.tmdb.org/t/p/w185/g5cwWBCzds8giIxa88yBjz9qxvg.jpg",
-      "genre": "",
+      "genre": "Documental",
       "day_order": 4,
       "flags": "🇺🇸"
     },
@@ -9790,7 +9796,8 @@
       "time": "5:30 PM",
       "venue": "Spring Studios",
       "day_order": 4,
-      "flags": "🇫🇷🇸🇳🇺🇸"
+      "flags": "🇫🇷🇸🇳🇺🇸",
+      "genre": "Documental"
     },
     {
       "title": "Odessa",
@@ -9985,7 +9992,8 @@
       "time": "2:30 PM",
       "venue": "Spring Studios",
       "day_order": 4,
-      "flags": "🇵🇹🇺🇸"
+      "flags": "🇵🇹🇺🇸",
+      "genre": "Documental"
     }
   ]
 }
