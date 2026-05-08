@@ -3622,12 +3622,14 @@ function makeEventPoster(title,duration,eventKind){
     'masterclass':  {accent:'#7F77DD', headerLabel:'MASTERCLASS'},
     'encuentro':    {accent:'#378ADD', headerLabel:'ENCUENTRO'},
     'cineconcierto':{accent:'#D85A30', headerLabel:'CINECONCIERTO'},
+    'awards':       {accent:'#BA7517', headerLabel:'AWARDS'},
   };
   const _kindMapEN={
     'ponencia':     {accent:'#F59E0B', headerLabel:'TALK'},
     'masterclass':  {accent:'#7F77DD', headerLabel:'MASTERCLASS'},
     'encuentro':    {accent:'#378ADD', headerLabel:'MEETING'},
     'cineconcierto':{accent:'#D85A30', headerLabel:'FILM CONCERT'},
+    'awards':       {accent:'#BA7517', headerLabel:'AWARDS'},
   };
   const _kindMap=_lang==='en'?_kindMapEN:_kindMapES;
   const kind=_kindMap[eventKind];
@@ -5412,7 +5414,9 @@ function getSuggestions(){
 function parseProgramTitle(t){
   let displayTitle=t, progSuffix='';
   const f=FILMS.find(fi=>fi.title===t);
-  if(f?.is_cortos){
+  if(f?.is_awards_screening){
+    displayTitle=t.replace(/^Award Screening:\s*/i,'');
+  } else if(f?.is_cortos){
     // "Cortos: Familia 12+" → displayTitle="Familia 12+"
     if(t.match(/^Cortos:\s*/i)){
       displayTitle=t.replace(/^Cortos:\s*/i,'');
