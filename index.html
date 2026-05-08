@@ -3272,13 +3272,13 @@ function _buildPosterSVG(o){
 }
 function makeFilmPlaceholder(title, director, year, section){
   // Poster generativo para films sin imagen real.
-  // Header con color de sección (sistema _sectionColor) — coherente con cards editoriales.
+  // Header gris #2C2C2A (único para films, no confundible con ningún otro tipo).
+  // Año en header centrado — información útil y diferenciador visual.
   // Título adaptativo + director truncado en caja interior.
   // En el enricher aparece en gris → diagnóstico visual inmediato de lo pendiente.
+  // NOTA: section se acepta para compatibilidad de firma pero NO modifica el diseño.
   const VW=120,VH=180,HDR_H=38,BX=10,BY=46,BW=VW-20,BH=VH-56,FY=VH-16,DUR_Y=148;
   const festName=((FESTIVAL_CONFIG&&FESTIVAL_CONFIG[_activeFestId])||Object.values(FESTIVAL_CONFIG||{})[0]||{}).shortName||'FESTIVAL';
-  const accent=section?_sectionColor(section):'#2C2C2A';
-  const hdrTextFill=accent==='#2C2C2A'?'#D3D1C7':'#0A0A0A';
 
   // Título: mismo sistema adaptativo de _buildPosterSVG
   const rawWords=(title||'').split(/\s+/);
@@ -3304,12 +3304,12 @@ function makeFilmPlaceholder(title, director, year, section){
   const dirEl=dir?`<text x="${VW/2}" y="${TITLE_ZONE_BOT+8}" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,sans-serif" font-size="7" fill="#5F5E5A">${dir}</text>`:'';
 
   // Año en header centrado (y=22 = una línea centrada en 38px)
-  const yearEl=year?`<text x="${VW/2}" y="22" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,sans-serif" font-size="10" font-weight="700" fill="${hdrTextFill}" letter-spacing="1">${year}</text>`
-    :'';
+  const yearEl=year?`<text x="${VW/2}" y="22" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,sans-serif" font-size="10" font-weight="700" fill="#D3D1C7" letter-spacing="1">${year}</text>`
+    :`<text x="${VW/2}" y="22" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,sans-serif" font-size="7" fill="#888780" letter-spacing="0.5">SIN POSTER</text>`;
 
   const svg=`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${VW} ${VH}">
     <rect width="${VW}" height="${VH}" fill="#1E1B17"/>
-    <rect x="0" y="0" width="${VW}" height="${HDR_H}" fill="${accent}"/>
+    <rect x="0" y="0" width="${VW}" height="${HDR_H}" fill="#2C2C2A"/>
     <rect x="0" y="${HDR_H}" width="${VW}" height="1" fill="#444441"/>
     ${yearEl}
     <rect x="${BX}" y="${BY}" width="${BW}" height="${BH}" rx="3" fill="#0A0A09" stroke="#2C2C2A" stroke-width="1"/>
