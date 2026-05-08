@@ -6098,7 +6098,7 @@ function renderGapOptions(gapStartMin,gapEndMin,todayKey,removedTitle){
   return opts.map(f=>{
     const vc2=vcfg(f.venue);const{displayTitle}=parseProgramTitle(f.title);
     const short=displayTitle.length>26?displayTitle.slice(0,24)+'…':displayTitle;
-    const safeT=f.title.replace(/'/g,"\'");
+    const safeT=f.title.replace(/'/g,"\'").replace(/"/g,'&quot;');
     const fStart=toMin(f.time);const inProg=isLiveDay&&fStart<nowMin;
     const minsIn=inProg?nowMin-fStart:0;
     const badge=inProg?`<span class="label-confirmed">${t('plan_en_curso')} ${minsIn} min</span>`:'';
@@ -8089,7 +8089,7 @@ function onCartaSearch(){
   res.innerHTML=matches.map(f=>{
     const{displayTitle,progSuffix}=parseProgramTitle(f.title);
     const poster=getFilmPoster(f)||'';
-    const safeT=f.title.replace(/'/g,"\'");
+    const safeT=f.title.replace(/'/g,"\'").replace(/"/g,'&quot;');
     const safeC=(f.country||'').replace(/'/g,"\'");
     const safeD=(f.duration||'').replace(/'/g,"\'");
     const safeS=(f.section||'').replace(/'/g,"\'");
@@ -9343,7 +9343,7 @@ function _renderExploreLista(){
   el.innerHTML=entries.map(({film:f,screenings})=>{
     const inWL=watchlist.has(f.title);
     const isEvent=f.type==='event';
-    const safeT=f.title.replace(/\'/g,"\\'");
+    const safeT=f.title.replace(/\'/g,"\\'").replace(/"/g,'&quot;');
     const{displayTitle:dt}=parseProgramTitle(f.title);
     const src=isEvent?'':getFilmPoster(f)||'';
     const allPast=screenings.every(s=>screeningPassed(s));
@@ -9440,7 +9440,7 @@ function renderPeliculaView(){
     const inW=watched.has(f.title);
     const allPast=screenings.every(s=>screeningPassed(s));
     const posterSrc=getFilmPoster(f);
-    const safeT=f.title.replace(/'/g,"\'");
+    const safeT=f.title.replace(/'/g,"\'").replace(/"/g,'&quot;');
     const{displayTitle}=parseProgramTitle(f.title);
     const progBadge='';//REMOVED: no count badge
     const _ended=festivalEnded();
