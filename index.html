@@ -3387,7 +3387,7 @@ function getFilmPoster(f){
   const _cn=normKey(f.title||'');
   if(_CUSTOM_N[_cn]) return _CUSTOM_N[_cn];
   // 2. Eventos — siempre poster ámbar generativo (ignora f.poster/TMDB)
-  if(f.type==='event') return makeEventPoster(f.title,f.duration,f.event_kind);
+  if(f.type==='event') return f.poster||makeEventPoster(f.title,f.duration,f.event_kind,f.section);
   // 3. Proyección sorpresa
   if(f.title&&f.title.toLowerCase().includes('sorpresa')) return makeSorpresaPoster();
   // 4. Cortos
@@ -3630,10 +3630,12 @@ function makeEventPoster(title,duration,eventKind){
   const _kindMap=_lang==='en'?_kindMapEN:_kindMapES;
   const kind=_kindMap[eventKind];
   if(kind) return _buildPosterV16({...kind, title, num:null});
-  // Fallback — usa eventPosterLabel del config del festival (puede ser ['INDUSTRY','DAYS'])
-  const lbl=((festCfg.eventPosterLabel)||['EVENTO','']);
+  // Fallback — usa la sección del film si existe, sino eventPosterLabel del config
+  const _secFallback=arguments[3]?_secLabel(arguments[3]):''; // 4th param: f.section
+  const lbl=_secFallback?[_secFallback]:((festCfg.eventPosterLabel)||['EVENTO','']);
   const headerLabel=lbl.filter(Boolean).join(' ');
-  return _buildPosterV16({accent:'#6B9BD1', headerLabel, title, num:null});
+  const _sectionAccent=arguments[3]?_sectionColor(arguments[3]):'#6B9BD1';
+  return _buildPosterV16({accent:_sectionAccent||'#6B9BD1', headerLabel, title, num:null});
 }
 
 // ── Avisos de festival: funciones canceladas o reprogramadas ──────────────
