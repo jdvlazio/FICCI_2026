@@ -61,6 +61,7 @@
     <div style="margin-top:6px">
       <span class="chip active" data-fest="ficci65" onclick="toggleFest(this)">FICCI 65 <small>(director, año, poster)</small></span>
       <span class="chip active" data-fest="aff2026" onclick="toggleFest(this)">AFF 2026 <small>(sinopsis faltante)</small></span>
+      <span class="chip active" data-fest="tribeca2026" onclick="toggleFest(this)">Tribeca 2026 <small>(poster, genre)</small></span>
       <span class="chip active" data-fest="cinemancia2025" onclick="toggleFest(this)">Cinemancia 2025 <small>(posters)</small></span>
     </div>
   </div>
@@ -115,6 +116,7 @@ const REPO_RAW  = 'https://raw.githubusercontent.com/jdvlazio/Otrofestiv.app/mai
 const FESTIVALS = {
   ficci65:       { file:'ficci-65.json',      name:'FICCI 65'        },
   aff2026:       { file:'aff-2026.json',       name:'AFF 2026'        },
+  tribeca2026:   { file:'tribeca-2026.json',   name:'Tribeca 2026'    },
   cinemancia2025:{ file:'cinemancia-2025.json',name:'Cinemancia 2025' },
 };
 // needs universal — el enricher salta el campo si ya existe en el film
