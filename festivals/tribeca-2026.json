@@ -260,7 +260,7 @@
       "filmType": "",
       "director": "",
       "duration": 60,
-      "country": "",
+      "country": "United States",
       "language": "",
       "premiere": "",
       "synopsis": "Jane Rosenthal y Robert De Niro reflexionan sobre 25 años del Festival de Tribeca, cómo nació tras el 11 de septiembre y en qué se ha convertido.",
@@ -279,7 +279,8 @@
       "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/7232/large_BobandJane_1920x1080.jpg",
       "posterPosition": "center",
       "day_order": 8,
-      "synopsis_en": "Jane Rosenthal and Robert De Niro reflect on 25 years of the Tribeca Festival — how it began in the aftermath of 9/11 and what it has become."
+      "synopsis_en": "Jane Rosenthal and Robert De Niro reflect on 25 years of the Tribeca Festival — how it began in the aftermath of 9/11 and what it has become.",
+      "flags": "🇺🇸"
     },
     {
       "title": "Tribeca Festival Awards Night",
@@ -289,7 +290,7 @@
       "filmType": "",
       "director": "",
       "duration": 60,
-      "country": "",
+      "country": "United States",
       "language": "",
       "premiere": "",
       "synopsis": "La ceremonia anual que celebra las mejores películas y cineastas del Festival de Tribeca.",
@@ -308,7 +309,8 @@
       "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/7233/large_TF26_Web_KeyArt.jpg",
       "posterPosition": "center",
       "day_order": 8,
-      "synopsis_en": "The annual ceremony celebrating the best films and filmmakers of the Tribeca Festival."
+      "synopsis_en": "The annual ceremony celebrating the best films and filmmakers of the Tribeca Festival.",
+      "flags": "🇺🇸"
     },
     {
       "title": "Alejandro Sanz: When No One Sees Me",
@@ -653,7 +655,7 @@
       "filmType": "Feature Documentary",
       "director": "Jono Bergmann and Benji Bergmann",
       "duration": 95,
-      "country": "English, Hebrew",
+      "country": "Israel",
       "language": "English subtitles",
       "premiere": "World Premiere",
       "synopsis": "La estrella del pop alternativo Noga Erez habla sin filtros sobre la guerra, los rehenes, BDS y su propia relación. Ella y su pareja encuentran nuevas formas de expresar un mensaje político progresista.",
@@ -686,7 +688,8 @@
       "genre": "Documental, Música",
       "posterPosition": "center",
       "day_order": 4,
-      "synopsis_en": "Alternative pop star Noga Erez speaks without filters about war, hostages, BDS, and her own relationship. She and partner Ori Rousso find new ways to channel a progressive political voice in an upside-down world."
+      "synopsis_en": "Alternative pop star Noga Erez speaks without filters about war, hostages, BDS, and her own relationship. She and partner Ori Rousso find new ways to channel a progressive political voice in an upside-down world.",
+      "flags": "🇮🇱"
     },
     {
       "title": "Playing POTUS",
@@ -2277,7 +2280,7 @@
       "filmType": "Feature Documentary",
       "director": "Mohammed Ali Naqvi",
       "duration": 77,
-      "country": "English, Urdu, Pashto",
+      "country": "Pakistan/United States",
       "language": "English subtitles",
       "premiere": "New York Premiere",
       "synopsis": "Una comunidad en crisis se aferra a una infraestructura en colapso mientras las autoridades marginan a los expertos locales. Un documental vívido sobre supervivencia, intervención y cuyo conocimiento cuenta.",
@@ -2309,7 +2312,8 @@
       "poster": "",
       "genre": "Documental, Suspense",
       "day_order": 8,
-      "synopsis_en": "A community in crisis holds onto a failing infrastructure system while government authorities sideline local experts. A vivid documentary about survival, intervention, and whose knowledge counts."
+      "synopsis_en": "A community in crisis holds onto a failing infrastructure system while government authorities sideline local experts. A vivid documentary about survival, intervention, and whose knowledge counts.",
+      "flags": "🇵🇰🇺🇸"
     },
     {
       "title": "Hollywood Does Abortion",
@@ -2935,7 +2939,7 @@
       "filmType": "Feature Documentary",
       "director": "Tamra Davis and Tamra Davis",
       "duration": 84,
-      "country": "English",
+      "country": "United States",
       "language": "",
       "premiere": "New York Premiere",
       "synopsis": "Metraje raro de Sonic Youth, Nirvana, Bikini Kill y los Beastie Boys antes de la fama captura un momento cultural irrecuperable. Una película casera de 30 años que es también el retrato de una generación.",
@@ -2967,7 +2971,8 @@
       "poster": "",
       "genre": "Documental, Música",
       "day_order": 6,
-      "synopsis_en": "Rare footage of Sonic Youth, Nirvana, Bikini Kill, and the Beastie Boys before fame captures a cultural moment that cannot be recovered. A 30-year-old home movie that doubles as a portrait of a generation."
+      "synopsis_en": "Rare footage of Sonic Youth, Nirvana, Bikini Kill, and the Beastie Boys before fame captures a cultural moment that cannot be recovered. A 30-year-old home movie that doubles as a portrait of a generation.",
+      "flags": "🇺🇸"
     },
     {
       "title": "The Lion Queen",
@@ -5408,7 +5413,7 @@
       "filmType": "Feature Narrative",
       "director": "Dina Duma",
       "duration": 79,
-      "country": "Macedonian",
+      "country": "North Macedonia",
       "language": "English subtitles",
       "premiere": "World Premiere",
       "synopsis": "En Macedonia del Norte, las hermanas romaníes Adela y Zara navegan entre la escuela y el skateboard mientras sostienen a su familia. Cuando un familiar propone vender a Zara a un mercado nupcial, Adela lucha para impedirlo.",
@@ -5440,7 +5445,8 @@
       "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/6961/medium_Skateboarding_Is_Not_For_Girls-Clean-16x9-01.jpg",
       "genre": "Drama",
       "day_order": 1,
-      "synopsis_en": "In Northern Macedonia, Romani sisters Adela and Zara navigate school and skateboards while helping their mother survive. When a relative proposes selling Zara to a traditional bridal market, Adela fights back."
+      "synopsis_en": "In Northern Macedonia, Romani sisters Adela and Zara navigate school and skateboards while helping their mother survive. When a relative proposes selling Zara to a traditional bridal market, Adela fights back.",
+      "flags": "🇲🇰"
     },
     {
       "title": "Stand Up",
@@ -5727,7 +5733,7 @@
       "filmType": "Feature Narrative",
       "director": "Sharon Maguire",
       "duration": 97,
-      "country": "English",
+      "country": "United Kingdom",
       "language": "",
       "premiere": "",
       "synopsis": "Una proyección de la querida comedia romántica de 2001 seguida de una conversación con la protagonista Renée Zellweger y la directora Sharon Maguire.",
@@ -5746,7 +5752,8 @@
       "day_order": 9,
       "year": 2001,
       "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/7119/medium_BridgetJones-clean-16x9-01.jpg",
-      "synopsis_en": "A screening of the beloved 2001 romantic comedy followed by a conversation with star Renée Zellweger and director Sharon Maguire."
+      "synopsis_en": "A screening of the beloved 2001 romantic comedy followed by a conversation with star Renée Zellweger and director Sharon Maguire.",
+      "flags": "🇬🇧"
     },
     {
       "title": "Daft Punk's Electroma: 4k Remaster and 20th Anniversary",
@@ -5879,7 +5886,7 @@
       "filmType": "",
       "director": "",
       "duration": 90,
-      "country": "",
+      "country": "United States",
       "language": "",
       "premiere": "",
       "synopsis": "Adrián Solano, un venezolano de 22 años que nunca ha visto nieve, entra accidentalmente a los Campeonatos Mundiales de Esquí Nórdico de 2017. Coronado 'el peor esquiador del mundo', demuestra que la grandeza se mide en coraje.",
@@ -5898,7 +5905,8 @@
       "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/7168/large_ESPN_x_Tribeca_website_image__1_.jpg",
       "posterPosition": "center",
       "day_order": 9,
-      "synopsis_en": "Adrián Solano, a 22-year-old Venezuelan who has never seen snow, accidentally enters the 2017 Nordic World Ski Championships. Crowned 'The World's Worst Skier' by the internet, he proves that greatness is measured in courage, not medals."
+      "synopsis_en": "Adrián Solano, a 22-year-old Venezuelan who has never seen snow, accidentally enters the 2017 Nordic World Ski Championships. Crowned 'The World's Worst Skier' by the internet, he proves that greatness is measured in courage, not medals.",
+      "flags": "🇺🇸"
     },
     {
       "title": "Fueled by the Future",
@@ -5908,7 +5916,7 @@
       "filmType": "",
       "director": "",
       "duration": 90,
-      "country": "",
+      "country": "United States",
       "language": "",
       "premiere": "",
       "synopsis": "Un evento especial que explora qué impulsa a la próxima generación de narradores e innovadores.",
@@ -5927,7 +5935,8 @@
       "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/7169/large_OpenAI_x_Tribeca_website_image.jpg",
       "posterPosition": "center",
       "day_order": 4,
-      "synopsis_en": "A special event exploring what drives the next generation of storytellers and innovators."
+      "synopsis_en": "A special event exploring what drives the next generation of storytellers and innovators.",
+      "flags": "🇺🇸"
     },
     {
       "title": "Not A Very Good Murderer/The Palladino Files Event",
@@ -5937,7 +5946,7 @@
       "filmType": "",
       "director": "",
       "duration": 56,
-      "country": "",
+      "country": "United States",
       "language": "",
       "premiere": "",
       "synopsis": "Avance de dos próximas series documentales de HBO: Ronan Farrow investiga la historia de una ex reina de belleza más extraña que la ficción, y rastrea el asesinato del legendario detective privado Jack Palladino.",
@@ -5956,7 +5965,8 @@
       "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/7066/large_TF26-TV-RonanFarrow.jpg",
       "posterPosition": "center",
       "day_order": 7,
-      "synopsis_en": "A preview of two upcoming HBO documentary crime series: Ronan Farrow investigates a former beauty queen's stranger-than-fiction story, and traces the murder of legendary private eye Jack Palladino through his celebrity case files."
+      "synopsis_en": "A preview of two upcoming HBO documentary crime series: Ronan Farrow investigates a former beauty queen's stranger-than-fiction story, and traces the murder of legendary private eye Jack Palladino through his celebrity case files.",
+      "flags": "🇺🇸"
     },
     {
       "title": "Vital Stories Premiere",
@@ -5966,7 +5976,7 @@
       "filmType": "",
       "director": "",
       "duration": 110,
-      "country": "",
+      "country": "United States",
       "language": "",
       "premiere": "",
       "synopsis": "Una premiere que presenta historias vitales de voces emergentes en el Festival de Tribeca.",
@@ -5978,7 +5988,8 @@
       "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/7167/large_Lilly-Home-Desktop_1_.jpg",
       "posterPosition": "center",
       "day_order": 99,
-      "synopsis_en": "A premiere showcasing vital stories from emerging voices at the Tribeca Festival."
+      "synopsis_en": "A premiere showcasing vital stories from emerging voices at the Tribeca Festival.",
+      "flags": "🇺🇸"
     },
     {
       "title": "Storytellers - Dwyane Wade",
@@ -7458,7 +7469,7 @@
       "filmType": "",
       "director": "",
       "duration": 76,
-      "country": "",
+      "country": "United States",
       "language": "",
       "premiere": "",
       "synopsis": "Una selección curada de los mejores cortometrajes del Festival de Tribeca 2026.",
@@ -7476,7 +7487,8 @@
       "venue": "Hudson Yards Public Square and Gardens",
       "day_order": 3,
       "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/7230/medium_Shorts_HudsonYards.jpg",
-      "synopsis_en": "A curated selection of the finest short films from the 2026 Tribeca Festival."
+      "synopsis_en": "A curated selection of the finest short films from the 2026 Tribeca Festival.",
+      "flags": "🇺🇸"
     },
     {
       "title": "Dior and I",
@@ -7796,7 +7808,7 @@
       "filmType": "Feature Documentary",
       "director": "Orlando von Einsiedel",
       "duration": 100,
-      "country": "English, French, Swahili",
+      "country": "Democratic Republic of Congo/United Kingdom",
       "language": "",
       "premiere": "",
       "synopsis": "El último hábitat natural del gorila de montaña en peligro crítico está amenazado por insurgencias armadas e intereses corruptos. Un puñado de guardabosques y periodistas se interpone en el camino.",
@@ -7816,7 +7828,8 @@
       "poster": "",
       "genre": "Documental, Bélica",
       "day_order": 7,
-      "synopsis_en": "The last natural habitat for the critically endangered mountain gorilla is threatened by armed insurgencies, corrupt interests, and a British oil company. A handful of park rangers and journalists stand in the way."
+      "synopsis_en": "The last natural habitat for the critically endangered mountain gorilla is threatened by armed insurgencies, corrupt interests, and a British oil company. A handful of park rangers and journalists stand in the way.",
+      "flags": "🇨🇩🇬🇧"
     },
     {
       "title": "\"Animus Ignis\" - Shawty Sweat",
