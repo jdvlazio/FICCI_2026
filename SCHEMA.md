@@ -162,6 +162,8 @@ Campos requeridos por festival:
 
 ```
 [ ] node scripts/validate-festivals.js → 0 errores
+[ ] VERIFICACIÓN DE SINTAXIS JS (obligatorio, <1 segundo):
+    node -e "const h=require('fs').readFileSync('index.html','utf8');[...h.matchAll(/<script>([\s\S]*?)<\/script>/g)].forEach((m,i)=>{try{new Function(m[1]);console.log('Script',i,'OK')}catch(e){console.error('Script',i,'ERROR:',e.message);process.exit(1)}})"
 [ ] Diff review completo — no solo el fragmento modificado
 [ ] Smoke test en browser:
     [ ] Splash carga con festival correcto como default
