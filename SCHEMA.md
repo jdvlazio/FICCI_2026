@@ -176,7 +176,28 @@ Campos requeridos por festival:
 
 ---
 
-## Reglas permanentes — establecidas en auditoría 2026-05-08
+## Regla de onboarding de festival nuevo
+
+**Esta regla es la más importante del documento.**
+
+Cuando se monta un festival nuevo, el trabajo es:
+
+1. Copiar la estructura de datos del festival más reciente
+2. Replicar exactamente el mismo pipeline: extracción → enrichment → FESTIVAL_CONFIG
+3. No modificar ningún componente visual existente
+4. No proponer mejoras visuales durante el onboarding
+5. Si el festival nuevo tiene algo que los anteriores no tienen (ej: imagen editorial 16:9), se para, se hace un mockup, se presenta, se espera aprobación explícita antes de tocar código
+
+**Lo que no es aceptable:**
+- Modificar `makeFilmPlaceholder`, `makeEventPoster`, `makeProgramPoster`, `_buildPosterV16` durante el onboarding de un festival
+- Añadir componentes visuales (badges, overlays, nuevos tipos de card) sin aprobación
+- Cambiar proporciones, colores o tipografía de componentes existentes
+- "Mejorar" algo que no se pidió mejorar
+
+**La pregunta antes de cada cambio:**
+¿Me pidieron esto explícitamente? Si la respuesta no es "sí", no se hace.
+
+
 
 ### Arquitectura
 
