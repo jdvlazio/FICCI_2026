@@ -2104,8 +2104,7 @@
       "venue": "SVA Theatre",
       "day_order": 5,
       "flags": "🇺🇸",
-      "year": 2026,
-      "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/7110/medium_EveryYearAfter-clean-16x9-01.jpg"
+      "year": 2026
     },
     {
       "title": "Full Circle: The First All Black Everest Ascent",
@@ -2182,8 +2181,7 @@
       "venue": "SVA Theatre",
       "day_order": 4,
       "flags": "🇺🇸",
-      "year": 2026,
-      "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/7082/medium_Grandmasters-Benjamin-Whatley-clean-16x9-01.jpg"
+      "year": 2026
     },
     {
       "title": "Guggi",
@@ -3871,7 +3869,8 @@
       "venue": "SVA Theatre",
       "day_order": 6,
       "flags": "🇺🇸",
-      "year": 2026
+      "year": 2026,
+      "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/7086/medium_TheManWillBurn-clean-16x9-01.jpg"
     },
     {
       "title": "The Wedding Entertainer (The Tale of Moishe Badhan)",
