@@ -2060,6 +2060,8 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:var(--t
   display:none;
   flex-direction:column;
   overflow:hidden;
+  opacity:0;
+  transition:opacity .15s ease;
 }
 
 .search-bar{
@@ -2496,14 +2498,6 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:var(--t
   <div class="pel-sheet-inner" id="pel-sheet-inner"></div>
 </div>
 <div id="hdr-programa">
-<div class="carta-search-wrap" id="carta-search-wrap">
-  <div class="carta-search-field">
-    <span class="carta-search-ico"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"/></svg></span>
-    <input type="text" id="carta-search-input" class="carta-search" placeholder="Buscar…" data-i18n-ph="search_placeholder" oninput="onCartaSearch()" autocomplete="off" autocorrect="off" autocapitalize="off">
-    <button class="carta-search-clear" id="carta-search-clear" onclick="clearCartaSearch()"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg></button>
-  </div>
-  <div id="carta-search-results" class="carta-search-results"></div>
-</div>
 <!-- ── Programa: barra de modos Explorar/Hoy/Mañana ── -->
 <div class="programa-mode-bar" id="programa-mode-bar" style="display:none">
   <button class="pmode-tab on" id="pmode-explorar" onclick="setProgramaMode('explorar')">Explorar</button>
@@ -2567,13 +2561,7 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:var(--t
 <!-- ── Intereses: search + toggle — estáticos, fuera de ag-view ── -->
 <!-- ── Intereses / Planear: header unificado — fuera de ag-view ── -->
 <div id="hdr-ag" style="display:none">
-  <div class="carta-search-wrap">
-    <div class="carta-search-field">
-      <span class="carta-search-ico"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"/></svg></span>
-      <input type="text" id="ag-search-input" class="carta-search" placeholder="Buscar…" data-i18n-ph="search_placeholder" oninput="onSearchInput()" onblur="closeSearch()" autocomplete="off" autocapitalize="off">
-    </div>
-    <div id="ag-search-results" class="ag-search-results"></div>
-  </div>
+
   <div class="ag-toggle-bar" id="ag-toggle-bar">
     <button class="ag-sec-pill prio" id="pill-prio" onclick="(()=>{const el=document.getElementById('sec-prio');if(!el)return;const hdr=document.getElementById('hdr-ag');const off=hdr?hdr.getBoundingClientRect().bottom:0;const y=el.getBoundingClientRect().top+window.scrollY-off-8;window.scrollTo({top:y,behavior:'smooth'})})()">
       Prioridad <span class="txt-dim-xs" id="pill-prio-cnt">—</span>
@@ -2666,6 +2654,7 @@ const _I18N = {
     "search_cancelar": "Cancelar",
     "search_sin_res": "Sin resultados",
     "search_sin_res_para": "Sin resultados para",
+    "search_resultados": "Resultados",
     "empty_intereses": "Agregá lo que te interesa para armar tu plan.",
     "empty_intereses_2": "Agregá lo que te interesa.",
     "empty_intereses_3": "Agregá lo que no querés perderte. Cuando tengas tu lista, armamos tu plan.",
@@ -2890,6 +2879,7 @@ const _I18N = {
     "search_cancelar": "Cancel",
     "search_sin_res": "No results",
     "search_sin_res_para": "No results for",
+    "search_resultados": "Results",
     "empty_intereses": "Add films you're interested in to build your plan.",
     "empty_intereses_2": "Add films you're interested in.",
     "empty_intereses_3": "Add what you don't want to miss. Once you have your list, we'll build your plan.",
@@ -4521,7 +4511,7 @@ function updateAgTab(){
 
 // ═══════════════════════════════════════════════════════════════
 // 8 · EVENT HANDLERS — MI LISTA
-//     toggleWL, toggleWatched, addFromSearch, removeFromAgenda
+//     toggleWL, toggleWatched, removeFromAgenda
 // ═══════════════════════════════════════════════════════════════
 
 /* ── ACTIONS: watchlist, prioridades, vistas, retraso ───────────────── */
@@ -4612,52 +4602,6 @@ function fuzzyMatch(query,title){
   if(qi===q.length) return{match:true,score:qi};
   return{match:false,score:0};
 }
-function searchFilms(query){
-  if(!query||query.length<2) return[];
-  const seen=new Set();
-  return FILMS
-    .map(f=>{
-      const r1=fuzzyMatch(query,f.title);
-      const r2=f.title_en?fuzzyMatch(query,f.title_en):{match:false,score:0};
-      let r3={match:false,score:0};
-      if(f.film_list&&f.film_list.length){
-        for(const item of f.film_list){
-          const r=fuzzyMatch(query,item.title);
-          if(r.match&&r.score>r3.score) r3=r;
-        }
-      }
-      return{...f,score:Math.max(r1.score,r2.score,r3.score),match:r1.match||r2.match||r3.match};
-    })
-    .filter(f=>f.match)
-    .filter(f=>{if(seen.has(f.title)) return false;seen.add(f.title);return true;})
-    .sort((a,b)=>b.score-a.score)
-    .slice(0,8);
-}
-function onSearchInput(){
-  const q=document.getElementById('ag-search-input').value.trim();
-  const res=document.getElementById('ag-search-results');
-  if(!q||q.length<2){res.classList.remove('open');return;}
-  const films=searchFilms(q);
-  if(!films.length){res.innerHTML=emptyState(ICONS.search,t('search_sin_res')+'.');res.classList.add('open');return;}
-  res.innerHTML=films.map(f=>{
-    const inWL=watchlist.has(f.title);
-    return`<div class="ag-sr-item">
-      <div>
-        <div class="ag-sr-title">${f.title}</div>
-        <div class="ag-sr-meta">${flagFmt(f.flags)||''}${flagFmt(f.flags)?' ':''} ${durFmt(f.duration)}${f.is_cortos?` · ${t('label_programa')}`:''}${inWL?' · <span style="color:var(--amber)">${ICONS.heartFill}</span>':''}</div>
-      </div>
-      <button class="row-xs ag-sr-add${inWL?' added':''}" data-title="${f.title.replace(/"/g,'&quot;')}" onclick="addFromSearch(this.dataset.title)">
-        ${inWL?`${ICONS.check} ${t('cta_en_intereses')}`:`${ICONS.plus} ${t('misc_anadir')}`}
-      </button>
-    </div>`;
-  }).join('');
-  res.classList.add('open');
-}
-function addFromSearch(title){
-  if(!watchlist.has(title)){watchlist.add(title);watched.delete(title);saveState('wl','watched');updateCardState(title);updateAgTab();}
-  onSearchInput();
-  _reRenderIntereses();
-}
 function removeFromAgenda(title){
   if(!savedAgenda) return;
   const _s=title.length>36?title.slice(0,34)+'…':title;
@@ -4715,7 +4659,6 @@ function addSuggestion(title,day,time){
   // 5. Re-render
   renderAgenda();
 }
-function closeSearch(){setTimeout(()=>{const r=document.getElementById('ag-search-results');if(r) r.classList.remove('open');},200);}
 
 // ── AVAILABILITY ──
 // ─────────────────────────────────────────────────────────────────────────────
@@ -8048,91 +7991,6 @@ let expandedPelicula=''; // título expandido en vista Por Película
 
 
 
-function onCartaSearch(){
-  const inp=document.getElementById('carta-search-input');
-  const res=document.getElementById('carta-search-results');
-  const clr=document.getElementById('carta-search-clear');
-  if(!inp||!res) return;
-  const q=inp.value.trim().toLowerCase();
-  if(clr) clr.classList.toggle('visible', q.length>0);
-  if(!q){res.classList.remove('open');res.innerHTML='';return;}
-
-  // Buscar en títulos únicos (programas + cortos individuales en film_list)
-  const titleMap={};
-  FILMS.forEach(f=>{if(!titleMap[f.title]) titleMap[f.title]=f;});
-  const progMatches=Object.values(titleMap).filter(f=>{
-    const{displayTitle}=parseProgramTitle(f.title);
-    const secShort=(f.section||'').replace(/^[^ ]+ /,'').toLowerCase();
-    return displayTitle.toLowerCase().includes(q)
-      ||f.title.toLowerCase().includes(q)
-      ||secShort.includes(q)
-      ||(f.country||'').toLowerCase().includes(q);
-  });
-  // Buscar también en cortos individuales dentro de film_list
-  const cortoMatches=[];
-  FILMS.filter(f=>f.is_cortos&&f.film_list?.length).forEach(prog=>{
-    prog.film_list.forEach(item=>{
-      if(item.title.toLowerCase().includes(q)){
-        // Crear pseudo-entrada para el corto individual
-        cortoMatches.push({
-          _isCortoItem:true, _prog:prog,
-          title:item.title, country:item.country, duration:item.duration,
-          flags:countryToFlags(item.country||''), section:prog.section,
-          is_cortos:false
-        });
-      }
-    });
-  });
-  // Combinar — programas primero, cortos individuales después
-  const allMatches=[...progMatches,...cortoMatches];
-  const seen=new Set();
-  const matches=allMatches.filter(f=>{if(seen.has(f.title))return false;seen.add(f.title);return true;}).slice(0,10);
-
-  if(!matches.length){
-    res.innerHTML='<div class="carta-sr-empty"><div class="carta-sr-empty-ico">🔍</div>Sin resultados</div>';
-    res.classList.add('open');
-    return;
-  }
-
-  res.innerHTML=matches.map(f=>{
-    const{displayTitle,progSuffix}=parseProgramTitle(f.title);
-    const poster=getFilmPoster(f)||'';
-    const safeT=f.title.replace(/'/g,"\'").replace(/"/g,'&quot;');
-    const safeC=(f.country||'').replace(/'/g,"\'");
-    const safeD=(f.duration||'').replace(/'/g,"\'");
-    const safeS=(f.section||'').replace(/'/g,"\'");
-    const safeF=(f.flags||'🌍').replace(/'/g,"\'");
-    const inWL=watchlist.has(f.title);
-    const onclick=f._isCortoItem?`clearCartaSearch();openCortoSheet('${safeT}','${safeC}','${safeD}','${safeS}','${safeF}')`:`clearCartaSearch();openPelSheet('${safeT}')`;
-    return`<div class="carta-sr-item" onclick="${onclick}">
-      ${poster?`<img class="carta-sr-poster" src="${poster}" onerror="this.remove()" alt="" loading="lazy">`:'<div class="carta-sr-poster"></div>'}
-      <div class="carta-sr-info">
-        <div class="carta-sr-title">${displayTitle}${progSuffix?` <span class="txt-amber-label">${progSuffix}</span>`:''}</div>
-        <div class="carta-sr-meta">${f._isCortoItem
-          ?`Cortometraje${f._prog?` · ${parseProgramTitle(f._prog.title).displayTitle}`:''}`
-          :`${durFmt(f.duration)}${f.section?' · '+f.section.replace(/^[^ ]+ /,''):''}`
-        }${inWL?' · <span style="color:var(--amber)">♥</span>':''}</div>
-      </div>
-    </div>`;
-  }).join('');
-  res.classList.add('open');
-}
-
-function clearCartaSearch(){
-  const inp=document.getElementById('carta-search-input');
-  const res=document.getElementById('carta-search-results');
-  const clr=document.getElementById('carta-search-clear');
-  if(inp) inp.value='';
-  if(res){res.classList.remove('open');res.innerHTML='';}
-  if(clr) clr.classList.remove('visible');
-}
-
-// Cerrar al tocar fuera
-document.addEventListener('click',e=>{
-  const wrap=document.getElementById('carta-search-wrap');
-  if(wrap&&!wrap.contains(e.target)) clearCartaSearch();
-});
-
 /* ── NAV: navegación principal entre tabs ────────────────────────────── */
 function switchMainNav(id){
   if(id==='mnav-miplan') activeMiPlanDay=null; // recalcula día actual al entrar
@@ -8144,7 +8002,6 @@ function showDayView(){
   activeView='day';
   switchMainNav('mnav-cartelera');
   // Mostrar buscador y mode bar
-  const _csw2=document.getElementById('carta-search-wrap');if(_csw2) _csw2.style.display='';
   document.getElementById('hdr-ag')?.style.setProperty('display','none');
   const modeBar=document.getElementById('programa-mode-bar');
   if(modeBar){
@@ -8171,7 +8028,6 @@ function showAgView(){
   const _chips=document.getElementById('programa-chips');if(_chips) _chips.classList.add('hidden');
   const _paf=document.getElementById('programa-active-filter');if(_paf) _paf.classList.remove('visible');
   const _lista=document.getElementById('programa-list');if(_lista) _lista.classList.remove('visible');
-  const _csw=document.getElementById('carta-search-wrap');if(_csw) _csw.style.display='none';
   const _agH=document.getElementById('hdr-ag');
   if(_agH){
     _agH.style.display='';
@@ -9075,7 +8931,6 @@ function setProgramaMode(mode){
   activeSec='all';activeVenue='all';selectedIdx=null;
   programaChip='all';_programaChipMatchFn=null;
   lugarClose();seccionClose();
-  clearCartaSearch();
   // Set active day for hoy/mañana modes
   const _pts=simTodayStr();
   const _pti=DAY_KEYS.findIndex(d=>FESTIVAL_DATES[d]===_pts);
@@ -10323,6 +10178,7 @@ function searchOpen(){
   window.scrollTo({top:0, behavior:'instant'});
   overlay.style.display = 'flex';
   requestAnimationFrame(()=>{
+    overlay.style.opacity = '1';
     searchPositionOverlay();
     if(inp) inp.focus();
   });
@@ -10332,55 +10188,73 @@ function searchClose(){
   const overlay = document.getElementById('search-overlay');
   const inp = document.getElementById('search-input');
   const results = document.getElementById('search-results');
-  if(overlay) overlay.style.display = 'none';
+  if(overlay){
+    overlay.style.opacity = '0';
+    setTimeout(()=>{ overlay.style.display = 'none'; }, 150);
+  }
   if(inp){ inp.value = ''; inp.blur(); }
   if(results) results.innerHTML = '';
 }
 
-function searchQuery(){
-  const inp = document.getElementById('search-input');
-  const results = document.getElementById('search-results');
-  if(!inp || !results) return;
-  const q = inp.value.trim().toLowerCase();
+function _searchAll(q){
+  // Motor único: fuzzyMatch scoring en títulos + cortos individuales.
+  // Reemplaza los tres motores paralelos anteriores.
+  if(!q) return[];
+  const ql=q.toLowerCase();
+  const seen=new Set();
+  const results=[];
 
-  if(!q){ results.innerHTML = ''; return; }
-
-  // Search: film titles + cortos individuales
-  const seen = new Set();
-  const matches = [];
-
-  // Programs
-  const titleMap = {};
-  FILMS.forEach(f=>{ if(!titleMap[f.title]) titleMap[f.title]=f; });
+  // 1. Programas y películas (deduplicados por título)
+  const titleMap={};
+  FILMS.forEach(f=>{if(!titleMap[f.title]) titleMap[f.title]=f;});
   Object.values(titleMap).forEach(f=>{
-    const{displayTitle}=parseProgramTitle(f.title);
-    const sec=(f.section||'').replace(/^[^ ]+ /,'').toLowerCase();
-    if(displayTitle.toLowerCase().includes(q)||f.title.toLowerCase().includes(q)||sec.includes(q)||(f.country||'').toLowerCase().includes(q)){
-      if(!seen.has(f.title)){ seen.add(f.title); matches.push(f); }
+    const r1=fuzzyMatch(q,f.title);
+    const r2=f.title_en?fuzzyMatch(q,f.title_en):{match:false,score:0};
+    const secScore=(f.section||'').toLowerCase().includes(ql)?0.3:0;
+    const cntScore=(f.country||'').toLowerCase().includes(ql)?0.2:0;
+    const score=Math.max(r1.score,r2.score)+secScore+cntScore;
+    if((r1.match||r2.match||secScore||cntScore)&&!seen.has(f.title)){
+      seen.add(f.title);
+      results.push({...f,_score:score});
     }
   });
 
-  // Individual shorts inside cortos programs
+  // 2. Cortos individuales dentro de film_list
   FILMS.filter(f=>f.is_cortos&&f.film_list?.length).forEach(prog=>{
     prog.film_list.forEach(item=>{
-      if(item.title.toLowerCase().includes(q)&&!seen.has(item.title)){
+      const r=fuzzyMatch(q,item.title);
+      if(r.match&&!seen.has(item.title)){
         seen.add(item.title);
-        matches.push({_isCortoItem:true,_prog:prog,
+        results.push({_isCortoItem:true,_prog:prog,_score:r.score,
           title:item.title,country:item.country,duration:item.duration,
           flags:countryToFlags(item.country||''),section:prog.section,is_cortos:false});
       }
     });
   });
 
-  const top10 = matches.slice(0, 10);
+  return results.sort((a,b)=>b._score-a._score).slice(0,10);
+}
 
-  if(!top10.length){
-    results.innerHTML = '<div class="search-empty"><div class="search-empty-icon">🔍</div><div>'+t('search_sin_res_para')+' <strong>&ldquo;'+q+'&rdquo;</strong></div></div>';
+function searchQuery(){
+  const inp = document.getElementById('search-input');
+  const results = document.getElementById('search-results');
+  if(!inp || !results) return;
+  const q = inp.value.trim();
+
+  if(!q){ results.innerHTML = ''; return; }
+
+  const matches = _searchAll(q);
+
+  if(!matches.length){
+    results.innerHTML = `<div class="search-empty">${emptyState(ICONS.search,t('search_sin_res_para')+' \u201c'+q+'\u201d')}</div>`;
     return;
   }
 
-  results.innerHTML = `<div class="search-section-hdr">${t('planear_peliculas')}</div>`
-    + top10.map(f=>{
+  const hasCortos=matches.some(f=>f._isCortoItem);
+  const hasFilms=matches.some(f=>!f._isCortoItem);
+  const hdr=hasFilms&&hasCortos?t('search_resultados')||'Resultados':hasCortos?t('label_cortos')||'Cortometrajes':t('planear_peliculas');
+  results.innerHTML = `<div class="search-section-hdr">${hdr}</div>`
+    + matches.map(f=>{
       const{displayTitle,progSuffix}=parseProgramTitle(f.title);
       const poster=getFilmPoster(f)||'';
       const meta=f._isCortoItem
@@ -10640,9 +10514,6 @@ function _posterErr(img){
 <!-- ── SEARCH OVERLAY ── position:fixed, cubre pantalla desde topbar ── -->
 <div id="search-overlay">
   <div class="search-bar">
-    <button class="search-back" onclick="searchClose()" aria-label="Cancelar">
-      <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5"/></svg>
-    </button>
     <div class="search-input-wrap">
       <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"/></svg>
       <input type="search" id="search-input" placeholder="Buscar…" data-i18n-ph="search_placeholder" oninput="searchQuery()" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" incremental>
