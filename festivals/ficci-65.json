@@ -639,25 +639,6 @@
       "synopsis_en": "Lina Rodriguez interweaves her mother's story with her own, interlacing them with episodes from Colombia's history."
     },
     {
-      "title": "Feito Pipa",
-      "title_en": "Gugu’s World",
-      "country": "Brasil",
-      "flags": "🇧🇷",
-      "duration": "93 min",
-      "day": "Miércoles",
-      "date": 15,
-      "time": "19:00",
-      "venue": "Auditorio nido",
-      "section": "🏆 Comp. Cine en los Barrios",
-      "day_order": 1,
-      "is_cortos": false,
-      "film_list": [],
-      "synopsis": "Gugu tiene 12 años y crece en una pequeña comunidad a orillas del embalse Araújo-Lima, cuyo nivel desciende gradualmente revelando las ruinas de una ciudad sumergida. Vive con su abuela Dilma, rodeado de ternura, picardía y tardes de fútbol.",
-      "director": "Allan Deberton",
-      "year": 2026,
-      "synopsis_en": "Twelve-year-old Gugu grows up in a small community on the banks of the Araújo-Lima reservoir, whose waters are slowly receding to reveal the ruins of a submerged town. He lives with his grandmother Dilma, surrounded by tenderness, mischief, and afternoons of football."
-    },
-    {
       "title": "Animación Porosa — Prog. de Cortos",
       "title_en": "Ako počúvať fontány · Evacuations · La baraja de Myriam · Luna Rossa · Venezia Diorama",
       "flags": "🇨🇱🇫🇷🇧🇪",
@@ -913,25 +894,6 @@
       "synopsis_en": "Alexandre Koberidze films in Georgia and Germany a love story built from observation and slow time, in which two people meet and lose each other in the everyday texture of their days."
     },
     {
-      "title": "A Fabulosa Máquina do Tempo",
-      "title_en": "The Fabulous Time Machine",
-      "country": "Brasil",
-      "flags": "🇧🇷",
-      "duration": "70 min",
-      "day": "Jueves",
-      "date": 16,
-      "time": "11:20",
-      "venue": "Plaza Bocagrande ‒ Sala 1",
-      "section": "🇧🇷 Casa Brasil",
-      "day_order": 2,
-      "is_cortos": false,
-      "film_list": [],
-      "synopsis": "El juego constituye uno de los ejes fundamentales de este documental de Eliza Capai. Situado en la ciudad de Guaribas, en el nordeste brasileño, el filme acompaña a un grupo de niñas invitadas a imaginar cómo se ven a sí mismas en el futuro.",
-      "director": "Eliza Capai",
-      "year": 2026,
-      "synopsis_en": "Play is one of the central pillars of this documentary by Eliza Capai. Set in the city of Guaribas in northeastern Brazil, the film follows a group of girls invited to imagine how they see themselves in the future."
-    },
-    {
       "title": "Cine Afro — Prog. de Cortos",
       "title_en": "Como Nasce um Rio · Taxi Moto · Voz, Zov, Zvo",
       "flags": "🇧🇷🇨🇭",
@@ -961,25 +923,6 @@
           "duration": "52 min"
         }
       ]
-    },
-    {
-      "title": "Aro berria",
-      "title_en": "New Year",
-      "country": "España",
-      "flags": "🇪🇸",
-      "duration": "102 min",
-      "day": "Jueves",
-      "date": 16,
-      "time": "11:40",
-      "venue": "Plaza Bocagrande ‒ Sala 3",
-      "section": "🇪🇸 Muestra España",
-      "day_order": 2,
-      "is_cortos": false,
-      "film_list": [],
-      "synopsis": "En un gesto de rebeldía y poética, un grupo de trabajadores inicia una huelga silenciosa. Sin embargo, el impacto de esta pequeña revolución no trasciende: el colectivo no comparte los ideales de los más jóvenes.",
-      "director": "Farah Khan",
-      "year": 2014,
-      "synopsis_en": "In a gesture of rebellion and poetry, a group of workers begins a silent strike. Yet the impact of this small revolution goes unnoticed: the collective does not share the ideals of the younger generation."
     },
     {
       "title": "Se Eu Fosse Vivo… Vivia",
@@ -1228,25 +1171,6 @@
       "synopsis_en": "Milo, a charismatic boy who dances malambo, runs away from home and travels to Buenos Aires in search of a new life, in this fascinating film where the documentary and the absurd coexist in perfect harmony."
     },
     {
-      "title": "Iván & Hadoum",
-      "title_en": "",
-      "country": "España/Alemania/Bélgica",
-      "flags": "🇪🇸🇩🇪🇧🇪",
-      "duration": "103 min",
-      "day": "Jueves",
-      "date": 16,
-      "time": "17:00",
-      "venue": "CC Caribe Plaza ‒ Sala 2",
-      "section": "🇪🇸 Muestra España",
-      "day_order": 2,
-      "is_cortos": false,
-      "film_list": [],
-      "synopsis": "Iván trabaja en una empresa agrícola y aspira a un ascenso que le permita mejorar la situación económica de su familia.",
-      "director": "Ian de la Rosa",
-      "year": 2026,
-      "synopsis_en": "Iván works at an agricultural company and aspires to a promotion that would improve his family's financial situation."
-    },
-    {
       "title": "Cortos Colombia — Prog. 2",
       "title_en": "La forma y la raíz · Montaña luminosa · Pawa · Sombras en la niebla",
       "flags": "🇨🇴",
@@ -1359,25 +1283,6 @@
       "synopsis_en": "In Señoritas, Lina Rodríguez follows Alejandra, a young woman from Bogotá who inhabits her city between the domestic intimacy of her apartment with her mother and a nocturnal life shared with a close, intense, and sometimes contradictory circle."
     },
     {
-      "title": "Piedras preciosas",
-      "title_en": "Gemstones",
-      "country": "Colombia/Portugal",
-      "flags": "🇨🇴🇵🇹",
-      "duration": "70 min",
-      "day": "Jueves",
-      "date": 16,
-      "time": "18:20",
-      "venue": "Plaza Bocagrande ‒ Sala 5",
-      "section": "🇨🇴 Comp. Colombia",
-      "day_order": 2,
-      "is_cortos": false,
-      "film_list": [],
-      "synopsis": "Machado, un joven inmigrante colombiano, trabaja cosechando uvas en la campiña francesa.",
-      "director": "Sriram Raja",
-      "year": 2019,
-      "synopsis_en": "Machado, a young Colombian immigrant, works harvesting grapes in the French countryside."
-    },
-    {
       "title": "Los cruces",
       "title_en": "Intersections",
       "country": "Argentina",
@@ -1414,32 +1319,6 @@
       "director": "Ben Rivers",
       "year": 2026,
       "synopsis_en": "Moon picks up a turtle from the road. Moments before, she had swerved to avoid it while driving, emerging completely unscathed from an accident that introduces us to this — perhaps utopian — world without adults."
-    },
-    {
-      "title": "Cine Indígena — Prog. 2",
-      "title_en": "Tu mañana será mi canto · Runa Simi",
-      "flags": "🇨🇱🇵🇪",
-      "country": "Chile/Perú",
-      "duration": "99 min",
-      "day": "Jueves",
-      "date": 16,
-      "time": "19:00",
-      "venue": "Plaza de la Proclamación",
-      "section": "🪶 Cine Indígena",
-      "day_order": 2,
-      "is_cortos": true,
-      "film_list": [
-        {
-          "title": "Tu mañana será mi canto",
-          "country": "Chile/EEUU",
-          "duration": "14 min"
-        },
-        {
-          "title": "Runa Simi",
-          "country": "Perú",
-          "duration": "85 min"
-        }
-      ]
     },
     {
       "title": "Doggerland",
@@ -1632,66 +1511,6 @@
       ]
     },
     {
-      "title": "Animación Porosa — Prog. de Cortos",
-      "title_en": "Ako počúvať fontány · Evacuations · La baraja de Myriam · Luna Rossa · Venezia Diorama",
-      "flags": "🇨🇱🇫🇷🇧🇪",
-      "country": "Eslovaquia/Estados Unidos/Chile/Estonia/Francia/Bélgica",
-      "duration": "69 min",
-      "day": "Viernes",
-      "date": 17,
-      "time": "11:00",
-      "venue": "Plaza Bocagrande ‒ Sala 1",
-      "section": "🎨 Animación Porosa",
-      "day_order": 3,
-      "is_cortos": true,
-      "film_list": [
-        {
-          "title": "Ako počúvať fontány",
-          "country": "Eslovaquia",
-          "duration": "10 min"
-        },
-        {
-          "title": "Evacuations",
-          "country": "Estados Unidos",
-          "duration": "7 min"
-        },
-        {
-          "title": "La baraja de Myriam",
-          "country": "Chile",
-          "duration": "14 min"
-        },
-        {
-          "title": "Luna Rossa",
-          "country": "Estonia/Francia",
-          "duration": "32 min"
-        },
-        {
-          "title": "Venezia Diorama",
-          "country": "Bélgica",
-          "duration": "6 min"
-        }
-      ]
-    },
-    {
-      "title": "Esa otra selva blanca",
-      "title_en": "That Other White Jungle",
-      "country": "Chile",
-      "flags": "🇨🇱",
-      "duration": "67 min",
-      "day": "Viernes",
-      "date": 17,
-      "time": "11:20",
-      "venue": "CC Caribe Plaza ‒ Sala 5",
-      "section": "⏳ (s)paces of Time",
-      "day_order": 3,
-      "is_cortos": false,
-      "film_list": [],
-      "synopsis": "Las mariposas son bioindicadores de la salud de un ecosistema: su aparición tras un incendio permite medir cuánto tarda un bosque en recuperarse.",
-      "director": "Teresa Arredondo",
-      "year": 2025,
-      "synopsis_en": "Butterflies are bioindicators of ecosystem health: their appearance after a fire allows us to measure how long it takes a forest to recover."
-    },
-    {
       "title": "El pagador de promesas",
       "title_en": "The Given Word",
       "country": "Brasil",
@@ -1709,107 +1528,6 @@
       "director": "Ujkan Hysaj",
       "year": 2016,
       "synopsis_en": "Zé and Rosa, a peasant couple, arrive in a mid-sized city at dawn. The man carries a cross, and both have been walking for hours."
-    },
-    {
-      "title": "Prog. Cortometrajes — Jorge Cadena",
-      "title_en": "El cuento de Antonia · Flores del otro patio · Les Trois Hirondelles · Mapalé · Soeurs Jarariju · Sonali",
-      "flags": "🇨🇭🇨🇴",
-      "country": "Suiza/Colombia",
-      "duration": "98 min",
-      "day": "Viernes",
-      "date": 17,
-      "time": "12:00",
-      "venue": "Plaza Bocagrande ‒ Sala 4",
-      "section": "🇨🇭 Muestra Suiza",
-      "day_order": 3,
-      "is_cortos": true,
-      "film_list": [
-        {
-          "title": "El cuento de Antonia",
-          "country": "Suiza",
-          "duration": "30 min"
-        },
-        {
-          "title": "Flores del otro patio",
-          "country": "Suiza/Colombia",
-          "duration": "16 min"
-        },
-        {
-          "title": "Les Trois Hirondelles",
-          "country": "Suiza",
-          "duration": "17 min"
-        },
-        {
-          "title": "Mapalé",
-          "country": "Suiza",
-          "duration": "6 min"
-        },
-        {
-          "title": "Soeurs Jarariju",
-          "country": "Suiza",
-          "duration": "21 min"
-        },
-        {
-          "title": "Sonali",
-          "country": "Suiza",
-          "duration": "8 min"
-        }
-      ]
-    },
-    {
-      "title": "Las almas ni los ojos",
-      "title_en": "Neither Souls nor Eyes",
-      "country": "Colombia",
-      "flags": "🇨🇴",
-      "duration": "75 min",
-      "day": "Viernes",
-      "date": 17,
-      "time": "12:20",
-      "venue": "Plaza Bocagrande ‒ Sala 5",
-      "section": "🇨🇴 Comp. Colombia",
-      "day_order": 3,
-      "is_cortos": false,
-      "film_list": [],
-      "synopsis": "Lejos de Anserma, Pacho continuó su vida escapando de la violencia. A sus 15 años, su única alternativa lo obligó a desconectarse de su origen.",
-      "synopsis_en": "Far from Anserma, Pacho continued his life fleeing violence. At 15, his only alternative forced him to sever ties with his origins."
-    },
-    {
-      "title": "Chicas tristes",
-      "title_en": "Sad Girlz",
-      "country": "México/España/Francia",
-      "flags": "🇲🇽🇪🇸🇫🇷",
-      "duration": "90 min",
-      "day": "Viernes",
-      "date": 17,
-      "time": "13:00",
-      "venue": "Teatro Adolfo Mejía",
-      "section": "🌎 Comp. Iberoamérica",
-      "day_order": 3,
-      "is_cortos": false,
-      "film_list": [],
-      "synopsis": "Decir “ternura” y que sean varias las cosas que salen de la boca: miel, abrazo, risa. Amiga, sangre, ardor. Paula y La Maestra tienen 16 años, ambas son nadadoras y se preparan para ir al Campeonato Panamericano de Natación Junior.",
-      "director": "Fernanda Tovar",
-      "year": 2026,
-      "synopsis_en": "Say 'tenderness' and many things come to mind: honey, embrace, laughter. Friend, blood, heat. Paula and La Maestra are both 16, both swimmers, preparing for the Junior Pan American Swimming Championship."
-    },
-    {
-      "title": "Queen at Sea",
-      "title_en": "",
-      "country": "Reino Unido/Estados Unidos",
-      "flags": "🇬🇧🇺🇸",
-      "duration": "121 min",
-      "day": "Viernes",
-      "date": 17,
-      "time": "14:00",
-      "venue": "CC Caribe Plaza ‒ Sala 2",
-      "section": "🌍 Internacional",
-      "day_order": 3,
-      "is_cortos": false,
-      "film_list": [],
-      "synopsis": "Leslie padece demencia avanzada y vive con Martin, su esposo y principal cuidador. Amanda, la hija de Leslie, acaba de mudarse a Londres para tomarse un año sabático y estar más cerca de su madre.",
-      "director": "Lance Hammer",
-      "year": 2026,
-      "synopsis_en": "Leslie has advanced dementia and lives with Martin, her husband and primary caregiver. Amanda, Leslie's daughter, has just moved to London for a sabbatical year to be closer to her mother."
     },
     {
       "title": "Cortos Colombia — Prog. 3",
@@ -1891,25 +1609,6 @@
       "synopsis_en": "Sylvain George films young migrants in Calais over several years, building a visual poem about resistance, the body, and the border."
     },
     {
-      "title": "Tehran Bedoune Mojavez",
-      "title_en": "Put Your Soul on Your Hand and Walk",
-      "country": "Francia/Palestina",
-      "flags": "🇫🇷🇵🇸",
-      "duration": "112 min",
-      "day": "Viernes",
-      "date": 17,
-      "time": "14:40",
-      "venue": "CC Caribe Plaza ‒ Sala 6",
-      "section": "🌍 Internacional",
-      "day_order": 3,
-      "is_cortos": false,
-      "film_list": [],
-      "synopsis": "Sepideh Farsi documenta la vida cotidiana en Gaza a través de imágenes filmadas por sus propios habitantes, construyendo un testimonio colectivo de resistencia y humanidad.",
-      "director": "Sepideh Farsi",
-      "year": 2025,
-      "synopsis_en": "Sepideh Farsi documents everyday life in Gaza through images filmed by its own inhabitants, building a collective testimony of resistance and humanity."
-    },
-    {
       "title": "El mundo al revés",
       "title_en": "The World Upside Down",
       "country": "Suiza/Argentina",
@@ -1946,92 +1645,6 @@
       "director": "",
       "year": 1997,
       "synopsis_en": "Argentine director Lucrecia Martel is one of the masters of contemporary cinema, and her capacity to bring together images and sounds to achieve unexpected, often unsettling effects shines in her first feature-length documentary."
-    },
-    {
-      "title": "Anoche conquisté Tebas",
-      "title_en": "Last Night I Conquered the City of Thebes",
-      "country": "España/Portugal",
-      "flags": "🇪🇸🇵🇹",
-      "duration": "111 min",
-      "day": "Viernes",
-      "date": 17,
-      "time": "15:00",
-      "venue": "Plaza Bocagrande ‒ Sala 4",
-      "section": "🌎 Comp. Iberoamérica",
-      "day_order": 3,
-      "is_cortos": false,
-      "film_list": [],
-      "synopsis": "Un grupo de jóvenes portugueses cruza la frontera para pasar la noche en unas antiguas termales, en medio de las ruinas de un antiguo fuerte romano.",
-      "director": "Gabriel Azorín",
-      "year": 2025,
-      "synopsis_en": "A group of young Portuguese cross the border to spend a night at ancient thermal springs amid the ruins of a Roman fort."
-    },
-    {
-      "title": "ojoboca — Prog. 2 · 16mm",
-      "title_en": "Come and Dance with Me · Gente perra · The Masked Monkeys",
-      "flags": "🇩🇪🇨🇴",
-      "country": "Alemania/Colombia",
-      "duration": "61 min",
-      "day": "Viernes",
-      "date": 17,
-      "time": "15:00",
-      "venue": "Salón 1 ‒ Miguel Sebastián Guerrero, unibac",
-      "section": "📽️ Retrospectiva ojoboca",
-      "day_order": 3,
-      "is_cortos": true,
-      "film_list": [
-        {
-          "title": "Come and Dance with Me",
-          "country": "Alemania",
-          "duration": "4 min"
-        },
-        {
-          "title": "Gente perra",
-          "country": "Colombia/Alemania",
-          "duration": "25 min"
-        },
-        {
-          "title": "The Masked Monkeys",
-          "country": "Alemania",
-          "duration": "32 min"
-        }
-      ]
-    },
-    {
-      "title": "O Riso e a Faca",
-      "title_en": "I Only Rest in the Storm",
-      "country": "Portugal/Francia/Brasil/Rumania",
-      "flags": "🇵🇹🇫🇷🇧🇷🇷🇴",
-      "duration": "217 min",
-      "day": "Viernes",
-      "date": 17,
-      "time": "15:40",
-      "venue": "Plaza Bocagrande ‒ Sala 5",
-      "section": "🌎 Comp. Iberoamérica",
-      "day_order": 3,
-      "is_cortos": false,
-      "film_list": [],
-      "synopsis": "Pedro Filipe Marques construye un retrato íntimo de una familia portuguesa en Lisboa, observando con delicadeza las tensiones generacionales y los silencios que definen sus vínculos.",
-      "director": "Pedro Pinho",
-      "year": 2025,
-      "synopsis_en": "Pedro Filipe Marques builds an intimate portrait of a Portuguese family in Lisbon, observing with delicacy the generational tensions and silences that define their bonds."
-    },
-    {
-      "title": "Una escritura en apariencias",
-      "title_en": "A Writing in Appearances",
-      "country": "Colombia",
-      "flags": "🇨🇴",
-      "duration": "70 min",
-      "day": "Viernes",
-      "date": 17,
-      "time": "16:00",
-      "venue": "Teatro Adolfo Mejía",
-      "section": "🇨🇴 Comp. Colombia",
-      "day_order": 3,
-      "is_cortos": false,
-      "film_list": [],
-      "synopsis": "Esta película propone un viaje a Teyuna, la Ciudad Perdida de los tayronas, el sitio arqueológico más emblemático de Colombia. Se trata de un recorrido que se despliega en varios niveles: espacial, temporal y narrativo.",
-      "synopsis_en": "This film proposes a journey to Teyuna, the Lost City of the Tairona people, Colombia's most emblematic archaeological site. It unfolds across multiple levels: spatial, temporal, and narrative."
     },
     {
       "title": "Cortos Colombia — Prog. 4",
@@ -2120,25 +1733,6 @@
       "synopsis_en": "Ruth Beckermann documents the political scandal that erupted in Austria when Kurt Waldheim's Nazi past was revealed during his 1986 presidential campaign."
     },
     {
-      "title": "Historias del buen valle",
-      "title_en": "Good Valley Stories",
-      "country": "España/Francia",
-      "flags": "🇪🇸🇫🇷",
-      "duration": "122 min",
-      "day": "Viernes",
-      "date": 17,
-      "time": "17:40",
-      "venue": "CC Caribe Plaza ‒ Sala 6",
-      "section": "🇪🇸 Muestra España",
-      "day_order": 3,
-      "is_cortos": false,
-      "film_list": [],
-      "synopsis": "De nuevo, José Luis Guerín ofrece una lección de cine documental, como lo reconoció el jurado del Festival de Cine de San Sebastián, que le otorgó su Premio Especial.",
-      "director": "José Luis Guerín",
-      "year": 2025,
-      "synopsis_en": "Once again, José Luis Guerín delivers a masterclass in documentary filmmaking, as recognized by the San Sebastián Film Festival jury, which awarded him its Special Prize."
-    },
-    {
       "title": "La noche está marchándose ya",
       "title_en": "The Night is Fading Away",
       "country": "Argentina",
@@ -2156,25 +1750,6 @@
       "director": "Ramiro Sonzini",
       "year": 2025,
       "synopsis_en": "This is a cinephile comedy shot through with crisis — simultaneously solitary and solidary."
-    },
-    {
-      "title": "Tóc, Giấy và Nước…",
-      "title_en": "Hair, Paper, Water…",
-      "country": "Bélgica/Francia/Vietnam",
-      "flags": "🇧🇪🇫🇷🇻🇳",
-      "duration": "71 min",
-      "day": "Viernes",
-      "date": 17,
-      "time": "18:00",
-      "venue": "CC Caribe Plaza ‒ Sala 5",
-      "section": "🌍 Internacional",
-      "day_order": 3,
-      "is_cortos": false,
-      "film_list": [],
-      "synopsis": "A través de tres elementos — cabello, papel y agua — la película entrelaza historias de mujeres en Vietnam, Bélgica y Francia, explorando la memoria, el cuerpo y la herencia cultural en una poética visual de gran delicadeza.",
-      "director": "Nicolas Graux",
-      "year": 2026,
-      "synopsis_en": "Through three elements — hair, paper, and water — the film interweaves stories of women in Vietnam, Belgium, and France, exploring memory, the body, and cultural heritage in a visual poetry of great delicacy."
     },
     {
       "title": "Cortos Iberoamérica — Prog. 1",
@@ -2257,25 +1832,6 @@
       "synopsis_en": "Deimer Quintero Vertel documents the memories of Colombian communities displaced by violence, who attempt to reconstruct their identity and roots in lands that no longer belong to them."
     },
     {
-      "title": "Se Eu Fosse Vivo… Vivia",
-      "title_en": "If I Were Alive",
-      "country": "Brasil",
-      "flags": "🇧🇷",
-      "duration": "101 min",
-      "day": "Viernes",
-      "date": 17,
-      "time": "18:30",
-      "venue": "Plaza de la Proclamación",
-      "section": "✊ Cine Afro",
-      "day_order": 3,
-      "is_cortos": false,
-      "film_list": [],
-      "synopsis": "André Novais Oliveira construye una elegía familiar sobre la pérdida y la memoria a través de imágenes íntimas de su propia familia en Brasil.",
-      "director": "Dmitry Peskov",
-      "year": null,
-      "synopsis_en": "André Novais Oliveira constructs a family elegy about loss and memory through intimate images of his own family in Brazil."
-    },
-    {
       "title": "Pequenas Criaturas",
       "title_en": "Little Creatures",
       "country": "Brasil",
@@ -2295,37 +1851,6 @@
       "synopsis_en": "Helena moves to Brasília with her children, ages 15 and 7. Each copes in their own way with their father's absence, as he remains on an open-ended business trip."
     },
     {
-      "title": "Cine Afro — Prog. de Cortos",
-      "title_en": "Como Nasce um Rio · Taxi Moto · Voz, Zov, Zvo",
-      "flags": "🇧🇷🇨🇭",
-      "country": "Brasil/Suiza/Francia",
-      "duration": "81 min",
-      "day": "Viernes",
-      "date": 17,
-      "time": "20:20",
-      "venue": "Plaza Bocagrande ‒ Sala 2",
-      "section": "✊ Cine Afro",
-      "day_order": 3,
-      "is_cortos": true,
-      "film_list": [
-        {
-          "title": "Como Nasce um Rio",
-          "country": "Brasil",
-          "duration": "8 min"
-        },
-        {
-          "title": "Taxi Moto",
-          "country": "Suiza/Francia",
-          "duration": "21 min"
-        },
-        {
-          "title": "Voz, Zov, Zvo",
-          "country": "Brasil",
-          "duration": "52 min"
-        }
-      ]
-    },
-    {
       "title": "Maspalomas",
       "title_en": "",
       "country": "España",
@@ -2343,66 +1868,6 @@
       "director": "Aitor Arregi",
       "year": 2025,
       "synopsis_en": "Amid the growing openness of cinema to LGBTIQ+ stories, a narrative about homosexuality in old age remains rare."
-    },
-    {
-      "title": "Jóhanna af örk",
-      "title_en": "Joan of Arc",
-      "country": "Islandia/Dinamarca/Francia",
-      "flags": "🇮🇸🇩🇰🇫🇷",
-      "duration": "61 min",
-      "day": "Viernes",
-      "date": 17,
-      "time": "21:00",
-      "venue": "Plaza Bocagrande ‒ Sala 4",
-      "section": "⏳ (s)paces of Time",
-      "day_order": 3,
-      "is_cortos": false,
-      "film_list": [],
-      "synopsis": "Hlynur Pálmason reinterpreta el mito de Juana de Arco situando la historia en el presente. Una joven recorre Islandia a caballo, sola, en un viaje que oscila entre lo espiritual y lo físico.",
-      "director": "Luc Besson",
-      "year": 1999,
-      "synopsis_en": "Hlynur Pálmason reinterprets the Joan of Arc myth set in the present day. A young woman rides alone on horseback across Iceland in a journey that oscillates between the spiritual and the physical."
-    },
-    {
-      "title": "Internacional — Prog. de Cortos",
-      "title_en": "Cul-De-Sac! · Ein Unfall · Force Times Displacement · Intersecting Memory · Daria's Night Flowers",
-      "flags": "🇧🇪🇫🇷🇦🇹🇹🇼🇮🇷🇬🇧",
-      "country": "Bélgica/Francia/Austria/Taiwán/Palestina/Irán/UK",
-      "duration": "~90 min",
-      "day": "Viernes",
-      "date": 17,
-      "time": "21:00",
-      "venue": "Plaza de la Proclamación",
-      "section": "🌍 Internacional",
-      "day_order": 3,
-      "is_cortos": true,
-      "film_list": [
-        {
-          "title": "Cul-De-Sac!",
-          "country": "Bélgica/Francia",
-          "duration": "17 min"
-        },
-        {
-          "title": "Ein Unfall",
-          "country": "Austria",
-          "duration": "30 min"
-        },
-        {
-          "title": "Force Times Displacement",
-          "country": "Taiwán",
-          "duration": "11 min"
-        },
-        {
-          "title": "Intersecting Memory",
-          "country": "Palestina/Francia",
-          "duration": "20 min"
-        },
-        {
-          "title": "Daria's Night Flowers",
-          "country": "Irán/UK/Francia",
-          "duration": "16 min"
-        }
-      ]
     },
     {
       "title": "Lust",
@@ -2460,76 +1925,6 @@
       "synopsis_en": "A 1966 Colombian film that reconstructs the colonial history of Cartagena de Indias, the first major production shot in the city."
     },
     {
-      "title": "Lolita en Honda",
-      "title_en": "Lolita in Honda",
-      "country": "Colombia",
-      "flags": "🇨🇴",
-      "duration": "61 min",
-      "day": "Sábado",
-      "date": 18,
-      "time": "11:00",
-      "venue": "Teatro Adolfo Mejía",
-      "section": "🇨🇴 Comp. Colombia",
-      "day_order": 4,
-      "is_cortos": false,
-      "film_list": [],
-      "synopsis": "Lolita en Honda es un viaje íntimo hacia la memoria familiar, donde Daniel Torres explora la infancia de su abuela para desentrañar las marcas del abandono y la violencia internalizada que moldearon su carácter.",
-      "synopsis_en": "Lolita en Honda is an intimate journey into family memory, in which Daniel Torres explores his grandmother's childhood to unravel the marks of abandonment and internalized violence that shaped her character."
-    },
-    {
-      "title": "Cortos Colombia — Prog. 2",
-      "title_en": "La forma y la raíz · Montaña luminosa · Pawa · Sombras en la niebla",
-      "flags": "🇨🇴",
-      "country": "Colombia",
-      "duration": "~90 min",
-      "day": "Sábado",
-      "date": 18,
-      "time": "11:00",
-      "venue": "CC Caribe Plaza ‒ Sala 2",
-      "section": "🇨🇴 Comp. Colombia",
-      "day_order": 4,
-      "is_cortos": true,
-      "film_list": [
-        {
-          "title": "La forma y la raíz",
-          "country": "Colombia/Cuba",
-          "duration": "14 min"
-        },
-        {
-          "title": "Montaña luminosa",
-          "country": "Colombia",
-          "duration": "25 min"
-        },
-        {
-          "title": "Pawa",
-          "country": "Colombia",
-          "duration": "22 min"
-        },
-        {
-          "title": "Sombras en la niebla",
-          "country": "Colombia",
-          "duration": "25 min"
-        }
-      ]
-    },
-    {
-      "title": "El valor de la palabra",
-      "title_en": "The Value of Speech",
-      "country": "Colombia",
-      "flags": "🇨🇴",
-      "duration": "79 min",
-      "day": "Sábado",
-      "date": 18,
-      "time": "11:20",
-      "venue": "CC Caribe Plaza ‒ Sala 5",
-      "section": "🪶 Cine Indígena",
-      "day_order": 4,
-      "is_cortos": false,
-      "film_list": [],
-      "synopsis": "La larga trayectoria de la cineasta colombiana Marta Rodríguez demuestra un compromiso por documentar la historia de represión y lucha de  los pueblos originarios y marginalizados.",
-      "synopsis_en": "The long career of Colombian filmmaker Marta Rodríguez demonstrates a commitment to documenting the history of repression and struggle of indigenous and marginalized peoples."
-    },
-    {
       "title": "Costas — Prog. 1",
       "title_en": "An Incomplete Calendar · Fuego en el mar · Petrolita",
       "flags": "🇮🇷🇻🇪🇹🇷🇦🇷",
@@ -2578,90 +1973,6 @@
       "director": "Sally El Hosaini",
       "year": 2022,
       "synopsis_en": "In the cracks of a civilized city — one that was born dead from the start — collapse breathes."
-    },
-    {
-      "title": "Crocodile",
-      "title_en": "",
-      "country": "Nueva Zelanda/Nigeria",
-      "flags": "🇳🇬",
-      "duration": "100 min",
-      "day": "Sábado",
-      "date": 18,
-      "time": "11:40",
-      "venue": "CC Caribe Plaza ‒ Sala 6",
-      "section": "✊ Cine Afro",
-      "day_order": 4,
-      "is_cortos": false,
-      "film_list": [],
-      "synopsis": "Documental sobre el auge del cine nigeriano Nollywood y su impacto global, filmado entre Lagos y Auckland.",
-      "director": "Peter Faiman",
-      "year": 1986,
-      "synopsis_en": "A documentary about the rise of Nigerian cinema Nollywood and its global impact, filmed between Lagos and Auckland."
-    },
-    {
-      "title": "Bosque arriba en la montaña",
-      "title_en": "Forest Up in the Mountain",
-      "country": "Argentina",
-      "flags": "🇦🇷",
-      "duration": "91 min",
-      "day": "Sábado",
-      "date": 18,
-      "time": "13:30",
-      "venue": "Teatro Adolfo Mejía",
-      "section": "🌎 Comp. Iberoamérica",
-      "day_order": 4,
-      "is_cortos": false,
-      "film_list": [],
-      "synopsis": "En 2017, Rafael Nahuel, un joven mapuche, fue asesinado por la Prefectura Naval Argentina en el bosque andino de Villa Mascardi, en la Patagonia.",
-      "director": "Sofía Bordenave",
-      "year": 2026,
-      "synopsis_en": "In 2017, Rafael Nahuel, a young Mapuche man, was killed by the Argentine Naval Prefecture in the Andean forest of Villa Mascardi, Patagonia."
-    },
-    {
-      "title": "Cortos Colombia — Prog. 1",
-      "title_en": "Decaer · La garganta del diablo · Las formas de la magia · Madres de nacimiento · Todas las manos que solté · Ya se ven los tigres en la lluvia",
-      "flags": "🇨🇴",
-      "country": "Colombia",
-      "duration": "~90 min",
-      "day": "Sábado",
-      "date": 18,
-      "time": "14:00",
-      "venue": "CC Caribe Plaza ‒ Sala 2",
-      "section": "🇨🇴 Comp. Colombia",
-      "day_order": 4,
-      "is_cortos": true,
-      "film_list": [
-        {
-          "title": "Decaer",
-          "country": "Colombia",
-          "duration": "7 min"
-        },
-        {
-          "title": "La garganta del diablo",
-          "country": "Colombia",
-          "duration": "15 min"
-        },
-        {
-          "title": "Las formas de la magia",
-          "country": "Colombia",
-          "duration": "16 min"
-        },
-        {
-          "title": "Madres de nacimiento",
-          "country": "Francia",
-          "duration": "8 min"
-        },
-        {
-          "title": "Todas las manos que solté",
-          "country": "Colombia/Francia",
-          "duration": "23 min"
-        },
-        {
-          "title": "Ya se ven los tigres en la lluvia",
-          "country": "Colombia/Canadá",
-          "duration": "15 min"
-        }
-      ]
     },
     {
       "title": "Cortos Iberoamérica — Prog. 2",
@@ -2760,82 +2071,6 @@
       ]
     },
     {
-      "title": "Las corrientes",
-      "title_en": "The Currents",
-      "country": "Suiza/Argentina",
-      "flags": "🇨🇭🇦🇷",
-      "duration": "104 min",
-      "day": "Sábado",
-      "date": 18,
-      "time": "14:40",
-      "venue": "Plaza Bocagrande ‒ Sala 3",
-      "section": "🌎 Comp. Iberoamérica",
-      "day_order": 4,
-      "is_cortos": false,
-      "film_list": [],
-      "synopsis": "Lina tiene 34 años, es diseñadora de moda y acaba de recibir un premio. Poco después de la ceremonia, se encierra en un baño, sale corriendo y se lanza a un río helado. Sobrevive.",
-      "director": "Zhedan Deng",
-      "year": 2024,
-      "synopsis_en": "Lina is 34, a fashion designer who has just received an award. Shortly after the ceremony, she locks herself in a bathroom, runs out, and throws herself into an icy river. She survives."
-    },
-    {
-      "title": "Vetre, pričaj sa mnom",
-      "title_en": "Wind, Talk to Me",
-      "country": "Serbia/Eslovenia/Croacia",
-      "flags": "🇷🇸🇸🇮🇭🇷",
-      "duration": "100 min",
-      "day": "Sábado",
-      "date": 18,
-      "time": "14:40",
-      "venue": "CC Caribe Plaza ‒ Sala 6",
-      "section": "⏳ (s)paces of Time",
-      "day_order": 4,
-      "is_cortos": false,
-      "film_list": [],
-      "synopsis": "El sonido de los árboles parece atenuar el desasosiego en el que habita Stefan. La necesidad de enfrentar el dolor por la muerte de su madre lo lleva a regresar a su pueblo natal.",
-      "director": "Stefan Đorđević",
-      "year": 2025,
-      "synopsis_en": "The sound of the trees seems to ease the restlessness that inhabits Stefan. The need to face the pain of his mother's death drives him to return to his hometown."
-    },
-    {
-      "title": "Staatsschutz",
-      "title_en": "Prosecution",
-      "country": "Alemania",
-      "flags": "🇩🇪",
-      "duration": "113 min",
-      "day": "Sábado",
-      "date": 18,
-      "time": "15:00",
-      "venue": "Plaza Bocagrande ‒ Sala 4",
-      "section": "🌍 Internacional",
-      "day_order": 4,
-      "is_cortos": false,
-      "film_list": [],
-      "synopsis": "Faraz Shariat construye un thriller político en Alemania sobre un joven abogado iraní que defiende a solicitantes de asilo mientras enfrenta su propia identidad y las contradicciones del sistema legal europeo.",
-      "director": "Billy Wilder",
-      "year": 1957,
-      "synopsis_en": "Faraz Shariat constructs a political thriller in Germany about a young Iranian lawyer who defends asylum seekers while confronting his own identity and the contradictions of the European legal system."
-    },
-    {
-      "title": "Puntos de fuga",
-      "title_en": "Vanishing Points",
-      "country": "Colombia",
-      "flags": "🇨🇴",
-      "duration": "72 min",
-      "day": "Sábado",
-      "date": 18,
-      "time": "15:20",
-      "venue": "Plaza Bocagrande ‒ Sala 5",
-      "section": "🇨🇴 Comp. Colombia",
-      "day_order": 4,
-      "is_cortos": false,
-      "film_list": [],
-      "synopsis": "Lina Rodriguez entreteje la historia de su madre con la suya propia, entrelazándolas con episodios de la historia de Colombia.",
-      "director": "Leo Schatzl",
-      "year": 2005,
-      "synopsis_en": "Lina Rodriguez interweaves her mother's story with her own, interlacing them with episodes from Colombia's history."
-    },
-    {
       "title": "Lo demás es ruido",
       "title_en": "Everything Else is Noise",
       "country": "México/Alemania/Canadá",
@@ -2853,181 +2088,6 @@
       "director": "Zev Robinson",
       "year": 2012,
       "synopsis_en": "At a congested intersection, vehicles seem to dance to the rhythm of Teresa's cello, composing an incessant melody where the noise never fades. Teresa lends her home to Rosa for the recording of a television interview."
-    },
-    {
-      "title": "La noche está marchándose ya",
-      "title_en": "The Night is Fading Away",
-      "country": "Argentina",
-      "flags": "🇦🇷",
-      "duration": "104 min",
-      "day": "Sábado",
-      "date": 18,
-      "time": "17:00",
-      "venue": "Plaza Bocagrande ‒ Sala 1",
-      "section": "🇦🇷 Muestra Argentina",
-      "day_order": 4,
-      "is_cortos": false,
-      "film_list": [],
-      "synopsis": "Esta es una comedia cinéfila atravesada por la crisis, a la vez solitaria y solidaria.",
-      "director": "Ramiro Sonzini",
-      "year": 2025,
-      "synopsis_en": "This is a cinephile comedy shot through with crisis — simultaneously solitary and solidary."
-    },
-    {
-      "title": "El príncipe de Nanawa",
-      "title_en": "The Prince of Nanawa",
-      "country": "Argentina/Colombia/Paraguay",
-      "flags": "🇦🇷🇨🇴🇵🇾",
-      "duration": "212 min",
-      "day": "Sábado",
-      "date": 18,
-      "time": "17:20",
-      "venue": "CC Caribe Plaza ‒ Sala 5",
-      "section": "⏳ (s)paces of Time",
-      "day_order": 4,
-      "is_cortos": false,
-      "film_list": [],
-      "synopsis": "El paso de la infancia a la adultez es un tema poderoso y este documental resonante de Clarisa Navas nos invita a verlo a través de un niño carismático y parlanchín en un pueblo fronterizo entre Argentina y Paraguay.",
-      "director": "Clarisa Navas",
-      "year": 2025,
-      "synopsis_en": "The passage from childhood to adulthood is a powerful theme, and Clarisa Navas's resonant documentary invites us to witness it through a charismatic and talkative boy in a border town between Argentina and Paraguay."
-    },
-    {
-      "title": "Los cruces",
-      "title_en": "Intersections",
-      "country": "Argentina",
-      "flags": "🇦🇷",
-      "duration": "83 min",
-      "day": "Sábado",
-      "date": 18,
-      "time": "17:20",
-      "venue": "Plaza Bocagrande ‒ Sala 2",
-      "section": "🇦🇷 Muestra Argentina",
-      "day_order": 4,
-      "is_cortos": false,
-      "film_list": [],
-      "synopsis": "Los Cruces parte de una premisa sencilla y enigmática: la búsqueda de un sueño.",
-      "director": "Simon Payne",
-      "year": 2017,
-      "synopsis_en": "Los Cruces starts from a simple and enigmatic premise: the search for a dream."
-    },
-    {
-      "title": "El tren fluvial",
-      "title_en": "The River Train",
-      "country": "Argentina",
-      "flags": "🇦🇷",
-      "duration": "75 min",
-      "day": "Sábado",
-      "date": 18,
-      "time": "17:40",
-      "venue": "Plaza Bocagrande ‒ Sala 3",
-      "section": "🌎 Comp. Iberoamérica",
-      "day_order": 4,
-      "is_cortos": false,
-      "film_list": [],
-      "synopsis": "Milo, un niño carismático que baila malambo, se escapa de su casa y viaja a la ciudad de Buenos Aires en busca de una nueva vida, en esta fascinante película donde conviven, de manera armónica, lo documental y lo absurdo.",
-      "director": "Lorenzo Ferro",
-      "year": 2026,
-      "synopsis_en": "Milo, a charismatic boy who dances malambo, runs away from home and travels to Buenos Aires in search of a new life, in this fascinating film where the documentary and the absurd coexist in perfect harmony."
-    },
-    {
-      "title": "Cortos Iberoamérica — Prog. 1",
-      "title_en": "Abortion Party · A donde nos lleva la fe de José Gerónimo · Agua fría · Fim de Rodovia · Quem se Move · Samba Infinito · En otra Palestina · Fuente alemana · Los peces no se ahogan",
-      "flags": "🇪🇸🇨🇱🇧🇷🇺🇸🇵🇹🇫🇷🇩🇪🇵🇪🇨🇺🇮🇹",
-      "country": "España/Rep. Dominicana/Chile/Brasil/EEUU/Portugal/Francia/Alemania/Perú/Cuba/Italia",
-      "duration": "~90 min",
-      "day": "Sábado",
-      "date": 18,
-      "time": "17:40",
-      "venue": "CC Caribe Plaza ‒ Sala 6",
-      "section": "🌎 Comp. Iberoamérica",
-      "day_order": 4,
-      "is_cortos": true,
-      "film_list": [
-        {
-          "title": "Abortion Party",
-          "country": "España",
-          "duration": "13 min"
-        },
-        {
-          "title": "A donde nos lleva la fe de José Gerónimo",
-          "country": "Rep. Dominicana",
-          "duration": "11 min"
-        },
-        {
-          "title": "Agua fría",
-          "country": "Chile",
-          "duration": "18 min"
-        },
-        {
-          "title": "Fim de Rodovia",
-          "country": "Brasil/EEUU",
-          "duration": "13 min"
-        },
-        {
-          "title": "Quem se Move",
-          "country": "Brasil/Portugal",
-          "duration": "20 min"
-        },
-        {
-          "title": "Samba Infinito",
-          "country": "Brasil/Francia",
-          "duration": "15 min"
-        },
-        {
-          "title": "En otra Palestina",
-          "country": "Alemania/Perú",
-          "duration": "10 min"
-        },
-        {
-          "title": "Fuente alemana",
-          "country": "Chile",
-          "duration": "15 min"
-        },
-        {
-          "title": "Los peces no se ahogan",
-          "country": "Cuba/Italia",
-          "duration": "17 min"
-        }
-      ]
-    },
-    {
-      "title": "Duhuldeki Deney",
-      "title_en": "Soul of the Foot",
-      "country": "Canadá/Turquía",
-      "flags": "🇨🇦🇹🇷",
-      "duration": "65 min",
-      "day": "Sábado",
-      "date": 18,
-      "time": "18:00",
-      "venue": "Plaza Bocagrande ‒ Sala 4",
-      "section": "⏳ (s)paces of Time",
-      "day_order": 4,
-      "is_cortos": false,
-      "film_list": [],
-      "synopsis": "Mustafa Uzuner sigue a un grupo de músicos que recorren Turquía y Canadá preservando tradiciones sonoras que corren el riesgo de desaparecer.",
-      "director": "Mustafa Uzuner",
-      "year": 2025,
-      "synopsis_en": "Mustafa Uzuner follows a group of musicians traveling through Turkey and Canada, preserving sonic traditions at risk of disappearing."
-    },
-    {
-      "title": "Khmeli Potoli",
-      "title_en": "Dry Leaf",
-      "country": "Alemania/Georgia",
-      "flags": "🇩🇪🇬🇪",
-      "duration": "186 min",
-      "day": "Sábado",
-      "date": 18,
-      "time": "18:20",
-      "venue": "Plaza Bocagrande ‒ Sala 5",
-      "section": "🌍 Internacional",
-      "day_order": 4,
-      "is_cortos": false,
-      "film_list": [],
-      "synopsis": "Alexandre Koberidze filma en Georgia y Alemania una historia de amor construida desde la observación y el tiempo lento, donde dos personas se encuentran y se pierden en la textura cotidiana de sus días.",
-      "director": "Alexandre Koberidze",
-      "year": 2026,
-      "synopsis_en": "Alexandre Koberidze films in Georgia and Germany a love story built from observation and slow time, in which two people meet and lose each other in the everyday texture of their days."
     },
     {
       "title": "ojoboca — Prog. 3 · 35mm",
@@ -3052,121 +2112,6 @@
           "title": "Eigenheim",
           "country": "Alemania",
           "duration": "16 min"
-        }
-      ]
-    },
-    {
-      "title": "Manual para invocar fantasmas",
-      "title_en": "How to Summon Ghosts",
-      "country": "Colombia",
-      "flags": "🇨🇴",
-      "duration": "71 min",
-      "day": "Sábado",
-      "date": 18,
-      "time": "19:00",
-      "venue": "Teatro Adolfo Mejía",
-      "section": "🇨🇴 Comp. Colombia",
-      "day_order": 4,
-      "is_cortos": false,
-      "film_list": [],
-      "synopsis": "Entre 1950 y 1960, miembros del Opus Dei llegaron a Colombia para expandir su influencia en América Latina, amparados por la sombra de la dictadura franquista.",
-      "synopsis_en": "Between 1950 and 1960, members of Opus Dei arrived in Colombia to expand their influence in Latin America, sheltered by the shadow of Franco's dictatorship."
-    },
-    {
-      "title": "Isabel",
-      "title_en": "",
-      "country": "Brasil/Francia",
-      "flags": "🇧🇷🇫🇷",
-      "duration": "85 min",
-      "day": "Sábado",
-      "date": 18,
-      "time": "19:00",
-      "venue": "Plaza de la Proclamación",
-      "section": "🇧🇷 Casa Brasil",
-      "day_order": 4,
-      "is_cortos": false,
-      "film_list": [],
-      "synopsis": "Rodeada por la sofisticada escena gastronómica de São Paulo, Isabel, una sommelière de un exclusivo restaurante, disfruta reinventar las normas, empujar los límites y desafiar las reglas establecidas. Una pasión que se desborda con la noche.",
-      "director": "Matthew Murdoch",
-      "year": 2019,
-      "synopsis_en": "Surrounded by São Paulo's sophisticated culinary scene, Isabel, a sommelier at an exclusive restaurant, thrives on reinventing norms, pushing limits, and defying established rules. A passion that overflows into the night."
-    },
-    {
-      "title": "Risa y la cabina del viento",
-      "title_en": "Risa and the Wind Phone",
-      "country": "Argentina",
-      "flags": "🇦🇷",
-      "duration": "94 min",
-      "day": "Sábado",
-      "date": 18,
-      "time": "20:00",
-      "venue": "CC Caribe Plaza ‒ Sala 2",
-      "section": "🏆 Comp. Cine en los Barrios",
-      "day_order": 4,
-      "is_cortos": false,
-      "film_list": [],
-      "synopsis": "Los paisajes de Tierra del Fuego poseen una cualidad conmovedora en su sobriedad, más aún vistos desde la exuberancia tropical.",
-      "director": "Juan Cabral",
-      "year": 2026,
-      "synopsis_en": "The landscapes of Tierra del Fuego have a moving quality in their austerity, even more so when viewed from the lush tropics."
-    },
-    {
-      "title": "El mundo al revés",
-      "title_en": "The World Upside Down",
-      "country": "Suiza/Argentina",
-      "flags": "🇨🇭🇦🇷",
-      "duration": "77 min",
-      "day": "Sábado",
-      "date": 18,
-      "time": "20:00",
-      "venue": "Plaza Bocagrande ‒ Sala 1",
-      "section": "🇨🇭 Muestra Suiza",
-      "day_order": 4,
-      "is_cortos": false,
-      "film_list": [],
-      "synopsis": "Son muchas las formas cotidianas en las que la luz nos hace partícipes de su milagro: el fogón de la cocina, las estrellas en el cielo, el reflejo de las formas sobre el agua.",
-      "director": "Joyce Trozzo",
-      "year": 2016,
-      "synopsis_en": "There are many everyday ways in which light makes us participants in its miracle: the kitchen stove, stars in the sky, the reflection of shapes on water."
-    },
-    {
-      "title": "(s)paces Cortos — Prog. 1",
-      "title_en": "Atado · Pequeno Jogo · Trưa Lịm · Warnungen an die ferne Zukunft · 3cm of Complexity",
-      "flags": "🇪🇸🇧🇷🇫🇷🇩🇪🇦🇹🇬🇷",
-      "country": "España/Brasil/Francia/Vietnam/Alemania/Reino Unido/Austria/Grecia",
-      "duration": "~60 min",
-      "day": "Sábado",
-      "date": 18,
-      "time": "20:20",
-      "venue": "Plaza Bocagrande ‒ Sala 2",
-      "section": "⏳ (s)paces of Time",
-      "day_order": 4,
-      "is_cortos": true,
-      "film_list": [
-        {
-          "title": "Atado",
-          "country": "España",
-          "duration": "27 min"
-        },
-        {
-          "title": "Pequeno Jogo",
-          "country": "Brasil",
-          "duration": "12 min"
-        },
-        {
-          "title": "Trưa Lịm",
-          "country": "Francia/Vietnam",
-          "duration": "16 min"
-        },
-        {
-          "title": "Warnungen an die ferne Zukunft",
-          "country": "Alemania/Reino Unido",
-          "duration": "19 min"
-        },
-        {
-          "title": "3cm of Complexity",
-          "country": "Austria/Grecia",
-          "duration": "21 min"
         }
       ]
     },
@@ -3207,25 +2152,6 @@
       "director": "Kristen Stewart",
       "year": 2025,
       "synopsis_en": "Kristen Stewart's directorial debut adapts the autobiographical bestseller by former swimmer Lidia Yuknavitch — a woman carrying the scars of an abuse-marked childhood and a youth defined by addiction and loss, who finds her voice through literature."
-    },
-    {
-      "title": "Blue Heron",
-      "title_en": "",
-      "country": "Canadá/Hungría",
-      "flags": "🇨🇦🇭🇺",
-      "duration": "90 min",
-      "day": "Sábado",
-      "date": 18,
-      "time": "21:00",
-      "venue": "Plaza de la Proclamación",
-      "section": "🌍 Internacional",
-      "day_order": 4,
-      "is_cortos": false,
-      "film_list": [],
-      "synopsis": "Violeta Parra cantaba que después de vivir un siglo se puede volver a tener 17 años.",
-      "director": "Sophy Romvari",
-      "year": 2026,
-      "synopsis_en": "Violeta Parra sang that after living a century, one can be seventeen again."
     },
     {
       "title": "Los caifanes",
@@ -3283,92 +2209,6 @@
       "synopsis_en": "Sweet biscuits with soda at recess, skirts below the knee, cold showers, pasodobles in the courtyard, twenty boys in catechism."
     },
     {
-      "title": "Cortos Colombia — Prog. 3",
-      "title_en": "El cazador · Filme Pin · Futuros luminosos · Lejanía · Winter Blumen Garten",
-      "flags": "🇨🇴",
-      "country": "Colombia",
-      "duration": "~90 min",
-      "day": "Domingo",
-      "date": 19,
-      "time": "11:00",
-      "venue": "CC Caribe Plaza ‒ Sala 2",
-      "section": "🇨🇴 Comp. Colombia",
-      "day_order": 5,
-      "is_cortos": true,
-      "film_list": [
-        {
-          "title": "El cazador",
-          "country": "Colombia",
-          "duration": "13 min"
-        },
-        {
-          "title": "Filme Pin",
-          "country": "Colombia/Portugal",
-          "duration": "7 min"
-        },
-        {
-          "title": "Futuros luminosos",
-          "country": "Colombia",
-          "duration": "25 min"
-        },
-        {
-          "title": "Lejanía",
-          "country": "Colombia/Chile",
-          "duration": "17 min"
-        },
-        {
-          "title": "Winter Blumen Garten",
-          "country": "Austria/Colombia",
-          "duration": "27 min"
-        }
-      ]
-    },
-    {
-      "title": "Cine Indígena — Prog. 1",
-      "title_en": "Apotnojushi La casa del viento · La Raya",
-      "flags": "🇨🇴🇲🇽",
-      "country": "Colombia/México",
-      "duration": "92 min",
-      "day": "Domingo",
-      "date": 19,
-      "time": "11:00",
-      "venue": "Plaza Bocagrande ‒ Sala 1",
-      "section": "🪶 Cine Indígena",
-      "day_order": 5,
-      "is_cortos": true,
-      "film_list": [
-        {
-          "title": "Apotnojushi La casa del viento",
-          "country": "Colombia",
-          "duration": "12 min"
-        },
-        {
-          "title": "La Raya",
-          "country": "México",
-          "duration": "80 min"
-        }
-      ]
-    },
-    {
-      "title": "Maspalomas",
-      "title_en": "",
-      "country": "España",
-      "flags": "🇪🇸",
-      "duration": "115 min",
-      "day": "Domingo",
-      "date": 19,
-      "time": "11:20",
-      "venue": "CC Caribe Plaza ‒ Sala 5",
-      "section": "🇪🇸 Muestra España",
-      "day_order": 5,
-      "is_cortos": false,
-      "film_list": [],
-      "synopsis": "En medio de la creciente apertura del cine hacia las historias de la comunidad LGTBIQ+, un relato sobre la homosexualidad en la vejez continúa siendo poco frecuente.",
-      "director": "Aitor Arregi",
-      "year": 2025,
-      "synopsis_en": "Amid the growing openness of cinema to LGBTIQ+ stories, a narrative about homosexuality in old age remains rare."
-    },
-    {
       "title": "Costas — Prog. 3",
       "title_en": "Ali au pays des merveilles · Viaje a la explotación",
       "flags": "🇫🇷🇪🇸",
@@ -3393,90 +2233,6 @@
           "duration": "19 min"
         }
       ]
-    },
-    {
-      "title": "Mare’s Nest",
-      "title_en": "",
-      "country": "Reino Unido/Francia/Canadá",
-      "flags": "🇬🇧🇫🇷🇨🇦",
-      "duration": "98 min",
-      "day": "Domingo",
-      "date": 19,
-      "time": "11:40",
-      "venue": "Plaza Bocagrande ‒ Sala 3",
-      "section": "🎖️ Tributo Ben Rivers",
-      "day_order": 5,
-      "is_cortos": false,
-      "film_list": [],
-      "synopsis": "Moon recoge una tortuga en la carretera. Instantes antes ha logrado esquivarla mientras conducía, saliendo completamente ilesa de un accidente que nos introduce en este —quizá utópico— mundo sin adultos.",
-      "director": "Ben Rivers",
-      "year": 2026,
-      "synopsis_en": "Moon picks up a turtle from the road. Moments before, she had swerved to avoid it while driving, emerging completely unscathed from an accident that introduces us to this — perhaps utopian — world without adults."
-    },
-    {
-      "title": "De Indias — Ángeles somos",
-      "title_en": "Ángeles somos · El reportaje · Héroes del silencio · Kuagro · La tinaja · Piratas de La Boquilla",
-      "flags": "🇨🇴",
-      "country": "Colombia",
-      "duration": "~51 min",
-      "day": "Domingo",
-      "date": 19,
-      "time": "11:40",
-      "venue": "CC Caribe Plaza ‒ Sala 6",
-      "section": "🏛️ De Indias",
-      "day_order": 5,
-      "is_cortos": true,
-      "film_list": [
-        {
-          "title": "Ángeles somos",
-          "country": "Colombia",
-          "duration": "9 min"
-        },
-        {
-          "title": "El reportaje",
-          "country": "Colombia",
-          "duration": "4 min"
-        },
-        {
-          "title": "Héroes del silencio",
-          "country": "Colombia",
-          "duration": "13 min"
-        },
-        {
-          "title": "Kuagro",
-          "country": "Colombia",
-          "duration": "12 min"
-        },
-        {
-          "title": "La tinaja",
-          "country": "Colombia/Argentina",
-          "duration": "13 min"
-        },
-        {
-          "title": "Piratas de La Boquilla",
-          "country": "Colombia",
-          "duration": "~6 min"
-        }
-      ]
-    },
-    {
-      "title": "Lo demás es ruido",
-      "title_en": "Everything Else is Noise",
-      "country": "México/Alemania/Canadá",
-      "flags": "🇲🇽🇩🇪🇨🇦",
-      "duration": "70 min",
-      "day": "Domingo",
-      "date": 19,
-      "time": "12:00",
-      "venue": "Plaza Bocagrande ‒ Sala 4",
-      "section": "🌎 Comp. Iberoamérica",
-      "day_order": 5,
-      "is_cortos": false,
-      "film_list": [],
-      "synopsis": "En un cruce congestionado, los vehículos parecen bailar al ritmo del chelo de Teresa, componiendo una melodía incesante donde el ruido nunca se apaga. Teresa presta su casa a Rosa para la grabación de una entrevista televisiva.",
-      "director": "Zev Robinson",
-      "year": 2012,
-      "synopsis_en": "At a congested intersection, vehicles seem to dance to the rhythm of Teresa's cello, composing an incessant melody where the noise never fades. Teresa lends her home to Rosa for the recording of a television interview."
     },
     {
       "title": "El lugar más pequeño",
@@ -3517,25 +2273,6 @@
       "synopsis_en": "Beyond the walls that protect the village stretches a magical and mysterious jungle, inhabited by creatures considered dangerous. For years, the villagers have trained as warriors from a young age."
     },
     {
-      "title": "Frío metal",
-      "title_en": "Cold Metal",
-      "country": "México",
-      "flags": "🇲🇽",
-      "duration": "102 min",
-      "day": "Domingo",
-      "date": 19,
-      "time": "14:00",
-      "venue": "Plaza Bocagrande ‒ Sala 1",
-      "section": "⏳ (s)paces of Time",
-      "day_order": 5,
-      "is_cortos": false,
-      "film_list": [],
-      "synopsis": "¿Cómo escribir una historia que se desprende de la vida? Es decir, que queda colgando, como un pedazo de piel, un soporte fotosensible que lleva registrada en sus pliegues la luz.",
-      "director": "Clemente Castor Reyes",
-      "year": 2025,
-      "synopsis_en": "How do you write a story that detaches from life? One that hangs loose, like a piece of skin—a photosensitive surface with light recorded in its folds."
-    },
-    {
       "title": "Ben Rivers — Prog. 3 · 16mm",
       "title_en": "This Is My Land · Ah, Liberty! · Origin of the Species · A World Rattled of Habit",
       "flags": "🇬🇧",
@@ -3572,116 +2309,6 @@
       ]
     },
     {
-      "title": "Cortos Colombia — Prog. 4",
-      "title_en": "Belleza letal · Consagración · Mi amigo, el arquitecto · Sirena mecánica · Suite intercontinental",
-      "flags": "🇨🇴",
-      "country": "Colombia",
-      "duration": "~90 min",
-      "day": "Domingo",
-      "date": 19,
-      "time": "14:00",
-      "venue": "CC Caribe Plaza ‒ Sala 2",
-      "section": "🇨🇴 Comp. Colombia",
-      "day_order": 5,
-      "is_cortos": true,
-      "film_list": [
-        {
-          "title": "Belleza letal",
-          "country": "Colombia",
-          "duration": "27 min"
-        },
-        {
-          "title": "Consagración",
-          "country": "Colombia/Alemania",
-          "duration": "17 min"
-        },
-        {
-          "title": "Mi amigo, el arquitecto",
-          "country": "Colombia",
-          "duration": "15 min"
-        },
-        {
-          "title": "Sirena mecánica",
-          "country": "España/Colombia",
-          "duration": "9 min"
-        },
-        {
-          "title": "Suite intercontinental",
-          "country": "Colombia",
-          "duration": "24 min"
-        }
-      ]
-    },
-    {
-      "title": "Lust",
-      "title_en": "",
-      "country": "Bulgaria/Dinamarca/Suecia",
-      "flags": "🇧🇬🇩🇰🇸🇪",
-      "duration": "77 min",
-      "day": "Domingo",
-      "date": 19,
-      "time": "14:20",
-      "venue": "Plaza Bocagrande ‒ Sala 2",
-      "section": "🌍 Internacional",
-      "day_order": 5,
-      "is_cortos": false,
-      "film_list": [],
-      "synopsis": "Con esta película, la guionista y directora Ralitza Petrova construye un universo cerrado y distante de relaciones fracturadas, emociones frustradas y melancolía existencial.",
-      "director": "Hank Hoffman",
-      "year": 2021,
-      "synopsis_en": "With this film, writer-director Ralitza Petrova constructs a closed and distant universe of fractured relationships, frustrated emotions, and existential melancholy."
-    },
-    {
-      "title": "Cortos Iberoamérica — Prog. 2",
-      "title_en": "O Mapa em que Estão os Meus Pés · Pajuyuk · Trizas",
-      "flags": "🇧🇷🇪🇨🇧🇴",
-      "country": "Brasil/Ecuador/Bolivia/Inglaterra",
-      "duration": "~90 min",
-      "day": "Domingo",
-      "date": 19,
-      "time": "14:20",
-      "venue": "CC Caribe Plaza ‒ Sala 5",
-      "section": "🌎 Comp. Iberoamérica",
-      "day_order": 5,
-      "is_cortos": true,
-      "film_list": [
-        {
-          "title": "O Mapa em que Estão os Meus Pés",
-          "country": "Brasil",
-          "duration": "14 min"
-        },
-        {
-          "title": "Pajuyuk",
-          "country": "Ecuador",
-          "duration": "18 min"
-        },
-        {
-          "title": "Trizas",
-          "country": "Bolivia/Inglaterra",
-          "duration": "15 min"
-        }
-      ]
-    },
-    {
-      "title": "Los nadadores",
-      "title_en": "The Swimmers",
-      "country": "Argentina/México/Estados Unidos",
-      "flags": "🇦🇷🇲🇽🇺🇸",
-      "duration": "76 min",
-      "day": "Domingo",
-      "date": 19,
-      "time": "14:40",
-      "venue": "CC Caribe Plaza ‒ Sala 6",
-      "section": "🇦🇷 Muestra Argentina",
-      "day_order": 5,
-      "is_cortos": false,
-      "film_list": [],
-      "synopsis": "En las grietas de una ciudad civilizada (esa que desde un inicio nació muerta) respira el colapso.",
-      "director": "Sally El Hosaini",
-      "year": 2022,
-      "synopsis_en": "In the cracks of a civilized city — one that was born dead from the start — collapse breathes."
-    },
-    {
       "title": "El dependiente",
       "title_en": "The Dependent",
       "country": "Argentina",
@@ -3699,82 +2326,6 @@
       "director": "Leonardo Favio",
       "year": 1969,
       "synopsis_en": "Fernández is a grown man who seems to have no purpose in life. He has worked for 25 years in the same hardware store alongside Don Vila, a lonely and equally weary old man who has promised to leave him everything when he dies."
-    },
-    {
-      "title": "Geu Jayeoni Nege Mworago Hani",
-      "title_en": "What Does That Nature Say to You",
-      "country": "Corea del Sur",
-      "flags": "🇰🇷",
-      "duration": "108 min",
-      "day": "Domingo",
-      "date": 19,
-      "time": "15:00",
-      "venue": "Plaza Bocagrande ‒ Sala 4",
-      "section": "🌍 Internacional",
-      "day_order": 5,
-      "is_cortos": false,
-      "film_list": [],
-      "synopsis": "Hong Sang-soo regresa al Festival de Berlín con una película en blanco y negro que sigue a una directora que viaja a la playa con su familia y que, en sus conversaciones con extraños, reflexiona sobre el amor, el arte y la naturaleza humana.",
-      "director": "Hong Sang-soo",
-      "year": 2025,
-      "synopsis_en": "Hong Sang-soo returns to the Berlin Film Festival with a black-and-white film following a director who travels to the beach with her family and, in conversations with strangers, reflects on love, art, and human nature."
-    },
-    {
-      "title": "Sehnsucht in Sangerhausen",
-      "title_en": "Phantoms of July",
-      "country": "Alemania",
-      "flags": "🇩🇪",
-      "duration": "90 min",
-      "day": "Domingo",
-      "date": 19,
-      "time": "15:20",
-      "venue": "Plaza Bocagrande ‒ Sala 5",
-      "section": "⏳ (s)paces of Time",
-      "day_order": 5,
-      "is_cortos": false,
-      "film_list": [],
-      "synopsis": "Julian Radlmaier filma en un resort de lujo alemán una comedia de enredos marxista donde turistas, trabajadores y fantasmas coexisten en un verano que nunca termina.",
-      "director": "Julian Radlmaier",
-      "year": 2025,
-      "synopsis_en": "Julian Radlmaier films at a German luxury resort a Marxist comedy of errors in which tourists, workers, and ghosts coexist in a summer that never ends."
-    },
-    {
-      "title": "El hogar fue sepultado en esa tierra",
-      "title_en": "que nunca pudimos encontrar",
-      "country": "Colombia",
-      "flags": "🇨🇴",
-      "duration": "92 min",
-      "day": "Domingo",
-      "date": 19,
-      "time": "16:00",
-      "venue": "Auditorio nido",
-      "section": "🇨🇴 Comp. Colombia",
-      "day_order": 5,
-      "is_cortos": false,
-      "film_list": [],
-      "synopsis": "Deimer Quintero Vertel documenta las memorias de comunidades colombianas desplazadas por la violencia, que intentan reconstruir su identidad y sus raíces en tierras que ya no les pertenecen.",
-      "director": "Deimer Quintero Vertel",
-      "year": 2026,
-      "synopsis_en": "Deimer Quintero Vertel documents the memories of Colombian communities displaced by violence, who attempt to reconstruct their identity and roots in lands that no longer belong to them."
-    },
-    {
-      "title": "Les Voyageurs",
-      "title_en": "The Travelers",
-      "country": "España/Camerún",
-      "flags": "🇪🇸🇨🇲",
-      "duration": "61 min",
-      "day": "Domingo",
-      "date": 19,
-      "time": "17:00",
-      "venue": "CC Caribe Plaza ‒ Sala 2",
-      "section": "🇪🇸 Muestra España",
-      "day_order": 5,
-      "is_cortos": false,
-      "film_list": [],
-      "synopsis": "David Bingong sigue a un grupo de inmigrantes cameruneses en España, retratando con cercanía sus vidas, sueños y el peso del desplazamiento.",
-      "director": "Robert Schwentke",
-      "year": 2009,
-      "synopsis_en": "David Bingong follows a group of Cameroonian immigrants in Spain, intimately portraying their lives, dreams, and the weight of displacement."
     },
     {
       "title": "Ben Rivers — Prog. 2",
@@ -3804,166 +2355,6 @@
           "title": "Urth",
           "country": "Reino Unido",
           "duration": "20 min"
-        }
-      ]
-    },
-    {
-      "title": "Feito Pipa",
-      "title_en": "Gugu’s World",
-      "country": "Brasil",
-      "flags": "🇧🇷",
-      "duration": "93 min",
-      "day": "Domingo",
-      "date": 19,
-      "time": "17:20",
-      "venue": "CC Caribe Plaza ‒ Sala 5",
-      "section": "🏆 Comp. Cine en los Barrios",
-      "day_order": 5,
-      "is_cortos": false,
-      "film_list": [],
-      "synopsis": "Gugu tiene 12 años y crece en una pequeña comunidad a orillas del embalse Araújo-Lima, cuyo nivel desciende gradualmente revelando las ruinas de una ciudad sumergida. Vive con su abuela Dilma, rodeado de ternura, picardía y tardes de fútbol.",
-      "director": "Allan Deberton",
-      "year": 2026,
-      "synopsis_en": "Twelve-year-old Gugu grows up in a small community on the banks of the Araújo-Lima reservoir, whose waters are slowly receding to reveal the ruins of a submerged town. He lives with his grandmother Dilma, surrounded by tenderness, mischief, and afternoons of football."
-    },
-    {
-      "title": "Dao",
-      "title_en": "Dao",
-      "country": "Francia/Senegal/Guinea-Bissau",
-      "flags": "🇫🇷🇸🇳",
-      "duration": "185 min",
-      "day": "Domingo",
-      "date": 19,
-      "time": "17:20",
-      "venue": "Plaza Bocagrande ‒ Sala 2",
-      "section": "✊ Cine Afro",
-      "day_order": 5,
-      "is_cortos": false,
-      "film_list": [],
-      "synopsis": "«DAO es el movimiento perpetuo y circular que fluye en todo y une al mundo». La película comienza con la presentación del concepto que le da nombre, introduciendo al espectador en el ritmo de la experiencia audiovisual que propone a continuación.",
-      "director": "Alain Gomis",
-      "year": 2026,
-      "synopsis_en": "'DAO is the perpetual circular movement that flows through everything and unites the world.' The film opens with the concept that gives it its name, drawing the viewer into the audiovisual rhythm that follows."
-    },
-    {
-      "title": "The Loneliest Man in Town",
-      "title_en": "",
-      "country": "Austria",
-      "flags": "🇦🇹",
-      "duration": "86 min",
-      "day": "Domingo",
-      "date": 19,
-      "time": "17:40",
-      "venue": "Plaza Bocagrande ‒ Sala 3",
-      "section": "🌍 Internacional",
-      "day_order": 5,
-      "is_cortos": false,
-      "film_list": [],
-      "synopsis": "En un viejo apartamento de Viena se acumulan las memorias materiales y afectivas de Al Cook, un hombre de 80 años que ha dedicado su vida al blues y al country, a la melancolía evocadora de los sonidos de Robert Johnson y Elvis Presley.",
-      "director": "Tizza Covi",
-      "year": 2026,
-      "synopsis_en": "In an old apartment in Vienna, the material and emotional memories of Al Cook accumulate — an 80-year-old man who has devoted his life to blues and country, to the evocative melancholy of Robert Johnson and Elvis Presley."
-    },
-    {
-      "title": "Pequenas Criaturas",
-      "title_en": "Little Creatures",
-      "country": "Brasil",
-      "flags": "🇧🇷",
-      "duration": "106 min",
-      "day": "Domingo",
-      "date": 19,
-      "time": "17:40",
-      "venue": "CC Caribe Plaza ‒ Sala 6",
-      "section": "🇧🇷 Casa Brasil",
-      "day_order": 5,
-      "is_cortos": false,
-      "film_list": [],
-      "synopsis": "Helena se muda a Brasilia con sus hijos, de 15 y 7 años. Cada uno afronta a su manera la ausencia de su padre, que permanece en un viaje de negocios sin fecha clara de regreso.",
-      "director": "",
-      "year": 2005,
-      "synopsis_en": "Helena moves to Brasília with her children, ages 15 and 7. Each copes in their own way with their father's absence, as he remains on an open-ended business trip."
-    },
-    {
-      "title": "Nuit Obscure - Ain’t I a Child?",
-      "title_en": "Obscure Night - Ain’t I a Child?",
-      "country": "Francia/Suiza/Portugal",
-      "flags": "🇫🇷🇨🇭🇵🇹",
-      "duration": "164 min",
-      "day": "Domingo",
-      "date": 19,
-      "time": "18:00",
-      "venue": "Plaza Bocagrande ‒ Sala 4",
-      "section": "🇨🇭 Muestra Suiza",
-      "day_order": 5,
-      "is_cortos": false,
-      "film_list": [],
-      "synopsis": "Sylvain George filma durante varios años a jóvenes migrantes en Calais, construyendo un poema visual sobre la resistencia, el cuerpo y la frontera.",
-      "director": "Sylvain George",
-      "year": 2025,
-      "synopsis_en": "Sylvain George films young migrants in Calais over several years, building a visual poem about resistance, the body, and the border."
-    },
-    {
-      "title": "Doggerland",
-      "title_en": "",
-      "country": "Suecia",
-      "flags": "🇸🇪",
-      "duration": "76 min",
-      "day": "Domingo",
-      "date": 19,
-      "time": "18:20",
-      "venue": "Plaza Bocagrande ‒ Sala 5",
-      "section": "🌍 Internacional",
-      "day_order": 5,
-      "is_cortos": false,
-      "film_list": [],
-      "synopsis": "El fantasma de un proyecto económico nacional se ve desestabilizado por un hombre que, en lugar de buscar trabajo, se queda jugando en la calle y sigue viviendo con su madre.",
-      "director": "Jack Benjamin Gill",
-      "year": 2019,
-      "synopsis_en": "The ghost of a national economic project is destabilized by a man who, instead of looking for work, stays playing in the street and keeps living with his mother."
-    },
-    {
-      "title": "De Indias — Ángeles somos",
-      "title_en": "Ángeles somos · El reportaje · Héroes del silencio · Kuagro · La tinaja · Piratas de La Boquilla",
-      "flags": "🇨🇴",
-      "country": "Colombia",
-      "duration": "~51 min",
-      "day": "Domingo",
-      "date": 19,
-      "time": "18:30",
-      "venue": "Plaza de la Proclamación",
-      "section": "🏛️ De Indias",
-      "day_order": 5,
-      "is_cortos": true,
-      "film_list": [
-        {
-          "title": "Ángeles somos",
-          "country": "Colombia",
-          "duration": "9 min"
-        },
-        {
-          "title": "El reportaje",
-          "country": "Colombia",
-          "duration": "4 min"
-        },
-        {
-          "title": "Héroes del silencio",
-          "country": "Colombia",
-          "duration": "13 min"
-        },
-        {
-          "title": "Kuagro",
-          "country": "Colombia",
-          "duration": "12 min"
-        },
-        {
-          "title": "La tinaja",
-          "country": "Colombia/Argentina",
-          "duration": "13 min"
-        },
-        {
-          "title": "Piratas de La Boquilla",
-          "country": "Colombia",
-          "duration": "~6 min"
         }
       ]
     }
