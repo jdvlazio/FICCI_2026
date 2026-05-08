@@ -2023,7 +2023,7 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:var(--t
 /* Lugar filter — nuevo sistema ────────────────────────── */
 .lugar-btn{display:flex;align-items:center;gap:var(--sp-1);font-size:var(--t-sm);font-weight:var(--w-semi);color:var(--gray);background:none;border:none;cursor:pointer;font-family:var(--font);padding:4px 0;transition:color var(--tr-base);white-space:nowrap;-webkit-tap-highlight-color:transparent}
 .lugar-btn.active{color:var(--amber)}
-.lugar-opt{display:flex;align-items:center;gap:var(--sp-2);padding:10px var(--sp-4);cursor:pointer;font-size:var(--t-base);color:var(--gray);border-bottom:1px solid var(--bdr-l);transition:background var(--tr-base)}
+.lugar-opt{display:flex;align-items:center;gap:var(--sp-2);padding:10px var(--sp-4);min-height:44px;box-sizing:border-box;cursor:pointer;font-size:var(--t-base);color:var(--gray);border-bottom:1px solid var(--bdr-l);transition:background var(--tr-base)}
 .lugar-opt:last-child{border-bottom:none}
 .lugar-opt:active,.lugar-opt:hover{background:var(--surf-2)}
 .lugar-opt.on{color:var(--white);font-weight:var(--w-semi)}
@@ -10198,6 +10198,8 @@ function lugarOpen(){
     'max-width:min(280px,90vw)',
     'max-height:50vh',
     'overflow-y:auto',
+    '-webkit-overflow-scrolling:touch',
+    'overscroll-behavior:contain',
     'background:var(--surf)',
     'border:1px solid var(--bdr)',
     'border-radius:var(--r)',
@@ -10259,9 +10261,11 @@ function lugarOpen(){
   btn.classList.add('active');
 
   // Close on outside click
-  setTimeout(()=>{
+  setTimeout(()=>{\
     document.addEventListener('click', lugarOutside);
   }, 0);
+  // Close on scroll — dropdown is fixed, button moves with sticky bar
+  window.addEventListener('scroll', lugarClose, {passive:true, once:true});
 }
 
 function lugarOutside(e){
@@ -10276,6 +10280,7 @@ function lugarClose(){
   const drop = document.getElementById('lugar-drop');
   if(drop) drop.remove();
   document.removeEventListener('click', lugarOutside);
+  window.removeEventListener('scroll', lugarClose);
   const btn = document.getElementById('lugar-btn');
   if(btn) btn.classList.toggle('active', activeVenue!=='all');
   const lbl = document.getElementById('lugar-lbl');
