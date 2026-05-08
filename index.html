@@ -318,7 +318,7 @@ body{background:var(--bg);color:var(--white);font-family:var(--font),'Plus Jakar
 h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:var(--t-lg);font-weight:var(--w-display);line-height:1;letter-spacing:-.03em;color:var(--white);flex:1}
 .hdr-wordmark span{color:var(--amber)}
 /* Auth button */
-.auth-btn{position:relative;width:32px;height:32px;border-radius:50%;border:none;background:transparent;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;-webkit-tap-highlight-color:transparent}
+.auth-btn{position:relative;width:32px;height:32px;border-radius:50%;border:none;background:transparent;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;-webkit-tap-highlight-color:transparent}.auth-btn::after{content:'';position:absolute;inset:-6px}
 .auth-btn svg{opacity:.8;transition:opacity var(--tr-smooth);stroke:var(--amber)}
 .auth-btn:hover svg{opacity:1}
 .auth-btn.signed-in svg{display:none}
@@ -2050,7 +2050,7 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:var(--t
   left:0;top:15%;bottom:15%;
   width:1px;background:var(--bdr);
 }
-.hdr-search-icon:active{color:var(--white)}
+.hdr-search-icon::after{content:'';position:absolute;inset:-6px}.hdr-search-icon:active{color:var(--white)}
 
 #search-overlay{
   position:fixed;
