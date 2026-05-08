@@ -5494,9 +5494,12 @@ function renderFilmListHTML(){
     const conflict=_hasConflict(title);
     const safeT=title.replace(/'/g,"\'");
     const poster=f?getFilmPoster(f):null;
-    const posterHtml=poster
-      ?`<img class="int-item-poster"${_posterStyle(f)} src="${poster}" data-title="${title.replace(/"/g,'&quot;')}" onerror="_posterErr(this)" alt="" loading="lazy">`
-      :`<div class="int-item-poster"></div>`;
+    const _isEd1=f&&_isEditorialPoster(f);
+    const posterHtml=_isEd1
+      ?`<div class="int-item-poster" style="background:${_sectionColor(f.section||'')};display:flex;flex-direction:column;overflow:hidden;border-radius:var(--r-sm)"><div style="height:28.89%;flex-shrink:0"></div><img src="${poster}" style="width:100%;aspect-ratio:16/9;object-fit:cover;display:block" onerror="this.remove()" alt="" loading="lazy"></div>`
+      :poster
+        ?`<img class="int-item-poster"${_posterStyle(f)} src="${poster}" data-title="${title.replace(/"/g,'&quot;')}" onerror="_posterErr(this)" alt="" loading="lazy">`
+        :`<div class="int-item-poster"></div>`;
     const secLabel=_secLabel(f?.section||'');
     const nextHtml=next
       ?`<div class="int-item-next">
@@ -5531,9 +5534,12 @@ function renderFilmListHTML(){
     const{displayTitle,progSuffix}=parseProgramTitle(title);
     const safeT=title.replace(/'/g,"\'");
     const poster=f?getFilmPoster(f):null;
-    const posterHtml=poster
-      ?`<img class="int-item-poster"${_posterStyle(f)} src="${poster}" data-title="${title.replace(/"/g,'&quot;')}" onerror="_posterErr(this)" alt="" loading="lazy">`
-      :`<div class="int-item-poster"></div>`;
+    const _isEd2=f&&_isEditorialPoster(f);
+    const posterHtml=_isEd2
+      ?`<div class="int-item-poster" style="background:${_sectionColor(f.section||'')};display:flex;flex-direction:column;overflow:hidden;border-radius:var(--r-sm)"><div style="height:28.89%;flex-shrink:0"></div><img src="${poster}" style="width:100%;aspect-ratio:16/9;object-fit:cover;display:block" onerror="this.remove()" alt="" loading="lazy"></div>`
+      :poster
+        ?`<img class="int-item-poster"${_posterStyle(f)} src="${poster}" data-title="${title.replace(/"/g,'&quot;')}" onerror="_posterErr(this)" alt="" loading="lazy">`
+        :`<div class="int-item-poster"></div>`;
     const secLabel=_secLabel(f?.section||'');
     const rating=filmRatings[title]||0;
     const stars=rating>0
@@ -8751,9 +8757,13 @@ function _openCombinedFilmSheet(filmData){
   }
   const{title='',director='',year='',duration='',flags='🌐',country='',synopsis='',lbSlug='',poster:_fPoster=''}=filmData;
   const posterUrl=_fPoster?(_fPoster.startsWith('http')?_fPoster:TMDB_IMG+_fPoster):getPosterSrc(title,false)||null;
-  const posterHtml=posterUrl
-    ?`<img class="pel-sheet-poster" src="${posterUrl}" data-title="${(title||"").replace(/"/g,'&quot;')}" loading="lazy" onerror="_posterErr(this)" alt="">`
-    :`<div class="pel-sheet-poster-ph">🎬</div>`;
+  const _isEd4=posterUrl&&posterUrl.includes('cloudfront.net');
+  const _sec4=(()=>{const _p=FILMS.find(f=>f.film_list&&f.film_list.some(c=>c.title===title));return _p?.section||'';})();
+  const posterHtml=_isEd4
+    ?`<div class="psp-editorial"><div class="psp-ed-hdr" style="background:${_sectionColor(_sec4)}"><span>${_secLabel(_sec4).toUpperCase()}</span></div><div class="psp-ed-img"><img src="${posterUrl}" loading="lazy" onerror="this.parentElement.style.display='none'" alt=""></div></div>`
+    :posterUrl
+      ?`<img class="pel-sheet-poster" src="${posterUrl}" data-title="${(title||"").replace(/"/g,'&quot;')}" loading="lazy" onerror="_posterErr(this)" alt="">`
+      :`<div class="pel-sheet-poster-ph">🎬</div>`;
   const metaLine=[director,year].filter(Boolean).join(' · ');
   const lbHref=lbSlug?`https://letterboxd.com/film/${lbSlug}/`:lbUrl(title);
   const ps=document.getElementById('pel-sheet');
@@ -8800,14 +8810,16 @@ function openCortoSheet(title, country, duration, section, flags, director, genr
   const dur=duration||(richItem&&richItem.duration)||'';
   const flgs=flags||countryToFlags(ctry)||'🌐';
   const posterUrl=(richItem&&richItem.poster)?(richItem.poster.startsWith("http")?richItem.poster:TMDB_IMG+richItem.poster):getPosterSrc(title,true)||null;
-  const posterHtml=posterUrl
-    ?`<img class="pel-sheet-poster" src="${posterUrl}" data-title="${(title||"").replace(/"/g,'&quot;')}" loading="lazy" onerror="_posterErr(this)" alt="">`
-    :`<div class="pel-sheet-poster-ph">🎬</div>`;
+  const _isEd3=posterUrl&&posterUrl.includes('cloudfront.net');
+  const posterHtml=_isEd3
+    ?`<div class="psp-editorial"><div class="psp-ed-hdr" style="background:${_sectionColor(section||'')}"><span>${_secLabel(section||'').toUpperCase()}</span></div><div class="psp-ed-img"><img src="${posterUrl}" loading="lazy" onerror="this.parentElement.style.display='none'" alt=""></div></div>`
+    :posterUrl
+      ?`<img class="pel-sheet-poster" src="${posterUrl}" data-title="${(title||"").replace(/"/g,'&quot;')}" loading="lazy" onerror="_posterErr(this)" alt="">`
+      :`<div class="pel-sheet-poster-ph">🎬</div>`;
   const ps=document.getElementById('pel-sheet');
   if(ps) ps.scrollTop=0;
   _pushSheetState();
   const safeTitle=title.replace(/'/g,"\\'");
-  // Intereses y Priorizar actúan sobre el programa padre
   const parent=_findParentProgram(title);
   const parentTitle=parent?parent.title:null;
   const safeParent=parentTitle?parentTitle.replace(/'/g,"\\'"):safeTitle;
