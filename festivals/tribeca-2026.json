@@ -1,6 +1,6 @@
 {
-  "_status": "COMPLETE — extracted 2026-05-07 from tribecafilm.com",
-  "_source": "tribecafilm.com/festival/film + /festival/schedule",
+  "_status": "COMPLETE v2 — venue from detail pages, extracted 2026-05-07",
+  "_source": "tribecafilm.com/films/[slug]-2026",
   "_extracted": "2026-05-07",
   "_total": 246,
   "config": {
@@ -24,61 +24,53 @@
   },
   "transport": "transit",
   "venues": {
-    "Beacon Theatre": {
-      "short": "Beacon",
-      "city": "New York",
-      "address": "2124 Broadway, New York, NY 10023",
-      "lat": 40.7799,
-      "lng": -73.981
-    },
-    "OKX Theater at BMCC TPAC": {
-      "short": "OKX Theater",
-      "city": "New York",
-      "address": "199 Chambers St, New York, NY 10007",
-      "lat": 40.7156,
-      "lng": -74.0087
-    },
-    "Spring Studios": {
-      "short": "Spring Studios",
-      "city": "New York",
-      "address": "50 Varick St, New York, NY 10013",
-      "lat": 40.7253,
-      "lng": -74.0055
-    },
     "Village East by Angelika": {
       "short": "Village East",
-      "city": "New York",
-      "address": "181 2nd Ave, New York, NY 10003",
+      "address": "181-189 2nd Ave, New York, NY 10003",
       "lat": 40.7285,
       "lng": -73.9876
     },
     "AMC 19th St. East 6": {
-      "short": "AMC 19th",
-      "city": "New York",
+      "short": "AMC 19th St.",
       "address": "890 Broadway, New York, NY 10003",
       "lat": 40.7378,
       "lng": -73.9895
     },
-    "SVA Theatre": {
-      "short": "SVA Theatre",
-      "city": "New York",
-      "address": "333 W 23rd St, New York, NY 10011",
-      "lat": 40.7467,
-      "lng": -74.0001
-    },
-    "Shorts Theater at Spring Studios": {
-      "short": "Spring Studios (Shorts)",
-      "city": "New York",
+    "Spring Studios": {
+      "short": "Spring Studios",
       "address": "50 Varick St, New York, NY 10013",
       "lat": 40.7253,
       "lng": -74.0055
     },
-    "The Roxy Theater": {
-      "short": "The Roxy",
-      "city": "New York",
-      "address": "601 W 26th St, New York, NY 10001",
-      "lat": 40.749,
-      "lng": -74.0028
+    "SVA Theatre": {
+      "short": "SVA Theatre",
+      "address": "333 W 23rd St, New York, NY 10011",
+      "lat": 40.7467,
+      "lng": -74.0001
+    },
+    "OKX Theater at BMCC TPAC": {
+      "short": "OKX Theater",
+      "address": "199 Chambers St, New York, NY 10007",
+      "lat": 40.7156,
+      "lng": -74.0087
+    },
+    "Beacon Theatre": {
+      "short": "Beacon Theatre",
+      "address": "2124 Broadway, New York, NY 10023",
+      "lat": 40.7799,
+      "lng": -73.981
+    },
+    "Le Poisson Rouge": {
+      "short": "Le Poisson Rouge",
+      "address": "158 Bleecker St, New York, NY 10012",
+      "lat": 40.7281,
+      "lng": -74.0005
+    },
+    "Hudson Yards Public Square and Gardens": {
+      "short": "Hudson Yards",
+      "address": "Hudson Yards Public Square, New York, NY 10001",
+      "lat": 40.7536,
+      "lng": -74.0021
     }
   },
   "posters": {},
@@ -101,19 +93,19 @@
       "screenings": [
         {
           "date": "2026-06-13",
-          "venue": "BMCC TPAC",
-          "time": "08:00 PM"
+          "time": "8:00 PM",
+          "venue": "OKX Theater at BMCC TPAC"
         },
         {
           "date": "2026-06-14",
-          "venue": "Silas",
-          "time": "08:00 PM"
+          "time": "8:00 PM",
+          "venue": "SVA Theatre"
         }
       ],
       "day": "2026-06-13",
       "date": "2026-06-13",
-      "time": "08:00 PM",
-      "venue": "BMCC TPAC"
+      "time": "8:00 PM",
+      "venue": "OKX Theater at BMCC TPAC"
     },
     {
       "title": "Opening Night: Earth, Wind & Fire (To Be Celestial VS That’s the Weight of the World)",
@@ -130,24 +122,24 @@
       "screenings": [
         {
           "date": "2026-06-03",
-          "venue": "Beacon",
-          "time": "08:00 PM"
+          "time": "8:00 PM",
+          "venue": "Beacon Theatre"
         },
         {
           "date": "2026-06-04",
-          "venue": "Theater 3",
-          "time": "05:45 PM"
+          "time": "5:45 PM",
+          "venue": "AMC 19th St. East 6"
         },
         {
           "date": "2026-06-13",
-          "venue": "Silas",
-          "time": "05:00 PM"
+          "time": "5:00 PM",
+          "venue": "SVA Theatre"
         }
       ],
       "day": "2026-06-03",
       "date": "2026-06-03",
-      "time": "08:00 PM",
-      "venue": "Beacon"
+      "time": "8:00 PM",
+      "venue": "Beacon Theatre"
     },
     {
       "title": "Sara Bareilles: Good Grief",
@@ -164,19 +156,29 @@
       "screenings": [
         {
           "date": "2026-06-04",
-          "venue": "Beacon",
-          "time": "07:00 PM"
+          "time": "7:00 PM",
+          "venue": "Beacon Theatre"
+        },
+        {
+          "date": "2026-06-05",
+          "time": "2:00 PM",
+          "venue": "Village East by Angelika"
         },
         {
           "date": "2026-06-10",
-          "venue": "Theater 2",
-          "time": "08:15 PM"
+          "time": "8:15 PM",
+          "venue": "Village East by Angelika"
+        },
+        {
+          "date": "2026-06-14",
+          "time": "11:00 AM",
+          "venue": "AMC 19th St. East 6"
         }
       ],
       "day": "2026-06-04",
       "date": "2026-06-04",
-      "time": "07:00 PM",
-      "venue": "Beacon"
+      "time": "7:00 PM",
+      "venue": "Beacon Theatre"
     },
     {
       "title": "Tribeca at 25: A Conversation With Co-Founders Jane Rosenthal and Robert De Niro",
@@ -193,14 +195,14 @@
       "screenings": [
         {
           "date": "2026-06-11",
-          "venue": "BMCC TPAC",
-          "time": "08:00 PM"
+          "time": "8:00 PM",
+          "venue": "OKX Theater at BMCC TPAC"
         }
       ],
       "day": "2026-06-11",
       "date": "2026-06-11",
-      "time": "08:00 PM",
-      "venue": "BMCC TPAC"
+      "time": "8:00 PM",
+      "venue": "OKX Theater at BMCC TPAC"
     },
     {
       "title": "Tribeca Festival Awards Night",
@@ -214,11 +216,17 @@
       "language": "",
       "premiere": "",
       "synopsis": "",
-      "screenings": [],
-      "day": "",
-      "date": "",
-      "time": "",
-      "venue": ""
+      "screenings": [
+        {
+          "date": "2026-06-11",
+          "time": "4:00 PM",
+          "venue": "Spring Studios"
+        }
+      ],
+      "day": "2026-06-11",
+      "date": "2026-06-11",
+      "time": "4:00 PM",
+      "venue": "Spring Studios"
     },
     {
       "title": "ALEJANDRO SANZ: WHEN NO ONE SEES ME",
@@ -235,14 +243,14 @@
       "screenings": [
         {
           "date": "2026-06-04",
-          "venue": "BMCC TPAC",
-          "time": "05:00 PM"
+          "time": "5:00 PM",
+          "venue": "OKX Theater at BMCC TPAC"
         }
       ],
       "day": "2026-06-04",
       "date": "2026-06-04",
-      "time": "05:00 PM",
-      "venue": "BMCC TPAC"
+      "time": "5:00 PM",
+      "venue": "OKX Theater at BMCC TPAC"
     },
     {
       "title": "Doc Meets World",
@@ -256,11 +264,27 @@
       "language": "English",
       "premiere": "World Premiere",
       "synopsis": "When the cast of hit ‘90s TV show Boy Meets World reunited after 30 years for a re-watch podcast, they didn’t expect the fans' outpouring of love to turn the podcast into a national tour. This celebratory documentary features the real-life friendships, personal struggles, and shared memories of these beloved characters. Footage from performances throughout their tour, including celebrity cameos and fan photo ops, paints a fuller picture of how deeply the show has touched the lives of fans nationwide. Audiences also learn more about the actors' current personal lives.",
-      "screenings": [],
-      "day": "",
-      "date": "",
-      "time": "",
-      "venue": ""
+      "screenings": [
+        {
+          "date": "2026-06-06",
+          "time": "1:30 PM",
+          "venue": "Spring Studios"
+        },
+        {
+          "date": "2026-06-07",
+          "time": "11:30 AM",
+          "venue": "Village East by Angelika"
+        },
+        {
+          "date": "2026-06-10",
+          "time": "3:15 PM",
+          "venue": "Village East by Angelika"
+        }
+      ],
+      "day": "2026-06-06",
+      "date": "2026-06-06",
+      "time": "1:30 PM",
+      "venue": "Spring Studios"
     },
     {
       "title": "Frampton",
@@ -277,14 +301,24 @@
       "screenings": [
         {
           "date": "2026-06-04",
-          "venue": "BMCC TPAC",
-          "time": "08:00 PM"
+          "time": "8:00 PM",
+          "venue": "OKX Theater at BMCC TPAC"
+        },
+        {
+          "date": "2026-06-05",
+          "time": "2:15 PM",
+          "venue": "Village East by Angelika"
+        },
+        {
+          "date": "2026-06-06",
+          "time": "11:15 AM",
+          "venue": "Village East by Angelika"
         }
       ],
       "day": "2026-06-04",
       "date": "2026-06-04",
-      "time": "08:00 PM",
-      "venue": "BMCC TPAC"
+      "time": "8:00 PM",
+      "venue": "OKX Theater at BMCC TPAC"
     },
     {
       "title": "Hadestown: The Musical",
@@ -301,19 +335,24 @@
       "screenings": [
         {
           "date": "2026-06-08",
-          "venue": "BMCC TPAC",
-          "time": "05:00 PM"
+          "time": "5:00 PM",
+          "venue": "OKX Theater at BMCC TPAC"
         },
         {
           "date": "2026-06-09",
-          "venue": "Theater 2",
-          "time": "08:15 PM"
+          "time": "8:15 PM",
+          "venue": "Village East by Angelika"
+        },
+        {
+          "date": "2026-06-12",
+          "time": "1:30 PM",
+          "venue": "Village East by Angelika"
         }
       ],
       "day": "2026-06-08",
       "date": "2026-06-08",
-      "time": "05:00 PM",
-      "venue": "BMCC TPAC"
+      "time": "5:00 PM",
+      "venue": "OKX Theater at BMCC TPAC"
     },
     {
       "title": "Imaginal Disk",
@@ -330,19 +369,24 @@
       "screenings": [
         {
           "date": "2026-06-04",
-          "venue": "Spring Fl. 6",
-          "time": "08:30 PM"
+          "time": "8:30 PM",
+          "venue": "Spring Studios"
+        },
+        {
+          "date": "2026-06-05",
+          "time": "3:30 PM",
+          "venue": "Village East by Angelika"
         },
         {
           "date": "2026-06-08",
-          "venue": "Theater 3",
-          "time": "08:45 PM"
+          "time": "8:45 PM",
+          "venue": "Village East by Angelika"
         }
       ],
       "day": "2026-06-04",
       "date": "2026-06-04",
-      "time": "08:30 PM",
-      "venue": "Spring Fl. 6"
+      "time": "8:30 PM",
+      "venue": "Spring Studios"
     },
     {
       "title": "Katy Perry: The Lifetimes Tour - Live from Paris",
@@ -359,19 +403,24 @@
       "screenings": [
         {
           "date": "2026-06-08",
-          "venue": "BMCC TPAC",
-          "time": "08:30 PM"
+          "time": "8:30 PM",
+          "venue": "OKX Theater at BMCC TPAC"
+        },
+        {
+          "date": "2026-06-10",
+          "time": "2:30 PM",
+          "venue": "Village East by Angelika"
         },
         {
           "date": "2026-06-11",
-          "venue": "Theater 7",
-          "time": "08:00 PM"
+          "time": "8:00 PM",
+          "venue": "Village East by Angelika"
         }
       ],
       "day": "2026-06-08",
       "date": "2026-06-08",
-      "time": "08:30 PM",
-      "venue": "BMCC TPAC"
+      "time": "8:30 PM",
+      "venue": "OKX Theater at BMCC TPAC"
     },
     {
       "title": "Miss Representation: Rise Up",
@@ -385,11 +434,27 @@
       "language": "English",
       "premiere": "World Premiere",
       "synopsis": "This timely and incisive film from director Jennifer Siebel Newsom expands on her acclaimed 2011 documentary Miss Representation, which examined how messaging from mainstream media and culture have long limited women’s pathways to power. Now, 15 years later, the landscape has grown more complex — and more hostile. A rising, punitive backlash against women’s progress now converges with a relentless digital culture, where social media amplifies toxic messaging 24/7 and can erode women’s self-esteem, mental health, and public engagement. With the advancement of sophisticated algorithms and AI, these technologies are increasingly weaponized to target women and girls in order to harass, harm and, ultimately, silence them. Young women particularly struggle to navigate this minefield of abuse, and many are discouraged from risking these threats to take on leadership roles and positions of political power.",
-      "screenings": [],
-      "day": "",
-      "date": "",
-      "time": "",
-      "venue": ""
+      "screenings": [
+        {
+          "date": "2026-06-07",
+          "time": "2:00 PM",
+          "venue": "SVA Theatre"
+        },
+        {
+          "date": "2026-06-08",
+          "time": "2:45 PM",
+          "venue": "Village East by Angelika"
+        },
+        {
+          "date": "2026-06-11",
+          "time": "2:15 PM",
+          "venue": "Village East by Angelika"
+        }
+      ],
+      "day": "2026-06-07",
+      "date": "2026-06-07",
+      "time": "2:00 PM",
+      "venue": "SVA Theatre"
     },
     {
       "title": "Mumford & Sons: The House Band",
@@ -406,19 +471,24 @@
       "screenings": [
         {
           "date": "2026-06-12",
-          "venue": "BMCC TPAC",
-          "time": "05:00 PM"
+          "time": "5:00 PM",
+          "venue": "OKX Theater at BMCC TPAC"
         },
         {
           "date": "2026-06-13",
-          "venue": "Theater 7",
-          "time": "08:00 PM"
+          "time": "8:00 PM",
+          "venue": "Village East by Angelika"
+        },
+        {
+          "date": "2026-06-14",
+          "time": "12:15 PM",
+          "venue": "Village East by Angelika"
         }
       ],
       "day": "2026-06-12",
       "date": "2026-06-12",
-      "time": "05:00 PM",
-      "venue": "BMCC TPAC"
+      "time": "5:00 PM",
+      "venue": "OKX Theater at BMCC TPAC"
     },
     {
       "title": "Noga",
@@ -435,19 +505,24 @@
       "screenings": [
         {
           "date": "2026-06-07",
-          "venue": "BMCC TPAC",
-          "time": "08:15 PM"
+          "time": "8:15 PM",
+          "venue": "OKX Theater at BMCC TPAC"
         },
         {
           "date": "2026-06-08",
-          "venue": "Theater 1",
-          "time": "08:15 PM"
+          "time": "8:15 PM",
+          "venue": "AMC 19th St. East 6"
+        },
+        {
+          "date": "2026-06-11",
+          "time": "9:15 PM",
+          "venue": "AMC 19th St. East 6"
         }
       ],
       "day": "2026-06-07",
       "date": "2026-06-07",
-      "time": "08:15 PM",
-      "venue": "BMCC TPAC"
+      "time": "8:15 PM",
+      "venue": "OKX Theater at BMCC TPAC"
     },
     {
       "title": "Playing POTUS",
@@ -464,14 +539,24 @@
       "screenings": [
         {
           "date": "2026-06-06",
-          "venue": "Spring Fl. 6",
-          "time": "05:00 PM"
+          "time": "5:00 PM",
+          "venue": "Spring Studios"
+        },
+        {
+          "date": "2026-06-07",
+          "time": "2:15 PM",
+          "venue": "Village East by Angelika"
+        },
+        {
+          "date": "2026-06-09",
+          "time": "2:45 PM",
+          "venue": "Village East by Angelika"
         }
       ],
       "day": "2026-06-06",
       "date": "2026-06-06",
-      "time": "05:00 PM",
-      "venue": "Spring Fl. 6"
+      "time": "5:00 PM",
+      "venue": "Spring Studios"
     },
     {
       "title": "The Symphony of Dance",
@@ -488,19 +573,24 @@
       "screenings": [
         {
           "date": "2026-06-07",
-          "venue": "Spring Fl. 6",
-          "time": "05:00 PM"
+          "time": "5:00 PM",
+          "venue": "Spring Studios"
+        },
+        {
+          "date": "2026-06-08",
+          "time": "2:30 PM",
+          "venue": "Village East by Angelika"
         },
         {
           "date": "2026-06-11",
-          "venue": "Theater 3",
-          "time": "05:45 PM"
+          "time": "5:45 PM",
+          "venue": "Village East by Angelika"
         }
       ],
       "day": "2026-06-07",
       "date": "2026-06-07",
-      "time": "05:00 PM",
-      "venue": "Spring Fl. 6"
+      "time": "5:00 PM",
+      "venue": "Spring Studios"
     },
     {
       "title": "Trinity: The Story of The LOX",
@@ -517,19 +607,24 @@
       "screenings": [
         {
           "date": "2026-06-11",
-          "venue": "Spring Fl. 6",
-          "time": "08:00 PM"
+          "time": "8:00 PM",
+          "venue": "Spring Studios"
+        },
+        {
+          "date": "2026-06-12",
+          "time": "9:15 PM",
+          "venue": "Village East by Angelika"
         },
         {
           "date": "2026-06-14",
-          "venue": "Theater 3",
-          "time": "08:45 PM"
+          "time": "8:45 PM",
+          "venue": "Village East by Angelika"
         }
       ],
       "day": "2026-06-11",
       "date": "2026-06-11",
-      "time": "08:00 PM",
-      "venue": "Spring Fl. 6"
+      "time": "8:00 PM",
+      "venue": "Spring Studios"
     },
     {
       "title": "Act One",
@@ -546,19 +641,24 @@
       "screenings": [
         {
           "date": "2026-06-10",
-          "venue": "Theater 1",
-          "time": "08:30 PM"
+          "time": "8:30 PM",
+          "venue": "Village East by Angelika"
+        },
+        {
+          "date": "2026-06-12",
+          "time": "9:00 PM",
+          "venue": "Village East by Angelika"
         },
         {
           "date": "2026-06-13",
-          "venue": "Theater 6",
-          "time": "08:00 PM"
+          "time": "8:00 PM",
+          "venue": "AMC 19th St. East 6"
         }
       ],
       "day": "2026-06-10",
       "date": "2026-06-10",
-      "time": "08:30 PM",
-      "venue": "Theater 1"
+      "time": "8:30 PM",
+      "venue": "Village East by Angelika"
     },
     {
       "title": "Adults",
@@ -575,14 +675,14 @@
       "screenings": [
         {
           "date": "2026-06-11",
-          "venue": "Silas",
-          "time": "08:00 PM"
+          "time": "8:00 PM",
+          "venue": "SVA Theatre"
         }
       ],
       "day": "2026-06-11",
       "date": "2026-06-11",
-      "time": "08:00 PM",
-      "venue": "Silas"
+      "time": "8:00 PM",
+      "venue": "SVA Theatre"
     },
     {
       "title": "Alice and Steve",
@@ -599,14 +699,14 @@
       "screenings": [
         {
           "date": "2026-06-04",
-          "venue": "Beatrice",
-          "time": "08:30 PM"
+          "time": "8:30 PM",
+          "venue": "SVA Theatre"
         }
       ],
       "day": "2026-06-04",
       "date": "2026-06-04",
-      "time": "08:30 PM",
-      "venue": "Beatrice"
+      "time": "8:30 PM",
+      "venue": "SVA Theatre"
     },
     {
       "title": "Clean Hands",
@@ -620,11 +720,27 @@
       "language": "English",
       "premiere": "World Premiere",
       "synopsis": "In this moving drama based on a true story, director Jake Allyn brings pathos and empathy to a subject that cuts to the heart of America’s drug crisis. Zach Braff delivers a sobering portrayal of a desperate man divided by his strict police code and his love for his daughter, played by Esther McGregor (whose heartwrenching performance marks her as a young actor to watch). At its heart, Clean Hands isn’t just about the devastating effects of addiction — it’s about the vital importance of empathy and the unbreakable bond between parent and child.—Isobel Houseman",
-      "screenings": [],
-      "day": "",
-      "date": "",
-      "time": "",
-      "venue": ""
+      "screenings": [
+        {
+          "date": "2026-06-07",
+          "time": "2:30 PM",
+          "venue": "Village East by Angelika"
+        },
+        {
+          "date": "2026-06-08",
+          "time": "2:00 PM",
+          "venue": "Village East by Angelika"
+        },
+        {
+          "date": "2026-06-11",
+          "time": "2:30 PM",
+          "venue": "Village East by Angelika"
+        }
+      ],
+      "day": "2026-06-07",
+      "date": "2026-06-07",
+      "time": "2:30 PM",
+      "venue": "Village East by Angelika"
     },
     {
       "title": "Finnegan’s Foursome",
@@ -641,14 +757,24 @@
       "screenings": [
         {
           "date": "2026-06-07",
-          "venue": "BMCC TPAC",
-          "time": "05:00 PM"
+          "time": "5:00 PM",
+          "venue": "OKX Theater at BMCC TPAC"
+        },
+        {
+          "date": "2026-06-08",
+          "time": "2:15 PM",
+          "venue": "Village East by Angelika"
+        },
+        {
+          "date": "2026-06-13",
+          "time": "1:45 PM",
+          "venue": "Village East by Angelika"
         }
       ],
       "day": "2026-06-07",
       "date": "2026-06-07",
-      "time": "05:00 PM",
-      "venue": "BMCC TPAC"
+      "time": "5:00 PM",
+      "venue": "OKX Theater at BMCC TPAC"
     },
     {
       "title": "Gail Daughtry and the Celebrity Sex Pass",
@@ -665,19 +791,24 @@
       "screenings": [
         {
           "date": "2026-06-10",
-          "venue": "BMCC TPAC",
-          "time": "08:00 PM"
+          "time": "8:00 PM",
+          "venue": "OKX Theater at BMCC TPAC"
+        },
+        {
+          "date": "2026-06-12",
+          "time": "2:30 PM",
+          "venue": "Village East by Angelika"
         },
         {
           "date": "2026-06-14",
-          "venue": "Theater 1",
-          "time": "08:30 PM"
+          "time": "8:30 PM",
+          "venue": "Village East by Angelika"
         }
       ],
       "day": "2026-06-10",
       "date": "2026-06-10",
-      "time": "08:00 PM",
-      "venue": "BMCC TPAC"
+      "time": "8:00 PM",
+      "venue": "OKX Theater at BMCC TPAC"
     },
     {
       "title": "Happy Hours",
@@ -694,24 +825,29 @@
       "screenings": [
         {
           "date": "2026-06-06",
-          "venue": "BMCC TPAC",
-          "time": "05:00 PM"
+          "time": "5:00 PM",
+          "venue": "OKX Theater at BMCC TPAC"
         },
         {
           "date": "2026-06-09",
-          "venue": "Theater 2",
-          "time": "05:30 PM"
+          "time": "5:30 PM",
+          "venue": "AMC 19th St. East 6"
         },
         {
           "date": "2026-06-13",
-          "venue": "Theater 1",
-          "time": "08:30 PM"
+          "time": "11:30 AM",
+          "venue": "Village East by Angelika"
+        },
+        {
+          "date": "2026-06-13",
+          "time": "8:30 PM",
+          "venue": "Village East by Angelika"
         }
       ],
       "day": "2026-06-06",
       "date": "2026-06-06",
-      "time": "05:00 PM",
-      "venue": "BMCC TPAC"
+      "time": "5:00 PM",
+      "venue": "OKX Theater at BMCC TPAC"
     },
     {
       "title": "Iconoclast",
@@ -728,19 +864,24 @@
       "screenings": [
         {
           "date": "2026-06-09",
-          "venue": "Theater 1",
-          "time": "08:30 PM"
+          "time": "8:30 PM",
+          "venue": "Village East by Angelika"
         },
         {
           "date": "2026-06-10",
-          "venue": "Theater 6",
-          "time": "06:15 PM"
+          "time": "6:15 PM",
+          "venue": "Village East by Angelika"
+        },
+        {
+          "date": "2026-06-11",
+          "time": "2:00 PM",
+          "venue": "Village East by Angelika"
         }
       ],
       "day": "2026-06-09",
       "date": "2026-06-09",
-      "time": "08:30 PM",
-      "venue": "Theater 1"
+      "time": "8:30 PM",
+      "venue": "Village East by Angelika"
     },
     {
       "title": "In Memoriam",
@@ -757,19 +898,24 @@
       "screenings": [
         {
           "date": "2026-06-07",
-          "venue": "Silas",
-          "time": "08:00 PM"
+          "time": "8:00 PM",
+          "venue": "SVA Theatre"
+        },
+        {
+          "date": "2026-06-09",
+          "time": "2:30 PM",
+          "venue": "Village East by Angelika"
         },
         {
           "date": "2026-06-12",
-          "venue": "Theater 6",
-          "time": "06:15 PM"
+          "time": "6:15 PM",
+          "venue": "Village East by Angelika"
         }
       ],
       "day": "2026-06-07",
       "date": "2026-06-07",
-      "time": "08:00 PM",
-      "venue": "Silas"
+      "time": "8:00 PM",
+      "venue": "SVA Theatre"
     },
     {
       "title": "In the Hand of Dante",
@@ -786,14 +932,19 @@
       "screenings": [
         {
           "date": "2026-06-10",
-          "venue": "Silas",
-          "time": "08:00 PM"
+          "time": "8:00 PM",
+          "venue": "SVA Theatre"
+        },
+        {
+          "date": "2026-06-11",
+          "time": "9:00 PM",
+          "venue": "AMC 19th St. East 6"
         }
       ],
       "day": "2026-06-10",
       "date": "2026-06-10",
-      "time": "08:00 PM",
-      "venue": "Silas"
+      "time": "8:00 PM",
+      "venue": "SVA Theatre"
     },
     {
       "title": "Killing Castro",
@@ -810,19 +961,24 @@
       "screenings": [
         {
           "date": "2026-06-09",
-          "venue": "BMCC TPAC",
-          "time": "08:00 PM"
+          "time": "8:00 PM",
+          "venue": "OKX Theater at BMCC TPAC"
         },
         {
           "date": "2026-06-13",
-          "venue": "Theater 1",
-          "time": "05:30 PM"
+          "time": "5:30 PM",
+          "venue": "Village East by Angelika"
+        },
+        {
+          "date": "2026-06-14",
+          "time": "11:30 AM",
+          "venue": "Village East by Angelika"
         }
       ],
       "day": "2026-06-09",
       "date": "2026-06-09",
-      "time": "08:00 PM",
-      "venue": "BMCC TPAC"
+      "time": "8:00 PM",
+      "venue": "OKX Theater at BMCC TPAC"
     },
     {
       "title": "Never Change!",
@@ -839,24 +995,24 @@
       "screenings": [
         {
           "date": "2026-06-09",
-          "venue": "Silas",
-          "time": "05:00 PM"
+          "time": "5:00 PM",
+          "venue": "SVA Theatre"
         },
         {
           "date": "2026-06-10",
-          "venue": "Theater 3",
-          "time": "08:45 PM"
+          "time": "8:45 PM",
+          "venue": "Village East by Angelika"
         },
         {
           "date": "2026-06-12",
-          "venue": "Theater 7",
-          "time": "08:00 PM"
+          "time": "8:00 PM",
+          "venue": "Village East by Angelika"
         }
       ],
       "day": "2026-06-09",
       "date": "2026-06-09",
-      "time": "05:00 PM",
-      "venue": "Silas"
+      "time": "5:00 PM",
+      "venue": "SVA Theatre"
     },
     {
       "title": "Next Life",
@@ -873,19 +1029,24 @@
       "screenings": [
         {
           "date": "2026-06-05",
-          "venue": "Silas",
-          "time": "08:00 PM"
+          "time": "8:00 PM",
+          "venue": "SVA Theatre"
         },
         {
           "date": "2026-06-06",
-          "venue": "Theater 2",
-          "time": "05:15 PM"
+          "time": "5:15 PM",
+          "venue": "Village East by Angelika"
+        },
+        {
+          "date": "2026-06-09",
+          "time": "2:15 PM",
+          "venue": "Village East by Angelika"
         }
       ],
       "day": "2026-06-05",
       "date": "2026-06-05",
-      "time": "08:00 PM",
-      "venue": "Silas"
+      "time": "8:00 PM",
+      "venue": "SVA Theatre"
     },
     {
       "title": "Only What We Carry",
@@ -899,11 +1060,27 @@
       "language": "English",
       "premiere": "World Premiere",
       "synopsis": "“I can create a dancer out of no one.” This single sentence, written by her former choreographer Julian Johns (Simon Pegg), drives famed Moulin Rouge performer Charlotte Levant (Sofia Boutella) to a place of deep insecurity and volatility. Traveling home to Deauville with her sister Josephine (Charlotte Gainsbourg), the siblings find themselves changed and challenged through their deepening relationships with a wealthy benefactor (Quentin Tarantino), a young couple (Lizzy McAlpine and Liam Hellmann), and Julian himself.",
-      "screenings": [],
-      "day": "",
-      "date": "",
-      "time": "",
-      "venue": ""
+      "screenings": [
+        {
+          "date": "2026-06-06",
+          "time": "2:30 PM",
+          "venue": "SVA Theatre"
+        },
+        {
+          "date": "2026-06-07",
+          "time": "11:30 AM",
+          "venue": "AMC 19th St. East 6"
+        },
+        {
+          "date": "2026-06-10",
+          "time": "2:00 PM",
+          "venue": "Village East by Angelika"
+        }
+      ],
+      "day": "2026-06-06",
+      "date": "2026-06-06",
+      "time": "2:30 PM",
+      "venue": "SVA Theatre"
     },
     {
       "title": "Rain Reign",
@@ -920,19 +1097,29 @@
       "screenings": [
         {
           "date": "2026-06-06",
-          "venue": "Silas",
-          "time": "05:00 PM"
+          "time": "5:00 PM",
+          "venue": "SVA Theatre"
+        },
+        {
+          "date": "2026-06-07",
+          "time": "11:45 AM",
+          "venue": "Village East by Angelika"
         },
         {
           "date": "2026-06-11",
-          "venue": "Theater 6",
-          "time": "06:15 PM"
+          "time": "6:15 PM",
+          "venue": "Village East by Angelika"
+        },
+        {
+          "date": "2026-06-14",
+          "time": "11:15 AM",
+          "venue": "AMC 19th St. East 6"
         }
       ],
       "day": "2026-06-06",
       "date": "2026-06-06",
-      "time": "05:00 PM",
-      "venue": "Silas"
+      "time": "5:00 PM",
+      "venue": "SVA Theatre"
     },
     {
       "title": "Seven O'Clock Breakfast Club for the Brokenhearted",
@@ -949,19 +1136,24 @@
       "screenings": [
         {
           "date": "2026-06-11",
-          "venue": "Theater 1",
-          "time": "08:30 PM"
+          "time": "8:30 PM",
+          "venue": "Village East by Angelika"
         },
         {
           "date": "2026-06-12",
-          "venue": "Theater 2",
-          "time": "05:15 PM"
+          "time": "5:15 PM",
+          "venue": "Village East by Angelika"
+        },
+        {
+          "date": "2026-06-14",
+          "time": "12:00 PM",
+          "venue": "Village East by Angelika"
         }
       ],
       "day": "2026-06-11",
       "date": "2026-06-11",
-      "time": "08:30 PM",
-      "venue": "Theater 1"
+      "time": "8:30 PM",
+      "venue": "Village East by Angelika"
     },
     {
       "title": "Take Me Home",
@@ -977,15 +1169,25 @@
       "synopsis": "Anna, a 38-year-old Korean adoptee with a cognitive disability, cares for her aging parents in a fragile balance of meeting one another’s needs. When a Florida heat wave shatters their family and Anna’s routine, her future is uncertain until she creates a world where she can thrive.An intimate and thought-provoking drama, Take Me Home explores a family unit in a newly precarious position. Grounded in a magnetic performance by newcomer Anna Sargent, sister of writer-director Liz Sargent, Anna must navigate shifting family dynamics amid a system that deprioritizes her needs. Anna’s journey toward independence, community and contentment is both gripping and gentle, allowing audiences to experience her challenges alongside the bold promise of optimism. With a nuanced ensemble, including Victor Slezak as Anna’s devoted father, Bob, whose dementia is slowly emerging, and Ali Ahn as the loving but overloaded sibling Emily, the film still centers Anna with confidence.",
       "screenings": [
         {
+          "date": "2026-06-06",
+          "time": "1:00 PM",
+          "venue": "SVA Theatre"
+        },
+        {
           "date": "2026-06-07",
-          "venue": "Theater 4",
-          "time": "06:00 PM"
+          "time": "6:00 PM",
+          "venue": "AMC 19th St. East 6"
+        },
+        {
+          "date": "2026-06-09",
+          "time": "3:00 PM",
+          "venue": "Village East by Angelika"
         }
       ],
-      "day": "2026-06-07",
-      "date": "2026-06-07",
-      "time": "06:00 PM",
-      "venue": "Theater 4"
+      "day": "2026-06-06",
+      "date": "2026-06-06",
+      "time": "1:00 PM",
+      "venue": "SVA Theatre"
     },
     {
       "title": "That Friend",
@@ -1002,19 +1204,24 @@
       "screenings": [
         {
           "date": "2026-06-08",
-          "venue": "Theater 1",
-          "time": "08:30 PM"
+          "time": "8:30 PM",
+          "venue": "Village East by Angelika"
         },
         {
           "date": "2026-06-09",
-          "venue": "Theater 3",
-          "time": "08:45 PM"
+          "time": "8:45 PM",
+          "venue": "Village East by Angelika"
+        },
+        {
+          "date": "2026-06-12",
+          "time": "2:45 PM",
+          "venue": "Village East by Angelika"
         }
       ],
       "day": "2026-06-08",
       "date": "2026-06-08",
-      "time": "08:30 PM",
-      "venue": "Theater 1"
+      "time": "8:30 PM",
+      "venue": "Village East by Angelika"
     },
     {
       "title": "The Accompanist",
@@ -1031,19 +1238,24 @@
       "screenings": [
         {
           "date": "2026-06-04",
-          "venue": "Silas",
-          "time": "08:00 PM"
+          "time": "8:00 PM",
+          "venue": "SVA Theatre"
         },
         {
           "date": "2026-06-05",
-          "venue": "Theater 2",
-          "time": "05:15 PM"
+          "time": "5:15 PM",
+          "venue": "Village East by Angelika"
+        },
+        {
+          "date": "2026-06-07",
+          "time": "11:00 AM",
+          "venue": "Village East by Angelika"
         }
       ],
       "day": "2026-06-04",
       "date": "2026-06-04",
-      "time": "08:00 PM",
-      "venue": "Silas"
+      "time": "8:00 PM",
+      "venue": "SVA Theatre"
     },
     {
       "title": "The Last Day",
@@ -1060,19 +1272,24 @@
       "screenings": [
         {
           "date": "2026-06-06",
-          "venue": "BMCC TPAC",
-          "time": "08:00 PM"
+          "time": "8:00 PM",
+          "venue": "OKX Theater at BMCC TPAC"
         },
         {
           "date": "2026-06-07",
-          "venue": "Theater 2",
-          "time": "08:15 PM"
+          "time": "8:15 PM",
+          "venue": "Village East by Angelika"
+        },
+        {
+          "date": "2026-06-12",
+          "time": "2:15 PM",
+          "venue": "Village East by Angelika"
         }
       ],
       "day": "2026-06-06",
       "date": "2026-06-06",
-      "time": "08:00 PM",
-      "venue": "BMCC TPAC"
+      "time": "8:00 PM",
+      "venue": "OKX Theater at BMCC TPAC"
     },
     {
       "title": "The Leader",
@@ -1089,19 +1306,24 @@
       "screenings": [
         {
           "date": "2026-06-05",
-          "venue": "Silas",
-          "time": "05:00 PM"
+          "time": "5:00 PM",
+          "venue": "SVA Theatre"
         },
         {
           "date": "2026-06-08",
-          "venue": "Theater 3",
-          "time": "05:45 PM"
+          "time": "5:45 PM",
+          "venue": "Village East by Angelika"
+        },
+        {
+          "date": "2026-06-10",
+          "time": "2:45 PM",
+          "venue": "Village East by Angelika"
         }
       ],
       "day": "2026-06-05",
       "date": "2026-06-05",
-      "time": "05:00 PM",
-      "venue": "Silas"
+      "time": "5:00 PM",
+      "venue": "SVA Theatre"
     },
     {
       "title": "The Long Haul",
@@ -1118,14 +1340,24 @@
       "screenings": [
         {
           "date": "2026-06-07",
-          "venue": "Theater 1",
-          "time": "05:30 PM"
+          "time": "5:30 PM",
+          "venue": "Village East by Angelika"
+        },
+        {
+          "date": "2026-06-08",
+          "time": "3:00 PM",
+          "venue": "Village East by Angelika"
+        },
+        {
+          "date": "2026-06-10",
+          "time": "9:15 PM",
+          "venue": "Village East by Angelika"
         }
       ],
       "day": "2026-06-07",
       "date": "2026-06-07",
-      "time": "05:30 PM",
-      "venue": "Theater 1"
+      "time": "5:30 PM",
+      "venue": "Village East by Angelika"
     },
     {
       "title": "The Revisionist",
@@ -1142,19 +1374,24 @@
       "screenings": [
         {
           "date": "2026-06-05",
-          "venue": "BMCC TPAC",
-          "time": "05:00 PM"
+          "time": "5:00 PM",
+          "venue": "OKX Theater at BMCC TPAC"
+        },
+        {
+          "date": "2026-06-06",
+          "time": "11:30 AM",
+          "venue": "Village East by Angelika"
         },
         {
           "date": "2026-06-11",
-          "venue": "Theater 3",
-          "time": "08:45 PM"
+          "time": "8:45 PM",
+          "venue": "Village East by Angelika"
         }
       ],
       "day": "2026-06-05",
       "date": "2026-06-05",
-      "time": "05:00 PM",
-      "venue": "BMCC TPAC"
+      "time": "5:00 PM",
+      "venue": "OKX Theater at BMCC TPAC"
     },
     {
       "title": "They Fight",
@@ -1171,19 +1408,24 @@
       "screenings": [
         {
           "date": "2026-06-08",
-          "venue": "Theater 1",
-          "time": "05:30 PM"
+          "time": "5:30 PM",
+          "venue": "Village East by Angelika"
         },
         {
           "date": "2026-06-09",
-          "venue": "Theater 3",
-          "time": "05:45 PM"
+          "time": "5:45 PM",
+          "venue": "Village East by Angelika"
+        },
+        {
+          "date": "2026-06-11",
+          "time": "2:45 PM",
+          "venue": "Village East by Angelika"
         }
       ],
       "day": "2026-06-08",
       "date": "2026-06-08",
-      "time": "05:30 PM",
-      "venue": "Theater 1"
+      "time": "5:30 PM",
+      "venue": "Village East by Angelika"
     },
     {
       "title": "Unidentified",
@@ -1200,24 +1442,24 @@
       "screenings": [
         {
           "date": "2026-06-09",
-          "venue": "Theater 2",
-          "time": "08:30 PM"
+          "time": "8:30 PM",
+          "venue": "AMC 19th St. East 6"
         },
         {
           "date": "2026-06-10",
-          "venue": "Theater 3",
-          "time": "05:45 PM"
+          "time": "5:45 PM",
+          "venue": "AMC 19th St. East 6"
         },
         {
           "date": "2026-06-11",
-          "venue": "Theater 3",
-          "time": "05:45 PM"
+          "time": "5:45 PM",
+          "venue": "AMC 19th St. East 6"
         }
       ],
       "day": "2026-06-09",
       "date": "2026-06-09",
-      "time": "08:30 PM",
-      "venue": "Theater 2"
+      "time": "8:30 PM",
+      "venue": "AMC 19th St. East 6"
     },
     {
       "title": "Young Washington",
@@ -1231,11 +1473,22 @@
       "language": "English",
       "premiere": "New York Premiere",
       "synopsis": "An extraordinarily ambitious period piece, Jon Erwin’s historical biopic is a pulse-pounding recreation of a less explored period in the life of the first president of the United States. Featuring a star-studded cast including Andy Serkis, Kelsey Grammer and Ben Kingsley, Young Washington is a showcase of exemplary performances and announces Franklyn-Miller as a star to watch.—Cara Cusumano",
-      "screenings": [],
-      "day": "",
-      "date": "",
-      "time": "",
-      "venue": ""
+      "screenings": [
+        {
+          "date": "2026-06-13",
+          "time": "2:00 PM",
+          "venue": "SVA Theatre"
+        },
+        {
+          "date": "2026-06-14",
+          "time": "11:00 AM",
+          "venue": "Village East by Angelika"
+        }
+      ],
+      "day": "2026-06-13",
+      "date": "2026-06-13",
+      "time": "2:00 PM",
+      "venue": "SVA Theatre"
     },
     {
       "title": "4000 Days",
@@ -1252,19 +1505,24 @@
       "screenings": [
         {
           "date": "2026-06-10",
-          "venue": "Theater 1",
-          "time": "05:30 PM"
+          "time": "5:30 PM",
+          "venue": "Village East by Angelika"
         },
         {
           "date": "2026-06-11",
-          "venue": "Theater 1",
-          "time": "08:15 PM"
+          "time": "8:15 PM",
+          "venue": "AMC 19th St. East 6"
+        },
+        {
+          "date": "2026-06-14",
+          "time": "9:00 PM",
+          "venue": "Village East by Angelika"
         }
       ],
       "day": "2026-06-10",
       "date": "2026-06-10",
-      "time": "05:30 PM",
-      "venue": "Theater 1"
+      "time": "5:30 PM",
+      "venue": "Village East by Angelika"
     },
     {
       "title": "AI: Probably Nothing to Worry About",
@@ -1281,19 +1539,24 @@
       "screenings": [
         {
           "date": "2026-06-06",
-          "venue": "Theater 7",
-          "time": "05:00 PM"
+          "time": "5:00 PM",
+          "venue": "Village East by Angelika"
+        },
+        {
+          "date": "2026-06-07",
+          "time": "11:15 AM",
+          "venue": "AMC 19th St. East 6"
         },
         {
           "date": "2026-06-11",
-          "venue": "Theater 2",
-          "time": "08:15 PM"
+          "time": "8:15 PM",
+          "venue": "Village East by Angelika"
         }
       ],
       "day": "2026-06-06",
       "date": "2026-06-06",
-      "time": "05:00 PM",
-      "venue": "Theater 7"
+      "time": "5:00 PM",
+      "venue": "Village East by Angelika"
     },
     {
       "title": "Bob and David Climb Machu Picchu",
@@ -1310,19 +1573,24 @@
       "screenings": [
         {
           "date": "2026-06-06",
-          "venue": "Silas",
-          "time": "08:00 PM"
+          "time": "8:00 PM",
+          "venue": "SVA Theatre"
         },
         {
           "date": "2026-06-07",
-          "venue": "Theater 3",
-          "time": "05:45 PM"
+          "time": "5:45 PM",
+          "venue": "Village East by Angelika"
+        },
+        {
+          "date": "2026-06-10",
+          "time": "3:00 PM",
+          "venue": "Village East by Angelika"
         }
       ],
       "day": "2026-06-06",
       "date": "2026-06-06",
-      "time": "08:00 PM",
-      "venue": "Silas"
+      "time": "8:00 PM",
+      "venue": "SVA Theatre"
     },
     {
       "title": "Born Melo",
@@ -1339,14 +1607,19 @@
       "screenings": [
         {
           "date": "2026-06-12",
-          "venue": "Silas",
-          "time": "08:00 PM"
+          "time": "8:00 PM",
+          "venue": "SVA Theatre"
+        },
+        {
+          "date": "2026-06-14",
+          "time": "2:30 PM",
+          "venue": "Village East by Angelika"
         }
       ],
       "day": "2026-06-12",
       "date": "2026-06-12",
-      "time": "08:00 PM",
-      "venue": "Silas"
+      "time": "8:00 PM",
+      "venue": "SVA Theatre"
     },
     {
       "title": "Chris & Martina: The Final Set",
@@ -1363,19 +1636,24 @@
       "screenings": [
         {
           "date": "2026-06-10",
-          "venue": "Silas",
-          "time": "05:00 PM"
+          "time": "5:00 PM",
+          "venue": "SVA Theatre"
         },
         {
           "date": "2026-06-11",
-          "venue": "Theater 2",
-          "time": "05:15 PM"
+          "time": "5:15 PM",
+          "venue": "Village East by Angelika"
+        },
+        {
+          "date": "2026-06-14",
+          "time": "2:15 PM",
+          "venue": "Village East by Angelika"
         }
       ],
       "day": "2026-06-10",
       "date": "2026-06-10",
-      "time": "05:00 PM",
-      "venue": "Silas"
+      "time": "5:00 PM",
+      "venue": "SVA Theatre"
     },
     {
       "title": "Every Year After",
@@ -1392,14 +1670,14 @@
       "screenings": [
         {
           "date": "2026-06-08",
-          "venue": "Silas",
-          "time": "07:30 PM"
+          "time": "7:30 PM",
+          "venue": "SVA Theatre"
         }
       ],
       "day": "2026-06-08",
       "date": "2026-06-08",
-      "time": "07:30 PM",
-      "venue": "Silas"
+      "time": "7:30 PM",
+      "venue": "SVA Theatre"
     },
     {
       "title": "Full Circle: The First All Black Everest Ascent",
@@ -1415,20 +1693,25 @@
       "synopsis": "Full Circle Expeditions, led by mountaineer Phil Henderson, isn’t just about summiting mountains: it’s about making the outdoors accessible to all. In 2022, Henderson organized the first all-Black team to attempt Mount Everest, bringing together a group of climbers determined to take on both the mountain and the perceptions of who belongs there. As they ascend, they face not only the physical dangers of Everest, but also the added pressure of what the climb represents.",
       "screenings": [
         {
+          "date": "2026-06-07",
+          "time": "2:00 PM",
+          "venue": "Village East by Angelika"
+        },
+        {
           "date": "2026-06-10",
-          "venue": "Theater 1",
-          "time": "05:00 PM"
+          "time": "5:00 PM",
+          "venue": "AMC 19th St. East 6"
         },
         {
           "date": "2026-06-14",
-          "venue": "Theater 2",
-          "time": "05:15 PM"
+          "time": "5:15 PM",
+          "venue": "Village East by Angelika"
         }
       ],
-      "day": "2026-06-10",
-      "date": "2026-06-10",
-      "time": "05:00 PM",
-      "venue": "Theater 1"
+      "day": "2026-06-07",
+      "date": "2026-06-07",
+      "time": "2:00 PM",
+      "venue": "Village East by Angelika"
     },
     {
       "title": "Grandmasters",
@@ -1444,15 +1727,20 @@
       "synopsis": "",
       "screenings": [
         {
+          "date": "2026-06-07",
+          "time": "2:30 PM",
+          "venue": "SVA Theatre"
+        },
+        {
           "date": "2026-06-10",
-          "venue": "Theater 3",
-          "time": "05:45 PM"
+          "time": "5:45 PM",
+          "venue": "Village East by Angelika"
         }
       ],
-      "day": "2026-06-10",
-      "date": "2026-06-10",
-      "time": "05:45 PM",
-      "venue": "Theater 3"
+      "day": "2026-06-07",
+      "date": "2026-06-07",
+      "time": "2:30 PM",
+      "venue": "SVA Theatre"
     },
     {
       "title": "Guggi",
@@ -1469,19 +1757,19 @@
       "screenings": [
         {
           "date": "2026-06-13",
-          "venue": "Beatrice",
-          "time": "08:30 PM"
+          "time": "8:30 PM",
+          "venue": "SVA Theatre"
         },
         {
           "date": "2026-06-14",
-          "venue": "Theater 3",
-          "time": "05:45 PM"
+          "time": "5:45 PM",
+          "venue": "Village East by Angelika"
         }
       ],
       "day": "2026-06-13",
       "date": "2026-06-13",
-      "time": "08:30 PM",
-      "venue": "Beatrice"
+      "time": "8:30 PM",
+      "venue": "SVA Theatre"
     },
     {
       "title": "Hanging by a Wire",
@@ -1498,19 +1786,24 @@
       "screenings": [
         {
           "date": "2026-06-11",
-          "venue": "Theater 1",
-          "time": "05:30 PM"
+          "time": "5:30 PM",
+          "venue": "Village East by Angelika"
         },
         {
           "date": "2026-06-12",
-          "venue": "Theater 5",
-          "time": "06:15 PM"
+          "time": "6:15 PM",
+          "venue": "AMC 19th St. East 6"
+        },
+        {
+          "date": "2026-06-13",
+          "time": "12:15 PM",
+          "venue": "Village East by Angelika"
         }
       ],
       "day": "2026-06-11",
       "date": "2026-06-11",
-      "time": "05:30 PM",
-      "venue": "Theater 1"
+      "time": "5:30 PM",
+      "venue": "Village East by Angelika"
     },
     {
       "title": "Hollywood Does Abortion",
@@ -1527,24 +1820,24 @@
       "screenings": [
         {
           "date": "2026-06-07",
-          "venue": "Beatrice",
-          "time": "05:30 PM"
+          "time": "5:30 PM",
+          "venue": "SVA Theatre"
         },
         {
           "date": "2026-06-08",
-          "venue": "Theater 3",
-          "time": "05:45 PM"
+          "time": "5:45 PM",
+          "venue": "AMC 19th St. East 6"
         },
         {
           "date": "2026-06-10",
-          "venue": "Theater 3",
-          "time": "08:45 PM"
+          "time": "8:45 PM",
+          "venue": "AMC 19th St. East 6"
         }
       ],
       "day": "2026-06-07",
       "date": "2026-06-07",
-      "time": "05:30 PM",
-      "venue": "Beatrice"
+      "time": "5:30 PM",
+      "venue": "SVA Theatre"
     },
     {
       "title": "House of Criticism",
@@ -1561,19 +1854,24 @@
       "screenings": [
         {
           "date": "2026-06-12",
-          "venue": "Theater 1",
-          "time": "05:30 PM"
+          "time": "5:30 PM",
+          "venue": "Village East by Angelika"
+        },
+        {
+          "date": "2026-06-13",
+          "time": "2:30 PM",
+          "venue": "Village East by Angelika"
         },
         {
           "date": "2026-06-14",
-          "venue": "Theater 2",
-          "time": "08:15 PM"
+          "time": "8:15 PM",
+          "venue": "Village East by Angelika"
         }
       ],
       "day": "2026-06-12",
       "date": "2026-06-12",
-      "time": "05:30 PM",
-      "venue": "Theater 1"
+      "time": "5:30 PM",
+      "venue": "Village East by Angelika"
     },
     {
       "title": "How to Feed a Dictator",
@@ -1590,19 +1888,24 @@
       "screenings": [
         {
           "date": "2026-06-10",
-          "venue": "Theater 7",
-          "time": "08:00 PM"
+          "time": "8:00 PM",
+          "venue": "Village East by Angelika"
         },
         {
           "date": "2026-06-11",
-          "venue": "Theater 4",
-          "time": "06:00 PM"
+          "time": "6:00 PM",
+          "venue": "Village East by Angelika"
+        },
+        {
+          "date": "2026-06-13",
+          "time": "11:15 AM",
+          "venue": "Village East by Angelika"
         }
       ],
       "day": "2026-06-10",
       "date": "2026-06-10",
-      "time": "08:00 PM",
-      "venue": "Theater 7"
+      "time": "8:00 PM",
+      "venue": "Village East by Angelika"
     },
     {
       "title": "Humpty Dumpty X",
@@ -1618,20 +1921,25 @@
       "synopsis": "The story of Tony Kaye and American History X is Hollywood folklore: a fiercely original debut filmmaker, a studio battle over final cut and a director who famously asked for the credit \"Humpty Dumpty\" rather than compromise his vision. What few people knew was that Kaye kept a camera running throughout. Twenty-three years later, he has finally assembled that footage into Humpty Dumpty X, a documentary built from phone calls with executives, candid conversations with friends, and the rantings, paintings, photographs, and notebooks that filled his life during that singular period.",
       "screenings": [
         {
+          "date": "2026-06-06",
+          "time": "12:00 PM",
+          "venue": "AMC 19th St. East 6"
+        },
+        {
           "date": "2026-06-10",
-          "venue": "Theater 4",
-          "time": "06:00 PM"
+          "time": "6:00 PM",
+          "venue": "AMC 19th St. East 6"
         },
         {
           "date": "2026-06-12",
-          "venue": "Theater 1",
-          "time": "08:15 PM"
+          "time": "8:15 PM",
+          "venue": "AMC 19th St. East 6"
         }
       ],
-      "day": "2026-06-10",
-      "date": "2026-06-10",
-      "time": "06:00 PM",
-      "venue": "Theater 4"
+      "day": "2026-06-06",
+      "date": "2026-06-06",
+      "time": "12:00 PM",
+      "venue": "AMC 19th St. East 6"
     },
     {
       "title": "IX XI",
@@ -1648,19 +1956,24 @@
       "screenings": [
         {
           "date": "2026-06-04",
-          "venue": "Theater 3",
-          "time": "08:45 PM"
+          "time": "8:45 PM",
+          "venue": "Village East by Angelika"
         },
         {
           "date": "2026-06-05",
-          "venue": "Theater 6",
-          "time": "08:00 PM"
+          "time": "8:00 PM",
+          "venue": "AMC 19th St. East 6"
+        },
+        {
+          "date": "2026-06-14",
+          "time": "3:00 PM",
+          "venue": "Village East by Angelika"
         }
       ],
       "day": "2026-06-04",
       "date": "2026-06-04",
-      "time": "08:45 PM",
-      "venue": "Theater 3"
+      "time": "8:45 PM",
+      "venue": "Village East by Angelika"
     },
     {
       "title": "Just Look Up",
@@ -1677,19 +1990,24 @@
       "screenings": [
         {
           "date": "2026-06-11",
-          "venue": "Beatrice",
-          "time": "05:30 PM"
+          "time": "5:30 PM",
+          "venue": "SVA Theatre"
         },
         {
           "date": "2026-06-12",
-          "venue": "Theater 4",
-          "time": "06:00 PM"
+          "time": "6:00 PM",
+          "venue": "Village East by Angelika"
+        },
+        {
+          "date": "2026-06-13",
+          "time": "3:00 PM",
+          "venue": "Village East by Angelika"
         }
       ],
       "day": "2026-06-11",
       "date": "2026-06-11",
-      "time": "05:30 PM",
-      "venue": "Beatrice"
+      "time": "5:30 PM",
+      "venue": "SVA Theatre"
     },
     {
       "title": "March Forth",
@@ -1706,19 +2024,29 @@
       "screenings": [
         {
           "date": "2026-06-08",
-          "venue": "Theater 7",
-          "time": "05:00 PM"
+          "time": "5:00 PM",
+          "venue": "Village East by Angelika"
         },
         {
           "date": "2026-06-09",
-          "venue": "Theater 2",
-          "time": "05:15 PM"
+          "time": "5:15 PM",
+          "venue": "Village East by Angelika"
+        },
+        {
+          "date": "2026-06-13",
+          "time": "2:15 PM",
+          "venue": "Village East by Angelika"
+        },
+        {
+          "date": "2026-06-14",
+          "time": "12:15 PM",
+          "venue": "AMC 19th St. East 6"
         }
       ],
       "day": "2026-06-08",
       "date": "2026-06-08",
-      "time": "05:00 PM",
-      "venue": "Theater 7"
+      "time": "5:00 PM",
+      "venue": "Village East by Angelika"
     },
     {
       "title": "Mario",
@@ -1735,14 +2063,24 @@
       "screenings": [
         {
           "date": "2026-06-04",
-          "venue": "Silas",
-          "time": "05:00 PM"
+          "time": "5:00 PM",
+          "venue": "SVA Theatre"
+        },
+        {
+          "date": "2026-06-05",
+          "time": "2:45 PM",
+          "venue": "Village East by Angelika"
+        },
+        {
+          "date": "2026-06-10",
+          "time": "2:15 PM",
+          "venue": "Village East by Angelika"
         }
       ],
       "day": "2026-06-04",
       "date": "2026-06-04",
-      "time": "05:00 PM",
-      "venue": "Silas"
+      "time": "5:00 PM",
+      "venue": "SVA Theatre"
     },
     {
       "title": "Mineshaft: The Cruising Murders",
@@ -1759,19 +2097,24 @@
       "screenings": [
         {
           "date": "2026-06-06",
-          "venue": "Beatrice",
-          "time": "05:30 PM"
+          "time": "5:30 PM",
+          "venue": "SVA Theatre"
         },
         {
           "date": "2026-06-07",
-          "venue": "Theater 3",
-          "time": "08:45 PM"
+          "time": "8:45 PM",
+          "venue": "AMC 19th St. East 6"
+        },
+        {
+          "date": "2026-06-09",
+          "time": "9:00 PM",
+          "venue": "Village East by Angelika"
         }
       ],
       "day": "2026-06-06",
       "date": "2026-06-06",
-      "time": "05:30 PM",
-      "venue": "Beatrice"
+      "time": "5:30 PM",
+      "venue": "SVA Theatre"
     },
     {
       "title": "MOUTH FULL OF GOLDS",
@@ -1788,24 +2131,24 @@
       "screenings": [
         {
           "date": "2026-06-12",
-          "venue": "Spring Fl. 6",
-          "time": "08:30 PM"
+          "time": "8:30 PM",
+          "venue": "Spring Studios"
         },
         {
           "date": "2026-06-13",
-          "venue": "Theater 6",
-          "time": "05:00 PM"
+          "time": "5:00 PM",
+          "venue": "AMC 19th St. East 6"
         },
         {
           "date": "2026-06-14",
-          "venue": "Theater 1",
-          "time": "08:00 PM"
+          "time": "8:00 PM",
+          "venue": "AMC 19th St. East 6"
         }
       ],
       "day": "2026-06-12",
       "date": "2026-06-12",
-      "time": "08:30 PM",
-      "venue": "Spring Fl. 6"
+      "time": "8:30 PM",
+      "venue": "Spring Studios"
     },
     {
       "title": "Odyssey",
@@ -1822,19 +2165,24 @@
       "screenings": [
         {
           "date": "2026-06-07",
-          "venue": "Beatrice",
-          "time": "08:30 PM"
+          "time": "8:30 PM",
+          "venue": "SVA Theatre"
+        },
+        {
+          "date": "2026-06-09",
+          "time": "9:15 PM",
+          "venue": "Village East by Angelika"
         },
         {
           "date": "2026-06-11",
-          "venue": "Theater 2",
-          "time": "07:30 PM"
+          "time": "7:30 PM",
+          "venue": "AMC 19th St. East 6"
         }
       ],
       "day": "2026-06-07",
       "date": "2026-06-07",
-      "time": "08:30 PM",
-      "venue": "Beatrice"
+      "time": "8:30 PM",
+      "venue": "SVA Theatre"
     },
     {
       "title": "Spin Wars",
@@ -1851,19 +2199,24 @@
       "screenings": [
         {
           "date": "2026-06-09",
-          "venue": "Theater 1",
-          "time": "05:30 PM"
+          "time": "5:30 PM",
+          "venue": "Village East by Angelika"
         },
         {
           "date": "2026-06-10",
-          "venue": "Theater 2",
-          "time": "05:15 PM"
+          "time": "5:15 PM",
+          "venue": "Village East by Angelika"
+        },
+        {
+          "date": "2026-06-12",
+          "time": "3:00 PM",
+          "venue": "Village East by Angelika"
         }
       ],
       "day": "2026-06-09",
       "date": "2026-06-09",
-      "time": "05:30 PM",
-      "venue": "Theater 1"
+      "time": "5:30 PM",
+      "venue": "Village East by Angelika"
     },
     {
       "title": "Stealing Magic",
@@ -1880,19 +2233,24 @@
       "screenings": [
         {
           "date": "2026-06-05",
-          "venue": "Theater 7",
-          "time": "05:00 PM"
+          "time": "5:00 PM",
+          "venue": "Village East by Angelika"
+        },
+        {
+          "date": "2026-06-06",
+          "time": "11:45 AM",
+          "venue": "Village East by Angelika"
         },
         {
           "date": "2026-06-07",
-          "venue": "Theater 6",
-          "time": "08:00 PM"
+          "time": "8:00 PM",
+          "venue": "AMC 19th St. East 6"
         }
       ],
       "day": "2026-06-05",
       "date": "2026-06-05",
-      "time": "05:00 PM",
-      "venue": "Theater 7"
+      "time": "5:00 PM",
+      "venue": "Village East by Angelika"
     },
     {
       "title": "The A-Word: The Future of Aging",
@@ -1909,14 +2267,24 @@
       "screenings": [
         {
           "date": "2026-06-05",
-          "venue": "Beatrice",
-          "time": "05:30 PM"
+          "time": "5:30 PM",
+          "venue": "SVA Theatre"
+        },
+        {
+          "date": "2026-06-08",
+          "time": "3:15 PM",
+          "venue": "Village East by Angelika"
+        },
+        {
+          "date": "2026-06-13",
+          "time": "11:45 AM",
+          "venue": "Village East by Angelika"
         }
       ],
       "day": "2026-06-05",
       "date": "2026-06-05",
-      "time": "05:30 PM",
-      "venue": "Beatrice"
+      "time": "5:30 PM",
+      "venue": "SVA Theatre"
     },
     {
       "title": "The Best Summer",
@@ -1933,24 +2301,24 @@
       "screenings": [
         {
           "date": "2026-06-09",
-          "venue": "",
-          "time": "05:30 PM"
+          "time": "5:30 PM",
+          "venue": "Spring Studios"
         },
         {
           "date": "2026-06-12",
-          "venue": "Theater 2",
-          "time": "08:30 PM"
+          "time": "8:30 PM",
+          "venue": "AMC 19th St. East 6"
         },
         {
           "date": "2026-06-13",
-          "venue": "Theater 7",
-          "time": "05:00 PM"
+          "time": "5:00 PM",
+          "venue": "Village East by Angelika"
         }
       ],
       "day": "2026-06-09",
       "date": "2026-06-09",
-      "time": "05:30 PM",
-      "venue": ""
+      "time": "5:30 PM",
+      "venue": "Spring Studios"
     },
     {
       "title": "The Lion Queen",
@@ -1967,24 +2335,24 @@
       "screenings": [
         {
           "date": "2026-06-11",
-          "venue": "Beatrice",
-          "time": "08:30 PM"
+          "time": "8:30 PM",
+          "venue": "SVA Theatre"
         },
         {
           "date": "2026-06-12",
-          "venue": "Theater 3",
-          "time": "08:45 PM"
+          "time": "8:45 PM",
+          "venue": "Village East by Angelika"
         },
         {
           "date": "2026-06-13",
-          "venue": "Theater 6",
-          "time": "06:15 PM"
+          "time": "6:15 PM",
+          "venue": "Village East by Angelika"
         }
       ],
       "day": "2026-06-11",
       "date": "2026-06-11",
-      "time": "08:30 PM",
-      "venue": "Beatrice"
+      "time": "8:30 PM",
+      "venue": "SVA Theatre"
     },
     {
       "title": "The Lorraine",
@@ -2001,19 +2369,24 @@
       "screenings": [
         {
           "date": "2026-06-05",
-          "venue": "Beatrice",
-          "time": "08:30 PM"
+          "time": "8:30 PM",
+          "venue": "SVA Theatre"
         },
         {
           "date": "2026-06-06",
-          "venue": "Theater 6",
-          "time": "05:00 PM"
+          "time": "5:00 PM",
+          "venue": "AMC 19th St. East 6"
+        },
+        {
+          "date": "2026-06-13",
+          "time": "11:00 AM",
+          "venue": "Village East by Angelika"
         }
       ],
       "day": "2026-06-05",
       "date": "2026-06-05",
-      "time": "08:30 PM",
-      "venue": "Beatrice"
+      "time": "8:30 PM",
+      "venue": "SVA Theatre"
     },
     {
       "title": "threeASFOUR: Full Circle",
@@ -2030,19 +2403,24 @@
       "screenings": [
         {
           "date": "2026-06-07",
-          "venue": "Silas",
-          "time": "05:00 PM"
+          "time": "5:00 PM",
+          "venue": "SVA Theatre"
         },
         {
           "date": "2026-06-08",
-          "venue": "Theater 2",
-          "time": "08:15 PM"
+          "time": "8:15 PM",
+          "venue": "Village East by Angelika"
+        },
+        {
+          "date": "2026-06-11",
+          "time": "3:00 PM",
+          "venue": "Village East by Angelika"
         }
       ],
       "day": "2026-06-07",
       "date": "2026-06-07",
-      "time": "05:00 PM",
-      "venue": "Silas"
+      "time": "5:00 PM",
+      "venue": "SVA Theatre"
     },
     {
       "title": "TikTok Never Dies",
@@ -2059,14 +2437,24 @@
       "screenings": [
         {
           "date": "2026-06-04",
-          "venue": "Theater 7",
-          "time": "05:30 PM"
+          "time": "5:30 PM",
+          "venue": "Village East by Angelika"
+        },
+        {
+          "date": "2026-06-05",
+          "time": "3:00 PM",
+          "venue": "Village East by Angelika"
+        },
+        {
+          "date": "2026-06-13",
+          "time": "2:45 PM",
+          "venue": "Village East by Angelika"
         }
       ],
       "day": "2026-06-04",
       "date": "2026-06-04",
-      "time": "05:30 PM",
-      "venue": "Theater 7"
+      "time": "5:30 PM",
+      "venue": "Village East by Angelika"
     },
     {
       "title": "Whipple's World",
@@ -2083,14 +2471,24 @@
       "screenings": [
         {
           "date": "2026-06-12",
-          "venue": "Silas",
-          "time": "05:00 PM"
+          "time": "5:00 PM",
+          "venue": "SVA Theatre"
+        },
+        {
+          "date": "2026-06-13",
+          "time": "3:00 PM",
+          "venue": "AMC 19th St. East 6"
+        },
+        {
+          "date": "2026-06-14",
+          "time": "3:15 PM",
+          "venue": "Village East by Angelika"
         }
       ],
       "day": "2026-06-12",
       "date": "2026-06-12",
-      "time": "05:00 PM",
-      "venue": "Silas"
+      "time": "5:00 PM",
+      "venue": "SVA Theatre"
     },
     {
       "title": "Breeder",
@@ -2106,15 +2504,25 @@
       "synopsis": "College student Russell (Daniel Doheny) is focused on developing a new game-changing solution to save the endangered bee population from extinction. But there’s a problem: He can’t secure enough funding. That’s before a potential lifeline shows up in the form of a random but tempting financial offer from a poodle breeder named Patti (Dot-Marie Jones), who lives off the grid on an isolated ranch. Russell visits Patti to see if her offer is legit or too good to be true. Unfortunately, after several awkward interactions and a growing sense of unease, he learns that it’s the latter. She’ll give him the cash, but with an added cost: He must breed with her daughter.",
       "screenings": [
         {
+          "date": "2026-06-06",
+          "time": "9:15 PM",
+          "venue": "Village East by Angelika"
+        },
+        {
           "date": "2026-06-07",
-          "venue": "Theater 3",
-          "time": "05:45 PM"
+          "time": "5:45 PM",
+          "venue": "AMC 19th St. East 6"
+        },
+        {
+          "date": "2026-06-13",
+          "time": "9:15 PM",
+          "venue": "Village East by Angelika"
         }
       ],
-      "day": "2026-06-07",
-      "date": "2026-06-07",
-      "time": "05:45 PM",
-      "venue": "Theater 3"
+      "day": "2026-06-06",
+      "date": "2026-06-06",
+      "time": "9:15 PM",
+      "venue": "Village East by Angelika"
     },
     {
       "title": "Dante",
@@ -2130,15 +2538,25 @@
       "synopsis": "It should be a routine night for young do-gooder paramedic Eduardo (Chino Darin)— but this isn’t your typical emergency call. Entering the apartment equipped with his life-saving gear, Eduardo quickly realizes that his night is about to take a dangerous turn: A local crime boss, Mario, is bleeding out on a love seat; two of his underlings are there, weapons in hand, to force Eduardo to save Mario by any means necessary. What happens in the apartment triggers a series of increasingly out-of-control events that, over the course of one hellish night, put the seemingly unprepared Eduardo in a tailspin of frantic twists, turns, carnage and gore.",
       "screenings": [
         {
+          "date": "2026-06-07",
+          "time": "9:15 PM",
+          "venue": "Village East by Angelika"
+        },
+        {
           "date": "2026-06-08",
-          "venue": "Theater 3",
-          "time": "08:45 PM"
+          "time": "8:45 PM",
+          "venue": "AMC 19th St. East 6"
+        },
+        {
+          "date": "2026-06-12",
+          "time": "9:15 PM",
+          "venue": "AMC 19th St. East 6"
         }
       ],
-      "day": "2026-06-08",
-      "date": "2026-06-08",
-      "time": "08:45 PM",
-      "venue": "Theater 3"
+      "day": "2026-06-07",
+      "date": "2026-06-07",
+      "time": "9:15 PM",
+      "venue": "Village East by Angelika"
     },
     {
       "title": "Death Boom",
@@ -2155,14 +2573,24 @@
       "screenings": [
         {
           "date": "2026-06-09",
-          "venue": "Theater 7",
-          "time": "08:00 PM"
+          "time": "8:00 PM",
+          "venue": "Village East by Angelika"
+        },
+        {
+          "date": "2026-06-10",
+          "time": "9:00 PM",
+          "venue": "Village East by Angelika"
+        },
+        {
+          "date": "2026-06-13",
+          "time": "9:00 PM",
+          "venue": "AMC 19th St. East 6"
         }
       ],
       "day": "2026-06-09",
       "date": "2026-06-09",
-      "time": "08:00 PM",
-      "venue": "Theater 7"
+      "time": "8:00 PM",
+      "venue": "Village East by Angelika"
     },
     {
       "title": "Hallowarrior",
@@ -2179,19 +2607,24 @@
       "screenings": [
         {
           "date": "2026-06-10",
-          "venue": "Theater 7",
-          "time": "05:00 PM"
+          "time": "5:00 PM",
+          "venue": "Village East by Angelika"
+        },
+        {
+          "date": "2026-06-12",
+          "time": "9:00 PM",
+          "venue": "AMC 19th St. East 6"
         },
         {
           "date": "2026-06-13",
-          "venue": "Theater 3",
-          "time": "08:45 PM"
+          "time": "8:45 PM",
+          "venue": "AMC 19th St. East 6"
         }
       ],
       "day": "2026-06-10",
       "date": "2026-06-10",
-      "time": "05:00 PM",
-      "venue": "Theater 7"
+      "time": "5:00 PM",
+      "venue": "Village East by Angelika"
     },
     {
       "title": "Mutter: The Diary of a Mother",
@@ -2208,14 +2641,24 @@
       "screenings": [
         {
           "date": "2026-06-06",
-          "venue": "Theater 1",
-          "time": "08:15 PM"
+          "time": "8:15 PM",
+          "venue": "AMC 19th St. East 6"
+        },
+        {
+          "date": "2026-06-07",
+          "time": "9:00 PM",
+          "venue": "AMC 19th St. East 6"
+        },
+        {
+          "date": "2026-06-09",
+          "time": "9:00 PM",
+          "venue": "AMC 19th St. East 6"
         }
       ],
       "day": "2026-06-06",
       "date": "2026-06-06",
-      "time": "08:15 PM",
-      "venue": "Theater 1"
+      "time": "8:15 PM",
+      "venue": "AMC 19th St. East 6"
     },
     {
       "title": "Recluse",
@@ -2229,11 +2672,27 @@
       "language": "English",
       "premiere": "World Premiere",
       "synopsis": "Working as an audio engineer for movies, Joan (Sasha Frolova) is constantly haunted by and obsessed with sounds. This auditory fascination ends up being particularly vital when she ends up back in her family’s New England mansion to tend to her father, a once-prolific artist who was severely burned in an accident and is now bedridden. While reconnecting with her dad’s hired help, Joan can’t shake the ghosts of her past, largely tied to her mother’s long-unsolved disappearance. But something else isn’t right. Initially just figurative, those ghosts may in fact be literal and are possibly connected to her father’s dabbling in the occult. As Joan is about to find out, the truth is much scarier than she could’ve imagined.",
-      "screenings": [],
-      "day": "",
-      "date": "",
-      "time": "",
-      "venue": ""
+      "screenings": [
+        {
+          "date": "2026-06-04",
+          "time": "9:15 PM",
+          "venue": "Village East by Angelika"
+        },
+        {
+          "date": "2026-06-06",
+          "time": "9:00 PM",
+          "venue": "Village East by Angelika"
+        },
+        {
+          "date": "2026-06-11",
+          "time": "9:00 PM",
+          "venue": "Village East by Angelika"
+        }
+      ],
+      "day": "2026-06-04",
+      "date": "2026-06-04",
+      "time": "9:15 PM",
+      "venue": "Village East by Angelika"
     },
     {
       "title": "The Haunting of Pennhurst",
@@ -2249,15 +2708,25 @@
       "synopsis": "What used to be a state school and hospital for disabled people is now the site of “Pennhurst Asylum,” a controversial haunted house run by many performers with disabilities. Autumn, one of the performers who manages the ghost haunts, is a contortionist who encourages the new “haunters” that she trains to reclaim their disabilities and incorporate them into their haunter personas. As we see the performers embody their twisted and scary characters at the attraction, a sobering picture of what Pennhurst used to be comes into starker detail — an institution that promoted “segregation of all deficients” and became a site of profound neglect, abuse and deprivation.",
       "screenings": [
         {
+          "date": "2026-06-05",
+          "time": "9:15 PM",
+          "venue": "Village East by Angelika"
+        },
+        {
+          "date": "2026-06-07",
+          "time": "3:15 PM",
+          "venue": "Village East by Angelika"
+        },
+        {
           "date": "2026-06-09",
-          "venue": "Theater 6",
-          "time": "06:15 PM"
+          "time": "6:15 PM",
+          "venue": "Village East by Angelika"
         }
       ],
-      "day": "2026-06-09",
-      "date": "2026-06-09",
-      "time": "06:15 PM",
-      "venue": "Theater 6"
+      "day": "2026-06-05",
+      "date": "2026-06-05",
+      "time": "9:15 PM",
+      "venue": "Village East by Angelika"
     },
     {
       "title": "Turn It Up!",
@@ -2274,19 +2743,24 @@
       "screenings": [
         {
           "date": "2026-06-04",
-          "venue": "Theater 2",
-          "time": "08:30 PM"
+          "time": "8:30 PM",
+          "venue": "AMC 19th St. East 6"
         },
         {
           "date": "2026-06-05",
-          "venue": "Theater 3",
-          "time": "08:45 PM"
+          "time": "8:45 PM",
+          "venue": "AMC 19th St. East 6"
+        },
+        {
+          "date": "2026-06-07",
+          "time": "9:15 PM",
+          "venue": "AMC 19th St. East 6"
         }
       ],
       "day": "2026-06-04",
       "date": "2026-06-04",
-      "time": "08:30 PM",
-      "venue": "Theater 2"
+      "time": "8:30 PM",
+      "venue": "AMC 19th St. East 6"
     },
     {
       "title": "Crocodile",
@@ -2303,24 +2777,24 @@
       "screenings": [
         {
           "date": "2026-06-05",
-          "venue": "Theater 1",
-          "time": "05:15 PM"
+          "time": "5:15 PM",
+          "venue": "AMC 19th St. East 6"
         },
         {
           "date": "2026-06-06",
-          "venue": "Theater 4",
-          "time": "06:00 PM"
+          "time": "6:00 PM",
+          "venue": "AMC 19th St. East 6"
         },
         {
           "date": "2026-06-08",
-          "venue": "Theater 6",
-          "time": "08:00 PM"
+          "time": "8:00 PM",
+          "venue": "AMC 19th St. East 6"
         }
       ],
       "day": "2026-06-05",
       "date": "2026-06-05",
-      "time": "05:15 PM",
-      "venue": "Theater 1"
+      "time": "5:15 PM",
+      "venue": "AMC 19th St. East 6"
     },
     {
       "title": "Crooks",
@@ -2337,14 +2811,24 @@
       "screenings": [
         {
           "date": "2026-06-07",
-          "venue": "Theater 6",
-          "time": "06:15 PM"
+          "time": "6:15 PM",
+          "venue": "Village East by Angelika"
+        },
+        {
+          "date": "2026-06-08",
+          "time": "9:15 PM",
+          "venue": "AMC 19th St. East 6"
+        },
+        {
+          "date": "2026-06-10",
+          "time": "9:00 PM",
+          "venue": "AMC 19th St. East 6"
         }
       ],
       "day": "2026-06-07",
       "date": "2026-06-07",
-      "time": "06:15 PM",
-      "venue": "Theater 6"
+      "time": "6:15 PM",
+      "venue": "Village East by Angelika"
     },
     {
       "title": "Deepfake",
@@ -2361,19 +2845,24 @@
       "screenings": [
         {
           "date": "2026-06-06",
-          "venue": "Theater 1",
-          "time": "05:30 PM"
+          "time": "5:30 PM",
+          "venue": "Village East by Angelika"
         },
         {
           "date": "2026-06-07",
-          "venue": "Theater 4",
-          "time": "06:00 PM"
+          "time": "6:00 PM",
+          "venue": "Village East by Angelika"
+        },
+        {
+          "date": "2026-06-14",
+          "time": "2:45 PM",
+          "venue": "Village East by Angelika"
         }
       ],
       "day": "2026-06-06",
       "date": "2026-06-06",
-      "time": "05:30 PM",
-      "venue": "Theater 1"
+      "time": "5:30 PM",
+      "venue": "Village East by Angelika"
     },
     {
       "title": "Human Theories",
@@ -2389,15 +2878,25 @@
       "synopsis": "Reminiscent of the indie films of the 90s, the city becomes a main character in and of itself as the film jumps from bedroom to coffee shop to brownstone steps, peeking into the humorous lives of everyday people (and some not-so-everyday individuals) as they take on the awkward struggle of modern city living. Human Theories is a love letter to the folks who are just trying to exist and the beautiful city they exist in.—Faridah Gbadamosi",
       "screenings": [
         {
+          "date": "2026-06-06",
+          "time": "2:30 PM",
+          "venue": "Village East by Angelika"
+        },
+        {
+          "date": "2026-06-07",
+          "time": "12:00 PM",
+          "venue": "Village East by Angelika"
+        },
+        {
           "date": "2026-06-14",
-          "venue": "Theater 7",
-          "time": "05:00 PM"
+          "time": "5:00 PM",
+          "venue": "Village East by Angelika"
         }
       ],
-      "day": "2026-06-14",
-      "date": "2026-06-14",
-      "time": "05:00 PM",
-      "venue": "Theater 7"
+      "day": "2026-06-06",
+      "date": "2026-06-06",
+      "time": "2:30 PM",
+      "venue": "Village East by Angelika"
     },
     {
       "title": "Matininó",
@@ -2414,19 +2913,24 @@
       "screenings": [
         {
           "date": "2026-06-04",
-          "venue": "Theater 2",
-          "time": "08:15 PM"
+          "time": "8:15 PM",
+          "venue": "Village East by Angelika"
         },
         {
           "date": "2026-06-05",
-          "venue": "Theater 3",
-          "time": "05:45 PM"
+          "time": "5:45 PM",
+          "venue": "AMC 19th St. East 6"
+        },
+        {
+          "date": "2026-06-06",
+          "time": "9:00 PM",
+          "venue": "AMC 19th St. East 6"
         }
       ],
       "day": "2026-06-04",
       "date": "2026-06-04",
-      "time": "08:15 PM",
-      "venue": "Theater 2"
+      "time": "8:15 PM",
+      "venue": "Village East by Angelika"
     },
     {
       "title": "Micronations",
@@ -2443,19 +2947,24 @@
       "screenings": [
         {
           "date": "2026-06-05",
-          "venue": "Theater 3",
-          "time": "05:45 PM"
+          "time": "5:45 PM",
+          "venue": "Village East by Angelika"
+        },
+        {
+          "date": "2026-06-06",
+          "time": "3:00 PM",
+          "venue": "Village East by Angelika"
         },
         {
           "date": "2026-06-11",
-          "venue": "Theater 1",
-          "time": "05:15 PM"
+          "time": "5:15 PM",
+          "venue": "AMC 19th St. East 6"
         }
       ],
       "day": "2026-06-05",
       "date": "2026-06-05",
-      "time": "05:45 PM",
-      "venue": "Theater 3"
+      "time": "5:45 PM",
+      "venue": "Village East by Angelika"
     },
     {
       "title": "One Woman One Bra",
@@ -2472,19 +2981,24 @@
       "screenings": [
         {
           "date": "2026-06-05",
-          "venue": "Theater 4",
-          "time": "06:00 PM"
+          "time": "6:00 PM",
+          "venue": "Village East by Angelika"
+        },
+        {
+          "date": "2026-06-06",
+          "time": "2:15 PM",
+          "venue": "AMC 19th St. East 6"
         },
         {
           "date": "2026-06-12",
-          "venue": "Theater 3",
-          "time": "08:45 PM"
+          "time": "8:45 PM",
+          "venue": "AMC 19th St. East 6"
         }
       ],
       "day": "2026-06-05",
       "date": "2026-06-05",
-      "time": "06:00 PM",
-      "venue": "Theater 4"
+      "time": "6:00 PM",
+      "venue": "Village East by Angelika"
     },
     {
       "title": "Something You Should Know About Me",
@@ -2500,25 +3014,30 @@
       "synopsis": "",
       "screenings": [
         {
+          "date": "2026-06-06",
+          "time": "2:00 PM",
+          "venue": "Village East by Angelika"
+        },
+        {
           "date": "2026-06-07",
-          "venue": "Theater 6",
-          "time": "05:00 PM"
+          "time": "5:00 PM",
+          "venue": "AMC 19th St. East 6"
         },
         {
           "date": "2026-06-13",
-          "venue": "Theater 3",
-          "time": "08:45 PM"
+          "time": "8:45 PM",
+          "venue": "Village East by Angelika"
         },
         {
           "date": "2026-06-14",
-          "venue": "Theater 3",
-          "time": "05:45 PM"
+          "time": "5:45 PM",
+          "venue": "AMC 19th St. East 6"
         }
       ],
-      "day": "2026-06-07",
-      "date": "2026-06-07",
-      "time": "05:00 PM",
-      "venue": "Theater 6"
+      "day": "2026-06-06",
+      "date": "2026-06-06",
+      "time": "2:00 PM",
+      "venue": "Village East by Angelika"
     },
     {
       "title": "The Keeper of the Camphor Tree",
@@ -2535,24 +3054,24 @@
       "screenings": [
         {
           "date": "2026-06-05",
-          "venue": "Theater 1",
-          "time": "08:15 PM"
+          "time": "8:15 PM",
+          "venue": "AMC 19th St. East 6"
         },
         {
           "date": "2026-06-06",
-          "venue": "Theater 5",
-          "time": "06:15 PM"
+          "time": "6:15 PM",
+          "venue": "AMC 19th St. East 6"
         },
         {
           "date": "2026-06-09",
-          "venue": "Theater 6",
-          "time": "05:00 PM"
+          "time": "5:00 PM",
+          "venue": "AMC 19th St. East 6"
         }
       ],
       "day": "2026-06-05",
       "date": "2026-06-05",
-      "time": "08:15 PM",
-      "venue": "Theater 1"
+      "time": "8:15 PM",
+      "venue": "AMC 19th St. East 6"
     },
     {
       "title": "The Man Will Burn",
@@ -2569,14 +3088,19 @@
       "screenings": [
         {
           "date": "2026-06-09",
-          "venue": "Beatrice",
-          "time": "05:30 PM"
+          "time": "5:30 PM",
+          "venue": "SVA Theatre"
+        },
+        {
+          "date": "2026-06-13",
+          "time": "2:45 PM",
+          "venue": "AMC 19th St. East 6"
         }
       ],
       "day": "2026-06-09",
       "date": "2026-06-09",
-      "time": "05:30 PM",
-      "venue": "Beatrice"
+      "time": "5:30 PM",
+      "venue": "SVA Theatre"
     },
     {
       "title": "The Wedding Entertainer (The Tale of Moishe Badhan)",
@@ -2593,14 +3117,24 @@
       "screenings": [
         {
           "date": "2026-06-04",
-          "venue": "Theater 3",
-          "time": "05:45 PM"
+          "time": "5:45 PM",
+          "venue": "Village East by Angelika"
+        },
+        {
+          "date": "2026-06-07",
+          "time": "11:15 AM",
+          "venue": "Village East by Angelika"
+        },
+        {
+          "date": "2026-06-14",
+          "time": "11:15 AM",
+          "venue": "Village East by Angelika"
         }
       ],
       "day": "2026-06-04",
       "date": "2026-06-04",
-      "time": "05:45 PM",
-      "venue": "Theater 3"
+      "time": "5:45 PM",
+      "venue": "Village East by Angelika"
     },
     {
       "title": "Vanishing tracks",
@@ -2617,24 +3151,24 @@
       "screenings": [
         {
           "date": "2026-06-07",
-          "venue": "Theater 1",
-          "time": "05:15 PM"
+          "time": "5:15 PM",
+          "venue": "AMC 19th St. East 6"
         },
         {
           "date": "2026-06-08",
-          "venue": "Theater 6",
-          "time": "05:00 PM"
+          "time": "5:00 PM",
+          "venue": "AMC 19th St. East 6"
         },
         {
           "date": "2026-06-10",
-          "venue": "Theater 6",
-          "time": "08:00 PM"
+          "time": "8:00 PM",
+          "venue": "AMC 19th St. East 6"
         }
       ],
       "day": "2026-06-07",
       "date": "2026-06-07",
-      "time": "05:15 PM",
-      "venue": "Theater 1"
+      "time": "5:15 PM",
+      "venue": "AMC 19th St. East 6"
     },
     {
       "title": "Árru",
@@ -2651,24 +3185,24 @@
       "screenings": [
         {
           "date": "2026-06-04",
-          "venue": "Theater 4",
-          "time": "07:30 PM"
+          "time": "7:30 PM",
+          "venue": "Village East by Angelika"
         },
         {
           "date": "2026-06-05",
-          "venue": "Theater 4",
-          "time": "06:00 PM"
+          "time": "6:00 PM",
+          "venue": "AMC 19th St. East 6"
         },
         {
           "date": "2026-06-11",
-          "venue": "Theater 4",
-          "time": "06:00 PM"
+          "time": "6:00 PM",
+          "venue": "AMC 19th St. East 6"
         }
       ],
       "day": "2026-06-04",
       "date": "2026-06-04",
-      "time": "07:30 PM",
-      "venue": "Theater 4"
+      "time": "7:30 PM",
+      "venue": "Village East by Angelika"
     },
     {
       "title": "Airport BLVD",
@@ -2685,19 +3219,24 @@
       "screenings": [
         {
           "date": "2026-06-05",
-          "venue": "Theater 6",
-          "time": "06:15 PM"
+          "time": "6:15 PM",
+          "venue": "Village East by Angelika"
         },
         {
           "date": "2026-06-06",
-          "venue": "Theater 3",
-          "time": "08:45 PM"
+          "time": "8:45 PM",
+          "venue": "AMC 19th St. East 6"
+        },
+        {
+          "date": "2026-06-10",
+          "time": "9:15 PM",
+          "venue": "AMC 19th St. East 6"
         }
       ],
       "day": "2026-06-05",
       "date": "2026-06-05",
-      "time": "06:15 PM",
-      "venue": "Theater 6"
+      "time": "6:15 PM",
+      "venue": "Village East by Angelika"
     },
     {
       "title": "Caity",
@@ -2714,19 +3253,24 @@
       "screenings": [
         {
           "date": "2026-06-07",
-          "venue": "Theater 1",
-          "time": "08:30 PM"
+          "time": "8:30 PM",
+          "venue": "Village East by Angelika"
         },
         {
           "date": "2026-06-08",
-          "venue": "Theater 2",
-          "time": "05:15 PM"
+          "time": "5:15 PM",
+          "venue": "Village East by Angelika"
+        },
+        {
+          "date": "2026-06-11",
+          "time": "3:15 PM",
+          "venue": "Village East by Angelika"
         }
       ],
       "day": "2026-06-07",
       "date": "2026-06-07",
-      "time": "08:30 PM",
-      "venue": "Theater 1"
+      "time": "8:30 PM",
+      "venue": "Village East by Angelika"
     },
     {
       "title": "Cotton Fever",
@@ -2743,29 +3287,29 @@
       "screenings": [
         {
           "date": "2026-06-05",
-          "venue": "Theater 7",
-          "time": "08:00 PM"
+          "time": "8:00 PM",
+          "venue": "Village East by Angelika"
         },
         {
           "date": "2026-06-06",
-          "venue": "Theater 3",
-          "time": "08:45 PM"
+          "time": "8:45 PM",
+          "venue": "Village East by Angelika"
         },
         {
           "date": "2026-06-13",
-          "venue": "Theater 4",
-          "time": "06:00 PM"
+          "time": "6:00 PM",
+          "venue": "Village East by Angelika"
         },
         {
           "date": "2026-06-14",
-          "venue": "Theater 1",
-          "time": "05:15 PM"
+          "time": "5:15 PM",
+          "venue": "AMC 19th St. East 6"
         }
       ],
       "day": "2026-06-05",
       "date": "2026-06-05",
-      "time": "08:00 PM",
-      "venue": "Theater 7"
+      "time": "8:00 PM",
+      "venue": "Village East by Angelika"
     },
     {
       "title": "Ephemera",
@@ -2782,19 +3326,24 @@
       "screenings": [
         {
           "date": "2026-06-07",
-          "venue": "Theater 7",
-          "time": "05:00 PM"
+          "time": "5:00 PM",
+          "venue": "Village East by Angelika"
         },
         {
           "date": "2026-06-08",
-          "venue": "Theater 4",
-          "time": "06:00 PM"
+          "time": "6:00 PM",
+          "venue": "AMC 19th St. East 6"
+        },
+        {
+          "date": "2026-06-13",
+          "time": "3:15 PM",
+          "venue": "Village East by Angelika"
         }
       ],
       "day": "2026-06-07",
       "date": "2026-06-07",
-      "time": "05:00 PM",
-      "venue": "Theater 7"
+      "time": "5:00 PM",
+      "venue": "Village East by Angelika"
     },
     {
       "title": "Here I'm Alive",
@@ -2811,19 +3360,24 @@
       "screenings": [
         {
           "date": "2026-06-06",
-          "venue": "Beatrice",
-          "time": "08:30 PM"
+          "time": "8:30 PM",
+          "venue": "SVA Theatre"
+        },
+        {
+          "date": "2026-06-07",
+          "time": "9:00 PM",
+          "venue": "Village East by Angelika"
         },
         {
           "date": "2026-06-14",
-          "venue": "Theater 7",
-          "time": "08:00 PM"
+          "time": "8:00 PM",
+          "venue": "Village East by Angelika"
         }
       ],
       "day": "2026-06-06",
       "date": "2026-06-06",
-      "time": "08:30 PM",
-      "venue": "Beatrice"
+      "time": "8:30 PM",
+      "venue": "SVA Theatre"
     },
     {
       "title": "Kingston",
@@ -2840,24 +3394,24 @@
       "screenings": [
         {
           "date": "2026-06-04",
-          "venue": "Theater 1",
-          "time": "05:30 PM"
+          "time": "5:30 PM",
+          "venue": "Village East by Angelika"
         },
         {
           "date": "2026-06-05",
-          "venue": "Theater 5",
-          "time": "06:15 PM"
+          "time": "6:15 PM",
+          "venue": "AMC 19th St. East 6"
         },
         {
           "date": "2026-06-13",
-          "venue": "Theater 2",
-          "time": "05:15 PM"
+          "time": "5:15 PM",
+          "venue": "Village East by Angelika"
         }
       ],
       "day": "2026-06-04",
       "date": "2026-06-04",
-      "time": "05:30 PM",
-      "venue": "Theater 1"
+      "time": "5:30 PM",
+      "venue": "Village East by Angelika"
     },
     {
       "title": "Lucy Schulman",
@@ -2874,14 +3428,24 @@
       "screenings": [
         {
           "date": "2026-06-05",
-          "venue": "Theater 1",
-          "time": "05:30 PM"
+          "time": "5:30 PM",
+          "venue": "Village East by Angelika"
+        },
+        {
+          "date": "2026-06-06",
+          "time": "12:15 PM",
+          "venue": "Village East by Angelika"
+        },
+        {
+          "date": "2026-06-08",
+          "time": "9:15 PM",
+          "venue": "Village East by Angelika"
         }
       ],
       "day": "2026-06-05",
       "date": "2026-06-05",
-      "time": "05:30 PM",
-      "venue": "Theater 1"
+      "time": "5:30 PM",
+      "venue": "Village East by Angelika"
     },
     {
       "title": "Mother Future Self",
@@ -2898,24 +3462,24 @@
       "screenings": [
         {
           "date": "2026-06-05",
-          "venue": "Theater 3",
-          "time": "08:45 PM"
+          "time": "8:45 PM",
+          "venue": "Village East by Angelika"
         },
         {
           "date": "2026-06-06",
-          "venue": "Theater 3",
-          "time": "05:45 PM"
+          "time": "5:45 PM",
+          "venue": "AMC 19th St. East 6"
         },
         {
           "date": "2026-06-14",
-          "venue": "Theater 6",
-          "time": "06:15 PM"
+          "time": "6:15 PM",
+          "venue": "Village East by Angelika"
         }
       ],
       "day": "2026-06-05",
       "date": "2026-06-05",
-      "time": "08:45 PM",
-      "venue": "Theater 3"
+      "time": "8:45 PM",
+      "venue": "Village East by Angelika"
     },
     {
       "title": "Ponderosa",
@@ -2932,24 +3496,24 @@
       "screenings": [
         {
           "date": "2026-06-06",
-          "venue": "Theater 1",
-          "time": "08:30 PM"
+          "time": "8:30 PM",
+          "venue": "Village East by Angelika"
         },
         {
           "date": "2026-06-07",
-          "venue": "Theater 3",
-          "time": "08:45 PM"
+          "time": "8:45 PM",
+          "venue": "Village East by Angelika"
         },
         {
           "date": "2026-06-10",
-          "venue": "Theater 5",
-          "time": "06:15 PM"
+          "time": "6:15 PM",
+          "venue": "AMC 19th St. East 6"
         }
       ],
       "day": "2026-06-06",
       "date": "2026-06-06",
-      "time": "08:30 PM",
-      "venue": "Theater 1"
+      "time": "8:30 PM",
+      "venue": "Village East by Angelika"
     },
     {
       "title": "She Keeps Me Young",
@@ -2966,19 +3530,24 @@
       "screenings": [
         {
           "date": "2026-06-04",
-          "venue": "Theater 1",
-          "time": "08:30 PM"
+          "time": "8:30 PM",
+          "venue": "Village East by Angelika"
         },
         {
           "date": "2026-06-05",
-          "venue": "Theater 2",
-          "time": "08:15 PM"
+          "time": "8:15 PM",
+          "venue": "Village East by Angelika"
+        },
+        {
+          "date": "2026-06-09",
+          "time": "9:15 PM",
+          "venue": "AMC 19th St. East 6"
         }
       ],
       "day": "2026-06-04",
       "date": "2026-06-04",
-      "time": "08:30 PM",
-      "venue": "Theater 1"
+      "time": "8:30 PM",
+      "venue": "Village East by Angelika"
     },
     {
       "title": "Summer of Three",
@@ -2995,19 +3564,24 @@
       "screenings": [
         {
           "date": "2026-06-08",
-          "venue": "Theater 7",
-          "time": "08:00 PM"
+          "time": "8:00 PM",
+          "venue": "Village East by Angelika"
         },
         {
           "date": "2026-06-09",
-          "venue": "Theater 3",
-          "time": "06:00 PM"
+          "time": "6:00 PM",
+          "venue": "AMC 19th St. East 6"
+        },
+        {
+          "date": "2026-06-11",
+          "time": "9:15 PM",
+          "venue": "Village East by Angelika"
         }
       ],
       "day": "2026-06-08",
       "date": "2026-06-08",
-      "time": "08:00 PM",
-      "venue": "Theater 7"
+      "time": "8:00 PM",
+      "venue": "Village East by Angelika"
     },
     {
       "title": "Via Negativa",
@@ -3024,19 +3598,24 @@
       "screenings": [
         {
           "date": "2026-06-05",
-          "venue": "Theater 1",
-          "time": "08:30 PM"
+          "time": "8:30 PM",
+          "venue": "Village East by Angelika"
         },
         {
           "date": "2026-06-06",
-          "venue": "Theater 3",
-          "time": "05:45 PM"
+          "time": "5:45 PM",
+          "venue": "Village East by Angelika"
+        },
+        {
+          "date": "2026-06-09",
+          "time": "2:00 PM",
+          "venue": "Village East by Angelika"
         }
       ],
       "day": "2026-06-05",
       "date": "2026-06-05",
-      "time": "08:30 PM",
-      "venue": "Theater 1"
+      "time": "8:30 PM",
+      "venue": "Village East by Angelika"
     },
     {
       "title": "American Zoo",
@@ -3053,19 +3632,24 @@
       "screenings": [
         {
           "date": "2026-06-04",
-          "venue": "Beatrice",
-          "time": "05:30 PM"
+          "time": "5:30 PM",
+          "venue": "SVA Theatre"
+        },
+        {
+          "date": "2026-06-05",
+          "time": "9:00 PM",
+          "venue": "AMC 19th St. East 6"
         },
         {
           "date": "2026-06-06",
-          "venue": "Theater 4",
-          "time": "06:00 PM"
+          "time": "6:00 PM",
+          "venue": "Village East by Angelika"
         }
       ],
       "day": "2026-06-04",
       "date": "2026-06-04",
-      "time": "05:30 PM",
-      "venue": "Beatrice"
+      "time": "5:30 PM",
+      "venue": "SVA Theatre"
     },
     {
       "title": "Bang My Box: The Robin Byrd Story",
@@ -3082,24 +3666,29 @@
       "screenings": [
         {
           "date": "2026-06-09",
-          "venue": "Silas",
-          "time": "08:00 PM"
+          "time": "8:00 PM",
+          "venue": "SVA Theatre"
         },
         {
           "date": "2026-06-12",
-          "venue": "Theater 7",
-          "time": "05:00 PM"
+          "time": "5:00 PM",
+          "venue": "Village East by Angelika"
         },
         {
           "date": "2026-06-12",
-          "venue": "Theater 2",
-          "time": "08:15 PM"
+          "time": "8:15 PM",
+          "venue": "Village East by Angelika"
+        },
+        {
+          "date": "2026-06-13",
+          "time": "9:00 PM",
+          "venue": "Village East by Angelika"
         }
       ],
       "day": "2026-06-09",
       "date": "2026-06-09",
-      "time": "08:00 PM",
-      "venue": "Silas"
+      "time": "8:00 PM",
+      "venue": "SVA Theatre"
     },
     {
       "title": "Colors of White Rock",
@@ -3116,24 +3705,24 @@
       "screenings": [
         {
           "date": "2026-06-07",
-          "venue": "Theater 2",
-          "time": "05:15 PM"
+          "time": "5:15 PM",
+          "venue": "Village East by Angelika"
         },
         {
           "date": "2026-06-09",
-          "venue": "Theater 1",
-          "time": "05:15 PM"
+          "time": "5:15 PM",
+          "venue": "AMC 19th St. East 6"
         },
         {
           "date": "2026-06-10",
-          "venue": "Theater 6",
-          "time": "05:15 PM"
+          "time": "5:15 PM",
+          "venue": "AMC 19th St. East 6"
         }
       ],
       "day": "2026-06-07",
       "date": "2026-06-07",
-      "time": "05:15 PM",
-      "venue": "Theater 2"
+      "time": "5:15 PM",
+      "venue": "Village East by Angelika"
     },
     {
       "title": "Harvest",
@@ -3150,19 +3739,24 @@
       "screenings": [
         {
           "date": "2026-06-06",
-          "venue": "Theater 6",
-          "time": "06:15 PM"
+          "time": "6:15 PM",
+          "venue": "Village East by Angelika"
+        },
+        {
+          "date": "2026-06-07",
+          "time": "2:45 PM",
+          "venue": "Village East by Angelika"
         },
         {
           "date": "2026-06-09",
-          "venue": "Theater 6",
-          "time": "08:00 PM"
+          "time": "8:00 PM",
+          "venue": "AMC 19th St. East 6"
         }
       ],
       "day": "2026-06-06",
       "date": "2026-06-06",
-      "time": "06:15 PM",
-      "venue": "Theater 6"
+      "time": "6:15 PM",
+      "venue": "Village East by Angelika"
     },
     {
       "title": "Jail Time Records",
@@ -3179,19 +3773,24 @@
       "screenings": [
         {
           "date": "2026-06-06",
-          "venue": "Theater 2",
-          "time": "05:30 PM"
+          "time": "5:30 PM",
+          "venue": "AMC 19th St. East 6"
+        },
+        {
+          "date": "2026-06-07",
+          "time": "2:45 PM",
+          "venue": "AMC 19th St. East 6"
         },
         {
           "date": "2026-06-11",
-          "venue": "Theater 5",
-          "time": "06:15 PM"
+          "time": "6:15 PM",
+          "venue": "AMC 19th St. East 6"
         }
       ],
       "day": "2026-06-06",
       "date": "2026-06-06",
-      "time": "05:30 PM",
-      "venue": "Theater 2"
+      "time": "5:30 PM",
+      "venue": "AMC 19th St. East 6"
     },
     {
       "title": "Jean-Michel",
@@ -3208,19 +3807,24 @@
       "screenings": [
         {
           "date": "2026-06-05",
-          "venue": "Spring Fl. 6",
-          "time": "07:30 PM"
+          "time": "7:30 PM",
+          "venue": "Spring Studios"
+        },
+        {
+          "date": "2026-06-06",
+          "time": "2:15 PM",
+          "venue": "Village East by Angelika"
         },
         {
           "date": "2026-06-13",
-          "venue": "Theater 3",
-          "time": "05:45 PM"
+          "time": "5:45 PM",
+          "venue": "Village East by Angelika"
         }
       ],
       "day": "2026-06-05",
       "date": "2026-06-05",
-      "time": "07:30 PM",
-      "venue": "Spring Fl. 6"
+      "time": "7:30 PM",
+      "venue": "Spring Studios"
     },
     {
       "title": "Kids Like Me",
@@ -3237,19 +3841,24 @@
       "screenings": [
         {
           "date": "2026-06-04",
-          "venue": "Theater 6",
-          "time": "06:15 PM"
+          "time": "6:15 PM",
+          "venue": "Village East by Angelika"
+        },
+        {
+          "date": "2026-06-05",
+          "time": "3:15 PM",
+          "venue": "Village East by Angelika"
         },
         {
           "date": "2026-06-08",
-          "venue": "Theater 6",
-          "time": "06:15 PM"
+          "time": "6:15 PM",
+          "venue": "Village East by Angelika"
         }
       ],
       "day": "2026-06-04",
       "date": "2026-06-04",
-      "time": "06:15 PM",
-      "venue": "Theater 6"
+      "time": "6:15 PM",
+      "venue": "Village East by Angelika"
     },
     {
       "title": "Mexicanamerican",
@@ -3266,24 +3875,24 @@
       "screenings": [
         {
           "date": "2026-06-09",
-          "venue": "Theater 7",
-          "time": "05:00 PM"
+          "time": "5:00 PM",
+          "venue": "Village East by Angelika"
         },
         {
           "date": "2026-06-10",
-          "venue": "Theater 4",
-          "time": "06:00 PM"
+          "time": "6:00 PM",
+          "venue": "Village East by Angelika"
         },
         {
           "date": "2026-06-14",
-          "venue": "Theater 4",
-          "time": "06:00 PM"
+          "time": "6:00 PM",
+          "venue": "Village East by Angelika"
         }
       ],
       "day": "2026-06-09",
       "date": "2026-06-09",
-      "time": "05:00 PM",
-      "venue": "Theater 7"
+      "time": "5:00 PM",
+      "venue": "Village East by Angelika"
     },
     {
       "title": "Retrieval",
@@ -3300,14 +3909,24 @@
       "screenings": [
         {
           "date": "2026-06-04",
-          "venue": "Theater 7",
-          "time": "08:00 PM"
+          "time": "8:00 PM",
+          "venue": "Village East by Angelika"
+        },
+        {
+          "date": "2026-06-05",
+          "time": "9:00 PM",
+          "venue": "Village East by Angelika"
+        },
+        {
+          "date": "2026-06-06",
+          "time": "12:00 PM",
+          "venue": "Village East by Angelika"
         }
       ],
       "day": "2026-06-04",
       "date": "2026-06-04",
-      "time": "08:00 PM",
-      "venue": "Theater 7"
+      "time": "8:00 PM",
+      "venue": "Village East by Angelika"
     },
     {
       "title": "The Gymnasts of Fisherman Colony",
@@ -3324,24 +3943,24 @@
       "screenings": [
         {
           "date": "2026-06-08",
-          "venue": "Beatrice",
-          "time": "05:30 PM"
+          "time": "5:30 PM",
+          "venue": "SVA Theatre"
         },
         {
           "date": "2026-06-09",
-          "venue": "Theater 5",
-          "time": "06:30 PM"
+          "time": "6:30 PM",
+          "venue": "AMC 19th St. East 6"
         },
         {
           "date": "2026-06-12",
-          "venue": "Theater 3",
-          "time": "05:45 PM"
+          "time": "5:45 PM",
+          "venue": "AMC 19th St. East 6"
         }
       ],
       "day": "2026-06-08",
       "date": "2026-06-08",
-      "time": "05:30 PM",
-      "venue": "Beatrice"
+      "time": "5:30 PM",
+      "venue": "SVA Theatre"
     },
     {
       "title": "The Siege of Paradise",
@@ -3358,24 +3977,24 @@
       "screenings": [
         {
           "date": "2026-06-07",
-          "venue": "Theater 7",
-          "time": "08:00 PM"
+          "time": "8:00 PM",
+          "venue": "Village East by Angelika"
         },
         {
           "date": "2026-06-08",
-          "venue": "Theater 4",
-          "time": "06:00 PM"
+          "time": "6:00 PM",
+          "venue": "Village East by Angelika"
         },
         {
           "date": "2026-06-09",
-          "venue": "Theater 3",
-          "time": "08:45 PM"
+          "time": "8:45 PM",
+          "venue": "AMC 19th St. East 6"
         }
       ],
       "day": "2026-06-07",
       "date": "2026-06-07",
-      "time": "08:00 PM",
-      "venue": "Theater 7"
+      "time": "8:00 PM",
+      "venue": "Village East by Angelika"
     },
     {
       "title": "Time Warp",
@@ -3392,24 +4011,24 @@
       "screenings": [
         {
           "date": "2026-06-06",
-          "venue": "Theater 7",
-          "time": "08:15 PM"
+          "time": "8:15 PM",
+          "venue": "Village East by Angelika"
         },
         {
           "date": "2026-06-08",
-          "venue": "",
-          "time": "08:30 PM"
+          "time": "8:30 PM",
+          "venue": "Spring Studios"
         },
         {
           "date": "2026-06-13",
-          "venue": "Theater 2",
-          "time": "08:15 PM"
+          "time": "8:15 PM",
+          "venue": "Village East by Angelika"
         }
       ],
       "day": "2026-06-06",
       "date": "2026-06-06",
-      "time": "08:15 PM",
-      "venue": "Theater 7"
+      "time": "8:15 PM",
+      "venue": "Village East by Angelika"
     },
     {
       "title": "Against the Flow",
@@ -3425,20 +4044,25 @@
       "synopsis": "",
       "screenings": [
         {
+          "date": "2026-06-07",
+          "time": "2:30 PM",
+          "venue": "AMC 19th St. East 6"
+        },
+        {
           "date": "2026-06-09",
-          "venue": "Theater 4",
-          "time": "06:30 PM"
+          "time": "6:30 PM",
+          "venue": "AMC 19th St. East 6"
         },
         {
           "date": "2026-06-12",
-          "venue": "Theater 6",
-          "time": "08:00 PM"
+          "time": "8:00 PM",
+          "venue": "AMC 19th St. East 6"
         }
       ],
-      "day": "2026-06-09",
-      "date": "2026-06-09",
-      "time": "06:30 PM",
-      "venue": "Theater 4"
+      "day": "2026-06-07",
+      "date": "2026-06-07",
+      "time": "2:30 PM",
+      "venue": "AMC 19th St. East 6"
     },
     {
       "title": "Funk",
@@ -3455,14 +4079,24 @@
       "screenings": [
         {
           "date": "2026-06-05",
-          "venue": "Theater 2",
-          "time": "08:30 PM"
+          "time": "8:30 PM",
+          "venue": "AMC 19th St. East 6"
+        },
+        {
+          "date": "2026-06-06",
+          "time": "9:15 PM",
+          "venue": "AMC 19th St. East 6"
+        },
+        {
+          "date": "2026-06-08",
+          "time": "9:00 PM",
+          "venue": "Village East by Angelika"
         }
       ],
       "day": "2026-06-05",
       "date": "2026-06-05",
-      "time": "08:30 PM",
-      "venue": "Theater 2"
+      "time": "8:30 PM",
+      "venue": "AMC 19th St. East 6"
     },
     {
       "title": "I Spy With My Little Eye",
@@ -3478,20 +4112,25 @@
       "synopsis": "",
       "screenings": [
         {
+          "date": "2026-06-07",
+          "time": "2:15 PM",
+          "venue": "AMC 19th St. East 6"
+        },
+        {
           "date": "2026-06-09",
-          "venue": "Theater 1",
-          "time": "08:15 PM"
+          "time": "8:15 PM",
+          "venue": "AMC 19th St. East 6"
         },
         {
           "date": "2026-06-11",
-          "venue": "Theater 3",
-          "time": "08:45 PM"
+          "time": "8:45 PM",
+          "venue": "AMC 19th St. East 6"
         }
       ],
-      "day": "2026-06-09",
-      "date": "2026-06-09",
-      "time": "08:15 PM",
-      "venue": "Theater 1"
+      "day": "2026-06-07",
+      "date": "2026-06-07",
+      "time": "2:15 PM",
+      "venue": "AMC 19th St. East 6"
     },
     {
       "title": "Labrador — Autopsy of Silence",
@@ -3508,19 +4147,24 @@
       "screenings": [
         {
           "date": "2026-06-06",
-          "venue": "Theater 2",
-          "time": "08:30 PM"
+          "time": "8:30 PM",
+          "venue": "AMC 19th St. East 6"
         },
         {
           "date": "2026-06-07",
-          "venue": "Theater 1",
-          "time": "08:15 PM"
+          "time": "8:15 PM",
+          "venue": "AMC 19th St. East 6"
+        },
+        {
+          "date": "2026-06-08",
+          "time": "9:00 PM",
+          "venue": "AMC 19th St. East 6"
         }
       ],
       "day": "2026-06-06",
       "date": "2026-06-06",
-      "time": "08:30 PM",
-      "venue": "Theater 2"
+      "time": "8:30 PM",
+      "venue": "AMC 19th St. East 6"
     },
     {
       "title": "Memorizu",
@@ -3537,24 +4181,24 @@
       "screenings": [
         {
           "date": "2026-06-06",
-          "venue": "Theater 2",
-          "time": "08:15 PM"
+          "time": "8:15 PM",
+          "venue": "Village East by Angelika"
         },
         {
           "date": "2026-06-07",
-          "venue": "Theater 5",
-          "time": "06:30 PM"
+          "time": "6:30 PM",
+          "venue": "AMC 19th St. East 6"
         },
         {
           "date": "2026-06-13",
-          "venue": "Theater 4",
-          "time": "06:00 PM"
+          "time": "6:00 PM",
+          "venue": "AMC 19th St. East 6"
         }
       ],
       "day": "2026-06-06",
       "date": "2026-06-06",
-      "time": "08:15 PM",
-      "venue": "Theater 2"
+      "time": "8:15 PM",
+      "venue": "Village East by Angelika"
     },
     {
       "title": "Sad Girlz",
@@ -3571,19 +4215,24 @@
       "screenings": [
         {
           "date": "2026-06-04",
-          "venue": "Theater 2",
-          "time": "05:15 PM"
+          "time": "5:15 PM",
+          "venue": "Village East by Angelika"
+        },
+        {
+          "date": "2026-06-05",
+          "time": "9:15 PM",
+          "venue": "AMC 19th St. East 6"
         },
         {
           "date": "2026-06-12",
-          "venue": "Theater 4",
-          "time": "06:00 PM"
+          "time": "6:00 PM",
+          "venue": "AMC 19th St. East 6"
         }
       ],
       "day": "2026-06-04",
       "date": "2026-06-04",
-      "time": "05:15 PM",
-      "venue": "Theater 2"
+      "time": "5:15 PM",
+      "venue": "Village East by Angelika"
     },
     {
       "title": "Skateboarding Is Not for Girls",
@@ -3600,24 +4249,24 @@
       "screenings": [
         {
           "date": "2026-06-04",
-          "venue": "Theater 1",
-          "time": "08:15 PM"
+          "time": "8:15 PM",
+          "venue": "AMC 19th St. East 6"
         },
         {
           "date": "2026-06-05",
-          "venue": "Theater 6",
-          "time": "05:00 PM"
+          "time": "5:00 PM",
+          "venue": "AMC 19th St. East 6"
         },
         {
           "date": "2026-06-06",
-          "venue": "Theater 6",
-          "time": "08:00 PM"
+          "time": "8:00 PM",
+          "venue": "AMC 19th St. East 6"
         }
       ],
       "day": "2026-06-04",
       "date": "2026-06-04",
-      "time": "08:15 PM",
-      "venue": "Theater 1"
+      "time": "8:15 PM",
+      "venue": "AMC 19th St. East 6"
     },
     {
       "title": "Stand Up",
@@ -3631,11 +4280,27 @@
       "language": "Dutch, English",
       "premiere": "World Premiere",
       "synopsis": "Vera is a normal, party-loving, bike-riding, risk-taking 23-year-old woman — until one night when she gets in an accident on her way home from a night out. The next time she wakes up, she has one less leg than she started with. As she struggles to cope with her new reality as a disabled person, she meets Xander, another young, wheelchair-bound person who rolls with a big posse of differently-abled people and an even bigger attitude. Stuck between two worlds, her able-bodied friends and Xander’s new group, Vera must figure out where she fits in now or forge an entirely new path of her own.",
-      "screenings": [],
-      "day": "",
-      "date": "",
-      "time": "",
-      "venue": ""
+      "screenings": [
+        {
+          "date": "2026-06-06",
+          "time": "3:15 PM",
+          "venue": "Village East by Angelika"
+        },
+        {
+          "date": "2026-06-07",
+          "time": "12:15 PM",
+          "venue": "Village East by Angelika"
+        },
+        {
+          "date": "2026-06-09",
+          "time": "3:15 PM",
+          "venue": "Village East by Angelika"
+        }
+      ],
+      "day": "2026-06-06",
+      "date": "2026-06-06",
+      "time": "3:15 PM",
+      "venue": "Village East by Angelika"
     },
     {
       "title": "Summer War",
@@ -3652,24 +4317,24 @@
       "screenings": [
         {
           "date": "2026-06-07",
-          "venue": "Theater 2",
-          "time": "05:30 PM"
+          "time": "5:30 PM",
+          "venue": "AMC 19th St. East 6"
         },
         {
           "date": "2026-06-08",
-          "venue": "Theater 1",
-          "time": "05:15 PM"
+          "time": "5:15 PM",
+          "venue": "AMC 19th St. East 6"
         },
         {
           "date": "2026-06-12",
-          "venue": "Theater 6",
-          "time": "05:00 PM"
+          "time": "5:00 PM",
+          "venue": "AMC 19th St. East 6"
         }
       ],
       "day": "2026-06-07",
       "date": "2026-06-07",
-      "time": "05:30 PM",
-      "venue": "Theater 2"
+      "time": "5:30 PM",
+      "venue": "AMC 19th St. East 6"
     },
     {
       "title": "The Tropic Sun and His Eyes",
@@ -3686,24 +4351,24 @@
       "screenings": [
         {
           "date": "2026-06-05",
-          "venue": "Theater 2",
-          "time": "05:30 PM"
+          "time": "5:30 PM",
+          "venue": "AMC 19th St. East 6"
         },
         {
           "date": "2026-06-06",
-          "venue": "Theater 1",
-          "time": "05:15 PM"
+          "time": "5:15 PM",
+          "venue": "AMC 19th St. East 6"
         },
         {
           "date": "2026-06-11",
-          "venue": "Theater 6",
-          "time": "08:00 PM"
+          "time": "8:00 PM",
+          "venue": "AMC 19th St. East 6"
         }
       ],
       "day": "2026-06-05",
       "date": "2026-06-05",
-      "time": "05:30 PM",
-      "venue": "Theater 2"
+      "time": "5:30 PM",
+      "venue": "AMC 19th St. East 6"
     },
     {
       "title": "What Is to Come",
@@ -3720,24 +4385,24 @@
       "screenings": [
         {
           "date": "2026-06-08",
-          "venue": "Theater 2",
-          "time": "05:30 PM"
+          "time": "5:30 PM",
+          "venue": "AMC 19th St. East 6"
         },
         {
           "date": "2026-06-09",
-          "venue": "Theater 4",
-          "time": "06:00 PM"
+          "time": "6:00 PM",
+          "venue": "Village East by Angelika"
         },
         {
           "date": "2026-06-10",
-          "venue": "Theater 1",
-          "time": "08:15 PM"
+          "time": "8:15 PM",
+          "venue": "AMC 19th St. East 6"
         }
       ],
       "day": "2026-06-08",
       "date": "2026-06-08",
-      "time": "05:30 PM",
-      "venue": "Theater 2"
+      "time": "5:30 PM",
+      "venue": "AMC 19th St. East 6"
     },
     {
       "title": "Zejtune",
@@ -3753,15 +4418,25 @@
       "synopsis": "With the death of her estranged mother and a sudden inheritance of three plots of land across Malta and its surrounding islands, Mar (Michela Farrugia) might finally have the means to sever ties with her homeland once and for all. To sell the land, she must quickly locate the plots and stake a physical claim or she risks challenges from her relatives. In need of a guide, Mar enlists local troubadour Nenu (Nenu Borg), a charismatic, roguish octogenarian whose knowledge of the region is invaluable. As the unlikely duo travels together across the dusty terrain and under the warm sun, emptying bottles and singing songs, Mar finds her bitterness gradually dissipating.",
       "screenings": [
         {
+          "date": "2026-06-06",
+          "time": "2:30 PM",
+          "venue": "AMC 19th St. East 6"
+        },
+        {
+          "date": "2026-06-07",
+          "time": "3:00 PM",
+          "venue": "Village East by Angelika"
+        },
+        {
           "date": "2026-06-11",
-          "venue": "Theater 6",
-          "time": "05:00 PM"
+          "time": "5:00 PM",
+          "venue": "AMC 19th St. East 6"
         }
       ],
-      "day": "2026-06-11",
-      "date": "2026-06-11",
-      "time": "05:00 PM",
-      "venue": "Theater 6"
+      "day": "2026-06-06",
+      "date": "2026-06-06",
+      "time": "2:30 PM",
+      "venue": "AMC 19th St. East 6"
     },
     {
       "title": "9/11: Reunited",
@@ -3778,14 +4453,14 @@
       "screenings": [
         {
           "date": "2026-06-13",
-          "venue": "Spring Fl. 6",
-          "time": "05:00 PM"
+          "time": "5:00 PM",
+          "venue": "Spring Studios"
         }
       ],
       "day": "2026-06-13",
       "date": "2026-06-13",
-      "time": "05:00 PM",
-      "venue": "Spring Fl. 6"
+      "time": "5:00 PM",
+      "venue": "Spring Studios"
     },
     {
       "title": "Bound: 30th Anniversary",
@@ -3802,14 +4477,14 @@
       "screenings": [
         {
           "date": "2026-06-07",
-          "venue": "Spring Fl. 6",
-          "time": "08:15 PM"
+          "time": "8:15 PM",
+          "venue": "Spring Studios"
         }
       ],
       "day": "2026-06-07",
       "date": "2026-06-07",
-      "time": "08:15 PM",
-      "venue": "Spring Fl. 6"
+      "time": "8:15 PM",
+      "venue": "Spring Studios"
     },
     {
       "title": "Bridget Jones's Diary with Renee Zellweger and Sharon Maguire",
@@ -3826,14 +4501,14 @@
       "screenings": [
         {
           "date": "2026-06-12",
-          "venue": "BMCC TPAC",
-          "time": "08:15 PM"
+          "time": "8:15 PM",
+          "venue": "OKX Theater at BMCC TPAC"
         }
       ],
       "day": "2026-06-12",
       "date": "2026-06-12",
-      "time": "08:15 PM",
-      "venue": "BMCC TPAC"
+      "time": "8:15 PM",
+      "venue": "OKX Theater at BMCC TPAC"
     },
     {
       "title": "Daft Punk's Electroma: 4k Remaster and 20th Anniversary",
@@ -3850,14 +4525,14 @@
       "screenings": [
         {
           "date": "2026-06-08",
-          "venue": "Beatrice",
-          "time": "08:30 PM"
+          "time": "8:30 PM",
+          "venue": "SVA Theatre"
         }
       ],
       "day": "2026-06-08",
       "date": "2026-06-08",
-      "time": "08:30 PM",
-      "venue": "Beatrice"
+      "time": "8:30 PM",
+      "venue": "SVA Theatre"
     },
     {
       "title": "Small Town Gay Bar",
@@ -3874,14 +4549,14 @@
       "screenings": [
         {
           "date": "2026-06-08",
-          "venue": "Theater 2",
-          "time": "08:30 PM"
+          "time": "8:30 PM",
+          "venue": "AMC 19th St. East 6"
         }
       ],
       "day": "2026-06-08",
       "date": "2026-06-08",
-      "time": "08:30 PM",
-      "venue": "Theater 2"
+      "time": "8:30 PM",
+      "venue": "AMC 19th St. East 6"
     },
     {
       "title": "Taxi Driver",
@@ -3898,14 +4573,14 @@
       "screenings": [
         {
           "date": "2026-06-05",
-          "venue": "BMCC TPAC",
-          "time": "08:00 PM"
+          "time": "8:00 PM",
+          "venue": "OKX Theater at BMCC TPAC"
         }
       ],
       "day": "2026-06-05",
       "date": "2026-06-05",
-      "time": "08:00 PM",
-      "venue": "BMCC TPAC"
+      "time": "8:00 PM",
+      "venue": "OKX Theater at BMCC TPAC"
     },
     {
       "title": "Dear England",
@@ -3922,14 +4597,14 @@
       "screenings": [
         {
           "date": "2026-06-12",
-          "venue": "Beatrice",
-          "time": "05:30 PM"
+          "time": "5:30 PM",
+          "venue": "SVA Theatre"
         }
       ],
       "day": "2026-06-12",
       "date": "2026-06-12",
-      "time": "05:30 PM",
-      "venue": "Beatrice"
+      "time": "5:30 PM",
+      "venue": "SVA Theatre"
     },
     {
       "title": "ESPN Deportes, ESPN, & Tribeca Studios Presents: 13.4 Seconds To Nowhere + Shooting Stars: The Adrián Solano Story",
@@ -3946,14 +4621,14 @@
       "screenings": [
         {
           "date": "2026-06-12",
-          "venue": "Theater 2",
-          "time": "05:30 PM"
+          "time": "5:30 PM",
+          "venue": "AMC 19th St. East 6"
         }
       ],
       "day": "2026-06-12",
       "date": "2026-06-12",
-      "time": "05:30 PM",
-      "venue": "Theater 2"
+      "time": "5:30 PM",
+      "venue": "AMC 19th St. East 6"
     },
     {
       "title": "Fueled by the Future",
@@ -3970,14 +4645,14 @@
       "screenings": [
         {
           "date": "2026-06-07",
-          "venue": "Roxy",
-          "time": "05:00 PM"
+          "time": "5:00 PM",
+          "venue": ""
         }
       ],
       "day": "2026-06-07",
       "date": "2026-06-07",
-      "time": "05:00 PM",
-      "venue": "Roxy"
+      "time": "5:00 PM",
+      "venue": ""
     },
     {
       "title": "Not A Very Good Murderer/The Palladino Files Event",
@@ -3994,14 +4669,14 @@
       "screenings": [
         {
           "date": "2026-06-10",
-          "venue": "Spring Fl. 6",
-          "time": "05:30 PM"
+          "time": "5:30 PM",
+          "venue": "Spring Studios"
         }
       ],
       "day": "2026-06-10",
       "date": "2026-06-10",
-      "time": "05:30 PM",
-      "venue": "Spring Fl. 6"
+      "time": "5:30 PM",
+      "venue": "Spring Studios"
     },
     {
       "title": "Vital Stories Premiere",
@@ -4016,9 +4691,9 @@
       "premiere": "",
       "synopsis": "",
       "screenings": [],
-      "day": "",
+      "day": "TBD",
       "date": "",
-      "time": "",
+      "time": "TBD",
       "venue": ""
     },
     {
@@ -4036,14 +4711,14 @@
       "screenings": [
         {
           "date": "2026-06-10",
-          "venue": "BMCC TPAC",
-          "time": "06:00 PM"
+          "time": "6:00 PM",
+          "venue": "OKX Theater at BMCC TPAC"
         }
       ],
       "day": "2026-06-10",
       "date": "2026-06-10",
-      "time": "06:00 PM",
-      "venue": "BMCC TPAC"
+      "time": "6:00 PM",
+      "venue": "OKX Theater at BMCC TPAC"
     },
     {
       "title": "Storytellers - Finneas with Anthony WIllis",
@@ -4060,14 +4735,14 @@
       "screenings": [
         {
           "date": "2026-06-09",
-          "venue": "Spring Fl. 6",
-          "time": "08:00 PM"
+          "time": "8:00 PM",
+          "venue": "Spring Studios"
         }
       ],
       "day": "2026-06-09",
       "date": "2026-06-09",
-      "time": "08:00 PM",
-      "venue": "Spring Fl. 6"
+      "time": "8:00 PM",
+      "venue": "Spring Studios"
     },
     {
       "title": "Storytellers - Keke Palmer with Whoopi Goldberg",
@@ -4084,14 +4759,14 @@
       "screenings": [
         {
           "date": "2026-06-08",
-          "venue": "Silas",
-          "time": "06:00 PM"
+          "time": "6:00 PM",
+          "venue": "SVA Theatre"
         }
       ],
       "day": "2026-06-08",
       "date": "2026-06-08",
-      "time": "06:00 PM",
-      "venue": "Silas"
+      "time": "6:00 PM",
+      "venue": "SVA Theatre"
     },
     {
       "title": "Storytellers - Paul Rudd",
@@ -4108,14 +4783,14 @@
       "screenings": [
         {
           "date": "2026-06-04",
-          "venue": "Spring Fl. 6",
-          "time": "06:00 PM"
+          "time": "6:00 PM",
+          "venue": "Spring Studios"
         }
       ],
       "day": "2026-06-04",
       "date": "2026-06-04",
-      "time": "06:00 PM",
-      "venue": "Spring Fl. 6"
+      "time": "6:00 PM",
+      "venue": "Spring Studios"
     },
     {
       "title": "Storytellers - Sean Penn with Kaitlan Collins",
@@ -4132,14 +4807,14 @@
       "screenings": [
         {
           "date": "2026-06-05",
-          "venue": "Spring Fl. 6",
-          "time": "05:00 PM"
+          "time": "5:00 PM",
+          "venue": "Spring Studios"
         }
       ],
       "day": "2026-06-05",
       "date": "2026-06-05",
-      "time": "05:00 PM",
-      "venue": "Spring Fl. 6"
+      "time": "5:00 PM",
+      "venue": "Spring Studios"
     },
     {
       "title": "Cannonball Live with Wesley Morris",
@@ -4156,14 +4831,14 @@
       "screenings": [
         {
           "date": "2026-06-12",
-          "venue": "Spring Fl. 6",
-          "time": "06:00 PM"
+          "time": "6:00 PM",
+          "venue": "Spring Studios"
         }
       ],
       "day": "2026-06-12",
       "date": "2026-06-12",
-      "time": "06:00 PM",
-      "venue": "Spring Fl. 6"
+      "time": "6:00 PM",
+      "venue": "Spring Studios"
     },
     {
       "title": "Concert & Conversation: Hrishikesh Hirway Moderated By Adam Scott",
@@ -4180,14 +4855,14 @@
       "screenings": [
         {
           "date": "2026-06-13",
-          "venue": "LPR",
-          "time": "07:30 PM"
+          "time": "7:30 PM",
+          "venue": "Le Poisson Rouge"
         }
       ],
       "day": "2026-06-13",
       "date": "2026-06-13",
-      "time": "07:30 PM",
-      "venue": "LPR"
+      "time": "7:30 PM",
+      "venue": "Le Poisson Rouge"
     },
     {
       "title": "Death Sex & Money Live with Guests Peter Dinklage & Erica Schmidt",
@@ -4204,14 +4879,14 @@
       "screenings": [
         {
           "date": "2026-06-10",
-          "venue": "Beatrice",
-          "time": "05:30 PM"
+          "time": "5:30 PM",
+          "venue": "SVA Theatre"
         }
       ],
       "day": "2026-06-10",
       "date": "2026-06-10",
-      "time": "05:30 PM",
-      "venue": "Beatrice"
+      "time": "5:30 PM",
+      "venue": "SVA Theatre"
     },
     {
       "title": "Fashion Neurosis Live with Guest Laurie Anderson",
@@ -4228,14 +4903,19 @@
       "screenings": [
         {
           "date": "2026-06-09",
-          "venue": "Beatrice",
-          "time": "08:30 PM"
+          "time": "12:30 PM",
+          "venue": "SVA Theatre"
+        },
+        {
+          "date": "2026-06-09",
+          "time": "8:30 PM",
+          "venue": "SVA Theatre"
         }
       ],
       "day": "2026-06-09",
       "date": "2026-06-09",
-      "time": "08:30 PM",
-      "venue": "Beatrice"
+      "time": "12:30 PM",
+      "venue": "SVA Theatre"
     },
     {
       "title": "Lemme Say This Live with Guest Sydney Lemmon",
@@ -4252,14 +4932,14 @@
       "screenings": [
         {
           "date": "2026-06-11",
-          "venue": "Silas",
-          "time": "06:00 PM"
+          "time": "6:00 PM",
+          "venue": "SVA Theatre"
         }
       ],
       "day": "2026-06-11",
       "date": "2026-06-11",
-      "time": "06:00 PM",
-      "venue": "Silas"
+      "time": "6:00 PM",
+      "venue": "SVA Theatre"
     },
     {
       "title": "New Yorker Radio Hour Live with David Remnick",
@@ -4276,14 +4956,14 @@
       "screenings": [
         {
           "date": "2026-06-10",
-          "venue": "Spring Fl. 6",
-          "time": "08:15 PM"
+          "time": "8:15 PM",
+          "venue": "Spring Studios"
         }
       ],
       "day": "2026-06-10",
       "date": "2026-06-10",
-      "time": "08:15 PM",
-      "venue": "Spring Fl. 6"
+      "time": "8:15 PM",
+      "venue": "Spring Studios"
     },
     {
       "title": "On With Kara Swisher with Guest Marc Maron",
@@ -4300,14 +4980,14 @@
       "screenings": [
         {
           "date": "2026-06-08",
-          "venue": "Spring Fl. 6",
-          "time": "08:00 PM"
+          "time": "8:00 PM",
+          "venue": "Spring Studios"
         }
       ],
       "day": "2026-06-08",
       "date": "2026-06-08",
-      "time": "08:00 PM",
-      "venue": "Spring Fl. 6"
+      "time": "8:00 PM",
+      "venue": "Spring Studios"
     },
     {
       "title": "Radiolab Live with Latif Nasser & Lulu Miller",
@@ -4324,14 +5004,14 @@
       "screenings": [
         {
           "date": "2026-06-09",
-          "venue": "BMCC TPAC",
-          "time": "06:00 PM"
+          "time": "6:00 PM",
+          "venue": "OKX Theater at BMCC TPAC"
         }
       ],
       "day": "2026-06-09",
       "date": "2026-06-09",
-      "time": "06:00 PM",
-      "venue": "BMCC TPAC"
+      "time": "6:00 PM",
+      "venue": "OKX Theater at BMCC TPAC"
     },
     {
       "title": "2026 Indie TV Documentary Showcase",
@@ -4348,14 +5028,19 @@
       "screenings": [
         {
           "date": "2026-06-04",
-          "venue": "Theater 4",
-          "time": "05:00 PM"
+          "time": "5:00 PM",
+          "venue": "Village East by Angelika"
+        },
+        {
+          "date": "2026-06-06",
+          "time": "2:45 PM",
+          "venue": "Village East by Angelika"
         }
       ],
       "day": "2026-06-04",
       "date": "2026-06-04",
-      "time": "05:00 PM",
-      "venue": "Theater 4"
+      "time": "5:00 PM",
+      "venue": "Village East by Angelika"
     },
     {
       "title": "2026 Indie TV Narrative Showcase",
@@ -4372,19 +5057,24 @@
       "screenings": [
         {
           "date": "2026-06-07",
-          "venue": "",
-          "time": "08:30 PM"
+          "time": "8:30 PM",
+          "venue": "Spring Studios"
         },
         {
           "date": "2026-06-08",
-          "venue": "Theater 5",
-          "time": "06:30 PM"
+          "time": "6:30 PM",
+          "venue": "AMC 19th St. East 6"
+        },
+        {
+          "date": "2026-06-14",
+          "time": "2:15 PM",
+          "venue": "AMC 19th St. East 6"
         }
       ],
       "day": "2026-06-07",
       "date": "2026-06-07",
-      "time": "08:30 PM",
-      "venue": ""
+      "time": "8:30 PM",
+      "venue": "Spring Studios"
     },
     {
       "title": "Tribeca NOW Creators Showcase",
@@ -4401,14 +5091,14 @@
       "screenings": [
         {
           "date": "2026-06-10",
-          "venue": "Theater 2",
-          "time": "08:30 PM"
+          "time": "8:30 PM",
+          "venue": "AMC 19th St. East 6"
         }
       ],
       "day": "2026-06-10",
       "date": "2026-06-10",
-      "time": "08:30 PM",
-      "venue": "Theater 2"
+      "time": "8:30 PM",
+      "venue": "AMC 19th St. East 6"
     },
     {
       "title": "Tribeca NOW Presents: Kareem Rhama’s Keep the Meter Running",
@@ -4425,14 +5115,14 @@
       "screenings": [
         {
           "date": "2026-06-11",
-          "venue": "Theater 2",
-          "time": "05:00 PM"
+          "time": "5:00 PM",
+          "venue": "AMC 19th St. East 6"
         }
       ],
       "day": "2026-06-11",
       "date": "2026-06-11",
-      "time": "05:00 PM",
-      "venue": "Theater 2"
+      "time": "5:00 PM",
+      "venue": "AMC 19th St. East 6"
     },
     {
       "title": "Tribeca NOW Presents: KeyTV’s The Rise and Fall of DivaGurl with Keke Palmer & Lawrence Murray",
@@ -4449,14 +5139,14 @@
       "screenings": [
         {
           "date": "2026-06-07",
-          "venue": "Theater 2",
-          "time": "08:30 PM"
+          "time": "8:30 PM",
+          "venue": "AMC 19th St. East 6"
         }
       ],
       "day": "2026-06-07",
       "date": "2026-06-07",
-      "time": "08:30 PM",
-      "venue": "Theater 2"
+      "time": "8:30 PM",
+      "venue": "AMC 19th St. East 6"
     },
     {
       "title": "Shorts: Animated Shorts curated by Whoopi G",
@@ -4472,15 +5162,20 @@
       "synopsis": "",
       "screenings": [
         {
+          "date": "2026-06-06",
+          "time": "2:30 PM",
+          "venue": "Spring Studios"
+        },
+        {
           "date": "2026-06-13",
-          "venue": "Theater 5",
-          "time": "06:15 PM"
+          "time": "6:15 PM",
+          "venue": "AMC 19th St. East 6"
         }
       ],
-      "day": "2026-06-13",
-      "date": "2026-06-13",
-      "time": "06:15 PM",
-      "venue": "Theater 5"
+      "day": "2026-06-06",
+      "date": "2026-06-06",
+      "time": "2:30 PM",
+      "venue": "Spring Studios"
     },
     {
       "title": "Shorts: Care Package",
@@ -4497,19 +5192,24 @@
       "screenings": [
         {
           "date": "2026-06-06",
-          "venue": "",
-          "time": "05:30 PM"
+          "time": "5:30 PM",
+          "venue": "Spring Studios"
         },
         {
           "date": "2026-06-13",
-          "venue": "Theater 1",
-          "time": "08:15 PM"
+          "time": "8:15 PM",
+          "venue": "AMC 19th St. East 6"
+        },
+        {
+          "date": "2026-06-14",
+          "time": "12:00 PM",
+          "venue": "AMC 19th St. East 6"
         }
       ],
       "day": "2026-06-06",
       "date": "2026-06-06",
-      "time": "05:30 PM",
-      "venue": ""
+      "time": "5:30 PM",
+      "venue": "Spring Studios"
     },
     {
       "title": "Shorts: Competitive Edge",
@@ -4526,19 +5226,24 @@
       "screenings": [
         {
           "date": "2026-06-04",
-          "venue": "",
-          "time": "08:30 PM"
+          "time": "8:30 PM",
+          "venue": "Spring Studios"
         },
         {
           "date": "2026-06-11",
-          "venue": "",
-          "time": "05:30 PM"
+          "time": "5:30 PM",
+          "venue": "Spring Studios"
+        },
+        {
+          "date": "2026-06-13",
+          "time": "2:30 PM",
+          "venue": "AMC 19th St. East 6"
         }
       ],
       "day": "2026-06-04",
       "date": "2026-06-04",
-      "time": "08:30 PM",
-      "venue": ""
+      "time": "8:30 PM",
+      "venue": "Spring Studios"
     },
     {
       "title": "Shorts: Fierce Fashion",
@@ -4555,14 +5260,19 @@
       "screenings": [
         {
           "date": "2026-06-13",
-          "venue": "",
-          "time": "08:30 PM"
+          "time": "8:30 PM",
+          "venue": "Spring Studios"
+        },
+        {
+          "date": "2026-06-14",
+          "time": "2:00 PM",
+          "venue": "Village East by Angelika"
         }
       ],
       "day": "2026-06-13",
       "date": "2026-06-13",
-      "time": "08:30 PM",
-      "venue": ""
+      "time": "8:30 PM",
+      "venue": "Spring Studios"
     },
     {
       "title": "Shorts: Helpline",
@@ -4579,19 +5289,19 @@
       "screenings": [
         {
           "date": "2026-06-04",
-          "venue": "",
-          "time": "05:30 PM"
+          "time": "5:30 PM",
+          "venue": "Spring Studios"
         },
         {
           "date": "2026-06-13",
-          "venue": "Theater 3",
-          "time": "05:45 PM"
+          "time": "5:45 PM",
+          "venue": "AMC 19th St. East 6"
         }
       ],
       "day": "2026-06-04",
       "date": "2026-06-04",
-      "time": "05:30 PM",
-      "venue": ""
+      "time": "5:30 PM",
+      "venue": "Spring Studios"
     },
     {
       "title": "Shorts: Love Fictionally",
@@ -4608,24 +5318,29 @@
       "screenings": [
         {
           "date": "2026-06-05",
-          "venue": "",
-          "time": "08:30 PM"
+          "time": "8:30 PM",
+          "venue": "Spring Studios"
         },
         {
           "date": "2026-06-08",
-          "venue": "",
-          "time": "05:30 PM"
+          "time": "5:30 PM",
+          "venue": "Spring Studios"
         },
         {
           "date": "2026-06-13",
-          "venue": "Theater 2",
-          "time": "08:30 PM"
+          "time": "8:30 PM",
+          "venue": "AMC 19th St. East 6"
+        },
+        {
+          "date": "2026-06-14",
+          "time": "2:00 PM",
+          "venue": "AMC 19th St. East 6"
         }
       ],
       "day": "2026-06-05",
       "date": "2026-06-05",
-      "time": "08:30 PM",
-      "venue": ""
+      "time": "8:30 PM",
+      "venue": "Spring Studios"
     },
     {
       "title": "Shorts: Music Videos",
@@ -4642,14 +5357,14 @@
       "screenings": [
         {
           "date": "2026-06-09",
-          "venue": "",
-          "time": "08:30 PM"
+          "time": "8:30 PM",
+          "venue": "Spring Studios"
         }
       ],
       "day": "2026-06-09",
       "date": "2026-06-09",
-      "time": "08:30 PM",
-      "venue": ""
+      "time": "8:30 PM",
+      "venue": "Spring Studios"
     },
     {
       "title": "Shorts: NY Making It Here",
@@ -4666,19 +5381,24 @@
       "screenings": [
         {
           "date": "2026-06-06",
-          "venue": "Spring Fl. 6",
-          "time": "08:45 PM"
+          "time": "8:45 PM",
+          "venue": "Spring Studios"
         },
         {
           "date": "2026-06-12",
-          "venue": "",
-          "time": "05:30 PM"
+          "time": "5:30 PM",
+          "venue": "Spring Studios"
+        },
+        {
+          "date": "2026-06-13",
+          "time": "3:15 PM",
+          "venue": "AMC 19th St. East 6"
         }
       ],
       "day": "2026-06-06",
       "date": "2026-06-06",
-      "time": "08:45 PM",
-      "venue": "Spring Fl. 6"
+      "time": "8:45 PM",
+      "venue": "Spring Studios"
     },
     {
       "title": "Shorts: Power to the People",
@@ -4694,20 +5414,25 @@
       "synopsis": "Passion and rebellion helped change the world in these short docs.Shorts playing in this program:",
       "screenings": [
         {
+          "date": "2026-06-05",
+          "time": "2:30 PM",
+          "venue": "Spring Studios"
+        },
+        {
           "date": "2026-06-11",
-          "venue": "",
-          "time": "08:30 PM"
+          "time": "8:30 PM",
+          "venue": "Spring Studios"
         },
         {
           "date": "2026-06-13",
-          "venue": "Theater 1",
-          "time": "05:15 PM"
+          "time": "5:15 PM",
+          "venue": "AMC 19th St. East 6"
         }
       ],
-      "day": "2026-06-11",
-      "date": "2026-06-11",
-      "time": "08:30 PM",
-      "venue": ""
+      "day": "2026-06-05",
+      "date": "2026-06-05",
+      "time": "2:30 PM",
+      "venue": "Spring Studios"
     },
     {
       "title": "Shorts: The Dark Web",
@@ -4724,19 +5449,24 @@
       "screenings": [
         {
           "date": "2026-06-06",
-          "venue": "",
-          "time": "08:15 PM"
+          "time": "8:15 PM",
+          "venue": "Spring Studios"
         },
         {
           "date": "2026-06-10",
-          "venue": "",
-          "time": "08:30 PM"
+          "time": "8:30 PM",
+          "venue": "Spring Studios"
+        },
+        {
+          "date": "2026-06-13",
+          "time": "9:15 PM",
+          "venue": "AMC 19th St. East 6"
         }
       ],
       "day": "2026-06-06",
       "date": "2026-06-06",
-      "time": "08:15 PM",
-      "venue": ""
+      "time": "8:15 PM",
+      "venue": "Spring Studios"
     },
     {
       "title": "Shorts: Think Fast",
@@ -4753,19 +5483,24 @@
       "screenings": [
         {
           "date": "2026-06-05",
-          "venue": "",
-          "time": "05:30 PM"
+          "time": "5:30 PM",
+          "venue": "Spring Studios"
         },
         {
           "date": "2026-06-12",
-          "venue": "",
-          "time": "08:30 PM"
+          "time": "8:30 PM",
+          "venue": "Spring Studios"
+        },
+        {
+          "date": "2026-06-13",
+          "time": "2:15 PM",
+          "venue": "AMC 19th St. East 6"
         }
       ],
       "day": "2026-06-05",
       "date": "2026-06-05",
-      "time": "05:30 PM",
-      "venue": ""
+      "time": "5:30 PM",
+      "venue": "Spring Studios"
     },
     {
       "title": "Shorts: Whatever It Takes",
@@ -4781,15 +5516,20 @@
       "synopsis": "Witness personal perseverance in these short docs.Shorts playing in this program:",
       "screenings": [
         {
+          "date": "2026-06-07",
+          "time": "2:30 PM",
+          "venue": "Spring Studios"
+        },
+        {
           "date": "2026-06-13",
-          "venue": "",
-          "time": "05:30 PM"
+          "time": "5:30 PM",
+          "venue": "Spring Studios"
         }
       ],
-      "day": "2026-06-13",
-      "date": "2026-06-13",
-      "time": "05:30 PM",
-      "venue": ""
+      "day": "2026-06-07",
+      "date": "2026-06-07",
+      "time": "2:30 PM",
+      "venue": "Spring Studios"
     },
     {
       "title": "Shorts: Where We Belong",
@@ -4806,19 +5546,19 @@
       "screenings": [
         {
           "date": "2026-06-07",
-          "venue": "",
-          "time": "05:30 PM"
+          "time": "5:30 PM",
+          "venue": "Spring Studios"
         },
         {
           "date": "2026-06-13",
-          "venue": "Theater 2",
-          "time": "05:30 PM"
+          "time": "5:30 PM",
+          "venue": "AMC 19th St. East 6"
         }
       ],
       "day": "2026-06-07",
       "date": "2026-06-07",
-      "time": "05:30 PM",
-      "venue": ""
+      "time": "5:30 PM",
+      "venue": "Spring Studios"
     },
     {
       "title": "Shorts: Whoopi's Wonderful World of Animation",
@@ -4832,11 +5572,22 @@
       "language": "",
       "premiere": "",
       "synopsis": "",
-      "screenings": [],
-      "day": "",
-      "date": "",
-      "time": "",
-      "venue": ""
+      "screenings": [
+        {
+          "date": "2026-06-06",
+          "time": "12:15 PM",
+          "venue": "Spring Studios"
+        },
+        {
+          "date": "2026-06-13",
+          "time": "11:30 AM",
+          "venue": "AMC 19th St. East 6"
+        }
+      ],
+      "day": "2026-06-06",
+      "date": "2026-06-06",
+      "time": "12:15 PM",
+      "venue": "Spring Studios"
     },
     {
       "title": "Ascension",
@@ -4853,14 +5604,14 @@
       "screenings": [
         {
           "date": "2026-06-14",
-          "venue": "Hudson Yards",
-          "time": "07:00 PM"
+          "time": "7:00 PM",
+          "venue": "Hudson Yards Public Square and Gardens"
         }
       ],
       "day": "2026-06-14",
       "date": "2026-06-14",
-      "time": "07:00 PM",
-      "venue": "Hudson Yards"
+      "time": "7:00 PM",
+      "venue": "Hudson Yards Public Square and Gardens"
     },
     {
       "title": "Best of Tribeca Shorts",
@@ -4877,14 +5628,14 @@
       "screenings": [
         {
           "date": "2026-06-06",
-          "venue": "Hudson Yards",
-          "time": "07:00 PM"
+          "time": "7:00 PM",
+          "venue": "Hudson Yards Public Square and Gardens"
         }
       ],
       "day": "2026-06-06",
       "date": "2026-06-06",
-      "time": "07:00 PM",
-      "venue": "Hudson Yards"
+      "time": "7:00 PM",
+      "venue": "Hudson Yards Public Square and Gardens"
     },
     {
       "title": "Dior and I",
@@ -4901,14 +5652,14 @@
       "screenings": [
         {
           "date": "2026-06-09",
-          "venue": "Hudson Yards",
-          "time": "07:00 PM"
+          "time": "7:00 PM",
+          "venue": "Hudson Yards Public Square and Gardens"
         }
       ],
       "day": "2026-06-09",
       "date": "2026-06-09",
-      "time": "07:00 PM",
-      "venue": "Hudson Yards"
+      "time": "7:00 PM",
+      "venue": "Hudson Yards Public Square and Gardens"
     },
     {
       "title": "Guy and Madeline on a Park Bench",
@@ -4925,14 +5676,14 @@
       "screenings": [
         {
           "date": "2026-06-05",
-          "venue": "Hudson Yards",
-          "time": "07:00 PM"
+          "time": "7:00 PM",
+          "venue": "Hudson Yards Public Square and Gardens"
         }
       ],
       "day": "2026-06-05",
       "date": "2026-06-05",
-      "time": "07:00 PM",
-      "venue": "Hudson Yards"
+      "time": "7:00 PM",
+      "venue": "Hudson Yards Public Square and Gardens"
     },
     {
       "title": "Jane Austen's Period Drama",
@@ -4946,11 +5697,17 @@
       "language": "English",
       "premiere": "",
       "synopsis": "",
-      "screenings": [],
-      "day": "",
-      "date": "",
-      "time": "",
-      "venue": ""
+      "screenings": [
+        {
+          "date": "2026-06-06",
+          "time": "7:00 PM",
+          "venue": "Hudson Yards Public Square and Gardens"
+        }
+      ],
+      "day": "2026-06-06",
+      "date": "2026-06-06",
+      "time": "7:00 PM",
+      "venue": "Hudson Yards Public Square and Gardens"
     },
     {
       "title": "Jiro Dreams of Sushi",
@@ -4967,14 +5724,14 @@
       "screenings": [
         {
           "date": "2026-06-07",
-          "venue": "Hudson Yards",
-          "time": "07:00 PM"
+          "time": "7:00 PM",
+          "venue": "Hudson Yards Public Square and Gardens"
         }
       ],
       "day": "2026-06-07",
       "date": "2026-06-07",
-      "time": "07:00 PM",
-      "venue": "Hudson Yards"
+      "time": "7:00 PM",
+      "venue": "Hudson Yards Public Square and Gardens"
     },
     {
       "title": "Let the Right One In",
@@ -4991,14 +5748,14 @@
       "screenings": [
         {
           "date": "2026-06-08",
-          "venue": "Hudson Yards",
-          "time": "07:00 PM"
+          "time": "7:00 PM",
+          "venue": "Hudson Yards Public Square and Gardens"
         }
       ],
       "day": "2026-06-08",
       "date": "2026-06-08",
-      "time": "07:00 PM",
-      "venue": "Hudson Yards"
+      "time": "7:00 PM",
+      "venue": "Hudson Yards Public Square and Gardens"
     },
     {
       "title": "Little Woods",
@@ -5015,14 +5772,14 @@
       "screenings": [
         {
           "date": "2026-06-11",
-          "venue": "Hudson Yards",
-          "time": "07:00 PM"
+          "time": "7:00 PM",
+          "venue": "Hudson Yards Public Square and Gardens"
         }
       ],
       "day": "2026-06-11",
       "date": "2026-06-11",
-      "time": "07:00 PM",
-      "venue": "Hudson Yards"
+      "time": "7:00 PM",
+      "venue": "Hudson Yards Public Square and Gardens"
     },
     {
       "title": "Ripe!",
@@ -5036,11 +5793,17 @@
       "language": "",
       "premiere": "",
       "synopsis": "",
-      "screenings": [],
-      "day": "",
-      "date": "",
-      "time": "",
-      "venue": ""
+      "screenings": [
+        {
+          "date": "2026-06-06",
+          "time": "7:00 PM",
+          "venue": "Hudson Yards Public Square and Gardens"
+        }
+      ],
+      "day": "2026-06-06",
+      "date": "2026-06-06",
+      "time": "7:00 PM",
+      "venue": "Hudson Yards Public Square and Gardens"
     },
     {
       "title": "The Last Play at Shea",
@@ -5057,14 +5820,14 @@
       "screenings": [
         {
           "date": "2026-06-04",
-          "venue": "Hudson Yards",
-          "time": "07:00 PM"
+          "time": "7:00 PM",
+          "venue": "Hudson Yards Public Square and Gardens"
         }
       ],
       "day": "2026-06-04",
       "date": "2026-06-04",
-      "time": "07:00 PM",
-      "venue": "Hudson Yards"
+      "time": "7:00 PM",
+      "venue": "Hudson Yards Public Square and Gardens"
     },
     {
       "title": "The Queen of Basketball",
@@ -5078,11 +5841,17 @@
       "language": "English",
       "premiere": "",
       "synopsis": "",
-      "screenings": [],
-      "day": "",
-      "date": "",
-      "time": "",
-      "venue": ""
+      "screenings": [
+        {
+          "date": "2026-06-06",
+          "time": "7:00 PM",
+          "venue": "Hudson Yards Public Square and Gardens"
+        }
+      ],
+      "day": "2026-06-06",
+      "date": "2026-06-06",
+      "time": "7:00 PM",
+      "venue": "Hudson Yards Public Square and Gardens"
     },
     {
       "title": "The Short History of the Long Road",
@@ -5099,14 +5868,14 @@
       "screenings": [
         {
           "date": "2026-06-13",
-          "venue": "Hudson Yards",
-          "time": "07:00 PM"
+          "time": "7:00 PM",
+          "venue": "Hudson Yards Public Square and Gardens"
         }
       ],
       "day": "2026-06-13",
       "date": "2026-06-13",
-      "time": "07:00 PM",
-      "venue": "Hudson Yards"
+      "time": "7:00 PM",
+      "venue": "Hudson Yards Public Square and Gardens"
     },
     {
       "title": "Virunga",
@@ -5123,14 +5892,14 @@
       "screenings": [
         {
           "date": "2026-06-10",
-          "venue": "Hudson Yards",
-          "time": "07:00 PM"
+          "time": "7:00 PM",
+          "venue": "Hudson Yards Public Square and Gardens"
         }
       ],
       "day": "2026-06-10",
       "date": "2026-06-10",
-      "time": "07:00 PM",
-      "venue": "Hudson Yards"
+      "time": "7:00 PM",
+      "venue": "Hudson Yards Public Square and Gardens"
     },
     {
       "title": "\"Animus Ignis\" - Shawty Sweat",
@@ -5144,11 +5913,17 @@
       "language": "Mandarin Chinese",
       "premiere": "",
       "synopsis": "",
-      "screenings": [],
-      "day": "",
-      "date": "",
-      "time": "",
-      "venue": ""
+      "screenings": [
+        {
+          "date": "2026-06-09",
+          "time": "8:30 PM",
+          "venue": "Spring Studios"
+        }
+      ],
+      "day": "2026-06-09",
+      "date": "2026-06-09",
+      "time": "8:30 PM",
+      "venue": "Spring Studios"
     },
     {
       "title": "\"Archbishop Harold Holmes” - Jack White",
@@ -5162,11 +5937,17 @@
       "language": "English",
       "premiere": "",
       "synopsis": "",
-      "screenings": [],
-      "day": "",
-      "date": "",
-      "time": "",
-      "venue": ""
+      "screenings": [
+        {
+          "date": "2026-06-09",
+          "time": "8:30 PM",
+          "venue": "Spring Studios"
+        }
+      ],
+      "day": "2026-06-09",
+      "date": "2026-06-09",
+      "time": "8:30 PM",
+      "venue": "Spring Studios"
     },
     {
       "title": "\"Beautiful\" - Linda Perry",
@@ -5180,11 +5961,17 @@
       "language": "English",
       "premiere": "",
       "synopsis": "",
-      "screenings": [],
-      "day": "",
-      "date": "",
-      "time": "",
-      "venue": ""
+      "screenings": [
+        {
+          "date": "2026-06-09",
+          "time": "8:30 PM",
+          "venue": "Spring Studios"
+        }
+      ],
+      "day": "2026-06-09",
+      "date": "2026-06-09",
+      "time": "8:30 PM",
+      "venue": "Spring Studios"
     },
     {
       "title": "\"Elegantly Wasted\" - Hermanos Gutiérrez x Leon Bridges",
@@ -5198,11 +5985,17 @@
       "language": "English",
       "premiere": "New York Premiere",
       "synopsis": "",
-      "screenings": [],
-      "day": "",
-      "date": "",
-      "time": "",
-      "venue": ""
+      "screenings": [
+        {
+          "date": "2026-06-09",
+          "time": "8:30 PM",
+          "venue": "Spring Studios"
+        }
+      ],
+      "day": "2026-06-09",
+      "date": "2026-06-09",
+      "time": "8:30 PM",
+      "venue": "Spring Studios"
     },
     {
       "title": "\"Everyone’s A Star\" - 5 Seconds of Summer",
@@ -5216,11 +6009,17 @@
       "language": "English",
       "premiere": "World Premiere",
       "synopsis": "",
-      "screenings": [],
-      "day": "",
-      "date": "",
-      "time": "",
-      "venue": ""
+      "screenings": [
+        {
+          "date": "2026-06-09",
+          "time": "8:30 PM",
+          "venue": "Spring Studios"
+        }
+      ],
+      "day": "2026-06-09",
+      "date": "2026-06-09",
+      "time": "8:30 PM",
+      "venue": "Spring Studios"
     },
     {
       "title": "\"Fingers Crossed\" - The Moth & The Flame",
@@ -5234,11 +6033,17 @@
       "language": "English",
       "premiere": "World Premiere",
       "synopsis": "",
-      "screenings": [],
-      "day": "",
-      "date": "",
-      "time": "",
-      "venue": ""
+      "screenings": [
+        {
+          "date": "2026-06-09",
+          "time": "8:30 PM",
+          "venue": "Spring Studios"
+        }
+      ],
+      "day": "2026-06-09",
+      "date": "2026-06-09",
+      "time": "8:30 PM",
+      "venue": "Spring Studios"
     },
     {
       "title": "\"Grave\" - Kid Cudi",
@@ -5252,11 +6057,17 @@
       "language": "English",
       "premiere": "World Premiere",
       "synopsis": "",
-      "screenings": [],
-      "day": "",
-      "date": "",
-      "time": "",
-      "venue": ""
+      "screenings": [
+        {
+          "date": "2026-06-09",
+          "time": "8:30 PM",
+          "venue": "Spring Studios"
+        }
+      ],
+      "day": "2026-06-09",
+      "date": "2026-06-09",
+      "time": "8:30 PM",
+      "venue": "Spring Studios"
     },
     {
       "title": "\"Kill Me Fast\" - Three Days Grace",
@@ -5270,11 +6081,17 @@
       "language": "English",
       "premiere": "",
       "synopsis": "",
-      "screenings": [],
-      "day": "",
-      "date": "",
-      "time": "",
-      "venue": ""
+      "screenings": [
+        {
+          "date": "2026-06-09",
+          "time": "8:30 PM",
+          "venue": "Spring Studios"
+        }
+      ],
+      "day": "2026-06-09",
+      "date": "2026-06-09",
+      "time": "8:30 PM",
+      "venue": "Spring Studios"
     },
     {
       "title": "\"Long Way To Go\" - The What Four",
@@ -5288,11 +6105,17 @@
       "language": "English",
       "premiere": "",
       "synopsis": "",
-      "screenings": [],
-      "day": "",
-      "date": "",
-      "time": "",
-      "venue": ""
+      "screenings": [
+        {
+          "date": "2026-06-09",
+          "time": "8:30 PM",
+          "venue": "Spring Studios"
+        }
+      ],
+      "day": "2026-06-09",
+      "date": "2026-06-09",
+      "time": "8:30 PM",
+      "venue": "Spring Studios"
     },
     {
       "title": "\"Mr Electric Blue\" - Benson Boone",
@@ -5306,11 +6129,17 @@
       "language": "English",
       "premiere": "",
       "synopsis": "",
-      "screenings": [],
-      "day": "",
-      "date": "",
-      "time": "",
-      "venue": ""
+      "screenings": [
+        {
+          "date": "2026-06-09",
+          "time": "8:30 PM",
+          "venue": "Spring Studios"
+        }
+      ],
+      "day": "2026-06-09",
+      "date": "2026-06-09",
+      "time": "8:30 PM",
+      "venue": "Spring Studios"
     },
     {
       "title": "\"NEW YORK IS DEAD\" - LP Giobbi feat. little boots",
@@ -5324,11 +6153,17 @@
       "language": "English",
       "premiere": "World Premiere",
       "synopsis": "",
-      "screenings": [],
-      "day": "",
-      "date": "",
-      "time": "",
-      "venue": ""
+      "screenings": [
+        {
+          "date": "2026-06-09",
+          "time": "8:30 PM",
+          "venue": "Spring Studios"
+        }
+      ],
+      "day": "2026-06-09",
+      "date": "2026-06-09",
+      "time": "8:30 PM",
+      "venue": "Spring Studios"
     },
     {
       "title": "32 B",
@@ -5342,11 +6177,27 @@
       "language": "Arabic",
       "premiere": "",
       "synopsis": "",
-      "screenings": [],
-      "day": "",
-      "date": "",
-      "time": "",
-      "venue": ""
+      "screenings": [
+        {
+          "date": "2026-06-06",
+          "time": "5:30 PM",
+          "venue": "Spring Studios"
+        },
+        {
+          "date": "2026-06-13",
+          "time": "8:15 PM",
+          "venue": "AMC 19th St. East 6"
+        },
+        {
+          "date": "2026-06-14",
+          "time": "12:00 PM",
+          "venue": "AMC 19th St. East 6"
+        }
+      ],
+      "day": "2026-06-06",
+      "date": "2026-06-06",
+      "time": "5:30 PM",
+      "venue": "Spring Studios"
     },
     {
       "title": "A Crime Across Four Landscapes",
@@ -5360,11 +6211,27 @@
       "language": "English",
       "premiere": "World Premiere",
       "synopsis": "",
-      "screenings": [],
-      "day": "",
-      "date": "",
-      "time": "",
-      "venue": ""
+      "screenings": [
+        {
+          "date": "2026-06-05",
+          "time": "5:30 PM",
+          "venue": "Spring Studios"
+        },
+        {
+          "date": "2026-06-12",
+          "time": "8:30 PM",
+          "venue": "Spring Studios"
+        },
+        {
+          "date": "2026-06-13",
+          "time": "2:15 PM",
+          "venue": "AMC 19th St. East 6"
+        }
+      ],
+      "day": "2026-06-05",
+      "date": "2026-06-05",
+      "time": "5:30 PM",
+      "venue": "Spring Studios"
     },
     {
       "title": "Am I a Bad Person?",
@@ -5378,11 +6245,22 @@
       "language": "English",
       "premiere": "World Premiere",
       "synopsis": "",
-      "screenings": [],
-      "day": "",
-      "date": "",
-      "time": "",
-      "venue": ""
+      "screenings": [
+        {
+          "date": "2026-06-04",
+          "time": "5:30 PM",
+          "venue": "Spring Studios"
+        },
+        {
+          "date": "2026-06-13",
+          "time": "5:45 PM",
+          "venue": "AMC 19th St. East 6"
+        }
+      ],
+      "day": "2026-06-04",
+      "date": "2026-06-04",
+      "time": "5:30 PM",
+      "venue": "Spring Studios"
     },
     {
       "title": "APART",
@@ -5396,11 +6274,22 @@
       "language": "Afrikaans, English",
       "premiere": "World Premiere",
       "synopsis": "",
-      "screenings": [],
-      "day": "",
-      "date": "",
-      "time": "",
-      "venue": ""
+      "screenings": [
+        {
+          "date": "2026-06-06",
+          "time": "2:30 PM",
+          "venue": "Spring Studios"
+        },
+        {
+          "date": "2026-06-13",
+          "time": "6:15 PM",
+          "venue": "AMC 19th St. East 6"
+        }
+      ],
+      "day": "2026-06-06",
+      "date": "2026-06-06",
+      "time": "2:30 PM",
+      "venue": "Spring Studios"
     },
     {
       "title": "Because Today is Saturday",
@@ -5414,11 +6303,22 @@
       "language": "No Dialogue",
       "premiere": "",
       "synopsis": "",
-      "screenings": [],
-      "day": "",
-      "date": "",
-      "time": "",
-      "venue": ""
+      "screenings": [
+        {
+          "date": "2026-06-06",
+          "time": "2:30 PM",
+          "venue": "Spring Studios"
+        },
+        {
+          "date": "2026-06-13",
+          "time": "6:15 PM",
+          "venue": "AMC 19th St. East 6"
+        }
+      ],
+      "day": "2026-06-06",
+      "date": "2026-06-06",
+      "time": "2:30 PM",
+      "venue": "Spring Studios"
     },
     {
       "title": "Born to Kill",
@@ -5432,11 +6332,22 @@
       "language": "English",
       "premiere": "World Premiere",
       "synopsis": "",
-      "screenings": [],
-      "day": "",
-      "date": "",
-      "time": "",
-      "venue": ""
+      "screenings": [
+        {
+          "date": "2026-06-07",
+          "time": "5:30 PM",
+          "venue": "Spring Studios"
+        },
+        {
+          "date": "2026-06-13",
+          "time": "5:30 PM",
+          "venue": "AMC 19th St. East 6"
+        }
+      ],
+      "day": "2026-06-07",
+      "date": "2026-06-07",
+      "time": "5:30 PM",
+      "venue": "Spring Studios"
     },
     {
       "title": "Brujo",
@@ -5450,11 +6361,27 @@
       "language": "Spanish, English",
       "premiere": "International Premiere",
       "synopsis": "",
-      "screenings": [],
-      "day": "",
-      "date": "",
-      "time": "",
-      "venue": ""
+      "screenings": [
+        {
+          "date": "2026-06-06",
+          "time": "8:15 PM",
+          "venue": "Spring Studios"
+        },
+        {
+          "date": "2026-06-10",
+          "time": "8:30 PM",
+          "venue": "Spring Studios"
+        },
+        {
+          "date": "2026-06-13",
+          "time": "9:15 PM",
+          "venue": "AMC 19th St. East 6"
+        }
+      ],
+      "day": "2026-06-06",
+      "date": "2026-06-06",
+      "time": "8:15 PM",
+      "venue": "Spring Studios"
     },
     {
       "title": "Buckets",
@@ -5468,11 +6395,32 @@
       "language": "English",
       "premiere": "World Premiere",
       "synopsis": "",
-      "screenings": [],
-      "day": "",
-      "date": "",
-      "time": "",
-      "venue": ""
+      "screenings": [
+        {
+          "date": "2026-06-05",
+          "time": "8:30 PM",
+          "venue": "Spring Studios"
+        },
+        {
+          "date": "2026-06-08",
+          "time": "5:30 PM",
+          "venue": "Spring Studios"
+        },
+        {
+          "date": "2026-06-13",
+          "time": "8:30 PM",
+          "venue": "AMC 19th St. East 6"
+        },
+        {
+          "date": "2026-06-14",
+          "time": "2:00 PM",
+          "venue": "AMC 19th St. East 6"
+        }
+      ],
+      "day": "2026-06-05",
+      "date": "2026-06-05",
+      "time": "8:30 PM",
+      "venue": "Spring Studios"
     },
     {
       "title": "ChikaBOOM!",
@@ -5486,11 +6434,22 @@
       "language": "English",
       "premiere": "World Premiere",
       "synopsis": "",
-      "screenings": [],
-      "day": "",
-      "date": "",
-      "time": "",
-      "venue": ""
+      "screenings": [
+        {
+          "date": "2026-06-06",
+          "time": "12:15 PM",
+          "venue": "Spring Studios"
+        },
+        {
+          "date": "2026-06-13",
+          "time": "11:30 AM",
+          "venue": "AMC 19th St. East 6"
+        }
+      ],
+      "day": "2026-06-06",
+      "date": "2026-06-06",
+      "time": "12:15 PM",
+      "venue": "Spring Studios"
     },
     {
       "title": "Child of the Rouge",
@@ -5504,11 +6463,27 @@
       "language": "English, Khmer",
       "premiere": "World Premiere",
       "synopsis": "",
-      "screenings": [],
-      "day": "",
-      "date": "",
-      "time": "",
-      "venue": ""
+      "screenings": [
+        {
+          "date": "2026-06-05",
+          "time": "5:30 PM",
+          "venue": "Spring Studios"
+        },
+        {
+          "date": "2026-06-12",
+          "time": "8:30 PM",
+          "venue": "Spring Studios"
+        },
+        {
+          "date": "2026-06-13",
+          "time": "2:15 PM",
+          "venue": "AMC 19th St. East 6"
+        }
+      ],
+      "day": "2026-06-05",
+      "date": "2026-06-05",
+      "time": "5:30 PM",
+      "venue": "Spring Studios"
     },
     {
       "title": "Cookie, Love",
@@ -5522,11 +6497,22 @@
       "language": "English, French",
       "premiere": "World Premiere",
       "synopsis": "",
-      "screenings": [],
-      "day": "",
-      "date": "",
-      "time": "",
-      "venue": ""
+      "screenings": [
+        {
+          "date": "2026-06-07",
+          "time": "2:30 PM",
+          "venue": "Spring Studios"
+        },
+        {
+          "date": "2026-06-13",
+          "time": "5:30 PM",
+          "venue": "Spring Studios"
+        }
+      ],
+      "day": "2026-06-07",
+      "date": "2026-06-07",
+      "time": "2:30 PM",
+      "venue": "Spring Studios"
     },
     {
       "title": "Couture to the Max",
@@ -5540,11 +6526,22 @@
       "language": "English",
       "premiere": "World Premiere",
       "synopsis": "",
-      "screenings": [],
-      "day": "",
-      "date": "",
-      "time": "",
-      "venue": ""
+      "screenings": [
+        {
+          "date": "2026-06-13",
+          "time": "8:30 PM",
+          "venue": "Spring Studios"
+        },
+        {
+          "date": "2026-06-14",
+          "time": "2:00 PM",
+          "venue": "Village East by Angelika"
+        }
+      ],
+      "day": "2026-06-13",
+      "date": "2026-06-13",
+      "time": "8:30 PM",
+      "venue": "Spring Studios"
     },
     {
       "title": "Daddy's Little Meatball",
@@ -5558,11 +6555,27 @@
       "language": "English",
       "premiere": "New York Premiere",
       "synopsis": "",
-      "screenings": [],
-      "day": "",
-      "date": "",
-      "time": "",
-      "venue": ""
+      "screenings": [
+        {
+          "date": "2026-06-06",
+          "time": "8:45 PM",
+          "venue": "Spring Studios"
+        },
+        {
+          "date": "2026-06-12",
+          "time": "5:30 PM",
+          "venue": "Spring Studios"
+        },
+        {
+          "date": "2026-06-13",
+          "time": "3:15 PM",
+          "venue": "AMC 19th St. East 6"
+        }
+      ],
+      "day": "2026-06-06",
+      "date": "2026-06-06",
+      "time": "8:45 PM",
+      "venue": "Spring Studios"
     },
     {
       "title": "Dear Upstairs Neighbors",
@@ -5576,11 +6589,22 @@
       "language": "English",
       "premiere": "World Premiere",
       "synopsis": "",
-      "screenings": [],
-      "day": "",
-      "date": "",
-      "time": "",
-      "venue": ""
+      "screenings": [
+        {
+          "date": "2026-06-06",
+          "time": "12:15 PM",
+          "venue": "Spring Studios"
+        },
+        {
+          "date": "2026-06-13",
+          "time": "11:30 AM",
+          "venue": "AMC 19th St. East 6"
+        }
+      ],
+      "day": "2026-06-06",
+      "date": "2026-06-06",
+      "time": "12:15 PM",
+      "venue": "Spring Studios"
     },
     {
       "title": "DISC",
@@ -5594,11 +6618,32 @@
       "language": "English",
       "premiere": "New York Premiere",
       "synopsis": "",
-      "screenings": [],
-      "day": "",
-      "date": "",
-      "time": "",
-      "venue": ""
+      "screenings": [
+        {
+          "date": "2026-06-05",
+          "time": "8:30 PM",
+          "venue": "Spring Studios"
+        },
+        {
+          "date": "2026-06-08",
+          "time": "5:30 PM",
+          "venue": "Spring Studios"
+        },
+        {
+          "date": "2026-06-13",
+          "time": "8:30 PM",
+          "venue": "AMC 19th St. East 6"
+        },
+        {
+          "date": "2026-06-14",
+          "time": "2:00 PM",
+          "venue": "AMC 19th St. East 6"
+        }
+      ],
+      "day": "2026-06-05",
+      "date": "2026-06-05",
+      "time": "8:30 PM",
+      "venue": "Spring Studios"
     },
     {
       "title": "Eeny, Meeny, Miny, Moe!",
@@ -5612,11 +6657,22 @@
       "language": "No Dialogue",
       "premiere": "",
       "synopsis": "",
-      "screenings": [],
-      "day": "",
-      "date": "",
-      "time": "",
-      "venue": ""
+      "screenings": [
+        {
+          "date": "2026-06-06",
+          "time": "12:15 PM",
+          "venue": "Spring Studios"
+        },
+        {
+          "date": "2026-06-13",
+          "time": "11:30 AM",
+          "venue": "AMC 19th St. East 6"
+        }
+      ],
+      "day": "2026-06-06",
+      "date": "2026-06-06",
+      "time": "12:15 PM",
+      "venue": "Spring Studios"
     },
     {
       "title": "Fabric",
@@ -5630,11 +6686,27 @@
       "language": "English",
       "premiere": "World Premiere",
       "synopsis": "",
-      "screenings": [],
-      "day": "",
-      "date": "",
-      "time": "",
-      "venue": ""
+      "screenings": [
+        {
+          "date": "2026-06-06",
+          "time": "8:45 PM",
+          "venue": "Spring Studios"
+        },
+        {
+          "date": "2026-06-12",
+          "time": "5:30 PM",
+          "venue": "Spring Studios"
+        },
+        {
+          "date": "2026-06-13",
+          "time": "3:15 PM",
+          "venue": "AMC 19th St. East 6"
+        }
+      ],
+      "day": "2026-06-06",
+      "date": "2026-06-06",
+      "time": "8:45 PM",
+      "venue": "Spring Studios"
     },
     {
       "title": "Farm to Fashion",
@@ -5648,11 +6720,22 @@
       "language": "English",
       "premiere": "World Premiere",
       "synopsis": "",
-      "screenings": [],
-      "day": "",
-      "date": "",
-      "time": "",
-      "venue": ""
+      "screenings": [
+        {
+          "date": "2026-06-13",
+          "time": "8:30 PM",
+          "venue": "Spring Studios"
+        },
+        {
+          "date": "2026-06-14",
+          "time": "2:00 PM",
+          "venue": "Village East by Angelika"
+        }
+      ],
+      "day": "2026-06-13",
+      "date": "2026-06-13",
+      "time": "8:30 PM",
+      "venue": "Spring Studios"
     },
     {
       "title": "Fault",
@@ -5666,11 +6749,27 @@
       "language": "English",
       "premiere": "World Premiere",
       "synopsis": "",
-      "screenings": [],
-      "day": "",
-      "date": "",
-      "time": "",
-      "venue": ""
+      "screenings": [
+        {
+          "date": "2026-06-04",
+          "time": "8:30 PM",
+          "venue": "Spring Studios"
+        },
+        {
+          "date": "2026-06-11",
+          "time": "5:30 PM",
+          "venue": "Spring Studios"
+        },
+        {
+          "date": "2026-06-13",
+          "time": "2:30 PM",
+          "venue": "AMC 19th St. East 6"
+        }
+      ],
+      "day": "2026-06-04",
+      "date": "2026-06-04",
+      "time": "8:30 PM",
+      "venue": "Spring Studios"
     },
     {
       "title": "Found&Lost",
@@ -5684,11 +6783,27 @@
       "language": "Arabic, German, English",
       "premiere": "New York Premiere",
       "synopsis": "",
-      "screenings": [],
-      "day": "",
-      "date": "",
-      "time": "",
-      "venue": ""
+      "screenings": [
+        {
+          "date": "2026-06-05",
+          "time": "5:30 PM",
+          "venue": "Spring Studios"
+        },
+        {
+          "date": "2026-06-12",
+          "time": "8:30 PM",
+          "venue": "Spring Studios"
+        },
+        {
+          "date": "2026-06-13",
+          "time": "2:15 PM",
+          "venue": "AMC 19th St. East 6"
+        }
+      ],
+      "day": "2026-06-05",
+      "date": "2026-06-05",
+      "time": "5:30 PM",
+      "venue": "Spring Studios"
     },
     {
       "title": "Freestyle",
@@ -5702,11 +6817,27 @@
       "language": "English, Russian",
       "premiere": "World Premiere",
       "synopsis": "",
-      "screenings": [],
-      "day": "",
-      "date": "",
-      "time": "",
-      "venue": ""
+      "screenings": [
+        {
+          "date": "2026-06-04",
+          "time": "8:30 PM",
+          "venue": "Spring Studios"
+        },
+        {
+          "date": "2026-06-11",
+          "time": "5:30 PM",
+          "venue": "Spring Studios"
+        },
+        {
+          "date": "2026-06-13",
+          "time": "2:30 PM",
+          "venue": "AMC 19th St. East 6"
+        }
+      ],
+      "day": "2026-06-04",
+      "date": "2026-06-04",
+      "time": "8:30 PM",
+      "venue": "Spring Studios"
     },
     {
       "title": "General Admission",
@@ -5720,11 +6851,32 @@
       "language": "English",
       "premiere": "World Premiere",
       "synopsis": "",
-      "screenings": [],
-      "day": "",
-      "date": "",
-      "time": "",
-      "venue": ""
+      "screenings": [
+        {
+          "date": "2026-06-05",
+          "time": "8:30 PM",
+          "venue": "Spring Studios"
+        },
+        {
+          "date": "2026-06-08",
+          "time": "5:30 PM",
+          "venue": "Spring Studios"
+        },
+        {
+          "date": "2026-06-13",
+          "time": "8:30 PM",
+          "venue": "AMC 19th St. East 6"
+        },
+        {
+          "date": "2026-06-14",
+          "time": "2:00 PM",
+          "venue": "AMC 19th St. East 6"
+        }
+      ],
+      "day": "2026-06-05",
+      "date": "2026-06-05",
+      "time": "8:30 PM",
+      "venue": "Spring Studios"
     },
     {
       "title": "Getar Hero",
@@ -5738,11 +6890,27 @@
       "language": "Hindi, English",
       "premiere": "World Premiere",
       "synopsis": "",
-      "screenings": [],
-      "day": "",
-      "date": "",
-      "time": "",
-      "venue": ""
+      "screenings": [
+        {
+          "date": "2026-06-05",
+          "time": "5:30 PM",
+          "venue": "Spring Studios"
+        },
+        {
+          "date": "2026-06-12",
+          "time": "8:30 PM",
+          "venue": "Spring Studios"
+        },
+        {
+          "date": "2026-06-13",
+          "time": "2:15 PM",
+          "venue": "AMC 19th St. East 6"
+        }
+      ],
+      "day": "2026-06-05",
+      "date": "2026-06-05",
+      "time": "5:30 PM",
+      "venue": "Spring Studios"
     },
     {
       "title": "Greetings from Sumatra",
@@ -5756,11 +6924,22 @@
       "language": "English, Polish",
       "premiere": "",
       "synopsis": "",
-      "screenings": [],
-      "day": "",
-      "date": "",
-      "time": "",
-      "venue": ""
+      "screenings": [
+        {
+          "date": "2026-06-04",
+          "time": "5:30 PM",
+          "venue": "Spring Studios"
+        },
+        {
+          "date": "2026-06-13",
+          "time": "5:45 PM",
+          "venue": "AMC 19th St. East 6"
+        }
+      ],
+      "day": "2026-06-04",
+      "date": "2026-06-04",
+      "time": "5:30 PM",
+      "venue": "Spring Studios"
     },
     {
       "title": "Grounded",
@@ -5774,11 +6953,22 @@
       "language": "No Dialogue",
       "premiere": "",
       "synopsis": "",
-      "screenings": [],
-      "day": "",
-      "date": "",
-      "time": "",
-      "venue": ""
+      "screenings": [
+        {
+          "date": "2026-06-06",
+          "time": "12:15 PM",
+          "venue": "Spring Studios"
+        },
+        {
+          "date": "2026-06-13",
+          "time": "11:30 AM",
+          "venue": "AMC 19th St. East 6"
+        }
+      ],
+      "day": "2026-06-06",
+      "date": "2026-06-06",
+      "time": "12:15 PM",
+      "venue": "Spring Studios"
     },
     {
       "title": "His House, Home",
@@ -5792,11 +6982,27 @@
       "language": "English",
       "premiere": "New York Premiere",
       "synopsis": "",
-      "screenings": [],
-      "day": "",
-      "date": "",
-      "time": "",
-      "venue": ""
+      "screenings": [
+        {
+          "date": "2026-06-06",
+          "time": "5:30 PM",
+          "venue": "Spring Studios"
+        },
+        {
+          "date": "2026-06-13",
+          "time": "8:15 PM",
+          "venue": "AMC 19th St. East 6"
+        },
+        {
+          "date": "2026-06-14",
+          "time": "12:00 PM",
+          "venue": "AMC 19th St. East 6"
+        }
+      ],
+      "day": "2026-06-06",
+      "date": "2026-06-06",
+      "time": "5:30 PM",
+      "venue": "Spring Studios"
     },
     {
       "title": "Holo",
@@ -5810,11 +7016,27 @@
       "language": "English",
       "premiere": "World Premiere",
       "synopsis": "",
-      "screenings": [],
-      "day": "",
-      "date": "",
-      "time": "",
-      "venue": ""
+      "screenings": [
+        {
+          "date": "2026-06-06",
+          "time": "8:15 PM",
+          "venue": "Spring Studios"
+        },
+        {
+          "date": "2026-06-10",
+          "time": "8:30 PM",
+          "venue": "Spring Studios"
+        },
+        {
+          "date": "2026-06-13",
+          "time": "9:15 PM",
+          "venue": "AMC 19th St. East 6"
+        }
+      ],
+      "day": "2026-06-06",
+      "date": "2026-06-06",
+      "time": "8:15 PM",
+      "venue": "Spring Studios"
     },
     {
       "title": "Homesick",
@@ -5828,11 +7050,27 @@
       "language": "English, Russian",
       "premiere": "World Premiere",
       "synopsis": "",
-      "screenings": [],
-      "day": "",
-      "date": "",
-      "time": "",
-      "venue": ""
+      "screenings": [
+        {
+          "date": "2026-06-06",
+          "time": "8:45 PM",
+          "venue": "Spring Studios"
+        },
+        {
+          "date": "2026-06-12",
+          "time": "5:30 PM",
+          "venue": "Spring Studios"
+        },
+        {
+          "date": "2026-06-13",
+          "time": "3:15 PM",
+          "venue": "AMC 19th St. East 6"
+        }
+      ],
+      "day": "2026-06-06",
+      "date": "2026-06-06",
+      "time": "8:45 PM",
+      "venue": "Spring Studios"
     },
     {
       "title": "Hope",
@@ -5846,11 +7084,22 @@
       "language": "Spanish, English",
       "premiere": "New York Premiere",
       "synopsis": "",
-      "screenings": [],
-      "day": "",
-      "date": "",
-      "time": "",
-      "venue": ""
+      "screenings": [
+        {
+          "date": "2026-06-07",
+          "time": "5:30 PM",
+          "venue": "Spring Studios"
+        },
+        {
+          "date": "2026-06-13",
+          "time": "5:30 PM",
+          "venue": "AMC 19th St. East 6"
+        }
+      ],
+      "day": "2026-06-07",
+      "date": "2026-06-07",
+      "time": "5:30 PM",
+      "venue": "Spring Studios"
     },
     {
       "title": "I Think About Killing You",
@@ -5864,11 +7113,27 @@
       "language": "English",
       "premiere": "New York Premiere",
       "synopsis": "",
-      "screenings": [],
-      "day": "",
-      "date": "",
-      "time": "",
-      "venue": ""
+      "screenings": [
+        {
+          "date": "2026-06-04",
+          "time": "8:30 PM",
+          "venue": "Spring Studios"
+        },
+        {
+          "date": "2026-06-11",
+          "time": "5:30 PM",
+          "venue": "Spring Studios"
+        },
+        {
+          "date": "2026-06-13",
+          "time": "2:30 PM",
+          "venue": "AMC 19th St. East 6"
+        }
+      ],
+      "day": "2026-06-04",
+      "date": "2026-06-04",
+      "time": "8:30 PM",
+      "venue": "Spring Studios"
     },
     {
       "title": "I'm Not Home",
@@ -5882,11 +7147,27 @@
       "language": "English",
       "premiere": "World Premiere",
       "synopsis": "",
-      "screenings": [],
-      "day": "",
-      "date": "",
-      "time": "",
-      "venue": ""
+      "screenings": [
+        {
+          "date": "2026-06-06",
+          "time": "8:45 PM",
+          "venue": "Spring Studios"
+        },
+        {
+          "date": "2026-06-12",
+          "time": "5:30 PM",
+          "venue": "Spring Studios"
+        },
+        {
+          "date": "2026-06-13",
+          "time": "3:15 PM",
+          "venue": "AMC 19th St. East 6"
+        }
+      ],
+      "day": "2026-06-06",
+      "date": "2026-06-06",
+      "time": "8:45 PM",
+      "venue": "Spring Studios"
     },
     {
       "title": "I, of an Accident or of love",
@@ -5900,11 +7181,32 @@
       "language": "French",
       "premiere": "",
       "synopsis": "",
-      "screenings": [],
-      "day": "",
-      "date": "",
-      "time": "",
-      "venue": ""
+      "screenings": [
+        {
+          "date": "2026-06-05",
+          "time": "8:30 PM",
+          "venue": "Spring Studios"
+        },
+        {
+          "date": "2026-06-08",
+          "time": "5:30 PM",
+          "venue": "Spring Studios"
+        },
+        {
+          "date": "2026-06-13",
+          "time": "8:30 PM",
+          "venue": "AMC 19th St. East 6"
+        },
+        {
+          "date": "2026-06-14",
+          "time": "2:00 PM",
+          "venue": "AMC 19th St. East 6"
+        }
+      ],
+      "day": "2026-06-05",
+      "date": "2026-06-05",
+      "time": "8:30 PM",
+      "venue": "Spring Studios"
     },
     {
       "title": "Imprint",
@@ -5918,11 +7220,27 @@
       "language": "English, Mandarin Chinese",
       "premiere": "World Premiere",
       "synopsis": "",
-      "screenings": [],
-      "day": "",
-      "date": "",
-      "time": "",
-      "venue": ""
+      "screenings": [
+        {
+          "date": "2026-06-06",
+          "time": "8:15 PM",
+          "venue": "Spring Studios"
+        },
+        {
+          "date": "2026-06-10",
+          "time": "8:30 PM",
+          "venue": "Spring Studios"
+        },
+        {
+          "date": "2026-06-13",
+          "time": "9:15 PM",
+          "venue": "AMC 19th St. East 6"
+        }
+      ],
+      "day": "2026-06-06",
+      "date": "2026-06-06",
+      "time": "8:15 PM",
+      "venue": "Spring Studios"
     },
     {
       "title": "Insufficient Fare",
@@ -5936,11 +7254,27 @@
       "language": "English",
       "premiere": "World Premiere",
       "synopsis": "",
-      "screenings": [],
-      "day": "",
-      "date": "",
-      "time": "",
-      "venue": ""
+      "screenings": [
+        {
+          "date": "2026-06-06",
+          "time": "8:45 PM",
+          "venue": "Spring Studios"
+        },
+        {
+          "date": "2026-06-12",
+          "time": "5:30 PM",
+          "venue": "Spring Studios"
+        },
+        {
+          "date": "2026-06-13",
+          "time": "3:15 PM",
+          "venue": "AMC 19th St. East 6"
+        }
+      ],
+      "day": "2026-06-06",
+      "date": "2026-06-06",
+      "time": "8:45 PM",
+      "venue": "Spring Studios"
     },
     {
       "title": "Kaya (ᜃᜌ)",
@@ -5954,11 +7288,27 @@
       "language": "English, Tagalog",
       "premiere": "World Premiere",
       "synopsis": "",
-      "screenings": [],
-      "day": "",
-      "date": "",
-      "time": "",
-      "venue": ""
+      "screenings": [
+        {
+          "date": "2026-06-04",
+          "time": "8:30 PM",
+          "venue": "Spring Studios"
+        },
+        {
+          "date": "2026-06-11",
+          "time": "5:30 PM",
+          "venue": "Spring Studios"
+        },
+        {
+          "date": "2026-06-13",
+          "time": "2:30 PM",
+          "venue": "AMC 19th St. East 6"
+        }
+      ],
+      "day": "2026-06-04",
+      "date": "2026-06-04",
+      "time": "8:30 PM",
+      "venue": "Spring Studios"
     },
     {
       "title": "Kiloran Bay",
@@ -5972,11 +7322,27 @@
       "language": "English",
       "premiere": "International Premiere",
       "synopsis": "",
-      "screenings": [],
-      "day": "",
-      "date": "",
-      "time": "",
-      "venue": ""
+      "screenings": [
+        {
+          "date": "2026-06-06",
+          "time": "5:30 PM",
+          "venue": "Spring Studios"
+        },
+        {
+          "date": "2026-06-13",
+          "time": "8:15 PM",
+          "venue": "AMC 19th St. East 6"
+        },
+        {
+          "date": "2026-06-14",
+          "time": "12:00 PM",
+          "venue": "AMC 19th St. East 6"
+        }
+      ],
+      "day": "2026-06-06",
+      "date": "2026-06-06",
+      "time": "5:30 PM",
+      "venue": "Spring Studios"
     },
     {
       "title": "La Lucha de Lucía",
@@ -5990,11 +7356,27 @@
       "language": "Spanish",
       "premiere": "New York Premiere",
       "synopsis": "",
-      "screenings": [],
-      "day": "",
-      "date": "",
-      "time": "",
-      "venue": ""
+      "screenings": [
+        {
+          "date": "2026-06-04",
+          "time": "8:30 PM",
+          "venue": "Spring Studios"
+        },
+        {
+          "date": "2026-06-11",
+          "time": "5:30 PM",
+          "venue": "Spring Studios"
+        },
+        {
+          "date": "2026-06-13",
+          "time": "2:30 PM",
+          "venue": "AMC 19th St. East 6"
+        }
+      ],
+      "day": "2026-06-04",
+      "date": "2026-06-04",
+      "time": "8:30 PM",
+      "venue": "Spring Studios"
     },
     {
       "title": "Last Minute",
@@ -6008,11 +7390,27 @@
       "language": "English",
       "premiere": "New York Premiere",
       "synopsis": "",
-      "screenings": [],
-      "day": "",
-      "date": "",
-      "time": "",
-      "venue": ""
+      "screenings": [
+        {
+          "date": "2026-06-06",
+          "time": "5:30 PM",
+          "venue": "Spring Studios"
+        },
+        {
+          "date": "2026-06-13",
+          "time": "8:15 PM",
+          "venue": "AMC 19th St. East 6"
+        },
+        {
+          "date": "2026-06-14",
+          "time": "12:00 PM",
+          "venue": "AMC 19th St. East 6"
+        }
+      ],
+      "day": "2026-06-06",
+      "date": "2026-06-06",
+      "time": "5:30 PM",
+      "venue": "Spring Studios"
     },
     {
       "title": "Leg Day",
@@ -6026,11 +7424,22 @@
       "language": "No Dialogue",
       "premiere": "World Premiere",
       "synopsis": "",
-      "screenings": [],
-      "day": "",
-      "date": "",
-      "time": "",
-      "venue": ""
+      "screenings": [
+        {
+          "date": "2026-06-06",
+          "time": "12:15 PM",
+          "venue": "Spring Studios"
+        },
+        {
+          "date": "2026-06-13",
+          "time": "11:30 AM",
+          "venue": "AMC 19th St. East 6"
+        }
+      ],
+      "day": "2026-06-06",
+      "date": "2026-06-06",
+      "time": "12:15 PM",
+      "venue": "Spring Studios"
     },
     {
       "title": "Listen",
@@ -6044,11 +7453,22 @@
       "language": "English",
       "premiere": "World Premiere",
       "synopsis": "",
-      "screenings": [],
-      "day": "",
-      "date": "",
-      "time": "",
-      "venue": ""
+      "screenings": [
+        {
+          "date": "2026-06-07",
+          "time": "5:30 PM",
+          "venue": "Spring Studios"
+        },
+        {
+          "date": "2026-06-13",
+          "time": "5:30 PM",
+          "venue": "AMC 19th St. East 6"
+        }
+      ],
+      "day": "2026-06-07",
+      "date": "2026-06-07",
+      "time": "5:30 PM",
+      "venue": "Spring Studios"
     },
     {
       "title": "Lost Touch",
@@ -6062,11 +7482,27 @@
       "language": "English",
       "premiere": "",
       "synopsis": "",
-      "screenings": [],
-      "day": "",
-      "date": "",
-      "time": "",
-      "venue": ""
+      "screenings": [
+        {
+          "date": "2026-06-06",
+          "time": "8:15 PM",
+          "venue": "Spring Studios"
+        },
+        {
+          "date": "2026-06-10",
+          "time": "8:30 PM",
+          "venue": "Spring Studios"
+        },
+        {
+          "date": "2026-06-13",
+          "time": "9:15 PM",
+          "venue": "AMC 19th St. East 6"
+        }
+      ],
+      "day": "2026-06-06",
+      "date": "2026-06-06",
+      "time": "8:15 PM",
+      "venue": "Spring Studios"
     },
     {
       "title": "Me, Myself, and Mary",
@@ -6080,11 +7516,22 @@
       "language": "English",
       "premiere": "World Premiere",
       "synopsis": "",
-      "screenings": [],
-      "day": "",
-      "date": "",
-      "time": "",
-      "venue": ""
+      "screenings": [
+        {
+          "date": "2026-06-06",
+          "time": "2:30 PM",
+          "venue": "Spring Studios"
+        },
+        {
+          "date": "2026-06-13",
+          "time": "6:15 PM",
+          "venue": "AMC 19th St. East 6"
+        }
+      ],
+      "day": "2026-06-06",
+      "date": "2026-06-06",
+      "time": "2:30 PM",
+      "venue": "Spring Studios"
     },
     {
       "title": "Mon Taxi",
@@ -6098,11 +7545,22 @@
       "language": "English subtitles",
       "premiere": "World Premiere",
       "synopsis": "",
-      "screenings": [],
-      "day": "",
-      "date": "",
-      "time": "",
-      "venue": ""
+      "screenings": [
+        {
+          "date": "2026-06-07",
+          "time": "5:30 PM",
+          "venue": "Spring Studios"
+        },
+        {
+          "date": "2026-06-13",
+          "time": "5:30 PM",
+          "venue": "AMC 19th St. East 6"
+        }
+      ],
+      "day": "2026-06-07",
+      "date": "2026-06-07",
+      "time": "5:30 PM",
+      "venue": "Spring Studios"
     },
     {
       "title": "NIO KO BOKK (This Belongs to All of Us)",
@@ -6116,11 +7574,22 @@
       "language": "Wolof",
       "premiere": "New York Premiere",
       "synopsis": "",
-      "screenings": [],
-      "day": "",
-      "date": "",
-      "time": "",
-      "venue": ""
+      "screenings": [
+        {
+          "date": "2026-06-07",
+          "time": "5:30 PM",
+          "venue": "Spring Studios"
+        },
+        {
+          "date": "2026-06-13",
+          "time": "5:30 PM",
+          "venue": "AMC 19th St. East 6"
+        }
+      ],
+      "day": "2026-06-07",
+      "date": "2026-06-07",
+      "time": "5:30 PM",
+      "venue": "Spring Studios"
     },
     {
       "title": "Odessa",
@@ -6134,11 +7603,22 @@
       "language": "German",
       "premiere": "New York Premiere",
       "synopsis": "",
-      "screenings": [],
-      "day": "",
-      "date": "",
-      "time": "",
-      "venue": ""
+      "screenings": [
+        {
+          "date": "2026-06-04",
+          "time": "5:30 PM",
+          "venue": "Spring Studios"
+        },
+        {
+          "date": "2026-06-13",
+          "time": "5:45 PM",
+          "venue": "AMC 19th St. East 6"
+        }
+      ],
+      "day": "2026-06-04",
+      "date": "2026-06-04",
+      "time": "5:30 PM",
+      "venue": "Spring Studios"
     },
     {
       "title": "One Night",
@@ -6152,11 +7632,32 @@
       "language": "English",
       "premiere": "World Premiere",
       "synopsis": "",
-      "screenings": [],
-      "day": "",
-      "date": "",
-      "time": "",
-      "venue": ""
+      "screenings": [
+        {
+          "date": "2026-06-05",
+          "time": "8:30 PM",
+          "venue": "Spring Studios"
+        },
+        {
+          "date": "2026-06-08",
+          "time": "5:30 PM",
+          "venue": "Spring Studios"
+        },
+        {
+          "date": "2026-06-13",
+          "time": "8:30 PM",
+          "venue": "AMC 19th St. East 6"
+        },
+        {
+          "date": "2026-06-14",
+          "time": "2:00 PM",
+          "venue": "AMC 19th St. East 6"
+        }
+      ],
+      "day": "2026-06-05",
+      "date": "2026-06-05",
+      "time": "8:30 PM",
+      "venue": "Spring Studios"
     },
     {
       "title": "The Baddest Speechwriter of All",
@@ -6170,11 +7671,27 @@
       "language": "English",
       "premiere": "New York Premiere",
       "synopsis": "",
-      "screenings": [],
-      "day": "",
-      "date": "",
-      "time": "",
-      "venue": ""
+      "screenings": [
+        {
+          "date": "2026-06-05",
+          "time": "2:30 PM",
+          "venue": "Spring Studios"
+        },
+        {
+          "date": "2026-06-11",
+          "time": "8:30 PM",
+          "venue": "Spring Studios"
+        },
+        {
+          "date": "2026-06-13",
+          "time": "5:15 PM",
+          "venue": "AMC 19th St. East 6"
+        }
+      ],
+      "day": "2026-06-05",
+      "date": "2026-06-05",
+      "time": "2:30 PM",
+      "venue": "Spring Studios"
     },
     {
       "title": "The Barbershop",
@@ -6188,11 +7705,22 @@
       "language": "Danish",
       "premiere": "World Premiere",
       "synopsis": "",
-      "screenings": [],
-      "day": "",
-      "date": "",
-      "time": "",
-      "venue": ""
+      "screenings": [
+        {
+          "date": "2026-06-04",
+          "time": "5:30 PM",
+          "venue": "Spring Studios"
+        },
+        {
+          "date": "2026-06-13",
+          "time": "5:45 PM",
+          "venue": "AMC 19th St. East 6"
+        }
+      ],
+      "day": "2026-06-04",
+      "date": "2026-06-04",
+      "time": "5:30 PM",
+      "venue": "Spring Studios"
     },
     {
       "title": "The Dark Knot at the Center",
@@ -6206,11 +7734,22 @@
       "language": "English",
       "premiere": "World Premiere",
       "synopsis": "",
-      "screenings": [],
-      "day": "",
-      "date": "",
-      "time": "",
-      "venue": ""
+      "screenings": [
+        {
+          "date": "2026-06-07",
+          "time": "2:30 PM",
+          "venue": "Spring Studios"
+        },
+        {
+          "date": "2026-06-13",
+          "time": "5:30 PM",
+          "venue": "Spring Studios"
+        }
+      ],
+      "day": "2026-06-07",
+      "date": "2026-06-07",
+      "time": "2:30 PM",
+      "venue": "Spring Studios"
     }
   ]
 }

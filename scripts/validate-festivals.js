@@ -56,7 +56,11 @@ function getFlagsFromList(filmList) {
 }
 
 function sectionEmoji(sec) {
-  return sec ? sec.split(' ')[0] : '';
+  if (!sec) return '';
+  const first = sec.split(' ')[0];
+  // Only treat as emoji if it's actually an emoji character (not a word like "Spotlight" or "U.S.")
+  const isEmoji = /^\p{Emoji}/u.test(first) && !/^[A-Za-z0-9.]/u.test(first);
+  return isEmoji ? first : '';
 }
 
 // ── Validar un festival ──────────────────────────────────────────────────────
