@@ -6406,7 +6406,30 @@
       "venue": "Village East by Angelika",
       "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/7154/large_TF26-TV-IndieDoc.jpg",
       "posterPosition": "center",
-      "day_order": 1
+      "day_order": 1,
+      "is_cortos": true,
+      "film_list": [
+        {
+          "title": "Free Help",
+          "director": "Bianca Giaever",
+          "duration": 24,
+          "country": "United States",
+          "flags": "🇺🇸",
+          "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/7157/large_FreeHelp-clean-16x9-01.jpg",
+          "synopsis": "Free Help sigue a la cineasta Bianca Giaever quien, tras ser llamada egoísta por su padre, decide ofrecer ayuda gratuita a cualquiera que la quiera. En cada episodio, Bianca se adentra en la vida de desconocidos para resolver sus problemas, pero lo que comienza como un gesto simple pronto la lleva a un territorio mucho más complicado.",
+          "synopsis_en": "Free Help follows filmmaker Bianca Giaever who, after being called selfish by her dad, decides to offer free help to anyone who wants it. In every episode, Bianca takes on a few strangers, stepping into their lives to help solve their problems. But what begins as a straightforward offer quickly pulls her into more complicated territory than she ever expected."
+        },
+        {
+          "title": "The Little Cult That Could",
+          "director": "Anthony Columbus",
+          "duration": 50,
+          "country": "United States",
+          "flags": "🇺🇸",
+          "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/7156/large_TheLittleCultThatCould-clean-16x9-01.jpg",
+          "synopsis": "Una serie documental oscuramente cómica que sigue a un grupo milenarista de Michigan mientras se prepara para el inminente apocalipsis.",
+          "synopsis_en": "The Little Cult That Could is a darkly comedic documentary series following a Michigan doomsday group as they prepare for the soon-to-come apocalypse."
+        }
+      ]
     },
     {
       "title": "2026 Indie TV Narrative Showcase",
@@ -6424,7 +6447,7 @@
         {
           "date": "2026-06-07",
           "time": "8:30 PM",
-          "venue": "Spring Studios",
+          "venue": "Shorts Theater at Spring Studios",
           "day_order": 4
         },
         {
@@ -6443,10 +6466,43 @@
       "day": "2026-06-07",
       "date": "2026-06-07",
       "time": "8:30 PM",
-      "venue": "Spring Studios",
+      "venue": "Shorts Theater at Spring Studios",
       "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/7065/large_TF26-TV-IndieNarr.jpg",
       "posterPosition": "center",
-      "day_order": 4
+      "day_order": 4,
+      "is_cortos": true,
+      "film_list": [
+        {
+          "title": "CVNT",
+          "director": "Nicole Higgins",
+          "duration": 16,
+          "country": "United States",
+          "flags": "🇺🇸",
+          "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/7078/large_CVNT_CLEAN-16x9-01.jpg",
+          "synopsis": "Marni lo intenta con todas sus fuerzas: está sobria, es luchadora y haría cualquier cosa por su hija. Cuando una factura inesperada de guardería la deja sin opciones, encuentra la solución en el aviso más insólito de Craigslist que haya visto.",
+          "synopsis_en": "Marni is doing her best: she's sober, she's scrappy, and she would do anything for her baby daughter Mila. So when a surprise daycare bill hits and every door slams shut, she finds her solution in the most unexpected Craigslist ad she's ever seen."
+        },
+        {
+          "title": "Kevin's Series of Unfortunate Events",
+          "director": "Rex Glensy",
+          "duration": 29,
+          "country": "United Kingdom",
+          "flags": "🇬🇧",
+          "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/7077/large_Kevins-Series-of-unfortunate-events-clean-16x9-01.jpg",
+          "synopsis": "Kevin es un romántico sin remedio cuyo optimismo supera por mucho su conciencia de sí mismo. De día trabaja como Online Safety Salamander en un colegio. De noche se somete a una interminable serie de citas desastrosas, convencido de que la persistencia lo llevará al amor.",
+          "synopsis_en": "Kevin is a hopelessly earnest romantic whose optimism far outweighs his self-awareness. By day, he works as a school's Online Safety Salamander. By night, he subjects himself to a relentless series of disastrous dates, convinced that persistence alone will eventually lead to love."
+        },
+        {
+          "title": "Switch",
+          "director": "Isabelle Platt, Sofya Levitsky-Weitz, Jean Liu, Jaki Bradley",
+          "duration": 27,
+          "country": "United States",
+          "flags": "🇺🇸",
+          "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/7081/large_Switch_Alyssa-Brocato-Clean-16x9-01.jpg",
+          "synopsis": "Maxine nunca ha tenido una relación. Lena nunca ha estado con otra mujer. Cuando Maxine le propone ser novias, Lena acepta con una sola preocupación: no se imagina teniendo sexo con una sola persona el resto de su vida.",
+          "synopsis_en": "Maxine's never been in a relationship. Lena's never been in a relationship with another woman. When Maxine asks her to be her girlfriend, Lena's all in with one concern: she doesn't see herself having sex with one person for the rest of her life."
+        }
+      ]
     },
     {
       "title": "Tribeca NOW Creators Showcase",
@@ -10620,6 +10676,130 @@
       "year": 2026,
       "synopsis": "En este show en vivo con creadores presentes, narradores únicos y singulares son destacados.",
       "synopsis_en": "In this live show with creators in attendance, unique, singular storytellers are highlighted."
+    },
+    {
+      "title": "ALEJANDRO SANZ: WHEN NO ONE SEES ME",
+      "slug": "alejandro-sanz-when-no-one-sees-me",
+      "section": "📺 TV",
+      "type": "film",
+      "filmType": "",
+      "director": "Álvaro Ron",
+      "duration": 55,
+      "country": "Spain, United States",
+      "language": "Spanish, English",
+      "premiere": "US Premiere",
+      "screenings": [
+        {
+          "date": "2026-06-04",
+          "time": "5:00 PM",
+          "venue": "OKX Theater at BMCC TPAC",
+          "day_order": 1
+        }
+      ],
+      "day": "2026-06-04",
+      "date": "2026-06-04",
+      "time": "5:00 PM",
+      "venue": "OKX Theater at BMCC TPAC",
+      "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/7107/large_Alejandro-Sanz-WhenNoOneSeesMe-alberto-castro_clean-16x9-01.jpg",
+      "posterPosition": "center",
+      "day_order": 1,
+      "flags": "🇪🇸🇺🇸",
+      "year": 2026,
+      "synopsis": "De niño obsesionado con la música a icono global, el camino de Alejandro Sánchez Pizarro está impulsado por la pasión, la reinvención y la resiliencia. En busca de su voz auténtica, se sumerge en el pop italiano, el flamenco y la música latina, creando Corazón Partío y convirtiéndose en Alejandro Sanz.",
+      "synopsis_en": "From a music-obsessed kid to a global icon, Alejandro Sánchez Pizarro's journey is fueled by passion, reinvention, and resilience. Searching for his true voice, he dives into Italian pop, flamenco and Latin music, creating Corazón Partío and becoming Alejandro Sanz."
+    },
+    {
+      "title": "Survival of the Thickest",
+      "slug": "survival-of-the-thickest",
+      "section": "📺 TV",
+      "type": "film",
+      "filmType": "",
+      "director": "Michelle Buteau",
+      "duration": 60,
+      "country": "United States",
+      "language": "",
+      "premiere": "World Premiere",
+      "screenings": [
+        {
+          "date": "2026-06-13",
+          "time": "2:30 PM",
+          "venue": "SVA Theatre",
+          "day_order": 10
+        }
+      ],
+      "day": "2026-06-13",
+      "date": "2026-06-13",
+      "time": "2:30 PM",
+      "venue": "SVA Theatre",
+      "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/7155/large_SOTT-CLEAN-16x9-02.jpg",
+      "posterPosition": "center",
+      "day_order": 10,
+      "flags": "🇺🇸",
+      "year": 2026,
+      "synopsis": "La temporada 3 de Survival of the Thickest se centra en Mavis Beaumont. Negra, talla grande y enamorándose mientras se ama a sí misma, Mavis trabaja duro para hacer crecer su marca como estilista y diseñadora. La comedia está inspirada en el aclamado libro de ensayos de Michelle Buteau.",
+      "synopsis_en": "Season 3 of Survival of the Thickest centers on Mavis Beaumont. Black, plus-size, and falling in love while loving herself, Mavis works hard to grow her brand as a stylist and designer. The scripted comedy is inspired by Michelle Buteau's acclaimed book of essays."
+    },
+    {
+      "title": "Survivor 50th Season Anniversary Panel",
+      "slug": "survivor-50th-season-anniversary-panel",
+      "section": "📺 TV",
+      "type": "film",
+      "filmType": "",
+      "director": "",
+      "duration": 75,
+      "country": "",
+      "language": "",
+      "premiere": "",
+      "screenings": [
+        {
+          "date": "2026-06-06",
+          "time": "2:00 PM",
+          "venue": "OKX Theater at BMCC TPAC",
+          "day_order": 3
+        }
+      ],
+      "day": "2026-06-06",
+      "date": "2026-06-06",
+      "time": "2:00 PM",
+      "venue": "OKX Theater at BMCC TPAC",
+      "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/7123/large_Survivor-50-16x9-01.jpg",
+      "posterPosition": "center",
+      "day_order": 3,
+      "flags": "",
+      "year": 2026,
+      "synopsis": "Los aniversarios se encuentran: el 25 Festival de Tribeca celebra el 25 aniversario de SURVIVOR. Únete a los jugadores favoritos del público para explorar el legado del abuelo de todos los reality shows, mientras la emblemática temporada 50 llega a su fin.",
+      "synopsis_en": "Anniversaries collide as the 25th Tribeca Festival celebrates the 25th anniversary of SURVIVOR. Join fan favorite players for a deep dive into the lore and legacy of the Grand-daddy of all Reality TV Shows, as the landmark 50th Season draws to a close."
+    },
+    {
+      "title": "X-Men '97",
+      "slug": "x-men-97",
+      "section": "📺 TV",
+      "type": "film",
+      "filmType": "",
+      "director": "",
+      "duration": 60,
+      "country": "United States",
+      "language": "English",
+      "premiere": "World Premiere",
+      "screenings": [
+        {
+          "date": "2026-06-13",
+          "time": "2:30 PM",
+          "venue": "Shorts Theater at Spring Studios",
+          "day_order": 10
+        }
+      ],
+      "day": "2026-06-13",
+      "date": "2026-06-13",
+      "time": "2:30 PM",
+      "venue": "Shorts Theater at Spring Studios",
+      "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/7138/large_TF26_Web_ComingSoon_1920x1080.jpg",
+      "posterPosition": "center",
+      "day_order": 10,
+      "flags": "🇺🇸",
+      "year": 2026,
+      "synopsis": "Una banda de mutantes usa sus extraordinarios poderes para proteger un mundo que los odia y los teme; enfrentados como nunca antes, se ven obligados a afrontar un futuro peligroso e inesperado.",
+      "synopsis_en": "A band of mutants use their uncanny gifts to protect a world that hates and fears them; they're challenged like never before, forced to face a dangerous and unexpected new future."
     }
   ]
 }

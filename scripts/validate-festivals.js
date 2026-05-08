@@ -165,7 +165,12 @@ function validateFestival(fname, data) {
       else _seenTitles.add(film.title);
     }
     // ── RULE 5b: titulo en ALLCAPS ───────────────────────────────────────
-    if (film.title) {
+    // Excepción: títulos oficialmente estilizados en ALLCAPS por el festival
+    const _allcapsExempt = new Set([
+      'ALEJANDRO SANZ: WHEN NO ONE SEES ME',
+      'CVNT',
+    ]);
+    if (film.title && !_allcapsExempt.has(film.title)) {
       const _ws = film.title.split(' ');
       const _uw = _ws.filter(w => w.length > 2 && /^[A-ZÁÉÍÓÚÑÜ]+$/.test(w));
       if (_uw.length >= 3) {
