@@ -171,9 +171,22 @@ function validateFestival(fname, data) {
         }
       }
     }
-  }
 
-  // ── RULE 8: venues GPS completeness ─────────────────────────────────────────
+    // ── RULE 8: screenings[] integridad ──────────────────────────────────
+    // Aplica a festivales con múltiples funciones por film (formato Tribeca/Jardín)
+    if (Array.isArray(film.screenings) && film.screenings.length) {
+      const _venues = data.venues || {};
+      const _hasVenues = Object.keys(_venues).length > 0;
+      film.screenings.forEach((s, i) => {
+        if (!s.day && !s.date) {
+          errors.push(`"${title}": screenings[${i}] no tiene 'day' ni 'date' — mostraría UNDEFINED en UI`);
+        }
+        if (_hasVenues && s.venue && !_venues[s.venue]) {
+          warnings.push(`"${title}": screenings[${i}].venue "${s.venue}" no está en venues{}`);
+        }
+      });
+    }
+  }
   const venuesDef = data.venues || {};
   const venueKeys = Object.keys(venuesDef);
   for (const [vname, vdata] of Object.entries(venuesDef)) {
@@ -215,6 +228,27 @@ function validateFestival(fname, data) {
       }
     }
   }
+
+  // ── RULE 9: i18n key parity ──────────────────────────────────────────────────
+  // Los archivos es.json y en.json deben tener exactamente las mismas claves.
+  // Una clave faltante produce strings en inglés cuando el usuario tiene ES.
+  try {
+    const repoRoot = path.join(__dirname, '..');
+    const esPath = path.join(repoRoot, 'i18n', 'es.json');
+    const enPath = path.join(repoRoot, 'i18n', 'en.json');
+    if (fs.existsSync(esPath) && fs.existsSync(enPath)) {
+      const esKeys = new Set(Object.keys(JSON.parse(fs.readFileSync(esPath, 'utf8'))));
+      const enKeys = new Set(Object.keys(JSON.parse(fs.readFileSync(enPath, 'utf8'))));
+      const missingInEs = [...enKeys].filter(k => !esKeys.has(k));
+      const missingInEn = [...esKeys].filter(k => !enKeys.has(k));
+      if (missingInEs.length) {
+        errors.push(`i18n: ${missingInEs.length} claves en en.json faltan en es.json: ${missingInEs.slice(0,5).join(', ')}${missingInEs.length>5?'…':''}`);
+      }
+      if (missingInEn.length) {
+        errors.push(`i18n: ${missingInEn.length} claves en es.json faltan en en.json: ${missingInEn.slice(0,5).join(', ')}${missingInEn.length>5?'…':''}`);
+      }
+    }
+  } catch(e) { /* i18n files optional */ }
 
   // ── RULE 4 (cont): check emoji clashes ───────────────────────────────────
   for (const [emoji, secNames] of Object.entries(emojiToSections)) {
