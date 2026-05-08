@@ -8817,6 +8817,8 @@ function _openCombinedFilmSheet(filmData){
     <a class="c-lb pel-sheet-lb" href="${lbHref}" target="_blank" rel="noopener">${LB_SVG}<span class="c-lb-text pel-sheet-lb-text">Letterboxd</span></a>
     <div class="pel-sheet-divider"></div>
   `;
+  const _psReset=document.getElementById('pel-sheet');
+  if(_psReset){_psReset.scrollTop=0;_psReset.classList.remove('compact');}
   document.getElementById('pel-overlay').classList.add('open');
   document.getElementById('pel-sheet').classList.add('open');
 }
@@ -8879,6 +8881,8 @@ function openCortoSheet(title, country, duration, section, flags, director, genr
       <button class="row-center-xs pel-sheet-action-btn${filmRatings[title]?' act-on':' btn-secondary'}" onclick="closePelSheet();setTimeout(()=>openRatingSheet('${safeTitle}'),100)">${ICONS.star} ${filmRatings[title]?'Cambiar':t('cta_calificar')}</button>
     </div>
   `;
+  const _psReset2=document.getElementById('pel-sheet');
+  if(_psReset2){_psReset2.scrollTop=0;_psReset2.classList.remove('compact');}
   document.getElementById('pel-overlay').classList.add('open');
   document.getElementById('pel-sheet').classList.add('open');
 }

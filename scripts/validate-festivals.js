@@ -125,14 +125,16 @@ function validateFestival(fname, data) {
     if (sec) {
       const emoji = sectionEmoji(sec);
       const secName = sec.slice(emoji.length).trim();
-      if (emoji && !NON_FLAG_EMOJIS.has(emoji)) {
-        // Flag emojis as section emoji — OK if section name references a country/place
-        // e.g. "🇨🇴 Comp. Colombia", "🇨🇭 Muestra Suiza" — deliberate and correct
-        // Only warn if section name doesn't reference the country the flag represents
-        const secNameLower = secName.toLowerCase();
-        const isCountrySection = ['muestra','comp.','casa','cortos','cine'].some(w => secNameLower.includes(w));
-        if (!isCountrySection) {
-          warnings.push(`"${title}": sección usa emoji de bandera como identificador: ${emoji}`);
+      if (emoji) {
+        // Solo advertir si el emoji de sección ES una bandera de país (regional indicators)
+        // Los emojis decorativos (🌟, 📹, 🎬, etc.) son válidos como identificadores de sección
+        const isFlagEmoji = /^\p{Regional_Indicator}\p{Regional_Indicator}/u.test(emoji);
+        if (isFlagEmoji) {
+          const secNameLower = secName.toLowerCase();
+          const isCountrySection = ['muestra','comp.','casa','cortos','cine'].some(w => secNameLower.includes(w));
+          if (!isCountrySection) {
+            warnings.push(`"${title}": sección usa emoji de bandera como identificador: ${emoji}`);
+          }
         }
       }
       if (emoji) {
