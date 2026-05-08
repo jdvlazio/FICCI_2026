@@ -820,7 +820,7 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:var(--t
 /* ── POSTER GRID — sistema unificado 3 col / ratio 2:3 ──────────────── *
  * Matemática: 390px - 20px padding - 16px gaps = 354px / 3 = 118px    *
  * Ratio 2:3 → 177px alto. Estándar one-sheet cinematográfico.          */
-.poster-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--sp-2);padding:10px 20px 10px 10px;transition:opacity var(--tr-fast)}
+.poster-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--sp-2);padding:10px 20px calc(var(--nav-h,56px) + env(safe-area-inset-bottom,0px) + 16px) 10px;transition:opacity var(--tr-fast)}
 .poster-card{position:relative;border-radius:var(--r);overflow:hidden;cursor:pointer;background:var(--surf-2);background-size:cover;background-position:center;aspect-ratio:2/3;display:block;container-type:inline-size}
 .poster-card.editorial{background:var(--surf-3,#1A1A1A);display:flex;flex-direction:column}
 .poster-card.editorial .ed-hdr{height:28.89%;flex-shrink:0;display:flex;flex-direction:column;justify-content:center;padding:0 8px}
