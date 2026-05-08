@@ -4629,7 +4629,7 @@ function onSearchInput(){
     return`<div class="ag-sr-item">
       <div>
         <div class="ag-sr-title">${f.title}</div>
-        <div class="ag-sr-meta">${f.flags||''} ${f.duration||''}${f.is_cortos?` · ${t('label_programa')}`:''}${inWL?' · <span style="color:var(--amber)">${ICONS.heartFill}</span>':''}</div>
+        <div class="ag-sr-meta">${f.flags||''} ${durFmt(f.duration)}${f.is_cortos?` · ${t('label_programa')}`:''}${inWL?' · <span style="color:var(--amber)">${ICONS.heartFill}</span>':''}</div>
       </div>
       <button class="row-xs ag-sr-add${inWL?' added':''}" data-title="${f.title.replace(/"/g,'&quot;')}" onclick="addFromSearch(this.dataset.title)">
         ${inWL?`${ICONS.check} ${t('cta_en_intereses')}`:`${ICONS.plus} ${t('misc_anadir')}`}
@@ -4740,6 +4740,7 @@ const dayChip = key => {
 };
 /* dayLabel/dayHeader — mantenidos para compatibilidad, internamente usan dayChip */
 const dayLabel  = key => (_lang==='en' ? DAY_SHORT_EN : DAY_SHORT)[key] || key;
+const durFmt    = d   => d ? (String(d).includes('min') ? String(d) : String(d)+' min') : '';
 
 /* ══════════════════════════════════════════════════════
    emptyState(icon, title, sub) — componente vacío unificado
@@ -5501,13 +5502,11 @@ function renderFilmListHTML(){
   function _relDayLabel(screening){
     const todayStr=simTodayStr();
     const todayKey=DAY_KEYS.find(d=>FESTIVAL_DATES[d]===todayStr);
-    const todayLabel=todayKey?dayLabel(todayKey):'';
     const tomorrowIdx=todayKey?DAY_KEYS.indexOf(todayKey)+1:-1;
     const tomorrowKey=tomorrowIdx>0&&tomorrowIdx<DAY_KEYS.length?DAY_KEYS[tomorrowIdx]:null;
-    const tomorrowLabel=tomorrowKey?dayLabel(tomorrowKey):'';
-    if(screening.day===todayLabel) return screening.time+(screening.venue?' · '+screening.venue:'');
-    if(tomorrowLabel&&screening.day===tomorrowLabel) return'MAÑANA · '+screening.time+(screening.venue?' · '+screening.venue:'');
-    return screening.day+' · '+screening.time+(screening.venue?' · '+screening.venue:'');
+    if(screening.day===todayKey) return screening.time+(screening.venue?' · '+screening.venue:'');
+    if(tomorrowKey&&screening.day===tomorrowKey) return t('bar_manana').toUpperCase()+' · '+screening.time+(screening.venue?' · '+screening.venue:'');
+    return dayLabel(screening.day)+' · '+screening.time+(screening.venue?' · '+screening.venue:'');
   }
 
   // ── Detecta conflicto con agenda guardada ──────────────────────────────
@@ -5728,7 +5727,7 @@ function _mkCortoItemHtml(item, n, {cls='mplan-prog-item', onclick='', ratingEl=
         <span class="mplan-prog-num">${n+1}</span>
         <span class="mplan-prog-title">${item.title}</span>
       </div>
-      <div class="indent-nested mplan-prog-dur">${item.country?item.country+' · ':''}${item.duration}</div>
+      <div class="indent-nested mplan-prog-dur">${item.country?item.country+' · ':''}${durFmt(item.duration)}</div>
     </div>
     ${ratingEl}
   </div>`;
@@ -6531,7 +6530,7 @@ function _renderSavedAgendaHTML(){
             <div class="saved-time">${f.flags||'🌐'}</div>
             <div class="saved-info">
               <div class="saved-title">${f.title}</div>
-              <div class="saved-venue">${ICONS.clock} ${f.duration||'—'}</div>
+              <div class="saved-venue">${ICONS.clock} ${durFmt(f.duration)||'—'}</div>
             </div>
             <button class="saved-check done" data-wt="${(f.title||'').replace(/"/g,'&quot;')}" onclick="toggleWatched(this.dataset.wt,event)" >No vista</button>
           </div>`;
@@ -6561,7 +6560,7 @@ function _renderSavedAgendaHTML(){
           <div class="suggestion-info">
             <div class="suggestion-title">${(()=>{const{displayTitle:_dt}=parseProgramTitle(f.title);return _dt;})()}</div>
             <div class="suggestion-sec">${f.section||''}</div>
-            <div class="suggestion-meta">${f.duration}${vc2.short?' · '+vc2.short+(sl?' · '+sl:''):''}</div>
+            <div class="suggestion-meta">${durFmt(f.duration)}${vc2.short?' · '+vc2.short+(sl?' · '+sl:''):''}</div>
           </div>
           <button class="suggestion-add" onclick="event.stopPropagation();addSuggestion('${f.title.replace(/'/g,"\\'")}','${f.day}','${f.time}')" style="${f._isRestored?'border-color:var(--amber);color:var(--amber);background:var(--amber-10)':''}">
             ${f._isRestored?`${ICONS.undo} Restaurar`:`${ICONS.plus} Añadir`}
@@ -8090,7 +8089,7 @@ function onCartaSearch(){
         <div class="carta-sr-title">${displayTitle}${progSuffix?` <span class="txt-amber-label">${progSuffix}</span>`:''}</div>
         <div class="carta-sr-meta">${f._isCortoItem
           ?`Cortometraje${f._prog?` · ${parseProgramTitle(f._prog.title).displayTitle}`:''}`
-          :`${f.duration||''}${f.section?' · '+f.section.replace(/^[^ ]+ /,''):''}`
+          :`${durFmt(f.duration)}${f.section?' · '+f.section.replace(/^[^ ]+ /,''):''}`
         }${inWL?' · <span style="color:var(--amber)">♥</span>':''}</div>
       </div>
     </div>`;
@@ -8601,8 +8600,8 @@ function openPelSheet(title){
       <div class="pel-sheet-meta">
         <div class="pel-sheet-title">${(()=>{const _dt=filmDisplayTitle(f);return _dt.original?`${_dt.main}<div class="pel-sheet-original">${_dt.original}</div>`:_dt.main;})()}</div>
         ${f.type!=='event'
-          ?`<div class="pel-sheet-flags-dur">${f.flags||'🌐'}${f.duration?` · ${f.duration}`:''}</div>`
-          :(f.duration?`<div class="pel-sheet-flags-dur">${f.duration}</div>`:'')}
+          ?`<div class="pel-sheet-flags-dur">${f.flags||'🌐'}${f.duration?` · ${durFmt(f.duration)}`:''}</div>`
+          :(f.duration?`<div class="pel-sheet-flags-dur">${durFmt(f.duration)}</div>`:'')}
         ${f.type!=='event'&&_metaLine?`<div class="pel-sheet-metaline">${_metaLine}</div>`:''}
         ${f.section?`<div class="pel-sheet-sec" data-sec="${f.section.replace(/"/g,'&quot;')}" onclick="filterBySection(this.dataset.sec)">${secLabel} <span class="pel-sheet-sec-arrow">›</span></div>`:''}
       </div>
@@ -9341,7 +9340,7 @@ function _renderExploreLista(){
       <img class="plist-poster" src="${makeEventPoster(dt,f.duration,f.event_kind)}" alt="${dt}" loading="lazy">
       <div class="plist-info">
         <div class="plist-title">${dt}</div>
-        <div class="plist-meta">${days?`${daysHtml} · `:''}${f.duration||''}</div>
+        <div class="plist-meta">${days?`${daysHtml} · `:''}${durFmt(f.duration)}</div>
         <div class="plist-sec">${f.section||''}</div>
       </div>
       <div class="plist-heart${inWL?'':' empty'}" onclick="event.stopPropagation();_toggleWLFromList('${safeT}',this)">${inWL?ICONS.heartFill:ICONS.heart}</div>
@@ -9350,7 +9349,7 @@ function _renderExploreLista(){
     return`<div class="plist-item${allPast?' past-card':''}" onclick="openPelSheet('${safeT}')">
       ${_stk2||(src?`<div class="plist-poster"><img src="${src}" loading="lazy" onerror="this.remove()" alt="${dt}" style="width:100%;height:100%;object-fit:cover;border-radius:var(--r-sm)"></div>`:`<div class="plist-poster"></div>`)}
       <div class="plist-info">
-        ${(()=>{const n=NOTICES.find(nx=>nx.title===f.title&&nx.festival===((_activeFestId||_DEFAULT_FEST_ID)));const nb=n?`<span class="notice-badge">${n.type==='cancelled'?'CANCELADA':'REPROG.'}</span>`:'';const nn=n&&n.type==='cancelled'?`<div class="notice-detail-amber">Pendiente nueva fecha</div>`:n&&n.type==='rescheduled'&&n.newTime?`<div class="notice-detail-green">${n.newDay||''} · ${n.newTime}${n.newVenue?' · '+n.newVenue:''}</div>`:'';return`<div class="plist-title" style="${allPast?'opacity:.5':''}">${nb}${dt}</div><div class="plist-meta" style="${n&&n.type==='cancelled'?'text-decoration:line-through':''}${allPast?';opacity:.5':''}">${daysHtml?`${daysHtml} · `:''}${f.duration||''}${_metaBadges(f)?` · ${_metaBadges(f)}`:''}</div>${nn||`<div class="plist-sec">${f.section||''}</div>`}`;})()}
+        ${(()=>{const n=NOTICES.find(nx=>nx.title===f.title&&nx.festival===((_activeFestId||_DEFAULT_FEST_ID)));const nb=n?`<span class="notice-badge">${n.type==='cancelled'?'CANCELADA':'REPROG.'}</span>`:'';const nn=n&&n.type==='cancelled'?`<div class="notice-detail-amber">Pendiente nueva fecha</div>`:n&&n.type==='rescheduled'&&n.newTime?`<div class="notice-detail-green">${n.newDay||''} · ${n.newTime}${n.newVenue?' · '+n.newVenue:''}</div>`:'';return`<div class="plist-title" style="${allPast?'opacity:.5':''}">${nb}${dt}</div><div class="plist-meta" style="${n&&n.type==='cancelled'?'text-decoration:line-through':''}${allPast?';opacity:.5':''}">${daysHtml?`${daysHtml} · `:''}${durFmt(f.duration)}${_metaBadges(f)?` · ${_metaBadges(f)}`:''}</div>${nn||`<div class="plist-sec">${f.section||''}</div>`}`;})()}
       </div>
       <div class="plist-heart${inWL?'':' empty'}" onclick="event.stopPropagation();_toggleWLFromList('${safeT}',this)">${inWL?ICONS.heartFill:ICONS.heart}</div>
     </div>`;
