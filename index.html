@@ -2638,6 +2638,7 @@ const _I18N = {
     "plan_compartir": "Compartir",
     "plan_optimo": "Plan óptimo",
     "plan_sin_plan": "No tenés un plan guardado",
+    "plan_tu_plan_empty": "Todavía no hay plan",
     "plan_dia_libre": "Día libre en tu Plan",
     "plan_desactualizado": "Tu plan puede estar desactualizado",
     "plan_sincroniza": "Tu plan se sincroniza automáticamente entre todos tus dispositivos.",
@@ -2651,6 +2652,7 @@ const _I18N = {
     "av_tipo": "Tipo",
     "av_dia": "Día",
     "av_horas": "Horas específicas",
+    "av_ver_opciones": "Ver opciones",
     "av_opcion_pers": "Opción personalizada",
     "auth_entrar": "Entrar",
     "auth_cuenta": "Cuenta",
@@ -2820,6 +2822,8 @@ const _I18N = {
     "misc_no_disponible": "No disponible",
     "conflict_titulo": "Se solapan en el mismo tramo",
     "cta_mi_plan": "Ver Mi Plan",
+    "cta_ir_planear": "Planear ahora",
+    "cta_ir_intereses": "Agregar títulos",
     "label_programa": "Programa",
     "toast_prioridad_quitada": "Prioridad quitada",
     "misc_anadir": "Añadir",
@@ -2857,6 +2861,7 @@ const _I18N = {
     "plan_compartir": "Share",
     "plan_optimo": "Best option",
     "plan_sin_plan": "You don't have a saved plan",
+    "plan_tu_plan_empty": "No plan yet",
     "plan_dia_libre": "Free day in your plan",
     "plan_desactualizado": "Your plan may be outdated",
     "plan_sincroniza": "Your plan syncs automatically across all your devices.",
@@ -2870,6 +2875,7 @@ const _I18N = {
     "av_tipo": "Type",
     "av_dia": "Day",
     "av_horas": "Specific hours",
+    "av_ver_opciones": "Generate plan",
     "av_opcion_pers": "Custom",
     "auth_entrar": "Enter",
     "auth_cuenta": "Account",
@@ -3039,6 +3045,8 @@ const _I18N = {
     "misc_no_disponible": "Not available",
     "conflict_titulo": "Scheduling conflict",
     "cta_mi_plan": "View My Plan",
+    "cta_ir_planear": "Start planning",
+    "cta_ir_intereses": "Add titles",
     "label_programa": "Program",
     "toast_prioridad_quitada": "Priority removed",
     "misc_anadir": "Add",
@@ -7785,7 +7793,7 @@ document.addEventListener('visibilitychange',function(){
     _activeCalcWorker.terminate();
     _activeCalcWorker=null;
     const btn=document.querySelector('.av-calc-btn');
-    if(btn){btn.disabled=false;btn.textContent='Ver opciones';}
+    if(btn){btn.disabled=false;btn.textContent=t('av_ver_opciones');}
   }
 });
 
@@ -7821,7 +7829,7 @@ function runCalc(){
       clearTimeout(watchdog);
       _activeCalcWorker=null;
       worker.terminate();
-      if(btn){btn.disabled=false;btn.textContent='Ver opciones';}
+      if(btn){btn.disabled=false;btn.textContent=t('av_ver_opciones');}
       if(e.data.ok){
         const scenarios=e.data.scenarios;
         cachedResult={scenarios,currentIdx:0,_algorithmCount:scenarios.length};
@@ -7864,7 +7872,7 @@ function _runCalcSync(btn,res){
   }catch(err){
     if(res) res.innerHTML=`<div class="ag-calc-prompt" style="color:var(--red)"><strong>Error al calcular:</strong><br><code class="txt-xs">${err.message}</code></div>`;
   }finally{
-    if(btn){btn.disabled=false;btn.textContent='Ver opciones';}
+    if(btn){btn.disabled=false;btn.textContent=t('av_ver_opciones');}
   }
 }
 
@@ -7953,7 +7961,7 @@ function renderAgenda(){
     // ── Estado B: con Intereses — herramienta completa ──
     const resultContent=cachedResult
       ?buildResultHTML(cachedResult.scenarios)
-      :`<div class="ag-calc-prompt">Tocá <strong>Ver opciones</strong> para ver tu plan.</div>`;
+      :`<div class="ag-calc-prompt">${t('plan_hint_opciones')}</div>`;
     view.innerHTML=`${_progressHtml}
       <div class="ag-section">
         ${renderPrioStrip()}
@@ -7965,7 +7973,7 @@ function renderAgenda(){
         </div>
         <div class="av-calc-wrap">
           <button class="av-calc-btn" onclick="runCalc()">
-            Ver opciones
+            ${t('av_ver_opciones')}
           </button>
         </div>
       </div>
