@@ -66,7 +66,9 @@
 
 ### Fase 3 · Enriquecimiento TMDB `[Data Engineer — algoritmo aprobado por Senior Dev]`
 
-**Objetivo:** Poblar `posters{}`, `genre`, `synopsis_en`, `year` con datos verificados.
+**Objetivo:** Poblar `genre` y `year` con datos verificados. **No poster. No synopsis_en.**
+
+> ⚠️ **Lección aprendida (Tribeca 2026):** El algoritmo de matching usa `year` como criterio de validación. Si `year` viene corrupto del scraping (como ocurrió con 37 films de Tribeca), la validación falla silenciosamente y TMDB asigna datos de un film completamente distinto. `synopsis_en` de 64/107 films describía otra película. Ningún campo de TMDB puede considerarse verificado sin revisión humana previa.
 
 **Algoritmo de matching estricto — los 4 criterios deben cumplirse simultáneamente:**
 
@@ -83,14 +85,21 @@
 - Se prueban `movie` y `tv` en ese orden
 
 **Campos aceptados de TMDB (solo si vacíos en el JSON):**
-- `poster` → `posters{}` dict
-- `synopsis_en` → campo en el objeto film
-- `genre` → campo en el objeto film (si vacío)
-- `year` → campo en el objeto film (si vacío)
+- `genre` → campo en el objeto film (si vacío) — error tolerable, no visible como dato crítico
+- `year` → campo en el objeto film (si vacío) — solo si el año del scraping fue verificado primero
+
+**Campos PROHIBIDOS desde TMDB sin verificación humana:**
+- ❌ `poster` / `posters{}` → **NUNCA desde TMDB sin verificación visual manual**
+- ❌ `synopsis_en` → **NUNCA desde TMDB sin verificación que describe el film correcto**
+- ❌ `director`, `country`, `language` → solo desde el scraping de primera fuente
 
 **Nota sobre match rate:**
-- Match rate > 80% → sospechoso, el algoritmo puede ser demasiado permisivo
+- Match rate > 60% → sospechoso, el algoritmo puede ser demasiado permisivo
 - Match rate < 20% → revisar algoritmo de búsqueda o datos de entrada
+
+**Prerequisito obligatorio antes de correr TMDB:**
+- Verificar que el campo `year` del scraping es correcto para una muestra de 10+ films
+- Si hay World Premieres con year < año_del_festival - 1 → el scraping está corrupto, no correr TMDB
 
 ---
 
@@ -150,7 +159,9 @@ node scripts/validate-festivals.js [festival-id]
 | Regla | Detalle |
 |-------|---------|
 | `config{}` prohibido en JSON | La configuración vive en `FESTIVAL_CONFIG` en `index.html` siempre |
-| Matching TMDB estricto | Los 4 criterios simultáneos — nunca primer resultado sin validar |
+| Matching TMDB estricto | Los 4 criterios simultáneos — pero solo válido si los datos de entrada fueron verificados primero |
+| TMDB para poster: prohibido | `posters{}` solo desde verificación visual humana — nunca automatizado |
+| TMDB para synopsis_en: prohibido | synopsis_en solo desde traducción manual o fuente verificada — 64/107 de Tribeca eran de films distintos |
 | `og:image` en fase 1 | Se captura en extracción, no como parche posterior |
 | Day keys ISO | `YYYY-MM-DD` desde Tribeca 2026. Los festivales legacy mantienen su formato pero no se replica |
 | Validate antes de push | `validate-festivals.js` no es opcional. Un push que falla se revierte |
@@ -161,12 +172,14 @@ node scripts/validate-festivals.js [festival-id]
 
 ## Deuda técnica por festival
 
-| Festival | Género | Poster | Sinopsis | Pendiente |
-|----------|--------|--------|----------|-----------|
-| FICCI 65 | 0% | 62% | 75% | TMDB estricto + og:image scraping |
-| Cinemancia 2025 | 72% | 71% | 100% | TMDB estricto + og:image scraping |
-| AFF 2026 | 65% | 65% | 100% | TMDB estricto + og:image scraping |
-| Tribeca 2026 | 93% | 98% | 79% | synopsis_en pendiente |
+| Festival | Género | Poster | Sinopsis ES | Pendiente |
+|----------|--------|--------|-------------|-----------|
+| FICCI 65 | 37% | 74% | 75% | Verificar year del scraping antes de TMDB |
+| Cinemancia 2025 | 93% | 95% | 100% | — |
+| AFF 2026 | 100% | 100% | 100% | — |
+| Tribeca 2026 | 93% | 44%* | 90% | *poster: solo cloudfront verificado. TMDB requiere verificación visual |
+
+*Tribeca: 134 cloudfront (tribecafilm.com primera fuente) + 87 poster editorial. TMDB vaciado hasta verificación humana.
 
 ---
 
@@ -174,7 +187,8 @@ node scripts/validate-festivals.js [festival-id]
 
 | Error | Impacto | Fix aplicado |
 |-------|---------|-------------|
-| TMDB sin validación | 134 posters falsos (ej. "The Leader" → "The Leader and the Band") | Algoritmo estricto con 4 criterios |
+| TMDB sin validación (round 1) | 134 posters falsos ("The Leader" → "The Leader and the Band") | Algoritmo estricto con 4 criterios |
+| TMDB con año corrupto (round 2) | 107 synopsis_en de films distintos (64 confirmados). Año corrupto en 37 films dejó el validador ciego | TMDB prohibido para poster y synopsis_en. Verificación de year del scraping como prerequisito |
 | Scraping incompleto de imágenes | 29 films sin poster a pesar de tener og:image en la web | og:image en fase 1 obligatorio |
 | `config{}` en JSON | Configuración ignorada silenciosamente por el engine | Gate bloqueante en validator |
 | Títulos en ALLCAPS | ALEJANDRO SANZ, MOUTH FULL OF GOLDS visibles en producción | Gate bloqueante en validator |
