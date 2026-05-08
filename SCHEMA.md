@@ -174,7 +174,93 @@ Campos requeridos por festival:
 
 ---
 
-## Errores conocidos y su causa raíz
+## Reglas permanentes — establecidas en auditoría 2026-05-08
+
+### Arquitectura
+
+**ARCH-R1 — Una función, una definición en el scope del main thread.**
+Las funciones duplicadas en `index.html` son del Web Worker (scope separado, legítimo). No eliminar.
+
+**ARCH-R2 — Detección de poster editorial.**
+Usar `_isEditorialPoster(f)` en todo el código. Esta función lee `f.posterSource` primero.
+Nuevos festivales deben incluir `posterSource: 'editorial'` en el campo del film cuando la imagen es editorial.
+No detectar por URL — frágil si el CDN cambia.
+
+**ARCH-R3 — Constantes de módulo, no locales.**
+`SECTION_COLORS`, `SECTION_ORDER_LIST`, `_sectionColor()`, `_secLabel()`, `_isEditorialPoster()` viven al nivel de módulo, antes de `_buildPosterV16`. No redefinir dentro de funciones.
+
+**ARCH-R4 — Cero `console.log` en producción.**
+Usar `if(DEBUG)console.log(...)` o eliminarlo. El flag `DEBUG` se activa solo en desarrollo.
+
+---
+
+### Componentes
+
+**COMP-R1 — Sheet compacto con 3+ funciones.**
+`openPelSheet` añade clase `.compact` cuando `totalFn >= 3`. El CSS reduce el poster de 96→72px.
+Regla: el CTA primario debe ser visible sin scroll en el primer viewport.
+
+**COMP-R2 — `_secLabel(sec)` en todos los contextos.**
+Nunca usar `.replace(/^\S+ /, '')` ni `.replace(/^[^ ]+ /, '')` para limpiar nombres de sección.
+Usar `_secLabel(sec)` — solo elimina prefijo emoji, preserva palabras como "U.S.", "Free", "Escape".
+
+**COMP-R3 — Scroll en sheets.**
+Toda función que abre el sheet hace `document.getElementById('pel-sheet').scrollTop = 0`.
+Toda función que abre el sheet añade `-webkit-overflow-scrolling: touch` al contenedor.
+
+---
+
+### Visual
+
+**VIS-R1 — Tres tipos de card, tratamiento visual distinto:**
+1. TMDB: imagen pura 2:3, sin intervención, sin sólido de sección.
+2. Editorial (cloudfront): sólido de sección 52px + imagen 16:9 + título anclado abajo.
+3. Generativo (sin imagen): sólido de sección 52px + caja oscura + título. Sin texto "NO POSTER".
+
+**VIS-R2 — `makeFilmPlaceholder` siempre recibe `section`.**
+Firma: `makeFilmPlaceholder(title, director, year, section)`.
+El header usa `_sectionColor(section)`. Si no hay `section`, color fallback `#2C2C2A`.
+
+**VIS-R3 — Grilla con affordance de scroll.**
+`poster-grid` tiene `padding-right: 20px` para que la cuarta columna asome.
+
+---
+
+### Copy e i18n
+
+**COPY-R1 — El campo `synopsis` en el JSON no contiene metadatos de proceso.**
+Nunca guardar `⚠️ INGLÉS —` u otros prefijos en el dato. El dato es el dato.
+
+**COPY-R2 — Toda string visible al usuario pasa por `t()`.**
+Sin excepciones en templates. Incluye: Q&A labels, registro, premieres, empty states.
+
+**COPY-R3 — `premiere` se muestra tal cual, sin `.toUpperCase()`.**
+El valor en el JSON ya viene en el case correcto desde la fuente.
+
+**COPY-R4 — Paridad ES/EN obligatoria.**
+Toda key nueva se añade a `es.json` Y `en.json` en el mismo commit.
+El validator (RULE 9) bloquea el push si hay desalineación.
+
+---
+
+### Mobile
+
+**MOB-R1 — `-webkit-overflow-scrolling: touch` en todo scroll container.**
+`.pel-sheet`, `.prio-strip-row`, `.hscroll-strip`, `.mplan-wk-outer`, `.ag-excl-strip`.
+
+**MOB-R2 — Tap targets mínimo 44px.**
+Botones de acción: `min-height: 44px`. Si el visual es más pequeño, usar `padding` para expandir el área táctil sin cambiar el tamaño visual.
+
+---
+
+### Deuda técnica registrada (no bloqueante)
+
+- 13 inline onclick handlers con >40 chars — deben migrar a funciones nombradas
+- FICCI/AFF/Cinemancia tienen `config{}` en el JSON (formato legacy) — no afecta runtime
+- Cinemancia2025 en FESTIVAL_CONFIG falta `dayShort`/`dayShort_en`/`dayLong`
+- Detección por URL en `_isEditorialPoster` como fallback — migrar a `posterSource` en todos los festivales
+
+
 
 | Error | Causa | Fix |
 |---|---|---|
