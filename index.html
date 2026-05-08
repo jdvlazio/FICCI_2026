@@ -829,9 +829,6 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:var(--t
 .poster-card.editorial .ed-img img{width:100%;aspect-ratio:16/9;object-fit:cover;display:block;opacity:0;transition:opacity 250ms ease}
 .poster-card.editorial .ed-body{flex:1;display:flex;flex-direction:column;justify-content:flex-end;padding:0 8px 8px}
 .poster-card.editorial .ed-body .ed-title{font-family:-apple-system,BlinkMacSystemFont,sans-serif;font-size:11px;font-weight:800;letter-spacing:-.3px;color:#F0EDE8;line-height:1.27;display:-webkit-box;-webkit-line-clamp:4;-webkit-box-orient:vertical;overflow:hidden}
-.pc-type-badge{position:absolute;top:6px;left:6px;font-size:6px;font-weight:700;letter-spacing:.12em;padding:2px 5px;border-radius:3px;pointer-events:none;z-index:2}
-.pc-type-badge.type-short{background:rgba(93,202,165,.92);color:#0A1A15}
-.pc-type-badge.type-event{background:rgba(239,159,39,.92);color:#1A1000}
 .poster-card-stack{width:100%;height:100%;display:flex;gap:1px;background:var(--bdr)}
 .pcs-back,.pcs-front{flex:1;height:100%;object-fit:cover;object-position:center;display:block;min-width:0}
 .pel-sheet-poster-stage{display:flex;gap:1px;background:var(--bdr);flex-shrink:0;width:var(--poster-lg-w);height:var(--poster-lg-h);border-radius:var(--r-md);overflow:hidden}
@@ -9432,10 +9429,8 @@ function renderPeliculaView(){
           :``;
       }
     }
-    const _typeBadge=f.type==='short'?`<div class="pc-type-badge type-short">SHORT</div>`:f.type==='event'?`<div class="pc-type-badge type-event">EVENT</div>`:'';
     return`<div class="bg-surf-2 poster-card${inWL&&!inW?' in-wl':''}${inW&&!_ended?' in-watched':''}${(_isPrograma?false:_isEditorialPoster(f))?' editorial':''}" data-title="${f.title.replace(/"/g,'&quot;')}" onclick="openPelSheet('${safeT}')"${_isPrograma?'':_cardBg}>
       ${posterImg}
-      ${_typeBadge}
       ${progBadge}
       ${inWL?`<div class="poster-wl-dot">${ICONS.heartFill}</div>`:''}
     </div>`;
