@@ -8616,7 +8616,6 @@ function openPelSheet(title){
     ${_inPlan&&activeView==='agenda'?`<button onclick="closePelSheet();removeFromAgenda('${safeT}')" class="pel-sheet-remove-plan">${ICONS.x} ${t('plan_quitar_plan')}</button>`:''}
   `;
   document.getElementById('pel-overlay').classList.add('open');
-  const _ps=document.getElementById('pel-sheet');
   _ps.classList.add('open');
   _ps.classList.toggle('compact', totalFn>=3);
   _pspAttach();
