@@ -127,7 +127,8 @@
       "genre": "Drama",
       "synopsis": "Una joven falsamente acusada de infanticidio y la abogada que la defiende detonan un movimiento por la justicia y los derechos de las mujeres.",
       "synopsis_en": "In the conservative northwestern region of Argentina, Julieta finds herself accused of infanticide after a medical emergency. With support from her attorney and women's rights advocates, she fights for justice in a landmark case that could change lives.",
-      "tmdb_id": 1301844
+      "tmdb_id": 1301844,
+      "language": "es"
     },
     {
       "title": "Tierra perdida",
@@ -168,7 +169,8 @@
       "genre": "Documental",
       "synopsis": "Brigitte Baptiste, Ph.D., se ha consolidado como una de las principales expertas ambientales de Colombia y también como un ícono transgénero influyente e inesperado.",
       "synopsis_en": "Brigitte Baptiste is a female transgender ecologist whose groundbreaking research has challenged scientific and social conventions for years. With the help of tracking, archive footage and digital animation, the film weaves an intimate soliloquy and a richly nuanced portrait around an extraordinary protagonist, whose refreshing ideas about life, family and current issues may, perhaps, rekindle hope for the future of our planet.",
-      "tmdb_id": 1498786
+      "tmdb_id": 1498786,
+      "language": "es"
     },
     {
       "title": "La hija cóndor",
@@ -209,7 +211,8 @@
       "year": 2026,
       "genre": "Acción, Aventura",
       "synopsis": "Machado, colombiano radicado en Francia, regresa a Medellín para robar una esmeralda. Mientras ejecuta el plan, se enreda en una serie de eventos que lo llevan a reconsiderar su misión.",
-      "synopsis_en": "Machado, a Colombian living in France, returns to Medellín to steal an emerald. As he executes his plan, he becomes entangled in a series of events that force him to reconsider his mission."
+      "synopsis_en": "Machado, a Colombian living in France, returns to Medellín to steal an emerald. As he executes his plan, he becomes entangled in a series of events that force him to reconsider his mission.",
+      "language": "es"
     },
     {
       "title": "Amar bajo las espinas",
@@ -270,7 +273,8 @@
       "year": 2025,
       "genre": "Drama",
       "synopsis": "1982. Una enfermedad desconocida en un pueblo minero chileno lleva a acusar a los hombres gay de transmitirla con la mirada. Lidia, de 12 años, busca la verdad.",
-      "synopsis_en": "As an unknown and deadly disease begins to spread, legend has it that it is transmitted by the mysterious gaze of the flamingo. In a small coastal town, a community struggles to protect themselves while confronting fear, superstition, and the fragility of human connection."
+      "synopsis_en": "As an unknown and deadly disease begins to spread, legend has it that it is transmitted by the mysterious gaze of the flamingo. In a small coastal town, a community struggles to protect themselves while confronting fear, superstition, and the fragility of human connection.",
+      "language": "es"
     },
     {
       "title": "La reserva",
@@ -831,7 +835,8 @@
       "tmdb_id": 1227739,
       "lb_slug": "homebound-2025",
       "lbSlug": "homebound-2025",
-      "synopsis_en": "Two childhood friends from a small town in northern India pursue a police job that promises them dignity. But desperation threatens the bond between them."
+      "synopsis_en": "Two childhood friends from a small town in northern India pursue a police job that promises them dignity. But desperation threatens the bond between them.",
+      "language": "hi"
     },
     {
       "title": "Un fantasma para servirte",
@@ -855,14 +860,14 @@
     }
   ],
   "posters": {
-    "Belén": "https://image.tmdb.org/t/p/w185/w0DzNvUOjCIqxxifViNlwMSc3bm.jpg",
+    "Belén": "https://image.tmdb.org/t/p/w500/4UQ8qAtYeOrUQL3I44foCBfuwUl.jpg",
     "Tierra perdida": "https://admin.alternativa.film/uploads/B1poster_LOSTLAND_XU_Jing_718e89c6d4.jpg",
-    "Brigitte, Planeta B": "https://image.tmdb.org/t/p/w185/ajUS8Zl4qCGcsuX9lNgphTYh3Qp.jpg",
+    "Brigitte, Planeta B": "https://image.tmdb.org/t/p/w500/ajUS8Zl4qCGcsuX9lNgphTYh3Qp.jpg",
     "La hija cóndor": "https://image.tmdb.org/t/p/w185/apNxjF4eu2Oy3kqugfBgUP37C4O.jpg",
-    "Piedras preciosas": "https://image.tmdb.org/t/p/w185/dVwPsLV4Pi9CPmbOHeIYs4k2lpk.jpg",
+    "Piedras preciosas": "https://image.tmdb.org/t/p/w500/ufQVaCjHk7GdTPQLcjsBUS1gjjR.jpg",
     "Amar bajo las espinas": "https://image.tmdb.org/t/p/w185/rhNbwnUPW1h6umdYETaOiE8PPIk.jpg",
     "Cómo ser millonario antes que muera la abuela": "https://image.tmdb.org/t/p/w185/fgWhmlpxPEJQTZeKOAEPlgrD0lB.jpg",
-    "La misteriosa mirada del flamenco": "https://image.tmdb.org/t/p/w185/ra40EbZWA85Pk0ZijF9Dr78Z36o.jpg",
+    "La misteriosa mirada del flamenco": "https://image.tmdb.org/t/p/w500/xfPhni21LIEmuV8HiDfrLhcmTwr.jpg",
     "La reserva": "https://image.tmdb.org/t/p/w185/fMu0fMn9c9r7UJMu8CIsFSGmK6z.jpg",
     "Rayas de tigre": "https://image.tmdb.org/t/p/w185/xn9jcXcSBCIFeUm94EPUTS8laos.jpg",
     "Solo el cielo lo sabe": "https://image.tmdb.org/t/p/w185/fb3olc8UzC7oNZJC096Tr7KiDDQ.jpg",
@@ -890,7 +895,7 @@
     "Presente en los grandes eventos": "https://admin.alternativa.film/uploads/Balloon_2_Pam_Martinez_2db918b067.jpg",
     "Samba infinito": "https://admin.alternativa.film/uploads/SAMBA_INFINITO_POSTER_VERSION_02_LOW_Leonardo_Martinelli_f26536cccd.jpg",
     "Un mundo frágil y maravilloso": "https://image.tmdb.org/t/p/w185/uWuFbUO1mIpJfHiqNnDVALEXHlw.jpg",
-    "Homebound": "https://image.tmdb.org/t/p/w185/xVxWO0Fdt1Gh7Ew6BD8snPEmt0T.jpg"
+    "Homebound": "https://image.tmdb.org/t/p/w500/vyezjSvSdLO0bvr6jSNuFi6yuiw.jpg"
   },
   "customPosters": {},
   "lbSlugs": {
