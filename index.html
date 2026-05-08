@@ -2533,7 +2533,7 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:var(--t
 </div>
 <div id="cartelera-cta" style="display:none">
   <div class="cartelera-cta">
-    <span class="cartelera-cta-text">${t('misc_toca')} <span style="color:var(--amber)">♥</span> en cualquier título para añadirlo a <b>Intereses</b></span>
+    <span class="cartelera-cta-text" id="cartelera-hint-text"><span data-i18n="misc_toca">Tocá</span> <span style="color:var(--amber)">♥</span> <span data-i18n="cartelera_hint_sfx">en cualquier título para agregarlo a Intereses</span></span>
   </div>
 </div>
 </div>
@@ -2750,6 +2750,7 @@ const _I18N = {
     "plan_choca": "Choca con otras películas de tu plan",
     "misc_mas": "+ más ·",
     "misc_toca": "Tocá",
+    "cartelera_hint_sfx": "en cualquier título para agregarlo a Intereses",
     "intereses_onboard": "Añadí lo que no querés perderte en",
     "av_disponibilidad": "Disponibilidad",
     "av_no_incluir": "Tu plan no incluirá funciones en estos horarios.",
@@ -2973,6 +2974,7 @@ const _I18N = {
     "plan_choca": "Conflicts with films in your plan",
     "misc_mas": "+ more ·",
     "misc_toca": "Tap",
+    "cartelera_hint_sfx": "on any title to add it to Interests",
     "intereses_onboard": "Add what you don't want to miss at",
     "av_disponibilidad": "Availability",
     "av_no_incluir": "Your plan won't include screenings during these hours.",
@@ -4629,7 +4631,7 @@ function onSearchInput(){
     return`<div class="ag-sr-item">
       <div>
         <div class="ag-sr-title">${f.title}</div>
-        <div class="ag-sr-meta">${f.flags||''} ${durFmt(f.duration)}${f.is_cortos?` · ${t('label_programa')}`:''}${inWL?' · <span style="color:var(--amber)">${ICONS.heartFill}</span>':''}</div>
+        <div class="ag-sr-meta">${flagFmt(f.flags)||''}${flagFmt(f.flags)?' ':''} ${durFmt(f.duration)}${f.is_cortos?` · ${t('label_programa')}`:''}${inWL?' · <span style="color:var(--amber)">${ICONS.heartFill}</span>':''}</div>
       </div>
       <button class="row-xs ag-sr-add${inWL?' added':''}" data-title="${f.title.replace(/"/g,'&quot;')}" onclick="addFromSearch(this.dataset.title)">
         ${inWL?`${ICONS.check} ${t('cta_en_intereses')}`:`${ICONS.plus} ${t('misc_anadir')}`}
@@ -4741,6 +4743,8 @@ const dayChip = key => {
 /* dayLabel/dayHeader — mantenidos para compatibilidad, internamente usan dayChip */
 const dayLabel  = key => (_lang==='en' ? DAY_SHORT_EN : DAY_SHORT)[key] || key;
 const durFmt    = d   => d ? (String(d).includes('min') ? String(d) : String(d)+' min') : '';
+const _isoToFlag = c  => c&&c.length===2 ? String.fromCodePoint(0x1F1E6+c.toUpperCase().charCodeAt(0)-65)+String.fromCodePoint(0x1F1E6+c.toUpperCase().charCodeAt(1)-65) : '';
+const flagFmt   = fl  => { if(!fl) return ''; const _fc=(FESTIVAL_CONFIG[_activeFestId||_DEFAULT_FEST_ID]||{}).country||''; return (_fc&&fl===_isoToFlag(_fc))?'':fl; };
 
 /* ══════════════════════════════════════════════════════
    emptyState(icon, title, sub) — componente vacío unificado
@@ -5557,7 +5561,7 @@ function renderFilmListHTML(){
       ${posterHtml}
       <div class="int-item-info">
         <div class="int-item-title">${displayTitle}${progSuffix?` <span class="txt-amber-xs">${progSuffix}</span>`:''}</div>
-        <div class="int-item-sec">${f?.flags||''} ${secLabel}</div>
+        <div class="int-item-sec">${flagFmt(f?.flags)||''}${flagFmt(f?.flags)?' ':''} ${secLabel}</div>
         ${nextHtml}
         ${conflictHtml}
       </div>
@@ -5592,7 +5596,7 @@ function renderFilmListHTML(){
       ${posterHtml}
       <div class="int-item-info">
         <div class="int-item-title">${displayTitle}${progSuffix?` <span class="txt-amber-xs">${progSuffix}</span>`:''}</div>
-        <div class="int-item-sec">${f?.flags||''} ${secLabel}</div>
+        <div class="int-item-sec">${flagFmt(f?.flags)||''}${flagFmt(f?.flags)?' ':''} ${secLabel}</div>
         ${ratingHtml}
       </div>
       <div class="int-item-actions">
@@ -6527,7 +6531,7 @@ function _renderSavedAgendaHTML(){
           const _aph=_ap?`<img class="lb-poster" src="${_ap}" loading="lazy" onerror="this.remove()" alt="">`:'<div class="lb-poster-ph">🎬</div>';
           return`<div class="saved-item done">
             ${_aph}
-            <div class="saved-time">${f.flags||'🌐'}</div>
+            <div class="saved-time">${flagFmt(f.flags)||''}</div>
             <div class="saved-info">
               <div class="saved-title">${f.title}</div>
               <div class="saved-venue">${ICONS.clock} ${durFmt(f.duration)||'—'}</div>
@@ -7119,7 +7123,7 @@ function buildResultHTML(scenarios){
         ${posterHtml}
         <div class="int-item-info">
           <div class="int-item-title">${dt}</div>
-          <div class="int-item-sec">${f?.flags||''} ${secLabel}</div>
+          <div class="int-item-sec">${flagFmt(f?.flags)||''}${flagFmt(f?.flags)?' ':''} ${secLabel}</div>
           ${reason}
         </div>
         ${includeBtn}
@@ -8600,7 +8604,7 @@ function openPelSheet(title){
       <div class="pel-sheet-meta">
         <div class="pel-sheet-title">${(()=>{const _dt=filmDisplayTitle(f);return _dt.original?`${_dt.main}<div class="pel-sheet-original">${_dt.original}</div>`:_dt.main;})()}</div>
         ${f.type!=='event'
-          ?`<div class="pel-sheet-flags-dur">${f.flags||'🌐'}${f.duration?` · ${durFmt(f.duration)}`:''}</div>`
+          ?`<div class="pel-sheet-flags-dur">${flagFmt(f.flags)||''}${f.duration?` · ${durFmt(f.duration)}`:''}</div>`
           :(f.duration?`<div class="pel-sheet-flags-dur">${durFmt(f.duration)}</div>`:'')}
         ${f.type!=='event'&&_metaLine?`<div class="pel-sheet-metaline">${_metaLine}</div>`:''}
         ${f.section?`<div class="pel-sheet-sec" data-sec="${f.section.replace(/"/g,'&quot;')}" onclick="filterBySection(this.dataset.sec)">${secLabel} <span class="pel-sheet-sec-arrow">›</span></div>`:''}
