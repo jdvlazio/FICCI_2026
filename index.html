@@ -2314,7 +2314,7 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:var(--t
     <div class="av-sheet-lbl" data-i18n="av_tipo">Tipo</div>
     <div class="av-type-row">
       <button class="av-type-btn selected" id="av-type-hours" onclick="setAvType('hours')">Horas específicas</button>
-      <button class="av-type-btn" id="av-type-full" onclick="setAvType('full')">${t('av_todo_el_dia_btn')}</button>
+      <button class="av-type-btn" id="av-type-full" data-i18n="av_todo_el_dia_btn" onclick="setAvType('full')">Todo el día</button>
     </div>
     <div id="av-time-section">
       <div class="av-sheet-lbl" data-i18n="av_horario">Horario</div>
@@ -2324,7 +2324,7 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:var(--t
         <select class="av-time-sel" id="av-sheet-to"></select>
       </div>
     </div>
-    <button class="av-sheet-confirm" onclick="confirmAvBlock()">Confirmar</button>
+    <button class="av-sheet-confirm" data-i18n="av_confirmar" onclick="confirmAvBlock()">Confirmar</button>
   </div>
 </div>
 
@@ -2478,7 +2478,7 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:var(--t
     </div>
   </div>
   <div class="plan-confirm-films" id="plan-confirm-films"></div>
-  <button class="plan-confirm-cta" onclick="closePlanConfirm(true)">Ver Mi Plan</button>
+  <button class="plan-confirm-cta" data-i18n="cta_mi_plan" onclick="closePlanConfirm(true)">Ver Mi Plan</button>
 </div>
 <!-- ── Rating Sheet ── -->
 <div class="rating-overlay" id="rating-overlay" onclick="closeRatingSheet()"></div>
@@ -3096,6 +3096,7 @@ function _applyI18nDOM(){
     'seccion-lbl'      :'bar_seccion',
     'lugar-lbl'        :'bar_lugar',
     'av-type-hours'    :'av_horas',
+    'av-type-full'     :'av_todo_el_dia_btn',
   };
   for(const[id,key] of Object.entries(ids)){
     const el=document.getElementById(id);
@@ -3710,6 +3711,7 @@ let _sb=null,_sbUser=null,_sbReady=false;
 
 // Init — llamado una vez al arrancar
 function _sbInit(){
+  if(typeof supabase==='undefined'){window.addEventListener('load',_sbInit,{once:true});return;}
   try{
     _sb=supabase.createClient(_SB_URL,_SB_KEY);
     _sb.auth.onAuthStateChange(async(event,session)=>{
@@ -7890,11 +7892,11 @@ function renderFlowProgress(activeTab){
   };
 
   return`<div class="flow-progress">
-    ${mkStep(1,'Intereses')}
+    ${mkStep(1,t('nav_intereses'))}
     <div class="flow-step-sep"></div>
-    ${mkStep(2,'Planear')}
+    ${mkStep(2,t('nav_planear'))}
     <div class="flow-step-sep"></div>
-    ${mkStep(3,'Mi Plan')}
+    ${mkStep(3,t('nav_miplan'))}
   </div>`;
 }
 function renderAgenda(){
@@ -8364,12 +8366,12 @@ function togglePelPrio(title){
   const inWL=watchlist.has(title);
   const pelWlBtn=document.getElementById('pel-wl-btn');
   if(pelWlBtn){
-    pelWlBtn.innerHTML=(inWL?ICONS.heartFill:ICONS.heart)+' '+(inWL?t('cta_en_intereses'):'Intereses');
+    pelWlBtn.innerHTML=(inWL?ICONS.heartFill:ICONS.heart)+' '+(inWL?t('cta_en_intereses'):t('cta_intereses'));
     pelWlBtn.className='pel-sheet-action-btn'+(inWL?' act-on btn-primary':' btn-primary');
   }
   const cortoWlBtn=document.getElementById('corto-wl-btn');
   if(cortoWlBtn){
-    cortoWlBtn.innerHTML=(inWL?ICONS.heartFill:ICONS.heart)+' '+(inWL?t('cta_en_intereses'):'Intereses');
+    cortoWlBtn.innerHTML=(inWL?ICONS.heartFill:ICONS.heart)+' '+(inWL?t('cta_en_intereses'):t('cta_intereses'));
     cortoWlBtn.className='pel-sheet-action-btn'+(inWL?' act-on btn-primary':' btn-primary');
   }
 }
@@ -8381,7 +8383,7 @@ function togglePelWL(title,e){
   const btn=document.getElementById('pel-wl-btn');
   if(!btn) return;
   const inWL=watchlist.has(title);
-  btn.innerHTML=(inWL?ICONS.heartFill:ICONS.heart)+' '+(inWL?t('cta_en_intereses'):'Intereses');
+  btn.innerHTML=(inWL?ICONS.heartFill:ICONS.heart)+' '+(inWL?t('cta_en_intereses'):t('cta_intereses'));
   btn.className='pel-sheet-action-btn'+(inWL?' act-on btn-primary':' btn-primary');
   // Abrir WLAdd solo al AÑADIR — no al quitar (modal async deja wasInWL=true)
   if(!wasInWL&&inWL){
@@ -8613,7 +8615,7 @@ function openPelSheet(title){
         ${!f.is_cortos?`<button onclick="closePelSheet();setTimeout(()=>openRatingSheet('${safeT}'),100)" class="pel-sheet-action-btn btn-secondary">${ICONS.star} ${filmRatings['${safeT}']?'Cambiar':t('cta_calificar')}</button>`:``}
       </div>`
     :`<div class="pel-sheet-ctas">
-        <button id="pel-wl-btn" class="row-center-xs pel-sheet-action-btn${inWL?' act-on btn-primary':' btn-primary'}" onclick="togglePelWL('${safeT}',event)">${inWL?ICONS.heartFill:ICONS.heart} ${inWL?t('cta_en_intereses'):'Intereses'}</button>
+        <button id="pel-wl-btn" class="row-center-xs pel-sheet-action-btn${inWL?' act-on btn-primary':' btn-primary'}" onclick="togglePelWL('${safeT}',event)">${inWL?ICONS.heartFill:ICONS.heart} ${inWL?t('cta_en_intereses'):t('cta_intereses')}</button>
         <button id="pel-prio-btn" class="row-center-xs pel-sheet-action-btn${inPrio?' act-prio':' btn-secondary'}" onclick="togglePelPrio('${safeT}')">${inPrio?ICONS.starFill:ICONS.star} ${inPrio?t('cta_priorizada'):t('cta_priorizar')}</button>
         <button id="pel-vista-btn" class="row-center-xs pel-sheet-action-btn btn-tertiary" onclick="toggleWatched('${safeT}',event)">${ICONS.check} ${f.type==='event'?t('cta_asistio'):t('cta_vista')}</button>
       </div>`}
@@ -8879,7 +8881,7 @@ function openCortoSheet(title, country, duration, section, flags, director, genr
     <div class="pel-sheet-divider"></div>
     ${parentTitle?`<div class="meta-xs-gray">Al agregar un corto se incluye el programa completo</div>`:''}
     <div class="flex-gap1-mt1">
-      <button id="corto-wl-btn" class="row-center-xs pel-sheet-action-btn${inWL?' act-on btn-primary':' btn-primary'}" onclick="toggleWL('${safeParent}',event)">${inWL?ICONS.heartFill:ICONS.heart} ${inWL?t('cta_en_intereses'):'Intereses'}</button>
+      <button id="corto-wl-btn" class="row-center-xs pel-sheet-action-btn${inWL?' act-on btn-primary':' btn-primary'}" onclick="toggleWL('${safeParent}',event)">${inWL?ICONS.heartFill:ICONS.heart} ${inWL?t('cta_en_intereses'):t('cta_intereses')}</button>
       <button id="corto-prio-btn" class="row-center-xs pel-sheet-action-btn${inPrio?' act-prio':' btn-secondary'}" onclick="togglePelPrio('${safeParent}')">${inPrio?ICONS.starFill:ICONS.star} ${inPrio?t('cta_priorizada'):t('cta_priorizar')}</button>
       <button class="row-center-xs pel-sheet-action-btn${filmRatings[title]?' act-on':' btn-secondary'}" onclick="closePelSheet();setTimeout(()=>openRatingSheet('${safeTitle}'),100)">${ICONS.star} ${filmRatings[title]?'Cambiar':t('cta_calificar')}</button>
     </div>
@@ -10511,7 +10513,7 @@ function _posterErr(img){
       <div class="auth-sheet-title" data-i18n="auth_revisa">Revisá tu email</div>
       <div class="auth-sheet-sub">Enviamos un código de 6 dígitos a <span id="auth-otp-email" style="color:var(--white)"></span></div>
       <input class="pin-display auth-email-inp" id="auth-otp-inp" type="number" placeholder="123456" inputmode="numeric" maxlength="6" onkeydown="if(event.key==='Enter')submitOTP()"><!-- 16px: prevents iOS auto-zoom -->
-      <button class="auth-send-btn" id="auth-otp-btn" onclick="submitOTP()">Confirmar</button>
+      <button class="auth-send-btn" data-i18n="av_confirmar" id="auth-otp-btn" onclick="submitOTP()">Confirmar</button>
       <div class="auth-msg" id="auth-otp-msg"></div>
       <span class="auth-cancel" onclick="closeAuthSheet();document.getElementById('auth-sheet-step1').style.display='block';document.getElementById('auth-sheet-step2').style.display='none'" data-i18n="misc_cancelar">Cancelar</span>
     </div>

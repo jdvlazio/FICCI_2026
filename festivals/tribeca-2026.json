@@ -3,25 +3,6 @@
   "_source": "tribecafilm.com/films/[slug]-2026",
   "_extracted": "2026-05-07",
   "_total": 246,
-  "config": {
-    "id": "tribeca-2026",
-    "name": "Tribeca Festival",
-    "name_short": "Tribeca",
-    "city": "New York",
-    "country": "US",
-    "flag": "🇺🇸",
-    "dates": "June 3–14, 2026",
-    "date_start": "2026-06-03",
-    "date_end": "2026-06-14",
-    "timezone": "America/New_York",
-    "tz_offset": "-04:00",
-    "language": "en",
-    "website": "https://tribecafilm.com/festival",
-    "color_accent": "#E8173C",
-    "shortName": "Tribeca",
-    "storageKey": "tribeca2026",
-    "festivalEndStr": "2026-06-14T23:59:00"
-  },
   "transport": "transit",
   "venues": {
     "Village East by Angelika": {
