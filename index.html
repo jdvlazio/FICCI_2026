@@ -3465,7 +3465,7 @@ const SECTION_ORDER_LIST=[
   '🌟 Gala','✨ Spotlight+','🏆 U.S. Narrative Competition',
   '🌍 International Narrative Competition','🏅 Documentary Competition',
   '🎬 Spotlight Narrative','📹 Spotlight Documentary','👁️ Viewpoints',
-  '🌙 Escape From Tribeca','📽️ Reunions & Retrospectives','🎭 Storytellers',
+  '🌙 Escape From Tribeca','📽️ Reunions & Retrospectives','🗣️ Talks',
   '🎙️ Podcasts','⭐ Special Events','📱 NOW','📺 TV','🎨 Shorts Programs',
   '🌿 Free Outdoor Screenings','✂️ Shorts',
   // Sin emoji (festivales legacy)
@@ -3492,7 +3492,7 @@ const SECTION_COLORS={
   '👁️ Viewpoints':'#AFA9EC',
   '🌙 Escape From Tribeca':'#E24B4A',
   '📽️ Reunions & Retrospectives':'#888780',
-  '🎭 Storytellers':'#FAC775',
+  '🗣️ Talks':'#FAC775',
   '🎙️ Podcasts':'#85B7EB',
   '📱 NOW':'#5DCAA5',
   '📺 TV':'#B4B2A9',
@@ -3513,6 +3513,7 @@ const SECTION_COLORS={
   'Escape From Tribeca':'#E24B4A',
   'Reunions & Retrospectives':'#888780',
   'Storytellers':'#FAC775',
+  'Talks':'#FAC775',
   'Talks':'#85B7EB',
   'NOW':'#5DCAA5',
   'TV':'#B4B2A9',
@@ -9361,7 +9362,7 @@ function renderPeliculaView(){
       if(_isEditorial){
         const _accent=_sectionColor(f.section||'');
         const _edSecLbl=_secLabel(f.section||'');
-        const _edBodyTitle=(()=>{const pfx=_edSecLbl+' - ';return displayTitle.startsWith(pfx)?displayTitle.slice(pfx.length):displayTitle;})();
+        const _edBodyTitle=(()=>{const pfx=_edSecLbl+' - ';if(displayTitle.startsWith(pfx))return displayTitle.slice(pfx.length);const sPfx='Storytellers - ';if(displayTitle.startsWith(sPfx))return displayTitle.slice(sPfx.length);return displayTitle;})();
         posterImg=`<div class="ed-hdr" style="background:${_accent}"><div class="ed-lbl">${_edSecLbl}</div></div><div class="ed-img"><img src="${posterSrc}" loading="lazy" onerror="this.remove()" alt="" onload="this.style.opacity='1'"></div><div class="ed-body"><div class="ed-title">${_edBodyTitle}</div></div>`;
       } else {
         posterImg=posterSrc
