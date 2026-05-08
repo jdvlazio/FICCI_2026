@@ -9090,11 +9090,6 @@ function _metaBadges(f){
 }
 function _metaBanners(f){
   let b='';
-  if(f.premiere){
-    const _premIcons={'World Premiere':'🌍','International Premiere':'🌎','U.S. Premiere':'🇺🇸','New York Premiere':'🗽'};
-    const _premIcon=_premIcons[f.premiere]||'★';
-    b+=`<div class="meta-banner premiere-banner"><div class="meta-banner-dot" style="background:#EF9F27"></div><div><div class="meta-banner-label" style="color:#EF9F27">${_premIcon} ${f.premiere}</div></div></div>`;
-  }
   if(f.has_qa) b+=`<div class="meta-banner"><div class="meta-banner-dot"></div><div><div class="meta-banner-label">${t('meta_qa_label')}</div><div class="meta-banner-text">${t('notice_extension')} <span>${t('meta_qa_time')}</span></div></div></div>`;
   if(f.requires_registration) b+=`<div class="meta-banner"><div class="meta-banner-dot"></div><div><div class="meta-banner-label">${t('badge_inscripcion_prev')}</div><div class="meta-banner-text">${t('meta_registro_text')}</div></div></div>`;
   return b;
