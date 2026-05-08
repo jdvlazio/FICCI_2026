@@ -81,7 +81,7 @@
     {
       "title": "Closing Night: Alicia Keys: Girl From Hell's Kitchen",
       "slug": "closing-night-alicia-keys-girl-from-hell-s-kitchen",
-      "section": "Gala",
+      "section": "🌟 Gala",
       "type": "film",
       "filmType": "Feature Documentary",
       "director": "One9",
@@ -116,7 +116,7 @@
     {
       "title": "Opening Night: Earth, Wind & Fire (To Be Celestial VS That’s the Weight of the World)",
       "slug": "opening-night-earth-wind-fire-to-be-celestial-vs-that-s-the-weight-of-the-world",
-      "section": "Gala",
+      "section": "🌟 Gala",
       "type": "film",
       "filmType": "Feature Documentary",
       "director": "Ahmir \"Questlove\" Thompson",
@@ -157,7 +157,7 @@
     {
       "title": "Sara Bareilles: Good Grief",
       "slug": "sara-bareilles-good-grief",
-      "section": "Gala",
+      "section": "🌟 Gala",
       "type": "film",
       "filmType": "Feature Documentary",
       "director": "Josh Alexander",
@@ -206,7 +206,7 @@
     {
       "title": "Tribeca at 25: A Conversation With Co-Founders Jane Rosenthal and Robert De Niro",
       "slug": "tribeca-at-25-a-conversation-with-co-founders-jane-rosenthal-and-robert-de-niro",
-      "section": "Gala",
+      "section": "🌟 Gala",
       "type": "film",
       "filmType": "",
       "director": "",
@@ -234,7 +234,7 @@
     {
       "title": "Tribeca Festival Awards Night",
       "slug": "tribeca-festival-awards-night",
-      "section": "Gala",
+      "section": "🌟 Gala",
       "type": "film",
       "filmType": "",
       "director": "",
@@ -262,7 +262,7 @@
     {
       "title": "ALEJANDRO SANZ: WHEN NO ONE SEES ME",
       "slug": "alejandro-sanz-when-no-one-sees-me",
-      "section": "Spotlight+",
+      "section": "✨ Spotlight+",
       "type": "film",
       "filmType": "Episodic Series or Pilot",
       "director": "Álvaro Ron",
@@ -291,7 +291,7 @@
     {
       "title": "Doc Meets World",
       "slug": "doc-meets-world",
-      "section": "Spotlight+",
+      "section": "✨ Spotlight+",
       "type": "film",
       "filmType": "Feature Documentary",
       "director": "Chris Levitus and Zane Rubin",
@@ -334,7 +334,7 @@
     {
       "title": "Frampton",
       "slug": "frampton",
-      "section": "Spotlight+",
+      "section": "✨ Spotlight+",
       "type": "film",
       "filmType": "Feature Documentary",
       "director": "Rob Arthur",
@@ -376,7 +376,7 @@
     {
       "title": "Hadestown: The Musical",
       "slug": "hadestown-the-musical",
-      "section": "Spotlight+",
+      "section": "✨ Spotlight+",
       "type": "film",
       "filmType": "Feature Narrative",
       "director": "Brett Sullivan",
@@ -418,7 +418,7 @@
     {
       "title": "Imaginal Disk",
       "slug": "imaginal-disk",
-      "section": "Spotlight+",
+      "section": "✨ Spotlight+",
       "type": "film",
       "filmType": "Feature Narrative",
       "director": "Amanda Kramer",
@@ -460,7 +460,7 @@
     {
       "title": "Katy Perry: The Lifetimes Tour - Live from Paris",
       "slug": "katy-perry-the-lifetimes-tour-live-from-paris",
-      "section": "Spotlight+",
+      "section": "✨ Spotlight+",
       "type": "film",
       "filmType": "Feature Documentary",
       "director": "Paul Dugdale",
@@ -502,7 +502,7 @@
     {
       "title": "Miss Representation: Rise Up",
       "slug": "miss-representation-rise-up",
-      "section": "Spotlight+",
+      "section": "✨ Spotlight+",
       "type": "film",
       "filmType": "Feature Documentary",
       "director": "Jennifer Siebel Newsom",
@@ -545,7 +545,7 @@
     {
       "title": "Mumford & Sons: The House Band",
       "slug": "mumford-sons-the-house-band",
-      "section": "Spotlight+",
+      "section": "✨ Spotlight+",
       "type": "film",
       "filmType": "Feature Documentary",
       "director": "Sam Jones",
@@ -587,7 +587,7 @@
     {
       "title": "Noga",
       "slug": "noga",
-      "section": "Spotlight+",
+      "section": "✨ Spotlight+",
       "type": "film",
       "filmType": "Feature Documentary",
       "director": "Jono Bergmann and Benji Bergmann",
@@ -629,7 +629,7 @@
     {
       "title": "Playing POTUS",
       "slug": "playing-potus",
-      "section": "Spotlight+",
+      "section": "✨ Spotlight+",
       "type": "film",
       "filmType": "Feature Documentary",
       "director": "Josh Greenbaum",
@@ -672,7 +672,7 @@
     {
       "title": "The Symphony of Dance",
       "slug": "symphony-of-dance",
-      "section": "Spotlight+",
+      "section": "✨ Spotlight+",
       "type": "film",
       "filmType": "Feature Documentary",
       "director": "Jason Bergh",
@@ -715,7 +715,7 @@
     {
       "title": "Trinity: The Story of The LOX",
       "slug": "trinity-the-story-of-the-lox",
-      "section": "Spotlight+",
+      "section": "✨ Spotlight+",
       "type": "film",
       "filmType": "Feature Documentary",
       "director": "Bill Horace",
@@ -758,7 +758,7 @@
     {
       "title": "Act One",
       "slug": "act-one",
-      "section": "Spotlight Narrative",
+      "section": "🎬 Spotlight Narrative",
       "type": "film",
       "filmType": "Feature Narrative",
       "director": "Sophia Takal",
@@ -800,7 +800,7 @@
     {
       "title": "Adults",
       "slug": "adults",
-      "section": "Spotlight Narrative",
+      "section": "🎬 Spotlight Narrative",
       "type": "event",
       "filmType": "Tribeca TV",
       "director": "Jonathan Krisel",
@@ -829,7 +829,7 @@
     {
       "title": "Alice and Steve",
       "slug": "alice-and-steve",
-      "section": "Spotlight Narrative",
+      "section": "🎬 Spotlight Narrative",
       "type": "event",
       "filmType": "Tribeca TV",
       "director": "Tom Kingsley",
@@ -858,7 +858,7 @@
     {
       "title": "Clean Hands",
       "slug": "clean-hands",
-      "section": "Spotlight Narrative",
+      "section": "🎬 Spotlight Narrative",
       "type": "film",
       "filmType": "Feature Narrative",
       "director": "Jake Allyn",
@@ -900,7 +900,7 @@
     {
       "title": "Finnegan’s Foursome",
       "slug": "finnegan-s-foursome",
-      "section": "Spotlight Narrative",
+      "section": "🎬 Spotlight Narrative",
       "type": "film",
       "filmType": "Feature Narrative",
       "director": "Edward F Burns",
@@ -942,7 +942,7 @@
     {
       "title": "Gail Daughtry and the Celebrity Sex Pass",
       "slug": "gail-daughtry-and-the-celebrity-sex-pass",
-      "section": "Spotlight Narrative",
+      "section": "🎬 Spotlight Narrative",
       "type": "film",
       "filmType": "Feature Narrative",
       "director": "David Wain",
@@ -984,7 +984,7 @@
     {
       "title": "Happy Hours",
       "slug": "happy-hours",
-      "section": "Spotlight Narrative",
+      "section": "🎬 Spotlight Narrative",
       "type": "film",
       "filmType": "Feature Narrative",
       "director": "Katie Holmes",
@@ -1032,7 +1032,7 @@
     {
       "title": "Iconoclast",
       "slug": "iconoclast",
-      "section": "Spotlight Narrative",
+      "section": "🎬 Spotlight Narrative",
       "type": "film",
       "filmType": "Feature Narrative",
       "director": "Gabriel Basso",
@@ -1074,7 +1074,7 @@
     {
       "title": "In Memoriam",
       "slug": "in-memoriam",
-      "section": "Spotlight Narrative",
+      "section": "🎬 Spotlight Narrative",
       "type": "film",
       "filmType": "Feature Narrative",
       "director": "Rob Burnett",
@@ -1116,7 +1116,7 @@
     {
       "title": "In the Hand of Dante",
       "slug": "in-the-hand-of-dante",
-      "section": "Spotlight Narrative",
+      "section": "🎬 Spotlight Narrative",
       "type": "film",
       "filmType": "Feature Narrative",
       "director": "Julian Schnabel",
@@ -1152,7 +1152,7 @@
     {
       "title": "Killing Castro",
       "slug": "killing-castro",
-      "section": "Spotlight Narrative",
+      "section": "🎬 Spotlight Narrative",
       "type": "film",
       "filmType": "Feature Narrative",
       "director": "Eif Rivera",
@@ -1194,7 +1194,7 @@
     {
       "title": "Never Change!",
       "slug": "never-change",
-      "section": "Spotlight Narrative",
+      "section": "🎬 Spotlight Narrative",
       "type": "film",
       "filmType": "Feature Narrative",
       "director": "Marty Schousboe",
@@ -1236,7 +1236,7 @@
     {
       "title": "Next Life",
       "slug": "next-life",
-      "section": "Spotlight Narrative",
+      "section": "🎬 Spotlight Narrative",
       "type": "film",
       "filmType": "Feature Narrative",
       "director": "Drake Doremus",
@@ -1278,7 +1278,7 @@
     {
       "title": "Only What We Carry",
       "slug": "only-what-we-carry",
-      "section": "Spotlight Narrative",
+      "section": "🎬 Spotlight Narrative",
       "type": "film",
       "filmType": "Feature Narrative",
       "director": "Jamie Adams",
@@ -1320,7 +1320,7 @@
     {
       "title": "Rain Reign",
       "slug": "rain-reign",
-      "section": "Spotlight Narrative",
+      "section": "🎬 Spotlight Narrative",
       "type": "film",
       "filmType": "Feature Narrative",
       "director": "Erika Burke Rossa",
@@ -1369,7 +1369,7 @@
     {
       "title": "Seven O'Clock Breakfast Club for the Brokenhearted",
       "slug": "seven-o-clock-breakfast-club-for-the-brokenhearted",
-      "section": "Spotlight Narrative",
+      "section": "🎬 Spotlight Narrative",
       "type": "film",
       "filmType": "Feature Narrative",
       "director": "Sun-ae Lim",
@@ -1411,7 +1411,7 @@
     {
       "title": "Take Me Home",
       "slug": "take-me-home",
-      "section": "Spotlight Narrative",
+      "section": "🎬 Spotlight Narrative",
       "type": "film",
       "filmType": "Feature Narrative",
       "director": "Liz Sargent",
@@ -1453,7 +1453,7 @@
     {
       "title": "That Friend",
       "slug": "that-friend",
-      "section": "Spotlight Narrative",
+      "section": "🎬 Spotlight Narrative",
       "type": "film",
       "filmType": "Feature Narrative",
       "director": "Alex Wall and Will Sterling",
@@ -1495,7 +1495,7 @@
     {
       "title": "The Accompanist",
       "slug": "accompanist",
-      "section": "Spotlight Narrative",
+      "section": "🎬 Spotlight Narrative",
       "type": "film",
       "filmType": "Feature Narrative",
       "director": "Zach Woods",
@@ -1537,7 +1537,7 @@
     {
       "title": "The Last Day",
       "slug": "last-day",
-      "section": "Spotlight Narrative",
+      "section": "🎬 Spotlight Narrative",
       "type": "film",
       "filmType": "Feature Narrative",
       "director": "Rachel Rose",
@@ -1579,7 +1579,7 @@
     {
       "title": "The Leader",
       "slug": "leader",
-      "section": "Spotlight Narrative",
+      "section": "🎬 Spotlight Narrative",
       "type": "film",
       "filmType": "Feature Narrative",
       "director": "Michael Gallagher",
@@ -1621,7 +1621,7 @@
     {
       "title": "The Long Haul",
       "slug": "long-haul",
-      "section": "Spotlight Narrative",
+      "section": "🎬 Spotlight Narrative",
       "type": "film",
       "filmType": "Feature Narrative",
       "director": "David Drake",
@@ -1663,7 +1663,7 @@
     {
       "title": "The Revisionist",
       "slug": "revisionist",
-      "section": "Spotlight Narrative",
+      "section": "🎬 Spotlight Narrative",
       "type": "film",
       "filmType": "Feature Narrative",
       "director": "Alex Vlack",
@@ -1705,7 +1705,7 @@
     {
       "title": "They Fight",
       "slug": "they-fight",
-      "section": "Spotlight Narrative",
+      "section": "🎬 Spotlight Narrative",
       "type": "film",
       "filmType": "Feature Narrative",
       "director": "Sheldon Candis",
@@ -1747,7 +1747,7 @@
     {
       "title": "Unidentified",
       "slug": "unidentified",
-      "section": "Spotlight Narrative",
+      "section": "🎬 Spotlight Narrative",
       "type": "film",
       "filmType": "Feature Narrative",
       "director": "Haifaa Al Mansour",
@@ -1789,7 +1789,7 @@
     {
       "title": "Young Washington",
       "slug": "young-washington",
-      "section": "Spotlight Narrative",
+      "section": "🎬 Spotlight Narrative",
       "type": "film",
       "filmType": "Feature Narrative",
       "director": "Jon Erwin",
@@ -1825,7 +1825,7 @@
     {
       "title": "4000 Days",
       "slug": "4000-days",
-      "section": "Spotlight Documentary",
+      "section": "📹 Spotlight Documentary",
       "type": "film",
       "filmType": "Feature Documentary",
       "director": "Daniel E Catullo III",
@@ -1868,7 +1868,7 @@
     {
       "title": "AI: Probably Nothing to Worry About",
       "slug": "ai-probably-nothing-to-worry-about",
-      "section": "Spotlight Documentary",
+      "section": "📹 Spotlight Documentary",
       "type": "film",
       "filmType": "Feature Documentary",
       "director": "Nick Holt",
@@ -1911,7 +1911,7 @@
     {
       "title": "Bob and David Climb Machu Picchu",
       "slug": "bob-and-david-climb-machu-picchu",
-      "section": "Spotlight Documentary",
+      "section": "📹 Spotlight Documentary",
       "type": "film",
       "filmType": "Feature Documentary",
       "director": "Michael LaHaie",
@@ -1953,7 +1953,7 @@
     {
       "title": "Born Melo",
       "slug": "born-melo",
-      "section": "Spotlight Documentary",
+      "section": "📹 Spotlight Documentary",
       "type": "film",
       "filmType": "Feature Documentary",
       "director": "Jake Rogal",
@@ -1990,7 +1990,7 @@
     {
       "title": "Chris & Martina: The Final Set",
       "slug": "chris-martina-the-final-set",
-      "section": "Spotlight Documentary",
+      "section": "📹 Spotlight Documentary",
       "type": "film",
       "filmType": "Feature Documentary",
       "director": "Rebecca Gitlitz",
@@ -2032,7 +2032,7 @@
     {
       "title": "Every Year After",
       "slug": "every-year-after",
-      "section": "Spotlight Documentary",
+      "section": "📹 Spotlight Documentary",
       "type": "event",
       "filmType": "Tribeca TV",
       "director": "Jeffrey W.  Byrd, Tara Nicole Weyr, Gillian Robespierre, and John Polson",
@@ -2059,7 +2059,7 @@
     {
       "title": "Full Circle: The First All Black Everest Ascent",
       "slug": "full-circle-the-first-all-black-everest-ascent",
-      "section": "Spotlight Documentary",
+      "section": "📹 Spotlight Documentary",
       "type": "film",
       "filmType": "Feature Documentary",
       "director": "Justice A. Whitaker and Rolake Bamgbose",
@@ -2102,7 +2102,7 @@
     {
       "title": "Grandmasters",
       "slug": "grandmasters",
-      "section": "Spotlight Documentary",
+      "section": "📹 Spotlight Documentary",
       "type": "event",
       "filmType": "Tribeca TV",
       "director": "Liza Mandelup",
@@ -2135,7 +2135,7 @@
     {
       "title": "Guggi",
       "slug": "guggi",
-      "section": "Spotlight Documentary",
+      "section": "📹 Spotlight Documentary",
       "type": "film",
       "filmType": "Feature Documentary",
       "director": "Ian Thuillier",
@@ -2171,7 +2171,7 @@
     {
       "title": "Hanging by a Wire",
       "slug": "hanging-by-a-wire",
-      "section": "Spotlight Documentary",
+      "section": "📹 Spotlight Documentary",
       "type": "film",
       "filmType": "Feature Documentary",
       "director": "Mohammed Ali Naqvi",
@@ -2212,7 +2212,7 @@
     {
       "title": "Hollywood Does Abortion",
       "slug": "hollywood-does-abortion",
-      "section": "Spotlight Documentary",
+      "section": "📹 Spotlight Documentary",
       "type": "film",
       "filmType": "Feature Documentary",
       "director": "Barbara Attie, Janet Goldwater, and Mike Attie",
@@ -2255,7 +2255,7 @@
     {
       "title": "House of Criticism",
       "slug": "house-of-criticism",
-      "section": "Spotlight Documentary",
+      "section": "📹 Spotlight Documentary",
       "type": "film",
       "filmType": "Feature Documentary",
       "director": "Alison Chernick",
@@ -2298,7 +2298,7 @@
     {
       "title": "How to Feed a Dictator",
       "slug": "how-to-feed-a-dictator",
-      "section": "Spotlight Documentary",
+      "section": "📹 Spotlight Documentary",
       "type": "film",
       "filmType": "Feature Documentary",
       "director": "Andrew Neel",
@@ -2341,7 +2341,7 @@
     {
       "title": "Humpty Dumpty X",
       "slug": "humpty-dumpty-x",
-      "section": "Spotlight Documentary",
+      "section": "📹 Spotlight Documentary",
       "type": "film",
       "filmType": "Feature Documentary",
       "director": "Tony Kaye",
@@ -2382,7 +2382,7 @@
     {
       "title": "IX XI",
       "slug": "ix-xi",
-      "section": "Spotlight Documentary",
+      "section": "📹 Spotlight Documentary",
       "type": "film",
       "filmType": "Feature Documentary",
       "director": "Sean Wilsey",
@@ -2424,7 +2424,7 @@
     {
       "title": "Just Look Up",
       "slug": "just-look-up",
-      "section": "Spotlight Documentary",
+      "section": "📹 Spotlight Documentary",
       "type": "film",
       "filmType": "Feature Documentary",
       "director": "Betsy Hershey and Emma Wall",
@@ -2466,7 +2466,7 @@
     {
       "title": "March Forth",
       "slug": "march-forth",
-      "section": "Spotlight Documentary",
+      "section": "📹 Spotlight Documentary",
       "type": "film",
       "filmType": "Feature Documentary",
       "director": "Robe Imbriano and Valerie Hong",
@@ -2515,7 +2515,7 @@
     {
       "title": "Mario",
       "slug": "mario",
-      "section": "Spotlight Documentary",
+      "section": "📹 Spotlight Documentary",
       "type": "film",
       "filmType": "Feature Documentary",
       "director": "Peter Kunhardt, George Kunhardt, and Teddy Kunhardt",
@@ -2557,7 +2557,7 @@
     {
       "title": "Mineshaft: The Cruising Murders",
       "slug": "mineshaft-the-cruising-murders",
-      "section": "Spotlight Documentary",
+      "section": "📹 Spotlight Documentary",
       "type": "film",
       "filmType": "Feature Documentary",
       "director": "Jeffrey Schwarz",
@@ -2599,7 +2599,7 @@
     {
       "title": "MOUTH FULL OF GOLDS",
       "slug": "mouth-full-of-golds",
-      "section": "Spotlight Documentary",
+      "section": "📹 Spotlight Documentary",
       "type": "film",
       "filmType": "Feature Documentary",
       "director": "Lyle Lindgren",
@@ -2641,7 +2641,7 @@
     {
       "title": "Odyssey",
       "slug": "odyssey",
-      "section": "Spotlight Documentary",
+      "section": "📹 Spotlight Documentary",
       "type": "film",
       "filmType": "Feature Documentary",
       "director": "Avi Belkin",
@@ -2683,7 +2683,7 @@
     {
       "title": "Spin Wars",
       "slug": "spin-wars",
-      "section": "Spotlight Documentary",
+      "section": "📹 Spotlight Documentary",
       "type": "film",
       "filmType": "Feature Documentary",
       "director": "Philip Byron",
@@ -2726,7 +2726,7 @@
     {
       "title": "Stealing Magic",
       "slug": "stealing-magic",
-      "section": "Spotlight Documentary",
+      "section": "📹 Spotlight Documentary",
       "type": "film",
       "filmType": "Feature Documentary",
       "director": "Matthew Testa",
@@ -2769,7 +2769,7 @@
     {
       "title": "The A-Word: The Future of Aging",
       "slug": "a-word-the-future-of-aging",
-      "section": "Spotlight Documentary",
+      "section": "📹 Spotlight Documentary",
       "type": "film",
       "filmType": "Feature Documentary",
       "director": "Greg Kohs",
@@ -2812,7 +2812,7 @@
     {
       "title": "The Best Summer",
       "slug": "best-summer",
-      "section": "Spotlight Documentary",
+      "section": "📹 Spotlight Documentary",
       "type": "film",
       "filmType": "Feature Documentary",
       "director": "Tamra Davis and Tamra Davis",
@@ -2853,7 +2853,7 @@
     {
       "title": "The Lion Queen",
       "slug": "lion-queen",
-      "section": "Spotlight Documentary",
+      "section": "📹 Spotlight Documentary",
       "type": "film",
       "filmType": "Feature Documentary",
       "director": "Alden Nusser and Ben Fries",
@@ -2895,7 +2895,7 @@
     {
       "title": "The Lorraine",
       "slug": "lorraine",
-      "section": "Spotlight Documentary",
+      "section": "📹 Spotlight Documentary",
       "type": "film",
       "filmType": "Feature Documentary",
       "director": "Sam Pollard",
@@ -2937,7 +2937,7 @@
     {
       "title": "threeASFOUR: Full Circle",
       "slug": "threeasfour-full-circle",
-      "section": "Spotlight Documentary",
+      "section": "📹 Spotlight Documentary",
       "type": "film",
       "filmType": "Feature Documentary",
       "director": "Sean Ono Lennon and co-directed by Brian Gonzalez",
@@ -2980,7 +2980,7 @@
     {
       "title": "TikTok Never Dies",
       "slug": "tiktok-never-dies",
-      "section": "Spotlight Documentary",
+      "section": "📹 Spotlight Documentary",
       "type": "film",
       "filmType": "Feature Documentary",
       "director": "Hao Wu",
@@ -3022,7 +3022,7 @@
     {
       "title": "Whipple's World",
       "slug": "whipple-s-world",
-      "section": "Spotlight Documentary",
+      "section": "📹 Spotlight Documentary",
       "type": "film",
       "filmType": "Feature Documentary",
       "director": "Adam Paul Verity",
@@ -3064,7 +3064,7 @@
     {
       "title": "Breeder",
       "slug": "breeder",
-      "section": "Escape From Tribeca",
+      "section": "🌙 Escape From Tribeca",
       "type": "film",
       "filmType": "Feature Narrative",
       "director": "Alex Goyette",
@@ -3106,7 +3106,7 @@
     {
       "title": "Dante",
       "slug": "dante",
-      "section": "Escape From Tribeca",
+      "section": "🌙 Escape From Tribeca",
       "type": "film",
       "filmType": "Feature Narrative",
       "director": "Hugo Ruíz",
@@ -3148,7 +3148,7 @@
     {
       "title": "Death Boom",
       "slug": "death-boom",
-      "section": "Escape From Tribeca",
+      "section": "🌙 Escape From Tribeca",
       "type": "film",
       "filmType": "Feature Documentary",
       "director": "Jessica Chandler",
@@ -3190,7 +3190,7 @@
     {
       "title": "Hallowarrior",
       "slug": "hallowarrior",
-      "section": "Escape From Tribeca",
+      "section": "🌙 Escape From Tribeca",
       "type": "film",
       "filmType": "Feature Narrative",
       "director": "Ben Sottak",
@@ -3232,7 +3232,7 @@
     {
       "title": "Mutter: The Diary of a Mother",
       "slug": "mutter-the-diary-of-a-mother",
-      "section": "Escape From Tribeca",
+      "section": "🌙 Escape From Tribeca",
       "type": "film",
       "filmType": "Feature Narrative",
       "director": "Alphan Eseli",
@@ -3274,7 +3274,7 @@
     {
       "title": "Recluse",
       "slug": "recluse",
-      "section": "Escape From Tribeca",
+      "section": "🌙 Escape From Tribeca",
       "type": "film",
       "filmType": "Feature Narrative",
       "director": "Henry Chaisson",
@@ -3316,7 +3316,7 @@
     {
       "title": "The Haunting of Pennhurst",
       "slug": "haunting-of-pennhurst",
-      "section": "Escape From Tribeca",
+      "section": "🌙 Escape From Tribeca",
       "type": "film",
       "filmType": "Feature Documentary",
       "director": "Nathan R. Stenberg, Mike Attie, and Katarina Poljak",
@@ -3358,7 +3358,7 @@
     {
       "title": "Turn It Up!",
       "slug": "turn-it-up",
-      "section": "Escape From Tribeca",
+      "section": "🌙 Escape From Tribeca",
       "type": "film",
       "filmType": "Feature Narrative",
       "director": "Sam Scott",
@@ -3400,7 +3400,7 @@
     {
       "title": "Crocodile",
       "slug": "crocodile",
-      "section": "Viewpoints",
+      "section": "👁️ Viewpoints",
       "type": "film",
       "filmType": "Feature Documentary",
       "director": "The Critics and Pietra Brettkelly",
@@ -3442,7 +3442,7 @@
     {
       "title": "Crooks",
       "slug": "crooks",
-      "section": "Viewpoints",
+      "section": "👁️ Viewpoints",
       "type": "film",
       "filmType": "Feature Narrative",
       "director": "Mickey Keating",
@@ -3485,7 +3485,7 @@
     {
       "title": "Deepfake",
       "slug": "deepfake",
-      "section": "Viewpoints",
+      "section": "👁️ Viewpoints",
       "type": "film",
       "filmType": "Feature Narrative",
       "director": "Matt Eames",
@@ -3527,7 +3527,7 @@
     {
       "title": "Human Theories",
       "slug": "human-theories",
-      "section": "Viewpoints",
+      "section": "👁️ Viewpoints",
       "type": "film",
       "filmType": "Feature Narrative",
       "director": "Jess Zeidman",
@@ -3570,7 +3570,7 @@
     {
       "title": "Matininó",
       "slug": "matinino",
-      "section": "Viewpoints",
+      "section": "👁️ Viewpoints",
       "type": "film",
       "filmType": "Feature Documentary",
       "director": "Gabriela Díaz Arp",
@@ -3613,7 +3613,7 @@
     {
       "title": "Micronations",
       "slug": "micronations",
-      "section": "Viewpoints",
+      "section": "👁️ Viewpoints",
       "type": "film",
       "filmType": "Feature Documentary",
       "director": "Joe Kowalski",
@@ -3655,7 +3655,7 @@
     {
       "title": "One Woman One Bra",
       "slug": "one-woman-one-bra",
-      "section": "Viewpoints",
+      "section": "👁️ Viewpoints",
       "type": "film",
       "filmType": "Feature Narrative",
       "director": "Vincho Nchogu",
@@ -3697,7 +3697,7 @@
     {
       "title": "Something You Should Know About Me",
       "slug": "something-you-should-know-about-me",
-      "section": "Viewpoints",
+      "section": "👁️ Viewpoints",
       "type": "film",
       "filmType": "Feature Narrative",
       "director": "Andy Fidoten",
@@ -3745,7 +3745,7 @@
     {
       "title": "The Keeper of the Camphor Tree",
       "slug": "keeper-of-the-camphor-tree",
-      "section": "Viewpoints",
+      "section": "👁️ Viewpoints",
       "type": "film",
       "filmType": "Feature Narrative",
       "director": "Tomohiko Ito",
@@ -3787,7 +3787,7 @@
     {
       "title": "The Man Will Burn",
       "slug": "man-will-burn",
-      "section": "Viewpoints",
+      "section": "👁️ Viewpoints",
       "type": "event",
       "filmType": "Tribeca TV",
       "director": "Jehane Noujaim and Vikram Gandhi",
@@ -3820,7 +3820,7 @@
     {
       "title": "The Wedding Entertainer (The Tale of Moishe Badhan)",
       "slug": "wedding-entertainer-the-tale-of-moishe-badhan",
-      "section": "Viewpoints",
+      "section": "👁️ Viewpoints",
       "type": "film",
       "filmType": "Feature Narrative",
       "director": "Gidi Dar",
@@ -3862,7 +3862,7 @@
     {
       "title": "Vanishing tracks",
       "slug": "vanishing-tracks",
-      "section": "Viewpoints",
+      "section": "👁️ Viewpoints",
       "type": "film",
       "filmType": "Feature Documentary",
       "director": "Hamed Zolfaghari",
@@ -3904,7 +3904,7 @@
     {
       "title": "Árru",
       "slug": "arru",
-      "section": "Viewpoints",
+      "section": "👁️ Viewpoints",
       "type": "film",
       "filmType": "Feature Narrative",
       "director": "Elle Sofe Sara",
@@ -3946,7 +3946,7 @@
     {
       "title": "Airport BLVD",
       "slug": "airport-blvd",
-      "section": "U.S. Narrative Competition",
+      "section": "🏆 U.S. Narrative Competition",
       "type": "film",
       "filmType": "Feature Narrative",
       "director": "Alejandro Hendricks",
@@ -3988,7 +3988,7 @@
     {
       "title": "Caity",
       "slug": "caity",
-      "section": "U.S. Narrative Competition",
+      "section": "🏆 U.S. Narrative Competition",
       "type": "film",
       "filmType": "Feature Narrative",
       "director": "Lindsay Calleran",
@@ -4031,7 +4031,7 @@
     {
       "title": "Cotton Fever",
       "slug": "cotton-fever",
-      "section": "U.S. Narrative Competition",
+      "section": "🏆 U.S. Narrative Competition",
       "type": "film",
       "filmType": "Feature Narrative",
       "director": "Daniel Blake Schwartz",
@@ -4079,7 +4079,7 @@
     {
       "title": "Ephemera",
       "slug": "ephemera",
-      "section": "U.S. Narrative Competition",
+      "section": "🏆 U.S. Narrative Competition",
       "type": "film",
       "filmType": "Feature Narrative",
       "director": "Shan Jiang",
@@ -4121,7 +4121,7 @@
     {
       "title": "Here I'm Alive",
       "slug": "here-i-m-alive",
-      "section": "U.S. Narrative Competition",
+      "section": "🏆 U.S. Narrative Competition",
       "type": "film",
       "filmType": "Feature Narrative",
       "director": "Joshua Z Weinstein",
@@ -4164,7 +4164,7 @@
     {
       "title": "Kingston",
       "slug": "kingston",
-      "section": "U.S. Narrative Competition",
+      "section": "🏆 U.S. Narrative Competition",
       "type": "film",
       "filmType": "Feature Narrative",
       "director": "Carlos Key and Kalijah Rowe",
@@ -4206,7 +4206,7 @@
     {
       "title": "Lucy Schulman",
       "slug": "lucy-schulman",
-      "section": "U.S. Narrative Competition",
+      "section": "🏆 U.S. Narrative Competition",
       "type": "film",
       "filmType": "Feature Narrative",
       "director": "Ellie Sachs",
@@ -4248,7 +4248,7 @@
     {
       "title": "Mother Future Self",
       "slug": "mother-future-self",
-      "section": "U.S. Narrative Competition",
+      "section": "🏆 U.S. Narrative Competition",
       "type": "film",
       "filmType": "Feature Narrative",
       "director": "Tori Lancaster",
@@ -4291,7 +4291,7 @@
     {
       "title": "Ponderosa",
       "slug": "ponderosa",
-      "section": "U.S. Narrative Competition",
+      "section": "🏆 U.S. Narrative Competition",
       "type": "film",
       "filmType": "Feature Narrative",
       "director": "Rob Rice",
@@ -4333,7 +4333,7 @@
     {
       "title": "She Keeps Me Young",
       "slug": "she-keeps-me-young",
-      "section": "U.S. Narrative Competition",
+      "section": "🏆 U.S. Narrative Competition",
       "type": "film",
       "filmType": "Feature Narrative",
       "director": "Doron Max Hagay",
@@ -4375,7 +4375,7 @@
     {
       "title": "Summer of Three",
       "slug": "summer-of-three",
-      "section": "U.S. Narrative Competition",
+      "section": "🏆 U.S. Narrative Competition",
       "type": "film",
       "filmType": "Feature Narrative",
       "director": "Carlitos Ruiz-Ruiz",
@@ -4417,7 +4417,7 @@
     {
       "title": "Via Negativa",
       "slug": "via-negativa",
-      "section": "U.S. Narrative Competition",
+      "section": "🏆 U.S. Narrative Competition",
       "type": "film",
       "filmType": "Feature Narrative",
       "director": "Hannah Peterson",
@@ -4459,7 +4459,7 @@
     {
       "title": "American Zoo",
       "slug": "american-zoo",
-      "section": "Documentary Competition",
+      "section": "🏅 Documentary Competition",
       "type": "film",
       "filmType": "Feature Documentary",
       "director": "Tim Travers Hawkins",
@@ -4501,7 +4501,7 @@
     {
       "title": "Bang My Box: The Robin Byrd Story",
       "slug": "bang-my-box-the-robin-byrd-story",
-      "section": "Documentary Competition",
+      "section": "🏅 Documentary Competition",
       "type": "film",
       "filmType": "Feature Documentary",
       "director": "Jyllian Gunther and Stephanie Schwam",
@@ -4550,7 +4550,7 @@
     {
       "title": "Colors of White Rock",
       "slug": "colors-of-white-rock",
-      "section": "Documentary Competition",
+      "section": "🏅 Documentary Competition",
       "type": "film",
       "filmType": "Feature Documentary",
       "director": "Khoroldorj Choijoovanchig",
@@ -4593,7 +4593,7 @@
     {
       "title": "Harvest",
       "slug": "harvest",
-      "section": "Documentary Competition",
+      "section": "🏅 Documentary Competition",
       "type": "film",
       "filmType": "Feature Documentary",
       "director": "Natalie Baszile and Hyacinth Parker",
@@ -4635,7 +4635,7 @@
     {
       "title": "Jail Time Records",
       "slug": "jail-time-records",
-      "section": "Documentary Competition",
+      "section": "🏅 Documentary Competition",
       "type": "film",
       "filmType": "Feature Documentary",
       "director": "Dione Roach and Steve Happi",
@@ -4678,7 +4678,7 @@
     {
       "title": "Jean-Michel",
       "slug": "jean-michel",
-      "section": "Documentary Competition",
+      "section": "🏅 Documentary Competition",
       "type": "film",
       "filmType": "Feature Documentary",
       "director": "Quinn Whitney Wilson and Viridiana Lieberman",
@@ -4720,7 +4720,7 @@
     {
       "title": "Kids Like Me",
       "slug": "kids-like-me",
-      "section": "Documentary Competition",
+      "section": "🏅 Documentary Competition",
       "type": "film",
       "filmType": "Feature Documentary",
       "director": "Cynthia Lowen and Jon Cohrs",
@@ -4763,7 +4763,7 @@
     {
       "title": "Mexicanamerican",
       "slug": "mexicanamerican",
-      "section": "Documentary Competition",
+      "section": "🏅 Documentary Competition",
       "type": "film",
       "filmType": "Feature Documentary",
       "director": "Eddie Sánchez",
@@ -4805,7 +4805,7 @@
     {
       "title": "Retrieval",
       "slug": "retrieval",
-      "section": "Documentary Competition",
+      "section": "🏅 Documentary Competition",
       "type": "film",
       "filmType": "Feature Documentary",
       "director": "Tracy Jarrett",
@@ -4847,7 +4847,7 @@
     {
       "title": "The Gymnasts of Fisherman Colony",
       "slug": "gymnasts-of-fisherman-colony",
-      "section": "Documentary Competition",
+      "section": "🏅 Documentary Competition",
       "type": "film",
       "filmType": "Feature Documentary",
       "director": "Habiba Nosheen",
@@ -4890,7 +4890,7 @@
     {
       "title": "The Siege of Paradise",
       "slug": "siege-of-paradise",
-      "section": "Documentary Competition",
+      "section": "🏅 Documentary Competition",
       "type": "film",
       "filmType": "Feature Documentary",
       "director": "Gar O'Rourke",
@@ -4932,7 +4932,7 @@
     {
       "title": "Time Warp",
       "slug": "time-warp",
-      "section": "Documentary Competition",
+      "section": "🏅 Documentary Competition",
       "type": "film",
       "filmType": "Feature Documentary",
       "director": "Allison Berg",
@@ -4974,7 +4974,7 @@
     {
       "title": "Against the Flow",
       "slug": "against-the-flow",
-      "section": "International Narrative Competition",
+      "section": "🌍 International Narrative Competition",
       "type": "film",
       "filmType": "Feature Narrative",
       "director": "Tao Zhang",
@@ -5017,7 +5017,7 @@
     {
       "title": "Funk",
       "slug": "funk",
-      "section": "International Narrative Competition",
+      "section": "🌍 International Narrative Competition",
       "type": "film",
       "filmType": "Feature Narrative",
       "director": "Aly Muritiba",
@@ -5059,7 +5059,7 @@
     {
       "title": "I Spy With My Little Eye",
       "slug": "i-spy-with-my-little-eye",
-      "section": "International Narrative Competition",
+      "section": "🌍 International Narrative Competition",
       "type": "film",
       "filmType": "Feature Narrative",
       "director": "Alisa Kolosova",
@@ -5101,7 +5101,7 @@
     {
       "title": "Labrador — Autopsy of Silence",
       "slug": "labrador-autopsy-of-silence",
-      "section": "International Narrative Competition",
+      "section": "🌍 International Narrative Competition",
       "type": "film",
       "filmType": "Feature Narrative",
       "director": "Rodrigue Jean",
@@ -5143,7 +5143,7 @@
     {
       "title": "Memorizu",
       "slug": "memorizu",
-      "section": "International Narrative Competition",
+      "section": "🌍 International Narrative Competition",
       "type": "film",
       "filmType": "Feature Narrative",
       "director": "Miiku Sakanishi",
@@ -5185,7 +5185,7 @@
     {
       "title": "Sad Girlz",
       "slug": "sad-girlz",
-      "section": "International Narrative Competition",
+      "section": "🌍 International Narrative Competition",
       "type": "film",
       "filmType": "Feature Narrative",
       "director": "Fernanda Tovar",
@@ -5227,7 +5227,7 @@
     {
       "title": "Skateboarding Is Not for Girls",
       "slug": "skateboarding-is-not-for-girls",
-      "section": "International Narrative Competition",
+      "section": "🌍 International Narrative Competition",
       "type": "film",
       "filmType": "Feature Narrative",
       "director": "Dina Duma",
@@ -5268,7 +5268,7 @@
     {
       "title": "Stand Up",
       "slug": "stand-up",
-      "section": "International Narrative Competition",
+      "section": "🌍 International Narrative Competition",
       "type": "film",
       "filmType": "Feature Narrative",
       "director": "Mari Sanders",
@@ -5310,7 +5310,7 @@
     {
       "title": "Summer War",
       "slug": "summer-war",
-      "section": "International Narrative Competition",
+      "section": "🌍 International Narrative Competition",
       "type": "film",
       "filmType": "Feature Narrative",
       "director": "Alicia Scherson",
@@ -5352,7 +5352,7 @@
     {
       "title": "The Tropic Sun and His Eyes",
       "slug": "tropic-sun-and-his-eyes",
-      "section": "International Narrative Competition",
+      "section": "🌍 International Narrative Competition",
       "type": "film",
       "filmType": "Feature Narrative",
       "director": "Elisee Junior St Preux",
@@ -5394,7 +5394,7 @@
     {
       "title": "What Is to Come",
       "slug": "what-is-to-come",
-      "section": "International Narrative Competition",
+      "section": "🌍 International Narrative Competition",
       "type": "film",
       "filmType": "Feature Narrative",
       "director": "Ruthy Pribar",
@@ -5436,7 +5436,7 @@
     {
       "title": "Zejtune",
       "slug": "zejtune",
-      "section": "International Narrative Competition",
+      "section": "🌍 International Narrative Competition",
       "type": "film",
       "filmType": "Feature Narrative",
       "director": "Alex Camilleri",
@@ -5478,7 +5478,7 @@
     {
       "title": "9/11: Reunited",
       "slug": "9-11-reunited",
-      "section": "Reunions & Retrospectives",
+      "section": "📽️ Reunions & Retrospectives",
       "type": "event",
       "filmType": "Tribeca TV",
       "director": "Julian Jones",
@@ -5507,7 +5507,7 @@
     {
       "title": "Bound: 30th Anniversary",
       "slug": "bound-30th-anniversary",
-      "section": "Reunions & Retrospectives",
+      "section": "📽️ Reunions & Retrospectives",
       "type": "film",
       "filmType": "Feature Narrative",
       "director": "Lana Wachowski and Lilly Wachowski",
@@ -5536,7 +5536,7 @@
     {
       "title": "Bridget Jones's Diary with Renee Zellweger and Sharon Maguire",
       "slug": "bridget-jones-s-diary-with-renee-zellweger-and-sharon-maguire",
-      "section": "Reunions & Retrospectives",
+      "section": "📽️ Reunions & Retrospectives",
       "type": "film",
       "filmType": "Feature Narrative",
       "director": "Sharon Maguire",
@@ -5562,7 +5562,7 @@
     {
       "title": "Daft Punk's Electroma: 4k Remaster and 20th Anniversary",
       "slug": "daft-punk-s-electroma-4k-remaster-and-20th-anniversary",
-      "section": "Reunions & Retrospectives",
+      "section": "📽️ Reunions & Retrospectives",
       "type": "film",
       "filmType": "Feature Narrative",
       "director": "Thomas Bangalter and Guy-Manuel De Homem-Christo",
@@ -5591,7 +5591,7 @@
     {
       "title": "Small Town Gay Bar",
       "slug": "small-town-gay-bar",
-      "section": "Reunions & Retrospectives",
+      "section": "📽️ Reunions & Retrospectives",
       "type": "film",
       "filmType": "Feature Documentary",
       "director": "Malcolm ingram",
@@ -5621,7 +5621,7 @@
     {
       "title": "Taxi Driver",
       "slug": "taxi-driver",
-      "section": "Reunions & Retrospectives",
+      "section": "📽️ Reunions & Retrospectives",
       "type": "film",
       "filmType": "Feature Narrative",
       "director": "Martin Scorsese",
@@ -5651,7 +5651,7 @@
     {
       "title": "Dear England",
       "slug": "dear-england",
-      "section": "Special Events",
+      "section": "⭐ Special Events",
       "type": "event",
       "filmType": "Tribeca TV",
       "director": "Rupert Goold and Paul Whittington",
@@ -5680,7 +5680,7 @@
     {
       "title": "ESPN Deportes, ESPN, & Tribeca Studios Presents: 13.4 Seconds To Nowhere + Shooting Stars: The Adrián Solano Story",
       "slug": "espn-deportes-espn-tribeca-studios-presents-13-4-seconds-to-nowhere-shooting-stars-the-adrian-solano-story",
-      "section": "Special Events",
+      "section": "⭐ Special Events",
       "type": "film",
       "filmType": "",
       "director": "",
@@ -5708,7 +5708,7 @@
     {
       "title": "Fueled by the Future",
       "slug": "fueled-by-the-future",
-      "section": "Special Events",
+      "section": "⭐ Special Events",
       "type": "film",
       "filmType": "",
       "director": "",
@@ -5736,7 +5736,7 @@
     {
       "title": "Not A Very Good Murderer/The Palladino Files Event",
       "slug": "not-a-very-good-murderer-the-palladino-files-event",
-      "section": "Special Events",
+      "section": "⭐ Special Events",
       "type": "film",
       "filmType": "",
       "director": "",
@@ -5764,7 +5764,7 @@
     {
       "title": "Vital Stories Premiere",
       "slug": "vital-stories-premiere",
-      "section": "Special Events",
+      "section": "⭐ Special Events",
       "type": "film",
       "filmType": "",
       "director": "",
@@ -5785,7 +5785,7 @@
     {
       "title": "Storytellers - Dwyane Wade",
       "slug": "storytellers-dwyane-wade",
-      "section": "Storytellers",
+      "section": "🎭 Storytellers",
       "type": "event",
       "filmType": "",
       "director": "",
@@ -5813,7 +5813,7 @@
     {
       "title": "Storytellers - Finneas with Anthony WIllis",
       "slug": "storytellers-finneas-with-anthony-willis",
-      "section": "Storytellers",
+      "section": "🎭 Storytellers",
       "type": "event",
       "filmType": "",
       "director": "",
@@ -5841,7 +5841,7 @@
     {
       "title": "Storytellers - Keke Palmer with Whoopi Goldberg",
       "slug": "storytellers-keke-palmer-with-whoopi-goldberg",
-      "section": "Storytellers",
+      "section": "🎭 Storytellers",
       "type": "event",
       "filmType": "",
       "director": "",
@@ -5869,7 +5869,7 @@
     {
       "title": "Storytellers - Paul Rudd",
       "slug": "storytellers-paul-rudd",
-      "section": "Storytellers",
+      "section": "🎭 Storytellers",
       "type": "event",
       "filmType": "",
       "director": "",
@@ -5897,7 +5897,7 @@
     {
       "title": "Storytellers - Sean Penn with Kaitlan Collins",
       "slug": "storytellers-sean-penn-with-kaitlan-collins",
-      "section": "Storytellers",
+      "section": "🎭 Storytellers",
       "type": "event",
       "filmType": "",
       "director": "",
@@ -5925,7 +5925,7 @@
     {
       "title": "Cannonball Live with Wesley Morris",
       "slug": "cannonball-live-with-wesley-morris",
-      "section": "Talks",
+      "section": "💡 Talks",
       "type": "event",
       "filmType": "",
       "director": "",
@@ -5954,7 +5954,7 @@
     {
       "title": "Concert & Conversation: Hrishikesh Hirway Moderated By Adam Scott",
       "slug": "concert-conversation-hrishikesh-hirway-moderated-by-adam-scott",
-      "section": "Talks",
+      "section": "💡 Talks",
       "type": "event",
       "filmType": "",
       "director": "",
@@ -5982,7 +5982,7 @@
     {
       "title": "Death Sex & Money Live with Guests Peter Dinklage & Erica Schmidt",
       "slug": "death-sex-money-live-with-guests-peter-dinklage-erica-schmidt",
-      "section": "Talks",
+      "section": "💡 Talks",
       "type": "event",
       "filmType": "",
       "director": "",
@@ -6010,7 +6010,7 @@
     {
       "title": "Fashion Neurosis Live with Guest Laurie Anderson",
       "slug": "fashion-neurosis-live-with-guest-laurie-anderson",
-      "section": "Talks",
+      "section": "💡 Talks",
       "type": "event",
       "filmType": "",
       "director": "",
@@ -6045,7 +6045,7 @@
     {
       "title": "Lemme Say This Live with Guest Sydney Lemmon",
       "slug": "lemme-say-this-live-with-guest-sydney-lemmon",
-      "section": "Talks",
+      "section": "💡 Talks",
       "type": "event",
       "filmType": "",
       "director": "",
@@ -6073,7 +6073,7 @@
     {
       "title": "New Yorker Radio Hour Live with David Remnick",
       "slug": "new-yorker-radio-hour-live-with-david-remnick",
-      "section": "Talks",
+      "section": "💡 Talks",
       "type": "event",
       "filmType": "",
       "director": "",
@@ -6102,7 +6102,7 @@
     {
       "title": "On With Kara Swisher with Guest Marc Maron",
       "slug": "on-with-kara-swisher-with-guest-marc-maron",
-      "section": "Talks",
+      "section": "💡 Talks",
       "type": "event",
       "filmType": "",
       "director": "",
@@ -6131,7 +6131,7 @@
     {
       "title": "Radiolab Live with Latif Nasser & Lulu Miller",
       "slug": "radiolab-live-with-latif-nasser-lulu-miller",
-      "section": "Talks",
+      "section": "💡 Talks",
       "type": "event",
       "filmType": "",
       "director": "",
@@ -6160,7 +6160,7 @@
     {
       "title": "2026 Indie TV Documentary Showcase",
       "slug": "2026-indie-tv-documentary-showcase",
-      "section": "TV",
+      "section": "📺 TV",
       "type": "event",
       "filmType": "",
       "director": "",
@@ -6194,7 +6194,7 @@
     {
       "title": "2026 Indie TV Narrative Showcase",
       "slug": "2026-indie-tv-narrative-showcase",
-      "section": "TV",
+      "section": "📺 TV",
       "type": "event",
       "filmType": "",
       "director": "",
@@ -6234,7 +6234,7 @@
     {
       "title": "Tribeca NOW Creators Showcase",
       "slug": "tribeca-now-creators-showcase",
-      "section": "NOW",
+      "section": "📱 NOW",
       "type": "event",
       "filmType": "",
       "director": "",
@@ -6262,7 +6262,7 @@
     {
       "title": "Tribeca NOW Presents: Kareem Rhama’s Keep the Meter Running",
       "slug": "tribeca-now-presents-kareem-rhama-s-keep-the-meter-running",
-      "section": "NOW",
+      "section": "📱 NOW",
       "type": "event",
       "filmType": "",
       "director": "",
@@ -6291,7 +6291,7 @@
     {
       "title": "Tribeca NOW Presents: KeyTV’s The Rise and Fall of DivaGurl with Keke Palmer & Lawrence Murray",
       "slug": "tribeca-now-presents-keytv-s-the-rise-and-fall-of-divagurl-with-keke-palmer-lawrence-murray",
-      "section": "NOW",
+      "section": "📱 NOW",
       "type": "event",
       "filmType": "",
       "director": "",
@@ -6320,7 +6320,7 @@
     {
       "title": "Shorts: Animated Shorts curated by Whoopi G",
       "slug": "shorts-animated-shorts-curated-by-whoopi-g",
-      "section": "Shorts Programs",
+      "section": "🎨 Shorts Programs",
       "type": "event",
       "filmType": "",
       "director": "",
@@ -6354,7 +6354,7 @@
     {
       "title": "Shorts: Care Package",
       "slug": "shorts-care-package",
-      "section": "Shorts Programs",
+      "section": "🎨 Shorts Programs",
       "type": "event",
       "filmType": "",
       "director": "",
@@ -6394,7 +6394,7 @@
     {
       "title": "Shorts: Competitive Edge",
       "slug": "shorts-competitive-edge",
-      "section": "Shorts Programs",
+      "section": "🎨 Shorts Programs",
       "type": "event",
       "filmType": "",
       "director": "",
@@ -6434,7 +6434,7 @@
     {
       "title": "Shorts: Fierce Fashion",
       "slug": "shorts-fierce-fashion",
-      "section": "Shorts Programs",
+      "section": "🎨 Shorts Programs",
       "type": "event",
       "filmType": "",
       "director": "",
@@ -6468,7 +6468,7 @@
     {
       "title": "Shorts: Helpline",
       "slug": "shorts-helpline",
-      "section": "Shorts Programs",
+      "section": "🎨 Shorts Programs",
       "type": "event",
       "filmType": "",
       "director": "",
@@ -6502,7 +6502,7 @@
     {
       "title": "Shorts: Love Fictionally",
       "slug": "shorts-love-fictionally",
-      "section": "Shorts Programs",
+      "section": "🎨 Shorts Programs",
       "type": "event",
       "filmType": "",
       "director": "",
@@ -6548,7 +6548,7 @@
     {
       "title": "Shorts: Music Videos",
       "slug": "shorts-music-videos",
-      "section": "Shorts Programs",
+      "section": "🎨 Shorts Programs",
       "type": "event",
       "filmType": "",
       "director": "",
@@ -6576,7 +6576,7 @@
     {
       "title": "Shorts: NY Making It Here",
       "slug": "shorts-ny-making-it-here",
-      "section": "Shorts Programs",
+      "section": "🎨 Shorts Programs",
       "type": "event",
       "filmType": "",
       "director": "",
@@ -6616,7 +6616,7 @@
     {
       "title": "Shorts: Power to the People",
       "slug": "shorts-power-to-the-people",
-      "section": "Shorts Programs",
+      "section": "🎨 Shorts Programs",
       "type": "event",
       "filmType": "",
       "director": "",
@@ -6656,7 +6656,7 @@
     {
       "title": "Shorts: The Dark Web",
       "slug": "shorts-the-dark-web",
-      "section": "Shorts Programs",
+      "section": "🎨 Shorts Programs",
       "type": "event",
       "filmType": "",
       "director": "",
@@ -6696,7 +6696,7 @@
     {
       "title": "Shorts: Think Fast",
       "slug": "shorts-think-fast",
-      "section": "Shorts Programs",
+      "section": "🎨 Shorts Programs",
       "type": "event",
       "filmType": "",
       "director": "",
@@ -6736,7 +6736,7 @@
     {
       "title": "Shorts: Whatever It Takes",
       "slug": "shorts-whatever-it-takes",
-      "section": "Shorts Programs",
+      "section": "🎨 Shorts Programs",
       "type": "event",
       "filmType": "",
       "director": "",
@@ -6770,7 +6770,7 @@
     {
       "title": "Shorts: Where We Belong",
       "slug": "shorts-where-we-belong",
-      "section": "Shorts Programs",
+      "section": "🎨 Shorts Programs",
       "type": "event",
       "filmType": "",
       "director": "",
@@ -6804,7 +6804,7 @@
     {
       "title": "Shorts: Whoopi's Wonderful World of Animation",
       "slug": "shorts-whoopi-s-wonderful-world-of-animation",
-      "section": "Shorts Programs",
+      "section": "🎨 Shorts Programs",
       "type": "event",
       "filmType": "",
       "director": "",
@@ -6838,7 +6838,7 @@
     {
       "title": "Ascension",
       "slug": "ascension",
-      "section": "Free Outdoor Screenings",
+      "section": "🌿 Free Outdoor Screenings",
       "type": "film",
       "filmType": "",
       "director": "Jessica Kingdon",
@@ -6868,7 +6868,7 @@
     {
       "title": "Best of Tribeca Shorts",
       "slug": "best-of-tribeca-shorts",
-      "section": "Free Outdoor Screenings",
+      "section": "🌿 Free Outdoor Screenings",
       "type": "film",
       "filmType": "",
       "director": "",
@@ -6894,7 +6894,7 @@
     {
       "title": "Dior and I",
       "slug": "dior-and-i",
-      "section": "Free Outdoor Screenings",
+      "section": "🌿 Free Outdoor Screenings",
       "type": "film",
       "filmType": "Feature Documentary",
       "director": "Frédéric Tcheng",
@@ -6924,7 +6924,7 @@
     {
       "title": "Guy and Madeline on a Park Bench",
       "slug": "guy-and-madeline-on-a-park-bench",
-      "section": "Free Outdoor Screenings",
+      "section": "🌿 Free Outdoor Screenings",
       "type": "film",
       "filmType": "Feature Narrative",
       "director": "Damien Chazelle",
@@ -6954,7 +6954,7 @@
     {
       "title": "Jane Austen's Period Drama",
       "slug": "jane-austen-s-period-drama",
-      "section": "Free Outdoor Screenings",
+      "section": "🌿 Free Outdoor Screenings",
       "type": "short",
       "filmType": "Short Narrative",
       "director": "Julia Aks and Steve Pinder",
@@ -6984,7 +6984,7 @@
     {
       "title": "Jiro Dreams of Sushi",
       "slug": "jiro-dreams-of-sushi",
-      "section": "Free Outdoor Screenings",
+      "section": "🌿 Free Outdoor Screenings",
       "type": "film",
       "filmType": "Feature Documentary",
       "director": "David Gelb",
@@ -7014,7 +7014,7 @@
     {
       "title": "Let the Right One In",
       "slug": "let-the-right-one-in",
-      "section": "Free Outdoor Screenings",
+      "section": "🌿 Free Outdoor Screenings",
       "type": "film",
       "filmType": "Feature Narrative",
       "director": "Tomas Alfredson",
@@ -7044,7 +7044,7 @@
     {
       "title": "Little Woods",
       "slug": "little-woods",
-      "section": "Free Outdoor Screenings",
+      "section": "🌿 Free Outdoor Screenings",
       "type": "film",
       "filmType": "Feature Narrative",
       "director": "Nia DaCosta",
@@ -7074,7 +7074,7 @@
     {
       "title": "Ripe!",
       "slug": "ripe",
-      "section": "Free Outdoor Screenings",
+      "section": "🌿 Free Outdoor Screenings",
       "type": "short",
       "filmType": "Short Narrative",
       "director": "Tusk",
@@ -7104,7 +7104,7 @@
     {
       "title": "The Last Play at Shea",
       "slug": "last-play-at-shea",
-      "section": "Free Outdoor Screenings",
+      "section": "🌿 Free Outdoor Screenings",
       "type": "film",
       "filmType": "Feature Documentary",
       "director": "Paul Crowder",
@@ -7134,7 +7134,7 @@
     {
       "title": "The Queen of Basketball",
       "slug": "queen-of-basketball",
-      "section": "Free Outdoor Screenings",
+      "section": "🌿 Free Outdoor Screenings",
       "type": "short",
       "filmType": "Short Documentary",
       "director": "Ben Proudfoot",
@@ -7164,7 +7164,7 @@
     {
       "title": "The Short History of the Long Road",
       "slug": "short-history-of-the-long-road",
-      "section": "Free Outdoor Screenings",
+      "section": "🌿 Free Outdoor Screenings",
       "type": "film",
       "filmType": "Feature Narrative",
       "director": "Ani Simon-Kennedy",
@@ -7194,7 +7194,7 @@
     {
       "title": "Virunga",
       "slug": "virunga",
-      "section": "Free Outdoor Screenings",
+      "section": "🌿 Free Outdoor Screenings",
       "type": "film",
       "filmType": "Feature Documentary",
       "director": "Orlando von Einsiedel",
@@ -7223,7 +7223,7 @@
     {
       "title": "\"Animus Ignis\" - Shawty Sweat",
       "slug": "animus-ignis-shawty-sweat",
-      "section": "Shorts",
+      "section": "✂️ Shorts",
       "type": "film",
       "filmType": "",
       "director": "Rui Wang and Yu-Ming Huang",
@@ -7252,7 +7252,7 @@
     {
       "title": "\"Archbishop Harold Holmes” - Jack White",
       "slug": "archbishop-harold-holmes-jack-white",
-      "section": "Shorts",
+      "section": "✂️ Shorts",
       "type": "film",
       "filmType": "",
       "director": "Gilbert Trejo",
@@ -7281,7 +7281,7 @@
     {
       "title": "\"Beautiful\" - Linda Perry",
       "slug": "beautiful-linda-perry",
-      "section": "Shorts",
+      "section": "✂️ Shorts",
       "type": "film",
       "filmType": "",
       "director": "Sara Gilbert",
@@ -7310,7 +7310,7 @@
     {
       "title": "\"Elegantly Wasted\" - Hermanos Gutiérrez x Leon Bridges",
       "slug": "elegantly-wasted-hermanos-gutierrez-x-leon-bridges",
-      "section": "Shorts",
+      "section": "✂️ Shorts",
       "type": "film",
       "filmType": "",
       "director": "Matt Muir",
@@ -7339,7 +7339,7 @@
     {
       "title": "\"Everyone’s A Star\" - 5 Seconds of Summer",
       "slug": "everyone-s-a-star-5-seconds-of-summer",
-      "section": "Shorts",
+      "section": "✂️ Shorts",
       "type": "film",
       "filmType": "",
       "director": "Ivy Tellin",
@@ -7368,7 +7368,7 @@
     {
       "title": "\"Fingers Crossed\" - The Moth & The Flame",
       "slug": "fingers-crossed-the-moth-the-flame",
-      "section": "Shorts",
+      "section": "✂️ Shorts",
       "type": "film",
       "filmType": "",
       "director": "Rebecca Thomas",
@@ -7397,7 +7397,7 @@
     {
       "title": "\"Grave\" - Kid Cudi",
       "slug": "grave-kid-cudi",
-      "section": "Shorts",
+      "section": "✂️ Shorts",
       "type": "film",
       "filmType": "",
       "director": "Samuel  Bayer",
@@ -7426,7 +7426,7 @@
     {
       "title": "\"Kill Me Fast\" - Three Days Grace",
       "slug": "kill-me-fast-three-days-grace",
-      "section": "Shorts",
+      "section": "✂️ Shorts",
       "type": "film",
       "filmType": "",
       "director": "Jose Lun",
@@ -7455,7 +7455,7 @@
     {
       "title": "\"Long Way To Go\" - The What Four",
       "slug": "long-way-to-go-the-what-four",
-      "section": "Shorts",
+      "section": "✂️ Shorts",
       "type": "film",
       "filmType": "",
       "director": "Julius Charles Ritter",
@@ -7484,7 +7484,7 @@
     {
       "title": "\"Mr Electric Blue\" - Benson Boone",
       "slug": "mr-electric-blue-benson-boone",
-      "section": "Shorts",
+      "section": "✂️ Shorts",
       "type": "film",
       "filmType": "",
       "director": "Matt Eastin",
@@ -7513,7 +7513,7 @@
     {
       "title": "\"NEW YORK IS DEAD\" - LP Giobbi feat. little boots",
       "slug": "new-york-is-dead-lp-giobbi-feat-little-boots",
-      "section": "Shorts",
+      "section": "✂️ Shorts",
       "type": "short",
       "filmType": "Music Video, Short Narrative",
       "director": "Richard Burrowes",
@@ -7542,7 +7542,7 @@
     {
       "title": "32 B",
       "slug": "32-b",
-      "section": "Shorts",
+      "section": "✂️ Shorts",
       "type": "short",
       "filmType": "Short Narrative",
       "director": "Mohamed Taher",
@@ -7584,7 +7584,7 @@
     {
       "title": "A Crime Across Four Landscapes",
       "slug": "crime-across-four-landscapes",
-      "section": "Shorts",
+      "section": "✂️ Shorts",
       "type": "short",
       "filmType": "Short Narrative",
       "director": "Aidan Weaver",
@@ -7626,7 +7626,7 @@
     {
       "title": "Am I a Bad Person?",
       "slug": "am-i-a-bad-person",
-      "section": "Shorts",
+      "section": "✂️ Shorts",
       "type": "short",
       "filmType": "Short Narrative",
       "director": "Alanna Longo",
@@ -7662,7 +7662,7 @@
     {
       "title": "APART",
       "slug": "apart",
-      "section": "Shorts",
+      "section": "✂️ Shorts",
       "type": "short",
       "filmType": "Short Animation",
       "director": "Pola Maneli",
@@ -7698,7 +7698,7 @@
     {
       "title": "Because Today is Saturday",
       "slug": "because-today-is-saturday",
-      "section": "Shorts",
+      "section": "✂️ Shorts",
       "type": "short",
       "filmType": "Short Animation",
       "director": "Alice Eça Guimarães",
@@ -7734,7 +7734,7 @@
     {
       "title": "Born to Kill",
       "slug": "born-to-kill",
-      "section": "Shorts",
+      "section": "✂️ Shorts",
       "type": "short",
       "filmType": "Short Documentary",
       "director": "Sally Tran",
@@ -7770,7 +7770,7 @@
     {
       "title": "Brujo",
       "slug": "brujo",
-      "section": "Shorts",
+      "section": "✂️ Shorts",
       "type": "short",
       "filmType": "Short Narrative",
       "director": "Juan Zuleta",
@@ -7812,7 +7812,7 @@
     {
       "title": "Buckets",
       "slug": "buckets",
-      "section": "Shorts",
+      "section": "✂️ Shorts",
       "type": "short",
       "filmType": "Short Narrative",
       "director": "Drew Van Steenbergen",
@@ -7861,7 +7861,7 @@
     {
       "title": "ChikaBOOM!",
       "slug": "chikaboom",
-      "section": "Shorts",
+      "section": "✂️ Shorts",
       "type": "short",
       "filmType": "Short Animation",
       "director": "c. Craig Patterson",
@@ -7896,7 +7896,7 @@
     {
       "title": "Child of the Rouge",
       "slug": "child-of-the-rouge",
-      "section": "Shorts",
+      "section": "✂️ Shorts",
       "type": "short",
       "filmType": "Short Narrative",
       "director": "Taz F. Stark",
@@ -7937,7 +7937,7 @@
     {
       "title": "Cookie, Love",
       "slug": "cookie-love",
-      "section": "Shorts",
+      "section": "✂️ Shorts",
       "type": "short",
       "filmType": "Short Documentary",
       "director": "Sari Arambulo",
@@ -7973,7 +7973,7 @@
     {
       "title": "Couture to the Max",
       "slug": "couture-to-the-max",
-      "section": "Shorts",
+      "section": "✂️ Shorts",
       "type": "short",
       "filmType": "Short Documentary",
       "director": "Dori Berinstein",
@@ -8010,7 +8010,7 @@
     {
       "title": "Daddy's Little Meatball",
       "slug": "daddy-s-little-meatball",
-      "section": "Shorts",
+      "section": "✂️ Shorts",
       "type": "short",
       "filmType": "Short Narrative",
       "director": "Yael Grunseit",
@@ -8052,7 +8052,7 @@
     {
       "title": "Dear Upstairs Neighbors",
       "slug": "dear-upstairs-neighbors",
-      "section": "Shorts",
+      "section": "✂️ Shorts",
       "type": "short",
       "filmType": "Short Animation",
       "director": "Connie Qin He",
@@ -8089,7 +8089,7 @@
     {
       "title": "DISC",
       "slug": "disc",
-      "section": "Shorts",
+      "section": "✂️ Shorts",
       "type": "short",
       "filmType": "Short Narrative",
       "director": "Blake Winston Rice",
@@ -8137,7 +8137,7 @@
     {
       "title": "Eeny, Meeny, Miny, Moe!",
       "slug": "eeny-meeny-miny-moe",
-      "section": "Shorts",
+      "section": "✂️ Shorts",
       "type": "short",
       "filmType": "Short Animation",
       "director": "Andrea Szelesová",
@@ -8173,7 +8173,7 @@
     {
       "title": "Fabric",
       "slug": "fabric",
-      "section": "Shorts",
+      "section": "✂️ Shorts",
       "type": "short",
       "filmType": "Short Narrative",
       "director": "Frank Sun",
@@ -8215,7 +8215,7 @@
     {
       "title": "Farm to Fashion",
       "slug": "farm-to-fashion",
-      "section": "Shorts",
+      "section": "✂️ Shorts",
       "type": "short",
       "filmType": "Short Documentary",
       "director": "Oliver Halfin",
@@ -8250,7 +8250,7 @@
     {
       "title": "Fault",
       "slug": "fault",
-      "section": "Shorts",
+      "section": "✂️ Shorts",
       "type": "short",
       "filmType": "Short Narrative",
       "director": "Misha Calvert",
@@ -8292,7 +8292,7 @@
     {
       "title": "Found&Lost",
       "slug": "found-lost",
-      "section": "Shorts",
+      "section": "✂️ Shorts",
       "type": "short",
       "filmType": "Short Narrative",
       "director": "Reza Rasouli",
@@ -8334,7 +8334,7 @@
     {
       "title": "Freestyle",
       "slug": "freestyle",
-      "section": "Shorts",
+      "section": "✂️ Shorts",
       "type": "short",
       "filmType": "Short Narrative",
       "director": "Jordan Britt",
@@ -8376,7 +8376,7 @@
     {
       "title": "General Admission",
       "slug": "general-admission",
-      "section": "Shorts",
+      "section": "✂️ Shorts",
       "type": "short",
       "filmType": "Short Narrative",
       "director": "Kaily Morgan Smith",
@@ -8424,7 +8424,7 @@
     {
       "title": "Getar Hero",
       "slug": "getar-hero",
-      "section": "Shorts",
+      "section": "✂️ Shorts",
       "type": "short",
       "filmType": "Short Narrative",
       "director": "Teddy Stern",
@@ -8465,7 +8465,7 @@
     {
       "title": "Greetings from Sumatra",
       "slug": "greetings-from-sumatra",
-      "section": "Shorts",
+      "section": "✂️ Shorts",
       "type": "short",
       "filmType": "Short Narrative",
       "director": "Karolina Fronik and Marta Kowalska",
@@ -8502,7 +8502,7 @@
     {
       "title": "Grounded",
       "slug": "grounded",
-      "section": "Shorts",
+      "section": "✂️ Shorts",
       "type": "short",
       "filmType": "Short Animation",
       "director": "Chris Callus",
@@ -8539,7 +8539,7 @@
     {
       "title": "His House, Home",
       "slug": "his-house-home",
-      "section": "Shorts",
+      "section": "✂️ Shorts",
       "type": "short",
       "filmType": "Short Narrative",
       "director": "Aisling O'Regan Sargent",
@@ -8581,7 +8581,7 @@
     {
       "title": "Holo",
       "slug": "holo",
-      "section": "Shorts",
+      "section": "✂️ Shorts",
       "type": "short",
       "filmType": "Narrative Short",
       "director": "Alexander DeSouza",
@@ -8623,7 +8623,7 @@
     {
       "title": "Homesick",
       "slug": "homesick",
-      "section": "Shorts",
+      "section": "✂️ Shorts",
       "type": "short",
       "filmType": "Short Narrative",
       "director": "Nadia Bedj",
@@ -8665,7 +8665,7 @@
     {
       "title": "Hope",
       "slug": "hope",
-      "section": "Shorts",
+      "section": "✂️ Shorts",
       "type": "short",
       "filmType": "Short Documentary",
       "director": "Javier Cruz-Ginez",
@@ -8701,7 +8701,7 @@
     {
       "title": "I Think About Killing You",
       "slug": "i-think-about-killing-you",
-      "section": "Shorts",
+      "section": "✂️ Shorts",
       "type": "short",
       "filmType": "Short Narrative",
       "director": "Ran Ran Wang",
@@ -8743,7 +8743,7 @@
     {
       "title": "I'm Not Home",
       "slug": "i-m-not-home",
-      "section": "Shorts",
+      "section": "✂️ Shorts",
       "type": "short",
       "filmType": "Short Narrative",
       "director": "Elena Parasco",
@@ -8786,7 +8786,7 @@
     {
       "title": "I, of an Accident or of love",
       "slug": "i-of-an-accident-or-of-love",
-      "section": "Shorts",
+      "section": "✂️ Shorts",
       "type": "short",
       "filmType": "Short Narrative",
       "director": "Khalil Cherti",
@@ -8833,7 +8833,7 @@
     {
       "title": "Imprint",
       "slug": "imprint",
-      "section": "Shorts",
+      "section": "✂️ Shorts",
       "type": "short",
       "filmType": "Short Narrative",
       "director": "Ran Jing",
@@ -8875,7 +8875,7 @@
     {
       "title": "Insufficient Fare",
       "slug": "insufficient-fare",
-      "section": "Shorts",
+      "section": "✂️ Shorts",
       "type": "short",
       "filmType": "Short Narrative",
       "director": "Michael Gugger and Varvara Kanellakopoulou",
@@ -8916,7 +8916,7 @@
     {
       "title": "Kaya (ᜃᜌ)",
       "slug": "kaya",
-      "section": "Shorts",
+      "section": "✂️ Shorts",
       "type": "short",
       "filmType": "Short Narrative",
       "director": "Isabel Lamers",
@@ -8957,7 +8957,7 @@
     {
       "title": "Kiloran Bay",
       "slug": "kiloran-bay",
-      "section": "Shorts",
+      "section": "✂️ Shorts",
       "type": "short",
       "filmType": "Short Narrative",
       "director": "Michael Bruce",
@@ -8999,7 +8999,7 @@
     {
       "title": "La Lucha de Lucía",
       "slug": "lucha-de-lucia",
-      "section": "Shorts",
+      "section": "✂️ Shorts",
       "type": "short",
       "filmType": "Short Narrative",
       "director": "Maria Sofia Hernandez",
@@ -9041,7 +9041,7 @@
     {
       "title": "Last Minute",
       "slug": "last-minute",
-      "section": "Shorts",
+      "section": "✂️ Shorts",
       "type": "short",
       "filmType": "Short Narrative",
       "director": "Michael Cusumano",
@@ -9083,7 +9083,7 @@
     {
       "title": "Leg Day",
       "slug": "leg-day",
-      "section": "Shorts",
+      "section": "✂️ Shorts",
       "type": "short",
       "filmType": "Short Animation",
       "director": "João Lauro Fonte",
@@ -9118,7 +9118,7 @@
     {
       "title": "Listen",
       "slug": "listen",
-      "section": "Shorts",
+      "section": "✂️ Shorts",
       "type": "short",
       "filmType": "Short Documentary",
       "director": "Taliesin Black Brown",
@@ -9154,7 +9154,7 @@
     {
       "title": "Lost Touch",
       "slug": "lost-touch",
-      "section": "Shorts",
+      "section": "✂️ Shorts",
       "type": "short",
       "filmType": "Short Animation",
       "director": "Justine Klaiber",
@@ -9196,7 +9196,7 @@
     {
       "title": "Me, Myself, and Mary",
       "slug": "me-myself-and-mary",
-      "section": "Shorts",
+      "section": "✂️ Shorts",
       "type": "short",
       "filmType": "Short Animation",
       "director": "John Michell",
@@ -9232,7 +9232,7 @@
     {
       "title": "Mon Taxi",
       "slug": "mon-taxi",
-      "section": "Shorts",
+      "section": "✂️ Shorts",
       "type": "short",
       "filmType": "Short Documentary",
       "director": "Meriem Sakrouhi",
@@ -9268,7 +9268,7 @@
     {
       "title": "NIO KO BOKK (This Belongs to All of Us)",
       "slug": "nio-ko-bokk-this-belongs-to-all-of-us",
-      "section": "Shorts",
+      "section": "✂️ Shorts",
       "type": "short",
       "filmType": "Short Documentary",
       "director": "David Clancy and David Clancy",
@@ -9301,7 +9301,7 @@
     {
       "title": "Odessa",
       "slug": "odessa",
-      "section": "Shorts",
+      "section": "✂️ Shorts",
       "type": "short",
       "filmType": "Short Narrative",
       "director": "Harald Swinkels",
@@ -9337,7 +9337,7 @@
     {
       "title": "One Night",
       "slug": "one-night",
-      "section": "Shorts",
+      "section": "✂️ Shorts",
       "type": "short",
       "filmType": "Short Narrative",
       "director": "Maggie Brown and Tyler Brown",
@@ -9385,7 +9385,7 @@
     {
       "title": "The Baddest Speechwriter of All",
       "slug": "baddest-speechwriter-of-all",
-      "section": "Shorts",
+      "section": "✂️ Shorts",
       "type": "short",
       "filmType": "Short Documentary",
       "director": "Ben Proudfoot and Stephen Curry",
@@ -9427,7 +9427,7 @@
     {
       "title": "The Barbershop",
       "slug": "barbershop",
-      "section": "Shorts",
+      "section": "✂️ Shorts",
       "type": "short",
       "filmType": "Short Narrative",
       "director": "Diêm Camille and Diêm Camille",
@@ -9463,7 +9463,7 @@
     {
       "title": "The Dark Knot at the Center",
       "slug": "dark-knot-at-the-center",
-      "section": "Shorts",
+      "section": "✂️ Shorts",
       "type": "short",
       "filmType": "Short Documentary",
       "director": "Inês Pedrosa e Melo",

@@ -2160,6 +2160,8 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:var(--t
 .int-seen-btn.on{background:rgba(245,158,11,.1);color:var(--amber);border-color:rgba(245,158,11,.3)}
 .int-item:active{background:var(--surf-2)}
 .int-item-poster{width:38px;height:57px;border-radius:var(--r-sm);background:var(--surf-2);flex-shrink:0;overflow:hidden;object-fit:cover}
+.int-item-poster.int-item-poster-ed{display:flex;flex-direction:column}
+.int-item-poster.int-item-poster-ed img{width:100%;aspect-ratio:16/9;object-fit:cover;display:block}
 .int-item-info{flex:1;min-width:0}
 .int-item-title{font-size:var(--t-base);font-weight:var(--w-bold);color:var(--white);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-bottom:2px}
 .int-item-sec{font-size:var(--t-xs);font-weight:var(--w-semi);color:var(--white-60);margin-bottom:var(--sp-1);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
@@ -3452,6 +3454,14 @@ function lbLink(title,film){
 // Aplica en: filtro Sección, sort de grilla, renderSbar.
 // Las secciones no listadas aquí se ordenan alfabéticamente al final.
 const SECTION_ORDER_LIST=[
+  // Con emoji
+  '🌟 Gala','✨ Spotlight+','🏆 U.S. Narrative Competition',
+  '🌍 International Narrative Competition','🏅 Documentary Competition',
+  '🎬 Spotlight Narrative','📹 Spotlight Documentary','👁️ Viewpoints',
+  '🌙 Escape From Tribeca','📽️ Reunions & Retrospectives','🎭 Storytellers',
+  '💡 Talks','⭐ Special Events','📱 NOW','📺 TV','🎨 Shorts Programs',
+  '🌿 Free Outdoor Screenings','✂️ Shorts',
+  // Sin emoji (festivales legacy)
   'Gala','Spotlight+','U.S. Narrative Competition',
   'International Narrative Competition','Documentary Competition',
   'Spotlight Narrative','Spotlight Documentary','Viewpoints',
@@ -3464,6 +3474,26 @@ const SECTION_ORDER_LIST=[
 // Usado en cards editoriales y posters generativos.
 // Consistente entre festivales: misma sección → mismo color.
 const SECTION_COLORS={
+  // Con emoji (Tribeca 2026+)
+  '🌟 Gala':'#EF9F27',
+  '✨ Spotlight+':'#5DCAA5',
+  '🎬 Spotlight Narrative':'#7F77DD',
+  '📹 Spotlight Documentary':'#1D9E75',
+  '🏆 U.S. Narrative Competition':'#D85A30',
+  '🌍 International Narrative Competition':'#378ADD',
+  '🏅 Documentary Competition':'#639922',
+  '👁️ Viewpoints':'#AFA9EC',
+  '🌙 Escape From Tribeca':'#E24B4A',
+  '📽️ Reunions & Retrospectives':'#888780',
+  '🎭 Storytellers':'#FAC775',
+  '💡 Talks':'#85B7EB',
+  '📱 NOW':'#5DCAA5',
+  '📺 TV':'#B4B2A9',
+  '⭐ Special Events':'#EF9F27',
+  '🎨 Shorts Programs':'#1D9E75',
+  '🌿 Free Outdoor Screenings':'#97C459',
+  '✂️ Shorts':'#888780',
+  // Sin emoji (AFF, FICCI, Cinemancia — compatibilidad)
   'Gala':'#EF9F27',
   'Spotlight+':'#5DCAA5',
   'Spotlight Narrative':'#7F77DD',
@@ -6160,12 +6190,14 @@ function renderContextualHeader(){
       const r=filmRatings[t];
       const{displayTitle:dt}=parseProgramTitle(t);
       const src=getFilmPoster(f)||'';
+      const _isEd=f&&_isEditorialPoster(f);
       const safeT=t.replace(/'/g,"\'");
       const stars=r?starsText(r):'';
       // Posters grandes, plena opacidad — pensado para screenshot
-      // Usar poster-card existente — mismo patrón que Hoy/Mañana
-      return`<div class="poster-card ended-poster" onclick="openPelSheet('${safeT}')">
-        ${src?`<img class="img-cover" src="${src}" loading="lazy" onerror="this.remove()" alt="">`:``}
+      return`<div class="poster-card ended-poster${_isEd?' editorial':''}" onclick="openPelSheet('${safeT}')">
+        ${_isEd
+          ?`<div class="ed-hdr" style="background:${_sectionColor(f.section||'')}"><div class="ed-lbl">${_secLabel(f.section||'').toUpperCase()}</div></div><div class="ed-img"><img src="${src}" onerror="this.remove()" alt="" loading="lazy"></div><div class="ed-body"></div>`
+          :src?`<img class="img-cover" src="${src}" loading="lazy" onerror="this.remove()" alt="">`:``}
         <div class="ended-poster-footer">
           ${r?`<div class="label-track-amber">${stars}</div>`
              :`<button class="ended-rate-btn" onclick="event.stopPropagation();openPostViewRating('${safeT}','','','','')">★</button>`}
