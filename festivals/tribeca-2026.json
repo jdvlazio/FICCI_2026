@@ -6321,7 +6321,7 @@
       "title": "Shorts: Animated Shorts curated by Whoopi G",
       "slug": "shorts-animated-shorts-curated-by-whoopi-g",
       "section": "🎨 Shorts Programs",
-      "type": "event",
+      "type": "short",
       "filmType": "",
       "director": "",
       "duration": 72,
@@ -6349,13 +6349,15 @@
       "venue": "Spring Studios",
       "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/6853/large_TF26-Shorts-Animated_Shorts.jpg",
       "posterPosition": "center",
-      "day_order": 3
+      "day_order": 3,
+      "is_cortos": true,
+      "film_list": []
     },
     {
       "title": "Shorts: Care Package",
       "slug": "shorts-care-package",
       "section": "🎨 Shorts Programs",
-      "type": "event",
+      "type": "short",
       "filmType": "",
       "director": "",
       "duration": 91,
@@ -6389,13 +6391,15 @@
       "venue": "Spring Studios",
       "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/6851/large_TF26-Shorts-Care_Package.jpg",
       "posterPosition": "center",
-      "day_order": 3
+      "day_order": 3,
+      "is_cortos": true,
+      "film_list": []
     },
     {
       "title": "Shorts: Competitive Edge",
       "slug": "shorts-competitive-edge",
       "section": "🎨 Shorts Programs",
-      "type": "event",
+      "type": "short",
       "filmType": "",
       "director": "",
       "duration": 81,
@@ -6429,13 +6433,15 @@
       "venue": "Spring Studios",
       "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/6849/large_TF26-Shorts-Competitive_Edge.jpg",
       "posterPosition": "center",
-      "day_order": 1
+      "day_order": 1,
+      "is_cortos": true,
+      "film_list": []
     },
     {
       "title": "Shorts: Fierce Fashion",
       "slug": "shorts-fierce-fashion",
       "section": "🎨 Shorts Programs",
-      "type": "event",
+      "type": "short",
       "filmType": "",
       "director": "",
       "duration": 75,
@@ -6463,13 +6469,15 @@
       "venue": "Spring Studios",
       "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/6857/large_TF26-Shorts-Fierce_Fashion-V2_1.jpg",
       "posterPosition": "center",
-      "day_order": 10
+      "day_order": 10,
+      "is_cortos": true,
+      "film_list": []
     },
     {
       "title": "Shorts: Helpline",
       "slug": "shorts-helpline",
       "section": "🎨 Shorts Programs",
-      "type": "event",
+      "type": "short",
       "filmType": "",
       "director": "",
       "duration": 94,
@@ -6497,13 +6505,15 @@
       "venue": "Spring Studios",
       "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/6855/large_TF26-Shorts-Helpline_1.jpg",
       "posterPosition": "center",
-      "day_order": 1
+      "day_order": 1,
+      "is_cortos": true,
+      "film_list": []
     },
     {
       "title": "Shorts: Love Fictionally",
       "slug": "shorts-love-fictionally",
       "section": "🎨 Shorts Programs",
-      "type": "event",
+      "type": "short",
       "filmType": "",
       "director": "",
       "duration": 85,
@@ -6543,13 +6553,15 @@
       "venue": "Spring Studios",
       "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/6847/large_TF26-Shorts-Love_Fictionally.jpg",
       "posterPosition": "center",
-      "day_order": 2
+      "day_order": 2,
+      "is_cortos": true,
+      "film_list": []
     },
     {
       "title": "Shorts: Music Videos",
       "slug": "shorts-music-videos",
       "section": "🎨 Shorts Programs",
-      "type": "event",
+      "type": "short",
       "filmType": "",
       "director": "",
       "duration": 40,
@@ -6571,13 +6583,15 @@
       "venue": "Spring Studios",
       "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/7062/large_TF26-Music_Videos.jpg",
       "posterPosition": "center",
-      "day_order": 6
+      "day_order": 6,
+      "is_cortos": true,
+      "film_list": []
     },
     {
       "title": "Shorts: NY Making It Here",
       "slug": "shorts-ny-making-it-here",
       "section": "🎨 Shorts Programs",
-      "type": "event",
+      "type": "short",
       "filmType": "",
       "director": "",
       "duration": 82,
@@ -6611,13 +6625,15 @@
       "venue": "Spring Studios",
       "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/7061/large_TF26-Shorts-NY_Making_It_Here-V2.jpg",
       "posterPosition": "center",
-      "day_order": 3
+      "day_order": 3,
+      "is_cortos": true,
+      "film_list": []
     },
     {
       "title": "Shorts: Power to the People",
       "slug": "shorts-power-to-the-people",
       "section": "🎨 Shorts Programs",
-      "type": "event",
+      "type": "short",
       "filmType": "",
       "director": "",
       "duration": 75,
@@ -6651,13 +6667,15 @@
       "venue": "Spring Studios",
       "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/6854/large_TF26-Shorts-Power_to_the_People.jpg",
       "posterPosition": "center",
-      "day_order": 2
+      "day_order": 2,
+      "is_cortos": true,
+      "film_list": []
     },
     {
       "title": "Shorts: The Dark Web",
       "slug": "shorts-the-dark-web",
       "section": "🎨 Shorts Programs",
-      "type": "event",
+      "type": "short",
       "filmType": "",
       "director": "",
       "duration": 87,
@@ -6691,13 +6709,15 @@
       "venue": "Spring Studios",
       "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/6848/large_TF26-Shorts-The_Dark_Web_v3.jpg",
       "posterPosition": "center",
-      "day_order": 3
+      "day_order": 3,
+      "is_cortos": true,
+      "film_list": []
     },
     {
       "title": "Shorts: Think Fast",
       "slug": "shorts-think-fast",
       "section": "🎨 Shorts Programs",
-      "type": "event",
+      "type": "short",
       "filmType": "",
       "director": "",
       "duration": 78,
@@ -6731,13 +6751,15 @@
       "venue": "Spring Studios",
       "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/6846/large_TF26-Shorts-Think_Fast-V2.jpg",
       "posterPosition": "center",
-      "day_order": 2
+      "day_order": 2,
+      "is_cortos": true,
+      "film_list": []
     },
     {
       "title": "Shorts: Whatever It Takes",
       "slug": "shorts-whatever-it-takes",
       "section": "🎨 Shorts Programs",
-      "type": "event",
+      "type": "short",
       "filmType": "",
       "director": "",
       "duration": 89,
@@ -6765,13 +6787,15 @@
       "venue": "Spring Studios",
       "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/6852/large_TF26-Shorts-Whatever_It_Takes-v3.jpg",
       "posterPosition": "center",
-      "day_order": 4
+      "day_order": 4,
+      "is_cortos": true,
+      "film_list": []
     },
     {
       "title": "Shorts: Where We Belong",
       "slug": "shorts-where-we-belong",
       "section": "🎨 Shorts Programs",
-      "type": "event",
+      "type": "short",
       "filmType": "",
       "director": "",
       "duration": 87,
@@ -6799,13 +6823,15 @@
       "venue": "Spring Studios",
       "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/6850/large_TF26-Shorts-Where_We_Belong.jpg",
       "posterPosition": "center",
-      "day_order": 4
+      "day_order": 4,
+      "is_cortos": true,
+      "film_list": []
     },
     {
       "title": "Shorts: Whoopi's Wonderful World of Animation",
       "slug": "shorts-whoopi-s-wonderful-world-of-animation",
       "section": "🎨 Shorts Programs",
-      "type": "event",
+      "type": "short",
       "filmType": "",
       "director": "",
       "duration": 52,
@@ -6833,7 +6859,9 @@
       "venue": "Spring Studios",
       "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/6856/large_TF26-Shorts-Whoopis_Wonderful-V2.jpg",
       "posterPosition": "center",
-      "day_order": 3
+      "day_order": 3,
+      "is_cortos": true,
+      "film_list": []
     },
     {
       "title": "Ascension",
