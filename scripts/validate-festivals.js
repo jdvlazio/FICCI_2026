@@ -100,6 +100,7 @@ function validateFestival(fname, data) {
   const emojiToSections = {}; // emoji → [section names]
   const sectionStrings = {};  // sec_name → Set of exact strings
 
+  const _seenTitles = new Set();
   for (const film of films) {
     const title = film.title || '?';
     const sec = film.section || '';
@@ -158,6 +159,11 @@ function validateFestival(fname, data) {
     if (!film.section) warnings.push(`"${title}": campo 'section' vacío`);
     if (film.day_order === undefined) warnings.push(`"${title}": falta 'day_order'`);
 
+    // ── RULE 5a: titulo duplicado ─────────────────────────────────────────
+    if (film.title) {
+      if (_seenTitles.has(film.title)) errors.push(`GATE BLOQUEANTE: titulo duplicado — '${film.title.slice(0,55)}'`);
+      else _seenTitles.add(film.title);
+    }
     // ── RULE 5b: titulo en ALLCAPS ───────────────────────────────────────
     if (film.title) {
       const _ws = film.title.split(' ');
