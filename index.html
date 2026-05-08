@@ -3393,6 +3393,12 @@ function getPosterSrc(title, isCortos, section){
 //
 // USO: getFilmPoster(f) en TODOS los contextos — grilla, card, lista, Mi Plan
 // ═══════════════════════════════════════════════════════════════
+// Devuelve inline style para object-position cuando el film tiene posterPosition != 'center'
+// Aplica solo a imágenes editoriales 16:9 que necesitan crop ajustado
+function _posterStyle(f){
+  const pos=f&&f.posterPosition;
+  return (pos&&pos!=='center')?` style="object-position:${pos}"`:'';
+}
 function getFilmPoster(f){
   if(!f) return null;
   // Custom poster siempre primero — cubre casos especiales como Proyección sorpresa
@@ -5463,10 +5469,9 @@ function renderFilmListHTML(){
     const safeT=title.replace(/'/g,"\'");
     const poster=f?getFilmPoster(f):null;
     const posterHtml=poster
-      ?`<img class="int-item-poster" src="${poster}" data-title="${title.replace(/"/g,'&quot;')}" onerror="_posterErr(this)" alt="" loading="lazy">`
+      ?`<img class="int-item-poster"${_posterStyle(f)} src="${poster}" data-title="${title.replace(/"/g,'&quot;')}" onerror="_posterErr(this)" alt="" loading="lazy">`
       :`<div class="int-item-poster"></div>`;
     const secLabel=(f?.section||'').replace(/^\S+ /,'')||f?.section||'';
-    const nextHtml=next
       ?`<div class="int-item-next">
           <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
           ${_relDayLabel(next)}
@@ -5500,7 +5505,7 @@ function renderFilmListHTML(){
     const safeT=title.replace(/'/g,"\'");
     const poster=f?getFilmPoster(f):null;
     const posterHtml=poster
-      ?`<img class="int-item-poster" src="${poster}" data-title="${title.replace(/"/g,'&quot;')}" onerror="_posterErr(this)" alt="" loading="lazy">`
+      ?`<img class="int-item-poster"${_posterStyle(f)} src="${poster}" data-title="${title.replace(/"/g,'&quot;')}" onerror="_posterErr(this)" alt="" loading="lazy">`
       :`<div class="int-item-poster"></div>`;
     const secLabel=(f?.section||'').replace(/^\S+ /,'')||f?.section||'';
     const rating=filmRatings[title]||0;
@@ -8447,7 +8452,7 @@ function openPelSheet(title){
     posterHtml=`<div class="pel-sheet-poster-stage">${_c1}${_c2}</div>`;
   } else {
     posterHtml=posterSrc
-      ?`<img class="pel-sheet-poster" src="${posterSrc}" data-title="${f.title.replace(/"/g,'&quot;')}" loading="lazy" onerror="_posterErr(this)" alt="">`
+      ?`<img class="pel-sheet-poster"${_posterStyle(f)} src="${posterSrc}" data-title="${f.title.replace(/"/g,'&quot;')}" loading="lazy" onerror="_posterErr(this)" alt="">`
       :`<div class="pel-sheet-poster-ph">🎬</div>`;
   }
   const{displayTitle}=parseProgramTitle(f.title);
