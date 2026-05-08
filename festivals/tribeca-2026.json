@@ -54,142 +54,7 @@
       "lng": -74.0021
     }
   },
-  "posters": {
-    "Frampton": "https://image.tmdb.org/t/p/w500/y9PzkIf942LgpbtP33CfpVbvSO2.jpg",
-    "Hadestown: The Musical": "https://image.tmdb.org/t/p/w500/egOIeTWjdQNcnbBSuGoJn2G3MsN.jpg",
-    "Imaginal Disk": "https://image.tmdb.org/t/p/w500/3O7Cwak2ADgQ3JQWhX5rSPMYBWZ.jpg",
-    "Katy Perry: The Lifetimes Tour - Live from Paris": "https://image.tmdb.org/t/p/w500/aW1dUvEpqGCpEVQ7hRmb0tkZQAq.jpg",
-    "Noga": "https://image.tmdb.org/t/p/w500/6RZc9EBFeJ5f9CLIKCRwTQyTbjR.jpg",
-    "The Symphony of Dance": "https://image.tmdb.org/t/p/w500/7N35nweeK4ySJastqNaPT2W1fTM.jpg",
-    "Act One": "https://image.tmdb.org/t/p/w500/rK6QmbSqMM9cNlBKSOIr3eko2gI.jpg",
-    "Clean Hands": "https://image.tmdb.org/t/p/w500/ymjQl79w14KfiSkIWVzqqvMBobU.jpg",
-    "Finnegan’s Foursome": "https://image.tmdb.org/t/p/w500/bmFdsOFHipMvqult9MNnUhrwaFS.jpg",
-    "Gail Daughtry and the Celebrity Sex Pass": "https://image.tmdb.org/t/p/w500/iGAa5sndcGIIq6icQ4155TnL3vz.jpg",
-    "Happy Hours": "https://image.tmdb.org/t/p/w500/LiW3eZB8L4gZtRdXD8HGFXL4Uz.jpg",
-    "Iconoclast": "https://image.tmdb.org/t/p/w500/siKvoieEfRdgswv1QSsnrZ6k4Qt.jpg",
-    "In Memoriam": "https://image.tmdb.org/t/p/w500/amEmT6BCYpiDu0LasojtryVmNJv.jpg",
-    "In the Hand of Dante": "https://image.tmdb.org/t/p/w500/FVyNH1Y7Zro3kukCtwhyw1J0o2.jpg",
-    "Killing Castro": "https://image.tmdb.org/t/p/w500/9GxigbIRIDpQoIdyfD50cDKoApx.jpg",
-    "Never Change!": "https://image.tmdb.org/t/p/w500/uAbHtk2Hy5AE4Uytm0OKyTOi6Po.jpg",
-    "Next Life": "https://image.tmdb.org/t/p/w500/cg8qDuNX31reaGVghwY6FPOKsU4.jpg",
-    "Only What We Carry": "https://image.tmdb.org/t/p/w500/nXsJyp8pZBwKzJfsVdr7z18BfIc.jpg",
-    "Rain Reign": "https://image.tmdb.org/t/p/w500/jIQAm7YlBoZqllu4gbnagRlO9NY.jpg",
-    "Seven O'Clock Breakfast Club for the Brokenhearted": "https://image.tmdb.org/t/p/w500/mgKStC3O7jOURJJcMqasAgHnT7B.jpg",
-    "Take Me Home": "https://image.tmdb.org/t/p/w500/fUTVoqYpygh9CYgkVDdQ1h5xXnq.jpg",
-    "That Friend": "https://image.tmdb.org/t/p/w500/gRRtooJbW4yKVDGnrzmjCTeBgeE.jpg",
-    "The Accompanist": "https://image.tmdb.org/t/p/w500/gdFleTfG15PDy2hiEbay4OWZRFJ.jpg",
-    "The Last Day": "https://image.tmdb.org/t/p/w500/egZi5FEoa9i1b0u8e1wekb28ApU.jpg",
-    "The Leader": "https://image.tmdb.org/t/p/w500/rHNHuqlF4vAanccWmEdlbC6w3wj.jpg",
-    "The Long Haul": "https://image.tmdb.org/t/p/w500/aaDEWK1yZEzaLItbSwil2rlm9Rn.jpg",
-    "The Revisionist": "https://image.tmdb.org/t/p/w500/gclyBU7or5mKwtDq5SJdyiaO7jf.jpg",
-    "They Fight": "https://image.tmdb.org/t/p/w500/a2B9gCTpb8w7LdfvHwrTEyphSrX.jpg",
-    "Unidentified": "https://image.tmdb.org/t/p/w500/5hucma4zh66NzVYIkflPe4K83ql.jpg",
-    "Young Washington": "https://image.tmdb.org/t/p/w500/ntW9zzhDmbt3sXDyPXb7SHVuDdB.jpg",
-    "Bob and David Climb Machu Picchu": "https://image.tmdb.org/t/p/w500/u8ruKHHzIWiz0NGdL9VWNr1fqTv.jpg",
-    "Born Melo": "https://image.tmdb.org/t/p/w500/ev9eS4H5TCZxS0Xb2AoT4jYyMp5.jpg",
-    "Guggi": "https://image.tmdb.org/t/p/w500/9rzmWBISWM6Pcdeug6eMUDJjxvt.jpg",
-    "Hanging by a Wire": "https://image.tmdb.org/t/p/w500/xQJsujphh0k9fJKFVcolow5OrjQ.jpg",
-    "IX XI": "https://image.tmdb.org/t/p/w500/ybF28zqRDjSsvObmnCoZqHbC93u.jpg",
-    "Just Look Up": "https://image.tmdb.org/t/p/w500/m1jQ9M6ZnwuT0qekLTgRqGNiNRy.jpg",
-    "Mario": "https://image.tmdb.org/t/p/w500/eJGWx219ZcEMVQJhAgMiqo8tYY.jpg",
-    "Mouth Full of Golds": "https://image.tmdb.org/t/p/w500/tLQzj2qP7RnfmmSiaZ7M9yeDHT0.jpg",
-    "Odyssey": "https://image.tmdb.org/t/p/w500/2jzjE3OtXekGtn3vdRGXpyWrHe7.jpg",
-    "Spin Wars": "https://image.tmdb.org/t/p/w500/zL7zV68jIpq2IBOtlK38mlwfgI9.jpg",
-    "Stealing Magic": "https://image.tmdb.org/t/p/w500/5TdQVUaMoasmWKiQddkk8QreQot.jpg",
-    "The Best Summer": "https://image.tmdb.org/t/p/w500/jjTWHbpw3Ts50A1x46KXPGSpOc7.jpg",
-    "The Lion Queen": "https://image.tmdb.org/t/p/w500/ogMsUylVm7lpVOZKrGDwUqdkl6f.jpg",
-    "The Lorraine": "https://image.tmdb.org/t/p/w500/8lxIDocpVEQcWU2PYSQwzk3Dsfk.jpg",
-    "Breeder": "https://image.tmdb.org/t/p/w500/p4RwOjzPQ4lpA4pGll5DKXuGlr3.jpg",
-    "Dante": "https://image.tmdb.org/t/p/w500/wLi0pzD3JcmTeeg4D5WbzYruX5T.jpg",
-    "Hallowarrior": "https://image.tmdb.org/t/p/w500/eaVuQsTofgodi76nXkYoWtN9afH.jpg",
-    "Mutter: The Diary of a Mother": "https://image.tmdb.org/t/p/w500/crGynSiPjF5Tn5XG8B11QrlNZ3X.jpg",
-    "Recluse": "https://image.tmdb.org/t/p/w500/jkRPqoBSfhPZOFZN2rqfzY7yrzN.jpg",
-    "Turn It Up!": "https://image.tmdb.org/t/p/w500/1LqMTyQJnI7IfeDjjGRcDh1vv0r.jpg",
-    "Crocodile": "https://image.tmdb.org/t/p/w500/pduPduL1ub5kok3lPYT15ryC9L6.jpg",
-    "Crooks": "https://image.tmdb.org/t/p/w500/1uYCIsMpX7FtWu2xO1YMIAQYvLR.jpg",
-    "Deepfake": "https://image.tmdb.org/t/p/w500/i6mtsJKENKOknAoK8C7Acq4o1mW.jpg",
-    "Micronations": "https://image.tmdb.org/t/p/w500/b2kX8NXDOVk32M7OZoDw2aCNqOS.jpg",
-    "One Woman One Bra": "https://image.tmdb.org/t/p/w500/tnu15dwkehe1PumafBITO2b1lEy.jpg",
-    "The Keeper of the Camphor Tree": "https://image.tmdb.org/t/p/w500/1Z054bQ6RxRvFGe2drQbVuIkmKb.jpg",
-    "Vanishing tracks": "https://image.tmdb.org/t/p/w500/vlu5cD2FZ4CQ4ulYagzwTrWozwo.jpg",
-    "Árru": "https://image.tmdb.org/t/p/w500/UFAIK0f9qvQYndcUF6i2hrSqSb.jpg",
-    "Caity": "https://image.tmdb.org/t/p/w500/3fJ5iowyzRULvjInAqwspg7jeYg.jpg",
-    "Cotton Fever": "https://image.tmdb.org/t/p/w500/9IfUUWXltKsQTKBkF18XQtgQ5Dp.jpg",
-    "Ephemera": "https://image.tmdb.org/t/p/w500/1NhxLlr7H9lK6PMoZqkHfOnw2jY.jpg",
-    "Kingston": "https://image.tmdb.org/t/p/w500/tvSLcd9p8mB1z6EMFDzZP691JGz.jpg",
-    "Ponderosa": "https://image.tmdb.org/t/p/w500/hGy8hODGfne7Eh41hNVDv1AZw4M.jpg",
-    "She Keeps Me Young": "https://image.tmdb.org/t/p/w500/buEA5gWVrniuCPHysiNcdsbSpGZ.jpg",
-    "Summer of Three": "https://image.tmdb.org/t/p/w500/wL8zEII7tZh8Li0s1RnENTBX2Ty.jpg",
-    "Via Negativa": "https://image.tmdb.org/t/p/w500/zSiIf4sEQqyRWriGERI0s1Ps2JF.jpg",
-    "American Zoo": "https://image.tmdb.org/t/p/w500/nwSFpMPbzhkGWcMZZPwYYO2qTpD.jpg",
-    "Harvest": "https://image.tmdb.org/t/p/w500/sFBDjWdw8gHSI2dMivP7H52iwvp.jpg",
-    "Jean-Michel": "https://image.tmdb.org/t/p/w500/y67rYeuVtXOqNHBpDPbSdK4cbc3.jpg",
-    "Kids Like Me": "https://image.tmdb.org/t/p/w500/wQIZQ0vJsabODfsKtIh6Zm9NQUM.jpg",
-    "Mexicanamerican": "https://image.tmdb.org/t/p/w500/wGp2clMovz9LbtBj2IzIeWzjsfr.jpg",
-    "Retrieval": "https://image.tmdb.org/t/p/w500/2SKzV3CE1MTWEmL65L2Isb8uuOm.jpg",
-    "Time Warp": "https://image.tmdb.org/t/p/w500/fcj5VHPFbQC32C0mbSLcLcyCDsI.jpg",
-    "Against the Flow": "https://image.tmdb.org/t/p/w500/82NQ1ClmTRQ4BpCZcQWA3TLXFNH.jpg",
-    "Funk": "https://image.tmdb.org/t/p/w500/hgbVCGDjbJfO9Rx5LBsFgFOjEa7.jpg",
-    "I Spy With My Little Eye": "https://image.tmdb.org/t/p/w500/hmjCMtkeqxruMVocq7iwMx899xi.jpg",
-    "Labrador — Autopsy of Silence": "https://image.tmdb.org/t/p/w500/xbQFsDH8fLj8TlsmROG4nNT5iJ2.jpg",
-    "Memorizu": "https://image.tmdb.org/t/p/w500/9hShb0eM5G8MLRtl97VaxY9VoUC.jpg",
-    "Sad Girlz": "https://image.tmdb.org/t/p/w500/daj02QrJmvhLvmVUuoxa1Srq02y.jpg",
-    "Stand Up": "https://image.tmdb.org/t/p/w500/sqaKvJJVf2VxHPJLs6rm5XeLDmk.jpg",
-    "Summer War": "https://image.tmdb.org/t/p/w500/pQpqLGAPfSe4pcIiH2YvkzI4X6r.jpg",
-    "The Tropic Sun and His Eyes": "https://image.tmdb.org/t/p/w500/iiSTkTSxKlYlqjwRulQK6XAVrKE.jpg",
-    "Zejtune": "https://image.tmdb.org/t/p/w500/LocCeo7mZ0PBibKioNjJwPHihb.jpg",
-    "Bridget Jones's Diary with Renee Zellweger and Sharon Maguire": "https://image.tmdb.org/t/p/w500/dkauRl9TosBFikftrC3OVcKWDoz.jpg",
-    "Small Town Gay Bar": "https://image.tmdb.org/t/p/w500/pmtStF3fFKohqL1uteBkIDSd2no.jpg",
-    "Taxi Driver": "https://image.tmdb.org/t/p/w500/ekstpH614fwDX8DUln1a2Opz0N8.jpg",
-    "Ascension": "https://image.tmdb.org/t/p/w500/eHLZiLMvBL7oK2LAWekemb3xFjS.jpg",
-    "Dior and I": "https://image.tmdb.org/t/p/w500/w1qBPXztk6C7eZxShmYcGWuiDUS.jpg",
-    "Guy and Madeline on a Park Bench": "https://image.tmdb.org/t/p/w500/7bu5XiVNVSlJkdihAv7Bnkdah3i.jpg",
-    "Jane Austen's Period Drama": "https://image.tmdb.org/t/p/w500/tlQfsrxKLdrpQBlWUrUlpTamOBy.jpg",
-    "Jiro Dreams of Sushi": "https://image.tmdb.org/t/p/w500/iVrkM4jSJw1IsOpW5jTtY5QxVqj.jpg",
-    "Let the Right One In": "https://image.tmdb.org/t/p/w500/7IG4WjaAOVDlLvLUkh513HSwhW8.jpg",
-    "Little Woods": "https://image.tmdb.org/t/p/w500/gvyikwFv2pwUyapTPx8Mx6JKZzX.jpg",
-    "Ripe!": "https://image.tmdb.org/t/p/w500/xoQmibPIqwIN4cTlohDVNZwAi2y.jpg",
-    "The Last Play at Shea": "https://image.tmdb.org/t/p/w500/xnnmPEZJrZCQdjJlrU6UJW75LUe.jpg",
-    "The Queen of Basketball": "https://image.tmdb.org/t/p/w500/8RjXNAvpH4SsBkEDRsCrEXxOcnd.jpg",
-    "The Short History of the Long Road": "https://image.tmdb.org/t/p/w500/chTc0F8B9YOiwZDea5LJ8h2q2Qx.jpg",
-    "Virunga": "https://image.tmdb.org/t/p/w500/b59YdJZyRUu04hnWdmmz4kPjbTF.jpg",
-    "32 B": "https://image.tmdb.org/t/p/w500/rJTPIWWaVmKLYT3cx0PLlWm7X65.jpg",
-    "A Crime Across Four Landscapes": "https://image.tmdb.org/t/p/w500/xyJc46QkEAE35PVyyCT8JguQrTO.jpg",
-    "Am I a Bad Person?": "https://image.tmdb.org/t/p/w500/qqk2Gw7XB3oNGL7TuppcL4JaRax.jpg",
-    "APART": "https://image.tmdb.org/t/p/w500/6IiNUUV6H2W1wUc8e1w4GfuQCOE.jpg",
-    "Because Today is Saturday": "https://image.tmdb.org/t/p/w500/eLMlWlvZq6WY1yUg0wwJJJaTGhf.jpg",
-    "Born to Kill": "https://image.tmdb.org/t/p/w500/fFq23ToiVg8sWiMnD4f3Fj37UHD.jpg",
-    "Brujo": "https://image.tmdb.org/t/p/w500/gW3SqK4V14p1Avx7VivI0mDQBpO.jpg",
-    "Buckets": "https://image.tmdb.org/t/p/w500/uWmMINhqk8w9OnGax9BaMEOFlN9.jpg",
-    "Cookie, Love": "https://image.tmdb.org/t/p/w500/t4RhUuEeYSQEZiJrKSy2MdTis2j.jpg",
-    "Daddy's Little Meatball": "https://image.tmdb.org/t/p/w500/sQQJuqFrjy5HhsZOUzTNptMk742.jpg",
-    "DISC": "https://image.tmdb.org/t/p/w500/p6n6asYwy0jggE0gCWhz6Llk7BI.jpg",
-    "Eeny, Meeny, Miny, Moe!": "https://image.tmdb.org/t/p/w500/Xc0DIw8r6NYWaB1U1YGmTfVBkp.jpg",
-    "Fabric": "https://image.tmdb.org/t/p/w500/puGJX5Ko9KUMWM5cGqPZ5nyxa8c.jpg",
-    "Fault": "https://image.tmdb.org/t/p/w500/w46Vw536HwNnEzOa7J24YH9DPRS.jpg",
-    "Found&Lost": "https://image.tmdb.org/t/p/w500/jaylLo7TsJrJriNVGf72Asen1Fr.jpg",
-    "Freestyle": "https://image.tmdb.org/t/p/w500/9Dv2IKD6ap7hlEgQhKPZnmG2Qxa.jpg",
-    "General Admission": "https://image.tmdb.org/t/p/w500/fv1KZVziar0T56AQFHlqElqPgyV.jpg",
-    "Grounded": "https://image.tmdb.org/t/p/w500/qFTmvdXxRmHDdGXiNXGLho1gP7F.jpg",
-    "His House, Home": "https://image.tmdb.org/t/p/w500/azfGYimJTYrf3sYLp3ilTSjS4dr.jpg",
-    "Holo": "https://image.tmdb.org/t/p/w500/rCCSm6InL33Ake9Qu4uUjnDgOW9.jpg",
-    "Homesick": "https://image.tmdb.org/t/p/w500/cuO7fTeecF5ngAVOvGmKFKd3W7H.jpg",
-    "Hope": "https://image.tmdb.org/t/p/w500/x9yjkm9gIz5qI5fJMUTfBnWiB2o.jpg",
-    "I Think About Killing You": "https://image.tmdb.org/t/p/w500/bHx1gKtymZ6Vd2vCr4jlyPYzr2e.jpg",
-    "Imprint": "https://image.tmdb.org/t/p/w500/l6sOkozopDz3YAv7x1DjCIW9cMC.jpg",
-    "Kaya (ᜃᜌ)": "https://image.tmdb.org/t/p/w500/zculS0ZU05OqInoNQnFy3vDmYCf.jpg",
-    "Kiloran Bay": "https://image.tmdb.org/t/p/w500/deBNC4AYcIWn5PDOzQIyE3YDQEY.jpg",
-    "La Lucha de Lucía": "https://image.tmdb.org/t/p/w500/ph8COLT1urTUa59Ze0xef1bPI2b.jpg",
-    "Last Minute": "https://image.tmdb.org/t/p/w500/9P02FAfXoE9G8qw8vW53c2JibRJ.jpg",
-    "Listen": "https://image.tmdb.org/t/p/w500/g5cwWBCzds8giIxa88yBjz9qxvg.jpg",
-    "Lost Touch": "https://image.tmdb.org/t/p/w500/wbC3GmPQ2yYZilufUJDBWF109E2.jpg",
-    "Me, Myself, and Mary": "https://image.tmdb.org/t/p/w500/fwBqBAsKuZ0XedGXDJP3sy9l9rQ.jpg",
-    "Mon Taxi": "https://image.tmdb.org/t/p/w500/zRexKuKKtPs4z9m9hNYQreaoc4J.jpg",
-    "Odessa": "https://image.tmdb.org/t/p/w500/80zDn3oanRMWDSDX1cPKZVIi8OO.jpg",
-    "One Night": "https://image.tmdb.org/t/p/w500/gzy1L7wqkFRznQPv4WrdPQ9bCJ8.jpg",
-    "The Baddest Speechwriter of All": "https://image.tmdb.org/t/p/w500/a600xi9rnKkvgwBgHIwWgIDxoaK.jpg",
-    "The Barbershop": "https://image.tmdb.org/t/p/w500/9mwzidlGgWfr2hcMWUKM86lOqdo.jpg"
-  },
+  "posters": {},
   "customPosters": {},
   "lbSlugs": {},
   "prioLimit": 5,
@@ -321,8 +186,7 @@
       "genre": "Documental, Música",
       "posterPosition": "center",
       "day_order": 1,
-      "flags": "🇺🇸",
-      "synopsis_en": "Seven years after her Grammy Award-winning Amidst the Chaos, Sara Bareilles reunites with her closest collaborators to record a new album. What emerges is an intimate, cinematic process that lays bare the musician's deep connections and inspirations in  Josh Alexander's moving music documentary."
+      "flags": "🇺🇸"
     },
     {
       "title": "Tribeca at 25: A Conversation With Co-Founders Jane Rosenthal and Robert De Niro",
@@ -452,8 +316,7 @@
       "genre": "Documental",
       "posterPosition": "center",
       "day_order": 3,
-      "flags": "🇺🇸",
-      "synopsis_en": "Thirty years after Boy Meets World made them teen idols, Danielle Fishel, Will Friedle, and Rider Strong reunite for a wildly popular rewatch podcast and national tour. Funny, candid, and unexpectedly emotional, their tour becomes a nostalgic ride through fame, friendship, and the messy reality of growing up on screen and off."
+      "flags": "🇺🇸"
     },
     {
       "title": "Frampton",
@@ -495,8 +358,7 @@
       "poster": "",
       "genre": "Documental, Música",
       "day_order": 1,
-      "flags": "🇺🇸",
-      "synopsis_en": "Follows a rock icon who lost everything and fought his way back, again and again."
+      "flags": "🇺🇸"
     },
     {
       "title": "Hadestown: The Musical",
@@ -538,8 +400,7 @@
       "poster": "https://image.tmdb.org/t/p/w185/egOIeTWjdQNcnbBSuGoJn2G3MsN.jpg",
       "genre": "Drama, Fantasía",
       "day_order": 5,
-      "flags": "🇺🇸",
-      "synopsis_en": "In a post-apocalyptic world inspired by New Orleans, the tragic love of Orpheus and Eurydice is intertwined with the complex relationship of Hades and Persephone. Eurydice, struggling with poverty, is lured to the industrial underworld of Hadestown by Hades, while Orpheus, a struggling musician, ventures down below to bring her back."
+      "flags": "🇺🇸"
     },
     {
       "title": "Imaginal Disk",
@@ -581,8 +442,7 @@
       "poster": "https://image.tmdb.org/t/p/w185/3O7Cwak2ADgQ3JQWhX5rSPMYBWZ.jpg",
       "genre": "Música, Romance",
       "day_order": 1,
-      "flags": "🇺🇸",
-      "synopsis_en": "This film accompanying concept album 'Imaginal Disk' takes you on the journey of True on the path to becoming the \"purest you\". What soon unfolds is a cinematic, hypnotically beautiful quest to rediscover the essence of being a human."
+      "flags": "🇺🇸"
     },
     {
       "title": "Katy Perry: The Lifetimes Tour - Live from Paris",
@@ -624,8 +484,7 @@
       "poster": "https://image.tmdb.org/t/p/w185/aW1dUvEpqGCpEVQ7hRmb0tkZQAq.jpg",
       "genre": "Documental",
       "day_order": 5,
-      "flags": "🇺🇸🇫🇷",
-      "synopsis_en": "Capturing Katy Perry’s electrifying, immersive concert experience, Katy Perry: The Lifetimes Tour – Live from Paris blends powerhouse performances, exhilarating cinematography, and intimate moments to bring audiences into the spectacular world of this creative artist."
+      "flags": "🇺🇸🇫🇷"
     },
     {
       "title": "Miss Representation: Rise Up",
@@ -668,8 +527,7 @@
       "genre": "Documental",
       "posterPosition": "center",
       "day_order": 4,
-      "flags": "🇺🇸",
-      "synopsis_en": "MISS REPRESENTATION: RISING dives deep into the cultural backlash against women’s mental health, agency, and political power with technology exacerbating sexism and misogyny towards women and girls."
+      "flags": "🇺🇸"
     },
     {
       "title": "Mumford & Sons: The House Band",
@@ -711,8 +569,7 @@
       "poster": "",
       "genre": "Documental, Música",
       "day_order": 9,
-      "flags": "🇺🇸",
-      "synopsis_en": "Mumford & Sons invite the camera onto the train for one of the most purely pleasurable concert docs in years. Featuring Noah Kahan, Darius Rucker, Lainey Wilson, Maggie Rogers, and several other special guests along for the ride, the journey captures the intimacy and camaraderie between all the performers both onstage and off."
+      "flags": "🇺🇸"
     },
     {
       "title": "Noga",
@@ -754,8 +611,7 @@
       "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/6949/large_Noga-Clean-16x9-01.jpg",
       "genre": "Documental, Música",
       "posterPosition": "center",
-      "day_order": 4,
-      "synopsis_en": "Fearless alternative pop singer Noga Erez is on the brink of superstardom with a unique, captivating sound and a major studio album on the way. But when war erupts and cracks appear in her relationship, Noga must redefine her role as an artist on a global stage."
+      "day_order": 4
     },
     {
       "title": "Playing POTUS",
@@ -798,8 +654,7 @@
       "genre": "Documental",
       "posterPosition": "center",
       "day_order": 3,
-      "flags": "🇺🇸",
-      "synopsis_en": "Explores the uniquely American tradition of presidential parody, a bold art form that has transformed our perceptions of real-world presidents and politicians for the past 60 years. These iconic impressions have an outsized and lasting impact on American politics that has gone completely unexamined... until now."
+      "flags": "🇺🇸"
     },
     {
       "title": "The Symphony of Dance",
@@ -842,8 +697,7 @@
       "genre": "Documental",
       "posterPosition": "center",
       "day_order": 4,
-      "flags": "🇺🇸",
-      "synopsis_en": "A behind-the-scenes glimpse at a marathon of performances by Dancing with the Stars’ Derek and Hayley Hough becomes something entirely different when Hayley is forced to fight for her life following a shocking health crisis."
+      "flags": "🇺🇸"
     },
     {
       "title": "Trinity: The Story of The LOX",
@@ -886,8 +740,7 @@
       "genre": "Documental, Música",
       "posterPosition": "center",
       "day_order": 8,
-      "flags": "🇺🇸",
-      "synopsis_en": "Travel through time and reflect on the genesis, journey, and brotherhood of the multidimensional rap trio from Yonkers, The LOX."
+      "flags": "🇺🇸"
     },
     {
       "title": "Act One",
@@ -929,8 +782,7 @@
       "poster": "https://image.tmdb.org/t/p/w185/rK6QmbSqMM9cNlBKSOIr3eko2gI.jpg",
       "genre": "Drama",
       "day_order": 7,
-      "flags": "🇺🇸",
-      "synopsis_en": "This autobiographical story traces the career of playwright Moss Hart. Moss struggles as a dramatic writer until he concentrates his efforts on writing comedy. He suffers through a series of professional and romantic failures before a meeting with George S. Kaufman which changes his fortunes."
+      "flags": "🇺🇸"
     },
     {
       "title": "Adults",
@@ -960,7 +812,6 @@
       "posterPosition": "center",
       "day_order": 8,
       "flags": "🇺🇸",
-      "genre": "Documental",
       "year": 2026
     },
     {
@@ -990,8 +841,7 @@
       "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/7093/large_Alice_and_Steve-clean-16x9-01.jpg",
       "posterPosition": "center",
       "day_order": 1,
-      "flags": "🇬🇧🇺🇸",
-      "genre": "Documental"
+      "flags": "🇬🇧🇺🇸"
     },
     {
       "title": "Clean Hands",
@@ -1033,8 +883,7 @@
       "poster": "https://image.tmdb.org/t/p/w185/ymjQl79w14KfiSkIWVzqqvMBobU.jpg",
       "genre": "Crimen, Drama",
       "day_order": 4,
-      "flags": "🇺🇸",
-      "synopsis_en": "Weighed down by his deadbeat father and unrelenting financial debts, Joss is forced to sink deeper into a criminal underworld to escape his burdens. As the line between his two lives thins, Joss frantically begins constructing an escape from his sins he commits before they swallow him whole."
+      "flags": "🇺🇸"
     },
     {
       "title": "Finnegan’s Foursome",
@@ -1076,8 +925,7 @@
       "poster": "https://image.tmdb.org/t/p/w185/bmFdsOFHipMvqult9MNnUhrwaFS.jpg",
       "genre": "Comedia, Drama",
       "day_order": 4,
-      "flags": "🇺🇸",
-      "synopsis_en": "Two middle aged brothers and their respective sons travel to Ireland to play the Finnegan Family's annual golf outing, where they distribute the ashes of the family patriarch"
+      "flags": "🇺🇸"
     },
     {
       "title": "Gail Daughtry and the Celebrity Sex Pass",
@@ -1119,8 +967,7 @@
       "poster": "https://image.tmdb.org/t/p/w185/iGAa5sndcGIIq6icQ4155TnL3vz.jpg",
       "genre": "Comedia",
       "day_order": 7,
-      "flags": "🇺🇸",
-      "synopsis_en": "A Midwestern bride-to-be, Gail Daughtry, has a celebrity hall pass agreement with her fiancé… who uses it. Their relationship in crisis, Gail sets out on an epic journey through Hollywood to even the scales."
+      "flags": "🇺🇸"
     },
     {
       "title": "Happy Hours",
@@ -1131,7 +978,7 @@
       "director": "Katie Holmes",
       "duration": 80,
       "country": "United States",
-      "language": "English",
+      "language": "",
       "premiere": "World Premiere",
       "synopsis": "Freshly divorced, photographer Liz (Katie Holmes) finds herself surrounded by happy couples. Walking past a bookstore advertising a talk with travel writer Andrew McCloud (Joshua Jackson), Liz freezes up in recognition of her high school boyfriend. Through a serendipitous gig, Liz photographs Andrew, and the pair of former lovers pick back up where they left off, rekindling their spark, confiding in one another and working through old wounds. As the fantasy of a life with Andrew becomes closer to reality, Liz must decide whether she’s ready to let herself love again.",
       "screenings": [
@@ -1168,8 +1015,7 @@
       "poster": "https://image.tmdb.org/t/p/w185/LiW3eZB8L4gZtRdXD8HGFXL4Uz.jpg",
       "genre": "Comedia",
       "day_order": 3,
-      "flags": "🇺🇸",
-      "synopsis_en": "Happy Hours is an independent comedy feature film about three silly adults who need help...just not from each other. Filmed between 2008-2010, edited and completed during COVID-19 pandemic in 2020."
+      "flags": "🇺🇸"
     },
     {
       "title": "Iconoclast",
@@ -1211,8 +1057,7 @@
       "poster": "https://image.tmdb.org/t/p/w185/siKvoieEfRdgswv1QSsnrZ6k4Qt.jpg",
       "genre": "Documental",
       "day_order": 6,
-      "flags": "🇺🇸",
-      "synopsis_en": "Boyd Rice may well be the only person alive who's been on a first name basis with both Charles Manson and Marilyn Manson. His career has spanned more than three decades, during which time he has remained at the epicenter of underground culture and controversy."
+      "flags": "🇺🇸"
     },
     {
       "title": "In Memoriam",
@@ -1254,8 +1099,7 @@
       "poster": "https://image.tmdb.org/t/p/w185/m4RJbZax1UwzmW6WZyDJ1EP1CfW.jpg",
       "genre": "Comedia",
       "day_order": 4,
-      "flags": "🇺🇸",
-      "synopsis_en": "In an anguished triangle of silences and unspoken words, a man secretly loves a woman who loves another man."
+      "flags": "🇺🇸"
     },
     {
       "title": "In the Hand of Dante",
@@ -1291,8 +1135,7 @@
       "poster": "https://image.tmdb.org/t/p/w185/FVyNH1Y7Zro3kukCtwhyw1J0o2.jpg",
       "genre": "Crimen, Drama",
       "day_order": 7,
-      "flags": "🇺🇸",
-      "synopsis_en": "A handwritten manuscript of Dante Alighieri's poem \"The Divine Comedy\" makes its way from a priest to a mob boss in New York City, where it is taken by author Nick Tosches after he's asked to verify its authenticity."
+      "flags": "🇺🇸"
     },
     {
       "title": "Killing Castro",
@@ -1334,8 +1177,7 @@
       "poster": "https://image.tmdb.org/t/p/w185/9GxigbIRIDpQoIdyfD50cDKoApx.jpg",
       "genre": "Drama, Historia",
       "day_order": 6,
-      "flags": "🇺🇸",
-      "synopsis_en": "Centered on true events when Cuban revolution leader Fidel Castro visited New York City and stayed in Harlem in 1960."
+      "flags": "🇺🇸"
     },
     {
       "title": "Never Change!",
@@ -1377,8 +1219,7 @@
       "poster": "",
       "genre": "Comedia",
       "day_order": 6,
-      "flags": "🇺🇸",
-      "synopsis_en": "In 2005, the graduating class of North Meadows High School had their senior year cut short due to a disastrous tornado that wrecked half the school. Now in their mid-30s, they're being forced to return home and finish high school once and for all."
+      "flags": "🇺🇸"
     },
     {
       "title": "Next Life",
@@ -1420,8 +1261,7 @@
       "poster": "",
       "genre": "Ciencia ficción, Romance",
       "day_order": 2,
-      "flags": "🇬🇧",
-      "synopsis_en": "Ivy finds herself confronted with parallel universes in which her life unspools in very different ways set against the modern London jazz scene."
+      "flags": "🇬🇧"
     },
     {
       "title": "Only What We Carry",
@@ -1463,8 +1303,7 @@
       "poster": "https://image.tmdb.org/t/p/w185/nXsJyp8pZBwKzJfsVdr7z18BfIc.jpg",
       "genre": "Drama",
       "day_order": 3,
-      "flags": "🇬🇧🇫🇷",
-      "synopsis_en": "Set against the windswept coast of Normandy. Described as “a meditation on love, loss, and the quiet courage it takes to move forward”."
+      "flags": "🇬🇧🇫🇷"
     },
     {
       "title": "Rain Reign",
@@ -1513,8 +1352,7 @@
       "genre": "Aventura, Drama",
       "posterPosition": "center",
       "day_order": 3,
-      "flags": "🇺🇸",
-      "synopsis_en": "Rose Howard, a neurodivergent 12-year-old girl raised by her volatile single father, is forced to abandon her daily routines when a superstorm devastates their town and her beloved dog, Rain, goes missing. With the support of her uncle, Rose embarks on a determined search for Rain — a journey that challenges her resilience and compels her to make an impossible choice between her own needs and doing what is right."
+      "flags": "🇺🇸"
     },
     {
       "title": "Seven O'Clock Breakfast Club for the Brokenhearted",
@@ -1556,8 +1394,7 @@
       "poster": "https://image.tmdb.org/t/p/w185/p90CQyqlAJb5aIbubYCuL1bLpBW.jpg",
       "genre": "Drama, Romance",
       "day_order": 8,
-      "flags": "🇰🇷",
-      "synopsis_en": "\"I just got dumped. Will you have breakfast with me?\" At a breakfast club, heartbroken Sa-gang and Ji-hoon stumble upon mysterious \"breakup souvenirs.\" Each item holds a secret pain, reflecting their own. Will they find the souvenir's owner?"
+      "flags": "🇰🇷"
     },
     {
       "title": "Take Me Home",
@@ -1599,8 +1436,7 @@
       "poster": "https://image.tmdb.org/t/p/w185/3Tz81RsuCkCVThM0rzkXvt78FqE.jpg",
       "genre": "Drama, Terror",
       "day_order": 3,
-      "flags": "🇺🇸",
-      "synopsis_en": "Same-sex couple Eun-soo and Ye-won are living together happily. One day, a terrible traffic accident occurs and Eun-soo is seriously injured and her sister Eunhae dies. Eun-soo is disabled and Eunhae's daughter Soo-min became an orphan. Now Eun-soo and Ye-won are in a position to take charge of Soo-min."
+      "flags": "🇺🇸"
     },
     {
       "title": "That Friend",
@@ -1642,8 +1478,7 @@
       "poster": "",
       "genre": "Comedia",
       "day_order": 5,
-      "flags": "🇺🇸",
-      "synopsis_en": "Paul, “That Friend” who turns one drink into a full-blown bender, crashes his best friend Henry’s romantic weekend with his new girlfriend Penny, only to unleash chaos when his drug-laced cigarettes disappear into a stranger's hands."
+      "flags": "🇺🇸"
     },
     {
       "title": "The Accompanist",
@@ -1685,8 +1520,7 @@
       "poster": "https://image.tmdb.org/t/p/w185/82GxUHTkMAyO5XiQEfOjoocfGZR.jpg",
       "genre": "",
       "day_order": 1,
-      "flags": "🇺🇸",
-      "synopsis_en": "Dr. Jason Holden, early 50s, is in danger of losing his family, because of a tragic automobile accident. He becomes a piano accompanist at a local ballet studio and falls in love with Brandon Wykowski, 27, a troubled dancer."
+      "flags": "🇺🇸"
     },
     {
       "title": "The Last Day",
@@ -1728,8 +1562,7 @@
       "poster": "https://image.tmdb.org/t/p/w185/5uJhl8yk44hmLy79xb9fF4n9YWr.jpg",
       "genre": "Película de TV, Western",
       "day_order": 3,
-      "flags": "🇺🇸",
-      "synopsis_en": "The Dalton gang is riding again, forcing a retired gunman to use his weapons once more."
+      "flags": "🇺🇸"
     },
     {
       "title": "The Leader",
@@ -1771,8 +1604,7 @@
       "poster": "",
       "genre": "Drama, Crimen",
       "day_order": 2,
-      "flags": "🇺🇸🇨🇦",
-      "synopsis_en": "In 1997, thirty-nine members of the American cult known as \"Heaven's Gate\" committed the largest mass suicide to ever take place on American soil. This is their story."
+      "flags": "🇺🇸🇨🇦"
     },
     {
       "title": "The Long Haul",
@@ -1814,8 +1646,7 @@
       "poster": "https://image.tmdb.org/t/p/w185/dmWCpu2ZJyACQ6rnHkl1z56rebh.jpg",
       "genre": "Crimen, Drama",
       "day_order": 4,
-      "flags": "🇬🇧🇺🇸",
-      "synopsis_en": "An American ex-GI takes a job as a truck driver to support his British war bride Connie. It isn't long, however, before Harry is blackmailed into joining a smuggling operation run by a conniving criminal."
+      "flags": "🇬🇧🇺🇸"
     },
     {
       "title": "The Revisionist",
@@ -1857,8 +1688,7 @@
       "poster": "",
       "genre": "Drama",
       "day_order": 2,
-      "flags": "🇺🇸",
-      "synopsis_en": "Elise, a successful novelist, does what so many writers do: she manipulates and transforms the people in her life into the characters she needs for her story. As she blurs the line between fiction and reality, her world descends into secrets, lies, and outright betrayal."
+      "flags": "🇺🇸"
     },
     {
       "title": "They Fight",
@@ -1900,8 +1730,7 @@
       "poster": "https://image.tmdb.org/t/p/w185/a2B9gCTpb8w7LdfvHwrTEyphSrX.jpg",
       "genre": "Documental",
       "day_order": 5,
-      "flags": "🇺🇸",
-      "synopsis_en": "Coach Walt Manigan mentors young boxers at his after-school program in Washington, D.C.'s Ward 8."
+      "flags": "🇺🇸"
     },
     {
       "title": "Unidentified",
@@ -1943,8 +1772,7 @@
       "poster": "https://image.tmdb.org/t/p/w185/5hucma4zh66NzVYIkflPe4K83ql.jpg",
       "genre": "Ciencia ficción, Comedia",
       "day_order": 6,
-      "flags": "🇸🇦",
-      "synopsis_en": "During a wild weekend in Las Vegas, four young friends get into trouble with a loan shark and must skip town in a hurry. But gambling problems may be the least of their worries after they get stranded in the Nevada desert. One of the guys discovers a mysterious metal fragment, then promptly goes missing during the night. When the remaining three catch up with their lost friend, there's something different about him. As his condition worsens, the others realize that something unearthly might be stalking them in the desert."
+      "flags": "🇸🇦"
     },
     {
       "title": "Young Washington",
@@ -1980,8 +1808,7 @@
       "poster": "https://image.tmdb.org/t/p/w185/ntW9zzhDmbt3sXDyPXb7SHVuDdB.jpg",
       "genre": "Historia, Drama",
       "day_order": 10,
-      "flags": "🇺🇸",
-      "synopsis_en": "Before he led a nation, George Washington was a young soldier thrown into a global conflict. With alliances crumbling and war closing in, he must choose who to trust and confront the leader he's becoming."
+      "flags": "🇺🇸"
     },
     {
       "title": "4000 Days",
@@ -2024,8 +1851,7 @@
       "genre": "Documental",
       "posterPosition": "center",
       "day_order": 7,
-      "flags": "🇺🇸",
-      "synopsis_en": "4000 Days chronicles the agonizing public struggle of three families whose personal tragedies become part of a nationwide movement for change — and the center of a push for legislative reform around the dangers of hazing."
+      "flags": "🇺🇸"
     },
     {
       "title": "AI: Probably Nothing to Worry About",
@@ -2068,8 +1894,7 @@
       "genre": "Documental",
       "posterPosition": "center",
       "day_order": 3,
-      "flags": "🇬🇧",
-      "synopsis_en": "The definitive documentary on AI's origins, told by the people who built it. A thriller-paced reckoning with ambition, rivalry and the question that now haunts everyone: Will artificial intelligence save humanity or destroy it?"
+      "flags": "🇬🇧"
     },
     {
       "title": "Bob and David Climb Machu Picchu",
@@ -2111,8 +1936,7 @@
       "poster": "https://image.tmdb.org/t/p/w185/u8ruKHHzIWiz0NGdL9VWNr1fqTv.jpg",
       "genre": "Documental, Comedia",
       "day_order": 3,
-      "flags": "🇺🇸",
-      "synopsis_en": "Comedy legends Bob Odenkirk and David Cross tackle one of the world's toughest hikes — and each other — in this high-altitude, coca-fueled meditation on friendship, mortality, and profoundly absurd comedy from two icons still magnificently in sync."
+      "flags": "🇺🇸"
     },
     {
       "title": "Born Melo",
@@ -2149,8 +1973,7 @@
       "genre": "Documental",
       "posterPosition": "center",
       "day_order": 9,
-      "flags": "🇺🇸",
-      "synopsis_en": "This new, official documentary takes an intimate look into the life and legacy of Carmelo Anthony as he is inducted into the Hall of Fame and sees his son, Kiyan, launch his collegiate basketball career."
+      "flags": "🇺🇸"
     },
     {
       "title": "Chris & Martina: The Final Set",
@@ -2192,8 +2015,7 @@
       "poster": "",
       "genre": "Documental",
       "day_order": 7,
-      "flags": "🇺🇸",
-      "synopsis_en": "Tennis legends Chris Evert and Martina Navratilova reflect on their parallel journeys to sports stardom while delving into their rivalry and friendship, especially as the duo continue to support each other through their shared experience of cancer treatment."
+      "flags": "🇺🇸"
     },
     {
       "title": "Every Year After",
@@ -2221,7 +2043,6 @@
       "venue": "SVA Theatre",
       "day_order": 5,
       "flags": "🇺🇸",
-      "genre": "Documental",
       "year": 2026
     },
     {
@@ -2265,8 +2086,7 @@
       "genre": "Documental",
       "posterPosition": "center",
       "day_order": 4,
-      "flags": "🇺🇸",
-      "synopsis_en": "An all-Black team sets out to summit Mount Everest not just to make history, but to redefine what it means to climb and who belongs in the mountains."
+      "flags": "🇺🇸"
     },
     {
       "title": "Grandmasters",
@@ -2300,7 +2120,6 @@
       "venue": "SVA Theatre",
       "day_order": 4,
       "flags": "🇺🇸",
-      "genre": "Documental",
       "year": 2026
     },
     {
@@ -2337,8 +2156,7 @@
       "poster": "https://image.tmdb.org/t/p/w185/9rzmWBISWM6Pcdeug6eMUDJjxvt.jpg",
       "genre": "Documental",
       "day_order": 10,
-      "flags": "🇮🇪",
-      "synopsis_en": "An intimate portrait of abstract painter Guggi that traces his journey from humble Irish beginnings—with friends Bono and Gavin Friday—through his post-punk phase and toward international acclaim as an uncompromising artist."
+      "flags": "🇮🇪"
     },
     {
       "title": "Hanging by a Wire",
@@ -2379,8 +2197,7 @@
       "year": 2026,
       "poster": "https://image.tmdb.org/t/p/w185/xQJsujphh0k9fJKFVcolow5OrjQ.jpg",
       "genre": "Documental, Suspense",
-      "day_order": 8,
-      "synopsis_en": "On a Tuesday morning in August 2023, a group of kids set off for school, climbing into a makeshift cable car for the journey across a mountain pass in northwest Pakistan. What happened next would make headlines around the world. Suddenly, 900 feet above the ground, two cables snapped, putting the teenagers in mortal danger."
+      "day_order": 8
     },
     {
       "title": "Hollywood Does Abortion",
@@ -2423,8 +2240,7 @@
       "genre": "Documental",
       "posterPosition": "center",
       "day_order": 4,
-      "flags": "🇺🇸",
-      "synopsis_en": "HOLLYWOOD DOES ABORTION  reveals how, from the 1970s to the present, film and television have too often relied on dangerously misleading distortions about abortions and the people who seek them. This provocative and lively feature length documentary explores the ways in which abortion narratives onscreen and public policy both mimic and influence one another. Extensive archival imagery spans five decades of television and film, ranging from Maude and Dirty Dancing to Jane the Virgin and Juno, and creates a historical timeline to support the “story” of the film.  In Hollywood Does Abortion, leading directors, writers, showrunners, and cultural critics share their personal and political reactions to these seminal depictions through the lens of today’s post-Roe world. Today, we see how a wide range of diverse Hollywood creators are racing to tell stories that push back against the seismic shift in access to abortion."
+      "flags": "🇺🇸"
     },
     {
       "title": "House of Criticism",
@@ -2467,8 +2283,7 @@
       "genre": "Documental",
       "posterPosition": "center",
       "day_order": 9,
-      "flags": "🇺🇸",
-      "synopsis_en": "Roberta Smith and Jerry Saltz are both rockstars in the world of art criticism. They’re also madly in love. Reflecting on their relationship, careers, and the ever-evolving New York City art scene, this unlikely power couple invites us into their surprisingly humble world."
+      "flags": "🇺🇸"
     },
     {
       "title": "How to Feed a Dictator",
@@ -2511,8 +2326,7 @@
       "genre": "Documental",
       "posterPosition": "center",
       "day_order": 7,
-      "flags": "🇺🇸",
-      "synopsis_en": "Five private chefs to fearsome dictators all over the world share their experiences of the kitchens and circumstances that led them to these sometimes dangerous and often morally compromising workplaces. Based on the book by Witold Szablowski."
+      "flags": "🇺🇸"
     },
     {
       "title": "Humpty Dumpty X",
@@ -2566,7 +2380,7 @@
       "director": "Sean Wilsey",
       "duration": 86,
       "country": "United States",
-      "language": "English",
+      "language": "",
       "premiere": "World Premiere",
       "synopsis": "Told from the perspectives of 12 unrelated strangers, IX XI intertwines their stories to emphasize the human reaction to the shock and devastation of 9/11. Framing his subjects in glassy pools and mirrored rooms, director Sean Wilsey brings together individuals from all walks of life. This staging marks a visual and emotional connection to the 9/11 Memorial and the design of the Twin Towers. From a professional skateboarder to a cartoonist, this documentary’s interviewees share their memories of New York City and the World Trade Center before the attacks, as well as where they were on that fateful day.",
       "screenings": [
@@ -2597,8 +2411,7 @@
       "poster": "",
       "genre": "Documental",
       "day_order": 1,
-      "flags": "🇺🇸",
-      "synopsis_en": "Twelve unique individuals recount their lives leading up to and during the tragic events of 9/11. As everyday New Yorkers, their narratives embody the impact the attacks had on the millions of people who call this city home."
+      "flags": "🇺🇸"
     },
     {
       "title": "Just Look Up",
@@ -2640,8 +2453,7 @@
       "poster": "https://image.tmdb.org/t/p/w185/m1jQ9M6ZnwuT0qekLTgRqGNiNRy.jpg",
       "genre": "Documental",
       "day_order": 8,
-      "flags": "🇩🇰🇺🇸",
-      "synopsis_en": "A defiant young visionary, part stand-up comic, part young Bob Dylan, part brilliant mind, leads a disruptive climate movement reinventing protest, channeling civil disobedience, and demanding a livable future."
+      "flags": "🇩🇰🇺🇸"
     },
     {
       "title": "March Forth",
@@ -2690,8 +2502,7 @@
       "genre": "Documental",
       "posterPosition": "center",
       "day_order": 5,
-      "flags": "🇺🇸",
-      "synopsis_en": "This documentary is a powerful exploration into the life of Reginald Dwayne Betts, Yale Law School graduate and award-winning author, who transformed his time in prison into purpose."
+      "flags": "🇺🇸"
     },
     {
       "title": "Mario",
@@ -2733,8 +2544,7 @@
       "poster": "https://image.tmdb.org/t/p/w185/9BafQnaU3U0PL7pkDBaTmCA9EHE.jpg",
       "genre": "Familia, Comedia",
       "day_order": 1,
-      "flags": "🇺🇸",
-      "synopsis_en": "Having thwarted Bowser's previous plot to marry Princess Peach, Mario and Luigi now face a fresh threat in Bowser Jr., who is determined to liberate his father from captivity and restore the family legacy. Alongside companions new and old, the brothers travel across the stars to stop the young heir's crusade."
+      "flags": "🇺🇸"
     },
     {
       "title": "Mineshaft: The Cruising Murders",
@@ -2776,8 +2586,7 @@
       "poster": "",
       "genre": "Documental",
       "day_order": 3,
-      "flags": "🇺🇸",
-      "synopsis_en": "“Mineshaft: The Cruising Murders\" peels back the layers of controversy surrounding the making of the 1980 thriller, \"Cruising.\" Directed by William Friedkin, the film triggered fierce protests from the LGBTQ+ community for its portrayal of a serial killer targeting gay men in New York's leather bars. Friedkin drew inspiration from the brutal murder of Variety reporter Addison Verrill, blurring the boundaries between cinematic fiction and real-life tragedy."
+      "flags": "🇺🇸"
     },
     {
       "title": "Mouth Full of Golds",
@@ -2819,8 +2628,7 @@
       "poster": "https://image.tmdb.org/t/p/w185/tLQzj2qP7RnfmmSiaZ7M9yeDHT0.jpg",
       "genre": "Documental, Música",
       "day_order": 9,
-      "flags": "🇺🇸🇬🇧🇫🇷",
-      "synopsis_en": "This is the definitive documentary of grillz (gold teeth) as told through the life and times of the artforms creator Famous Eddie Plein - one of the most inventive fashion icon you’ve never heard of, an entrepreneur who changed the face of hip-hop, one gold tooth at a time.  Simultaneously developing the aesthetic of grillz as the sound of hip-hop evolved across the country giving each city their moment in the spotlight. The story of a man who found him self at the epicentre of the hip-hop, Miami bass, Southern Rap and Chopped and Screwed music scenes.  A natural born hustler whose customer base comprised of rap superstars, millionaire drug dealers, gangsters and fashion focused teenagers. An icon that built and then lost an empire after the world went digital and moved on-line without him."
+      "flags": "🇺🇸🇬🇧🇫🇷"
     },
     {
       "title": "Odyssey",
@@ -2862,8 +2670,7 @@
       "poster": "https://image.tmdb.org/t/p/w185/tcYM55YaRob9UrPf9vW2lrBpIY8.jpg",
       "genre": "Aventura, Acción",
       "day_order": 4,
-      "flags": "🇺🇸",
-      "synopsis_en": "Odysseus, the legendary King of Ithaca, embarks on a long and perilous journey home following the Trojan War. Throughout his voyage, he is forced to confront the whims of gods, mythological monsters, and trials that stretch both his cunning and his humanity to the breaking point."
+      "flags": "🇺🇸"
     },
     {
       "title": "Spin Wars",
@@ -2906,8 +2713,7 @@
       "genre": "Documental",
       "posterPosition": "center",
       "day_order": 6,
-      "flags": "🇺🇸",
-      "synopsis_en": "SoulCycle, Flywheel, Peloton — the billion-dollar boutique fitness revolution built on ambition, betrayal and toxic sweat. This high-energy documentary exposes the dark side of \"mind, body, soul\" culture with deliciously colorful insiders."
+      "flags": "🇺🇸"
     },
     {
       "title": "Stealing Magic",
@@ -2950,8 +2756,7 @@
       "genre": "Documental",
       "posterPosition": "center",
       "day_order": 2,
-      "flags": "🇺🇸",
-      "synopsis_en": "Someone is stealing the secrets behind magicians' greatest tricks and selling them on illicit websites. Magician Andi Gladwin leads an unlikely team of illusionists on an international caper to track down the culprits."
+      "flags": "🇺🇸"
     },
     {
       "title": "The A-Word: The Future of Aging",
@@ -2994,8 +2799,7 @@
       "genre": "Documental",
       "posterPosition": "center",
       "day_order": 2,
-      "flags": "🇺🇸",
-      "synopsis_en": "Modern medicine treats diseases one-by-one, but what if aging itself is the root cause? The A-Word: The Future of Aging follows visionary scientists racing to extend lifespan and the rescue dog whose bond with an 87-year-old widower demonstrates the stakes of life extension."
+      "flags": "🇺🇸"
     },
     {
       "title": "The Best Summer",
@@ -3006,7 +2810,7 @@
       "director": "Tamra Davis and Tamra Davis",
       "duration": 84,
       "country": "English",
-      "language": "English",
+      "language": "",
       "premiere": "New York Premiere",
       "synopsis": "What makes The Best Summer more than a nostalgia trip is how alive these musicians feel in Davis' footage before their fame kicked in. Kim Gordon tours with her toddler, Coco. Dave Grohl talks about the books he's reading. Kathleen Hanna and Ad-Rock fall in love on camera. Adam Yauch is in the prime of his life. Davis and editor Jessica Hernandez assemble it all into something loose and quietly devastating, a 30-year-old home movie that doubles as a portrait of an irretrievable cultural moment. For anyone who grew up on this music, it plays like the rarest of concert films, a backstage pass that keeps on giving.—Jarod Neece",
       "screenings": [
@@ -3036,8 +2840,7 @@
       "year": 2026,
       "poster": "https://image.tmdb.org/t/p/w185/jjTWHbpw3Ts50A1x46KXPGSpOc7.jpg",
       "genre": "Documental, Música",
-      "day_order": 6,
-      "synopsis_en": "Immersive POV camera footage reveals electric performances, candid interviews, and intimate backstage life with the Beastie Boys, Sonic Youth, Foo Fighters, Pavement, Rancid, Beck, The Amps, and Bikini Kill — an all-access view inside an era-defining moment in music."
+      "day_order": 6
     },
     {
       "title": "The Lion Queen",
@@ -3079,8 +2882,7 @@
       "poster": "https://image.tmdb.org/t/p/w185/ogMsUylVm7lpVOZKrGDwUqdkl6f.jpg",
       "genre": "Documental",
       "day_order": 8,
-      "flags": "🇺🇸",
-      "synopsis_en": "Follows life of Malika, a lioness in South Africa’s Kruger National Park as she battles to survive."
+      "flags": "🇺🇸"
     },
     {
       "title": "The Lorraine",
@@ -3122,8 +2924,7 @@
       "poster": "https://image.tmdb.org/t/p/w185/8lxIDocpVEQcWU2PYSQwzk3Dsfk.jpg",
       "genre": "Bélica, Drama",
       "day_order": 2,
-      "flags": "🇺🇸",
-      "synopsis_en": "French soldiers surrender to lying Nazis and are herded into a barbaric prison of war camp. From there they plan an uprising."
+      "flags": "🇺🇸"
     },
     {
       "title": "threeASFOUR: Full Circle",
@@ -3166,8 +2967,7 @@
       "genre": "Documental",
       "posterPosition": "center",
       "day_order": 4,
-      "flags": "🇺🇸",
-      "synopsis_en": "Follows avant-garde NYC designers Gabi Asfour, Angela Donhauser, and Adi Gil and their singular \"couture-on-the-street\" designs; highlighting fashion as a radical act of collaboration shaped by war, identity, and hope."
+      "flags": "🇺🇸"
     },
     {
       "title": "TikTok Never Dies",
@@ -3209,8 +3009,7 @@
       "poster": "",
       "genre": "Documental",
       "day_order": 1,
-      "flags": "🇺🇸",
-      "synopsis_en": "When TikTok faces a nationwide ban, three influencers fight for their livelihoods, their voices, and the First Amendment. As their efforts advance to the Supreme Court, questions swirl around the stakes, power, and control of the future of social media."
+      "flags": "🇺🇸"
     },
     {
       "title": "Whipple's World",
@@ -3252,8 +3051,7 @@
       "poster": "",
       "genre": "Documental",
       "day_order": 9,
-      "flags": "🇺🇸",
-      "synopsis_en": "Attorney by day and beloved entertainment journalist by night, George Whipple has been a staple on NY1 for three decades, including his eponymous show \"Whipple's World.\" Juggling many different hats with aplomb, this documentary debut shows just how fascinating Whipple’s eccentric life is."
+      "flags": "🇺🇸"
     },
     {
       "title": "Breeder",
@@ -3295,8 +3093,7 @@
       "poster": "https://image.tmdb.org/t/p/w185/8VKsq26fe7reSHyLgCqLL5ezJgU.jpg",
       "genre": "Terror, Suspense",
       "day_order": 3,
-      "flags": "🇨🇦🇺🇸",
-      "synopsis_en": "A renowned health supplement company, run by a ruthless businesswoman, is selecting and abducting young women as part of an experiment bio-hacking babies’ DNA to enable her clients to reverse the aging process. When Mia goes to investigate, she finds herself trapped, branded and tortured in a grim underground facility. Familiar faces start to appear, and she realises that she is not alone in this. Can she somehow find inner strength and escape from the nightmare?"
+      "flags": "🇨🇦🇺🇸"
     },
     {
       "title": "Dante",
@@ -3338,8 +3135,7 @@
       "poster": "https://image.tmdb.org/t/p/w185/aHRHfuVXEivk6abXySYCbmanUEL.jpg",
       "genre": "Acción, Aventura",
       "day_order": 4,
-      "flags": "🇪🇸",
-      "synopsis_en": "The tormented life of Dante Alighieri, from solitary childhood to death in exile, seen through Giovanni Boccaccio’s journey to rehabilitate his memory."
+      "flags": "🇪🇸"
     },
     {
       "title": "Death Boom",
@@ -3381,8 +3177,7 @@
       "poster": "",
       "genre": "Documental",
       "day_order": 6,
-      "flags": "🇺🇸",
-      "synopsis_en": "As a “spiritual follow-up” to 'Fin', 'Death Boom' “pulls back the curtain on the catastrophic mental and environmental impacts of the contemporary death care industry. The film, shown through the lens of the workers at the heart of it as they prepare for the passing of 77 million baby boomers, exposes the toll that embalming, cremation, and traditional burial have on those who’ve passed, their families, and deathcare workers, and the corruption – political, religious, and corporate – that stands in opposition to greener methods being nationally legalized and accessible.”"
+      "flags": "🇺🇸"
     },
     {
       "title": "Hallowarrior",
@@ -3424,8 +3219,7 @@
       "poster": "https://image.tmdb.org/t/p/w185/eaVuQsTofgodi76nXkYoWtN9afH.jpg",
       "genre": "Terror, Suspense",
       "day_order": 7,
-      "flags": "🇺🇸",
-      "synopsis_en": "Pumpkin, the last girl on earth and sole survivor of a humanity-ending plague, scavenging the wasteland for supplies on the eve of Halloween. Pumpkin’s lonely holiday ritual is interrupted by the arrival of a savage gang of raiders at her doorstep, led by the fearsome Thalia. Outnumbered and armed with candy, wit and weapons, Pumpkin must ferociously fight back to survive the night."
+      "flags": "🇺🇸"
     },
     {
       "title": "Mutter: The Diary of a Mother",
@@ -3467,8 +3261,7 @@
       "poster": "https://image.tmdb.org/t/p/w185/crGynSiPjF5Tn5XG8B11QrlNZ3X.jpg",
       "genre": "Terror, Misterio",
       "day_order": 3,
-      "flags": "🇹🇷",
-      "synopsis_en": "Under traumatic circumstances, Gül gives birth to her first child: an inhuman creature. What’s a single mother to do? Protect her newborn, albeit alien-like, offspring by any means necessary, of course."
+      "flags": "🇹🇷"
     },
     {
       "title": "Recluse",
@@ -3510,8 +3303,7 @@
       "poster": "https://image.tmdb.org/t/p/w185/jkRPqoBSfhPZOFZN2rqfzY7yrzN.jpg",
       "genre": "Crimen, Drama",
       "day_order": 1,
-      "flags": "🇺🇸",
-      "synopsis_en": "A reconstruction of the possible events that might have led up to the real-life tragic case of the Luxton family who lived at West Chapple Farm, Winkleigh, Devon. Brothers and sister Robert, Alan and Frances Luxton had lived in the farm for many years. On 23 September 1975 their bodies were found with shotgun wounds outside their farmhouse."
+      "flags": "🇺🇸"
     },
     {
       "title": "The Haunting of Pennhurst",
@@ -3553,8 +3345,7 @@
       "poster": "",
       "genre": "Documental",
       "day_order": 2,
-      "flags": "🇺🇸",
-      "synopsis_en": "Once a notorious institution for people with disabilities, Pennhurst finally closed after decades of abuse in 1987. Now those doors are reopening, as a group of disabled performers reframe the narrative around the site's harmful history – as a haunted house."
+      "flags": "🇺🇸"
     },
     {
       "title": "Turn It Up!",
@@ -3596,8 +3387,7 @@
       "poster": "https://image.tmdb.org/t/p/w185/1LqMTyQJnI7IfeDjjGRcDh1vv0r.jpg",
       "genre": "Acción, Crimen",
       "day_order": 1,
-      "flags": "🇨🇦",
-      "synopsis_en": "Trying to bootstrap his way out of Brooklyn's mean streets is Diamond, a rap musician. With his long-time pal Gage acting as his manager, he's trying to lay down a demo tape with cut-rate studio time. To pay the bills, he and Gage run drugs for \"Mr. B.\" Inside a week, Diamond's beloved mother dies suddenly, his father appears after an absence of 12 years and wants a relationship, and his girlfriend Kia tells him she's pregnant, asking him if he's ready to be a father. Gage steals $100,000 in a multiple-felony robbery so that Diamond can record a full album, not knowing it's Mr. B's money he's taken. B wants his money, Diamond wants his music, Tia wants an answer."
+      "flags": "🇨🇦"
     },
     {
       "title": "Crocodile",
@@ -3639,8 +3429,7 @@
       "poster": "https://image.tmdb.org/t/p/w185/q0Msbpvpe6yuvIUCyJuBbQ9UhUj.jpg",
       "genre": "Aventura, Comedia",
       "day_order": 2,
-      "flags": "🇳🇬🇳🇿",
-      "synopsis_en": "When a New York reporter plucks crocodile hunter Mick Dundee from the Australian Outback for a visit to the Big Apple, it's a clash of cultures and a recipe for good-natured comedy as naïve Dundee negotiates the concrete jungle. He proves that his instincts are quite useful in the city and adeptly handles everything from wily muggers to high-society snoots without breaking a sweat."
+      "flags": "🇳🇬🇳🇿"
     },
     {
       "title": "Crooks",
@@ -3683,8 +3472,7 @@
       "genre": "Crimen, Suspense",
       "posterPosition": "center",
       "day_order": 4,
-      "flags": "🇺🇸",
-      "synopsis_en": "A group of criminals must rethink their plan of leaving town following a successful bank heist when they are double-crossed by a member of their own crew."
+      "flags": "🇺🇸"
     },
     {
       "title": "Deepfake",
@@ -3726,8 +3514,7 @@
       "poster": "https://image.tmdb.org/t/p/w185/i6mtsJKENKOknAoK8C7Acq4o1mW.jpg",
       "genre": "Comedia",
       "day_order": 3,
-      "flags": "🇺🇸🇮🇹",
-      "synopsis_en": "After a breakup, rudderless millennial Jane hires a team of Gen-Z consultants to reinvent her life. But what begins as a makeover soon spirals into a sharp social media satire about image, app culture, and the cost of becoming someone else."
+      "flags": "🇺🇸🇮🇹"
     },
     {
       "title": "Human Theories",
@@ -3770,8 +3557,7 @@
       "genre": "Comedia",
       "posterPosition": "center",
       "day_order": 3,
-      "flags": "🇺🇸",
-      "synopsis_en": "Isn’t it funny to be alive? Through forty interconnected vignettes, Human Theories is a comedic kaleidoscope exploring how people try, and often fail, to connect with one another in this weird world. Filmed over a year on location in New York City with a diverse ensemble cast of over 50 actors and non-actors, the film is an experimental love letter to the awkward struggle of modern city living."
+      "flags": "🇺🇸"
     },
     {
       "title": "Matininó",
@@ -3814,8 +3600,7 @@
       "genre": "Documental",
       "posterPosition": "center",
       "day_order": 1,
-      "flags": "🇵🇷🇩🇴",
-      "synopsis_en": "A multi-generational family of outspoken Puerto Rican women takes center stage as they conceive and perform fantastical film vignettes as a way to navigate painful pasts in this visually-arresting, kaleidoscopic documentary."
+      "flags": "🇵🇷🇩🇴"
     },
     {
       "title": "Micronations",
@@ -3857,8 +3642,7 @@
       "poster": "",
       "genre": "Comedia",
       "day_order": 2,
-      "flags": "🇺🇸",
-      "synopsis_en": "A misfit living amongst neighborhoods and homes that have declared themselves sovereign nations, is recruited to wage a battle against the nation of Wayne County, Nevada."
+      "flags": "🇺🇸"
     },
     {
       "title": "One Woman One Bra",
@@ -3900,8 +3684,7 @@
       "poster": "https://image.tmdb.org/t/p/w185/tnu15dwkehe1PumafBITO2b1lEy.jpg",
       "genre": "Drama",
       "day_order": 2,
-      "flags": "🇰🇪🇳🇬",
-      "synopsis_en": "In a rural village, an orphaned girl named Star races against time to prove her family lineage and claim her land deed, facing obstacles from hostile neighbors and shady organizations while unexpectedly finding romance along the way."
+      "flags": "🇰🇪🇳🇬"
     },
     {
       "title": "Something You Should Know About Me",
@@ -3949,8 +3732,7 @@
       "poster": "",
       "genre": "Animación, Romance",
       "day_order": 3,
-      "flags": "🇺🇸",
-      "synopsis_en": "In this sweet and raunchy trans rom-com, insecure cartoonist Al is faced with his most daunting prompt yet: confess his true feelings for his best friend or risk losing him to a handsome nemesis."
+      "flags": "🇺🇸"
     },
     {
       "title": "The Keeper of the Camphor Tree",
@@ -3992,8 +3774,7 @@
       "poster": "https://image.tmdb.org/t/p/w185/xkpgFVewjqtIRNTFh5yJXnNtFU4.jpg",
       "genre": "Animación, Drama",
       "day_order": 2,
-      "flags": "🇯🇵",
-      "synopsis_en": "Reito Naoi, a young man fired unfairly from his day job, finds himself hitting rock bottom when he's arrested after a desperate attempt to get back on his feet. With nothing left to him, he surrendered himself to fate, giving up on any hopes for the future, and lost the will to make his own choices in life. But one day, a chance encounter threw him a lifeline that could change his fate forever."
+      "flags": "🇯🇵"
     },
     {
       "title": "The Man Will Burn",
@@ -4027,7 +3808,6 @@
       "venue": "SVA Theatre",
       "day_order": 6,
       "flags": "🇺🇸",
-      "genre": "Documental",
       "year": 2026
     },
     {
@@ -4070,8 +3850,7 @@
       "poster": "",
       "genre": "",
       "day_order": 1,
-      "flags": "🇮🇱🇺🇸",
-      "synopsis_en": "Jerusalem's greatest badchan (Hasidic wedding comedian), wrecked his career because of liquor and a big mouth, gets a second chance as the sidekick of the famous American Badchan Meshulam. At the wedding, everything spins out of control."
+      "flags": "🇮🇱🇺🇸"
     },
     {
       "title": "Vanishing tracks",
@@ -4113,8 +3892,7 @@
       "poster": "https://image.tmdb.org/t/p/w185/vlu5cD2FZ4CQ4ulYagzwTrWozwo.jpg",
       "genre": "Documental",
       "day_order": 4,
-      "flags": "🇦🇿",
-      "synopsis_en": "In Iran’s remote nomadic landscape, a family navigates their traditional existence in a modern world. When their sheep vanish overnight, tensions rise between the three sons and their parents."
+      "flags": "🇦🇿"
     },
     {
       "title": "Árru",
@@ -4156,8 +3934,7 @@
       "poster": "https://image.tmdb.org/t/p/w185/UFAIK0f9qvQYndcUF6i2hrSqSb.jpg",
       "genre": "Drama, Música",
       "day_order": 1,
-      "flags": "🇳🇴🇸🇪🇫🇮",
-      "synopsis_en": "Sámi reindeer herder Maia fights to protect her ancestral lands from a looming mining project. Amid the growing protests, she is also confronted with deeply buried family traumas. Maia is forced to make a decision."
+      "flags": "🇳🇴🇸🇪🇫🇮"
     },
     {
       "title": "Airport BLVD",
@@ -4199,8 +3976,7 @@
       "poster": "",
       "genre": "Música, Drama",
       "day_order": 2,
-      "flags": "🇺🇸",
-      "synopsis_en": "In the transforming streets of East Austin, Xavier watches his community, friendships, and sense of home disappear. As the city evolves around him, Airport BLVD becomes a soulful, romantic, and bittersweet love letter to a city old and new."
+      "flags": "🇺🇸"
     },
     {
       "title": "Caity",
@@ -4243,8 +4019,7 @@
       "genre": "Drama",
       "posterPosition": "center",
       "day_order": 4,
-      "flags": "🇺🇸",
-      "synopsis_en": "Along with her newly sober father Paul, 16-year-old Caity prepares for the new Halloween season of their family-owned haunted house. When she recognizes signs of a relapse from Paul, she tries to cover them up but struggles to manage as she tests her own relationship to substances and an attraction to new employee Hannah."
+      "flags": "🇺🇸"
     },
     {
       "title": "Cotton Fever",
@@ -4292,8 +4067,7 @@
       "poster": "https://image.tmdb.org/t/p/w185/9IfUUWXltKsQTKBkF18XQtgQ5Dp.jpg",
       "genre": "Drama",
       "day_order": 2,
-      "flags": "🇺🇸",
-      "synopsis_en": "James, a low level drug dealer and addict, struggles to raise money for a new family."
+      "flags": "🇺🇸"
     },
     {
       "title": "Ephemera",
@@ -4335,8 +4109,7 @@
       "poster": "https://image.tmdb.org/t/p/w185/1NhxLlr7H9lK6PMoZqkHfOnw2jY.jpg",
       "genre": "Fantasía",
       "day_order": 4,
-      "flags": "🇺🇸🇸🇬",
-      "synopsis_en": "Deep psychological states find relief through excess water released from eyes."
+      "flags": "🇺🇸🇸🇬"
     },
     {
       "title": "Here I'm Alive",
@@ -4379,8 +4152,7 @@
       "genre": "",
       "posterPosition": "center",
       "day_order": 3,
-      "flags": "🇺🇸",
-      "synopsis_en": "One night. One city. Migrants, sex workers and dreamers hustle New York's digital underbelly in this neo-realist urban epic driven by underground rap and spiritual jazz. Raw, unforgettable and unmistakably New York."
+      "flags": "🇺🇸"
     },
     {
       "title": "Kingston",
@@ -4422,8 +4194,7 @@
       "poster": "https://image.tmdb.org/t/p/w185/eYQ39Kp3ub92ZDpAsXkd2o25QFi.jpg",
       "genre": "Drama, Película de TV",
       "day_order": 1,
-      "flags": "🇺🇸",
-      "synopsis_en": "The sea off the coast of Thoovathor becomes cursed following a paranormal event in 1982. Kingston, a daring sea smuggler, ventures into the haunted waters with his friends to break the curse and bring hope back to their doomed village."
+      "flags": "🇺🇸"
     },
     {
       "title": "Lucy Schulman",
@@ -4465,8 +4236,7 @@
       "poster": "",
       "genre": "Romance, Comedia",
       "day_order": 2,
-      "flags": "🇺🇸",
-      "synopsis_en": "After a crushing breakup, Lucy moves back in with her eccentric single dad and dives into bad dates, false starts, and growing pains."
+      "flags": "🇺🇸"
     },
     {
       "title": "Mother Future Self",
@@ -4509,8 +4279,7 @@
       "genre": "",
       "posterPosition": "center",
       "day_order": 2,
-      "flags": "🇺🇸",
-      "synopsis_en": "An experimental dance camp in rural Maine sure sounds like a great place to have a long-awaited reunion, no? Sofi and Jordan rekindle friendships and more against a gorgeous backdrop as the pendulum swings between reconciliation and rupture."
+      "flags": "🇺🇸"
     },
     {
       "title": "Ponderosa",
@@ -4594,8 +4363,7 @@
       "poster": "",
       "genre": "Drama",
       "day_order": 1,
-      "flags": "🇺🇸",
-      "synopsis_en": "An exploration of the small decisions that shape our lives, and the parts of ourselves we so often choose to give up."
+      "flags": "🇺🇸"
     },
     {
       "title": "Summer of Three",
@@ -4637,8 +4405,7 @@
       "poster": "https://image.tmdb.org/t/p/w185/wL8zEII7tZh8Li0s1RnENTBX2Ty.jpg",
       "genre": "Drama",
       "day_order": 5,
-      "flags": "🇵🇷",
-      "synopsis_en": "Thirteen years after moving to L.A. following his father’s death, Javi is forced to return to Puerto Rico for his grandpa’s funeral. He soon meets Luife and Kiki, two social misfits who turn his summer around and entangle him in the middle of a love triangle."
+      "flags": "🇵🇷"
     },
     {
       "title": "Via Negativa",
@@ -4680,8 +4447,7 @@
       "poster": "",
       "genre": "Drama",
       "day_order": 2,
-      "flags": "🇺🇸",
-      "synopsis_en": "Dan, a young priest who has abandoned his conservative diocese after learning of the death of his estranged friend, Paul. Struggling with a deep crisis of faith, he embarks on a journey to find the older priest who once abused Paul during their time in seminary. With a wounded coyote in the back of his car, Dan drifts through the American landscape, encountering eccentric travelers, stealing a gun and other assorted trophies, singing Prince songs and stopping at roadside attractions."
+      "flags": "🇺🇸"
     },
     {
       "title": "American Zoo",
@@ -4723,8 +4489,7 @@
       "poster": "",
       "genre": "Documental",
       "day_order": 1,
-      "flags": "🇬🇧",
-      "synopsis_en": "The Catskill Game Farm was America's first ever private zoo, fostering beloved childhood memories for a generation before falling into disrepair and closing in 2006. Amongst the rubble, filmmakers discover reels of home movies which would expose a shocking new chapter of the zoo's history."
+      "flags": "🇬🇧"
     },
     {
       "title": "Bang My Box: The Robin Byrd Story",
@@ -4773,8 +4538,7 @@
       "genre": "Documental",
       "posterPosition": "center",
       "day_order": 6,
-      "flags": "🇺🇸",
-      "synopsis_en": "Robin Byrd pioneered NYC public access with her cult sex-positive call-in show.  Now the larger-than-life 70-year-old champion of free speech, queer visibility, and safe sex reflects on her unique legacy and her hidden, decades-long marriage behind the scenes."
+      "flags": "🇺🇸"
     },
     {
       "title": "Colors of White Rock",
@@ -4859,8 +4623,7 @@
       "poster": "https://image.tmdb.org/t/p/w185/cpbukMqjn96Vdw8bt4MPRF8h41T.jpg",
       "genre": "Terror, Fantasía",
       "day_order": 3,
-      "flags": "🇺🇸",
-      "synopsis_en": "In a small Midwestern town, a deadly annual ritual unfolds when the mythical nightmare, Sawtooth Jack, rises from the cornfields and challenges the town’s teenage boys in a bloody battle of survival."
+      "flags": "🇺🇸"
     },
     {
       "title": "Jail Time Records",
@@ -4903,8 +4666,7 @@
       "genre": "Documental, Música",
       "posterPosition": "center",
       "day_order": 3,
-      "flags": "🇨🇲🇺🇸",
-      "synopsis_en": "The rivetingly intimate Jail Time Records profiles the first prison recording studio on the African continent and three incarcerated artists who express themselves through music."
+      "flags": "🇨🇲🇺🇸"
     },
     {
       "title": "Jean-Michel",
@@ -4989,8 +4751,7 @@
       "genre": "Documental",
       "posterPosition": "center",
       "day_order": 1,
-      "flags": "🇺🇸",
-      "synopsis_en": "Explores the life and aspirations of Oliver, a rambunctious and imaginative preteen growing up with disabilities, who’s an avowed murder-mystery aficionado about to craft the perfect mystery caper."
+      "flags": "🇺🇸"
     },
     {
       "title": "Mexicanamerican",
@@ -5032,8 +4793,7 @@
       "poster": "https://image.tmdb.org/t/p/w185/wGp2clMovz9LbtBj2IzIeWzjsfr.jpg",
       "genre": "Documental",
       "day_order": 6,
-      "flags": "🇺🇸",
-      "synopsis_en": "Expertly merging old VHS home movies with new family interviews, filmmaker Eddie Sánchez traces his parents' journey from Mexico to the U.S. in this poignant and affecting documentary debut."
+      "flags": "🇺🇸"
     },
     {
       "title": "Retrieval",
@@ -5075,8 +4835,7 @@
       "poster": "https://image.tmdb.org/t/p/w185/zK6Cwv2zH5h3wCekVMkNWyDkDpH.jpg",
       "genre": "Ciencia ficción, Drama",
       "day_order": 1,
-      "flags": "🇺🇸",
-      "synopsis_en": "19 year old Wojtek lives in a poverty stricken Polish town. He is in love with an older woman, an illegal emigrant from Ukraine. He boxes in illegal matches to get money and is spotted by a man running a security business. Accepting this man's offer means becoming a gangster, but this could allow him to a residence permit for his girlfriend Katya."
+      "flags": "🇺🇸"
     },
     {
       "title": "The Gymnasts of Fisherman Colony",
@@ -5119,8 +4878,7 @@
       "genre": "Documental",
       "posterPosition": "center",
       "day_order": 5,
-      "flags": "🇨🇦🇵🇰🇺🇸",
-      "synopsis_en": "The birth of a gymnastics team in Pakistan provides an inspiring spark of light for a small group of girls on the margins."
+      "flags": "🇨🇦🇵🇰🇺🇸"
     },
     {
       "title": "The Siege of Paradise",
@@ -5162,8 +4920,7 @@
       "poster": "",
       "genre": "Documental",
       "day_order": 4,
-      "flags": "🇮🇪🇨🇭",
-      "synopsis_en": "In Cinque Terre on Italy’s northern Riviera, fewer than 3,000 locals endure over four million tourists each summer.  Across one chaotic season, six very different lives play out in parallel, revealing a sharply funny and surprisingly tender story of paradise under pressure in the age of social media driven tourism."
+      "flags": "🇮🇪🇨🇭"
     },
     {
       "title": "Time Warp",
@@ -5205,8 +4962,7 @@
       "poster": "https://image.tmdb.org/t/p/w185/fcj5VHPFbQC32C0mbSLcLcyCDsI.jpg",
       "genre": "Película de TV, Ciencia ficción",
       "day_order": 3,
-      "flags": "🇺🇸",
-      "synopsis_en": "After a long space journey, an astronaut returns home to his family only to discover that he has somehow gone through a \"time warp\" and is now one year into the future, rendering him invisible to all those around him."
+      "flags": "🇺🇸"
     },
     {
       "title": "Against the Flow",
@@ -5249,8 +5005,7 @@
       "genre": "",
       "posterPosition": "center",
       "day_order": 4,
-      "flags": "🇫🇷🇵🇹🇸🇪🇱🇺",
-      "synopsis_en": "Dayao and his pregnant wife, Tiantian, live in the countryside but work themselves to the bone in the city. Tiantian prefers the city, but Dayao prefers the tranquility of nature. When Dayao is seriously injured at a construction site, Tiantian must make major decisions about what’s best for them and their unborn baby."
+      "flags": "🇫🇷🇵🇹🇸🇪🇱🇺"
     },
     {
       "title": "Funk",
@@ -5292,8 +5047,7 @@
       "poster": "https://image.tmdb.org/t/p/w185/hgbVCGDjbJfO9Rx5LBsFgFOjEa7.jpg",
       "genre": "Comedia",
       "day_order": 2,
-      "flags": "🇧🇷",
-      "synopsis_en": "After he's fired from his job -- by his mother, no less -- Bob Funk agrees to quit drinking, see a therapist, and eventually report to a new boss, who might just be the woman of his dreams."
+      "flags": "🇧🇷"
     },
     {
       "title": "I Spy With My Little Eye",
@@ -5335,8 +5089,7 @@
       "poster": "https://image.tmdb.org/t/p/w185/dlq0fKxkaUgp2yb21C4kGneC9Ae.jpg",
       "genre": "Animación",
       "day_order": 4,
-      "flags": "🇩🇪",
-      "synopsis_en": "When the Switchblade, the most sophisticated prototype stealth fighter created yet, is stolen from the U.S. government, one of the United States' top spies, Alex Scott, is called to action. What he doesn't expect is to get teamed up with a cocky civilian, World Class Boxing Champion Kelly Robinson, on a dangerous top secret espionage mission. Their assignment: using equal parts skill and humor, catch Arnold Gundars, one of the world's most successful arms dealers."
+      "flags": "🇩🇪"
     },
     {
       "title": "Labrador — Autopsy of Silence",
@@ -5378,8 +5131,7 @@
       "poster": "https://image.tmdb.org/t/p/w185/s8VOcaEejy0RcYzXBSLyRyDaIpo.jpg",
       "genre": "Suspense, Crimen",
       "day_order": 3,
-      "flags": "🇨🇦",
-      "synopsis_en": "A desolate, windswept island. Stella and Oskar, a young couple, visit Stella's father Nathan who lives alone with his labrador. Stella is pregnant and looking forward to having a baby, but Oskar appears to have doubts. When Oskar falls prey to Nathan's provocations and feels bewildered by the relationship between father and daughter, a clash between the two men is inevitable, and Stella is caught in between."
+      "flags": "🇨🇦"
     },
     {
       "title": "Memorizu",
@@ -5463,8 +5215,7 @@
       "poster": "https://image.tmdb.org/t/p/w185/uBuKmFb6lpqvL1a1TeqP6NmOTHP.jpg",
       "genre": "Drama",
       "day_order": 1,
-      "flags": "🇲🇽🇫🇷🇪🇸",
-      "synopsis_en": "La Maestra and Paula are the best swimmers in their team and best friends, until an incident at a party changes everything. La Maestra, intense and unstoppable, realises that something in her best friend has changed, making her sad. When the truth comes to light, the two are faced with an impossible decision: Paula wants to keep quiet about it, while La Maestra wants revenge. Their friendship, previously unbreakable, will be put to the test as never before."
+      "flags": "🇲🇽🇫🇷🇪🇸"
     },
     {
       "title": "Skateboarding Is Not for Girls",
@@ -5505,8 +5256,7 @@
       "year": 2026,
       "poster": "",
       "genre": "Drama",
-      "day_order": 1,
-      "synopsis_en": "When a conservative tradition of bridal sale becomes a solution for a financial family problem, Adela dives into a completely new world where she gets caught between traditional and modern values."
+      "day_order": 1
     },
     {
       "title": "Stand Up",
@@ -5548,8 +5298,7 @@
       "poster": "https://image.tmdb.org/t/p/w185/RYos76JUfalXJN1P3WW4me7xcB.jpg",
       "genre": "Suspense, Comedia",
       "day_order": 3,
-      "flags": "🇳🇱🇬🇷",
-      "synopsis_en": "A graduate of American Harvard University with a degree in justice, Daigo is a wanderer who steps into the life of Miura Hiroki after seeing the boy bullied. Becoming employed as a teacher at Hiroki's school, Daigo works continually to unearth the source of Hiroki's sadness and try to revitalize his love for life."
+      "flags": "🇳🇱🇬🇷"
     },
     {
       "title": "Summer War",
@@ -5589,10 +5338,9 @@
       "venue": "AMC 19th St. East 6",
       "year": 2026,
       "poster": "",
-      "genre": "Misterio, Drama",
+      "genre": "",
       "day_order": 4,
-      "flags": "🇨🇱🇦🇷🇺🇾🇮🇹",
-      "synopsis_en": "The peaceful summer holiday of a US champion of the board game Third Reich is shattered when a tourist mysteriously disappears at sea."
+      "flags": "🇨🇱🇦🇷🇺🇾🇮🇹"
     },
     {
       "title": "The Tropic Sun and His Eyes",
@@ -5634,8 +5382,7 @@
       "poster": "https://image.tmdb.org/t/p/w185/iiSTkTSxKlYlqjwRulQK6XAVrKE.jpg",
       "genre": "Drama",
       "day_order": 2,
-      "flags": "🇭🇹",
-      "synopsis_en": "Traveling on foot, a young man returns to Haiti to reconnect with his estranged father. When a persistent street kid won’t stop following him, Ruben makes a deal: help him find a shortcut, keep some distance, and the boy can stay."
+      "flags": "🇭🇹"
     },
     {
       "title": "What Is to Come",
@@ -5677,8 +5424,7 @@
       "poster": "",
       "genre": "Drama",
       "day_order": 5,
-      "flags": "🇮🇱🇬🇧",
-      "synopsis_en": "After unexpectedly losing her husband, Yehudit has no choice but to start over. In the process, she finds that abrupt and painful detours can lead to bright roads."
+      "flags": "🇮🇱🇬🇧"
     },
     {
       "title": "Zejtune",
@@ -5720,8 +5466,7 @@
       "poster": "https://image.tmdb.org/t/p/w185/LocCeo7mZ0PBibKioNjJwPHihb.jpg",
       "genre": "Drama",
       "day_order": 3,
-      "flags": "🇩🇪🇶🇦🇲🇹",
-      "synopsis_en": "Mar is ready to leave the tiny island of Malta behind, and her estranged mother's death gives her the perfect way out: an inheritance of valuable farmland that she can sell. But when greedy relatives contest her claim, Mar's plans hit a snag. As she fights to secure her future, Mar meets Nenu, a spirited troubadour whose vibrant folk songs, rooted in Malta's ancient għana tradition, awaken emotions she's long buried."
+      "flags": "🇩🇪🇶🇦🇲🇹"
     },
     {
       "title": "9/11: Reunited",
@@ -5751,7 +5496,6 @@
       "posterPosition": "center",
       "day_order": 10,
       "flags": "🇺🇸",
-      "genre": "Documental",
       "year": 2026
     },
     {
@@ -5794,7 +5538,7 @@
       "director": "Sharon Maguire",
       "duration": 97,
       "country": "English",
-      "language": "English",
+      "language": "",
       "premiere": "",
       "synopsis": "Sharon Maguire started her filmmaking career as a BBC and Channel 4 television documentarian, directing Channel 4’s The Media Show and BBC’s The Late Show. She also directed for the BAFTA-winning series Bookmark. In 2001, Sharon made her feature film directorial debut with the smash hit BRIDGET JONES’S DIARY. The film was a worldwide success, earning Renee Zellweger an Oscar nomination for Best Actress. For her next project, Sharon wrote and directed the drama, INCENDIARY, which starred Michelle Williams and Ewan McGregor. In 2015, she launched the TV production company Seven Stories. Sharon directed the third installment of the BRIDGET JONES franchise, BRIDGET JONES’S BABY, as well as the feature film GODMOTHERED, starring June Squibb.",
       "screenings": [
@@ -5810,9 +5554,7 @@
       "time": "8:15 PM",
       "venue": "OKX Theater at BMCC TPAC",
       "day_order": 9,
-      "genre": "Comedia, Romance",
-      "year": 2001,
-      "synopsis_en": "Bridget Jones is an average woman struggling against expectations. As a New Year's resolution, Bridget decides to take control of her life, starting by keeping a diary in which she will always tell the complete truth. Her charming boss takes an interest in her, and she cannot stop running into a rather disagreeable acquaintance whom Bridget cannot help finding quietly attractive."
+      "year": 2001
     },
     {
       "title": "Daft Punk's Electroma: 4k Remaster and 20th Anniversary",
@@ -5843,7 +5585,7 @@
       "day_order": 5,
       "flags": "🇫🇷🇺🇸",
       "genre": "Ciencia ficción, Drama",
-      "year": 2026
+      "year": 2006
     },
     {
       "title": "Small Town Gay Bar",
@@ -5873,8 +5615,7 @@
       "poster": "https://image.tmdb.org/t/p/w185/pmtStF3fFKohqL1uteBkIDSd2no.jpg",
       "genre": "Documental",
       "day_order": 5,
-      "flags": "🇺🇸",
-      "synopsis_en": "The story of community in the Deep South that is forced to deal with the struggles of ignorance, hypocrisy and oppression."
+      "flags": "🇺🇸"
     },
     {
       "title": "Taxi Driver",
@@ -5904,8 +5645,7 @@
       "poster": "https://image.tmdb.org/t/p/w185/mZMl0YVHJOrkCUSH9oDOEgDwbHT.jpg",
       "genre": "Crimen, Drama",
       "day_order": 2,
-      "flags": "🇺🇸",
-      "synopsis_en": "Suffering from insomnia, disturbed loner Travis Bickle takes a job as a New York City cabbie, haunting the streets nightly, growing increasingly detached from reality as he dreams of cleaning up the filthy city."
+      "flags": "🇺🇸"
     },
     {
       "title": "Dear England",
@@ -5934,8 +5674,7 @@
       "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/7112/large_DearEngland-clean-16x9-01.jpg",
       "posterPosition": "center",
       "day_order": 9,
-      "flags": "🇬🇧",
-      "genre": "Documental"
+      "flags": "🇬🇧"
     },
     {
       "title": "ESPN Deportes, ESPN, & Tribeca Studios Presents: 13.4 Seconds To Nowhere + Shooting Stars: The Adrián Solano Story",
@@ -7509,8 +7248,7 @@
       "poster": "https://image.tmdb.org/t/p/w185/8Tng4QWveeazE2gFcrZxvbyvvl8.jpg",
       "genre": "Documental",
       "day_order": 11,
-      "flags": "🇺🇸",
-      "synopsis_en": "Soon to be Martial Arts Master, Luna is forced to go on a dangerous journey when her teacher, Sensei Sirius is kidnapped by a vengeful ex-student."
+      "flags": "🇺🇸"
     },
     {
       "title": "Best of Tribeca Shorts",
@@ -7566,8 +7304,7 @@
       "poster": "https://image.tmdb.org/t/p/w185/1Op8vRhkmTF83JZ5PkIZTx8vSlB.jpg",
       "genre": "Documental",
       "day_order": 6,
-      "flags": "🇫🇷",
-      "synopsis_en": "Behind-the-scenes documentary revealing what goes on inside the colourful, privileged, and sometimes stressful Christian Dior fashion house."
+      "flags": "🇫🇷"
     },
     {
       "title": "Guy and Madeline on a Park Bench",
@@ -7597,8 +7334,7 @@
       "poster": "https://image.tmdb.org/t/p/w185/7bu5XiVNVSlJkdihAv7Bnkdah3i.jpg",
       "genre": "Drama, Música",
       "day_order": 2,
-      "flags": "🇺🇸",
-      "synopsis_en": "After connecting with the shy Madeline, a jazz trumpeter embarks on a quest for a more gregarious paramour, but through a series of twists and turns punctuated by an original score, the two lovers seem destined to be together."
+      "flags": "🇺🇸"
     },
     {
       "title": "Jane Austen's Period Drama",
@@ -7628,8 +7364,7 @@
       "poster": "https://image.tmdb.org/t/p/w185/qZZYV7MDC5pgYCadQAUyrhsjbKO.jpg",
       "genre": "Comedia, Romance",
       "day_order": 3,
-      "flags": "🇺🇸",
-      "synopsis_en": "England, 1813. In the middle of a long-awaited marriage proposal, Miss Estrogenia Talbot gets her period. Her suitor, Mr. Dickley, mistakes the blood for an injury, and it soon becomes clear that his expensive education has missed a spot."
+      "flags": "🇺🇸"
     },
     {
       "title": "Jiro Dreams of Sushi",
@@ -7659,8 +7394,7 @@
       "poster": "https://image.tmdb.org/t/p/w185/iVrkM4jSJw1IsOpW5jTtY5QxVqj.jpg",
       "genre": "Documental",
       "day_order": 4,
-      "flags": "🇺🇸",
-      "synopsis_en": "Revered sushi chef Jiro Ono strives for perfection in his work, while his eldest son, Yoshikazu, has trouble living up to his father's legacy."
+      "flags": "🇺🇸"
     },
     {
       "title": "Let the Right One In",
@@ -7690,8 +7424,7 @@
       "poster": "https://image.tmdb.org/t/p/w185/8mw1Iv9o4BVCtfScCL0nhzolOdO.jpg",
       "genre": "Terror, Drama",
       "day_order": 5,
-      "flags": "🇸🇪",
-      "synopsis_en": "When Oskar, a sensitive, bullied 12-year-old boy, meets his new neighbor, the mysterious and moody Eli, they strike up a friendship. Initially reserved with each other, Oskar and Eli slowly form a close bond, but it soon becomes apparent that she is no ordinary young girl."
+      "flags": "🇸🇪"
     },
     {
       "title": "Little Woods",
@@ -7721,8 +7454,7 @@
       "poster": "https://image.tmdb.org/t/p/w185/h29Yy7xP5T5Jq2uHi3L47XB80RP.jpg",
       "genre": "Drama, Suspense",
       "day_order": 8,
-      "flags": "🇺🇸",
-      "synopsis_en": "For years, Ollie has illicitly helped the struggling residents of her North Dakota oil boomtown access Canadian health care and medication. When the authorities catch on, she plans to abandon her crusade, only to be dragged in even deeper after a desperate plea for help from her sister."
+      "flags": "🇺🇸"
     },
     {
       "title": "Ripe!",
@@ -7733,7 +7465,7 @@
       "director": "Tusk",
       "duration": 18,
       "country": "Spain, United States",
-      "language": "English",
+      "language": "",
       "premiere": "",
       "synopsis": "When their abusive parents are killed in a car crash, twin sisters Rosie and Violet vow to run away to Kentucky in search of a better life. While on the road, the girls meet up with Pete, a drifter working as a grounds keeper on a derelict army base, who takes them in. While Violet falls for him, Rosie becomes increasingly angry and hostile, and the sisters' childhood bond is eventually destroyed forever.",
       "screenings": [
@@ -7752,8 +7484,7 @@
       "poster": "https://image.tmdb.org/t/p/w185/xoQmibPIqwIN4cTlohDVNZwAi2y.jpg",
       "genre": "Drama",
       "day_order": 3,
-      "flags": "🇪🇸🇺🇸",
-      "synopsis_en": "When their abusive parents are killed in a car crash, twin sisters Rosie and Violet vow to run away to Kentucky in search of a better life. While on the road, the girls meet up with Pete, a drifter working as a grounds keeper on a derelict army base, who takes them in. While Violet falls for him, Rosie becomes increasingly angry and hostile, and the sisters' childhood bond is eventually destroyed forever."
+      "flags": "🇪🇸🇺🇸"
     },
     {
       "title": "The Last Play at Shea",
@@ -7783,8 +7514,7 @@
       "poster": "https://image.tmdb.org/t/p/w185/xnnmPEZJrZCQdjJlrU6UJW75LUe.jpg",
       "genre": "Documental, Música",
       "day_order": 1,
-      "flags": "🇺🇸",
-      "synopsis_en": "In 1964, when the New York Mets were regarded as little more than a punch line in major league baseball, the team moved into a brand new ballpark, Shea Stadium, which was to become their home for the next forty-four years. Shea Stadium was closed (in part to create more parking space for a new stadium, Citi Field), and on July 16 and 18, 2008, Billy Joel headlined the final concerts held at the stadium. Filmmaker Paul Crowder and a camera crew were on hand for Joel's shows, and the documentary THE LAST PLAY AT SHEA chronicles his historic two-night stand, as well as exploring Joel's career, his ties to working-class New York, and how his life and career paralleled the growth of suburban Long Island and the beloved ballpark."
+      "flags": "🇺🇸"
     },
     {
       "title": "The Queen of Basketball",
@@ -7814,8 +7544,7 @@
       "poster": "https://image.tmdb.org/t/p/w185/8RjXNAvpH4SsBkEDRsCrEXxOcnd.jpg",
       "genre": "Documental",
       "day_order": 3,
-      "flags": "🇺🇸",
-      "synopsis_en": "Part of the Almost Famous series. She was arguably the greatest women's basketball player. She won three national trophies; she played in the ’76 Olympics; she was drafted to the NBA. But have you ever heard of Lucy Harris?"
+      "flags": "🇺🇸"
     },
     {
       "title": "The Short History of the Long Road",
@@ -7845,8 +7574,7 @@
       "poster": "https://image.tmdb.org/t/p/w185/chTc0F8B9YOiwZDea5LJ8h2q2Qx.jpg",
       "genre": "Drama",
       "day_order": 10,
-      "flags": "🇺🇸",
-      "synopsis_en": "Nola grew up living in a van with her father, Clint—two nomads against the world. When tragedy strikes, Nola must confront the reality of life on the road alone, learning to own her grief, her past, and her new destination."
+      "flags": "🇺🇸"
     },
     {
       "title": "Virunga",
@@ -7857,7 +7585,7 @@
       "director": "Orlando von Einsiedel",
       "duration": 100,
       "country": "English, French, Swahili",
-      "language": "English",
+      "language": "",
       "premiere": "",
       "synopsis": "Virunga in the Democratic Republic of the Congo is Africa’s oldest national park, a UNESCO world heritage site, and a contested ground among insurgencies seeking to topple the government that see untold profits in the land. Among this ongoing power struggle, Virunga also happens to be the last natural habitat for the critically endangered mountain gorilla. The only thing standing in the way of the forces closing in around the gorillas: a handful of passionate park rangers and journalists fighting to secure the park’s borders and expose the corruption of its enemies. Filled with shocking footage, and anchored by the surprisingly deep and gentle characters of the gorillas themselves, Virunga is a galvanizing call to action around an ongoing political and environmental crisis in the Congo.",
       "screenings": [
@@ -7875,8 +7603,7 @@
       "year": 2014,
       "poster": "https://image.tmdb.org/t/p/w185/b59YdJZyRUu04hnWdmmz4kPjbTF.jpg",
       "genre": "Documental, Bélica",
-      "day_order": 7,
-      "synopsis_en": "Virunga in the Democratic Republic of the Congo is Africa’s oldest national park, a UNESCO world heritage site, and a contested ground among insurgencies seeking to topple the government that see untold profits in the land. Among this ongoing power struggle, Virunga also happens to be the last natural habitat for the critically endangered mountain gorilla. The only thing standing in the way of the forces closing in around the gorillas: a handful of passionate park rangers and journalists fighting to secure the park’s borders and expose the corruption of its enemies. Filled with shocking footage, and anchored by the surprisingly deep and gentle characters of the gorillas themselves, Virunga is a galvanizing call to action around an ongoing political and environmental crisis in the Congo."
+      "day_order": 7
     },
     {
       "title": "\"Animus Ignis\" - Shawty Sweat",
@@ -8241,8 +7968,7 @@
       "poster": "https://image.tmdb.org/t/p/w185/rJTPIWWaVmKLYT3cx0PLlWm7X65.jpg",
       "genre": "Terror, Drama",
       "day_order": 3,
-      "flags": "🇪🇬",
-      "synopsis_en": "A couple moves into a new house and observe a series of strange and possibly paranormal events that leads them to setup surveillance cameras, recording everything that takes place. The found footage reveals what took place."
+      "flags": "🇪🇬"
     },
     {
       "title": "A Crime Across Four Landscapes",
@@ -8284,8 +8010,7 @@
       "poster": "https://image.tmdb.org/t/p/w185/xyJc46QkEAE35PVyyCT8JguQrTO.jpg",
       "genre": "Drama",
       "day_order": 2,
-      "flags": "🇺🇸",
-      "synopsis_en": "When a small-town crime goes awry, the evidence is scattered across four picturesque landscapes in the Southern American countryside - inviting viewers to piece together what happened."
+      "flags": "🇺🇸"
     },
     {
       "title": "Am I a Bad Person?",
@@ -8321,8 +8046,7 @@
       "poster": "https://image.tmdb.org/t/p/w185/qqk2Gw7XB3oNGL7TuppcL4JaRax.jpg",
       "genre": "Drama",
       "day_order": 1,
-      "flags": "🇺🇸",
-      "synopsis_en": "When a mother and daughter tour film festivals in Europe and decide to part ways, they must confront life-changing choices alone, before returning home."
+      "flags": "🇺🇸"
     },
     {
       "title": "APART",
@@ -8358,8 +8082,7 @@
       "poster": "https://image.tmdb.org/t/p/w185/6IiNUUV6H2W1wUc8e1w4GfuQCOE.jpg",
       "genre": "Terror, Misterio",
       "day_order": 3,
-      "flags": "🇺🇸🇿🇦",
-      "synopsis_en": "When Violet accepts an invitation to a private island with some of the world's most famous social influencers, she expects a weekend of unrivaled viral opportunity. She soon becomes part of her own horrific reality show when the guests are pitted against each other to capture the island's legendary man-eating dogs before they become victims of the monstrous canines."
+      "flags": "🇺🇸🇿🇦"
     },
     {
       "title": "Because Today is Saturday",
@@ -8395,8 +8118,7 @@
       "poster": "https://image.tmdb.org/t/p/w185/eLMlWlvZq6WY1yUg0wwJJJaTGhf.jpg",
       "genre": "Animación, Drama",
       "day_order": 3,
-      "flags": "🇵🇹🇫🇷🇪🇸",
-      "synopsis_en": "It is Saturday, a day of rest. A woman wakes up early so that she can give herself a birthday present: some time to write. But whenever an inspirational moment occurs, it is interrupted by domestic situations that claim her attention: the children, laundry, the meals. The mental load of those tasks ends up being unbearable and she reaches a breaking point."
+      "flags": "🇵🇹🇫🇷🇪🇸"
     },
     {
       "title": "Born to Kill",
@@ -8432,8 +8154,7 @@
       "poster": "https://image.tmdb.org/t/p/w185/1qPd9roi8DzcSwVmsv15rrXrCgF.jpg",
       "genre": "Crimen, Drama",
       "day_order": 4,
-      "flags": "🇺🇸",
-      "synopsis_en": "A calculating divorcée risks her chances at wealth and security with a man she doesn't love by getting involved with a hotheaded murderer."
+      "flags": "🇺🇸"
     },
     {
       "title": "Brujo",
@@ -8475,8 +8196,7 @@
       "poster": "https://image.tmdb.org/t/p/w185/gW3SqK4V14p1Avx7VivI0mDQBpO.jpg",
       "genre": "Drama",
       "day_order": 3,
-      "flags": "🇨🇴",
-      "synopsis_en": "Border Brujo is a ritual-linguistic journey across the U.S./Mexico border written and performed by artist Guillermo Gómez-Peña. In the guise of a cross-cultural shaman, Gómez Peña shifts into 15 different personas, each speaking a different language. The personas are symbolic of the borders between North and South, Anglo and Latino; myth and reality; legality and illegality; art and life. Border Brujo assaults and exorcises the demons of dominant cultures. He articulates fear, desire, trauma sublimation, anger and misplacement embodying ruptured and defiant communities with multilingual dexterity and humor."
+      "flags": "🇨🇴"
     },
     {
       "title": "Buckets",
@@ -8641,8 +8361,7 @@
       "poster": "https://image.tmdb.org/t/p/w185/pDPg91DIntUHCrz5avzjw7xlJlV.jpg",
       "genre": "Terror, Comedia",
       "day_order": 4,
-      "flags": "🇫🇷🇺🇸",
-      "synopsis_en": "Down at the docks a very enterprising but dangerous element is making life miserable for Sheriff Marga. But she is distracted by a series of puzzling kidnappings that is plaguing her parish. Could the culprit be the mysterious Queen - the dance hall queen of the docks? Or could it be an even more sinister figure: The Killer Tarantula?"
+      "flags": "🇫🇷🇺🇸"
     },
     {
       "title": "Couture to the Max",
@@ -8679,8 +8398,7 @@
       "genre": "Documental",
       "posterPosition": "center",
       "day_order": 10,
-      "flags": "🇺🇸",
-      "synopsis_en": "At just 9-years-old, fashion prodigy Max Alexander fearlessly fuses his boundless imagination with an unwavering commitment to sustainability, inspiring us to dream boldly and act responsibly."
+      "flags": "🇺🇸"
     },
     {
       "title": "Daddy's Little Meatball",
@@ -8722,8 +8440,7 @@
       "poster": "https://image.tmdb.org/t/p/w185/sQQJuqFrjy5HhsZOUzTNptMk742.jpg",
       "genre": "Comedia, Drama",
       "day_order": 3,
-      "flags": "🇦🇺🇺🇸",
-      "synopsis_en": "On a trip to New York, an Australian period-underwear salesman and his teenage daughter navigate the city and their strained relationship."
+      "flags": "🇦🇺🇺🇸"
     },
     {
       "title": "Dear Upstairs Neighbors",
@@ -8808,8 +8525,7 @@
       "poster": "https://image.tmdb.org/t/p/w185/p6n6asYwy0jggE0gCWhz6Llk7BI.jpg",
       "genre": "Drama",
       "day_order": 2,
-      "flags": "🇺🇸",
-      "synopsis_en": "A street rapper, tries to promote his latest single in the big apple, but he is challenge by the arrogant competition around the block."
+      "flags": "🇺🇸"
     },
     {
       "title": "Eeny, Meeny, Miny, Moe!",
@@ -8845,8 +8561,7 @@
       "poster": "https://image.tmdb.org/t/p/w185/Xc0DIw8r6NYWaB1U1YGmTfVBkp.jpg",
       "genre": "Animación",
       "day_order": 3,
-      "flags": "🇨🇿🇸🇰",
-      "synopsis_en": "My choices determine my life."
+      "flags": "🇨🇿🇸🇰"
     },
     {
       "title": "Fabric",
@@ -8888,8 +8603,7 @@
       "poster": "https://image.tmdb.org/t/p/w185/mIH9mS7tZXBaEoL6LAHZL6TgktW.jpg",
       "genre": "Terror, Fantasía",
       "day_order": 3,
-      "flags": "🇺🇸",
-      "synopsis_en": "A haunting ghost story set against the backdrop of a busy winter sales period in a department store, following the life of a cursed dress as it passes from person to person, with devastating consequences."
+      "flags": "🇺🇸"
     },
     {
       "title": "Farm to Fashion",
@@ -8968,8 +8682,7 @@
       "poster": "https://image.tmdb.org/t/p/w185/q0HxfkF9eoa6wSVnzwMhuDSK7ba.jpg",
       "genre": "Drama, Romance",
       "day_order": 1,
-      "flags": "🇺🇸",
-      "synopsis_en": "Noah must leave her city, boyfriend, and friends to move into William Leister's mansion, the flashy and wealthy husband of her mother Rafaela. As a proud and independent 17 year old, Noah resists living in a mansion surrounded by luxury. However, it is there where she meets Nick, her new stepbrother, and the clash of their strong personalities becomes evident from the very beginning."
+      "flags": "🇺🇸"
     },
     {
       "title": "Found&Lost",
@@ -9011,8 +8724,7 @@
       "poster": "https://image.tmdb.org/t/p/w185/3A7G3EMp2SBCsKG9ZrlUBlqhPBr.jpg",
       "genre": "Comedia, Romance",
       "day_order": 2,
-      "flags": "🇦🇹",
-      "synopsis_en": "In order to impress his beautiful French neighbor, Dylan Ramsey dognaps her pet pooch so he can return him and become a hero."
+      "flags": "🇦🇹"
     },
     {
       "title": "Freestyle",
@@ -9054,8 +8766,7 @@
       "poster": "https://image.tmdb.org/t/p/w185/gX2MUaQzAFaLIyRTPTtXNJX8ev3.jpg",
       "genre": "Crimen, Acción",
       "day_order": 1,
-      "flags": "🇺🇸",
-      "synopsis_en": "One morning, Louise, 45, is suddenly unable to step out of her car. Sweats, anxieties, palpitations... she is having an inexplicable panic attack. She is tetanized and simply cannot set foot outside."
+      "flags": "🇺🇸"
     },
     {
       "title": "General Admission",
@@ -9103,8 +8814,7 @@
       "poster": "https://image.tmdb.org/t/p/w185/fv1KZVziar0T56AQFHlqElqPgyV.jpg",
       "genre": "Drama",
       "day_order": 2,
-      "flags": "🇺🇸",
-      "synopsis_en": "A movie directed by Jeffrey Hidalgo starring Jasmine Curtis-Smith."
+      "flags": "🇺🇸"
     },
     {
       "title": "Getar Hero",
@@ -9184,8 +8894,7 @@
       "genre": "Drama",
       "posterPosition": "center",
       "day_order": 1,
-      "flags": "🇵🇱",
-      "synopsis_en": "Aga, is a popular journalist who reports on world conflicts. She travels all over the world and is close to the people she meets. She doesn't keep her distance with her viewers; she speaks to them through her phone screen, even when she is in danger. Unfortunately, during one of her reports, this time from Indonesia, through a mistake by the filmmaker, her secret comes out. Aga's life changes suddenly, and she has to save her reputation. The events make her think, is her work ethical?​​"
+      "flags": "🇵🇱"
     },
     {
       "title": "Grounded",
@@ -9222,8 +8931,7 @@
       "genre": "Comedia",
       "posterPosition": "center",
       "day_order": 3,
-      "flags": "🇳🇿",
-      "synopsis_en": "Old DC-3s are the lifeline for residents of the Colombian Amazon. The film crew joins one of the planes on a flight to remote settlements. But this connection is under threat, and without it communities will face total isolation."
+      "flags": "🇳🇿"
     },
     {
       "title": "His House, Home",
@@ -9265,8 +8973,7 @@
       "poster": "https://image.tmdb.org/t/p/w185/azfGYimJTYrf3sYLp3ilTSjS4dr.jpg",
       "genre": "Drama",
       "day_order": 3,
-      "flags": "🇮🇪",
-      "synopsis_en": "Luke, a closeted young man caring for his father with MS, must confront his fears of coming out when a queer healthcare assistant enters their lives."
+      "flags": "🇮🇪"
     },
     {
       "title": "Holo",
@@ -9308,8 +9015,7 @@
       "poster": "https://image.tmdb.org/t/p/w185/rCCSm6InL33Ake9Qu4uUjnDgOW9.jpg",
       "genre": "Suspense, Comedia",
       "day_order": 3,
-      "flags": "🇨🇦",
-      "synopsis_en": "One day he'll be the best trainer. For now, he just needs to find a Charizard. It's a matter of life or death."
+      "flags": "🇨🇦"
     },
     {
       "title": "Homesick",
@@ -9351,8 +9057,7 @@
       "poster": "https://image.tmdb.org/t/p/w185/zqx3eGMhkLPZptc0Nvnrh3EKvYw.jpg",
       "genre": "Comedia, Drama",
       "day_order": 3,
-      "flags": "🇺🇸",
-      "synopsis_en": "When Charlotte, 27, meets her brother Henrik, 35, for the first time as an adult, it becomes an encounter without boundaries, between two people who don't know what a normal family is. How does sibling love manifest itself if you have never experienced it before? Homesick is an unusual family drama about seeking a family, and breaking every rule to be one."
+      "flags": "🇺🇸"
     },
     {
       "title": "Hope",
@@ -9388,8 +9093,7 @@
       "poster": "https://image.tmdb.org/t/p/w185/PZlNvDwKwHeHUsXnd6SEDXWZNn.jpg",
       "genre": "Drama",
       "day_order": 4,
-      "flags": "🇺🇸🇲🇽",
-      "synopsis_en": "After 8-year-old So-won narrowly survives a brutal sexual assault, her family labors to help her heal while coping with their own rage and grief."
+      "flags": "🇺🇸🇲🇽"
     },
     {
       "title": "I Think About Killing You",
@@ -9431,8 +9135,7 @@
       "poster": "https://image.tmdb.org/t/p/w185/bHx1gKtymZ6Vd2vCr4jlyPYzr2e.jpg",
       "genre": "Suspense",
       "day_order": 1,
-      "flags": "🇺🇸",
-      "synopsis_en": "Team captain Dani is plagued by invasive fantasies of killing her abusive coach. When the coach pushes the team too far, Dani must choose whether or not to act on her fantasies of violence."
+      "flags": "🇺🇸"
     },
     {
       "title": "I'm Not Home",
@@ -9475,8 +9178,7 @@
       "genre": "Documental",
       "posterPosition": "center",
       "day_order": 3,
-      "flags": "🇺🇸",
-      "synopsis_en": "“I’m Not Home”: Follows Shau, an ex-Mumbai Mafia member, on a poignant journey to reconnect with his family, questioning themes of freedom and belonging."
+      "flags": "🇺🇸"
     },
     {
       "title": "I, of an Accident or of love",
@@ -9567,8 +9269,7 @@
       "poster": "https://image.tmdb.org/t/p/w185/l6sOkozopDz3YAv7x1DjCIW9cMC.jpg",
       "genre": "Drama, Suspense",
       "day_order": 3,
-      "flags": "🇺🇸",
-      "synopsis_en": "Shayla Stonefeather, a Native American attorney prosecuting a Lakota teen in a controversial murder trial, returns to the reservation to say goodbye to her dying father. After the teen is killed, she hears ghostly voices and sees strange visions that cause her to re-examine beliefs she thought she left behind."
+      "flags": "🇺🇸"
     },
     {
       "title": "Insufficient Fare",
@@ -9653,9 +9354,8 @@
       "posterPosition": "center",
       "day_order": 1,
       "flags": "🇵🇭",
-      "genre": "Suspense",
-      "year": 2019,
-      "synopsis_en": "A woman's desperate search for her teenage sister and the truck driver who trafficked her erupts in violence when she delivers justice on her own terms."
+      "genre": "Drama",
+      "year": 2026
     },
     {
       "title": "Kiloran Bay",
@@ -9697,8 +9397,7 @@
       "poster": "https://image.tmdb.org/t/p/w185/deBNC4AYcIWn5PDOzQIyE3YDQEY.jpg",
       "genre": "Drama",
       "day_order": 3,
-      "flags": "🇬🇧",
-      "synopsis_en": "Kiloran Bay is written and directed by Michael Bruce: A musical short film starring Alan Cumming and Jack Wolfe. After decades away, a gay man returns home to Scotland to attend a traditional wedding and faces a past he spent a lifetime avoiding."
+      "flags": "🇬🇧"
     },
     {
       "title": "La Lucha de Lucía",
@@ -9740,8 +9439,7 @@
       "poster": "https://image.tmdb.org/t/p/w185/ph8COLT1urTUa59Ze0xef1bPI2b.jpg",
       "genre": "Drama",
       "day_order": 1,
-      "flags": "🇲🇽",
-      "synopsis_en": "Lucía “La Guerrera”, a 16-year-old Mexican lucha libre wrestler, as she struggles to find herself in the wrestling world that she grew up in. Her Father, “El Patron Enmascarado”, who has trained her from a young age, believes that she must maintain the tactics of a ruda (a wrestler who plays dirty to win) in order to have a successful wrestling career. A persona that has laid the foundation of their family’s legacy for generations and been the key to their success. Lucía is determined to challenge her family’s ways. She is left to decide if she will trust her own intuition and put up a real fight or play by the unspoken rules of the game, surrendering to the strategy that has been forced upon her."
+      "flags": "🇲🇽"
     },
     {
       "title": "Last Minute",
@@ -9783,8 +9481,7 @@
       "poster": "https://image.tmdb.org/t/p/w185/9P02FAfXoE9G8qw8vW53c2JibRJ.jpg",
       "genre": "Suspense, Drama",
       "day_order": 3,
-      "flags": "🇺🇸",
-      "synopsis_en": "The clock is ticking towards The Last Minute, but no one knows it. No one except Billy Byrne - young, cool and talented, he's the Next Big Thing. At least that's what the London glitterazzi are saying, on the streets, in the clubs, in the Business. But the glitterazzi turn out to be wrong and Billy Byrne is all over in a split second. His world detonates. His self-esteem splinters. Suddenly he's on a rollercoaster ride into the London underworld - a dangerous land of murderers, thieves and talent agents."
+      "flags": "🇺🇸"
     },
     {
       "title": "Leg Day",
@@ -9857,8 +9554,7 @@
       "poster": "https://image.tmdb.org/t/p/w185/g5cwWBCzds8giIxa88yBjz9qxvg.jpg",
       "genre": "Documental",
       "day_order": 4,
-      "flags": "🇺🇸",
-      "synopsis_en": "A demonstration of sound in Dolby Stereo."
+      "flags": "🇺🇸"
     },
     {
       "title": "Lost Touch",
@@ -9900,8 +9596,7 @@
       "poster": "https://image.tmdb.org/t/p/w185/wbC3GmPQ2yYZilufUJDBWF109E2.jpg",
       "genre": "Animación",
       "day_order": 3,
-      "flags": "🇨🇭",
-      "synopsis_en": "Amelia is the sole survivor on a damaged spaceship. Caught in the gravitational pull of a planet, she struggles with grief and isolation. When a mysterious presence appears, she is torn between the past and the future."
+      "flags": "🇨🇭"
     },
     {
       "title": "Me, Myself, and Mary",
@@ -9937,8 +9632,7 @@
       "poster": "https://image.tmdb.org/t/p/w185/fwBqBAsKuZ0XedGXDJP3sy9l9rQ.jpg",
       "genre": "Animación, Comedia",
       "day_order": 3,
-      "flags": "🇬🇧🇮🇪",
-      "synopsis_en": "Chris O'Dowd and Aisling Bea star in the viral, true story of Séamas O'Reilly, who got his days mixed up and ended up alone with his boss and the President of Ireland while high on drugs."
+      "flags": "🇬🇧🇮🇪"
     },
     {
       "title": "Mon Taxi",
@@ -9974,8 +9668,7 @@
       "poster": "https://image.tmdb.org/t/p/w185/zRexKuKKtPs4z9m9hNYQreaoc4J.jpg",
       "genre": "Animación, Comedia",
       "day_order": 4,
-      "flags": "🇺🇸🇲🇦",
-      "synopsis_en": "A happily married pair of taxicabs are delighted when Junior enters their lives, but this delight turns to consternation when he states his ambition to become a hotrodder.."
+      "flags": "🇺🇸🇲🇦"
     },
     {
       "title": "NIO KO BOKK (This Belongs to All of Us)",
@@ -10046,8 +9739,7 @@
       "poster": "https://image.tmdb.org/t/p/w185/i6wkb0a1FxbfuITkEjTr877gCbn.jpg",
       "genre": "Drama, Crimen",
       "day_order": 1,
-      "flags": "🇳🇱",
-      "synopsis_en": "Long separated from his family, hitman Joshua returns to Brighton Beach for a contract killing for the Russian Mafia. His abusive father, Arkady, banned him from returning after Joshua committed his first murder. He takes up residence in a hotel, and soon everyone knows he has returned. He goes home to visit his dying mother, Irina, and prepares for the assassination, getting drawn back into the criminal community he left behind."
+      "flags": "🇳🇱"
     },
     {
       "title": "One Night",
@@ -10095,8 +9787,7 @@
       "poster": "https://image.tmdb.org/t/p/w185/gzy1L7wqkFRznQPv4WrdPQ9bCJ8.jpg",
       "genre": "Comedia, Romance",
       "day_order": 2,
-      "flags": "🇺🇸",
-      "synopsis_en": "Two love-starved strangers crash into each other on the one night of the year when single people are allowed to have sex."
+      "flags": "🇺🇸"
     },
     {
       "title": "The Baddest Speechwriter of All",
@@ -10138,8 +9829,7 @@
       "poster": "https://image.tmdb.org/t/p/w185/a600xi9rnKkvgwBgHIwWgIDxoaK.jpg",
       "genre": "Documental",
       "day_order": 2,
-      "flags": "🇺🇸",
-      "synopsis_en": "Now 93, Martin Luther King Jr.’s lawyer and speechwriter reflects on the personal cost and surprising truths of making history, offering an intimate insider’s view of the Civil Rights Movement."
+      "flags": "🇺🇸"
     },
     {
       "title": "The Barbershop",
@@ -10175,8 +9865,7 @@
       "poster": "https://image.tmdb.org/t/p/w185/mS02PgUL6vYn1yhJJuWbcLpYDj2.jpg",
       "genre": "Comedia, Drama",
       "day_order": 1,
-      "flags": "🇩🇰",
-      "synopsis_en": "To survive harsh economic times, Calvin and Angie have merged the barbershop and beauty salon into one business. The days of male bonding are gone as Eddie and the crew must now contend with sassy female co-workers and spirited clientele. As the battle of the sexes rages on, a different kind of conflict has taken over Chicago. Crime and gangs are on the rise, leaving Calvin worried about the fate of his son. Together, the friends come up with a bold plan to take back their beloved neighborhood."
+      "flags": "🇩🇰"
     },
     {
       "title": "The Dark Knot at the Center",
