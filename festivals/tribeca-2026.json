@@ -105,7 +105,9 @@
       "day": "2026-06-13",
       "date": "2026-06-13",
       "time": "8:00 PM",
-      "venue": "OKX Theater at BMCC TPAC"
+      "venue": "OKX Theater at BMCC TPAC",
+      "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/7038/large_Alicia_Keys_-_Girl_From_Hell_s_Kitchen-Clean-16x9-01.jpg",
+      "posterPosition": "center"
     },
     {
       "title": "Opening Night: Earth, Wind & Fire (To Be Celestial VS That’s the Weight of the World)",
@@ -139,7 +141,9 @@
       "day": "2026-06-03",
       "date": "2026-06-03",
       "time": "8:00 PM",
-      "venue": "Beacon Theatre"
+      "venue": "Beacon Theatre",
+      "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/6845/large_Earth_Wind___Fire-Bug-16x9-01-v2.jpg",
+      "posterPosition": "center"
     },
     {
       "title": "Sara Bareilles: Good Grief",
@@ -180,8 +184,9 @@
       "time": "7:00 PM",
       "venue": "Beacon Theatre",
       "year": 2026,
-      "poster": "",
-      "genre": "Documental, Música"
+      "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/6931/large_Sarah_Bareilles_-_Good_Grief-Clean-16x9-01.jpg",
+      "genre": "Documental, Música",
+      "posterPosition": "center"
     },
     {
       "title": "Tribeca at 25: A Conversation With Co-Founders Jane Rosenthal and Robert De Niro",
@@ -205,7 +210,9 @@
       "day": "2026-06-11",
       "date": "2026-06-11",
       "time": "8:00 PM",
-      "venue": "OKX Theater at BMCC TPAC"
+      "venue": "OKX Theater at BMCC TPAC",
+      "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/7232/large_BobandJane_1920x1080.jpg",
+      "posterPosition": "center"
     },
     {
       "title": "Tribeca Festival Awards Night",
@@ -229,7 +236,9 @@
       "day": "2026-06-11",
       "date": "2026-06-11",
       "time": "4:00 PM",
-      "venue": "Spring Studios"
+      "venue": "Spring Studios",
+      "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/7233/large_TF26_Web_KeyArt.jpg",
+      "posterPosition": "center"
     },
     {
       "title": "ALEJANDRO SANZ: WHEN NO ONE SEES ME",
@@ -253,7 +262,9 @@
       "day": "2026-06-04",
       "date": "2026-06-04",
       "time": "5:00 PM",
-      "venue": "OKX Theater at BMCC TPAC"
+      "venue": "OKX Theater at BMCC TPAC",
+      "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/7107/large_Alejandro-Sanz-WhenNoOneSeesMe-alberto-castro_clean-16x9-01.jpg",
+      "posterPosition": "center"
     },
     {
       "title": "Doc Meets World",
@@ -289,8 +300,9 @@
       "time": "1:30 PM",
       "venue": "Spring Studios",
       "year": null,
-      "poster": "",
-      "genre": ""
+      "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/6969/large_Doc_Meets_World-Clean-16x9-01.jpg",
+      "genre": "",
+      "posterPosition": "center"
     },
     {
       "title": "Frampton",
@@ -474,8 +486,9 @@
       "time": "2:00 PM",
       "venue": "SVA Theatre",
       "year": 2026,
-      "poster": "",
-      "genre": ""
+      "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/6915/large_Miss_Representation_-_Rise_Up-Bug-16x9-01.jpg",
+      "genre": "",
+      "posterPosition": "center"
     },
     {
       "title": "Mumford & Sons: The House Band",
@@ -548,8 +561,9 @@
       "time": "8:15 PM",
       "venue": "OKX Theater at BMCC TPAC",
       "year": 2026,
-      "poster": "",
-      "genre": "Documental, Música"
+      "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/6949/large_Noga-Clean-16x9-01.jpg",
+      "genre": "Documental, Música",
+      "posterPosition": "center"
     },
     {
       "title": "Playing POTUS",
@@ -585,8 +599,9 @@
       "time": "5:00 PM",
       "venue": "Spring Studios",
       "year": null,
-      "poster": "",
-      "genre": "Documental"
+      "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/6950/large_Playing_POTUS-Clean-16x9-01.jpg",
+      "genre": "Documental",
+      "posterPosition": "center"
     },
     {
       "title": "The Symphony of Dance",
@@ -622,8 +637,9 @@
       "time": "5:00 PM",
       "venue": "Spring Studios",
       "year": null,
-      "poster": "",
-      "genre": ""
+      "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/6976/large_The_Symphony_of_Dance-Bug-16x9-01.jpg",
+      "genre": "",
+      "posterPosition": "center"
     },
     {
       "title": "Trinity: The Story of The LOX",
@@ -659,8 +675,9 @@
       "time": "8:00 PM",
       "venue": "Spring Studios",
       "year": 2026,
-      "poster": "",
-      "genre": "Documental, Música"
+      "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/7051/large_Trinity_-_The_Story_of_The_LOX-Clean-16x9-01.jpg",
+      "genre": "Documental, Música",
+      "posterPosition": "center"
     },
     {
       "title": "Act One",
@@ -721,7 +738,9 @@
       "day": "2026-06-11",
       "date": "2026-06-11",
       "time": "8:00 PM",
-      "venue": "SVA Theatre"
+      "venue": "SVA Theatre",
+      "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/7113/large_Adults-clean-16x9-01.jpg",
+      "posterPosition": "center"
     },
     {
       "title": "Alice and Steve",
@@ -745,7 +764,9 @@
       "day": "2026-06-04",
       "date": "2026-06-04",
       "time": "8:30 PM",
-      "venue": "SVA Theatre"
+      "venue": "SVA Theatre",
+      "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/7093/large_Alice_and_Steve-clean-16x9-01.jpg",
+      "posterPosition": "center"
     },
     {
       "title": "Clean Hands",
@@ -1193,8 +1214,9 @@
       "time": "5:00 PM",
       "venue": "SVA Theatre",
       "year": null,
-      "poster": "",
-      "genre": "Aventura, Drama"
+      "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/6936/large_Rain_Reign-Clean-16x9-01.jpg",
+      "genre": "Aventura, Drama",
+      "posterPosition": "center"
     },
     {
       "title": "Seven O'Clock Breakfast Club for the Brokenhearted",
@@ -1632,8 +1654,9 @@
       "time": "5:30 PM",
       "venue": "Village East by Angelika",
       "year": null,
-      "poster": "",
-      "genre": "Documental"
+      "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/6860/large_4000_Days_clean_16x9.jpg",
+      "genre": "Documental",
+      "posterPosition": "center"
     },
     {
       "title": "AI: Probably Nothing to Worry About",
@@ -1669,8 +1692,9 @@
       "time": "5:00 PM",
       "venue": "Village East by Angelika",
       "year": null,
-      "poster": "",
-      "genre": ""
+      "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/7032/large_TF26_Web_ComingSoon_1920x1080.jpg",
+      "genre": "",
+      "posterPosition": "center"
     },
     {
       "title": "Bob and David Climb Machu Picchu",
@@ -1738,8 +1762,9 @@
       "time": "8:00 PM",
       "venue": "SVA Theatre",
       "year": null,
-      "poster": "",
-      "genre": ""
+      "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/7056/large_Carmelo_Anthony-Clean-16x9-01.jpg",
+      "genre": "",
+      "posterPosition": "center"
     },
     {
       "title": "Chris & Martina: The Final Set",
@@ -1836,8 +1861,9 @@
       "time": "2:00 PM",
       "venue": "Village East by Angelika",
       "year": 2026,
-      "poster": "",
-      "genre": "Documental"
+      "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/6965/large_Full_Circle_-_The_First_All_Black_Everest_Ascent-Clean-16x9-01.jpg",
+      "genre": "Documental",
+      "posterPosition": "center"
     },
     {
       "title": "Grandmasters",
@@ -1971,8 +1997,9 @@
       "time": "5:30 PM",
       "venue": "SVA Theatre",
       "year": null,
-      "poster": "",
-      "genre": ""
+      "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/6910/large_HollywoodDoesAbortion-1_clean_16x9.jpg",
+      "genre": "",
+      "posterPosition": "center"
     },
     {
       "title": "House of Criticism",
@@ -2008,8 +2035,9 @@
       "time": "5:30 PM",
       "venue": "Village East by Angelika",
       "year": null,
-      "poster": "",
-      "genre": ""
+      "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/6959/large_Houseofcriticism-melindapinecone-1_clean_16x9.jpg",
+      "genre": "",
+      "posterPosition": "center"
     },
     {
       "title": "How to Feed a Dictator",
@@ -2045,8 +2073,9 @@
       "time": "8:00 PM",
       "venue": "Village East by Angelika",
       "year": 2026,
-      "poster": "",
-      "genre": "Documental"
+      "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/6896/large_How_to_Feed_a_Dictator-Clean-16x9-01.jpg",
+      "genre": "Documental",
+      "posterPosition": "center"
     },
     {
       "title": "Humpty Dumpty X",
@@ -2080,7 +2109,9 @@
       "day": "2026-06-06",
       "date": "2026-06-06",
       "time": "12:00 PM",
-      "venue": "AMC 19th St. East 6"
+      "venue": "AMC 19th St. East 6",
+      "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/7166/large_Humpty-Dumpty-X-01-16x9.png",
+      "posterPosition": "center"
     },
     {
       "title": "IX XI",
@@ -2195,8 +2226,9 @@
       "time": "5:00 PM",
       "venue": "Village East by Angelika",
       "year": null,
-      "poster": "",
-      "genre": ""
+      "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/6975/large_March_Forth-Clean-16x9-01.jpg",
+      "genre": "",
+      "posterPosition": "center"
     },
     {
       "title": "Mario",
@@ -2380,8 +2412,9 @@
       "time": "5:30 PM",
       "venue": "Village East by Angelika",
       "year": null,
-      "poster": "",
-      "genre": ""
+      "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/6881/large_Spin_Wars-Clean-16x9-01.jpg",
+      "genre": "",
+      "posterPosition": "center"
     },
     {
       "title": "Stealing Magic",
@@ -2417,8 +2450,9 @@
       "time": "5:00 PM",
       "venue": "Village East by Angelika",
       "year": null,
-      "poster": "",
-      "genre": ""
+      "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/6994/large_Stealing_Magic-1_clean_16x9.jpg",
+      "genre": "",
+      "posterPosition": "center"
     },
     {
       "title": "The A-Word: The Future of Aging",
@@ -2454,8 +2488,9 @@
       "time": "5:30 PM",
       "venue": "SVA Theatre",
       "year": null,
-      "poster": "",
-      "genre": ""
+      "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/7047/large_The_A-Word_-_The_Future_of_Aging-Clean-16x9-01.jpg",
+      "genre": "",
+      "posterPosition": "center"
     },
     {
       "title": "The Best Summer",
@@ -2602,8 +2637,9 @@
       "time": "5:00 PM",
       "venue": "SVA Theatre",
       "year": null,
-      "poster": "",
-      "genre": ""
+      "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/6971/large_threesASFOUR-Clean-16x9-01.jpg",
+      "genre": "",
+      "posterPosition": "center"
     },
     {
       "title": "TikTok Never Dies",
@@ -3046,8 +3082,9 @@
       "time": "6:15 PM",
       "venue": "Village East by Angelika",
       "year": null,
-      "poster": "",
-      "genre": "Crimen, Suspense"
+      "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/6983/large_Crooks-Clean-16x9-01.jpg",
+      "genre": "Crimen, Suspense",
+      "posterPosition": "center"
     },
     {
       "title": "Deepfake",
@@ -3120,8 +3157,9 @@
       "time": "2:30 PM",
       "venue": "Village East by Angelika",
       "year": null,
-      "poster": "",
-      "genre": "Comedia"
+      "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/6939/large_Human_Theories-Clean-16x9-01.jpg",
+      "genre": "Comedia",
+      "posterPosition": "center"
     },
     {
       "title": "Matininó",
@@ -3157,8 +3195,9 @@
       "time": "8:15 PM",
       "venue": "Village East by Angelika",
       "year": 2026,
-      "poster": "",
-      "genre": "Documental"
+      "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/6970/large_Matinino-Clean-16x9-01.jpg",
+      "genre": "Documental",
+      "posterPosition": "center"
     },
     {
       "title": "Micronations",
@@ -3524,8 +3563,9 @@
       "time": "8:30 PM",
       "venue": "Village East by Angelika",
       "year": 2026,
-      "poster": "",
-      "genre": "Drama"
+      "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/6998/large_Caity-Clean-16x9-01.jpg",
+      "genre": "Drama",
+      "posterPosition": "center"
     },
     {
       "title": "Cotton Fever",
@@ -3640,8 +3680,9 @@
       "time": "8:30 PM",
       "venue": "SVA Theatre",
       "year": null,
-      "poster": "",
-      "genre": ""
+      "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/7033/large_Here_I_m_Alive-Clean-16x9-01-v2.jpg",
+      "genre": "",
+      "posterPosition": "center"
     },
     {
       "title": "Kingston",
@@ -3751,8 +3792,9 @@
       "time": "8:45 PM",
       "venue": "Village East by Angelika",
       "year": null,
-      "poster": "",
-      "genre": ""
+      "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/6887/large_Mother_Future_Self-Clean-16x9-01.jpg",
+      "genre": "",
+      "posterPosition": "center"
     },
     {
       "title": "Ponderosa",
@@ -3978,8 +4020,9 @@
       "time": "8:00 PM",
       "venue": "SVA Theatre",
       "year": 2026,
-      "poster": "",
-      "genre": ""
+      "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/7009/large_Bang_My_Box_The_Robin_Byrd_Story-Clean-16x9-01.jpg",
+      "genre": "",
+      "posterPosition": "center"
     },
     {
       "title": "Colors of White Rock",
@@ -4015,8 +4058,9 @@
       "time": "5:15 PM",
       "venue": "Village East by Angelika",
       "year": null,
-      "poster": "",
-      "genre": ""
+      "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/6930/large_COLORSOFWHITEROCK_PETITE_MAISON_PRODUCTION_1_clean_16x9.jpg",
+      "genre": "",
+      "posterPosition": "center"
     },
     {
       "title": "Harvest",
@@ -4089,8 +4133,9 @@
       "time": "5:30 PM",
       "venue": "AMC 19th St. East 6",
       "year": 2026,
-      "poster": "",
-      "genre": "Documental, Música"
+      "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/6984/large_Jail_Time_Records-Clean-16x9-01.jpg",
+      "genre": "Documental, Música",
+      "posterPosition": "center"
     },
     {
       "title": "Jean-Michel",
@@ -4163,8 +4208,9 @@
       "time": "6:15 PM",
       "venue": "Village East by Angelika",
       "year": 2026,
-      "poster": "",
-      "genre": "Documental"
+      "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/6991/large_Kids_Like_Me-Clean-16x9-01.jpg",
+      "genre": "Documental",
+      "posterPosition": "center"
     },
     {
       "title": "Mexicanamerican",
@@ -4274,8 +4320,9 @@
       "time": "5:30 PM",
       "venue": "SVA Theatre",
       "year": 2026,
-      "poster": "",
-      "genre": "Documental"
+      "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/6953/large_The_Gymnasts_of_Fisherman_Colony-Bug-16x9-01.jpg",
+      "genre": "Documental",
+      "posterPosition": "center"
     },
     {
       "title": "The Siege of Paradise",
@@ -4385,8 +4432,9 @@
       "time": "2:30 PM",
       "venue": "AMC 19th St. East 6",
       "year": null,
-      "poster": "",
-      "genre": ""
+      "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/6962/large_Against_the_Flow-Clean-16x9-01.jpg",
+      "genre": "",
+      "posterPosition": "center"
     },
     {
       "title": "Funk",
@@ -4817,7 +4865,9 @@
       "day": "2026-06-13",
       "date": "2026-06-13",
       "time": "5:00 PM",
-      "venue": "Spring Studios"
+      "venue": "Spring Studios",
+      "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/7139/large_911Reunited-clean-16x9-01.jpg",
+      "posterPosition": "center"
     },
     {
       "title": "Bound: 30th Anniversary",
@@ -4841,7 +4891,9 @@
       "day": "2026-06-07",
       "date": "2026-06-07",
       "time": "8:15 PM",
-      "venue": "Spring Studios"
+      "venue": "Spring Studios",
+      "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/7054/large_BOUND-clean-16x9-01.jpg",
+      "posterPosition": "center"
     },
     {
       "title": "Bridget Jones's Diary with Renee Zellweger and Sharon Maguire",
@@ -4889,7 +4941,9 @@
       "day": "2026-06-08",
       "date": "2026-06-08",
       "time": "8:30 PM",
-      "venue": "SVA Theatre"
+      "venue": "SVA Theatre",
+      "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/7140/large_Daftpunk-clean-16x9-01.jpg",
+      "posterPosition": "center"
     },
     {
       "title": "Small Town Gay Bar",
@@ -4967,7 +5021,9 @@
       "day": "2026-06-12",
       "date": "2026-06-12",
       "time": "5:30 PM",
-      "venue": "SVA Theatre"
+      "venue": "SVA Theatre",
+      "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/7112/large_DearEngland-clean-16x9-01.jpg",
+      "posterPosition": "center"
     },
     {
       "title": "ESPN Deportes, ESPN, & Tribeca Studios Presents: 13.4 Seconds To Nowhere + Shooting Stars: The Adrián Solano Story",
@@ -4991,7 +5047,9 @@
       "day": "2026-06-12",
       "date": "2026-06-12",
       "time": "5:30 PM",
-      "venue": "AMC 19th St. East 6"
+      "venue": "AMC 19th St. East 6",
+      "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/7168/large_ESPN_x_Tribeca_website_image__1_.jpg",
+      "posterPosition": "center"
     },
     {
       "title": "Fueled by the Future",
@@ -5015,7 +5073,9 @@
       "day": "2026-06-07",
       "date": "2026-06-07",
       "time": "5:00 PM",
-      "venue": ""
+      "venue": "",
+      "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/7169/large_OpenAI_x_Tribeca_website_image.jpg",
+      "posterPosition": "center"
     },
     {
       "title": "Not A Very Good Murderer/The Palladino Files Event",
@@ -5039,7 +5099,9 @@
       "day": "2026-06-10",
       "date": "2026-06-10",
       "time": "5:30 PM",
-      "venue": "Spring Studios"
+      "venue": "Spring Studios",
+      "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/7066/large_TF26-TV-RonanFarrow.jpg",
+      "posterPosition": "center"
     },
     {
       "title": "Vital Stories Premiere",
@@ -5057,7 +5119,9 @@
       "day": "TBD",
       "date": "",
       "time": "TBD",
-      "venue": ""
+      "venue": "",
+      "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/7167/large_Lilly-Home-Desktop_1_.jpg",
+      "posterPosition": "center"
     },
     {
       "title": "Storytellers - Dwyane Wade",
@@ -5081,7 +5145,9 @@
       "day": "2026-06-10",
       "date": "2026-06-10",
       "time": "6:00 PM",
-      "venue": "OKX Theater at BMCC TPAC"
+      "venue": "OKX Theater at BMCC TPAC",
+      "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/7122/large_DwayneWade_1080x1920_v2.jpg",
+      "posterPosition": "center"
     },
     {
       "title": "Storytellers - Finneas with Anthony WIllis",
@@ -5105,7 +5171,9 @@
       "day": "2026-06-09",
       "date": "2026-06-09",
       "time": "8:00 PM",
-      "venue": "Spring Studios"
+      "venue": "Spring Studios",
+      "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/7118/large_Finneas_AnthonyWIllis_1920x1080_.jpg",
+      "posterPosition": "center"
     },
     {
       "title": "Storytellers - Keke Palmer with Whoopi Goldberg",
@@ -5129,7 +5197,9 @@
       "day": "2026-06-08",
       "date": "2026-06-08",
       "time": "6:00 PM",
-      "venue": "SVA Theatre"
+      "venue": "SVA Theatre",
+      "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/7115/large_Keke_Whoopi_1080x1920_v2.jpg",
+      "posterPosition": "center"
     },
     {
       "title": "Storytellers - Paul Rudd",
@@ -5153,7 +5223,9 @@
       "day": "2026-06-04",
       "date": "2026-06-04",
       "time": "6:00 PM",
-      "venue": "Spring Studios"
+      "venue": "Spring Studios",
+      "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/7117/large_PaulRudd_1080x1920_01.jpg",
+      "posterPosition": "center"
     },
     {
       "title": "Storytellers - Sean Penn with Kaitlan Collins",
@@ -5177,7 +5249,9 @@
       "day": "2026-06-05",
       "date": "2026-06-05",
       "time": "5:00 PM",
-      "venue": "Spring Studios"
+      "venue": "Spring Studios",
+      "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/7121/large_SeanPenn_KaitlynCollins_1080x1920.jpg",
+      "posterPosition": "center"
     },
     {
       "title": "Cannonball Live with Wesley Morris",
@@ -5201,7 +5275,9 @@
       "day": "2026-06-12",
       "date": "2026-06-12",
       "time": "6:00 PM",
-      "venue": "Spring Studios"
+      "venue": "Spring Studios",
+      "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/7126/large_TF26_LiveShows_NYTCANNONBALL_1920x1080.jpg",
+      "posterPosition": "center"
     },
     {
       "title": "Concert & Conversation: Hrishikesh Hirway Moderated By Adam Scott",
@@ -5225,7 +5301,9 @@
       "day": "2026-06-13",
       "date": "2026-06-13",
       "time": "7:30 PM",
-      "venue": "Le Poisson Rouge"
+      "venue": "Le Poisson Rouge",
+      "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/7133/large_TF26_LiveShows_HRISHIKESH_NEW.jpg",
+      "posterPosition": "center"
     },
     {
       "title": "Death Sex & Money Live with Guests Peter Dinklage & Erica Schmidt",
@@ -5249,7 +5327,9 @@
       "day": "2026-06-10",
       "date": "2026-06-10",
       "time": "5:30 PM",
-      "venue": "SVA Theatre"
+      "venue": "SVA Theatre",
+      "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/7130/large_TF26_LiveShows_DEATHSEXMONEY_NEW.jpg",
+      "posterPosition": "center"
     },
     {
       "title": "Fashion Neurosis Live with Guest Laurie Anderson",
@@ -5278,7 +5358,9 @@
       "day": "2026-06-09",
       "date": "2026-06-09",
       "time": "12:30 PM",
-      "venue": "SVA Theatre"
+      "venue": "SVA Theatre",
+      "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/7125/large_TF26_LiveShows_FASHIONNEUROSIS_1920x1080.jpg",
+      "posterPosition": "center"
     },
     {
       "title": "Lemme Say This Live with Guest Sydney Lemmon",
@@ -5302,7 +5384,9 @@
       "day": "2026-06-11",
       "date": "2026-06-11",
       "time": "6:00 PM",
-      "venue": "SVA Theatre"
+      "venue": "SVA Theatre",
+      "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/7129/large_TF26_LiveShows_LEMMESAYTHIS_1920x1080.jpg",
+      "posterPosition": "center"
     },
     {
       "title": "New Yorker Radio Hour Live with David Remnick",
@@ -5326,7 +5410,9 @@
       "day": "2026-06-10",
       "date": "2026-06-10",
       "time": "8:15 PM",
-      "venue": "Spring Studios"
+      "venue": "Spring Studios",
+      "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/7131/large_TF26_LiveShows_NEWYORKERRADIOHOUR_1920x1080.jpg",
+      "posterPosition": "center"
     },
     {
       "title": "On With Kara Swisher with Guest Marc Maron",
@@ -5350,7 +5436,9 @@
       "day": "2026-06-08",
       "date": "2026-06-08",
       "time": "8:00 PM",
-      "venue": "Spring Studios"
+      "venue": "Spring Studios",
+      "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/7127/large_TF26_LiveShows_ONWITHKARA_NEW.jpg",
+      "posterPosition": "center"
     },
     {
       "title": "Radiolab Live with Latif Nasser & Lulu Miller",
@@ -5374,7 +5462,9 @@
       "day": "2026-06-09",
       "date": "2026-06-09",
       "time": "6:00 PM",
-      "venue": "OKX Theater at BMCC TPAC"
+      "venue": "OKX Theater at BMCC TPAC",
+      "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/7124/large_TF26_LiveShows_RADIOLAB_NEW.jpg",
+      "posterPosition": "center"
     },
     {
       "title": "2026 Indie TV Documentary Showcase",
@@ -5403,7 +5493,9 @@
       "day": "2026-06-04",
       "date": "2026-06-04",
       "time": "5:00 PM",
-      "venue": "Village East by Angelika"
+      "venue": "Village East by Angelika",
+      "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/7154/large_TF26-TV-IndieDoc.jpg",
+      "posterPosition": "center"
     },
     {
       "title": "2026 Indie TV Narrative Showcase",
@@ -5437,7 +5529,9 @@
       "day": "2026-06-07",
       "date": "2026-06-07",
       "time": "8:30 PM",
-      "venue": "Spring Studios"
+      "venue": "Spring Studios",
+      "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/7065/large_TF26-TV-IndieNarr.jpg",
+      "posterPosition": "center"
     },
     {
       "title": "Tribeca NOW Creators Showcase",
@@ -5461,7 +5555,9 @@
       "day": "2026-06-10",
       "date": "2026-06-10",
       "time": "8:30 PM",
-      "venue": "AMC 19th St. East 6"
+      "venue": "AMC 19th St. East 6",
+      "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/7165/large_TF26-NOW-Creators.jpg",
+      "posterPosition": "center"
     },
     {
       "title": "Tribeca NOW Presents: Kareem Rhama’s Keep the Meter Running",
@@ -5485,7 +5581,9 @@
       "day": "2026-06-11",
       "date": "2026-06-11",
       "time": "5:00 PM",
-      "venue": "AMC 19th St. East 6"
+      "venue": "AMC 19th St. East 6",
+      "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/7153/large_KTMR-CLEAN-16x9-01.jpg",
+      "posterPosition": "center"
     },
     {
       "title": "Tribeca NOW Presents: KeyTV’s The Rise and Fall of DivaGurl with Keke Palmer & Lawrence Murray",
@@ -5509,7 +5607,9 @@
       "day": "2026-06-07",
       "date": "2026-06-07",
       "time": "8:30 PM",
-      "venue": "AMC 19th St. East 6"
+      "venue": "AMC 19th St. East 6",
+      "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/7142/large_TF26-NOW-Keke_Palmer.jpg",
+      "posterPosition": "center"
     },
     {
       "title": "Shorts: Animated Shorts curated by Whoopi G",
@@ -5538,7 +5638,9 @@
       "day": "2026-06-06",
       "date": "2026-06-06",
       "time": "2:30 PM",
-      "venue": "Spring Studios"
+      "venue": "Spring Studios",
+      "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/6853/large_TF26-Shorts-Animated_Shorts.jpg",
+      "posterPosition": "center"
     },
     {
       "title": "Shorts: Care Package",
@@ -5572,7 +5674,9 @@
       "day": "2026-06-06",
       "date": "2026-06-06",
       "time": "5:30 PM",
-      "venue": "Spring Studios"
+      "venue": "Spring Studios",
+      "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/6851/large_TF26-Shorts-Care_Package.jpg",
+      "posterPosition": "center"
     },
     {
       "title": "Shorts: Competitive Edge",
@@ -5606,7 +5710,9 @@
       "day": "2026-06-04",
       "date": "2026-06-04",
       "time": "8:30 PM",
-      "venue": "Spring Studios"
+      "venue": "Spring Studios",
+      "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/6849/large_TF26-Shorts-Competitive_Edge.jpg",
+      "posterPosition": "center"
     },
     {
       "title": "Shorts: Fierce Fashion",
@@ -5635,7 +5741,9 @@
       "day": "2026-06-13",
       "date": "2026-06-13",
       "time": "8:30 PM",
-      "venue": "Spring Studios"
+      "venue": "Spring Studios",
+      "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/6857/large_TF26-Shorts-Fierce_Fashion-V2_1.jpg",
+      "posterPosition": "center"
     },
     {
       "title": "Shorts: Helpline",
@@ -5664,7 +5772,9 @@
       "day": "2026-06-04",
       "date": "2026-06-04",
       "time": "5:30 PM",
-      "venue": "Spring Studios"
+      "venue": "Spring Studios",
+      "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/6855/large_TF26-Shorts-Helpline_1.jpg",
+      "posterPosition": "center"
     },
     {
       "title": "Shorts: Love Fictionally",
@@ -5703,7 +5813,9 @@
       "day": "2026-06-05",
       "date": "2026-06-05",
       "time": "8:30 PM",
-      "venue": "Spring Studios"
+      "venue": "Spring Studios",
+      "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/6847/large_TF26-Shorts-Love_Fictionally.jpg",
+      "posterPosition": "center"
     },
     {
       "title": "Shorts: Music Videos",
@@ -5727,7 +5839,9 @@
       "day": "2026-06-09",
       "date": "2026-06-09",
       "time": "8:30 PM",
-      "venue": "Spring Studios"
+      "venue": "Spring Studios",
+      "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/7062/large_TF26-Music_Videos.jpg",
+      "posterPosition": "center"
     },
     {
       "title": "Shorts: NY Making It Here",
@@ -5761,7 +5875,9 @@
       "day": "2026-06-06",
       "date": "2026-06-06",
       "time": "8:45 PM",
-      "venue": "Spring Studios"
+      "venue": "Spring Studios",
+      "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/7061/large_TF26-Shorts-NY_Making_It_Here-V2.jpg",
+      "posterPosition": "center"
     },
     {
       "title": "Shorts: Power to the People",
@@ -5795,7 +5911,9 @@
       "day": "2026-06-05",
       "date": "2026-06-05",
       "time": "2:30 PM",
-      "venue": "Spring Studios"
+      "venue": "Spring Studios",
+      "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/6854/large_TF26-Shorts-Power_to_the_People.jpg",
+      "posterPosition": "center"
     },
     {
       "title": "Shorts: The Dark Web",
@@ -5829,7 +5947,9 @@
       "day": "2026-06-06",
       "date": "2026-06-06",
       "time": "8:15 PM",
-      "venue": "Spring Studios"
+      "venue": "Spring Studios",
+      "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/6848/large_TF26-Shorts-The_Dark_Web_v3.jpg",
+      "posterPosition": "center"
     },
     {
       "title": "Shorts: Think Fast",
@@ -5863,7 +5983,9 @@
       "day": "2026-06-05",
       "date": "2026-06-05",
       "time": "5:30 PM",
-      "venue": "Spring Studios"
+      "venue": "Spring Studios",
+      "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/6846/large_TF26-Shorts-Think_Fast-V2.jpg",
+      "posterPosition": "center"
     },
     {
       "title": "Shorts: Whatever It Takes",
@@ -5892,7 +6014,9 @@
       "day": "2026-06-07",
       "date": "2026-06-07",
       "time": "2:30 PM",
-      "venue": "Spring Studios"
+      "venue": "Spring Studios",
+      "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/6852/large_TF26-Shorts-Whatever_It_Takes-v3.jpg",
+      "posterPosition": "center"
     },
     {
       "title": "Shorts: Where We Belong",
@@ -5921,7 +6045,9 @@
       "day": "2026-06-07",
       "date": "2026-06-07",
       "time": "5:30 PM",
-      "venue": "Spring Studios"
+      "venue": "Spring Studios",
+      "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/6850/large_TF26-Shorts-Where_We_Belong.jpg",
+      "posterPosition": "center"
     },
     {
       "title": "Shorts: Whoopi's Wonderful World of Animation",
@@ -5950,7 +6076,9 @@
       "day": "2026-06-06",
       "date": "2026-06-06",
       "time": "12:15 PM",
-      "venue": "Spring Studios"
+      "venue": "Spring Studios",
+      "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/6856/large_TF26-Shorts-Whoopis_Wonderful-V2.jpg",
+      "posterPosition": "center"
     },
     {
       "title": "Ascension",
@@ -6322,7 +6450,9 @@
       "day": "2026-06-09",
       "date": "2026-06-09",
       "time": "8:30 PM",
-      "venue": "Spring Studios"
+      "venue": "Spring Studios",
+      "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/6942/large_Animus_Ignis_-_Shawty_Sweat-Clean-16x9-01.jpg",
+      "posterPosition": "center"
     },
     {
       "title": "\"Archbishop Harold Holmes” - Jack White",
@@ -6346,7 +6476,9 @@
       "day": "2026-06-09",
       "date": "2026-06-09",
       "time": "8:30 PM",
-      "venue": "Spring Studios"
+      "venue": "Spring Studios",
+      "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/7023/large_Archbishop_Harold_Holmes_-_Jack_White-Clean-16x9-01.jpg",
+      "posterPosition": "center"
     },
     {
       "title": "\"Beautiful\" - Linda Perry",
@@ -6370,7 +6502,9 @@
       "day": "2026-06-09",
       "date": "2026-06-09",
       "time": "8:30 PM",
-      "venue": "Spring Studios"
+      "venue": "Spring Studios",
+      "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/7055/large_Beautiful-clean-16x9-01.jpg",
+      "posterPosition": "center"
     },
     {
       "title": "\"Elegantly Wasted\" - Hermanos Gutiérrez x Leon Bridges",
@@ -6394,7 +6528,9 @@
       "day": "2026-06-09",
       "date": "2026-06-09",
       "time": "8:30 PM",
-      "venue": "Spring Studios"
+      "venue": "Spring Studios",
+      "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/6993/large_Elegantly_Wasted_-_Hermanos_Gutie%CC%81rrez_x_Leon_Bridges-Clean-16x9-01.jpg",
+      "posterPosition": "center"
     },
     {
       "title": "\"Everyone’s A Star\" - 5 Seconds of Summer",
@@ -6418,7 +6554,9 @@
       "day": "2026-06-09",
       "date": "2026-06-09",
       "time": "8:30 PM",
-      "venue": "Spring Studios"
+      "venue": "Spring Studios",
+      "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/7037/large_5SOS-CLEAN-16x9-01.jpg",
+      "posterPosition": "center"
     },
     {
       "title": "\"Fingers Crossed\" - The Moth & The Flame",
@@ -6442,7 +6580,9 @@
       "day": "2026-06-09",
       "date": "2026-06-09",
       "time": "8:30 PM",
-      "venue": "Spring Studios"
+      "venue": "Spring Studios",
+      "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/6946/large_Fingers_Crossed_-_The_Moth___The_Flame-Clean-16x9-01.jpg",
+      "posterPosition": "center"
     },
     {
       "title": "\"Grave\" - Kid Cudi",
@@ -6466,7 +6606,9 @@
       "day": "2026-06-09",
       "date": "2026-06-09",
       "time": "8:30 PM",
-      "venue": "Spring Studios"
+      "venue": "Spring Studios",
+      "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/7036/large_TF26_Web_ComingSoon_1920x1080.jpg",
+      "posterPosition": "center"
     },
     {
       "title": "\"Kill Me Fast\" - Three Days Grace",
@@ -6490,7 +6632,9 @@
       "day": "2026-06-09",
       "date": "2026-06-09",
       "time": "8:30 PM",
-      "venue": "Spring Studios"
+      "venue": "Spring Studios",
+      "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/6996/large_Kill_Me_Fast_-_Three_Days_Grace-Clean-16x9-01.jpg",
+      "posterPosition": "center"
     },
     {
       "title": "\"Long Way To Go\" - The What Four",
@@ -6514,7 +6658,9 @@
       "day": "2026-06-09",
       "date": "2026-06-09",
       "time": "8:30 PM",
-      "venue": "Spring Studios"
+      "venue": "Spring Studios",
+      "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/6988/large_Long_Way_To_Go_-_The_What_Four-Clean-16x9-01.jpg",
+      "posterPosition": "center"
     },
     {
       "title": "\"Mr Electric Blue\" - Benson Boone",
@@ -6538,7 +6684,9 @@
       "day": "2026-06-09",
       "date": "2026-06-09",
       "time": "8:30 PM",
-      "venue": "Spring Studios"
+      "venue": "Spring Studios",
+      "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/6952/large_Mr_Electric_Blue_-_Benson_Boone-Bug-16x9-01.jpg",
+      "posterPosition": "center"
     },
     {
       "title": "\"NEW YORK IS DEAD\" - LP Giobbi feat. little boots",
@@ -6562,7 +6710,9 @@
       "day": "2026-06-09",
       "date": "2026-06-09",
       "time": "8:30 PM",
-      "venue": "Spring Studios"
+      "venue": "Spring Studios",
+      "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/6863/large_New_York_Is_Dead_-_LP_Giobi-Clean-16x9-01.jpg",
+      "posterPosition": "center"
     },
     {
       "title": "32 B",
@@ -6842,8 +6992,9 @@
       "time": "8:30 PM",
       "venue": "Spring Studios",
       "year": null,
-      "poster": "",
-      "genre": ""
+      "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/6903/large_Buckets-Clean-16x9-01.jpg",
+      "genre": "",
+      "posterPosition": "center"
     },
     {
       "title": "ChikaBOOM!",
@@ -6872,7 +7023,9 @@
       "day": "2026-06-06",
       "date": "2026-06-06",
       "time": "12:15 PM",
-      "venue": "Spring Studios"
+      "venue": "Spring Studios",
+      "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/6948/large_ChikaBOOM_-Clean-16x9-01.jpg",
+      "posterPosition": "center"
     },
     {
       "title": "Child of the Rouge",
@@ -6906,7 +7059,9 @@
       "day": "2026-06-05",
       "date": "2026-06-05",
       "time": "5:30 PM",
-      "venue": "Spring Studios"
+      "venue": "Spring Studios",
+      "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/6868/large_ChildOfTheRouge-CLEAN-16x9-01.jpg",
+      "posterPosition": "center"
     },
     {
       "title": "Cookie, Love",
@@ -6969,8 +7124,9 @@
       "time": "8:30 PM",
       "venue": "Spring Studios",
       "year": 2026,
-      "poster": "",
-      "genre": "Documental"
+      "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/7021/large_Couture_to_the_Max-Clean-16x9-01.jpg",
+      "genre": "Documental",
+      "posterPosition": "center"
     },
     {
       "title": "Daddy's Little Meatball",
@@ -7038,8 +7194,9 @@
       "time": "12:15 PM",
       "venue": "Spring Studios",
       "year": null,
-      "poster": "",
-      "genre": ""
+      "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/7019/large_Dear_Upstairs_Neighbors-Clean-16x9-01.jpg",
+      "genre": "",
+      "posterPosition": "center"
     },
     {
       "title": "DISC",
@@ -7179,7 +7336,9 @@
       "day": "2026-06-13",
       "date": "2026-06-13",
       "time": "8:30 PM",
-      "venue": "Spring Studios"
+      "venue": "Spring Studios",
+      "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/7063/large_FarmToFashion-clean-16x9-01.jpg",
+      "posterPosition": "center"
     },
     {
       "title": "Fault",
@@ -7366,7 +7525,9 @@
       "day": "2026-06-05",
       "date": "2026-06-05",
       "time": "5:30 PM",
-      "venue": "Spring Studios"
+      "venue": "Spring Studios",
+      "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/7020/large_Getar_Hero-Clean-16x9-01.jpg",
+      "posterPosition": "center"
     },
     {
       "title": "Greetings from Sumatra",
@@ -7397,8 +7558,9 @@
       "time": "5:30 PM",
       "venue": "Spring Studios",
       "year": 2025,
-      "poster": "",
-      "genre": "Drama"
+      "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/6898/large_Greetings_from_Sumatra-Bug-16x9-01.jpg",
+      "genre": "Drama",
+      "posterPosition": "center"
     },
     {
       "title": "Grounded",
@@ -7429,8 +7591,9 @@
       "time": "12:15 PM",
       "venue": "Spring Studios",
       "year": 2003,
-      "poster": "",
-      "genre": "Comedia"
+      "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/7017/large_Grounded-Clean-16x9-01.jpg",
+      "genre": "Comedia",
+      "posterPosition": "center"
     },
     {
       "title": "His House, Home",
@@ -7646,8 +7809,9 @@
       "time": "8:45 PM",
       "venue": "Spring Studios",
       "year": null,
-      "poster": "",
-      "genre": "Documental"
+      "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/6944/large_ImNotHome-clean-16x9-01.jpg",
+      "genre": "Documental",
+      "posterPosition": "center"
     },
     {
       "title": "I, of an Accident or of love",
@@ -7686,7 +7850,9 @@
       "day": "2026-06-05",
       "date": "2026-06-05",
       "time": "8:30 PM",
-      "venue": "Spring Studios"
+      "venue": "Spring Studios",
+      "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/6883/large_I__of_an_Accident_or_of_Love-Clean-16x9-01.jpg",
+      "posterPosition": "center"
     },
     {
       "title": "Imprint",
@@ -7757,7 +7923,9 @@
       "day": "2026-06-06",
       "date": "2026-06-06",
       "time": "8:45 PM",
-      "venue": "Spring Studios"
+      "venue": "Spring Studios",
+      "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/7012/large_Insufficient_Fare-Clean-16x9-01.jpg",
+      "posterPosition": "center"
     },
     {
       "title": "Kaya (ᜃᜌ)",
@@ -7791,7 +7959,9 @@
       "day": "2026-06-04",
       "date": "2026-06-04",
       "time": "8:30 PM",
-      "venue": "Spring Studios"
+      "venue": "Spring Studios",
+      "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/6981/large_Kaya-Clean-16x9-01.jpg",
+      "posterPosition": "center"
     },
     {
       "title": "Kiloran Bay",
@@ -7931,7 +8101,9 @@
       "day": "2026-06-06",
       "date": "2026-06-06",
       "time": "12:15 PM",
-      "venue": "Spring Studios"
+      "venue": "Spring Studios",
+      "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/7029/large_Leg_Day-Clean-16x9-01.jpg",
+      "posterPosition": "center"
     },
     {
       "title": "Listen",
