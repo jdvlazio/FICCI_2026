@@ -3538,6 +3538,8 @@ function _isEditorialPoster(f){
   if(!f) return false;
   if(f.posterSource==='editorial') return true;
   if(f.posterSource==='tmdb'||f.posterSource==='custom') return false;
+  // Si hay poster TMDB validado, no es editorial — son formatos incompatibles (portrait vs 16:9)
+  if(_POSTERS_N&&_POSTERS_N[normKey(f.title||'')]) return false;
   return !!(f.poster&&f.poster.includes('cloudfront.net'));
 }
 // Elimina el prefijo emoji de una sección (ej. "🎬 Competencia" → "Competencia")
