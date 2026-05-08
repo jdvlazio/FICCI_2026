@@ -1681,6 +1681,7 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:var(--t
     padding-right:var(--content-pad);
     overflow-x:auto;
     scrollbar-width:none;
+    -webkit-overflow-scrolling:touch;
   }
   .programa-chips::-webkit-scrollbar{display:none}
 
@@ -8820,7 +8821,9 @@ function _openCombinedFilmSheet(filmData){
   const _psReset=document.getElementById('pel-sheet');
   if(_psReset){_psReset.scrollTop=0;_psReset.classList.remove('compact');}
   document.getElementById('pel-overlay').classList.add('open');
-  document.getElementById('pel-sheet').classList.add('open');
+  const _psC=document.getElementById('pel-sheet');
+  _psC.scrollTop=0;
+  _psC.classList.add('open');
 }
 
 
@@ -8884,7 +8887,9 @@ function openCortoSheet(title, country, duration, section, flags, director, genr
   const _psReset2=document.getElementById('pel-sheet');
   if(_psReset2){_psReset2.scrollTop=0;_psReset2.classList.remove('compact');}
   document.getElementById('pel-overlay').classList.add('open');
-  document.getElementById('pel-sheet').classList.add('open');
+  const _psCo=document.getElementById('pel-sheet');
+  _psCo.scrollTop=0;
+  _psCo.classList.add('open');
 }
 
 function setMiPlanView(mode){
