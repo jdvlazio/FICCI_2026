@@ -75,6 +75,10 @@ function validateFestival(fname, data) {
 
   // CONFIG required fields
   // Festivales NUEVOS (desde Mujeres 2026): config en FESTIVAL_CONFIG de index.html, no en el JSON.
+  // GATE: config{} en el JSON es un error bloqueante desde el pipeline v2.
+  if (data.config && Object.keys(data.config).length > 0) {
+    errors.push('GATE BLOQUEANTE: config{} presente en el JSON — mover a FESTIVAL_CONFIG en index.html y eliminar este bloque');
+  }
   // Festivales LEGADOS (FICCI 65, Cinemancia 2025): config en el bloque config{} del JSON.
   if (!hasConfigBlock) {
     warnings.push('Sin bloque config{} — se asume que la configuración está en FESTIVAL_CONFIG en index.html (formato nuevo ✓)');
@@ -154,6 +158,14 @@ function validateFestival(fname, data) {
     if (!film.section) warnings.push(`"${title}": campo 'section' vacío`);
     if (film.day_order === undefined) warnings.push(`"${title}": falta 'day_order'`);
 
+    // ── RULE 5b: titulo en ALLCAPS ───────────────────────────────────────
+    if (film.title) {
+      const _ws = film.title.split(' ');
+      const _uw = _ws.filter(w => w.length > 2 && /^[A-ZÁÉÍÓÚÑÜ]+$/.test(w));
+      if (_uw.length >= 3) {
+        errors.push(`GATE BLOQUEANTE: titulo ALLCAPS — '${film.title.slice(0,55)}' — convertir a Title Case`);
+      }
+    }
     // ── RULE 6: event without type:event ──────────────────────────────────
     if (!isEvent && !isCortos && !film.director) {
       const secLower = (sec || '').toLowerCase();
@@ -316,13 +328,28 @@ for (const fname of files) {
   const filmsWithPoster = filmableFilms.filter(f => f.poster && f.poster !== '');
   const legacyPosters   = Object.keys(data.posters || {}).length;
   const totalPosters    = filmsWithPoster.length + legacyPosters;
-  if (filmableFilms.length > 0 && totalPosters === 0) {
-    warnings.push(
-      `Sin posters: ${filmableFilms.length} films sin film.poster y sin posters{} ` +
-      `— se mostrarán placeholders generativos. Correr enrich-festival.py para resolver.`
-    );
+  if (filmableFilms.length > 0) {
+    const _pPct = Math.round(totalPosters / filmableFilms.length * 100);
+    if (totalPosters === 0) {
+      errors.push(`GATE BLOQUEANTE: cobertura de poster 0% — ${filmableFilms.length} films sin imagen. Ejecutar scraping og:image + TMDB estricto.`);
+    } else if (_pPct < 95) {
+      warnings.push(`Cobertura de poster: ${_pPct}% (${totalPosters}/${filmableFilms.length}) — recomendado ≥95%. Revisar films sin imagen.`);
+    }
   }
 
+  // ── Genre coverage ≥ 80% ─────────────────────────────────────────────────
+  const _auditFilms = (data.films || []).filter(f => f.type !== 'event' && !f.is_cortos && !f.title?.startsWith('Shorts:'));
+  const _withGenre  = _auditFilms.filter(f => f.genre && f.genre.trim());
+  if (_auditFilms.length > 0) {
+    const _gPct = Math.round(_withGenre.length / _auditFilms.length * 100);
+    if (_gPct < 80) warnings.push(`Cobertura de género: ${_gPct}% (${_withGenre.length}/${_auditFilms.length}) — recomendado ≥80%. Ejecutar enriquecimiento TMDB estricto.`);
+  }
+  // ── Duration anomalies ────────────────────────────────────────────────────
+  for (const f of (data.films || [])) {
+    if (!f.duration && f.duration !== 0) continue;
+    const _d = parseInt(String(f.duration).replace(/[^0-9]/g,''));
+    if (!isNaN(_d) && (_d <= 0 || _d > 400)) warnings.push(`Duración anómala: '${(f.title||'').slice(0,40)}' — ${f.duration}`);
+  }
   totalErrors += errors.length;
   totalWarnings += warnings.length;
   results.push({ fname, errors, warnings });
