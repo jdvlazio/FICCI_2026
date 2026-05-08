@@ -822,14 +822,13 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:var(--t
  * Ratio 2:3 → 177px alto. Estándar one-sheet cinematográfico.          */
 .poster-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--sp-2);padding:10px;transition:opacity var(--tr-fast)}
 .poster-card{position:relative;border-radius:var(--r);overflow:hidden;cursor:pointer;background:var(--surf-2);background-size:cover;background-position:center;aspect-ratio:2/3;display:block}
-.poster-card.editorial{background:#1E1B17;display:flex;flex-direction:column;justify-content:space-between;padding:0}
-.poster-card.editorial .ed-img-wrap{width:100%;overflow:hidden;flex-shrink:0}
-.poster-card.editorial .ed-img-wrap img{width:100%;aspect-ratio:16/9;object-fit:cover;display:block;opacity:0;transition:opacity 250ms ease}
-.poster-card.editorial .ed-body{flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;padding:6px 8px;text-align:center;gap:3px}
-.poster-card.editorial .ed-title{font-size:8px;font-weight:700;color:#B4B2A9;line-height:1.3;display:-webkit-box;-webkit-line-clamp:4;-webkit-box-orient:vertical;overflow:hidden}
-.poster-card.editorial .ed-dir{font-size:7px;color:#5F5E5A;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100%}
-.poster-card.editorial .ed-foot{padding:4px 0;border-top:1px solid #2C2C2A;text-align:center;flex-shrink:0}
-.poster-card.editorial .ed-foot span{font-size:6px;font-weight:500;letter-spacing:.12em;color:#5A4E40}
+.poster-card.editorial{background:#1A1A1A;display:flex;flex-direction:column}
+.poster-card.editorial .ed-hdr{height:52px;flex-shrink:0;display:flex;flex-direction:column;justify-content:center;padding:0 8px}
+.poster-card.editorial .ed-hdr .ed-lbl{font-family:-apple-system,BlinkMacSystemFont,sans-serif;font-size:6.5px;font-weight:800;letter-spacing:.7px;color:#0A0A0A;line-height:1.35;text-transform:uppercase}
+.poster-card.editorial .ed-img{width:100%;flex-shrink:0;overflow:hidden}
+.poster-card.editorial .ed-img img{width:100%;aspect-ratio:16/9;object-fit:cover;display:block;opacity:0;transition:opacity 250ms ease}
+.poster-card.editorial .ed-body{flex:1;display:flex;flex-direction:column;justify-content:flex-end;padding:0 8px 8px}
+.poster-card.editorial .ed-body .ed-title{font-family:-apple-system,BlinkMacSystemFont,sans-serif;font-size:11px;font-weight:800;letter-spacing:-.3px;color:#F0EDE8;line-height:1.27;display:-webkit-box;-webkit-line-clamp:4;-webkit-box-orient:vertical;overflow:hidden}
 .poster-card-stack{width:100%;height:100%;display:flex;gap:1px;background:var(--bdr)}
 .pcs-back,.pcs-front{flex:1;height:100%;object-fit:cover;object-position:center;display:block;min-width:0}
 .pel-sheet-poster-stage{display:flex;gap:1px;background:var(--bdr);flex-shrink:0;width:var(--poster-lg-w);height:var(--poster-lg-h);border-radius:var(--r-md);overflow:hidden}
@@ -3483,6 +3482,30 @@ function lbLink(title,film){
   return`<a class="c-lb pel-sheet-lb" href="${url}" target="_blank" rel="noopener">${LB_SVG}<span class="c-lb-text pel-sheet-lb-text">Letterboxd</span></a>`;
 }
 
+// ── Mapa canónico de colores por sección ────────────────────────────────────
+// Usado en cards editoriales y posters generativos.
+// Consistente entre festivales: misma sección → mismo color.
+const SECTION_COLORS={
+  'Gala':'#EF9F27',
+  'Spotlight+':'#5DCAA5',
+  'Spotlight Narrative':'#7F77DD',
+  'Spotlight Documentary':'#1D9E75',
+  'U.S. Narrative Competition':'#D85A30',
+  'International Narrative Competition':'#378ADD',
+  'Documentary Competition':'#639922',
+  'Viewpoints':'#AFA9EC',
+  'Escape From Tribeca':'#E24B4A',
+  'Reunions & Retrospectives':'#888780',
+  'Storytellers':'#FAC775',
+  'Talks':'#85B7EB',
+  'NOW':'#5DCAA5',
+  'TV':'#B4B2A9',
+  'Special Events':'#EF9F27',
+  'Shorts Programs':'#1D9E75',
+  'Free Outdoor Screenings':'#97C459',
+  'Shorts':'#888780',
+};
+function _sectionColor(sec){return SECTION_COLORS[sec]||'#2C2C2A';}
 function _buildPosterV16({accent, headerLabel, title, num}){
   // ── Motor de poster tipográfico v16 ──────────────────────────
   // Sistema único para eventos, programas, sorpresa.
@@ -9358,9 +9381,9 @@ function renderPeliculaView(){
       const _opacity=allPast&&!_ended?';opacity:.45':'';
       const _isEditorial=posterSrc&&posterSrc.includes('cloudfront.net');
       if(_isEditorial){
-        const _festShort=((FESTIVAL_CONFIG&&FESTIVAL_CONFIG[_activeFestId])||{}).shortName||'FESTIVAL';
-        const _dir=f.director?(f.director.split(',')[0].trim().slice(0,22)):'';
-        posterImg=`<div class="ed-img-wrap"><img src="${posterSrc}" loading="lazy" onerror="this.remove()" alt="" onload="this.style.opacity='1'" style="${_opacity?'opacity:.45':''}"></div><div class="ed-body"><div class="ed-title">${displayTitle}</div>${_dir?`<div class="ed-dir">${_dir}</div>`:''}</div><div class="ed-foot"><span>${_festShort}</span></div>`;
+        const _accent=_sectionColor(f.section||'');
+        const _secLabel=(f.section||'').toUpperCase();
+        posterImg=`<div class="ed-hdr" style="background:${_accent}"><div class="ed-lbl">${_secLabel}</div></div><div class="ed-img"><img src="${posterSrc}" loading="lazy" onerror="this.remove()" alt="" onload="this.style.opacity='1'"></div><div class="ed-body"><div class="ed-title">${displayTitle}</div></div>`;
       } else {
         posterImg=posterSrc
           ?`<img src="${posterSrc}" loading="lazy" data-title="${f.title.replace(/"/g,'&quot;')}" style="width:100%;height:100%;object-fit:cover${_opacity};display:block;opacity:0;transition:opacity 250ms ease" onload="this.style.opacity='1'" onerror="_posterErr(this)" alt="">`
@@ -9385,7 +9408,21 @@ function renderSbar(){
   const isExplorar=programaSubMode==='explorar';
   let dayF=isExplorar?FILMS:FILMS.filter(f=>f.day===activeDay);
   if(activeVenue!=='all') dayF=dayF.filter(f=>vcfg(f.venue).short===activeVenue);
-  const secs=[...new Set(dayF.map(f=>f.section))].sort();
+  const SECTION_ORDER_LIST=[
+    'Gala','Spotlight+','U.S. Narrative Competition',
+    'International Narrative Competition','Documentary Competition',
+    'Spotlight Narrative','Spotlight Documentary','Viewpoints',
+    'Escape From Tribeca','Reunions & Retrospectives','Storytellers',
+    'Talks','Special Events','NOW','TV','Shorts Programs',
+    'Free Outdoor Screenings','Shorts'
+  ];
+  const secs=[...new Set(dayF.map(f=>f.section))].sort((a,b)=>{
+    const ia=SECTION_ORDER_LIST.indexOf(a),ib=SECTION_ORDER_LIST.indexOf(b);
+    if(ia>=0&&ib>=0) return ia-ib;
+    if(ia>=0) return -1;
+    if(ib>=0) return 1;
+    return a.localeCompare(b);
+  });
   if(lbl) lbl.textContent=activeSec==='all'||activeSec==='_chip_'?'Sección':(activeSec.length>18?activeSec.slice(0,16)+'…':activeSec);
   if(trigBtn) trigBtn.classList.toggle('active',activeSec!=='all'&&activeSec!=='_chip_');
   const mkOpt=(html,isOn,cb)=>{
