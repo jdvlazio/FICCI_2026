@@ -215,5 +215,8 @@
   "cta_mi_plan": "Ver Mi Plan",
   "label_programa": "Programa",
   "toast_prioridad_quitada": "Prioridad quitada",
-  "misc_anadir": "Añadir"
+  "misc_anadir": "Añadir",
+  "plan_tu_plan_empty": "Tu plan aparece aquí.",
+  "cta_ir_planear": "Ir a Planear",
+  "cta_ir_intereses": "Ir a Intereses"
 }

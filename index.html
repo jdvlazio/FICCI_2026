@@ -6366,7 +6366,7 @@ function _renderSavedAgendaHTML(){
     const _festNameMp=(FESTIVAL_CONFIG[_activeFestId]||{}).name||'El festival';
     return emptyStateHero(ICONS.sparkles,`${_festNameMp} ${t('plan_fest_terminado')}`,t('empty_vistas'),t('plan_ir_programa'),"switchMainNav('mnav-cartelera');showDayView()");
   }
-  if(!savedAgenda||!savedAgenda.schedule.length) return emptyStateHero(ICONS.calendar,t('plan_tu_plan')+' aparece aquí.',t('empty_intereses'),'Ir a Planear',"switchMainNav('mnav-planner');showAgView()");
+  if(!savedAgenda||!savedAgenda.schedule.length) return emptyStateHero(ICONS.calendar,t('plan_tu_plan_empty'),t('empty_intereses'),t('cta_ir_planear'),"switchMainNav('mnav-planner');showAgView()");
   const all=savedAgenda.schedule;
   const planTitles=new Set(all.map(s=>s._title));
   const archive=all.filter(s=>screeningPassed(s)||watched.has(s._title));
@@ -7878,7 +7878,7 @@ function renderAgenda(){
     if(!pending.length&&!cachedResult){
       view.innerHTML=`${_progressHtml}
         <div class="ag-section">
-          ${emptyStateHero(ICONS.calendar,'Tu plan calculado aparece aquí.',t('empty_intereses_3'),'Ir a Intereses',"switchMainNav('mnav-seleccion');showAgView()")}
+          ${emptyStateHero(ICONS.calendar,t('plan_tu_plan_empty'),t('empty_intereses_3'),t('cta_ir_intereses'),"switchMainNav('mnav-seleccion');showAgView()")}
         </div>`;
       return;
     }
