@@ -5472,6 +5472,7 @@ function renderFilmListHTML(){
       ?`<img class="int-item-poster"${_posterStyle(f)} src="${poster}" data-title="${title.replace(/"/g,'&quot;')}" onerror="_posterErr(this)" alt="" loading="lazy">`
       :`<div class="int-item-poster"></div>`;
     const secLabel=(f?.section||'').replace(/^\S+ /,'')||f?.section||'';
+    const nextHtml=next
       ?`<div class="int-item-next">
           <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
           ${_relDayLabel(next)}
