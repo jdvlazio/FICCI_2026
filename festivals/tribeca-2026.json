@@ -178,7 +178,10 @@
       "day": "2026-06-04",
       "date": "2026-06-04",
       "time": "7:00 PM",
-      "venue": "Beacon Theatre"
+      "venue": "Beacon Theatre",
+      "year": 2026,
+      "poster": "",
+      "genre": "Documental, Música"
     },
     {
       "title": "Tribeca at 25: A Conversation With Co-Founders Jane Rosenthal and Robert De Niro",
@@ -284,7 +287,10 @@
       "day": "2026-06-06",
       "date": "2026-06-06",
       "time": "1:30 PM",
-      "venue": "Spring Studios"
+      "venue": "Spring Studios",
+      "year": null,
+      "poster": "",
+      "genre": ""
     },
     {
       "title": "Frampton",
@@ -318,7 +324,10 @@
       "day": "2026-06-04",
       "date": "2026-06-04",
       "time": "8:00 PM",
-      "venue": "OKX Theater at BMCC TPAC"
+      "venue": "OKX Theater at BMCC TPAC",
+      "year": 2026,
+      "poster": "",
+      "genre": "Documental, Música"
     },
     {
       "title": "Hadestown: The Musical",
@@ -352,7 +361,10 @@
       "day": "2026-06-08",
       "date": "2026-06-08",
       "time": "5:00 PM",
-      "venue": "OKX Theater at BMCC TPAC"
+      "venue": "OKX Theater at BMCC TPAC",
+      "year": 2026,
+      "poster": "https://image.tmdb.org/t/p/w185/egOIeTWjdQNcnbBSuGoJn2G3MsN.jpg",
+      "genre": "Drama, Fantasía"
     },
     {
       "title": "Imaginal Disk",
@@ -365,7 +377,7 @@
       "country": "United States",
       "language": "English",
       "premiere": "World Premiere",
-      "synopsis": "",
+      "synopsis": "⚠️ INGLÉS — This film accompanying concept album 'Imaginal Disk' takes you on the journey of True on the path to becoming the \"purest you\". What soon unfolds is a cinematic, hypnotically beautiful quest to rediscover the essence of being a human.",
       "screenings": [
         {
           "date": "2026-06-04",
@@ -386,7 +398,10 @@
       "day": "2026-06-04",
       "date": "2026-06-04",
       "time": "8:30 PM",
-      "venue": "Spring Studios"
+      "venue": "Spring Studios",
+      "year": 2026,
+      "poster": "https://image.tmdb.org/t/p/w185/3O7Cwak2ADgQ3JQWhX5rSPMYBWZ.jpg",
+      "genre": "Música, Romance"
     },
     {
       "title": "Katy Perry: The Lifetimes Tour - Live from Paris",
@@ -420,7 +435,10 @@
       "day": "2026-06-08",
       "date": "2026-06-08",
       "time": "8:30 PM",
-      "venue": "OKX Theater at BMCC TPAC"
+      "venue": "OKX Theater at BMCC TPAC",
+      "year": 2026,
+      "poster": "https://image.tmdb.org/t/p/w185/aW1dUvEpqGCpEVQ7hRmb0tkZQAq.jpg",
+      "genre": "Documental"
     },
     {
       "title": "Miss Representation: Rise Up",
@@ -454,7 +472,10 @@
       "day": "2026-06-07",
       "date": "2026-06-07",
       "time": "2:00 PM",
-      "venue": "SVA Theatre"
+      "venue": "SVA Theatre",
+      "year": 2026,
+      "poster": "",
+      "genre": ""
     },
     {
       "title": "Mumford & Sons: The House Band",
@@ -488,7 +509,10 @@
       "day": "2026-06-12",
       "date": "2026-06-12",
       "time": "5:00 PM",
-      "venue": "OKX Theater at BMCC TPAC"
+      "venue": "OKX Theater at BMCC TPAC",
+      "year": 2026,
+      "poster": "",
+      "genre": "Documental, Música"
     },
     {
       "title": "Noga",
@@ -522,7 +546,10 @@
       "day": "2026-06-07",
       "date": "2026-06-07",
       "time": "8:15 PM",
-      "venue": "OKX Theater at BMCC TPAC"
+      "venue": "OKX Theater at BMCC TPAC",
+      "year": 2026,
+      "poster": "",
+      "genre": "Documental, Música"
     },
     {
       "title": "Playing POTUS",
@@ -556,7 +583,10 @@
       "day": "2026-06-06",
       "date": "2026-06-06",
       "time": "5:00 PM",
-      "venue": "Spring Studios"
+      "venue": "Spring Studios",
+      "year": null,
+      "poster": "",
+      "genre": "Documental"
     },
     {
       "title": "The Symphony of Dance",
@@ -590,7 +620,10 @@
       "day": "2026-06-07",
       "date": "2026-06-07",
       "time": "5:00 PM",
-      "venue": "Spring Studios"
+      "venue": "Spring Studios",
+      "year": null,
+      "poster": "",
+      "genre": ""
     },
     {
       "title": "Trinity: The Story of The LOX",
@@ -624,7 +657,10 @@
       "day": "2026-06-11",
       "date": "2026-06-11",
       "time": "8:00 PM",
-      "venue": "Spring Studios"
+      "venue": "Spring Studios",
+      "year": 2026,
+      "poster": "",
+      "genre": "Documental, Música"
     },
     {
       "title": "Act One",
@@ -658,7 +694,10 @@
       "day": "2026-06-10",
       "date": "2026-06-10",
       "time": "8:30 PM",
-      "venue": "Village East by Angelika"
+      "venue": "Village East by Angelika",
+      "year": 1963,
+      "poster": "https://image.tmdb.org/t/p/w185/rK6QmbSqMM9cNlBKSOIr3eko2gI.jpg",
+      "genre": "Drama"
     },
     {
       "title": "Adults",
@@ -740,7 +779,10 @@
       "day": "2026-06-07",
       "date": "2026-06-07",
       "time": "2:30 PM",
-      "venue": "Village East by Angelika"
+      "venue": "Village East by Angelika",
+      "year": 2016,
+      "poster": "https://image.tmdb.org/t/p/w185/ymjQl79w14KfiSkIWVzqqvMBobU.jpg",
+      "genre": "Crimen, Drama"
     },
     {
       "title": "Finnegan’s Foursome",
@@ -774,7 +816,10 @@
       "day": "2026-06-07",
       "date": "2026-06-07",
       "time": "5:00 PM",
-      "venue": "OKX Theater at BMCC TPAC"
+      "venue": "OKX Theater at BMCC TPAC",
+      "year": 2026,
+      "poster": "https://image.tmdb.org/t/p/w185/bmFdsOFHipMvqult9MNnUhrwaFS.jpg",
+      "genre": "Comedia, Drama"
     },
     {
       "title": "Gail Daughtry and the Celebrity Sex Pass",
@@ -808,7 +853,10 @@
       "day": "2026-06-10",
       "date": "2026-06-10",
       "time": "8:00 PM",
-      "venue": "OKX Theater at BMCC TPAC"
+      "venue": "OKX Theater at BMCC TPAC",
+      "year": 2026,
+      "poster": "https://image.tmdb.org/t/p/w185/iGAa5sndcGIIq6icQ4155TnL3vz.jpg",
+      "genre": "Comedia"
     },
     {
       "title": "Happy Hours",
@@ -847,7 +895,10 @@
       "day": "2026-06-06",
       "date": "2026-06-06",
       "time": "5:00 PM",
-      "venue": "OKX Theater at BMCC TPAC"
+      "venue": "OKX Theater at BMCC TPAC",
+      "year": 2021,
+      "poster": "https://image.tmdb.org/t/p/w185/LiW3eZB8L4gZtRdXD8HGFXL4Uz.jpg",
+      "genre": "Comedia"
     },
     {
       "title": "Iconoclast",
@@ -881,7 +932,10 @@
       "day": "2026-06-09",
       "date": "2026-06-09",
       "time": "8:30 PM",
-      "venue": "Village East by Angelika"
+      "venue": "Village East by Angelika",
+      "year": 2010,
+      "poster": "https://image.tmdb.org/t/p/w185/siKvoieEfRdgswv1QSsnrZ6k4Qt.jpg",
+      "genre": "Documental"
     },
     {
       "title": "In Memoriam",
@@ -915,7 +969,10 @@
       "day": "2026-06-07",
       "date": "2026-06-07",
       "time": "8:00 PM",
-      "venue": "SVA Theatre"
+      "venue": "SVA Theatre",
+      "year": 2026,
+      "poster": "https://image.tmdb.org/t/p/w185/m4RJbZax1UwzmW6WZyDJ1EP1CfW.jpg",
+      "genre": "Comedia"
     },
     {
       "title": "In the Hand of Dante",
@@ -928,7 +985,7 @@
       "country": "United States",
       "language": "English",
       "premiere": "New York Premiere",
-      "synopsis": "",
+      "synopsis": "Sigue la historia del manuscrito original de La Divina Comedia que emerge en manos de una red de contrabando del mercado negro en los peligrosos bajos fondos de Nueva York, y el cansado erudito Nick es llamado por la mafia para autenticarlo. Abrumado por la tentación, Nick desafía a la mafia y roba el manuscrito en un intento frenético por tenerlo todo. Sigue un camino oscuro y violento desde un metafórico infierno hasta el paraíso con su amor Giulietta, mientras se desarrolla una historia paralela: la odisea del propio Dante, un hombre que está atrapado en un matrimonio sin amor con Gemma y reforzado solo por su tutoría bajo un intelectual austero. Escapa a Sicilia y crea su obra más grande, inmortalizando a su amor perdido, Beatriz. Las líneas de tiempo de Nick y Dante tejen caminos separados y, sin embargo, los dos hombres están inextricablemente unidos: ambos se pierden persiguiendo el amor, la belleza y la promesa misma de lo divino.",
       "screenings": [
         {
           "date": "2026-06-10",
@@ -944,7 +1001,10 @@
       "day": "2026-06-10",
       "date": "2026-06-10",
       "time": "8:00 PM",
-      "venue": "SVA Theatre"
+      "venue": "SVA Theatre",
+      "year": 2026,
+      "poster": "https://image.tmdb.org/t/p/w185/FVyNH1Y7Zro3kukCtwhyw1J0o2.jpg",
+      "genre": "Crimen, Drama"
     },
     {
       "title": "Killing Castro",
@@ -978,7 +1038,10 @@
       "day": "2026-06-09",
       "date": "2026-06-09",
       "time": "8:00 PM",
-      "venue": "OKX Theater at BMCC TPAC"
+      "venue": "OKX Theater at BMCC TPAC",
+      "year": 2026,
+      "poster": "https://image.tmdb.org/t/p/w185/9GxigbIRIDpQoIdyfD50cDKoApx.jpg",
+      "genre": "Drama, Historia"
     },
     {
       "title": "Never Change!",
@@ -1012,7 +1075,10 @@
       "day": "2026-06-09",
       "date": "2026-06-09",
       "time": "5:00 PM",
-      "venue": "SVA Theatre"
+      "venue": "SVA Theatre",
+      "year": 2026,
+      "poster": "",
+      "genre": "Comedia"
     },
     {
       "title": "Next Life",
@@ -1046,7 +1112,10 @@
       "day": "2026-06-05",
       "date": "2026-06-05",
       "time": "8:00 PM",
-      "venue": "SVA Theatre"
+      "venue": "SVA Theatre",
+      "year": 2026,
+      "poster": "",
+      "genre": "Ciencia ficción, Romance"
     },
     {
       "title": "Only What We Carry",
@@ -1080,7 +1149,10 @@
       "day": "2026-06-06",
       "date": "2026-06-06",
       "time": "2:30 PM",
-      "venue": "SVA Theatre"
+      "venue": "SVA Theatre",
+      "year": 2026,
+      "poster": "https://image.tmdb.org/t/p/w185/nXsJyp8pZBwKzJfsVdr7z18BfIc.jpg",
+      "genre": "Drama"
     },
     {
       "title": "Rain Reign",
@@ -1119,7 +1191,10 @@
       "day": "2026-06-06",
       "date": "2026-06-06",
       "time": "5:00 PM",
-      "venue": "SVA Theatre"
+      "venue": "SVA Theatre",
+      "year": null,
+      "poster": "",
+      "genre": "Aventura, Drama"
     },
     {
       "title": "Seven O'Clock Breakfast Club for the Brokenhearted",
@@ -1132,7 +1207,7 @@
       "country": "Republic of Korea (South Korea)",
       "language": "Korean",
       "premiere": "International Premiere",
-      "synopsis": "",
+      "synopsis": "\"I just got dumped. Will you have breakfast with me?\" At a breakfast club, heartbroken Sa-gang and Ji-hoon stumble upon mysterious \"breakup souvenirs.\" Each item holds a secret pain, reflecting their own. Will they find the souvenir's owner?",
       "screenings": [
         {
           "date": "2026-06-11",
@@ -1153,7 +1228,10 @@
       "day": "2026-06-11",
       "date": "2026-06-11",
       "time": "8:30 PM",
-      "venue": "Village East by Angelika"
+      "venue": "Village East by Angelika",
+      "year": 2025,
+      "poster": "https://image.tmdb.org/t/p/w185/p90CQyqlAJb5aIbubYCuL1bLpBW.jpg",
+      "genre": "Drama, Romance"
     },
     {
       "title": "Take Me Home",
@@ -1187,7 +1265,10 @@
       "day": "2026-06-06",
       "date": "2026-06-06",
       "time": "1:00 PM",
-      "venue": "SVA Theatre"
+      "venue": "SVA Theatre",
+      "year": 2016,
+      "poster": "https://image.tmdb.org/t/p/w185/3Tz81RsuCkCVThM0rzkXvt78FqE.jpg",
+      "genre": "Drama, Terror"
     },
     {
       "title": "That Friend",
@@ -1221,7 +1302,10 @@
       "day": "2026-06-08",
       "date": "2026-06-08",
       "time": "8:30 PM",
-      "venue": "Village East by Angelika"
+      "venue": "Village East by Angelika",
+      "year": 2026,
+      "poster": "",
+      "genre": "Comedia"
     },
     {
       "title": "The Accompanist",
@@ -1255,7 +1339,10 @@
       "day": "2026-06-04",
       "date": "2026-06-04",
       "time": "8:00 PM",
-      "venue": "SVA Theatre"
+      "venue": "SVA Theatre",
+      "year": 2019,
+      "poster": "https://image.tmdb.org/t/p/w185/82GxUHTkMAyO5XiQEfOjoocfGZR.jpg",
+      "genre": ""
     },
     {
       "title": "The Last Day",
@@ -1289,7 +1376,10 @@
       "day": "2026-06-06",
       "date": "2026-06-06",
       "time": "8:00 PM",
-      "venue": "OKX Theater at BMCC TPAC"
+      "venue": "OKX Theater at BMCC TPAC",
+      "year": 1975,
+      "poster": "https://image.tmdb.org/t/p/w185/5uJhl8yk44hmLy79xb9fF4n9YWr.jpg",
+      "genre": "Película de TV, Western"
     },
     {
       "title": "The Leader",
@@ -1323,7 +1413,10 @@
       "day": "2026-06-05",
       "date": "2026-06-05",
       "time": "5:00 PM",
-      "venue": "SVA Theatre"
+      "venue": "SVA Theatre",
+      "year": 2026,
+      "poster": "",
+      "genre": "Drama, Crimen"
     },
     {
       "title": "The Long Haul",
@@ -1357,7 +1450,10 @@
       "day": "2026-06-07",
       "date": "2026-06-07",
       "time": "5:30 PM",
-      "venue": "Village East by Angelika"
+      "venue": "Village East by Angelika",
+      "year": 1957,
+      "poster": "https://image.tmdb.org/t/p/w185/dmWCpu2ZJyACQ6rnHkl1z56rebh.jpg",
+      "genre": "Crimen, Drama"
     },
     {
       "title": "The Revisionist",
@@ -1391,7 +1487,10 @@
       "day": "2026-06-05",
       "date": "2026-06-05",
       "time": "5:00 PM",
-      "venue": "OKX Theater at BMCC TPAC"
+      "venue": "OKX Theater at BMCC TPAC",
+      "year": null,
+      "poster": "",
+      "genre": "Drama"
     },
     {
       "title": "They Fight",
@@ -1425,7 +1524,10 @@
       "day": "2026-06-08",
       "date": "2026-06-08",
       "time": "5:30 PM",
-      "venue": "Village East by Angelika"
+      "venue": "Village East by Angelika",
+      "year": 2018,
+      "poster": "https://image.tmdb.org/t/p/w185/a2B9gCTpb8w7LdfvHwrTEyphSrX.jpg",
+      "genre": "Documental"
     },
     {
       "title": "Unidentified",
@@ -1438,7 +1540,7 @@
       "country": "Saudi Arabia",
       "language": "Arabic",
       "premiere": "",
-      "synopsis": "",
+      "synopsis": "⚠️ INGLÉS — During a wild weekend in Las Vegas, four young friends get into trouble with a loan shark and must skip town in a hurry. But gambling problems may be the least of their worries after they get stranded in the Nevada desert. One of the guys discovers a mysterious metal fragment, then promptly goes missing during the night. When the remaining three catch up with their lost friend, there's something different about him. As his condition worsens, the others realize that something unearthly might be stalking them in the desert.",
       "screenings": [
         {
           "date": "2026-06-09",
@@ -1459,7 +1561,10 @@
       "day": "2026-06-09",
       "date": "2026-06-09",
       "time": "8:30 PM",
-      "venue": "AMC 19th St. East 6"
+      "venue": "AMC 19th St. East 6",
+      "year": 2013,
+      "poster": "https://image.tmdb.org/t/p/w185/5hucma4zh66NzVYIkflPe4K83ql.jpg",
+      "genre": "Ciencia ficción, Comedia"
     },
     {
       "title": "Young Washington",
@@ -1488,7 +1593,10 @@
       "day": "2026-06-13",
       "date": "2026-06-13",
       "time": "2:00 PM",
-      "venue": "SVA Theatre"
+      "venue": "SVA Theatre",
+      "year": 2026,
+      "poster": "https://image.tmdb.org/t/p/w185/ntW9zzhDmbt3sXDyPXb7SHVuDdB.jpg",
+      "genre": "Historia, Drama"
     },
     {
       "title": "4000 Days",
@@ -1522,7 +1630,10 @@
       "day": "2026-06-10",
       "date": "2026-06-10",
       "time": "5:30 PM",
-      "venue": "Village East by Angelika"
+      "venue": "Village East by Angelika",
+      "year": null,
+      "poster": "",
+      "genre": "Documental"
     },
     {
       "title": "AI: Probably Nothing to Worry About",
@@ -1556,7 +1667,10 @@
       "day": "2026-06-06",
       "date": "2026-06-06",
       "time": "5:00 PM",
-      "venue": "Village East by Angelika"
+      "venue": "Village East by Angelika",
+      "year": null,
+      "poster": "",
+      "genre": ""
     },
     {
       "title": "Bob and David Climb Machu Picchu",
@@ -1590,7 +1704,10 @@
       "day": "2026-06-06",
       "date": "2026-06-06",
       "time": "8:00 PM",
-      "venue": "SVA Theatre"
+      "venue": "SVA Theatre",
+      "year": 2026,
+      "poster": "https://image.tmdb.org/t/p/w185/u8ruKHHzIWiz0NGdL9VWNr1fqTv.jpg",
+      "genre": "Documental, Comedia"
     },
     {
       "title": "Born Melo",
@@ -1619,7 +1736,10 @@
       "day": "2026-06-12",
       "date": "2026-06-12",
       "time": "8:00 PM",
-      "venue": "SVA Theatre"
+      "venue": "SVA Theatre",
+      "year": null,
+      "poster": "",
+      "genre": ""
     },
     {
       "title": "Chris & Martina: The Final Set",
@@ -1653,7 +1773,10 @@
       "day": "2026-06-10",
       "date": "2026-06-10",
       "time": "5:00 PM",
-      "venue": "SVA Theatre"
+      "venue": "SVA Theatre",
+      "year": null,
+      "poster": "",
+      "genre": ""
     },
     {
       "title": "Every Year After",
@@ -1711,7 +1834,10 @@
       "day": "2026-06-07",
       "date": "2026-06-07",
       "time": "2:00 PM",
-      "venue": "Village East by Angelika"
+      "venue": "Village East by Angelika",
+      "year": 2026,
+      "poster": "",
+      "genre": "Documental"
     },
     {
       "title": "Grandmasters",
@@ -1769,7 +1895,10 @@
       "day": "2026-06-13",
       "date": "2026-06-13",
       "time": "8:30 PM",
-      "venue": "SVA Theatre"
+      "venue": "SVA Theatre",
+      "year": 2026,
+      "poster": "https://image.tmdb.org/t/p/w185/9rzmWBISWM6Pcdeug6eMUDJjxvt.jpg",
+      "genre": "Documental"
     },
     {
       "title": "Hanging by a Wire",
@@ -1803,7 +1932,10 @@
       "day": "2026-06-11",
       "date": "2026-06-11",
       "time": "5:30 PM",
-      "venue": "Village East by Angelika"
+      "venue": "Village East by Angelika",
+      "year": 2026,
+      "poster": "https://image.tmdb.org/t/p/w185/xQJsujphh0k9fJKFVcolow5OrjQ.jpg",
+      "genre": "Documental, Suspense"
     },
     {
       "title": "Hollywood Does Abortion",
@@ -1816,7 +1948,7 @@
       "country": "United States",
       "language": "English",
       "premiere": "World Premiere",
-      "synopsis": "",
+      "synopsis": "⚠️ INGLÉS — HOLLYWOOD DOES ABORTION  reveals how, from the 1970s to the present, film and television have too often relied on dangerously misleading distortions about abortions and the people who seek them. This provocative and lively feature length documentary explores the ways in which abortion narratives onscreen and public policy both mimic and influence one another. Extensive archival imagery spans five decades of television and film, ranging from Maude and Dirty Dancing to Jane the Virgin and Juno, and creates a historical timeline to support the “story” of the film.  In Hollywood Does Abortion, leading directors, writers, showrunners, and cultural critics share their personal and political reactions to these seminal depictions through the lens of today’s post-Roe world. Today, we see how a wide range of diverse Hollywood creators are racing to tell stories that push back against the seismic shift in access to abortion.",
       "screenings": [
         {
           "date": "2026-06-07",
@@ -1837,7 +1969,10 @@
       "day": "2026-06-07",
       "date": "2026-06-07",
       "time": "5:30 PM",
-      "venue": "SVA Theatre"
+      "venue": "SVA Theatre",
+      "year": null,
+      "poster": "",
+      "genre": ""
     },
     {
       "title": "House of Criticism",
@@ -1850,7 +1985,7 @@
       "country": "United States",
       "language": "English",
       "premiere": "World Premiere",
-      "synopsis": "",
+      "synopsis": "⚠️ INGLÉS — Roberta Smith and Jerry Saltz are both rockstars in the world of art criticism. They’re also madly in love. Reflecting on their relationship, careers, and the ever-evolving New York City art scene, this unlikely power couple invites us into their surprisingly humble world.",
       "screenings": [
         {
           "date": "2026-06-12",
@@ -1871,7 +2006,10 @@
       "day": "2026-06-12",
       "date": "2026-06-12",
       "time": "5:30 PM",
-      "venue": "Village East by Angelika"
+      "venue": "Village East by Angelika",
+      "year": null,
+      "poster": "",
+      "genre": ""
     },
     {
       "title": "How to Feed a Dictator",
@@ -1905,7 +2043,10 @@
       "day": "2026-06-10",
       "date": "2026-06-10",
       "time": "8:00 PM",
-      "venue": "Village East by Angelika"
+      "venue": "Village East by Angelika",
+      "year": 2026,
+      "poster": "",
+      "genre": "Documental"
     },
     {
       "title": "Humpty Dumpty X",
@@ -1973,7 +2114,10 @@
       "day": "2026-06-04",
       "date": "2026-06-04",
       "time": "8:45 PM",
-      "venue": "Village East by Angelika"
+      "venue": "Village East by Angelika",
+      "year": null,
+      "poster": "",
+      "genre": ""
     },
     {
       "title": "Just Look Up",
@@ -2007,7 +2151,10 @@
       "day": "2026-06-11",
       "date": "2026-06-11",
       "time": "5:30 PM",
-      "venue": "SVA Theatre"
+      "venue": "SVA Theatre",
+      "year": 2026,
+      "poster": "https://image.tmdb.org/t/p/w185/m1jQ9M6ZnwuT0qekLTgRqGNiNRy.jpg",
+      "genre": "Documental"
     },
     {
       "title": "March Forth",
@@ -2046,7 +2193,10 @@
       "day": "2026-06-08",
       "date": "2026-06-08",
       "time": "5:00 PM",
-      "venue": "Village East by Angelika"
+      "venue": "Village East by Angelika",
+      "year": null,
+      "poster": "",
+      "genre": ""
     },
     {
       "title": "Mario",
@@ -2080,7 +2230,10 @@
       "day": "2026-06-04",
       "date": "2026-06-04",
       "time": "5:00 PM",
-      "venue": "SVA Theatre"
+      "venue": "SVA Theatre",
+      "year": 2026,
+      "poster": "https://image.tmdb.org/t/p/w185/9BafQnaU3U0PL7pkDBaTmCA9EHE.jpg",
+      "genre": "Familia, Comedia"
     },
     {
       "title": "Mineshaft: The Cruising Murders",
@@ -2114,7 +2267,10 @@
       "day": "2026-06-06",
       "date": "2026-06-06",
       "time": "5:30 PM",
-      "venue": "SVA Theatre"
+      "venue": "SVA Theatre",
+      "year": 2026,
+      "poster": "",
+      "genre": "Documental"
     },
     {
       "title": "MOUTH FULL OF GOLDS",
@@ -2148,7 +2304,10 @@
       "day": "2026-06-12",
       "date": "2026-06-12",
       "time": "8:30 PM",
-      "venue": "Spring Studios"
+      "venue": "Spring Studios",
+      "year": 2026,
+      "poster": "https://image.tmdb.org/t/p/w185/tLQzj2qP7RnfmmSiaZ7M9yeDHT0.jpg",
+      "genre": "Documental, Música"
     },
     {
       "title": "Odyssey",
@@ -2182,7 +2341,10 @@
       "day": "2026-06-07",
       "date": "2026-06-07",
       "time": "8:30 PM",
-      "venue": "SVA Theatre"
+      "venue": "SVA Theatre",
+      "year": 2026,
+      "poster": "https://image.tmdb.org/t/p/w185/tcYM55YaRob9UrPf9vW2lrBpIY8.jpg",
+      "genre": "Aventura, Acción"
     },
     {
       "title": "Spin Wars",
@@ -2216,7 +2378,10 @@
       "day": "2026-06-09",
       "date": "2026-06-09",
       "time": "5:30 PM",
-      "venue": "Village East by Angelika"
+      "venue": "Village East by Angelika",
+      "year": null,
+      "poster": "",
+      "genre": ""
     },
     {
       "title": "Stealing Magic",
@@ -2229,7 +2394,7 @@
       "country": "United States",
       "language": "English subtitles",
       "premiere": "World Premiere",
-      "synopsis": "",
+      "synopsis": "⚠️ INGLÉS — Someone is stealing the secrets behind magicians' greatest tricks and selling them on illicit websites. Magician Andi Gladwin leads an unlikely team of illusionists on an international caper to track down the culprits.",
       "screenings": [
         {
           "date": "2026-06-05",
@@ -2250,7 +2415,10 @@
       "day": "2026-06-05",
       "date": "2026-06-05",
       "time": "5:00 PM",
-      "venue": "Village East by Angelika"
+      "venue": "Village East by Angelika",
+      "year": null,
+      "poster": "",
+      "genre": ""
     },
     {
       "title": "The A-Word: The Future of Aging",
@@ -2284,7 +2452,10 @@
       "day": "2026-06-05",
       "date": "2026-06-05",
       "time": "5:30 PM",
-      "venue": "SVA Theatre"
+      "venue": "SVA Theatre",
+      "year": null,
+      "poster": "",
+      "genre": ""
     },
     {
       "title": "The Best Summer",
@@ -2318,7 +2489,10 @@
       "day": "2026-06-09",
       "date": "2026-06-09",
       "time": "5:30 PM",
-      "venue": "Spring Studios"
+      "venue": "Spring Studios",
+      "year": 2026,
+      "poster": "https://image.tmdb.org/t/p/w185/jjTWHbpw3Ts50A1x46KXPGSpOc7.jpg",
+      "genre": "Documental, Música"
     },
     {
       "title": "The Lion Queen",
@@ -2352,7 +2526,10 @@
       "day": "2026-06-11",
       "date": "2026-06-11",
       "time": "8:30 PM",
-      "venue": "SVA Theatre"
+      "venue": "SVA Theatre",
+      "year": 2021,
+      "poster": "https://image.tmdb.org/t/p/w185/ogMsUylVm7lpVOZKrGDwUqdkl6f.jpg",
+      "genre": "Documental"
     },
     {
       "title": "The Lorraine",
@@ -2365,7 +2542,7 @@
       "country": "United States",
       "language": "English",
       "premiere": "World Premiere",
-      "synopsis": "",
+      "synopsis": "Durante la Segunda Guerra Mundial, un grupo de soldados franceses se entregan a las tropas nazis con la promesa de que desertarán y podrán marcharse a su hogar. Sin embargo, los alemanes no cumplen su palabra y les internan en un campo de prisioneros.",
       "screenings": [
         {
           "date": "2026-06-05",
@@ -2386,7 +2563,10 @@
       "day": "2026-06-05",
       "date": "2026-06-05",
       "time": "8:30 PM",
-      "venue": "SVA Theatre"
+      "venue": "SVA Theatre",
+      "year": 1943,
+      "poster": "https://image.tmdb.org/t/p/w185/8lxIDocpVEQcWU2PYSQwzk3Dsfk.jpg",
+      "genre": "Bélica, Drama"
     },
     {
       "title": "threeASFOUR: Full Circle",
@@ -2420,7 +2600,10 @@
       "day": "2026-06-07",
       "date": "2026-06-07",
       "time": "5:00 PM",
-      "venue": "SVA Theatre"
+      "venue": "SVA Theatre",
+      "year": null,
+      "poster": "",
+      "genre": ""
     },
     {
       "title": "TikTok Never Dies",
@@ -2433,7 +2616,7 @@
       "country": "United States",
       "language": "English",
       "premiere": "World Premiere",
-      "synopsis": "",
+      "synopsis": "⚠️ INGLÉS — When TikTok faces a nationwide ban, three influencers fight for their livelihoods, their voices, and the First Amendment. As their efforts advance to the Supreme Court, questions swirl around the stakes, power, and control of the future of social media.",
       "screenings": [
         {
           "date": "2026-06-04",
@@ -2454,7 +2637,10 @@
       "day": "2026-06-04",
       "date": "2026-06-04",
       "time": "5:30 PM",
-      "venue": "Village East by Angelika"
+      "venue": "Village East by Angelika",
+      "year": 2026,
+      "poster": "",
+      "genre": "Documental"
     },
     {
       "title": "Whipple's World",
@@ -2488,7 +2674,10 @@
       "day": "2026-06-12",
       "date": "2026-06-12",
       "time": "5:00 PM",
-      "venue": "SVA Theatre"
+      "venue": "SVA Theatre",
+      "year": null,
+      "poster": "",
+      "genre": ""
     },
     {
       "title": "Breeder",
@@ -2522,7 +2711,10 @@
       "day": "2026-06-06",
       "date": "2026-06-06",
       "time": "9:15 PM",
-      "venue": "Village East by Angelika"
+      "venue": "Village East by Angelika",
+      "year": 2020,
+      "poster": "https://image.tmdb.org/t/p/w185/8VKsq26fe7reSHyLgCqLL5ezJgU.jpg",
+      "genre": "Terror, Suspense"
     },
     {
       "title": "Dante",
@@ -2556,7 +2748,10 @@
       "day": "2026-06-07",
       "date": "2026-06-07",
       "time": "9:15 PM",
-      "venue": "Village East by Angelika"
+      "venue": "Village East by Angelika",
+      "year": 1997,
+      "poster": "https://image.tmdb.org/t/p/w185/aHRHfuVXEivk6abXySYCbmanUEL.jpg",
+      "genre": "Acción, Aventura"
     },
     {
       "title": "Death Boom",
@@ -2590,7 +2785,10 @@
       "day": "2026-06-09",
       "date": "2026-06-09",
       "time": "8:00 PM",
-      "venue": "Village East by Angelika"
+      "venue": "Village East by Angelika",
+      "year": null,
+      "poster": "",
+      "genre": "Documental"
     },
     {
       "title": "Hallowarrior",
@@ -2624,7 +2822,10 @@
       "day": "2026-06-10",
       "date": "2026-06-10",
       "time": "5:00 PM",
-      "venue": "Village East by Angelika"
+      "venue": "Village East by Angelika",
+      "year": 2026,
+      "poster": "https://image.tmdb.org/t/p/w185/eaVuQsTofgodi76nXkYoWtN9afH.jpg",
+      "genre": "Terror, Suspense"
     },
     {
       "title": "Mutter: The Diary of a Mother",
@@ -2658,7 +2859,10 @@
       "day": "2026-06-06",
       "date": "2026-06-06",
       "time": "8:15 PM",
-      "venue": "AMC 19th St. East 6"
+      "venue": "AMC 19th St. East 6",
+      "year": null,
+      "poster": "https://image.tmdb.org/t/p/w185/crGynSiPjF5Tn5XG8B11QrlNZ3X.jpg",
+      "genre": "Terror, Misterio"
     },
     {
       "title": "Recluse",
@@ -2692,7 +2896,10 @@
       "day": "2026-06-04",
       "date": "2026-06-04",
       "time": "9:15 PM",
-      "venue": "Village East by Angelika"
+      "venue": "Village East by Angelika",
+      "year": 1981,
+      "poster": "https://image.tmdb.org/t/p/w185/jkRPqoBSfhPZOFZN2rqfzY7yrzN.jpg",
+      "genre": "Crimen, Drama"
     },
     {
       "title": "The Haunting of Pennhurst",
@@ -2726,7 +2933,10 @@
       "day": "2026-06-05",
       "date": "2026-06-05",
       "time": "9:15 PM",
-      "venue": "Village East by Angelika"
+      "venue": "Village East by Angelika",
+      "year": 2026,
+      "poster": "",
+      "genre": "Documental"
     },
     {
       "title": "Turn It Up!",
@@ -2760,7 +2970,10 @@
       "day": "2026-06-04",
       "date": "2026-06-04",
       "time": "8:30 PM",
-      "venue": "AMC 19th St. East 6"
+      "venue": "AMC 19th St. East 6",
+      "year": 2000,
+      "poster": "https://image.tmdb.org/t/p/w185/1LqMTyQJnI7IfeDjjGRcDh1vv0r.jpg",
+      "genre": "Acción, Crimen"
     },
     {
       "title": "Crocodile",
@@ -2794,7 +3007,10 @@
       "day": "2026-06-05",
       "date": "2026-06-05",
       "time": "5:15 PM",
-      "venue": "AMC 19th St. East 6"
+      "venue": "AMC 19th St. East 6",
+      "year": 1986,
+      "poster": "https://image.tmdb.org/t/p/w185/q0Msbpvpe6yuvIUCyJuBbQ9UhUj.jpg",
+      "genre": "Aventura, Comedia"
     },
     {
       "title": "Crooks",
@@ -2828,7 +3044,10 @@
       "day": "2026-06-07",
       "date": "2026-06-07",
       "time": "6:15 PM",
-      "venue": "Village East by Angelika"
+      "venue": "Village East by Angelika",
+      "year": null,
+      "poster": "",
+      "genre": "Crimen, Suspense"
     },
     {
       "title": "Deepfake",
@@ -2862,7 +3081,10 @@
       "day": "2026-06-06",
       "date": "2026-06-06",
       "time": "5:30 PM",
-      "venue": "Village East by Angelika"
+      "venue": "Village East by Angelika",
+      "year": null,
+      "poster": "https://image.tmdb.org/t/p/w185/i6mtsJKENKOknAoK8C7Acq4o1mW.jpg",
+      "genre": "Comedia"
     },
     {
       "title": "Human Theories",
@@ -2896,7 +3118,10 @@
       "day": "2026-06-06",
       "date": "2026-06-06",
       "time": "2:30 PM",
-      "venue": "Village East by Angelika"
+      "venue": "Village East by Angelika",
+      "year": null,
+      "poster": "",
+      "genre": "Comedia"
     },
     {
       "title": "Matininó",
@@ -2930,7 +3155,10 @@
       "day": "2026-06-04",
       "date": "2026-06-04",
       "time": "8:15 PM",
-      "venue": "Village East by Angelika"
+      "venue": "Village East by Angelika",
+      "year": 2026,
+      "poster": "",
+      "genre": "Documental"
     },
     {
       "title": "Micronations",
@@ -2964,7 +3192,10 @@
       "day": "2026-06-05",
       "date": "2026-06-05",
       "time": "5:45 PM",
-      "venue": "Village East by Angelika"
+      "venue": "Village East by Angelika",
+      "year": null,
+      "poster": "",
+      "genre": "Comedia"
     },
     {
       "title": "One Woman One Bra",
@@ -2998,7 +3229,10 @@
       "day": "2026-06-05",
       "date": "2026-06-05",
       "time": "6:00 PM",
-      "venue": "Village East by Angelika"
+      "venue": "Village East by Angelika",
+      "year": 2025,
+      "poster": "https://image.tmdb.org/t/p/w185/tnu15dwkehe1PumafBITO2b1lEy.jpg",
+      "genre": "Drama"
     },
     {
       "title": "Something You Should Know About Me",
@@ -3011,7 +3245,7 @@
       "country": "United States",
       "language": "English",
       "premiere": "World Premiere",
-      "synopsis": "",
+      "synopsis": "⚠️ INGLÉS — In this sweet and raunchy trans rom-com, insecure cartoonist Al is faced with his most daunting prompt yet: confess his true feelings for his best friend or risk losing him to a handsome nemesis.",
       "screenings": [
         {
           "date": "2026-06-06",
@@ -3037,7 +3271,10 @@
       "day": "2026-06-06",
       "date": "2026-06-06",
       "time": "2:00 PM",
-      "venue": "Village East by Angelika"
+      "venue": "Village East by Angelika",
+      "year": 2026,
+      "poster": "",
+      "genre": "Animación, Romance"
     },
     {
       "title": "The Keeper of the Camphor Tree",
@@ -3071,7 +3308,10 @@
       "day": "2026-06-05",
       "date": "2026-06-05",
       "time": "8:15 PM",
-      "venue": "AMC 19th St. East 6"
+      "venue": "AMC 19th St. East 6",
+      "year": 2026,
+      "poster": "https://image.tmdb.org/t/p/w185/xkpgFVewjqtIRNTFh5yJXnNtFU4.jpg",
+      "genre": "Animación, Drama"
     },
     {
       "title": "The Man Will Burn",
@@ -3134,7 +3374,10 @@
       "day": "2026-06-04",
       "date": "2026-06-04",
       "time": "5:45 PM",
-      "venue": "Village East by Angelika"
+      "venue": "Village East by Angelika",
+      "year": null,
+      "poster": "",
+      "genre": ""
     },
     {
       "title": "Vanishing tracks",
@@ -3168,7 +3411,10 @@
       "day": "2026-06-07",
       "date": "2026-06-07",
       "time": "5:15 PM",
-      "venue": "AMC 19th St. East 6"
+      "venue": "AMC 19th St. East 6",
+      "year": 2026,
+      "poster": "https://image.tmdb.org/t/p/w185/vlu5cD2FZ4CQ4ulYagzwTrWozwo.jpg",
+      "genre": "Documental"
     },
     {
       "title": "Árru",
@@ -3202,7 +3448,10 @@
       "day": "2026-06-04",
       "date": "2026-06-04",
       "time": "7:30 PM",
-      "venue": "Village East by Angelika"
+      "venue": "Village East by Angelika",
+      "year": 2026,
+      "poster": "https://image.tmdb.org/t/p/w185/UFAIK0f9qvQYndcUF6i2hrSqSb.jpg",
+      "genre": "Drama, Música"
     },
     {
       "title": "Airport BLVD",
@@ -3236,7 +3485,10 @@
       "day": "2026-06-05",
       "date": "2026-06-05",
       "time": "6:15 PM",
-      "venue": "Village East by Angelika"
+      "venue": "Village East by Angelika",
+      "year": 2026,
+      "poster": "",
+      "genre": "Música, Drama"
     },
     {
       "title": "Caity",
@@ -3270,7 +3522,10 @@
       "day": "2026-06-07",
       "date": "2026-06-07",
       "time": "8:30 PM",
-      "venue": "Village East by Angelika"
+      "venue": "Village East by Angelika",
+      "year": 2026,
+      "poster": "",
+      "genre": "Drama"
     },
     {
       "title": "Cotton Fever",
@@ -3309,7 +3564,10 @@
       "day": "2026-06-05",
       "date": "2026-06-05",
       "time": "8:00 PM",
-      "venue": "Village East by Angelika"
+      "venue": "Village East by Angelika",
+      "year": 2023,
+      "poster": "https://image.tmdb.org/t/p/w185/9IfUUWXltKsQTKBkF18XQtgQ5Dp.jpg",
+      "genre": "Drama"
     },
     {
       "title": "Ephemera",
@@ -3343,7 +3601,10 @@
       "day": "2026-06-07",
       "date": "2026-06-07",
       "time": "5:00 PM",
-      "venue": "Village East by Angelika"
+      "venue": "Village East by Angelika",
+      "year": 2005,
+      "poster": "https://image.tmdb.org/t/p/w185/1NhxLlr7H9lK6PMoZqkHfOnw2jY.jpg",
+      "genre": "Fantasía"
     },
     {
       "title": "Here I'm Alive",
@@ -3377,7 +3638,10 @@
       "day": "2026-06-06",
       "date": "2026-06-06",
       "time": "8:30 PM",
-      "venue": "SVA Theatre"
+      "venue": "SVA Theatre",
+      "year": null,
+      "poster": "",
+      "genre": ""
     },
     {
       "title": "Kingston",
@@ -3411,7 +3675,10 @@
       "day": "2026-06-04",
       "date": "2026-06-04",
       "time": "5:30 PM",
-      "venue": "Village East by Angelika"
+      "venue": "Village East by Angelika",
+      "year": 1976,
+      "poster": "https://image.tmdb.org/t/p/w185/eYQ39Kp3ub92ZDpAsXkd2o25QFi.jpg",
+      "genre": "Drama, Película de TV"
     },
     {
       "title": "Lucy Schulman",
@@ -3445,7 +3712,10 @@
       "day": "2026-06-05",
       "date": "2026-06-05",
       "time": "5:30 PM",
-      "venue": "Village East by Angelika"
+      "venue": "Village East by Angelika",
+      "year": 2026,
+      "poster": "",
+      "genre": "Romance, Comedia"
     },
     {
       "title": "Mother Future Self",
@@ -3479,7 +3749,10 @@
       "day": "2026-06-05",
       "date": "2026-06-05",
       "time": "8:45 PM",
-      "venue": "Village East by Angelika"
+      "venue": "Village East by Angelika",
+      "year": null,
+      "poster": "",
+      "genre": ""
     },
     {
       "title": "Ponderosa",
@@ -3513,7 +3786,10 @@
       "day": "2026-06-06",
       "date": "2026-06-06",
       "time": "8:30 PM",
-      "venue": "Village East by Angelika"
+      "venue": "Village East by Angelika",
+      "year": null,
+      "poster": "https://image.tmdb.org/t/p/w185/hGy8hODGfne7Eh41hNVDv1AZw4M.jpg",
+      "genre": ""
     },
     {
       "title": "She Keeps Me Young",
@@ -3547,7 +3823,10 @@
       "day": "2026-06-04",
       "date": "2026-06-04",
       "time": "8:30 PM",
-      "venue": "Village East by Angelika"
+      "venue": "Village East by Angelika",
+      "year": null,
+      "poster": "",
+      "genre": "Drama"
     },
     {
       "title": "Summer of Three",
@@ -3581,7 +3860,10 @@
       "day": "2026-06-08",
       "date": "2026-06-08",
       "time": "8:00 PM",
-      "venue": "Village East by Angelika"
+      "venue": "Village East by Angelika",
+      "year": 2026,
+      "poster": "https://image.tmdb.org/t/p/w185/wL8zEII7tZh8Li0s1RnENTBX2Ty.jpg",
+      "genre": "Drama"
     },
     {
       "title": "Via Negativa",
@@ -3615,7 +3897,10 @@
       "day": "2026-06-05",
       "date": "2026-06-05",
       "time": "8:30 PM",
-      "venue": "Village East by Angelika"
+      "venue": "Village East by Angelika",
+      "year": 2026,
+      "poster": "",
+      "genre": "Drama"
     },
     {
       "title": "American Zoo",
@@ -3649,7 +3934,10 @@
       "day": "2026-06-04",
       "date": "2026-06-04",
       "time": "5:30 PM",
-      "venue": "SVA Theatre"
+      "venue": "SVA Theatre",
+      "year": 2026,
+      "poster": "",
+      "genre": "Documental"
     },
     {
       "title": "Bang My Box: The Robin Byrd Story",
@@ -3688,7 +3976,10 @@
       "day": "2026-06-09",
       "date": "2026-06-09",
       "time": "8:00 PM",
-      "venue": "SVA Theatre"
+      "venue": "SVA Theatre",
+      "year": 2026,
+      "poster": "",
+      "genre": ""
     },
     {
       "title": "Colors of White Rock",
@@ -3722,7 +4013,10 @@
       "day": "2026-06-07",
       "date": "2026-06-07",
       "time": "5:15 PM",
-      "venue": "Village East by Angelika"
+      "venue": "Village East by Angelika",
+      "year": null,
+      "poster": "",
+      "genre": ""
     },
     {
       "title": "Harvest",
@@ -3756,7 +4050,10 @@
       "day": "2026-06-06",
       "date": "2026-06-06",
       "time": "6:15 PM",
-      "venue": "Village East by Angelika"
+      "venue": "Village East by Angelika",
+      "year": 2023,
+      "poster": "https://image.tmdb.org/t/p/w185/cpbukMqjn96Vdw8bt4MPRF8h41T.jpg",
+      "genre": "Terror, Fantasía"
     },
     {
       "title": "Jail Time Records",
@@ -3790,7 +4087,10 @@
       "day": "2026-06-06",
       "date": "2026-06-06",
       "time": "5:30 PM",
-      "venue": "AMC 19th St. East 6"
+      "venue": "AMC 19th St. East 6",
+      "year": 2026,
+      "poster": "",
+      "genre": "Documental, Música"
     },
     {
       "title": "Jean-Michel",
@@ -3824,7 +4124,10 @@
       "day": "2026-06-05",
       "date": "2026-06-05",
       "time": "7:30 PM",
-      "venue": "Spring Studios"
+      "venue": "Spring Studios",
+      "year": 2026,
+      "poster": "https://image.tmdb.org/t/p/w185/3V75ESlmejJPp92WOZ7AKfmKxhC.jpg",
+      "genre": "Documental"
     },
     {
       "title": "Kids Like Me",
@@ -3858,7 +4161,10 @@
       "day": "2026-06-04",
       "date": "2026-06-04",
       "time": "6:15 PM",
-      "venue": "Village East by Angelika"
+      "venue": "Village East by Angelika",
+      "year": 2026,
+      "poster": "",
+      "genre": "Documental"
     },
     {
       "title": "Mexicanamerican",
@@ -3892,7 +4198,10 @@
       "day": "2026-06-09",
       "date": "2026-06-09",
       "time": "5:00 PM",
-      "venue": "Village East by Angelika"
+      "venue": "Village East by Angelika",
+      "year": 2026,
+      "poster": "https://image.tmdb.org/t/p/w185/wGp2clMovz9LbtBj2IzIeWzjsfr.jpg",
+      "genre": "Documental"
     },
     {
       "title": "Retrieval",
@@ -3926,7 +4235,10 @@
       "day": "2026-06-04",
       "date": "2026-06-04",
       "time": "8:00 PM",
-      "venue": "Village East by Angelika"
+      "venue": "Village East by Angelika",
+      "year": 2020,
+      "poster": "https://image.tmdb.org/t/p/w185/zK6Cwv2zH5h3wCekVMkNWyDkDpH.jpg",
+      "genre": "Ciencia ficción, Drama"
     },
     {
       "title": "The Gymnasts of Fisherman Colony",
@@ -3960,7 +4272,10 @@
       "day": "2026-06-08",
       "date": "2026-06-08",
       "time": "5:30 PM",
-      "venue": "SVA Theatre"
+      "venue": "SVA Theatre",
+      "year": 2026,
+      "poster": "",
+      "genre": "Documental"
     },
     {
       "title": "The Siege of Paradise",
@@ -3994,7 +4309,10 @@
       "day": "2026-06-07",
       "date": "2026-06-07",
       "time": "8:00 PM",
-      "venue": "Village East by Angelika"
+      "venue": "Village East by Angelika",
+      "year": 2026,
+      "poster": "",
+      "genre": "Documental"
     },
     {
       "title": "Time Warp",
@@ -4028,7 +4346,10 @@
       "day": "2026-06-06",
       "date": "2026-06-06",
       "time": "8:15 PM",
-      "venue": "Village East by Angelika"
+      "venue": "Village East by Angelika",
+      "year": 1981,
+      "poster": "https://image.tmdb.org/t/p/w185/fcj5VHPFbQC32C0mbSLcLcyCDsI.jpg",
+      "genre": "Película de TV, Ciencia ficción"
     },
     {
       "title": "Against the Flow",
@@ -4041,7 +4362,7 @@
       "country": "France, Luxembourg, Portugal, Sweden",
       "language": "Mandarin Chinese",
       "premiere": "World Premiere",
-      "synopsis": "",
+      "synopsis": "⚠️ INGLÉS — Dayao and his pregnant wife, Tiantian, live in the countryside but work themselves to the bone in the city. Tiantian prefers the city, but Dayao prefers the tranquility of nature. When Dayao is seriously injured at a construction site, Tiantian must make major decisions about what’s best for them and their unborn baby.",
       "screenings": [
         {
           "date": "2026-06-07",
@@ -4062,7 +4383,10 @@
       "day": "2026-06-07",
       "date": "2026-06-07",
       "time": "2:30 PM",
-      "venue": "AMC 19th St. East 6"
+      "venue": "AMC 19th St. East 6",
+      "year": null,
+      "poster": "",
+      "genre": ""
     },
     {
       "title": "Funk",
@@ -4096,7 +4420,10 @@
       "day": "2026-06-05",
       "date": "2026-06-05",
       "time": "8:30 PM",
-      "venue": "AMC 19th St. East 6"
+      "venue": "AMC 19th St. East 6",
+      "year": 2009,
+      "poster": "https://image.tmdb.org/t/p/w185/hgbVCGDjbJfO9Rx5LBsFgFOjEa7.jpg",
+      "genre": "Comedia"
     },
     {
       "title": "I Spy With My Little Eye",
@@ -4109,7 +4436,7 @@
       "country": "Germany",
       "language": "German",
       "premiere": "World Premiere",
-      "synopsis": "",
+      "synopsis": "⚠️ INGLÉS — Single-narrator animation that tells the story of a boy called Dick and his best friend Stewart, whose eye is all that's left of him following a mysterious accident.",
       "screenings": [
         {
           "date": "2026-06-07",
@@ -4130,7 +4457,10 @@
       "day": "2026-06-07",
       "date": "2026-06-07",
       "time": "2:15 PM",
-      "venue": "AMC 19th St. East 6"
+      "venue": "AMC 19th St. East 6",
+      "year": 2018,
+      "poster": "https://image.tmdb.org/t/p/w185/dlq0fKxkaUgp2yb21C4kGneC9Ae.jpg",
+      "genre": "Animación"
     },
     {
       "title": "Labrador — Autopsy of Silence",
@@ -4164,7 +4494,10 @@
       "day": "2026-06-06",
       "date": "2026-06-06",
       "time": "8:30 PM",
-      "venue": "AMC 19th St. East 6"
+      "venue": "AMC 19th St. East 6",
+      "year": 2026,
+      "poster": "https://image.tmdb.org/t/p/w185/s8VOcaEejy0RcYzXBSLyRyDaIpo.jpg",
+      "genre": "Suspense, Crimen"
     },
     {
       "title": "Memorizu",
@@ -4198,7 +4531,10 @@
       "day": "2026-06-06",
       "date": "2026-06-06",
       "time": "8:15 PM",
-      "venue": "Village East by Angelika"
+      "venue": "Village East by Angelika",
+      "year": 2026,
+      "poster": "https://image.tmdb.org/t/p/w185/9hShb0eM5G8MLRtl97VaxY9VoUC.jpg",
+      "genre": "Drama"
     },
     {
       "title": "Sad Girlz",
@@ -4232,7 +4568,10 @@
       "day": "2026-06-04",
       "date": "2026-06-04",
       "time": "5:15 PM",
-      "venue": "Village East by Angelika"
+      "venue": "Village East by Angelika",
+      "year": 2026,
+      "poster": "https://image.tmdb.org/t/p/w185/uBuKmFb6lpqvL1a1TeqP6NmOTHP.jpg",
+      "genre": "Drama"
     },
     {
       "title": "Skateboarding Is Not for Girls",
@@ -4266,7 +4605,10 @@
       "day": "2026-06-04",
       "date": "2026-06-04",
       "time": "8:15 PM",
-      "venue": "AMC 19th St. East 6"
+      "venue": "AMC 19th St. East 6",
+      "year": 2026,
+      "poster": "",
+      "genre": "Drama"
     },
     {
       "title": "Stand Up",
@@ -4300,7 +4642,10 @@
       "day": "2026-06-06",
       "date": "2026-06-06",
       "time": "3:15 PM",
-      "venue": "Village East by Angelika"
+      "venue": "Village East by Angelika",
+      "year": 2012,
+      "poster": "https://image.tmdb.org/t/p/w185/RYos76JUfalXJN1P3WW4me7xcB.jpg",
+      "genre": "Suspense, Comedia"
     },
     {
       "title": "Summer War",
@@ -4313,7 +4658,7 @@
       "country": "Chile, Argentina, Uruguay, Italy",
       "language": "Spanish, English",
       "premiere": "World Premiere",
-      "synopsis": "",
+      "synopsis": "Document of World War Battles in Finland at Summer 1944",
       "screenings": [
         {
           "date": "2026-06-07",
@@ -4334,7 +4679,10 @@
       "day": "2026-06-07",
       "date": "2026-06-07",
       "time": "5:30 PM",
-      "venue": "AMC 19th St. East 6"
+      "venue": "AMC 19th St. East 6",
+      "year": null,
+      "poster": "",
+      "genre": ""
     },
     {
       "title": "The Tropic Sun and His Eyes",
@@ -4368,7 +4716,10 @@
       "day": "2026-06-05",
       "date": "2026-06-05",
       "time": "5:30 PM",
-      "venue": "AMC 19th St. East 6"
+      "venue": "AMC 19th St. East 6",
+      "year": 2026,
+      "poster": "https://image.tmdb.org/t/p/w185/iiSTkTSxKlYlqjwRulQK6XAVrKE.jpg",
+      "genre": "Drama"
     },
     {
       "title": "What Is to Come",
@@ -4402,7 +4753,10 @@
       "day": "2026-06-08",
       "date": "2026-06-08",
       "time": "5:30 PM",
-      "venue": "AMC 19th St. East 6"
+      "venue": "AMC 19th St. East 6",
+      "year": 2026,
+      "poster": "",
+      "genre": "Drama"
     },
     {
       "title": "Zejtune",
@@ -4436,7 +4790,10 @@
       "day": "2026-06-06",
       "date": "2026-06-06",
       "time": "2:30 PM",
-      "venue": "AMC 19th St. East 6"
+      "venue": "AMC 19th St. East 6",
+      "year": 2026,
+      "poster": "https://image.tmdb.org/t/p/w185/LocCeo7mZ0PBibKioNjJwPHihb.jpg",
+      "genre": "Drama"
     },
     {
       "title": "9/11: Reunited",
@@ -4556,7 +4913,10 @@
       "day": "2026-06-08",
       "date": "2026-06-08",
       "time": "8:30 PM",
-      "venue": "AMC 19th St. East 6"
+      "venue": "AMC 19th St. East 6",
+      "year": 2007,
+      "poster": "https://image.tmdb.org/t/p/w185/pmtStF3fFKohqL1uteBkIDSd2no.jpg",
+      "genre": "Documental"
     },
     {
       "title": "Taxi Driver",
@@ -4580,7 +4940,10 @@
       "day": "2026-06-05",
       "date": "2026-06-05",
       "time": "8:00 PM",
-      "venue": "OKX Theater at BMCC TPAC"
+      "venue": "OKX Theater at BMCC TPAC",
+      "year": 1976,
+      "poster": "https://image.tmdb.org/t/p/w185/mZMl0YVHJOrkCUSH9oDOEgDwbHT.jpg",
+      "genre": "Crimen, Drama"
     },
     {
       "title": "Dear England",
@@ -5600,7 +5963,7 @@
       "country": "United States",
       "language": "Mandarin Chinese",
       "premiere": "",
-      "synopsis": "",
+      "synopsis": "Explora la persecución de \"el sueño chino\", el mundo del trabajo en el gigante asiatico, presentando una visión contemporánea de una China que da prioridad a la productividad y la innovación por encima de todo.",
       "screenings": [
         {
           "date": "2026-06-14",
@@ -5611,7 +5974,10 @@
       "day": "2026-06-14",
       "date": "2026-06-14",
       "time": "7:00 PM",
-      "venue": "Hudson Yards Public Square and Gardens"
+      "venue": "Hudson Yards Public Square and Gardens",
+      "year": 2021,
+      "poster": "https://image.tmdb.org/t/p/w185/8Tng4QWveeazE2gFcrZxvbyvvl8.jpg",
+      "genre": "Documental"
     },
     {
       "title": "Best of Tribeca Shorts",
@@ -5648,7 +6014,7 @@
       "country": "France",
       "language": "English, French",
       "premiere": "",
-      "synopsis": "",
+      "synopsis": "Behind-the-scenes documentary revealing what goes on inside the colourful, privileged, and sometimes stressful Christian Dior fashion house.",
       "screenings": [
         {
           "date": "2026-06-09",
@@ -5659,7 +6025,10 @@
       "day": "2026-06-09",
       "date": "2026-06-09",
       "time": "7:00 PM",
-      "venue": "Hudson Yards Public Square and Gardens"
+      "venue": "Hudson Yards Public Square and Gardens",
+      "year": 2015,
+      "poster": "https://image.tmdb.org/t/p/w185/1Op8vRhkmTF83JZ5PkIZTx8vSlB.jpg",
+      "genre": "Documental"
     },
     {
       "title": "Guy and Madeline on a Park Bench",
@@ -5683,7 +6052,10 @@
       "day": "2026-06-05",
       "date": "2026-06-05",
       "time": "7:00 PM",
-      "venue": "Hudson Yards Public Square and Gardens"
+      "venue": "Hudson Yards Public Square and Gardens",
+      "year": 2010,
+      "poster": "https://image.tmdb.org/t/p/w185/7bu5XiVNVSlJkdihAv7Bnkdah3i.jpg",
+      "genre": "Drama, Música"
     },
     {
       "title": "Jane Austen's Period Drama",
@@ -5696,7 +6068,7 @@
       "country": "United States",
       "language": "English",
       "premiere": "",
-      "synopsis": "",
+      "synopsis": "⚠️ INGLÉS — England, 1813. In the middle of a long-awaited marriage proposal, Miss Estrogenia Talbot gets her period. Her suitor, Mr. Dickley, mistakes the blood for an injury, and it soon becomes clear that his expensive education has missed a spot.",
       "screenings": [
         {
           "date": "2026-06-06",
@@ -5707,7 +6079,10 @@
       "day": "2026-06-06",
       "date": "2026-06-06",
       "time": "7:00 PM",
-      "venue": "Hudson Yards Public Square and Gardens"
+      "venue": "Hudson Yards Public Square and Gardens",
+      "year": 2024,
+      "poster": "https://image.tmdb.org/t/p/w185/qZZYV7MDC5pgYCadQAUyrhsjbKO.jpg",
+      "genre": "Comedia, Romance"
     },
     {
       "title": "Jiro Dreams of Sushi",
@@ -5731,7 +6106,10 @@
       "day": "2026-06-07",
       "date": "2026-06-07",
       "time": "7:00 PM",
-      "venue": "Hudson Yards Public Square and Gardens"
+      "venue": "Hudson Yards Public Square and Gardens",
+      "year": 2011,
+      "poster": "https://image.tmdb.org/t/p/w185/iVrkM4jSJw1IsOpW5jTtY5QxVqj.jpg",
+      "genre": "Documental"
     },
     {
       "title": "Let the Right One In",
@@ -5755,7 +6133,10 @@
       "day": "2026-06-08",
       "date": "2026-06-08",
       "time": "7:00 PM",
-      "venue": "Hudson Yards Public Square and Gardens"
+      "venue": "Hudson Yards Public Square and Gardens",
+      "year": 2008,
+      "poster": "https://image.tmdb.org/t/p/w185/8mw1Iv9o4BVCtfScCL0nhzolOdO.jpg",
+      "genre": "Terror, Drama"
     },
     {
       "title": "Little Woods",
@@ -5779,7 +6160,10 @@
       "day": "2026-06-11",
       "date": "2026-06-11",
       "time": "7:00 PM",
-      "venue": "Hudson Yards Public Square and Gardens"
+      "venue": "Hudson Yards Public Square and Gardens",
+      "year": 2019,
+      "poster": "https://image.tmdb.org/t/p/w185/h29Yy7xP5T5Jq2uHi3L47XB80RP.jpg",
+      "genre": "Drama, Suspense"
     },
     {
       "title": "Ripe!",
@@ -5792,7 +6176,7 @@
       "country": "Spain, United States",
       "language": "",
       "premiere": "",
-      "synopsis": "",
+      "synopsis": "⚠️ INGLÉS — When their abusive parents are killed in a car crash, twin sisters Rosie and Violet vow to run away to Kentucky in search of a better life. While on the road, the girls meet up with Pete, a drifter working as a grounds keeper on a derelict army base, who takes them in. While Violet falls for him, Rosie becomes increasingly angry and hostile, and the sisters' childhood bond is eventually destroyed forever.",
       "screenings": [
         {
           "date": "2026-06-06",
@@ -5803,7 +6187,10 @@
       "day": "2026-06-06",
       "date": "2026-06-06",
       "time": "7:00 PM",
-      "venue": "Hudson Yards Public Square and Gardens"
+      "venue": "Hudson Yards Public Square and Gardens",
+      "year": 1996,
+      "poster": "https://image.tmdb.org/t/p/w185/xoQmibPIqwIN4cTlohDVNZwAi2y.jpg",
+      "genre": "Drama"
     },
     {
       "title": "The Last Play at Shea",
@@ -5816,7 +6203,7 @@
       "country": "United States",
       "language": "English",
       "premiere": "",
-      "synopsis": "",
+      "synopsis": "⚠️ INGLÉS — In 1964, when the New York Mets were regarded as little more than a punch line in major league baseball, the team moved into a brand new ballpark, Shea Stadium, which was to become their home for the next forty-four years. Shea Stadium was closed (in part to create more parking space for a new stadium, Citi Field), and on July 16 and 18, 2008, Billy Joel headlined the final concerts held at the stadium. Filmmaker Paul Crowder and a camera crew were on hand for Joel's shows, and the documentary THE LAST PLAY AT SHEA chronicles his historic two-night stand, as well as exploring Joel's career, his ties to working-class New York, and how his life and career paralleled the growth of suburban Long Island and the beloved ballpark.",
       "screenings": [
         {
           "date": "2026-06-04",
@@ -5827,7 +6214,10 @@
       "day": "2026-06-04",
       "date": "2026-06-04",
       "time": "7:00 PM",
-      "venue": "Hudson Yards Public Square and Gardens"
+      "venue": "Hudson Yards Public Square and Gardens",
+      "year": 2010,
+      "poster": "https://image.tmdb.org/t/p/w185/xnnmPEZJrZCQdjJlrU6UJW75LUe.jpg",
+      "genre": "Documental, Música"
     },
     {
       "title": "The Queen of Basketball",
@@ -5840,7 +6230,7 @@
       "country": "United States",
       "language": "English",
       "premiere": "",
-      "synopsis": "",
+      "synopsis": "⚠️ INGLÉS — Part of the Almost Famous series. She was arguably the greatest women's basketball player. She won three national trophies; she played in the ’76 Olympics; she was drafted to the NBA. But have you ever heard of Lucy Harris?",
       "screenings": [
         {
           "date": "2026-06-06",
@@ -5851,7 +6241,10 @@
       "day": "2026-06-06",
       "date": "2026-06-06",
       "time": "7:00 PM",
-      "venue": "Hudson Yards Public Square and Gardens"
+      "venue": "Hudson Yards Public Square and Gardens",
+      "year": 2021,
+      "poster": "https://image.tmdb.org/t/p/w185/8RjXNAvpH4SsBkEDRsCrEXxOcnd.jpg",
+      "genre": "Documental"
     },
     {
       "title": "The Short History of the Long Road",
@@ -5875,7 +6268,10 @@
       "day": "2026-06-13",
       "date": "2026-06-13",
       "time": "7:00 PM",
-      "venue": "Hudson Yards Public Square and Gardens"
+      "venue": "Hudson Yards Public Square and Gardens",
+      "year": 2019,
+      "poster": "https://image.tmdb.org/t/p/w185/chTc0F8B9YOiwZDea5LJ8h2q2Qx.jpg",
+      "genre": "Drama"
     },
     {
       "title": "Virunga",
@@ -5888,7 +6284,7 @@
       "country": "English, French, Swahili",
       "language": "",
       "premiere": "",
-      "synopsis": "",
+      "synopsis": "⚠️ INGLÉS — Virunga in the Democratic Republic of the Congo is Africa’s oldest national park, a UNESCO world heritage site, and a contested ground among insurgencies seeking to topple the government that see untold profits in the land. Among this ongoing power struggle, Virunga also happens to be the last natural habitat for the critically endangered mountain gorilla. The only thing standing in the way of the forces closing in around the gorillas: a handful of passionate park rangers and journalists fighting to secure the park’s borders and expose the corruption of its enemies. Filled with shocking footage, and anchored by the surprisingly deep and gentle characters of the gorillas themselves, Virunga is a galvanizing call to action around an ongoing political and environmental crisis in the Congo.",
       "screenings": [
         {
           "date": "2026-06-10",
@@ -5899,7 +6295,10 @@
       "day": "2026-06-10",
       "date": "2026-06-10",
       "time": "7:00 PM",
-      "venue": "Hudson Yards Public Square and Gardens"
+      "venue": "Hudson Yards Public Square and Gardens",
+      "year": 2014,
+      "poster": "https://image.tmdb.org/t/p/w185/b59YdJZyRUu04hnWdmmz4kPjbTF.jpg",
+      "genre": "Documental, Bélica"
     },
     {
       "title": "\"Animus Ignis\" - Shawty Sweat",
@@ -6176,7 +6575,7 @@
       "country": "Egypt",
       "language": "Arabic",
       "premiere": "",
-      "synopsis": "",
+      "synopsis": "⚠️ INGLÉS — A couple moves into a new house and observe a series of strange and possibly paranormal events that leads them to setup surveillance cameras, recording everything that takes place. The found footage reveals what took place.",
       "screenings": [
         {
           "date": "2026-06-06",
@@ -6197,7 +6596,10 @@
       "day": "2026-06-06",
       "date": "2026-06-06",
       "time": "5:30 PM",
-      "venue": "Spring Studios"
+      "venue": "Spring Studios",
+      "year": 2011,
+      "poster": "https://image.tmdb.org/t/p/w185/rJTPIWWaVmKLYT3cx0PLlWm7X65.jpg",
+      "genre": "Terror, Drama"
     },
     {
       "title": "A Crime Across Four Landscapes",
@@ -6210,7 +6612,7 @@
       "country": "United States",
       "language": "English",
       "premiere": "World Premiere",
-      "synopsis": "",
+      "synopsis": "⚠️ INGLÉS — When a small-town crime goes awry, the evidence is scattered across four picturesque landscapes in the Southern American countryside - inviting viewers to piece together what happened.",
       "screenings": [
         {
           "date": "2026-06-05",
@@ -6231,7 +6633,10 @@
       "day": "2026-06-05",
       "date": "2026-06-05",
       "time": "5:30 PM",
-      "venue": "Spring Studios"
+      "venue": "Spring Studios",
+      "year": 2026,
+      "poster": "https://image.tmdb.org/t/p/w185/xyJc46QkEAE35PVyyCT8JguQrTO.jpg",
+      "genre": ""
     },
     {
       "title": "Am I a Bad Person?",
@@ -6244,7 +6649,7 @@
       "country": "United States",
       "language": "English",
       "premiere": "World Premiere",
-      "synopsis": "",
+      "synopsis": "When a mother and daughter tour film festivals in Europe and decide to part ways, they must confront life-changing choices alone, before returning home.",
       "screenings": [
         {
           "date": "2026-06-04",
@@ -6260,7 +6665,10 @@
       "day": "2026-06-04",
       "date": "2026-06-04",
       "time": "5:30 PM",
-      "venue": "Spring Studios"
+      "venue": "Spring Studios",
+      "year": 2012,
+      "poster": "https://image.tmdb.org/t/p/w185/qqk2Gw7XB3oNGL7TuppcL4JaRax.jpg",
+      "genre": ""
     },
     {
       "title": "APART",
@@ -6273,7 +6681,7 @@
       "country": "United States, South Africa",
       "language": "Afrikaans, English",
       "premiere": "World Premiere",
-      "synopsis": "",
+      "synopsis": "Cuando Violet acepta una invitación a una isla privada con algunos de los influencers sociales más famosos del mundo, espera un fin de semana de oportunidades virales inigualables. Pronto se convierte en parte de su propio y horrible reality show cuando los invitados se enfrentan entre sí para capturar a los legendarios perros devoradores de hombres de la isla antes de que se conviertan en víctimas de los monstruosos caninos.",
       "screenings": [
         {
           "date": "2026-06-06",
@@ -6289,7 +6697,10 @@
       "day": "2026-06-06",
       "date": "2026-06-06",
       "time": "2:30 PM",
-      "venue": "Spring Studios"
+      "venue": "Spring Studios",
+      "year": 2025,
+      "poster": "https://image.tmdb.org/t/p/w185/6IiNUUV6H2W1wUc8e1w4GfuQCOE.jpg",
+      "genre": "Terror, Misterio"
     },
     {
       "title": "Because Today is Saturday",
@@ -6302,7 +6713,7 @@
       "country": "Portugal, France, Spain",
       "language": "No Dialogue",
       "premiere": "",
-      "synopsis": "",
+      "synopsis": "⚠️ INGLÉS — It is Saturday, a day of rest. A woman wakes up early so that she can give herself a birthday present: some time to write. But whenever an inspirational moment occurs, it is interrupted by domestic situations that claim her attention: the children, laundry, the meals. The mental load of those tasks ends up being unbearable and she reaches a breaking point.",
       "screenings": [
         {
           "date": "2026-06-06",
@@ -6318,7 +6729,10 @@
       "day": "2026-06-06",
       "date": "2026-06-06",
       "time": "2:30 PM",
-      "venue": "Spring Studios"
+      "venue": "Spring Studios",
+      "year": 2026,
+      "poster": "https://image.tmdb.org/t/p/w185/eLMlWlvZq6WY1yUg0wwJJJaTGhf.jpg",
+      "genre": "Animación, Drama"
     },
     {
       "title": "Born to Kill",
@@ -6331,7 +6745,7 @@
       "country": "United States",
       "language": "English",
       "premiere": "World Premiere",
-      "synopsis": "",
+      "synopsis": "En Reno (Nevada), Helen Brent (Claire Trevor), una mujer fría y calculadora, acaba de divorciarse. Esa misma noche, en la casa donde se aloja, descubre un doble asesinato. Como iba a regresar a San Francisco, prefiere irse sin avisar a la policía para no involucrarse. En el tren se encuentra con Sam Wild (Lawrence Tierney), un atractivo psicópata. Él es el asesino que ha matado a la pareja por celos, y también va para San Francisco huyendo del lugar del crimen.",
       "screenings": [
         {
           "date": "2026-06-07",
@@ -6347,7 +6761,10 @@
       "day": "2026-06-07",
       "date": "2026-06-07",
       "time": "5:30 PM",
-      "venue": "Spring Studios"
+      "venue": "Spring Studios",
+      "year": 1947,
+      "poster": "https://image.tmdb.org/t/p/w185/1qPd9roi8DzcSwVmsv15rrXrCgF.jpg",
+      "genre": "Crimen, Drama"
     },
     {
       "title": "Brujo",
@@ -6360,7 +6777,7 @@
       "country": "Colombia",
       "language": "Spanish, English",
       "premiere": "International Premiere",
-      "synopsis": "",
+      "synopsis": "⚠️ INGLÉS — Border Brujo is a ritual-linguistic journey across the U.S./Mexico border written and performed by artist Guillermo Gómez-Peña. In the guise of a cross-cultural shaman, Gómez Peña shifts into 15 different personas, each speaking a different language. The personas are symbolic of the borders between North and South, Anglo and Latino; myth and reality; legality and illegality; art and life. Border Brujo assaults and exorcises the demons of dominant cultures. He articulates fear, desire, trauma sublimation, anger and misplacement embodying ruptured and defiant communities with multilingual dexterity and humor.",
       "screenings": [
         {
           "date": "2026-06-06",
@@ -6381,7 +6798,10 @@
       "day": "2026-06-06",
       "date": "2026-06-06",
       "time": "8:15 PM",
-      "venue": "Spring Studios"
+      "venue": "Spring Studios",
+      "year": 1990,
+      "poster": "https://image.tmdb.org/t/p/w185/gW3SqK4V14p1Avx7VivI0mDQBpO.jpg",
+      "genre": ""
     },
     {
       "title": "Buckets",
@@ -6420,7 +6840,10 @@
       "day": "2026-06-05",
       "date": "2026-06-05",
       "time": "8:30 PM",
-      "venue": "Spring Studios"
+      "venue": "Spring Studios",
+      "year": null,
+      "poster": "",
+      "genre": ""
     },
     {
       "title": "ChikaBOOM!",
@@ -6496,7 +6919,7 @@
       "country": "France, United States",
       "language": "English, French",
       "premiere": "World Premiere",
-      "synopsis": "",
+      "synopsis": "⚠️ INGLÉS — Down at the docks a very enterprising but dangerous element is making life miserable for Sheriff Marga. But she is distracted by a series of puzzling kidnappings that is plaguing her parish. Could the culprit be the mysterious Queen - the dance hall queen of the docks? Or could it be an even more sinister figure: The Killer Tarantula?",
       "screenings": [
         {
           "date": "2026-06-07",
@@ -6512,7 +6935,10 @@
       "day": "2026-06-07",
       "date": "2026-06-07",
       "time": "2:30 PM",
-      "venue": "Spring Studios"
+      "venue": "Spring Studios",
+      "year": 1998,
+      "poster": "https://image.tmdb.org/t/p/w185/pDPg91DIntUHCrz5avzjw7xlJlV.jpg",
+      "genre": "Terror, Comedia"
     },
     {
       "title": "Couture to the Max",
@@ -6525,7 +6951,7 @@
       "country": "United States",
       "language": "English",
       "premiere": "World Premiere",
-      "synopsis": "",
+      "synopsis": "At just 9-years-old, fashion prodigy Max Alexander fearlessly fuses his boundless imagination with an unwavering commitment to sustainability, inspiring us to dream boldly and act responsibly.",
       "screenings": [
         {
           "date": "2026-06-13",
@@ -6541,7 +6967,10 @@
       "day": "2026-06-13",
       "date": "2026-06-13",
       "time": "8:30 PM",
-      "venue": "Spring Studios"
+      "venue": "Spring Studios",
+      "year": 2026,
+      "poster": "",
+      "genre": "Documental"
     },
     {
       "title": "Daddy's Little Meatball",
@@ -6554,7 +6983,7 @@
       "country": "Australia, United States",
       "language": "English",
       "premiere": "New York Premiere",
-      "synopsis": "",
+      "synopsis": "⚠️ INGLÉS — On a trip to New York, an Australian period-underwear salesman and his teenage daughter navigate the city and their strained relationship.",
       "screenings": [
         {
           "date": "2026-06-06",
@@ -6575,7 +7004,10 @@
       "day": "2026-06-06",
       "date": "2026-06-06",
       "time": "8:45 PM",
-      "venue": "Spring Studios"
+      "venue": "Spring Studios",
+      "year": 2026,
+      "poster": "https://image.tmdb.org/t/p/w185/sQQJuqFrjy5HhsZOUzTNptMk742.jpg",
+      "genre": "Comedia, Drama"
     },
     {
       "title": "Dear Upstairs Neighbors",
@@ -6604,7 +7036,10 @@
       "day": "2026-06-06",
       "date": "2026-06-06",
       "time": "12:15 PM",
-      "venue": "Spring Studios"
+      "venue": "Spring Studios",
+      "year": null,
+      "poster": "",
+      "genre": ""
     },
     {
       "title": "DISC",
@@ -6617,7 +7052,7 @@
       "country": "United States",
       "language": "English",
       "premiere": "New York Premiere",
-      "synopsis": "",
+      "synopsis": "⚠️ INGLÉS — A street rapper, tries to promote his latest single in the big apple, but he is challenge by the arrogant competition around the block.",
       "screenings": [
         {
           "date": "2026-06-05",
@@ -6643,7 +7078,10 @@
       "day": "2026-06-05",
       "date": "2026-06-05",
       "time": "8:30 PM",
-      "venue": "Spring Studios"
+      "venue": "Spring Studios",
+      "year": 2024,
+      "poster": "https://image.tmdb.org/t/p/w185/p6n6asYwy0jggE0gCWhz6Llk7BI.jpg",
+      "genre": "Drama"
     },
     {
       "title": "Eeny, Meeny, Miny, Moe!",
@@ -6656,7 +7094,7 @@
       "country": "Czech Republic, Slovakia",
       "language": "No Dialogue",
       "premiere": "",
-      "synopsis": "",
+      "synopsis": "My choices determine my life.",
       "screenings": [
         {
           "date": "2026-06-06",
@@ -6672,7 +7110,10 @@
       "day": "2026-06-06",
       "date": "2026-06-06",
       "time": "12:15 PM",
-      "venue": "Spring Studios"
+      "venue": "Spring Studios",
+      "year": 2011,
+      "poster": "https://image.tmdb.org/t/p/w185/Xc0DIw8r6NYWaB1U1YGmTfVBkp.jpg",
+      "genre": ""
     },
     {
       "title": "Fabric",
@@ -6685,7 +7126,7 @@
       "country": "United States",
       "language": "English",
       "premiere": "World Premiere",
-      "synopsis": "",
+      "synopsis": "Rebajas en un gran almacén inglés, Sheila ronda estanterías, sopesa prendas y, de repente, un vestido rojo sangre de seda la hipnotiza. Ya no hay nada que ella quiera salvo ese vestido, nada salvo acariciarlo, tantearlo, adorarlo... Parece que pesa una maldición sobre cada persona que ha poseído esa prenda fetiche.",
       "screenings": [
         {
           "date": "2026-06-06",
@@ -6706,7 +7147,10 @@
       "day": "2026-06-06",
       "date": "2026-06-06",
       "time": "8:45 PM",
-      "venue": "Spring Studios"
+      "venue": "Spring Studios",
+      "year": 2018,
+      "poster": "https://image.tmdb.org/t/p/w185/mIH9mS7tZXBaEoL6LAHZL6TgktW.jpg",
+      "genre": "Terror, Fantasía"
     },
     {
       "title": "Farm to Fashion",
@@ -6748,7 +7192,7 @@
       "country": "United States",
       "language": "English",
       "premiere": "World Premiere",
-      "synopsis": "",
+      "synopsis": "Noah, de 18 años, se muda de Estados Unidos a Londres con su madre y William, un empresario británico adinerado. Noah conoce al hijo de William, un chico malo llamado Nick, y crece entre ellos una atracción innegable. Mientras Noah se adapta a su nueva vida y se enamora por primera vez, su devastador pasado la alcanzará.",
       "screenings": [
         {
           "date": "2026-06-04",
@@ -6769,7 +7213,10 @@
       "day": "2026-06-04",
       "date": "2026-06-04",
       "time": "8:30 PM",
-      "venue": "Spring Studios"
+      "venue": "Spring Studios",
+      "year": 2025,
+      "poster": "https://image.tmdb.org/t/p/w185/q0HxfkF9eoa6wSVnzwMhuDSK7ba.jpg",
+      "genre": "Drama, Romance"
     },
     {
       "title": "Found&Lost",
@@ -6782,7 +7229,7 @@
       "country": "Austria",
       "language": "Arabic, German, English",
       "premiere": "New York Premiere",
-      "synopsis": "",
+      "synopsis": "⚠️ INGLÉS — In order to impress his beautiful French neighbor, Dylan Ramsey dognaps her pet pooch so he can return him and become a hero.",
       "screenings": [
         {
           "date": "2026-06-05",
@@ -6803,7 +7250,10 @@
       "day": "2026-06-05",
       "date": "2026-06-05",
       "time": "5:30 PM",
-      "venue": "Spring Studios"
+      "venue": "Spring Studios",
+      "year": 1999,
+      "poster": "https://image.tmdb.org/t/p/w185/3A7G3EMp2SBCsKG9ZrlUBlqhPBr.jpg",
+      "genre": "Comedia, Romance"
     },
     {
       "title": "Freestyle",
@@ -6816,7 +7266,7 @@
       "country": "United States",
       "language": "English, Russian",
       "premiere": "World Premiere",
-      "synopsis": "",
+      "synopsis": "Una promesa del rap con un pasado delictivo decide vender droga para saldar su deuda con el estudio de grabación. Pero su arriesgado plan podría costarle muy caro.",
       "screenings": [
         {
           "date": "2026-06-04",
@@ -6837,7 +7287,10 @@
       "day": "2026-06-04",
       "date": "2026-06-04",
       "time": "8:30 PM",
-      "venue": "Spring Studios"
+      "venue": "Spring Studios",
+      "year": 2023,
+      "poster": "https://image.tmdb.org/t/p/w185/gX2MUaQzAFaLIyRTPTtXNJX8ev3.jpg",
+      "genre": "Crimen, Acción"
     },
     {
       "title": "General Admission",
@@ -6850,7 +7303,7 @@
       "country": "United States",
       "language": "English",
       "premiere": "World Premiere",
-      "synopsis": "",
+      "synopsis": "A movie directed by Jeffrey Hidalgo starring Jasmine Curtis-Smith.",
       "screenings": [
         {
           "date": "2026-06-05",
@@ -6876,7 +7329,10 @@
       "day": "2026-06-05",
       "date": "2026-06-05",
       "time": "8:30 PM",
-      "venue": "Spring Studios"
+      "venue": "Spring Studios",
+      "year": 2021,
+      "poster": "https://image.tmdb.org/t/p/w185/fv1KZVziar0T56AQFHlqElqPgyV.jpg",
+      "genre": ""
     },
     {
       "title": "Getar Hero",
@@ -6923,7 +7379,7 @@
       "country": "Poland",
       "language": "English, Polish",
       "premiere": "",
-      "synopsis": "",
+      "synopsis": "⚠️ INGLÉS — Aga, is a popular journalist who reports on world conflicts. She travels all over the world and is close to the people she meets. She doesn't keep her distance with her viewers; she speaks to them through her phone screen, even when she is in danger. Unfortunately, during one of her reports, this time from Indonesia, through a mistake by the filmmaker, her secret comes out. Aga's life changes suddenly, and she has to save her reputation. The events make her think, is her work ethical?​​",
       "screenings": [
         {
           "date": "2026-06-04",
@@ -6939,7 +7395,10 @@
       "day": "2026-06-04",
       "date": "2026-06-04",
       "time": "5:30 PM",
-      "venue": "Spring Studios"
+      "venue": "Spring Studios",
+      "year": 2025,
+      "poster": "",
+      "genre": "Drama"
     },
     {
       "title": "Grounded",
@@ -6952,7 +7411,7 @@
       "country": "New Zealand",
       "language": "No Dialogue",
       "premiere": "",
-      "synopsis": "",
+      "synopsis": "⚠️ INGLÉS — Young backpacker Henry inadvertently becomes the custodian of an old lady's suitcase at the airport. Moments later, Henry's surrounded by police and accused of being a terrorist. Things only get worse when Detective Harrigan arrives; a hard-nosed cop in no mood to listen. Can Henry find some way out of this mess... alive?",
       "screenings": [
         {
           "date": "2026-06-06",
@@ -6968,7 +7427,10 @@
       "day": "2026-06-06",
       "date": "2026-06-06",
       "time": "12:15 PM",
-      "venue": "Spring Studios"
+      "venue": "Spring Studios",
+      "year": 2003,
+      "poster": "",
+      "genre": "Comedia"
     },
     {
       "title": "His House, Home",
@@ -6981,7 +7443,7 @@
       "country": "Ireland",
       "language": "English",
       "premiere": "New York Premiere",
-      "synopsis": "",
+      "synopsis": "Luke, a closeted young man caring for his father with MS, must confront his fears of coming out when a queer healthcare assistant enters their lives.",
       "screenings": [
         {
           "date": "2026-06-06",
@@ -7002,7 +7464,10 @@
       "day": "2026-06-06",
       "date": "2026-06-06",
       "time": "5:30 PM",
-      "venue": "Spring Studios"
+      "venue": "Spring Studios",
+      "year": 2025,
+      "poster": "https://image.tmdb.org/t/p/w185/azfGYimJTYrf3sYLp3ilTSjS4dr.jpg",
+      "genre": "Drama"
     },
     {
       "title": "Holo",
@@ -7015,7 +7480,7 @@
       "country": "Canada",
       "language": "English",
       "premiere": "World Premiere",
-      "synopsis": "",
+      "synopsis": "One day he'll be the best trainer. For now, he just needs to find a Charizard. It's a matter of life or death.",
       "screenings": [
         {
           "date": "2026-06-06",
@@ -7036,7 +7501,10 @@
       "day": "2026-06-06",
       "date": "2026-06-06",
       "time": "8:15 PM",
-      "venue": "Spring Studios"
+      "venue": "Spring Studios",
+      "year": 2022,
+      "poster": "https://image.tmdb.org/t/p/w185/rCCSm6InL33Ake9Qu4uUjnDgOW9.jpg",
+      "genre": "Suspense, Comedia"
     },
     {
       "title": "Homesick",
@@ -7049,7 +7517,7 @@
       "country": "United States",
       "language": "English, Russian",
       "premiere": "World Premiere",
-      "synopsis": "",
+      "synopsis": "\"Homesick\" is an absurdist thriller about an unhappy man who attends a retreat offering adults a second chance at a happy childhood.",
       "screenings": [
         {
           "date": "2026-06-06",
@@ -7070,7 +7538,10 @@
       "day": "2026-06-06",
       "date": "2026-06-06",
       "time": "8:45 PM",
-      "venue": "Spring Studios"
+      "venue": "Spring Studios",
+      "year": 2022,
+      "poster": "https://image.tmdb.org/t/p/w185/zqx3eGMhkLPZptc0Nvnrh3EKvYw.jpg",
+      "genre": "Comedia, Drama"
     },
     {
       "title": "Hope",
@@ -7083,7 +7554,7 @@
       "country": "United States, Mexico",
       "language": "Spanish, English",
       "premiere": "New York Premiere",
-      "synopsis": "",
+      "synopsis": "Una niña llamada So Won se convierte en víctima de la violencia. Su familia pasa por la desesperación y el dolor al intentar abrir otra puerta en su vida.",
       "screenings": [
         {
           "date": "2026-06-07",
@@ -7099,7 +7570,10 @@
       "day": "2026-06-07",
       "date": "2026-06-07",
       "time": "5:30 PM",
-      "venue": "Spring Studios"
+      "venue": "Spring Studios",
+      "year": 2013,
+      "poster": "https://image.tmdb.org/t/p/w185/PZlNvDwKwHeHUsXnd6SEDXWZNn.jpg",
+      "genre": "Drama"
     },
     {
       "title": "I Think About Killing You",
@@ -7112,7 +7586,7 @@
       "country": "United States",
       "language": "English",
       "premiere": "New York Premiere",
-      "synopsis": "",
+      "synopsis": "⚠️ INGLÉS — Team captain Dani is plagued by invasive fantasies of killing her abusive coach. When the coach pushes the team too far, Dani must choose whether or not to act on her fantasies of violence.",
       "screenings": [
         {
           "date": "2026-06-04",
@@ -7133,7 +7607,10 @@
       "day": "2026-06-04",
       "date": "2026-06-04",
       "time": "8:30 PM",
-      "venue": "Spring Studios"
+      "venue": "Spring Studios",
+      "year": null,
+      "poster": "https://image.tmdb.org/t/p/w185/bHx1gKtymZ6Vd2vCr4jlyPYzr2e.jpg",
+      "genre": "Suspense"
     },
     {
       "title": "I'm Not Home",
@@ -7146,7 +7623,7 @@
       "country": "United States",
       "language": "English",
       "premiere": "World Premiere",
-      "synopsis": "",
+      "synopsis": "“I’m Not Home”: Follows Shau, an ex-Mumbai Mafia member, on a poignant journey to reconnect with his family, questioning themes of freedom and belonging.",
       "screenings": [
         {
           "date": "2026-06-06",
@@ -7167,7 +7644,10 @@
       "day": "2026-06-06",
       "date": "2026-06-06",
       "time": "8:45 PM",
-      "venue": "Spring Studios"
+      "venue": "Spring Studios",
+      "year": null,
+      "poster": "",
+      "genre": "Documental"
     },
     {
       "title": "I, of an Accident or of love",
@@ -7219,7 +7699,7 @@
       "country": "United States",
       "language": "English, Mandarin Chinese",
       "premiere": "World Premiere",
-      "synopsis": "",
+      "synopsis": "⚠️ INGLÉS — Shayla Stonefeather, a Native American attorney prosecuting a Lakota teen in a controversial murder trial, returns to the reservation to say goodbye to her dying father. After the teen is killed, she hears ghostly voices and sees strange visions that cause her to re-examine beliefs she thought she left behind.",
       "screenings": [
         {
           "date": "2026-06-06",
@@ -7240,7 +7720,10 @@
       "day": "2026-06-06",
       "date": "2026-06-06",
       "time": "8:15 PM",
-      "venue": "Spring Studios"
+      "venue": "Spring Studios",
+      "year": 2007,
+      "poster": "https://image.tmdb.org/t/p/w185/l6sOkozopDz3YAv7x1DjCIW9cMC.jpg",
+      "genre": "Drama, Suspense"
     },
     {
       "title": "Insufficient Fare",
@@ -7321,7 +7804,7 @@
       "country": "United Kingdom",
       "language": "English",
       "premiere": "International Premiere",
-      "synopsis": "",
+      "synopsis": "⚠️ INGLÉS — Kiloran Bay is written and directed by Michael Bruce: A musical short film starring Alan Cumming and Jack Wolfe. After decades away, a gay man returns home to Scotland to attend a traditional wedding and faces a past he spent a lifetime avoiding.",
       "screenings": [
         {
           "date": "2026-06-06",
@@ -7342,7 +7825,10 @@
       "day": "2026-06-06",
       "date": "2026-06-06",
       "time": "5:30 PM",
-      "venue": "Spring Studios"
+      "venue": "Spring Studios",
+      "year": 2026,
+      "poster": "https://image.tmdb.org/t/p/w185/deBNC4AYcIWn5PDOzQIyE3YDQEY.jpg",
+      "genre": ""
     },
     {
       "title": "La Lucha de Lucía",
@@ -7355,7 +7841,7 @@
       "country": "Mexico",
       "language": "Spanish",
       "premiere": "New York Premiere",
-      "synopsis": "",
+      "synopsis": "⚠️ INGLÉS — Lucía “La Guerrera”, a 16-year-old Mexican lucha libre wrestler, as she struggles to find herself in the wrestling world that she grew up in. Her Father, “El Patron Enmascarado”, who has trained her from a young age, believes that she must maintain the tactics of a ruda (a wrestler who plays dirty to win) in order to have a successful wrestling career. A persona that has laid the foundation of their family’s legacy for generations and been the key to their success. Lucía is determined to challenge her family’s ways. She is left to decide if she will trust her own intuition and put up a real fight or play by the unspoken rules of the game, surrendering to the strategy that has been forced upon her.",
       "screenings": [
         {
           "date": "2026-06-04",
@@ -7376,7 +7862,10 @@
       "day": "2026-06-04",
       "date": "2026-06-04",
       "time": "8:30 PM",
-      "venue": "Spring Studios"
+      "venue": "Spring Studios",
+      "year": 2026,
+      "poster": "https://image.tmdb.org/t/p/w185/ph8COLT1urTUa59Ze0xef1bPI2b.jpg",
+      "genre": ""
     },
     {
       "title": "Last Minute",
@@ -7389,7 +7878,7 @@
       "country": "United States",
       "language": "English",
       "premiere": "New York Premiere",
-      "synopsis": "",
+      "synopsis": "⚠️ INGLÉS — The clock is ticking towards The Last Minute, but no one knows it. No one except Billy Byrne - young, cool and talented, he's the Next Big Thing. At least that's what the London glitterazzi are saying, on the streets, in the clubs, in the Business. But the glitterazzi turn out to be wrong and Billy Byrne is all over in a split second. His world detonates. His self-esteem splinters. Suddenly he's on a rollercoaster ride into the London underworld - a dangerous land of murderers, thieves and talent agents.",
       "screenings": [
         {
           "date": "2026-06-06",
@@ -7410,7 +7899,10 @@
       "day": "2026-06-06",
       "date": "2026-06-06",
       "time": "5:30 PM",
-      "venue": "Spring Studios"
+      "venue": "Spring Studios",
+      "year": 2002,
+      "poster": "https://image.tmdb.org/t/p/w185/9P02FAfXoE9G8qw8vW53c2JibRJ.jpg",
+      "genre": "Suspense, Drama"
     },
     {
       "title": "Leg Day",
@@ -7452,7 +7944,7 @@
       "country": "United States",
       "language": "English",
       "premiere": "World Premiere",
-      "synopsis": "",
+      "synopsis": "A demonstration of sound in Dolby Stereo.",
       "screenings": [
         {
           "date": "2026-06-07",
@@ -7468,7 +7960,10 @@
       "day": "2026-06-07",
       "date": "2026-06-07",
       "time": "5:30 PM",
-      "venue": "Spring Studios"
+      "venue": "Spring Studios",
+      "year": 1982,
+      "poster": "https://image.tmdb.org/t/p/w185/g5cwWBCzds8giIxa88yBjz9qxvg.jpg",
+      "genre": ""
     },
     {
       "title": "Lost Touch",
@@ -7481,7 +7976,7 @@
       "country": "Switzerland",
       "language": "English",
       "premiere": "",
-      "synopsis": "",
+      "synopsis": "⚠️ INGLÉS — Amelia is the sole survivor on a damaged spaceship. Caught in the gravitational pull of a planet, she struggles with grief and isolation. When a mysterious presence appears, she is torn between the past and the future.",
       "screenings": [
         {
           "date": "2026-06-06",
@@ -7502,7 +7997,10 @@
       "day": "2026-06-06",
       "date": "2026-06-06",
       "time": "8:15 PM",
-      "venue": "Spring Studios"
+      "venue": "Spring Studios",
+      "year": 2025,
+      "poster": "https://image.tmdb.org/t/p/w185/wbC3GmPQ2yYZilufUJDBWF109E2.jpg",
+      "genre": "Animación"
     },
     {
       "title": "Me, Myself, and Mary",
@@ -7515,7 +8013,7 @@
       "country": "United Kingdom, Ireland",
       "language": "English",
       "premiere": "World Premiere",
-      "synopsis": "",
+      "synopsis": "⚠️ INGLÉS — Chris O'Dowd and Aisling Bea star in the viral, true story of Séamas O'Reilly, who got his days mixed up and ended up alone with his boss and the President of Ireland while high on drugs.",
       "screenings": [
         {
           "date": "2026-06-06",
@@ -7531,7 +8029,10 @@
       "day": "2026-06-06",
       "date": "2026-06-06",
       "time": "2:30 PM",
-      "venue": "Spring Studios"
+      "venue": "Spring Studios",
+      "year": 2026,
+      "poster": "https://image.tmdb.org/t/p/w185/fwBqBAsKuZ0XedGXDJP3sy9l9rQ.jpg",
+      "genre": "Animación, Comedia"
     },
     {
       "title": "Mon Taxi",
@@ -7544,7 +8045,7 @@
       "country": "United States, Morocco",
       "language": "English subtitles",
       "premiere": "World Premiere",
-      "synopsis": "",
+      "synopsis": "A happily married pair of taxicabs are delighted when Junior enters their lives, but this delight turns to consternation when he states his ambition to become a hotrodder..",
       "screenings": [
         {
           "date": "2026-06-07",
@@ -7560,7 +8061,10 @@
       "day": "2026-06-07",
       "date": "2026-06-07",
       "time": "5:30 PM",
-      "venue": "Spring Studios"
+      "venue": "Spring Studios",
+      "year": 1952,
+      "poster": "https://image.tmdb.org/t/p/w185/zRexKuKKtPs4z9m9hNYQreaoc4J.jpg",
+      "genre": "Animación, Comedia"
     },
     {
       "title": "NIO KO BOKK (This Belongs to All of Us)",
@@ -7602,7 +8106,7 @@
       "country": "Netherlands",
       "language": "German",
       "premiere": "New York Premiere",
-      "synopsis": "",
+      "synopsis": "Joshua, un asesino profesional, vuelve a su ciudad natal por cuestiones de trabajo. El retorno a la población de inmigrantes rusos donde pasó su juventud despierta en él recuerdos dolorosos y confusos.",
       "screenings": [
         {
           "date": "2026-06-04",
@@ -7618,7 +8122,10 @@
       "day": "2026-06-04",
       "date": "2026-06-04",
       "time": "5:30 PM",
-      "venue": "Spring Studios"
+      "venue": "Spring Studios",
+      "year": 1994,
+      "poster": "https://image.tmdb.org/t/p/w185/i6wkb0a1FxbfuITkEjTr877gCbn.jpg",
+      "genre": "Drama, Crimen"
     },
     {
       "title": "One Night",
@@ -7631,7 +8138,7 @@
       "country": "United States",
       "language": "English",
       "premiere": "World Premiere",
-      "synopsis": "",
+      "synopsis": "Dos desconocidos, ávidos de amor, se topan por casualidad en la única noche del año en que las personas solteras tienen permitido tener relaciones sexuales.",
       "screenings": [
         {
           "date": "2026-06-05",
@@ -7657,7 +8164,10 @@
       "day": "2026-06-05",
       "date": "2026-06-05",
       "time": "8:30 PM",
-      "venue": "Spring Studios"
+      "venue": "Spring Studios",
+      "year": 2026,
+      "poster": "https://image.tmdb.org/t/p/w185/gzy1L7wqkFRznQPv4WrdPQ9bCJ8.jpg",
+      "genre": "Comedia, Romance"
     },
     {
       "title": "The Baddest Speechwriter of All",
@@ -7670,7 +8180,7 @@
       "country": "United States",
       "language": "English",
       "premiere": "New York Premiere",
-      "synopsis": "",
+      "synopsis": "⚠️ INGLÉS — Now 93, Martin Luther King Jr.’s lawyer and speechwriter reflects on the personal cost and surprising truths of making history, offering an intimate insider’s view of the Civil Rights Movement.",
       "screenings": [
         {
           "date": "2026-06-05",
@@ -7691,7 +8201,10 @@
       "day": "2026-06-05",
       "date": "2026-06-05",
       "time": "2:30 PM",
-      "venue": "Spring Studios"
+      "venue": "Spring Studios",
+      "year": 2026,
+      "poster": "https://image.tmdb.org/t/p/w185/a600xi9rnKkvgwBgHIwWgIDxoaK.jpg",
+      "genre": "Documental"
     },
     {
       "title": "The Barbershop",
@@ -7704,7 +8217,7 @@
       "country": "Denmark",
       "language": "Danish",
       "premiere": "World Premiere",
-      "synopsis": "",
+      "synopsis": "Tras diez años la barbería de Calvin ha cambiado, la llegada de mujeres le ha dado un nuevo aire. Pero ese ambiente de camaradería y diversión no dura para siempre y Calvin, Eddie y el resto de la pandilla deben trabajar juntos para salvar su tienda y el vecindario de una pandilla que deambula por las calles.",
       "screenings": [
         {
           "date": "2026-06-04",
@@ -7720,7 +8233,10 @@
       "day": "2026-06-04",
       "date": "2026-06-04",
       "time": "5:30 PM",
-      "venue": "Spring Studios"
+      "venue": "Spring Studios",
+      "year": 2016,
+      "poster": "https://image.tmdb.org/t/p/w185/mS02PgUL6vYn1yhJJuWbcLpYDj2.jpg",
+      "genre": "Comedia, Drama"
     },
     {
       "title": "The Dark Knot at the Center",
