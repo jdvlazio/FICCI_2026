@@ -169,6 +169,7 @@ function validateFestival(fname, data) {
     const _allcapsExempt = new Set([
       'ALEJANDRO SANZ: WHEN NO ONE SEES ME',
       'CVNT',
+      'MOUTH FULL OF GOLDS',
     ]);
     if (film.title && !_allcapsExempt.has(film.title)) {
       const _ws = film.title.split(' ');
