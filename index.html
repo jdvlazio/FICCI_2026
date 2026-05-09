@@ -2023,6 +2023,7 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:var(--t
 /* Lugar filter — nuevo sistema ────────────────────────── */
 .lugar-btn{display:flex;align-items:center;gap:var(--sp-1);font-size:var(--t-sm);font-weight:var(--w-semi);color:var(--gray);background:none;border:none;cursor:pointer;font-family:var(--font);padding:4px 0;transition:color var(--tr-base);white-space:nowrap;-webkit-tap-highlight-color:transparent}
 .lugar-btn.active{color:var(--amber)}
+.sec-drop-hdr{padding:10px var(--sp-4) 4px;font-size:10px;font-weight:700;letter-spacing:.08em;color:var(--gray2);text-transform:uppercase;pointer-events:none;user-select:none}
 .lugar-opt{display:flex;align-items:center;gap:var(--sp-2);padding:10px var(--sp-4);min-height:44px;box-sizing:border-box;cursor:pointer;font-size:var(--t-base);color:var(--gray);border-bottom:1px solid var(--bdr-l);transition:background var(--tr-base)}
 .lugar-opt:last-child{border-bottom:none}
 .lugar-opt:active,.lugar-opt:hover{background:var(--surf-2)}
@@ -3467,7 +3468,7 @@ const SECTION_ORDER_LIST=[
   '🎬 Spotlight Narrative','📹 Spotlight Documentary','👁️ Viewpoints',
   '🌙 Escape From Tribeca','📽️ Reunions & Retrospectives','🗣️ Talks',
   '🎙️ Podcasts','⭐ Special Events','📱 NOW','📺 TV','🎨 Shorts Programs',
-  '🌿 Free Outdoor Screenings','✂️ Shorts',
+  '🌿 Free Outdoor Screenings',
   // Sin emoji (festivales legacy)
   'Gala','Spotlight+','U.S. Narrative Competition',
   'International Narrative Competition','Documentary Competition',
@@ -3476,6 +3477,14 @@ const SECTION_ORDER_LIST=[
   'Talks','Special Events','NOW','TV','Shorts Programs',
   'Free Outdoor Screenings','Shorts'
 ];
+
+// ── Orden de categorías para el dropdown agrupado ────────────────────────
+// Usado por seccionOpen() cuando el festival tiene filmCategory en sus datos.
+// Fallback a lista plana si no hay filmCategory.
+const FILM_CATEGORY_ORDER = ['Films','TV','Talks','NOW','Podcasts'];
+const FILM_CATEGORY_LABEL = {
+  'Films':'Films','TV':'TV','Talks':'Talks','NOW':'NOW','Podcasts':'Podcasts'
+};
 
 // ── Mapa canónico de colores por sección ────────────────────────────────────
 // Usado en cards editoriales y posters generativos.
@@ -10308,76 +10317,71 @@ function _seccionPillLabel(sec){
 function seccionOpen(){
   const btn = document.getElementById('seccion-btn');
   const r = btn.getBoundingClientRect();
-
   const drop = document.createElement('div');
   drop.id = 'seccion-drop';
   drop.style.cssText = [
-    'position:fixed',
-    'top:'+(r.bottom+4)+'px',
+    'position:fixed','top:'+(r.bottom+4)+'px',
     'right:'+(window.innerWidth-r.right)+'px',
-    'min-width:200px',
-    'max-width:min(300px,90vw)',
-    'max-height:55vh',
-    'overflow-y:auto',
-    'background:var(--surf)',
-    'border:1px solid var(--bdr)',
-    'border-radius:var(--r)',
-    'box-shadow:0 8px 24px rgba(0,0,0,.55)',
-    'z-index:9999',
-    'animation:lugarFadeIn .12s ease'
+    'min-width:200px','max-width:min(300px,90vw)','max-height:55vh',
+    'overflow-y:auto','background:var(--surf)','border:1px solid var(--bdr)',
+    'border-radius:var(--r)','box-shadow:0 8px 24px rgba(0,0,0,.55)',
+    'z-index:9999','animation:lugarFadeIn .12s ease'
   ].join(';');
 
-  // Secciones únicas del festival activo (filtradas por día si aplica)
-  const baseFilms = programaSubMode==='explorar'
-    ? FILMS
-    : FILMS.filter(f=>f.day===activeDay);
-  // Si hay venue activo, mostrar solo secciones disponibles en ese venue
-  const films = activeVenue!=='all'
-    ? baseFilms.filter(f=>vcfg(f.venue).short===activeVenue)
-    : baseFilms;
+  const baseFilms = programaSubMode==='explorar' ? FILMS : FILMS.filter(f=>f.day===activeDay);
+  const films = activeVenue!=='all' ? baseFilms.filter(f=>vcfg(f.venue).short===activeVenue) : baseFilms;
 
-  const secMap = {};
-  const titleSet = {};
+  const secMap={}, secCatMap={}, titleSet={};
   films.forEach(f=>{
     if(!titleSet[f.title]){
       titleSet[f.title]=true;
       const s=f.section||'';
-      if(s) secMap[s]=(secMap[s]||0)+1;
+      if(s){ secMap[s]=(secMap[s]||0)+1; if(f.filmCategory) secCatMap[s]=f.filmCategory; }
     }
   });
-  const total = Object.keys(titleSet).length;
-  const secs = Object.entries(secMap).sort((a,b)=>b[1]-a[1]);
+  const total=Object.keys(titleSet).length;
 
-  const opts = [{sec:'all', label:t('filter_todo_programa'), count:total}, ...secs.map(([sec,cnt])=>({sec, label:sec, count:cnt}))];
+  const _opt=(s,cnt,isActive)=>'<div class="lugar-opt'+(isActive?' on':'')+'" data-s="'+s.replace(/"/g,'&quot;')+'">'
+    +'<span>'+s+'</span><span class="lugar-cnt">'+cnt+'</span>'+(isActive?'<span class="txt-amber-ml">✓</span>':'')+'</div>';
 
-  drop.innerHTML = opts.map(o=>{
-    const isActive = o.sec==='all' ? activeSec==='all' : activeSec===o.sec;
-    // Usar el nombre real de la sección — ya incluye emoji propio
-    const displayLabel = o.label;
-    return '<div class="lugar-opt'+(isActive?' on':'')+'" data-s="'+o.sec.replace(/"/g,'&quot;')+'">'
-      +'<span>'+displayLabel+'</span>'
-      +'<span class="lugar-cnt">'+o.count+'</span>'
-      +(isActive&&o.sec!=='all'?'<span class="txt-amber-ml">✓</span>':'')
-      +'</div>';
-  }).join('');
+  let html='<div class="lugar-opt'+(activeSec==='all'?' on':'')+'" data-s="all">'
+    +'<span>'+t('filter_todo_programa')+'</span><span class="lugar-cnt">'+total+'</span>'
+    +(activeSec==='all'?'<span class="txt-amber-ml">✓</span>':'')+'</div>';
 
-  drop.addEventListener('click', e=>{
-    const opt = e.target.closest('.lugar-opt');
-    if(!opt) return;
-    const s = opt.dataset.s;
-    activeSec = (s==='all'||s===activeSec) ? 'all' : s;
-    _programaChipMatchFn = null;
-    programaChip = 'all';
-    seccionClose();
-    _updateProgramaActiveFilter();
-    if(programaSubMode==='explorar') _renderProgramaContent(); else render();
+  const hasCategories=Object.keys(secCatMap).length>0;
+  const orderedSecs=Object.keys(secMap).sort((a,b)=>{
+    const ia=SECTION_ORDER_LIST.indexOf(a),ib=SECTION_ORDER_LIST.indexOf(b);
+    return (ia<0?999:ia)-(ib<0?999:ib);
   });
 
+  if(hasCategories){
+    const groups={};
+    orderedSecs.forEach(s=>{ const cat=secCatMap[s]||''; if(cat){if(!groups[cat])groups[cat]=[];groups[cat].push(s);} });
+    const uncategorized=orderedSecs.filter(s=>!secCatMap[s]);
+    FILM_CATEGORY_ORDER.forEach(cat=>{
+      if(!groups[cat]) return;
+      html+='<div class="sec-drop-hdr">'+(FILM_CATEGORY_LABEL[cat]||cat)+'</div>';
+      groups[cat].forEach(s=>{ html+=_opt(s,secMap[s],activeSec===s); });
+    });
+    uncategorized.forEach(s=>{ html+=_opt(s,secMap[s],activeSec===s); });
+  } else {
+    orderedSecs.forEach(s=>{ html+=_opt(s,secMap[s],activeSec===s); });
+  }
+
+  drop.innerHTML=html;
+  drop.addEventListener('click',e=>{
+    const opt=e.target.closest('.lugar-opt');
+    if(!opt) return;
+    const s=opt.dataset.s;
+    activeSec=(s==='all'||s===activeSec)?'all':s;
+    _programaChipMatchFn=null; programaChip='all';
+    seccionClose(); _updateProgramaActiveFilter();
+    if(programaSubMode==='explorar') _renderProgramaContent(); else render();
+  });
   document.body.appendChild(drop);
   btn.classList.add('active');
-  setTimeout(()=>{ document.addEventListener('click', seccionOutside); }, 0);
+  setTimeout(()=>{ document.addEventListener('click',seccionOutside); },0);
 }
-
 function seccionOutside(e){
   const drop = document.getElementById('seccion-drop');
   const btn = document.getElementById('seccion-btn');
