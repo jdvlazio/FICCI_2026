@@ -10786,6 +10786,980 @@
       "year": 2026,
       "synopsis": "Una banda de mutantes usa sus extraordinarios poderes para proteger un mundo que los odia y los teme; enfrentados como nunca antes, se ven obligados a afrontar un futuro peligroso e inesperado.",
       "synopsis_en": "A band of mutants use their uncanny gifts to protect a world that hates and fears them; they're challenged like never before, forced to face a dangerous and unexpected new future."
+    },
+    {
+      "title": "Oscar de la Renta : A Life Well Lived",
+      "section": "✂️ Shorts",
+      "type": "film",
+      "filmType": "",
+      "director": "Richard Kaufman",
+      "duration": 17,
+      "country": "United States, Dominican Republic, India, Italy",
+      "language": "",
+      "premiere": "",
+      "screenings": [
+        {
+          "date": "2026-06-13",
+          "time": "8:30 PM",
+          "venue": "Shorts Theater at Spring Studios",
+          "day_order": 10
+        },
+        {
+          "date": "2026-06-14",
+          "time": "2:00 PM",
+          "venue": "Village East by Angelika",
+          "day_order": 11
+        }
+      ],
+      "day": "2026-06-13",
+      "date": "2026-06-13",
+      "time": "8:30 PM",
+      "venue": "Shorts Theater at Spring Studios",
+      "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/7004/large_Oscar-de-la-Renta_ALifeWellLived-Clean-16x9.jpg",
+      "posterPosition": "center",
+      "day_order": 10,
+      "flags": "🇺🇸🇩🇴🇮🇳🇮🇹",
+      "year": 2026
+    },
+    {
+      "title": "Pale Sun",
+      "section": "✂️ Shorts",
+      "type": "film",
+      "filmType": "",
+      "director": "Adrian Moyse Dullin and Jawahine Zentar",
+      "duration": 15,
+      "country": "France",
+      "language": "",
+      "premiere": "New York Premiere",
+      "screenings": [
+        {
+          "date": "2026-06-06",
+          "time": "5:30 PM",
+          "venue": "Shorts Theater at Spring Studios",
+          "day_order": 3
+        },
+        {
+          "date": "2026-06-13",
+          "time": "8:15 PM",
+          "venue": "AMC 19th St. East 6",
+          "day_order": 10
+        },
+        {
+          "date": "2026-06-14",
+          "time": "12:00 PM",
+          "venue": "AMC 19th St. East 6",
+          "day_order": 11
+        }
+      ],
+      "day": "2026-06-06",
+      "date": "2026-06-06",
+      "time": "5:30 PM",
+      "venue": "Shorts Theater at Spring Studios",
+      "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/6980/large_Pale_Sun-Clean-16x9-01.jpg",
+      "posterPosition": "center",
+      "day_order": 3,
+      "flags": "🇫🇷",
+      "year": 2026
+    },
+    {
+      "title": "Panther Pat",
+      "section": "✂️ Shorts",
+      "type": "film",
+      "filmType": "",
+      "director": "Ashley Brandon",
+      "duration": 12,
+      "country": "United States",
+      "language": "",
+      "premiere": "New York Premiere",
+      "screenings": [
+        {
+          "date": "2026-06-07",
+          "time": "2:30 PM",
+          "venue": "Shorts Theater at Spring Studios",
+          "day_order": 4
+        },
+        {
+          "date": "2026-06-13",
+          "time": "5:30 PM",
+          "venue": "Shorts Theater at Spring Studios",
+          "day_order": 10
+        }
+      ],
+      "day": "2026-06-07",
+      "date": "2026-06-07",
+      "time": "2:30 PM",
+      "venue": "Shorts Theater at Spring Studios",
+      "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/6872/large_Panther_Pat-Clean-16x9-01.jpg",
+      "posterPosition": "center",
+      "day_order": 4,
+      "flags": "🇺🇸",
+      "year": 2026
+    },
+    {
+      "title": "Paving The Way",
+      "section": "✂️ Shorts",
+      "type": "film",
+      "filmType": "",
+      "director": "Keelan Williams",
+      "duration": 21,
+      "country": "United States",
+      "language": "",
+      "premiere": "New York Premiere",
+      "screenings": [
+        {
+          "date": "2026-06-07",
+          "time": "5:30 PM",
+          "venue": "Shorts Theater at Spring Studios",
+          "day_order": 4
+        },
+        {
+          "date": "2026-06-13",
+          "time": "5:30 PM",
+          "venue": "AMC 19th St. East 6",
+          "day_order": 10
+        }
+      ],
+      "day": "2026-06-07",
+      "date": "2026-06-07",
+      "time": "5:30 PM",
+      "venue": "Shorts Theater at Spring Studios",
+      "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/7031/large_Paving_The_Way-Clean-16x9-01.jpg",
+      "posterPosition": "center",
+      "day_order": 4,
+      "flags": "🇺🇸",
+      "year": 2026
+    },
+    {
+      "title": "ROAR",
+      "section": "✂️ Shorts",
+      "type": "film",
+      "filmType": "",
+      "director": "Jesse Weglein",
+      "duration": 4,
+      "country": "United States",
+      "language": "",
+      "premiere": "North American Premiere",
+      "screenings": [
+        {
+          "date": "2026-06-06",
+          "time": "12:15 PM",
+          "venue": "Shorts Theater at Spring Studios",
+          "day_order": 3
+        },
+        {
+          "date": "2026-06-13",
+          "time": "11:30 AM",
+          "venue": "AMC 19th St. East 6",
+          "day_order": 10
+        }
+      ],
+      "day": "2026-06-06",
+      "date": "2026-06-06",
+      "time": "12:15 PM",
+      "venue": "Shorts Theater at Spring Studios",
+      "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/7015/large_ROAR-Bug-16x9-01.jpg",
+      "posterPosition": "center",
+      "day_order": 3,
+      "flags": "🇺🇸",
+      "year": 2026
+    },
+    {
+      "title": "Rare Birds",
+      "section": "✂️ Shorts",
+      "type": "film",
+      "filmType": "",
+      "director": "Lily Weisberg",
+      "duration": 10,
+      "country": "United States",
+      "language": "",
+      "premiere": "World Premiere",
+      "screenings": [
+        {
+          "date": "2026-06-05",
+          "time": "5:30 PM",
+          "venue": "Shorts Theater at Spring Studios",
+          "day_order": 2
+        },
+        {
+          "date": "2026-06-12",
+          "time": "8:30 PM",
+          "venue": "Shorts Theater at Spring Studios",
+          "day_order": 9
+        },
+        {
+          "date": "2026-06-13",
+          "time": "2:15 PM",
+          "venue": "AMC 19th St. East 6",
+          "day_order": 10
+        }
+      ],
+      "day": "2026-06-05",
+      "date": "2026-06-05",
+      "time": "5:30 PM",
+      "venue": "Shorts Theater at Spring Studios",
+      "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/6873/large_Rare_Birds-Clean-16x9-01.jpg",
+      "posterPosition": "center",
+      "day_order": 2,
+      "flags": "🇺🇸",
+      "year": 2026
+    },
+    {
+      "title": "Run In Beauty",
+      "section": "✂️ Shorts",
+      "type": "film",
+      "filmType": "",
+      "director": "Devin Whetstone",
+      "duration": 15,
+      "country": "United States",
+      "language": "",
+      "premiere": "New York Premiere",
+      "screenings": [
+        {
+          "date": "2026-06-07",
+          "time": "2:30 PM",
+          "venue": "Shorts Theater at Spring Studios",
+          "day_order": 4
+        },
+        {
+          "date": "2026-06-13",
+          "time": "5:30 PM",
+          "venue": "Shorts Theater at Spring Studios",
+          "day_order": 10
+        }
+      ],
+      "day": "2026-06-07",
+      "date": "2026-06-07",
+      "time": "2:30 PM",
+      "venue": "Shorts Theater at Spring Studios",
+      "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/7079/large_Run_In_Beauty-Clean-16x9-01.jpg",
+      "posterPosition": "center",
+      "day_order": 4,
+      "flags": "🇺🇸",
+      "year": 2026
+    },
+    {
+      "title": "Saba",
+      "section": "✂️ Shorts",
+      "type": "film",
+      "filmType": "",
+      "director": "Liron Topaz",
+      "duration": 9,
+      "country": "France",
+      "language": "",
+      "premiere": "World Premiere",
+      "screenings": [
+        {
+          "date": "2026-06-06",
+          "time": "2:30 PM",
+          "venue": "Shorts Theater at Spring Studios",
+          "day_order": 3
+        },
+        {
+          "date": "2026-06-13",
+          "time": "6:15 PM",
+          "venue": "AMC 19th St. East 6",
+          "day_order": 10
+        }
+      ],
+      "day": "2026-06-06",
+      "date": "2026-06-06",
+      "time": "2:30 PM",
+      "venue": "Shorts Theater at Spring Studios",
+      "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/6947/large_Saba-Clean-16x9-01.jpg",
+      "posterPosition": "center",
+      "day_order": 3,
+      "flags": "🇫🇷",
+      "year": 2026
+    },
+    {
+      "title": "Sandy Fannies",
+      "section": "✂️ Shorts",
+      "type": "film",
+      "filmType": "",
+      "director": "Ingrid Runde Saxegaard",
+      "duration": 13,
+      "country": "Norway",
+      "language": "",
+      "premiere": "World Premiere",
+      "screenings": [
+        {
+          "date": "2026-06-06",
+          "time": "5:30 PM",
+          "venue": "Shorts Theater at Spring Studios",
+          "day_order": 3
+        },
+        {
+          "date": "2026-06-13",
+          "time": "8:15 PM",
+          "venue": "AMC 19th St. East 6",
+          "day_order": 10
+        },
+        {
+          "date": "2026-06-14",
+          "time": "12:00 PM",
+          "venue": "AMC 19th St. East 6",
+          "day_order": 11
+        }
+      ],
+      "day": "2026-06-06",
+      "date": "2026-06-06",
+      "time": "5:30 PM",
+      "venue": "Shorts Theater at Spring Studios",
+      "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/6999/large_Sandy_Fannies-Clean-16x9-01.jpg",
+      "posterPosition": "center",
+      "day_order": 3,
+      "flags": "🇳🇴",
+      "year": 2026
+    },
+    {
+      "title": "Selah",
+      "section": "✂️ Shorts",
+      "type": "film",
+      "filmType": "",
+      "director": "Lara Everly",
+      "duration": 21,
+      "country": "United States",
+      "language": "",
+      "premiere": "World Premiere",
+      "screenings": [
+        {
+          "date": "2026-06-04",
+          "time": "5:30 PM",
+          "venue": "Shorts Theater at Spring Studios",
+          "day_order": 1
+        },
+        {
+          "date": "2026-06-13",
+          "time": "5:45 PM",
+          "venue": "AMC 19th St. East 6",
+          "day_order": 10
+        }
+      ],
+      "day": "2026-06-04",
+      "date": "2026-06-04",
+      "time": "5:30 PM",
+      "venue": "Shorts Theater at Spring Studios",
+      "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/7045/large_Selah-Clean-16x9-01(2).jpg",
+      "posterPosition": "center",
+      "day_order": 1,
+      "flags": "🇺🇸",
+      "year": 2026
+    },
+    {
+      "title": "She's Nonbinary",
+      "section": "✂️ Shorts",
+      "type": "film",
+      "filmType": "",
+      "director": "Jess McLeod",
+      "duration": 10,
+      "country": "Canada",
+      "language": "",
+      "premiere": "New York Premiere",
+      "screenings": [
+        {
+          "date": "2026-06-05",
+          "time": "8:30 PM",
+          "venue": "Shorts Theater at Spring Studios",
+          "day_order": 2
+        },
+        {
+          "date": "2026-06-08",
+          "time": "5:30 PM",
+          "venue": "Shorts Theater at Spring Studios",
+          "day_order": 5
+        },
+        {
+          "date": "2026-06-13",
+          "time": "8:30 PM",
+          "venue": "AMC 19th St. East 6",
+          "day_order": 10
+        },
+        {
+          "date": "2026-06-14",
+          "time": "2:00 PM",
+          "venue": "AMC 19th St. East 6",
+          "day_order": 11
+        }
+      ],
+      "day": "2026-06-05",
+      "date": "2026-06-05",
+      "time": "8:30 PM",
+      "venue": "Shorts Theater at Spring Studios",
+      "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/6907/large_She_s_Nonbinary-Clean-16x9-01.jpg",
+      "posterPosition": "center",
+      "day_order": 2,
+      "flags": "🇨🇦",
+      "year": 2026
+    },
+    {
+      "title": "Sleep Call",
+      "section": "✂️ Shorts",
+      "type": "film",
+      "filmType": "",
+      "director": "Richer Huynh",
+      "duration": 17,
+      "country": "United States",
+      "language": "",
+      "premiere": "New York Premiere",
+      "screenings": [
+        {
+          "date": "2026-06-06",
+          "time": "8:15 PM",
+          "venue": "Shorts Theater at Spring Studios",
+          "day_order": 3
+        },
+        {
+          "date": "2026-06-10",
+          "time": "8:30 PM",
+          "venue": "Shorts Theater at Spring Studios",
+          "day_order": 7
+        },
+        {
+          "date": "2026-06-13",
+          "time": "9:15 PM",
+          "venue": "AMC 19th St. East 6",
+          "day_order": 10
+        }
+      ],
+      "day": "2026-06-06",
+      "date": "2026-06-06",
+      "time": "8:15 PM",
+      "venue": "Shorts Theater at Spring Studios",
+      "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/7030/large_Sleep_Call-Clean-16x9-01.jpg",
+      "posterPosition": "center",
+      "day_order": 3,
+      "flags": "🇺🇸",
+      "year": 2026
+    },
+    {
+      "title": "So, Boom",
+      "section": "✂️ Shorts",
+      "type": "film",
+      "filmType": "",
+      "director": "Abby Pierce",
+      "duration": 14,
+      "country": "United States",
+      "language": "",
+      "premiere": "New York Premiere",
+      "screenings": [
+        {
+          "date": "2026-06-06",
+          "time": "8:45 PM",
+          "venue": "Spring Studios",
+          "day_order": 3
+        },
+        {
+          "date": "2026-06-12",
+          "time": "5:30 PM",
+          "venue": "Shorts Theater at Spring Studios",
+          "day_order": 9
+        },
+        {
+          "date": "2026-06-13",
+          "time": "3:15 PM",
+          "venue": "AMC 19th St. East 6",
+          "day_order": 10
+        }
+      ],
+      "day": "2026-06-06",
+      "date": "2026-06-06",
+      "time": "8:45 PM",
+      "venue": "Spring Studios",
+      "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/6891/large_SoBoom_Clean-16x9-01.jpg",
+      "posterPosition": "center",
+      "day_order": 3,
+      "flags": "🇺🇸",
+      "year": 2026
+    },
+    {
+      "title": "Stand Clear ’ the Closing Doors",
+      "section": "✂️ Shorts",
+      "type": "film",
+      "filmType": "",
+      "director": "Stacey Sargeant",
+      "duration": 7,
+      "country": "United States",
+      "language": "",
+      "premiere": "World Premiere",
+      "screenings": [
+        {
+          "date": "2026-06-06",
+          "time": "8:45 PM",
+          "venue": "Spring Studios",
+          "day_order": 3
+        },
+        {
+          "date": "2026-06-12",
+          "time": "5:30 PM",
+          "venue": "Shorts Theater at Spring Studios",
+          "day_order": 9
+        },
+        {
+          "date": "2026-06-13",
+          "time": "3:15 PM",
+          "venue": "AMC 19th St. East 6",
+          "day_order": 10
+        }
+      ],
+      "day": "2026-06-06",
+      "date": "2026-06-06",
+      "time": "8:45 PM",
+      "venue": "Spring Studios",
+      "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/7018/large_Stand_Clear_the_Closing_Doors-Clean-16x9-021.jpg",
+      "posterPosition": "center",
+      "day_order": 3,
+      "flags": "🇺🇸",
+      "year": 2026
+    },
+    {
+      "title": "The Second Life of Freddie Nole",
+      "section": "✂️ Shorts",
+      "type": "film",
+      "filmType": "",
+      "director": "Dana Nachman",
+      "duration": 21,
+      "country": "United States",
+      "language": "",
+      "premiere": "New York Premiere",
+      "screenings": [
+        {
+          "date": "2026-06-05",
+          "time": "2:30 PM",
+          "venue": "Shorts Theater at Spring Studios",
+          "day_order": 2
+        },
+        {
+          "date": "2026-06-11",
+          "time": "8:30 PM",
+          "venue": "Shorts Theater at Spring Studios",
+          "day_order": 8
+        },
+        {
+          "date": "2026-06-13",
+          "time": "5:15 PM",
+          "venue": "AMC 19th St. East 6",
+          "day_order": 10
+        }
+      ],
+      "day": "2026-06-05",
+      "date": "2026-06-05",
+      "time": "2:30 PM",
+      "venue": "Shorts Theater at Spring Studios",
+      "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/6932/large_The_Second_Life_of_Freddie_Nole-Bug-16x9-01.jpg",
+      "posterPosition": "center",
+      "day_order": 2,
+      "flags": "🇺🇸",
+      "year": 2026
+    },
+    {
+      "title": "Theatre of Dreams",
+      "section": "✂️ Shorts",
+      "type": "film",
+      "filmType": "",
+      "director": "Fatma Al-Ghanim",
+      "duration": 15,
+      "country": "Qatar",
+      "language": "",
+      "premiere": "New York Premiere",
+      "screenings": [
+        {
+          "date": "2026-06-07",
+          "time": "2:30 PM",
+          "venue": "Shorts Theater at Spring Studios",
+          "day_order": 4
+        },
+        {
+          "date": "2026-06-13",
+          "time": "5:30 PM",
+          "venue": "Shorts Theater at Spring Studios",
+          "day_order": 10
+        }
+      ],
+      "day": "2026-06-07",
+      "date": "2026-06-07",
+      "time": "2:30 PM",
+      "venue": "Shorts Theater at Spring Studios",
+      "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/6982/large_Theater-of-Dreams-clean-16x9-01.jpg",
+      "posterPosition": "center",
+      "day_order": 4,
+      "flags": "🇶🇦",
+      "year": 2026
+    },
+    {
+      "title": "Ultimatum",
+      "section": "✂️ Shorts",
+      "type": "film",
+      "filmType": "",
+      "director": "Jean-Luc Mwepu and Desirée Mwepu",
+      "duration": 13,
+      "country": "Sweden",
+      "language": "",
+      "premiere": "World Premiere",
+      "screenings": [
+        {
+          "date": "2026-06-04",
+          "time": "8:30 PM",
+          "venue": "Shorts Theater at Spring Studios",
+          "day_order": 1
+        },
+        {
+          "date": "2026-06-11",
+          "time": "5:30 PM",
+          "venue": "Shorts Theater at Spring Studios",
+          "day_order": 8
+        },
+        {
+          "date": "2026-06-13",
+          "time": "2:30 PM",
+          "venue": "AMC 19th St. East 6",
+          "day_order": 10
+        }
+      ],
+      "day": "2026-06-04",
+      "date": "2026-06-04",
+      "time": "8:30 PM",
+      "venue": "Shorts Theater at Spring Studios",
+      "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/6973/large_Ultimatum-Clean-16x9-01.jpg",
+      "posterPosition": "center",
+      "day_order": 1,
+      "flags": "🇸🇪",
+      "year": 2026
+    },
+    {
+      "title": "Under the Lake",
+      "section": "✂️ Shorts",
+      "type": "film",
+      "filmType": "",
+      "director": "Juan Carlos Mostaza",
+      "duration": 14,
+      "country": "Spain",
+      "language": "",
+      "premiere": "World Premiere",
+      "screenings": [
+        {
+          "date": "2026-06-06",
+          "time": "2:30 PM",
+          "venue": "Shorts Theater at Spring Studios",
+          "day_order": 3
+        },
+        {
+          "date": "2026-06-13",
+          "time": "6:15 PM",
+          "venue": "AMC 19th St. East 6",
+          "day_order": 10
+        }
+      ],
+      "day": "2026-06-06",
+      "date": "2026-06-06",
+      "time": "2:30 PM",
+      "venue": "Shorts Theater at Spring Studios",
+      "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/7014/large_Under_the_Lake-Bug-16x9-01.jpg",
+      "posterPosition": "center",
+      "day_order": 3,
+      "flags": "🇪🇸",
+      "year": 2026
+    },
+    {
+      "title": "Verse",
+      "section": "✂️ Shorts",
+      "type": "film",
+      "filmType": "",
+      "director": "Noam Argov",
+      "duration": 18,
+      "country": "United States",
+      "language": "",
+      "premiere": "World Premiere",
+      "screenings": [
+        {
+          "date": "2026-06-06",
+          "time": "8:15 PM",
+          "venue": "Shorts Theater at Spring Studios",
+          "day_order": 3
+        },
+        {
+          "date": "2026-06-10",
+          "time": "8:30 PM",
+          "venue": "Shorts Theater at Spring Studios",
+          "day_order": 7
+        },
+        {
+          "date": "2026-06-13",
+          "time": "9:15 PM",
+          "venue": "AMC 19th St. East 6",
+          "day_order": 10
+        }
+      ],
+      "day": "2026-06-06",
+      "date": "2026-06-06",
+      "time": "8:15 PM",
+      "venue": "Shorts Theater at Spring Studios",
+      "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/6972/large_Verse_Clean-16x9-01.jpg",
+      "posterPosition": "center",
+      "day_order": 3,
+      "flags": "🇺🇸",
+      "year": 2026
+    },
+    {
+      "title": "Violet and Marlowe Rob a Bank",
+      "section": "✂️ Shorts",
+      "type": "film",
+      "filmType": "",
+      "director": "Wesley Wang",
+      "duration": 2,
+      "country": "United States",
+      "language": "",
+      "premiere": "World Premiere",
+      "screenings": [
+        {
+          "date": "2026-06-06",
+          "time": "2:30 PM",
+          "venue": "Shorts Theater at Spring Studios",
+          "day_order": 3
+        },
+        {
+          "date": "2026-06-13",
+          "time": "6:15 PM",
+          "venue": "AMC 19th St. East 6",
+          "day_order": 10
+        }
+      ],
+      "day": "2026-06-06",
+      "date": "2026-06-06",
+      "time": "2:30 PM",
+      "venue": "Shorts Theater at Spring Studios",
+      "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/7034/large_Violet_and_Marlowe_Rob_a_Bank-Bug-16x9-01.jpg",
+      "posterPosition": "center",
+      "day_order": 3,
+      "flags": "🇺🇸",
+      "year": 2026
+    },
+    {
+      "title": "Vultures",
+      "section": "✂️ Shorts",
+      "type": "film",
+      "filmType": "",
+      "director": "Dian Weys",
+      "duration": 14,
+      "country": "France, South Africa",
+      "language": "",
+      "premiere": "New York Premiere",
+      "screenings": [
+        {
+          "date": "2026-06-04",
+          "time": "5:30 PM",
+          "venue": "Shorts Theater at Spring Studios",
+          "day_order": 1
+        },
+        {
+          "date": "2026-06-13",
+          "time": "5:45 PM",
+          "venue": "AMC 19th St. East 6",
+          "day_order": 10
+        }
+      ],
+      "day": "2026-06-04",
+      "date": "2026-06-04",
+      "time": "5:30 PM",
+      "venue": "Shorts Theater at Spring Studios",
+      "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/7003/large_Vultures-Bug-16x9-01.jpg",
+      "posterPosition": "center",
+      "day_order": 1,
+      "flags": "🇫🇷🇿🇦",
+      "year": 2026
+    },
+    {
+      "title": "WHALE 52 - Suite For Man, Boy, And Whale",
+      "section": "✂️ Shorts",
+      "type": "film",
+      "filmType": "",
+      "director": "Daniel Neiden",
+      "duration": 11,
+      "country": "United States",
+      "language": "",
+      "premiere": "",
+      "screenings": [
+        {
+          "date": "2026-06-06",
+          "time": "12:15 PM",
+          "venue": "Shorts Theater at Spring Studios",
+          "day_order": 3
+        },
+        {
+          "date": "2026-06-13",
+          "time": "11:30 AM",
+          "venue": "AMC 19th St. East 6",
+          "day_order": 10
+        }
+      ],
+      "day": "2026-06-06",
+      "date": "2026-06-06",
+      "time": "12:15 PM",
+      "venue": "Shorts Theater at Spring Studios",
+      "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/6900/large_Whale52-clean-16x9-01.jpg",
+      "posterPosition": "center",
+      "day_order": 3,
+      "flags": "🇺🇸",
+      "year": 2026
+    },
+    {
+      "title": "When the Revolution Doesn't Come",
+      "section": "✂️ Shorts",
+      "type": "film",
+      "filmType": "",
+      "director": "Aurora Brachman",
+      "duration": 25,
+      "country": "United States, United Kingdom",
+      "language": "",
+      "premiere": "",
+      "screenings": [
+        {
+          "date": "2026-06-05",
+          "time": "2:30 PM",
+          "venue": "Shorts Theater at Spring Studios",
+          "day_order": 2
+        },
+        {
+          "date": "2026-06-11",
+          "time": "8:30 PM",
+          "venue": "Shorts Theater at Spring Studios",
+          "day_order": 8
+        },
+        {
+          "date": "2026-06-13",
+          "time": "5:15 PM",
+          "venue": "AMC 19th St. East 6",
+          "day_order": 10
+        }
+      ],
+      "day": "2026-06-05",
+      "date": "2026-06-05",
+      "time": "2:30 PM",
+      "venue": "Shorts Theater at Spring Studios",
+      "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/7005/large_When_the_Revolution_Doesn_t_Come-Clean-16x9-01.jpg",
+      "posterPosition": "center",
+      "day_order": 2,
+      "flags": "🇺🇸🇬🇧",
+      "year": 2026
+    },
+    {
+      "title": "White Belt",
+      "section": "✂️ Shorts",
+      "type": "film",
+      "filmType": "",
+      "director": "Branislav Jankic",
+      "duration": 18,
+      "country": "United States",
+      "language": "",
+      "premiere": "New York Premiere",
+      "screenings": [
+        {
+          "date": "2026-06-07",
+          "time": "2:30 PM",
+          "venue": "Shorts Theater at Spring Studios",
+          "day_order": 4
+        },
+        {
+          "date": "2026-06-13",
+          "time": "5:30 PM",
+          "venue": "Shorts Theater at Spring Studios",
+          "day_order": 10
+        }
+      ],
+      "day": "2026-06-07",
+      "date": "2026-06-07",
+      "time": "2:30 PM",
+      "venue": "Shorts Theater at Spring Studios",
+      "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/6858/large_WhiteBelt-clean-16x9-01.jpg",
+      "posterPosition": "center",
+      "day_order": 4,
+      "flags": "🇺🇸",
+      "year": 2026
+    },
+    {
+      "title": "Winter Psalm",
+      "section": "✂️ Shorts",
+      "type": "film",
+      "filmType": "",
+      "director": "Hao Yan",
+      "duration": 13,
+      "country": "United States",
+      "language": "",
+      "premiere": "New York Premiere",
+      "screenings": [
+        {
+          "date": "2026-06-05",
+          "time": "5:30 PM",
+          "venue": "Shorts Theater at Spring Studios",
+          "day_order": 2
+        },
+        {
+          "date": "2026-06-12",
+          "time": "8:30 PM",
+          "venue": "Shorts Theater at Spring Studios",
+          "day_order": 9
+        },
+        {
+          "date": "2026-06-13",
+          "time": "2:15 PM",
+          "venue": "AMC 19th St. East 6",
+          "day_order": 10
+        }
+      ],
+      "day": "2026-06-05",
+      "date": "2026-06-05",
+      "time": "5:30 PM",
+      "venue": "Shorts Theater at Spring Studios",
+      "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/6899/large_WinterPsalm-Clean-16x9-01.jpg",
+      "posterPosition": "center",
+      "day_order": 2,
+      "flags": "🇺🇸",
+      "year": 2026
+    },
+    {
+      "title": "You Tryna Say You Love Me?",
+      "section": "✂️ Shorts",
+      "type": "film",
+      "filmType": "",
+      "director": "Ty Molbak",
+      "duration": 11,
+      "country": "United States",
+      "language": "",
+      "premiere": "World Premiere",
+      "screenings": [
+        {
+          "date": "2026-06-05",
+          "time": "8:30 PM",
+          "venue": "Shorts Theater at Spring Studios",
+          "day_order": 2
+        },
+        {
+          "date": "2026-06-08",
+          "time": "5:30 PM",
+          "venue": "Shorts Theater at Spring Studios",
+          "day_order": 5
+        },
+        {
+          "date": "2026-06-13",
+          "time": "8:30 PM",
+          "venue": "AMC 19th St. East 6",
+          "day_order": 10
+        },
+        {
+          "date": "2026-06-14",
+          "time": "2:00 PM",
+          "venue": "AMC 19th St. East 6",
+          "day_order": 11
+        }
+      ],
+      "day": "2026-06-05",
+      "date": "2026-06-05",
+      "time": "8:30 PM",
+      "venue": "Shorts Theater at Spring Studios",
+      "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/6869/large_You_Tryna_Say_You_Love_Me-Clean-16x9-01.jpg",
+      "posterPosition": "center",
+      "day_order": 2,
+      "flags": "🇺🇸",
+      "year": 2026
     }
   ]
 }
