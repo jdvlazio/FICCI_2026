@@ -6613,25 +6613,69 @@
       "film_list": [
         {
           "title": "Me, Myself, and Mary",
-          "slug": "me-myself-and-mary",
-          "director": "John Michell"
+          "director": "John Michell",
+          "duration": 13,
+          "country": "United Kingdom, Ireland",
+          "flags": "🇬🇧🇮🇪",
+          "premiere": "World Premiere",
+          "poster": "",
+          "synopsis": "Séamas O'Reilly confundió los días y se encontró solo con su jefa y el Presidente de Irlanda mientras estaba drogado. Una historia real viral, con Chris O'Dowd y Aisling Bea.",
+          "synopsis_en": "Séamas O'Reilly got his days mixed up and found himself alone with his boss and the President of Ireland while high on drugs. A viral true story, starring Chris O'Dowd and Aisling Bea."
         },
         {
-          "title": "violet-and-marlowe-rob-a-bank",
-          "slug": "violet-and-marlowe-rob-a-bank"
+          "title": "Violet and Marlowe Rob a Bank",
+          "director": "Wesley Wang",
+          "duration": 2,
+          "country": "United States",
+          "flags": "🇺🇸",
+          "premiere": "World Premiere",
+          "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/7034/large_Violet_and_Marlowe_Rob_a_Bank-Bug-16x9-01.jpg",
+          "synopsis": "",
+          "synopsis_en": ""
         },
         {
-          "title": "under-the-lake",
-          "slug": "under-the-lake"
+          "title": "Under the Lake",
+          "director": "Juan Carlos Mostaza",
+          "duration": 14,
+          "country": "Spain",
+          "flags": "🇪🇸",
+          "premiere": "World Premiere",
+          "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/7014/large_Under_the_Lake-Bug-16x9-01.jpg",
+          "synopsis": "",
+          "synopsis_en": ""
         },
         {
-          "title": "saba",
-          "slug": "saba"
+          "title": "Because Today is Saturday",
+          "director": "Alice Eça Guimarães",
+          "duration": 12,
+          "country": "Portugal, France, Spain",
+          "flags": "🇵🇹🇫🇷🇪🇸",
+          "premiere": "",
+          "poster": "",
+          "synopsis": "Una mujer despierta temprano en su cumpleaños para robarse unas horas de escritura. Cada momento de inspiración es interrumpido por demandas domésticas hasta que la carga mental llega a un punto de quiebre.",
+          "synopsis_en": "A woman wakes early on her birthday to steal a few hours of writing time. Every inspiration is interrupted by domestic demands — laundry, children, meals — until the mental load reaches a breaking point."
+        },
+        {
+          "title": "Saba",
+          "director": "Liron Topaz",
+          "duration": 9,
+          "country": "France",
+          "flags": "🇫🇷",
+          "premiere": "World Premiere",
+          "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/6947/large_Saba-Clean-16x9-01.jpg",
+          "synopsis": "",
+          "synopsis_en": ""
         },
         {
           "title": "APART",
-          "slug": "apart",
-          "director": "Pola Maneli"
+          "director": "Pola Maneli",
+          "duration": 19,
+          "country": "United States, South Africa",
+          "flags": "🇺🇸🇿🇦",
+          "premiere": "World Premiere",
+          "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/7022/medium_Apart-Clean-16x9-01.jpg",
+          "synopsis": "Violet acepta una invitación a una isla privada con famosos influencers, esperando oportunidades virales. Pronto se convierte en parte de un reality show de terror: los invitados deben cazar a los legendarios perros devoradores de hombres.",
+          "synopsis_en": "Violet acepta una invitación a una isla privada con famosos influencers, esperando oportunidades virales. Pronto se convierte en parte de un reality show de terror real: los invitados deben cazar a los legendarios perros devoradores de hombres de la isla."
         }
       ]
     },
@@ -6678,31 +6722,69 @@
       "film_list": [
         {
           "title": "Last Minute",
-          "slug": "last-minute",
-          "director": "Michael Cusumano"
+          "director": "Michael Cusumano",
+          "duration": 15,
+          "country": "United States",
+          "flags": "🇺🇸",
+          "premiere": "New York Premiere",
+          "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/6901/medium_Last_Minute-Clean-16x9-01.jpg",
+          "synopsis": "Billy Byrne es el próximo gran fenómeno de Londres, hasta que deja de serlo. En un instante su mundo explota y cae en espiral hacia el submundo de asesinos, ladrones y agentes de talento.",
+          "synopsis_en": "Billy Byrne is the Next Big Thing in London — until he isn't. In a split second, his world detonates and he spirals into the underworld of murderers, thieves, and talent agents."
         },
         {
           "title": "32 B",
-          "slug": "32-b",
-          "director": "Mohamed Taher"
+          "director": "Mohamed Taher",
+          "duration": 18,
+          "country": "Egypt",
+          "flags": "🇪🇬",
+          "premiere": "",
+          "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/6990/medium_32_B-Clean-16x9-01.jpg",
+          "synopsis": "Una pareja se muda a una nueva casa y coloca cámaras de vigilancia tras una serie de eventos extraños y posiblemente paranormales. Lo que revela el metraje encontrado es perturbador.",
+          "synopsis_en": "A couple moves into a new house and sets up surveillance cameras after a series of strange, possibly paranormal events. What the found footage reveals is unsettling."
         },
         {
           "title": "His House, Home",
-          "slug": "his-house-home",
-          "director": "Aisling O'Regan Sargent"
+          "director": "Aisling O'Regan Sargent",
+          "duration": 14,
+          "country": "Ireland",
+          "flags": "🇮🇪",
+          "premiere": "New York Premiere",
+          "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/6904/medium_His_House__Home-Clean-16x9-01.jpg",
+          "synopsis": "Luke, un joven en el armario que cuida a su padre con esclerosis múltiple, debe enfrentar sus miedos cuando una asistente sanitaria queer entra en sus vidas.",
+          "synopsis_en": "Luke, a closeted young man caring for his father with MS, must face his fears of coming out when a queer healthcare assistant enters their lives."
         },
         {
-          "title": "sandy-fannies",
-          "slug": "sandy-fannies"
+          "title": "Sandy Fannies",
+          "director": "Ingrid Runde Saxegaard",
+          "duration": 13,
+          "country": "Norway",
+          "flags": "🇳🇴",
+          "premiere": "World Premiere",
+          "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/6999/large_Sandy_Fannies-Clean-16x9-01.jpg",
+          "synopsis": "",
+          "synopsis_en": ""
         },
         {
-          "title": "pale-sun",
-          "slug": "pale-sun"
+          "title": "Pale Sun",
+          "director": "Adrian Moyse Dullin and Jawahine Zentar",
+          "duration": 15,
+          "country": "France",
+          "flags": "🇫🇷",
+          "premiere": "New York Premiere",
+          "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/6980/large_Pale_Sun-Clean-16x9-01.jpg",
+          "synopsis": "",
+          "synopsis_en": ""
         },
         {
           "title": "Kiloran Bay",
-          "slug": "kiloran-bay",
-          "director": "Michael Bruce"
+          "director": "Michael Bruce",
+          "duration": 13,
+          "country": "United Kingdom",
+          "flags": "🇬🇧",
+          "premiere": "International Premiere",
+          "poster": "",
+          "synopsis": "Un hombre gay regresa a Escocia después de décadas para asistir a una boda tradicional y se enfrenta a un pasado que pasó toda su vida evitando. Un cortometraje musical.",
+          "synopsis_en": "A gay man returns to Scotland after decades away to attend a traditional wedding — and faces a past he spent a lifetime avoiding. A musical short film."
         }
       ]
     },
@@ -6749,32 +6831,69 @@
       "film_list": [
         {
           "title": "Kaya (ᜃᜌ)",
-          "slug": "kaya",
-          "director": "Isabel Lamers"
+          "director": "Isabel Lamers",
+          "duration": 11,
+          "country": "Philippines",
+          "flags": "🇵🇭",
+          "premiere": "World Premiere",
+          "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/6981/large_Kaya-Clean-16x9-01.jpg",
+          "synopsis": "Un cortometraje en competencia en Tribeca 2026.",
+          "synopsis_en": "A short film in competition at Tribeca 2026."
         },
         {
           "title": "Freestyle",
-          "slug": "freestyle",
-          "director": "Jordan Britt"
+          "director": "Jordan Britt",
+          "duration": 13,
+          "country": "United States",
+          "flags": "🇺🇸",
+          "premiere": "World Premiere",
+          "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/6871/medium_Freestyle-Clean-16x9-01.jpg",
+          "synopsis": "Una promesa del rap con un pasado delictivo decide vender droga para saldar su deuda con el estudio de grabación. Pero su arriesgado plan podría costarle muy caro.",
+          "synopsis_en": "Una promesa del rap con un pasado delictivo decide vender droga para saldar su deuda con el estudio de grabación. Su plan arriesgado podría costarle muy caro."
         },
         {
           "title": "Fault",
-          "slug": "fault",
-          "director": "Misha Calvert"
+          "director": "Misha Calvert",
+          "duration": 14,
+          "country": "United States",
+          "flags": "🇺🇸",
+          "premiere": "World Premiere",
+          "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/7025/medium_Fault_RobertNewman-Clean-16x9-01.jpg",
+          "synopsis": "Noah se muda a Londres y se enamora por primera vez del hijo de su padrastro. Mientras se adapta a su nueva vida, su devastador pasado la alcanzará.",
+          "synopsis_en": "Noah se muda de Estados Unidos a Londres y se enamora por primera vez del hijo de su padrastro. Mientras se adapta a su nueva vida, su devastador pasado la alcanzará."
         },
         {
           "title": "I Think About Killing You",
-          "slug": "i-think-about-killing-you",
-          "director": "Ran Ran Wang"
+          "director": "Ran Ran Wang",
+          "duration": 14,
+          "country": "United States",
+          "flags": "🇺🇸",
+          "premiere": "New York Premiere",
+          "poster": "",
+          "synopsis": "La capitana Dani está obsesionada con fantasías de matar a su entrenador abusivo. Cuando él lleva al equipo demasiado lejos, debe decidir si actuar sobre ellas.",
+          "synopsis_en": "Team captain Dani is haunted by fantasies of killing her abusive coach. When he pushes the team too far, she must decide whether to act on them."
         },
         {
           "title": "La Lucha de Lucía",
-          "slug": "lucha-de-lucia",
-          "director": "Maria Sofia Hernandez"
+          "director": "Maria Sofia Hernandez",
+          "duration": 14,
+          "country": "Mexico",
+          "flags": "🇲🇽",
+          "premiere": "New York Premiere",
+          "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/6866/medium_Lucia_s_Fight-Clean-16x9-01.jpg",
+          "synopsis": "Lucía, de 16 años, es luchadora de lucha libre entrenada desde niña para pelear sucio. Su padre cree que debe ser ruda para triunfar. Debe decidir si confiar en sus propios instintos o seguir las reglas que construyeron a su familia.",
+          "synopsis_en": "Sixteen-year-old Lucía is a lucha libre wrestler trained since childhood to fight dirty. Her father believes she must be a ruda to succeed. She must decide whether to trust her own instincts or follow the rules that built her family."
         },
         {
-          "title": "ultimatum",
-          "slug": "ultimatum"
+          "title": "Ultimatum",
+          "director": "Jean-Luc Mwepu and Desirée Mwepu",
+          "duration": 13,
+          "country": "Sweden",
+          "flags": "🇸🇪",
+          "premiere": "World Premiere",
+          "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/6973/large_Ultimatum-Clean-16x9-01.jpg",
+          "synopsis": "",
+          "synopsis_en": ""
         }
       ]
     },
@@ -6815,17 +6934,36 @@
       "film_list": [
         {
           "title": "Farm to Fashion",
-          "slug": "farm-to-fashion",
-          "director": "Oliver Halfin"
+          "director": "Oliver Halfin",
+          "duration": 23,
+          "country": "United States",
+          "flags": "🇺🇸",
+          "premiere": "World Premiere",
+          "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/7063/large_FarmToFashion-clean-16x9-01.jpg",
+          "synopsis": "Un cortometraje en competencia en Tribeca 2026.",
+          "synopsis_en": "A short film in competition at Tribeca 2026."
         },
         {
-          "title": "oscar-de-la-renta-a-life-well-lived",
-          "slug": "oscar-de-la-renta-a-life-well-lived"
+          "title": "Oscar de la Renta : A Life Well Lived",
+          "director": "Richard Kaufman",
+          "duration": 17,
+          "country": "United States, Dominican Republic, India, Italy",
+          "flags": "🇺🇸🇩🇴🇮🇳🇮🇹",
+          "premiere": "",
+          "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/7004/large_Oscar-de-la-Renta_ALifeWellLived-Clean-16x9.jpg",
+          "synopsis": "",
+          "synopsis_en": ""
         },
         {
           "title": "Couture to the Max",
-          "slug": "couture-to-the-max",
-          "director": "Dori Berinstein"
+          "director": "Dori Berinstein",
+          "duration": 35,
+          "country": "United States",
+          "flags": "🇺🇸",
+          "premiere": "World Premiere",
+          "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/7021/large_Couture_to_the_Max-Clean-16x9-01.jpg",
+          "synopsis": "Con solo 9 años, el prodigio de la moda Max Alexander fusiona una imaginación desbordante con un compromiso firme con la sostenibilidad.",
+          "synopsis_en": "At 9 years old, fashion prodigy Max Alexander fuses boundless imagination with an unwavering commitment to sustainability."
         }
       ]
     },
@@ -6863,7 +7001,74 @@
       "posterPosition": "center",
       "day_order": 1,
       "is_cortos": true,
-      "film_list": []
+      "film_list": [
+        {
+          "title": "Vultures",
+          "director": "Dian Weys",
+          "duration": 14,
+          "country": "France, South Africa",
+          "flags": "🇫🇷🇿🇦",
+          "premiere": "New York Premiere",
+          "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/7003/large_Vultures-Bug-16x9-01.jpg",
+          "synopsis": "",
+          "synopsis_en": ""
+        },
+        {
+          "title": "Odessa",
+          "director": "Harald Swinkels",
+          "duration": 19,
+          "country": "Netherlands",
+          "flags": "🇳🇱",
+          "premiere": "New York Premiere",
+          "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/6905/medium_Odessa-Clean-16x9-01.jpg",
+          "synopsis": "Joshua, un asesino profesional, vuelve a su ciudad natal por cuestiones de trabajo. El retorno a la población de inmigrantes rusos donde pasó su juventud despierta en él recuerdos dolorosos y confusos.",
+          "synopsis_en": "Joshua, un asesino profesional, regresa a su ciudad natal por trabajo. El retorno al barrio de inmigrantes rusos donde creció despierta recuerdos dolorosos y confusos."
+        },
+        {
+          "title": "Greetings from Sumatra",
+          "director": "Karolina Fronik and Marta Kowalska",
+          "duration": 12,
+          "country": "Poland",
+          "flags": "🇵🇱",
+          "premiere": "",
+          "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/6898/large_Greetings_from_Sumatra-Bug-16x9-01.jpg",
+          "synopsis": "Aga es una popular periodista de guerra que lo comparte todo con sus espectadores, hasta que un error de filmación en Indonesia revela un secreto que la obliga a preguntarse si su trabajo es verdaderamente ético.",
+          "synopsis_en": "Aga is a popular war journalist who shares everything with her viewers — until a filmmaking mistake in Indonesia reveals a secret that forces her to reckon with whether her work is truly ethical."
+        },
+        {
+          "title": "Am I a Bad Person?",
+          "director": "Alanna Longo",
+          "duration": 13,
+          "country": "United States",
+          "flags": "🇺🇸",
+          "premiere": "World Premiere",
+          "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/7028/medium_Am_I_a_Bad_Person_Clean-16x9-01.jpg",
+          "synopsis": "Una madre y su hija de gira por festivales de cine en Europa deciden separarse y deben enfrentar decisiones que cambiarán sus vidas antes de regresar a casa.",
+          "synopsis_en": "A mother and daughter touring film festivals in Europe choose to part ways — and must face life-changing decisions alone before returning home."
+        },
+        {
+          "title": "The Barbershop",
+          "director": "Diêm Camille and Diêm Camille",
+          "duration": 12,
+          "country": "Denmark",
+          "flags": "🇩🇰",
+          "premiere": "World Premiere",
+          "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/6941/medium_Barbershop_01_clean_16x9.jpg",
+          "synopsis": "La barbería de Calvin ha cambiado en diez años: la llegada de mujeres le dio nuevo aire. Pero cuando una pandilla amenaza el vecindario, Calvin, Eddie y su pandilla deben unirse para salvar lo que construyeron.",
+          "synopsis_en": "Calvin's barbershop has changed after ten years — women have given it new life. But when a gang threatens the neighborhood, Calvin, Eddie, and the crew must work together to save what they've built."
+        },
+        {
+          "title": "Selah",
+          "director": "Lara Everly",
+          "duration": 21,
+          "country": "United States",
+          "flags": "🇺🇸",
+          "premiere": "World Premiere",
+          "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/7045/large_Selah-Clean-16x9-01(2).jpg",
+          "synopsis": "",
+          "synopsis_en": ""
+        }
+      ]
     },
     {
       "title": "Shorts: Love Fictionally",
@@ -6914,36 +7119,80 @@
       "film_list": [
         {
           "title": "General Admission",
-          "slug": "general-admission",
-          "director": "Kaily Morgan Smith"
+          "director": "Kaily Morgan Smith",
+          "duration": 10,
+          "country": "United States",
+          "flags": "🇺🇸",
+          "premiere": "World Premiere",
+          "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/6943/medium_General_Admission-Clean-16x9-01.jpg",
+          "synopsis": "Un cortometraje sobre una noche, un escenario y las personas que aparecen.",
+          "synopsis_en": "A short film about one night, one stage, and the people who show up."
         },
         {
           "title": "Buckets",
-          "slug": "buckets",
-          "director": "Drew Van Steenbergen"
+          "director": "Drew Van Steenbergen",
+          "duration": 10,
+          "country": "United States",
+          "flags": "🇺🇸",
+          "premiere": "World Premiere",
+          "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/6903/large_Buckets-Clean-16x9-01.jpg",
+          "synopsis": "Un cortometraje en competencia en Tribeca 2026.",
+          "synopsis_en": "A short film in competition at Tribeca 2026."
         },
         {
           "title": "DISC",
-          "slug": "disc",
-          "director": "Blake Winston Rice"
+          "director": "Blake Winston Rice",
+          "duration": 13,
+          "country": "United States",
+          "flags": "🇺🇸",
+          "premiere": "New York Premiere",
+          "poster": "",
+          "synopsis": "Un rapero callejero intenta promocionar su último sencillo en Nueva York, pero se enfrenta a una competencia arrogante del barrio.",
+          "synopsis_en": "A street rapper tries to promote his latest single in New York but faces arrogant competition from a rival around the block."
         },
         {
           "title": "One Night",
-          "slug": "one-night",
-          "director": "Maggie Brown and Tyler Brown"
+          "director": "Maggie Brown and Tyler Brown",
+          "duration": 13,
+          "country": "United States",
+          "flags": "🇺🇸",
+          "premiere": "World Premiere",
+          "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/6880/medium_One-Night_Jacob-Kuba-Bojsza_Clean-16x9-01.jpg",
+          "synopsis": "Dos desconocidos, ávidos de amor, se topan por casualidad en la única noche del año en que las personas solteras tienen permitido tener relaciones sexuales.",
+          "synopsis_en": "Dos desconocidos ávidos de amor se encuentran en la única noche del año en que las personas solteras tienen permitido tener relaciones sexuales."
         },
         {
-          "title": "she-s-nonbinary",
-          "slug": "she-s-nonbinary"
+          "title": "She's Nonbinary",
+          "director": "Jess McLeod",
+          "duration": 10,
+          "country": "Canada",
+          "flags": "🇨🇦",
+          "premiere": "New York Premiere",
+          "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/6907/large_She_s_Nonbinary-Clean-16x9-01.jpg",
+          "synopsis": "",
+          "synopsis_en": ""
         },
         {
           "title": "I, of an Accident or of love",
-          "slug": "i-of-an-accident-or-of-love",
-          "director": "Khalil Cherti"
+          "director": "Khalil Cherti",
+          "duration": 14,
+          "country": "France",
+          "flags": "🇫🇷",
+          "premiere": "",
+          "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/6883/large_I__of_an_Accident_or_of_Love-Clean-16x9-01.jpg",
+          "synopsis": "Un cortometraje en competencia en Tribeca 2026.",
+          "synopsis_en": "A short film in competition at Tribeca 2026."
         },
         {
-          "title": "you-tryna-say-you-love-me",
-          "slug": "you-tryna-say-you-love-me"
+          "title": "You Tryna Say You Love Me?",
+          "director": "Ty Molbak",
+          "duration": 11,
+          "country": "United States",
+          "flags": "🇺🇸",
+          "premiere": "World Premiere",
+          "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/6869/large_You_Tryna_Say_You_Love_Me-Clean-16x9-01.jpg",
+          "synopsis": "",
+          "synopsis_en": ""
         }
       ]
     },
@@ -6978,58 +7227,102 @@
       "film_list": [
         {
           "title": "\"Animus Ignis\" - Shawty Sweat",
-          "slug": "animus-ignis-shawty-sweat",
-          "director": "Rui Wang and Yu-Ming Huang"
+          "director": "Rui Wang and Yu-Ming Huang",
+          "duration": 3,
+          "country": "China",
+          "flags": "🇨🇳",
+          "premiere": "",
+          "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/7072/large_Animus_Ignis_-_Shawty_Sweat-Clean-16x9-01.jpg"
         },
         {
           "title": "\"Archbishop Harold Holmes” - Jack White",
-          "slug": "archbishop-harold-holmes-jack-white",
-          "director": "Gilbert Trejo"
+          "director": "Gilbert Trejo",
+          "duration": 2,
+          "country": "United States",
+          "flags": "🇺🇸",
+          "premiere": "",
+          "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/7069/large_Archbishop_Harold_Holmes_-_Jack_White-Clean-16x9-01.jpg"
         },
         {
           "title": "\"Beautiful\" - Linda Perry",
-          "slug": "beautiful-linda-perry",
-          "director": "Sara Gilbert"
+          "director": "Sara Gilbert",
+          "duration": 4,
+          "country": "United States",
+          "flags": "🇺🇸",
+          "premiere": "",
+          "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/7067/large_Beautiful-clean-16x9-01.jpg"
         },
         {
           "title": "\"Elegantly Wasted\" - Hermanos Gutiérrez x Leon Bridges",
-          "slug": "elegantly-wasted-hermanos-gutierrez-x-leon-bridges",
-          "director": "Matt Muir"
+          "director": "Matt Muir",
+          "duration": 3,
+          "country": "United States",
+          "flags": "🇺🇸",
+          "premiere": "",
+          "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/7056/large_Elegantly_Wasted_-_Hermanos_Gutie%CC%81rrez_x_Leon_Bridges-Clean-16x9-01.jpg"
         },
         {
           "title": "\"Everyone’s A Star\" - 5 Seconds of Summer",
-          "slug": "everyone-s-a-star-5-seconds-of-summer",
-          "director": "Ivy Tellin"
+          "director": "Ivy Tellin",
+          "duration": 3,
+          "country": "United States",
+          "flags": "🇺🇸",
+          "premiere": "",
+          "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/7068/large_5SOS-CLEAN-16x9-01.jpg"
         },
         {
           "title": "\"Fingers Crossed\" - The Moth & The Flame",
-          "slug": "fingers-crossed-the-moth-the-flame",
-          "director": "Rebecca Thomas"
+          "director": "Rebecca Thomas",
+          "duration": 3,
+          "country": "United States",
+          "flags": "🇺🇸",
+          "premiere": "",
+          "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/7055/large_Fingers_Crossed_-_The_Moth___The_Flame-Clean-16x9-01.jpg"
         },
         {
           "title": "\"Grave\" - Kid Cudi",
-          "slug": "grave-kid-cudi",
-          "director": "Samuel  Bayer"
+          "director": "Samuel Bayer",
+          "duration": 3,
+          "country": "United States",
+          "flags": "🇺🇸",
+          "premiere": "",
+          "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/7063/large_GRAVE-clean-16x9-01.jpg"
         },
         {
           "title": "\"Kill Me Fast\" - Three Days Grace",
-          "slug": "kill-me-fast-three-days-grace",
-          "director": "Jose Lun"
+          "director": "Jose Lun",
+          "duration": 3,
+          "country": "United States",
+          "flags": "🇺🇸",
+          "premiere": "",
+          "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/7059/large_Kill_Me_Fast_-_Three_Days_Grace-Clean-16x9-01.jpg"
         },
         {
           "title": "\"Long Way To Go\" - The What Four",
-          "slug": "long-way-to-go-the-what-four",
-          "director": "Julius Charles Ritter"
+          "director": "Julius Charles Ritter",
+          "duration": 2,
+          "country": "United States",
+          "flags": "🇺🇸",
+          "premiere": "",
+          "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/7060/large_Long_Way_To_Go_-_The_What_Four-Clean-16x9-01.jpg"
         },
         {
           "title": "\"Mr Electric Blue\" - Benson Boone",
-          "slug": "mr-electric-blue-benson-boone",
-          "director": "Matt Eastin"
+          "director": "Matt Eastin",
+          "duration": 5,
+          "country": "United States",
+          "flags": "🇺🇸",
+          "premiere": "",
+          "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/7061/large_Mr_Electric_Blue_-_Benson_Boone-Bug-16x9-01.jpg"
         },
         {
-          "title": "\"NEW YORK IS DEAD\" - LP Giobbi feat. little boots",
-          "slug": "new-york-is-dead-lp-giobbi-feat-little-boots",
-          "director": "Richard Burrowes"
+          "title": "\"New York Is Dead\" - LP Giobbi feat. little boots",
+          "director": "Richard Burrowes",
+          "duration": 4,
+          "country": "United States",
+          "flags": "🇺🇸",
+          "premiere": "",
+          "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/7064/large_New_York_Is_Dead_-_LP_Giobi-Clean-16x9-01.jpg"
         }
       ]
     },
@@ -7073,7 +7366,85 @@
       "posterPosition": "center",
       "day_order": 3,
       "is_cortos": true,
-      "film_list": []
+      "film_list": [
+        {
+          "title": "Insufficient Fare",
+          "director": "Michael Gugger and Varvara Kanellakopoulou",
+          "duration": 5,
+          "country": "United States",
+          "flags": "🇺🇸",
+          "premiere": "World Premiere",
+          "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/7012/large_Insufficient_Fare-Clean-16x9-01.jpg",
+          "synopsis": "Un cortometraje en competencia en Tribeca 2026.",
+          "synopsis_en": "A short film in competition at Tribeca 2026."
+        },
+        {
+          "title": "Stand Clear ’ the Closing Doors",
+          "director": "Stacey Sargeant",
+          "duration": 7,
+          "country": "United States",
+          "flags": "🇺🇸",
+          "premiere": "World Premiere",
+          "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/7018/large_Stand_Clear_the_Closing_Doors-Clean-16x9-021.jpg",
+          "synopsis": "",
+          "synopsis_en": ""
+        },
+        {
+          "title": "So, Boom",
+          "director": "Abby Pierce",
+          "duration": 14,
+          "country": "United States",
+          "flags": "🇺🇸",
+          "premiere": "New York Premiere",
+          "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/6891/large_SoBoom_Clean-16x9-01.jpg",
+          "synopsis": "",
+          "synopsis_en": ""
+        },
+        {
+          "title": "I'm Not Home",
+          "director": "Elena Parasco",
+          "duration": 12,
+          "country": "United States",
+          "flags": "🇺🇸",
+          "premiere": "World Premiere",
+          "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/6944/large_ImNotHome-clean-16x9-01.jpg",
+          "synopsis": "El exmiembro de la mafia de Bombay Shau emprende un viaje para reconectarse con su familia, cuestionando qué significan la libertad y el sentido de pertenencia.",
+          "synopsis_en": "Ex-Mumbai Mafia member Shau embarks on a journey to reconnect with his family, questioning what freedom and belonging mean after a life of violence."
+        },
+        {
+          "title": "Fabric",
+          "director": "Frank Sun",
+          "duration": 14,
+          "country": "United States",
+          "flags": "🇺🇸",
+          "premiere": "World Premiere",
+          "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/6927/medium_Fabric-Clean-16x9-01.jpg",
+          "synopsis": "Un vestido rojo sangre hipnotiza a Sheila en las rebajas de unos grandes almacenes ingleses. Parece que una maldición pesa sobre cada persona que ha poseído esa prenda.",
+          "synopsis_en": "En las rebajas de unos grandes almacenes ingleses, un vestido rojo sangre hipnotiza a Sheila. Una maldición parece pesar sobre cada persona que ha poseído esa prenda fetiche."
+        },
+        {
+          "title": "Homesick",
+          "director": "Nadia Bedj",
+          "duration": 13,
+          "country": "United States",
+          "flags": "🇺🇸",
+          "premiere": "World Premiere",
+          "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/6865/medium_Homesick_Clean-16x9-01.jpg",
+          "synopsis": "Un hombre infeliz asiste a un retiro que promete a los adultos una segunda oportunidad para tener una infancia feliz. Un thriller absurdista sobre lo que realmente buscamos cuando intentamos volver atrás.",
+          "synopsis_en": "An unhappy man attends a retreat that promises adults a second chance at a happy childhood. An absurdist thriller about what we're actually looking for when we try to go back."
+        },
+        {
+          "title": "Daddy's Little Meatball",
+          "director": "Yael Grunseit",
+          "duration": 14,
+          "country": "Australia, United States",
+          "flags": "🇦🇺🇺🇸",
+          "premiere": "New York Premiere",
+          "poster": "",
+          "synopsis": "Un vendedor australiano de ropa interior de período y su hija adolescente navegan la ciudad de Nueva York y su tensa relación.",
+          "synopsis_en": "An Australian period-underwear salesman and his teenage daughter navigate New York City and their strained relationship."
+        }
+      ]
     },
     {
       "title": "Shorts: Power to the People",
@@ -7117,17 +7488,37 @@
       "is_cortos": true,
       "film_list": [
         {
-          "title": "second-life-of-freddie-nole",
-          "slug": "second-life-of-freddie-nole"
+          "title": "The Second Life of Freddie Nole",
+          "director": "Dana Nachman",
+          "duration": 21,
+          "country": "United States",
+          "flags": "🇺🇸",
+          "premiere": "New York Premiere",
+          "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/6932/large_The_Second_Life_of_Freddie_Nole-Bug-16x9-01.jpg",
+          "synopsis": "",
+          "synopsis_en": ""
         },
         {
-          "title": "when-the-revolution-doesn-t-come",
-          "slug": "when-the-revolution-doesn-t-come"
+          "title": "When the Revolution Doesn't Come",
+          "director": "Aurora Brachman",
+          "duration": 25,
+          "country": "United States, United Kingdom",
+          "flags": "🇺🇸🇬🇧",
+          "premiere": "",
+          "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/7005/large_When_the_Revolution_Doesn_t_Come-Clean-16x9-01.jpg",
+          "synopsis": "",
+          "synopsis_en": ""
         },
         {
           "title": "The Baddest Speechwriter of All",
-          "slug": "baddest-speechwriter-of-all",
-          "director": "Ben Proudfoot and Stephen Curry"
+          "director": "Ben Proudfoot and Stephen Curry",
+          "duration": 29,
+          "country": "United States",
+          "flags": "🇺🇸",
+          "premiere": "New York Premiere",
+          "poster": "",
+          "synopsis": "A los 93 años, el abogado y redactor de discursos de Martin Luther King reflexiona sobre el costo personal de hacer historia y las verdades sorprendentes detrás del Movimiento por los Derechos Civiles.",
+          "synopsis_en": "Now 93, Martin Luther King Jr.'s lawyer and speechwriter reflects on the personal cost of making history — and the surprising truths behind the Civil Rights Movement."
         }
       ]
     },
@@ -7174,31 +7565,69 @@
       "film_list": [
         {
           "title": "Lost Touch",
-          "slug": "lost-touch",
-          "director": "Justine Klaiber"
+          "director": "Justine Klaiber",
+          "duration": 12,
+          "country": "Switzerland",
+          "flags": "🇨🇭",
+          "premiere": "",
+          "poster": "",
+          "synopsis": "La única superviviente de una nave espacial dañada, atrapada en la gravedad de un planeta, lucha contra el duelo y el aislamiento. Cuando aparece una presencia misteriosa, debe elegir entre el pasado y el futuro.",
+          "synopsis_en": "The sole survivor of a damaged spaceship, caught in a planet's gravitational pull, battles grief and isolation. When a mysterious presence appears, she must choose between the past and the future."
         },
         {
-          "title": "sleep-call",
-          "slug": "sleep-call"
+          "title": "Sleep Call",
+          "director": "Richer Huynh",
+          "duration": 17,
+          "country": "United States",
+          "flags": "🇺🇸",
+          "premiere": "New York Premiere",
+          "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/7030/large_Sleep_Call-Clean-16x9-01.jpg",
+          "synopsis": "",
+          "synopsis_en": ""
         },
         {
           "title": "Imprint",
-          "slug": "imprint",
-          "director": "Ran Jing"
+          "director": "Ran Jing",
+          "duration": 15,
+          "country": "United States",
+          "flags": "🇺🇸",
+          "premiere": "World Premiere",
+          "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/6877/medium_Imprint-Clean-16x9-01.jpg",
+          "synopsis": "Una abogada nativa americana regresa a la reserva para despedirse de su padre moribundo y se ve perseguida por visiones relacionadas con la desaparición sin resolver de su madre y el ocultismo de su padre.",
+          "synopsis_en": "A Native American attorney returns to the reservation to say goodbye to her dying father — and finds herself haunted by visions connected to her mother's long-unsolved disappearance and her father's dabbling in the occult."
         },
         {
           "title": "Brujo",
-          "slug": "brujo",
-          "director": "Juan Zuleta"
+          "director": "Juan Zuleta",
+          "duration": 11,
+          "country": "Colombia",
+          "flags": "🇨🇴",
+          "premiere": "International Premiere",
+          "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/6987/medium_Brujo_camillo-monslave-Clean-16x9-01.jpg",
+          "synopsis": "El artista Guillermo Gómez-Peña se convierte en un chamán transcultural que encarna 15 personajes en distintos idiomas, cada uno símbolo de las fronteras entre norte y sur, mito y realidad, arte y vida.",
+          "synopsis_en": "Artist Guillermo Gómez-Peña becomes a cross-cultural shaman, shifting through 15 personas speaking different languages — each a symbol of the borders between North and South, myth and reality, art and life."
         },
         {
           "title": "Holo",
-          "slug": "holo",
-          "director": "Alexander DeSouza"
+          "director": "Alexander DeSouza",
+          "duration": 12,
+          "country": "Canada",
+          "flags": "🇨🇦",
+          "premiere": "World Premiere",
+          "poster": "",
+          "synopsis": "Algún día será el mejor entrenador. Por ahora, solo necesita encontrar un Charizard. Es cuestión de vida o muerte.",
+          "synopsis_en": "One day he'll be the best trainer. Right now, he just needs to find a Charizard. It's a matter of life or death."
         },
         {
-          "title": "verse",
-          "slug": "verse"
+          "title": "Verse",
+          "director": "Noam Argov",
+          "duration": 18,
+          "country": "United States",
+          "flags": "🇺🇸",
+          "premiere": "World Premiere",
+          "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/6972/large_Verse_Clean-16x9-01.jpg",
+          "synopsis": "",
+          "synopsis_en": ""
         }
       ]
     },
@@ -7245,31 +7674,69 @@
       "film_list": [
         {
           "title": "A Crime Across Four Landscapes",
-          "slug": "crime-across-four-landscapes",
-          "director": "Aidan Weaver"
+          "director": "Aidan Weaver",
+          "duration": 6,
+          "country": "United States",
+          "flags": "🇺🇸",
+          "premiere": "World Premiere",
+          "poster": "",
+          "synopsis": "Un crimen en un pequeño pueblo dispersa sus pistas por cuatro paisajes pintorescos del sur americano, invitando al espectador a reconstruir lo ocurrido.",
+          "synopsis_en": "A small-town crime scatters its evidence across four picturesque landscapes in the American South, inviting viewers to piece together what happened."
         },
         {
           "title": "Child of the Rouge",
-          "slug": "child-of-the-rouge",
-          "director": "Taz F. Stark"
+          "director": "Taz F. Stark",
+          "duration": 14,
+          "country": "United States",
+          "flags": "🇺🇸",
+          "premiere": "World Premiere",
+          "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/6868/large_ChildOfTheRouge-CLEAN-16x9-01.jpg",
+          "synopsis": "Un cortometraje en competencia en Tribeca 2026.",
+          "synopsis_en": "A short film in competition at Tribeca 2026."
         },
         {
-          "title": "winter-psalm",
-          "slug": "winter-psalm"
+          "title": "Winter Psalm",
+          "director": "Hao Yan",
+          "duration": 13,
+          "country": "United States",
+          "flags": "🇺🇸",
+          "premiere": "New York Premiere",
+          "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/6899/large_WinterPsalm-Clean-16x9-01.jpg",
+          "synopsis": "",
+          "synopsis_en": ""
         },
         {
           "title": "Found&Lost",
-          "slug": "found-lost",
-          "director": "Reza Rasouli"
+          "director": "Reza Rasouli",
+          "duration": 17,
+          "country": "Austria",
+          "flags": "🇦🇹",
+          "premiere": "New York Premiere",
+          "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/6862/medium_Found_lost-Clean-16x9-01.jpg",
+          "synopsis": "Dylan secuestra la mascota de su hermosa vecina francesa para poder devolverla y convertirse en héroe.",
+          "synopsis_en": "Dylan dognaps his beautiful French neighbor's pet so he can return it and play the hero."
         },
         {
-          "title": "rare-birds",
-          "slug": "rare-birds"
+          "title": "Rare Birds",
+          "director": "Lily Weisberg",
+          "duration": 10,
+          "country": "United States",
+          "flags": "🇺🇸",
+          "premiere": "World Premiere",
+          "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/6873/large_Rare_Birds-Clean-16x9-01.jpg",
+          "synopsis": "",
+          "synopsis_en": ""
         },
         {
           "title": "Getar Hero",
-          "slug": "getar-hero",
-          "director": "Teddy Stern"
+          "director": "Teddy Stern",
+          "duration": 15,
+          "country": "United States, India",
+          "flags": "🇺🇸🇮🇳",
+          "premiere": "World Premiere",
+          "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/7020/large_Getar_Hero-Clean-16x9-01.jpg",
+          "synopsis": "Un cortometraje en competencia en Tribeca 2026.",
+          "synopsis_en": "A short film in competition at Tribeca 2026."
         }
       ]
     },
@@ -7310,29 +7777,69 @@
       "film_list": [
         {
           "title": "Cookie, Love",
-          "slug": "cookie-love",
-          "director": "Sari Arambulo"
+          "director": "Sari Arambulo",
+          "duration": 9,
+          "country": "France, United States",
+          "flags": "🇫🇷🇺🇸",
+          "premiere": "World Premiere",
+          "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/6908/medium_Cookie__Love-Clean-16x9-01.jpg",
+          "synopsis": "La sheriff Marga es distrada de una serie de secuestros misteriosos por el peligroso elemento que opera en los muelles. ¿Será la misteriosa reina del salón de baile — o algo mucho más siniestro?",
+          "synopsis_en": "Sheriff Marga is distracted from a series of puzzling kidnappings by dangerous trouble at the docks. Could the culprit be the mysterious dance hall queen — or something far more sinister?"
         },
         {
-          "title": "white-belt",
-          "slug": "white-belt"
+          "title": "White Belt",
+          "director": "Branislav Jankic",
+          "duration": 18,
+          "country": "United States",
+          "flags": "🇺🇸",
+          "premiere": "New York Premiere",
+          "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/6858/large_WhiteBelt-clean-16x9-01.jpg",
+          "synopsis": "",
+          "synopsis_en": ""
         },
         {
-          "title": "theatre-of-dreams",
-          "slug": "theatre-of-dreams"
+          "title": "Theatre of Dreams",
+          "director": "Fatma Al-Ghanim",
+          "duration": 15,
+          "country": "Qatar",
+          "flags": "🇶🇦",
+          "premiere": "New York Premiere",
+          "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/6982/large_Theater-of-Dreams-clean-16x9-01.jpg",
+          "synopsis": "",
+          "synopsis_en": ""
         },
         {
           "title": "The Dark Knot at the Center",
-          "slug": "dark-knot-at-the-center",
-          "director": "Inês Pedrosa e Melo"
+          "director": "Inês Pedrosa e Melo",
+          "duration": 17,
+          "country": "Portugal, United States",
+          "flags": "🇵🇹🇺🇸",
+          "premiere": "World Premiere",
+          "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/6956/medium_The_Dark_Knot_at_the_Center-Clean-16x9-01.jpg",
+          "synopsis": "Un cortometraje que explora el nudo oscuro en el centro de una vida bajo presión.",
+          "synopsis_en": "A short film exploring the tangled center of a life under pressure."
         },
         {
-          "title": "run-in-beauty",
-          "slug": "run-in-beauty"
+          "title": "Run In Beauty",
+          "director": "Devin Whetstone",
+          "duration": 15,
+          "country": "United States",
+          "flags": "🇺🇸",
+          "premiere": "New York Premiere",
+          "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/7079/large_Run_In_Beauty-Clean-16x9-01.jpg",
+          "synopsis": "",
+          "synopsis_en": ""
         },
         {
-          "title": "panther-pat",
-          "slug": "panther-pat"
+          "title": "Panther Pat",
+          "director": "Ashley Brandon",
+          "duration": 12,
+          "country": "United States",
+          "flags": "🇺🇸",
+          "premiere": "New York Premiere",
+          "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/6872/large_Panther_Pat-Clean-16x9-01.jpg",
+          "synopsis": "",
+          "synopsis_en": ""
         }
       ]
     },
@@ -7373,32 +7880,69 @@
       "film_list": [
         {
           "title": "Born to Kill",
-          "slug": "born-to-kill",
-          "director": "Sally Tran"
+          "director": "Sally Tran",
+          "duration": 17,
+          "country": "United States",
+          "flags": "🇺🇸",
+          "premiere": "World Premiere",
+          "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/7006/medium_Born_to_Kill-Clean-16x9-01.jpg",
+          "synopsis": "Helen se divorcia en Reno y esa noche descubre un doble asesinato. Prefiere guardar silencio. En el tren hacia San Francisco conoce a Sam Wild, un psicópata atractivo que también huye del lugar del crimen.",
+          "synopsis_en": "Helen, fría y calculadora, acaba de divorciarse en Reno. Esa noche encuentra un doble asesinato y prefiere guardar silencio. En el tren conoce a Sam Wild, un psicópata atractivo que también huye hacia San Francisco."
         },
         {
           "title": "NIO KO BOKK (This Belongs to All of Us)",
-          "slug": "nio-ko-bokk-this-belongs-to-all-of-us",
-          "director": "David Clancy and David Clancy"
+          "director": "David Clancy and David Clancy",
+          "duration": 10,
+          "country": "France, Senegal, United States",
+          "flags": "🇫🇷🇸🇳🇺🇸",
+          "premiere": "New York Premiere",
+          "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/6989/medium_NIO_KO_BOKK-Bug-16x9-01.jpg",
+          "synopsis": "Una película sobre la pertenencia colectiva, la identidad y lo que tenemos en común.",
+          "synopsis_en": "A film about collective belonging, identity, and what we hold in common."
         },
         {
           "title": "Mon Taxi",
-          "slug": "mon-taxi",
-          "director": "Meriem Sakrouhi"
+          "director": "Meriem Sakrouhi",
+          "duration": 8,
+          "country": "United States, Morocco",
+          "flags": "🇺🇸🇲🇦",
+          "premiere": "World Premiere",
+          "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/6955/medium_Mon_Taxi-Clean-16x9-01-NEW.png",
+          "synopsis": "Una feliz pareja de taxis recibe a su hijo Junior, hasta que él anuncia que quiere ser un corredor de autos.",
+          "synopsis_en": "A happily married pair of taxicabs welcomes their son Junior — until he announces he wants to be a hotrodder."
         },
         {
-          "title": "paving-the-way",
-          "slug": "paving-the-way"
+          "title": "Paving The Way",
+          "director": "Keelan Williams",
+          "duration": 21,
+          "country": "United States",
+          "flags": "🇺🇸",
+          "premiere": "New York Premiere",
+          "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/7031/large_Paving_The_Way-Clean-16x9-01.jpg",
+          "synopsis": "",
+          "synopsis_en": ""
         },
         {
           "title": "Listen",
-          "slug": "listen",
-          "director": "Taliesin Black Brown"
+          "director": "Taliesin Black Brown",
+          "duration": 14,
+          "country": "United States",
+          "flags": "🇺🇸",
+          "premiere": "World Premiere",
+          "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/6906/medium_Listen-Clean-16x9-01.jpg",
+          "synopsis": "Una demostración del sonido en Dolby Stereo.",
+          "synopsis_en": "A demonstration of sound in Dolby Stereo."
         },
         {
           "title": "Hope",
-          "slug": "hope",
-          "director": "Javier Cruz-Ginez"
+          "director": "Javier Cruz-Ginez",
+          "duration": 15,
+          "country": "United States, Mexico",
+          "flags": "🇺🇸🇲🇽",
+          "premiere": "New York Premiere",
+          "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/6884/medium_Hope-Clean-16x9-01.jpg",
+          "synopsis": "Una niña llamada So Won se convierte en víctima de la violencia. Su familia pasa por la desesperación y el dolor al intentar abrir otra puerta en su vida.",
+          "synopsis_en": "So Won, una niña, se convierte en víctima de la violencia. Su familia atraviesa la desesperación e intenta abrir una nueva puerta en la vida."
         }
       ]
     },
@@ -7438,37 +7982,81 @@
       "is_cortos": true,
       "film_list": [
         {
-          "title": "roar",
-          "slug": "roar"
+          "title": "ROAR",
+          "director": "Jesse Weglein",
+          "duration": 4,
+          "country": "United States",
+          "flags": "🇺🇸",
+          "premiere": "North American Premiere",
+          "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/7015/large_ROAR-Bug-16x9-01.jpg",
+          "synopsis": "",
+          "synopsis_en": ""
         },
         {
           "title": "ChikaBOOM!",
-          "slug": "chikaboom",
-          "director": "c. Craig Patterson"
+          "director": "c. Craig Patterson",
+          "duration": 9,
+          "country": "United States",
+          "flags": "🇺🇸",
+          "premiere": "World Premiere",
+          "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/6948/large_ChikaBOOM_-Clean-16x9-01.jpg",
+          "synopsis": "Un cortometraje en competencia en Tribeca 2026.",
+          "synopsis_en": "A short film in competition at Tribeca 2026."
         },
         {
           "title": "Dear Upstairs Neighbors",
-          "slug": "dear-upstairs-neighbors",
-          "director": "Connie Qin He"
+          "director": "Connie Qin He",
+          "duration": 6,
+          "country": "United States",
+          "flags": "🇺🇸",
+          "premiere": "World Premiere",
+          "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/7019/large_Dear_Upstairs_Neighbors-Clean-16x9-01.jpg",
+          "synopsis": "Un cortometraje en competencia en Tribeca 2026.",
+          "synopsis_en": "A short film in competition at Tribeca 2026."
         },
         {
           "title": "Eeny, Meeny, Miny, Moe!",
-          "slug": "eeny-meeny-miny-moe",
-          "director": "Andrea Szelesová"
+          "director": "Andrea Szelesová",
+          "duration": 12,
+          "country": "Czech Republic, Slovakia",
+          "flags": "🇨🇿🇸🇰",
+          "premiere": "",
+          "poster": "",
+          "synopsis": "Una meditación sobre la elección: mis decisiones determinan mi vida.",
+          "synopsis_en": "A meditation on choice: my choices determine my life."
         },
         {
           "title": "Grounded",
-          "slug": "grounded",
-          "director": "Chris Callus"
+          "director": "Chris Callus",
+          "duration": 4,
+          "country": "New Zealand",
+          "flags": "🇳🇿",
+          "premiere": "",
+          "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/7017/large_Grounded-Clean-16x9-01.jpg",
+          "synopsis": "Henry, joven mochilero, se hace cargo inadvertidamente de la maleta de un desconocido en el aeropuerto y de inmediato se ve rodeado de policías que lo acusan de terrorismo.",
+          "synopsis_en": "Young backpacker Henry inadvertently takes charge of a stranger's suitcase at the airport — and is immediately surrounded by police who accuse him of terrorism."
         },
         {
           "title": "Leg Day",
-          "slug": "leg-day",
-          "director": "João Lauro Fonte"
+          "director": "João Lauro Fonte",
+          "duration": 4,
+          "country": "Brazil",
+          "flags": "🇧🇷",
+          "premiere": "World Premiere",
+          "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/7029/large_Leg_Day-Clean-16x9-01.jpg",
+          "synopsis": "Un cortometraje en competencia en Tribeca 2026.",
+          "synopsis_en": "A short film in competition at Tribeca 2026."
         },
         {
-          "title": "whale-52-suite-for-man-boy-and-whale",
-          "slug": "whale-52-suite-for-man-boy-and-whale"
+          "title": "WHALE 52 - Suite For Man, Boy, And Whale",
+          "director": "Daniel Neiden",
+          "duration": 11,
+          "country": "United States",
+          "flags": "🇺🇸",
+          "premiere": "",
+          "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/6900/large_Whale52-clean-16x9-01.jpg",
+          "synopsis": "",
+          "synopsis_en": ""
         }
       ]
     },
@@ -7872,2363 +8460,6 @@
       "day_order": 7,
       "synopsis_en": "The last natural habitat for the critically endangered mountain gorilla is threatened by armed insurgencies, corrupt interests, and a British oil company. A handful of park rangers and journalists stand in the way.",
       "flags": "🇨🇩🇬🇧"
-    },
-    {
-      "title": "\"Animus Ignis\" - Shawty Sweat",
-      "slug": "animus-ignis-shawty-sweat",
-      "section": "✂️ Shorts",
-      "type": "film",
-      "filmType": "",
-      "director": "Rui Wang and Yu-Ming Huang",
-      "duration": 3,
-      "country": "China",
-      "language": "Mandarin Chinese",
-      "premiere": "",
-      "synopsis": "Video musical de 'Animus Ignis' por Shawty Sweat.",
-      "screenings": [
-        {
-          "date": "2026-06-09",
-          "time": "8:30 PM",
-          "venue": "Spring Studios",
-          "day_order": 6
-        }
-      ],
-      "day": "2026-06-09",
-      "date": "2026-06-09",
-      "time": "8:30 PM",
-      "venue": "Spring Studios",
-      "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/6942/large_Animus_Ignis_-_Shawty_Sweat-Clean-16x9-01.jpg",
-      "posterPosition": "center",
-      "day_order": 6,
-      "flags": "🇨🇳",
-      "synopsis_en": "Music video for 'Animus Ignis' by Shawty Sweat."
-    },
-    {
-      "title": "\"Archbishop Harold Holmes” - Jack White",
-      "slug": "archbishop-harold-holmes-jack-white",
-      "section": "✂️ Shorts",
-      "type": "film",
-      "filmType": "",
-      "director": "Gilbert Trejo",
-      "duration": 2,
-      "country": "United States",
-      "language": "English",
-      "premiere": "",
-      "synopsis": "",
-      "screenings": [
-        {
-          "date": "2026-06-09",
-          "time": "8:30 PM",
-          "venue": "Spring Studios",
-          "day_order": 6
-        }
-      ],
-      "day": "2026-06-09",
-      "date": "2026-06-09",
-      "time": "8:30 PM",
-      "venue": "Spring Studios",
-      "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/7023/large_Archbishop_Harold_Holmes_-_Jack_White-Clean-16x9-01.jpg",
-      "posterPosition": "center",
-      "day_order": 6,
-      "flags": "🇺🇸"
-    },
-    {
-      "title": "\"Beautiful\" - Linda Perry",
-      "slug": "beautiful-linda-perry",
-      "section": "✂️ Shorts",
-      "type": "film",
-      "filmType": "",
-      "director": "Sara Gilbert",
-      "duration": 4,
-      "country": "United States",
-      "language": "English",
-      "premiere": "",
-      "synopsis": "Video musical de 'Beautiful' por Linda Perry.",
-      "screenings": [
-        {
-          "date": "2026-06-09",
-          "time": "8:30 PM",
-          "venue": "Spring Studios",
-          "day_order": 6
-        }
-      ],
-      "day": "2026-06-09",
-      "date": "2026-06-09",
-      "time": "8:30 PM",
-      "venue": "Spring Studios",
-      "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/7055/large_Beautiful-clean-16x9-01.jpg",
-      "posterPosition": "center",
-      "day_order": 6,
-      "flags": "🇺🇸",
-      "synopsis_en": "Music video for 'Beautiful' by Linda Perry."
-    },
-    {
-      "title": "\"Elegantly Wasted\" - Hermanos Gutiérrez x Leon Bridges",
-      "slug": "elegantly-wasted-hermanos-gutierrez-x-leon-bridges",
-      "section": "✂️ Shorts",
-      "type": "film",
-      "filmType": "",
-      "director": "Matt Muir",
-      "duration": 3,
-      "country": "United States",
-      "language": "English",
-      "premiere": "New York Premiere",
-      "synopsis": "Video musical de 'Elegantly Wasted' de Hermanos Gutiérrez y Leon Bridges.",
-      "screenings": [
-        {
-          "date": "2026-06-09",
-          "time": "8:30 PM",
-          "venue": "Spring Studios",
-          "day_order": 6
-        }
-      ],
-      "day": "2026-06-09",
-      "date": "2026-06-09",
-      "time": "8:30 PM",
-      "venue": "Spring Studios",
-      "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/6993/large_Elegantly_Wasted_-_Hermanos_Gutie%CC%81rrez_x_Leon_Bridges-Clean-16x9-01.jpg",
-      "posterPosition": "center",
-      "day_order": 6,
-      "flags": "🇺🇸",
-      "synopsis_en": "Music video for 'Elegantly Wasted' by Hermanos Gutiérrez and Leon Bridges."
-    },
-    {
-      "title": "\"Everyone’s A Star\" - 5 Seconds of Summer",
-      "slug": "everyone-s-a-star-5-seconds-of-summer",
-      "section": "✂️ Shorts",
-      "type": "film",
-      "filmType": "",
-      "director": "Ivy Tellin",
-      "duration": 3,
-      "country": "United States",
-      "language": "English",
-      "premiere": "World Premiere",
-      "synopsis": "",
-      "screenings": [
-        {
-          "date": "2026-06-09",
-          "time": "8:30 PM",
-          "venue": "Spring Studios",
-          "day_order": 6
-        }
-      ],
-      "day": "2026-06-09",
-      "date": "2026-06-09",
-      "time": "8:30 PM",
-      "venue": "Spring Studios",
-      "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/7037/large_5SOS-CLEAN-16x9-01.jpg",
-      "posterPosition": "center",
-      "day_order": 6,
-      "flags": "🇺🇸",
-      "year": 2026
-    },
-    {
-      "title": "\"Fingers Crossed\" - The Moth & The Flame",
-      "slug": "fingers-crossed-the-moth-the-flame",
-      "section": "✂️ Shorts",
-      "type": "film",
-      "filmType": "",
-      "director": "Rebecca Thomas",
-      "duration": 3,
-      "country": "United States",
-      "language": "English",
-      "premiere": "World Premiere",
-      "synopsis": "Video musical de 'Fingers Crossed' de The Moth & The Flame.",
-      "screenings": [
-        {
-          "date": "2026-06-09",
-          "time": "8:30 PM",
-          "venue": "Spring Studios",
-          "day_order": 6
-        }
-      ],
-      "day": "2026-06-09",
-      "date": "2026-06-09",
-      "time": "8:30 PM",
-      "venue": "Spring Studios",
-      "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/6946/large_Fingers_Crossed_-_The_Moth___The_Flame-Clean-16x9-01.jpg",
-      "posterPosition": "center",
-      "day_order": 6,
-      "flags": "🇺🇸",
-      "year": 2026,
-      "synopsis_en": "Music video for 'Fingers Crossed' by The Moth & The Flame."
-    },
-    {
-      "title": "\"Grave\" - Kid Cudi",
-      "slug": "grave-kid-cudi",
-      "section": "✂️ Shorts",
-      "type": "film",
-      "filmType": "",
-      "director": "Samuel  Bayer",
-      "duration": 3,
-      "country": "United States",
-      "language": "English",
-      "premiere": "World Premiere",
-      "synopsis": "Video musical de 'Grave' de Kid Cudi.",
-      "screenings": [
-        {
-          "date": "2026-06-09",
-          "time": "8:30 PM",
-          "venue": "Spring Studios",
-          "day_order": 6
-        }
-      ],
-      "day": "2026-06-09",
-      "date": "2026-06-09",
-      "time": "8:30 PM",
-      "venue": "Spring Studios",
-      "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/7036/medium_GRAVE-clean-16x9-01.jpg",
-      "posterPosition": "center",
-      "day_order": 6,
-      "flags": "🇺🇸",
-      "year": 2026,
-      "synopsis_en": "Music video for 'Grave' by Kid Cudi."
-    },
-    {
-      "title": "\"Kill Me Fast\" - Three Days Grace",
-      "slug": "kill-me-fast-three-days-grace",
-      "section": "✂️ Shorts",
-      "type": "film",
-      "filmType": "",
-      "director": "Jose Lun",
-      "duration": 3,
-      "country": "United States",
-      "language": "English",
-      "premiere": "",
-      "synopsis": "Video musical de 'Kill Me Fast' de Three Days Grace.",
-      "screenings": [
-        {
-          "date": "2026-06-09",
-          "time": "8:30 PM",
-          "venue": "Spring Studios",
-          "day_order": 6
-        }
-      ],
-      "day": "2026-06-09",
-      "date": "2026-06-09",
-      "time": "8:30 PM",
-      "venue": "Spring Studios",
-      "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/6996/large_Kill_Me_Fast_-_Three_Days_Grace-Clean-16x9-01.jpg",
-      "posterPosition": "center",
-      "day_order": 6,
-      "flags": "🇺🇸",
-      "synopsis_en": "Music video for 'Kill Me Fast' by Three Days Grace."
-    },
-    {
-      "title": "\"Long Way To Go\" - The What Four",
-      "slug": "long-way-to-go-the-what-four",
-      "section": "✂️ Shorts",
-      "type": "film",
-      "filmType": "",
-      "director": "Julius Charles Ritter",
-      "duration": 2,
-      "country": "United States",
-      "language": "English",
-      "premiere": "",
-      "synopsis": "Video musical de 'Long Way To Go' de The What Four.",
-      "screenings": [
-        {
-          "date": "2026-06-09",
-          "time": "8:30 PM",
-          "venue": "Spring Studios",
-          "day_order": 6
-        }
-      ],
-      "day": "2026-06-09",
-      "date": "2026-06-09",
-      "time": "8:30 PM",
-      "venue": "Spring Studios",
-      "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/6988/large_Long_Way_To_Go_-_The_What_Four-Clean-16x9-01.jpg",
-      "posterPosition": "center",
-      "day_order": 6,
-      "flags": "🇺🇸",
-      "synopsis_en": "Music video for 'Long Way To Go' by The What Four."
-    },
-    {
-      "title": "\"Mr Electric Blue\" - Benson Boone",
-      "slug": "mr-electric-blue-benson-boone",
-      "section": "✂️ Shorts",
-      "type": "film",
-      "filmType": "",
-      "director": "Matt Eastin",
-      "duration": 5,
-      "country": "United States",
-      "language": "English",
-      "premiere": "",
-      "synopsis": "Video musical de 'Mr Electric Blue' de Benson Boone.",
-      "screenings": [
-        {
-          "date": "2026-06-09",
-          "time": "8:30 PM",
-          "venue": "Spring Studios",
-          "day_order": 6
-        }
-      ],
-      "day": "2026-06-09",
-      "date": "2026-06-09",
-      "time": "8:30 PM",
-      "venue": "Spring Studios",
-      "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/6952/large_Mr_Electric_Blue_-_Benson_Boone-Bug-16x9-01.jpg",
-      "posterPosition": "center",
-      "day_order": 6,
-      "flags": "🇺🇸",
-      "synopsis_en": "Music video for 'Mr Electric Blue' by Benson Boone."
-    },
-    {
-      "title": "\"New York Is Dead\" - LP Giobbi feat. little boots",
-      "slug": "new-york-is-dead-lp-giobbi-feat-little-boots",
-      "section": "✂️ Shorts",
-      "type": "short",
-      "filmType": "Music Video, Short Narrative",
-      "director": "Richard Burrowes",
-      "duration": 4,
-      "country": "United States",
-      "language": "English",
-      "premiere": "World Premiere",
-      "synopsis": "Video musical de 'New York Is Dead' de LP Giobbi con little boots.",
-      "screenings": [
-        {
-          "date": "2026-06-09",
-          "time": "8:30 PM",
-          "venue": "Spring Studios",
-          "day_order": 6
-        }
-      ],
-      "day": "2026-06-09",
-      "date": "2026-06-09",
-      "time": "8:30 PM",
-      "venue": "Spring Studios",
-      "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/6863/large_New_York_Is_Dead_-_LP_Giobi-Clean-16x9-01.jpg",
-      "posterPosition": "center",
-      "day_order": 6,
-      "flags": "🇺🇸",
-      "year": 2026,
-      "synopsis_en": "Music video for 'New York Is Dead' by LP Giobbi featuring little boots."
-    },
-    {
-      "title": "32 B",
-      "slug": "32-b",
-      "section": "✂️ Shorts",
-      "type": "short",
-      "filmType": "Short Narrative",
-      "director": "Mohamed Taher",
-      "duration": 18,
-      "country": "Egypt",
-      "language": "Arabic",
-      "premiere": "",
-      "synopsis": "Una pareja se muda a una nueva casa y coloca cámaras de vigilancia tras una serie de eventos extraños y posiblemente paranormales. Lo que revela el metraje encontrado es perturbador.",
-      "screenings": [
-        {
-          "date": "2026-06-06",
-          "time": "5:30 PM",
-          "venue": "Spring Studios",
-          "day_order": 3
-        },
-        {
-          "date": "2026-06-13",
-          "time": "8:15 PM",
-          "venue": "AMC 19th St. East 6",
-          "day_order": 10
-        },
-        {
-          "date": "2026-06-14",
-          "time": "12:00 PM",
-          "venue": "AMC 19th St. East 6",
-          "day_order": 11
-        }
-      ],
-      "day": "2026-06-06",
-      "date": "2026-06-06",
-      "time": "5:30 PM",
-      "venue": "Spring Studios",
-      "year": 2011,
-      "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/6990/medium_32_B-Clean-16x9-01.jpg",
-      "genre": "Terror, Drama",
-      "day_order": 3,
-      "flags": "🇪🇬",
-      "synopsis_en": "A couple moves into a new house and sets up surveillance cameras after a series of strange, possibly paranormal events. What the found footage reveals is unsettling."
-    },
-    {
-      "title": "A Crime Across Four Landscapes",
-      "slug": "crime-across-four-landscapes",
-      "section": "✂️ Shorts",
-      "type": "short",
-      "filmType": "Short Narrative",
-      "director": "Aidan Weaver",
-      "duration": 6,
-      "country": "United States",
-      "language": "English",
-      "premiere": "World Premiere",
-      "synopsis": "Un crimen en un pequeño pueblo dispersa sus pistas por cuatro paisajes pintorescos del sur americano, invitando al espectador a reconstruir lo ocurrido.",
-      "screenings": [
-        {
-          "date": "2026-06-05",
-          "time": "5:30 PM",
-          "venue": "Spring Studios",
-          "day_order": 2
-        },
-        {
-          "date": "2026-06-12",
-          "time": "8:30 PM",
-          "venue": "Spring Studios",
-          "day_order": 9
-        },
-        {
-          "date": "2026-06-13",
-          "time": "2:15 PM",
-          "venue": "AMC 19th St. East 6",
-          "day_order": 10
-        }
-      ],
-      "day": "2026-06-05",
-      "date": "2026-06-05",
-      "time": "5:30 PM",
-      "venue": "Spring Studios",
-      "year": 2026,
-      "poster": "",
-      "genre": "Drama",
-      "day_order": 2,
-      "flags": "🇺🇸",
-      "synopsis_en": "A small-town crime scatters its evidence across four picturesque landscapes in the American South, inviting viewers to piece together what happened."
-    },
-    {
-      "title": "Am I a Bad Person?",
-      "slug": "am-i-a-bad-person",
-      "section": "✂️ Shorts",
-      "type": "short",
-      "filmType": "Short Narrative",
-      "director": "Alanna Longo",
-      "duration": 13,
-      "country": "United States",
-      "language": "English",
-      "premiere": "World Premiere",
-      "synopsis": "Una madre y su hija de gira por festivales de cine en Europa deciden separarse y deben enfrentar decisiones que cambiarán sus vidas antes de regresar a casa.",
-      "screenings": [
-        {
-          "date": "2026-06-04",
-          "time": "5:30 PM",
-          "venue": "Spring Studios",
-          "day_order": 1
-        },
-        {
-          "date": "2026-06-13",
-          "time": "5:45 PM",
-          "venue": "AMC 19th St. East 6",
-          "day_order": 10
-        }
-      ],
-      "day": "2026-06-04",
-      "date": "2026-06-04",
-      "time": "5:30 PM",
-      "venue": "Spring Studios",
-      "year": 2026,
-      "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/7028/medium_Am_I_a_Bad_Person_Clean-16x9-01.jpg",
-      "genre": "Drama",
-      "day_order": 1,
-      "flags": "🇺🇸",
-      "synopsis_en": "A mother and daughter touring film festivals in Europe choose to part ways — and must face life-changing decisions alone before returning home."
-    },
-    {
-      "title": "APART",
-      "slug": "apart",
-      "section": "✂️ Shorts",
-      "type": "short",
-      "filmType": "Short Animation",
-      "director": "Pola Maneli",
-      "duration": 19,
-      "country": "United States, South Africa",
-      "language": "Afrikaans, English",
-      "premiere": "World Premiere",
-      "synopsis": "Violet acepta una invitación a una isla privada con famosos influencers, esperando oportunidades virales. Pronto se convierte en parte de un reality show de terror: los invitados deben cazar a los legendarios perros devoradores de hombres.",
-      "screenings": [
-        {
-          "date": "2026-06-06",
-          "time": "2:30 PM",
-          "venue": "Spring Studios",
-          "day_order": 3
-        },
-        {
-          "date": "2026-06-13",
-          "time": "6:15 PM",
-          "venue": "AMC 19th St. East 6",
-          "day_order": 10
-        }
-      ],
-      "day": "2026-06-06",
-      "date": "2026-06-06",
-      "time": "2:30 PM",
-      "venue": "Spring Studios",
-      "year": 2025,
-      "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/7022/medium_Apart-Clean-16x9-01.jpg",
-      "genre": "Terror, Misterio",
-      "day_order": 3,
-      "flags": "🇺🇸🇿🇦",
-      "synopsis_en": "Violet acepta una invitación a una isla privada con famosos influencers, esperando oportunidades virales. Pronto se convierte en parte de un reality show de terror real: los invitados deben cazar a los legendarios perros devoradores de hombres de la isla."
-    },
-    {
-      "title": "Because Today is Saturday",
-      "slug": "because-today-is-saturday",
-      "section": "✂️ Shorts",
-      "type": "short",
-      "filmType": "Short Animation",
-      "director": "Alice Eça Guimarães",
-      "duration": 12,
-      "country": "Portugal, France, Spain",
-      "language": "No Dialogue",
-      "premiere": "",
-      "synopsis": "Una mujer despierta temprano en su cumpleaños para robarse unas horas de escritura. Cada momento de inspiración es interrumpido por demandas domésticas hasta que la carga mental llega a un punto de quiebre.",
-      "screenings": [
-        {
-          "date": "2026-06-06",
-          "time": "2:30 PM",
-          "venue": "Spring Studios",
-          "day_order": 3
-        },
-        {
-          "date": "2026-06-13",
-          "time": "6:15 PM",
-          "venue": "AMC 19th St. East 6",
-          "day_order": 10
-        }
-      ],
-      "day": "2026-06-06",
-      "date": "2026-06-06",
-      "time": "2:30 PM",
-      "venue": "Spring Studios",
-      "year": 2026,
-      "poster": "",
-      "genre": "Animación, Drama",
-      "day_order": 3,
-      "flags": "🇵🇹🇫🇷🇪🇸",
-      "synopsis_en": "A woman wakes early on her birthday to steal a few hours of writing time. Every inspiration is interrupted by domestic demands — laundry, children, meals — until the mental load reaches a breaking point."
-    },
-    {
-      "title": "Born to Kill",
-      "slug": "born-to-kill",
-      "section": "✂️ Shorts",
-      "type": "short",
-      "filmType": "Short Documentary",
-      "director": "Sally Tran",
-      "duration": 17,
-      "country": "United States",
-      "language": "English",
-      "premiere": "World Premiere",
-      "synopsis": "Helen se divorcia en Reno y esa noche descubre un doble asesinato. Prefiere guardar silencio. En el tren hacia San Francisco conoce a Sam Wild, un psicópata atractivo que también huye del lugar del crimen.",
-      "screenings": [
-        {
-          "date": "2026-06-07",
-          "time": "5:30 PM",
-          "venue": "Spring Studios",
-          "day_order": 4
-        },
-        {
-          "date": "2026-06-13",
-          "time": "5:30 PM",
-          "venue": "AMC 19th St. East 6",
-          "day_order": 10
-        }
-      ],
-      "day": "2026-06-07",
-      "date": "2026-06-07",
-      "time": "5:30 PM",
-      "venue": "Spring Studios",
-      "year": 2026,
-      "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/7006/medium_Born_to_Kill-Clean-16x9-01.jpg",
-      "genre": "Crimen, Drama",
-      "day_order": 4,
-      "flags": "🇺🇸",
-      "synopsis_en": "Helen, fría y calculadora, acaba de divorciarse en Reno. Esa noche encuentra un doble asesinato y prefiere guardar silencio. En el tren conoce a Sam Wild, un psicópata atractivo que también huye hacia San Francisco."
-    },
-    {
-      "title": "Brujo",
-      "slug": "brujo",
-      "section": "✂️ Shorts",
-      "type": "short",
-      "filmType": "Short Narrative",
-      "director": "Juan Zuleta",
-      "duration": 11,
-      "country": "Colombia",
-      "language": "Spanish, English",
-      "premiere": "International Premiere",
-      "synopsis": "El artista Guillermo Gómez-Peña se convierte en un chamán transcultural que encarna 15 personajes en distintos idiomas, cada uno símbolo de las fronteras entre norte y sur, mito y realidad, arte y vida.",
-      "screenings": [
-        {
-          "date": "2026-06-06",
-          "time": "8:15 PM",
-          "venue": "Spring Studios",
-          "day_order": 3
-        },
-        {
-          "date": "2026-06-10",
-          "time": "8:30 PM",
-          "venue": "Spring Studios",
-          "day_order": 7
-        },
-        {
-          "date": "2026-06-13",
-          "time": "9:15 PM",
-          "venue": "AMC 19th St. East 6",
-          "day_order": 10
-        }
-      ],
-      "day": "2026-06-06",
-      "date": "2026-06-06",
-      "time": "8:15 PM",
-      "venue": "Spring Studios",
-      "year": 1990,
-      "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/6987/medium_Brujo_camillo-monslave-Clean-16x9-01.jpg",
-      "genre": "Drama",
-      "day_order": 3,
-      "flags": "🇨🇴",
-      "synopsis_en": "Artist Guillermo Gómez-Peña becomes a cross-cultural shaman, shifting through 15 personas speaking different languages — each a symbol of the borders between North and South, myth and reality, art and life."
-    },
-    {
-      "title": "Buckets",
-      "slug": "buckets",
-      "section": "✂️ Shorts",
-      "type": "short",
-      "filmType": "Short Narrative",
-      "director": "Drew Van Steenbergen",
-      "duration": 10,
-      "country": "United States",
-      "language": "English",
-      "premiere": "World Premiere",
-      "synopsis": "Un cortometraje en competencia en Tribeca 2026.",
-      "screenings": [
-        {
-          "date": "2026-06-05",
-          "time": "8:30 PM",
-          "venue": "Spring Studios",
-          "day_order": 2
-        },
-        {
-          "date": "2026-06-08",
-          "time": "5:30 PM",
-          "venue": "Spring Studios",
-          "day_order": 5
-        },
-        {
-          "date": "2026-06-13",
-          "time": "8:30 PM",
-          "venue": "AMC 19th St. East 6",
-          "day_order": 10
-        },
-        {
-          "date": "2026-06-14",
-          "time": "2:00 PM",
-          "venue": "AMC 19th St. East 6",
-          "day_order": 11
-        }
-      ],
-      "day": "2026-06-05",
-      "date": "2026-06-05",
-      "time": "8:30 PM",
-      "venue": "Spring Studios",
-      "year": 2026,
-      "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/6903/large_Buckets-Clean-16x9-01.jpg",
-      "genre": "Drama",
-      "posterPosition": "center",
-      "day_order": 2,
-      "flags": "🇺🇸",
-      "synopsis_en": "A short film in competition at Tribeca 2026."
-    },
-    {
-      "title": "ChikaBOOM!",
-      "slug": "chikaboom",
-      "section": "✂️ Shorts",
-      "type": "short",
-      "filmType": "Short Animation",
-      "director": "c. Craig Patterson",
-      "duration": 9,
-      "country": "United States",
-      "language": "English",
-      "premiere": "World Premiere",
-      "synopsis": "Un cortometraje en competencia en Tribeca 2026.",
-      "screenings": [
-        {
-          "date": "2026-06-06",
-          "time": "12:15 PM",
-          "venue": "Spring Studios",
-          "day_order": 3
-        },
-        {
-          "date": "2026-06-13",
-          "time": "11:30 AM",
-          "venue": "AMC 19th St. East 6",
-          "day_order": 10
-        }
-      ],
-      "day": "2026-06-06",
-      "date": "2026-06-06",
-      "time": "12:15 PM",
-      "venue": "Spring Studios",
-      "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/6948/large_ChikaBOOM_-Clean-16x9-01.jpg",
-      "posterPosition": "center",
-      "day_order": 3,
-      "flags": "🇺🇸",
-      "genre": "Animación",
-      "year": 2026,
-      "synopsis_en": "A short film in competition at Tribeca 2026."
-    },
-    {
-      "title": "Child of the Rouge",
-      "slug": "child-of-the-rouge",
-      "section": "✂️ Shorts",
-      "type": "short",
-      "filmType": "Short Narrative",
-      "director": "Taz F. Stark",
-      "duration": 14,
-      "country": "United States",
-      "language": "English, Khmer",
-      "premiere": "World Premiere",
-      "synopsis": "Un cortometraje en competencia en Tribeca 2026.",
-      "screenings": [
-        {
-          "date": "2026-06-05",
-          "time": "5:30 PM",
-          "venue": "Spring Studios",
-          "day_order": 2
-        },
-        {
-          "date": "2026-06-12",
-          "time": "8:30 PM",
-          "venue": "Spring Studios",
-          "day_order": 9
-        },
-        {
-          "date": "2026-06-13",
-          "time": "2:15 PM",
-          "venue": "AMC 19th St. East 6",
-          "day_order": 10
-        }
-      ],
-      "day": "2026-06-05",
-      "date": "2026-06-05",
-      "time": "5:30 PM",
-      "venue": "Spring Studios",
-      "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/6868/large_ChildOfTheRouge-CLEAN-16x9-01.jpg",
-      "posterPosition": "center",
-      "day_order": 2,
-      "flags": "🇺🇸",
-      "genre": "Drama",
-      "year": 2026,
-      "synopsis_en": "A short film in competition at Tribeca 2026."
-    },
-    {
-      "title": "Cookie, Love",
-      "slug": "cookie-love",
-      "section": "✂️ Shorts",
-      "type": "short",
-      "filmType": "Short Documentary",
-      "director": "Sari Arambulo",
-      "duration": 9,
-      "country": "France, United States",
-      "language": "English, French",
-      "premiere": "World Premiere",
-      "synopsis": "La sheriff Marga es distrada de una serie de secuestros misteriosos por el peligroso elemento que opera en los muelles. ¿Será la misteriosa reina del salón de baile — o algo mucho más siniestro?",
-      "screenings": [
-        {
-          "date": "2026-06-07",
-          "time": "2:30 PM",
-          "venue": "Spring Studios",
-          "day_order": 4
-        },
-        {
-          "date": "2026-06-13",
-          "time": "5:30 PM",
-          "venue": "Spring Studios",
-          "day_order": 10
-        }
-      ],
-      "day": "2026-06-07",
-      "date": "2026-06-07",
-      "time": "2:30 PM",
-      "venue": "Spring Studios",
-      "year": 2026,
-      "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/6908/medium_Cookie__Love-Clean-16x9-01.jpg",
-      "genre": "Terror, Comedia",
-      "day_order": 4,
-      "flags": "🇫🇷🇺🇸",
-      "synopsis_en": "Sheriff Marga is distracted from a series of puzzling kidnappings by dangerous trouble at the docks. Could the culprit be the mysterious dance hall queen — or something far more sinister?"
-    },
-    {
-      "title": "Couture to the Max",
-      "slug": "couture-to-the-max",
-      "section": "✂️ Shorts",
-      "type": "short",
-      "filmType": "Short Documentary",
-      "director": "Dori Berinstein",
-      "duration": 35,
-      "country": "United States",
-      "language": "English",
-      "premiere": "World Premiere",
-      "synopsis": "Con solo 9 años, el prodigio de la moda Max Alexander fusiona una imaginación desbordante con un compromiso firme con la sostenibilidad.",
-      "screenings": [
-        {
-          "date": "2026-06-13",
-          "time": "8:30 PM",
-          "venue": "Spring Studios",
-          "day_order": 10
-        },
-        {
-          "date": "2026-06-14",
-          "time": "2:00 PM",
-          "venue": "Village East by Angelika",
-          "day_order": 11
-        }
-      ],
-      "day": "2026-06-13",
-      "date": "2026-06-13",
-      "time": "8:30 PM",
-      "venue": "Spring Studios",
-      "year": 2026,
-      "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/7021/large_Couture_to_the_Max-Clean-16x9-01.jpg",
-      "genre": "Documental",
-      "posterPosition": "center",
-      "day_order": 10,
-      "flags": "🇺🇸",
-      "synopsis_en": "At 9 years old, fashion prodigy Max Alexander fuses boundless imagination with an unwavering commitment to sustainability."
-    },
-    {
-      "title": "Daddy's Little Meatball",
-      "slug": "daddy-s-little-meatball",
-      "section": "✂️ Shorts",
-      "type": "short",
-      "filmType": "Short Narrative",
-      "director": "Yael Grunseit",
-      "duration": 14,
-      "country": "Australia, United States",
-      "language": "English",
-      "premiere": "New York Premiere",
-      "synopsis": "Un vendedor australiano de ropa interior de período y su hija adolescente navegan la ciudad de Nueva York y su tensa relación.",
-      "screenings": [
-        {
-          "date": "2026-06-06",
-          "time": "8:45 PM",
-          "venue": "Spring Studios",
-          "day_order": 3
-        },
-        {
-          "date": "2026-06-12",
-          "time": "5:30 PM",
-          "venue": "Spring Studios",
-          "day_order": 9
-        },
-        {
-          "date": "2026-06-13",
-          "time": "3:15 PM",
-          "venue": "AMC 19th St. East 6",
-          "day_order": 10
-        }
-      ],
-      "day": "2026-06-06",
-      "date": "2026-06-06",
-      "time": "8:45 PM",
-      "venue": "Spring Studios",
-      "year": 2026,
-      "poster": "",
-      "genre": "Comedia, Drama",
-      "day_order": 3,
-      "flags": "🇦🇺🇺🇸",
-      "synopsis_en": "An Australian period-underwear salesman and his teenage daughter navigate New York City and their strained relationship."
-    },
-    {
-      "title": "Dear Upstairs Neighbors",
-      "slug": "dear-upstairs-neighbors",
-      "section": "✂️ Shorts",
-      "type": "short",
-      "filmType": "Short Animation",
-      "director": "Connie Qin He",
-      "duration": 6,
-      "country": "United States",
-      "language": "English",
-      "premiere": "World Premiere",
-      "synopsis": "Un cortometraje en competencia en Tribeca 2026.",
-      "screenings": [
-        {
-          "date": "2026-06-06",
-          "time": "12:15 PM",
-          "venue": "Spring Studios",
-          "day_order": 3
-        },
-        {
-          "date": "2026-06-13",
-          "time": "11:30 AM",
-          "venue": "AMC 19th St. East 6",
-          "day_order": 10
-        }
-      ],
-      "day": "2026-06-06",
-      "date": "2026-06-06",
-      "time": "12:15 PM",
-      "venue": "Spring Studios",
-      "year": 2026,
-      "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/7019/large_Dear_Upstairs_Neighbors-Clean-16x9-01.jpg",
-      "genre": "Animación",
-      "posterPosition": "center",
-      "day_order": 3,
-      "flags": "🇺🇸",
-      "synopsis_en": "A short film in competition at Tribeca 2026."
-    },
-    {
-      "title": "DISC",
-      "slug": "disc",
-      "section": "✂️ Shorts",
-      "type": "short",
-      "filmType": "Short Narrative",
-      "director": "Blake Winston Rice",
-      "duration": 13,
-      "country": "United States",
-      "language": "English",
-      "premiere": "New York Premiere",
-      "synopsis": "Un rapero callejero intenta promocionar su último sencillo en Nueva York, pero se enfrenta a una competencia arrogante del barrio.",
-      "screenings": [
-        {
-          "date": "2026-06-05",
-          "time": "8:30 PM",
-          "venue": "Spring Studios",
-          "day_order": 2
-        },
-        {
-          "date": "2026-06-08",
-          "time": "5:30 PM",
-          "venue": "Spring Studios",
-          "day_order": 5
-        },
-        {
-          "date": "2026-06-13",
-          "time": "8:30 PM",
-          "venue": "AMC 19th St. East 6",
-          "day_order": 10
-        },
-        {
-          "date": "2026-06-14",
-          "time": "2:00 PM",
-          "venue": "AMC 19th St. East 6",
-          "day_order": 11
-        }
-      ],
-      "day": "2026-06-05",
-      "date": "2026-06-05",
-      "time": "8:30 PM",
-      "venue": "Spring Studios",
-      "year": 2024,
-      "poster": "",
-      "genre": "Drama",
-      "day_order": 2,
-      "flags": "🇺🇸",
-      "synopsis_en": "A street rapper tries to promote his latest single in New York but faces arrogant competition from a rival around the block."
-    },
-    {
-      "title": "Eeny, Meeny, Miny, Moe!",
-      "slug": "eeny-meeny-miny-moe",
-      "section": "✂️ Shorts",
-      "type": "short",
-      "filmType": "Short Animation",
-      "director": "Andrea Szelesová",
-      "duration": 12,
-      "country": "Czech Republic, Slovakia",
-      "language": "No Dialogue",
-      "premiere": "",
-      "synopsis": "Una meditación sobre la elección: mis decisiones determinan mi vida.",
-      "screenings": [
-        {
-          "date": "2026-06-06",
-          "time": "12:15 PM",
-          "venue": "Spring Studios",
-          "day_order": 3
-        },
-        {
-          "date": "2026-06-13",
-          "time": "11:30 AM",
-          "venue": "AMC 19th St. East 6",
-          "day_order": 10
-        }
-      ],
-      "day": "2026-06-06",
-      "date": "2026-06-06",
-      "time": "12:15 PM",
-      "venue": "Spring Studios",
-      "year": 2011,
-      "poster": "",
-      "genre": "Animación",
-      "day_order": 3,
-      "flags": "🇨🇿🇸🇰",
-      "synopsis_en": "A meditation on choice: my choices determine my life."
-    },
-    {
-      "title": "Fabric",
-      "slug": "fabric",
-      "section": "✂️ Shorts",
-      "type": "short",
-      "filmType": "Short Narrative",
-      "director": "Frank Sun",
-      "duration": 14,
-      "country": "United States",
-      "language": "English",
-      "premiere": "World Premiere",
-      "synopsis": "Un vestido rojo sangre hipnotiza a Sheila en las rebajas de unos grandes almacenes ingleses. Parece que una maldición pesa sobre cada persona que ha poseído esa prenda.",
-      "screenings": [
-        {
-          "date": "2026-06-06",
-          "time": "8:45 PM",
-          "venue": "Spring Studios",
-          "day_order": 3
-        },
-        {
-          "date": "2026-06-12",
-          "time": "5:30 PM",
-          "venue": "Spring Studios",
-          "day_order": 9
-        },
-        {
-          "date": "2026-06-13",
-          "time": "3:15 PM",
-          "venue": "AMC 19th St. East 6",
-          "day_order": 10
-        }
-      ],
-      "day": "2026-06-06",
-      "date": "2026-06-06",
-      "time": "8:45 PM",
-      "venue": "Spring Studios",
-      "year": 2026,
-      "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/6927/medium_Fabric-Clean-16x9-01.jpg",
-      "genre": "Terror, Fantasía",
-      "day_order": 3,
-      "flags": "🇺🇸",
-      "synopsis_en": "En las rebajas de unos grandes almacenes ingleses, un vestido rojo sangre hipnotiza a Sheila. Una maldición parece pesar sobre cada persona que ha poseído esa prenda fetiche."
-    },
-    {
-      "title": "Farm to Fashion",
-      "slug": "farm-to-fashion",
-      "section": "✂️ Shorts",
-      "type": "short",
-      "filmType": "Short Documentary",
-      "director": "Oliver Halfin",
-      "duration": 23,
-      "country": "United States",
-      "language": "English",
-      "premiere": "World Premiere",
-      "synopsis": "Un cortometraje en competencia en Tribeca 2026.",
-      "screenings": [
-        {
-          "date": "2026-06-13",
-          "time": "8:30 PM",
-          "venue": "Spring Studios",
-          "day_order": 10
-        },
-        {
-          "date": "2026-06-14",
-          "time": "2:00 PM",
-          "venue": "Village East by Angelika",
-          "day_order": 11
-        }
-      ],
-      "day": "2026-06-13",
-      "date": "2026-06-13",
-      "time": "8:30 PM",
-      "venue": "Spring Studios",
-      "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/7063/large_FarmToFashion-clean-16x9-01.jpg",
-      "posterPosition": "center",
-      "day_order": 10,
-      "flags": "🇺🇸",
-      "genre": "Documental",
-      "year": 2026,
-      "synopsis_en": "A short film in competition at Tribeca 2026."
-    },
-    {
-      "title": "Fault",
-      "slug": "fault",
-      "section": "✂️ Shorts",
-      "type": "short",
-      "filmType": "Short Narrative",
-      "director": "Misha Calvert",
-      "duration": 14,
-      "country": "United States",
-      "language": "English",
-      "premiere": "World Premiere",
-      "synopsis": "Noah se muda a Londres y se enamora por primera vez del hijo de su padrastro. Mientras se adapta a su nueva vida, su devastador pasado la alcanzará.",
-      "screenings": [
-        {
-          "date": "2026-06-04",
-          "time": "8:30 PM",
-          "venue": "Spring Studios",
-          "day_order": 1
-        },
-        {
-          "date": "2026-06-11",
-          "time": "5:30 PM",
-          "venue": "Spring Studios",
-          "day_order": 8
-        },
-        {
-          "date": "2026-06-13",
-          "time": "2:30 PM",
-          "venue": "AMC 19th St. East 6",
-          "day_order": 10
-        }
-      ],
-      "day": "2026-06-04",
-      "date": "2026-06-04",
-      "time": "8:30 PM",
-      "venue": "Spring Studios",
-      "year": 2025,
-      "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/7025/medium_Fault_RobertNewman-Clean-16x9-01.jpg",
-      "genre": "Drama, Romance",
-      "day_order": 1,
-      "flags": "🇺🇸",
-      "synopsis_en": "Noah se muda de Estados Unidos a Londres y se enamora por primera vez del hijo de su padrastro. Mientras se adapta a su nueva vida, su devastador pasado la alcanzará."
-    },
-    {
-      "title": "Found&Lost",
-      "slug": "found-lost",
-      "section": "✂️ Shorts",
-      "type": "short",
-      "filmType": "Short Narrative",
-      "director": "Reza Rasouli",
-      "duration": 17,
-      "country": "Austria",
-      "language": "Arabic, German, English",
-      "premiere": "New York Premiere",
-      "synopsis": "Dylan secuestra la mascota de su hermosa vecina francesa para poder devolverla y convertirse en héroe.",
-      "screenings": [
-        {
-          "date": "2026-06-05",
-          "time": "5:30 PM",
-          "venue": "Spring Studios",
-          "day_order": 2
-        },
-        {
-          "date": "2026-06-12",
-          "time": "8:30 PM",
-          "venue": "Spring Studios",
-          "day_order": 9
-        },
-        {
-          "date": "2026-06-13",
-          "time": "2:15 PM",
-          "venue": "AMC 19th St. East 6",
-          "day_order": 10
-        }
-      ],
-      "day": "2026-06-05",
-      "date": "2026-06-05",
-      "time": "5:30 PM",
-      "venue": "Spring Studios",
-      "year": 1999,
-      "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/6862/medium_Found_lost-Clean-16x9-01.jpg",
-      "genre": "Comedia, Romance",
-      "day_order": 2,
-      "flags": "🇦🇹",
-      "synopsis_en": "Dylan dognaps his beautiful French neighbor's pet so he can return it and play the hero."
-    },
-    {
-      "title": "Freestyle",
-      "slug": "freestyle",
-      "section": "✂️ Shorts",
-      "type": "short",
-      "filmType": "Short Narrative",
-      "director": "Jordan Britt",
-      "duration": 13,
-      "country": "United States",
-      "language": "English, Russian",
-      "premiere": "World Premiere",
-      "synopsis": "Una promesa del rap con un pasado delictivo decide vender droga para saldar su deuda con el estudio de grabación. Pero su arriesgado plan podría costarle muy caro.",
-      "screenings": [
-        {
-          "date": "2026-06-04",
-          "time": "8:30 PM",
-          "venue": "Spring Studios",
-          "day_order": 1
-        },
-        {
-          "date": "2026-06-11",
-          "time": "5:30 PM",
-          "venue": "Spring Studios",
-          "day_order": 8
-        },
-        {
-          "date": "2026-06-13",
-          "time": "2:30 PM",
-          "venue": "AMC 19th St. East 6",
-          "day_order": 10
-        }
-      ],
-      "day": "2026-06-04",
-      "date": "2026-06-04",
-      "time": "8:30 PM",
-      "venue": "Spring Studios",
-      "year": 2026,
-      "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/6871/medium_Freestyle-Clean-16x9-01.jpg",
-      "genre": "Crimen, Acción",
-      "day_order": 1,
-      "flags": "🇺🇸",
-      "synopsis_en": "Una promesa del rap con un pasado delictivo decide vender droga para saldar su deuda con el estudio de grabación. Su plan arriesgado podría costarle muy caro."
-    },
-    {
-      "title": "General Admission",
-      "slug": "general-admission",
-      "section": "✂️ Shorts",
-      "type": "short",
-      "filmType": "Short Narrative",
-      "director": "Kaily Morgan Smith",
-      "duration": 10,
-      "country": "United States",
-      "language": "English",
-      "premiere": "World Premiere",
-      "synopsis": "Un cortometraje sobre una noche, un escenario y las personas que aparecen.",
-      "screenings": [
-        {
-          "date": "2026-06-05",
-          "time": "8:30 PM",
-          "venue": "Spring Studios",
-          "day_order": 2
-        },
-        {
-          "date": "2026-06-08",
-          "time": "5:30 PM",
-          "venue": "Spring Studios",
-          "day_order": 5
-        },
-        {
-          "date": "2026-06-13",
-          "time": "8:30 PM",
-          "venue": "AMC 19th St. East 6",
-          "day_order": 10
-        },
-        {
-          "date": "2026-06-14",
-          "time": "2:00 PM",
-          "venue": "AMC 19th St. East 6",
-          "day_order": 11
-        }
-      ],
-      "day": "2026-06-05",
-      "date": "2026-06-05",
-      "time": "8:30 PM",
-      "venue": "Spring Studios",
-      "year": 2026,
-      "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/6943/medium_General_Admission-Clean-16x9-01.jpg",
-      "genre": "Drama",
-      "day_order": 2,
-      "flags": "🇺🇸",
-      "synopsis_en": "A short film about one night, one stage, and the people who show up."
-    },
-    {
-      "title": "Getar Hero",
-      "slug": "getar-hero",
-      "section": "✂️ Shorts",
-      "type": "short",
-      "filmType": "Short Narrative",
-      "director": "Teddy Stern",
-      "duration": 15,
-      "country": "United States, India",
-      "language": "Hindi, English",
-      "premiere": "World Premiere",
-      "synopsis": "Un cortometraje en competencia en Tribeca 2026.",
-      "screenings": [
-        {
-          "date": "2026-06-05",
-          "time": "5:30 PM",
-          "venue": "Spring Studios",
-          "day_order": 2
-        },
-        {
-          "date": "2026-06-12",
-          "time": "8:30 PM",
-          "venue": "Spring Studios",
-          "day_order": 9
-        },
-        {
-          "date": "2026-06-13",
-          "time": "2:15 PM",
-          "venue": "AMC 19th St. East 6",
-          "day_order": 10
-        }
-      ],
-      "day": "2026-06-05",
-      "date": "2026-06-05",
-      "time": "5:30 PM",
-      "venue": "Spring Studios",
-      "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/7020/large_Getar_Hero-Clean-16x9-01.jpg",
-      "posterPosition": "center",
-      "day_order": 2,
-      "flags": "🇺🇸🇮🇳",
-      "genre": "Drama",
-      "year": 2026,
-      "synopsis_en": "A short film in competition at Tribeca 2026."
-    },
-    {
-      "title": "Greetings from Sumatra",
-      "slug": "greetings-from-sumatra",
-      "section": "✂️ Shorts",
-      "type": "short",
-      "filmType": "Short Narrative",
-      "director": "Karolina Fronik and Marta Kowalska",
-      "duration": 12,
-      "country": "Poland",
-      "language": "English, Polish",
-      "premiere": "",
-      "synopsis": "Aga es una popular periodista de guerra que lo comparte todo con sus espectadores, hasta que un error de filmación en Indonesia revela un secreto que la obliga a preguntarse si su trabajo es verdaderamente ético.",
-      "screenings": [
-        {
-          "date": "2026-06-04",
-          "time": "5:30 PM",
-          "venue": "Spring Studios",
-          "day_order": 1
-        },
-        {
-          "date": "2026-06-13",
-          "time": "5:45 PM",
-          "venue": "AMC 19th St. East 6",
-          "day_order": 10
-        }
-      ],
-      "day": "2026-06-04",
-      "date": "2026-06-04",
-      "time": "5:30 PM",
-      "venue": "Spring Studios",
-      "year": 2025,
-      "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/6898/large_Greetings_from_Sumatra-Bug-16x9-01.jpg",
-      "genre": "Drama",
-      "posterPosition": "center",
-      "day_order": 1,
-      "flags": "🇵🇱",
-      "synopsis_en": "Aga is a popular war journalist who shares everything with her viewers — until a filmmaking mistake in Indonesia reveals a secret that forces her to reckon with whether her work is truly ethical."
-    },
-    {
-      "title": "Grounded",
-      "slug": "grounded",
-      "section": "✂️ Shorts",
-      "type": "short",
-      "filmType": "Short Animation",
-      "director": "Chris Callus",
-      "duration": 4,
-      "country": "New Zealand",
-      "language": "No Dialogue",
-      "premiere": "",
-      "synopsis": "Henry, joven mochilero, se hace cargo inadvertidamente de la maleta de un desconocido en el aeropuerto y de inmediato se ve rodeado de policías que lo acusan de terrorismo.",
-      "screenings": [
-        {
-          "date": "2026-06-06",
-          "time": "12:15 PM",
-          "venue": "Spring Studios",
-          "day_order": 3
-        },
-        {
-          "date": "2026-06-13",
-          "time": "11:30 AM",
-          "venue": "AMC 19th St. East 6",
-          "day_order": 10
-        }
-      ],
-      "day": "2026-06-06",
-      "date": "2026-06-06",
-      "time": "12:15 PM",
-      "venue": "Spring Studios",
-      "year": 2003,
-      "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/7017/large_Grounded-Clean-16x9-01.jpg",
-      "genre": "Comedia",
-      "posterPosition": "center",
-      "day_order": 3,
-      "flags": "🇳🇿",
-      "synopsis_en": "Young backpacker Henry inadvertently takes charge of a stranger's suitcase at the airport — and is immediately surrounded by police who accuse him of terrorism."
-    },
-    {
-      "title": "His House, Home",
-      "slug": "his-house-home",
-      "section": "✂️ Shorts",
-      "type": "short",
-      "filmType": "Short Narrative",
-      "director": "Aisling O'Regan Sargent",
-      "duration": 14,
-      "country": "Ireland",
-      "language": "English",
-      "premiere": "New York Premiere",
-      "synopsis": "Luke, un joven en el armario que cuida a su padre con esclerosis múltiple, debe enfrentar sus miedos cuando una asistente sanitaria queer entra en sus vidas.",
-      "screenings": [
-        {
-          "date": "2026-06-06",
-          "time": "5:30 PM",
-          "venue": "Spring Studios",
-          "day_order": 3
-        },
-        {
-          "date": "2026-06-13",
-          "time": "8:15 PM",
-          "venue": "AMC 19th St. East 6",
-          "day_order": 10
-        },
-        {
-          "date": "2026-06-14",
-          "time": "12:00 PM",
-          "venue": "AMC 19th St. East 6",
-          "day_order": 11
-        }
-      ],
-      "day": "2026-06-06",
-      "date": "2026-06-06",
-      "time": "5:30 PM",
-      "venue": "Spring Studios",
-      "year": 2025,
-      "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/6904/medium_His_House__Home-Clean-16x9-01.jpg",
-      "genre": "Drama",
-      "day_order": 3,
-      "flags": "🇮🇪",
-      "synopsis_en": "Luke, a closeted young man caring for his father with MS, must face his fears of coming out when a queer healthcare assistant enters their lives."
-    },
-    {
-      "title": "Holo",
-      "slug": "holo",
-      "section": "✂️ Shorts",
-      "type": "short",
-      "filmType": "Narrative Short",
-      "director": "Alexander DeSouza",
-      "duration": 12,
-      "country": "Canada",
-      "language": "English",
-      "premiere": "World Premiere",
-      "synopsis": "Algún día será el mejor entrenador. Por ahora, solo necesita encontrar un Charizard. Es cuestión de vida o muerte.",
-      "screenings": [
-        {
-          "date": "2026-06-06",
-          "time": "8:15 PM",
-          "venue": "Spring Studios",
-          "day_order": 3
-        },
-        {
-          "date": "2026-06-10",
-          "time": "8:30 PM",
-          "venue": "Spring Studios",
-          "day_order": 7
-        },
-        {
-          "date": "2026-06-13",
-          "time": "9:15 PM",
-          "venue": "AMC 19th St. East 6",
-          "day_order": 10
-        }
-      ],
-      "day": "2026-06-06",
-      "date": "2026-06-06",
-      "time": "8:15 PM",
-      "venue": "Spring Studios",
-      "year": 2026,
-      "poster": "",
-      "genre": "Suspense, Comedia",
-      "day_order": 3,
-      "flags": "🇨🇦",
-      "synopsis_en": "One day he'll be the best trainer. Right now, he just needs to find a Charizard. It's a matter of life or death."
-    },
-    {
-      "title": "Homesick",
-      "slug": "homesick",
-      "section": "✂️ Shorts",
-      "type": "short",
-      "filmType": "Short Narrative",
-      "director": "Nadia Bedj",
-      "duration": 13,
-      "country": "United States",
-      "language": "English, Russian",
-      "premiere": "World Premiere",
-      "synopsis": "Un hombre infeliz asiste a un retiro que promete a los adultos una segunda oportunidad para tener una infancia feliz. Un thriller absurdista sobre lo que realmente buscamos cuando intentamos volver atrás.",
-      "screenings": [
-        {
-          "date": "2026-06-06",
-          "time": "8:45 PM",
-          "venue": "Spring Studios",
-          "day_order": 3
-        },
-        {
-          "date": "2026-06-12",
-          "time": "5:30 PM",
-          "venue": "Spring Studios",
-          "day_order": 9
-        },
-        {
-          "date": "2026-06-13",
-          "time": "3:15 PM",
-          "venue": "AMC 19th St. East 6",
-          "day_order": 10
-        }
-      ],
-      "day": "2026-06-06",
-      "date": "2026-06-06",
-      "time": "8:45 PM",
-      "venue": "Spring Studios",
-      "year": 2026,
-      "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/6865/medium_Homesick_Clean-16x9-01.jpg",
-      "genre": "Comedia, Drama",
-      "day_order": 3,
-      "flags": "🇺🇸",
-      "synopsis_en": "An unhappy man attends a retreat that promises adults a second chance at a happy childhood. An absurdist thriller about what we're actually looking for when we try to go back."
-    },
-    {
-      "title": "Hope",
-      "slug": "hope",
-      "section": "✂️ Shorts",
-      "type": "short",
-      "filmType": "Short Documentary",
-      "director": "Javier Cruz-Ginez",
-      "duration": 15,
-      "country": "United States, Mexico",
-      "language": "Spanish, English",
-      "premiere": "New York Premiere",
-      "synopsis": "Una niña llamada So Won se convierte en víctima de la violencia. Su familia pasa por la desesperación y el dolor al intentar abrir otra puerta en su vida.",
-      "screenings": [
-        {
-          "date": "2026-06-07",
-          "time": "5:30 PM",
-          "venue": "Spring Studios",
-          "day_order": 4
-        },
-        {
-          "date": "2026-06-13",
-          "time": "5:30 PM",
-          "venue": "AMC 19th St. East 6",
-          "day_order": 10
-        }
-      ],
-      "day": "2026-06-07",
-      "date": "2026-06-07",
-      "time": "5:30 PM",
-      "venue": "Spring Studios",
-      "year": 2013,
-      "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/6884/medium_Hope-Clean-16x9-01.jpg",
-      "genre": "Drama",
-      "day_order": 4,
-      "flags": "🇺🇸🇲🇽",
-      "synopsis_en": "So Won, una niña, se convierte en víctima de la violencia. Su familia atraviesa la desesperación e intenta abrir una nueva puerta en la vida."
-    },
-    {
-      "title": "I Think About Killing You",
-      "slug": "i-think-about-killing-you",
-      "section": "✂️ Shorts",
-      "type": "short",
-      "filmType": "Short Narrative",
-      "director": "Ran Ran Wang",
-      "duration": 14,
-      "country": "United States",
-      "language": "English",
-      "premiere": "New York Premiere",
-      "synopsis": "La capitana Dani está obsesionada con fantasías de matar a su entrenador abusivo. Cuando él lleva al equipo demasiado lejos, debe decidir si actuar sobre ellas.",
-      "screenings": [
-        {
-          "date": "2026-06-04",
-          "time": "8:30 PM",
-          "venue": "Spring Studios",
-          "day_order": 1
-        },
-        {
-          "date": "2026-06-11",
-          "time": "5:30 PM",
-          "venue": "Spring Studios",
-          "day_order": 8
-        },
-        {
-          "date": "2026-06-13",
-          "time": "2:30 PM",
-          "venue": "AMC 19th St. East 6",
-          "day_order": 10
-        }
-      ],
-      "day": "2026-06-04",
-      "date": "2026-06-04",
-      "time": "8:30 PM",
-      "venue": "Spring Studios",
-      "year": 2026,
-      "poster": "",
-      "genre": "Suspense",
-      "day_order": 1,
-      "flags": "🇺🇸",
-      "synopsis_en": "Team captain Dani is haunted by fantasies of killing her abusive coach. When he pushes the team too far, she must decide whether to act on them."
-    },
-    {
-      "title": "I'm Not Home",
-      "slug": "i-m-not-home",
-      "section": "✂️ Shorts",
-      "type": "short",
-      "filmType": "Short Narrative",
-      "director": "Elena Parasco",
-      "duration": 12,
-      "country": "United States",
-      "language": "English",
-      "premiere": "World Premiere",
-      "synopsis": "El exmiembro de la mafia de Bombay Shau emprende un viaje para reconectarse con su familia, cuestionando qué significan la libertad y el sentido de pertenencia.",
-      "screenings": [
-        {
-          "date": "2026-06-06",
-          "time": "8:45 PM",
-          "venue": "Spring Studios",
-          "day_order": 3
-        },
-        {
-          "date": "2026-06-12",
-          "time": "5:30 PM",
-          "venue": "Spring Studios",
-          "day_order": 9
-        },
-        {
-          "date": "2026-06-13",
-          "time": "3:15 PM",
-          "venue": "AMC 19th St. East 6",
-          "day_order": 10
-        }
-      ],
-      "day": "2026-06-06",
-      "date": "2026-06-06",
-      "time": "8:45 PM",
-      "venue": "Spring Studios",
-      "year": 2026,
-      "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/6944/large_ImNotHome-clean-16x9-01.jpg",
-      "genre": "Documental",
-      "posterPosition": "center",
-      "day_order": 3,
-      "flags": "🇺🇸",
-      "synopsis_en": "Ex-Mumbai Mafia member Shau embarks on a journey to reconnect with his family, questioning what freedom and belonging mean after a life of violence."
-    },
-    {
-      "title": "I, of an Accident or of love",
-      "slug": "i-of-an-accident-or-of-love",
-      "section": "✂️ Shorts",
-      "type": "short",
-      "filmType": "Short Narrative",
-      "director": "Khalil Cherti",
-      "duration": 14,
-      "country": "France",
-      "language": "French",
-      "premiere": "",
-      "synopsis": "Un cortometraje en competencia en Tribeca 2026.",
-      "screenings": [
-        {
-          "date": "2026-06-05",
-          "time": "8:30 PM",
-          "venue": "Spring Studios",
-          "day_order": 2
-        },
-        {
-          "date": "2026-06-08",
-          "time": "5:30 PM",
-          "venue": "Spring Studios",
-          "day_order": 5
-        },
-        {
-          "date": "2026-06-13",
-          "time": "8:30 PM",
-          "venue": "AMC 19th St. East 6",
-          "day_order": 10
-        },
-        {
-          "date": "2026-06-14",
-          "time": "2:00 PM",
-          "venue": "AMC 19th St. East 6",
-          "day_order": 11
-        }
-      ],
-      "day": "2026-06-05",
-      "date": "2026-06-05",
-      "time": "8:30 PM",
-      "venue": "Spring Studios",
-      "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/6883/large_I__of_an_Accident_or_of_Love-Clean-16x9-01.jpg",
-      "posterPosition": "center",
-      "day_order": 2,
-      "flags": "🇫🇷",
-      "genre": "Drama",
-      "year": 2026,
-      "synopsis_en": "A short film in competition at Tribeca 2026."
-    },
-    {
-      "title": "Imprint",
-      "slug": "imprint",
-      "section": "✂️ Shorts",
-      "type": "short",
-      "filmType": "Short Narrative",
-      "director": "Ran Jing",
-      "duration": 15,
-      "country": "United States",
-      "language": "English, Mandarin Chinese",
-      "premiere": "World Premiere",
-      "synopsis": "Una abogada nativa americana regresa a la reserva para despedirse de su padre moribundo y se ve perseguida por visiones relacionadas con la desaparición sin resolver de su madre y el ocultismo de su padre.",
-      "screenings": [
-        {
-          "date": "2026-06-06",
-          "time": "8:15 PM",
-          "venue": "Spring Studios",
-          "day_order": 3
-        },
-        {
-          "date": "2026-06-10",
-          "time": "8:30 PM",
-          "venue": "Spring Studios",
-          "day_order": 7
-        },
-        {
-          "date": "2026-06-13",
-          "time": "9:15 PM",
-          "venue": "AMC 19th St. East 6",
-          "day_order": 10
-        }
-      ],
-      "day": "2026-06-06",
-      "date": "2026-06-06",
-      "time": "8:15 PM",
-      "venue": "Spring Studios",
-      "year": 2026,
-      "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/6877/medium_Imprint-Clean-16x9-01.jpg",
-      "genre": "Drama, Suspense",
-      "day_order": 3,
-      "flags": "🇺🇸",
-      "synopsis_en": "A Native American attorney returns to the reservation to say goodbye to her dying father — and finds herself haunted by visions connected to her mother's long-unsolved disappearance and her father's dabbling in the occult."
-    },
-    {
-      "title": "Insufficient Fare",
-      "slug": "insufficient-fare",
-      "section": "✂️ Shorts",
-      "type": "short",
-      "filmType": "Short Narrative",
-      "director": "Michael Gugger and Varvara Kanellakopoulou",
-      "duration": 5,
-      "country": "United States",
-      "language": "English",
-      "premiere": "World Premiere",
-      "synopsis": "Un cortometraje en competencia en Tribeca 2026.",
-      "screenings": [
-        {
-          "date": "2026-06-06",
-          "time": "8:45 PM",
-          "venue": "Spring Studios",
-          "day_order": 3
-        },
-        {
-          "date": "2026-06-12",
-          "time": "5:30 PM",
-          "venue": "Spring Studios",
-          "day_order": 9
-        },
-        {
-          "date": "2026-06-13",
-          "time": "3:15 PM",
-          "venue": "AMC 19th St. East 6",
-          "day_order": 10
-        }
-      ],
-      "day": "2026-06-06",
-      "date": "2026-06-06",
-      "time": "8:45 PM",
-      "venue": "Spring Studios",
-      "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/7012/large_Insufficient_Fare-Clean-16x9-01.jpg",
-      "posterPosition": "center",
-      "day_order": 3,
-      "flags": "🇺🇸",
-      "genre": "Drama",
-      "year": 2026,
-      "synopsis_en": "A short film in competition at Tribeca 2026."
-    },
-    {
-      "title": "Kaya (ᜃᜌ)",
-      "slug": "kaya",
-      "section": "✂️ Shorts",
-      "type": "short",
-      "filmType": "Short Narrative",
-      "director": "Isabel Lamers",
-      "duration": 11,
-      "country": "Philippines",
-      "language": "English, Tagalog",
-      "premiere": "World Premiere",
-      "synopsis": "Un cortometraje en competencia en Tribeca 2026.",
-      "screenings": [
-        {
-          "date": "2026-06-04",
-          "time": "8:30 PM",
-          "venue": "Spring Studios",
-          "day_order": 1
-        },
-        {
-          "date": "2026-06-11",
-          "time": "5:30 PM",
-          "venue": "Spring Studios",
-          "day_order": 8
-        },
-        {
-          "date": "2026-06-13",
-          "time": "2:30 PM",
-          "venue": "AMC 19th St. East 6",
-          "day_order": 10
-        }
-      ],
-      "day": "2026-06-04",
-      "date": "2026-06-04",
-      "time": "8:30 PM",
-      "venue": "Spring Studios",
-      "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/6981/large_Kaya-Clean-16x9-01.jpg",
-      "posterPosition": "center",
-      "day_order": 1,
-      "flags": "🇵🇭",
-      "genre": "Drama",
-      "year": 2026,
-      "synopsis_en": "A short film in competition at Tribeca 2026."
-    },
-    {
-      "title": "Kiloran Bay",
-      "slug": "kiloran-bay",
-      "section": "✂️ Shorts",
-      "type": "short",
-      "filmType": "Short Narrative",
-      "director": "Michael Bruce",
-      "duration": 13,
-      "country": "United Kingdom",
-      "language": "English",
-      "premiere": "International Premiere",
-      "synopsis": "Un hombre gay regresa a Escocia después de décadas para asistir a una boda tradicional y se enfrenta a un pasado que pasó toda su vida evitando. Un cortometraje musical.",
-      "screenings": [
-        {
-          "date": "2026-06-06",
-          "time": "5:30 PM",
-          "venue": "Spring Studios",
-          "day_order": 3
-        },
-        {
-          "date": "2026-06-13",
-          "time": "8:15 PM",
-          "venue": "AMC 19th St. East 6",
-          "day_order": 10
-        },
-        {
-          "date": "2026-06-14",
-          "time": "12:00 PM",
-          "venue": "AMC 19th St. East 6",
-          "day_order": 11
-        }
-      ],
-      "day": "2026-06-06",
-      "date": "2026-06-06",
-      "time": "5:30 PM",
-      "venue": "Spring Studios",
-      "year": 2026,
-      "poster": "",
-      "genre": "Drama",
-      "day_order": 3,
-      "flags": "🇬🇧",
-      "synopsis_en": "A gay man returns to Scotland after decades away to attend a traditional wedding — and faces a past he spent a lifetime avoiding. A musical short film."
-    },
-    {
-      "title": "La Lucha de Lucía",
-      "slug": "lucha-de-lucia",
-      "section": "✂️ Shorts",
-      "type": "short",
-      "filmType": "Short Narrative",
-      "director": "Maria Sofia Hernandez",
-      "duration": 14,
-      "country": "Mexico",
-      "language": "Spanish",
-      "premiere": "New York Premiere",
-      "synopsis": "Lucía, de 16 años, es luchadora de lucha libre entrenada desde niña para pelear sucio. Su padre cree que debe ser ruda para triunfar. Debe decidir si confiar en sus propios instintos o seguir las reglas que construyeron a su familia.",
-      "screenings": [
-        {
-          "date": "2026-06-04",
-          "time": "8:30 PM",
-          "venue": "Spring Studios",
-          "day_order": 1
-        },
-        {
-          "date": "2026-06-11",
-          "time": "5:30 PM",
-          "venue": "Spring Studios",
-          "day_order": 8
-        },
-        {
-          "date": "2026-06-13",
-          "time": "2:30 PM",
-          "venue": "AMC 19th St. East 6",
-          "day_order": 10
-        }
-      ],
-      "day": "2026-06-04",
-      "date": "2026-06-04",
-      "time": "8:30 PM",
-      "venue": "Spring Studios",
-      "year": 2026,
-      "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/6866/medium_Lucia_s_Fight-Clean-16x9-01.jpg",
-      "genre": "Drama",
-      "day_order": 1,
-      "flags": "🇲🇽",
-      "synopsis_en": "Sixteen-year-old Lucía is a lucha libre wrestler trained since childhood to fight dirty. Her father believes she must be a ruda to succeed. She must decide whether to trust her own instincts or follow the rules that built her family."
-    },
-    {
-      "title": "Last Minute",
-      "slug": "last-minute",
-      "section": "✂️ Shorts",
-      "type": "short",
-      "filmType": "Short Narrative",
-      "director": "Michael Cusumano",
-      "duration": 15,
-      "country": "United States",
-      "language": "English",
-      "premiere": "New York Premiere",
-      "synopsis": "Billy Byrne es el próximo gran fenómeno de Londres, hasta que deja de serlo. En un instante su mundo explota y cae en espiral hacia el submundo de asesinos, ladrones y agentes de talento.",
-      "screenings": [
-        {
-          "date": "2026-06-06",
-          "time": "5:30 PM",
-          "venue": "Spring Studios",
-          "day_order": 3
-        },
-        {
-          "date": "2026-06-13",
-          "time": "8:15 PM",
-          "venue": "AMC 19th St. East 6",
-          "day_order": 10
-        },
-        {
-          "date": "2026-06-14",
-          "time": "12:00 PM",
-          "venue": "AMC 19th St. East 6",
-          "day_order": 11
-        }
-      ],
-      "day": "2026-06-06",
-      "date": "2026-06-06",
-      "time": "5:30 PM",
-      "venue": "Spring Studios",
-      "year": 2002,
-      "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/6901/medium_Last_Minute-Clean-16x9-01.jpg",
-      "genre": "Suspense, Drama",
-      "day_order": 3,
-      "flags": "🇺🇸",
-      "synopsis_en": "Billy Byrne is the Next Big Thing in London — until he isn't. In a split second, his world detonates and he spirals into the underworld of murderers, thieves, and talent agents."
-    },
-    {
-      "title": "Leg Day",
-      "slug": "leg-day",
-      "section": "✂️ Shorts",
-      "type": "short",
-      "filmType": "Short Animation",
-      "director": "João Lauro Fonte",
-      "duration": 4,
-      "country": "Brazil",
-      "language": "No Dialogue",
-      "premiere": "World Premiere",
-      "synopsis": "Un cortometraje en competencia en Tribeca 2026.",
-      "screenings": [
-        {
-          "date": "2026-06-06",
-          "time": "12:15 PM",
-          "venue": "Spring Studios",
-          "day_order": 3
-        },
-        {
-          "date": "2026-06-13",
-          "time": "11:30 AM",
-          "venue": "AMC 19th St. East 6",
-          "day_order": 10
-        }
-      ],
-      "day": "2026-06-06",
-      "date": "2026-06-06",
-      "time": "12:15 PM",
-      "venue": "Spring Studios",
-      "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/7029/large_Leg_Day-Clean-16x9-01.jpg",
-      "posterPosition": "center",
-      "day_order": 3,
-      "flags": "🇧🇷",
-      "genre": "Animación",
-      "year": 2026,
-      "synopsis_en": "A short film in competition at Tribeca 2026."
-    },
-    {
-      "title": "Listen",
-      "slug": "listen",
-      "section": "✂️ Shorts",
-      "type": "short",
-      "filmType": "Short Documentary",
-      "director": "Taliesin Black Brown",
-      "duration": 14,
-      "country": "United States",
-      "language": "English",
-      "premiere": "World Premiere",
-      "synopsis": "Una demostración del sonido en Dolby Stereo.",
-      "screenings": [
-        {
-          "date": "2026-06-07",
-          "time": "5:30 PM",
-          "venue": "Spring Studios",
-          "day_order": 4
-        },
-        {
-          "date": "2026-06-13",
-          "time": "5:30 PM",
-          "venue": "AMC 19th St. East 6",
-          "day_order": 10
-        }
-      ],
-      "day": "2026-06-07",
-      "date": "2026-06-07",
-      "time": "5:30 PM",
-      "venue": "Spring Studios",
-      "year": 2026,
-      "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/6906/medium_Listen-Clean-16x9-01.jpg",
-      "genre": "Documental",
-      "day_order": 4,
-      "flags": "🇺🇸",
-      "synopsis_en": "A demonstration of sound in Dolby Stereo."
-    },
-    {
-      "title": "Lost Touch",
-      "slug": "lost-touch",
-      "section": "✂️ Shorts",
-      "type": "short",
-      "filmType": "Short Animation",
-      "director": "Justine Klaiber",
-      "duration": 12,
-      "country": "Switzerland",
-      "language": "English",
-      "premiere": "",
-      "synopsis": "La única superviviente de una nave espacial dañada, atrapada en la gravedad de un planeta, lucha contra el duelo y el aislamiento. Cuando aparece una presencia misteriosa, debe elegir entre el pasado y el futuro.",
-      "screenings": [
-        {
-          "date": "2026-06-06",
-          "time": "8:15 PM",
-          "venue": "Spring Studios",
-          "day_order": 3
-        },
-        {
-          "date": "2026-06-10",
-          "time": "8:30 PM",
-          "venue": "Spring Studios",
-          "day_order": 7
-        },
-        {
-          "date": "2026-06-13",
-          "time": "9:15 PM",
-          "venue": "AMC 19th St. East 6",
-          "day_order": 10
-        }
-      ],
-      "day": "2026-06-06",
-      "date": "2026-06-06",
-      "time": "8:15 PM",
-      "venue": "Spring Studios",
-      "year": 2025,
-      "poster": "",
-      "genre": "Animación",
-      "day_order": 3,
-      "flags": "🇨🇭",
-      "synopsis_en": "The sole survivor of a damaged spaceship, caught in a planet's gravitational pull, battles grief and isolation. When a mysterious presence appears, she must choose between the past and the future."
-    },
-    {
-      "title": "Me, Myself, and Mary",
-      "slug": "me-myself-and-mary",
-      "section": "✂️ Shorts",
-      "type": "short",
-      "filmType": "Short Animation",
-      "director": "John Michell",
-      "duration": 13,
-      "country": "United Kingdom, Ireland",
-      "language": "English",
-      "premiere": "World Premiere",
-      "synopsis": "Séamas O'Reilly confundió los días y se encontró solo con su jefa y el Presidente de Irlanda mientras estaba drogado. Una historia real viral, con Chris O'Dowd y Aisling Bea.",
-      "screenings": [
-        {
-          "date": "2026-06-06",
-          "time": "2:30 PM",
-          "venue": "Spring Studios",
-          "day_order": 3
-        },
-        {
-          "date": "2026-06-13",
-          "time": "6:15 PM",
-          "venue": "AMC 19th St. East 6",
-          "day_order": 10
-        }
-      ],
-      "day": "2026-06-06",
-      "date": "2026-06-06",
-      "time": "2:30 PM",
-      "venue": "Spring Studios",
-      "year": 2026,
-      "poster": "",
-      "genre": "Animación, Comedia",
-      "day_order": 3,
-      "flags": "🇬🇧🇮🇪",
-      "synopsis_en": "Séamas O'Reilly got his days mixed up and found himself alone with his boss and the President of Ireland while high on drugs. A viral true story, starring Chris O'Dowd and Aisling Bea."
-    },
-    {
-      "title": "Mon Taxi",
-      "slug": "mon-taxi",
-      "section": "✂️ Shorts",
-      "type": "short",
-      "filmType": "Short Documentary",
-      "director": "Meriem Sakrouhi",
-      "duration": 8,
-      "country": "United States, Morocco",
-      "language": "English subtitles",
-      "premiere": "World Premiere",
-      "synopsis": "Una feliz pareja de taxis recibe a su hijo Junior, hasta que él anuncia que quiere ser un corredor de autos.",
-      "screenings": [
-        {
-          "date": "2026-06-07",
-          "time": "5:30 PM",
-          "venue": "Spring Studios",
-          "day_order": 4
-        },
-        {
-          "date": "2026-06-13",
-          "time": "5:30 PM",
-          "venue": "AMC 19th St. East 6",
-          "day_order": 10
-        }
-      ],
-      "day": "2026-06-07",
-      "date": "2026-06-07",
-      "time": "5:30 PM",
-      "venue": "Spring Studios",
-      "year": 2026,
-      "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/6955/medium_Mon_Taxi-Clean-16x9-01-NEW.png",
-      "genre": "Animación, Comedia",
-      "day_order": 4,
-      "flags": "🇺🇸🇲🇦",
-      "synopsis_en": "A happily married pair of taxicabs welcomes their son Junior — until he announces he wants to be a hotrodder."
-    },
-    {
-      "title": "NIO KO BOKK (This Belongs to All of Us)",
-      "slug": "nio-ko-bokk-this-belongs-to-all-of-us",
-      "section": "✂️ Shorts",
-      "type": "short",
-      "filmType": "Short Documentary",
-      "director": "David Clancy and David Clancy",
-      "duration": 10,
-      "country": "France, Senegal, United States",
-      "language": "Wolof",
-      "premiere": "New York Premiere",
-      "synopsis": "Una película sobre la pertenencia colectiva, la identidad y lo que tenemos en común.",
-      "screenings": [
-        {
-          "date": "2026-06-07",
-          "time": "5:30 PM",
-          "venue": "Spring Studios",
-          "day_order": 4
-        },
-        {
-          "date": "2026-06-13",
-          "time": "5:30 PM",
-          "venue": "AMC 19th St. East 6",
-          "day_order": 10
-        }
-      ],
-      "day": "2026-06-07",
-      "date": "2026-06-07",
-      "time": "5:30 PM",
-      "venue": "Spring Studios",
-      "day_order": 4,
-      "flags": "🇫🇷🇸🇳🇺🇸",
-      "genre": "Documental",
-      "year": 2026,
-      "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/6989/medium_NIO_KO_BOKK-Bug-16x9-01.jpg",
-      "synopsis_en": "A film about collective belonging, identity, and what we hold in common."
-    },
-    {
-      "title": "Odessa",
-      "slug": "odessa",
-      "section": "✂️ Shorts",
-      "type": "short",
-      "filmType": "Short Narrative",
-      "director": "Harald Swinkels",
-      "duration": 19,
-      "country": "Netherlands",
-      "language": "German",
-      "premiere": "New York Premiere",
-      "synopsis": "Joshua, un asesino profesional, vuelve a su ciudad natal por cuestiones de trabajo. El retorno a la población de inmigrantes rusos donde pasó su juventud despierta en él recuerdos dolorosos y confusos.",
-      "screenings": [
-        {
-          "date": "2026-06-04",
-          "time": "5:30 PM",
-          "venue": "Spring Studios",
-          "day_order": 1
-        },
-        {
-          "date": "2026-06-13",
-          "time": "5:45 PM",
-          "venue": "AMC 19th St. East 6",
-          "day_order": 10
-        }
-      ],
-      "day": "2026-06-04",
-      "date": "2026-06-04",
-      "time": "5:30 PM",
-      "venue": "Spring Studios",
-      "year": 1994,
-      "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/6905/medium_Odessa-Clean-16x9-01.jpg",
-      "genre": "Drama, Crimen",
-      "day_order": 1,
-      "flags": "🇳🇱",
-      "synopsis_en": "Joshua, un asesino profesional, regresa a su ciudad natal por trabajo. El retorno al barrio de inmigrantes rusos donde creció despierta recuerdos dolorosos y confusos."
-    },
-    {
-      "title": "One Night",
-      "slug": "one-night",
-      "section": "✂️ Shorts",
-      "type": "short",
-      "filmType": "Short Narrative",
-      "director": "Maggie Brown and Tyler Brown",
-      "duration": 13,
-      "country": "United States",
-      "language": "English",
-      "premiere": "World Premiere",
-      "synopsis": "Dos desconocidos, ávidos de amor, se topan por casualidad en la única noche del año en que las personas solteras tienen permitido tener relaciones sexuales.",
-      "screenings": [
-        {
-          "date": "2026-06-05",
-          "time": "8:30 PM",
-          "venue": "Spring Studios",
-          "day_order": 2
-        },
-        {
-          "date": "2026-06-08",
-          "time": "5:30 PM",
-          "venue": "Spring Studios",
-          "day_order": 5
-        },
-        {
-          "date": "2026-06-13",
-          "time": "8:30 PM",
-          "venue": "AMC 19th St. East 6",
-          "day_order": 10
-        },
-        {
-          "date": "2026-06-14",
-          "time": "2:00 PM",
-          "venue": "AMC 19th St. East 6",
-          "day_order": 11
-        }
-      ],
-      "day": "2026-06-05",
-      "date": "2026-06-05",
-      "time": "8:30 PM",
-      "venue": "Spring Studios",
-      "year": 2026,
-      "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/6880/medium_One-Night_Jacob-Kuba-Bojsza_Clean-16x9-01.jpg",
-      "genre": "Comedia, Romance",
-      "day_order": 2,
-      "flags": "🇺🇸",
-      "synopsis_en": "Dos desconocidos ávidos de amor se encuentran en la única noche del año en que las personas solteras tienen permitido tener relaciones sexuales."
-    },
-    {
-      "title": "The Baddest Speechwriter of All",
-      "slug": "baddest-speechwriter-of-all",
-      "section": "✂️ Shorts",
-      "type": "short",
-      "filmType": "Short Documentary",
-      "director": "Ben Proudfoot and Stephen Curry",
-      "duration": 29,
-      "country": "United States",
-      "language": "English",
-      "premiere": "New York Premiere",
-      "synopsis": "A los 93 años, el abogado y redactor de discursos de Martin Luther King reflexiona sobre el costo personal de hacer historia y las verdades sorprendentes detrás del Movimiento por los Derechos Civiles.",
-      "screenings": [
-        {
-          "date": "2026-06-05",
-          "time": "2:30 PM",
-          "venue": "Spring Studios",
-          "day_order": 2
-        },
-        {
-          "date": "2026-06-11",
-          "time": "8:30 PM",
-          "venue": "Spring Studios",
-          "day_order": 8
-        },
-        {
-          "date": "2026-06-13",
-          "time": "5:15 PM",
-          "venue": "AMC 19th St. East 6",
-          "day_order": 10
-        }
-      ],
-      "day": "2026-06-05",
-      "date": "2026-06-05",
-      "time": "2:30 PM",
-      "venue": "Spring Studios",
-      "year": 2026,
-      "poster": "",
-      "genre": "Documental",
-      "day_order": 2,
-      "flags": "🇺🇸",
-      "synopsis_en": "Now 93, Martin Luther King Jr.'s lawyer and speechwriter reflects on the personal cost of making history — and the surprising truths behind the Civil Rights Movement."
-    },
-    {
-      "title": "The Barbershop",
-      "slug": "barbershop",
-      "section": "✂️ Shorts",
-      "type": "short",
-      "filmType": "Short Narrative",
-      "director": "Diêm Camille and Diêm Camille",
-      "duration": 12,
-      "country": "Denmark",
-      "language": "Danish",
-      "premiere": "World Premiere",
-      "synopsis": "La barbería de Calvin ha cambiado en diez años: la llegada de mujeres le dio nuevo aire. Pero cuando una pandilla amenaza el vecindario, Calvin, Eddie y su pandilla deben unirse para salvar lo que construyeron.",
-      "screenings": [
-        {
-          "date": "2026-06-04",
-          "time": "5:30 PM",
-          "venue": "Spring Studios",
-          "day_order": 1
-        },
-        {
-          "date": "2026-06-13",
-          "time": "5:45 PM",
-          "venue": "AMC 19th St. East 6",
-          "day_order": 10
-        }
-      ],
-      "day": "2026-06-04",
-      "date": "2026-06-04",
-      "time": "5:30 PM",
-      "venue": "Spring Studios",
-      "year": 2026,
-      "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/6941/medium_Barbershop_01_clean_16x9.jpg",
-      "genre": "Comedia, Drama",
-      "day_order": 1,
-      "flags": "🇩🇰",
-      "synopsis_en": "Calvin's barbershop has changed after ten years — women have given it new life. But when a gang threatens the neighborhood, Calvin, Eddie, and the crew must work together to save what they've built."
-    },
-    {
-      "title": "The Dark Knot at the Center",
-      "slug": "dark-knot-at-the-center",
-      "section": "✂️ Shorts",
-      "type": "short",
-      "filmType": "Short Documentary",
-      "director": "Inês Pedrosa e Melo",
-      "duration": 17,
-      "country": "Portugal, United States",
-      "language": "English",
-      "premiere": "World Premiere",
-      "synopsis": "Un cortometraje que explora el nudo oscuro en el centro de una vida bajo presión.",
-      "screenings": [
-        {
-          "date": "2026-06-07",
-          "time": "2:30 PM",
-          "venue": "Spring Studios",
-          "day_order": 4
-        },
-        {
-          "date": "2026-06-13",
-          "time": "5:30 PM",
-          "venue": "Spring Studios",
-          "day_order": 10
-        }
-      ],
-      "day": "2026-06-07",
-      "date": "2026-06-07",
-      "time": "2:30 PM",
-      "venue": "Spring Studios",
-      "day_order": 4,
-      "flags": "🇵🇹🇺🇸",
-      "genre": "Documental",
-      "year": 2026,
-      "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/6956/medium_The_Dark_Knot_at_the_Center-Clean-16x9-01.jpg",
-      "synopsis_en": "A short film exploring the tangled center of a life under pressure."
     },
     {
       "title": "Award Screening: Founders Award for Best U.S. Narrative Feature",
@@ -10786,980 +9017,6 @@
       "year": 2026,
       "synopsis": "Una banda de mutantes usa sus extraordinarios poderes para proteger un mundo que los odia y los teme; enfrentados como nunca antes, se ven obligados a afrontar un futuro peligroso e inesperado.",
       "synopsis_en": "A band of mutants use their uncanny gifts to protect a world that hates and fears them; they're challenged like never before, forced to face a dangerous and unexpected new future."
-    },
-    {
-      "title": "Oscar de la Renta : A Life Well Lived",
-      "section": "✂️ Shorts",
-      "type": "film",
-      "filmType": "",
-      "director": "Richard Kaufman",
-      "duration": 17,
-      "country": "United States, Dominican Republic, India, Italy",
-      "language": "",
-      "premiere": "",
-      "screenings": [
-        {
-          "date": "2026-06-13",
-          "time": "8:30 PM",
-          "venue": "Shorts Theater at Spring Studios",
-          "day_order": 10
-        },
-        {
-          "date": "2026-06-14",
-          "time": "2:00 PM",
-          "venue": "Village East by Angelika",
-          "day_order": 11
-        }
-      ],
-      "day": "2026-06-13",
-      "date": "2026-06-13",
-      "time": "8:30 PM",
-      "venue": "Shorts Theater at Spring Studios",
-      "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/7004/large_Oscar-de-la-Renta_ALifeWellLived-Clean-16x9.jpg",
-      "posterPosition": "center",
-      "day_order": 10,
-      "flags": "🇺🇸🇩🇴🇮🇳🇮🇹",
-      "year": 2026
-    },
-    {
-      "title": "Pale Sun",
-      "section": "✂️ Shorts",
-      "type": "film",
-      "filmType": "",
-      "director": "Adrian Moyse Dullin and Jawahine Zentar",
-      "duration": 15,
-      "country": "France",
-      "language": "",
-      "premiere": "New York Premiere",
-      "screenings": [
-        {
-          "date": "2026-06-06",
-          "time": "5:30 PM",
-          "venue": "Shorts Theater at Spring Studios",
-          "day_order": 3
-        },
-        {
-          "date": "2026-06-13",
-          "time": "8:15 PM",
-          "venue": "AMC 19th St. East 6",
-          "day_order": 10
-        },
-        {
-          "date": "2026-06-14",
-          "time": "12:00 PM",
-          "venue": "AMC 19th St. East 6",
-          "day_order": 11
-        }
-      ],
-      "day": "2026-06-06",
-      "date": "2026-06-06",
-      "time": "5:30 PM",
-      "venue": "Shorts Theater at Spring Studios",
-      "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/6980/large_Pale_Sun-Clean-16x9-01.jpg",
-      "posterPosition": "center",
-      "day_order": 3,
-      "flags": "🇫🇷",
-      "year": 2026
-    },
-    {
-      "title": "Panther Pat",
-      "section": "✂️ Shorts",
-      "type": "film",
-      "filmType": "",
-      "director": "Ashley Brandon",
-      "duration": 12,
-      "country": "United States",
-      "language": "",
-      "premiere": "New York Premiere",
-      "screenings": [
-        {
-          "date": "2026-06-07",
-          "time": "2:30 PM",
-          "venue": "Shorts Theater at Spring Studios",
-          "day_order": 4
-        },
-        {
-          "date": "2026-06-13",
-          "time": "5:30 PM",
-          "venue": "Shorts Theater at Spring Studios",
-          "day_order": 10
-        }
-      ],
-      "day": "2026-06-07",
-      "date": "2026-06-07",
-      "time": "2:30 PM",
-      "venue": "Shorts Theater at Spring Studios",
-      "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/6872/large_Panther_Pat-Clean-16x9-01.jpg",
-      "posterPosition": "center",
-      "day_order": 4,
-      "flags": "🇺🇸",
-      "year": 2026
-    },
-    {
-      "title": "Paving The Way",
-      "section": "✂️ Shorts",
-      "type": "film",
-      "filmType": "",
-      "director": "Keelan Williams",
-      "duration": 21,
-      "country": "United States",
-      "language": "",
-      "premiere": "New York Premiere",
-      "screenings": [
-        {
-          "date": "2026-06-07",
-          "time": "5:30 PM",
-          "venue": "Shorts Theater at Spring Studios",
-          "day_order": 4
-        },
-        {
-          "date": "2026-06-13",
-          "time": "5:30 PM",
-          "venue": "AMC 19th St. East 6",
-          "day_order": 10
-        }
-      ],
-      "day": "2026-06-07",
-      "date": "2026-06-07",
-      "time": "5:30 PM",
-      "venue": "Shorts Theater at Spring Studios",
-      "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/7031/large_Paving_The_Way-Clean-16x9-01.jpg",
-      "posterPosition": "center",
-      "day_order": 4,
-      "flags": "🇺🇸",
-      "year": 2026
-    },
-    {
-      "title": "ROAR",
-      "section": "✂️ Shorts",
-      "type": "film",
-      "filmType": "",
-      "director": "Jesse Weglein",
-      "duration": 4,
-      "country": "United States",
-      "language": "",
-      "premiere": "North American Premiere",
-      "screenings": [
-        {
-          "date": "2026-06-06",
-          "time": "12:15 PM",
-          "venue": "Shorts Theater at Spring Studios",
-          "day_order": 3
-        },
-        {
-          "date": "2026-06-13",
-          "time": "11:30 AM",
-          "venue": "AMC 19th St. East 6",
-          "day_order": 10
-        }
-      ],
-      "day": "2026-06-06",
-      "date": "2026-06-06",
-      "time": "12:15 PM",
-      "venue": "Shorts Theater at Spring Studios",
-      "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/7015/large_ROAR-Bug-16x9-01.jpg",
-      "posterPosition": "center",
-      "day_order": 3,
-      "flags": "🇺🇸",
-      "year": 2026
-    },
-    {
-      "title": "Rare Birds",
-      "section": "✂️ Shorts",
-      "type": "film",
-      "filmType": "",
-      "director": "Lily Weisberg",
-      "duration": 10,
-      "country": "United States",
-      "language": "",
-      "premiere": "World Premiere",
-      "screenings": [
-        {
-          "date": "2026-06-05",
-          "time": "5:30 PM",
-          "venue": "Shorts Theater at Spring Studios",
-          "day_order": 2
-        },
-        {
-          "date": "2026-06-12",
-          "time": "8:30 PM",
-          "venue": "Shorts Theater at Spring Studios",
-          "day_order": 9
-        },
-        {
-          "date": "2026-06-13",
-          "time": "2:15 PM",
-          "venue": "AMC 19th St. East 6",
-          "day_order": 10
-        }
-      ],
-      "day": "2026-06-05",
-      "date": "2026-06-05",
-      "time": "5:30 PM",
-      "venue": "Shorts Theater at Spring Studios",
-      "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/6873/large_Rare_Birds-Clean-16x9-01.jpg",
-      "posterPosition": "center",
-      "day_order": 2,
-      "flags": "🇺🇸",
-      "year": 2026
-    },
-    {
-      "title": "Run In Beauty",
-      "section": "✂️ Shorts",
-      "type": "film",
-      "filmType": "",
-      "director": "Devin Whetstone",
-      "duration": 15,
-      "country": "United States",
-      "language": "",
-      "premiere": "New York Premiere",
-      "screenings": [
-        {
-          "date": "2026-06-07",
-          "time": "2:30 PM",
-          "venue": "Shorts Theater at Spring Studios",
-          "day_order": 4
-        },
-        {
-          "date": "2026-06-13",
-          "time": "5:30 PM",
-          "venue": "Shorts Theater at Spring Studios",
-          "day_order": 10
-        }
-      ],
-      "day": "2026-06-07",
-      "date": "2026-06-07",
-      "time": "2:30 PM",
-      "venue": "Shorts Theater at Spring Studios",
-      "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/7079/large_Run_In_Beauty-Clean-16x9-01.jpg",
-      "posterPosition": "center",
-      "day_order": 4,
-      "flags": "🇺🇸",
-      "year": 2026
-    },
-    {
-      "title": "Saba",
-      "section": "✂️ Shorts",
-      "type": "film",
-      "filmType": "",
-      "director": "Liron Topaz",
-      "duration": 9,
-      "country": "France",
-      "language": "",
-      "premiere": "World Premiere",
-      "screenings": [
-        {
-          "date": "2026-06-06",
-          "time": "2:30 PM",
-          "venue": "Shorts Theater at Spring Studios",
-          "day_order": 3
-        },
-        {
-          "date": "2026-06-13",
-          "time": "6:15 PM",
-          "venue": "AMC 19th St. East 6",
-          "day_order": 10
-        }
-      ],
-      "day": "2026-06-06",
-      "date": "2026-06-06",
-      "time": "2:30 PM",
-      "venue": "Shorts Theater at Spring Studios",
-      "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/6947/large_Saba-Clean-16x9-01.jpg",
-      "posterPosition": "center",
-      "day_order": 3,
-      "flags": "🇫🇷",
-      "year": 2026
-    },
-    {
-      "title": "Sandy Fannies",
-      "section": "✂️ Shorts",
-      "type": "film",
-      "filmType": "",
-      "director": "Ingrid Runde Saxegaard",
-      "duration": 13,
-      "country": "Norway",
-      "language": "",
-      "premiere": "World Premiere",
-      "screenings": [
-        {
-          "date": "2026-06-06",
-          "time": "5:30 PM",
-          "venue": "Shorts Theater at Spring Studios",
-          "day_order": 3
-        },
-        {
-          "date": "2026-06-13",
-          "time": "8:15 PM",
-          "venue": "AMC 19th St. East 6",
-          "day_order": 10
-        },
-        {
-          "date": "2026-06-14",
-          "time": "12:00 PM",
-          "venue": "AMC 19th St. East 6",
-          "day_order": 11
-        }
-      ],
-      "day": "2026-06-06",
-      "date": "2026-06-06",
-      "time": "5:30 PM",
-      "venue": "Shorts Theater at Spring Studios",
-      "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/6999/large_Sandy_Fannies-Clean-16x9-01.jpg",
-      "posterPosition": "center",
-      "day_order": 3,
-      "flags": "🇳🇴",
-      "year": 2026
-    },
-    {
-      "title": "Selah",
-      "section": "✂️ Shorts",
-      "type": "film",
-      "filmType": "",
-      "director": "Lara Everly",
-      "duration": 21,
-      "country": "United States",
-      "language": "",
-      "premiere": "World Premiere",
-      "screenings": [
-        {
-          "date": "2026-06-04",
-          "time": "5:30 PM",
-          "venue": "Shorts Theater at Spring Studios",
-          "day_order": 1
-        },
-        {
-          "date": "2026-06-13",
-          "time": "5:45 PM",
-          "venue": "AMC 19th St. East 6",
-          "day_order": 10
-        }
-      ],
-      "day": "2026-06-04",
-      "date": "2026-06-04",
-      "time": "5:30 PM",
-      "venue": "Shorts Theater at Spring Studios",
-      "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/7045/large_Selah-Clean-16x9-01(2).jpg",
-      "posterPosition": "center",
-      "day_order": 1,
-      "flags": "🇺🇸",
-      "year": 2026
-    },
-    {
-      "title": "She's Nonbinary",
-      "section": "✂️ Shorts",
-      "type": "film",
-      "filmType": "",
-      "director": "Jess McLeod",
-      "duration": 10,
-      "country": "Canada",
-      "language": "",
-      "premiere": "New York Premiere",
-      "screenings": [
-        {
-          "date": "2026-06-05",
-          "time": "8:30 PM",
-          "venue": "Shorts Theater at Spring Studios",
-          "day_order": 2
-        },
-        {
-          "date": "2026-06-08",
-          "time": "5:30 PM",
-          "venue": "Shorts Theater at Spring Studios",
-          "day_order": 5
-        },
-        {
-          "date": "2026-06-13",
-          "time": "8:30 PM",
-          "venue": "AMC 19th St. East 6",
-          "day_order": 10
-        },
-        {
-          "date": "2026-06-14",
-          "time": "2:00 PM",
-          "venue": "AMC 19th St. East 6",
-          "day_order": 11
-        }
-      ],
-      "day": "2026-06-05",
-      "date": "2026-06-05",
-      "time": "8:30 PM",
-      "venue": "Shorts Theater at Spring Studios",
-      "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/6907/large_She_s_Nonbinary-Clean-16x9-01.jpg",
-      "posterPosition": "center",
-      "day_order": 2,
-      "flags": "🇨🇦",
-      "year": 2026
-    },
-    {
-      "title": "Sleep Call",
-      "section": "✂️ Shorts",
-      "type": "film",
-      "filmType": "",
-      "director": "Richer Huynh",
-      "duration": 17,
-      "country": "United States",
-      "language": "",
-      "premiere": "New York Premiere",
-      "screenings": [
-        {
-          "date": "2026-06-06",
-          "time": "8:15 PM",
-          "venue": "Shorts Theater at Spring Studios",
-          "day_order": 3
-        },
-        {
-          "date": "2026-06-10",
-          "time": "8:30 PM",
-          "venue": "Shorts Theater at Spring Studios",
-          "day_order": 7
-        },
-        {
-          "date": "2026-06-13",
-          "time": "9:15 PM",
-          "venue": "AMC 19th St. East 6",
-          "day_order": 10
-        }
-      ],
-      "day": "2026-06-06",
-      "date": "2026-06-06",
-      "time": "8:15 PM",
-      "venue": "Shorts Theater at Spring Studios",
-      "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/7030/large_Sleep_Call-Clean-16x9-01.jpg",
-      "posterPosition": "center",
-      "day_order": 3,
-      "flags": "🇺🇸",
-      "year": 2026
-    },
-    {
-      "title": "So, Boom",
-      "section": "✂️ Shorts",
-      "type": "film",
-      "filmType": "",
-      "director": "Abby Pierce",
-      "duration": 14,
-      "country": "United States",
-      "language": "",
-      "premiere": "New York Premiere",
-      "screenings": [
-        {
-          "date": "2026-06-06",
-          "time": "8:45 PM",
-          "venue": "Spring Studios",
-          "day_order": 3
-        },
-        {
-          "date": "2026-06-12",
-          "time": "5:30 PM",
-          "venue": "Shorts Theater at Spring Studios",
-          "day_order": 9
-        },
-        {
-          "date": "2026-06-13",
-          "time": "3:15 PM",
-          "venue": "AMC 19th St. East 6",
-          "day_order": 10
-        }
-      ],
-      "day": "2026-06-06",
-      "date": "2026-06-06",
-      "time": "8:45 PM",
-      "venue": "Spring Studios",
-      "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/6891/large_SoBoom_Clean-16x9-01.jpg",
-      "posterPosition": "center",
-      "day_order": 3,
-      "flags": "🇺🇸",
-      "year": 2026
-    },
-    {
-      "title": "Stand Clear ’ the Closing Doors",
-      "section": "✂️ Shorts",
-      "type": "film",
-      "filmType": "",
-      "director": "Stacey Sargeant",
-      "duration": 7,
-      "country": "United States",
-      "language": "",
-      "premiere": "World Premiere",
-      "screenings": [
-        {
-          "date": "2026-06-06",
-          "time": "8:45 PM",
-          "venue": "Spring Studios",
-          "day_order": 3
-        },
-        {
-          "date": "2026-06-12",
-          "time": "5:30 PM",
-          "venue": "Shorts Theater at Spring Studios",
-          "day_order": 9
-        },
-        {
-          "date": "2026-06-13",
-          "time": "3:15 PM",
-          "venue": "AMC 19th St. East 6",
-          "day_order": 10
-        }
-      ],
-      "day": "2026-06-06",
-      "date": "2026-06-06",
-      "time": "8:45 PM",
-      "venue": "Spring Studios",
-      "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/7018/large_Stand_Clear_the_Closing_Doors-Clean-16x9-021.jpg",
-      "posterPosition": "center",
-      "day_order": 3,
-      "flags": "🇺🇸",
-      "year": 2026
-    },
-    {
-      "title": "The Second Life of Freddie Nole",
-      "section": "✂️ Shorts",
-      "type": "film",
-      "filmType": "",
-      "director": "Dana Nachman",
-      "duration": 21,
-      "country": "United States",
-      "language": "",
-      "premiere": "New York Premiere",
-      "screenings": [
-        {
-          "date": "2026-06-05",
-          "time": "2:30 PM",
-          "venue": "Shorts Theater at Spring Studios",
-          "day_order": 2
-        },
-        {
-          "date": "2026-06-11",
-          "time": "8:30 PM",
-          "venue": "Shorts Theater at Spring Studios",
-          "day_order": 8
-        },
-        {
-          "date": "2026-06-13",
-          "time": "5:15 PM",
-          "venue": "AMC 19th St. East 6",
-          "day_order": 10
-        }
-      ],
-      "day": "2026-06-05",
-      "date": "2026-06-05",
-      "time": "2:30 PM",
-      "venue": "Shorts Theater at Spring Studios",
-      "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/6932/large_The_Second_Life_of_Freddie_Nole-Bug-16x9-01.jpg",
-      "posterPosition": "center",
-      "day_order": 2,
-      "flags": "🇺🇸",
-      "year": 2026
-    },
-    {
-      "title": "Theatre of Dreams",
-      "section": "✂️ Shorts",
-      "type": "film",
-      "filmType": "",
-      "director": "Fatma Al-Ghanim",
-      "duration": 15,
-      "country": "Qatar",
-      "language": "",
-      "premiere": "New York Premiere",
-      "screenings": [
-        {
-          "date": "2026-06-07",
-          "time": "2:30 PM",
-          "venue": "Shorts Theater at Spring Studios",
-          "day_order": 4
-        },
-        {
-          "date": "2026-06-13",
-          "time": "5:30 PM",
-          "venue": "Shorts Theater at Spring Studios",
-          "day_order": 10
-        }
-      ],
-      "day": "2026-06-07",
-      "date": "2026-06-07",
-      "time": "2:30 PM",
-      "venue": "Shorts Theater at Spring Studios",
-      "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/6982/large_Theater-of-Dreams-clean-16x9-01.jpg",
-      "posterPosition": "center",
-      "day_order": 4,
-      "flags": "🇶🇦",
-      "year": 2026
-    },
-    {
-      "title": "Ultimatum",
-      "section": "✂️ Shorts",
-      "type": "film",
-      "filmType": "",
-      "director": "Jean-Luc Mwepu and Desirée Mwepu",
-      "duration": 13,
-      "country": "Sweden",
-      "language": "",
-      "premiere": "World Premiere",
-      "screenings": [
-        {
-          "date": "2026-06-04",
-          "time": "8:30 PM",
-          "venue": "Shorts Theater at Spring Studios",
-          "day_order": 1
-        },
-        {
-          "date": "2026-06-11",
-          "time": "5:30 PM",
-          "venue": "Shorts Theater at Spring Studios",
-          "day_order": 8
-        },
-        {
-          "date": "2026-06-13",
-          "time": "2:30 PM",
-          "venue": "AMC 19th St. East 6",
-          "day_order": 10
-        }
-      ],
-      "day": "2026-06-04",
-      "date": "2026-06-04",
-      "time": "8:30 PM",
-      "venue": "Shorts Theater at Spring Studios",
-      "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/6973/large_Ultimatum-Clean-16x9-01.jpg",
-      "posterPosition": "center",
-      "day_order": 1,
-      "flags": "🇸🇪",
-      "year": 2026
-    },
-    {
-      "title": "Under the Lake",
-      "section": "✂️ Shorts",
-      "type": "film",
-      "filmType": "",
-      "director": "Juan Carlos Mostaza",
-      "duration": 14,
-      "country": "Spain",
-      "language": "",
-      "premiere": "World Premiere",
-      "screenings": [
-        {
-          "date": "2026-06-06",
-          "time": "2:30 PM",
-          "venue": "Shorts Theater at Spring Studios",
-          "day_order": 3
-        },
-        {
-          "date": "2026-06-13",
-          "time": "6:15 PM",
-          "venue": "AMC 19th St. East 6",
-          "day_order": 10
-        }
-      ],
-      "day": "2026-06-06",
-      "date": "2026-06-06",
-      "time": "2:30 PM",
-      "venue": "Shorts Theater at Spring Studios",
-      "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/7014/large_Under_the_Lake-Bug-16x9-01.jpg",
-      "posterPosition": "center",
-      "day_order": 3,
-      "flags": "🇪🇸",
-      "year": 2026
-    },
-    {
-      "title": "Verse",
-      "section": "✂️ Shorts",
-      "type": "film",
-      "filmType": "",
-      "director": "Noam Argov",
-      "duration": 18,
-      "country": "United States",
-      "language": "",
-      "premiere": "World Premiere",
-      "screenings": [
-        {
-          "date": "2026-06-06",
-          "time": "8:15 PM",
-          "venue": "Shorts Theater at Spring Studios",
-          "day_order": 3
-        },
-        {
-          "date": "2026-06-10",
-          "time": "8:30 PM",
-          "venue": "Shorts Theater at Spring Studios",
-          "day_order": 7
-        },
-        {
-          "date": "2026-06-13",
-          "time": "9:15 PM",
-          "venue": "AMC 19th St. East 6",
-          "day_order": 10
-        }
-      ],
-      "day": "2026-06-06",
-      "date": "2026-06-06",
-      "time": "8:15 PM",
-      "venue": "Shorts Theater at Spring Studios",
-      "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/6972/large_Verse_Clean-16x9-01.jpg",
-      "posterPosition": "center",
-      "day_order": 3,
-      "flags": "🇺🇸",
-      "year": 2026
-    },
-    {
-      "title": "Violet and Marlowe Rob a Bank",
-      "section": "✂️ Shorts",
-      "type": "film",
-      "filmType": "",
-      "director": "Wesley Wang",
-      "duration": 2,
-      "country": "United States",
-      "language": "",
-      "premiere": "World Premiere",
-      "screenings": [
-        {
-          "date": "2026-06-06",
-          "time": "2:30 PM",
-          "venue": "Shorts Theater at Spring Studios",
-          "day_order": 3
-        },
-        {
-          "date": "2026-06-13",
-          "time": "6:15 PM",
-          "venue": "AMC 19th St. East 6",
-          "day_order": 10
-        }
-      ],
-      "day": "2026-06-06",
-      "date": "2026-06-06",
-      "time": "2:30 PM",
-      "venue": "Shorts Theater at Spring Studios",
-      "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/7034/large_Violet_and_Marlowe_Rob_a_Bank-Bug-16x9-01.jpg",
-      "posterPosition": "center",
-      "day_order": 3,
-      "flags": "🇺🇸",
-      "year": 2026
-    },
-    {
-      "title": "Vultures",
-      "section": "✂️ Shorts",
-      "type": "film",
-      "filmType": "",
-      "director": "Dian Weys",
-      "duration": 14,
-      "country": "France, South Africa",
-      "language": "",
-      "premiere": "New York Premiere",
-      "screenings": [
-        {
-          "date": "2026-06-04",
-          "time": "5:30 PM",
-          "venue": "Shorts Theater at Spring Studios",
-          "day_order": 1
-        },
-        {
-          "date": "2026-06-13",
-          "time": "5:45 PM",
-          "venue": "AMC 19th St. East 6",
-          "day_order": 10
-        }
-      ],
-      "day": "2026-06-04",
-      "date": "2026-06-04",
-      "time": "5:30 PM",
-      "venue": "Shorts Theater at Spring Studios",
-      "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/7003/large_Vultures-Bug-16x9-01.jpg",
-      "posterPosition": "center",
-      "day_order": 1,
-      "flags": "🇫🇷🇿🇦",
-      "year": 2026
-    },
-    {
-      "title": "WHALE 52 - Suite For Man, Boy, And Whale",
-      "section": "✂️ Shorts",
-      "type": "film",
-      "filmType": "",
-      "director": "Daniel Neiden",
-      "duration": 11,
-      "country": "United States",
-      "language": "",
-      "premiere": "",
-      "screenings": [
-        {
-          "date": "2026-06-06",
-          "time": "12:15 PM",
-          "venue": "Shorts Theater at Spring Studios",
-          "day_order": 3
-        },
-        {
-          "date": "2026-06-13",
-          "time": "11:30 AM",
-          "venue": "AMC 19th St. East 6",
-          "day_order": 10
-        }
-      ],
-      "day": "2026-06-06",
-      "date": "2026-06-06",
-      "time": "12:15 PM",
-      "venue": "Shorts Theater at Spring Studios",
-      "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/6900/large_Whale52-clean-16x9-01.jpg",
-      "posterPosition": "center",
-      "day_order": 3,
-      "flags": "🇺🇸",
-      "year": 2026
-    },
-    {
-      "title": "When the Revolution Doesn't Come",
-      "section": "✂️ Shorts",
-      "type": "film",
-      "filmType": "",
-      "director": "Aurora Brachman",
-      "duration": 25,
-      "country": "United States, United Kingdom",
-      "language": "",
-      "premiere": "",
-      "screenings": [
-        {
-          "date": "2026-06-05",
-          "time": "2:30 PM",
-          "venue": "Shorts Theater at Spring Studios",
-          "day_order": 2
-        },
-        {
-          "date": "2026-06-11",
-          "time": "8:30 PM",
-          "venue": "Shorts Theater at Spring Studios",
-          "day_order": 8
-        },
-        {
-          "date": "2026-06-13",
-          "time": "5:15 PM",
-          "venue": "AMC 19th St. East 6",
-          "day_order": 10
-        }
-      ],
-      "day": "2026-06-05",
-      "date": "2026-06-05",
-      "time": "2:30 PM",
-      "venue": "Shorts Theater at Spring Studios",
-      "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/7005/large_When_the_Revolution_Doesn_t_Come-Clean-16x9-01.jpg",
-      "posterPosition": "center",
-      "day_order": 2,
-      "flags": "🇺🇸🇬🇧",
-      "year": 2026
-    },
-    {
-      "title": "White Belt",
-      "section": "✂️ Shorts",
-      "type": "film",
-      "filmType": "",
-      "director": "Branislav Jankic",
-      "duration": 18,
-      "country": "United States",
-      "language": "",
-      "premiere": "New York Premiere",
-      "screenings": [
-        {
-          "date": "2026-06-07",
-          "time": "2:30 PM",
-          "venue": "Shorts Theater at Spring Studios",
-          "day_order": 4
-        },
-        {
-          "date": "2026-06-13",
-          "time": "5:30 PM",
-          "venue": "Shorts Theater at Spring Studios",
-          "day_order": 10
-        }
-      ],
-      "day": "2026-06-07",
-      "date": "2026-06-07",
-      "time": "2:30 PM",
-      "venue": "Shorts Theater at Spring Studios",
-      "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/6858/large_WhiteBelt-clean-16x9-01.jpg",
-      "posterPosition": "center",
-      "day_order": 4,
-      "flags": "🇺🇸",
-      "year": 2026
-    },
-    {
-      "title": "Winter Psalm",
-      "section": "✂️ Shorts",
-      "type": "film",
-      "filmType": "",
-      "director": "Hao Yan",
-      "duration": 13,
-      "country": "United States",
-      "language": "",
-      "premiere": "New York Premiere",
-      "screenings": [
-        {
-          "date": "2026-06-05",
-          "time": "5:30 PM",
-          "venue": "Shorts Theater at Spring Studios",
-          "day_order": 2
-        },
-        {
-          "date": "2026-06-12",
-          "time": "8:30 PM",
-          "venue": "Shorts Theater at Spring Studios",
-          "day_order": 9
-        },
-        {
-          "date": "2026-06-13",
-          "time": "2:15 PM",
-          "venue": "AMC 19th St. East 6",
-          "day_order": 10
-        }
-      ],
-      "day": "2026-06-05",
-      "date": "2026-06-05",
-      "time": "5:30 PM",
-      "venue": "Shorts Theater at Spring Studios",
-      "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/6899/large_WinterPsalm-Clean-16x9-01.jpg",
-      "posterPosition": "center",
-      "day_order": 2,
-      "flags": "🇺🇸",
-      "year": 2026
-    },
-    {
-      "title": "You Tryna Say You Love Me?",
-      "section": "✂️ Shorts",
-      "type": "film",
-      "filmType": "",
-      "director": "Ty Molbak",
-      "duration": 11,
-      "country": "United States",
-      "language": "",
-      "premiere": "World Premiere",
-      "screenings": [
-        {
-          "date": "2026-06-05",
-          "time": "8:30 PM",
-          "venue": "Shorts Theater at Spring Studios",
-          "day_order": 2
-        },
-        {
-          "date": "2026-06-08",
-          "time": "5:30 PM",
-          "venue": "Shorts Theater at Spring Studios",
-          "day_order": 5
-        },
-        {
-          "date": "2026-06-13",
-          "time": "8:30 PM",
-          "venue": "AMC 19th St. East 6",
-          "day_order": 10
-        },
-        {
-          "date": "2026-06-14",
-          "time": "2:00 PM",
-          "venue": "AMC 19th St. East 6",
-          "day_order": 11
-        }
-      ],
-      "day": "2026-06-05",
-      "date": "2026-06-05",
-      "time": "8:30 PM",
-      "venue": "Shorts Theater at Spring Studios",
-      "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/6869/large_You_Tryna_Say_You_Love_Me-Clean-16x9-01.jpg",
-      "posterPosition": "center",
-      "day_order": 2,
-      "flags": "🇺🇸",
-      "year": 2026
     }
   ]
 }
