@@ -313,38 +313,6 @@
       "flags": "🇺🇸"
     },
     {
-      "title": "Alejandro Sanz: When No One Sees Me",
-      "slug": "alejandro-sanz-when-no-one-sees-me",
-      "section": "✨ Spotlight+",
-      "type": "film",
-      "filmType": "Episodic Series or Pilot",
-      "director": "Álvaro Ron",
-      "duration": 55,
-      "country": "Spain, United States",
-      "language": "Spanish, English",
-      "premiere": "",
-      "synopsis": "Un retrato documental íntimo de Alejandro Sanz, uno de los cantautores más queridos de España, en un momento sin guardias.",
-      "screenings": [
-        {
-          "date": "2026-06-04",
-          "time": "5:00 PM",
-          "venue": "OKX Theater at BMCC TPAC",
-          "day_order": 1
-        }
-      ],
-      "day": "2026-06-04",
-      "date": "2026-06-04",
-      "time": "5:00 PM",
-      "venue": "OKX Theater at BMCC TPAC",
-      "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/7107/large_Alejandro-Sanz-WhenNoOneSeesMe-alberto-castro_clean-16x9-01.jpg",
-      "posterPosition": "center",
-      "day_order": 1,
-      "flags": "🇪🇸🇺🇸",
-      "genre": "Documental",
-      "year": 2026,
-      "synopsis_en": "An intimate documentary portrait of Alejandro Sanz, one of Spain's most beloved singer-songwriters, in an unguarded moment."
-    },
-    {
       "title": "Doc Meets World",
       "slug": "doc-meets-world",
       "section": "✨ Spotlight+",
