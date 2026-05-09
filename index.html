@@ -8853,7 +8853,7 @@ function renderMiPlanList(schedule){
               :`<div class="mplan-list-poster"></div>`}
           <div class="mplan-list-info">
             <div class="mplan-list-title" style="${isPassed?'opacity:.35':''}">${dt}</div>
-            <div class="mplan-list-meta">${s.time} · ${vc.short}${_lmf?.is_cortos?' · Cortos':''}</div>
+            <div class="mplan-list-meta">${s.time} · ${vc.short}${_lmf?.is_cortos?(' · '+(_lmf.section==='📺 TV'?'TV':'Cortos')):''}</div>
           </div>
           ${isW?`<div class="mplan-list-check">✓</div>`:''}
         </div>`;
