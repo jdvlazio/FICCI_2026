@@ -6002,7 +6002,7 @@
       "country": "",
       "language": "",
       "premiere": "",
-      "synopsis": "",
+      "synopsis": "Dwyane Wade es un emprendedor y miembro del Salón de la Fama de la NBA con intereses en Utah Jazz, Utah Mammoth de la NHL, Chicago Sky y Smith Entertainment Group. Es embajador global de Intuition by Aramis y miembro de la Junta Directiva de Liderazgo Ejecutivo de UC Davis.",
       "screenings": [
         {
           "date": "2026-06-10",
@@ -6017,10 +6017,11 @@
       "venue": "OKX Theater at BMCC TPAC",
       "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/7122/large_DwayneWade_1080x1920_v2.jpg",
       "posterPosition": "center",
-      "day_order": 7
+      "day_order": 7,
+      "synopsis_en": "Dwyane Wade is an entrepreneur and NBA Hall of Famer with partnerships including Way of Wade, Estée Lauder, MISSION, BallerTV, and Jeeter. Wade has stakes in the Utah Jazz, NHL's Utah Mammoth, Chicago Sky, and Smith Entertainment Group. He currently serves as a Global Ambassador for Intuition by Aramis and is a UC Davis Executive Leadership Board member."
     },
     {
-      "title": "Storytellers - Finneas with Anthony WIllis",
+      "title": "Storytellers - Finneas with Anthony Willis",
       "slug": "storytellers-finneas-with-anthony-willis",
       "section": "🗣️ Talks",
       "type": "event",
@@ -6045,7 +6046,8 @@
       "venue": "Spring Studios",
       "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/7118/large_Finneas_AnthonyWIllis_1920x1080_.jpg",
       "posterPosition": "center",
-      "day_order": 6
+      "day_order": 6,
+      "synopsis_en": "Multi-Academy and Grammy Award-winning singer, songwriter, producer and composer FINNEAS O'Connell has emerged as an unassumingly ubiquitous presence in popular music and culture. He introduced a heartfelt and hypnotic style on his 2019 debut Blood Harmony EP and has since become one of the most sought-after producers in the industry."
     },
     {
       "title": "Storytellers - Keke Palmer with Whoopi Goldberg",
@@ -6073,7 +6075,8 @@
       "venue": "SVA Theatre",
       "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/7115/large_Keke_Whoopi_1080x1920_v2.jpg",
       "posterPosition": "center",
-      "day_order": 5
+      "day_order": 5,
+      "synopsis_en": "Keke Palmer is a multi-Emmy Award winning actress, television host, singer/songwriter, producer, and NY Times best-selling author honored with the 2025 NAACP Image Award for Entertainer of the Year. She earned praise for standout performances in One of Them Days, Jordan Peele's Nope, Hustlers, and Amazon's The Power."
     },
     {
       "title": "Storytellers - Paul Rudd",
@@ -6101,7 +6104,8 @@
       "venue": "Spring Studios",
       "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/7117/large_PaulRudd_1080x1920_01.jpg",
       "posterPosition": "center",
-      "day_order": 1
+      "day_order": 1,
+      "synopsis_en": "Paul Rudd is an Emmy, SAG and Golden Globe nominated actor, producer and writer. Throughout his 30-year career he has performed in film, television and theater. Rudd is well-known for starring as Ant-Man in the Marvel Universe as well as films like Anchorman, Knocked Up, Clueless and Wet Hot American Summer."
     },
     {
       "title": "Storytellers - Sean Penn with Kaitlan Collins",
@@ -6129,7 +6133,8 @@
       "venue": "Spring Studios",
       "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/7121/large_SeanPenn_KaitlynCollins_1080x1920.jpg",
       "posterPosition": "center",
-      "day_order": 2
+      "day_order": 2,
+      "synopsis_en": "Sean Penn is a three-time Academy Award-winning actor, filmmaker and author. In January 2010, Penn established J/P HRO after the Haiti earthquake, later renamed CORE (Community Organized Relief Effort), which continues to bring immediate aid to underserved communities. Kaitlan Collins anchors The Source with Kaitlan Collins on CNN."
     },
     {
       "title": "Cannonball Live with Wesley Morris",
@@ -6142,7 +6147,7 @@
       "country": "United States",
       "language": "English",
       "premiere": "World Premiere",
-      "synopsis": "",
+      "synopsis": "Grabación de episodio en vivo. Agudo, sorprendentemente personal y nunca obvio, Cannonball with Wesley Morris se sumerge en la cultura que nos mueve. Cada semana, el presentador Wesley Morris conversa con escritores, artistas y amigos para entender mejor el momento cultural que vivimos.",
       "screenings": [
         {
           "date": "2026-06-12",
@@ -6159,7 +6164,8 @@
       "posterPosition": "center",
       "day_order": 9,
       "flags": "🇺🇸",
-      "year": 2026
+      "year": 2026,
+      "synopsis_en": "Live episode recording. Sharp, surprisingly personal and never obvious, Cannonball with Wesley Morris takes a deep dive into the culture that moves us. Each week, host Wesley Morris talks with fellow writers, artists and friends to better understand the cultural moment we're in."
     },
     {
       "title": "Concert & Conversation: Hrishikesh Hirway Moderated By Adam Scott",
@@ -6172,7 +6178,7 @@
       "country": "",
       "language": "",
       "premiere": "World Premiere",
-      "synopsis": "",
+      "synopsis": "Una conversación y concierto especial en Le Poisson Rouge entre Hrishikesh Hirway (Song Exploder) y el aclamado actor Adam Scott (Severance, Parks and Recreation) para celebrar el lanzamiento del nuevo álbum de Hirway, In the Last Hour of Light.",
       "screenings": [
         {
           "date": "2026-06-13",
@@ -6188,7 +6194,8 @@
       "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/7133/large_TF26_LiveShows_HRISHIKESH_NEW.jpg",
       "posterPosition": "center",
       "day_order": 10,
-      "year": 2026
+      "year": 2026,
+      "synopsis_en": "A special conversation and concert at Le Poisson Rouge between Hrishikesh Hirway (Song Exploder) and acclaimed actor Adam Scott (Severance, Parks and Recreation) to support the release of Hirway's new album, In the Last Hour of Light."
     },
     {
       "title": "Death Sex & Money Live with Guests Peter Dinklage & Erica Schmidt",
@@ -6201,7 +6208,7 @@
       "country": "",
       "language": "",
       "premiere": "World Premiere",
-      "synopsis": "",
+      "synopsis": "Grabación de episodio en vivo. Anna Sale regresa para un nuevo episodio en vivo desde Tribeca del querido podcast Death, Sex & Money. Conocida por su estilo de entrevista empático, Anna conversa con el premiado actor Peter Dinklage y su esposa, la escritora y directora Erica Schmidt.",
       "screenings": [
         {
           "date": "2026-06-10",
@@ -6217,7 +6224,8 @@
       "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/7130/large_TF26_LiveShows_DEATHSEXMONEY_NEW.jpg",
       "posterPosition": "center",
       "day_order": 7,
-      "year": 2026
+      "year": 2026,
+      "synopsis_en": "Live episode recording. Anna Sale returns for a brand new live-from-Tribeca episode of the beloved podcast Death, Sex & Money. Known for her empathetic interviewing style, Anna sits down with award-winning actor Peter Dinklage and his wife, writer/director Erica Schmidt, for a nuanced conversation."
     },
     {
       "title": "Fashion Neurosis Live with Guest Laurie Anderson",
@@ -6230,7 +6238,7 @@
       "country": "United Kingdom",
       "language": "English",
       "premiere": "World Premiere",
-      "synopsis": "",
+      "synopsis": "Episodio en vivo. Bella Freud y su invitada especial, la legendaria artista multimedia Laurie Anderson, protagonizan la primera grabación en vivo en Nueva York del podcast Fashion Neurosis. El programa invita a un huésped especial a 'recostarse en el diván' y explorar la conexión entre moda e identidad.",
       "screenings": [
         {
           "date": "2026-06-09",
@@ -6253,7 +6261,8 @@
       "posterPosition": "center",
       "day_order": 6,
       "flags": "🇬🇧",
-      "year": 2026
+      "year": 2026,
+      "synopsis_en": "Live episode. Join Bella Freud and special guest, legendary multimedia artist Laurie Anderson, for the first-ever New York live recording of the Fashion Neurosis with Bella Freud podcast. The show invites a special guest to 'lie on the couch' and explore the connection between fashion and identity."
     },
     {
       "title": "Lemme Say This Live with Guest Sydney Lemmon",
@@ -6266,7 +6275,7 @@
       "country": "",
       "language": "",
       "premiere": "World Premiere",
-      "synopsis": "",
+      "synopsis": "Grabación de episodio en vivo. Peyton Dix y Hunter Harris — dos faros de la verdad y conocedoras del caos de las celebridades — debutan en vivo en Tribeca. Abordan la mayor disculpa de notes-app de todos los tiempos, el hombre más divorciado de Hollywood y cuál sociedad está torturando a los poetas.",
       "screenings": [
         {
           "date": "2026-06-11",
@@ -6282,7 +6291,8 @@
       "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/7129/large_TF26_LiveShows_LEMMESAYTHIS_1920x1080.jpg",
       "posterPosition": "center",
       "day_order": 8,
-      "year": 2026
+      "year": 2026,
+      "synopsis_en": "Live episode recording. Peyton Dix and Hunter Harris — two beacons of truth and connoisseurs of celebrity chaos — are ready for their live Tribeca debut. They cover the greatest notes-app apology of all time, Hollywood's most divorced man, and which society is torturing the poets."
     },
     {
       "title": "New Yorker Radio Hour Live with David Remnick",
@@ -6295,7 +6305,7 @@
       "country": "United States",
       "language": "English",
       "premiere": "World Premiere",
-      "synopsis": "",
+      "synopsis": "Grabación de episodio en vivo. The New Yorker Radio Hour es un programa semanal presentado por el editor de la revista, David Remnick, y producido por WNYC Studios y The New Yorker. Cada episodio presenta una mezcla de entrevistas, perfiles, narrativa y humor inspirado en la revista.",
       "screenings": [
         {
           "date": "2026-06-10",
@@ -6312,7 +6322,8 @@
       "posterPosition": "center",
       "day_order": 7,
       "flags": "🇺🇸",
-      "year": 2026
+      "year": 2026,
+      "synopsis_en": "Live episode recording. The New Yorker Radio Hour is a weekly program presented by the magazine's editor, David Remnick, and produced by WNYC Studios and The New Yorker. Each episode features a diverse mix of interviews, profiles, storytelling and occasional humor inspired by the magazine."
     },
     {
       "title": "On With Kara Swisher with Guest Marc Maron",
@@ -6325,7 +6336,7 @@
       "country": "United States",
       "language": "English",
       "premiere": "World Premiere",
-      "synopsis": "",
+      "synopsis": "Grabación de episodio en vivo. Dos veces por semana, la premiada periodista Kara Swisher llega al fondo de la historia con entrevistas sin filtros a figuras del mundo empresarial, tecnológico, mediático y político. Marc Maron, aclamado comediante, actor y podcaster, se une a Kara en el escenario.",
       "screenings": [
         {
           "date": "2026-06-08",
@@ -6342,7 +6353,8 @@
       "posterPosition": "center",
       "day_order": 5,
       "flags": "🇺🇸",
-      "year": 2026
+      "year": 2026,
+      "synopsis_en": "Live episode recording. Twice a week, award-winning journalist Kara Swisher gets to the heart of the story through no-holds-barred interviews with power players across business, tech, media and politics. Joining Kara on stage for a special live recording is acclaimed comedian, actor and podcaster Marc Maron."
     },
     {
       "title": "Radiolab Live with Latif Nasser & Lulu Miller",
@@ -6355,7 +6367,7 @@
       "country": "United States",
       "language": "English",
       "premiere": "World Premiere",
-      "synopsis": "",
+      "synopsis": "Un episodio de Radiolab cobra vida en tiempo real con los presentadores Latif Nasser y Lulu Miller. En el estreno mundial de un nuevo proyecto, las luces se apagan, los micrófonos suben y el público resuelve junto a los presentadores un gran misterio de la naturaleza.",
       "screenings": [
         {
           "date": "2026-06-09",
@@ -6372,7 +6384,8 @@
       "posterPosition": "center",
       "day_order": 6,
       "flags": "🇺🇸",
-      "year": 2026
+      "year": 2026,
+      "synopsis_en": "Watch a Radiolab episode come to life in real time with hosts Latif Nasser and Lulu Miller. In this world premiere of a new project, the lights dim, the mics go up, and the audience puzzles through a great mystery of nature alongside the hosts."
     },
     {
       "title": "2026 Indie TV Documentary Showcase",
@@ -6429,7 +6442,8 @@
           "synopsis": "Una serie documental oscuramente cómica que sigue a un grupo milenarista de Michigan mientras se prepara para el inminente apocalipsis.",
           "synopsis_en": "The Little Cult That Could is a darkly comedic documentary series following a Michigan doomsday group as they prepare for the soon-to-come apocalypse."
         }
-      ]
+      ],
+      "synopsis_en": "The World Premiere of two wonderfully quirky indie docuseries. Featuring Free Help by Bianca Giaever and The Little Cult That Could by Anthony Columbus."
     },
     {
       "title": "2026 Indie TV Narrative Showcase",
@@ -6502,7 +6516,8 @@
           "synopsis": "Maxine nunca ha tenido una relación. Lena nunca ha estado con otra mujer. Cuando Maxine le propone ser novias, Lena acepta con una sola preocupación: no se imagina teniendo sexo con una sola persona el resto de su vida.",
           "synopsis_en": "Maxine's never been in a relationship. Lena's never been in a relationship with another woman. When Maxine asks her to be her girlfriend, Lena's all in with one concern: she doesn't see herself having sex with one person for the rest of her life."
         }
-      ]
+      ],
+      "synopsis_en": "The World Premiere of three provocative and poignant episodic projects that explore evolving relationships with motherhood, partnership and adulthood. Featuring CVNT, Kevin's Series of Unfortunate Events, and Switch."
     },
     {
       "title": "Tribeca NOW Creators Showcase",
@@ -6515,7 +6530,7 @@
       "country": "English",
       "language": "",
       "premiere": "",
-      "synopsis": "",
+      "synopsis": "El programa Tribeca NOW 2026 destaca a 10 narradores digitales que transforman el panorama creativo: desde sátira romántica en found-footage y arqueología deportiva hasta documentales de migración inversa, exploración de la historia afroamericana y una comedia de lugar de trabajo ambientada en un club campestre.",
       "screenings": [
         {
           "date": "2026-06-10",
@@ -6530,7 +6545,8 @@
       "venue": "AMC 19th St. East 6",
       "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/7165/large_TF26-NOW-Creators.jpg",
       "posterPosition": "center",
-      "day_order": 7
+      "day_order": 7,
+      "synopsis_en": "The 2026 Tribeca NOW program spotlights 10 boundary-pushing digital storytellers transforming the creator landscape with their distinctive voices — from found-footage dating satire and sports archaeology to reverse-migration documentaries, Black history deep-dives, and a country-club workplace comedy."
     },
     {
       "title": "Tribeca NOW Presents: Kareem Rhama’s Keep the Meter Running",
@@ -6543,7 +6559,7 @@
       "country": "United States",
       "language": "",
       "premiere": "",
-      "synopsis": "",
+      "synopsis": "Tribeca Festival recibe a Kareem Rahma y al productor Adam Faze para una proyección exclusiva de Keep the Meter Running. La querida serie web que llevó a taxistas de Nueva York y sus lugares favoritos a millones de espectadores es ahora un programa de larga duración en YouTube, con estrenos exclusivos en Tribeca.",
       "screenings": [
         {
           "date": "2026-06-11",
@@ -6559,7 +6575,8 @@
       "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/7153/large_KTMR-CLEAN-16x9-01.jpg",
       "posterPosition": "center",
       "day_order": 8,
-      "flags": "🇺🇸"
+      "flags": "🇺🇸",
+      "synopsis_en": "Tribeca Festival welcomes Kareem Rahma and producer Adam Faze for an exclusive screening of Keep The Meter Running. The beloved web-based series that took New York City taxi drivers and their favorite places to millions of viewers online is now a long-form TV show on YouTube, featuring Tribeca-exclusive episode premieres."
     },
     {
       "title": "Tribeca NOW Presents: KeyTV’s The Rise and Fall of DivaGurl with Keke Palmer & Lawrence Murray",
@@ -6572,7 +6589,7 @@
       "country": "United States",
       "language": "",
       "premiere": "",
-      "synopsis": "",
+      "synopsis": "KeyTV de Keke Palmer presenta The Rise and Fall of DivaGurl: cuatro divas, un enredado triángulo amoroso. El contenido diverso de KeyTV con narradores emergentes se alinea con la misión de Tribeca NOW de honrar a creadores digitales innovadores que conectan directamente con su audiencia.",
       "screenings": [
         {
           "date": "2026-06-07",
@@ -6588,7 +6605,8 @@
       "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/7142/large_TF26-NOW-Keke_Palmer.jpg",
       "posterPosition": "center",
       "day_order": 4,
-      "flags": "🇺🇸"
+      "flags": "🇺🇸",
+      "synopsis_en": "Keke Palmer's KeyTV presents The Rise and Fall of DivaGurl — four divas, one messy love triangle. KeyTV's diverse content featuring emerging storytellers aligns closely with Tribeca NOW's mission to honor innovative digital creators who share their stories and connect directly with fans."
     },
     {
       "title": "Shorts: Animated Shorts curated by Whoopi G",
@@ -10743,7 +10761,7 @@
       "title": "Survivor 50th Season Anniversary Panel",
       "slug": "survivor-50th-season-anniversary-panel",
       "section": "📺 TV",
-      "type": "film",
+      "type": "event",
       "filmType": "",
       "director": "",
       "duration": 75,
