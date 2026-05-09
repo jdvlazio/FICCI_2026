@@ -10118,7 +10118,7 @@ function lugarOpen(){
   btn.classList.add('active');
 
   // Close on outside click
-  setTimeout(()=>{\
+  setTimeout(()=>{
     document.addEventListener('click', lugarOutside);
   }, 0);
   // Close on scroll — dropdown is fixed, button moves with sticky bar
