@@ -4170,7 +4170,7 @@ let FESTIVAL_STORAGE_KEY=(localStorage.getItem('otrofestiv_festival')||_DEFAULT_
 // BUILD_VERSION: cambia en cada deploy.
 // Al cargar, compara con localStorage. Si difiere → reload duro.
 // sessionStorage evita loops infinitos dentro de la misma sesión.
-const BUILD_VERSION='202604211937';
+const BUILD_VERSION='202605102032';
 (function(){
   const _vk='otrofestiv_build';
   const _sk='otrofestiv_reloaded';
@@ -10594,9 +10594,9 @@ function _posterErr(img){
   <div class="search-bar">
     <div class="search-input-wrap">
       <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"/></svg>
-      <input type="text" id="search-input" placeholder="Buscar…" data-i18n-ph="search_placeholder" oninput="searchQuery()" onkeyup="searchQuery()" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
+      <input type="text" id="search-input" placeholder="Buscar…" data-i18n-ph="search_placeholder" oninput="searchQuery()" onkeyup="searchQuery()" onkeydown="setTimeout(searchQuery,0)" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
     </div>
-    <button class="search-cancel" onclick="searchClose()" data-i18n="misc_cancelar">Cancelar</button>
+    <button class="search-cancel" onclick="searchClose()" data-i18n="misc_cancelar">Cancelar</button><span id="dbg-ver" style="position:absolute;bottom:2px;right:4px;font-size:9px;color:var(--gray2);opacity:.5;pointer-events:none">202605102032</span>
   </div>
   <div id="search-results"></div>
 </div>
