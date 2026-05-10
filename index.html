@@ -9814,7 +9814,26 @@ async function loadFestival(id){
   const _dt=document.getElementById('dtabs');
   if(_dt){
     _dt.innerHTML='';
-    cfg.days.forEach(day=>{
+    // ── dtab "TODO" — muestra todo el programa sin filtro de día ──
+      const todoBtn=document.createElement('button');
+      todoBtn.className='dtab on';
+      todoBtn.dataset.day='all';
+      todoBtn.style.cssText='display:flex;align-items:center;justify-content:center;padding:0 14px';
+      todoBtn.innerHTML='<span style="font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase">TODO</span>';
+      todoBtn.onclick=()=>{
+        activeDay='all';activeVenue='all';activeSec='all';selectedIdx=null;
+        cartelaMode='horario';
+        document.querySelectorAll('.dtab').forEach(t=>t.classList.toggle('on',t.dataset.day==='all'));
+        _renderProgramaContent();
+        if(activeMNav!=='mnav-cartelera') switchMainNav('mnav-cartelera');
+      };
+      // Separador visual entre TODO y días de fecha
+      const todoSep=document.createElement('div');
+      todoSep.style.cssText='width:1px;background:var(--bdr);margin:6px 0;flex-shrink:0';
+      _dt.appendChild(todoBtn);
+      _dt.appendChild(todoSep);
+
+      cfg.days.forEach(day=>{
       const btn=document.createElement('button');
       btn.className='dtab'+(dayFullyPassed(day.k)?' past':'');
       btn.dataset.day=day.k;
