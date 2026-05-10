@@ -1036,6 +1036,61 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:var(--t
 .pel-sheet-prio-btn.prio-on{background:var(--amber-10);border-color:var(--amber-30);color:var(--amber)}
 .pel-sheet-action-btn{flex:1;background:none;border:1px solid var(--bdr);border-radius:var(--r-pill);color:var(--gray2);font-family:var(--font);font-size:var(--t-caption);font-weight:var(--w-bold);padding:11px 4px;cursor:pointer;white-space:nowrap;min-width:0;transition:all var(--tr-base);display:inline-flex;align-items:center;justify-content:center;gap:var(--sp-1);touch-action:manipulation;-webkit-tap-highlight-color:transparent}
 .pel-sheet-action-btn:active{opacity:.6;transform:scale(.96)}
+/* ── Active states globales — feedback táctil en iOS ─────────────────────
+   -webkit-tap-highlight-color:transparent está en html{} global,
+   así que cada elemento interactivo necesita su propio :active.       */
+
+/* Filtros y dropdowns */
+.lugar-opt:active,.fdr-opt:active,.pmode-tab:active,.dtab:active,
+.seccion-btn:active,.lugar-btn:active{opacity:.7}
+
+/* Chips */
+.pchip:active,.prio-chip:active,.av-day-chip:active,.av-type-btn:active,
+.prio-star-pill:active,.prio-pill:active,.av-pill-rm:active,
+.prio-chip-rm:active{opacity:.6;transform:scale(.94)}
+
+/* Splash */
+.splash-drop-item:active,.splash-sel-btn:active{opacity:.7}
+
+/* Búsqueda */
+.search-cancel:active,.search-back:active{opacity:.6}
+
+/* Agenda */
+.ag-card-btn:active,.ag-fi-btn:active,.ag-save-btn:active,
+.ag-nav-dot:active,.agbar-btn:active,.ag-sr-add:active{opacity:.6;transform:scale(.95)}
+
+/* Disponibilidad */
+.av-add-btn:active,.av-plus-btn:active,.av-full-btn:active,
+.av-calc-btn:active,.av-add-unavail:active{opacity:.6;transform:scale(.95)}
+
+/* Intereses tab */
+.int-prio-btn:active,.int-seen-btn:active{opacity:.6;transform:scale(.95)}
+
+/* Conflict modal */
+.conflict-btn-cancel:active,.conflict-btn-keep:active,
+.conflict-btn-replace:active,.conflict-modal-btn:active{opacity:.7;transform:scale(.97)}
+
+/* Sheet extras */
+.pel-sheet-remove-plan:active,.pel-sheet-prio-btn:active,
+.corto-rate-btn:active,.rating-action-btn:active,
+.ended-rate-btn:active,.checkin-btn:active,.checkin-result-btn:active{opacity:.6;transform:scale(.96)}
+
+/* Miscelánea */
+.toast-action-btn:active,.ctx-btn:active,.prio-limit-item:active,
+.excl-include-btn:active,.notice-banner-close:active,
+.archive-toggle:active,.link-gray-xs:active{opacity:.6}
+
+/* Auth */
+.auth-cancel:active,.auth-signout-btn:active,.auth-send-btn:active{opacity:.7}
+
+/* touch-action:manipulation — elimina delay 300ms iOS en elementos de alta frecuencia */
+.lugar-opt,.fdr-opt,.pchip,.prio-chip,.av-day-chip,.av-type-btn,.dtab,
+.ag-card-btn,.ag-fi-btn,.int-prio-btn,.int-seen-btn,.conflict-btn-cancel,
+.conflict-btn-keep,.conflict-btn-replace,.conflict-modal-btn,
+.splash-drop-item,.pmode-tab,.av-add-btn,.av-plus-btn,.corto-rate-btn,
+.rating-action-btn,.toast-action-btn,.checkin-btn,.checkin-result-btn{
+  touch-action:manipulation
+}
 .pel-sheet-action-btn.act-on{background:rgba(39,174,96,.08);border-color:rgba(39,174,96,.25);color:var(--green)}
 .pel-sheet-action-btn.act-prio{background:var(--amber-10);border-color:var(--amber-30);color:var(--amber)}
 .pel-sheet-action-btn.btn-primary{background:var(--amber);border-color:var(--amber);color:#000;font-size:var(--t-sm);padding:13px 4px}
