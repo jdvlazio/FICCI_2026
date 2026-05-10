@@ -52,6 +52,12 @@
       "address": "Hudson Yards Public Square, New York, NY 10001",
       "lat": 40.7536,
       "lng": -74.0021
+    },
+    "Shorts Theater at Spring Studios": {
+      "short": "Shorts Theater",
+      "address": "50 Varick St, New York, NY 10013",
+      "lat": 40.7258,
+      "lng": -74.0063
     }
   },
   "posters": {
@@ -6029,14 +6035,14 @@
         {
           "date": "2026-06-07",
           "time": "5:00 PM",
-          "venue": "",
+          "venue": "Hudson Yards Public Square and Gardens",
           "day_order": 4
         }
       ],
       "day": "2026-06-07",
       "date": "2026-06-07",
       "time": "5:00 PM",
-      "venue": "",
+      "venue": "Hudson Yards Public Square and Gardens",
       "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/7169/large_OpenAI_x_Tribeca_website_image.jpg",
       "posterPosition": "center",
       "day_order": 4,
@@ -6091,7 +6097,7 @@
       "day": "TBD",
       "date": "",
       "time": "TBD",
-      "venue": "",
+      "venue": "SVA Theatre",
       "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/7167/large_Lilly-Home-Desktop_1_.jpg",
       "posterPosition": "center",
       "day_order": 99,
@@ -6836,7 +6842,8 @@
           "synopsis_en": "Violet acepta una invitación a una isla privada con famosos influencers, esperando oportunidades virales. Pronto se convierte en parte de un reality show de terror real: los invitados deben cazar a los legendarios perros devoradores de hombres de la isla."
         }
       ],
-      "filmCategory": "Films"
+      "filmCategory": "Films",
+      "flags": "🇬🇧🇺🇸🇪🇸🇫🇷"
     },
     {
       "title": "Shorts: Care Package",
@@ -6946,7 +6953,8 @@
           "synopsis_en": "A gay man returns to Scotland after decades away to attend a traditional wedding — and faces a past he spent a lifetime avoiding. A musical short film."
         }
       ],
-      "filmCategory": "Films"
+      "filmCategory": "Films",
+      "flags": "🇺🇸🇳🇴🇫🇷🇬🇧"
     },
     {
       "title": "Shorts: Competitive Edge",
@@ -7056,7 +7064,8 @@
           "synopsis_en": ""
         }
       ],
-      "filmCategory": "Films"
+      "filmCategory": "Films",
+      "flags": "🇺🇸🇸🇪"
     },
     {
       "title": "Shorts: Fierce Fashion",
@@ -7127,7 +7136,8 @@
           "synopsis_en": "At 9 years old, fashion prodigy Max Alexander fuses boundless imagination with an unwavering commitment to sustainability."
         }
       ],
-      "filmCategory": "Films"
+      "filmCategory": "Films",
+      "flags": "🇺🇸🇩🇴🇮🇳🇮🇹"
     },
     {
       "title": "Shorts: Helpline",
@@ -7231,7 +7241,8 @@
           "synopsis_en": ""
         }
       ],
-      "filmCategory": "Films"
+      "filmCategory": "Films",
+      "flags": "🇫🇷🇿🇦🇺🇸"
     },
     {
       "title": "Shorts: Love Fictionally",
@@ -7358,7 +7369,8 @@
           "synopsis_en": ""
         }
       ],
-      "filmCategory": "Films"
+      "filmCategory": "Films",
+      "flags": "🇺🇸🇨🇦🇫🇷"
     },
     {
       "title": "Shorts: Music Videos",
@@ -7489,7 +7501,8 @@
           "poster": "https://d13jj08vfqimqg.cloudfront.net/uploads/film/photo_1/7064/large_New_York_Is_Dead_-_LP_Giobi-Clean-16x9-01.jpg"
         }
       ],
-      "filmCategory": "Films"
+      "filmCategory": "Films",
+      "flags": "🇨🇳🇺🇸"
     },
     {
       "title": "Shorts: NY Making It Here",
@@ -7610,7 +7623,8 @@
           "synopsis_en": "An Australian period-underwear salesman and his teenage daughter navigate New York City and their strained relationship."
         }
       ],
-      "filmCategory": "Films"
+      "filmCategory": "Films",
+      "flags": "🇺🇸"
     },
     {
       "title": "Shorts: Power to the People",
@@ -7687,7 +7701,8 @@
           "synopsis_en": "Now 93, Martin Luther King Jr.'s lawyer and speechwriter reflects on the personal cost of making history — and the surprising truths behind the Civil Rights Movement."
         }
       ],
-      "filmCategory": "Films"
+      "filmCategory": "Films",
+      "flags": "🇺🇸🇬🇧"
     },
     {
       "title": "Shorts: The Dark Web",
@@ -7797,7 +7812,8 @@
           "synopsis_en": ""
         }
       ],
-      "filmCategory": "Films"
+      "filmCategory": "Films",
+      "flags": "🇺🇸🇨🇴🇨🇦"
     },
     {
       "title": "Shorts: Think Fast",
@@ -7907,7 +7923,8 @@
           "synopsis_en": "A short film in competition at Tribeca 2026."
         }
       ],
-      "filmCategory": "Films"
+      "filmCategory": "Films",
+      "flags": "🇺🇸🇦🇹🇮🇳"
     },
     {
       "title": "Shorts: Whatever It Takes",
@@ -8011,7 +8028,8 @@
           "synopsis_en": ""
         }
       ],
-      "filmCategory": "Films"
+      "filmCategory": "Films",
+      "flags": "🇫🇷🇺🇸🇶🇦"
     },
     {
       "title": "Shorts: Where We Belong",
@@ -8115,7 +8133,8 @@
           "synopsis_en": "So Won, una niña, se convierte en víctima de la violencia. Su familia atraviesa la desesperación e intenta abrir una nueva puerta en la vida."
         }
       ],
-      "filmCategory": "Films"
+      "filmCategory": "Films",
+      "flags": "🇺🇸🇫🇷"
     },
     {
       "title": "Shorts: Whoopi's Wonderful World of Animation",
@@ -8230,7 +8249,8 @@
           "synopsis_en": ""
         }
       ],
-      "filmCategory": "Films"
+      "filmCategory": "Films",
+      "flags": "🇺🇸"
     },
     {
       "title": "Ascension",
