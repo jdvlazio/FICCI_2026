@@ -10340,12 +10340,13 @@ function searchQuery(){
     + matches.map(f=>{
       const{displayTitle,progSuffix}=parseProgramTitle(f.title);
       const poster=getFilmPoster(f)||'';
+      const _dur=f.duration!=null?String(f.duration):'';
       const meta=f._isCortoItem
         ?'Cortometraje'+(f._prog?' · '+parseProgramTitle(f._prog.title).displayTitle:'')
-        :(f.duration||'')+(f.section?' · '+f.section.replace(/^[^ ]+ /,''):'');
+        :(_dur?_dur+' min':'')+(f.section?' · '+f.section.replace(/^[^ ]+ /,''):'');
       const safeT=f.title.replace(/'/g,"\'");
       const safeC=(f.country||'').replace(/'/g,"\'");
-      const safeD=(f.duration||'').replace(/'/g,"\'");
+      const safeD=_dur.replace(/'/g,"\'");
       const safeS=(f.section||'').replace(/'/g,"\'");
       const safeF=(f.flags||'🌍').replace(/'/g,"\'");
       const onclick=f._isCortoItem
