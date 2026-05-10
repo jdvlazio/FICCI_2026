@@ -10317,6 +10317,8 @@ function searchQuery(){
   const q = inp.value.trim();
 
   if(!q){ results.innerHTML = ''; return; }
+  // Guard: si FILMS aún no cargó, no mostrar "Sin resultados"
+  if(!FILMS || !FILMS.length){ results.innerHTML = ''; return; }
 
   const matches = _searchAll(q);
 
