@@ -1849,11 +1849,10 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:var(--t
   z-index:99999;
   padding:calc(env(safe-area-inset-top) + 14vh) 32px calc(env(safe-area-inset-bottom) + 10vh);
   text-align:center;
-  will-change:opacity,transform,filter;
-  transition:opacity .9s cubic-bezier(.22,1,.36,1),
-             transform 1.1s cubic-bezier(.22,1,.36,1),
-             filter .9s cubic-bezier(.22,1,.36,1),
-             visibility .9s;
+  transition:opacity .55s ease,
+             transform .65s cubic-bezier(.22,1,.36,1),
+             filter .55s ease,
+             visibility .65s;
 }
 #otrofestiv-splash.fade-out{
   opacity:0;
@@ -9887,7 +9886,7 @@ function dismissSplash(){
       }
       // 150ms para que el compositor de iOS se asiente antes de revelar
       setTimeout(()=>{
-        if(s){s.classList.add('fade-out');setTimeout(()=>s.remove(),560);}
+        if(s){s.classList.add('fade-out');setTimeout(()=>s.remove(),680);}
         if(btn) btn.classList.remove('loading');
       },150);
     })
