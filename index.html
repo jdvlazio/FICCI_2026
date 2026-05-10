@@ -769,7 +769,8 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:var(--t
 /* view toggle — icono único, sin contenedor, mismo peso visual que lupa */
 .pmode-view-switch,.miplan-view-switch,.intereses-view-switch{display:flex}
 .pmode-view-btn,.miplan-view-btn,.intereses-view-btn{display:none} /* ocultar botones legacy */
-.view-toggle-btn{width:32px;min-height:34px;display:flex;align-items:center;justify-content:center;padding-right:4px;background:none;border:none;cursor:pointer;color:var(--gray);flex-shrink:0;-webkit-tap-highlight-color:transparent;font-family:var(--font);transition:color var(--tr-base);position:relative}
+.view-toggle-btn{width:32px;min-height:34px;display:flex;align-items:center;justify-content:center;padding-right:4px;background:none;border:none;cursor:pointer;color:var(--gray);flex-shrink:0;-webkit-tap-highlight-color:transparent;font-family:var(--font);transition:color var(--tr-base);position:relative;touch-action:manipulation;position:relative}
+.view-toggle-btn::after{content:'';position:absolute;inset:-6px -4px}
 .view-toggle-btn::before{content:'';position:absolute;left:0;top:15%;bottom:15%;width:1px;background:var(--bdr)}
 .view-toggle-btn:active{color:var(--white)}
 
@@ -872,7 +873,8 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:var(--t
 .pelicula-day{font-size:var(--t-label);font-weight:var(--w-bold);color:var(--amber);letter-spacing:.8px;text-transform:uppercase;white-space:nowrap;cursor:pointer;-webkit-tap-highlight-color:transparent;transition:opacity var(--tr-base);flex-shrink:0;width:48px}
 .pelicula-day:active{opacity:.6}
 .pelicula-time{font-size:var(--t-base);font-weight:var(--w-bold);color:var(--white);flex-shrink:0;white-space:nowrap;min-width:58px}
-.pelicula-venue{font-size:var(--t-caption);color:rgba(240,237,232,.6);flex:1;min-width:0;cursor:pointer;transition:color var(--tr-base);display:flex;align-items:flex-start;gap:var(--sp-1)}
+.pelicula-venue{font-size:var(--t-caption);color:rgba(240,237,232,.6);flex:1;min-width:0;cursor:pointer;transition:color var(--tr-base);display:flex;align-items:flex-start;gap:var(--sp-1);position:relative}
+.pelicula-venue::after{content:'';position:absolute;inset:-6px 0}
 .pelicula-venue:active{color:var(--amber)}
 .pelicula-venue>svg{margin-top:3px}
 .saved-venue svg,.next-film-venue svg,.mplan-rvenue svg,.mplan-wk-venue svg,.checkin-opt-venue svg{vertical-align:middle}
@@ -909,7 +911,8 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:var(--t
 .pel-sheet-title{font-size:var(--t-md);font-weight:var(--w-display);color:var(--white);line-height:1.25;letter-spacing:-.03em}.pel-sheet-original{font-size:var(--t-caption);font-weight:var(--w-regular);color:var(--gray);margin-top:2px;line-height:1.4}
 .pel-sheet-flags-dur{font-size:var(--t-sm);color:var(--gray2);display:flex;align-items:center;gap:var(--sp-1);flex-wrap:wrap}
 .pel-sheet-metaline{font-size:var(--t-sm);color:var(--gray2);margin-top:2px}
-.pel-sheet-sec{font-size:var(--t-sm);color:var(--amber);font-weight:var(--w-semi);margin-top:2px;cursor:pointer;display:inline-flex;align-items:center;gap:3px;transition:opacity var(--tr-base)}
+.pel-sheet-sec{font-size:var(--t-sm);color:var(--amber);font-weight:var(--w-semi);margin-top:2px;cursor:pointer;display:inline-flex;align-items:center;gap:3px;transition:opacity var(--tr-base);touch-action:manipulation;position:relative}
+.pel-sheet-sec::after{content:'';position:absolute;inset:-8px -4px}
 .pel-sheet-sec:active{opacity:.6}
 .pel-sheet-sec-arrow{opacity:.5;font-size:var(--t-label)}
 .pel-sheet-divider{height:0;margin:var(--sp-5) 0}
@@ -1038,7 +1041,8 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:var(--t
 
 .pel-sheet-prio-btn{background:none;border:1px solid var(--bdr);border-radius:var(--r-pill);color:var(--gray2);font-family:var(--font);font-size:var(--t-base);font-weight:var(--w-bold);padding:var(--sp-btn) 0;cursor:pointer;width:100%;margin-top:var(--sp-2);transition:all var(--tr-base)}
 .pel-sheet-prio-btn.prio-on{background:var(--amber-10);border-color:var(--amber-30);color:var(--amber)}
-.pel-sheet-action-btn{flex:1;background:none;border:1px solid var(--bdr);border-radius:var(--r-pill);color:var(--gray2);font-family:var(--font);font-size:var(--t-caption);font-weight:var(--w-bold);padding:11px 4px;cursor:pointer;white-space:nowrap;min-width:0;transition:all var(--tr-base);display:inline-flex;align-items:center;justify-content:center;gap:var(--sp-1);touch-action:manipulation;-webkit-tap-highlight-color:transparent}
+.pel-sheet-action-btn{flex:1;background:none;border:1px solid var(--bdr);border-radius:var(--r-pill);color:var(--gray2);font-family:var(--font);font-size:var(--t-caption);font-weight:var(--w-bold);padding:11px 4px;cursor:pointer;white-space:nowrap;min-width:0;transition:all var(--tr-base);display:inline-flex;align-items:center;justify-content:center;gap:var(--sp-1);touch-action:manipulation;-webkit-tap-highlight-color:transparent;position:relative}
+.pel-sheet-action-btn::after{content:'';position:absolute;inset:-3px 0}
 .pel-sheet-action-btn:active{opacity:.6;transform:scale(.96)}
 /* ── Active states globales — feedback táctil en iOS ─────────────────────
    -webkit-tap-highlight-color:transparent está en html{} global,
@@ -2077,10 +2081,12 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:var(--t
 .av-sheet-confirm{width:100%;background:var(--amber);border:none;border-radius:var(--r-md);padding:var(--sp-btn) 0;font-size:var(--t-base);font-weight:var(--w-bold);color:#000;cursor:pointer;font-family:var(--font)}
 
 /* Sección + Lugar — filtros dropdown ────────────────────── */
-.seccion-btn{display:flex;align-items:center;gap:var(--sp-1);font-size:var(--t-sm);font-weight:var(--w-semi);color:var(--gray);background:none;border:none;cursor:pointer;font-family:var(--font);padding:4px 0;transition:color var(--tr-base);white-space:nowrap;-webkit-tap-highlight-color:transparent}
+.seccion-btn{display:flex;align-items:center;gap:var(--sp-1);font-size:var(--t-sm);font-weight:var(--w-semi);color:var(--gray);background:none;border:none;cursor:pointer;font-family:var(--font);padding:4px 0;transition:color var(--tr-base);white-space:nowrap;-webkit-tap-highlight-color:transparent;touch-action:manipulation;position:relative}
+.seccion-btn::after{content:'';position:absolute;inset:-12px -8px}
 .seccion-btn.active{color:var(--amber)}
 /* Lugar filter — nuevo sistema ────────────────────────── */
-.lugar-btn{display:flex;align-items:center;gap:var(--sp-1);font-size:var(--t-sm);font-weight:var(--w-semi);color:var(--gray);background:none;border:none;cursor:pointer;font-family:var(--font);padding:4px 0;transition:color var(--tr-base);white-space:nowrap;-webkit-tap-highlight-color:transparent}
+.lugar-btn{display:flex;align-items:center;gap:var(--sp-1);font-size:var(--t-sm);font-weight:var(--w-semi);color:var(--gray);background:none;border:none;cursor:pointer;font-family:var(--font);padding:4px 0;transition:color var(--tr-base);white-space:nowrap;-webkit-tap-highlight-color:transparent;touch-action:manipulation;position:relative}
+.lugar-btn::after{content:'';position:absolute;inset:-12px -8px}
 .lugar-btn.active{color:var(--amber)}
 .sec-drop-hdr{padding:10px var(--sp-4) 4px;font-size:10px;font-weight:700;letter-spacing:.08em;color:var(--gray2);text-transform:uppercase;pointer-events:none;user-select:none}
 .lugar-opt{display:flex;align-items:center;gap:var(--sp-2);padding:10px var(--sp-4);min-height:44px;box-sizing:border-box;cursor:pointer;font-size:var(--t-base);color:var(--gray);border-bottom:1px solid var(--bdr-l);transition:background var(--tr-base)}
@@ -2104,7 +2110,8 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:var(--t
   font-family:var(--font);
   transition:color var(--tr-base);
   position:relative;
-}
+;touch-action:manipulation;position:relative}
+.hdr-search-icon::after{content:'';position:absolute;inset:-6px}
 .hdr-search-icon::before{
   content:'';position:absolute;
   left:0;top:15%;bottom:15%;
@@ -2162,7 +2169,7 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:var(--t
   background:none;border:none;font-family:var(--font);
   padding:0 var(--sp-1);
   -webkit-tap-highlight-color:transparent;
-}
+;touch-action:manipulation}
 
 #search-results{
   flex:1;overflow-y:auto;overscroll-behavior:contain;
