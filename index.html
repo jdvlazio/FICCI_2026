@@ -9425,10 +9425,11 @@ function renderPeliculaView(){
   // Within each category: chronological (day_order → time)
   const _typeOrd2=f=>f.type==='event'?2:f.is_cortos?1:0;
   entries.sort((a,b)=>{
-    if(activeDay==='all'){
-      const to=_typeOrd2(a.film)-_typeOrd2(b.film);
-      if(to!==0) return to;
-    }
+    // Grid: siempre agrupa por sección (Films→Cortos→Eventos) antes que por tiempo
+    // Lista: sort cronológico puro (manejado en renderProgramaList)
+    const to=_typeOrd2(a.film)-_typeOrd2(b.film);
+    if(to!==0) return to;
+    // Dentro de la misma categoría: cronológico
     const do_diff=(a.film.day_order||0)-(b.film.day_order||0);
     if(do_diff!==0) return do_diff;
     return toMin(a.film.time||'00:00')-toMin(b.film.time||'00:00');
