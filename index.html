@@ -9047,11 +9047,11 @@ function clearProgramaChip(){
 
 function _pafClearSec(){
   activeSec='all';seccionClose();_updateProgramaActiveFilter();
-  if(programaSubMode==='explorar')_renderProgramaContent();else render();
+  if(activeMNav==='mnav-cartelera')_renderProgramaContent();else render();
 }
 function _pafClearVenue(){
   activeVenue='all';lugarClose();_updateProgramaActiveFilter();
-  if(programaSubMode==='explorar')_renderProgramaContent();else render();
+  if(activeMNav==='mnav-cartelera')_renderProgramaContent();else render();
 }
 function _updateProgramaActiveFilter(){
   const af=document.getElementById('programa-active-filter');
@@ -10157,12 +10157,12 @@ function lugarOpen(){
   // Flat format (FICCI/AFF): one row per screening, use f.venue directly.
   const venueMap = {};
   const _vSeen = new Set();
-  (programaSubMode==='explorar'?FILMS:FILMS.filter(f=>f.day===activeDay))
+  (activeDay==='all'?FILMS:FILMS.filter(f=>f.day===activeDay))
     .forEach(f=>{
       if(f.screenings&&f.screenings.length){
         if(_vSeen.has(f.title)) return;
         _vSeen.add(f.title);
-        const rel=programaSubMode==='explorar'?f.screenings:f.screenings.filter(s=>s.date===activeDay||s.day===activeDay);
+        const rel=activeDay==='all'?f.screenings:f.screenings.filter(s=>s.date===activeDay||s.day===activeDay);
         rel.forEach(s=>{
           const cfg=vcfg(s.venue);const short=cfg.short||s.venue;
           if(!short) return;
@@ -10198,7 +10198,7 @@ function lugarOpen(){
     activeVenue = (v==='all'||v===activeVenue)?'all':v;
     lugarClose();
     _updateProgramaActiveFilter();
-    if(programaSubMode==='explorar') _renderProgramaContent(); else render();
+    if(activeMNav==='mnav-cartelera') _renderProgramaContent(); else render();
   });
 
   document.body.appendChild(drop);
@@ -10464,7 +10464,7 @@ function seccionOpen(){
     activeSec=(s==='all'||s===activeSec)?'all':s;
     _programaChipMatchFn=null; programaChip='all';
     seccionClose(); _updateProgramaActiveFilter();
-    if(programaSubMode==='explorar') _renderProgramaContent(); else render();
+    if(activeMNav==='mnav-cartelera') _renderProgramaContent(); else render();
   });
   document.body.appendChild(drop);
   btn.classList.add('active');
