@@ -2655,6 +2655,7 @@ const _I18N = {
     "nav_planear": "PLANEAR",
     "nav_miplan": "MI PLAN",
     "bar_explorar": "Explorar",
+    "bar_todo": "Todo",
     "bar_hoy": "Hoy",
     "bar_manana": "Mañana",
     "bar_todas": "Todas",
@@ -2880,6 +2881,7 @@ const _I18N = {
     "nav_planear": "PLANNER",
     "nav_miplan": "MY PLAN",
     "bar_explorar": "Browse",
+    "bar_todo": "All",
     "bar_hoy": "Today",
     "bar_manana": "Tomorrow",
     "bar_todas": "All",
@@ -3146,7 +3148,6 @@ function _applyI18nDOM(){
     'lbl-nav-intereses' :'nav_intereses',
     'lbl-nav-planear'  :'nav_planear',
     'lbl-nav-miplan'   :'nav_miplan',
-    'pmode-explorar'   :'bar_explorar',
     'pmode-hoy'        :'bar_hoy',
     'pmode-manana'     :'bar_manana',
     'seccion-lbl'      :'bar_seccion',
@@ -9246,16 +9247,15 @@ function _renderProgramaContent(){
       _renderExploreLista();
     }
   } else {
-    // Hoy / Mañana
+    // Día específico seleccionado
     if(programaViewMode==='grid'){
       lista.classList.remove('visible');
       grid.style.display='';
-      render(); // usa el modo horario existente
+      renderPeliculaView(); // muestra grilla de posters filtrada por activeDay
     } else {
       grid.style.display='none';
       lista.classList.add('visible');
       renderProgramaList();
-      // Reset scroll: prevent page jumping to bottom after day-tab navigation
       lista.scrollTop=0;
       window.scrollTo({top:0,behavior:'instant'});
     }
@@ -9815,7 +9815,7 @@ async function loadFestival(id){
       todoBtn.className='dtab on';
       todoBtn.dataset.day='all';
       todoBtn.style.cssText='display:flex;align-items:center;justify-content:center;padding:0 14px';
-      todoBtn.innerHTML='<span style="font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase">TODO</span>';
+      todoBtn.innerHTML='<span style="font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase">'+t('bar_todo')+'</span>';
       todoBtn.onclick=()=>{
         activeDay='all';activeVenue='all';activeSec='all';selectedIdx=null;
         cartelaMode='horario';
