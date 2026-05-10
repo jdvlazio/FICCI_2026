@@ -1,4 +1,8 @@
-<!DOCTYPE html>
+
+    "modal_ya_viste_titulo": "Have you seen this?",
+    "modal_ya_viste_body": "It will move to Seen in your list.",
+    "modal_ya_viste_cta": "Yes, I've seen it",
+    "toast_marcada_vista": "Moved to Seen",<!DOCTYPE html>
 <html lang="es">
 <head>
 <meta charset="UTF-8">
@@ -2664,6 +2668,10 @@ const _I18N = {
     "cta_intereses": "Interés",
     "cta_priorizar": "Priorizar",
     "cta_vista": "Vista",
+    "modal_ya_viste_titulo": "¿Ya viste esta película?",
+    "modal_ya_viste_body": "Se moverá a Ya vistas en Intereses.",
+    "modal_ya_viste_cta": "Sí, ya la vi",
+    "toast_marcada_vista": "Movida a Ya vistas",
     "cta_calificar": "Calificar",
     "cta_anadir": "Añadir a Intereses",
     "label_director": "Director",
@@ -4647,15 +4655,23 @@ function toggleWatched(title,e){
     if(activeView==='agenda') renderAgenda();
     showToast('De vuelta en pendientes','info');
   } else {
-    // Sin modal — acción directa
-    watched.add(title);
-    saveWatched();updateCardState(title);updateAgTab();
-    cachedResult=null;
-    _reRenderIntereses();
-    if(activeView==='agenda') renderAgenda();
-    if(activeMNav==='mnav-miplan') renderAgenda();
-    showToast('Marcada como vista','info');
-    if(!FILMS.find(fi=>fi.title===title)?.is_cortos) setTimeout(()=>openRatingSheet(title),350);
+    // Confirmar antes de marcar como vista
+    const _short=title.length>36?title.slice(0,34)+'…':title;
+    showActionModal(
+      t('modal_ya_viste_titulo'),
+      `<b>${_short}</b><br><br>${t('modal_ya_viste_body')}`,
+      t('modal_ya_viste_cta'),
+      ()=>{
+        watched.add(title);
+        saveWatched();updateCardState(title);updateAgTab();
+        cachedResult=null;
+        _reRenderIntereses();
+        if(activeView==='agenda') renderAgenda();
+        if(activeMNav==='mnav-miplan') renderAgenda();
+        showToast(t('toast_marcada_vista'),'info');
+        if(!FILMS.find(fi=>fi.title===title)?.is_cortos) setTimeout(()=>openRatingSheet(title),350);
+      }
+    );
   }
 }
 function updateCardState(title){
