@@ -8098,7 +8098,6 @@ function showAgView(){
     _agH.style.display='';
     // ag-toggle-bar eliminado de Intereses (solo en Explorar)
   }
-  document.getElementById('nav-row').classList.add('hidden');
   document.getElementById('filter-bars').style.display='none';
   ['hint','cnt','grid','cartelera-stepper'].forEach(id=>{const el=document.getElementById(id);if(el) el.style.display='none';});
   const _av=document.getElementById('ag-view');
@@ -8973,18 +8972,13 @@ function initProgramaModeBar(){
     chipsEl.classList.toggle('hidden',programaSubMode!=='explorar');
     if(programaSubMode==='explorar') renderProgramaChips();
   }
-  // Mostrar/ocultar nav-row (días) y filter-row según modo
+  // nav-row siempre visible en Programa — dtabs son la navegación temporal
   const navRow=document.getElementById('nav-row');
-  // nav-row: hidden in Explorar, visible in Hoy/Mañana
-  if(programaSubMode==='explorar'){
-    if(navRow) navRow.classList.add('hidden');
-  } else {
-    if(navRow) navRow.classList.remove('hidden');
-    document.querySelectorAll('.dtab').forEach(t=>{
-      t.classList.toggle('on',t.dataset.day===activeDay);
-      t.classList.toggle('past',dayFullyPassed(t.dataset.day));
-    });
-  }
+  if(navRow) navRow.classList.remove('hidden');
+  document.querySelectorAll('.dtab').forEach(t=>{
+    t.classList.toggle('on', activeDay==='all' ? t.dataset.day==='all' : t.dataset.day===activeDay);
+    t.classList.toggle('past', t.dataset.day!=='all' && dayFullyPassed(t.dataset.day));
+  });
   // tag dismissible
   _updateProgramaActiveFilter();
 }
