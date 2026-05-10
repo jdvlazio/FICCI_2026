@@ -9840,7 +9840,7 @@ async function loadFestival(id){
   DAY_KEYS.forEach(d=>{_newAv[d]=availability[d]&&availability[d].blocks?availability[d]:{blocks:[]}});
   Object.keys(availability).forEach(k=>delete availability[k]);
   Object.assign(availability,_newAv);
-  programaSubMode='explorar';cartelaMode='horario';
+  programaSubMode='hoy';cartelaMode='horario';activeDay='all';
   miPlanViewStart=0;activeMiPlanDay=0;
   // Load from new storage
   loadState();
