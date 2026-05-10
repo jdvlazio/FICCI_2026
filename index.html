@@ -8272,16 +8272,24 @@ function togglePelPrio(title){
 
 /* ── BOTTOM SHEET: apertura, cierre, acciones ───────────────────────── */
 function togglePelWL(title,e){
-  const wasInWL=watchlist.has(title);
-  toggleWL(title,e);
-  const btn=document.getElementById('pel-wl-btn');
-  if(!btn) return;
-  const inWL=watchlist.has(title);
-  btn.innerHTML=(inWL?ICONS.heartFill:ICONS.heart)+' '+(inWL?t('cta_en_intereses'):t('cta_intereses'));
-  btn.className='pel-sheet-action-btn'+(inWL?' act-on btn-primary':' btn-primary');
-  // Abrir WLAdd solo al AÑADIR — no al quitar (modal async deja wasInWL=true)
-  if(!wasInWL&&inWL){
-    showActionToast(`${ICONS.heartFill} ${t('cta_en_intereses')}`,`${ICONS.star} ${t('cta_priorizar')}`,()=>togglePriority(title));
+  try{
+    const wasInWL=watchlist.has(title);
+    toggleWL(title,e);
+    const btn=document.getElementById('pel-wl-btn');
+    if(!btn) return;
+    const inWL=watchlist.has(title);
+    btn.innerHTML=(inWL?ICONS.heartFill:ICONS.heart)+' '+(inWL?t('cta_en_intereses'):t('cta_intereses'));
+    btn.className='pel-sheet-action-btn'+(inWL?' act-on btn-primary':' btn-primary');
+    if(!wasInWL&&inWL){
+      showActionToast(`${ICONS.heartFill} ${t('cta_en_intereses')}`,`${ICONS.star} ${t('cta_priorizar')}`,()=>togglePriority(title));
+    }
+  }catch(err){
+    // Mostrar error visible para diagnóstico
+    const dbg=document.createElement('div');
+    dbg.style.cssText='position:fixed;top:20px;left:16px;right:16px;background:red;color:#fff;padding:12px;border-radius:8px;z-index:99999;font-size:13px;font-family:monospace';
+    dbg.textContent='togglePelWL ERROR: '+err.message;
+    document.body.appendChild(dbg);
+    setTimeout(()=>dbg.remove(),8000);
   }
 }
 // _dayChips — renderiza días únicos de un film como spans tappables (filtran por día)
