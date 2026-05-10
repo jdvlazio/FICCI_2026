@@ -8017,7 +8017,7 @@ function renderAgenda(){
 // ── CALENDAR VIEW ──
 let activeView='day',activeDay='Martes',activeVenue='all',activeSec='all',selectedIdx=null,activeMNav='mnav-cartelera';
 let cartelaMode='pelicula'; // 'horario' | 'pelicula' (interno)
-let programaSubMode='explorar'; // 'explorar' | 'hoy' | 'manana'
+let programaSubMode='hoy'; // 'hoy' | 'manana' (explorar eliminado — activeDay==='all' lo reemplaza)
 let interesesViewMode='grid';   // 'grid' | 'list' para Intereses
 let miPlanViewMode='calendar';  // 'calendar' | 'list' para Mi Plan
 let programaViewMode='grid';    // 'grid' | 'list'
@@ -8350,7 +8350,7 @@ function _dayChips(screenings){
 function filterByVenue(venue){
   closePelSheet();
   activeVenue=venue;activeSec='all';selectedIdx=null;
-  programaSubMode='explorar';programaViewMode='grid';
+  programaSubMode='hoy';programaViewMode='grid';
   programaChip='all';_programaChipMatchFn=null;
   // Si el día activo ya pasó, ir al primer día vigente
   if(dayFullyPassed(activeDay)){
@@ -8367,7 +8367,6 @@ function filterByDay(day){
   closePelSheet();
   activeDay=day;activeVenue='all';activeSec='all';selectedIdx=null;
   cartelaMode='horario';
-  programaSubMode='explorar';
   document.querySelectorAll('.dtab').forEach(t=>t.classList.toggle('on',t.dataset.day===day));
   requestAnimationFrame(()=>{
     const activeBtn=document.querySelector('.dtab.on');
@@ -8387,7 +8386,7 @@ function filterBySection(section){
   // Navegar a Programa · Explorar con esa sección activa
   closePelSheet();
   activeSec=section;activeVenue='all';selectedIdx=null;
-  programaSubMode='explorar';programaViewMode='grid';
+  programaSubMode='hoy';programaViewMode='grid';
   programaChip='all';
   _programaChipMatchFn=null;
   // Si el día activo ya pasó, ir al primer día vigente
@@ -10416,7 +10415,7 @@ function seccionOpen(){
     'z-index:9999','animation:lugarFadeIn .12s ease'
   ].join(';');
 
-  const baseFilms = programaSubMode==='explorar' ? FILMS : FILMS.filter(f=>f.day===activeDay);
+  const baseFilms = activeDay==='all' ? FILMS : FILMS.filter(f=>f.day===activeDay);
   const films = activeVenue!=='all' ? baseFilms.filter(f=>vcfg(f.venue).short===activeVenue) : baseFilms;
 
   const secMap={}, secCatMap={}, titleSet={};
