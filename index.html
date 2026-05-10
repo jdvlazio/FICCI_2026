@@ -9391,7 +9391,7 @@ function renderPeliculaView(){
     }
     const do_diff=(a.film.day_order||0)-(b.film.day_order||0);
     if(do_diff!==0) return do_diff;
-    return (a.film.time||'').localeCompare(b.film.time||'');
+    return toMin(a.film.time||'00:00')-toMin(b.film.time||'00:00');
   });
 
   // Count badge: solo cuando hay filtro de Lugar (sin chip activo muestra el count de la sección en el chip)
