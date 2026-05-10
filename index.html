@@ -9351,9 +9351,12 @@ function renderPeliculaView(){
   const cntEl=document.getElementById('cnt');
   if(!grid) return;
 
+  // Filtrar por día si hay uno activo
+  const _dayFilms = activeDay==='all' ? FILMS : FILMS.filter(f=>f.day===activeDay);
+
   // Agrupar por título único — film representativo = el de primera función cronológica
   const titleMap={};
-  FILMS.forEach(f=>{
+  _dayFilms.forEach(f=>{
     if(!titleMap[f.title]){titleMap[f.title]={film:f,screenings:[]};}
     else{
       // Actualizar film representativo si este screening es anterior
