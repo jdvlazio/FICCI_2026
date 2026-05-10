@@ -4108,7 +4108,19 @@ function vcfg(v){
 }
 function sala(v){const m=v.match(/Sala\s*(\d+)/)||v.match(/Sal[oó]n\s*(\d+)/i);return m?'Sala '+m[1]:'';}
 /* ── UTILS: tiempo, fecha, duración ─────────────────────────────────── */
-function toMin(t){const[h,m]=t.split(':').map(Number);return h*60+m;}
+function toMin(t){
+  if(!t) return 0;
+  const isPM=/ PM$/i.test(t), isAM=/ AM$/i.test(t);
+  const clean=t.replace(/ [AP]M$/i,'').trim();
+  const[h,m]=(clean+':0').split(':').map(Number);
+  if(isNaN(h)||isNaN(m)) return 0;
+  if(isPM||isAM){
+    // 12h format: 12 AM=0, 12 PM=720, 1 PM=780
+    const h24=isPM?(h===12?12:h+12):(h===12?0:h);
+    return h24*60+m;
+  }
+  return h*60+m; // 24h format
+}
 function parseDur(d){const m=d&&d.replace('~','').match(/(\d+)/);return m?parseInt(m[1]):DEFAULT_DURATION_MIN;}
 // Duración efectiva: parseDur + 30 min si has_qa (Q&A alarga la función)
 function effectiveDuration(f){return parseDur(f&&f.duration)+(f&&f.has_qa?30:0);}
@@ -7599,7 +7611,19 @@ const DEFAULT_DURATION_MIN=90;
 const FESTIVAL_BUFFER=15;
 
 // ── Funciones puras ───────────────────────────────────────────
-function toMin(t){const[h,m]=t.split(':').map(Number);return h*60+m;}
+function toMin(t){
+  if(!t) return 0;
+  const isPM=/ PM$/i.test(t), isAM=/ AM$/i.test(t);
+  const clean=t.replace(/ [AP]M$/i,'').trim();
+  const[h,m]=(clean+':0').split(':').map(Number);
+  if(isNaN(h)||isNaN(m)) return 0;
+  if(isPM||isAM){
+    // 12h format: 12 AM=0, 12 PM=720, 1 PM=780
+    const h24=isPM?(h===12?12:h+12):(h===12?0:h);
+    return h24*60+m;
+  }
+  return h*60+m; // 24h format
+}
 function parseDur(d){const m=d&&d.replace('~','').match(/(\d+)/);return m?parseInt(m[1]):DEFAULT_DURATION_MIN;}
 function _festDate(dateStr,time){return new Date(dateStr+'T'+time+':00'+TZ_OFFSET);}
 function simNow(){return SIM_TIME?new Date(SIM_TIME):new Date();}
