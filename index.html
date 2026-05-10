@@ -8062,6 +8062,9 @@ function switchMainNav(id){
   activeMNav=id;
   document.querySelectorAll('.main-nav-tab').forEach(t=>t.classList.remove('on'));
   const el=document.getElementById(id);if(el) el.classList.add('on');
+  // nav-row solo visible en tab Programa
+  const navRow=document.getElementById('nav-row');
+  if(navRow) navRow.classList.toggle('hidden', id!=='mnav-cartelera');
 }
 function showDayView(){
   activeView='day';
