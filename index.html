@@ -9706,9 +9706,17 @@ async function loadFestival(id){
     // Convierte festivalId a nombre de archivo: ficci65→ficci-65, aff2026→aff-2026
     const festFile=id.replace(/([a-zA-Z]+)(\d+)$/,'$1-$2');
     try{
-      const data=await fetch('festivals/'+festFile+'.json').then(r=>{
-        if(!r.ok)throw new Error('HTTP '+r.status);
+      const _festUrl='festivals/'+festFile+'.json';
+      const data=await fetch(_festUrl,{cache:'no-store'}).then(r=>{
+        if(!r.ok)throw new Error('HTTP '+r.status+' — '+_festUrl);
         return r.json();
+      }).catch(e=>{
+        // Banner de diagnóstico visible en pantalla
+        const dbg=document.createElement('div');
+        dbg.style.cssText='position:fixed;top:0;left:0;right:0;background:#c0392b;color:#fff;padding:14px 16px;z-index:99999;font-size:13px;font-family:monospace;line-height:1.4';
+        dbg.textContent='ERROR cargando festival: '+e.message;
+        document.body.appendChild(dbg);
+        throw e;
       });
       // ── Explosión de screenings[] → objetos planos por función ──
       // Si un film tiene screenings[], genera un objeto por función.
@@ -10317,8 +10325,6 @@ function searchQuery(){
   const q = inp.value.trim();
 
   if(!q){ results.innerHTML = ''; return; }
-  // Guard: si FILMS aún no cargó, no mostrar "Sin resultados"
-  if(!FILMS || !FILMS.length){ results.innerHTML = ''; return; }
 
   const matches = _searchAll(q);
 
