@@ -2556,7 +2556,7 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:var(--t
 <div id="hdr-programa">
 <!-- ── Programa: barra de modos Explorar/Hoy/Mañana ── -->
 <div class="programa-mode-bar" id="programa-mode-bar" style="display:none">
-  <button class="pmode-tab on" id="pmode-explorar" onclick="setProgramaMode('explorar')">Explorar</button>
+
   <button class="pmode-tab" id="pmode-hoy" onclick="setProgramaMode('hoy')">Hoy</button>
   <button class="pmode-tab" id="pmode-manana" onclick="setProgramaMode('manana')">Mañana</button>
   <div class="pmode-spacer"></div>
@@ -8935,24 +8935,24 @@ function setInteresesView(mode){
 
 function _getProgramaPhase(){
   // Retorna qué tabs deben ser visibles y cuál es el default
-  if(festivalEnded()) return {tabs:['explorar'],default:'explorar'};
+  // Explorar eliminado — dtab TODO cubre ese caso
+  if(festivalEnded()) return {tabs:[],default:'hoy'};
   const now=simNow();
-  // Fecha de inicio dinámica — primer día del festival activo
   const firstDayKey=DAY_KEYS[0];
   const firstDayDate=FESTIVAL_DATES[firstDayKey];
   const FEST_START=firstDayDate?new Date(firstDayDate+'T09:00:00'):new Date('2099-01-01');
-  if(now<FEST_START) return {tabs:['explorar'],default:'explorar'};
+  if(now<FEST_START) return {tabs:[],default:'hoy'};
   const todayStr=simTodayStr();
   const lastDayKey=DAY_KEYS[DAY_KEYS.length-1];
   const isLastDay=todayStr===FESTIVAL_DATES[lastDayKey];
-  const tabs=isLastDay?['explorar','hoy']:['explorar','hoy','manana'];
+  const tabs=isLastDay?['hoy']:['hoy','manana'];
   return{tabs,default:'hoy'};
 }
 
 function initProgramaModeBar(){
   const phase=_getProgramaPhase();
   // Mostrar/ocultar tabs según fase
-  ['explorar','hoy','manana'].forEach(m=>{
+  ['hoy','manana'].forEach(m=>{
     const el=document.getElementById('pmode-'+m);
     if(!el) return;
     el.style.display=phase.tabs.includes(m)?'':'none';
@@ -8962,7 +8962,7 @@ function initProgramaModeBar(){
     programaSubMode=phase.default;
   }
   // Actualizar tab activo
-  ['explorar','hoy','manana'].forEach(m=>{
+  ['hoy','manana'].forEach(m=>{
     const el=document.getElementById('pmode-'+m);
     if(el) el.classList.toggle('on',m===programaSubMode);
   });
