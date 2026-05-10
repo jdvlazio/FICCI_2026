@@ -856,7 +856,8 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:var(--t
 /* Overlay de hora (Por Horario) */
 .poster-time{position:absolute;bottom:0;left:0;right:0;padding:20px 7px 6px;background:linear-gradient(to top,rgba(0,0,0,.85) 0%,rgba(0,0,0,0) 100%);font-size:var(--t-icon);font-weight:var(--w-display);color:var(--amber);line-height:1;letter-spacing:-.3px}
 /* Indicador ♥ en lista */
-.poster-wl-dot{position:absolute;bottom:5px;right:5px;font-size:var(--t-base);line-height:1;filter:drop-shadow(0 1px 2px rgba(0,0,0,.8))}
+.poster-wl-dot{position:absolute;bottom:5px;right:5px;font-size:var(--t-base);line-height:1;filter:drop-shadow(0 1px 2px rgba(0,0,0,.8));background:none;border:none;padding:0;cursor:pointer;touch-action:manipulation;-webkit-tap-highlight-color:transparent}
+.poster-wl-dot:active{opacity:.6;transform:scale(.88)}
 /* Badge CORTOS */
 .poster-prog-badge{position:absolute;top:5px;left:5px;background:rgba(10,10,10,.75);backdrop-filter:blur(4px);border:1px solid rgba(255,255,255,.12);border-radius:var(--r-sm);font-size:var(--t-badge);font-weight:var(--w-display);color:var(--amber);letter-spacing:.5px;padding:2px 4px;line-height:1.4}
 /* Badge AHORA / Ya pasó */
@@ -9483,7 +9484,7 @@ function renderPeliculaView(){
     return`<div class="bg-surf-2 poster-card${inWL&&!inW?' in-wl':''}${inW&&!_ended?' in-watched':''}${(_isPrograma?false:_isEditorialPoster(f))?' editorial':''}" data-title="${f.title.replace(/"/g,'&quot;')}" onclick="openPelSheet('${safeT}')"${_isPrograma?'':_cardBg}>
       ${posterImg}
       ${progBadge}
-      ${inWL?`<div class="poster-wl-dot">${ICONS.heartFill}</div>`:''}
+      `<button class="poster-wl-dot${inWL?' wl-on':''}" onclick="event.stopPropagation();toggleWL('${safeT}',event)" aria-label="Interés">${inWL?ICONS.heartFill:ICONS.heart}</button>`
     </div>`;
   }).join('')}</div>`;
   requestAnimationFrame(()=>window.dispatchEvent(new Event('scroll')));// trigger lazy load
@@ -9561,7 +9562,7 @@ return`<div class="poster-card${inWL&&!inW?' in-wl':''}${inW&&!_fe?' in-watched'
       ${posterImg}
       <div class="poster-time">${f.time}</div>
       ${nowBadge||pastBadge||progBadge}
-      ${inWL?`<div class="poster-wl-dot">${ICONS.heartFill}</div>`:''}
+      `<button class="poster-wl-dot${inWL?' wl-on':''}" onclick="event.stopPropagation();toggleWL('${safeT}',event)" aria-label="Interés">${inWL?ICONS.heartFill:ICONS.heart}</button>`
     </div>`;
   }).join('')+'</div>';
 
