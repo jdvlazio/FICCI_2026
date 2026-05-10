@@ -10104,7 +10104,10 @@ if('serviceWorker' in navigator){
   navigator.serviceWorker.register('/sw.js').catch(function(){});
   // Recargar cuando el SW notifique actualización (iOS fix)
   navigator.serviceWorker.addEventListener('message', e => {
-    if(e.data && e.data.type==='SW_UPDATED') location.reload();
+    if(e.data && e.data.type==='SW_UPDATED'){
+      // Solo recargar si el splash sigue visible — evita interrumpir al usuario
+      if(document.getElementById('otrofestiv-splash')) location.reload();
+    }
   });
 }
 
