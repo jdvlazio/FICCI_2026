@@ -8969,8 +8969,8 @@ function initProgramaModeBar(){
   // Mostrar/ocultar chips
   const chipsEl=document.getElementById('programa-chips');
   if(chipsEl){
-    chipsEl.classList.toggle('hidden',programaSubMode!=='explorar');
-    if(programaSubMode==='explorar') renderProgramaChips();
+    chipsEl.classList.toggle('hidden',activeDay!=='all');
+    if(activeDay==='all') renderProgramaChips();
   }
   // nav-row siempre visible en Programa — dtabs son la navegación temporal
   const navRow=document.getElementById('nav-row');
@@ -9228,7 +9228,7 @@ function _renderProgramaContent(){
   const cntEl=document.getElementById('cnt');
   if(!grid||!lista) return;
   renderNoticesBanner();
-  if(programaSubMode==='explorar'){
+  if(activeDay==='all'){
     requestAnimationFrame(()=>{
       const _pg2=grid.querySelector('.poster-grid');
       if(_pg2) _pg2.style.opacity='1';
@@ -9380,7 +9380,7 @@ function renderPeliculaView(){
   // Within each category: chronological (day_order → time)
   const _typeOrd2=f=>f.type==='event'?2:f.is_cortos?1:0;
   entries.sort((a,b)=>{
-    if(programaSubMode==='explorar'){
+    if(activeDay==='all'){
       const to=_typeOrd2(a.film)-_typeOrd2(b.film);
       if(to!==0) return to;
     }
@@ -9442,7 +9442,7 @@ function renderSbar(){
   const lbl=document.getElementById('sdr-label');
   if(!panel) return;
   panel.innerHTML='';
-  const isExplorar=programaSubMode==='explorar';
+  const isExplorar=activeDay==='all';
   let dayF=isExplorar?FILMS:FILMS.filter(f=>f.day===activeDay);
   if(activeVenue!=='all') dayF=dayF.filter(f=>vcfg(f.venue).short===activeVenue);
   const secs=[...new Set(dayF.map(f=>f.section))].sort((a,b)=>{
@@ -9471,7 +9471,7 @@ function render(){
   if(activeView==='agenda') return;
   // Si estamos en Cartelera con el nuevo sistema, _renderProgramaContent lo maneja
   if(activeView==='day'&&document.getElementById('programa-mode-bar')?.style.display!=='none'){
-    if(programaSubMode==='explorar'){renderSbar();renderPeliculaView();return;}
+    if(activeDay==='all'){renderSbar();renderPeliculaView();return;}
     // Hoy/Mañana — forzar cartelaMode horario para que render() use la vista por día
     cartelaMode='horario';
   }
