@@ -39,3 +39,6 @@ fs.writeFileSync(vPath, JSON.stringify({ build }, null, 2) + '\n');
 
 console.log(`✅ Build: ${build}`);
 console.log(`   sw.js y version.json actualizados.`);
+
+// Regenerar CLAUDE.md con estado actual del repo
+require('./generate-claude-md');

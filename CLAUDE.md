@@ -1,0 +1,110 @@
+# CLAUDE.md — Otrofestiv
+> Generado automáticamente por `scripts/generate-claude-md.js`.
+> No editar a mano — los cambios se sobreescriben en el próximo deploy.
+> Para modificar secciones estáticas, editar el template en el script.
+>
+> Último commit: `b736df0 i18n: segunda pasada — 13 keys nuevas + validate.py check i18n-complete`
+
+---
+
+## Qué es Otrofestiv
+
+PWA mobile-first para planear asistencia a festivales de cine. Permite explorar el programa, armar una watchlist, detectar conflictos de horario y generar un plan optimizado. Vanilla JS/HTML, single-file (`index.html`), sin dependencias externas. Desplegado en GitHub Pages.
+
+- **Repo:** `jdvlazio/Otrofestiv.app`
+- **URL producción:** `https://otrofestiv.app`
+- **Deploy:** drag-and-drop manual en GitHub web interface
+
+---
+
+## Bootstrap de sesión
+
+```bash
+git clone https://<GITHUB_TOKEN>@github.com/jdvlazio/Otrofestiv.app.git /home/claude/repo \
+  && cd /home/claude/repo \
+  && git config user.email "claude@anthropic.com" \
+  && git config user.name "Claude"
+```
+
+Después del clone, leer en este orden:
+1. Este archivo (`CLAUDE.md`)
+2. `ARQUITECTURA.md` — diseño, reglas, componentes, patrones
+3. Si el trabajo involucra datos de festival: `SCHEMA.md`
+4. Si el trabajo involucra onboarding de un festival nuevo: `PIPELINE.md`
+
+---
+
+## Protocolo de trabajo con Juan
+
+Juan es Product Owner, diseñador y developer. Claude ejecuta; Juan audita y aprueba.
+
+**Reglas inamovibles del proceso:**
+
+1. **Arquitectura antes de ejecución.** Toda decisión no trivial requiere propuesta + aprobación antes de tocar código.
+2. **Cambios quirúrgicos.** Solo se modifica lo pedido. Cero modificaciones no solicitadas.
+3. **Copy es un artefacto de diseño.** Toda nueva string o corrección requiere discusión semántica con Juan como Content Designer + UX Writer. Sin excepciones.
+4. **Validar antes de commitear.** Siempre correr `python3 validate.py` antes de proponer un commit.
+5. **bump-version antes de deploy.** `node scripts/bump-version.js` justo antes de cada push.
+6. **Sin regresiones.** Verificar qué cambió y por qué después de cada entrega.
+
+---
+
+## Estado del proyecto
+
+### Festivales (desde `FESTIVAL_CONFIG` en `index.html`)
+
+| ID | Nombre | Ciudad | Fechas | Estado |
+|---|---|---|---|---|
+| `ficci65` | FICCI 65 | Cartagena | 14–19 ABR | Recién terminado |
+| `aff2026` | AFF 2026 | Medellín | 21–29 ABR | Recién terminado |
+| `tribeca2026` | Tribeca Festival | New York | JUN 3–14 | **Próximo / activo** |
+| `cinemancia2025` | Cinemancia 2025 | Valle de Aburrá | 11–20 SEP | Archivado |
+
+### Features activas (desde `.specify/features/`)
+
+_Sin features activas en `.specify/features/`._
+
+---
+
+## Documentación de referencia
+
+| Archivo | Qué contiene |
+|---|---|
+| `ARQUITECTURA.md` | Design system completo, reglas de diseño, mapa de funciones, patrones canónicos |
+| `PIPELINE.md` | Proceso de onboarding de festivales nuevos (fases, gates, roles) |
+| `SCHEMA.md` | Schema normativo del JSON de festival |
+| `.specify/memory/constitution.md` | Rationale de decisiones de arquitectura clave |
+| `.specify/features/` | Specs y planes de features en desarrollo |
+| `validate.py` | Validador: JS syntax, divs críticos, CSS, patrones prohibidos |
+
+---
+
+## Reglas críticas (resumen — ver `ARQUITECTURA.md` para detalle)
+
+- **CTA primario:** fondo amber sólido, texto negro. Siempre.
+- **Pósters:** solo vía `getFilmPoster(f)` o `getCortoItemPoster(item)`. Nunca directo.
+- **Iconos:** solo Lucide. Flags de países y emojis de categoría son la única excepción.
+- **Conflictos de horario:** siempre `screensConflict()`. Nunca comparaciones manuales.
+- **Tokens:** todo valor de spacing, tipografía y radio usa `var(--)`. Cero valores raw.
+- **Regex en index.html:** prohibido para transformaciones estructurales de >10 ocurrencias.
+- **Timezone:** Colombia (UTC-5). Nunca `toISOString()` para lógica de fechas.
+- **i18n:** toda string nueva va a `es.json` + `en.json` + `strings-reference.json`.
+
+---
+
+## APIs
+
+- **TMDB:** `38f24e78b2f13970af3430eb0732f0ac`
+- **GitHub token:** en el bootstrap command de arriba
+
+---
+
+## Herramientas del pipeline
+
+```bash
+python3 validate.py                        # validar antes de commitear
+node scripts/bump-version.js               # actualizar sw.js + version.json + CLAUDE.md antes de deploy
+node scripts/generate-config.js --help     # generar entrada FESTIVAL_CONFIG
+python3 scripts/enrich-festival.py --help  # enriquecer JSON con TMDB
+python3 scripts/geocode-venues.py --help   # geocodificar venues
+```
