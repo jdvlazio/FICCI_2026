@@ -4198,7 +4198,7 @@ let FESTIVAL_STORAGE_KEY=(localStorage.getItem('otrofestiv_festival')||_DEFAULT_
 // BUILD_VERSION: cambia en cada deploy.
 // Al cargar, compara con localStorage. Si difiere → reload duro.
 // sessionStorage evita loops infinitos dentro de la misma sesión.
-const BUILD_VERSION='202605110139';
+const BUILD_VERSION='202605110205';
 (function(){
   const _vk='otrofestiv_build';
   const _sk='otrofestiv_reloaded';
@@ -9905,8 +9905,6 @@ async function loadFestival(id){
       btn.innerHTML=`<span class="dtab-date">${day.lbl}</span><span class="dtab-name">${day.d}</span>`;
       btn.onclick=()=>{
         activeDay=day.k;activeVenue='all';activeSec='all';selectedIdx=null;
-        cartelaMode='horario';
-        setProgramaView('list'); // día específico → siempre Lista
         document.querySelectorAll('.dtab').forEach(t=>t.classList.toggle('on',t.dataset.day===day.k));
         _renderProgramaContent();
         if(activeMNav!=='mnav-cartelera') switchMainNav('mnav-cartelera');
