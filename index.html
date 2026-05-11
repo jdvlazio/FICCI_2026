@@ -831,7 +831,7 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:var(--t
 .poster-card.editorial .ed-hdr{height:28.89%;flex-shrink:0;display:flex;flex-direction:column;justify-content:center;padding:0 8px}
 .poster-card.editorial .ed-hdr .ed-lbl{font-family:-apple-system,BlinkMacSystemFont,sans-serif;font-size:5.4cqi;font-weight:800;letter-spacing:.05em;color:#0A0A0A;line-height:1.35;text-transform:uppercase}
 .poster-card.editorial .ed-img{width:100%;flex:1;overflow:hidden;min-height:0}
-.poster-card.editorial .ed-img img{width:100%;height:100%;object-fit:cover;display:block;opacity:0;transition:opacity 250ms ease}
+.poster-card.editorial .ed-img img{width:100%;height:100%;object-fit:cover;object-position:center top;display:block;opacity:0;transition:opacity 250ms ease}
 .poster-card.editorial .ed-body{flex:1;display:flex;flex-direction:column;justify-content:flex-end;padding:0 8px 8px}
 .poster-card.editorial .ed-body .ed-title{font-family:-apple-system,BlinkMacSystemFont,sans-serif;font-size:9.2cqi;font-weight:800;letter-spacing:-.02em;color:#F0EDE8;line-height:1.27;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
 .poster-card-stack{width:100%;height:100%;display:flex;gap:1px;background:var(--bdr)}
@@ -893,14 +893,14 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:var(--t
 .pel-sheet-close{position:absolute;right:12px;top:6px;background:var(--surf-2);border:none;color:var(--gray2);width:44px;height:44px;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:var(--t-md);line-height:1}
 .pel-sheet-close:active{background:var(--bdr)}
 .pel-sheet-inner{padding:var(--sp-btn) var(--sp-4) var(--sp-6)}
-.pel-sheet-poster{width:var(--poster-lg-w);height:var(--poster-lg-h);object-fit:cover;border-radius:var(--r-md);flex-shrink:0;display:block;background:var(--surf-2)}
+.pel-sheet-poster{width:var(--poster-lg-w);height:var(--poster-lg-h);object-fit:cover;border-radius:var(--r-md);flex-shrink:0;display:block;background:var(--surf-2);object-position:center top}
 .pel-sheet-poster-ph{width:var(--poster-lg-w);height:var(--poster-lg-h);border-radius:var(--r-md);background:var(--surf-2);flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:var(--t-display)}
 /* Poster editorial en sheet: sólido de sección + imagen 16:9 — misma regla que el card de grilla */
 .psp-editorial{width:var(--poster-lg-w);height:var(--poster-lg-h);border-radius:var(--r-md);overflow:hidden;flex-shrink:0;display:flex;flex-direction:column;background:#1A1A1A;justify-content:flex-start}
 .psp-editorial .psp-ed-hdr{height:28.89%;flex-shrink:0;display:flex;align-items:center;padding:0 6px}
 .psp-editorial .psp-ed-hdr span{font-size:5.4cqi;font-weight:800;letter-spacing:.7px;color:#0A0A0A;text-transform:uppercase;line-height:1.3}
 .psp-editorial .psp-ed-img{width:100%;flex:1;overflow:hidden;min-height:0}
-.psp-editorial .psp-ed-img img{width:100%;height:100%;object-fit:cover;display:block}
+.psp-editorial .psp-ed-img img{width:100%;height:100%;object-fit:cover;display:block;object-position:center top}
 .pel-sheet.compact .psp-editorial{width:72px;height:108px}
 .pel-sheet-header{display:flex;gap:var(--sp-btn);margin-bottom:var(--sp-4)}
 /* Modo compacto: films con 3+ funciones reducen el poster para que CTAs sean visibles */
@@ -4198,7 +4198,7 @@ let FESTIVAL_STORAGE_KEY=(localStorage.getItem('otrofestiv_festival')||_DEFAULT_
 // BUILD_VERSION: cambia en cada deploy.
 // Al cargar, compara con localStorage. Si difiere → reload duro.
 // sessionStorage evita loops infinitos dentro de la misma sesión.
-const BUILD_VERSION='202605110104';
+const BUILD_VERSION='202605110121';
 (function(){
   const _vk='otrofestiv_build';
   const _sk='otrofestiv_reloaded';
