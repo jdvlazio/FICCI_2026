@@ -1552,16 +1552,16 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:var(--t
   /* Remove the margin on nav-row that adds space above day tabs. */
   .nav-row{margin-top:0;background:transparent}
 
-  /* ── Mobile: frosted glass — pseudo-elemento ::before para iOS Safari ────
-     PROBLEMA ANTERIOR: backdrop-filter directo en position:sticky causa que
-     iOS Safari calcule el offset del sticky incorrectamente (bug WebKit
-     documentado). El topbar aparecía desplazado hacia abajo.
-     SOLUCIÓN: separar sticky-positioning del compositing layer.
-     El sticky tiene background:transparent.
-     El ::before (position:absolute, inset:0) provee el blur/background.
-     iOS Safari sticky funciona correctamente — no hay conflict. */
-  #chrome-blur{display:none} /* desactivado — ya no se usa */
+  #chrome-blur{display:none}
 
+  /* ── Único sticky container — topbar envuelve TODO el chrome ─────────
+     .topbar es el ÚNICO position:sticky en mobile. Contiene dentro:
+       .hdr  (wordmark + fest-bar)
+       #hdr-programa  (cartelera: modo bar + nav-row day tabs)
+       #hdr-ag  (intereses/planear/mi plan: toggle bar)
+     El ::before provee frosted glass sin interferir con sticky (iOS fix).
+     Elimina permanentemente el gap entre dos stickies con --sticky-top-carta
+     calculado erróneamente por timing de fuentes/datos. */
   .topbar{position:sticky;top:0;z-index:200;background:transparent}
   .topbar::before{content:'';position:absolute;inset:0;z-index:-1;
     background:rgba(20,20,20,0.72);
@@ -1570,24 +1570,9 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:var(--t
 
   .hdr{background:transparent}
   .hdr-fest-bar{background:transparent}
-
-  #hdr-programa{padding-top:0;background:transparent} /* top via _fixStickyOffset */
-  #hdr-programa::before{content:'';position:absolute;inset:0;z-index:-1;
-    background:rgba(20,20,20,0.72);
-    backdrop-filter:blur(24px) saturate(180%);
-    -webkit-backdrop-filter:blur(24px) saturate(180%)}
-
-  /* nav-row: background sólido explícito — no depende del ::before del padre.
-     En iOS Safari el blur del ::before puede no cubrir los hijos correctamente. */
-  .nav-row{background:rgba(20,20,20,0.72)}
-
+  #hdr-programa{position:relative;top:auto;padding-top:0;background:transparent}
   .programa-mode-bar{background:transparent}
-
-  #hdr-ag{top:47px;background:transparent;border-bottom:none}
-  #hdr-ag::before{content:'';position:absolute;inset:0;z-index:-1;
-    background:rgba(20,20,20,0.72);
-    backdrop-filter:blur(24px) saturate(180%);
-    -webkit-backdrop-filter:blur(24px) saturate(180%)}
+  #hdr-ag{position:relative;top:auto;background:transparent;border-bottom:none}
 }
 
 /* ── FESTIVAL BOTTOM SHEET ── */
@@ -1760,7 +1745,8 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:var(--t
   }
   .programa-mode-bar{position:sticky;top:var(--sticky-top-modebar);z-index:197;background:var(--surf)}
   .programa-active-filter{position:sticky;top:calc(var(--sticky-top-modebar) + 44px);z-index:196;background:var(--surf)}
-  #hdr-programa{padding:0}
+  #hdr-programa{padding:0;position:relative;top:auto}
+  #hdr-ag{position:relative;top:auto}
   .carta-search-wrap{margin-top:0;margin-bottom:0;padding-top:var(--sp-2);padding-bottom:var(--sp-2)}
 
   /* ── Chips — scroll natural sin mask (el marco del body reemplaza el cue visual) ── */
@@ -4221,7 +4207,7 @@ let FESTIVAL_STORAGE_KEY=(localStorage.getItem('otrofestiv_festival')||_DEFAULT_
 // BUILD_VERSION: cambia en cada deploy.
 // Al cargar, compara con localStorage. Si difiere → reload duro.
 // sessionStorage evita loops infinitos dentro de la misma sesión.
-const BUILD_VERSION='202605111248';
+const BUILD_VERSION='202605111310';
 (function(){
   const _vk='otrofestiv_build';
   const _sk='otrofestiv_reloaded';
@@ -10177,28 +10163,22 @@ function _fixStickyOffset(){
   if(!tb) return;
   const isMobile=window.innerWidth<768;
   const tbH=Math.ceil(tb.getBoundingClientRect().height)||(isMobile?80:86);
-  const navH=44; // main-nav height on desktop
+  const navH=44;
   const modeH=38;
   const r=document.documentElement.style;
   if(isMobile){
-    // Mobile: topbar sticky at 0, hdr-programa sticks right below
-    r.setProperty('--sticky-top-carta',tbH+'px');
+    // Mobile: topbar is the single sticky container (contains hdr-programa + hdr-ag).
+    // tbH now includes the full chrome height — use it for --sticky-top-lista.
+    r.setProperty('--sticky-top-carta',tbH+'px'); // kept for desktop-compat
+    r.setProperty('--sticky-top-lista',tbH+'px');
+    r.setProperty('--sticky-top-chips',tbH+'px');
   } else {
     r.setProperty('--tb-no-nav',tbH+'px');
     r.setProperty('--tb-total',(tbH+navH)+'px');
     r.setProperty('--sticky-top-carta',(tbH+navH)+'px');
     r.setProperty('--sticky-top-modebar',(tbH+navH+modeH)+'px');
-  }
-  const hdrH=document.getElementById('hdr-programa')?.offsetHeight||(tbH+(isMobile?0:navH));
-  r.setProperty('--sticky-top-chips',hdrH+'px');
-  // Mobile: solo necesita sticky-top-lista para .plist-time-hdr
-  if(isMobile){
-    const prog=document.getElementById('hdr-programa');
-    const ag=document.getElementById('hdr-ag');
-    const progH=(prog && getComputedStyle(prog).display!=='none') ? prog.offsetHeight : 0;
-    const agH=(ag && getComputedStyle(ag).display!=='none') ? ag.offsetHeight : 0;
-    const secH=progH+agH;
-    r.setProperty('--sticky-top-lista',(tbH+secH)+'px');
+    const hdrH=document.getElementById('hdr-programa')?.offsetHeight||(tbH+navH);
+    r.setProperty('--sticky-top-chips',hdrH+'px');
   }
 }
 // Run after layout is complete (fonts + CSS painted)
