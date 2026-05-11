@@ -70,3 +70,4 @@ Los festivales colombianos operan en hora local. `toISOString()` devuelve UTC, l
 | May 2026 | `config{}` del festival NO va en el JSON | La config vive en `FESTIVAL_CONFIG` de `index.html` — generada por `generate-config.js`, no editada a mano |
 | May 2026 | Supabase para auth + cloud sync | Permite sincronización de watchlist entre dispositivos sin backend propio |
 | May 2026 | `day` en formato ISO (`YYYY-MM-DD`) desde Tribeca 2026 | Elimina ambigüedad de formato localizado; el validator lo enforcea |
+| May 2026 | Grid/TODO ordena por sección (cronológico dentro de cada sección) | Grid es modo de descubrimiento, no de planificación. Ordenar por sección crea clusters visuales coherentes con la identidad editorial del festival. Cronológico ya está cubierto por Lista. |
