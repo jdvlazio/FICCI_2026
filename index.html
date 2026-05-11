@@ -1549,8 +1549,10 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:var(--t
      Remove borders + match background to make the header one block.
      #hdr-programa padding-top would show a gap under the sticky hdr. */
   .hdr-fest-bar{border-top:none;border-bottom:none}
-  /* Remove the margin on nav-row that adds space above day tabs */
-  .nav-row{margin-top:0}
+  /* Remove the margin on nav-row that adds space above day tabs.
+     nav-row sticky: completa el chrome stack topbar → hdr-programa → nav-row.
+     z:199 entre chrome-blur(198) y topbar(200) — visible sobre el blur, debajo del topbar al colisionar. */
+  .nav-row{margin-top:0;position:sticky;top:var(--sticky-top-dtabs,118px);z-index:199;background:transparent}
 
   /* ── Mobile: frosted glass — canvas único position:fixed ─────────────
      Un solo #chrome-blur cubre topbar + barra secundaria activa.
@@ -10168,20 +10170,24 @@ function _fixStickyOffset(){
   }
   const hdrH=document.getElementById('hdr-programa')?.offsetHeight||(tbH+(isMobile?0:navH));
   r.setProperty('--sticky-top-chips',hdrH+'px');
-  // --sticky-top-lista: offset para .plist-time-hdr en lista mode (window scroll)
-  // = topbar + hdr-programa — el chrome total por encima de la lista
-  if(isMobile) r.setProperty('--sticky-top-lista',(tbH+hdrH)+'px');
-  // ── Chrome blur overlay: cubre topbar + barra secundaria activa ──
+  // ── Mobile: chrome stack — topbar → hdr-programa(or hdr-ag) → nav-row(dtabs) ──
+  // Una sola medición del DOM; un solo paint del chrome-blur cubre todo el chrome stuck.
   if(isMobile){
+    const prog=document.getElementById('hdr-programa');
+    const ag=document.getElementById('hdr-ag');
+    let secH=0;
+    if(prog && getComputedStyle(prog).display!=='none') secH=prog.offsetHeight;
+    else if(ag && getComputedStyle(ag).display!=='none') secH=ag.offsetHeight;
+    // nav-row (dtabs) — visible solo en cartelera (toggle .hidden via switchMainNav)
+    const navRow=document.getElementById('nav-row');
+    const navRowH=(navRow && !navRow.classList.contains('hidden')) ? navRow.offsetHeight : 0;
+    // dtabs stick bajo topbar + barra secundaria
+    r.setProperty('--sticky-top-dtabs',(tbH+secH)+'px');
+    // Lista time-headers stick bajo todo el chrome (topbar + secundaria + dtabs)
+    r.setProperty('--sticky-top-lista',(tbH+secH+navRowH)+'px');
+    // chrome-blur cubre el chrome completo sin seams
     const cb=document.getElementById('chrome-blur');
-    if(cb){
-      const prog=document.getElementById('hdr-programa');
-      const ag=document.getElementById('hdr-ag');
-      let secH=0;
-      if(prog && getComputedStyle(prog).display!=='none') secH=prog.offsetHeight;
-      else if(ag && getComputedStyle(ag).display!=='none') secH=ag.offsetHeight;
-      cb.style.height=(tbH+secH)+'px';
-    }
+    if(cb) cb.style.height=(tbH+secH+navRowH)+'px';
   }
 }
 // Run after layout is complete (fonts + CSS painted)
