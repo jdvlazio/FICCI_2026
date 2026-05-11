@@ -1577,6 +1577,10 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:var(--t
     backdrop-filter:blur(24px) saturate(180%);
     -webkit-backdrop-filter:blur(24px) saturate(180%)}
 
+  /* nav-row: background sólido explícito — no depende del ::before del padre.
+     En iOS Safari el blur del ::before puede no cubrir los hijos correctamente. */
+  .nav-row{background:rgba(20,20,20,0.72)}
+
   .programa-mode-bar{background:transparent}
 
   #hdr-ag{top:47px;background:transparent;border-bottom:none}
@@ -2448,6 +2452,68 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:var(--t
   
 
 </div>
+
+<div id="hdr-programa">
+<!-- ── Programa: barra de modos Explorar/Hoy/Mañana ── -->
+<div class="programa-mode-bar" id="programa-mode-bar" style="display:none">
+
+  <button class="pmode-tab" id="pmode-hoy" onclick="setProgramaMode('hoy')">Hoy</button>
+  <button class="pmode-tab" id="pmode-manana" onclick="setProgramaMode('manana')">Mañana</button>
+  <div class="pmode-spacer"></div>
+  <div class="pmode-controls" style="position:relative">
+    <button class="seccion-btn" id="seccion-btn" onclick="seccionToggle()">
+      <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3c2.755 0 5.455.232 8.083.678.533.09.917.556.917 1.096v1.044a2.25 2.25 0 01-.659 1.591l-5.432 5.432a2.25 2.25 0 00-.659 1.591v2.927a2.25 2.25 0 01-1.244 2.013L9.75 21v-6.568a2.25 2.25 0 00-.659-1.591L3.659 7.409A2.25 2.25 0 013 5.818V4.774c0-.54.384-1.006.917-1.096A48.32 48.32 0 0112 3z"/></svg>
+      <span id="seccion-lbl">Sección</span>
+    </button>
+    <button class="lugar-btn" id="lugar-btn" onclick="lugarToggle()">
+      <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z"/></svg>
+      <span id="lugar-lbl">Lugar</span>
+    </button>
+    <!-- single toggle btn — icono refleja estado actual -->
+    <button class="view-toggle-btn" id="view-toggle-btn" onclick="toggleProgramaView()" title="Cambiar vista" aria-label="Cambiar vista">
+      <svg id="view-toggle-ico-grid" width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+      <svg id="view-toggle-ico-list" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" style="display:none"><line x1="4" y1="6" x2="20" y2="6"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="18" x2="20" y2="18"/></svg>
+    </button>
+    <!-- legacy btns kept hidden for JS compat -->
+    <div class="pmode-view-switch" style="display:none">
+      <button class="pmode-view-btn on" id="pmode-grid"></button>
+      <button class="pmode-view-btn" id="pmode-list"></button>
+    </div>
+  </div>
+</div>
+<div id="cartelera-cta" style="display:none">
+  <div class="cartelera-cta">
+    <span class="cartelera-cta-text" id="cartelera-hint-text"><span data-i18n="misc_toca">Tocá</span> <span style="color:var(--amber)">♥</span> <span data-i18n="cartelera_hint_sfx">en cualquier título para agregarlo a Intereses</span></span>
+  </div>
+</div>
+<!-- Lista de días — sticky dentro de hdr-programa -->
+<div class="nav-row" id="nav-row">
+  <div class="nav-tabs" id="dtabs"></div>
+</div>
+</div>
+<div id="hdr-ag" style="display:none">
+
+  <div class="ag-toggle-bar" id="ag-toggle-bar">
+    <button class="ag-sec-pill prio" id="pill-prio" onclick="(()=>{const el=document.getElementById('sec-prio');if(!el)return;const hdr=document.getElementById('hdr-ag');const off=hdr?hdr.getBoundingClientRect().bottom:0;const y=el.getBoundingClientRect().top+window.scrollY-off-8;window.scrollTo({top:y,behavior:'smooth'})})()">
+      Prioridad <span class="txt-dim-xs" id="pill-prio-cnt">—</span>
+    </button>
+    <button class="ag-sec-pill int" id="pill-int" onclick="(()=>{const el=document.getElementById('sec-int');if(!el)return;const hdr=document.getElementById('hdr-ag');const off=hdr?hdr.getBoundingClientRect().bottom:0;const y=el.getBoundingClientRect().top+window.scrollY-off-8;window.scrollTo({top:y,behavior:'smooth'})})()">
+      Intereses <span class="txt-dim-xs" id="pill-int-cnt">—</span>
+    </button>
+    <button class="ag-sec-pill yv" id="pill-yv" onclick="(()=>{const el=document.getElementById('sec-yv');if(!el)return;const hdr=document.getElementById('hdr-ag');const off=hdr?hdr.getBoundingClientRect().bottom:0;const y=el.getBoundingClientRect().top+window.scrollY-off-8;window.scrollTo({top:y,behavior:'smooth'})})()">
+      Vistas <span class="txt-dim-xs" id="pill-yv-cnt">—</span>
+    </button>
+    <div class="ag-toggle-spacer"></div>
+    <div class="intereses-view-switch">
+      <button class="intereses-view-btn on" id="ibtn-grid" onclick="setInteresesView('grid')">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+      </button>
+      <button class="intereses-view-btn" id="ibtn-list" onclick="setInteresesView('list')">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"><line x1="4" y1="6" x2="20" y2="6"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="18" x2="20" y2="18"/></svg>
+      </button>
+    </div>
+  </div>
+</div>
 </div><!-- /topbar -->
 <div class="main-nav" id="main-nav" role="navigation" aria-label="Navegación principal">
   <button class="main-nav-tab on" id="mnav-cartelera" onclick="{const _ph=_getProgramaPhase();programaSubMode=_ph.default;switchMainNav('mnav-cartelera');showDayView();}">
@@ -2584,44 +2650,6 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:var(--t
   <div class="pel-sheet-topbar"><div class="pel-sheet-handle"></div><button class="pel-sheet-close" onclick="closePelSheet()"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg></button></div>
   <div class="pel-sheet-inner" id="pel-sheet-inner"></div>
 </div>
-<div id="hdr-programa">
-<!-- ── Programa: barra de modos Explorar/Hoy/Mañana ── -->
-<div class="programa-mode-bar" id="programa-mode-bar" style="display:none">
-
-  <button class="pmode-tab" id="pmode-hoy" onclick="setProgramaMode('hoy')">Hoy</button>
-  <button class="pmode-tab" id="pmode-manana" onclick="setProgramaMode('manana')">Mañana</button>
-  <div class="pmode-spacer"></div>
-  <div class="pmode-controls" style="position:relative">
-    <button class="seccion-btn" id="seccion-btn" onclick="seccionToggle()">
-      <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3c2.755 0 5.455.232 8.083.678.533.09.917.556.917 1.096v1.044a2.25 2.25 0 01-.659 1.591l-5.432 5.432a2.25 2.25 0 00-.659 1.591v2.927a2.25 2.25 0 01-1.244 2.013L9.75 21v-6.568a2.25 2.25 0 00-.659-1.591L3.659 7.409A2.25 2.25 0 013 5.818V4.774c0-.54.384-1.006.917-1.096A48.32 48.32 0 0112 3z"/></svg>
-      <span id="seccion-lbl">Sección</span>
-    </button>
-    <button class="lugar-btn" id="lugar-btn" onclick="lugarToggle()">
-      <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z"/></svg>
-      <span id="lugar-lbl">Lugar</span>
-    </button>
-    <!-- single toggle btn — icono refleja estado actual -->
-    <button class="view-toggle-btn" id="view-toggle-btn" onclick="toggleProgramaView()" title="Cambiar vista" aria-label="Cambiar vista">
-      <svg id="view-toggle-ico-grid" width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
-      <svg id="view-toggle-ico-list" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" style="display:none"><line x1="4" y1="6" x2="20" y2="6"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="18" x2="20" y2="18"/></svg>
-    </button>
-    <!-- legacy btns kept hidden for JS compat -->
-    <div class="pmode-view-switch" style="display:none">
-      <button class="pmode-view-btn on" id="pmode-grid"></button>
-      <button class="pmode-view-btn" id="pmode-list"></button>
-    </div>
-  </div>
-</div>
-<div id="cartelera-cta" style="display:none">
-  <div class="cartelera-cta">
-    <span class="cartelera-cta-text" id="cartelera-hint-text"><span data-i18n="misc_toca">Tocá</span> <span style="color:var(--amber)">♥</span> <span data-i18n="cartelera_hint_sfx">en cualquier título para agregarlo a Intereses</span></span>
-  </div>
-</div>
-<!-- Lista de días — sticky dentro de hdr-programa -->
-<div class="nav-row" id="nav-row">
-  <div class="nav-tabs" id="dtabs"></div>
-</div>
-</div>
 <!-- Chips de categoría — sticky, fuera de #hdr-programa para mantener chrome uniforme (38px en todos los tabs) -->
 <div class="programa-chips hidden" id="programa-chips"></div>
 <!-- Tag activo dismissible -->
@@ -2647,30 +2675,6 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:var(--t
 
 <!-- ── Intereses: search + toggle — estáticos, fuera de ag-view ── -->
 <!-- ── Intereses / Planear: header unificado — fuera de ag-view ── -->
-<div id="hdr-ag" style="display:none">
-
-  <div class="ag-toggle-bar" id="ag-toggle-bar">
-    <button class="ag-sec-pill prio" id="pill-prio" onclick="(()=>{const el=document.getElementById('sec-prio');if(!el)return;const hdr=document.getElementById('hdr-ag');const off=hdr?hdr.getBoundingClientRect().bottom:0;const y=el.getBoundingClientRect().top+window.scrollY-off-8;window.scrollTo({top:y,behavior:'smooth'})})()">
-      Prioridad <span class="txt-dim-xs" id="pill-prio-cnt">—</span>
-    </button>
-    <button class="ag-sec-pill int" id="pill-int" onclick="(()=>{const el=document.getElementById('sec-int');if(!el)return;const hdr=document.getElementById('hdr-ag');const off=hdr?hdr.getBoundingClientRect().bottom:0;const y=el.getBoundingClientRect().top+window.scrollY-off-8;window.scrollTo({top:y,behavior:'smooth'})})()">
-      Intereses <span class="txt-dim-xs" id="pill-int-cnt">—</span>
-    </button>
-    <button class="ag-sec-pill yv" id="pill-yv" onclick="(()=>{const el=document.getElementById('sec-yv');if(!el)return;const hdr=document.getElementById('hdr-ag');const off=hdr?hdr.getBoundingClientRect().bottom:0;const y=el.getBoundingClientRect().top+window.scrollY-off-8;window.scrollTo({top:y,behavior:'smooth'})})()">
-      Vistas <span class="txt-dim-xs" id="pill-yv-cnt">—</span>
-    </button>
-    <div class="ag-toggle-spacer"></div>
-    <div class="intereses-view-switch">
-      <button class="intereses-view-btn on" id="ibtn-grid" onclick="setInteresesView('grid')">
-        <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
-      </button>
-      <button class="intereses-view-btn" id="ibtn-list" onclick="setInteresesView('list')">
-        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"><line x1="4" y1="6" x2="20" y2="6"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="18" x2="20" y2="18"/></svg>
-      </button>
-    </div>
-  </div>
-</div>
-
 <div class="ag-view" id="ag-view"></div>
 
 <script>
@@ -4217,7 +4221,7 @@ let FESTIVAL_STORAGE_KEY=(localStorage.getItem('otrofestiv_festival')||_DEFAULT_
 // BUILD_VERSION: cambia en cada deploy.
 // Al cargar, compara con localStorage. Si difiere → reload duro.
 // sessionStorage evita loops infinitos dentro de la misma sesión.
-const BUILD_VERSION='202605111228';
+const BUILD_VERSION='202605111248';
 (function(){
   const _vk='otrofestiv_build';
   const _sk='otrofestiv_reloaded';
