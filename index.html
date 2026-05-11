@@ -4204,7 +4204,7 @@ let FESTIVAL_STORAGE_KEY=(localStorage.getItem('otrofestiv_festival')||_DEFAULT_
 // BUILD_VERSION: cambia en cada deploy.
 // Al cargar, compara con localStorage. Si difiere → reload duro.
 // sessionStorage evita loops infinitos dentro de la misma sesión.
-const BUILD_VERSION='202605111445';
+const BUILD_VERSION='202605111510';
 (function(){
   const _vk='otrofestiv_build';
   const _sk='otrofestiv_reloaded';
@@ -4947,15 +4947,15 @@ function toggleFullDay(day){
 }
 function addBlock(day){
   const f=document.getElementById(`av-from-${day}`).value;
-  const t=document.getElementById(`av-to-${day}`).value;
-  if(!f||!t){showToast(t('av_seleccionar'),'warn');return;}
-  if(toMin(f)>=toMin(t)){showToast(t('av_hora_invalida'),'warn');return;}
+  const toVal=document.getElementById(`av-to-${day}`).value;
+  if(!f||!toVal){showToast(t('av_seleccionar'),'warn');return;}
+  if(toMin(f)>=toMin(toVal)){showToast(t('av_hora_invalida'),'warn');return;}
   const av=availability[day];
-  if(av.blocks.some(b=>toMin(f)<toMin(b.to)&&toMin(t)>toMin(b.from))){showToast('Este horario coincide con otro bloque','warn');return;}
-  const _blockConflicts=checkPlanConflictsWithBlock(day,f,t);
+  if(av.blocks.some(b=>toMin(f)<toMin(b.to)&&toMin(toVal)>toMin(b.from))){showToast('Este horario coincide con otro bloque','warn');return;}
+  const _blockConflicts=checkPlanConflictsWithBlock(day,f,toVal);
   const _doAdd=()=>{
     _blockConflicts.forEach(s=>_removePlanItem(s._title));
-    av.blocks.push({from:f,to:t});av.blocks.sort((a,b)=>toMin(a.from)-toMin(b.from));
+    av.blocks.push({from:f,to:toVal});av.blocks.sort((a,b)=>toMin(a.from)-toMin(b.from));
     avAddOpen[day]=false;
     cachedResult=null;saveAV();renderAvBlocks();invalidateCalcResult();
   };
@@ -5563,8 +5563,8 @@ function _reRenderIntereses(){
   lel.innerHTML=renderFilmListHTML();
 }
 function renderFilmListHTML(){
-  const prioList=[...prioritized].filter(t=>!watched.has(t));
-  const nonPrioList=[...watchlist].filter(t=>!watched.has(t)&&!prioritized.has(t));
+  const prioList=[...prioritized].filter(titleStr=>!watched.has(titleStr));
+  const nonPrioList=[...watchlist].filter(titleStr=>!watched.has(titleStr)&&!prioritized.has(titleStr));
   const watchedList=[...watched];
 
   if(!prioList.length&&!nonPrioList.length&&!watchedList.length){
@@ -7629,7 +7629,7 @@ function invalidateCalcResult(){
   // Called when availability changes — resets result prompt
   if(!document.getElementById('ag-result')) return;
   const res=document.getElementById('ag-result');
-  const pending=[...watchlist].filter(t=>!watched.has(t)&&FILMS.some(f=>f.title===t&&!screeningPassed(f)));
+  const pending=[...watchlist].filter(titleStr=>!watched.has(titleStr)&&FILMS.some(f=>f.title===titleStr&&!screeningPassed(f)));
   res.innerHTML=pending.length
     ?`<div class="ag-calc-prompt">${t('plan_hint_opciones')}</div>`
     :`<div class="ag-calc-prompt">${t('empty_intereses_3')}</div>`;
@@ -8050,7 +8050,7 @@ function renderAgenda(){
       return;
     }
     const _progressHtml=(!savedAgenda||!savedAgenda.schedule||!savedAgenda.schedule.length)?renderFlowProgress('planner'):'';
-    const pending=[...watchlist].filter(t=>!watched.has(t)&&FILMS.some(f=>f.title===t&&!screeningPassed(f)));
+    const pending=[...watchlist].filter(titleStr=>!watched.has(titleStr)&&FILMS.some(f=>f.title===titleStr&&!screeningPassed(f)));
 
     // ── Estado A: sin Intereses — pantalla simple, no mostrar herramienta ──
     if(!pending.length&&!cachedResult){
