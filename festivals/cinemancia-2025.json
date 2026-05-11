@@ -1,4 +1,131 @@
 {
+  "id": "cinemancia2025",
+  "name": "Cinemancia 2025",
+  "shortName": "CINEMANCIA",
+  "city": "Valle de Aburrá",
+  "dates": "11–20 SEP",
+  "dates_en": "SEP 11–20",
+  "year": 2025,
+  "timezoneOffset": "-05:00",
+  "storageKey": "cinemancia2025_",
+  "festivalEndStr": "2025-09-20T23:00:00",
+  "festivalDates": {
+    "JUE 11": "2025-09-11",
+    "VIE 12": "2025-09-12",
+    "SÁB 13": "2025-09-13",
+    "DOM 14": "2025-09-14",
+    "LUN 15": "2025-09-15",
+    "MAR 16": "2025-09-16",
+    "MIÉ 17": "2025-09-17",
+    "JUE 18": "2025-09-18",
+    "VIE 19": "2025-09-19",
+    "SÁB 20": "2025-09-20"
+  },
+  "days": [
+    {
+      "k": "JUE 11",
+      "d": 11,
+      "lbl": "THU"
+    },
+    {
+      "k": "VIE 12",
+      "d": 12,
+      "lbl": "FRI"
+    },
+    {
+      "k": "SÁB 13",
+      "d": 13,
+      "lbl": "SAT"
+    },
+    {
+      "k": "DOM 14",
+      "d": 14,
+      "lbl": "SUN"
+    },
+    {
+      "k": "LUN 15",
+      "d": 15,
+      "lbl": "MON"
+    },
+    {
+      "k": "MAR 16",
+      "d": 16,
+      "lbl": "TUE"
+    },
+    {
+      "k": "MIÉ 17",
+      "d": 17,
+      "lbl": "WED"
+    },
+    {
+      "k": "JUE 18",
+      "d": 18,
+      "lbl": "THU"
+    },
+    {
+      "k": "VIE 19",
+      "d": 19,
+      "lbl": "FRI"
+    },
+    {
+      "k": "SÁB 20",
+      "d": 20,
+      "lbl": "SAT"
+    }
+  ],
+  "dayKeys": [
+    "JUE 11",
+    "VIE 12",
+    "SÁB 13",
+    "DOM 14",
+    "LUN 15",
+    "MAR 16",
+    "MIÉ 17",
+    "JUE 18",
+    "VIE 19",
+    "SÁB 20"
+  ],
+  "dayShort": {
+    "JUE 11": "JUE 11",
+    "VIE 12": "VIE 12",
+    "SÁB 13": "SÁB 13",
+    "DOM 14": "DOM 14",
+    "LUN 15": "LUN 15",
+    "MAR 16": "MAR 16",
+    "MIÉ 17": "MIÉ 17",
+    "JUE 18": "JUE 18",
+    "VIE 19": "VIE 19",
+    "SÁB 20": "SÁB 20"
+  },
+  "dayShort_en": {
+    "JUE 11": "THU 11",
+    "VIE 12": "FRI 12",
+    "SÁB 13": "SAT 13",
+    "DOM 14": "SUN 14",
+    "LUN 15": "MON 15",
+    "MAR 16": "TUE 16",
+    "MIÉ 17": "WED 17",
+    "JUE 18": "THU 18",
+    "VIE 19": "FRI 19",
+    "SÁB 20": "SAT 20"
+  },
+  "dayLong": {
+    "JUE 11": "Thursday, September 11",
+    "VIE 12": "Friday, September 12",
+    "SÁB 13": "Saturday, September 13",
+    "DOM 14": "Sunday, September 14",
+    "LUN 15": "Monday, September 15",
+    "MAR 16": "Tuesday, September 16",
+    "MIÉ 17": "Wednesday, September 17",
+    "JUE 18": "Thursday, September 18",
+    "VIE 19": "Friday, September 19",
+    "SÁB 20": "Saturday, September 20"
+  },
+  "eventPosterLabel": [
+    "PROGRAMACIÓN",
+    "ACADÉMICA"
+  ],
+  "group": "test",
   "venues": {
     "Colombo Sala 1": {
       "short": "Colombo Americano",

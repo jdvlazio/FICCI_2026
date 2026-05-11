@@ -2926,5 +2926,6 @@
     }
   },
   "transport": "mixed",
-  "_venue_rule": "REGLA: short == nombre completo de la sede, siempre. Sin abreviaciones, sin excepciones. Si no cabe en el UI, se achica la fuente."
+  "_venue_rule": "REGLA: short == nombre completo de la sede, siempre. Sin abreviaciones, sin excepciones. Si no cabe en el UI, se achica la fuente.",
+  "timezoneOffset": "-05:00"
 }

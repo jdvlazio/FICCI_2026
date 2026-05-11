@@ -3740,53 +3740,30 @@ const NOTICES=[
 //
 // Al agregar festival: también actualizar FESTIVALS en enricher.html
 const FESTIVAL_CONFIG={
+  // ── Bootstrap mínimo por festival ────────────────────────────────────────
+  // Solo storageKey (necesario antes del fetch para localStorage) y
+  // festivalEndStr (necesario para _DEFAULT_FEST_ID antes del fetch).
+  // Todo lo demás (name, dates, days, venues, posters, etc.) viene del JSON
+  // y se mergea en loadFestival() — el JSON es la fuente única de verdad.
   'ficci65':{
-    name:'FICCI 65',shortName:'FICCI 65',city:'Cartagena',dates:'14\u201319 ABR',dates_en:'APR 14–19',year:2026,timezoneOffset:'-05:00',
     storageKey:'ficci65_',
     festivalEndStr:'2026-04-20T02:00:00',
-    festivalDates:{'Martes':'2026-04-14','Miércoles':'2026-04-15','Jueves':'2026-04-16','Viernes':'2026-04-17','Sábado':'2026-04-18','Domingo':'2026-04-19'},
-    days:[{k:'Martes',d:14,lbl:'MAR'},{k:'Miércoles',d:15,lbl:'MIÉ'},{k:'Jueves',d:16,lbl:'JUE'},{k:'Viernes',d:17,lbl:'VIE'},{k:'Sábado',d:18,lbl:'SÁB'},{k:'Domingo',d:19,lbl:'DOM'}],
-    dayKeys:['Martes','Miércoles','Jueves','Viernes','Sábado','Domingo'],
-    dayShort:{'Martes':'MAR 14','Miércoles':'MIÉ 15','Jueves':'JUE 16','Viernes':'VIE 17','Sábado':'SÁB 18','Domingo':'DOM 19'},
-  dayShort_en:{'Martes':'TUE 14','Miércoles':'WED 15','Jueves':'THU 16','Viernes':'FRI 17','Sábado':'SAT 18','Domingo':'SUN 19'},
-    dayLong:{'Martes':'Martes 14','Miércoles':'Miércoles 15','Jueves':'Jueves 16','Viernes':'Viernes 17','Sábado':'Sábado 18','Domingo':'Domingo 19'},
-    films:null,posters:null,lbSlugs:null,eventPosterLabel:['ACADEMIA','']
+    films:null,posters:null,lbSlugs:{}
   },
   'aff2026':{
-    name:'AFF 2026',shortName:'ALTERNATIVA',city:'Medellín',dates:'21\u201329 ABR',dates_en:'APR 21–29',year:2026,timezoneOffset:'-05:00',
     storageKey:'aff2026_',
     festivalEndStr:'2026-04-29T23:00:00',
-    festivalDates:{'MAR 21':'2026-04-21','MIÉ 22':'2026-04-22','JUE 23':'2026-04-23','VIE 24':'2026-04-24','SÁB 25':'2026-04-25','DOM 26':'2026-04-26','LUN 27':'2026-04-27','MAR 28':'2026-04-28','MIÉ 29':'2026-04-29','JUE 30':'2026-04-30'},
-    days:[{k:'MAR 21',d:21,lbl:'MAR'},{k:'MIÉ 22',d:22,lbl:'MIÉ'},{k:'JUE 23',d:23,lbl:'JUE'},{k:'VIE 24',d:24,lbl:'VIE'},{k:'SÁB 25',d:25,lbl:'SÁB'},{k:'DOM 26',d:26,lbl:'DOM'},{k:'LUN 27',d:27,lbl:'LUN'},{k:'MAR 28',d:28,lbl:'MAR'},{k:'MIÉ 29',d:29,lbl:'MIÉ'},{k:'JUE 30',d:30,lbl:'JUE'}],
-    dayKeys:['MAR 21','MIÉ 22','JUE 23','VIE 24','SÁB 25','DOM 26','LUN 27','MAR 28','MIÉ 29','JUE 30'],
-    dayShort:{'MAR 21':'MAR 21','MIÉ 22':'MIÉ 22','JUE 23':'JUE 23','VIE 24':'VIE 24','SÁB 25':'SÁB 25','DOM 26':'DOM 26','LUN 27':'LUN 27','MAR 28':'MAR 28','MIÉ 29':'MIÉ 29','JUE 30':'JUE 30'},
-  dayShort_en:{'MAR 21':'TUE 21','MIÉ 22':'WED 22','JUE 23':'THU 23','VIE 24':'FRI 24','SÁB 25':'SAT 25','DOM 26':'SUN 26','LUN 27':'MON 27','MAR 28':'TUE 28','MIÉ 29':'WED 29','JUE 30':'THU 30'},
-    dayLong:{'MAR 21':'Martes 21','MIÉ 22':'Miércoles 22','JUE 23':'Jueves 23','VIE 24':'Viernes 24','SÁB 25':'Sábado 25','DOM 26':'Domingo 26','LUN 27':'Lunes 27','MAR 28':'Martes 28','MIÉ 29':'Miércoles 29','JUE 30':'Jueves 30'},
-    films:null,posters:null,eventPosterLabel:['INDUSTRY','DAYS'],lbSlugs:{
-      'Un mundo frágil y maravilloso':'a-sad-and-beautiful-world',
-      'Homebound':'homebound-2025'
-    }
+    films:null,posters:null,lbSlugs:{}
   },
   'tribeca2026':{
-    name:'Tribeca Festival',shortName:'TRIBECA',city:'New York',dates:'JUN 3–14',dates_en:'JUN 3–14',year:2026,timezoneOffset:'-04:00',
     storageKey:'tribeca2026_',
     festivalEndStr:'2026-06-14T23:59:00',
-    festivalDates:{'2026-06-03':'2026-06-03','2026-06-04':'2026-06-04','2026-06-05':'2026-06-05','2026-06-06':'2026-06-06','2026-06-07':'2026-06-07','2026-06-08':'2026-06-08','2026-06-09':'2026-06-09','2026-06-10':'2026-06-10','2026-06-11':'2026-06-11','2026-06-12':'2026-06-12','2026-06-13':'2026-06-13','2026-06-14':'2026-06-14'},
-    days:[{k:'2026-06-03',d:3,lbl:'WED'},{k:'2026-06-04',d:4,lbl:'THU'},{k:'2026-06-05',d:5,lbl:'FRI'},{k:'2026-06-06',d:6,lbl:'SAT'},{k:'2026-06-07',d:7,lbl:'SUN'},{k:'2026-06-08',d:8,lbl:'MON'},{k:'2026-06-09',d:9,lbl:'TUE'},{k:'2026-06-10',d:10,lbl:'WED'},{k:'2026-06-11',d:11,lbl:'THU'},{k:'2026-06-12',d:12,lbl:'FRI'},{k:'2026-06-13',d:13,lbl:'SAT'},{k:'2026-06-14',d:14,lbl:'SUN'}],
-    dayKeys:['2026-06-03','2026-06-04','2026-06-05','2026-06-06','2026-06-07','2026-06-08','2026-06-09','2026-06-10','2026-06-11','2026-06-12','2026-06-13','2026-06-14'],
-    dayShort:{'2026-06-03':'WED 3','2026-06-04':'THU 4','2026-06-05':'FRI 5','2026-06-06':'SAT 6','2026-06-07':'SUN 7','2026-06-08':'MON 8','2026-06-09':'TUE 9','2026-06-10':'WED 10','2026-06-11':'THU 11','2026-06-12':'FRI 12','2026-06-13':'SAT 13','2026-06-14':'SUN 14'},
-    dayShort_en:{'2026-06-03':'WED 3','2026-06-04':'THU 4','2026-06-05':'FRI 5','2026-06-06':'SAT 6','2026-06-07':'SUN 7','2026-06-08':'MON 8','2026-06-09':'TUE 9','2026-06-10':'WED 10','2026-06-11':'THU 11','2026-06-12':'FRI 12','2026-06-13':'SAT 13','2026-06-14':'SUN 14'},
-    dayLong:{'2026-06-03':'Wednesday, June 3','2026-06-04':'Thursday, June 4','2026-06-05':'Friday, June 5','2026-06-06':'Saturday, June 6','2026-06-07':'Sunday, June 7','2026-06-08':'Monday, June 8','2026-06-09':'Tuesday, June 9','2026-06-10':'Wednesday, June 10','2026-06-11':'Thursday, June 11','2026-06-12':'Friday, June 12','2026-06-13':'Saturday, June 13','2026-06-14':'Sunday, June 14'},
-    eventPosterLabel:['TRIBECA','FESTIVAL'],
     films:null,posters:null,lbSlugs:{}
   },
   'cinemancia2025':{
-    name:'Cinemancia 2025',shortName:'CINEMANCIA',city:'Valle de Aburrá',dates:'11–20 SEP',dates_en:'SEP 11–20',year:2025,timezoneOffset:'-05:00',
-    storageKey:'cinemancia2025_',festivalEndStr:'2025-09-20T23:00:00',
-    eventPosterLabel:['PROGRAMACIÓN','ACADÉMICA'],
-    group:'test',
+    storageKey:'cinemancia2025_',
+    festivalEndStr:'2025-09-20T23:00:00',
     films:null,posters:null,lbSlugs:{}
-    // dayKeys/days/festivalDates se absorben del JSON config block en loadFestival()
   }
 };// Festival data loaded async from festivals/<id>.json via loadFestival()
 
@@ -4204,7 +4181,7 @@ let FESTIVAL_STORAGE_KEY=(localStorage.getItem('otrofestiv_festival')||_DEFAULT_
 // BUILD_VERSION: cambia en cada deploy.
 // Al cargar, compara con localStorage. Si difiere → reload duro.
 // sessionStorage evita loops infinitos dentro de la misma sesión.
-const BUILD_VERSION='202605111510';
+const BUILD_VERSION='202605111540';
 (function(){
   const _vk='otrofestiv_build';
   const _sk='otrofestiv_reloaded';
@@ -9839,8 +9816,15 @@ async function loadFestival(id){
       cfg.posters=data.posters||{};
       cfg.customPosters=data.customPosters||{};
       cfg.lbSlugs=data.lbSlugs||{};
-      // ── Absorber config del JSON si existe ──────────────────────────────────
-      // LEGADO: FICCI 65 y Cinemancia 2025 tienen bloque config{} en el JSON.
+      // ── Sprint 2: absorber campos de config desde JSON raíz ─────────────
+      // Fuente única de verdad: el JSON de cada festival contiene toda su config.
+      // FESTIVAL_CONFIG en index.html solo mantiene storageKey + festivalEndStr como bootstrap.
+      // Estos campos se mergean si existen en el JSON — nunca pisan storageKey.
+      const _cfgFields=['name','shortName','city','dates','dates_en','year',
+        'timezoneOffset','festivalDates','days','dayKeys','dayShort','dayShort_en',
+        'dayLong','prioLimit','eventPosterLabel','group'];
+      _cfgFields.forEach(k=>{ if(data[k]!=null) cfg[k]=data[k]; });
+      // ── LEGADO: festivales anteriores con bloque config{} en el JSON ──────
       // Festivales nuevos (desde Mujeres 2026) NO deben incluir config{} en el JSON —
       // toda la configuración va en FESTIVAL_CONFIG en index.html.
       // Este bloque existe solo para compatibilidad con festivales anteriores.
