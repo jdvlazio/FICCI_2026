@@ -9420,7 +9420,8 @@ function renderPeliculaView(){
   // Sort Grid: por sección editorial (SECTION_ORDER_LIST) → cronológico dentro de sección
   // Misma fuente de verdad que el filtro Sección. Secciones fuera de la lista van al final.
   // Lista usa sort cronológico puro (renderProgramaList).
-  const _secIdx=f=>{const i=SECTION_ORDER_LIST.indexOf(f.section??'');return i<0?99999:i;};
+  const _unknownSecMap=(()=>{const m={};let i=SECTION_ORDER_LIST.length;FILMS.forEach(f=>{if(f.section&&SECTION_ORDER_LIST.indexOf(f.section)<0&&!(f.section in m))m[f.section]=i++;});return m;})();
+  const _secIdx=f=>{const i=SECTION_ORDER_LIST.indexOf(f.section??'');return i>=0?i:(_unknownSecMap[f.section??'']??99999);};
   entries.sort((a,b)=>{
     const so=_secIdx(a.film)-_secIdx(b.film);
     if(so!==0) return so;
