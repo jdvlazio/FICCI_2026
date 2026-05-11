@@ -563,6 +563,10 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:var(--t
 /* ── Poster ── */
 .lb-poster{width:var(--poster-xs-w);height:var(--poster-xs-h);object-fit:cover;border-radius:var(--r-sm);flex-shrink:0;display:block;background:var(--surf-2)}
 .lb-poster-ph{width:var(--poster-xs-w);height:var(--poster-xs-h);border-radius:var(--r-sm);flex-shrink:0;background:var(--surf-2);display:flex;align-items:center;justify-content:center;font-size:var(--t-base);opacity:.3}
+/* Editorial variants — activados por _posterThumb cuando _isEditorialPoster(f) */
+.lb-poster.lb-poster-ed{display:flex;flex-direction:column;overflow:hidden;object-fit:unset}
+.prio-chip-poster.prio-chip-poster-ed{display:flex;flex-direction:column;overflow:hidden;object-fit:unset}
+.lb-poster.lb-poster-ed img,.prio-chip-poster.prio-chip-poster-ed img{width:100%;aspect-ratio:16/9;object-fit:cover;display:block}
 
 /* ── Check-in ── */
 .checkin-wrap{background:var(--card-a);border:1px solid var(--bdr);border-radius:var(--r);margin-bottom:var(--sp-3);overflow:hidden}
@@ -3622,6 +3626,36 @@ function _isEditorialPoster(f){
   if(_POSTERS_N&&_POSTERS_N[normKey(f.title||'')]) return false;
   return !!(f.poster&&f.poster.includes('cloudfront.net'));
 }
+
+// ── _posterThumb ─────────────────────────────────────────────────────────────
+// FUENTE ÚNICA DE VERDAD para posters en contexto lista/thumbnail.
+// Aplica tratamiento editorial (color de sección + 16:9) cuando corresponde.
+// Todos los contextos (Intereses, Planear, Mi Plan, Sugerencias) deben usar
+// esta función. NUNCA construir <img class="lb-poster"> directamente.
+//
+// cssClass: 'lb-poster' | 'int-item-poster' | 'prio-chip-poster'
+// onclickJs: string JS a ejecutar en click (sin event.stopPropagation — ya incluido)
+// loading:   'lazy' (default) | 'eager'
+function _posterThumb(f, cssClass, onclickJs, loading){
+  const p = f ? getFilmPoster(f) : null;
+  const _load = loading || 'lazy';
+  const _oc = onclickJs ? ` onclick="event.stopPropagation();${onclickJs}"` : '';
+
+  if(!p){
+    return `<div class="${cssClass}"${_oc}></div>`;
+  }
+
+  if(f && _isEditorialPoster(f)){
+    const color = _sectionColor(f.section || '');
+    return `<div class="${cssClass} ${cssClass}-ed" style="background:${color}"${_oc}>`
+      + `<div style="height:28.89%;flex-shrink:0"></div>`
+      + `<img src="${p}" style="width:100%;aspect-ratio:16/9;object-fit:cover;display:block" loading="${_load}" onerror="this.remove()" alt="">`
+      + `</div>`;
+  }
+
+  const _posStyle = _posterStyle(f);
+  return `<img class="${cssClass}" src="${p}" loading="${_load}"${_posStyle}${_oc} onerror="this.remove()" alt="">`;
+}
 // Elimina el prefijo emoji de una sección (ej. "🎬 Competencia" → "Competencia")
 // NO elimina palabras — "U.S. Narrative Competition" se mantiene intacto
 function _secLabel(sec){
@@ -4183,7 +4217,7 @@ let FESTIVAL_STORAGE_KEY=(localStorage.getItem('otrofestiv_festival')||_DEFAULT_
 // BUILD_VERSION: cambia en cada deploy.
 // Al cargar, compara con localStorage. Si difiere → reload duro.
 // sessionStorage evita loops infinitos dentro de la misma sesión.
-const BUILD_VERSION='202605111618';
+const BUILD_VERSION='202605111650';
 (function(){
   const _vk='otrofestiv_build';
   const _sk='otrofestiv_reloaded';
@@ -4460,11 +4494,9 @@ function renderMiPlanCalendar(){
       const _mf=FILMS.find(fi=>fi.title===s._title);const _mp=_mf?getFilmPoster(_mf):null;
       const _isEventRow=_mf&&_mf.type==='event';
       const _safeMpT=(s._title||"").replace(/'/g,"\\'");
-      const _mph=_mp
-        ?`<img class="lb-poster" src="${_mp}" loading="lazy" style="cursor:pointer" onclick="event.stopPropagation();openPelSheet('${_safeMpT}')" onerror="this.remove()" alt="">`
-        :_isEventRow
+      const _mph=_isEventRow
           ?`<div class="clickable-shrink" onclick="event.stopPropagation();openPelSheet('${_safeMpT}')">${makeEventPoster(_mf.title,_mf.duration,_mf.event_kind).replace('<svg class="poster-mini"','<svg')}</div>`
-          :`<div class="lb-poster-ph" onclick="event.stopPropagation();openPelSheet('${_safeMpT}')">🎬</div>`;
+          :_posterThumb(_mf,'lb-poster',`openPelSheet('${_safeMpT}')`)
       listHtml+=`<div class="mplan-row${_rowKey===_activeMiPlanFilm?' active':''}" style="cursor:pointer" data-rkey="${_safeRowKey}" onclick="selectFromDetail(this)">
         ${_mph}
         <div class="mplan-tc" onclick="event.stopPropagation()">
@@ -5514,7 +5546,7 @@ function renderPrioStrip(){
     const f=FILMS.find(fi=>fi.title===title);
     const p=getFilmPoster(f);
     const _safeChipT=title.replace(/'/g,"&#39;");
-    const img=p?`<img class="cover-pointer prio-chip-poster" src="${p}" data-title="${title.replace(/"/g,'&quot;')}" loading="eager" onclick="event.stopPropagation();openPelSheet('${_safeChipT}')" onerror="_posterErr(this)" alt="">`:`<div class="prio-chip-ph">${ICONS.star}</div>`;
+    const img=p?_posterThumb(f,'prio-chip-poster',`openPelSheet('${_safeChipT}')`):`<div class="prio-chip-ph">${ICONS.star}</div>`;
     const{displayTitle,progSuffix}=parseProgramTitle(title);
     const short=displayTitle.length>16?displayTitle.slice(0,14)+'…':displayTitle;
     const allPast=!festivalEnded()&&!FILMS.some(f=>f.title===title&&!screeningPassed(f));
@@ -5592,13 +5624,7 @@ function renderFilmListHTML(){
     const next=_nextScreening(title);
     const conflict=_hasConflict(title);
     const safeT=title.replace(/'/g,"&#39;");
-    const poster=f?getFilmPoster(f):null;
-    const _isEd1=f&&_isEditorialPoster(f);
-    const posterHtml=_isEd1
-      ?`<div class="int-item-poster" style="background:${_sectionColor(f.section||'')};display:flex;flex-direction:column;overflow:hidden;border-radius:var(--r-sm)"><div style="height:28.89%;flex-shrink:0"></div><img src="${poster}" style="width:100%;aspect-ratio:16/9;object-fit:cover;display:block" onerror="this.remove()" alt="" loading="lazy"></div>`
-      :poster
-        ?`<img class="int-item-poster"${_posterStyle(f)} src="${poster}" data-title="${title.replace(/"/g,'&quot;')}" onerror="_posterErr(this)" alt="" loading="lazy">`
-        :`<div class="int-item-poster"></div>`;
+    const posterHtml=_posterThumb(f,'int-item-poster',`openPelSheet('${safeT}')`);
     const secLabel=_secLabel(f?.section||'');
     const nextHtml=next
       ?`<div class="int-item-next">
@@ -5631,13 +5657,7 @@ function renderFilmListHTML(){
     const f=FILMS.find(fi=>fi.title===title);
     const{displayTitle,progSuffix}=parseProgramTitle(title);
     const safeT=title.replace(/'/g,"&#39;");
-    const poster=f?getFilmPoster(f):null;
-    const _isEd2=f&&_isEditorialPoster(f);
-    const posterHtml=_isEd2
-      ?`<div class="int-item-poster" style="background:${_sectionColor(f.section||'')};display:flex;flex-direction:column;overflow:hidden;border-radius:var(--r-sm)"><div style="height:28.89%;flex-shrink:0"></div><img src="${poster}" style="width:100%;aspect-ratio:16/9;object-fit:cover;display:block" onerror="this.remove()" alt="" loading="lazy"></div>`
-      :poster
-        ?`<img class="int-item-poster"${_posterStyle(f)} src="${poster}" data-title="${title.replace(/"/g,'&quot;')}" onerror="_posterErr(this)" alt="" loading="lazy">`
-        :`<div class="int-item-poster"></div>`;
+    const posterHtml=_posterThumb(f,'int-item-poster',`openPelSheet('${safeT}')`);
     const secLabel=_secLabel(f?.section||'');
     const rating=filmRatings[title]||0;
     const stars=rating>0
@@ -5736,7 +5756,7 @@ function mkAgendaRow(s, mode='saved'){
   const f=FILMS.find(fi=>fi.title===title);
   const _p=getFilmPoster(f);
   const _safePT=title.replace(/'/g,"\\'");
-  const _ph=_p?`<img class="lb-poster" src="${_p}" loading="lazy" style="cursor:pointer" onclick="event.stopPropagation();openPelSheet('${_safePT}')" onerror="this.remove()" alt="">`:'<div class="lb-poster-ph">🎬</div>';
+  const _ph=_posterThumb(f,'lb-poster',`openPelSheet('${_safePT}')`);
   const vc2=vcfg(s.venue),sl=sala(s.venue);
   const safeT=(s._title||'').replace(/"/g,'&quot;');
   const isDone=watched.has(title);
@@ -6463,9 +6483,7 @@ function renderContextualHeader(){
       const safeT=(s._title||'').replace(/'/g,"&#39;");
       const stars=r?starsText(r):'';
       return`<div class="prio-chip-wrap" onclick="openPelSheet('${safeT}')">
-        ${src
-          ?`<img class="prio-chip-poster" src="${src}" onerror="this.remove()" alt="" loading="lazy">`
-          :`<div class="prio-chip-ph">🎬</div>`}
+        ${src?_posterThumb(f,'prio-chip-poster',`openPelSheet('${safeT}')`):`<div class="prio-chip-ph">🎬</div>`}
         ${r?`<div class="prio-overlay-label">${stars}</div>`:''}
         ${!r?`<div class="prio-overlay-center">
           <button class="prio-star-pill" onclick="event.stopPropagation();openPostViewRating('${safeT}','${s.day||''}','${s.time||''}','${(s.venue||'').replace(/'/g,"&#39;")}','${s.duration||''}')">★</button>
@@ -6567,7 +6585,7 @@ function _renderSavedAgendaHTML(){
           const vc2=vcfg(s.venue),sl=sala(s.venue);
           const _af=FILMS.find(fi=>fi.title===s._title);const _ap=_af?getFilmPoster(_af):null;
           const _safeMpT2=(s._title||"").replace(/'/g,"&#39;");
-          const _aph=_ap?`<img class="lb-poster" src="${_ap}" loading="lazy" style="cursor:pointer" onclick="event.stopPropagation();openPelSheet('${_safeMpT2}')" onerror="this.remove()" alt="">`:'<div class="lb-poster-ph">🎬</div>';
+          const _aph=_posterThumb(_af,'lb-poster',`openPelSheet('${_safeMpT2}')`);
           return`<div class="saved-item done">
             ${_aph}
             <div class="saved-time">${s.time}</div>
@@ -6582,7 +6600,7 @@ function _renderSavedAgendaHTML(){
         <div class="archive-out-lbl">Vistas fuera del Plan</div>
         ${watchedOutsidePlan.map(f=>{
           const _ap=getFilmPoster(f);
-          const _aph=_ap?`<img class="lb-poster" src="${_ap}" loading="lazy" onerror="this.remove()" alt="">`:'<div class="lb-poster-ph">🎬</div>';
+          const _aph=_posterThumb(f,'lb-poster',null);
           return`<div class="saved-item done">
             ${_aph}
             <div class="saved-time">${flagFmt(f.flags)||''}</div>
@@ -6611,7 +6629,7 @@ function _renderSavedAgendaHTML(){
       html+=suggsByDay[day].slice(0,4).map(f=>{
         const vc2=vcfg(f.venue),sl=sala(f.venue);
         const _sp=getFilmPoster(f);
-        const _sph=_sp?`<img class="lb-poster" src="${_sp}" loading="lazy" onerror="this.remove()" alt="">`:'<div class="lb-poster-ph">🎬</div>';
+        const _sph=_posterThumb(f,'lb-poster',null);
         return`<div class="suggestion-item" onclick="openPelSheet('${f.title.replace(/'/g,"\\'")}')">
           ${_sph}
           <div class="suggestion-time">${f.time}</div>
@@ -7137,9 +7155,7 @@ function buildResultHTML(scenarios){
       const poster=f?getFilmPoster(f):null;
       const secLabel=f?_secLabel(f.section||''):'';
       const safeT=t.replace(/'/g,"&#39;");
-      const posterHtml=poster
-        ?`<img class="int-item-poster" src="${poster}" data-title="${t.replace(/"/g,'&quot;')}" onerror="_posterErr(this)" alt="" loading="lazy">`
-        :`<div class="int-item-poster"></div>`;
+      const posterHtml=_posterThumb(f,'int-item-poster',`openPelSheet('${safeT}')`);
       // Detectar razón usando screensConflict contra el schedule activo
       const screens=FILMS.filter(fi=>fi.title===t&&!screeningPassed(fi)&&!isScreeningBlocked(fi));
       let reason='',canInclude=false;
