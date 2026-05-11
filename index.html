@@ -2810,6 +2810,17 @@ const _I18N = {
     "label_descripcion": "descripción",
     "misc_ya_vistas": "Ya vistas",
     "lbl_prioridades": "Prioridades",
+    "lbl_intereses": "Intereses",
+    "plan_opciones": "Opciones",
+    "plan_variacion": "Variación",
+    "plan_usar_plan": "Usar este plan",
+    "misc_opcional": "opcional",
+    "conflict_con": "Conflicto con",
+    "cta_no_vista": "No vista",
+    "plan_vistas_fuera": "Vistas fuera del Plan",
+    "plan_historial": "Historial",
+    "plan_alt": "alt.",
+    "plan_fest_empieza": "El festival empieza",
     "plan_empty_dia": "No hay funciones para este día. Añadí desde Sugerencias.",
     "plan_nada_dia": "Nada en tu plan este día",
     "plan_en_tu_plan": "está en tu plan.",
@@ -2928,6 +2939,10 @@ const _I18N = {
     "label_min": "min",
     "label_seccion": "Section",
     "label_valoracion": "Your rating",
+    "modal_ya_viste_titulo": "Have you seen this film?",
+    "modal_ya_viste_body": "It'll be moved to Already Seen in Interests.",
+    "modal_ya_viste_cta": "Yes, I've seen it",
+    "toast_marcada_vista": "Moved to Already Seen",
     "plan_calcular": "Make my plan",
     "plan_calculando": "Calculating…",
     "plan_calculando_ops": "Finding options…",
@@ -3035,8 +3050,19 @@ const _I18N = {
     "label_funciones_pl": "screenings",
     "label_sinopsis": "synopsis",
     "label_descripcion": "description",
-    "misc_ya_vistas": "Already seen",
+    "misc_ya_vistas": "Already Seen",
     "lbl_prioridades": "Priorities",
+    "lbl_intereses": "Interests",
+    "plan_opciones": "Options",
+    "plan_variacion": "Option",
+    "plan_usar_plan": "Use this plan",
+    "misc_opcional": "optional",
+    "conflict_con": "Conflict with",
+    "cta_no_vista": "Not seen",
+    "plan_vistas_fuera": "Seen outside your plan",
+    "plan_historial": "History",
+    "plan_alt": "alt.",
+    "plan_fest_empieza": "Festival starts",
     "plan_empty_dia": "No screenings for this day. Add from Suggestions.",
     "plan_nada_dia": "Nothing planned for this day",
     "plan_en_tu_plan": "is in your plan.",
@@ -4225,7 +4251,7 @@ let FESTIVAL_STORAGE_KEY=(localStorage.getItem('otrofestiv_festival')||_DEFAULT_
 // BUILD_VERSION: cambia en cada deploy.
 // Al cargar, compara con localStorage. Si difiere → reload duro.
 // sessionStorage evita loops infinitos dentro de la misma sesión.
-const BUILD_VERSION='202605111815';
+const BUILD_VERSION='202605111830';
 (function(){
   const _vk='otrofestiv_build';
   const _sk='otrofestiv_reloaded';
@@ -5643,7 +5669,7 @@ function renderFilmListHTML(){
     const conflictHtml=conflict
       ?`<div class="int-item-conflict">
           <svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126zM12 15.75h.007v.008H12v-.008z"/></svg>
-          Conflicto con ${conflict}
+          ${t('conflict_con')} ${conflict}
         </div>`
       :'';
     return`<div class="int-item${!next?' gone':''}" style="${!next&&!festivalEnded()?'opacity:.35':''}" onclick="openPelSheet('${safeT}')">
@@ -5719,7 +5745,7 @@ function renderFilmListHTML(){
     if(prioList.length) html+=`<div class="hr-bdr"></div>`;
     html+=`<div class="int-section-hdr">
       <span class="int-section-hdr-ico">${ICONS.heart}</span>
-      <span class="int-section-hdr-lbl" data-i18n="nav_intereses">${t('nav_intereses')}</span>
+      <span class="int-section-hdr-lbl">${t('lbl_intereses')}</span>
       <span class="count-badge cb-neutral">${nonPrioList.length}</span>
     </div>
     <div>${_chronoSort(nonPrioList).map(_mkItem).join('')}</div>`;
@@ -5792,7 +5818,7 @@ function mkAgendaRow(s, mode='saved'){
   const safeT=(s._title||'').replace(/"/g,'&quot;');
   const isDone=watched.has(title);
   const alts=mode==='scenario'?FILMS.filter(fi=>fi.title===title&&!isScreeningBlocked(fi)&&!screeningPassed(fi)&&!(fi.day===s.day&&fi.time===s.time)):[];
-  const altBadge=alts.length?`<span class="ag-alts">${alts.length} alt.</span>`:'';
+  const altBadge=alts.length?`<span class="ag-alts">${alts.length} ${t('plan_alt')}</span>`:'';
   const filmKey=(s._title||'')+(s.day||'')+(s.time||'');
   const isExpanded=_expandedFilm===filmKey;
   const actionBtn=mode==='saved'
@@ -5812,7 +5838,7 @@ function mkAgendaRow(s, mode='saved'){
       <div class="saved-venue">${ICONS.pin} ${vc2.short}${sl?' · '+sl:''}${s.duration?' · '+durFmt(s.duration):''}${altBadge}</div>
       ${_progBtn}
     </div>
-    ${mode==='saved'?`<button class="row-xs saved-check${isDone?' done':''}" data-title="${safeT}" data-day="${s.day||''}" data-time="${s.time||''}" data-venue="${(s.venue||'').replace(/"/g,'&quot;')}" data-dur="${s.duration||''}" onclick="${isDone?'toggleWatched(this.dataset.title,event)':'markWatchedFromPlan(this.dataset.title,this.dataset.day,this.dataset.time,this.dataset.venue,this.dataset.dur,event)'}">${isDone?'No vista':ICONS.check+' Vista'}</button>`:''}
+    ${mode==='saved'?`<button class="row-xs saved-check${isDone?' done':''}" data-title="${safeT}" data-day="${s.day||''}" data-time="${s.time||''}" data-venue="${(s.venue||'').replace(/"/g,'&quot;')}" data-dur="${s.duration||''}" onclick="${isDone?'toggleWatched(this.dataset.title,event)':'markWatchedFromPlan(this.dataset.title,this.dataset.day,this.dataset.time,this.dataset.venue,this.dataset.dur,event)'}">${isDone?t('cta_no_vista'):ICONS.check+' '+t('cta_vista')}</button>`:''}
   </div>${_progList}${altsHtml?`<div class="film-alts">${altsHtml}</div>`:''}`;
 }
 
@@ -6372,7 +6398,7 @@ function renderContextualHeader(){
         <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5"/></svg>
         ${(FESTIVAL_CONFIG[_activeFestId]||{}).name||''}
       </div>
-      <div class="ctx-main-title">El festival empieza ${label}</div>
+      <div class="ctx-main-title">${t('plan_fest_empieza')} ${label}</div>
       <div class="ctx-sub">${(FESTIVAL_CONFIG[_activeFestId]||{}).city||''} · ${_langDates(FESTIVAL_CONFIG[_activeFestId])}</div>
       ${prioHtml?`<div class="ctx-prio-row">${prioHtml}</div>`:''}
     </div>`;
@@ -6606,7 +6632,7 @@ function _renderSavedAgendaHTML(){
     const archByDay={};
     archive.forEach(s=>{if(!archByDay[s.day])archByDay[s.day]=[];archByDay[s.day].push(s);});
     html+=`<div class="archive-toggle" onclick="toggleArchive()">
-      <span class="archive-toggle-lbl">${ICONS.checkCircle} Historial</span>
+      <span class="archive-toggle-lbl">${ICONS.checkCircle} ${t('plan_historial')}</span>
       <span class="row-sm"><span class="count-badge cb-neutral">${totalWatched}</span><span id="arch-arrow">${ICONS.chevronD}</span></span>
     </div>
     <div class="archive-body${archiveOpen?' open':''}" id="archive-body">
@@ -6624,11 +6650,11 @@ function _renderSavedAgendaHTML(){
               <div class="saved-title">${s._title}</div>
               <div class="saved-venue">${ICONS.pin} ${vc2.short}${sl?' · '+sl:''}</div>
             </div>
-            <button class="saved-check done" data-wt="${(s._title||'').replace(/"/g,'&quot;')}" onclick="toggleWatched(this.dataset.wt,event)" >No vista</button>
+            <button class="saved-check done" data-wt="${(s._title||'').replace(/"/g,'&quot;')}" onclick="toggleWatched(this.dataset.wt,event)" >${t('cta_no_vista')}</button>
           </div>`;
         }).join('')}`).join(''):''}
       ${watchedOutsidePlan.length?`
-        <div class="archive-out-lbl">Vistas fuera del Plan</div>
+        <div class="archive-out-lbl">${t('plan_vistas_fuera')}</div>
         ${watchedOutsidePlan.map(f=>{
           const _ap=getFilmPoster(f);
           const _aph=_posterThumb(f,'lb-poster',null);
@@ -6639,7 +6665,7 @@ function _renderSavedAgendaHTML(){
               <div class="saved-title">${f.title}</div>
               <div class="saved-venue">${ICONS.clock} ${durFmt(f.duration)||'—'}</div>
             </div>
-            <button class="saved-check done" data-wt="${(f.title||'').replace(/"/g,'&quot;')}" onclick="toggleWatched(this.dataset.wt,event)" >No vista</button>
+            <button class="saved-check done" data-wt="${(f.title||'').replace(/"/g,'&quot;')}" onclick="toggleWatched(this.dataset.wt,event)" >${t('cta_no_vista')}</button>
           </div>`;
         }).join('')}`:''}
     </div>`;
@@ -7125,13 +7151,13 @@ function buildResultHTML(scenarios){
 
   // ── Header: Plan óptimo vs Variación ──
   const isCustom=sc._custom===true;
-  const planLabel=isOptimo?`${ICONS.calendar} Plan óptimo`:isCustom?t('av_opcion_pers'):`Variación ${currentIdx}`;
+  const planLabel=isOptimo?`${ICONS.calendar} ${t('plan_optimo')}`:isCustom?t('av_opcion_pers'):`${t('plan_variacion')} ${currentIdx}`;
 
   // ── Navigation ──
   let navHtml='';
   if(n>1){
-    const prevLabel=currentIdx<=1?`${ICONS.calendar} Plan óptimo`:`Variación ${currentIdx-1}`;
-    const nextLabel=currentIdx===0?'Variación 1':`Variación ${currentIdx+1}`;
+    const prevLabel=currentIdx<=1?`${ICONS.calendar} ${t('plan_optimo')}`:`${t('plan_variacion')} ${currentIdx-1}`;
+    const nextLabel=currentIdx===0?`${t('plan_variacion')} 1`:`${t('plan_variacion')} ${currentIdx+1}`;
     // Dots: un botón por opción, activo destacado
     // Escalable: generado desde scenarios.length sin hardcodear
     const _algCount=cachedResult._algorithmCount||n;
@@ -7148,7 +7174,7 @@ function buildResultHTML(scenarios){
     navHtml=`<div class="mt-2 ag-nav">${dots}</div>`;
   }
 
-  const saveBtnHtml=`<button class="ag-save-btn" onclick="saveCurrentScenario()">${ICONS.calendar} Usar este plan</button>`;
+  const saveBtnHtml=`<button class="ag-save-btn" onclick="saveCurrentScenario()">${ICONS.calendar} ${t('plan_usar_plan')}</button>`;
   let html=`<div class="ag-summary">
     <div class="ag-summary-title" style="font-size:${isOptimo?'var(--t-md)':'var(--t-base)'};color:${isOptimo?'var(--white)':'var(--gray)'}">${planLabel}</div>
     <div class="tags-row ag-summary-text">
@@ -7930,7 +7956,7 @@ function renderAgenda(){
       <div class="ag-section">
         ${renderPrioStrip()}
         <div class="section-div">
-          <div class="mb-2 sec-hdr">${ICONS.clock} ${t('av_disponibilidad')} <span class="sec-hdr-opt">opcional</span></div>
+          <div class="mb-2 sec-hdr">${ICONS.clock} ${t('av_disponibilidad')} <span class="sec-hdr-opt">${t('misc_opcional')}</span></div>
           <div class="txt-gray2-sm-lh">${t('av_no_incluir')}</div>
           <div id="av-blocks-list"></div>
           <button class="av-add-unavail" onclick="openAvSheet()">${ICONS.plus} ${t('misc_no_disponible')}</button>
@@ -7943,7 +7969,7 @@ function renderAgenda(){
       </div>
       <div class="ag-list-sep"></div>
       <div class="amber-border-top ag-section">
-        <div class="txt-amber60 sec-hdr">${ICONS.switch} Opciones</div>
+        <div class="txt-amber60 sec-hdr">${ICONS.switch} ${t('plan_opciones')}</div>
         <div id="ag-result">${resultContent}</div>
       </div>`;
     renderAvBlocks();
