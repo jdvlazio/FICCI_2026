@@ -178,8 +178,8 @@
   --sp-btn:14px;   /* padding vertical de botones primarios full-width  */
 
   /* ── Layout — pósters (ratio 2:3) ── */
-  --poster-xs-w: 40px;   /* thumbnail lista: Mi Plan, Planear, Sugerencias */
-  --poster-xs-h: 60px;
+  --poster-xs-w: 56px;   /* thumbnail lista: Mi Plan, Planear, Sugerencias */
+  --poster-xs-h: 84px;
   --poster-md-w: 72px;   /* chip standalone: Prio strip                    */
   --poster-md-h: 108px;
   --poster-lg-w: 96px;   /* card descubrimiento: Programa / sheet          */
@@ -801,7 +801,7 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:var(--t
 .plist-time-hdr{padding:var(--sp-1) var(--sp-3) var(--sp-1);font-size:var(--t-label);font-weight:var(--w-display);color:var(--amber);letter-spacing:.5px;background:var(--surf);border-bottom:1px solid var(--bdr-l);position:sticky;top:var(--sticky-top-lista,0px);z-index:2;flex-shrink:0}
 .plist-item{display:flex;align-items:center;gap:var(--sp-3);padding:var(--sp-3);border-bottom:1px solid var(--bdr-l);cursor:pointer}
 .plist-item:active{background:var(--surf-2)}
-.plist-poster{width:40px;height:60px;border-radius:var(--r-sm);flex-shrink:0;object-fit:cover;background:var(--surf-3)}
+.plist-poster{width:56px;height:84px;border-radius:var(--r-sm);flex-shrink:0;object-fit:cover;background:var(--surf-3)}
 .plist-poster-stack{position:relative;width:38px;height:48px;flex-shrink:0}
 .plist-poster-stack .ps-back{position:absolute;top:0;right:0;width:32px;height:46px;border-radius:var(--r-sm);object-fit:cover;background:var(--surf-3);opacity:.6;border:1px solid var(--bdr)}
 .plist-poster-stack .ps-front{position:absolute;bottom:0;left:0;width:32px;height:46px;border-radius:var(--r-sm);object-fit:cover;background:var(--surf-3);box-shadow:2px -2px 0 rgba(0,0,0,.5)}
@@ -2235,14 +2235,14 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:var(--t
 .int-section-hdr{display:flex;align-items:center;gap:var(--sp-2);padding:var(--sp-3) var(--sp-4) var(--sp-2)}
 .int-section-hdr-ico{color:var(--gray2);flex-shrink:0}
 .int-section-hdr-lbl{font-size:var(--t-base);font-weight:var(--w-bold);color:var(--white-60);flex:1}
-.int-item{display:flex;align-items:flex-start;gap:var(--sp-3);padding:var(--sp-3) var(--sp-4);border-bottom:1px solid var(--bdr-l);cursor:pointer;transition:background var(--tr-base);-webkit-tap-highlight-color:transparent}
+.int-item{display:flex;align-items:flex-start;gap:var(--sp-3);padding:var(--sp-2) var(--sp-4);border-bottom:1px solid var(--bdr-l);cursor:pointer;transition:background var(--tr-base);-webkit-tap-highlight-color:transparent}
 .int-item:last-child{border-bottom:none}
 .int-item.gone{opacity:.4}
 .int-item-rating{display:inline-flex;align-items:center;font-size:var(--t-xs);font-weight:var(--w-bold);color:var(--amber)}
 .int-item-rating-empty{font-size:var(--t-xs);color:var(--gray2);cursor:pointer}
 .int-seen-btn.on{background:rgba(245,158,11,.1);color:var(--amber);border-color:rgba(245,158,11,.3)}
 .int-item:active{background:var(--surf-2)}
-.int-item-poster{width:38px;height:57px;border-radius:var(--r-sm);background:var(--surf-2);flex-shrink:0;overflow:hidden;object-fit:cover}
+.int-item-poster{width:56px;height:84px;border-radius:var(--r-sm);background:var(--surf-2);flex-shrink:0;overflow:hidden;object-fit:cover}
 .int-item-poster.int-item-poster-ed{display:flex;flex-direction:column;overflow:hidden}
 .int-item-info{flex:1;min-width:0}
 .int-item-title{font-size:var(--t-base);font-weight:var(--w-bold);color:var(--white);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-bottom:2px}
@@ -4223,7 +4223,7 @@ let FESTIVAL_STORAGE_KEY=(localStorage.getItem('otrofestiv_festival')||_DEFAULT_
 // BUILD_VERSION: cambia en cada deploy.
 // Al cargar, compara con localStorage. Si difiere → reload duro.
 // sessionStorage evita loops infinitos dentro de la misma sesión.
-const BUILD_VERSION='202605111720';
+const BUILD_VERSION='202605111745';
 (function(){
   const _vk='otrofestiv_build';
   const _sk='otrofestiv_reloaded';
@@ -9080,10 +9080,10 @@ function _plistPosterHtml(f, src){
   if(_isEditorialPoster(f)){
     var _accent=_sectionColor(f.section||'');
     var _imgSection=src
-      ?'<div style="flex:1;overflow:hidden;min-height:0;background:#1A1A1A"><img src="'+src+'" loading="lazy" onerror="this.remove()" alt="" style="width:100%;height:100%;object-fit:cover;object-position:center top;display:block"></div>'
+      ?'<div style="flex:1;overflow:hidden;min-height:0"><img src="'+src+'" loading="lazy" onerror="this.remove()" alt="" style="width:100%;height:100%;object-fit:cover;object-position:center top;display:block"></div>'
       :'<div style="flex:1;background:#1A1A1A"></div>';
     return '<div class="plist-poster" style="background:'+_accent+';display:flex;flex-direction:column;overflow:hidden">'+
-      '<div style="height:30%;flex-shrink:0;background:'+_accent+';display:flex;align-items:center;padding:0 3px;overflow:hidden"><span style="font-size:7px;font-weight:800;letter-spacing:.04em;color:#0A0A0A;text-transform:uppercase;white-space:nowrap;overflow:hidden">'+_secLabel(f.section||'')+'</span></div>'+
+      '<div style="height:28.89%;flex-shrink:0"></div>'+
       _imgSection+
     '</div>';
   }
