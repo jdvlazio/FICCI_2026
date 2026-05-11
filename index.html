@@ -4204,7 +4204,7 @@ let FESTIVAL_STORAGE_KEY=(localStorage.getItem('otrofestiv_festival')||_DEFAULT_
 // BUILD_VERSION: cambia en cada deploy.
 // Al cargar, compara con localStorage. Si difiere → reload duro.
 // sessionStorage evita loops infinitos dentro de la misma sesión.
-const BUILD_VERSION='202605111340';
+const BUILD_VERSION='202605111410';
 (function(){
   const _vk='otrofestiv_build';
   const _sk='otrofestiv_reloaded';
@@ -5531,17 +5531,17 @@ function filmDisplayTitle(f) {
 // ═══════════════════════════════════════════════════════════════
 function renderPrioStrip(){
   if(!prioritized.size) return '';
-  const chips=[...prioritized].map(t=>{
-    const f=FILMS.find(fi=>fi.title===t);
+  const chips=[...prioritized].map(title=>{
+    const f=FILMS.find(fi=>fi.title===title);
     const p=getFilmPoster(f);
-    const _safeChipT=t.replace(/'/g,"&#39;");
-    const img=p?`<img class="cover-pointer prio-chip-poster" src="${p}" data-title="${t.replace(/"/g,'&quot;')}" loading="eager" onclick="event.stopPropagation();openPelSheet('${_safeChipT}')" onerror="_posterErr(this)" alt="">`:`<div class="prio-chip-ph">${ICONS.star}</div>`;
-    const{displayTitle,progSuffix}=parseProgramTitle(t);
+    const _safeChipT=title.replace(/'/g,"&#39;");
+    const img=p?`<img class="cover-pointer prio-chip-poster" src="${p}" data-title="${title.replace(/"/g,'&quot;')}" loading="eager" onclick="event.stopPropagation();openPelSheet('${_safeChipT}')" onerror="_posterErr(this)" alt="">`:`<div class="prio-chip-ph">${ICONS.star}</div>`;
+    const{displayTitle,progSuffix}=parseProgramTitle(title);
     const short=displayTitle.length>16?displayTitle.slice(0,14)+'…':displayTitle;
-    const allPast=!festivalEnded()&&!FILMS.some(f=>f.title===t&&!screeningPassed(f));
+    const allPast=!festivalEnded()&&!FILMS.some(f=>f.title===title&&!screeningPassed(f));
     return`<div class="prio-chip${allPast?' past':''}">
       ${img}
-      <button class="prio-chip-rm" data-prio-title="${t.replace(/"/g,'&quot;')}" onclick="event.stopPropagation();togglePriority(this.dataset.prioTitle)" title="${t('aria_quitar_prio')}">${ICONS.x}</button>
+      <button class="prio-chip-rm" data-prio-title="${title.replace(/"/g,'&quot;')}" onclick="event.stopPropagation();togglePriority(this.dataset.prioTitle)" title="${t('aria_quitar_prio')}">${ICONS.x}</button>
       <div class="prio-chip-title">${short}${progSuffix?`<span class="poster-label-amber">${progSuffix}</span>`:''}</div>
     </div>`;
   }).join('');
