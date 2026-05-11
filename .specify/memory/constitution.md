@@ -71,3 +71,4 @@ Los festivales colombianos operan en hora local. `toISOString()` devuelve UTC, l
 | May 2026 | Supabase para auth + cloud sync | Permite sincronización de watchlist entre dispositivos sin backend propio |
 | May 2026 | `day` en formato ISO (`YYYY-MM-DD`) desde Tribeca 2026 | Elimina ambigüedad de formato localizado; el validator lo enforcea |
 | May 2026 | Grid/TODO ordena por sección (cronológico dentro de cada sección) | Grid es modo de descubrimiento, no de planificación. Ordenar por sección crea clusters visuales coherentes con la identidad editorial del festival. Cronológico ya está cubierto por Lista. |
+| May 2026 | Orden de secciones en Grid = orden de primera aparición en `films[]` | El JSON se construye con orden editorial intencional desde Fase 1 del pipeline. Primera aparición = posición en el Grid. Sin configuración extra; el orden vive donde viven los datos. |

@@ -23,6 +23,8 @@
 
 4. Secciones con emoji — cada sección recibe un emoji único antes del commit.
 
+5. **Orden editorial de secciones** — el orden en que las secciones aparecen por primera vez en `films[]` define el orden de display en el Grid. Organizar el array con intención curatorial: secciones principales primero, eventos y shorts al final. Primera aparición = posición en el Grid.
+
 **Gates de salida (bloqueantes):**
 - [ ] Cero films sin `slug`
 - [ ] Cero títulos en ALLCAPS (3+ palabras consecutivas en mayúsculas)
