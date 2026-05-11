@@ -2821,6 +2821,19 @@ const _I18N = {
     "plan_historial": "Historial",
     "plan_alt": "alt.",
     "plan_fest_empieza": "El festival empieza",
+    "label_cortos": "Cortometrajes",
+    "meta_qa_label": "Q&A",
+    "meta_qa_time": "30 min aprox.",
+    "meta_registro_text": "Se requiere registro previo.",
+    "plan_restaurar_suger": "t('plan_restaurar_suger')",
+    "error_cargar_miplan": "Error al cargar Mi Plan:",
+    "plan_no_alts_horario": "No hay alternativas en este horario — revisá Sugerencias.",
+    "plan_sin_actividades": "t('plan_sin_actividades')",
+    "plan_no_incluidas": "No incluidas",
+    "error_calcular": "Error al calcular:",
+    "meta_corto_incluye": "t('meta_corto_incluye').",
+    "error_cargar_lista": "Error al cargar la lista.",
+    "plan_fecha_pendiente": "Pendiente nueva fecha.",
     "plan_empty_dia": "No hay funciones para este día. Añadí desde Sugerencias.",
     "plan_nada_dia": "Nada en tu plan este día",
     "plan_en_tu_plan": "está en tu plan.",
@@ -3063,6 +3076,19 @@ const _I18N = {
     "plan_historial": "History",
     "plan_alt": "alt.",
     "plan_fest_empieza": "Festival starts",
+    "label_cortos": "Short Films",
+    "meta_qa_label": "Q&A",
+    "meta_qa_time": "~30 min",
+    "meta_registro_text": "Pre-registration required.",
+    "plan_restaurar_suger": "You can find it again in Suggestions.",
+    "error_cargar_miplan": "Error loading My Plan:",
+    "plan_no_alts_horario": "No alternatives at this time — check Suggestions.",
+    "plan_sin_actividades": "No activities available for this slot.",
+    "plan_no_incluidas": "Not included",
+    "error_calcular": "Error calculating:",
+    "meta_corto_incluye": "Adding a short film includes the full program.",
+    "error_cargar_lista": "Error loading the list.",
+    "plan_fecha_pendiente": "Date pending.",
     "plan_empty_dia": "No screenings for this day. Add from Suggestions.",
     "plan_nada_dia": "Nothing planned for this day",
     "plan_en_tu_plan": "is in your plan.",
@@ -4251,7 +4277,7 @@ let FESTIVAL_STORAGE_KEY=(localStorage.getItem('otrofestiv_festival')||_DEFAULT_
 // BUILD_VERSION: cambia en cada deploy.
 // Al cargar, compara con localStorage. Si difiere → reload duro.
 // sessionStorage evita loops infinitos dentro de la misma sesión.
-const BUILD_VERSION='202605111830';
+const BUILD_VERSION='202605111845';
 (function(){
   const _vk='otrofestiv_build';
   const _sk='otrofestiv_reloaded';
@@ -4766,7 +4792,7 @@ function fuzzyMatch(query,title){
 function removeFromAgenda(title){
   if(!savedAgenda) return;
   const _s=title.length>36?title.slice(0,34)+'…':title;
-  showActionModal(t('plan_quitar_plan'),`<b>${_s}</b><br><br>Podrás restaurarla desde Sugerencias.`,'Quitar',()=>{
+  showActionModal(t('plan_quitar_plan'),`<b>${_s}</b><br><br>t('plan_restaurar_suger')`,'Quitar',()=>{
     const rem=savedAgenda.schedule.find(s=>s._title===title);
     if(rem){lastRemovedSlots=lastRemovedSlots.filter(r=>r._title!==rem._title);lastRemovedSlots.unshift({...rem,_isRestored:true});if(lastRemovedSlots.length>MAX_REMEMBERED_SLOTS)lastRemovedSlots.length=MAX_REMEMBERED_SLOTS;saveLastSlot();}
     savedAgenda.schedule=savedAgenda.schedule.filter(s=>s._title!==title);
@@ -5877,7 +5903,7 @@ function renderSavedAgendaHTML(){
   catch(err){
     /* renderSavedAgendaHTML error — silent in production */
     return`<div class="error-box">
-      <strong>Error al cargar Mi Plan:</strong><br>
+      <strong>${t('error_cargar_miplan')}</strong><br>
       <code class="txt-xs-dim">${err.message}</code>
     </div>`;
   }
@@ -6143,7 +6169,7 @@ function renderFilmAlternatives(title,day,time){
   }).join('');
 
   return`<div class="film-alts">
-    ${optsHtml||`<div class="scenario-label">No hay alternativas en este horario — revisa Sugerencias.</div>`}
+    ${optsHtml||`<div class="scenario-label">t('plan_no_alts_horario').</div>`}
     <div class="scenario-footer">
       <button class="w-full-sm checkin-result-btn secondary" onclick="_expandedFilm='';renderAgenda()}">${t('misc_cerrar')}</button>
     </div>
@@ -6511,7 +6537,7 @@ function renderContextualHeader(){
             <div class="ctx-suggest-venue">${vc2.short}</div>
           </div>
         </div>`;
-    })():`<div class="txt-caption-gray">Sin actividades disponibles en este tramo.</div>`;
+    })():`<div class="txt-caption-gray">t('plan_sin_actividades')</div>`;
     return`<div class="ctx-header">
       <div class="txt-green70 ctx-eyebrow">
         <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
@@ -7258,7 +7284,7 @@ function buildResultHTML(scenarios){
     }).join('');
     html+=`<div class="pad-flush ag-excl-block">
       <div class="pad-sm ag-excl-eyebrow">
-        <span class="ag-excl-label">No incluidas</span>
+        <span class="ag-excl-label">${t('plan_no_incluidas')}</span>
         <span class="count-badge cb-neutral">${sc.excluded.length}</span>
       </div>
       ${_excItems}
@@ -7825,7 +7851,7 @@ function runCalc(){
         cachedResult={scenarios,currentIdx:0,_algorithmCount:scenarios.length};
         if(res) res.innerHTML=buildResultHTML(scenarios);
       }else{
-        if(res) res.innerHTML=`<div class="ag-calc-prompt" style="color:var(--red)"><strong>Error al calcular:</strong><br><code class="txt-xs">${e.data.error}</code></div>`;
+        if(res) res.innerHTML=`<div class="ag-calc-prompt" style="color:var(--red)"><strong>${t('error_calcular')}</strong><br><code class="txt-xs">${e.data.error}</code></div>`;
       }
     };
     worker.onerror=function(err){
@@ -7860,7 +7886,7 @@ function _runCalcSync(btn,res){
     cachedResult={scenarios,currentIdx:0,_algorithmCount:scenarios.length};
     if(res) res.innerHTML=buildResultHTML(scenarios);
   }catch(err){
-    if(res) res.innerHTML=`<div class="ag-calc-prompt" style="color:var(--red)"><strong>Error al calcular:</strong><br><code class="txt-xs">${err.message}</code></div>`;
+    if(res) res.innerHTML=`<div class="ag-calc-prompt" style="color:var(--red)"><strong>${t('error_calcular')}</strong><br><code class="txt-xs">${err.message}</code></div>`;
   }finally{
     if(btn){btn.disabled=false;btn.textContent=t('av_ver_opciones');}
   }
@@ -8822,7 +8848,7 @@ function openCortoSheet(title, country, duration, section, flags, director, genr
     ${syn?`<div class="pel-sheet-section-lbl">sinopsis</div><div class="pel-sheet-synopsis">${syn}</div><div class="pel-sheet-divider"></div>`:''}
     <a class="c-lb pel-sheet-lb" href="${lbUrl(title)||'#'}" target="_blank" rel="noopener"${!lbUrl(title)?' style="display:none"':''}>${LB_SVG}<span class="c-lb-text pel-sheet-lb-text">Letterboxd</span></a>
     <div class="pel-sheet-divider"></div>
-    ${parentTitle?`<div class="meta-xs-gray">Al agregar un corto se incluye el programa completo</div>`:''}
+    ${parentTitle?`<div class="meta-xs-gray">t('meta_corto_incluye')</div>`:''}
     <div class="flex-gap1-mt1">
       <button id="corto-wl-btn" class="row-center-xs pel-sheet-action-btn${inWL?' act-on btn-primary':' btn-primary'}" onclick="toggleWL('${safeParent}',event)">${inWL?ICONS.heartFill:ICONS.heart} ${inWL?t('cta_en_intereses'):t('cta_intereses')}</button>
       <button id="corto-prio-btn" class="row-center-xs pel-sheet-action-btn${inPrio?' act-prio':' btn-secondary'}" onclick="togglePelPrio('${safeParent}')">${inPrio?ICONS.starFill:ICONS.star} ${inPrio?t('cta_priorizada'):t('cta_priorizar')}</button>
@@ -8886,7 +8912,7 @@ function renderMiPlanList(schedule){
       }).join('')}
     `).join('')
   }</div>`;
-  }catch(e){return '<div class="pad-muted">Error al cargar lista</div>';}
+  }catch(e){return `<div class="pad-muted">${t('error_cargar_lista')}</div>`;}
 }
 function setInteresesView(mode){
   interesesViewMode=mode;
@@ -9109,7 +9135,7 @@ function renderNoticesBanner(){
   if(!active.length){el.innerHTML='';return;}
   el.innerHTML=active.map(n=>{
     const label=n.type==='cancelled'?'CANCELADA':'REPROGRAMADA';
-    const msgCancelled=`<span>Pendiente nueva fecha.</span>`;
+    const msgCancelled=`<span>${t('plan_fecha_pendiente')}</span>`;
     const msgRescheduled=n.newDay&&n.newTime?`Nueva función: <span class="txt-white60">${n.newDay} · ${n.newTime}${n.newVenue?' · '+n.newVenue:''}</span>`:'';
     const msg=n.type==='cancelled'?msgCancelled:msgRescheduled;
     const safeTitle=n.title.length>32?n.title.slice(0,30)+'…':n.title;

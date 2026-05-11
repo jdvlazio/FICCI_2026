@@ -235,6 +235,57 @@ if dead_items:
 else:
     ok(check, 'sin código muerto conocido')
 
+# ── CHECK 9: i18n completeness ────────────────────────────────────────────────
+# Verifica que todas las keys usadas en t('key') existan en AMBOS diccionarios ES y EN.
+check = 'i18n-complete'
+try:
+    # Extract _I18N block
+    i18n_start = content.find('const _I18N = {')
+    depth = 0
+    end = i18n_start
+    for i, ch in enumerate(content[i18n_start:]):
+        if ch == '{': depth += 1
+        elif ch == '}':
+            depth -= 1
+            if depth == 0:
+                end = i18n_start + i + 1
+                break
+    i18n_block = content[i18n_start:end]
+
+    def _parse_i18n(block):
+        import re as _re
+        return set(_re.findall(r'"([^"]+)":', block))
+
+    es_m = re.search(r'es:\s*\{([^}]+(?:\{[^}]*\}[^}]*)*)\}', i18n_block, re.DOTALL)
+    en_m = re.search(r'en:\s*\{([^}]+(?:\{[^}]*\}[^}]*)*)\}', i18n_block, re.DOTALL)
+    es_keys = _parse_i18n(es_m.group(1) if es_m else '')
+    en_keys = _parse_i18n(en_m.group(1) if en_m else '')
+
+    # All t('key') calls in the script
+    script_part = content[content.find('<script>'):content.rfind('</script>')]
+    all_t_calls = set(re.findall(r"t\('([a-z][a-z0-9_]+)'\)", script_part))
+    # Filter out non-i18n false positives (CSS selectors, HTML tags, etc.)
+    NON_KEYS = {'div','span','button','img','input','p','a','svg','ul','li','err','ok'}
+    real_keys = {k for k in all_t_calls if k not in NON_KEYS and len(k) > 3 and '_' in k}
+
+    missing_es = sorted(real_keys - es_keys)
+    missing_en = sorted(real_keys - en_keys)
+    es_not_en = sorted(es_keys - en_keys)
+
+    if missing_es:
+        for k in missing_es:
+            fail(check, f"t('{k}') usado en código pero falta en diccionario ES")
+    if missing_en:
+        for k in missing_en:
+            fail(check, f"t('{k}') usado en código pero falta en diccionario EN")
+    if es_not_en:
+        for k in es_not_en:
+            warn(check, f"key '{k}' en ES pero no en EN")
+    if not missing_es and not missing_en:
+        ok(check, f'todos los t() calls tienen key en ES y EN ({len(real_keys)} keys verificadas)')
+except Exception as e:
+    warn(check, f'no se pudo verificar i18n: {e}')
+
 # ── JS Syntax (Node.js) ───────────────────────────────────────────────────────
 check = 'js-syntax'
 try:
