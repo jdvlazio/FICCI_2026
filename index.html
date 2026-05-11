@@ -9382,15 +9382,13 @@ function renderPeliculaView(){
     }));
   }
 
-  // Sort: Movies → Cortos → Industry (category order)
-  // Within each category: chronological (day_order → time)
-  const _typeOrd2=f=>f.type==='event'?2:f.is_cortos?1:0;
+  // Sort Grid: por sección editorial (orden de aparición en FILMS) → cronológico dentro de sección
+  // Eventos siempre al final. Lista usa sort cronológico puro (renderProgramaList).
+  const _secOrder=(()=>{const m={};let i=0;FILMS.forEach(f=>{if(f.section&&!(f.section in m))m[f.section]=i++;});return m;})();
+  const _secIdx=f=>f.type==='event'?99999:(_secOrder[f.section]??99998);
   entries.sort((a,b)=>{
-    // Grid: siempre agrupa por sección (Films→Cortos→Eventos) antes que por tiempo
-    // Lista: sort cronológico puro (manejado en renderProgramaList)
-    const to=_typeOrd2(a.film)-_typeOrd2(b.film);
-    if(to!==0) return to;
-    // Dentro de la misma categoría: cronológico
+    const so=_secIdx(a.film)-_secIdx(b.film);
+    if(so!==0) return so;
     const do_diff=(a.film.day_order||0)-(b.film.day_order||0);
     if(do_diff!==0) return do_diff;
     return toMin(a.film.time||'00:00')-toMin(b.film.time||'00:00');
