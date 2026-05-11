@@ -4198,7 +4198,7 @@ let FESTIVAL_STORAGE_KEY=(localStorage.getItem('otrofestiv_festival')||_DEFAULT_
 // BUILD_VERSION: cambia en cada deploy.
 // Al cargar, compara con localStorage. Si difiere → reload duro.
 // sessionStorage evita loops infinitos dentro de la misma sesión.
-const BUILD_VERSION='202605110021';
+const BUILD_VERSION='202605110030';
 (function(){
   const _vk='otrofestiv_build';
   const _sk='otrofestiv_reloaded';
@@ -9258,6 +9258,7 @@ function renderProgramaList(){
         :_rawDt;
       const vc=vcfg(f.venue);
       const src=getFilmPoster(f)||'';
+      const _isEdList=_isEditorialPoster(f);
       const nowBadge=isNow?`<span class="film-check-badge">AHORA</span>`:'';
       const notice=NOTICES.find(n=>n.title===f.title&&n.festival===((_activeFestId||_DEFAULT_FEST_ID)));
       const noticeBadge=notice?`<span class="notice-badge">${notice.type==='cancelled'?'CANCELADA':'REPROG.'}</span>`:'';
