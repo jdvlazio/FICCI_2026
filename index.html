@@ -4183,7 +4183,7 @@ let FESTIVAL_STORAGE_KEY=(localStorage.getItem('otrofestiv_festival')||_DEFAULT_
 // BUILD_VERSION: cambia en cada deploy.
 // Al cargar, compara con localStorage. Si difiere → reload duro.
 // sessionStorage evita loops infinitos dentro de la misma sesión.
-const BUILD_VERSION='202605111548';
+const BUILD_VERSION='202605111610';
 (function(){
   const _vk='otrofestiv_build';
   const _sk='otrofestiv_reloaded';
@@ -7613,42 +7613,36 @@ function invalidateCalcResult(){
     ?`<div class="ag-calc-prompt">${t('plan_hint_opciones')}</div>`
     :`<div class="ag-calc-prompt">${t('empty_intereses_3')}</div>`;
 }
-// ── Worker blob — computeScenarios fuera del main thread ──────
-const _CALC_WORKER_SRC=`
-// Otrofestiv — Scheduling Worker
-// Recibe datos del main thread, corre computeScenarios, devuelve resultados.
-// Sin acceso al DOM. Sin globals del main thread.
 
-// ── Globals inyectados por postMessage ────────────────────────
+
+// ── Sprint 3: funciones puras que el Worker extrae del main thread ────────
+// Al añadir o modificar una función de scheduling en el main thread,
+// el Worker la recibe automáticamente. Sin copia manual, sin divergencia.
+const _SCHED_PURE_FNS = [
+  'toMin','parseDur','_festDate','simNow','festivalEnded',
+  'effectiveDuration','screensConflict','screeningPassed',
+  'isScreeningBlocked','_djb2','_titleSeed','_mulberry32',
+  'shuffle','scoreFilm','sortScreensByStrategy','computeScenarios'
+];
+
+function _mkCalcWorker(){
+  try{
+    // Globals worker-local (no acceso al main thread en Worker scope)
+    const _workerGlobals=`
 let FILMS=[], FESTIVAL_DATES={}, availability={};
 let watched=new Set(), prioritized=new Set();
 let TZ_OFFSET='-05:00', FESTIVAL_END_TS=0, SIM_TIME=null;
 const DEFAULT_DURATION_MIN=90;
 const FESTIVAL_BUFFER=15;
-
-// ── Funciones puras ───────────────────────────────────────────
-function toMin(t){
-  if(!t) return 0;
-  const isPM=/ PM$/i.test(t), isAM=/ AM$/i.test(t);
-  const clean=t.replace(/ [AP]M$/i,'').trim();
-  const[h,m]=(clean+':0').split(':').map(Number);
-  if(isNaN(h)||isNaN(m)) return 0;
-  if(isPM||isAM){
-    // 12h format: 12 AM=0, 12 PM=720, 1 PM=780
-    const h24=isPM?(h===12?12:h+12):(h===12?0:h);
-    return h24*60+m;
-  }
-  return h*60+m; // 24h format
-}
-function parseDur(d){const s=d!=null?String(d):'';const m=s&&s.replace('~','').match(/(\d+)/);return m?parseInt(m[1]):DEFAULT_DURATION_MIN;}
-function _festDate(dateStr,time){return new Date(dateStr+'T'+time+':00'+TZ_OFFSET);}
-function simNow(){return SIM_TIME?new Date(SIM_TIME):new Date();}
-function festivalEnded(){return simNow()>new Date(FESTIVAL_END_TS);}
-
+let _venueCoords={};
+let _transport='transit';
+`;
+    // Funciones de venue — usan _venueCoords/_transport (estado worker-local)
+    // Estas deben permanecer como copias worker-local, no se extraen del main.
+    const _venueFns=`
 function _workerFindCoords(v){
   if(!_venueCoords) return null;
   if(_venueCoords[v]) return _venueCoords[v];
-  // Prefix match — idéntico al main thread para consistencia
   const keys=Object.keys(_venueCoords).sort((a,b)=>b.length-a.length);
   const k=keys.find(k=>v.startsWith(k)||v.includes(k));
   return k?_venueCoords[k]:null;
@@ -7659,184 +7653,21 @@ function venueTravelMins(v1,v2){
   const dlat=(c1.lat-c2.lat)*111,dlon=(c1.lng-c2.lng)*111*Math.cos(c1.lat*Math.PI/180);
   const km=Math.sqrt(dlat*dlat+dlon*dlon);
   if(km<0.15) return 0;
-  // Velocidad efectiva por modo de transporte — sincronizado con main thread
   const spd=_transport==='walking'?4:_transport==='transit'?15:10;
   return Math.max(5,Math.round(km/spd*60/5)*5);
 }
-let _venueCoords={};
-let _transport='transit';
-
-function travelMins(venueA,venueB){
-  return venueTravelMins(venueA,venueB);
-}
-
-function effectiveDuration(f){return parseDur(f&&f.duration)+(f&&f.has_qa?30:0);}
-
-function screensConflict(a,b){
-  if(a.day!==b.day) return false;
-  const aS=toMin(a.time), aE=aS+effectiveDuration(a);
-  const bS=toMin(b.time), bE=bS+effectiveDuration(b);
-  const travel=(a.venue&&b.venue)?travelMins(a.venue,b.venue):0;
-  const minGap=Math.max(FESTIVAL_BUFFER, travel+FESTIVAL_BUFFER);
-  if(aE<=bS) return (bS-aE)<minGap;
-  if(bE<=aS) return (aS-bE)<minGap;
-  return true;
-}
-
-function screeningPassed(s){
-  if(festivalEnded()) return false;
-  const dateStr=FESTIVAL_DATES[s.day];
-  if(!dateStr) return false;
-  const t=_festDate(dateStr,s.time);
-  t.setMinutes(t.getMinutes()+10);
-  return simNow()>t;
-}
-
-function isScreeningBlocked(s){
-  const av=availability[s.day];if(!av) return false;
-  const sStart=toMin(s.time),sEnd=sStart+parseDur(s.duration);
-  return av.blocks.some(b=>sStart<toMin(b.to)&&sEnd>toMin(b.from));
-}
-
-function _djb2(str){
-  let h=5381;
-  for(let i=0;i<str.length;i++) h=(Math.imul(31,h)+str.charCodeAt(i))|0;
-  return h;
-}
-function _titleSeed(titles){
-  return _djb2([...titles].sort().join('|'));
-}
-function _mulberry32(seed){
-  let s=seed|0;
-  return function(){
-    s=s+0x6D2B79F5|0;
-    let t=Math.imul(s^s>>>15,1|s);
-    t=t+Math.imul(t^t>>>7,61|t)^t;
-    return((t^t>>>14)>>>0)/4294967296;
-  };
-}
-function shuffle(arr,rand){
-  const a=[...arr];
-  const r=rand||Math.random.bind(Math);
-  for(let i=a.length-1;i>0;i--){const j=Math.floor(r()*(i+1));[a[i],a[j]]=[a[j],a[i]];}
-  return a;
-}
-
-function scoreFilm(title,screens,isPriority,allTitles){
-  let score=0;
-  if(isPriority) score+=100;
-  const uniqueSections=new Set(allTitles.map(t=>{const f=FILMS.find(fi=>fi.title===t);return f&&f.section;}));
-  const f=FILMS.find(fi=>fi.title===title);
-  const section=f&&f.section;
-  const sectionCount=allTitles.filter(t=>{const fi=FILMS.find(x=>x.title===t);return fi&&fi.section===section;}).length;
-  score+=Math.max(0,10-sectionCount);
-  score+=Math.max(0,5-screens.length)*3;
-  return score;
-}
-
-function sortScreensByStrategy(screens,allGroups){
-  return [...screens].sort((a,b)=>{
-    const conflicts_a=allGroups.reduce((n,g)=>n+(g.screens.some(s=>screensConflict(a,s))?1:0),0);
-    const conflicts_b=allGroups.reduce((n,g)=>n+(g.screens.some(s=>screensConflict(b,s))?1:0),0);
-    return conflicts_a-conflicts_b;
-  });
-}
-
-function computeScenarios(titles){
-  const pending=titles.filter(t=>!watched.has(t));
-  const allPendingTitles=pending;
-  const baseGroups=pending.map(t=>{
-    const screens=FILMS.filter(f=>f.title===t&&!isScreeningBlocked(f)&&!screeningPassed(f));
-    const isPrio=prioritized.has(t);
-    const sc=scoreFilm(t,screens,isPrio,allPendingTitles);
-    return{title:t,screens,priority:isPrio,score:sc};
-  }).filter(g=>g.screens.length>0);
-  if(!baseGroups.length) return[];
-  baseGroups.forEach(g=>{if(g.screens.length>1) g.screens=sortScreensByStrategy(g.screens,baseGroups);});
-  const mrvGroups=[...baseGroups].sort((a,b)=>{
-    if(b.score!==a.score) return b.score-a.score;
-    return a.screens.length-b.screens.length;
-  });
-  const MAX_NODES_PER_CALL=80000;
-  function findMax(groups,mustIncludeAll){
-    let best=0,nodes=0;
-    function bb(idx,chosen){
-      if(++nodes>MAX_NODES_PER_CALL) return;
-      const remaining=groups.length-idx;
-      if(chosen.length+remaining<=best) return;
-      if(idx===groups.length){
-        if(!mustIncludeAll){if(chosen.length>best) best=chosen.length;}
-        else{const ct=new Set(chosen.map(s=>s._title));if(groups.every(g=>!g.priority||ct.has(g.title))&&chosen.length>best) best=chosen.length;}
-        return;
-      }
-      const g=groups[idx];
-      for(const s of g.screens){
-        if(!chosen.some(c=>screensConflict(c,s))){chosen.push({...s,_title:g.title});bb(idx+1,chosen);chosen.pop();}
-      }
-      bb(idx+1,chosen);
-    }
-    bb(0,[]);return best;
-  }
-  const trueMax=findMax(mrvGroups,false);
-  const hasPriorities=baseGroups.some(g=>g.priority);
-  const maxWithPriorities=hasPriorities?findMax(mrvGroups,true):trueMax;
-  const priorityCost=trueMax-maxWithPriorities;
-  const seenKeys=new Set();const allScenarios=[];
-  let incompatiblePriorities=false;
-  function collectAt(groups,targetCount,enforcePriority){
-    let nodes=0;
-    function backtrack(idx,chosen){
-      if(allScenarios.length>=8) return;
-      if(++nodes>MAX_NODES_PER_CALL) return;
-      if(chosen.length+(groups.length-idx)<targetCount) return;
-      if(idx===groups.length){
-        if(chosen.length===targetCount){
-          if(enforcePriority){const ct=new Set(chosen.map(s=>s._title));if(!groups.every(g=>!g.priority||ct.has(g.title))) return;}
-          const key=chosen.map(s=>s._title+'@'+s.day+s.time).sort().join('|');
-          if(!seenKeys.has(key)){seenKeys.add(key);allScenarios.push(chosen.map(c=>({...c})));}
-        }return;
-      }
-      const g=groups[idx];
-      for(const s of g.screens){
-        if(!chosen.some(c=>screensConflict(c,s))){chosen.push({...s,_title:g.title});backtrack(idx+1,chosen);chosen.pop();if(allScenarios.length>=8) return;}
-      }
-      if(!enforcePriority||!g.priority) backtrack(idx+1,chosen);
-    }backtrack(0,[]);
-  }
-  const prioritySorted=[...baseGroups].sort((a,b)=>{
-    if(a.priority&&!b.priority) return -1;if(!a.priority&&b.priority) return 1;return a.screens.length-b.screens.length;
-  });
-  const _seed=_titleSeed(titles);
-  if(hasPriorities&&maxWithPriorities>0){
-    collectAt(prioritySorted,maxWithPriorities,true);
-    for(let i=0;i<20&&allScenarios.length<4;i++) collectAt(shuffle(baseGroups,_mulberry32(_seed^i*7919)),maxWithPriorities,true);
-  }
-  if(!allScenarios.length&&hasPriorities){
-    incompatiblePriorities=true;
-    collectAt(prioritySorted,trueMax,false);
-    for(let i=0;i<20&&allScenarios.length<4;i++) collectAt(shuffle(baseGroups,_mulberry32(_seed^(i+100)*7919)),trueMax,false);
-  }
-  for(let i=0;i<30&&allScenarios.length<8;i++) collectAt(shuffle(baseGroups,_mulberry32(_seed^(i+200)*7919)),trueMax,false);
-  allScenarios.forEach(sc=>sc.sort((a,b)=>a.day_order!==b.day_order?a.day_order-b.day_order:toMin(a.time)-toMin(b.time)));
-  function dayBalance(sc){const counts={};sc.forEach(s=>{counts[s.day]=(counts[s.day]||0)+1;});const vals=Object.values(counts);if(vals.length<=1) return 0;const mean=vals.reduce((a,b)=>a+b,0)/vals.length;const variance=vals.reduce((a,v)=>a+Math.pow(v-mean,2),0)/vals.length;return Math.sqrt(variance);}
-  allScenarios.sort((a,b)=>dayBalance(a)-dayBalance(b));
-  const conflictingPriorityPairs=[];
-  if(incompatiblePriorities){
-    const prioGroups=baseGroups.filter(g=>g.priority);
-    for(let i=0;i<prioGroups.length;i++){
-      for(let j=i+1;j<prioGroups.length;j++){
-        const allConflict=prioGroups[i].screens.every(s1=>prioGroups[j].screens.every(s2=>screensConflict(s1,s2)));
-        if(allConflict) conflictingPriorityPairs.push([prioGroups[i].title,prioGroups[j].title]);
-      }
-    }
-  }
-  return allScenarios.map(sc=>{const included=new Set(sc.map(s=>s._title));return{schedule:sc,excluded:pending.filter(t=>!included.has(t)),incompatiblePriorities,conflictingPriorityPairs,trueMax,maxWithPriorities,priorityCost,dayBalance:Math.round(dayBalance(sc)*10)/10};});
-}
-
-// ── Message handler ───────────────────────────────────────────
+function travelMins(venueA,venueB){ return venueTravelMins(venueA,venueB); }
+`;
+    // Extraer funciones puras del main thread via .toString()
+    // Garantía: el Worker usa EXACTAMENTE el mismo código que el main thread.
+    const _pureFns=_SCHED_PURE_FNS.map(name=>{
+      const fn=eval(name); // eslint-disable-line no-eval
+      return (typeof fn==='function')?fn.toString():'/* MISSING: '+name+' */';
+    }).join('\n');
+    // Handler worker-specific
+    const _handler=`
 self.onmessage=function(e){
   const d=e.data;
-  // Inject state
   FILMS=d.films;
   watched=new Set(d.watched);
   prioritized=new Set(d.prioritized);
@@ -7855,15 +7686,13 @@ self.onmessage=function(e){
   }
 };
 `;
-
-function _mkCalcWorker(){
-  try{
-    const blob=new Blob([_CALC_WORKER_SRC],{type:'application/javascript'});
+    const src=_workerGlobals+_venueFns+_pureFns+_handler;
+    const blob=new Blob([src],{type:'application/javascript'});
     const url=URL.createObjectURL(blob);
     const w=new Worker(url);
-    URL.revokeObjectURL(url); // revocar inmediatamente — Worker ya está cargado
+    URL.revokeObjectURL(url);
     return w;
-  }catch(e){return null;}
+  }catch(e){console.warn('[Worker] build failed:',e);return null;}
 }
 
 // Worker activo — referencia para cancelar si el tab va a background
