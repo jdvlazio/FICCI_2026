@@ -4198,7 +4198,7 @@ let FESTIVAL_STORAGE_KEY=(localStorage.getItem('otrofestiv_festival')||_DEFAULT_
 // BUILD_VERSION: cambia en cada deploy.
 // Al cargar, compara con localStorage. Si difiere → reload duro.
 // sessionStorage evita loops infinitos dentro de la misma sesión.
-const BUILD_VERSION='202605110051';
+const BUILD_VERSION='202605110103';
 (function(){
   const _vk='otrofestiv_build';
   const _sk='otrofestiv_reloaded';
@@ -9270,7 +9270,7 @@ function renderProgramaList(){
       const itemStyle=[pastStyle,cancelStyle].filter(Boolean).join(';');
       const _stk=_programaStack(f);
       return`<div class="plist-item" style="${itemStyle}" onclick="openPelSheet('${safeT}')">
-        ${_stk||(_isEdList?`<div class="plist-poster plist-poster-ed" style="background:${_sectionColor(f.section||'')};display:flex;align-items:center;justify-content:center;padding:2px 3px;text-align:center"><span style="font-size:8px;font-weight:800;letter-spacing:.04em;color:#0a0a0a;text-transform:uppercase;line-height:1.2">${_secLabel(f.section||'')}</span></div>`:(src?`<div class="plist-poster"><img src="${src}" loading="lazy" onerror="this.remove()" alt="" style="width:100%;height:100%;object-fit:cover;border-radius:var(--r-sm)"></div>`:`<div class="plist-poster"></div>`))}
+        ${_stk||(_isEdList?`<div class="plist-poster" style="background:${_sectionColor(f.section||'')}">${src?`<img src="${src}" loading="lazy" onerror="this.remove()" alt="" style="width:100%;height:100%;object-fit:cover;object-position:center top;display:block;border-radius:var(--r-sm)">`:'<span style="font-size:7px;font-weight:800;letter-spacing:.04em;color:#0a0a0a;text-transform:uppercase;line-height:1;padding:2px;display:flex;align-items:center;justify-content:center;height:100%">${_secLabel(f.section||'')}</span>'}</div>`:(src?`<div class="plist-poster"><img src="${src}" loading="lazy" onerror="this.remove()" alt="" style="width:100%;height:100%;object-fit:cover;border-radius:var(--r-sm)"></div>`:`<div class="plist-poster"></div>`))}
         <div class="plist-info">
           <div class="plist-title">${noticeBadge}${_metaBadges(f)}${dt}${nowBadge}</div>
           <div class="plist-meta" style="${notice&&notice.type==='cancelled'?'text-decoration:line-through':''}">${vc.short}${sala(f.venue)?' · '+sala(f.venue):''}${f.duration?' · '+durFmt(f.duration):''}</div>
