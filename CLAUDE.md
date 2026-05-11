@@ -3,7 +3,7 @@
 > No editar a mano — los cambios se sobreescriben en el próximo deploy.
 > Para modificar secciones estáticas, editar el template en el script.
 >
-> Último commit: `b736df0 i18n: segunda pasada — 13 keys nuevas + validate.py check i18n-complete`
+> Último commit: `fc4d36a fix(grid): _secIdx ignoraba type=event — TV/Talks/Podcasts/NOW al fondo`
 
 ---
 
