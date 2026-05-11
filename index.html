@@ -4183,7 +4183,7 @@ let FESTIVAL_STORAGE_KEY=(localStorage.getItem('otrofestiv_festival')||_DEFAULT_
 // BUILD_VERSION: cambia en cada deploy.
 // Al cargar, compara con localStorage. Si difiere → reload duro.
 // sessionStorage evita loops infinitos dentro de la misma sesión.
-const BUILD_VERSION='202605111610';
+const BUILD_VERSION='202605111618';
 (function(){
   const _vk='otrofestiv_build';
   const _sk='otrofestiv_reloaded';
@@ -7618,8 +7618,11 @@ function invalidateCalcResult(){
 // ── Sprint 3: funciones puras que el Worker extrae del main thread ────────
 // Al añadir o modificar una función de scheduling en el main thread,
 // el Worker la recibe automáticamente. Sin copia manual, sin divergencia.
+// EXCLUIDAS de extracción: simNow, festivalEnded — usan globals con nombre
+// diferente en worker scope (_simTime→SIM_TIME, FESTIVAL_END→FESTIVAL_END_TS).
+// Estas se proveen como worker-local en _mkCalcWorker._venueFns.
 const _SCHED_PURE_FNS = [
-  'toMin','parseDur','_festDate','simNow','festivalEnded',
+  'toMin','parseDur','_festDate',
   'effectiveDuration','screensConflict','screeningPassed',
   'isScreeningBlocked','_djb2','_titleSeed','_mulberry32',
   'shuffle','scoreFilm','sortScreensByStrategy','computeScenarios'
@@ -7638,8 +7641,11 @@ let _venueCoords={};
 let _transport='transit';
 `;
     // Funciones de venue — usan _venueCoords/_transport (estado worker-local)
-    // Estas deben permanecer como copias worker-local, no se extraen del main.
+    // simNow/festivalEnded — usan SIM_TIME/FESTIVAL_END_TS (nombres worker-local)
+    // Estas no se extraen del main thread via .toString() por diferencia de globals.
     const _venueFns=`
+function simNow(){return SIM_TIME?new Date(SIM_TIME):new Date();}
+function festivalEnded(){return simNow()>new Date(FESTIVAL_END_TS);}
 function _workerFindCoords(v){
   if(!_venueCoords) return null;
   if(_venueCoords[v]) return _venueCoords[v];
