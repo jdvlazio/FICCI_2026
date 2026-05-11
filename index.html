@@ -829,6 +829,7 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:var(--t
  * Matemática: 390px - 20px padding - 16px gaps = 354px / 3 = 118px    *
  * Ratio 2:3 → 177px alto. Estándar one-sheet cinematográfico.          */
 .poster-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--sp-2);padding:10px 20px calc(var(--nav-h,56px) + env(safe-area-inset-bottom,0px) + 16px) 10px;transition:opacity var(--tr-fast)}
+.poster-grid-sep{grid-column:1/-1;padding:var(--sp-4) var(--sp-2) var(--sp-1);font-size:var(--t-label);font-weight:var(--w-display);letter-spacing:.08em;color:var(--gray2);text-transform:uppercase;pointer-events:none;user-select:none}
 .poster-card{position:relative;border-radius:var(--r);overflow:hidden;cursor:pointer;background:var(--surf-2);background-size:cover;background-position:center;aspect-ratio:2/3;display:block;container-type:inline-size}
 .poster-card.editorial{background:var(--surf-3,#1A1A1A);display:flex;flex-direction:column}
 .poster-card.editorial .ed-hdr{height:28.89%;flex-shrink:0;display:flex;flex-direction:column;justify-content:center;padding:0 8px}
@@ -9399,6 +9400,7 @@ function renderPeliculaView(){
 
   const DAY_ABB=['MAR','MIÉ','JUE','VIE','SÁB','DOM'];
 
+  let _prevSec=null;
   grid.innerHTML=`<div class="poster-grid">${entries.map(({film:f,screenings})=>{
     const inWL=watchlist.has(f.title);
     const inW=watched.has(f.title);
@@ -9432,7 +9434,8 @@ function renderPeliculaView(){
           :``;
       }
     }
-    return`<div class="bg-surf-2 poster-card${inWL&&!inW?' in-wl':''}${inW&&!_ended?' in-watched':''}${(_isPrograma?false:_isEditorialPoster(f))?' editorial':''}" data-title="${f.title.replace(/"/g,'&quot;')}" onclick="openPelSheet('${safeT}')"${_isPrograma?'':_cardBg}>
+    const _sep=activeDay==='all'&&f.section&&f.section!==_prevSec?`<div class="poster-grid-sep">${(f.section||'').replace(/^[\p{Emoji}\s]+/u,'').trim()}</div>`:'';_prevSec=f.section||_prevSec;
+    return _sep+`<div class="bg-surf-2 poster-card${inWL&&!inW?' in-wl':''}${inW&&!_ended?' in-watched':''}${(_isPrograma?false:_isEditorialPoster(f))?' editorial':''}" data-title="${f.title.replace(/"/g,'&quot;')}" onclick="openPelSheet('${safeT}')"${_isPrograma?'':_cardBg}>
       ${posterImg}
       ${progBadge}
       ${inWL?`<button class="poster-wl-dot wl-on" onclick="event.stopPropagation();toggleWL('${safeT}',event)" aria-label="Interés">${ICONS.heartFill}</button>`:''}

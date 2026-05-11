@@ -3,7 +3,7 @@
 > No editar a mano — los cambios se sobreescriben en el próximo deploy.
 > Para modificar secciones estáticas, editar el template en el script.
 >
-> Último commit: `fc4d36a fix(grid): _secIdx ignoraba type=event — TV/Talks/Podcasts/NOW al fondo`
+> Último commit: `2c7de91 chore: bump version — fuerza actualización SW`
 
 ---
 
@@ -62,7 +62,7 @@ Juan es Product Owner, diseñador y developer. Claude ejecuta; Juan audita y apr
 
 ### Features activas (desde `.specify/features/`)
 
-_Sin features activas en `.specify/features/`._
+- `grid-section-separators/` — fase actual: **tasks**
 
 ---
 
