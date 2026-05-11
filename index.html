@@ -2809,6 +2809,7 @@ const _I18N = {
     "label_sinopsis": "sinopsis",
     "label_descripcion": "descripción",
     "misc_ya_vistas": "Ya vistas",
+    "lbl_prioridades": "Prioridades",
     "plan_empty_dia": "No hay funciones para este día. Añadí desde Sugerencias.",
     "plan_nada_dia": "Nada en tu plan este día",
     "plan_en_tu_plan": "está en tu plan.",
@@ -3035,6 +3036,7 @@ const _I18N = {
     "label_sinopsis": "synopsis",
     "label_descripcion": "description",
     "misc_ya_vistas": "Already seen",
+    "lbl_prioridades": "Priorities",
     "plan_empty_dia": "No screenings for this day. Add from Suggestions.",
     "plan_nada_dia": "Nothing planned for this day",
     "plan_en_tu_plan": "is in your plan.",
@@ -4223,7 +4225,7 @@ let FESTIVAL_STORAGE_KEY=(localStorage.getItem('otrofestiv_festival')||_DEFAULT_
 // BUILD_VERSION: cambia en cada deploy.
 // Al cargar, compara con localStorage. Si difiere → reload duro.
 // sessionStorage evita loops infinitos dentro de la misma sesión.
-const BUILD_VERSION='202605111800';
+const BUILD_VERSION='202605111815';
 (function(){
   const _vk='otrofestiv_build';
   const _sk='otrofestiv_reloaded';
@@ -5563,7 +5565,7 @@ function renderPrioStrip(){
     </div>`;
   }).join('');
   return`<div class="prio-strip">
-    <div class="sec-hdr">${ICONS.star} Prioridades <span class="ml-1 count-badge cb-amber">${prioritized.size}/${PRIO_LIMIT}</span></div>
+    <div class="sec-hdr">${ICONS.star} ${t('lbl_prioridades')} <span class="ml-1 count-badge cb-amber">${prioritized.size}/${PRIO_LIMIT}</span></div>
     <div class="prio-strip-row">${chips}</div>
   </div>`;
 }
@@ -5685,39 +5687,62 @@ function renderFilmListHTML(){
     </div>`;
   }
 
+  // ── Ordenar cronológicamente: primero por próxima función (futuras antes que pasadas),
+  // luego por day_order + time dentro del mismo grupo ────────────────────────────────
+  function _chronoSort(titles){
+    return [...titles].sort((a,b)=>{
+      const nA=_nextScreening(a), nB=_nextScreening(b);
+      // Títulos sin función futura van al final
+      if(nA&&!nB) return -1;
+      if(!nA&&nB) return 1;
+      if(!nA&&!nB) return 0;
+      // Ambos tienen función futura: ordenar por day_order luego por hora
+      const dayDiff=(nA.day_order||0)-(nB.day_order||0);
+      if(dayDiff!==0) return dayDiff;
+      return toMin(nA.time)-toMin(nB.time);
+    });
+  }
+
   // ── Render secciones ───────────────────────────────────────────────────
   let html='';
 
   if(prioList.length){
-    const _sortedPrio=[...prioList].sort((a,b)=>(!!_nextScreening(b))-(!!_nextScreening(a)));
     html+=`<div class="int-section-hdr">
       <span class="int-section-hdr-ico">${ICONS.star}</span>
-      <span class="int-section-hdr-lbl">Prioridades</span>
+      <span class="int-section-hdr-lbl">${t('lbl_prioridades')}</span>
       <span class="count-badge cb-amber">${prioList.length}/${PRIO_LIMIT}</span>
     </div>
-    <div>${_sortedPrio.map(_mkItem).join('')}</div>`;
+    <div>${_chronoSort(prioList).map(_mkItem).join('')}</div>`;
   }
 
   if(nonPrioList.length){
     if(prioList.length) html+=`<div class="hr-bdr"></div>`;
-    const _sortedInt=[...nonPrioList].sort((a,b)=>(!!_nextScreening(b))-(!!_nextScreening(a)));
     html+=`<div class="int-section-hdr">
       <span class="int-section-hdr-ico">${ICONS.heart}</span>
-      <span class="int-section-hdr-lbl" data-i18n="nav_intereses">Intereses</span>
+      <span class="int-section-hdr-lbl" data-i18n="nav_intereses">${t('nav_intereses')}</span>
       <span class="count-badge cb-neutral">${nonPrioList.length}</span>
     </div>
-    <div>${_sortedInt.map(_mkItem).join('')}</div>`;
+    <div>${_chronoSort(nonPrioList).map(_mkItem).join('')}</div>`;
   }
 
   if(watchedList.length){
     if(prioList.length||nonPrioList.length) html+=`<div class="hr-bdr"></div>`;
-    const sortedW=[...watchedList].sort((a,b)=>(filmRatings[b]||0)-(filmRatings[a]||0));
+    // Ya vistas: ordenar cronológicamente por la primera función del film
+    const _sortedW=[...watchedList].sort((a,b)=>{
+      const fA=FILMS.filter(f=>f.title===a).sort((x,y)=>(x.day_order||0)-(y.day_order||0)||toMin(x.time)-toMin(y.time))[0];
+      const fB=FILMS.filter(f=>f.title===b).sort((x,y)=>(x.day_order||0)-(y.day_order||0)||toMin(x.time)-toMin(y.time))[0];
+      if(!fA&&!fB) return 0;
+      if(fA&&!fB) return -1;
+      if(!fA&&fB) return 1;
+      const dayDiff=(fA.day_order||0)-(fB.day_order||0);
+      return dayDiff||toMin(fA.time)-toMin(fB.time);
+    });
     html+=`<div class="int-section-hdr">
       <span class="int-section-hdr-ico">${ICONS.check}</span>
       <span class="int-section-hdr-lbl">${t('misc_ya_vistas')}</span>
       <span class="count-badge cb-neutral">${watchedList.length}</span>
     </div>
-    <div>${sortedW.map(_mkItemWatched).join('')}</div>`;
+    <div>${_sortedW.map(_mkItemWatched).join('')}</div>`;
   }
 
   // Actualizar counts en pills de navegación
