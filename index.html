@@ -1552,29 +1552,38 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:var(--t
   /* Remove the margin on nav-row that adds space above day tabs. */
   .nav-row{margin-top:0;background:transparent}
 
-  /* ── Mobile: frosted glass — backdrop-filter nativo en cada sticky ──────
-     ANTES: un #chrome-blur position:fixed compartido calculado por JS.
-     PROBLEMA: iOS Safari bug — un fixed antes de un sticky en el DOM
-     desplaza el sticky hacia abajo por la altura del fixed.
-     SOLUCIÓN: cada sticky tiene su propio backdrop-filter.
-     Sin fixed overlay, sin interferencia, mismo efecto visual. */
+  /* ── Mobile: frosted glass — pseudo-elemento ::before para iOS Safari ────
+     PROBLEMA ANTERIOR: backdrop-filter directo en position:sticky causa que
+     iOS Safari calcule el offset del sticky incorrectamente (bug WebKit
+     documentado). El topbar aparecía desplazado hacia abajo.
+     SOLUCIÓN: separar sticky-positioning del compositing layer.
+     El sticky tiene background:transparent.
+     El ::before (position:absolute, inset:0) provee el blur/background.
+     iOS Safari sticky funciona correctamente — no hay conflict. */
   #chrome-blur{display:none} /* desactivado — ya no se usa */
-  .topbar{position:sticky;top:0;z-index:200;
+
+  .topbar{position:sticky;top:0;z-index:200;background:transparent}
+  .topbar::before{content:'';position:absolute;inset:0;z-index:-1;
     background:rgba(20,20,20,0.72);
     backdrop-filter:blur(24px) saturate(180%);
     -webkit-backdrop-filter:blur(24px) saturate(180%)}
+
   .hdr{background:transparent}
   .hdr-fest-bar{background:transparent}
-  #hdr-programa{padding-top:0;
+
+  #hdr-programa{padding-top:0;background:transparent} /* top via _fixStickyOffset */
+  #hdr-programa::before{content:'';position:absolute;inset:0;z-index:-1;
     background:rgba(20,20,20,0.72);
     backdrop-filter:blur(24px) saturate(180%);
-    -webkit-backdrop-filter:blur(24px) saturate(180%)} /* top via _fixStickyOffset */
+    -webkit-backdrop-filter:blur(24px) saturate(180%)}
+
   .programa-mode-bar{background:transparent}
-  #hdr-ag{top:47px;
+
+  #hdr-ag{top:47px;background:transparent;border-bottom:none}
+  #hdr-ag::before{content:'';position:absolute;inset:0;z-index:-1;
     background:rgba(20,20,20,0.72);
     backdrop-filter:blur(24px) saturate(180%);
-    -webkit-backdrop-filter:blur(24px) saturate(180%);
-    border-bottom:none}
+    -webkit-backdrop-filter:blur(24px) saturate(180%)}
 }
 
 /* ── FESTIVAL BOTTOM SHEET ── */
@@ -4208,7 +4217,7 @@ let FESTIVAL_STORAGE_KEY=(localStorage.getItem('otrofestiv_festival')||_DEFAULT_
 // BUILD_VERSION: cambia en cada deploy.
 // Al cargar, compara con localStorage. Si difiere → reload duro.
 // sessionStorage evita loops infinitos dentro de la misma sesión.
-const BUILD_VERSION='202605111215';
+const BUILD_VERSION='202605111228';
 (function(){
   const _vk='otrofestiv_build';
   const _sk='otrofestiv_reloaded';
