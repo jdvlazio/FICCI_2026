@@ -9229,7 +9229,7 @@ function _plistPosterHtml(f, src){
       ?'<div style="flex:1;overflow:hidden;min-height:0;background:#1A1A1A"><img src="'+src+'" loading="lazy" onerror="this.remove()" alt="" style="width:100%;height:100%;object-fit:cover;object-position:center top;display:block"></div>'
       :'<div style="flex:1;background:#1A1A1A"></div>';
     return '<div class="plist-poster" style="background:'+_accent+';display:flex;flex-direction:column;overflow:hidden">'+
-      '<div style="height:30%;flex-shrink:0;background:'+_accent+';display:flex;align-items:center;padding:0 3px;overflow:hidden"><span style="font-size:6px;font-weight:800;letter-spacing:.04em;color:#0A0A0A;text-transform:uppercase;line-height:1.2;overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical">'+_secLabel(f.section||'')+'</span></div>'+
+      '<div style="height:30%;flex-shrink:0;background:'+_accent+';display:flex;align-items:center;padding:0 3px;overflow:hidden"><span style="font-size:7px;font-weight:800;letter-spacing:.04em;color:#0A0A0A;text-transform:uppercase;white-space:nowrap;overflow:hidden">'+_secLabel(f.section||'')+'</span></div>'+
       _imgSection+
     '</div>';
   }
@@ -9388,7 +9388,7 @@ function _renderExploreLista(){
     </div>`;
     const _stk2=_programaStack(f);
     return`<div class="plist-item${allPast?' past-card':''}" onclick="openPelSheet('${safeT}')">
-      ${_stk2||(src?`<div class="plist-poster"><img src="${src}" loading="lazy" onerror="this.remove()" alt="${dt}" style="width:100%;height:100%;object-fit:cover;border-radius:var(--r-sm)"></div>`:`<div class="plist-poster"></div>`)}
+      ${_stk2||_plistPosterHtml(f,src)}
       <div class="plist-info">
         ${(()=>{const n=NOTICES.find(nx=>nx.title===f.title&&nx.festival===((_activeFestId||_DEFAULT_FEST_ID)));const nb=n?`<span class="notice-badge">${n.type==='cancelled'?'CANCELADA':'REPROG.'}</span>`:'';const nn=n&&n.type==='cancelled'?`<div class="notice-detail-amber">Pendiente nueva fecha</div>`:n&&n.type==='rescheduled'&&n.newTime?`<div class="notice-detail-green">${n.newDay||''} · ${n.newTime}${n.newVenue?' · '+n.newVenue:''}</div>`:'';return`<div class="plist-title" style="${allPast?'opacity:.5':''}">${nb}${dt}</div><div class="plist-meta" style="${n&&n.type==='cancelled'?'text-decoration:line-through':''}${allPast?';opacity:.5':''}">${daysHtml?`${daysHtml} · `:''}${durFmt(f.duration)}${_metaBadges(f)?` · ${_metaBadges(f)}`:''}</div>${nn||`<div class="plist-sec">${f.section||''}</div>`}`;})()}
       </div>
