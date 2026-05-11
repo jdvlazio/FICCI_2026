@@ -4198,7 +4198,7 @@ let FESTIVAL_STORAGE_KEY=(localStorage.getItem('otrofestiv_festival')||_DEFAULT_
 // BUILD_VERSION: cambia en cada deploy.
 // Al cargar, compara con localStorage. Si difiere → reload duro.
 // sessionStorage evita loops infinitos dentro de la misma sesión.
-const BUILD_VERSION='202605102343';
+const BUILD_VERSION='202605110009';
 (function(){
   const _vk='otrofestiv_build';
   const _sk='otrofestiv_reloaded';
@@ -9491,7 +9491,7 @@ function renderPeliculaView(){
     return`<div class="bg-surf-2 poster-card${inWL&&!inW?' in-wl':''}${inW&&!_ended?' in-watched':''}${(_isPrograma?false:_isEditorialPoster(f))?' editorial':''}" data-title="${f.title.replace(/"/g,'&quot;')}" onclick="openPelSheet('${safeT}')"${_isPrograma?'':_cardBg}>
       ${posterImg}
       ${progBadge}
-      `<button class="poster-wl-dot${inWL?' wl-on':''}" onclick="event.stopPropagation();toggleWL('${safeT}',event)" aria-label="Interés">${inWL?ICONS.heartFill:ICONS.heart}</button>`
+      ${`<button class="poster-wl-dot${inWL?' wl-on':''}" onclick="event.stopPropagation();toggleWL('${safeT}',event)" aria-label="Interés">${inWL?ICONS.heartFill:ICONS.heart}</button>`}
     </div>`;
   }).join('')}</div>`;
   requestAnimationFrame(()=>window.dispatchEvent(new Event('scroll')));// trigger lazy load
@@ -9569,7 +9569,7 @@ return`<div class="poster-card${inWL&&!inW?' in-wl':''}${inW&&!_fe?' in-watched'
       ${posterImg}
       <div class="poster-time">${f.time}</div>
       ${nowBadge||pastBadge||progBadge}
-      `<button class="poster-wl-dot${inWL?' wl-on':''}" onclick="event.stopPropagation();toggleWL('${safeT}',event)" aria-label="Interés">${inWL?ICONS.heartFill:ICONS.heart}</button>`
+      ${`<button class="poster-wl-dot${inWL?' wl-on':''}" onclick="event.stopPropagation();toggleWL('${safeT}',event)" aria-label="Interés">${inWL?ICONS.heartFill:ICONS.heart}</button>`}
     </div>`;
   }).join('')+'</div>';
 
