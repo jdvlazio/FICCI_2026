@@ -1570,9 +1570,9 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:var(--t
 
   .hdr{background:transparent}
   .hdr-fest-bar{background:transparent}
-  #hdr-programa{position:relative;top:auto;padding-top:0;background:transparent}
+  #hdr-programa{position:relative!important;top:auto!important;padding-top:0;background:transparent}
   .programa-mode-bar{background:transparent}
-  #hdr-ag{position:relative;top:auto;background:transparent;border-bottom:none}
+  #hdr-ag{position:relative!important;top:auto!important;background:transparent;border-bottom:none}
 }
 
 /* ── FESTIVAL BOTTOM SHEET ── */
@@ -4207,7 +4207,7 @@ let FESTIVAL_STORAGE_KEY=(localStorage.getItem('otrofestiv_festival')||_DEFAULT_
 // BUILD_VERSION: cambia en cada deploy.
 // Al cargar, compara con localStorage. Si difiere → reload duro.
 // sessionStorage evita loops infinitos dentro de la misma sesión.
-const BUILD_VERSION='202605111310';
+const BUILD_VERSION='202605111305';
 (function(){
   const _vk='otrofestiv_build';
   const _sk='otrofestiv_reloaded';
