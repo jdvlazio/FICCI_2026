@@ -4204,7 +4204,7 @@ let FESTIVAL_STORAGE_KEY=(localStorage.getItem('otrofestiv_festival')||_DEFAULT_
 // BUILD_VERSION: cambia en cada deploy.
 // Al cargar, compara con localStorage. Si difiere → reload duro.
 // sessionStorage evita loops infinitos dentro de la misma sesión.
-const BUILD_VERSION='202605111410';
+const BUILD_VERSION='202605111430';
 (function(){
   const _vk='otrofestiv_build';
   const _sk='otrofestiv_reloaded';
@@ -7689,6 +7689,19 @@ let _transport='transit';
 
 function travelMins(venueA,venueB){
   return venueTravelMins(venueA,venueB);
+}
+
+function effectiveDuration(f){return parseDur(f&&f.duration)+(f&&f.has_qa?30:0);}
+
+function screensConflict(a,b){
+  if(a.day!==b.day) return false;
+  const aS=toMin(a.time), aE=aS+effectiveDuration(a);
+  const bS=toMin(b.time), bE=bS+effectiveDuration(b);
+  const travel=(a.venue&&b.venue)?travelMins(a.venue,b.venue):0;
+  const minGap=Math.max(FESTIVAL_BUFFER, travel+FESTIVAL_BUFFER);
+  if(aE<=bS) return (bS-aE)<minGap;
+  if(bE<=aS) return (aS-bE)<minGap;
+  return true;
 }
 
 function screeningPassed(s){
