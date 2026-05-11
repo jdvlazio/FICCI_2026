@@ -58,6 +58,7 @@ Los festivales colombianos operan en hora local. `toISOString()` devuelve UTC, l
 |---|---|---|
 | Festival selector en nav | Center tap (wordmark) vs. fila explícita | Nav redesign |
 | Desktop layout | Tabs en fila propia vs. en topbar | Desktop layout |
+| Separadores de sección en Grid | Detalle visual sutil entre grupos de sección — sin headers de texto, sin filtros. Dirección aprobada: sutil. Diseño pendiente. | Grid legibilidad |
 
 ---
 
