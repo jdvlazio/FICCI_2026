@@ -3,7 +3,7 @@
 > No editar a mano — los cambios se sobreescriben en el próximo deploy.
 > Para modificar secciones estáticas, editar el template en el script.
 >
-> Último commit: `3016dfa feat(grid): separadores de sección en TODO — .poster-grid-sep`
+> Último commit: `e79a422 fix(seccion-dropdown): eliminar ✓ de 'Todo el programa' + white-space:nowrap`
 
 ---
 
