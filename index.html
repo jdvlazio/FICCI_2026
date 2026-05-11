@@ -1549,10 +1549,8 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:var(--t
      Remove borders + match background to make the header one block.
      #hdr-programa padding-top would show a gap under the sticky hdr. */
   .hdr-fest-bar{border-top:none;border-bottom:none}
-  /* Remove the margin on nav-row that adds space above day tabs.
-     nav-row sticky: completa el chrome stack topbar → hdr-programa → nav-row.
-     z:199 entre chrome-blur(198) y topbar(200) — visible sobre el blur, debajo del topbar al colisionar. */
-  .nav-row{margin-top:0;position:sticky;top:var(--sticky-top-dtabs,118px);z-index:199;background:transparent}
+  /* Remove the margin on nav-row that adds space above day tabs. */
+  .nav-row{margin-top:0;background:transparent}
 
   /* ── Mobile: frosted glass — canvas único position:fixed ─────────────
      Un solo #chrome-blur cubre topbar + barra secundaria activa.
@@ -2598,6 +2596,10 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:var(--t
   <div class="cartelera-cta">
     <span class="cartelera-cta-text" id="cartelera-hint-text"><span data-i18n="misc_toca">Tocá</span> <span style="color:var(--amber)">♥</span> <span data-i18n="cartelera_hint_sfx">en cualquier título para agregarlo a Intereses</span></span>
   </div>
+<!-- Lista de días — dentro de hdr-programa, sticky automático -->
+<div class="nav-row" id="nav-row">
+  <div class="nav-tabs" id="dtabs"></div>
+</div>
 </div>
 </div>
 <!-- Chips de categoría — sticky, fuera de #hdr-programa para mantener chrome uniforme (38px en todos los tabs) -->
@@ -2609,10 +2611,6 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:var(--t
     <span class="txt-dim-sm">×</span>
   </div>
   <span class="paf-count" id="paf-count"></span>
-</div>
-<!-- Lista Hoy/Mañana -->
-<div class="nav-row" id="nav-row">
-  <div class="nav-tabs" id="dtabs"></div>
 </div>
 
 
@@ -4199,7 +4197,7 @@ let FESTIVAL_STORAGE_KEY=(localStorage.getItem('otrofestiv_festival')||_DEFAULT_
 // BUILD_VERSION: cambia en cada deploy.
 // Al cargar, compara con localStorage. Si difiere → reload duro.
 // sessionStorage evita loops infinitos dentro de la misma sesión.
-const BUILD_VERSION='202605111156';
+const BUILD_VERSION='202605111205';
 (function(){
   const _vk='otrofestiv_build';
   const _sk='otrofestiv_reloaded';
@@ -10169,24 +10167,18 @@ function _fixStickyOffset(){
   }
   const hdrH=document.getElementById('hdr-programa')?.offsetHeight||(tbH+(isMobile?0:navH));
   r.setProperty('--sticky-top-chips',hdrH+'px');
-  // ── Mobile: chrome stack — topbar → hdr-programa(or hdr-ag) → nav-row(dtabs) ──
-  // Una sola medición del DOM; un solo paint del chrome-blur cubre todo el chrome stuck.
+  // ── Mobile: chrome-blur cubre topbar + barra secundaria activa ──
+  // nav-row está dentro de hdr-programa → su altura ya está incluida en prog.offsetHeight.
   if(isMobile){
     const prog=document.getElementById('hdr-programa');
     const ag=document.getElementById('hdr-ag');
-    let secH=0;
-    if(prog && getComputedStyle(prog).display!=='none') secH=prog.offsetHeight;
-    else if(ag && getComputedStyle(ag).display!=='none') secH=ag.offsetHeight;
-    // nav-row (dtabs) — visible solo en cartelera (toggle .hidden via switchMainNav)
-    const navRow=document.getElementById('nav-row');
-    const navRowH=(navRow && !navRow.classList.contains('hidden')) ? navRow.offsetHeight : 0;
-    // dtabs stick bajo topbar + barra secundaria
-    r.setProperty('--sticky-top-dtabs',(tbH+secH)+'px');
-    // Lista time-headers stick bajo todo el chrome (topbar + secundaria + dtabs)
-    r.setProperty('--sticky-top-lista',(tbH+secH+navRowH)+'px');
-    // chrome-blur cubre el chrome completo sin seams
+    // progH y agH son mutuamente excluyentes (cartelera vs agenda)
+    const progH=(prog && getComputedStyle(prog).display!=='none') ? prog.offsetHeight : 0;
+    const agH=(ag && getComputedStyle(ag).display!=='none') ? ag.offsetHeight : 0;
+    const secH=progH+agH;
+    r.setProperty('--sticky-top-lista',(tbH+secH)+'px');
     const cb=document.getElementById('chrome-blur');
-    if(cb) cb.style.height=(tbH+secH+navRowH)+'px';
+    if(cb) cb.style.height=(tbH+secH)+'px';
   }
 }
 // Run after layout is complete (fonts + CSS painted)
