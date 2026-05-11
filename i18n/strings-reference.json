@@ -445,9 +445,9 @@
     "ctx": "Undo button aria-label"
   },
   "aria_marcar_vista": {
-    "es": "Marcar vista",
+    "es": "Marcar como vista",
     "en": "Mark as seen",
-    "ctx": "Seen button aria-label"
+    "context": "i18n audit — hardcoded Spanish fix"
   },
   "aria_quitar_vista": {
     "es": "Quitar de vistas",
@@ -998,5 +998,85 @@
     "es": "ha terminado",
     "en": "has ended",
     "context": "Empty states + prio modal — aprobado Content+UX"
+  },
+  "plan_bloqueado_disp": {
+    "es": "cae en horarios no disponibles — no podrá incluirse en el plan",
+    "en": "conflicts with your unavailable hours",
+    "context": "i18n audit — hardcoded Spanish fix"
+  },
+  "plan_vuelta_pendientes": {
+    "es": "De vuelta en pendientes",
+    "en": "Moved back to Interests",
+    "context": "i18n audit — hardcoded Spanish fix"
+  },
+  "plan_reemplazada_por": {
+    "es": "Reemplazada por",
+    "en": "Replaced with",
+    "context": "i18n audit — hardcoded Spanish fix"
+  },
+  "plan_anadida_al_plan": {
+    "es": "añadida al plan",
+    "en": "added to plan",
+    "context": "i18n audit — hardcoded Spanish fix"
+  },
+  "plan_sin_calificar": {
+    "es": "${n} sin calificar",
+    "en": "${n} to rate",
+    "context": "i18n audit — hardcoded Spanish fix"
+  },
+  "plan_viste_n": {
+    "es": "Viste ${n}",
+    "en": "You watched ${n}",
+    "context": "i18n audit — hardcoded Spanish fix"
+  },
+  "plan_una_pendiente": {
+    "es": "Una pendiente de calificar.",
+    "en": "One to rate.",
+    "context": "i18n audit — hardcoded Spanish fix"
+  },
+  "misc_manana": {
+    "es": "mañana",
+    "en": "tomorrow",
+    "context": "i18n audit — hardcoded Spanish fix"
+  },
+  "notice_cancelada": {
+    "es": "CANCELADA",
+    "en": "CANCELED",
+    "context": "i18n audit — hardcoded Spanish fix"
+  },
+  "notice_reprogramada": {
+    "es": "REPROGRAMADA",
+    "en": "RESCHEDULED",
+    "context": "i18n audit — hardcoded Spanish fix"
+  },
+  "notice_cancelada_short": {
+    "es": "Cancelada",
+    "en": "Canceled",
+    "context": "i18n audit — hardcoded Spanish fix"
+  },
+  "notice_reprog_short": {
+    "es": "Reprog.",
+    "en": "Rescheduled",
+    "context": "i18n audit — hardcoded Spanish fix"
+  },
+  "notice_nueva_funcion": {
+    "es": "Nueva función:",
+    "en": "New screening:",
+    "context": "i18n audit — hardcoded Spanish fix"
+  },
+  "plan_reemplazar_plan": {
+    "es": "Reemplazar plan",
+    "en": "Replace plan",
+    "context": "i18n audit — hardcoded Spanish fix"
+  },
+  "plan_continuar_quitar": {
+    "es": "¿Continuar y quitar del plan?",
+    "en": "This will remove it from your plan.",
+    "context": "i18n audit — hardcoded Spanish fix"
+  },
+  "aria_marcar_pendiente": {
+    "es": "Marcar como pendiente",
+    "en": "Mark as unwatched",
+    "context": "i18n audit — hardcoded Spanish fix"
   }
 }
