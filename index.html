@@ -8391,7 +8391,7 @@ function filterByVenue(venue){
 
 function filterByDay(day){
   closePelSheet();
-  activeDay=day;activeVenue='all';activeSec='all';selectedIdx=null;
+  activeDay=day;activeVenue='all';selectedIdx=null;
   cartelaMode='horario';
   document.querySelectorAll('.dtab').forEach(t=>t.classList.toggle('on',t.dataset.day===day));
   requestAnimationFrame(()=>{
@@ -8400,6 +8400,7 @@ function filterByDay(day){
   });
   switchMainNav('mnav-cartelera');
   _renderProgramaContent();
+  _updateProgramaActiveFilter();
 }
 
 // ── pelicula-day tap → filterByDay ──────────────────────────
