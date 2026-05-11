@@ -9382,10 +9382,10 @@ function renderPeliculaView(){
     }));
   }
 
-  // Sort Grid: por sección editorial (orden de aparición en FILMS) → cronológico dentro de sección
-  // Eventos siempre al final. Lista usa sort cronológico puro (renderProgramaList).
-  const _secOrder=(()=>{const m={};let i=0;FILMS.forEach(f=>{if(f.section&&!(f.section in m))m[f.section]=i++;});return m;})();
-  const _secIdx=f=>f.type==='event'?99999:(_secOrder[f.section]??99998);
+  // Sort Grid: por sección editorial (SECTION_ORDER_LIST) → cronológico dentro de sección
+  // Misma fuente de verdad que el filtro Sección. Eventos siempre al final.
+  // Lista usa sort cronológico puro (renderProgramaList).
+  const _secIdx=f=>f.type==='event'?99999:(()=>{const i=SECTION_ORDER_LIST.indexOf(f.section??'');return i<0?99998:i;})();
   entries.sort((a,b)=>{
     const so=_secIdx(a.film)-_secIdx(b.film);
     if(so!==0) return so;
