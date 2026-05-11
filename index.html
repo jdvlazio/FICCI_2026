@@ -6273,8 +6273,7 @@ function renderContextualHeader(){
       const r=filmRatings[t];
       const{displayTitle:dt}=parseProgramTitle(t);
       const src=getFilmPoster(f)||'';
-      const _isEd=_isEditorialPoster(f);
-      const _isEd=f&&_isEditorialPoster(f);
+      const _isEdList=_isEditorialPoster(f);
       const safeT=t.replace(/'/g,"&#39;");
       const stars=r?starsText(r):'';
       // Posters grandes, plena opacidad — pensado para screenshot
@@ -9269,7 +9268,7 @@ function renderProgramaList(){
       const itemStyle=[pastStyle,cancelStyle].filter(Boolean).join(';');
       const _stk=_programaStack(f);
       return`<div class="plist-item" style="${itemStyle}" onclick="openPelSheet('${safeT}')">
-        ${_stk||(_isEd?`<div class="plist-poster plist-poster-ed" style="background:${_sectionColor(f.section||'')};display:flex;align-items:center;justify-content:center;padding:2px 3px;text-align:center"><span style="font-size:8px;font-weight:800;letter-spacing:.04em;color:#0a0a0a;text-transform:uppercase;line-height:1.2">${_secLabel(f.section||'')}</span></div>`:(src?`<div class="plist-poster"><img src="${src}" loading="lazy" onerror="this.remove()" alt="" style="width:100%;height:100%;object-fit:cover;border-radius:var(--r-sm)"></div>`:`<div class="plist-poster"></div>`))}
+        ${_stk||(_isEdList?`<div class="plist-poster plist-poster-ed" style="background:${_sectionColor(f.section||'')};display:flex;align-items:center;justify-content:center;padding:2px 3px;text-align:center"><span style="font-size:8px;font-weight:800;letter-spacing:.04em;color:#0a0a0a;text-transform:uppercase;line-height:1.2">${_secLabel(f.section||'')}</span></div>`:(src?`<div class="plist-poster"><img src="${src}" loading="lazy" onerror="this.remove()" alt="" style="width:100%;height:100%;object-fit:cover;border-radius:var(--r-sm)"></div>`:`<div class="plist-poster"></div>`))}
         <div class="plist-info">
           <div class="plist-title">${noticeBadge}${_metaBadges(f)}${dt}${nowBadge}</div>
           <div class="plist-meta" style="${notice&&notice.type==='cancelled'?'text-decoration:line-through':''}">${vc.short}${sala(f.venue)?' · '+sala(f.venue):''}${f.duration?' · '+durFmt(f.duration):''}</div>
