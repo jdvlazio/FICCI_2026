@@ -2103,7 +2103,7 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:var(--t
 .lugar-btn::after{content:'';position:absolute;inset:-12px -8px}
 .lugar-btn.active{color:var(--amber)}
 .sec-drop-hdr{padding:10px var(--sp-4) 4px;font-size:10px;font-weight:700;letter-spacing:.08em;color:var(--gray2);text-transform:uppercase;pointer-events:none;user-select:none}
-.lugar-opt{display:flex;align-items:center;gap:var(--sp-2);padding:10px var(--sp-4);min-height:44px;box-sizing:border-box;cursor:pointer;font-size:var(--t-base);color:var(--gray);border-bottom:1px solid var(--bdr-l);transition:background var(--tr-base)}
+.lugar-opt{display:flex;align-items:center;gap:var(--sp-2);padding:10px var(--sp-4);min-height:44px;box-sizing:border-box;cursor:pointer;font-size:var(--t-base);color:var(--gray);border-bottom:1px solid var(--bdr-l);transition:background var(--tr-base);white-space:nowrap}
 .lugar-opt:last-child{border-bottom:none}
 .lugar-opt:active,.lugar-opt:hover{background:var(--surf-2)}
 .lugar-opt.on{color:var(--white);font-weight:var(--w-semi)}
@@ -10438,7 +10438,7 @@ function seccionOpen(){
 
   let html='<div class="lugar-opt'+(activeSec==='all'?' on':'')+'" data-s="all">'
     +'<span>'+t('filter_todo_programa')+'</span><span class="lugar-cnt">'+total+'</span>'
-    +(activeSec==='all'?'<span class="txt-amber-ml">✓</span>':'')+'</div>';
+    +'</div>';
 
   const hasCategories=Object.keys(secCatMap).length>0;
   const orderedSecs=Object.keys(secMap).sort((a,b)=>{

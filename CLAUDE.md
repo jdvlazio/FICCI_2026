@@ -3,7 +3,7 @@
 > No editar a mano — los cambios se sobreescriben en el próximo deploy.
 > Para modificar secciones estáticas, editar el template en el script.
 >
-> Último commit: `2c7de91 chore: bump version — fuerza actualización SW`
+> Último commit: `3016dfa feat(grid): separadores de sección en TODO — .poster-grid-sep`
 
 ---
 
