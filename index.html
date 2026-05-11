@@ -4198,7 +4198,7 @@ let FESTIVAL_STORAGE_KEY=(localStorage.getItem('otrofestiv_festival')||_DEFAULT_
 // BUILD_VERSION: cambia en cada deploy.
 // Al cargar, compara con localStorage. Si difiere → reload duro.
 // sessionStorage evita loops infinitos dentro de la misma sesión.
-const BUILD_VERSION='202605110030';
+const BUILD_VERSION='202605110043';
 (function(){
   const _vk='otrofestiv_build';
   const _sk='otrofestiv_reloaded';
@@ -4647,8 +4647,9 @@ function toggleWL(title,e){
   saveState('wl','watched');updateCardState(title);updateAgTab();
   if(activeView==='agenda'){cachedResult=null;renderAgenda();}
   else if(activeView==='day'&&activeMNav==='mnav-cartelera'){
-    // Re-renderizar el grid de Programa para reflejar el cambio de ♥
-    _renderProgramaContent();
+    // Re-renderizar solo si el pel-sheet no está abierto
+    const _pelOpen=document.getElementById('pel-sheet')?.classList.contains('open');
+    if(!_pelOpen) _renderProgramaContent();
   }
 }
 function toggleWatched(title,e){
