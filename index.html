@@ -2255,7 +2255,7 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:var(--t
 .ml-1{margin-left:var(--sp-1)}
 .txt-amber-xs{color:var(--amber);font-size:var(--t-xs)}
 .hr-bdr{height:1px;background:var(--bdr);margin:0}
-.img-cover{width:100%;height:100%;object-fit:cover;display:block}
+.img-cover{width:100%;height:100%;object-fit:cover;object-position:center top;display:block}
 .pad-sm{padding:var(--sp-3) var(--sp-4)}
 .mb-3{margin-bottom:var(--sp-3)}
 .row-sm{display:flex;align-items:center;gap:var(--sp-2)}
@@ -4198,7 +4198,7 @@ let FESTIVAL_STORAGE_KEY=(localStorage.getItem('otrofestiv_festival')||_DEFAULT_
 // BUILD_VERSION: cambia en cada deploy.
 // Al cargar, compara con localStorage. Si difiere → reload duro.
 // sessionStorage evita loops infinitos dentro de la misma sesión.
-const BUILD_VERSION='202605110121';
+const BUILD_VERSION='202605110139';
 (function(){
   const _vk='otrofestiv_build';
   const _sk='otrofestiv_reloaded';
