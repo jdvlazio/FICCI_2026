@@ -4137,7 +4137,7 @@ function toMin(t){
   }
   return h*60+m; // 24h format
 }
-function parseDur(d){const m=d&&d.replace('~','').match(/(\d+)/);return m?parseInt(m[1]):DEFAULT_DURATION_MIN;}
+function parseDur(d){const s=d!=null?String(d):'';const m=s&&s.replace('~','').match(/(\d+)/);return m?parseInt(m[1]):DEFAULT_DURATION_MIN;}
 // Duración efectiva: parseDur + 30 min si has_qa (Q&A alarga la función)
 function effectiveDuration(f){return parseDur(f&&f.duration)+(f&&f.has_qa?30:0);}
 function minToStr(m){
@@ -4198,7 +4198,7 @@ let FESTIVAL_STORAGE_KEY=(localStorage.getItem('otrofestiv_festival')||_DEFAULT_
 // BUILD_VERSION: cambia en cada deploy.
 // Al cargar, compara con localStorage. Si difiere → reload duro.
 // sessionStorage evita loops infinitos dentro de la misma sesión.
-const BUILD_VERSION='202605110043';
+const BUILD_VERSION='202605110051';
 (function(){
   const _vk='otrofestiv_build';
   const _sk='otrofestiv_reloaded';
@@ -7656,7 +7656,7 @@ function toMin(t){
   }
   return h*60+m; // 24h format
 }
-function parseDur(d){const m=d&&d.replace('~','').match(/(\d+)/);return m?parseInt(m[1]):DEFAULT_DURATION_MIN;}
+function parseDur(d){const s=d!=null?String(d):'';const m=s&&s.replace('~','').match(/(\d+)/);return m?parseInt(m[1]):DEFAULT_DURATION_MIN;}
 function _festDate(dateStr,time){return new Date(dateStr+'T'+time+':00'+TZ_OFFSET);}
 function simNow(){return SIM_TIME?new Date(SIM_TIME):new Date();}
 function festivalEnded(){return simNow()>new Date(FESTIVAL_END_TS);}
