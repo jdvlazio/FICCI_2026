@@ -2244,11 +2244,12 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:var(--t
 .int-item-next{display:inline-flex;align-items:center;gap:3px;font-size:var(--t-xs);font-weight:var(--w-semi);color:var(--amber)}
 .int-item-gone{font-size:var(--t-xs);color:var(--gray2);font-style:italic}
 .int-item-conflict{display:inline-flex;align-items:center;gap:3px;font-size:var(--t-xs);font-weight:var(--w-semi);color:var(--red);background:var(--red-08);border:1px solid var(--red-20);border-radius:var(--r-pill);padding:1px 6px;margin-top:3px}
-.int-item-actions{display:flex;flex-direction:column;align-items:center;gap:var(--sp-2);flex-shrink:0;align-self:center}
-.int-prio-btn{width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center;border:1px solid transparent;cursor:pointer;transition:all var(--tr-base);font-size:var(--t-base);background:var(--surf-2);color:var(--gray2);font-family:var(--font);-webkit-tap-highlight-color:transparent}
-.int-prio-btn.on{background:var(--amber-10);color:var(--amber);border-color:var(--amber-30)}
-.int-seen-btn{width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center;border:1px solid transparent;cursor:pointer;background:var(--surf-2);color:var(--gray2);transition:all var(--tr-base);font-size:var(--t-label);font-weight:var(--w-bold);font-family:var(--font);-webkit-tap-highlight-color:transparent}
-.int-seen-btn.on{background:var(--green-10);color:var(--green);border-color:var(--green-30)}
+.int-item-actions{display:flex;flex-direction:column;align-items:center;justify-content:center;flex-shrink:0;align-self:center}
+.int-prio-btn{width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;border:none;cursor:pointer;transition:color var(--tr-base),transform var(--tr-base);font-size:16px;background:transparent;color:var(--gray2);font-family:var(--font);-webkit-tap-highlight-color:transparent;padding:0}
+.int-prio-btn:active{opacity:.6;transform:scale(.9)}
+.int-prio-btn.on{color:var(--amber)}
+.int-seen-btn{width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;border:none;cursor:pointer;background:transparent;color:var(--gray2);transition:color var(--tr-base);font-size:13px;font-weight:var(--w-bold);font-family:var(--font);-webkit-tap-highlight-color:transparent;padding:0}
+.int-seen-btn.on{color:var(--green)}
 .int-vistas-collapsed{padding:var(--sp-2) var(--sp-4);display:flex;align-items:center;gap:var(--sp-2)}
 .int-vistas-collapsed-txt{font-size:var(--t-sm);color:var(--gray2)}
 
@@ -4203,7 +4204,7 @@ let FESTIVAL_STORAGE_KEY=(localStorage.getItem('otrofestiv_festival')||_DEFAULT_
 // BUILD_VERSION: cambia en cada deploy.
 // Al cargar, compara con localStorage. Si difiere → reload duro.
 // sessionStorage evita loops infinitos dentro de la misma sesión.
-const BUILD_VERSION='202605111320';
+const BUILD_VERSION='202605111340';
 (function(){
   const _vk='otrofestiv_build';
   const _sk='otrofestiv_reloaded';
@@ -5642,7 +5643,6 @@ function renderFilmListHTML(){
       </div>
       <div class="int-item-actions">
         <button class="int-prio-btn${isPrio?' on':''}" onclick="togglePriority('${safeT}');event.stopPropagation()" aria-label="${t('aria_priorizar')}">★</button>
-        <button class="int-seen-btn${isWatched?' on':''}" onclick="toggleWatched('${safeT}',event)" aria-label="${t('aria_marcar_vista')}">✓</button>
       </div>
     </div>`;
   }
