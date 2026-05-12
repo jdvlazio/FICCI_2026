@@ -32,6 +32,7 @@
 <meta name="twitter:description" content="Tú decides el festival. Más de lo que crees posible.">
 <meta name="twitter:image" content="https://otrofestiv.app/icon-512.png">
 <link rel="preconnect" href="https://image.tmdb.org">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/gsap.min.js" defer></script>
 <style>
 @font-face{font-family:'Plus Jakarta Sans';font-style:normal;font-weight:400;font-display:swap;src:url(/fonts/plus-jakarta-sans-latin-400-normal.woff2') format('woff2')}
 @font-face{font-family:'Plus Jakarta Sans';font-style:normal;font-weight:500;font-display:swap;src:url(/fonts/plus-jakarta-sans-latin-500-normal.woff2') format('woff2')}
@@ -1883,9 +1884,13 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:var(--t
   visibility:hidden;
   pointer-events:none;
 }
+.splash-bar-top,.splash-bar-bot{position:absolute;left:0;right:0;height:15%;background:var(--bg);z-index:99;pointer-events:none;transform-origin:top center}
+.splash-bar-bot{top:auto;bottom:0;transform-origin:bottom center}
+.splash-wm-char{display:inline-block}
+.splash-divider{width:0;height:1px;background:var(--amber-30);margin:var(--sp-3) auto var(--sp-5)}
 .splash-wordmark{
   font-size:var(--t-lg);letter-spacing:-.03em;color:var(--white);
-  font-weight:var(--w-display);line-height:1;
+  font-weight:var(--w-display);line-height:1;overflow:visible;
 }
 .splash-brand{display:flex;flex-direction:column;align-items:center}
 .splash-action{width:100%;display:flex;flex-direction:column;align-items:center}
@@ -2363,7 +2368,10 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:var(--t
 <body>
 <!-- Splash siempre visible — se pre-selecciona el festival en curso por fecha. -->
 <div id="otrofestiv-splash" role="dialog" aria-label="Bienvenida" aria-modal="true">
-  <div class="splash-wordmark">Otro<span>festiv</span></div>
+  <div class="splash-bar-top" id="splash-bar-top" aria-hidden="true"></div>
+  <div class="splash-bar-bot" id="splash-bar-bot" aria-hidden="true"></div>
+  <div class="splash-wordmark" id="splash-wordmark">Otro<span>festiv</span></div>
+  <div class="splash-divider" id="splash-divider"></div>
   <div class="splash-action">
   <div class="splash-selector">
     <div class="splash-fest-label" data-i18n="splash_festival">¿A qué festival vas?</div>
@@ -10003,6 +10011,57 @@ _sbInit();
     if(m) m.textContent=`${cfg.city} · ${_langDates(cfg)}${cfg.year?' '+cfg.year:''}`.trimEnd();
   }
 })();
+
+// ── Splash animation ────────────────────────────────────────────────────────
+function _initSplashAnimation(){
+  // Respeta prefers-reduced-motion
+  if(window.matchMedia('(prefers-reduced-motion:reduce)').matches) return;
+  if(typeof gsap==='undefined') return;
+
+  const wm   = document.getElementById('splash-wordmark');
+  const barT = document.getElementById('splash-bar-top');
+  const barB = document.getElementById('splash-bar-bot');
+  const div  = document.getElementById('splash-divider');
+  const act  = document.querySelector('.splash-action');
+  const tag  = document.querySelector('.splash-tagline');
+  if(!wm||!barT||!barB) return;
+
+  // Split wordmark into individual char spans
+  const text = wm.textContent; // "Otrofestiv"
+  wm.innerHTML = text.split('').map((ch,i)=>
+    `<span class="splash-wm-char" style="color:${i>=4?'var(--amber)':'var(--white)'}">${ch}</span>`
+  ).join('');
+  const chars = wm.querySelectorAll('.splash-wm-char');
+
+  // Initial state
+  gsap.set(chars,  {opacity:0, y:10, rotationX:-60, transformOrigin:'50% 100%'});
+  gsap.set(div,    {width:0, opacity:0});
+  gsap.set(act,    {opacity:0, y:16});
+  gsap.set(tag,    {opacity:0});
+
+  const tl = gsap.timeline();
+
+  // 1 — Letterbox abre
+  tl.to([barT, barB], {scaleY:0, duration:.75, ease:'power3.inOut'}, 0.08);
+
+  // 2 — Wordmark letra por letra
+  tl.to(chars, {opacity:1, y:0, rotationX:0, duration:.5, stagger:.05, ease:'back.out(1.4)'}, 0.5);
+
+  // 3 — Línea amber se dibuja
+  tl.to(div, {width:56, opacity:1, duration:.45, ease:'power2.out'}, 1.15);
+
+  // 4 — Selector + botón sube
+  tl.to(act, {opacity:1, y:0, duration:.5, ease:'power3.out'}, 1.4);
+
+  // 5 — Tagline aparece
+  tl.to(tag, {opacity:1, duration:.6, ease:'power2.out'}, 1.75);
+}
+// Ejecutar cuando GSAP esté disponible
+if(document.readyState==='loading'){
+  document.addEventListener('DOMContentLoaded', _initSplashAnimation);
+} else {
+  setTimeout(_initSplashAnimation, 0);
+}
 
 // ── Init: el splash siempre se muestra ─────────────────────────────
 // El festival pre-seleccionado es el que está en curso por fecha.
