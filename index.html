@@ -1887,7 +1887,6 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:var(--t
 .splash-bar-top,.splash-bar-bot{position:absolute;left:0;right:0;height:15%;background:var(--bg);z-index:99;pointer-events:none;transform-origin:top center}
 .splash-bar-bot{top:auto;bottom:0;transform-origin:bottom center}
 .splash-wm-char{display:inline-block}
-.splash-divider{width:0;height:1px;background:var(--amber-30);margin:var(--sp-3) auto var(--sp-5)}
 .splash-wordmark{
   font-size:var(--t-lg);letter-spacing:-.03em;color:var(--white);
   font-weight:var(--w-display);line-height:1;overflow:visible;
@@ -2371,7 +2370,6 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:var(--t
   <div class="splash-bar-top" id="splash-bar-top" aria-hidden="true"></div>
   <div class="splash-bar-bot" id="splash-bar-bot" aria-hidden="true"></div>
   <div class="splash-wordmark" id="splash-wordmark">Otro<span>festiv</span></div>
-  <div class="splash-divider" id="splash-divider"></div>
   <div class="splash-action">
   <div class="splash-selector">
     <div class="splash-fest-label" data-i18n="splash_festival">¿A qué festival vas?</div>
@@ -10014,47 +10012,44 @@ _sbInit();
 
 // ── Splash animation ────────────────────────────────────────────────────────
 function _initSplashAnimation(){
-  // Respeta prefers-reduced-motion
   if(window.matchMedia('(prefers-reduced-motion:reduce)').matches) return;
   if(typeof gsap==='undefined') return;
+  try{
+    const wm   = document.getElementById('splash-wordmark');
+    const barT = document.getElementById('splash-bar-top');
+    const barB = document.getElementById('splash-bar-bot');
+    const act  = document.querySelector('.splash-action');
+    const tag  = document.querySelector('.splash-tagline');
+    if(!wm||!barT||!barB) return;
 
-  const wm   = document.getElementById('splash-wordmark');
-  const barT = document.getElementById('splash-bar-top');
-  const barB = document.getElementById('splash-bar-bot');
-  const div  = document.getElementById('splash-divider');
-  const act  = document.querySelector('.splash-action');
-  const tag  = document.querySelector('.splash-tagline');
-  if(!wm||!barT||!barB) return;
+    // Split wordmark in char spans — preserva colores Otro/festiv
+    const text=wm.textContent;
+    wm.innerHTML=text.split('').map((ch,i)=>
+      `<span class="splash-wm-char" style="color:${i>=4?'var(--amber)':'var(--white)'}">${ch}</span>`
+    ).join('');
+    const chars=wm.querySelectorAll('.splash-wm-char');
 
-  // Split wordmark into individual char spans
-  const text = wm.textContent; // "Otrofestiv"
-  wm.innerHTML = text.split('').map((ch,i)=>
-    `<span class="splash-wm-char" style="color:${i>=4?'var(--amber)':'var(--white)'}">${ch}</span>`
-  ).join('');
-  const chars = wm.querySelectorAll('.splash-wm-char');
+    // gsap.from() — elementos visibles por defecto, GSAP anima desde estado oculto
+    // Si falla en cualquier punto, los elementos quedan visibles
+    const tl=gsap.timeline({
+      onInterrupt:()=>{gsap.set([chars,act,tag],{clearProps:'all'});}
+    });
 
-  // Initial state
-  gsap.set(chars,  {opacity:0, y:10, rotationX:-60, transformOrigin:'50% 100%'});
-  gsap.set(div,    {width:0, opacity:0});
-  gsap.set(act,    {opacity:0, y:16});
-  gsap.set(tag,    {opacity:0});
+    // 1 — Letterbox abre
+    tl.from([barT,barB],{scaleY:1,duration:.75,ease:'power3.inOut',stagger:0},0.08);
 
-  const tl = gsap.timeline();
+    // 2 — Wordmark letra por letra
+    tl.from(chars,{opacity:0,y:10,rotationX:-60,transformOrigin:'50% 100%',
+      duration:.5,stagger:.05,ease:'back.out(1.4)'},0.5);
 
-  // 1 — Letterbox abre
-  tl.to([barT, barB], {scaleY:0, duration:.75, ease:'power3.inOut'}, 0.08);
+    // 3 — Selector + botón sube
+    tl.from(act,{opacity:0,y:16,duration:.5,ease:'power3.out'},1.2);
 
-  // 2 — Wordmark letra por letra
-  tl.to(chars, {opacity:1, y:0, rotationX:0, duration:.5, stagger:.05, ease:'back.out(1.4)'}, 0.5);
-
-  // 3 — Línea amber se dibuja
-  tl.to(div, {width:56, opacity:1, duration:.45, ease:'power2.out'}, 1.15);
-
-  // 4 — Selector + botón sube
-  tl.to(act, {opacity:1, y:0, duration:.5, ease:'power3.out'}, 1.4);
-
-  // 5 — Tagline aparece
-  tl.to(tag, {opacity:1, duration:.6, ease:'power2.out'}, 1.75);
+    // 4 — Tagline
+    tl.from(tag,{opacity:0,duration:.6,ease:'power2.out'},1.6);
+  }catch(e){
+    // Si GSAP falla por cualquier razón, el splash queda visible normalmente
+  }
 }
 // Ejecutar cuando GSAP esté disponible
 if(document.readyState==='loading'){
