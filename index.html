@@ -3013,11 +3013,11 @@ const _I18N = {
     "search_sin_res": "No results",
     "search_sin_res_para": "No results for",
     "search_resultados": "Results",
-    "empty_intereses": "Add films you're interested in to build your plan.",
-    "empty_intereses_2": "Add films you're interested in.",
+    "empty_intereses": "Add titles you're interested in to build your plan.",
+    "empty_intereses_2": "Add titles you're interested in.",
     "empty_intereses_3": "Add what you don't want to miss. Once you have your list, we'll build your plan.",
     "empty_lo_que_agg": "What you add shows up here.",
-    "empty_vistas": "You haven't marked any films as seen.",
+    "empty_vistas": "No titles marked as seen yet.",
     "empty_calificar": "You can rate them now.",
     "empty_todo_calif": "All rated",
     "empty_programa": "Explore the full festival program.",
@@ -3027,7 +3027,7 @@ const _I18N = {
     "toast_cod_mal": "Incorrect or expired code. Try again.",
     "toast_envio_err": "Failed to send. Try again.",
     "toast_calif_elim": "Rating removed",
-    "toast_horario_lib": "Time slot freed — more films may fit",
+    "toast_horario_lib": "Time slot freed — more titles may fit",
     "toast_conexion": "Couldn't load the festival. Check your connection.",
     "notice_funcion_canc": "Screening cancelled · New date pending",
     "notice_extension": "Screening may run long",
@@ -3136,7 +3136,7 @@ const _I18N = {
     "export_aparecera": "Shows in the image when you share your plan.",
     "export_como_aparecer": "What name should appear on your plan?",
     "plan_sin_combos": "No combinations found. Adjust your availability.",
-    "plan_choca": "Conflicts with films in your plan",
+    "plan_choca": "Conflicts with your plan",
     "misc_mas": "+ more ·",
     "misc_toca": "Tap",
     "cartelera_hint_sfx": "on any title to add it to Interests",
@@ -3164,11 +3164,11 @@ const _I18N = {
     "auth_cerrar": "Sign out",
     "badge_inscripcion": "RSVP",
     "badge_inscripcion_prev": "RSVP REQUIRED",
-    "filter_sin_peliculas": "No films match this filter",
+    "filter_sin_peliculas": "Nothing matches this filter",
     "plan_quitar_tmb": "Remove it from your saved plan too?",
     "plan_se_quitara": "It'll be removed from Interests and options will update",
     "plan_reemplazar": "Replace it with this option? Your current plan will be lost",
-    "plan_no_intereses": "film(s) no longer in Interests",
+    "plan_no_intereses": "No longer in Interests",
     "splash_tagline_2": "possible.",
     "filter_todos_lugares": "All venues",
     "filter_todo_programa": "All sections",
@@ -3199,7 +3199,7 @@ const _I18N = {
     "misc_omitir": "Skip",
     "plan_ya_tenes_prio": "You have",
     "plan_quieres_prio": "Want to prioritize",
-    "plan_revisa_planeaste": "Review what you planned and the films you marked as seen.",
+    "plan_revisa_planeaste": "Review what you planned and the titles you marked as seen.",
     "plan_ir_programa": "Go to Program",
     "plan_fest_terminado": "has ended",
     "misc_prioridades": "priorities",
@@ -4313,7 +4313,7 @@ let FESTIVAL_STORAGE_KEY=(localStorage.getItem('otrofestiv_festival')||_DEFAULT_
 // BUILD_VERSION: cambia en cada deploy.
 // Al cargar, compara con localStorage. Si difiere → reload duro.
 // sessionStorage evita loops infinitos dentro de la misma sesión.
-const BUILD_VERSION='202605120146';
+const BUILD_VERSION='202605121122';
 (function(){
   const _vk='otrofestiv_build';
   const _sk='otrofestiv_reloaded';

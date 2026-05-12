@@ -3,7 +3,7 @@
 > No editar a mano — los cambios se sobreescriben en el próximo deploy.
 > Para modificar secciones estáticas, editar el template en el script.
 >
-> Último commit: `b728c40 restore: splash al estado aprobado bae0461 + docs actualizados`
+> Último commit: `417e287 revert: eliminar animación splash completamente`
 
 ---
 
@@ -63,6 +63,7 @@ Juan es Product Owner, diseñador y developer. Claude ejecuta; Juan audita y apr
 ### Features activas (desde `.specify/features/`)
 
 - `grid-section-separators/` — fase actual: **tasks**
+- `i18n-films-audit/` — fase actual: **tasks**
 - `i18n-planner-audit/` — fase actual: **tasks**
 - `lista-todo-sort/` — fase actual: **tasks**
 - `splash-animation/` — fase actual: **tasks**

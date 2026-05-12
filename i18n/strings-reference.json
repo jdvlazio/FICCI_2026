@@ -291,12 +291,12 @@
   },
   "empty_intereses": {
     "es": "Agregá lo que te interesa para armar tu plan.",
-    "en": "Add films you're interested in to build your plan.",
+    "en": "Add titles you're interested in to build your plan.",
     "ctx": "Intereses empty state"
   },
   "empty_intereses_2": {
     "es": "Agregá lo que te interesa.",
-    "en": "Add films you're interested in.",
+    "en": "Add titles you're interested in.",
     "ctx": "Intereses empty state short"
   },
   "empty_intereses_3": {
@@ -311,7 +311,7 @@
   },
   "empty_vistas": {
     "es": "No marcaste ninguna película como vista.",
-    "en": "You haven't marked any films as seen.",
+    "en": "No titles marked as seen yet.",
     "ctx": "Vistas empty state"
   },
   "empty_calificar": {
@@ -361,7 +361,7 @@
   },
   "toast_horario_lib": {
     "es": "Horario liberado — podrían caber más títulos",
-    "en": "Time slot freed — more films may fit",
+    "en": "Time slot freed — more titles may fit",
     "ctx": "Planear feedback"
   },
   "toast_conexion": {
@@ -726,7 +726,7 @@
   },
   "filter_sin_peliculas": {
     "es": "Sin películas para este filtro",
-    "en": "No films match this filter",
+    "en": "Nothing matches this filter",
     "context": "Aprobado Content+UX — filter_sin_peliculas"
   },
   "plan_quitar_tmb": {
@@ -746,7 +746,7 @@
   },
   "plan_no_intereses": {
     "es": "película ya no están en Intereses",
-    "en": "film(s) no longer in Interests",
+    "en": "No longer in Interests",
     "context": "Aprobado Content+UX — plan_no_intereses"
   },
   "av_disponibilidad": {
@@ -801,7 +801,7 @@
   },
   "plan_choca": {
     "es": "Choca con otras películas de tu plan",
-    "en": "Conflicts with films in your plan",
+    "en": "Conflicts with your plan",
     "context": "Added automatically — verify context"
   },
   "plan_empty_dia": {
@@ -986,7 +986,7 @@
   },
   "plan_revisa_planeaste": {
     "es": "Revisá lo que planeaste y las películas que marcaste como vistas.",
-    "en": "Review what you planned and the films you marked as seen.",
+    "en": "Review what you planned and the titles you marked as seen.",
     "context": "Empty states + prio modal — aprobado Content+UX"
   },
   "plan_ir_programa": {
