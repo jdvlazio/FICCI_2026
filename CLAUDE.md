@@ -3,7 +3,7 @@
 > No editar a mano — los cambios se sobreescriben en el próximo deploy.
 > Para modificar secciones estáticas, editar el template en el script.
 >
-> Último commit: `ea097e9 feat(refactor): Fase 2 data-title — togglePriority, togglePelPrio, toggleWatched, openRatingSheet`
+> Último commit: `4bed54d feat(refactor): Fase 3 — limpiar safeT huérfanos + tasks completas`
 
 ---
 

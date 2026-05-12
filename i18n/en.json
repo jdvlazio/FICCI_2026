@@ -241,5 +241,7 @@
   "notice_nueva_funcion": "New screening:",
   "plan_reemplazar_plan": "Replace plan",
   "plan_continuar_quitar": "This will remove it from your plan.",
-  "aria_marcar_pendiente": "Mark as unwatched"
+  "aria_marcar_pendiente": "Mark as unwatched",
+  "plan_excluidos": "not included",
+  "plan_contexto_max": "Titles not included overlap with others already in your plan."
 }
