@@ -3,7 +3,7 @@
 > No editar a mano — los cambios se sobreescriben en el próximo deploy.
 > Para modificar secciones estáticas, editar el template en el script.
 >
-> Último commit: `7b89ccd fix(splash): CSS nativo — eliminar dependencia GSAP`
+> Último commit: `b73040a fix: sintaxis JS — else duplicado en _initSplashAnimation`
 
 ---
 
