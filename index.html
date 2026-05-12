@@ -4316,7 +4316,7 @@ let FESTIVAL_STORAGE_KEY=(localStorage.getItem('otrofestiv_festival')||_DEFAULT_
 // BUILD_VERSION: cambia en cada deploy.
 // Al cargar, compara con localStorage. Si difiere → reload duro.
 // sessionStorage evita loops infinitos dentro de la misma sesión.
-const BUILD_VERSION='202605120129';
+const BUILD_VERSION='202605120138';
 (function(){
   const _vk='otrofestiv_build';
   const _sk='otrofestiv_reloaded';
@@ -10205,12 +10205,6 @@ window.addEventListener('resize',function(){requestAnimationFrame(_fixStickyOffs
 <script>
 if('serviceWorker' in navigator){
   navigator.serviceWorker.register('/sw.js').catch(function(){});
-  // SW_UPDATED: recargar solo si el splash sigue visible (primer uso)
-  navigator.serviceWorker.addEventListener('message', e => {
-    if(e.data && e.data.type==='SW_UPDATED'){
-      if(document.getElementById('otrofestiv-splash')) location.reload();
-    }
-  });
 }
 
 // ── FILTRO LUGAR — implementación desde cero ─────────────────────────────
