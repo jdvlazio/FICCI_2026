@@ -3,7 +3,7 @@
 > No editar a mano — los cambios se sobreescriben en el próximo deploy.
 > Para modificar secciones estáticas, editar el template en el script.
 >
-> Último commit: `d73d504 fix(splash): 4 fixes PWA — defer, rotationX, load event, catch clearProps`
+> Último commit: `7b89ccd fix(splash): CSS nativo — eliminar dependencia GSAP`
 
 ---
 

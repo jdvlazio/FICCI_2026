@@ -1883,7 +1883,7 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:var(--t
   visibility:hidden;
   pointer-events:none;
 }
-.splash-bar-top,.splash-bar-bot{position:absolute;left:0;right:0;height:16%;background:var(--bg);z-index:99;pointer-events:none}
+.splash-bar-top,.splash-bar-bot{position:absolute;left:0;right:0;height:16%;background:var(--bg);z-index:99;pointer-events:none;transform:scaleY(0)}
 .splash-bar-top{top:0;transform-origin:top center}
 .splash-bar-bot{bottom:0;transform-origin:bottom center}
 .splash-wm-char{display:inline-block}
@@ -2387,8 +2387,6 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:var(--t
 <body>
 <!-- Splash siempre visible — se pre-selecciona el festival en curso por fecha. -->
 <div id="otrofestiv-splash" role="dialog" aria-label="Bienvenida" aria-modal="true">
-  <div class="splash-bar-top" id="splash-bar-top" aria-hidden="true"></div>
-  <div class="splash-bar-bot" id="splash-bar-bot" aria-hidden="true"></div>
   <div class="splash-wordmark" id="splash-wordmark">Otro<span>festiv</span></div>
   <div class="splash-action">
   <div class="splash-selector">
@@ -3250,9 +3248,7 @@ const _I18N = {
 let _lang = (()=>{
   const saved = localStorage.getItem('otrofestiv_lang');
   if(saved && _I18N[saved]) return saved;
-  // Auto-detect por idioma del navegador — solo en primer uso
-  const nav = (navigator.language || navigator.userLanguage || 'es').toLowerCase();
-  return nav.startsWith('en') ? 'en' : 'es';
+  return 'es'; // Default ES — app regional, usuario cambia manualmente
 })();
 
 function t(key){
@@ -10035,16 +10031,31 @@ function _initSplashAnimation(){
   const splash=document.getElementById('otrofestiv-splash');
   const wm=document.getElementById('splash-wordmark');
   if(!splash||!wm) return;
-  // Split wordmark en chars individuales — CSS animation hace el resto
+
+  // Crear barras letterbox via JS — si JS falla, no existen = wordmark visible
+  const barT=document.createElement('div');
+  barT.className='splash-bar-top';barT.setAttribute('aria-hidden','true');
+  const barB=document.createElement('div');
+  barB.className='splash-bar-bot';barB.setAttribute('aria-hidden','true');
+  splash.prepend(barB);splash.prepend(barT);
+
+  // Split wordmark — inline animation-delay (evita nth-child en WebKit)
   const text=wm.textContent;
-  wm.innerHTML=text.split('').map((ch,i)=>
-    `<span class="splash-wm-char" style="color:${i>=4?'var(--amber)':'var(--white)'}">${ch}</span>`
-  ).join('');
-  // Activar animación CSS — sin dependencias externas
-  splash.classList.add('splash-animating');
+  wm.innerHTML=text.split('').map((ch,i)=>{
+    const delay=(0.8+i*0.05).toFixed(2)+'s';
+    const col=i>=4?'var(--amber)':'var(--white)';
+    return`<span class="splash-wm-char" style="color:${col};animation-delay:${delay}">${ch}</span>`;
+  }).join('');
+
+  // doble rAF: garantiza que el DOM está pintado antes de añadir la clase
+  requestAnimationFrame(()=>requestAnimationFrame(()=>{
+    splash.classList.add('splash-animating');
+  }));
 }
 if(document.readyState==='loading'){
   document.addEventListener('DOMContentLoaded',_initSplashAnimation,{once:true});
+}else{
+  _initSplashAnimation();
 }else{
   _initSplashAnimation();
 }
