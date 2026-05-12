@@ -4325,7 +4325,7 @@ let FESTIVAL_STORAGE_KEY=(localStorage.getItem('otrofestiv_festival')||_DEFAULT_
 // BUILD_VERSION: cambia en cada deploy.
 // Al cargar, compara con localStorage. Si difiere → reload duro.
 // sessionStorage evita loops infinitos dentro de la misma sesión.
-const BUILD_VERSION='202605121145';
+const BUILD_VERSION='202605121151';
 (function(){
   const _vk='otrofestiv_build';
   const _sk='otrofestiv_reloaded';
@@ -5746,7 +5746,7 @@ function renderFilmListHTML(){
           ${t('conflict_con')} ${conflict}
         </div>`
       :'';
-    return`<div class="int-item${!next?' gone':''}" style="${!next&&!festivalEnded()?'opacity:.35':''}" onclick="openPelSheet('${safeT}')">
+    return`<div class="int-item${!next?' gone':''}" style="${!next&&!festivalEnded()?'opacity:.35':''}" data-title="${title}">
       ${posterHtml}
       <div class="int-item-info">
         <div class="int-item-title">${displayTitle}${progSuffix?` <span class="txt-amber-xs">${progSuffix}</span>`:''}</div>
@@ -5774,7 +5774,7 @@ function renderFilmListHTML(){
     const ratingHtml=stars
       ?`<div class="int-item-rating">${stars}</div>`
       :`<div class="int-item-rating-empty" onclick="openRatingSheet('${safeT}');event.stopPropagation()">${t('cta_calificar')} →</div>`;
-    return`<div class="int-item" onclick="openPelSheet('${safeT}')">
+    return`<div class="int-item js-open-pel" data-title="${title}">
       ${posterHtml}
       <div class="int-item-info">
         <div class="int-item-title">${displayTitle}${progSuffix?` <span class="txt-amber-xs">${progSuffix}</span>`:''}</div>
@@ -6413,7 +6413,7 @@ function renderContextualHeader(){
       const safeT=t.replace(/'/g,"&#39;");
       const stars=r?starsText(r):'';
       // Posters grandes, plena opacidad — pensado para screenshot
-      return`<div class="poster-card ended-poster${_isEdList?' editorial':''}" onclick="openPelSheet('${safeT}')">
+      return`<div class="poster-card ended-poster${_isEdList?' editorial':''}" data-title="${f.title}">
         ${_isEdList
           ?`<div class="ed-hdr" style="background:${_sectionColor(f.section||'')}"><div class="ed-lbl">${_secLabel(f.section||'')}</div></div><div class="ed-img"><img src="${src}" onerror="this.remove()" alt="" loading="lazy"></div><div class="ed-body"></div>`
           :src?`<img class="img-cover" src="${src}" loading="lazy" onerror="this.remove()" alt="">`:``}
@@ -6544,7 +6544,7 @@ function renderContextualHeader(){
         <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
         ${eyebrowLabel}
       </div>
-      <div class="ctx-next-card" onclick="openPelSheet('${(next._title||'').replace(/'/g,"\\'")}')" style="cursor:pointer">
+      <div class="ctx-next-card js-open-pel" data-title="${next._title||''}" style="cursor:pointer">
         ${src
           ?`<img class="ctx-next-poster" src="${src}" data-title="${(next._title||'').replace(/"/g,'&quot;')}" onerror="_posterErr(this)" alt="" loading="lazy">`
           :_isEvent
@@ -6578,7 +6578,7 @@ function renderContextualHeader(){
       const dur=parseInt(gapSuggestion.duration)||DEFAULT_DURATION_MIN;
       const safeT=gapSuggestion.title.replace(/'/g,"&#39;");
       return`<div class="txt-gray-sm-mb1">Cabe en tu hueco</div>
-        <div class="ctx-suggest-card" onclick="openPelSheet('${safeT}')" style="cursor:pointer">
+        <div class="ctx-suggest-card js-open-pel" data-title="${f.title}" style="cursor:pointer">
           <div class="ctx-suggest-badge">${gapSuggestion.time}<br>${dur}m</div>
           <div class="ctx-suggest-info">
             <div class="ctx-suggest-title">${dt.length>26?dt.slice(0,24)+'…':dt}</div>
@@ -6613,7 +6613,7 @@ function renderContextualHeader(){
       const r=filmRatings[s._title];
       const safeT=(s._title||'').replace(/'/g,"&#39;");
       const stars=r?starsText(r):'';
-      return`<div class="prio-chip-wrap" onclick="openPelSheet('${safeT}')">
+      return`<div class="prio-chip-wrap js-open-pel" data-title="${f.title}">
         ${src?_posterThumb(f,'prio-chip-poster',`openPelSheet('${safeT}')`):`<div class="prio-chip-ph">🎬</div>`}
         ${r?`<div class="prio-overlay-label">${stars}</div>`:''}
         ${!r?`<div class="prio-overlay-center">
@@ -6761,7 +6761,7 @@ function _renderSavedAgendaHTML(){
         const vc2=vcfg(f.venue),sl=sala(f.venue);
         const _sp=getFilmPoster(f);
         const _sph=_posterThumb(f,'lb-poster',null);
-        return`<div class="suggestion-item" onclick="openPelSheet('${f.title.replace(/'/g,"\\'")}')">
+        return`<div class="suggestion-item js-open-pel" data-title="${f.title}">
           ${_sph}
           <div class="suggestion-time">${f.time}</div>
           <div class="suggestion-info">
@@ -7320,7 +7320,7 @@ function buildResultHTML(scenarios){
         ?`<button class="excl-include-btn" onclick="forceInclude('${safeT}');event.stopPropagation()">+ Incluir</button>`
         :'';
       const opacity=!screens.length?'opacity:.45;':'';
-      return`<div class="int-item" style="${opacity}" onclick="openPelSheet('${safeT}')">
+      return`<div class="int-item js-open-pel" style="${opacity}" data-title="${f.title}">
         ${posterHtml}
         <div class="int-item-info">
           <div class="int-item-title">${dt}</div>
@@ -8950,7 +8950,7 @@ function renderMiPlanList(schedule){
         const safeT=(s._title||'').replace(/'/g,"\\'");
         const isW=watched.has(s._title);
         const isPassed=screeningPassed(s);
-        return`<div class="mplan-list-item${isPassed?' past-card':''}" onclick="openPelSheet('${safeT}')">
+        return`<div class="mplan-list-item js-open-pel${isPassed?' past-card':''}" data-title="${f.title}">
           ${src
             ?`<img class="mplan-list-poster" src="${src}" data-title="${(s._title||"").replace(/"/g,'&quot;')}" loading="lazy" onerror="_posterErr(this)" alt="" style="${isPassed?'opacity:.35':''}">`
             :_lIsEvent
@@ -9266,7 +9266,7 @@ function renderProgramaList(){
       const pastStyle=passed&&!isNow&&!festivalEnded()?'opacity:.45':'';
       const itemStyle=[pastStyle,cancelStyle].filter(Boolean).join(';');
       const _stk=_programaStack(f);
-      return`<div class="plist-item" style="${itemStyle}" onclick="openPelSheet('${safeT}')">
+      return`<div class="plist-item js-open-pel" style="${itemStyle}" data-title="${f.title}">
         ${_stk||_plistPosterHtml(f,src)}
         <div class="plist-info">
           <div class="plist-title">${noticeBadge}${_metaBadges(f)}${dt}${nowBadge}</div>
@@ -9361,7 +9361,7 @@ function _renderExploreLista(){
     const allPast=screenings.every(s=>screeningPassed(s));
     const days=[...new Set(screenings.map(s=>dayLabel(s.day)||s.day))].join(' · ');
     const daysHtml=_dayChips(screenings);
-    if(isEvent) return`<div class="plist-item plist-event" style="${allPast?'opacity:.35':''}" onclick="openPelSheet('${safeT}')">
+    if(isEvent) return`<div class="plist-item plist-event js-open-pel" style="${allPast?'opacity:.35':''}" data-title="${f.title}">
       <img class="plist-poster" src="${makeEventPoster(dt,f.duration,f.event_kind)}" alt="${dt}" loading="lazy">
       <div class="plist-info">
         <div class="plist-title">${dt}</div>
@@ -9371,7 +9371,7 @@ function _renderExploreLista(){
       <div class="plist-heart${inWL?'':' empty'}" onclick="event.stopPropagation();_toggleWLFromList('${safeT}',this)">${inWL?ICONS.heartFill:ICONS.heart}</div>
     </div>`;
     const _stk2=_programaStack(f);
-    return`<div class="plist-item${allPast?' past-card':''}" onclick="openPelSheet('${safeT}')">
+    return`<div class="plist-item js-open-pel${allPast?' past-card':''}" data-title="${f.title}">
       ${_stk2||_plistPosterHtml(f,src)}
       <div class="plist-info">
         ${(()=>{const n=NOTICES.find(nx=>nx.title===f.title&&nx.festival===((_activeFestId||_DEFAULT_FEST_ID)));const nb=n?`<span class="notice-badge">${n.type==='cancelled'?t('notice_cancelada'):t('notice_reprog_short')}</span>`:'';const nn=n&&n.type==='cancelled'?`<div class="notice-detail-amber">${t('plan_fecha_pendiente')}</div>`:n&&n.type==='rescheduled'&&n.newTime?`<div class="notice-detail-green">${n.newDay||''} · ${n.newTime}${n.newVenue?' · '+n.newVenue:''}</div>`:'';return`<div class="plist-title" style="${allPast?'opacity:.5':''}">${nb}${dt}</div><div class="plist-meta" style="${n&&n.type==='cancelled'?'text-decoration:line-through':''}${allPast?';opacity:.5':''}">${daysHtml?`${daysHtml} · `:''}${durFmt(f.duration)}${_metaBadges(f)?` · ${_metaBadges(f)}`:''}</div>${nn||`<div class="plist-sec">${f.section||''}</div>`}`;})()}
@@ -9488,7 +9488,7 @@ function renderPeliculaView(){
       }
     }
     const _sep=activeDay==='all'&&f.section&&f.section!==_prevSec?`<div class="poster-grid-sep">${(f.section||'').replace(/^[\p{Emoji}\s]+/u,'').trim()}</div>`:'';_prevSec=f.section||_prevSec;
-    return _sep+`<div class="bg-surf-2 poster-card${inWL&&!inW?' in-wl':''}${inW&&!_ended?' in-watched':''}${(_isPrograma?false:_isEditorialPoster(f))?' editorial':''}" data-title="${f.title.replace(/"/g,'&quot;')}" onclick="openPelSheet('${safeT}')"${_isPrograma?'':_cardBg}>
+    return _sep+`<div class="bg-surf-2 poster-card${inWL&&!inW?' in-wl':''}${inW&&!_ended?' in-watched':''}${(_isPrograma?false:_isEditorialPoster(f))?' editorial':''}" data-title="${f.title}"${_isPrograma?'':_cardBg}>
       ${posterImg}
       ${progBadge}
       ${inWL?`<button class="poster-wl-dot wl-on" onclick="event.stopPropagation();toggleWL('${safeT}',event)" aria-label="Interés">${ICONS.heartFill}</button>`:''}
@@ -9565,7 +9565,7 @@ function render(){
     const pastBadge=_notice?`<div class="badge-past poster-past-badge">${_notice.type==='cancelled'?t('notice_cancelada_short'):t('notice_reprog_short')}</div>`:'';
 
     const _fe=festivalEnded();
-return`<div class="poster-card${inWL&&!inW?' in-wl':''}${inW&&!_fe?' in-watched':''}${passed&&!_fe?' past-card':''}" onclick="openPelSheet('${safeT}')"${_cardBg2}>
+return`<div class="poster-card${inWL&&!inW?' in-wl':''}${inW&&!_fe?' in-watched':''}${passed&&!_fe?' past-card':''}" data-title="${f.title}"${_cardBg2}>
       ${posterImg}
       <div class="poster-time">${f.time}</div>
       ${nowBadge||pastBadge||progBadge}

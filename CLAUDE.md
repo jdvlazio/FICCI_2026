@@ -3,7 +3,7 @@
 > No editar a mano — los cambios se sobreescriben en el próximo deploy.
 > Para modificar secciones estáticas, editar el template en el script.
 >
-> Último commit: `0c0508e fix(splash): eliminar glitch de idioma — script inline post-splash`
+> Último commit: `7171c2c spec: data-title refactor — eliminar safeT y onclick string passing`
 
 ---
 
@@ -62,6 +62,7 @@ Juan es Product Owner, diseñador y developer. Claude ejecuta; Juan audita y apr
 
 ### Features activas (desde `.specify/features/`)
 
+- `data-title-refactor/` — fase actual: **tasks**
 - `grid-section-separators/` — fase actual: **tasks**
 - `i18n-films-audit/` — fase actual: **tasks**
 - `i18n-planner-audit/` — fase actual: **tasks**
