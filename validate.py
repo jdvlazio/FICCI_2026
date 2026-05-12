@@ -189,6 +189,33 @@ if os.path.isdir(FESTIVALS_DIR):
 else:
     warn(check, f'directorio {FESTIVALS_DIR} no encontrado — skip')
 
+# ── CHECK 4b: prioLimit correcto en cada JSON ───────────────────────────────
+check = 'prio-limit'
+prio_errors = []
+import json as _json
+for fname in sorted(os.listdir(FESTIVALS_DIR)):
+    jf = os.path.join(FESTIVALS_DIR, fname)
+    if not fname.endswith('.json'): continue
+    try:
+        with open(jf) as jfh:
+            jd = _json.load(jfh)
+        day_keys = jd.get('dayKeys', [])
+        prio = jd.get('prioLimit')
+        if prio is None:
+            prio_errors.append(f'{jf}: prioLimit no definido')
+            continue
+        expected = min(8, max(3, round(len(day_keys) / 2)))
+        if prio != expected:
+            prio_errors.append(f'{jf}: prioLimit={prio} pero debería ser {expected} ({len(day_keys)} días)')
+    except Exception as e:
+        prio_errors.append(f'{jf}: error — {e}')
+if prio_errors:
+    for e in prio_errors:
+        fail(check, e)
+    fail(check, 'Regla: prioLimit = round(días/2), cap [3,8]')
+else:
+    ok(check, f'prioLimit correcto en todos los festivales (regla: round(días/2), cap [3,8])')
+
 # ── CHECK 5: FESTIVAL_CONFIG bootstrap ───────────────────────────────────────
 # Cada entrada en FESTIVAL_CONFIG debe tener los campos que el splash necesita
 # antes del fetch (name, city, dates, dates_en, year, storageKey, festivalEndStr).

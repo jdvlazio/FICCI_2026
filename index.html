@@ -4350,7 +4350,7 @@ let FESTIVAL_STORAGE_KEY=(localStorage.getItem('otrofestiv_festival')||_DEFAULT_
 // BUILD_VERSION: cambia en cada deploy.
 // Al cargar, compara con localStorage. Si difiere → reload duro.
 // sessionStorage evita loops infinitos dentro de la misma sesión.
-const BUILD_VERSION='202605121515';
+const BUILD_VERSION='202605121544';
 (function(){
   const _vk='otrofestiv_build';
   const _sk='otrofestiv_reloaded';
@@ -9903,7 +9903,12 @@ async function loadFestival(id){
   DAY_KEYS=cfg.dayKeys;
   DAY_SHORT=cfg.dayShort;
   DAY_SHORT_EN=cfg.dayShort_en||cfg.dayShort;
-  PRIO_LIMIT=cfg.prioLimit||5;
+  // PRIO_LIMIT: regla global por festival — round(días/2), cap [3,8]
+  // Garantiza ~8.3% de los films físicamente posibles como prioridades.
+  // Definido en cada festivals/*.json como 'prioLimit'.
+  // Si no está definido, fallback conservador = 3 (no 5 — evita over-promise).
+  const _computedPrioLimit = Math.min(8, Math.max(3, Math.round((cfg.dayKeys||[]).length / 2)));
+  PRIO_LIMIT = cfg.prioLimit || _computedPrioLimit;
   // Guard: dayKeys y days son requeridos — sin ellos el UI de calendario crashea
   if(!cfg.dayKeys||!cfg.days||!cfg.days.length){
     console.error(`[loadFestival] '${id}' no tiene dayKeys/days en FESTIVAL_CONFIG.`);

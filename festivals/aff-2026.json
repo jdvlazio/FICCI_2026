@@ -106,7 +106,7 @@
     "MIÉ 29": "Miércoles 29",
     "JUE 30": "Jueves 30"
   },
-  "prioLimit": 7,
+  "prioLimit": 5,
   "films": [
     {
       "title": "Belén",

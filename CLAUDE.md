@@ -3,7 +3,7 @@
 > No editar a mano — los cambios se sobreescriben en el próximo deploy.
 > Para modificar secciones estáticas, editar el template en el script.
 >
-> Último commit: `8239ae4 fix(mi-plan): excTitle is not defined — rename incompleto en prios.map`
+> Último commit: `ddb09b9 fix(mi-plan): 2 bugs en THU 4 / mplan-row`
 
 ---
 

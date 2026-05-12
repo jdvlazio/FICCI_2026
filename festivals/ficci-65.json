@@ -70,7 +70,7 @@
     "Sábado": "Sábado 18",
     "Domingo": "Domingo 19"
   },
-  "prioLimit": 5,
+  "prioLimit": 3,
   "films": [
     {
       "title": "Feito Pipa",
