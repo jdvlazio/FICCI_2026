@@ -3,7 +3,7 @@
 > No editar a mano — los cambios se sobreescriben en el próximo deploy.
 > Para modificar secciones estáticas, editar el template en el script.
 >
-> Último commit: `ab219c9 fix(spacing): eliminar doble separador en Planner`
+> Último commit: `01b1406 fix(spacing): badge Plan óptimo — inline con título, no fila propia`
 
 ---
 
