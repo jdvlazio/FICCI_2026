@@ -9356,6 +9356,7 @@ function renderProgramaList(){
       const cancelStyle=notice&&notice.type==='cancelled'?'opacity:.5':'';
       const pastStyle=passed&&!isNow&&!festivalEnded()?'opacity:.45':'';
       const itemStyle=[pastStyle,cancelStyle].filter(Boolean).join(';');
+      const safeT=f.title.replace(/'/g,"&#39;").replace(/"/g,'&quot;');
       const _stk=_programaStack(f);
       return`<div class="plist-item js-open-pel" style="${itemStyle}" data-title="${f.title}">
         ${_stk||_plistPosterHtml(f,src)}
