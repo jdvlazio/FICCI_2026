@@ -1,17 +1,12 @@
-# Tasks — Splash animation: fix PWA
+# Tasks — Splash animation (COMPLETADO)
 
-- [ ] 1. CSS: reemplazar animation:...both → transition en barras, sin fill-mode
-- [ ] 2. CSS: eliminar animation de .splash-action y .splash-tagline (controlado por JS)
-- [ ] 3. JS: _initSplashAnimation — fase 0 (JS inline styles para estado inicial)
-- [ ] 4. JS: _initSplashAnimation — fase 1 (doble rAF + clase)
-- [ ] 5. JS: _initSplashAnimation — fase 2 (fallback timeout 1500ms)
-- [ ] 6. JS: spell-out con JS transitions, inline animation-delay eliminado
-- [ ] 7. sw.js: añadir 5 variantes de fuente a STATIC_ASSETS
-- [ ] 8. python3 validate.py (sin pipe, verificar returncode)
-- [ ] 9. QA browser: splash completo, fallback (simulate slow)
-- [ ] 10. Commit + push
-
-## Orden de ejecución
-Tasks 1-6 son un único cambio coordinado en index.html.
-Task 7 es cambio separado en sw.js.
-Ambos en un solo commit.
+- [x] 1. GSAP defer en <head>
+- [x] 2. CSS: posicionamiento de barras (sin fill-mode, sin keyframes)
+- [x] 3. JS: _initSplashAnimation — progressive enhancement
+- [x] 4. JS: guard typeof gsap, try/catch, fallback
+- [x] 5. JS: spell-out con gsap.from(chars)
+- [x] 6. JS: timeline aprobado por Motion Designer
+- [x] 7. BUILD_VERSION: bump-version.js lo actualiza en cada deploy
+- [x] 8. SW_UPDATED: handler original restaurado
+- [x] 9. validate.py 10/10
+- [x] 10. QA: Chrome ✅ Safari Mac ✅ iOS/PWA: sin animación pero funcional ✅

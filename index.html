@@ -4316,7 +4316,7 @@ let FESTIVAL_STORAGE_KEY=(localStorage.getItem('otrofestiv_festival')||_DEFAULT_
 // BUILD_VERSION: cambia en cada deploy.
 // Al cargar, compara con localStorage. Si difiere → reload duro.
 // sessionStorage evita loops infinitos dentro de la misma sesión.
-const BUILD_VERSION='202605120138';
+const BUILD_VERSION='202605120143';
 (function(){
   const _vk='otrofestiv_build';
   const _sk='otrofestiv_reloaded';
@@ -10205,6 +10205,110 @@ window.addEventListener('resize',function(){requestAnimationFrame(_fixStickyOffs
 <script>
 if('serviceWorker' in navigator){
   navigator.serviceWorker.register('/sw.js').catch(function(){});
+  // Recargar cuando el SW notifique actualización (iOS fix)
+  navigator.serviceWorker.addEventListener('message', e => {
+    if(e.data && e.data.type==='SW_UPDATED'){
+      // Solo recargar si el splash sigue visible — evita interrumpir al usuario
+      if(document.getElementById('otrofestiv-splash')) location.reload();
+    }
+  });
+}
+
+// ── FILTRO LUGAR — implementación desde cero ─────────────────────────────
+// 40 líneas. Un dropdown simple. Sin dependencias externas.
+
+function lugarOpen(){
+  const btn = document.getElementById('lugar-btn');
+  const r = btn.getBoundingClientRect();
+
+  // Build dropdown
+  const drop = document.createElement('div');
+  drop.id = 'lugar-drop';
+  drop.style.cssText = [
+    'position:fixed',
+    'top:'+(r.bottom+4)+'px',
+    'right:'+(window.innerWidth-r.right)+'px',
+    'min-width:200px',
+    'max-width:min(280px,90vw)',
+    'max-height:50vh',
+    'overflow-y:auto',
+    '-webkit-overflow-scrolling:touch',
+    'overscroll-behavior:contain',
+    'background:var(--surf)',
+    'border:1px solid var(--bdr)',
+    'border-radius:var(--r)',
+    'box-shadow:0 8px 24px rgba(0,0,0,.55)',
+    'z-index:9999',
+    'animation:lugarFadeIn .12s ease'
+  ].join(';');
+
+  // Collect unique venues from FILMS
+  // Embedded screenings[] format (Tribeca): expand all screenings, dedupe by title.
+  // Flat format (FICCI/AFF): one row per screening, use f.venue directly.
+  const venueMap = {};
+  const _vSeen = new Set();
+  (activeDay==='all'?FILMS:FILMS.filter(f=>f.day===activeDay))
+    .forEach(f=>{
+      if(f.screenings&&f.screenings.length){
+        if(_vSeen.has(f.title)) return;
+        _vSeen.add(f.title);
+        const rel=activeDay==='all'?f.screenings:f.screenings.filter(s=>s.date===activeDay||s.day===activeDay);
+        rel.forEach(s=>{
+          const cfg=vcfg(s.venue);const short=cfg.short||s.venue;
+          if(!short) return;
+          if(!venueMap[short]) venueMap[short]={label:short,count:0,city:cfg.city||''};
+          venueMap[short].count++;
+        });
+      } else {
+        const cfg=vcfg(f.venue);const short=cfg.short||f.venue;
+        if(!short) return;
+        if(!venueMap[short]) venueMap[short]={label:short,count:0,city:cfg.city||''};
+        venueMap[short].count++;
+      }
+    });
+
+  const venues = Object.values(venueMap).sort((a,b)=>b.count-a.count);
+  const total = venues.reduce((s,v)=>s+v.count,0);
+
+  // Render options
+  const opts = [{label:t('filter_todos_lugares'), count:total, short:'all'}, ...venues.map(v=>({...v,short:v.label}))];
+  drop.innerHTML = opts.map(v=>{
+    const isActive = (v.short==='all' && activeVenue==='all') || (activeVenue===v.short);
+    return '<div class="lugar-opt'+(isActive?' on':'')+'" data-v="'+v.short+'">'
+      +(v.short!=='all'?'<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z"/></svg>':'')
+      +'<span>'+v.label+'</span>'
+      +'<span class="lugar-cnt">'+v.count+'</span>'
+      +'</div>';
+  }).join('');
+
+  drop.addEventListener('click', e=>{
+    const opt = e.target.closest('.lugar-opt');
+    if(!opt) return;
+    const v = opt.dataset.v;
+    activeVenue = (v==='all'||v===activeVenue)?'all':v;
+    lugarClose();
+    _updateProgramaActiveFilter();
+    if(activeMNav==='mnav-cartelera') _renderProgramaContent(); else render();
+  });
+
+  document.body.appendChild(drop);
+  btn.classList.add('active');
+
+  // Close on outside click
+  setTimeout(()=>{
+    document.addEventListener('click', lugarOutside);
+  }, 0);
+  // Close on scroll — dropdown is fixed, button moves with sticky bar
+  window.addEventListener('scroll', lugarClose, {passive:true, once:true});
+}
+
+function lugarOutside(e){
+  const drop = document.getElementById('lugar-drop');
+  const btn = document.getElementById('lugar-btn');
+  if(drop && !drop.contains(e.target) && e.target!==btn && !btn?.contains(e.target)){
+    lugarClose();
+  }
+}
 }
 
 // ── FILTRO LUGAR — implementación desde cero ─────────────────────────────

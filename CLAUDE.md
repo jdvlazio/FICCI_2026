@@ -3,7 +3,7 @@
 > No editar a mano — los cambios se sobreescriben en el próximo deploy.
 > Para modificar secciones estáticas, editar el template en el script.
 >
-> Último commit: `fec26f7 revert: controllerchange → SW_UPDATED original`
+> Último commit: `89b7bd6 fix(sw): eliminar SW_UPDATED reload — causa gris en PWA`
 
 ---
 
