@@ -10035,8 +10035,8 @@ function _initSplashAnimation(){
       onInterrupt:()=>{gsap.set([chars,act,tag],{clearProps:'all'});}
     });
 
-    // 1 — Letterbox abre
-    tl.from([barT,barB],{scaleY:1,duration:.75,ease:'power3.inOut',stagger:0},0.08);
+    // 1 — Letterbox abre: bars start at scaleY:1 (cubriendo), to scaleY:0 (ocultas)
+    tl.to([barT,barB],{scaleY:0,duration:.75,ease:'power3.inOut'},0.08);
 
     // 2 — Wordmark letra por letra
     tl.from(chars,{opacity:0,y:10,rotationX:-60,transformOrigin:'50% 100%',
