@@ -23,14 +23,14 @@ Severidad: 🔴 CRÍTICO (bloquea release) | 🟡 MAYOR (degradación UX) | 🟢
 ### P3 — Con prioridades (incl. apostrophes)
 - [x] P3.1 ✅ Chips con poster — apostrophes normalizados (CRIT-01 resuelto)
 - [x] P3.2 ✅ Límite 6/6 respetado — no permite 7ª prioridad
-- [x] P3.2b 🟡 FAIL — Sheet swap "PRIORIDADES" en ES, "Cambiar" en ES (app en EN)
+- [x] P3.2b ✅ PASS — Priorities/Change en EN (d994c71) en ES, "Cambiar" en ES (app en EN)
 - [x] P3.3 🟡 FAIL — Botón ✕ no quita prioridad desde chip
        Causa probable: title en dataset.prioTitle sin normalizar vs prioritized Set normalizado
 - [x] P3.4 ✅ Plan incluye todas las prioridades (verificado en P5.1)
 - [x] P3.5 ✅ N/A — no hay conflictos entre estas prioridades
 
 ### P4 — Disponibilidad
-- [x] P4.1 🟡 FAIL — Sheet "No disponible" en ES (app en EN). DAY/TYPE/Confirm en EN. Mezcla.
+- [x] P4.1 ✅ PASS — Not available en EN (d994c71) en ES (app en EN). DAY/TYPE/Confirm en EN. Mezcla.
 - [x] P4.2 ✅ Bloque aparece en lista tras confirmar
 - [x] P4.3 ✅ Plan generado: 0 films en slot bloqueado
 - [x] P4.4 ✅ Quitar bloque resetea plan (comportamiento correcto)
@@ -41,7 +41,7 @@ Severidad: 🔴 CRÍTICO (bloquea release) | 🟡 MAYOR (degradación UX) | 🟢
 - [x] P5.3 ✅ 0 excluded con watchlist pequeño / "not included" en gris cuando hay excluidos
 - [x] P5.4 🟡 FAIL — Click en horario no abre alternativas
 - [x] P5.5 ✅ N/A — no excluded en esta prueba
-- [x] P5.6 🟢 MENOR — "Use this plan" guarda OK pero no navega a My Plan
+- [x] P5.6 ✅ + N more · en EN (d994c71) pero no navega a My Plan
          → bottomsheet "Your plan is ready!" + "View My Plan" es el paso intermedio
          → "+ 3 más · FRI 5–SAT 13" mezcla "más" ES con "FRI 5–SAT 13" EN
 
@@ -58,7 +58,7 @@ Severidad: 🔴 CRÍTICO (bloquea release) | 🟡 MAYOR (degradación UX) | 🟢
 - [x] M2.3 ✅ Un solo chip de prioridad
 - [x] M2.4 ✅ Chip con poster (apostrophe normalizado)
 - [x] M2.5 ✅ "See day FRI 5" contextual correcto
-- [x] M2.x 🟡 FAIL — "Calendario" hardcodeado ES en botón de ICS export
+- [x] M2.x ✅ PASS — Calendar en EN (d994c71) en botón de ICS export
 
 ### M3 — Calendario semanal
 - [x] M3.1 ✅ Renderiza sin error
@@ -83,7 +83,7 @@ Severidad: 🔴 CRÍTICO (bloquea release) | 🟡 MAYOR (degradación UX) | 🟢
 - [x] M5.6 🟡 FAIL — "Sugerencias" vs "Suggestions" — verificar
 
 ### M6 — Internacionalización
-- [x] M6.1 🟡 FAIL — "Calendario" hardcodeado ES en modo EN (mplan-act-btn)
+- [x] M6.1 ✅ PASS — Calendar en EN (d994c71) hardcodeado ES en modo EN (mplan-act-btn)
 - [x] M6.2 — No verificado en ES
 - [x] M6.3 — No verificado
 
