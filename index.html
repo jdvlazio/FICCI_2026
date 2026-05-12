@@ -32,7 +32,7 @@
 <meta name="twitter:description" content="Tú decides el festival. Más de lo que crees posible.">
 <meta name="twitter:image" content="https://otrofestiv.app/icon-512.png">
 <link rel="preconnect" href="https://image.tmdb.org">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/gsap.min.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/gsap.min.js"></script>
 <style>
 @font-face{font-family:'Plus Jakarta Sans';font-style:normal;font-weight:400;font-display:swap;src:url(/fonts/plus-jakarta-sans-latin-400-normal.woff2') format('woff2')}
 @font-face{font-family:'Plus Jakarta Sans';font-style:normal;font-weight:500;font-display:swap;src:url(/fonts/plus-jakarta-sans-latin-500-normal.woff2') format('woff2')}
@@ -10039,8 +10039,8 @@ function _initSplashAnimation(){
     tl.to([barT,barB],{scaleY:0,duration:.75,ease:'power3.inOut'},0.08);
 
     // 2 — Wordmark letra por letra
-    tl.from(chars,{opacity:0,y:10,rotationX:-60,transformOrigin:'50% 100%',
-      duration:.5,stagger:.05,ease:'back.out(1.4)'},0.5);
+    tl.from(chars,{opacity:0,y:8,
+      duration:.45,stagger:.05,ease:'back.out(1.4)'},0.5);
 
     // 3 — Selector + botón sube
     tl.from(act,{opacity:0,y:16,duration:.5,ease:'power3.out'},1.2);
@@ -10048,15 +10048,22 @@ function _initSplashAnimation(){
     // 4 — Tagline
     tl.from(tag,{opacity:0,duration:.6,ease:'power2.out'},1.6);
   }catch(e){
-    // Si GSAP falla por cualquier razón, el splash queda visible normalmente
+    // Si GSAP falla, restaurar visibilidad de todos los elementos
+    try{
+      const _all=[
+        document.getElementById('splash-wordmark'),
+        document.querySelector('.splash-action'),
+        document.querySelector('.splash-tagline')
+      ].filter(Boolean);
+      gsap.set(_all,{clearProps:'all'});
+    }catch(_){}
   }
 }
 // Ejecutar cuando GSAP esté disponible
-if(document.readyState==='loading'){
-  document.addEventListener('DOMContentLoaded', _initSplashAnimation);
-} else {
-  setTimeout(_initSplashAnimation, 0);
-}
+// load event garantiza que todos los scripts diferidos (incluido GSAP) ya cargaron
+window.addEventListener('load', ()=>{
+  if(typeof gsap!=='undefined') _initSplashAnimation();
+}, {once:true});
 
 // ── Init: el splash siempre se muestra ─────────────────────────────
 // El festival pre-seleccionado es el que está en curso por fecha.

@@ -3,7 +3,7 @@
 > No editar a mano — los cambios se sobreescriben en el próximo deploy.
 > Para modificar secciones estáticas, editar el template en el script.
 >
-> Último commit: `cbf030b fix(splash): eliminar divider + gsap.from() + try/catch`
+> Último commit: `f7fd170 fix(splash): bars gsap.from→gsap.to(scaleY:0)`
 
 ---
 
