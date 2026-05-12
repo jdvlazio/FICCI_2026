@@ -32,7 +32,6 @@
 <meta name="twitter:description" content="Tú decides el festival. Más de lo que crees posible.">
 <meta name="twitter:image" content="https://otrofestiv.app/icon-512.png">
 <link rel="preconnect" href="https://image.tmdb.org">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/gsap.min.js" defer></script>
 <style>
 @font-face{font-family:'Plus Jakarta Sans';font-style:normal;font-weight:400;font-display:swap;src:url(/fonts/plus-jakarta-sans-latin-400-normal.woff2') format('woff2')}
 @font-face{font-family:'Plus Jakarta Sans';font-style:normal;font-weight:500;font-display:swap;src:url(/fonts/plus-jakarta-sans-latin-500-normal.woff2') format('woff2')}
@@ -1884,13 +1883,9 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:var(--t
   visibility:hidden;
   pointer-events:none;
 }
-.splash-bar-top,.splash-bar-bot{position:absolute;left:0;right:0;height:16%;background:var(--bg);z-index:99;pointer-events:none}
-.splash-bar-top{top:0;transform-origin:top center}
-.splash-bar-bot{bottom:0;transform-origin:bottom center}
-.splash-wm-char{display:inline-block}
 .splash-wordmark{
   font-size:var(--t-lg);letter-spacing:-.03em;color:var(--white);
-  font-weight:var(--w-display);line-height:1;overflow:visible;
+  font-weight:var(--w-display);line-height:1;
 }
 .splash-brand{display:flex;flex-direction:column;align-items:center}
 .splash-action{width:100%;display:flex;flex-direction:column;align-items:center}
@@ -2368,7 +2363,7 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:var(--t
 <body>
 <!-- Splash siempre visible — se pre-selecciona el festival en curso por fecha. -->
 <div id="otrofestiv-splash" role="dialog" aria-label="Bienvenida" aria-modal="true">
-  <div class="splash-wordmark" id="splash-wordmark">Otro<span>festiv</span></div>
+  <div class="splash-wordmark">Otro<span>festiv</span></div>
   <div class="splash-action">
   <div class="splash-selector">
     <div class="splash-fest-label" data-i18n="splash_festival">¿A qué festival vas?</div>
@@ -3229,7 +3224,9 @@ const _I18N = {
 let _lang = (()=>{
   const saved = localStorage.getItem('otrofestiv_lang');
   if(saved && _I18N[saved]) return saved;
-  return 'es'; // Default ES — app regional, usuario cambia manualmente
+  // Auto-detect por idioma del navegador — solo en primer uso
+  const nav = (navigator.language || navigator.userLanguage || 'es').toLowerCase();
+  return nav.startsWith('en') ? 'en' : 'es';
 })();
 
 function t(key){
@@ -4316,7 +4313,7 @@ let FESTIVAL_STORAGE_KEY=(localStorage.getItem('otrofestiv_festival')||_DEFAULT_
 // BUILD_VERSION: cambia en cada deploy.
 // Al cargar, compara con localStorage. Si difiere → reload duro.
 // sessionStorage evita loops infinitos dentro de la misma sesión.
-const BUILD_VERSION='202605120143';
+const BUILD_VERSION='202605120146';
 (function(){
   const _vk='otrofestiv_build';
   const _sk='otrofestiv_reloaded';
@@ -10007,51 +10004,6 @@ _sbInit();
   }
 })();
 
-// ── Splash animation ────────────────────────────────────────────────────────
-function _initSplashAnimation(){
-  // Progressive enhancement — si GSAP no cargó, splash se ve normal sin tocar nada
-  if(typeof gsap==='undefined') return;
-  const splash=document.getElementById('otrofestiv-splash');
-  const wm=document.getElementById('splash-wordmark');
-  if(!splash||!wm) return;
-  let barT,barB;
-  try{
-    // Barras solo existen si GSAP corre — JS crea, JS controla
-    barT=document.createElement('div');
-    barT.className='splash-bar-top';barT.setAttribute('aria-hidden','true');
-    barB=document.createElement('div');
-    barB.className='splash-bar-bot';barB.setAttribute('aria-hidden','true');
-    splash.prepend(barB);splash.prepend(barT);
-    gsap.set([barT,barB],{scaleY:1}); // cubrir inmediatamente
-    // Split wordmark en chars para spell-out
-    const text=wm.textContent;
-    wm.innerHTML=text.split('').map((ch,i)=>
-      `<span class="splash-wm-char" style="color:${i>=4?'var(--amber)':'var(--white)'}">${ch}</span>`
-    ).join('');
-    const chars=wm.querySelectorAll('.splash-wm-char');
-    const act=document.querySelector('.splash-action');
-    const tag=document.querySelector('.splash-tagline');
-    // Timeline aprobado por Motion Designer
-    const tl=gsap.timeline();
-    tl.to([barT,barB],{scaleY:0,duration:.7,ease:'power3.inOut'},0.05);
-    tl.from(chars,{opacity:0,y:8,duration:.45,stagger:.05,ease:'back.out(1.4)'},0.5);
-    if(act) tl.from(act,{opacity:0,y:14,duration:.5,ease:'power3.out'},1.1);
-    if(tag) tl.from(tag,{opacity:0,duration:.55,ease:'power2.out'},1.5);
-  }catch(e){
-    // Fallback: limpiar estado parcial — wordmark siempre visible
-    try{if(barT)barT.remove();if(barB)barB.remove();}catch(_){}
-    try{if(wm)gsap.set(wm,{clearProps:'all'});}catch(_){}
-    try{
-      const act=document.querySelector('.splash-action');
-      const tag=document.querySelector('.splash-tagline');
-      if(act)gsap.set(act,{clearProps:'all'});
-      if(tag)gsap.set(tag,{clearProps:'all'});
-    }catch(_){}
-  }
-}
-// window.load garantiza que GSAP (defer) ya ejecutó antes de correr
-window.addEventListener('load',_initSplashAnimation,{once:true});
-
 // ── Init: el splash siempre se muestra ─────────────────────────────
 // El festival pre-seleccionado es el que está en curso por fecha.
 // loadFestival() se llama desde dismissSplash() cuando el usuario pulsa "Entrar".
@@ -10212,103 +10164,6 @@ if('serviceWorker' in navigator){
       if(document.getElementById('otrofestiv-splash')) location.reload();
     }
   });
-}
-
-// ── FILTRO LUGAR — implementación desde cero ─────────────────────────────
-// 40 líneas. Un dropdown simple. Sin dependencias externas.
-
-function lugarOpen(){
-  const btn = document.getElementById('lugar-btn');
-  const r = btn.getBoundingClientRect();
-
-  // Build dropdown
-  const drop = document.createElement('div');
-  drop.id = 'lugar-drop';
-  drop.style.cssText = [
-    'position:fixed',
-    'top:'+(r.bottom+4)+'px',
-    'right:'+(window.innerWidth-r.right)+'px',
-    'min-width:200px',
-    'max-width:min(280px,90vw)',
-    'max-height:50vh',
-    'overflow-y:auto',
-    '-webkit-overflow-scrolling:touch',
-    'overscroll-behavior:contain',
-    'background:var(--surf)',
-    'border:1px solid var(--bdr)',
-    'border-radius:var(--r)',
-    'box-shadow:0 8px 24px rgba(0,0,0,.55)',
-    'z-index:9999',
-    'animation:lugarFadeIn .12s ease'
-  ].join(';');
-
-  // Collect unique venues from FILMS
-  // Embedded screenings[] format (Tribeca): expand all screenings, dedupe by title.
-  // Flat format (FICCI/AFF): one row per screening, use f.venue directly.
-  const venueMap = {};
-  const _vSeen = new Set();
-  (activeDay==='all'?FILMS:FILMS.filter(f=>f.day===activeDay))
-    .forEach(f=>{
-      if(f.screenings&&f.screenings.length){
-        if(_vSeen.has(f.title)) return;
-        _vSeen.add(f.title);
-        const rel=activeDay==='all'?f.screenings:f.screenings.filter(s=>s.date===activeDay||s.day===activeDay);
-        rel.forEach(s=>{
-          const cfg=vcfg(s.venue);const short=cfg.short||s.venue;
-          if(!short) return;
-          if(!venueMap[short]) venueMap[short]={label:short,count:0,city:cfg.city||''};
-          venueMap[short].count++;
-        });
-      } else {
-        const cfg=vcfg(f.venue);const short=cfg.short||f.venue;
-        if(!short) return;
-        if(!venueMap[short]) venueMap[short]={label:short,count:0,city:cfg.city||''};
-        venueMap[short].count++;
-      }
-    });
-
-  const venues = Object.values(venueMap).sort((a,b)=>b.count-a.count);
-  const total = venues.reduce((s,v)=>s+v.count,0);
-
-  // Render options
-  const opts = [{label:t('filter_todos_lugares'), count:total, short:'all'}, ...venues.map(v=>({...v,short:v.label}))];
-  drop.innerHTML = opts.map(v=>{
-    const isActive = (v.short==='all' && activeVenue==='all') || (activeVenue===v.short);
-    return '<div class="lugar-opt'+(isActive?' on':'')+'" data-v="'+v.short+'">'
-      +(v.short!=='all'?'<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z"/></svg>':'')
-      +'<span>'+v.label+'</span>'
-      +'<span class="lugar-cnt">'+v.count+'</span>'
-      +'</div>';
-  }).join('');
-
-  drop.addEventListener('click', e=>{
-    const opt = e.target.closest('.lugar-opt');
-    if(!opt) return;
-    const v = opt.dataset.v;
-    activeVenue = (v==='all'||v===activeVenue)?'all':v;
-    lugarClose();
-    _updateProgramaActiveFilter();
-    if(activeMNav==='mnav-cartelera') _renderProgramaContent(); else render();
-  });
-
-  document.body.appendChild(drop);
-  btn.classList.add('active');
-
-  // Close on outside click
-  setTimeout(()=>{
-    document.addEventListener('click', lugarOutside);
-  }, 0);
-  // Close on scroll — dropdown is fixed, button moves with sticky bar
-  window.addEventListener('scroll', lugarClose, {passive:true, once:true});
-}
-
-function lugarOutside(e){
-  const drop = document.getElementById('lugar-drop');
-  const btn = document.getElementById('lugar-btn');
-  if(drop && !drop.contains(e.target) && e.target!==btn && !btn?.contains(e.target)){
-    lugarClose();
-  }
-}
 }
 
 // ── FILTRO LUGAR — implementación desde cero ─────────────────────────────
