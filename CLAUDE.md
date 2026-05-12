@@ -3,7 +3,7 @@
 > No editar a mano — los cambios se sobreescriben en el próximo deploy.
 > Para modificar secciones estáticas, editar el template en el script.
 >
-> Último commit: `4bed54d feat(refactor): Fase 3 — limpiar safeT huérfanos + tasks completas`
+> Último commit: `f4c6a19 fix(planner): copy 'fuera' → 'no incluidos' + contexto bajo carga`
 
 ---
 

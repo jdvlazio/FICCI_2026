@@ -243,5 +243,12 @@
   "plan_continuar_quitar": "This will remove it from your plan.",
   "aria_marcar_pendiente": "Mark as unwatched",
   "plan_excluidos": "not included",
-  "plan_contexto_max": "Titles not included overlap with others already in your plan."
+  "plan_contexto_max": "Titles not included overlap with others already in your plan.",
+  "misc_in": "in",
+  "misc_days": "days",
+  "misc_tiempo_libre": "Free time",
+  "misc_hasta_sig": "until your next screening",
+  "misc_calendario": "Calendar",
+  "misc_sugerencias": "Suggestions",
+  "misc_calendario_listo": "Calendar ready"
 }

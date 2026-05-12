@@ -2852,6 +2852,13 @@ const _I18N = {
     "plan_reemplazada_por": "Reemplazada por",
     "plan_anadida_al_plan": "añadida al plan",
     "plan_excluidos": "no incluidos",
+    "misc_in": "en",
+    "misc_days": "días",
+    "misc_tiempo_libre": "Tiempo libre",
+    "misc_hasta_sig": "hasta tu siguiente actividad",
+    "misc_calendario": "Calendario",
+    "misc_sugerencias": "Sugerencias",
+    "misc_calendario_listo": "Calendario listo",
     "plan_contexto_max": "Los títulos no incluidos se solapan con otros en tu plan.",
     "plan_sin_calificar": "sin calificar",
     "plan_viste_n": "Viste",
@@ -3126,6 +3133,13 @@ const _I18N = {
     "plan_reemplazada_por": "Replaced with",
     "plan_anadida_al_plan": "added to plan",
     "plan_excluidos": "not included",
+    "misc_in": "in",
+    "misc_days": "days",
+    "misc_tiempo_libre": "Free time",
+    "misc_hasta_sig": "until your next screening",
+    "misc_calendario": "Calendar",
+    "misc_sugerencias": "Suggestions",
+    "misc_calendario_listo": "Calendar ready",
     "plan_contexto_max": "Titles not included overlap with others already in your plan.",
     "plan_sin_calificar": "to rate",
     "plan_viste_n": "You watched",
@@ -4330,7 +4344,7 @@ let FESTIVAL_STORAGE_KEY=(localStorage.getItem('otrofestiv_festival')||_DEFAULT_
 // BUILD_VERSION: cambia en cada deploy.
 // Al cargar, compara con localStorage. Si difiere → reload duro.
 // sessionStorage evita loops infinitos dentro de la misma sesión.
-const BUILD_VERSION='202605121307';
+const BUILD_VERSION='202605121316';
 (function(){
   const _vk='otrofestiv_build';
   const _sk='otrofestiv_reloaded';
@@ -6758,7 +6772,7 @@ function _renderSavedAgendaHTML(){
   const suggsByDay=getSuggestions();
   const suggDays=DAY_KEYS.filter(d=>suggsByDay[d]&&suggsByDay[d].length>0);
   html+=`<div class="suggestion-wrap">
-    <div class="mb-2 sec-hdr">${ICONS.sparkles} Sugerencias</div>`;
+    <div class="mb-2 sec-hdr">${ICONS.sparkles} ${t('misc_sugerencias')}</div>`;
   if(suggDays.length){
     suggDays.forEach(day=>{
       html+=`<div class="suggestion-day-lbl">${dayChip(day)}</div>`;
@@ -7160,7 +7174,7 @@ function exportICS(){
   lines.push('END:VCALENDAR');
   const blob=new Blob([lines.join('\r\n')],{type:'text/calendar'});
   const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=`otrofestiv-${_icsId}.ics`;a.click();
-  showToast('Calendario listo','info');
+  showToast(t('misc_calendario_listo'),'info');
 }
 function clearSavedAgenda(){
   showDestructiveModal(`Borrar plan`,

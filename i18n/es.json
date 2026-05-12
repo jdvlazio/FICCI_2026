@@ -243,5 +243,12 @@
   "plan_continuar_quitar": "¿Continuar y quitar del plan?",
   "aria_marcar_pendiente": "Marcar como pendiente",
   "plan_excluidos": "no incluidos",
-  "plan_contexto_max": "Los títulos no incluidos se solapan con otros en tu plan."
+  "plan_contexto_max": "Los títulos no incluidos se solapan con otros en tu plan.",
+  "misc_in": "en",
+  "misc_days": "días",
+  "misc_tiempo_libre": "Tiempo libre",
+  "misc_hasta_sig": "hasta tu siguiente actividad",
+  "misc_calendario": "Calendario",
+  "misc_sugerencias": "Sugerencias",
+  "misc_calendario_listo": "Calendario listo"
 }
