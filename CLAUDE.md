@@ -3,7 +3,7 @@
 > No editar a mano — los cambios se sobreescriben en el próximo deploy.
 > Para modificar secciones estáticas, editar el template en el script.
 >
-> Último commit: `f04751c docs: tasks i18n-films-audit completadas`
+> Último commit: `0c0508e fix(splash): eliminar glitch de idioma — script inline post-splash`
 
 ---
 
