@@ -1,0 +1,533 @@
+{
+  "id": "leviza2026",
+  "name": "Leviza - Festival de Cine y Audiovisuales en Zapatoca",
+  "shortName": "LEVIZA",
+  "city": "Zapatoca",
+  "country": "CO",
+  "dates": "14–17 MAY",
+  "dates_en": "MAY 14–17",
+  "year": 2026,
+  "timezoneOffset": "-05:00",
+  "storageKey": "leviza2026_",
+  "festivalEndStr": "2026-05-17T23:00:00",
+  "festivalDates": {
+    "JUE 14": "2026-05-14",
+    "VIE 15": "2026-05-15",
+    "SÁB 16": "2026-05-16",
+    "DOM 17": "2026-05-17"
+  },
+  "days": [
+    {
+      "k": "JUE 14",
+      "d": 14,
+      "lbl": "JUE"
+    },
+    {
+      "k": "VIE 15",
+      "d": 15,
+      "lbl": "VIE"
+    },
+    {
+      "k": "SÁB 16",
+      "d": 16,
+      "lbl": "SÁB"
+    },
+    {
+      "k": "DOM 17",
+      "d": 17,
+      "lbl": "DOM"
+    }
+  ],
+  "dayKeys": [
+    "JUE 14",
+    "VIE 15",
+    "SÁB 16",
+    "DOM 17"
+  ],
+  "dayShort": {
+    "JUE 14": "JUE 14",
+    "VIE 15": "VIE 15",
+    "SÁB 16": "SÁB 16",
+    "DOM 17": "DOM 17"
+  },
+  "dayShort_en": {
+    "JUE 14": "THU 14",
+    "VIE 15": "FRI 15",
+    "SÁB 16": "SAT 16",
+    "DOM 17": "SUN 17"
+  },
+  "prioLimit": 3,
+  "transport": "mixed",
+  "venues": {
+    "Auditorio Polideportivo - Zapatoca": {
+      "short": "Polideportivo",
+      "lat": 6.8206,
+      "lng": -73.2673,
+      "city": "Zapatoca"
+    },
+    "Mediateca Municipal - Zapatoca": {
+      "short": "Mediateca",
+      "lat": 6.82,
+      "lng": -73.267,
+      "city": "Zapatoca"
+    }
+  },
+  "films": [
+    {
+      "title": "La Suprema",
+      "director": "Felipe Holguín Caro",
+      "country": "Colombia",
+      "flags": "🇨🇴",
+      "section": "🎬 Inauguración",
+      "day": "JUE 14",
+      "time": "10:00",
+      "venue": "Auditorio Polideportivo - Zapatoca",
+      "has_qa": true,
+      "day_order": 0,
+      "tmdb_id": 1105382,
+      "year": 2023,
+      "genre": "Drama"
+    },
+    {
+      "title": "Rebelión",
+      "director": "José Luis Rugeles",
+      "country": "Colombia",
+      "flags": "🇨🇴",
+      "section": "🎞️ Proyecciones",
+      "day": "JUE 14",
+      "time": "16:00",
+      "venue": "Auditorio Polideportivo - Zapatoca",
+      "day_order": 1,
+      "tmdb_id": 1032603,
+      "year": 2022,
+      "genre": "Biográfico, Drama, Musical"
+    },
+    {
+      "title": "Muestra Competencia Nacional de Ficción — Jueves",
+      "section": "🏆 Competencia Nacional de Ficción",
+      "day": "JUE 14",
+      "time": "19:30",
+      "venue": "Auditorio Polideportivo - Zapatoca",
+      "is_cortos": true,
+      "film_list": [
+        {
+          "title": "Enigmas: Puro Entretenimiento",
+          "director": "Samuel Lazcano",
+          "country": "Colombia",
+          "flags": "🇨🇴",
+          "poster": "assets/leviza/images.jpeg"
+        },
+        {
+          "title": "La Bruja de Mi Ex",
+          "director": "Yesid Rengifo Sanabria",
+          "country": "Colombia",
+          "flags": "🇨🇴",
+          "poster": "assets/leviza/LaBruja.jpg"
+        },
+        {
+          "title": "La Mujer en el Espejo",
+          "director": "Luis Miguel Cuervo Ospina",
+          "country": "Colombia",
+          "flags": "🇨🇴",
+          "poster": "assets/leviza/LaMujer.png"
+        },
+        {
+          "title": "Legado Sinuano",
+          "director": "Luis Vieira Manchego",
+          "country": "Colombia",
+          "flags": "🇨🇴",
+          "poster": "assets/leviza/Legado.jpeg"
+        },
+        {
+          "title": "Manual para Reparar",
+          "director": "Laura Mora",
+          "country": "Colombia",
+          "flags": "🇨🇴"
+        }
+      ],
+      "day_order": 2,
+      "flags": "🇨🇴"
+    },
+    {
+      "title": "Chist",
+      "director": "Elkin Díaz",
+      "country": "Colombia",
+      "flags": "🇨🇴",
+      "year": 2022,
+      "section": "🎞️ Proyecciones",
+      "day": "VIE 15",
+      "time": "10:00",
+      "venue": "Auditorio Polideportivo - Zapatoca",
+      "has_qa": true,
+      "poster": "assets/leviza/Chist.jpg",
+      "day_order": 0
+    },
+    {
+      "title": "Sin la Luz Perpetua",
+      "director": "Raúl Gutiérrez",
+      "country": "Colombia",
+      "flags": "🇨🇴",
+      "section": "🎞️ Proyecciones",
+      "day": "VIE 15",
+      "time": "10:00",
+      "venue": "Auditorio Polideportivo - Zapatoca",
+      "has_qa": true,
+      "poster": "assets/leviza/SinLaLuz.jpg",
+      "day_order": 1
+    },
+    {
+      "title": "Filminutos Semillero YarimaFICS — Barrancabermeja",
+      "section": "📽️ Filminutos",
+      "day": "VIE 15",
+      "time": "16:00",
+      "venue": "Auditorio Polideportivo - Zapatoca",
+      "is_cortos": true,
+      "film_list": [
+        {
+          "title": "Closeth"
+        },
+        {
+          "title": "Cristofer"
+        },
+        {
+          "title": "Inocente"
+        },
+        {
+          "title": "La Enfermera"
+        },
+        {
+          "title": "Sálvame"
+        },
+        {
+          "title": "Un Día Más"
+        },
+        {
+          "title": "Vínculo"
+        }
+      ],
+      "day_order": 2,
+      "flags": "🇨🇴"
+    },
+    {
+      "title": "Candelaria",
+      "director": "Jhonny Hendrix Hinestroza",
+      "country": "Colombia",
+      "flags": "🇨🇴",
+      "section": "🎞️ Proyecciones",
+      "day": "VIE 15",
+      "time": "16:00",
+      "venue": "Auditorio Polideportivo - Zapatoca",
+      "day_order": 3,
+      "tmdb_id": 483787,
+      "year": 2017,
+      "genre": "Drama"
+    },
+    {
+      "title": "Muestra Competencia Nacional de Ficción — Viernes",
+      "section": "🏆 Competencia Nacional de Ficción",
+      "day": "VIE 15",
+      "time": "19:30",
+      "venue": "Auditorio Polideportivo - Zapatoca",
+      "is_cortos": true,
+      "film_list": [
+        {
+          "title": "La Ceremonia",
+          "director": "Deimer Vergara / Julián García",
+          "country": "Colombia",
+          "flags": "🇨🇴"
+        },
+        {
+          "title": "No Te Despiertes",
+          "director": "Hernán Velásquez",
+          "country": "Colombia",
+          "flags": "🇨🇴",
+          "poster": "assets/leviza/NoTeDespiertes.jpg"
+        },
+        {
+          "title": "Pawa",
+          "director": "Marbel Vanegas Jusayu",
+          "country": "Colombia",
+          "flags": "🇨🇴",
+          "poster": "assets/leviza/Pawa.jpeg"
+        },
+        {
+          "title": "Refracción",
+          "director": "Isabella Palacio Meda",
+          "country": "Colombia",
+          "flags": "🇨🇴",
+          "poster": "assets/leviza/Refraccio_n.jpeg"
+        },
+        {
+          "title": "Tiene que Ser Ella",
+          "director": "Valeria Rojas",
+          "country": "Colombia",
+          "flags": "🇨🇴"
+        },
+        {
+          "title": "Saltus",
+          "director": "Lisett Contreras",
+          "country": "Colombia",
+          "flags": "🇨🇴",
+          "poster": "assets/leviza/Saltus.jpeg"
+        },
+        {
+          "title": "Tándem",
+          "director": "Edison González",
+          "country": "Colombia",
+          "flags": "🇨🇴",
+          "poster": "assets/leviza/Tandem.webp"
+        }
+      ],
+      "day_order": 4,
+      "flags": "🇨🇴"
+    },
+    {
+      "title": "Mateo",
+      "director": "María Gamboa",
+      "country": "Colombia",
+      "flags": "🇨🇴",
+      "section": "🎞️ Proyecciones",
+      "day": "SÁB 16",
+      "time": "10:00",
+      "venue": "Auditorio Polideportivo - Zapatoca",
+      "has_qa": true,
+      "day_order": 0,
+      "tmdb_id": 262229,
+      "year": 2014,
+      "genre": "Drama"
+    },
+    {
+      "title": "Sumas y Restas",
+      "director": "Víctor Gaviria",
+      "country": "Colombia",
+      "flags": "🇨🇴",
+      "section": "🎞️ Proyecciones",
+      "day": "SÁB 16",
+      "time": "16:00",
+      "venue": "Auditorio Polideportivo - Zapatoca",
+      "has_qa": true,
+      "day_order": 1,
+      "tmdb_id": 258450,
+      "year": 2004,
+      "genre": "Drama, Crimen"
+    },
+    {
+      "title": "Muestra Competencia Nacional de Ficción — Sábado",
+      "section": "🏆 Competencia Nacional de Ficción",
+      "day": "SÁB 16",
+      "time": "19:30",
+      "venue": "Auditorio Polideportivo - Zapatoca",
+      "is_cortos": true,
+      "film_list": [
+        {
+          "title": "La Independencia",
+          "director": "Jhon Agudelo Suárez",
+          "country": "Colombia",
+          "flags": "🇨🇴",
+          "poster": "assets/leviza/LaIndependencia.webp"
+        },
+        {
+          "title": "Luz Blanca",
+          "director": "Luigui Acuña",
+          "country": "Colombia",
+          "flags": "🇨🇴",
+          "poster": "assets/leviza/Luz-Blanca.jpg"
+        },
+        {
+          "title": "Retrato de un Adiós",
+          "director": "Santiago Atehortúa",
+          "country": "Colombia",
+          "flags": "🇨🇴"
+        },
+        {
+          "title": "Ruidos",
+          "director": "Lala Corredor",
+          "country": "Colombia",
+          "flags": "🇨🇴"
+        },
+        {
+          "title": "Téngale Fe",
+          "director": "Doney Cardona",
+          "country": "Colombia",
+          "flags": "🇨🇴",
+          "poster": "assets/leviza/TengaleFE.png"
+        },
+        {
+          "title": "Tiempos Revelados",
+          "director": "Paola Nova / Fredy Roldán",
+          "country": "Colombia",
+          "flags": "🇨🇴"
+        }
+      ],
+      "day_order": 2,
+      "flags": "🇨🇴"
+    },
+    {
+      "title": "La Vendedora de Rosas",
+      "director": "Víctor Gaviria",
+      "country": "Colombia",
+      "flags": "🇨🇴",
+      "section": "🎞️ Proyecciones",
+      "day": "DOM 17",
+      "time": "10:00",
+      "venue": "Auditorio Polideportivo - Zapatoca",
+      "has_qa": true,
+      "day_order": 0,
+      "tmdb_id": 97038,
+      "year": 1998,
+      "genre": "Drama"
+    },
+    {
+      "title": "Los Súper Descendientes",
+      "director": "Rasmus A. Sivertsen",
+      "country": "Noruega",
+      "flags": "🇳🇴",
+      "section": "🎞️ Proyecciones",
+      "day": "DOM 17",
+      "time": "16:00",
+      "venue": "Auditorio Polideportivo - Zapatoca",
+      "day_order": 1,
+      "tmdb_id": 1222695,
+      "year": 2022,
+      "genre": "Animación, Familiar"
+    },
+    {
+      "title": "Clausura — Filminutos Movimiento Audiovisual LEVIZA",
+      "section": "⭐ Clausura",
+      "day": "DOM 17",
+      "time": "19:30",
+      "venue": "Auditorio Polideportivo - Zapatoca",
+      "is_cortos": true,
+      "film_list": [
+        {
+          "title": "Un Recuerdo Muerto"
+        },
+        {
+          "title": "Perdón"
+        },
+        {
+          "title": "La Lluvia"
+        },
+        {
+          "title": "Entre Ventanas"
+        },
+        {
+          "title": "Justa Medida"
+        },
+        {
+          "title": "Del Otro Lado del Solar"
+        }
+      ],
+      "day_order": 2,
+      "flags": "🇨🇴"
+    },
+    {
+      "title": "Taller de Producción y Financiación",
+      "section": "🎓 Talleres",
+      "type": "event",
+      "day": "JUE 14",
+      "time": "14:00",
+      "venue": "Mediateca Municipal - Zapatoca",
+      "day_order": 3
+    },
+    {
+      "title": "Taller de Producción y Financiación",
+      "section": "🎓 Talleres",
+      "type": "event",
+      "day": "VIE 15",
+      "time": "14:00",
+      "venue": "Mediateca Municipal - Zapatoca",
+      "day_order": 5
+    },
+    {
+      "title": "Taller de Producción y Financiación",
+      "section": "🎓 Talleres",
+      "type": "event",
+      "day": "SÁB 16",
+      "time": "14:00",
+      "venue": "Mediateca Municipal - Zapatoca",
+      "day_order": 3
+    },
+    {
+      "title": "Taller de Guion",
+      "section": "🎓 Talleres",
+      "type": "event",
+      "day": "JUE 14",
+      "time": "14:00",
+      "venue": "Mediateca Municipal - Zapatoca",
+      "day_order": 4
+    },
+    {
+      "title": "Taller de Guion",
+      "section": "🎓 Talleres",
+      "type": "event",
+      "day": "VIE 15",
+      "time": "14:00",
+      "venue": "Mediateca Municipal - Zapatoca",
+      "day_order": 6
+    },
+    {
+      "title": "Taller de Guion",
+      "section": "🎓 Talleres",
+      "type": "event",
+      "day": "SÁB 16",
+      "time": "14:00",
+      "venue": "Mediateca Municipal - Zapatoca",
+      "day_order": 4
+    },
+    {
+      "title": "Taller de Dirección de Actores",
+      "section": "🎓 Talleres",
+      "type": "event",
+      "day": "VIE 15",
+      "time": "14:00",
+      "venue": "Mediateca Municipal - Zapatoca",
+      "day_order": 7
+    },
+    {
+      "title": "Taller de Dirección de Actores",
+      "section": "🎓 Talleres",
+      "type": "event",
+      "day": "SÁB 16",
+      "time": "14:00",
+      "venue": "Mediateca Municipal - Zapatoca",
+      "day_order": 5
+    },
+    {
+      "title": "Taller de Dirección de Actores",
+      "section": "🎓 Talleres",
+      "type": "event",
+      "day": "DOM 17",
+      "time": "14:00",
+      "venue": "Mediateca Municipal - Zapatoca",
+      "day_order": 3
+    },
+    {
+      "title": "Taller de Iniciación Actoral",
+      "section": "🎓 Talleres",
+      "type": "event",
+      "day": "VIE 15",
+      "time": "14:00",
+      "venue": "Mediateca Municipal - Zapatoca",
+      "day_order": 8
+    },
+    {
+      "title": "Taller de Iniciación Actoral",
+      "section": "🎓 Talleres",
+      "type": "event",
+      "day": "SÁB 16",
+      "time": "14:00",
+      "venue": "Mediateca Municipal - Zapatoca",
+      "day_order": 6
+    },
+    {
+      "title": "Taller de Iniciación Actoral",
+      "section": "🎓 Talleres",
+      "type": "event",
+      "day": "DOM 17",
+      "time": "14:00",
+      "venue": "Mediateca Municipal - Zapatoca",
+      "day_order": 4
+    }
+  ]
+}
