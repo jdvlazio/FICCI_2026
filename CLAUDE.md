@@ -3,7 +3,7 @@
 > No editar a mano — los cambios se sobreescriben en el próximo deploy.
 > Para modificar secciones estáticas, editar el template en el script.
 >
-> Último commit: `839537d fix(i18n): auditoría P3.2b P4.1 P5.6 M6.1 — strings hardcodeados ES`
+> Último commit: `5f5d927 docs: spec spacing Planner — 8px grid audit, pendiente aprobación`
 
 ---
 
