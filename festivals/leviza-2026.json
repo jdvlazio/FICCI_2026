@@ -170,8 +170,7 @@
       "venue": "Auditorio Polideportivo - Zapatoca",
       "has_qa": true,
       "poster": "assets/leviza/Chist.jpg",
-      "day_order": 0,
-      "synopsis": "—"
+      "day_order": 0
     },
     {
       "title": "Sin la Luz Perpetua",
@@ -185,8 +184,6 @@
       "has_qa": true,
       "poster": "assets/leviza/SinLaLuz.jpg",
       "day_order": 1,
-      "lbSlug": "⚠️ LB PENDIENTE",
-      "synopsis": "—",
       "year": 2022
     },
     {
@@ -345,7 +342,7 @@
       "year": 2004,
       "genre": "Drama, Crimen",
       "lbSlug": "⚠️ LB PENDIENTE",
-      "synopsis": "Una mirada al infame cartel de cocaína de Medellín. Focalizándose en la relación entre un constructor y un traficante, la película narra las historias de aquellos atrapados en el torbellino de la violencia."
+      "synopsis": "Una mirada al infame cartel de cocaína de Medellín. Focalizándose en la relación entre un constructor y un traficante."
     },
     {
       "title": "Muestra Competencia Nacional de Ficción — Sábado",
@@ -436,7 +433,7 @@
       "year": 2022,
       "genre": "Animación, Familiar",
       "lbSlug": "⚠️ LB PENDIENTE",
-      "synopsis": "No hace falta ser un superhéroe para ser súper. Hedvig, de 11 años, encoge accidentalmente el traje de su padre, el superhéroe del pueblo. Torpe e insegura, tendrá que encontrar su propio superpoder para proteger a quienes ama."
+      "synopsis": "No hace falta ser un superhéroe para ser súper. Hedvig, de 11 años, encoge accidentalmente el traje de su padre, el superhéroe del pueblo, y tendrá que encontrar su propio superpoder."
     },
     {
       "title": "Clausura — Filminutos Movimiento Audiovisual LEVIZA",
