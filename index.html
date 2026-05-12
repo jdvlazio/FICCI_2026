@@ -4316,7 +4316,7 @@ let FESTIVAL_STORAGE_KEY=(localStorage.getItem('otrofestiv_festival')||_DEFAULT_
 // BUILD_VERSION: cambia en cada deploy.
 // Al cargar, compara con localStorage. Si difiere → reload duro.
 // sessionStorage evita loops infinitos dentro de la misma sesión.
-const BUILD_VERSION='202605120126';
+const BUILD_VERSION='202605120129';
 (function(){
   const _vk='otrofestiv_build';
   const _sk='otrofestiv_reloaded';
@@ -10205,13 +10205,10 @@ window.addEventListener('resize',function(){requestAnimationFrame(_fixStickyOffs
 <script>
 if('serviceWorker' in navigator){
   navigator.serviceWorker.register('/sw.js').catch(function(){});
-  // controllerchange: solo recargar en ACTUALIZACIÓN (había SW previo),
-  // no en primera instalación — evita reload en primer paint en Safari
-  const _prevCtrl = navigator.serviceWorker.controller;
-  navigator.serviceWorker.addEventListener('controllerchange', () => {
-    if(_prevCtrl && !sessionStorage.getItem('otrofestiv_sw_reload')){
-      sessionStorage.setItem('otrofestiv_sw_reload','1');
-      location.reload();
+  // SW_UPDATED: recargar solo si el splash sigue visible (primer uso)
+  navigator.serviceWorker.addEventListener('message', e => {
+    if(e.data && e.data.type==='SW_UPDATED'){
+      if(document.getElementById('otrofestiv-splash')) location.reload();
     }
   });
 }

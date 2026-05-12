@@ -3,7 +3,7 @@
 > No editar a mano — los cambios se sobreescriben en el próximo deploy.
 > Para modificar secciones estáticas, editar el template en el script.
 >
-> Último commit: `c0d4d2f fix(sw): mecanismo de actualización automática en iOS PWA`
+> Último commit: `b7cc232 fix(sw): controllerchange solo en actualización, no en primer install`
 
 ---
 
