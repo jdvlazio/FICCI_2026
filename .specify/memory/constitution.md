@@ -45,6 +45,10 @@ Las strings de la UI no son "texto que se puede cambiar después". Cada string e
 La app soporta ES + EN. Esto no es una feature opcional — es parte del modelo de producto (festivales internacionales como Tribeca requieren interfaz en inglés). Toda string nueva entra simultáneamente en `es.json` y `en.json`.
 
 ### validate.py como gate obligatorio
+
+⚠️ **NUNCA** usar `python3 validate.py | tail -N` — el pipe hace que el exit code sea el de `tail` (siempre 0), no el de validate.py. Así el `&&` chain continúa aunque haya errores. Siempre correr sin pipe para verificar, o usar `python3 validate.py; echo "exit: $?"`.
+
+### validate.py como gate obligatorio
 El validador chequea JS syntax, divs críticos, CSS corruption y patrones prohibidos. Es la única forma de detectar regresiones en un archivo de ~10k líneas sin test suite formal. Correr antes de cada commit no es opcional.
 
 ### Timezone Colombia (UTC-5)
