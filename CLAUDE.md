@@ -3,7 +3,7 @@
 > No editar a mano — los cambios se sobreescriben en el próximo deploy.
 > Para modificar secciones estáticas, editar el template en el script.
 >
-> Último commit: `5f5d927 docs: spec spacing Planner — 8px grid audit, pendiente aprobación`
+> Último commit: `41814e8 docs: spacing Planner tasks completas — gap 55px→33px, grid 8px verificado`
 
 ---
 
