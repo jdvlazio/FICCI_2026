@@ -2855,6 +2855,7 @@ const _I18N = {
     "misc_in": "en",
     "misc_days": "días",
     "misc_tiempo_libre": "Tiempo libre",
+    "misc_sugerencias_wl": "De tu lista",
     "misc_hasta_sig": "hasta tu siguiente actividad",
     "misc_calendario": "Calendario",
     "misc_sugerencias": "Sugerencias",
@@ -3136,6 +3137,7 @@ const _I18N = {
     "misc_in": "in",
     "misc_days": "days",
     "misc_tiempo_libre": "Free time",
+    "misc_sugerencias_wl": "From your list",
     "misc_hasta_sig": "until your next screening",
     "misc_calendario": "Calendar",
     "misc_sugerencias": "Suggestions",
@@ -4344,7 +4346,7 @@ let FESTIVAL_STORAGE_KEY=(localStorage.getItem('otrofestiv_festival')||_DEFAULT_
 // BUILD_VERSION: cambia en cada deploy.
 // Al cargar, compara con localStorage. Si difiere → reload duro.
 // sessionStorage evita loops infinitos dentro de la misma sesión.
-const BUILD_VERSION='202605121350';
+const BUILD_VERSION='202605121424';
 (function(){
   const _vk='otrofestiv_build';
   const _sk='otrofestiv_reloaded';
@@ -5594,7 +5596,7 @@ function getSuggestions(){
         if(noConflict){
           seenRecovery.add(f.title);seenDiscover.add(f.title);
           if(!byDay[day]) byDay[day]=[];
-          byDay[day].push({...f,gapCtx:'De tu lista · cabe en tu agenda',_isFromWL:true});
+          byDay[day].push({...f,gapCtx:t('misc_sugerencias_wl'),_isFromWL:true});
         }
       });
     });
@@ -6471,7 +6473,7 @@ function renderContextualHeader(){
 
   // ── BEFORE ─────────────────────────────────────────────────
   if(ph.phase==='before'){
-    const label=ph.daysDiff===1?t('misc_manana'):`en ${ph.daysDiff} días`;
+    const label=ph.daysDiff===1?t('misc_manana'):`${t('misc_in')} ${ph.daysDiff} ${t('misc_days')}`;
     const prios=[...prioritized]
       .map(t=>{
         const f=FILMS.filter(fi=>fi.title===t&&!screeningPassed(fi))
@@ -6614,9 +6616,9 @@ function renderContextualHeader(){
     return`<div class="ctx-header">
       <div class="txt-green70 ctx-eyebrow">
         <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-        Tiempo libre
+        ${t('misc_tiempo_libre')}
       </div>
-      <div class="ctx-main-title">${gapLabel} hasta tu siguiente actividad</div>
+      <div class="ctx-main-title">${gapLabel} ${t('misc_hasta_sig')}</div>
       <div class="txt-gray-sm-vm">${fromStr} → ${toStr} · ${(()=>{const{displayTitle:dt}=parseProgramTitle(next._title||'');return dt.length>28?dt.slice(0,26)+'…':dt;})()}</div>
       <div class="mt-3">${suggest}</div>
     </div>`;

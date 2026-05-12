@@ -3,7 +3,7 @@
 > No editar a mano — los cambios se sobreescriben en el próximo deploy.
 > Para modificar secciones estáticas, editar el template en el script.
 >
-> Último commit: `500e9ed feat(mi-plan): 'See day' contextual — muestra el día activo`
+> Último commit: `08ca294 fix(mi-plan): See day — DAYS[idx] no DAYS[dateKey]`
 
 ---
 
