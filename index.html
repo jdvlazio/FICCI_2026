@@ -2404,7 +2404,7 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:var(--t
 <div class="av-sheet-overlay" id="av-sheet-overlay" style="display:none" onclick="if(event.target===this)closeAvSheet()">
   <div class="av-sheet">
     <div class="av-sheet-handle"></div>
-    <div class="av-sheet-title">No disponible</div>
+    <div class="av-sheet-title" data-i18n="av_no_disponible">No disponible</div>
     <div class="av-sheet-lbl" data-i18n="av_dia">Día</div>
     <div class="av-day-chips" id="av-day-chips"></div>
     <div class="av-sheet-lbl" data-i18n="av_tipo">Tipo</div>
@@ -4384,7 +4384,7 @@ let FESTIVAL_STORAGE_KEY=(localStorage.getItem('otrofestiv_festival')||_DEFAULT_
 // BUILD_VERSION: cambia en cada deploy.
 // Al cargar, compara con localStorage. Si difiere → reload duro.
 // sessionStorage evita loops infinitos dentro de la misma sesión.
-const BUILD_VERSION='202605121721';
+const BUILD_VERSION='202605121724';
 (function(){
   const _vk='otrofestiv_build';
   const _sk='otrofestiv_reloaded';
