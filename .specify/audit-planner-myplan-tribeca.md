@@ -40,7 +40,9 @@ Severidad: 🔴 CRÍTICO (bloquea release) | 🟡 MAYOR (degradación UX) | 🟢
 - [x] P5.1 ✅ Plan con prioridades apostrophe termina < 10s (CRIT-01 resuelto)
 - [x] P5.2 ✅ ★ Best option es primera
 - [x] P5.3 ✅ 0 excluded con watchlist pequeño / "not included" en gris cuando hay excluidos
-- [x] P5.4 🟡 FAIL — Click en horario no abre alternativas
+- [x] P5.4 ✅ PASS — Diseño intencional: "2 alt." en Planner es badge informativo.
+       El modo de alternativas (toggleFilmAlternatives) es exclusivo de Mi Plan (mode=saved).
+       En Planner los items son escenarios hipotéticos, no el plan guardado.
 - [x] P5.5 ✅ N/A — no excluded en esta prueba
 - [x] P5.6 ✅ + N more · en EN (d994c71) pero no navega a My Plan
          → bottomsheet "Your plan is ready!" + "View My Plan" es el paso intermedio
