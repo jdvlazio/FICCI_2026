@@ -87,7 +87,8 @@
       "tmdb_id": 1105382,
       "year": 2023,
       "genre": "Drama",
-      "lbSlug": "⚠️ LB PENDIENTE"
+      "lbSlug": "⚠️ LB PENDIENTE",
+      "synopsis": "En una remota aldea sin electricidad, una adolescente convence a todo el pueblo para encontrar la forma de ver a su tío, del que está distanciada, competir en un combate del campeonato mundial de boxeo."
     },
     {
       "title": "Rebelión",
@@ -102,7 +103,8 @@
       "tmdb_id": 1032603,
       "year": 2022,
       "genre": "Biográfico, Drama, Musical",
-      "lbSlug": "⚠️ LB PENDIENTE"
+      "lbSlug": "⚠️ LB PENDIENTE",
+      "synopsis": "La película retrata a un vulnerable y anónimo Joe Arroyo, quizás el cantante colombiano de salsa más importante de la historia, en su viaje claustrofóbico por diferentes momentos de su vida."
     },
     {
       "title": "Muestra Competencia Nacional de Ficción — Jueves",
@@ -169,7 +171,7 @@
       "has_qa": true,
       "poster": "assets/leviza/Chist.jpg",
       "day_order": 0,
-      "lbSlug": "⚠️ LB PENDIENTE"
+      "synopsis": "—"
     },
     {
       "title": "Sin la Luz Perpetua",
@@ -183,7 +185,9 @@
       "has_qa": true,
       "poster": "assets/leviza/SinLaLuz.jpg",
       "day_order": 1,
-      "lbSlug": "⚠️ LB PENDIENTE"
+      "lbSlug": "⚠️ LB PENDIENTE",
+      "synopsis": "—",
+      "year": 2022
     },
     {
       "title": "Filminutos Semillero YarimaFICS — Barrancabermeja",
@@ -239,7 +243,8 @@
       "tmdb_id": 483787,
       "year": 2017,
       "genre": "Drama",
-      "lbSlug": "⚠️ LB PENDIENTE"
+      "lbSlug": "⚠️ LB PENDIENTE",
+      "synopsis": "Dos pensionistas, una cámara de video y una propuesta indecente."
     },
     {
       "title": "Muestra Competencia Nacional de Ficción — Viernes",
@@ -322,7 +327,8 @@
       "tmdb_id": 262229,
       "year": 2014,
       "genre": "Drama",
-      "lbSlug": "⚠️ LB PENDIENTE"
+      "lbSlug": "⚠️ LB PENDIENTE",
+      "synopsis": "A la impresionante edad de 16 años, el joven Mateo enfrenta la tentación de ingresar a las pandillas del barrio o buscar otra manera de expresarse."
     },
     {
       "title": "Sumas y Restas",
@@ -338,7 +344,8 @@
       "tmdb_id": 258450,
       "year": 2004,
       "genre": "Drama, Crimen",
-      "lbSlug": "⚠️ LB PENDIENTE"
+      "lbSlug": "⚠️ LB PENDIENTE",
+      "synopsis": "Una mirada al infame cartel de cocaína de Medellín. Focalizándose en la relación entre un constructor y un traficante, la película narra las historias de aquellos atrapados en el torbellino de la violencia."
     },
     {
       "title": "Muestra Competencia Nacional de Ficción — Sábado",
@@ -412,7 +419,8 @@
       "tmdb_id": 97038,
       "year": 1998,
       "genre": "Drama",
-      "lbSlug": "⚠️ LB PENDIENTE"
+      "lbSlug": "⚠️ LB PENDIENTE",
+      "synopsis": "Mónica, de 13 años, lleva una vida en la calle, ganándose la vida vendiendo rosas."
     },
     {
       "title": "Los Súper Descendientes",
@@ -427,7 +435,8 @@
       "tmdb_id": 1222695,
       "year": 2022,
       "genre": "Animación, Familiar",
-      "lbSlug": "⚠️ LB PENDIENTE"
+      "lbSlug": "⚠️ LB PENDIENTE",
+      "synopsis": "No hace falta ser un superhéroe para ser súper. Hedvig, de 11 años, encoge accidentalmente el traje de su padre, el superhéroe del pueblo. Torpe e insegura, tendrá que encontrar su propio superpoder para proteger a quienes ama."
     },
     {
       "title": "Clausura — Filminutos Movimiento Audiovisual LEVIZA",
