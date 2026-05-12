@@ -121,7 +121,7 @@
           "director": "Samuel Lazcano",
           "country": "Colombia",
           "flags": "🇨🇴",
-          "poster": "assets/leviza/images.jpeg",
+          "poster": "/assets/leviza/images.jpeg",
           "lbSlug": "⚠️ LB PENDIENTE"
         },
         {
@@ -129,7 +129,7 @@
           "director": "Yesid Rengifo Sanabria",
           "country": "Colombia",
           "flags": "🇨🇴",
-          "poster": "assets/leviza/LaBruja.jpg",
+          "poster": "/assets/leviza/LaBruja.jpg",
           "lbSlug": "⚠️ LB PENDIENTE"
         },
         {
@@ -137,7 +137,7 @@
           "director": "Luis Miguel Cuervo Ospina",
           "country": "Colombia",
           "flags": "🇨🇴",
-          "poster": "assets/leviza/LaMujer.png",
+          "poster": "/assets/leviza/LaMujer.png",
           "lbSlug": "⚠️ LB PENDIENTE"
         },
         {
@@ -145,7 +145,7 @@
           "director": "Luis Vieira Manchego",
           "country": "Colombia",
           "flags": "🇨🇴",
-          "poster": "assets/leviza/Legado.jpeg",
+          "poster": "/assets/leviza/Legado.jpeg",
           "lbSlug": "⚠️ LB PENDIENTE"
         },
         {
@@ -171,7 +171,7 @@
       "time": "10:00",
       "venue": "Auditorio Polideportivo - Zapatoca",
       "has_qa": true,
-      "poster": "assets/leviza/Chist.jpg",
+      "poster": "/assets/leviza/Chist.jpg",
       "day_order": 0
     },
     {
@@ -184,7 +184,7 @@
       "time": "10:00",
       "venue": "Auditorio Polideportivo - Zapatoca",
       "has_qa": true,
-      "poster": "assets/leviza/SinLaLuz.jpg",
+      "poster": "/assets/leviza/SinLaLuz.jpg",
       "day_order": 1,
       "year": 2022
     },
@@ -265,7 +265,7 @@
           "director": "Hernán Velásquez",
           "country": "Colombia",
           "flags": "🇨🇴",
-          "poster": "assets/leviza/NoTeDespiertes.jpg",
+          "poster": "/assets/leviza/NoTeDespiertes.jpg",
           "lbSlug": "⚠️ LB PENDIENTE"
         },
         {
@@ -273,7 +273,7 @@
           "director": "Marbel Vanegas Jusayu",
           "country": "Colombia",
           "flags": "🇨🇴",
-          "poster": "assets/leviza/Pawa.jpeg",
+          "poster": "/assets/leviza/Pawa.jpeg",
           "lbSlug": "⚠️ LB PENDIENTE"
         },
         {
@@ -281,7 +281,7 @@
           "director": "Isabella Palacio Meda",
           "country": "Colombia",
           "flags": "🇨🇴",
-          "poster": "assets/leviza/Refraccio_n.jpeg",
+          "poster": "/assets/leviza/Refraccio_n.jpeg",
           "lbSlug": "⚠️ LB PENDIENTE"
         },
         {
@@ -296,7 +296,7 @@
           "director": "Lisett Contreras",
           "country": "Colombia",
           "flags": "🇨🇴",
-          "poster": "assets/leviza/Saltus.jpeg",
+          "poster": "/assets/leviza/Saltus.jpeg",
           "lbSlug": "⚠️ LB PENDIENTE"
         },
         {
@@ -304,7 +304,7 @@
           "director": "Edison González",
           "country": "Colombia",
           "flags": "🇨🇴",
-          "poster": "assets/leviza/Tandem.webp",
+          "poster": "/assets/leviza/Tandem.webp",
           "lbSlug": "⚠️ LB PENDIENTE"
         }
       ],
@@ -359,7 +359,7 @@
           "director": "Jhon Agudelo Suárez",
           "country": "Colombia",
           "flags": "🇨🇴",
-          "poster": "assets/leviza/LaIndependencia.webp",
+          "poster": "/assets/leviza/LaIndependencia.webp",
           "lbSlug": "⚠️ LB PENDIENTE"
         },
         {
@@ -367,7 +367,7 @@
           "director": "Luigui Acuña",
           "country": "Colombia",
           "flags": "🇨🇴",
-          "poster": "assets/leviza/Luz-Blanca.jpg",
+          "poster": "/assets/leviza/Luz-Blanca.jpg",
           "lbSlug": "⚠️ LB PENDIENTE"
         },
         {
@@ -389,7 +389,7 @@
           "director": "Doney Cardona",
           "country": "Colombia",
           "flags": "🇨🇴",
-          "poster": "assets/leviza/TengaleFE.png",
+          "poster": "/assets/leviza/TengaleFE.png",
           "lbSlug": "⚠️ LB PENDIENTE"
         },
         {
