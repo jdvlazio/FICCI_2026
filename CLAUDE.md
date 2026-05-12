@@ -3,7 +3,7 @@
 > No editar a mano — los cambios se sobreescriben en el próximo deploy.
 > Para modificar secciones estáticas, editar el template en el script.
 >
-> Último commit: `f7c8b1d fix(mi-plan): variable shadowing t en prios.map — crash en Mi Plan`
+> Último commit: `b8a9f2e fix(validator): detectar destructuring {t} en arrow fn — shadow-t`
 
 ---
 

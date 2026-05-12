@@ -4346,7 +4346,7 @@ let FESTIVAL_STORAGE_KEY=(localStorage.getItem('otrofestiv_festival')||_DEFAULT_
 // BUILD_VERSION: cambia en cada deploy.
 // Al cargar, compara con localStorage. Si difiere → reload duro.
 // sessionStorage evita loops infinitos dentro de la misma sesión.
-const BUILD_VERSION='202605121432';
+const BUILD_VERSION='202605121456';
 (function(){
   const _vk='otrofestiv_build';
   const _sk='otrofestiv_reloaded';
@@ -5589,8 +5589,8 @@ function getSuggestions(){
     // Bloque 2 — Recuperación: watchlist no en agenda
     // Usa screensConflict (±10 min) — mismo criterio que el algoritmo de planificación
     // Solo aparece si genuinamente cabe sin conflicto en el plan actual
-    [...watchlist].filter(t=>!seenRecovery.has(t)).forEach(t=>{
-      FILMS.filter(f=>f.title===t&&f.day===day&&!screeningPassed(f)&&!isScreeningBlocked(f)).forEach(f=>{
+    [...watchlist].filter(wlTitle=>!seenRecovery.has(wlTitle)).forEach(wlTitle=>{
+      FILMS.filter(f=>f.title===wlTitle&&f.day===day&&!screeningPassed(f)&&!isScreeningBlocked(f)).forEach(f=>{
         if(seenRecovery.has(f.title)) return;
         const noConflict=!saved.some(s=>screensConflict(s,f));
         if(noConflict){
@@ -6476,7 +6476,7 @@ function renderContextualHeader(){
     const label=ph.daysDiff===1?t('misc_manana'):`${t('misc_in')} ${ph.daysDiff} ${t('misc_days')}`;
     const prios=[...prioritized]
       .map(t=>{
-        const f=FILMS.filter(fi=>fi.title===t&&!screeningPassed(fi))
+        const f=FILMS.filter(fi=>fi.title===excTitle&&!screeningPassed(fi))
           .sort((a,b)=>a.day_order-b.day_order||toMin(a.time)-toMin(b.time))[0];
         return f?{t,f}:null;
       })
@@ -7314,15 +7314,16 @@ function buildResultHTML(scenarios){
 
   // ── Películas no incluidas — lista con razón + botón Incluir ────────
   if(sc.excluded.length){
-    const _excItems=sc.excluded.map(t=>{
-      const{displayTitle:dt}=parseProgramTitle(t);
-      const f=FILMS.find(fi=>fi.title===t);
+    const _excItems=sc.excluded.map(excTitle=>{
+      const t_=excTitle; // alias para no pisar t() i18n
+      const{displayTitle:dt}=parseProgramTitle(excTitle);
+      const f=FILMS.find(fi=>fi.title===excTitle);
       const poster=f?getFilmPoster(f):null;
       const secLabel=f?_secLabel(f.section||''):'';
-      const safeT=t.replace(/'/g,"&#39;");
+      const safeT=excTitle.replace(/'/g,"&#39;");
       const posterHtml=_posterThumb(f,'int-item-poster',null);
       // Detectar razón usando screensConflict contra el schedule activo
-      const screens=FILMS.filter(fi=>fi.title===t&&!screeningPassed(fi)&&!isScreeningBlocked(fi));
+      const screens=FILMS.filter(fi=>fi.title===excTitle&&!screeningPassed(fi)&&!isScreeningBlocked(fi));
       let reason='',canInclude=false;
       if(!screens.length){
         reason=`<div class="excl-reason">${t('empty_sin_funciones')}</div>`;

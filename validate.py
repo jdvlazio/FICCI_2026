@@ -87,10 +87,18 @@ for i, m in enumerate(func_matches):
     end     = func_matches[i+1].start() if i+1 < len(func_matches) else len(script)
     body    = script[start:end]
 
-    # Arrow callback con t como param + t() llamado dentro
-    for arrow_m in re.finditer(r'(?:[\.(,])\s*\bt\b\s*=>', body):
-        cb_text = body[arrow_m.end():arrow_m.end()+200]
-        if re.search(r"\bt\('[^']*'\)", cb_text[:200]):
+    # Arrow callback con t como param + t() llamado dentro del mismo bloque
+    for arrow_m in re.finditer(r'(?:[.(,\s])\bt\b\s*=>\s*\{', body):
+        # Extraer solo el cuerpo del bloque { } del callback
+        brace_start = body.find('{', arrow_m.end()-1)
+        if brace_start == -1: continue
+        depth, i = 1, brace_start + 1
+        while i < len(body) and depth > 0:
+            if body[i] == '{': depth += 1
+            elif body[i] == '}': depth -= 1
+            i += 1
+        cb_text = body[brace_start:i]
+        if re.search(r"\bt\s*\('[^']*'\)", cb_text):
             shadow_found.append(f'{fn_name}() — arrow param t=> con t() en callback')
 
     # Destructuring ({t,...})=> en callbacks de array — {t,f} sombrea t()
