@@ -3,7 +3,7 @@
 > No editar a mano — los cambios se sobreescriben en el próximo deploy.
 > Para modificar secciones estáticas, editar el template en el script.
 >
-> Último commit: `01b1406 fix(spacing): badge Plan óptimo — inline con título, no fila propia`
+> Último commit: `d1679f6 docs: Badge Design System Audit — inventario 13 instancias, regla propuesta`
 
 ---
 
