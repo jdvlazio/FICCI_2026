@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Otrofestiv · Smoke Test</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg:      #0a0a0a;
+    --surface: #111111;
+    --border:  #222222;
+    --amber:   #f59e0b;
+    --green:   #22c55e;
+    --red:     #ef4444;
+    --gray:    #6b7280;
+    --white:   #f9fafb;
+    --font:    'SF Mono', 'Fira Code', 'Fira Mono', monospace;
+  }
+
+  body {
+    background: var(--bg);
+    color: var(--white);
+    font-family: var(--font);
+    font-size: 13px;
+    line-height: 1.6;
+    min-height: 100vh;
+    padding: 32px 24px 64px;
+  }
+
+  .shell {
+    max-width: 680px;
+    margin: 0 auto;
+  }
+
+  .header {
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+    margin-bottom: 32px;
+  }
+
+  .wordmark {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--amber);
+    letter-spacing: -.3px;
+  }
+
+  .label {
+    font-size: 11px;
+    color: var(--gray);
+    text-transform: uppercase;
+    letter-spacing: .08em;
+  }
+
+  .terminal {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+
+  .terminal-bar {
+    background: #1a1a1a;
+    border-bottom: 1px solid var(--border);
+    padding: 10px 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .dot { width: 12px; height: 12px; border-radius: 50%; }
+  .dot-r { background: #ff5f57; }
+  .dot-y { background: #ffbd2e; }
+  .dot-g { background: #28c840; }
+
+  .terminal-title {
+    flex: 1;
+    text-align: center;
+    font-size: 11px;
+    color: var(--gray);
+  }
+
+  .terminal-body {
+    padding: 20px 20px 24px;
+    min-height: 200px;
+  }
+
+  .log-line {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 3px 0;
+    animation: fadeIn .15s ease;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(2px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .log-icon { width: 16px; flex-shrink: 0; text-align: center; }
+  .log-text { flex: 1; }
+
+  .c-amber  { color: var(--amber); }
+  .c-green  { color: var(--green); }
+  .c-red    { color: var(--red); }
+  .c-gray   { color: var(--gray); }
+  .c-white  { color: var(--white); }
+
+  .divider {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 16px 0;
+  }
+
+  .summary {
+    margin-top: 24px;
+    padding: 16px 20px;
+    border-radius: 6px;
+    display: none;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .summary.pass { background: rgba(34,197,94,.08); border: 1px solid rgba(34,197,94,.2); }
+  .summary.fail { background: rgba(239,68,68,.08);  border: 1px solid rgba(239,68,68,.25); }
+
+  .summary-icon { font-size: 28px; line-height: 1; }
+  .summary-label { font-size: 18px; font-weight: 700; }
+  .summary-sub   { font-size: 11px; color: var(--gray); margin-top: 2px; }
+
+  .btn-rerun {
+    margin-top: 20px;
+    background: none;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    color: var(--gray);
+    font-family: var(--font);
+    font-size: 12px;
+    padding: 8px 16px;
+    cursor: pointer;
+    transition: border-color .15s, color .15s;
+    display: none;
+  }
+
+  .btn-rerun:hover { border-color: var(--amber); color: var(--amber); }
+
+  .cursor {
+    display: inline-block;
+    width: 8px;
+    height: 13px;
+    background: var(--amber);
+    vertical-align: text-bottom;
+    animation: blink 1s step-end infinite;
+    margin-left: 2px;
+  }
+
+  @keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+  }
+
+  /* Hidden iframe to run the app */
+  #app-frame {
+    position: fixed;
+    top: -9999px;
+    left: -9999px;
+    width: 390px;
+    height: 844px;
+    border: none;
+    visibility: hidden;
+  }
+</style>
+</head>
+<body>
+
+<iframe id="app-frame" src="index.html"></iframe>
+
+<div class="shell">
+  <div class="header">
+    <span class="wordmark">otrofestiv</span>
+    <span class="label">smoke test</span>
+  </div>
+
+  <div class="terminal">
+    <div class="terminal-bar">
+      <div class="dot dot-r"></div>
+      <div class="dot dot-y"></div>
+      <div class="dot dot-g"></div>
+      <div class="terminal-title" id="term-title">smoke-test · esperando app</div>
+    </div>
+    <div class="terminal-body" id="log"></div>
+  </div>
+
+  <div class="summary" id="summary">
+    <div class="summary-icon" id="sum-icon"></div>
+    <div>
+      <div class="summary-label" id="sum-label"></div>
+      <div class="summary-sub"  id="sum-sub"></div>
+    </div>
+  </div>
+
+  <button class="btn-rerun" id="btn-rerun" onclick="location.reload()">↺ Correr de nuevo</button>
+</div>
+
+<script>
+// ── Helpers de UI ─────────────────────────────────────────────────────────────
+const logEl   = document.getElementById('log');
+const termTitle = document.getElementById('term-title');
+
+let passed = 0, failed = 0, startTime = Date.now();
+
+function log(icon, text, cls) {
+  const line = document.createElement('div');
+  line.className = 'log-line';
+  line.innerHTML = `<span class="log-icon ${cls||''}">${icon}</span><span class="log-text ${cls||''}">${text}</span>`;
+  logEl.appendChild(line);
+  line.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+}
+
+function logPass(text) { passed++; log('✓', text, 'c-green'); }
+function logFail(text) { failed++; log('✗', text, 'c-red');   }
+function logInfo(text) { log('·', text, 'c-gray');             }
+function logSection(text) {
+  const hr = document.createElement('hr');
+  hr.className = 'divider';
+  logEl.appendChild(hr);
+  log('#', text, 'c-amber');
+}
+
+function showCursor() {
+  const cur = document.createElement('span');
+  cur.className = 'cursor';
+  cur.id = 'cursor';
+  logEl.appendChild(cur);
+}
+function hideCursor() {
+  const c = document.getElementById('cursor');
+  if (c) c.remove();
+}
+
+function sleep(ms) { return new Promise(r => setTimeout(r, ms)); }
+
+// ── Esperar a que el iframe cargue y FILMS se pueble ─────────────────────────
+async function waitForApp(frame, timeoutMs = 15000) {
+  const deadline = Date.now() + timeoutMs;
+  // Primero esperamos DOMContentLoaded del iframe
+  await new Promise((resolve, reject) => {
+    function check() {
+      try {
+        const w = frame.contentWindow;
+        if (w && w.document && w.document.readyState !== 'loading') return resolve();
+      } catch(e) {}
+      if (Date.now() > deadline) return reject(new Error('Timeout: iframe no cargó'));
+      setTimeout(check, 200);
+    }
+    frame.addEventListener('load', resolve, { once: true });
+    setTimeout(check, 500);
+  });
+
+  // Luego esperamos a que FILMS tenga datos (la app fetchea async)
+  return new Promise((resolve, reject) => {
+    function check() {
+      try {
+        const w = frame.contentWindow;
+        const films = w.FILMS;
+        if (films && Array.isArray(films) && films.length > 0) return resolve(w);
+      } catch(e) {}
+      if (Date.now() > deadline) return reject(new Error('Timeout: FILMS nunca se pobló'));
+      setTimeout(check, 300);
+    }
+    check();
+  });
+}
+
+// ── Tests ─────────────────────────────────────────────────────────────────────
+async function t1_navRow(w) {
+  const el = w.document.getElementById('nav-row');
+  if (!el) { logFail('T1 · nav-row: elemento no encontrado en DOM'); return; }
+  const visible = el.offsetParent !== null || el.getBoundingClientRect().height > 0;
+  // nav-row puede estar en display:none en la vista inicial si no está en Programa tab
+  // lo que importa es que existe y tiene contenido
+  if (el) {
+    logPass('T1 · Programa: #nav-row existe en el DOM');
+  } else {
+    logFail('T1 · Programa: #nav-row no encontrado');
+  }
+}
+
+async function t2_dayFilter(w) {
+  // Asegurar que estamos en tab Cartelera
+  try {
+    w.switchMainNav('mnav-cartelera');
+    w.showDayView();
+    await sleep(400);
+  } catch(e) {
+    logFail(`T2 · Day filter: error al navegar a Cartelera — ${e.message}`);
+    return;
+  }
+
+  const dtabs = w.document.querySelectorAll('.dtab[data-day]');
+  // Buscar el primer tab que NO sea 'all'
+  const dayTab = Array.from(dtabs).find(t => t.dataset.day && t.dataset.day !== 'all');
+
+  if (!dayTab) {
+    logFail('T2 · Day filter: no hay tabs de día disponibles');
+    return;
+  }
+
+  const targetDay = dayTab.dataset.day;
+  const prevDay   = w.activeDay;
+
+  try {
+    dayTab.click();
+    await sleep(300);
+  } catch(e) {
+    logFail(`T2 · Day filter: click falló — ${e.message}`);
+    return;
+  }
+
+  if (w.activeDay === targetDay) {
+    logPass(`T2 · Day filter: click en "${targetDay}" → activeDay cambió correctamente`);
+  } else {
+    logFail(`T2 · Day filter: activeDay sigue en "${w.activeDay}", esperaba "${targetDay}"`);
+  }
+}
+
+async function t3_planner(w) {
+  try {
+    w.switchMainNav('mnav-planner');
+    w.showAgView();
+    await sleep(400);
+  } catch(e) {
+    logFail(`T3 · Planner: error al navegar a Planner — ${e.message}`);
+    return;
+  }
+
+  try {
+    if (typeof w.runCalc !== 'function') {
+      logFail('T3 · Planner: función runCalc no encontrada');
+      return;
+    }
+    w.runCalc();
+    await sleep(600); // dar tiempo al worker
+    logPass('T3 · Planner: runCalc() ejecutó sin excepción');
+  } catch(e) {
+    logFail(`T3 · Planner: runCalc() lanzó error — ${e.message}`);
+  }
+}
+
+async function t4_miPlan(w) {
+  try {
+    w.switchMainNav('mnav-miplan');
+    w.showAgView();
+    await sleep(500);
+  } catch(e) {
+    logFail(`T4 · Mi Plan: error al navegar — ${e.message}`);
+    return;
+  }
+
+  const agView = w.document.getElementById('ag-view');
+  if (!agView) {
+    logFail('T4 · Mi Plan: #ag-view no encontrado');
+    return;
+  }
+
+  if (agView.innerHTML.trim().length === 0) {
+    logFail('T4 · Mi Plan: #ag-view está vacío después de render');
+    return;
+  }
+
+  logPass('T4 · Mi Plan: renderizó sin crash — #ag-view tiene contenido');
+}
+
+async function t5_pelSheet(w) {
+  const films = w.FILMS;
+  if (!films || !films.length) {
+    logFail('T5 · openPelSheet: FILMS vacío, no hay película para abrir');
+    return;
+  }
+
+  const film = films.find(f => f.title) || films[0];
+
+  try {
+    w.openPelSheet(film.title);
+    await sleep(300);
+  } catch(e) {
+    logFail(`T5 · openPelSheet("${film.title}"): lanzó error — ${e.message}`);
+    return;
+  }
+
+  const sheet = w.document.getElementById('pel-sheet');
+  if (!sheet) {
+    logFail('T5 · openPelSheet: #pel-sheet no encontrado en DOM');
+    return;
+  }
+
+  if (sheet.classList.contains('open')) {
+    logPass(`T5 · openPelSheet: sheet abrió correctamente para "${film.title}"`);
+  } else {
+    logFail(`T5 · openPelSheet: sheet no tiene clase 'open' después de llamar con "${film.title}"`);
+  }
+}
+
+async function t6_invariants(w) {
+  let inv = 0;
+  const films = w.FILMS || [];
+  const cfg   = w.FESTIVAL_CONFIG;
+
+  // Inv 1 — FILMS tiene datos
+  if (films.length > 0) {
+    logPass(`  INV1 · FILMS tiene ${films.length} películas`);
+    inv++;
+  } else {
+    logFail('  INV1 · FILMS está vacío');
+  }
+
+  // Inv 2 — FESTIVAL_CONFIG tiene campos mínimos
+  const needKeys = ['name', 'storageKey', 'festivalEndStr'];
+  const activeCfg = cfg && Object.values(cfg).find(f => f.storageKey);
+  const missingKeys = activeCfg ? needKeys.filter(k => !activeCfg[k]) : needKeys;
+  if (activeCfg && missingKeys.length === 0) {
+    logPass(`  INV2 · FESTIVAL_CONFIG: campos requeridos presentes`);
+    inv++;
+  } else {
+    logFail(`  INV2 · FESTIVAL_CONFIG: faltan campos — ${missingKeys.join(', ')}`);
+  }
+
+  // Inv 3 — Sin IDs duplicados
+  const ids = films.map(f => f.id).filter(Boolean);
+  const uniq = new Set(ids);
+  if (uniq.size === ids.length) {
+    logPass(`  INV3 · Sin film.id duplicados (${ids.length} IDs únicos)`);
+    inv++;
+  } else {
+    const dups = ids.filter((id, i) => ids.indexOf(id) !== i);
+    logFail(`  INV3 · IDs duplicados detectados: ${[...new Set(dups)].slice(0,3).join(', ')}`);
+  }
+
+  // Inv 4 — Todo film tiene title
+  const noTitle = films.filter(f => !f.title || !f.title.trim());
+  if (noTitle.length === 0) {
+    logPass(`  INV4 · Todo film tiene title (${films.length} verificados)`);
+    inv++;
+  } else {
+    logFail(`  INV4 · ${noTitle.length} films sin title — primero: id=${noTitle[0].id}`);
+  }
+
+  // Inv 5 — localStorage funciona
+  try {
+    const key = '__smoke_test__';
+    w.localStorage.setItem(key, '1');
+    const val = w.localStorage.getItem(key);
+    w.localStorage.removeItem(key);
+    if (val === '1') {
+      logPass('  INV5 · localStorage: lectura/escritura OK');
+      inv++;
+    } else {
+      logFail('  INV5 · localStorage: escritura OK pero lectura falló');
+    }
+  } catch(e) {
+    logFail(`  INV5 · localStorage: excepción — ${e.message}`);
+  }
+
+  if (inv === 5) {
+    logPass(`T6 · Invariantes del sistema: 5/5 OK`);
+  } else {
+    logFail(`T6 · Invariantes del sistema: ${5 - inv} fallaron`);
+  }
+}
+
+// ── Runner principal ──────────────────────────────────────────────────────────
+async function runSuite() {
+  const frame = document.getElementById('app-frame');
+
+  log('$', `smoke-test · ${new Date().toLocaleTimeString('es-CO')}`, 'c-amber');
+  logInfo('Cargando app en iframe...');
+  showCursor();
+
+  let w;
+  try {
+    w = await waitForApp(frame);
+  } catch(e) {
+    hideCursor();
+    logFail(`No se pudo cargar la app: ${e.message}`);
+    finish();
+    return;
+  }
+
+  hideCursor();
+  const festival = w.FESTIVAL_CONFIG
+    ? (Object.values(w.FESTIVAL_CONFIG).find(f => f.name) || {}).name || '—'
+    : '—';
+  logInfo(`App lista · FILMS: ${w.FILMS.length} · Festival activo: ${festival}`);
+
+  // ── T1
+  logSection('Programa');
+  await t1_navRow(w);
+  await sleep(100);
+
+  // ── T2
+  logSection('Day Filter');
+  await t2_dayFilter(w);
+  await sleep(100);
+
+  // ── T3
+  logSection('Planner');
+  await t3_planner(w);
+  await sleep(100);
+
+  // ── T4
+  logSection('Mi Plan');
+  await t4_miPlan(w);
+  await sleep(100);
+
+  // ── T5
+  logSection('openPelSheet');
+  await t5_pelSheet(w);
+  await sleep(100);
+
+  // ── T6
+  logSection('Invariantes del sistema');
+  await t6_invariants(w);
+
+  finish();
+}
+
+function finish() {
+  const elapsed = ((Date.now() - startTime) / 1000).toFixed(1);
+  const total   = passed + failed;
+
+  const hr = document.createElement('hr');
+  hr.className = 'divider';
+  logEl.appendChild(hr);
+  log('$', `${total} tests · ${passed} passed · ${failed} failed · ${elapsed}s`, failed ? 'c-red' : 'c-green');
+
+  termTitle.textContent = `smoke-test · ${failed ? `${failed} FAILED` : 'ALL CLEAR'}`;
+
+  const sum = document.getElementById('summary');
+  sum.className = `summary ${failed ? 'fail' : 'pass'}`;
+  sum.style.display = 'flex';
+  document.getElementById('sum-icon').textContent  = failed ? '✗' : '✓';
+  document.getElementById('sum-label').textContent = failed ? `${failed} TEST${failed > 1 ? 'S' : ''} FAILED` : 'ALL CLEAR';
+  document.getElementById('sum-sub').textContent   = `${passed}/${total} passed · ${elapsed}s`;
+  document.getElementById('btn-rerun').style.display = 'inline-block';
+}
+
+// ── Kick off
+window.addEventListener('load', () => {
+  setTimeout(runSuite, 100);
+});
+</script>
+</body>
+</html>
