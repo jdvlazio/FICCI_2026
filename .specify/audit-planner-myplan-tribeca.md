@@ -24,7 +24,8 @@ Severidad: 🔴 CRÍTICO (bloquea release) | 🟡 MAYOR (degradación UX) | 🟢
 - [x] P3.1 ✅ Chips con poster — apostrophes normalizados (CRIT-01 resuelto)
 - [x] P3.2 ✅ Límite 6/6 respetado — no permite 7ª prioridad
 - [x] P3.2b ✅ PASS — Priorities/Change en EN (d994c71) en ES, "Cambiar" en ES (app en EN)
-- [x] P3.3 🟡 FAIL — Botón ✕ no quita prioridad desde chip
+- [x] P3.3 ✅ PASS — Botón ✕ abre confirmación "Remove priority" y quita correctamente
+       ERROR DE AUDITORÍA: coordenadas del click no coincidían con el botón
        Causa probable: title en dataset.prioTitle sin normalizar vs prioritized Set normalizado
 - [x] P3.4 ✅ Plan incluye todas las prioridades (verificado en P5.1)
 - [x] P3.5 ✅ N/A — no hay conflictos entre estas prioridades
