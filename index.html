@@ -3579,7 +3579,7 @@ let _POSTERS_N = Object.fromEntries(Object.entries(POSTERS).map(([k,v])=>[normKe
 function getPosterSrc(title, isCortos, section){
   const t = normKey(title);
   if(_CUSTOM_N[t]) return _CUSTOM_N[t];
-  if(_POSTERS_N[t]) return _POSTERS_N[t].startsWith('http')?_POSTERS_N[t]:TMDB_IMG+_POSTERS_N[t];
+  if(_POSTERS_N[t]) return (_POSTERS_N[t].startsWith('http')||_POSTERS_N[t].startsWith('/'))?_POSTERS_N[t]:TMDB_IMG+_POSTERS_N[t];
   if(isCortos) return null;
   return null;
 }
@@ -3618,14 +3618,14 @@ function getFilmPoster(f){
   // 5. Programa combinado
   if(f.is_programa&&f.film_list&&f.film_list.length){
     const first=f.film_list[0];
-    if(first.poster) return first.poster.startsWith('http')?first.poster:TMDB_IMG+first.poster;
+    if(first.poster) return (first.poster.startsWith('http')||first.poster.startsWith('/'))?first.poster:TMDB_IMG+first.poster;
     return getPosterSrc(first.title||first,false)||getPosterSrc(f.title,false)||null;
   }
   // 6. TMDB — poster real (prioridad sobre editorial cloudfront)
   const _tmdb=getPosterSrc(f.title,false);
   if(_tmdb) return _tmdb;
   // 7. f.poster directo — editorial cloudfront o formato Jardín 2026
-  if(f.poster) return f.poster.startsWith('http')?f.poster:TMDB_IMG+f.poster;
+  if(f.poster) return (f.poster.startsWith('http')||f.poster.startsWith('/'))?f.poster:TMDB_IMG+f.poster;
   // 8. Poster generativo
   return _buildPosterV16({
     accent: _sectionColor(f.section||''),
@@ -3647,14 +3647,14 @@ function makeSorpresaPoster(){
 function getCortoItemPoster(item){
   if(!item) return null;
   // Nuevo formato (Jardín 2026+): poster directo en el objeto
-  if(item.poster) return item.poster.startsWith('http')?item.poster:TMDB_IMG+item.poster;
+  if(item.poster) return (item.poster.startsWith('http')||item.poster.startsWith('/'))?item.poster:TMDB_IMG+item.poster;
   return getPosterSrc(item.title,true)||null;
 }
 // Poster de film_list item de largometraje (is_programa).
 // No genera placeholder — devuelve null si no hay poster real.
 function _getItemPoster(item){
   if(!item) return '';
-  if(item.poster) return item.poster.startsWith('http')?item.poster:TMDB_IMG+item.poster;
+  if(item.poster) return (item.poster.startsWith('http')||item.poster.startsWith('/'))?item.poster:TMDB_IMG+item.poster;
   return getPosterSrc((item.title||item),false)||'';
 }
 
@@ -8910,7 +8910,7 @@ function _openCombinedFilmSheet(filmData){
     _cortoParentHtml=inner.innerHTML;
   }
   const{title='',director='',year='',duration='',flags='🌐',country='',synopsis='',lbSlug='',poster:_fPoster=''}=filmData;
-  const posterUrl=_fPoster?(_fPoster.startsWith('http')?_fPoster:TMDB_IMG+_fPoster):getPosterSrc(title,false)||null;
+  const posterUrl=_fPoster?((_fPoster.startsWith('http')||_fPoster.startsWith('/'))?_fPoster:TMDB_IMG+_fPoster):getPosterSrc(title,false)||null;
   const _isEd4=posterUrl&&posterUrl.includes('cloudfront.net');
   const _sec4=(()=>{const _p=FILMS.find(f=>f.film_list&&f.film_list.some(c=>c.title===title));return _p?.section||'';})();
   const posterHtml=_isEd4
