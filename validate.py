@@ -300,10 +300,21 @@ try:
         import re as _re
         return set(_re.findall(r'"([^"]+)":', block))
 
-    es_m = re.search(r'es:\s*\{([^}]+(?:\{[^}]*\}[^}]*)*)\}', i18n_block, re.DOTALL)
-    en_m = re.search(r'en:\s*\{([^}]+(?:\{[^}]*\}[^}]*)*)\}', i18n_block, re.DOTALL)
-    es_keys = _parse_i18n(es_m.group(1) if es_m else '')
-    en_keys = _parse_i18n(en_m.group(1) if en_m else '')
+    def _extract_lang_block(block, lang):
+        # Brace-counting to extract the full lang block robustly
+        start = re.search(rf'{lang}\s*:\s*{{', block)
+        if not start: return ''
+        pos = start.end() - 1  # position of opening {
+        depth = 0
+        for i, ch in enumerate(block[pos:], pos):
+            if ch == '{': depth += 1
+            elif ch == '}':
+                depth -= 1
+                if depth == 0:
+                    return block[pos+1:i]
+        return ''
+    es_keys = _parse_i18n(_extract_lang_block(i18n_block, 'es'))
+    en_keys = _parse_i18n(_extract_lang_block(i18n_block, 'en'))
 
     # All t('key') calls in the script
     script_part = content[content.find('<script>'):content.rfind('</script>')]

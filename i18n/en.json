@@ -253,5 +253,12 @@
   "misc_calendario_listo": "Calendar ready",
   "misc_sugerencias_wl": "From your list",
   "plan_cubierto": "Your plan is well covered.",
-  "plan_cubierto_sub": "Your schedule looks good. No more screenings fit without conflicts."
+  "plan_cubierto_sub": "Your schedule looks good. No more screenings fit without conflicts.",
+  "warn_sin_tiempo": "Not enough time to get there",
+  "warn_min_hasta_sig": "min until next screening",
+  "warn_qa_no_llega": "Q&A · if you stay you won't make the next one",
+  "warn_qa_tiempo": "Q&A · if you stay you have ~{n} min",
+  "warn_a_pie": "on foot",
+  "warn_en_carro": "by car",
+  "warn_entre_sedes": "between venues"
 }

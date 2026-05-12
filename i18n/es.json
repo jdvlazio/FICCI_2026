@@ -253,5 +253,12 @@
   "misc_calendario_listo": "Calendario listo",
   "misc_sugerencias_wl": "De tu lista",
   "plan_cubierto": "Tu plan está bien cubierto.",
-  "plan_cubierto_sub": "Tu agenda está bien cubierta. No hay más actividades que quepan."
+  "plan_cubierto_sub": "Tu agenda está bien cubierta. No hay más actividades que quepan.",
+  "warn_sin_tiempo": "No da tiempo llegar",
+  "warn_min_hasta_sig": "min hasta la siguiente",
+  "warn_qa_no_llega": "Q&A · si te quedás no llegás a la siguiente",
+  "warn_qa_tiempo": "Q&A · si te quedás tenés ~{n} min",
+  "warn_a_pie": "a pie",
+  "warn_en_carro": "en carro",
+  "warn_entre_sedes": "entre estas sedes"
 }

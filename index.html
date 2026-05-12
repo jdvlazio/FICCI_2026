@@ -2857,6 +2857,13 @@ const _I18N = {
     "misc_tiempo_libre": "Tiempo libre",
     "misc_sugerencias_wl": "De tu lista",
     "plan_cubierto": "Tu plan está bien cubierto.",
+    "warn_sin_tiempo": "No da tiempo llegar",
+    "warn_min_hasta_sig": "min hasta la siguiente",
+    "warn_qa_no_llega": "Q&A · si te quedás no llegás a la siguiente",
+    "warn_qa_tiempo": "Q&A · si te quedás tenés ~{n} min",
+    "warn_a_pie": "a pie",
+    "warn_en_carro": "en carro",
+    "warn_entre_sedes": "entre estas sedes",
     "plan_cubierto_sub": "Tu agenda está bien cubierta. No hay más actividades que quepan.",
     "misc_hasta_sig": "hasta tu siguiente actividad",
     "misc_calendario": "Calendario",
@@ -3141,6 +3148,13 @@ const _I18N = {
     "misc_tiempo_libre": "Free time",
     "misc_sugerencias_wl": "From your list",
     "plan_cubierto": "Your plan is well covered.",
+    "warn_sin_tiempo": "Not enough time to get there",
+    "warn_min_hasta_sig": "min until next screening",
+    "warn_qa_no_llega": "Q&A · if you stay you won't make the next one",
+    "warn_qa_tiempo": "Q&A · if you stay you have ~{n} min",
+    "warn_a_pie": "on foot",
+    "warn_en_carro": "by car",
+    "warn_entre_sedes": "between venues",
     "plan_cubierto_sub": "Your schedule looks good. No more screenings fit without conflicts.",
     "misc_hasta_sig": "until your next screening",
     "misc_calendario": "Calendar",
@@ -4258,7 +4272,7 @@ function venueTravelMins(v1,v2){
   const km=Math.sqrt(dlat*dlat+dlon*dlon);
   if(km<0.15) return 0;
   // Velocidad efectiva por modo de transporte (km/h, incluye overhead puerta-a-puerta)
-  const spd=FESTIVAL_TRANSPORT==='walking'?4:FESTIVAL_TRANSPORT==='transit'?15:10;
+  const spd=FESTIVAL_TRANSPORT==='walking'?4:FESTIVAL_TRANSPORT==='transit'?10:12;
   return Math.max(5,Math.round(km/spd*60/5)*5);
 }
 function vcfg(v){
@@ -4320,8 +4334,8 @@ function travelWarn(s1,s2){
   if(travel===0) return null;
   const gap=toMin(s2.time)-(toMin(s1.time)+parseDur(s1.duration));
   if(gap<travel+10){
-    const _modo=FESTIVAL_TRANSPORT==='walking'?'a pie':FESTIVAL_TRANSPORT==='mixed'?null:'en carro';
-    return`${ICONS.alert} ~${travel} min${_modo?' '+_modo:''} entre estas sedes`;
+    const _modo=FESTIVAL_TRANSPORT==='walking'?t('warn_a_pie'):FESTIVAL_TRANSPORT==='transit'?null:t('warn_en_carro');
+    return`${ICONS.alert} ~${travel} min${_modo?' '+_modo:''} ${t('warn_entre_sedes')}`;
   }
   return null;
 }
@@ -4350,7 +4364,7 @@ let FESTIVAL_STORAGE_KEY=(localStorage.getItem('otrofestiv_festival')||_DEFAULT_
 // BUILD_VERSION: cambia en cada deploy.
 // Al cargar, compara con localStorage. Si difiere → reload duro.
 // sessionStorage evita loops infinitos dentro de la misma sesión.
-const BUILD_VERSION='202605121544';
+const BUILD_VERSION='202605121555';
 (function(){
   const _vk='otrofestiv_build';
   const _sk='otrofestiv_reloaded';
@@ -4617,8 +4631,11 @@ function renderMiPlanCalendar(){
       if(idx>0){
         const prev=dayFilms[idx-1];
         const gap=fMin-(toMin(prev.time)+parseDur(prev.duration));
-        if(gap>=0&&gap<25) listHtml+=`<div class="mplan-warn-row">${ICONS.alert} ~${gap} min hasta la siguiente</div>`;
-        if(prev.has_qa){const qaGap=gap-30;qaGap<0?listHtml+=`<div class="mplan-warn-row" style="color:var(--red)">Q&A · si te quedas no llegas a la siguiente</div>`:listHtml+=`<div class="mplan-warn-row" style="color:var(--amber)">Q&A · si te quedas tienes ~${qaGap} min</div>`;}
+        if(gap>=0&&gap<25){
+          const _isCritical=gap<=5;
+          listHtml+=`<div class="mplan-warn-row" style="${_isCritical?'color:var(--red)':''}">${ICONS.alert} ${_isCritical?t('warn_sin_tiempo'):`~${gap} ${t('warn_min_hasta_sig')}`}</div>`;
+        }
+        if(prev.has_qa){const qaGap=gap-30;qaGap<0?listHtml+=`<div class="mplan-warn-row" style="color:var(--red)">${t('warn_qa_no_llega')}</div>`:listHtml+=`<div class="mplan-warn-row">${t('warn_qa_tiempo',{n:qaGap})}</div>`;}
         const tw=travelWarn(prev,s);
         if(tw) listHtml+=`<div class="mplan-warn-row">${tw}</div>`;
       }
@@ -7847,7 +7864,7 @@ function venueTravelMins(v1,v2){
   const dlat=(c1.lat-c2.lat)*111,dlon=(c1.lng-c2.lng)*111*Math.cos(c1.lat*Math.PI/180);
   const km=Math.sqrt(dlat*dlat+dlon*dlon);
   if(km<0.15) return 0;
-  const spd=_transport==='walking'?4:_transport==='transit'?15:10;
+  const spd=_transport==='walking'?4:_transport==='transit'?10:12;
   return Math.max(5,Math.round(km/spd*60/5)*5);
 }
 function travelMins(venueA,venueB){ return venueTravelMins(venueA,venueB); }

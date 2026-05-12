@@ -3,7 +3,7 @@
 > No editar a mano — los cambios se sobreescriben en el próximo deploy.
 > Para modificar secciones estáticas, editar el template en el script.
 >
-> Último commit: `ddb09b9 fix(mi-plan): 2 bugs en THU 4 / mplan-row`
+> Último commit: `201e43f feat(prioLimit): regla global por festival — round(días/2), cap [3,8]`
 
 ---
 
@@ -70,6 +70,7 @@ Juan es Product Owner, diseñador y developer. Claude ejecuta; Juan audita y apr
 - `splash-animation/` — fase actual: **tasks**
 - `sugerencias-watchlist/` — fase actual: **tasks**
 - `title-truncation/` — fase actual: **tasks**
+- `venue-warnings/` — fase actual: **tasks**
 
 ---
 
