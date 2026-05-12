@@ -61,15 +61,17 @@
   "venues": {
     "Auditorio Polideportivo - Zapatoca": {
       "short": "Polideportivo",
-      "lat": 6.8206,
-      "lng": -73.2673,
-      "city": "Zapatoca"
+      "lat": 6.8115307,
+      "lng": -73.2714857,
+      "city": "Zapatoca",
+      "address": "Zapatoca, Santander"
     },
     "Mediateca Municipal - Zapatoca": {
       "short": "Mediateca",
-      "lat": 6.82,
-      "lng": -73.267,
-      "city": "Zapatoca"
+      "lat": 6.8162013,
+      "lng": -73.269468,
+      "city": "Zapatoca",
+      "address": "Cra. 10 #1938, Zapatoca, Santander"
     }
   },
   "films": [
