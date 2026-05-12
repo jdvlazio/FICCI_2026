@@ -3,7 +3,7 @@
 > No editar a mano — los cambios se sobreescriben en el próximo deploy.
 > Para modificar secciones estáticas, editar el template en el script.
 >
-> Último commit: `beecb23 docs: venue-warnings tasks completadas`
+> Último commit: `c708382 fix(mi-plan): 2 bugs críticos — sugerencias inviables + click poster`
 
 ---
 
