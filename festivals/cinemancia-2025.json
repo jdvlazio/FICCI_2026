@@ -1010,6 +1010,61 @@
       "synopsis_en": "A witch sends her godson to find the legendary Lamirande — the fatal liberator, believed dead. The search moves between reality and dream, fueled by rock music, a sobbing saxophone, and poetic wandering."
     },
     {
+      "title": "Programa de cortos 1",
+      "title_en": "Short Films: Competition 1",
+      "country": "Colombia/Bolivia/Taiwán/Portugal",
+      "flags": "🇨🇴🇧🇴🇹🇼🇵🇹",
+      "duration": "82 min",
+      "director": "Varios",
+      "section": "🎞️ Competencia de cortometrajes",
+      "day": "SÁB 13",
+      "date": 13,
+      "time": "17:00",
+      "venue": "Capilla Comfama",
+      "day_order": 2,
+      "is_cortos": true,
+      "synopsis": "Primera sesión de la competencia internacional de cortometrajes de Cinemancia 2025.",
+      "film_list": [
+        {
+          "title": "Orinar oro",
+          "director": "Alejandro Pérez",
+          "country": "Colombia",
+          "duration": "14 min",
+          "year": 2025,
+          "synopsis": "Un actor renuncia a su trabajo en la mitad del rodaje: ha visto el material filmado y, como involucra el mal funcionamiento de sus genitales, cree que la vida y la ficción se mezclarán y confundirán a los espectadores. El director tiene que buscar el reemplazo. La escena no va a cambiar, solo necesita a un mejor intérprete."
+        },
+        {
+          "title": "p u r o a n d a r",
+          "director": "Luciana Decker Orozco",
+          "country": "Bolivia",
+          "duration": "13 min",
+          "year": 2025,
+          "synopsis": "Un viaje al inframundo comienza en nuestras propias entrañas, moldeadas por migajas ablandadas con saliva de madres. Esta película explora el devenir de diferentes tiempos, desde el ritmo íntimo de la digestión hasta la vastedad de las eras geológicas."
+        },
+        {
+          "title": "Jirapo",
+          "director": "María Rojas Arias",
+          "country": "Colombia",
+          "duration": "20 min",
+          "year": 2025
+        },
+        {
+          "title": "The Stag",
+          "director": "Chu An",
+          "country": "Taiwán",
+          "duration": "14 min",
+          "year": 2024
+        },
+        {
+          "title": "Campos belos",
+          "director": "David Ferreira",
+          "country": "Portugal",
+          "duration": "19 min",
+          "year": 2023
+        }
+      ]
+    },
+    {
       "title": "The Sealed Soil",
       "title_en": "The Sealed Soil",
       "country": "Irán",
@@ -1142,6 +1197,26 @@
           "duration": "8 min"
         }
       ]
+    },
+    {
+      "title": "Una cita de amor",
+      "title_en": "Una cita de amor",
+      "country": "México",
+      "flags": "🇲🇽",
+      "duration": "86 min",
+      "director": "Emilio Fernández",
+      "year": 1956,
+      "genre": "Drama",
+      "section": "🎭 ¿Qué es la ficción?",
+      "day": "SÁB 13",
+      "date": 13,
+      "time": "19:00",
+      "venue": "Fiesta del Libro Parque de los Deseos",
+      "day_order": 2,
+      "is_cortos": false,
+      "film_list": [],
+      "synopsis": "Soledad ama a Román en secreto, pero sus familias son rivales y su padre quiere casarla con otro. Una pelea en el pueblo desencadena muertes que hacen imposible lo que ya era difícil.",
+      "synopsis_en": "Soledad loves Román in secret — their families are rivals and her father has chosen another man for her. A village brawl sets off a chain of deaths that makes an already impossible love fatal."
     },
     {
       "title": "Devoción: una película sobre Producciones Ogawa",
@@ -1396,6 +1471,60 @@
       "synopsis_en": "Karl, a 70-year-old Austrian astronomer, travels to a Greek island to find the darkest sky for stargazing. A quiet reassessment of his work and his life, conducted under the cosmos."
     },
     {
+      "title": "Cortos: Competencia Nuevas Voces 1",
+      "title_en": "Short Films: New Voices 1",
+      "country": "Colombia",
+      "flags": "🇨🇴",
+      "duration": "70 min",
+      "director": "Varios",
+      "section": "🌱 Competencia Nuevas Voces",
+      "day": "LUN 15",
+      "date": 15,
+      "time": "16:00",
+      "venue": "Teatro Otraparte",
+      "day_order": 4,
+      "is_cortos": true,
+      "synopsis": "Primera sesión de la competencia de joven cine colombiano Nuevas Voces de Cinemancia 2025.",
+      "film_list": [
+        {
+          "title": "A dónde van los pájaros cuando llueve",
+          "director": "Juan Sebastián Sisa Archila",
+          "country": "Colombia",
+          "duration": "17 min"
+        },
+        {
+          "title": "Acto de Ver",
+          "director": "Jean Paul Sánchez Flórez",
+          "country": "Colombia",
+          "duration": "11 min",
+          "year": 2025,
+          "synopsis": "Cuatro rostros. Una fotografía. Cuatro miradas interpelan el acto de ver. Cuatro rostros fueron testigos de la violencia en Colombia. ¿Qué nos dicen? ¿Tenemos la posibilidad de entender el acto de violencia en Colombia?"
+        },
+        {
+          "title": "Amor en los tiempos de lo que sea que se llame el presente",
+          "director": "Valentina Qaszulxkef",
+          "country": "Colombia",
+          "duration": "18 min",
+          "year": 2025,
+          "synopsis": "En un museo de arte clásico donde las pinturas cobran vida por la noche, una pintora negra frustrada que trabaja como conserje debe decidir si intervendrá cuando una nueva adquisición retrata la violación de una esclava."
+        },
+        {
+          "title": "Antes del temblor",
+          "director": "Santiago Velásquez",
+          "country": "Colombia",
+          "duration": "17 min",
+          "year": 2024,
+          "synopsis": "Gabriela, una joven indígena perteneciente a un linaje de taitas de la selva colombiana en Putumayo, decide abandonar el camino de la medicina tradicional de Yagé. Después de una ceremonia a la que no asiste, los espíritus la llevarán a los páramos: el lugar sagrado de origen de su cultura Kamánú Biyá."
+        },
+        {
+          "title": "Espaciar",
+          "director": "Daniela Giraldo Suárez",
+          "country": "Colombia",
+          "duration": "8 min"
+        }
+      ]
+    },
+    {
       "title": "7 caminadas con Mark Brown",
       "title_en": "Sept promenades avec Mark Brown",
       "country": "Francia",
@@ -1414,6 +1543,27 @@
       "film_list": [],
       "synopsis": "Proyección especial de Pierre Creton y Vincent Barré: un encuentro entre un artista y la naturaleza a través de siete caminatas filmadas en el campo normando.",
       "synopsis_en": "Special screening by Pierre Creton and Vincent Barré: an encounter between an artist and nature through seven walks filmed in the Norman countryside."
+    },
+    {
+      "title": "Tres hermanas",
+      "title_en": "Three Sisters",
+      "country": "Colombia",
+      "flags": "🇨🇴",
+      "duration": "80 min",
+      "director": "Joyce Ventura",
+      "year": 2025,
+      "genre": "Drama",
+      "section": "🏆 Competencia central",
+      "day": "LUN 15",
+      "date": 15,
+      "time": "18:30",
+      "venue": "Museo Casa Consistorial",
+      "day_order": 4,
+      "is_cortos": false,
+      "film_list": [],
+      "synopsis": "Una cineasta colombiana en la antesala de la vejez busca a sus dos hermanas —una en Francia, otra en Israel— para explorar cómo cada una enfrenta el envejecimiento y la muerte. Con humor y sin tabúes.",
+      "synopsis_en": "A Colombian filmmaker approaching old age seeks out her two sisters — one in France, one in Israel — to explore how each faces aging and death. Honest, tender, and occasionally funny.",
+      "language": "es"
     },
     {
       "title": "La piel en primavera",
@@ -1560,6 +1710,116 @@
           "year": 2016
         }
       ]
+    },
+    {
+      "title": "Sanrizuka: Campesinos de la segunda fortaleza",
+      "title_en": "Sanrizuka: Peasants of the Second Fortress",
+      "country": "Japón",
+      "flags": "🇯🇵",
+      "duration": "143 min",
+      "director": "Shinsuke Ogawa",
+      "year": 1971,
+      "genre": "Documental",
+      "section": "🌿 Campo indómito: Shinsuke Ogawa",
+      "day": "MAR 16",
+      "date": 16,
+      "time": "19:00",
+      "venue": "Antimateria Libros y Café",
+      "day_order": 5,
+      "is_cortos": false,
+      "film_list": [],
+      "synopsis": "Documento del movimiento de resistencia contra el aeropuerto de Narita. Campesinos cavan túneles, levantan barricadas y se encadenan a árboles mientras comparten su ira, sus miedos y sus esperanzas.",
+      "synopsis_en": "Document of the resistance against Narita airport. Farmers dig tunnels, build barricades, and chain themselves to trees — and in the pauses between confrontations, share their anger, their fears, and their hopes."
+    },
+    {
+      "title": "Cortos: Competencia Nuevas Voces 2",
+      "title_en": "Short Films: New Voices 2",
+      "country": "Colombia",
+      "flags": "🇨🇴",
+      "duration": "75 min",
+      "director": "Varios",
+      "section": "🌱 Competencia Nuevas Voces",
+      "day": "MAR 16",
+      "date": 16,
+      "time": "19:00",
+      "venue": "Colombo Sala 2",
+      "day_order": 5,
+      "is_cortos": true,
+      "synopsis": "Segunda sesión de la competencia de joven cine colombiano Nuevas Voces de Cinemancia 2025.",
+      "film_list": [
+        {
+          "title": "Cuerpo creador de toda vida muerta",
+          "director": "Sara Upegui",
+          "country": "Colombia",
+          "duration": "20 min",
+          "year": 2025,
+          "synopsis": "Explora la delgada línea entre creación y desintegración. A través de la figura de una madre que da vida a hijos efímeros y deformes, reflexiona sobre el duelo, la memoria y la corporalidad. Una invitación a reconciliarse con la transitoriedad."
+        },
+        {
+          "title": "La casa grande",
+          "director": "Cristian Hidalgo",
+          "country": "Colombia",
+          "duration": "28 min"
+        },
+        {
+          "title": "Licencia de conducción",
+          "director": "Jose J. Martínez",
+          "country": "Colombia",
+          "duration": "9 min"
+        },
+        {
+          "title": "Retrato de la luz",
+          "director": "Ana Gabriela Morales",
+          "country": "Colombia",
+          "duration": "15 min"
+        },
+        {
+          "title": "Transversal 30FF",
+          "director": "Sergio Mejía",
+          "country": "Colombia",
+          "duration": "6 min"
+        }
+      ]
+    },
+    {
+      "title": "De todos modos Juan te llamas",
+      "title_en": "De todos modos Juan te llamas",
+      "country": "México",
+      "flags": "🇲🇽",
+      "duration": "99 min",
+      "director": "Marcela Fernandez Violante",
+      "year": 1976,
+      "genre": "Drama",
+      "section": "🎭 ¿Qué es la ficción?",
+      "day": "MAR 16",
+      "date": 16,
+      "time": "09:00",
+      "venue": "I.E. Pedro Luis Álvarez Caldas",
+      "day_order": 5,
+      "is_cortos": false,
+      "film_list": [],
+      "synopsis": "Un general mexicano debe combatir a los creyentes alzados en la Guerra Cristera (1926–1929) mientras su familia devota lo enfrenta. La lealtad al Estado y la fe entran en contradicción irresoluble.",
+      "synopsis_en": "A Mexican general is ordered to fight the Catholic rebels of the Cristero War while his devout family stands against him. Loyalty to the state and to faith pull in opposite directions."
+    },
+    {
+      "title": "La piel en primavera",
+      "title_en": "La piel en primavera",
+      "country": "Colombia",
+      "flags": "🇨🇴",
+      "duration": "92 min",
+      "director": "Yennifer Uribe",
+      "year": 2025,
+      "genre": "Drama",
+      "section": "🎭 ¿Qué es la ficción?",
+      "day": "MAR 16",
+      "date": 16,
+      "time": "13:00",
+      "venue": "Procinal Parque Fabricato",
+      "day_order": 5,
+      "is_cortos": false,
+      "film_list": [],
+      "synopsis": "Sandra es la nueva guardia de seguridad en un centro comercial. En su primer día de trabajo se cruza con un conductor de bus, con quien vive un romance. Sandra confronta su vida íntima y emprende un camino de libertad a través de su propia experiencia de deseo.",
+      "synopsis_en": "Sandra is the new security guard at a shopping mall. On her first day, she crosses paths with a bus driver, with whom she has a brief romance. Sandra confronts her intimate life and embarks on a path of freedom through her own experience of desire."
     },
     {
       "title": "La carta escondida",
@@ -1744,6 +2004,76 @@
       ]
     },
     {
+      "title": "Cortos: Competencia Nuevas Voces 2",
+      "title_en": "Short Films: New Voices 2",
+      "country": "Colombia",
+      "flags": "🇨🇴",
+      "duration": "75 min",
+      "director": "Varios",
+      "section": "🌱 Competencia Nuevas Voces",
+      "day": "MIÉ 17",
+      "date": 17,
+      "time": "19:00",
+      "venue": "Capilla Comfama",
+      "day_order": 6,
+      "is_cortos": true,
+      "synopsis": "Segunda sesión de la competencia de joven cine colombiano Nuevas Voces de Cinemancia 2025.",
+      "film_list": [
+        {
+          "title": "Cuerpo creador de toda vida muerta",
+          "director": "Sara Upegui",
+          "country": "Colombia",
+          "duration": "20 min",
+          "year": 2025,
+          "synopsis": "Explora la delgada línea entre creación y desintegración. A través de la figura de una madre que da vida a hijos efímeros y deformes, reflexiona sobre el duelo, la memoria y la corporalidad. Una invitación a reconciliarse con la transitoriedad."
+        },
+        {
+          "title": "La casa grande",
+          "director": "Cristian Hidalgo",
+          "country": "Colombia",
+          "duration": "28 min"
+        },
+        {
+          "title": "Licencia de conducción",
+          "director": "Jose J. Martínez",
+          "country": "Colombia",
+          "duration": "9 min"
+        },
+        {
+          "title": "Retrato de la luz",
+          "director": "Ana Gabriela Morales",
+          "country": "Colombia",
+          "duration": "15 min"
+        },
+        {
+          "title": "Transversal 30FF",
+          "director": "Sergio Mejía",
+          "country": "Colombia",
+          "duration": "6 min"
+        }
+      ]
+    },
+    {
+      "title": "Esperando a Godoy",
+      "title_en": "Waiting for Godoy",
+      "country": "Chile",
+      "flags": "🇨🇱",
+      "duration": "82 min",
+      "director": "Cristián Sánchez, Rodrigo González, Sergio Navarro",
+      "year": 1972,
+      "genre": "Drama",
+      "section": "🎭 ¿Qué es la ficción?",
+      "day": "MIÉ 17",
+      "date": 17,
+      "time": "19:00",
+      "venue": "Teatro Caribe",
+      "day_order": 6,
+      "is_cortos": false,
+      "film_list": [],
+      "synopsis": "Chile, 1972. Un grupo de intelectuales de izquierda toma un edificio para crear un Ministerio de Cultura, pero los obreros se oponen. Pactan convivir mientras esperan a Godoy, líder sindical, pero pronto las tensiones aumentan y la toma se disuelve, hasta que finalmente Godoy aparece con un discurso inesperado.",
+      "synopsis_en": "Chile, 1972. A group of left-wing intellectuals occupies a building to create a Ministry of Culture, but the workers oppose them. They agree to coexist while waiting for Godoy, a union leader — but tensions escalate and the takeover dissolves, until Godoy finally appears with an unexpected speech."
+    },
+    {
       "title": "Programa Miñuca Villaverde",
       "title_en": "Minuca Villaverde Program",
       "country": "Cuba, Estados Unidos",
@@ -1832,6 +2162,26 @@
       "synopsis": "Doble función de Matías Piñeiro. Tú me abrasas (2024): la poeta Safo y la ninfa Britomartis se encuentran junto al mar y conversan sobre el amor y la muerte. Prefacio para el Dialoguito (2025): el cortometraje que no pudo entrar al montaje final, presentado ahora como obertura.",
       "is_programa": true,
       "synopsis_en": "Double bill by Matías Piñeiro. Tú me abrasas (2024): the poet Sappho and the nymph Britomartis meet by the sea and speak about love and death. Prefacio para el Dialoguito (2025): the short film that didn't make the final cut, now presented as an overture."
+    },
+    {
+      "title": "La piel en primavera",
+      "title_en": "La piel en primavera",
+      "country": "Colombia",
+      "flags": "🇨🇴",
+      "duration": "92 min",
+      "director": "Yennifer Uribe",
+      "year": 2025,
+      "genre": "Drama",
+      "section": "🎭 ¿Qué es la ficción?",
+      "day": "MIÉ 17",
+      "date": 17,
+      "time": "13:00",
+      "venue": "Procinal Parque Fabricato",
+      "day_order": 6,
+      "is_cortos": false,
+      "film_list": [],
+      "synopsis": "Sandra es la nueva guardia de seguridad en un centro comercial. En su primer día de trabajo se cruza con un conductor de bus, con quien vive un romance. Sandra confronta su vida íntima y emprende un camino de libertad a través de su propia experiencia de deseo.",
+      "synopsis_en": "Sandra is the new security guard at a shopping mall. On her first day, she crosses paths with a bus driver, with whom she has a brief romance. Sandra confronts her intimate life and embarks on a path of freedom through her own experience of desire."
     },
     {
       "title": "Programa de cortos 3",
@@ -1932,6 +2282,87 @@
       "synopsis_en": "Julian moves to New York and rents a room from an art dealer. Painting the walls, he finds a book and a pencil drawing hidden inside — possibly left by a forger who vanished two decades ago."
     },
     {
+      "title": "Los estudiantes oprimidos",
+      "title_en": "The Oppressed Students",
+      "country": "Japón",
+      "flags": "🇯🇵",
+      "duration": "105 min",
+      "director": "Shinsuke Ogawa",
+      "year": 1967,
+      "genre": "Documental",
+      "section": "🌿 Campo indómito: Shinsuke Ogawa",
+      "day": "JUE 18",
+      "date": 18,
+      "time": "16:30",
+      "venue": "Colombo Sala 2",
+      "day_order": 7,
+      "is_cortos": false,
+      "film_list": [],
+      "synopsis": "Estudiantes de una universidad japonesa se atrinchera en el campus para resistir la violencia de la administración durante las protestas de finales de los 60. La película documenta un año de organización política y debate.",
+      "synopsis_en": "Japanese university students barricade themselves on campus against administrative violence during the late 1960s protests. Shot over a year, the film documents political organizing and the fierce debates that shape it."
+    },
+    {
+      "title": "Las artes de la palabra",
+      "title_en": "Les arts de la parole",
+      "country": "Canadá",
+      "flags": "🇨🇦",
+      "duration": "93 min",
+      "director": "Olivier Godin",
+      "year": 2016,
+      "genre": "Drama",
+      "section": "📖 Según la palabra. El cine de Olivier Godin",
+      "day": "JUE 18",
+      "date": 18,
+      "time": "19:30",
+      "venue": "Colombo Sala 2",
+      "day_order": 7,
+      "is_cortos": false,
+      "film_list": [],
+      "synopsis": "Koroviev es un policía que enseña poesía a sus colegas y busca una Biblia anotada por un célebre capitán de barco. La búsqueda lo acerca a un joven bandido y a la misteriosa Coriander.",
+      "synopsis_en": "Koroviev is a peculiar officer who teaches poetry to his colleagues while hunting a legendary annotated Bible. The search leads him to a young bandit — and to the mysterious Coriander."
+    },
+    {
+      "title": "Sanrizuka: El pueblo de Heta",
+      "title_en": "Sanrizuka: Heta Village",
+      "country": "Japón",
+      "flags": "🇯🇵",
+      "duration": "146 min",
+      "director": "Shinsuke Ogawa",
+      "year": 1973,
+      "genre": "Documental",
+      "section": "🌿 Campo indómito: Shinsuke Ogawa",
+      "day": "JUE 18",
+      "date": 18,
+      "time": "19:00",
+      "venue": "Antimateria Libros y Café",
+      "day_order": 7,
+      "is_cortos": false,
+      "film_list": [],
+      "synopsis": "El suicidio de un joven activista dejó cicatrices en los que resistieron la construcción del aeropuerto de Narita. Los agricultores, arrestados y sin poder trabajar en cosecha, buscan juntos consuelo y perseverancia.",
+      "synopsis_en": "An activist's suicide leaves deep wounds in the Narita airport resistance. Farmers arrested during harvest season look to each other for consolation and the will to keep going."
+    },
+    {
+      "title": "Eureka",
+      "title_en": "Eureka",
+      "country": "Argentina, Dinamarca",
+      "flags": "🇦🇷🇩🇰",
+      "duration": "147 min",
+      "director": "Lisandro Alonso",
+      "year": 2023,
+      "genre": "Drama",
+      "section": "✨ Proyecciones Especiales",
+      "day": "JUE 18",
+      "date": 18,
+      "time": "16:00",
+      "venue": "Procinal Las Américas Sala 3",
+      "day_order": 7,
+      "is_cortos": false,
+      "film_list": [],
+      "synopsis": "Tres historias en paralelo: un vaquero busca a su hija, una policía nativa trabaja en un paisaje nevado, y un pájaro viaja por el tiempo hacia una tribu amazónica. Cada trayecto transforma a quien lo recorre.",
+      "synopsis_en": "Three parallel stories: a cowboy searching for his daughter, a Native American officer working a snowy landscape, and a bird traveling through time to an Amazonian tribe. Each journey reshapes the one who takes it.",
+      "language": "English"
+    },
+    {
       "title": "Ewelina Rosińska. Nubes del este: reflexiones sobre la imagen y el territorio",
       "title_en": "Ewelina Rosinska. Clouds from the East",
       "country": "Polonia, Alemania",
@@ -1948,6 +2379,27 @@
       "film_list": [],
       "synopsis": "Conversación con la cineasta polaca Ewelina Rosińska sobre su trabajo con la imagen, el territorio y la memoria. Parte del foco monográfico de Cinemancia 2025.",
       "synopsis_en": "A conversation with Polish filmmaker Ewelina Rosińska about her work with the image, territory, and memory. Part of the monographic focus of Cinemancia 2025."
+    },
+    {
+      "title": "Andariega",
+      "title_en": "Andariega",
+      "country": "Colombia",
+      "flags": "🇨🇴",
+      "duration": "94 min",
+      "director": "Raúl Soto",
+      "year": 2025,
+      "genre": "Drama",
+      "section": "🏆 Competencia central",
+      "day": "JUE 18",
+      "date": 18,
+      "time": "19:00",
+      "venue": "Teatro Caribe",
+      "day_order": 7,
+      "is_cortos": false,
+      "film_list": [],
+      "synopsis": "Chena, 26 años, recorre cada año cientos de kilómetros para trabajar como jornalera en los cultivos colombianos. Lleva ocho años sin ahorrar ni alcanzar independencia. Su cuerpo y su voluntad son todo lo que tiene.",
+      "synopsis_en": "Every year, 26-year-old Chena walks hundreds of kilometers to work as a day laborer on Colombian crops. Eight years in, she has saved nothing. Her body and her will are all she has.",
+      "language": "es"
     },
     {
       "title": "Denominación de origen",
@@ -2035,6 +2487,197 @@
       "synopsis_en": "A document of traditional persimmon production in Japan, where time itself becomes image: fruit in full bloom, deep reds and oranges, skins stripped and hung to dry in the autumn air."
     },
     {
+      "title": "Programa Miñuca Villaverde",
+      "title_en": "Minuca Villaverde Program",
+      "country": "Cuba, Estados Unidos",
+      "flags": "🇨🇺🇺🇸",
+      "duration": "104 min",
+      "director": "Miñuca Villaverde",
+      "section": "💡 Iluminaciones",
+      "day": "VIE 19",
+      "date": 19,
+      "time": "18:30",
+      "venue": "Colombo Sala 2",
+      "day_order": 8,
+      "is_cortos": true,
+      "synopsis": "Programa de la cineasta cubano-americana Miñuca Villaverde: Apollo Man to the Moon (1970), Blanca Putica (1973), Tent City (1981) y To My Father (1973).",
+      "film_list": [
+        {
+          "title": "Apollo, Man to the Moon",
+          "director": "Miñuca Villaverde",
+          "country": "Cuba, Estados Unidos",
+          "duration": "28 min",
+          "year": 1970
+        },
+        {
+          "title": "Blanca Putica. A Girl in Love",
+          "director": "Miñuca Villaverde",
+          "country": "Cuba, Estados Unidos",
+          "duration": "15 min",
+          "year": 1973
+        },
+        {
+          "title": "Tent City",
+          "director": "Miñuca Villaverde",
+          "country": "Cuba, Estados Unidos",
+          "duration": "30 min",
+          "year": 1981
+        },
+        {
+          "title": "To My Father",
+          "director": "Miñuca Villaverde",
+          "country": "Cuba, Estados Unidos",
+          "duration": "23 min",
+          "year": 1973
+        }
+      ]
+    },
+    {
+      "title": "Las tierras del cielo",
+      "title_en": "Las tierras del cielo",
+      "country": "España",
+      "flags": "🇪🇸",
+      "duration": "83 min",
+      "director": "Pablo García Canga",
+      "year": 2020,
+      "genre": "Drama",
+      "section": "🎭 ¿Qué es la ficción?",
+      "day": "VIE 19",
+      "date": 19,
+      "time": "19:00",
+      "venue": "Procinal Las Américas",
+      "day_order": 8,
+      "is_cortos": false,
+      "film_list": [],
+      "synopsis": "Una noche en Madrid. Cinco conversaciones entre nueve personajes que cuentan historias personales, inventadas y una vieja historia japonesa que circula de boca en boca como una corriente subterránea.",
+      "synopsis_en": "One night in Madrid. Five conversations between nine people — personal stories, invented stories, and an old Japanese story that passes from mouth to mouth like an underground current."
+    },
+    {
+      "title": "Irlande Cahier Bleu",
+      "title_en": "Ireland Blue Notebook",
+      "country": "Canadá",
+      "flags": "🇨🇦",
+      "duration": "82 min",
+      "director": "Olivier Godin",
+      "year": 2023,
+      "genre": "Comedia",
+      "section": "📖 Según la palabra. El cine de Olivier Godin",
+      "day": "VIE 19",
+      "date": 19,
+      "time": "17:00",
+      "venue": "Capilla Comfama",
+      "day_order": 8,
+      "is_cortos": false,
+      "film_list": [],
+      "synopsis": "Ducarmel es bombero anacrónico, poeta cotidiano y jugador de baloncesto competitivo. Su único problema: encontrar niñera. Cuando duerme, un libro azul cautivador reina en sus sueños junto al amor y la gloria deportiva.",
+      "synopsis_en": "Ducarmel is a poet-fireman who plays competitive basketball and can't find a babysitter. When he finally sleeps, an enchanting blue book rules his dreams alongside love and athletic glory.",
+      "language": "fr"
+    },
+    {
+      "title": "¿Qué es la ficción?",
+      "title_en": "What is Fiction? Program 1",
+      "country": "Francia/Colombia/Canadá/Portugal",
+      "flags": "🇫🇷🇨🇴🇵🇹",
+      "duration": "81 min",
+      "director": "Varios",
+      "section": "🎭 ¿Qué es la ficción?",
+      "day": "VIE 19",
+      "date": 19,
+      "time": "21:00",
+      "venue": "Colombo Sala 1",
+      "day_order": 8,
+      "is_cortos": true,
+      "synopsis": "Segunda sesión de la programación de cortometrajes de la sección ¿Qué es la ficción? de Cinemancia 2025.",
+      "film_list": [
+        {
+          "title": "O Velho Do Restelo",
+          "director": "Manoel de Oliveira",
+          "year": 2014,
+          "country": "Portugal",
+          "duration": "19 min",
+          "synopsis": "Una zambullida libre en la Historia tal como la conocemos, como un sedimento fértil en la memoria de Manoel de Oliveira. En un banco de parque del siglo XXI, Oliveira une a Don Quijote con el poeta Luís Vaz de Camões y los novelistas Teixeira de Pascoaes y Camilo Castelo Branco."
+        },
+        {
+          "title": "La briglia sul collo",
+          "director": "Cecilia Mangini",
+          "year": 1974,
+          "country": "Italia",
+          "duration": "13 min",
+          "synopsis": "Entramos en el universo de Fabio Spada, un niño del barrio periférico romano de San Basilio: Fabio ha sido definido por la escuela como un inadaptado. Su padre, su madre, el director y la psicóloga de la escuela pública de la 'borgata romana' (y él mismo) nos hablan de él."
+        },
+        {
+          "title": "Mi última aventura",
+          "director": "Ezequiel Salinas, Ramiro Sonzini",
+          "year": 2021,
+          "country": "Argentina",
+          "duration": "15 min",
+          "synopsis": "Córdoba duerme o sueña que duerme tranquila. Pelu esta noche está despierto. Ya ha soñado demasiado tiempo cómo sería el momento en que todo empiece, que la suerte cambie. Gracias a su mejor amigo, el Jandro, intentará dar un golpe que cambie su destino."
+        },
+        {
+          "title": "Jaime",
+          "director": "António Reis",
+          "year": 1974,
+          "country": "Portugal",
+          "duration": "35 min",
+          "synopsis": "Primera película de la pareja de cineastas António Reis y Margarida Cordeiro. Filmada en el hospital psiquiátrico Miguel Bombarda de Lisboa, la película explora la vida y la obra pictórica del interno Jaime Fernandes desarrollada durante su encierro en el hospital hasta el día de su muerte."
+        }
+      ]
+    },
+    {
+      "title": "Programa de cortos 2",
+      "title_en": "Short Films: Competition 4",
+      "country": "Canadá/Argentina/Corea del Sur/España/Colombia",
+      "flags": "🇦🇷🇰🇷🇪🇸🇨🇴",
+      "duration": "82 min",
+      "director": "Varios",
+      "section": "🎞️ Competencia de cortometrajes",
+      "day": "VIE 19",
+      "date": 19,
+      "time": "17:00",
+      "venue": "Teatro Caribe",
+      "day_order": 8,
+      "is_cortos": true,
+      "synopsis": "Segunda sesión de la competencia internacional de cortometrajes de Cinemancia 2025.",
+      "film_list": [
+        {
+          "title": "Julian and the Wind",
+          "director": "Connor Jessup",
+          "country": "Canadá",
+          "duration": "15 min",
+          "year": 2024
+        },
+        {
+          "title": "Unas bolitas de mercurio",
+          "director": "Andrea Márquez",
+          "country": "Argentina",
+          "duration": "9 min",
+          "year": 2025
+        },
+        {
+          "title": "Buseok",
+          "director": "Park Kyujae",
+          "country": "Corea del Sur",
+          "duration": "18 min",
+          "year": 2024
+        },
+        {
+          "title": "A.",
+          "director": "Ramon Balcells",
+          "country": "España",
+          "duration": "10 min",
+          "year": 2025
+        },
+        {
+          "title": "Niña Chilapa",
+          "director": "Juana Lotero López",
+          "country": "Colombia",
+          "duration": "17 min",
+          "year": 2025,
+          "synopsis": "Yulieth es una niña en un momento que mide su relación con el mundo: no es todavía una adolescente pero sus experiencias la hacen sentirse una mujer grande. Ese difícil equilibrio se amplía con el espacio que la rodea: una naturaleza demasiado generosa, tupida y vasta."
+        }
+      ]
+    },
+    {
       "title": "Proyecciones especiales",
       "title_en": "Special Screenings",
       "country": "Varios",
@@ -2050,6 +2693,46 @@
       "is_cortos": true,
       "synopsis": "Programa de cortometrajes de proyecciones especiales de Cinemancia 2025.",
       "film_list": []
+    },
+    {
+      "title": "Una visita a Producciones Ogawa",
+      "title_en": "A Visit to Ogawa Productions",
+      "country": "Japón",
+      "flags": "🇯🇵",
+      "duration": "62 min",
+      "director": "Jun'ichirô Ôshige",
+      "year": 1982,
+      "genre": "Documental",
+      "section": "🌿 Campo indómito: Shinsuke Ogawa",
+      "day": "VIE 19",
+      "date": 19,
+      "time": "16:00",
+      "venue": "Biblioteca Comfama Bello",
+      "day_order": 8,
+      "is_cortos": false,
+      "film_list": [],
+      "synopsis": "La película documenta la visita del cineasta Nagisa Oshima al colectivo Producciones Ogawa durante su estancia en Furuyashikimura. Oshima se reúne con Shinsuke Ogawa para una extensa entrevista, en la que explica su método de trabajo y filosofía.",
+      "synopsis_en": "The film documents filmmaker Nagisa Oshima's visit to the Ogawa Productions collective during his stay at Furuyashikimura. Oshima meets with Shinsuke Ogawa for an extensive interview in which Ogawa explains his working method and philosophy."
+    },
+    {
+      "title": "El frente de batalla por la liberación de Japón – Verano en Sanrizuka",
+      "title_en": "The Battle Front for the Liberation of Japan – Summer in Sanrizuka",
+      "country": "Japón",
+      "flags": "🇯🇵",
+      "duration": "108 min",
+      "director": "Shinsuke Ogawa",
+      "year": 1968,
+      "genre": "Documental",
+      "section": "🌿 Campo indómito: Shinsuke Ogawa",
+      "day": "VIE 19",
+      "date": 19,
+      "time": "19:00",
+      "venue": "Antimateria Libros y Café",
+      "day_order": 8,
+      "is_cortos": false,
+      "film_list": [],
+      "synopsis": "En el pueblo de Heta, campesinos y estudiantes combaten a la policía antidisturbios enviada a proteger los trabajos del aeropuerto. La película registra el conflicto con una estética estridente y combativa.",
+      "synopsis_en": "In the village of Heta, farmers and students clash with riot police sent to protect airport surveyors. The film captures the conflict with a confrontational aesthetic that matches the fight it documents."
     },
     {
       "title": "Portales + Las muchas muertes de Antonio Parreiras",
@@ -2094,6 +2777,46 @@
       "synopsis": "Doble función. Portales (2025): el río Guadalete como portal entre dimensiones, fusión de acción real y animación. As Muitas Mortes de Antônio Parreiras (2025): un viaje por los bosques indómitos del pintor tropical que capturó la luz antes que nadie.",
       "is_programa": true,
       "synopsis_en": "Double bill. Portales (2025): the Guadalete River as a portal between dimensions, a fusion of live action and animation. As Muitas Mortes de Antônio Parreiras (2025): a journey through the untamed forests of the tropical painter who captured light before anyone else."
+    },
+    {
+      "title": "7 caminadas con Mark Brown",
+      "title_en": "Sept promenades avec Mark Brown",
+      "country": "Francia",
+      "flags": "🇫🇷",
+      "duration": "104 min",
+      "director": "Pierre Creton, Vincent Barré",
+      "year": 2024,
+      "genre": "Documental",
+      "section": "✨ Proyecciones Especiales",
+      "day": "SÁB 20",
+      "date": 20,
+      "time": "14:00",
+      "venue": "Colombo Sala 1",
+      "day_order": 9,
+      "is_cortos": false,
+      "film_list": [],
+      "synopsis": "Proyección especial de Pierre Creton y Vincent Barré: un encuentro entre un artista y la naturaleza a través de siete caminatas filmadas en el campo normando.",
+      "synopsis_en": "Special screening by Pierre Creton and Vincent Barré: an encounter between an artist and nature through seven walks filmed in the Norman countryside."
+    },
+    {
+      "title": "The Sealed Soil",
+      "title_en": "The Sealed Soil",
+      "country": "Irán",
+      "flags": "🇮🇷",
+      "duration": "90 min",
+      "director": "Marva Nabili",
+      "year": 1977,
+      "genre": "Drama",
+      "section": "💡 Iluminaciones",
+      "day": "SÁB 20",
+      "date": 20,
+      "time": "16:30",
+      "venue": "Colombo Sala 2",
+      "day_order": 9,
+      "is_cortos": false,
+      "film_list": [],
+      "synopsis": "Película iraní de 1977 de la cineasta Marva Nabili, redescubierta y presentada en el foco Iluminaciones de Cinemancia 2025.",
+      "synopsis_en": "Iranian film from 1977 by filmmaker Marva Nabili, rediscovered and presented in the Illuminations focus of Cinemancia 2025."
     },
     {
       "title": "Cobre",
@@ -2158,6 +2881,179 @@
       "language": "es"
     },
     {
+      "title": "Programa de cortos 3",
+      "title_en": "Short Films: Competition 3",
+      "country": "Canadá/Brasil/Francia/España/Colombia/Dinamarca",
+      "flags": "🇧🇷🇫🇷🇪🇸🇨🇴🇩🇰",
+      "duration": "71 min",
+      "director": "Varios",
+      "section": "🎞️ Competencia de cortometrajes",
+      "day": "DOM 14",
+      "date": 14,
+      "time": "18:30",
+      "venue": "Auditorio Ciro Mendía Caldas",
+      "day_order": 3,
+      "is_cortos": true,
+      "synopsis": "Tercera sesión de la competencia internacional de cortometrajes de Cinemancia 2025.",
+      "film_list": [
+        {
+          "title": "Nemo 1",
+          "director": "Albéric Aurtenèche",
+          "country": "Canadá",
+          "duration": "12 min",
+          "year": 2024
+        },
+        {
+          "title": "Do Caldeirao da Santa Cruz",
+          "director": "Weyna Macedo, Lucas Parente, Adeciany Castro",
+          "country": "Brasil",
+          "duration": "11 min",
+          "year": 2025
+        },
+        {
+          "title": "Montsouris",
+          "director": "Guil Sela",
+          "country": "Francia",
+          "duration": "14 min",
+          "year": 2024
+        },
+        {
+          "title": "Las entrañas saben lo que la razón no entiende",
+          "director": "Alberto Lobelle",
+          "country": "España",
+          "duration": "6 min",
+          "year": 2025
+        },
+        {
+          "title": "Soñar una serpiente",
+          "director": "Maria Carolina Ardila, Liliana Patricia Correa",
+          "country": "Colombia",
+          "duration": "14 min",
+          "year": 2025,
+          "synopsis": "Una bióloga forense que ha pasado su vida entre fósiles y vitrinas de museo encuentra una foto que lo cambia todo: es su madre, joven, sosteniendo la mirada de una serpiente con una intensidad casi ritual. A partir de ese momento, los reptiles comienzan a infiltrarse en su vida."
+        },
+        {
+          "title": "A Study of Empathy",
+          "director": "Hilke Rönnfeldt",
+          "country": "Dinamarca",
+          "duration": "15 min",
+          "year": 2023
+        }
+      ]
+    },
+    {
+      "title": "Programa de cortos 4",
+      "title_en": "Short Films: Competition 4",
+      "country": "Colombia/España/Argentina/Portugal",
+      "flags": "🇨🇴🇪🇸🇦🇷🇵🇹",
+      "duration": "64 min",
+      "director": "Varios",
+      "section": "🎞️ Competencia de cortometrajes",
+      "day": "VIE 19",
+      "date": 19,
+      "time": "17:00",
+      "venue": "Centro Colombo Americano",
+      "day_order": 8,
+      "is_cortos": true,
+      "synopsis": "Cuarta sesión de la competencia internacional de cortometrajes de Cinemancia 2025.",
+      "film_list": [
+        {
+          "title": "Kilómetro 126",
+          "director": "Felipe López Gómez",
+          "country": "Colombia",
+          "duration": "17 min",
+          "year": 2025
+        },
+        {
+          "title": "Una trabaja, la otra no",
+          "director": "Maider Fernández Iriarte",
+          "country": "España",
+          "duration": "19 min",
+          "year": 2024
+        },
+        {
+          "title": "La balandra",
+          "director": "Matías Lima",
+          "country": "Argentina",
+          "duration": "13 min",
+          "year": 2024
+        },
+        {
+          "title": "Maria Henriqueta Esteve Aqui",
+          "director": "Nuno Pimentel",
+          "country": "Portugal",
+          "duration": "13 min",
+          "year": 2025
+        }
+      ]
+    },
+    {
+      "title": "¿Qué es la ficción?",
+      "title_en": "What is Fiction? Program 3",
+      "country": "Francia/Colombia/Canadá/Portugal",
+      "flags": "🇫🇷🇨🇴🇵🇹",
+      "duration": "81 min",
+      "director": "Varios",
+      "section": "🎭 ¿Qué es la ficción?",
+      "day": "VIE 12",
+      "date": 12,
+      "time": "17:00",
+      "venue": "La Capilla del Claustro Comfama",
+      "day_order": 1,
+      "is_cortos": true,
+      "synopsis": "Segunda sesión de la programación de cortometrajes de la sección ¿Qué es la ficción? de Cinemancia 2025.",
+      "film_list": [
+        {
+          "title": "Aliens",
+          "director": "Luis Lopez Carrasco",
+          "year": 2017,
+          "country": "España",
+          "duration": "23 min",
+          "synopsis": "Retrato de la vida de Tesa Arranz, figura clave de la Movida Madrileña. Un retrato íntimo, sincero y desprejuiciado en el que la artista narra su vida a través de su obra gráfica, sus poemas, diarios, novelas y cartas. El título refiere a los más de quinientos retratos de extraterrestres que Arranz ha pintado."
+        },
+        {
+          "title": "En rachâchant",
+          "director": "Jean-Marie Straub, Danièle Huillet",
+          "year": 1983,
+          "country": "Francia",
+          "duration": "7 min",
+          "synopsis": "Basado en la historia 'Ah ¡Ernesto!', de Marguerite Duras. Abre un diálogo entre cuatro personajes: el pequeño estudiante Ernesto, su madre, el padre y el maestro de escuela. Mediante frases cortas e inconexas, se establece una comunicación absurda que se rebela contra las convenciones de la enseñanza institucional."
+        },
+        {
+          "title": "The Cat With Hands",
+          "director": "Robert Morgan",
+          "year": 2001,
+          "country": "Reino Unido",
+          "duration": "4 min",
+          "synopsis": "La historia de un gato que, según la leyenda, desea convertirse en un humano."
+        },
+        {
+          "title": "Seguro que Bach cerraba la puerta cuando quería trabajar",
+          "director": "Narcisa Hirsch",
+          "year": 1979,
+          "country": "Argentina",
+          "duration": "27 min",
+          "synopsis": "Narcisa invita a una serie de mujeres, amigas, las filma de frente a la cámara en un primer plano sin sonido alguno, tiempo después les proyecta sus imágenes silentes. Las mujeres le hablan a su propia imagen como ritual y terapia. El ejercicio se realizó tres veces: en 1974, 1979 y en el 2005."
+        },
+        {
+          "title": "Hanging Upside Down in the Branches",
+          "director": "Ute Aurand",
+          "year": 2007,
+          "country": "Alemania",
+          "duration": "15 min",
+          "synopsis": "Película filmada por Ute Aurand años antes de la muerte de sus padres, donde reflexiona sobre la gradual desaparición del mundo de su infancia a través de planos que, como destellos, despiden unos escenarios y personas que pasarán a formar parte del efímero soporte que es su memoria."
+        },
+        {
+          "title": "The Silence of Ani",
+          "director": "Francis Alÿs",
+          "year": 2015,
+          "country": "Turquía",
+          "duration": "13 min",
+          "synopsis": "Ani, una ciudad situada en la frontera turcoarmenia, se encuentra en absoluto abandono tras siglos de continuas invasiones. Alÿs dio instrumentos para imitar el sonido de los pájaros a adolescentes de los pueblos de alrededor, quienes atravesaron los límites de la ciudad y llamaron a los pájaros, creando la ilusión de que la ciudad había vuelto a la vida."
+        }
+      ]
+    },
+    {
       "title": "La durmiente + Las reglas del juego",
       "country": "Portugal, Argentina",
       "flags": "🇵🇹🇦🇷",
@@ -2212,5 +3108,7 @@
     }
   ],
   "_lbSlugsSource": "https://letterboxd.com/cinemancia/list/cinemancia-2025/detail/ — extraído via Chrome, NO inferir slugs",
-  "prioLimit": 5
+  "prioLimit": 5,
+  "_total": 87,
+  "_note": "Restored multi-screening data — 9bda712 incorrectly deduped 25 titles with multiple functions"
 }
