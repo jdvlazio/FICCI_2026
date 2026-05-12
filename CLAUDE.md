@@ -3,7 +3,7 @@
 > No editar a mano — los cambios se sobreescriben en el próximo deploy.
 > Para modificar secciones estáticas, editar el template en el script.
 >
-> Último commit: `315bdfb fix(mi-plan): safeT is not defined — rename incompleto en openPelSheet`
+> Último commit: `748256c docs: audit matrix — hallazgos P3.1 y P5.1 CRIT-01`
 
 ---
 

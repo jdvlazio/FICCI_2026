@@ -4376,7 +4376,7 @@ let FESTIVAL_STORAGE_KEY=(localStorage.getItem('otrofestiv_festival')||_DEFAULT_
 // BUILD_VERSION: cambia en cada deploy.
 // Al cargar, compara con localStorage. Si difiere → reload duro.
 // sessionStorage evita loops infinitos dentro de la misma sesión.
-const BUILD_VERSION='202605121640';
+const BUILD_VERSION='202605121701';
 (function(){
   const _vk='otrofestiv_build';
   const _sk='otrofestiv_reloaded';
@@ -4708,8 +4708,8 @@ function renderMiPlanCalendar(){
 /* ── STATE: persistencia en localStorage ────────────────────────────── */
 function loadState(){
   try{
-    const wl=localStorage.getItem(`${FESTIVAL_STORAGE_KEY}wl`); if(wl) watchlist=new Set(JSON.parse(wl));
-    const wt=localStorage.getItem(`${FESTIVAL_STORAGE_KEY}watched`); if(wt) watched=new Set(JSON.parse(wt));
+    const wl=localStorage.getItem(`${FESTIVAL_STORAGE_KEY}wl`); if(wl) watchlist=new Set(JSON.parse(wl).map(normTitle));
+    const wt=localStorage.getItem(`${FESTIVAL_STORAGE_KEY}watched`); if(wt) watched=new Set(JSON.parse(wt).map(normTitle));
     const _rt=localStorage.getItem(`${FESTIVAL_STORAGE_KEY}ratings`); if(_rt) try{Object.assign(filmRatings,JSON.parse(_rt));}catch(e){console.warn('[loadState] ratings parse failed',e);}
     const av=localStorage.getItem(`${FESTIVAL_STORAGE_KEY}av3`); if(av){const p=JSON.parse(av);DAY_KEYS.forEach(d=>{if(p[d]) availability[d]=p[d];});}
     const sa=localStorage.getItem(`${FESTIVAL_STORAGE_KEY}saved`); if(sa) savedAgenda=JSON.parse(sa);
@@ -4719,7 +4719,7 @@ function loadState(){
         if(s.venue) s.venue=s.venue.replace(/CC Bocagrande/g,'Plaza Bocagrande');
       });
     }
-    const pr=localStorage.getItem(`${FESTIVAL_STORAGE_KEY}prio`); if(pr) prioritized=new Set(JSON.parse(pr));
+    const pr=localStorage.getItem(`${FESTIVAL_STORAGE_KEY}prio`); if(pr) prioritized=new Set(JSON.parse(pr).map(normTitle));
     // Heal: garantiza que todo lo que está en prioritized esté en watchlist
     prioritized.forEach(t=>{if(!watchlist.has(t)){watchlist.add(t);}});
     saveWL();
@@ -4835,6 +4835,7 @@ function toggleWL(title,e){
   }
 }
 function toggleWatched(title,e){
+  title=normTitle(title);
   if(e) e.stopPropagation();
   if(watched.has(title)){
     // Quitar de vistas — si no está en Intereses, devolverla ahí
@@ -4911,6 +4912,7 @@ function removeFromAgenda(title){
   });
 }
 function addSuggestion(title,day,time){
+  title=normTitle(title);
   if(festivalEnded()) return;
   // 1. Add to watchlist if not already there
   if(!watchlist.has(title)){watchlist.add(title);watched.delete(title);saveState('wl','watched');updateCardState(title);updateAgTab();}
@@ -8419,6 +8421,7 @@ function starsDisplay(rating,size){
 
 
 function togglePelPrio(title){
+  title=normTitle(title);
   togglePriority(title);
   const btn=document.getElementById('pel-prio-btn')||document.getElementById('corto-prio-btn');
   if(!btn) return;
@@ -8441,6 +8444,7 @@ function togglePelPrio(title){
 
 /* ── BOTTOM SHEET: apertura, cierre, acciones ───────────────────────── */
 function togglePelWL(title,e){
+  title=normTitle(title);
   const wasInWL=watchlist.has(title);
   toggleWL(title,e);
   const btn=document.getElementById('pel-wl-btn');

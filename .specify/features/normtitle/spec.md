@@ -44,3 +44,44 @@ Se corre una vez por festival en onboarding.
 - [ ] validate.py 11/11 (o 12/12 con nuevo check)
 - [ ] QA browser: Opening Night y Finnegan's muestran poster en Priorities
 - [ ] Commit atómico con documentación
+
+---
+
+## Fase 2 — normTitle en puntos de entrada (CRIT-01)
+
+### Problema
+normTitle normaliza FILMS al cargar (loadFestival) pero no normaliza
+títulos que entran desde el UI o desde localStorage.
+Resultado: Sets tienen U+2019, FILMS tiene U+0027 → lookup falla.
+
+### Estrategia — 5 puntos de entrada, no 30 write points
+
+1. loadState() — restaura Sets desde localStorage (datos históricos)
+   Normalizar: watchlist, watched, prioritized al parsear de JSON
+   
+2. togglePelWL(title) — título viene del DOM vía pel-sheet
+   Normalizar: title = normTitle(title) al inicio de la función
+
+3. togglePelPrio(title) — título viene del DOM vía pel-sheet
+   Normalizar: title = normTitle(title) al inicio de la función
+
+4. toggleWatched(title) — título viene del DOM vía pel-sheet
+   Normalizar: title = normTitle(title) al inicio de la función
+   
+5. addSuggestion(title) — título viene del DOM vía sugerencias
+   Normalizar: title = normTitle(title) al inicio de la función
+
+### Invariante resultante
+Todo título que entra al sistema pasa por normTitle.
+Ningún write point interno necesita cambio.
+Cualquier función nueva que llame a estas 5 hereda la garantía.
+
+### Criterios de aceptación Fase 2
+- [ ] loadState normaliza watchlist, watched, prioritized al cargar
+- [ ] Las 4 funciones públicas normalizan title al inicio
+- [ ] FILMS.find con U+2019 encuentra el film (porque FILMS tiene U+0027)
+- [ ] Priority chips muestran poster con títulos apostrophe
+- [ ] Algoritmo termina con prioridades apostrophe — P5.1 PASS
+- [ ] validate.py 12/12
+- [ ] QA browser: P3.1 y P5.1 pasan
+- [ ] Commit atómico
