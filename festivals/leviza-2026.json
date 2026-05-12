@@ -86,7 +86,8 @@
       "day_order": 0,
       "tmdb_id": 1105382,
       "year": 2023,
-      "genre": "Drama"
+      "genre": "Drama",
+      "lbSlug": "⚠️ LB PENDIENTE"
     },
     {
       "title": "Rebelión",
@@ -100,7 +101,8 @@
       "day_order": 1,
       "tmdb_id": 1032603,
       "year": 2022,
-      "genre": "Biográfico, Drama, Musical"
+      "genre": "Biográfico, Drama, Musical",
+      "lbSlug": "⚠️ LB PENDIENTE"
     },
     {
       "title": "Muestra Competencia Nacional de Ficción — Jueves",
@@ -115,38 +117,44 @@
           "director": "Samuel Lazcano",
           "country": "Colombia",
           "flags": "🇨🇴",
-          "poster": "assets/leviza/images.jpeg"
+          "poster": "assets/leviza/images.jpeg",
+          "lbSlug": "⚠️ LB PENDIENTE"
         },
         {
           "title": "La Bruja de Mi Ex",
           "director": "Yesid Rengifo Sanabria",
           "country": "Colombia",
           "flags": "🇨🇴",
-          "poster": "assets/leviza/LaBruja.jpg"
+          "poster": "assets/leviza/LaBruja.jpg",
+          "lbSlug": "⚠️ LB PENDIENTE"
         },
         {
           "title": "La Mujer en el Espejo",
           "director": "Luis Miguel Cuervo Ospina",
           "country": "Colombia",
           "flags": "🇨🇴",
-          "poster": "assets/leviza/LaMujer.png"
+          "poster": "assets/leviza/LaMujer.png",
+          "lbSlug": "⚠️ LB PENDIENTE"
         },
         {
           "title": "Legado Sinuano",
           "director": "Luis Vieira Manchego",
           "country": "Colombia",
           "flags": "🇨🇴",
-          "poster": "assets/leviza/Legado.jpeg"
+          "poster": "assets/leviza/Legado.jpeg",
+          "lbSlug": "⚠️ LB PENDIENTE"
         },
         {
           "title": "Manual para Reparar",
           "director": "Laura Mora",
           "country": "Colombia",
-          "flags": "🇨🇴"
+          "flags": "🇨🇴",
+          "lbSlug": "⚠️ LB PENDIENTE"
         }
       ],
       "day_order": 2,
-      "flags": "🇨🇴"
+      "flags": "🇨🇴",
+      "lbSlug": "⚠️ LB PENDIENTE"
     },
     {
       "title": "Chist",
@@ -160,7 +168,8 @@
       "venue": "Auditorio Polideportivo - Zapatoca",
       "has_qa": true,
       "poster": "assets/leviza/Chist.jpg",
-      "day_order": 0
+      "day_order": 0,
+      "lbSlug": "⚠️ LB PENDIENTE"
     },
     {
       "title": "Sin la Luz Perpetua",
@@ -173,7 +182,8 @@
       "venue": "Auditorio Polideportivo - Zapatoca",
       "has_qa": true,
       "poster": "assets/leviza/SinLaLuz.jpg",
-      "day_order": 1
+      "day_order": 1,
+      "lbSlug": "⚠️ LB PENDIENTE"
     },
     {
       "title": "Filminutos Semillero YarimaFICS — Barrancabermeja",
@@ -184,29 +194,37 @@
       "is_cortos": true,
       "film_list": [
         {
-          "title": "Closeth"
+          "title": "Closeth",
+          "lbSlug": "⚠️ LB PENDIENTE"
         },
         {
-          "title": "Cristofer"
+          "title": "Cristofer",
+          "lbSlug": "⚠️ LB PENDIENTE"
         },
         {
-          "title": "Inocente"
+          "title": "Inocente",
+          "lbSlug": "⚠️ LB PENDIENTE"
         },
         {
-          "title": "La Enfermera"
+          "title": "La Enfermera",
+          "lbSlug": "⚠️ LB PENDIENTE"
         },
         {
-          "title": "Sálvame"
+          "title": "Sálvame",
+          "lbSlug": "⚠️ LB PENDIENTE"
         },
         {
-          "title": "Un Día Más"
+          "title": "Un Día Más",
+          "lbSlug": "⚠️ LB PENDIENTE"
         },
         {
-          "title": "Vínculo"
+          "title": "Vínculo",
+          "lbSlug": "⚠️ LB PENDIENTE"
         }
       ],
       "day_order": 2,
-      "flags": "🇨🇴"
+      "flags": "🇨🇴",
+      "lbSlug": "⚠️ LB PENDIENTE"
     },
     {
       "title": "Candelaria",
@@ -220,7 +238,8 @@
       "day_order": 3,
       "tmdb_id": 483787,
       "year": 2017,
-      "genre": "Drama"
+      "genre": "Drama",
+      "lbSlug": "⚠️ LB PENDIENTE"
     },
     {
       "title": "Muestra Competencia Nacional de Ficción — Viernes",
@@ -234,52 +253,60 @@
           "title": "La Ceremonia",
           "director": "Deimer Vergara / Julián García",
           "country": "Colombia",
-          "flags": "🇨🇴"
+          "flags": "🇨🇴",
+          "lbSlug": "⚠️ LB PENDIENTE"
         },
         {
           "title": "No Te Despiertes",
           "director": "Hernán Velásquez",
           "country": "Colombia",
           "flags": "🇨🇴",
-          "poster": "assets/leviza/NoTeDespiertes.jpg"
+          "poster": "assets/leviza/NoTeDespiertes.jpg",
+          "lbSlug": "⚠️ LB PENDIENTE"
         },
         {
           "title": "Pawa",
           "director": "Marbel Vanegas Jusayu",
           "country": "Colombia",
           "flags": "🇨🇴",
-          "poster": "assets/leviza/Pawa.jpeg"
+          "poster": "assets/leviza/Pawa.jpeg",
+          "lbSlug": "⚠️ LB PENDIENTE"
         },
         {
           "title": "Refracción",
           "director": "Isabella Palacio Meda",
           "country": "Colombia",
           "flags": "🇨🇴",
-          "poster": "assets/leviza/Refraccio_n.jpeg"
+          "poster": "assets/leviza/Refraccio_n.jpeg",
+          "lbSlug": "⚠️ LB PENDIENTE"
         },
         {
           "title": "Tiene que Ser Ella",
           "director": "Valeria Rojas",
           "country": "Colombia",
-          "flags": "🇨🇴"
+          "flags": "🇨🇴",
+          "lbSlug": "⚠️ LB PENDIENTE"
         },
         {
           "title": "Saltus",
           "director": "Lisett Contreras",
           "country": "Colombia",
           "flags": "🇨🇴",
-          "poster": "assets/leviza/Saltus.jpeg"
+          "poster": "assets/leviza/Saltus.jpeg",
+          "lbSlug": "⚠️ LB PENDIENTE"
         },
         {
           "title": "Tándem",
           "director": "Edison González",
           "country": "Colombia",
           "flags": "🇨🇴",
-          "poster": "assets/leviza/Tandem.webp"
+          "poster": "assets/leviza/Tandem.webp",
+          "lbSlug": "⚠️ LB PENDIENTE"
         }
       ],
       "day_order": 4,
-      "flags": "🇨🇴"
+      "flags": "🇨🇴",
+      "lbSlug": "⚠️ LB PENDIENTE"
     },
     {
       "title": "Mateo",
@@ -294,7 +321,8 @@
       "day_order": 0,
       "tmdb_id": 262229,
       "year": 2014,
-      "genre": "Drama"
+      "genre": "Drama",
+      "lbSlug": "⚠️ LB PENDIENTE"
     },
     {
       "title": "Sumas y Restas",
@@ -309,7 +337,8 @@
       "day_order": 1,
       "tmdb_id": 258450,
       "year": 2004,
-      "genre": "Drama, Crimen"
+      "genre": "Drama, Crimen",
+      "lbSlug": "⚠️ LB PENDIENTE"
     },
     {
       "title": "Muestra Competencia Nacional de Ficción — Sábado",
@@ -324,43 +353,50 @@
           "director": "Jhon Agudelo Suárez",
           "country": "Colombia",
           "flags": "🇨🇴",
-          "poster": "assets/leviza/LaIndependencia.webp"
+          "poster": "assets/leviza/LaIndependencia.webp",
+          "lbSlug": "⚠️ LB PENDIENTE"
         },
         {
           "title": "Luz Blanca",
           "director": "Luigui Acuña",
           "country": "Colombia",
           "flags": "🇨🇴",
-          "poster": "assets/leviza/Luz-Blanca.jpg"
+          "poster": "assets/leviza/Luz-Blanca.jpg",
+          "lbSlug": "⚠️ LB PENDIENTE"
         },
         {
           "title": "Retrato de un Adiós",
           "director": "Santiago Atehortúa",
           "country": "Colombia",
-          "flags": "🇨🇴"
+          "flags": "🇨🇴",
+          "lbSlug": "⚠️ LB PENDIENTE"
         },
         {
           "title": "Ruidos",
           "director": "Lala Corredor",
           "country": "Colombia",
-          "flags": "🇨🇴"
+          "flags": "🇨🇴",
+          "lbSlug": "⚠️ LB PENDIENTE"
         },
         {
           "title": "Téngale Fe",
           "director": "Doney Cardona",
           "country": "Colombia",
           "flags": "🇨🇴",
-          "poster": "assets/leviza/TengaleFE.png"
+          "poster": "assets/leviza/TengaleFE.png",
+          "lbSlug": "⚠️ LB PENDIENTE"
         },
         {
           "title": "Tiempos Revelados",
           "director": "Paola Nova / Fredy Roldán",
           "country": "Colombia",
-          "flags": "🇨🇴"
+          "flags": "🇨🇴",
+          "lbSlug": "⚠️ LB PENDIENTE"
         }
       ],
       "day_order": 2,
-      "flags": "🇨🇴"
+      "flags": "🇨🇴",
+      "lbSlug": "⚠️ LB PENDIENTE"
     },
     {
       "title": "La Vendedora de Rosas",
@@ -375,7 +411,8 @@
       "day_order": 0,
       "tmdb_id": 97038,
       "year": 1998,
-      "genre": "Drama"
+      "genre": "Drama",
+      "lbSlug": "⚠️ LB PENDIENTE"
     },
     {
       "title": "Los Súper Descendientes",
@@ -389,7 +426,8 @@
       "day_order": 1,
       "tmdb_id": 1222695,
       "year": 2022,
-      "genre": "Animación, Familiar"
+      "genre": "Animación, Familiar",
+      "lbSlug": "⚠️ LB PENDIENTE"
     },
     {
       "title": "Clausura — Filminutos Movimiento Audiovisual LEVIZA",
@@ -400,26 +438,33 @@
       "is_cortos": true,
       "film_list": [
         {
-          "title": "Un Recuerdo Muerto"
+          "title": "Un Recuerdo Muerto",
+          "lbSlug": "⚠️ LB PENDIENTE"
         },
         {
-          "title": "Perdón"
+          "title": "Perdón",
+          "lbSlug": "⚠️ LB PENDIENTE"
         },
         {
-          "title": "La Lluvia"
+          "title": "La Lluvia",
+          "lbSlug": "⚠️ LB PENDIENTE"
         },
         {
-          "title": "Entre Ventanas"
+          "title": "Entre Ventanas",
+          "lbSlug": "⚠️ LB PENDIENTE"
         },
         {
-          "title": "Justa Medida"
+          "title": "Justa Medida",
+          "lbSlug": "⚠️ LB PENDIENTE"
         },
         {
-          "title": "Del Otro Lado del Solar"
+          "title": "Del Otro Lado del Solar",
+          "lbSlug": "⚠️ LB PENDIENTE"
         }
       ],
       "day_order": 2,
-      "flags": "🇨🇴"
+      "flags": "🇨🇴",
+      "lbSlug": "⚠️ LB PENDIENTE"
     },
     {
       "title": "Taller de Producción y Financiación",
