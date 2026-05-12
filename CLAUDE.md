@@ -3,7 +3,7 @@
 > No editar a mano — los cambios se sobreescriben en el próximo deploy.
 > Para modificar secciones estáticas, editar el template en el script.
 >
-> Último commit: `201e43f feat(prioLimit): regla global por festival — round(días/2), cap [3,8]`
+> Último commit: `beecb23 docs: venue-warnings tasks completadas`
 
 ---
 

@@ -4364,7 +4364,7 @@ let FESTIVAL_STORAGE_KEY=(localStorage.getItem('otrofestiv_festival')||_DEFAULT_
 // BUILD_VERSION: cambia en cada deploy.
 // Al cargar, compara con localStorage. Si difiere → reload duro.
 // sessionStorage evita loops infinitos dentro de la misma sesión.
-const BUILD_VERSION='202605121555';
+const BUILD_VERSION='202605121607';
 (function(){
   const _vk='otrofestiv_build';
   const _sk='otrofestiv_reloaded';
@@ -4644,11 +4644,12 @@ function renderMiPlanCalendar(){
       const _mf=FILMS.find(fi=>fi.title===s._title);const _mp=_mf?getFilmPoster(_mf):null;
       const _isEventRow=_mf&&_mf.type==='event';
       const _safeMpT=(s._title||"").replace(/'/g,"\\'");
-      const _mph=_mp
-          ?_posterThumb(_mf,'lb-poster',`openPelSheet('${_safeMpT}')`)
+      const _mphInner=_mp
+          ?_posterThumb(_mf,'lb-poster',null)
           :_isEventRow
-            ?`<div class="clickable-shrink" onclick="event.stopPropagation();openPelSheet('${_safeMpT}')"><img class="lb-poster" src="${makeEventPoster(_mf.title,_mf.duration,_mf.event_kind)}" alt="" onerror="this.remove()"></div>`
-            :_posterThumb(_mf,'lb-poster',`openPelSheet('${_safeMpT}')`)
+            ?`<img class="lb-poster" src="${makeEventPoster(_mf.title,_mf.duration,_mf.event_kind)}" alt="" onerror="this.remove()">`
+            :_posterThumb(_mf,'lb-poster',null);
+      const _mph=`<div class="js-open-pel" data-title="${s._title||''}" style="flex-shrink:0;cursor:pointer" onclick="event.stopPropagation()">${_mphInner}</div>`
       listHtml+=`<div class="mplan-row${_rowKey===_activeMiPlanFilm?' active':''}" style="cursor:pointer" data-rkey="${_safeRowKey}" onclick="selectFromDetail(this)">
         ${_mph}
         <div class="mplan-tc" onclick="event.stopPropagation()">
@@ -5596,12 +5597,17 @@ function getSuggestions(){
     }
 
     // Bloque 1 — Descubrimiento: películas del festival que quepan en huecos
+    // Usa screensConflict — mismo criterio que el algoritmo, incluye travel time entre venues
     if(slots.length){
       FILMS.forEach(f=>{
         if(seenDiscover.has(f.title)||screeningPassed(f)||f.day!==day||isScreeningBlocked(f)) return;
         const fStart=toMin(f.time),fEnd=fStart+parseDur(f.duration);
+        // Verificar que hay un slot de tiempo (check rápido)
         const slot=slots.find(sl=>fStart>=sl.start&&fEnd<=sl.end&&fEnd-fStart>=20);
-        if(slot){
+        if(!slot) return;
+        // Verificar que no conflictúa con ningún item del plan activo (incluye travel time)
+        const noConflict=!saved.some(s=>screensConflict(s,f));
+        if(noConflict){
           seenDiscover.add(f.title);seenRecovery.add(f.title);
           if(!byDay[day]) byDay[day]=[];
           byDay[day].push({...f,gapCtx:slot.ctx});
