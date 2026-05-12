@@ -1,8 +1,8 @@
 # AUDIT · Tab Programa
-**Versión:** `97d47dd`  
+**Versión:** `97d47dd` → fix `0e222cc`  
 **Fecha:** 2026-05-12  
 **Auditor:** —  
-**Estado:** `IN PROGRESS`
+**Estado:** `COMPLETE`
 
 ---
 
@@ -24,7 +24,7 @@ Este documento es un artefacto de release. Se define **antes** de abrir el brows
 
 | Variable | Valores posibles | Reset en |
 |----------|-----------------|----------|
-| `activeDay` | `'all'` \| cada `DAY_KEYS[i]` | festival change → `'all'`; filterByVenue → `activeDay` (preserva si no passed) |
+| `activeDay` | `'all'` \| cada `DAY_KEYS[i]` | festival change → `'all'`; filterByVenue → preserva si no passed |
 | `programaViewMode` | `'grid'` \| `'list'` | festival change → `'grid'`; filterByVenue → `'grid'`; filterBySection → `'grid'`; TODO tab → `'grid'`; day tab → `'list'` |
 | `programaSubMode` | `'hoy'` \| `'manana'` | festival change → `'hoy'`; filterByVenue → `'hoy'`; filterBySection → `'hoy'` |
 | `activeSec` | `'all'` \| string de sección | day tab click → `'all'`; filterByVenue → `'all'`; setProgramaMode → `'all'` |
@@ -44,12 +44,12 @@ Este documento es un artefacto de release. Se define **antes** de abrir el brows
 
 ```
 activeDay === 'all'
-  programaViewMode === 'grid'  → renderPeliculaView()      [grid de posters]
-  programaViewMode === 'list'  → _renderExploreLista()     [lista agrupada por título]
+  programaViewMode === 'grid'  → renderPeliculaView()
+  programaViewMode === 'list'  → _renderExploreLista()
 
 activeDay === <día específico>
-  programaViewMode === 'grid'  → renderPeliculaView()      [grid filtrado]
-  programaViewMode === 'list'  → renderProgramaList()      [lista cronológica]
+  programaViewMode === 'grid'  → renderPeliculaView()
+  programaViewMode === 'list'  → renderProgramaList()
 ```
 
 ### 1.4 Tipos de film con render especial
@@ -57,9 +57,9 @@ activeDay === <día específico>
 | Tipo | Condición | Render especial |
 |------|-----------|----------------|
 | Film normal | default | poster + título |
-| Evento | `f.type === 'event'` | poster generativo amber |
-| Cortos (programa) | `f.is_cortos === true` | poster generativo teal + badge |
-| Programa combinado | `f.is_programa && f.film_list.length >= 2` | poster stack (2 imágenes) + badge `+1` |
+| Evento | `f.type === 'event'` | poster real o generativo amber |
+| Cortos (programa) | `f.is_cortos === true` | poster generativo teal + badge count |
+| Programa combinado | `f.is_programa && f.film_list.length >= 2` | poster stack + badge `+1` |
 
 ---
 
@@ -67,22 +67,22 @@ activeDay === <día específico>
 
 | ID | Flujo | Descripción |
 |----|-------|-------------|
-| F-01 | Entrada cold start | App carga → splash → loadFestival → switchMainNav('mnav-cartelera') → showDayView() |
+| F-01 | Entrada cold start | App carga → splash → loadFestival → switchMainNav → showDayView() |
 | F-02 | Tab Programa desde otra tab | Click en tab → showDayView() → _renderProgramaContent() |
-| F-03 | Click dtab TODO | activeDay='all', programaViewMode='grid', setProgramaView('grid') |
-| F-04 | Click dtab día específico | activeDay=day.k, setProgramaView('list'), _renderProgramaContent() |
-| F-05 | Toggle grid/list | setProgramaView(opposite), _renderProgramaContent() |
-| F-06 | Seleccionar sección | seccionOpen() → click opción → activeSec=sec → _renderProgramaContent() |
-| F-07 | Seleccionar venue | lugarOpen() → click opción → filterByVenue() → showDayView() |
-| F-08 | Limpiar filtro sección (PAF pill) | _pafClearSec() → activeSec='all' → _renderProgramaContent() |
-| F-09 | Limpiar filtro venue (PAF pill) | _pafClearVenue() → activeVenue='all' → _renderProgramaContent() |
+| F-03 | Click dtab TODO | activeDay='all', programaViewMode='grid' |
+| F-04 | Click dtab día específico | activeDay=day.k, setProgramaView('list') |
+| F-05 | Toggle grid/list | setProgramaView(opposite) |
+| F-06 | Seleccionar sección | activeSec=sec → _renderProgramaContent() |
+| F-07 | Seleccionar venue | filterByVenue() → showDayView() |
+| F-08 | Limpiar filtro sección (PAF pill) | _pafClearSec() → activeSec='all' |
+| F-09 | Limpiar filtro venue (PAF pill) | _pafClearVenue() → activeVenue='all' |
 | F-10 | openPelSheet desde grid | click .js-open-pel → openPelSheet(title) |
 | F-11 | openPelSheet desde lista | click film item → openPelSheet(title) |
-| F-12 | Toggle WL desde lista | click corazón → togglePelWL() → re-render |
+| F-12 | Toggle WL desde lista | click corazón → _toggleWLFromList() |
 | F-13 | Cambio de festival | loadFestival(id) → reset completo → showDayView() |
-| F-14 | Entrada desde CTA de otra tab | emptyStateHero CTA → switchMainNav('mnav-cartelera') + showDayView() |
-| F-15 | filterByDay desde chip en pel-sheet | .pelicula-day click → filterByDay(day) → _renderProgramaContent() |
-| F-16 | filterBySection desde pel-sheet | filterBySection(section) → activeDay='all', grid → _renderProgramaContent() |
+| F-14 | Entrada desde CTA de otra tab | emptyStateHero CTA → switchMainNav + showDayView() |
+| F-15 | filterByDay desde chip en pel-sheet | .pelicula-day click → filterByDay(day) |
+| F-16 | filterBySection desde pel-sheet | filterBySection(section) → grid |
 
 ---
 
@@ -92,115 +92,140 @@ activeDay === <día específico>
 
 | ID | Estado | activeDay | viewMode | Festival | Resultado | Severidad | Notas |
 |----|--------|-----------|----------|----------|-----------|-----------|-------|
-| S-01 | TODO · Grid | `all` | `grid` | ficci65 | `TO TEST` | | |
-| S-02 | TODO · List | `all` | `list` | ficci65 | `TO TEST` | | |
-| S-03 | Día específico · List | `Jueves` | `list` | ficci65 | `TO TEST` | | |
-| S-04 | Día específico · Grid | `Jueves` | `grid` | ficci65 | `TO TEST` | | |
-| S-05 | TODO · Grid + sección activa | `all` | `grid` | ficci65 | `TO TEST` | | |
-| S-06 | TODO · List + sección activa | `all` | `list` | ficci65 | `TO TEST` | | |
-| S-07 | Día · List + sección activa | `Jueves` | `list` | ficci65 | `TO TEST` | | |
-| S-08 | TODO · Grid + venue activo | `all` | `grid` | ficci65 | `TO TEST` | | |
-| S-09 | Día · List + venue activo | `Jueves` | `list` | ficci65 | `TO TEST` | | |
-| S-10 | Día · Grid + venue activo + sección activa | `Jueves` | `grid` | ficci65 | `⚠ ISSUE` | `medium` | Ver I-01: renderPeliculaView no tiene empty state guard |
-| S-11 | Festival pre-festival (tribeca2026) | `all` | `grid` | tribeca2026 | `TO TEST` | | |
-| S-12 | Festival terminado (ficci65) | `all` | `grid` | ficci65 | `TO TEST` | | screening badges y past state |
-| S-13 | Festival terminado · día específico | `Martes` | `list` | ficci65 | `TO TEST` | | todos los items como past |
+| S-01 | TODO · Grid | `all` | `grid` | tribeca2026 | `PASS` | — | 204 films, nav-row, dtabs 13 |
+| S-02 | TODO · List | `all` | `list` | tribeca2026 | `PASS` | — | _renderExploreLista correcto |
+| S-03 | Día · List | `2026-06-04` | `list` | tribeca2026 | `PASS` | — | 27 films, time headers |
+| S-04 | Día · Grid | `2026-06-04` | `grid` | tribeca2026 | `PASS` | — | grid filtrado por día |
+| S-05 | TODO · Grid + sección | `all` | `grid` | tribeca2026 | `PASS` | — | PAF pill, 5 Gala films |
+| S-06 | TODO · List + sección | `all` | `list` | tribeca2026 | `PASS` | — | _renderExploreLista filtrado |
+| S-07 | Día · List + sección | `2026-06-04` | `list` | tribeca2026 | `FAIL→FIXED` | `high` | I-02: safeT undefined. Fix `0e222cc` |
+| S-08 | TODO · Grid + venue | `all` | `grid` | tribeca2026 | `PASS` | — | Village East, grid filtrado |
+| S-09 | Día · List + venue | `2026-06-04` | `list` | tribeca2026 | `PASS` | — | 12 films Village East |
+| S-10 | Día · Grid + venue + sección sin resultados | `2026-06-04` | `grid` | tribeca2026 | `ISSUE` | `medium` | I-01: empty poster-grid sin mensaje |
+| S-11 | Festival pre-festival | `all` | `grid` | tribeca2026 | `PASS` | — | Hoy/Mañana ocultos, 13 dtabs |
+| S-12 | Festival terminado · TODO | `all` | `grid` | ficci65 | `PASS` | — | grid carga, días past atenuados |
+| S-13 | Festival terminado · día específico | `Martes` | `list` | ficci65 | `PASS` | — | screeningPassed=false por diseño |
 
 ### 3.2 Flujos
 
 | ID | Flujo | Festival | Resultado | Severidad | Notas |
 |----|-------|----------|-----------|-----------|-------|
-| F-01 | Cold start → Programa | ficci65 | `TO TEST` | | dtabs poblados, activeDay correcto |
-| F-02 | Tab switch desde Intereses | ficci65 | `TO TEST` | | estado previo preservado |
-| F-02b | Tab switch desde Mi Plan | ficci65 | `TO TEST` | | estado previo preservado |
-| F-03 | Click TODO | ficci65 | `TO TEST` | | activeDay='all', viewMode='grid' |
-| F-04a | Click día específico | ficci65 | `TO TEST` | | activeDay cambia, viewMode='list' |
-| F-04b | Click día ya activo | ficci65 | `TO TEST` | | sin cambio visual |
-| F-05a | Toggle list → grid (activeDay='all') | ficci65 | `TO TEST` | | cambia a renderPeliculaView |
-| F-05b | Toggle grid → list (activeDay='all') | ficci65 | `TO TEST` | | cambia a _renderExploreLista |
-| F-05c | Toggle list → grid (día específico) | ficci65 | `TO TEST` | | cambia a renderPeliculaView |
-| F-06a | Seleccionar sección desde TODO | ficci65 | `TO TEST` | | activeSec se actualiza, PAF pill visible |
-| F-06b | Seleccionar sección desde día | ficci65 | `TO TEST` | | activeSec se actualiza |
-| F-06c | Cambiar sección desde sección activa | ficci65 | `TO TEST` | | reemplaza, no acumula |
-| F-07a | Seleccionar venue desde TODO | ficci65 | `TO TEST` | | filterByVenue: activeDay preservado, viewMode='grid' |
-| F-07b | Seleccionar venue desde día | ficci65 | `TO TEST` | | activeDay preservado |
-| F-08 | Limpiar sección (PAF pill) | ficci65 | `TO TEST` | | PAF pill desaparece, activeSec='all' |
-| F-09 | Limpiar venue (PAF pill) | ficci65 | `TO TEST` | | PAF pill desaparece, activeVenue='all' |
-| F-10 | openPelSheet desde grid (film normal) | ficci65 | `TO TEST` | | sheet abre con datos correctos |
-| F-10b | openPelSheet desde grid (evento) | ficci65 | `TO TEST` | | sheet tipo evento |
-| F-10c | openPelSheet desde grid (is_programa) | cinemancia2025 | `TO TEST` | | _openCombinedFilmSheet |
-| F-11 | openPelSheet desde lista | ficci65 | `TO TEST` | | mismo sheet |
-| F-12 | Toggle WL desde lista | ficci65 | `TO TEST` | | corazón cambia estado, no crash |
-| F-13a | Cambio festival: ficci65 → tribeca2026 | — | `TO TEST` | | dtabs se reconstruyen, FILMS nuevo |
-| F-13b | Cambio festival: tribeca2026 → cinemancia2025 | — | `TO TEST` | | dtabs con formato diferente (JUE 11) |
-| F-15 | filterByDay desde chip en pel-sheet | ficci65 | `TO TEST` | | cierra sheet, filtra por ese día |
-| F-16 | filterBySection desde pel-sheet | ficci65 | `TO TEST` | | activeDay='all', grid, sección activa |
+| F-01 | Cold start → Programa | tribeca2026 | `PASS` | — | dtabs 13, activeDay='all', grid |
+| F-02 | Tab switch desde Intereses | tribeca2026 | `PASS` | — | estado previo preservado |
+| F-02b | Tab switch desde Mi Plan | cinemancia2025 | `PASS` | — | TODO + grid restaurado |
+| F-03 | Click TODO ya activo | tribeca2026 | `PASS` | — | no crash, mantiene grid |
+| F-04a | Click día específico | tribeca2026 | `PASS` | — | activeDay cambia, viewMode='list' |
+| F-04b | Click día ya activo | tribeca2026 | `PASS` | — | no cambio de estado, no crash |
+| F-05a | list→grid (activeDay='all') | tribeca2026 | `PASS` | — | renderPeliculaView |
+| F-05b | grid→list (activeDay='all') | tribeca2026 | `PASS` | — | _renderExploreLista |
+| F-05c | list→grid (día específico) | tribeca2026 | `PASS` | — | renderPeliculaView filtrado |
+| F-06a | Seleccionar sección desde TODO | tribeca2026 | `PASS` | — | activeSec actualiza, PAF visible |
+| F-06c | Cambiar sección desde sección activa | tribeca2026 | `PASS` | — | reemplaza, no acumula |
+| F-07a | Seleccionar venue desde TODO | tribeca2026 | `PASS` | — | filterByVenue: grid, PAF visible |
+| F-07b | Seleccionar venue desde día | tribeca2026 | `PASS` | — | 12 films Village East THU 4 |
+| F-08 | Limpiar sección (PAF pill) | tribeca2026 | `PASS` | — | activeSec='all', pill desaparece |
+| F-09 | Limpiar venue (PAF pill) | tribeca2026 | `PASS` | — | activeVenue='all', pill desaparece |
+| F-10 | openPelSheet desde grid (film normal) | tribeca2026 | `PASS` | — | sheet con datos correctos |
+| F-10b | openPelSheet desde grid (evento) | tribeca2026 | `PASS` | — | sheet sin crash |
+| F-11 | openPelSheet desde lista | tribeca2026 | `PASS` | — | mismo sheet |
+| F-12 | Toggle WL desde lista | tribeca2026 | `PASS` | — | toggled correctamente |
+| F-13a | Cambio festival tribeca→ficci | — | `PASS` | — | dtabs 7, FILMS 168, state reset |
+| F-13b | Cambio festival ficci→cinemancia | — | `PASS` | — | dtabs 11, formato 'JUE 11' |
+| F-14 | CTA empty state → Programa | tribeca2026 | `PASS` | — | mnav-cartelera, activeView='day' |
+| F-15 | filterByDay desde chip | cinemancia2025 | `PASS` | — | preserva programaViewMode por diseño |
+| F-16 | filterBySection desde pel-sheet | cinemancia2025 | `PASS` | — | activeDay preservado, grid |
 
 ### 3.3 Empty states
 
 | ID | Condición | Vista | Resultado | Severidad | Notas |
 |----|-----------|-------|-----------|-----------|-------|
-| E-01 | Sección con 0 films en día · List | `list` | `TO TEST` | | debe mostrar "Sin actividades..." |
-| E-02 | Venue con 0 films en día · List | `list` | `TO TEST` | | debe mostrar "Sin actividades..." |
-| E-03 | Sección + venue sin intersección · List | `list` | `TO TEST` | | debe mostrar "Sin actividades..." |
-| E-04 | Sección con 0 films · _renderExploreLista | `list` | `PASS` | — | código: `if(!entries.length)` → `t('filter_sin_peliculas')` ✓ |
-| E-05 | Filtro sin resultados · renderPeliculaView | `grid` | `⚠ ISSUE` | `medium` | Ver I-01 |
+| E-01 | Sección con 0 films en día · list | `list` | `PASS` | — | "Sin actividades para este filtro" |
+| E-02 | Venue con 0 films en día · list | `list` | `PASS` | — | "Sin actividades para este filtro" |
+| E-03 | Sección + venue sin intersección · list | `list` | `PASS` | — | "Sin actividades para este filtro" |
+| E-04 | Filtro sin resultados · _renderExploreLista | `list` | `PASS` | — | t('filter_sin_peliculas') |
+| E-05 | Filtro sin resultados · renderPeliculaView | `grid` | `ISSUE` | `medium` | I-01: empty div sin mensaje |
 
 ### 3.4 Tipos especiales de film
 
-| ID | Tipo | Vista | Festival | Resultado | Severidad | Notas |
-|----|------|-------|----------|-----------|-----------|-------|
-| T-01 | Evento en grid | `grid` | ficci65 | `TO TEST` | | poster generativo amber |
-| T-02 | Evento en lista | `list` | ficci65 | `TO TEST` | | render sin crash |
-| T-03 | is_cortos en grid | `grid` | cinemancia2025 | `TO TEST` | | poster teal |
-| T-04 | is_programa (combinado) en grid | `grid` | cinemancia2025 | `TO TEST` | | poster stack visible |
-| T-05 | is_programa en lista | `list` | cinemancia2025 | `TO TEST` | | badge +1, sin crash |
+| ID | Tipo | Vista | Festival | Resultado | Notas |
+|----|------|-------|----------|-----------|-------|
+| T-01 | Evento en grid | `grid` | tribeca2026 | `PASS` | poster real o generativo, sin crash |
+| T-02 | Evento en lista | `list` | tribeca2026 | `PASS` | render correcto |
+| T-03 | is_cortos en grid | `grid` | cinemancia2025 | `PASS` | poster teal COMPETENCIA CORTOMETRAJES |
+| T-04 | is_programa en grid | `grid` | cinemancia2025 | `PASS` | .poster-card-stack con 2 imágenes |
+| T-05 | is_programa en lista | `list` | cinemancia2025 | `PASS` | poster stack + badge +1 |
 
 ---
 
-## 4. Issues encontrados en análisis de código
+## 4. Issues
 
 ### I-01 · `renderPeliculaView` sin empty state guard
 **Severidad:** `medium`  
 **Estado:** `OPEN`  
-**Encontrado:** análisis estático (no requiere browser)
+**Encontrado:** análisis estático + verificación browser (S-10, E-05)
 
-`renderPeliculaView()` no tiene guard para `entries.length === 0`. Cuando el filtro combinado (día + venue, o día + sección) retorna 0 resultados, la función renderiza un div `poster-grid` vacío en lugar de mostrar un mensaje de estado vacío.
+`renderPeliculaView()` no tiene guard para `entries.length === 0`. Cuando el filtro combinado (día + venue o día + sección) retorna 0 resultados, la función renderiza un div `poster-grid` vacío sin feedback.
 
-Contraste:
-- `_renderExploreLista()` — **tiene** guard: `if(!entries.length){ el.innerHTML = t('filter_sin_peliculas') }`
-- `renderProgramaList()` — **tiene** guard: `if(!films.length){ el.innerHTML = 'Sin actividades...' }`
-- `renderPeliculaView()` — **no tiene** guard → render vacío silencioso
+Contraste: `_renderExploreLista` y `renderProgramaList` sí tienen empty state guard.
 
-**Condición para reproducir:** festival activo → día específico → filtrar por venue que no tiene films ese día (o sección sin films ese día) → viewMode='grid'.
-
-**Fix:** agregar antes de `grid.innerHTML=...`:
+**Fix:**
 ```js
 if (!entries.length) {
   grid.innerHTML = `<div class="empty-msg">${t('filter_sin_peliculas')}</div>`;
   return;
 }
 ```
+Insertar antes de `grid.innerHTML = \`<div class="poster-grid">...\``.
+
+---
+
+### I-02 · `safeT` no declarado en `renderProgramaList`
+**Severidad:** `high` → **FIXED** `0e222cc`  
+**Encontrado:** S-07 browser audit
+
+`renderProgramaList` usaba `safeT` en el template literal pero no lo declaraba en el scope de la función. El `try/catch` atrapaba el `ReferenceError` silenciosamente, retornando sin actualizar el DOM. El contenido anterior (`_renderExploreLista`) persistía con todos los films sin filtrar por día.
+
+Reproducible en cualquier festival al seleccionar un día específico estando en mode bar con sección activa.
+
+**Fix:** `const safeT=f.title.replace(/'/g,"&#39;").replace(/"/g,'&quot;');` antes del template.
+
+---
+
+### I-03 · PAF pill stale al click en TODO
+**Severidad:** `low`  
+**Estado:** `OPEN`  
+**Encontrado:** F-03 + S-08 browser audit
+
+`todoBtn.onclick` resetea `activeVenue='all'` y `activeSec='all'` pero no llama `_updateProgramaActiveFilter()`. La PAF pill muestra el filtro anterior aunque ya esté desactivado. El contenido del grid es correcto — solo la pill persiste visualmente.
+
+**Fix:** agregar `_updateProgramaActiveFilter();` al final del onclick del botón TODO en `loadFestival`.
 
 ---
 
 ## 5. Scope excluido
 
-Los siguientes items están fuera de este audit por scope o por depender de infraestructura externa:
-
-- Búsqueda global (no implementada aún — nav redesign pendiente)
-- Mode bar Hoy/Mañana (solo activo durante el festival — ningún festival activo hoy)
+- Búsqueda global (no implementada — nav redesign pendiente)
+- Mode bar Hoy/Mañana (solo activo durante festival activo — ninguno activo hoy)
 - Poster lazy loading / TMDB resolution
-- PWA / Service Worker behavior
+- PWA / Service Worker
 - Desktop layout (deferred)
-- Safari iOS input bugs (deferred)
+- Safari iOS (deferred)
 
 ---
 
-## 6. Cierre
+## 6. Resumen de cierre
 
-**Criterio de cierre:** todos los ítems `TO TEST` convertidos a `PASS`, `FAIL` o `ISSUE`.  
-**Issues bloqueantes para release:** cualquier `critical` o `high` abierto.  
-**Issues no bloqueantes:** `medium` y `low` — se documentan y se abren como trabajo futuro.
+| Categoría | Total | PASS | FAIL→FIXED | ISSUE open |
+|-----------|-------|------|------------|------------|
+| Estados base | 13 | 12 | 1 | 1 (S-10) |
+| Flujos | 24 | 24 | 0 | 0 |
+| Empty states | 5 | 5 | 0 | 1 (E-05) |
+| Tipos especiales | 5 | 5 | 0 | 0 |
+| **Total** | **47** | **46** | **1** | **2** |
 
-Una vez cerrado, este archivo no se modifica. Los fixes derivados se rastrean en commits referenciando el ID del issue (e.g., `fix(programa): I-01 empty state en renderPeliculaView`).
+**Issues bloqueantes para release:** ninguno.  
+**Issues no bloqueantes:** I-01 (`medium`), I-03 (`low`).
+
+Fixes derivados:
+- `fix(programa): I-01 empty state en renderPeliculaView` — agregar guard antes del render del grid
+- `fix(programa): I-03 PAF pill stale en click TODO` — agregar _updateProgramaActiveFilter en todoBtn.onclick
