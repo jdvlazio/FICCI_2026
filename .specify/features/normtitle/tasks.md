@@ -12,11 +12,11 @@
 
 ## Fase 2 tasks
 
-- [ ] F2.1 loadState: normalizar watchlist, watched, prioritized post-parse
-- [ ] F2.2 togglePelWL: normTitle(title) al inicio
-- [ ] F2.3 togglePelPrio: normTitle(title) al inicio
-- [ ] F2.4 toggleWatched: normTitle(title) al inicio
-- [ ] F2.5 addSuggestion: normTitle(title) al inicio
-- [ ] F2.6 validate.py 12/12
-- [ ] F2.7 QA browser — P3.1 chips con poster, P5.1 plan termina
-- [ ] F2.8 Commit
+- [x] F2.1 loadState: normalizar watchlist, watched, prioritized post-parse
+- [x] F2.2 togglePelWL: normTitle(title) al inicio
+- [x] F2.3 togglePelPrio: normTitle(title) al inicio
+- [x] F2.4 toggleWatched: normTitle(title) al inicio
+- [x] F2.5 addSuggestion: normTitle(title) al inicio
+- [x] F2.6 validate.py 12/12
+- [x] F2.7 QA browser — P3.1 chips con poster, P5.1 plan termina
+- [x] F2.8 Commit

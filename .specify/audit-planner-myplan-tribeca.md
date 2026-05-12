@@ -21,7 +21,7 @@ Severidad: 🔴 CRÍTICO (bloquea release) | 🟡 MAYOR (degradación UX) | 🟢
 - [x] P2.5 ✅ Badge correcto (14/15, "not included" en gris)
 
 ### P3 — Con prioridades (incluyendo títulos con apostrophe U+2019)
-- [x] P3.1 🔴 FAIL — Chips sin poster cuando título tiene U+2019 en Set
+- [x] P3.1 ✅ PASS — Chips con poster tras Fase 2 normTitle (86eec5d)
        Causa: normTitle normaliza FILMS pero NO los Sets al escribir.
        FILMS.find(fi => fi.title === t) falla: FILMS tiene U+0027,
        prioritized/watchlist tienen U+2019.
@@ -35,7 +35,7 @@ Severidad: 🔴 CRÍTICO (bloquea release) | 🟡 MAYOR (degradación UX) | 🟢
 - [ ] NO EJECUTADO
 
 ### P5 — Generación con prioridades apostrophe
-- [x] P5.1 🔴 FAIL — "Finding options..." no termina (>26 seg) cuando
+- [x] P5.1 ✅ PASS — Plan calcula y termina, 3/3 prioridades incluidas cuando
        alguna prioridad tiene U+2019. El algoritmo no encuentra las
        prioridades en FILMS → comportamiento indefinido / cuelgue.
        BLOQUEANTE PARA RELEASE.
@@ -81,4 +81,4 @@ tipográfico en prioridades rompe el Planner completamente.
 - PASS: P1.1 P1.2 P1.3 P2.1 P2.2 P2.3 P2.4 P2.5 I1 I4 (10 checks)
 - FAIL 🔴: P3.1 P5.1 (2 checks — 1 root cause)
 - Pendientes: 23 checks
-- Bloqueante para release: SÍ — [CRIT-01]
+- Bloqueante para release: NO — [CRIT-01] RESUELTO en 86eec5d
