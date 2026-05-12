@@ -62,6 +62,12 @@ Los festivales colombianos operan en hora local. `toISOString()` devuelve UTC, l
 
 ---
 
+## Reglas de proceso — inamovibles
+
+1. **`node scripts/validate-festivals.js` antes de cada push de datos de festival.** Sin excepciones. El CI es el último gate, no el primero.
+2. **Múltiples funciones del mismo título en días distintos son datos correctos.** Un duplicado real es mismo título + mismo día + misma hora. Esta distinción debe respetarse en todo script de limpieza, dedup o validación.
+3. **Ningún script de limpieza de datos puede correr sin auditoría previa** del resultado: comparar total antes/después y verificar que la diferencia corresponde a duplicados reales, no a funciones adicionales.
+
 ## Log de decisiones
 
 | Fecha | Decisión | Rationale |

@@ -29,6 +29,8 @@
 - [ ] Cero films sin `slug`
 - [ ] Cero títulos en ALLCAPS (3+ palabras consecutivas en mayúsculas)
 - [ ] `poster` ≥ 90% de films auditables
+- [ ] `node scripts/validate-festivals.js` pasa con 0 errores antes de cada push — **sin excepciones**
+- [ ] Cero funciones duplicadas (mismo título+día+hora). Múltiples funciones del mismo título en días distintos son **datos correctos, no duplicados**
 
 ---
 
