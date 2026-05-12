@@ -4316,7 +4316,7 @@ let FESTIVAL_STORAGE_KEY=(localStorage.getItem('otrofestiv_festival')||_DEFAULT_
 // BUILD_VERSION: cambia en cada deploy.
 // Al cargar, compara con localStorage. Si difiere → reload duro.
 // sessionStorage evita loops infinitos dentro de la misma sesión.
-const BUILD_VERSION='202605120123';
+const BUILD_VERSION='202605120126';
 (function(){
   const _vk='otrofestiv_build';
   const _sk='otrofestiv_reloaded';
@@ -10205,15 +10205,15 @@ window.addEventListener('resize',function(){requestAnimationFrame(_fixStickyOffs
 <script>
 if('serviceWorker' in navigator){
   navigator.serviceWorker.register('/sw.js').catch(function(){});
-  // controllerchange: más confiable que postMessage en iOS PWA standalone
-  // Dispara cuando el nuevo SW toma control via clients.claim()
+  // controllerchange: solo recargar en ACTUALIZACIÓN (había SW previo),
+  // no en primera instalación — evita reload en primer paint en Safari
+  const _prevCtrl = navigator.serviceWorker.controller;
   navigator.serviceWorker.addEventListener('controllerchange', () => {
-    if(!sessionStorage.getItem('otrofestiv_sw_reload')){
+    if(_prevCtrl && !sessionStorage.getItem('otrofestiv_sw_reload')){
       sessionStorage.setItem('otrofestiv_sw_reload','1');
       location.reload();
     }
   });
-  // sessionStorage se limpia al cerrar la app — anti-loop por sesión
 }
 
 // ── FILTRO LUGAR — implementación desde cero ─────────────────────────────

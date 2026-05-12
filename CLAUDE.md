@@ -3,7 +3,7 @@
 > No editar a mano — los cambios se sobreescriben en el próximo deploy.
 > Para modificar secciones estáticas, editar el template en el script.
 >
-> Último commit: `bae0461 feat(splash): progressive enhancement — GSAP si carga, nada si no`
+> Último commit: `c0d4d2f fix(sw): mecanismo de actualización automática en iOS PWA`
 
 ---
 
