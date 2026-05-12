@@ -3,7 +3,7 @@
 > No editar a mano — los cambios se sobreescriben en el próximo deploy.
 > Para modificar secciones estáticas, editar el template en el script.
 >
-> Último commit: `345e5b5 fix(spacing): av-calc-wrap — eliminar recuadro visible del botón`
+> Último commit: `ab219c9 fix(spacing): eliminar doble separador en Planner`
 
 ---
 

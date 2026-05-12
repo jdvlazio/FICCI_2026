@@ -4384,7 +4384,7 @@ let FESTIVAL_STORAGE_KEY=(localStorage.getItem('otrofestiv_festival')||_DEFAULT_
 // BUILD_VERSION: cambia en cada deploy.
 // Al cargar, compara con localStorage. Si difiere → reload duro.
 // sessionStorage evita loops infinitos dentro de la misma sesión.
-const BUILD_VERSION='202605121751';
+const BUILD_VERSION='202605121757';
 (function(){
   const _vk='otrofestiv_build';
   const _sk='otrofestiv_reloaded';
@@ -7334,11 +7334,8 @@ function buildResultHTML(scenarios){
 
   const saveBtnHtml=`<button class="ag-save-btn" onclick="saveCurrentScenario()">${ICONS.calendar} ${t('plan_usar_plan')}</button>`;
   let html=`<div class="ag-summary">
-    <div class="ag-summary-title" style="font-size:${isOptimo?'var(--t-md)':'var(--t-base)'};color:${isOptimo?'var(--white)':'var(--gray)'}">${planLabel}</div>
-    <div class="tags-row ag-summary-text">
-      <span style="display:inline-flex;align-items:center;justify-content:center;height:20px;padding:0 7px;border-radius:var(--r-pill);font-size:var(--t-label);font-weight:var(--w-bold);font-family:var(--font);line-height:1;background:${isOptimo?'var(--amber-10)':'transparent'};color:${isOptimo?'var(--amber)':'var(--gray)'};border:1px solid ${isOptimo?'var(--amber-30)':'var(--bdr)'}">${ok}/${total}</span>
-      ${bad?`<span class="row-xs"><span class="count-badge cb-gray2">${bad}</span><span class="txt-gray2-sm">${t('plan_excluidos')}</span></span>`:''}
-    </div>
+    <div class="ag-summary-title" style="font-size:${isOptimo?'var(--t-md)':'var(--t-base)'};color:${isOptimo?'var(--white)':'var(--gray)'}"><span class="count-badge ${isOptimo?'cb-amber':'cb-gray2'}">${ok}/${total}</span> ${planLabel}</div>
+    ${bad?`<div class="tags-row ag-summary-text"><span class="row-xs"><span class="count-badge cb-gray2">${bad}</span><span class="txt-gray2-sm">${t('plan_excluidos')}</span></span></div>`:''}
     ${bad>0&&bad>=total?`<div class="ag-excl-note txt-gray2-sm">${t('plan_contexto_max')}</div>`:''}
     ${sc.incompatiblePriorities?(()=>{
       const pairs=sc.conflictingPriorityPairs||[];
