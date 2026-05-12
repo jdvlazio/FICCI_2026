@@ -3,7 +3,7 @@
 > No editar a mano — los cambios se sobreescriben en el próximo deploy.
 > Para modificar secciones estáticas, editar el template en el script.
 >
-> Último commit: `28b99dd rule: nunca pipe validate.py a tail — oculta exit code`
+> Último commit: `bae0461 feat(splash): progressive enhancement — GSAP si carga, nada si no`
 
 ---
 

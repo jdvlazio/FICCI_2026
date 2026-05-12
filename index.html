@@ -4316,7 +4316,7 @@ let FESTIVAL_STORAGE_KEY=(localStorage.getItem('otrofestiv_festival')||_DEFAULT_
 // BUILD_VERSION: cambia en cada deploy.
 // Al cargar, compara con localStorage. Si difiere → reload duro.
 // sessionStorage evita loops infinitos dentro de la misma sesión.
-const BUILD_VERSION='202605111845';
+const BUILD_VERSION='202605120123';
 (function(){
   const _vk='otrofestiv_build';
   const _sk='otrofestiv_reloaded';
@@ -10205,13 +10205,15 @@ window.addEventListener('resize',function(){requestAnimationFrame(_fixStickyOffs
 <script>
 if('serviceWorker' in navigator){
   navigator.serviceWorker.register('/sw.js').catch(function(){});
-  // Recargar cuando el SW notifique actualización (iOS fix)
-  navigator.serviceWorker.addEventListener('message', e => {
-    if(e.data && e.data.type==='SW_UPDATED'){
-      // Solo recargar si el splash sigue visible — evita interrumpir al usuario
-      if(document.getElementById('otrofestiv-splash')) location.reload();
+  // controllerchange: más confiable que postMessage en iOS PWA standalone
+  // Dispara cuando el nuevo SW toma control via clients.claim()
+  navigator.serviceWorker.addEventListener('controllerchange', () => {
+    if(!sessionStorage.getItem('otrofestiv_sw_reload')){
+      sessionStorage.setItem('otrofestiv_sw_reload','1');
+      location.reload();
     }
   });
+  // sessionStorage se limpia al cerrar la app — anti-loop por sesión
 }
 
 // ── FILTRO LUGAR — implementación desde cero ─────────────────────────────

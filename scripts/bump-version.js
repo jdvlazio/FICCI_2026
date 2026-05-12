@@ -33,6 +33,12 @@ if (sw === swBefore) {
 }
 fs.writeFileSync(swPath, sw);
 
+// index.html — BUILD_VERSION para auto-reload por versión
+const htmlPath = path.join(ROOT, 'index.html');
+let html = fs.readFileSync(htmlPath, 'utf8');
+html = html.replace(/BUILD_VERSION='\d{12}'/, `BUILD_VERSION='${build}'`);
+fs.writeFileSync(htmlPath, html);
+
 // version.json
 const vPath = path.join(ROOT, 'version.json');
 fs.writeFileSync(vPath, JSON.stringify({ build }, null, 2) + '\n');
