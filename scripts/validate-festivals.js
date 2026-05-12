@@ -100,7 +100,8 @@ function validateFestival(fname, data) {
   const emojiToSections = {}; // emoji → [section names]
   const sectionStrings = {};  // sec_name → Set of exact strings
 
-  const _seenTitles = new Set();
+  const _seenTitles = new Set();   // title-only: para detectar multi-función (informativo)
+  const _seenSlots  = new Set();   // title+day+time: duplicado real (bloqueante)
   for (const film of films) {
     const title = film.title || '?';
     const sec = film.section || '';
@@ -159,10 +160,12 @@ function validateFestival(fname, data) {
     if (!film.section) warnings.push(`"${title}": campo 'section' vacío`);
     if (film.day_order === undefined) warnings.push(`"${title}": falta 'day_order'`);
 
-    // ── RULE 5a: titulo duplicado ─────────────────────────────────────────
+    // ── RULE 5a: duplicado real (mismo título+día+hora) ──────────────────
     if (film.title) {
-      if (_seenTitles.has(film.title)) errors.push(`GATE BLOQUEANTE: titulo duplicado — '${film.title.slice(0,55)}'`);
-      else _seenTitles.add(film.title);
+      _seenTitles.add(film.title);
+      const _slot = `${film.title}|${film.day||''}|${film.time||''}`;
+      if (_seenSlots.has(_slot)) errors.push(`GATE BLOQUEANTE: funcion duplicada (mismo título+día+hora) — '${film.title.slice(0,55)}'`);
+      else _seenSlots.add(_slot);
     }
     // ── RULE 5b: titulo en ALLCAPS ───────────────────────────────────────
     if (film.title) {
