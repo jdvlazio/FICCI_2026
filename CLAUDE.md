@@ -3,7 +3,7 @@
 > No editar a mano — los cambios se sobreescriben en el próximo deploy.
 > Para modificar secciones estáticas, editar el template en el script.
 >
-> Último commit: `82c350f fix(filtro-seccion): segundo handler dtab también preserva activeSec`
+> Último commit: `7a38f8b rule: validar JSONs de festival siempre antes de push`
 
 ---
 
