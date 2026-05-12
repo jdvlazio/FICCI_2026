@@ -2867,6 +2867,10 @@ const _I18N = {
     "plan_cubierto_sub": "Tu agenda está bien cubierta. No hay más actividades que quepan.",
     "misc_hasta_sig": "hasta tu siguiente actividad",
     "misc_calendario": "Calendario",
+    "av_no_disponible": "No disponible",
+    "av_horas_especificas": "Horas específicas",
+    "misc_cambiar": "Cambiar",
+    "misc_mas": "más ·",
     "misc_sugerencias": "Sugerencias",
     "misc_calendario_listo": "Calendario listo",
     "plan_contexto_max": "Los títulos no incluidos se solapan con otros en tu plan.",
@@ -3158,6 +3162,10 @@ const _I18N = {
     "plan_cubierto_sub": "Your schedule looks good. No more screenings fit without conflicts.",
     "misc_hasta_sig": "until your next screening",
     "misc_calendario": "Calendar",
+    "av_no_disponible": "Not available",
+    "av_horas_especificas": "Specific hours",
+    "misc_cambiar": "Change",
+    "misc_mas": "more ·",
     "misc_sugerencias": "Suggestions",
     "misc_calendario_listo": "Calendar ready",
     "plan_contexto_max": "Titles not included overlap with others already in your plan.",
@@ -4376,7 +4384,7 @@ let FESTIVAL_STORAGE_KEY=(localStorage.getItem('otrofestiv_festival')||_DEFAULT_
 // BUILD_VERSION: cambia en cada deploy.
 // Al cargar, compara con localStorage. Si difiere → reload duro.
 // sessionStorage evita loops infinitos dentro de la misma sesión.
-const BUILD_VERSION='202605121701';
+const BUILD_VERSION='202605121721';
 (function(){
   const _vk='otrofestiv_build';
   const _sk='otrofestiv_reloaded';
@@ -7783,7 +7791,7 @@ function openPlanConfirm(schedule){
         <div class="plan-confirm-time">${s.time}</div>
         <div class="plan-confirm-name">${short}</div>
       </div>`;
-    }).join('')+(rest>0?`<div class="plan-confirm-film" style="color:var(--gray)"><div class="bg-gray plan-confirm-dot"></div><div class="plan-confirm-name">+ ${rest} más · ${dayRange}</div></div>`:'');
+    }).join('')+(rest>0?`<div class="plan-confirm-film" style="color:var(--gray)"><div class="bg-gray plan-confirm-dot"></div><div class="plan-confirm-name">+ ${rest} ${t('misc_mas')} ${dayRange}</div></div>`:'');
   }
 
   const _pcSheet=document.getElementById('plan-confirm-sheet');

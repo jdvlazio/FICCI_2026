@@ -139,7 +139,7 @@
   "export_como_aparecer": "¿Cómo querés aparecer en tu plan?",
   "plan_sin_combos": "No hay combinaciones posibles. Ajusta la disponibilidad.",
   "plan_choca": "Choca con otras películas de tu plan",
-  "misc_mas": "+ más ·",
+  "misc_mas": "más ·",
   "misc_toca": "Tocá",
   "intereses_onboard": "Añadí lo que no querés perderte en",
   "av_disponibilidad": "Disponibilidad",
@@ -260,5 +260,8 @@
   "warn_qa_tiempo": "Q&A · si te quedás tenés ~{n} min",
   "warn_a_pie": "a pie",
   "warn_en_carro": "en carro",
-  "warn_entre_sedes": "entre estas sedes"
+  "warn_entre_sedes": "entre estas sedes",
+  "av_no_disponible": "No disponible",
+  "av_horas_especificas": "Horas específicas",
+  "misc_cambiar": "Cambiar"
 }

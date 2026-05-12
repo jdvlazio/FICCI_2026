@@ -139,7 +139,7 @@
   "export_como_aparecer": "What name should appear on your plan?",
   "plan_sin_combos": "No combinations found. Adjust your availability.",
   "plan_choca": "Conflicts with your plan",
-  "misc_mas": "+ more ·",
+  "misc_mas": "more ·",
   "misc_toca": "Tap",
   "intereses_onboard": "Add what you don't want to miss at",
   "av_disponibilidad": "Availability",
@@ -260,5 +260,8 @@
   "warn_qa_tiempo": "Q&A · if you stay you have ~{n} min",
   "warn_a_pie": "on foot",
   "warn_en_carro": "by car",
-  "warn_entre_sedes": "between venues"
+  "warn_entre_sedes": "between venues",
+  "av_no_disponible": "Not available",
+  "av_horas_especificas": "Specific hours",
+  "misc_cambiar": "Change"
 }

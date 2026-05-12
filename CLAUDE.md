@@ -3,7 +3,7 @@
 > No editar a mano — los cambios se sobreescriben en el próximo deploy.
 > Para modificar secciones estáticas, editar el template en el script.
 >
-> Último commit: `748256c docs: audit matrix — hallazgos P3.1 y P5.1 CRIT-01`
+> Último commit: `4415b4e docs: audit matrix COMPLETO — 27 PASS, 6 FAIL mayor, 0 FAIL critico`
 
 ---
 
