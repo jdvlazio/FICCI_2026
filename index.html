@@ -4346,7 +4346,7 @@ let FESTIVAL_STORAGE_KEY=(localStorage.getItem('otrofestiv_festival')||_DEFAULT_
 // BUILD_VERSION: cambia en cada deploy.
 // Al cargar, compara con localStorage. Si difiere → reload duro.
 // sessionStorage evita loops infinitos dentro de la misma sesión.
-const BUILD_VERSION='202605121456';
+const BUILD_VERSION='202605121508';
 (function(){
   const _vk='otrofestiv_build';
   const _sk='otrofestiv_reloaded';
@@ -6475,10 +6475,10 @@ function renderContextualHeader(){
   if(ph.phase==='before'){
     const label=ph.daysDiff===1?t('misc_manana'):`${t('misc_in')} ${ph.daysDiff} ${t('misc_days')}`;
     const prios=[...prioritized]
-      .map(t=>{
-        const f=FILMS.filter(fi=>fi.title===excTitle&&!screeningPassed(fi))
+      .map(prioTitle=>{
+        const f=FILMS.filter(fi=>fi.title===prioTitle&&!screeningPassed(fi))
           .sort((a,b)=>a.day_order-b.day_order||toMin(a.time)-toMin(b.time))[0];
-        return f?{t,f}:null;
+        return f?{t:prioTitle,f}:null;
       })
       .filter(Boolean)
       .slice(0,1);

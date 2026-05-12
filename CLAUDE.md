@@ -3,7 +3,7 @@
 > No editar a mano — los cambios se sobreescriben en el próximo deploy.
 > Para modificar secciones estáticas, editar el template en el script.
 >
-> Último commit: `b8a9f2e fix(validator): detectar destructuring {t} en arrow fn — shadow-t`
+> Último commit: `e3fc899 fix(shadow-t): 3 shadows t=> encontrados por validator mejorado`
 
 ---
 
