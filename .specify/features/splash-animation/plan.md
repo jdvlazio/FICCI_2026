@@ -1,37 +1,45 @@
-# Plan — Animación de entrada del splash
+# Plan — Splash animation: fix PWA
 
-## Dependencia
-`<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/gsap.min.js"></script>`
-Añadir en `<head>` de index.html. ~67kb minified, carga async.
+## Arquitectura de la solución
 
-## Elementos HTML necesarios
-- `.bar-top` y `.bar-bot` — divs de letterbox, position:absolute, z-index alto
-- `.wm-char` — cada carácter del wordmark envuelto en span (generado por JS)
-- `.splash-divider` — línea amber nueva bajo el wordmark
-- Los demás ya existen: `.splash-selector`, `.splash-enter-btn`, `.splash-tagline`
+### Principio de diseño
+**Todos los elementos son visibles por defecto.**
+La animación es ADITIVA — JS añade los efectos sobre elementos ya visibles.
+Si JS o CSS falla en cualquier punto, el splash está completamente funcional.
 
-## CSS
-- `.bar-top/.bar-bot`: position:absolute, top/bottom:0, left:0, right:0,
-  height:~15% viewport, background:#0A0A0A, z-index:99, pointer-events:none
-- `.wm-char`: display:inline-block (necesario para transforms 3D)
-- `.splash-divider`: width:0, height:1px, background:rgba(245,158,11,.35), margin:12px auto 20px
+### Cambio 1: Eliminar animation-fill-mode:both del CSS
+Las barras y los fades NO usarán `fill-mode:both` (que requiere backwards fill).
+En su lugar:
+- Las barras son creadas por JS con `style.transform='scaleY(1)'` inmediatamente
+- Transición CSS aplica cuando se añade la clase (de scaleY(1) a scaleY(0))
+- `.splash-action` y `.splash-tagline` también controlados via JS style
 
-## JS — función `_initSplashAnimation()`
-```js
-function _initSplashAnimation(){
-  if(window.matchMedia('(prefers-reduced-motion:reduce)').matches) return;
-  if(!window.gsap) return;
-  // split wordmark into chars
-  // build gsap.timeline()
-  // 5 pasos de la secuencia aprobada
-  // marcar como corrida — no repetir
-}
+### Cambio 2: Arquitectura JS de 3 fases
+
+**Fase 0 (inmediata):** JS crea barras con scaleY(1) inline y oculta chars/action/tagline via style inline.
+
+**Fase 1 (doble rAF):** Añade la clase `splash-animating` que triggea las transiciones CSS hacia el estado visible.
+
+**Fase 2 (fallback via animationend):** Si `.splash-bar-top` no dispara `animationend` en 1500ms, JS elimina las barras y fuerza visibilidad de todos los elementos — garantía de que el splash nunca queda roto.
+
+### Cambio 3: CSS sin backwards fill
+```css
+/* Barras: default scaleY(0), JS las pone en scaleY(1) inline */
+.splash-bar-top { ... transform:scaleY(0); transition:transform .65s ... }
+.splash-bar-top.bar-active { transform:scaleY(0); } /* la clase triggea la transición */
 ```
-Llamar desde `init()` — solo una vez, solo en el splash.
 
-## Riesgos Senior Dev
-- GSAP carga async desde CDN — la función debe esperar a que esté disponible
-- Los chars del wordmark se generan dinámicamente — el HTML estático actual
-  tiene texto plano; necesita wrapping por JS antes de animar
-- `pointer-events:none` en las barras para no bloquear taps durante la animación
-- La animación no debe correr si el usuario llega al splash via botón "atrás" desde la app
+O más simple: usar `transition` en lugar de `animation` para las barras.
+JS setea `scaleY(1)` → doble rAF → JS remueve el inline style → CSS default `scaleY(0)` toma efecto via transition.
+
+### Cambio 4: Fuentes en SW STATIC_ASSETS
+Añadir `/fonts/plus-jakarta-sans-latin-{400,500,600,700,800}-normal.woff2` a STATIC_ASSETS.
+El SW ya maneja el install event con `c.addAll(STATIC_ASSETS)`.
+
+### Protección validate.py
+Siempre correr `python3 validate.py` sin pipe. Verificar returncode=0 antes de git add.
+
+## Archivos a modificar
+- `index.html` — CSS splash (bars/action/tagline animation) + JS _initSplashAnimation
+- `sw.js` — STATIC_ASSETS (fonts)
+- Tras cambio sw.js: regenerar via bump-version.js

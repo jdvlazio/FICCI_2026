@@ -32,6 +32,7 @@
 <meta name="twitter:description" content="Tú decides el festival. Más de lo que crees posible.">
 <meta name="twitter:image" content="https://otrofestiv.app/icon-512.png">
 <link rel="preconnect" href="https://image.tmdb.org">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/gsap.min.js" defer></script>
 <style>
 @font-face{font-family:'Plus Jakarta Sans';font-style:normal;font-weight:400;font-display:swap;src:url(/fonts/plus-jakarta-sans-latin-400-normal.woff2') format('woff2')}
 @font-face{font-family:'Plus Jakarta Sans';font-style:normal;font-weight:500;font-display:swap;src:url(/fonts/plus-jakarta-sans-latin-500-normal.woff2') format('woff2')}
@@ -1883,15 +1884,10 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:var(--t
   visibility:hidden;
   pointer-events:none;
 }
-.splash-bar-top,.splash-bar-bot{position:absolute;left:0;right:0;height:16%;background:var(--bg);z-index:99;pointer-events:none;transform:scaleY(0)}
+.splash-bar-top,.splash-bar-bot{position:absolute;left:0;right:0;height:16%;background:var(--bg);z-index:99;pointer-events:none}
 .splash-bar-top{top:0;transform-origin:top center}
 .splash-bar-bot{bottom:0;transform-origin:bottom center}
-@keyframes _sbOpen{from{transform:scaleY(1)}to{transform:scaleY(0)}}
-@keyframes _sfIn{from{opacity:0}to{opacity:1}}
-#otrofestiv-splash.splash-animating .splash-bar-top{animation:_sbOpen .65s cubic-bezier(.87,0,.13,1) both}
-#otrofestiv-splash.splash-animating .splash-bar-bot{animation:_sbOpen .65s cubic-bezier(.87,0,.13,1) both}
-#otrofestiv-splash.splash-animating .splash-action{animation:_sfIn .5s ease .7s both}
-#otrofestiv-splash.splash-animating .splash-tagline{animation:_sfIn .5s ease 1s both}
+.splash-wm-char{display:inline-block}
 .splash-wordmark{
   font-size:var(--t-lg);letter-spacing:-.03em;color:var(--white);
   font-weight:var(--w-display);line-height:1;overflow:visible;
@@ -10013,25 +10009,48 @@ _sbInit();
 
 // ── Splash animation ────────────────────────────────────────────────────────
 function _initSplashAnimation(){
+  // Progressive enhancement — si GSAP no cargó, splash se ve normal sin tocar nada
+  if(typeof gsap==='undefined') return;
   const splash=document.getElementById('otrofestiv-splash');
-  if(!splash) return;
-  // Barras letterbox — creadas por JS, no en HTML
-  // Si JS falla: sin barras, wordmark siempre visible
-  const barT=document.createElement('div');
-  barT.className='splash-bar-top';barT.setAttribute('aria-hidden','true');
-  const barB=document.createElement('div');
-  barB.className='splash-bar-bot';barB.setAttribute('aria-hidden','true');
-  splash.prepend(barB);splash.prepend(barT);
-  // doble rAF: garantiza paint antes de clase en WebKit
-  requestAnimationFrame(()=>requestAnimationFrame(()=>{
-    splash.classList.add('splash-animating');
-  }));
+  const wm=document.getElementById('splash-wordmark');
+  if(!splash||!wm) return;
+  let barT,barB;
+  try{
+    // Barras solo existen si GSAP corre — JS crea, JS controla
+    barT=document.createElement('div');
+    barT.className='splash-bar-top';barT.setAttribute('aria-hidden','true');
+    barB=document.createElement('div');
+    barB.className='splash-bar-bot';barB.setAttribute('aria-hidden','true');
+    splash.prepend(barB);splash.prepend(barT);
+    gsap.set([barT,barB],{scaleY:1}); // cubrir inmediatamente
+    // Split wordmark en chars para spell-out
+    const text=wm.textContent;
+    wm.innerHTML=text.split('').map((ch,i)=>
+      `<span class="splash-wm-char" style="color:${i>=4?'var(--amber)':'var(--white)'}">${ch}</span>`
+    ).join('');
+    const chars=wm.querySelectorAll('.splash-wm-char');
+    const act=document.querySelector('.splash-action');
+    const tag=document.querySelector('.splash-tagline');
+    // Timeline aprobado por Motion Designer
+    const tl=gsap.timeline();
+    tl.to([barT,barB],{scaleY:0,duration:.7,ease:'power3.inOut'},0.05);
+    tl.from(chars,{opacity:0,y:8,duration:.45,stagger:.05,ease:'back.out(1.4)'},0.5);
+    if(act) tl.from(act,{opacity:0,y:14,duration:.5,ease:'power3.out'},1.1);
+    if(tag) tl.from(tag,{opacity:0,duration:.55,ease:'power2.out'},1.5);
+  }catch(e){
+    // Fallback: limpiar estado parcial — wordmark siempre visible
+    try{if(barT)barT.remove();if(barB)barB.remove();}catch(_){}
+    try{if(wm)gsap.set(wm,{clearProps:'all'});}catch(_){}
+    try{
+      const act=document.querySelector('.splash-action');
+      const tag=document.querySelector('.splash-tagline');
+      if(act)gsap.set(act,{clearProps:'all'});
+      if(tag)gsap.set(tag,{clearProps:'all'});
+    }catch(_){}
+  }
 }
-if(document.readyState==='loading'){
-  document.addEventListener('DOMContentLoaded',_initSplashAnimation,{once:true});
-}else{
-  _initSplashAnimation();
-}
+// window.load garantiza que GSAP (defer) ya ejecutó antes de correr
+window.addEventListener('load',_initSplashAnimation,{once:true});
 
 // ── Init: el splash siempre se muestra ─────────────────────────────
 // El festival pre-seleccionado es el que está en curso por fecha.
