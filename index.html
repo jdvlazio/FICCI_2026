@@ -2385,6 +2385,18 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:var(--t
     <div class="splash-tagline-line"><span data-i18n="splash_tagline_2">posible.</span></div>
   </div>
 </div>
+<script>
+// Aplicar idioma al splash antes del primer paint — sin eventos, sin delay
+(function(){
+  var l=localStorage.getItem('otrofestiv_lang');
+  if(l!=='en') return;
+  var m={'splash_festival':'Which festival?','auth_entrar':'Enter',
+         'splash_tagline':'More than you think','splash_tagline_2':'possible.'};
+  document.querySelectorAll('#otrofestiv-splash [data-i18n]').forEach(function(el){
+    var v=m[el.getAttribute('data-i18n')];if(v)el.textContent=v;
+  });
+})();
+</script>
 
 
 <!-- Bottom sheet disponibilidad -->
@@ -4313,7 +4325,7 @@ let FESTIVAL_STORAGE_KEY=(localStorage.getItem('otrofestiv_festival')||_DEFAULT_
 // BUILD_VERSION: cambia en cada deploy.
 // Al cargar, compara con localStorage. Si difiere → reload duro.
 // sessionStorage evita loops infinitos dentro de la misma sesión.
-const BUILD_VERSION='202605121122';
+const BUILD_VERSION='202605121142';
 (function(){
   const _vk='otrofestiv_build';
   const _sk='otrofestiv_reloaded';

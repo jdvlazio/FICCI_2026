@@ -3,7 +3,7 @@
 > No editar a mano — los cambios se sobreescriben en el próximo deploy.
 > Para modificar secciones estáticas, editar el template en el script.
 >
-> Último commit: `417e287 revert: eliminar animación splash completamente`
+> Último commit: `f04751c docs: tasks i18n-films-audit completadas`
 
 ---
 
