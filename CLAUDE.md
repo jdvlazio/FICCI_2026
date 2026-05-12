@@ -3,7 +3,7 @@
 > No editar a mano — los cambios se sobreescriben en el próximo deploy.
 > Para modificar secciones estáticas, editar el template en el script.
 >
-> Último commit: `08ca294 fix(mi-plan): See day — DAYS[idx] no DAYS[dateKey]`
+> Último commit: `ce380fc fix(mi-plan): completar i18n — strings que faltaban aplicar`
 
 ---
 
