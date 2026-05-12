@@ -3,7 +3,7 @@
 > No editar a mano — los cambios se sobreescriben en el próximo deploy.
 > Para modificar secciones estáticas, editar el template en el script.
 >
-> Último commit: `ce380fc fix(mi-plan): completar i18n — strings que faltaban aplicar`
+> Último commit: `35b5375 fix(mi-plan): un solo compromiso en header — slice(0,2) → slice(0,1)`
 
 ---
 
