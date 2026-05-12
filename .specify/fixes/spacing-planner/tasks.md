@@ -13,7 +13,7 @@ Aprobado: sí
 
 Resultado: gap Generate plan → Options = 16 + 2px borde + 16 = 34px ≈ sp-6
 
-- [ ] 1. Implementar 4 cambios CSS
-- [ ] 2. validate.py 12/12
-- [ ] 3. QA browser visual — medir gap resultante
-- [ ] 4. Commit
+- [x] 1. Implementar 4 cambios CSS
+- [x] 2. validate.py 12/12
+- [x] 3. QA browser visual — medir gap resultante
+- [x] 4. Commit
