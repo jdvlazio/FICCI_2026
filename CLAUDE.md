@@ -3,7 +3,7 @@
 > No editar a mano — los cambios se sobreescriben en el próximo deploy.
 > Para modificar secciones estáticas, editar el template en el script.
 >
-> Último commit: `081c46c fix(mi-plan): i18n — 5 strings hardcodeados en español`
+> Último commit: `f67a9ff fix(mi-plan): títulos menos agresivamente truncados`
 
 ---
 
@@ -68,6 +68,7 @@ Juan es Product Owner, diseñador y developer. Claude ejecuta; Juan audita y apr
 - `i18n-planner-audit/` — fase actual: **tasks**
 - `lista-todo-sort/` — fase actual: **tasks**
 - `splash-animation/` — fase actual: **tasks**
+- `sugerencias-watchlist/` — fase actual: **tasks**
 - `title-truncation/` — fase actual: **tasks**
 
 ---

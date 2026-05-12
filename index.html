@@ -4344,7 +4344,7 @@ let FESTIVAL_STORAGE_KEY=(localStorage.getItem('otrofestiv_festival')||_DEFAULT_
 // BUILD_VERSION: cambia en cada deploy.
 // Al cargar, compara con localStorage. Si difiere → reload duro.
 // sessionStorage evita loops infinitos dentro de la misma sesión.
-const BUILD_VERSION='202605121339';
+const BUILD_VERSION='202605121343';
 (function(){
   const _vk='otrofestiv_build';
   const _sk='otrofestiv_reloaded';
@@ -5594,14 +5594,21 @@ function getSuggestions(){
         if(noConflict){
           seenRecovery.add(f.title);seenDiscover.add(f.title);
           if(!byDay[day]) byDay[day]=[];
-          byDay[day].push({...f,gapCtx:'De tu lista · cabe en tu agenda'});
+          byDay[day].push({...f,gapCtx:'De tu lista · cabe en tu agenda',_isFromWL:true});
         }
       });
     });
   });
   // ── Ordenar cronológicamente dentro de cada día ──
   Object.keys(byDay).forEach(d=>{
-    byDay[d].sort((a,b)=>toMin(a.time)-toMin(b.time));
+    byDay[d].sort((a,b)=>{
+      // 1. Restaurar siempre primero
+      if(a._isRestored!==b._isRestored) return a._isRestored?-1:1;
+      // 2. Watchlist antes que descubrimiento
+      if(a._isFromWL!==b._isFromWL) return a._isFromWL?-1:1;
+      // 3. Cronológico
+      return toMin(a.time)-toMin(b.time);
+    });
   });
   return byDay;
 }
