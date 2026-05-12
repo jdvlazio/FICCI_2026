@@ -9325,14 +9325,14 @@ function _renderExploreLista(){
       return vcfg(s.venue).short===activeVenue;
     }));
   }
-  // Sort: Movies → Cortos → Industry (category), within each: day_order → time
+  // Sort: cronológico puro — day_order → time → tipo (tipo solo como desempate)
   const _typeOrder=f=>f.type==='event'?2:f.is_cortos?1:0;
   entries.sort((a,b)=>{
-    const to=_typeOrder(a.film)-_typeOrder(b.film);
-    if(to!==0) return to;
     const do_diff=(a.film.day_order||0)-(b.film.day_order||0);
     if(do_diff!==0) return do_diff;
-    return (a.film.time||'').localeCompare(b.film.time||'');
+    const td=(a.film.time||'').localeCompare(b.film.time||'');
+    if(td!==0) return td;
+    return _typeOrder(a.film)-_typeOrder(b.film);
   });
   if(!entries.length){el.innerHTML=`<div class="empty-msg">${t('filter_sin_peliculas')}</div>`;return;}
   el.innerHTML=entries.map(({film:f,screenings})=>{

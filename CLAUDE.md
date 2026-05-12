@@ -3,7 +3,7 @@
 > No editar a mano — los cambios se sobreescriben en el próximo deploy.
 > Para modificar secciones estáticas, editar el template en el script.
 >
-> Último commit: `52c7cde fix(filtro-seccion): preservar filtro al cambiar de día`
+> Último commit: `82c350f fix(filtro-seccion): segundo handler dtab también preserva activeSec`
 
 ---
 
@@ -64,6 +64,7 @@ Juan es Product Owner, diseñador y developer. Claude ejecuta; Juan audita y apr
 
 - `grid-section-separators/` — fase actual: **tasks**
 - `i18n-planner-audit/` — fase actual: **tasks**
+- `lista-todo-sort/` — fase actual: **tasks**
 
 ---
 
