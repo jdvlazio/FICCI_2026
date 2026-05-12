@@ -3,7 +3,7 @@
 > No editar a mano — los cambios se sobreescriben en el próximo deploy.
 > Para modificar secciones estáticas, editar el template en el script.
 >
-> Último commit: `f88f73a fix(grid): _secIdx — fallback a primera aparición en FILMS para secciones no en SECTION_ORDER_LIST`
+> Último commit: `52c7cde fix(filtro-seccion): preservar filtro al cambiar de día`
 
 ---
 

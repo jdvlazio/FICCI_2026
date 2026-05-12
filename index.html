@@ -9885,10 +9885,11 @@ async function loadFestival(id){
       btn.dataset.day=day.k;
       btn.innerHTML=`<span class="dtab-date">${day.lbl}</span><span class="dtab-name">${day.d}</span>`;
       btn.onclick=()=>{
-        activeDay=day.k;activeVenue='all';activeSec='all';selectedIdx=null;
+        activeDay=day.k;activeVenue='all';selectedIdx=null;
         setProgramaView('list'); // día específico → siempre Lista (horarios/planificación)
         document.querySelectorAll('.dtab').forEach(t=>t.classList.toggle('on',t.dataset.day===day.k));
         _renderProgramaContent();
+        _updateProgramaActiveFilter();
         if(activeMNav!=='mnav-cartelera') switchMainNav('mnav-cartelera');
       };
       _dt.appendChild(btn);
