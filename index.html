@@ -9545,6 +9545,10 @@ function renderPeliculaView(){
 
   const DAY_ABB=['MAR','MIÉ','JUE','VIE','SÁB','DOM'];
 
+  if(!entries.length){
+    grid.innerHTML=`<div class="empty-msg">${t('filter_sin_peliculas')}</div>`;
+    return;
+  }
   let _prevSec=null;
   grid.innerHTML=`<div class="poster-grid">${entries.map(({film:f,screenings})=>{
     const inWL=watchlist.has(f.title);
@@ -9987,6 +9991,7 @@ async function loadFestival(id){
         setProgramaView('grid'); // TODO → siempre Grid
         document.querySelectorAll('.dtab').forEach(t=>t.classList.toggle('on',t.dataset.day==='all'));
         _renderProgramaContent();
+        _updateProgramaActiveFilter();
         if(activeMNav!=='mnav-cartelera') switchMainNav('mnav-cartelera');
       };
       // Separador visual entre TODO y días de fecha
