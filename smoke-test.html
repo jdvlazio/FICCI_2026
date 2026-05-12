@@ -245,9 +245,10 @@ function hideCursor() {
 function sleep(ms) { return new Promise(r => setTimeout(r, ms)); }
 
 // ── Esperar a que el iframe cargue y FILMS se pueble ─────────────────────────
-async function waitForApp(frame, timeoutMs = 15000) {
+async function waitForApp(frame, timeoutMs = 20000) {
   const deadline = Date.now() + timeoutMs;
-  // Primero esperamos DOMContentLoaded del iframe
+
+  // 1. Esperar que el iframe esté listo (load event o readyState)
   await new Promise((resolve, reject) => {
     function check() {
       try {
@@ -261,16 +262,40 @@ async function waitForApp(frame, timeoutMs = 15000) {
     setTimeout(check, 500);
   });
 
-  // Luego esperamos a que FILMS tenga datos (la app fetchea async)
-  return new Promise((resolve, reject) => {
+  // 2. Esperar a que loadFestival() esté disponible (JS parseado)
+  await new Promise((resolve, reject) => {
     function check() {
       try {
         const w = frame.contentWindow;
+        if (typeof w.loadFestival === 'function' && w._splashSelectedFestId) return resolve();
+      } catch(e) {}
+      if (Date.now() > deadline) return reject(new Error('Timeout: loadFestival no encontrada'));
+      setTimeout(check, 150);
+    }
+    check();
+  });
+
+  // 3. Disparar loadFestival directamente — la app normalmente espera que el
+  //    usuario toque "Entrar" en el splash. El smoke test lo hace programáticamente.
+  const w = frame.contentWindow;
+  const festId = w._splashSelectedFestId || w._DEFAULT_FEST_ID;
+  logInfo(`Iniciando festival: ${festId}`);
+
+  try {
+    await w.loadFestival(festId);
+  } catch(e) {
+    throw new Error(`loadFestival('${festId}') falló: ${e.message}`);
+  }
+
+  // 4. Confirmar que FILMS se pobló
+  return new Promise((resolve, reject) => {
+    function check() {
+      try {
         const films = w.FILMS;
         if (films && Array.isArray(films) && films.length > 0) return resolve(w);
       } catch(e) {}
-      if (Date.now() > deadline) return reject(new Error('Timeout: FILMS nunca se pobló'));
-      setTimeout(check, 300);
+      if (Date.now() > deadline) return reject(new Error('Timeout: FILMS vacío después de loadFestival'));
+      setTimeout(check, 200);
     }
     check();
   });
