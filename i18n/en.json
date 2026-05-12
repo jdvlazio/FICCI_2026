@@ -251,5 +251,7 @@
   "misc_calendario": "Calendar",
   "misc_sugerencias": "Suggestions",
   "misc_calendario_listo": "Calendar ready",
-  "misc_sugerencias_wl": "From your list"
+  "misc_sugerencias_wl": "From your list",
+  "plan_cubierto": "Your plan is well covered.",
+  "plan_cubierto_sub": "Your schedule looks good. No more screenings fit without conflicts."
 }

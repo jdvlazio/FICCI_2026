@@ -251,5 +251,7 @@
   "misc_calendario": "Calendario",
   "misc_sugerencias": "Sugerencias",
   "misc_calendario_listo": "Calendario listo",
-  "misc_sugerencias_wl": "De tu lista"
+  "misc_sugerencias_wl": "De tu lista",
+  "plan_cubierto": "Tu plan está bien cubierto.",
+  "plan_cubierto_sub": "Tu agenda está bien cubierta. No hay más actividades que quepan."
 }

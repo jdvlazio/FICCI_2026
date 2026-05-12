@@ -3,7 +3,7 @@
 > No editar a mano — los cambios se sobreescriben en el próximo deploy.
 > Para modificar secciones estáticas, editar el template en el script.
 >
-> Último commit: `e3fc899 fix(shadow-t): 3 shadows t=> encontrados por validator mejorado`
+> Último commit: `8239ae4 fix(mi-plan): excTitle is not defined — rename incompleto en prios.map`
 
 ---
 
