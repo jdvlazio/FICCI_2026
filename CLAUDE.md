@@ -3,7 +3,7 @@
 > No editar a mano — los cambios se sobreescriben en el próximo deploy.
 > Para modificar secciones estáticas, editar el template en el script.
 >
-> Último commit: `248ff02 feat(refactor): Fase 1 data-title — eliminar onclick string passing en openPelSheet`
+> Último commit: `8912a6c fix(refactor): añadir listener event delegation js-open-pel`
 
 ---
 

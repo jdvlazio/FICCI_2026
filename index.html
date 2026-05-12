@@ -4325,7 +4325,7 @@ let FESTIVAL_STORAGE_KEY=(localStorage.getItem('otrofestiv_festival')||_DEFAULT_
 // BUILD_VERSION: cambia en cada deploy.
 // Al cargar, compara con localStorage. Si difiere → reload duro.
 // sessionStorage evita loops infinitos dentro de la misma sesión.
-const BUILD_VERSION='202605121152';
+const BUILD_VERSION='202605121158';
 (function(){
   const _vk='otrofestiv_build';
   const _sk='otrofestiv_reloaded';
@@ -5654,7 +5654,7 @@ function renderPrioStrip(){
     const f=FILMS.find(fi=>fi.title===title);
     const p=getFilmPoster(f);
     const _safeChipT=title.replace(/'/g,"&#39;");
-    const img=p?_posterThumb(f,'prio-chip-poster',`openPelSheet('${_safeChipT}')`):`<div class="prio-chip-ph">${ICONS.star}</div>`;
+    const img=p?_posterThumb(f,'prio-chip-poster',null):`<div class="prio-chip-ph">${ICONS.star}</div>`;
     const{displayTitle,progSuffix}=parseProgramTitle(title);
     const short=displayTitle.length>16?displayTitle.slice(0,14)+'…':displayTitle;
     const allPast=!festivalEnded()&&!FILMS.some(f=>f.title===title&&!screeningPassed(f));
@@ -5732,7 +5732,7 @@ function renderFilmListHTML(){
     const next=_nextScreening(title);
     const conflict=_hasConflict(title);
     const safeT=title.replace(/'/g,"&#39;");
-    const posterHtml=_posterThumb(f,'int-item-poster',`openPelSheet('${safeT}')`);
+    const posterHtml=_posterThumb(f,'int-item-poster',null);
     const secLabel=_secLabel(f?.section||'');
     const nextHtml=next
       ?`<div class="int-item-next">
@@ -5765,7 +5765,7 @@ function renderFilmListHTML(){
     const f=FILMS.find(fi=>fi.title===title);
     const{displayTitle,progSuffix}=parseProgramTitle(title);
     const safeT=title.replace(/'/g,"&#39;");
-    const posterHtml=_posterThumb(f,'int-item-poster',`openPelSheet('${safeT}')`);
+    const posterHtml=_posterThumb(f,'int-item-poster',null);
     const secLabel=_secLabel(f?.section||'');
     const rating=filmRatings[title]||0;
     const stars=rating>0
@@ -5887,7 +5887,7 @@ function mkAgendaRow(s, mode='saved'){
   const f=FILMS.find(fi=>fi.title===title);
   const _p=getFilmPoster(f);
   const _safePT=title.replace(/'/g,"\\'");
-  const _ph=_posterThumb(f,'lb-poster',`openPelSheet('${_safePT}')`);
+  const _ph=_posterThumb(f,'lb-poster',null);
   const vc2=vcfg(s.venue),sl=sala(s.venue);
   const safeT=(s._title||'').replace(/"/g,'&quot;');
   const isDone=watched.has(title);
@@ -6413,7 +6413,7 @@ function renderContextualHeader(){
       const safeT=t.replace(/'/g,"&#39;");
       const stars=r?starsText(r):'';
       // Posters grandes, plena opacidad — pensado para screenshot
-      return`<div class="poster-card ended-poster${_isEdList?' editorial':''}" data-title="${f.title}">
+      return`<div class="poster-card ended-poster js-open-pel${_isEdList?' editorial':''}" data-title="${f.title}">
         ${_isEdList
           ?`<div class="ed-hdr" style="background:${_sectionColor(f.section||'')}"><div class="ed-lbl">${_secLabel(f.section||'')}</div></div><div class="ed-img"><img src="${src}" onerror="this.remove()" alt="" loading="lazy"></div><div class="ed-body"></div>`
           :src?`<img class="img-cover" src="${src}" loading="lazy" onerror="this.remove()" alt="">`:``}
@@ -6614,7 +6614,7 @@ function renderContextualHeader(){
       const safeT=(s._title||'').replace(/'/g,"&#39;");
       const stars=r?starsText(r):'';
       return`<div class="prio-chip-wrap js-open-pel" data-title="${f.title}">
-        ${src?_posterThumb(f,'prio-chip-poster',`openPelSheet('${safeT}')`):`<div class="prio-chip-ph">🎬</div>`}
+        ${src?_posterThumb(f,'prio-chip-poster',null):`<div class="prio-chip-ph">🎬</div>`}
         ${r?`<div class="prio-overlay-label">${stars}</div>`:''}
         ${!r?`<div class="prio-overlay-center">
           <button class="prio-star-pill" onclick="event.stopPropagation();openPostViewRating('${safeT}','${s.day||''}','${s.time||''}','${(s.venue||'').replace(/'/g,"&#39;")}','${s.duration||''}')">★</button>
@@ -7286,7 +7286,7 @@ function buildResultHTML(scenarios){
       const poster=f?getFilmPoster(f):null;
       const secLabel=f?_secLabel(f.section||''):'';
       const safeT=t.replace(/'/g,"&#39;");
-      const posterHtml=_posterThumb(f,'int-item-poster',`openPelSheet('${safeT}')`);
+      const posterHtml=_posterThumb(f,'int-item-poster',null);
       // Detectar razón usando screensConflict contra el schedule activo
       const screens=FILMS.filter(fi=>fi.title===t&&!screeningPassed(fi)&&!isScreeningBlocked(fi));
       let reason='',canInclude=false;
@@ -9495,7 +9495,7 @@ function renderPeliculaView(){
       }
     }
     const _sep=activeDay==='all'&&f.section&&f.section!==_prevSec?`<div class="poster-grid-sep">${(f.section||'').replace(/^[\p{Emoji}\s]+/u,'').trim()}</div>`:'';_prevSec=f.section||_prevSec;
-    return _sep+`<div class="bg-surf-2 poster-card${inWL&&!inW?' in-wl':''}${inW&&!_ended?' in-watched':''}${(_isPrograma?false:_isEditorialPoster(f))?' editorial':''}" data-title="${f.title}"${_isPrograma?'':_cardBg}>
+    return _sep+`<div class="bg-surf-2 poster-card js-open-pel${inWL&&!inW?' in-wl':''}${inW&&!_ended?' in-watched':''}${(_isPrograma?false:_isEditorialPoster(f))?' editorial':''}" data-title="${f.title}"${_isPrograma?'':_cardBg}>
       ${posterImg}
       ${progBadge}
       ${inWL?`<button class="poster-wl-dot wl-on" onclick="event.stopPropagation();toggleWL('${safeT}',event)" aria-label="Interés">${ICONS.heartFill}</button>`:''}
@@ -9572,7 +9572,7 @@ function render(){
     const pastBadge=_notice?`<div class="badge-past poster-past-badge">${_notice.type==='cancelled'?t('notice_cancelada_short'):t('notice_reprog_short')}</div>`:'';
 
     const _fe=festivalEnded();
-return`<div class="poster-card${inWL&&!inW?' in-wl':''}${inW&&!_fe?' in-watched':''}${passed&&!_fe?' past-card':''}" data-title="${f.title}"${_cardBg2}>
+return`<div class="poster-card js-open-pel${inWL&&!inW?' in-wl':''}${inW&&!_fe?' in-watched':''}${passed&&!_fe?' past-card':''}" data-title="${f.title}"${_cardBg2}>
       ${posterImg}
       <div class="poster-time">${f.time}</div>
       ${nowBadge||pastBadge||progBadge}
