@@ -4344,7 +4344,7 @@ let FESTIVAL_STORAGE_KEY=(localStorage.getItem('otrofestiv_festival')||_DEFAULT_
 // BUILD_VERSION: cambia en cada deploy.
 // Al cargar, compara con localStorage. Si difiere → reload duro.
 // sessionStorage evita loops infinitos dentro de la misma sesión.
-const BUILD_VERSION='202605121316';
+const BUILD_VERSION='202605121339';
 (function(){
   const _vk='otrofestiv_build';
   const _sk='otrofestiv_reloaded';
@@ -5675,7 +5675,7 @@ function renderPrioStrip(){
     const _safeChipT=title.replace(/'/g,"&#39;");
     const img=p?_posterThumb(f,'prio-chip-poster',null):`<div class="prio-chip-ph">${ICONS.star}</div>`;
     const{displayTitle,progSuffix}=parseProgramTitle(title);
-    const short=displayTitle.length>16?displayTitle.slice(0,14)+'…':displayTitle;
+    const short=displayTitle.length>24?displayTitle.slice(0,22)+'…':displayTitle;
     const allPast=!festivalEnded()&&!FILMS.some(f=>f.title===title&&!screeningPassed(f));
     return`<div class="prio-chip${allPast?' past':''}">
       ${img}
@@ -6475,13 +6475,12 @@ function renderContextualHeader(){
       .slice(0,2);
     const prioHtml=prios.map(({t,f})=>{
       const{displayTitle:dt}=parseProgramTitle(t);
-      const short=dt.length>18?dt.slice(0,16)+'…':dt;
       const src=getFilmPoster(f)||'';
       return`<div class="ctx-prio-chip">
         ${src?`<img class="ctx-prio-thumb" src="${src}" onerror="this.remove()" alt="" loading="lazy">`:
               `<div class="ctx-prio-thumb"></div>`}
         <div style="flex:1;min-width:0">
-          <div class="ctx-prio-name">${short}</div>
+          <div class="ctx-prio-name">${dt}</div>
           <div class="ctx-prio-when">${_dayAbbr(f.day)} · ${f.time}</div>
         </div>
       </div>`;
@@ -6611,7 +6610,7 @@ function renderContextualHeader(){
         Tiempo libre
       </div>
       <div class="ctx-main-title">${gapLabel} hasta tu siguiente actividad</div>
-      <div class="txt-gray-sm-vm">${fromStr} → ${toStr} · ${(()=>{const{displayTitle:dt}=parseProgramTitle(next._title||'');return dt.length>18?dt.slice(0,16)+'…':dt;})()}</div>
+      <div class="txt-gray-sm-vm">${fromStr} → ${toStr} · ${(()=>{const{displayTitle:dt}=parseProgramTitle(next._title||'');return dt.length>28?dt.slice(0,26)+'…':dt;})()}</div>
       <div class="mt-3">${suggest}</div>
     </div>`;
   }
