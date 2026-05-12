@@ -189,6 +189,30 @@ if os.path.isdir(FESTIVALS_DIR):
 else:
     warn(check, f'directorio {FESTIVALS_DIR} no encontrado — skip')
 
+# ── CHECK 4a: títulos sin comillas tipográficas ──────────────────────────────
+check = 'title-normalization'
+TYPO_CHARS = '‘’ʼʹ“”«»'
+typo_errors = []
+import json as _json2
+for fname in sorted(os.listdir(FESTIVALS_DIR)):
+    if not fname.endswith('.json'): continue
+    fpath = os.path.join(FESTIVALS_DIR, fname)
+    try:
+        jd = _json2.load(open(fpath, encoding='utf-8'))
+        bad = [f['title'] for f in jd.get('films',[])
+               if any(ch in f.get('title','') for ch in TYPO_CHARS)]
+        if bad:
+            for t in bad:
+                typo_errors.append(f'{fname}: "{t}" contiene comilla tipográfica')
+    except Exception as e:
+        typo_errors.append(f'{fname}: error — {e}')
+if typo_errors:
+    for e in typo_errors:
+        fail(check, e)
+    fail(check, 'Correr: python3 scripts/normalize-festival-titles.py')
+else:
+    ok(check, 'Sin comillas tipográficas en títulos de festival')
+
 # ── CHECK 4b: prioLimit correcto en cada JSON ───────────────────────────────
 check = 'prio-limit'
 prio_errors = []

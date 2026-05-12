@@ -4344,6 +4344,18 @@ function travelWarn(s1,s2){
 function normalize(str){
   return str.normalize('NFD').replace(/[̀-ͯ]/g,'').toLowerCase();
 }
+// ── normTitle ─────────────────────────────────────────────────────────────────
+// Normaliza comillas tipográficas → ASCII en títulos de festival.
+// U+2019 ' U+2018 ' U+201C " U+201D " → ' ' " "
+// Punto único de verdad: se aplica en loadFestival sobre FILMS.
+// Todo lookup derivado (watchlist, prioritized, openPelSheet) hereda
+// el título normalizado sin cambios adicionales.
+function normTitle(t){
+  if(!t) return t;
+  return t
+    .replace(/[‘’ʼʹ]/g,"'")  // comillas simples tipográficas → '
+    .replace(/[“”«»]/g,'"');  // comillas dobles tipográficas → "
+}
 
 
 // ═══════════════════════════════════════════════════════════════
@@ -4364,7 +4376,7 @@ let FESTIVAL_STORAGE_KEY=(localStorage.getItem('otrofestiv_festival')||_DEFAULT_
 // BUILD_VERSION: cambia en cada deploy.
 // Al cargar, compara con localStorage. Si difiere → reload duro.
 // sessionStorage evita loops infinitos dentro de la misma sesión.
-const BUILD_VERSION='202605121611';
+const BUILD_VERSION='202605121640';
 (function(){
   const _vk='otrofestiv_build';
   const _sk='otrofestiv_reloaded';
@@ -9913,7 +9925,9 @@ async function loadFestival(id){
   }
   _activeFestId=id;
   // Swap globals
-  FILMS=cfg.films;
+  // normTitle: normaliza comillas tipográficas en títulos al cargar el festival.
+  // Punto único — todo lookup posterior hereda el título limpio.
+  FILMS=(cfg.films||[]).map(f=>({...f,title:normTitle(f.title)}));
   POSTERS=cfg.posters;
   LB_SLUGS=cfg.lbSlugs||{};
   FESTIVAL_DATES=cfg.festivalDates;
