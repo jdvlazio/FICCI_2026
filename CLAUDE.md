@@ -3,7 +3,7 @@
 > No editar a mano — los cambios se sobreescriben en el próximo deploy.
 > Para modificar secciones estáticas, editar el template en el script.
 >
-> Último commit: `6c543c4 docs: sugerencias-watchlist tasks completadas`
+> Último commit: `500e9ed feat(mi-plan): 'See day' contextual — muestra el día activo`
 
 ---
 

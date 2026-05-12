@@ -4344,7 +4344,7 @@ let FESTIVAL_STORAGE_KEY=(localStorage.getItem('otrofestiv_festival')||_DEFAULT_
 // BUILD_VERSION: cambia en cada deploy.
 // Al cargar, compara con localStorage. Si difiere → reload duro.
 // sessionStorage evita loops infinitos dentro de la misma sesión.
-const BUILD_VERSION='202605121347';
+const BUILD_VERSION='202605121350';
 (function(){
   const _vk='otrofestiv_build';
   const _sk='otrofestiv_reloaded';
@@ -6695,9 +6695,7 @@ function _renderSavedAgendaHTML(){
   const progressPct=dayIdx>=0?Math.round((dayIdx/(totalDays-1))*100):0;
   const _activeDayLabel=(()=>{
     if(activeMiPlanDay===null) return t('plan_ver_dia');
-    const dayKey=DAY_KEYS[activeMiPlanDay];
-    if(!dayKey) return t('plan_ver_dia');
-    const dayObj=DAYS[dayKey];
+    const dayObj=DAYS[activeMiPlanDay];
     if(!dayObj) return t('plan_ver_dia');
     return `${t('plan_ver_dia')} ${dayObj.lbl} ${dayObj.d}`;
   })();
