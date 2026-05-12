@@ -1,7 +1,7 @@
 # Tasks — Sugerencias priorizan watchlist
 
-- [ ] 1. Marcar Bloque 2 con _isFromWL:true en getSuggestions
-- [ ] 2. Sort: _isRestored → _isFromWL → cronológico
-- [ ] 3. validate.py
-- [ ] 4. QA browser
-- [ ] 5. Commit
+- [x] 1. Marcar Bloque 2 con _isFromWL:true en getSuggestions
+- [x] 2. Sort: _isRestored → _isFromWL → cronológico
+- [x] 3. validate.py
+- [x] 4. QA browser
+- [x] 5. Commit
