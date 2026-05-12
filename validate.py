@@ -93,6 +93,15 @@ for i, m in enumerate(func_matches):
         if re.search(r"\bt\('[^']*'\)", cb_text[:200]):
             shadow_found.append(f'{fn_name}() — arrow param t=> con t() en callback')
 
+    # Destructuring ({t,...})=> en callbacks de array — {t,f} sombrea t()
+    # Solo detecta cuando es parámetro de arrow function: ({t,...})=>
+    for destr_m in re.finditer(r'\(\{([^}]{1,40})\}\s*(?:,[^)]*)?\)\s*=>', body):
+        params = destr_m.group(1)
+        if re.search(r'(?<![:\w])t(?![:\w])', params):
+            cb_text = body[destr_m.end():destr_m.end()+500]
+            if re.search(r"\bt\('[^']*'\)", cb_text):
+                shadow_found.append(f'{fn_name}() — destructuring {{t}} en arrow fn sombrea t() — usar {{t:title}}')
+
     # const t = ... + t() llamado después
     for decl_m in re.finditer(r'\bconst\s+t\s*=(?!\s*t\()', body):
         if re.search(r"\bt\('[^']*'\)", body[decl_m.end():]):

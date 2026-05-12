@@ -3,7 +3,7 @@
 > No editar a mano — los cambios se sobreescriben en el próximo deploy.
 > Para modificar secciones estáticas, editar el template en el script.
 >
-> Último commit: `35b5375 fix(mi-plan): un solo compromiso en header — slice(0,2) → slice(0,1)`
+> Último commit: `f7c8b1d fix(mi-plan): variable shadowing t en prios.map — crash en Mi Plan`
 
 ---
 
