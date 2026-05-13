@@ -2957,7 +2957,6 @@ const _I18N = {
     "plan_vista_hoy": "vista hoy",
     "plan_vistas_hoy": "vistas hoy",
     "cta_en_intereses": "En Intereses",
-    "cta_quitado_intereses": "Quitado de Intereses",
     "cta_priorizada": "Priorizada",
     "cta_asistio": "Asistí",
     "misc_conservar": "Conservar",
@@ -3253,7 +3252,6 @@ const _I18N = {
     "plan_vista_hoy": "seen today",
     "plan_vistas_hoy": "seen today",
     "cta_en_intereses": "In Interests",
-    "cta_quitado_intereses": "Removed from Interests",
     "cta_priorizada": "Prioritized",
     "cta_asistio": "Attended",
     "misc_conservar": "Keep",
@@ -4838,7 +4836,7 @@ function toggleWL(title,e){
     }
     // Now safe to remove from watchlist
     watchlist.delete(title);watched.delete(title);prioritized.delete(title);
-    showActionToast(t('cta_quitado_intereses'));
+    showToast('Fuera de tus intereses','info');
   }
   else{
     watchlist.add(title);watched.delete(title);
@@ -4858,13 +4856,9 @@ function toggleWL(title,e){
   saveState('wl','watched');updateCardState(title);updateAgTab();
   if(activeView==='agenda'){cachedResult=null;renderAgenda();}
   else if(activeView==='day'&&activeMNav==='mnav-cartelera'){
-    // Actualizar solo el item afectado — sin re-render completo
+    // Re-renderizar solo si el pel-sheet no está abierto
     const _pelOpen=document.getElementById('pel-sheet')?.classList.contains('open');
-    if(!_pelOpen){
-      const _normT=normTitle(title);
-      const _item=document.querySelector(`.plist-item[data-title="${CSS.escape(_normT)}"], .ag-film-item[data-title="${CSS.escape(_normT)}"]`);
-      if(_item) _item.classList.toggle('in-wl', watchlist.has(_normT));
-    }
+    if(!_pelOpen) _renderProgramaContent();
   }
 }
 function toggleWatched(title,e){
@@ -6006,7 +6000,7 @@ function removeFilmFromScenario(title,e){
       watched.delete(title);
       saveState('wl','prio','watched');
       updateAgTab();
-      showActionToast(t('cta_quitado_intereses'));
+      showToast('Fuera de tus intereses','info');
       runCalc(); // recalcula directamente, no borra la vista
     }
   );
@@ -7529,7 +7523,7 @@ function showActionToast(msg,actionLabel,actionFn,duration=4000){
   let t=document.getElementById('prio-toast');
   if(!t){t=document.createElement('div');t.id='prio-toast';document.body.appendChild(t);}
   t.className='prio-toast action';
-  t.innerHTML='<span>'+msg+'</span>'+(actionLabel?('<button class="toast-action-btn" onclick="if(_toastActionFn){_toastActionFn();_toastActionFn=null;showToast(\'\',\'info\',100)}">'+actionLabel+'</button>'):'');
+  t.innerHTML=`<span>${msg}</span><button class="toast-action-btn" onclick="if(_toastActionFn){_toastActionFn();_toastActionFn=null;showToast('','info',100)}">${actionLabel}</button>`;
   t.style.opacity='1';t.style.pointerEvents='all';
   clearTimeout(t._to);t._to=setTimeout(()=>{t.style.opacity='0';t.style.pointerEvents='none';},duration);
 }
@@ -7887,10 +7881,8 @@ function saveCurrentScenario(){
 }
 function invalidateCalcResult(){
   // Called when availability changes — resets result prompt
-  const _wrap=document.getElementById('ag-result-wrap');
-  if(_wrap) _wrap.style.display='none';
+  if(!document.getElementById('ag-result')){showAgView();return;}
   const res=document.getElementById('ag-result');
-  if(!res) return;
   const pending=[...watchlist].filter(titleStr=>!watched.has(titleStr)&&FILMS.some(f=>f.title===titleStr&&!screeningPassed(f)));
   res.innerHTML=pending.length
     ?`<div class="ag-calc-prompt">${t('plan_hint_opciones')}</div>`
@@ -8002,9 +7994,6 @@ function runCalc(){
   // Cancelar Worker previo si existe
   if(_activeCalcWorker){_activeCalcWorker.terminate();_activeCalcWorker=null;}
   cachedResult=null;
-  // Mostrar wrapper de resultados si estaba oculto
-  const _wrap=document.getElementById('ag-result-wrap');
-  if(_wrap) _wrap.style.display='';
   const btn=document.querySelector('.av-calc-btn');
   const res=document.getElementById('ag-result');
   if(btn){btn.disabled=true;btn.textContent=t('plan_calculando');}
@@ -8036,7 +8025,6 @@ function runCalc(){
       if(e.data.ok){
         const scenarios=e.data.scenarios;
         cachedResult={scenarios,currentIdx:0,_algorithmCount:scenarios.length};
-        const _w1=document.getElementById('ag-result-wrap');if(_w1)_w1.style.display='';
         if(res) res.innerHTML=buildResultHTML(scenarios);
       }else{
         if(res) res.innerHTML=`<div class="ag-calc-prompt" style="color:var(--red)"><strong>${t('error_calcular')}</strong><br><code class="txt-xs">${e.data.error}</code></div>`;
@@ -8072,7 +8060,6 @@ function _runCalcSync(btn,res){
   try{
     const scenarios=computeScenarios([...watchlist]);
     cachedResult={scenarios,currentIdx:0,_algorithmCount:scenarios.length};
-    const _w2=document.getElementById('ag-result-wrap');if(_w2)_w2.style.display='';
     if(res) res.innerHTML=buildResultHTML(scenarios);
   }catch(err){
     if(res) res.innerHTML=`<div class="ag-calc-prompt" style="color:var(--red)"><strong>${t('error_calcular')}</strong><br><code class="txt-xs">${err.message}</code></div>`;
@@ -8166,7 +8153,7 @@ function renderAgenda(){
     // ── Estado B: con Intereses — herramienta completa ──
     const resultContent=cachedResult
       ?buildResultHTML(cachedResult.scenarios)
-      :'';
+      :`<div class="ag-calc-prompt">${t('plan_hint_opciones')}</div>`;
     view.innerHTML=`${_progressHtml}
       <div class="ag-section">
         ${renderPrioStrip()}
@@ -8182,10 +8169,10 @@ function renderAgenda(){
           </button>
         </div>
       </div>
-      <div class="amber-border-top ag-section" id="ag-result-wrap" style="${cachedResult?'':'display:none'}">
+      ${cachedResult?`<div class="amber-border-top ag-section">
         <div class="txt-amber60 sec-hdr">${ICONS.switch} ${t('plan_opciones')}</div>
         <div id="ag-result">${resultContent}</div>
-      </div>`;
+      </div>`:''}`;
     renderAvBlocks();
   }
 }
@@ -8516,8 +8503,6 @@ function togglePelWL(title,e){
   btn.className='pel-sheet-action-btn'+(inWL?' act-on btn-primary':' btn-primary');
   if(!wasInWL&&inWL){
     showActionToast(`${ICONS.heartFill} ${t('cta_en_intereses')}`,`${ICONS.star} ${t('cta_priorizar')}`,()=>togglePriority(title));
-  } else if(wasInWL&&!inWL){
-    setTimeout(()=>closePelSheet(),300);
   }
 }
 // _dayChips — renderiza días únicos de un film como spans tappables (filtran por día)
@@ -8845,7 +8830,6 @@ document.addEventListener('keydown',function(e){
 // capture:true garantiza que el evento llega antes del stopPropagation
 // de _posterThumb. data-title contiene el título sin encoding.
 document.addEventListener('click',function(e){
-  if(e.target.closest('.plist-heart,.poster-wl-dot,.av-add-unavail,.av-block-chip,.toast-action-btn')) return;
   const el=e.target.closest('.js-open-pel');
   if(el) openPelSheet(el.dataset.title||'');
 },true);
