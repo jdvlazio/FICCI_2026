@@ -5452,9 +5452,11 @@ function computeScenarios(titles){
   function findMax(groups, mustIncludeAll){
     let best=0;
     let nodes=0;
+    const _bbMax=groups.map(g=>g.is_recurring?g.screens.length:1);
+    const _bbRem=[];let _s=0;for(let i=_bbMax.length-1;i>=0;i--){_s+=_bbMax[i];_bbRem[i]=_s;}
     function bb(idx,chosen){
       if(++nodes>MAX_NODES_PER_CALL) return;
-      const remaining=groups.length-idx;
+      const remaining=idx<groups.length?_bbRem[idx]:0;
       if(chosen.length+remaining<=best) return;
       if(idx===groups.length){
         if(!mustIncludeAll){
@@ -5499,10 +5501,12 @@ function computeScenarios(titles){
 
   function collectAt(groups,targetCount,enforcePriority){
     let nodes=0;
+    const _btMax=groups.map(g=>g.is_recurring?g.screens.length:1);
+    const _btRem=[];let _rs=0;for(let i=_btMax.length-1;i>=0;i--){_rs+=_btMax[i];_btRem[i]=_rs;}
     function backtrack(idx,chosen){
       if(allScenarios.length>=8) return;
       if(++nodes>MAX_NODES_PER_CALL) return; // mismo límite en todos los dispositivos
-      if(chosen.length+(groups.length-idx)<targetCount) return;
+      if(chosen.length+(idx<groups.length?_btRem[idx]:0)<targetCount) return;
       if(idx===groups.length){
         if(chosen.length===targetCount){
           if(enforcePriority){
