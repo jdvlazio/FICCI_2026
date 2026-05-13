@@ -1,0 +1,46 @@
+name: Playwright Tests
+
+on:
+  push:
+    paths:
+      - 'index.html'
+      - 'sw.js'
+      - 'festivals/**.json'
+      - 'tests/**.spec.js'
+      - 'playwright.config.js'
+  pull_request:
+    paths:
+      - 'index.html'
+      - 'tests/**.spec.js'
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    name: Regression tests
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Install Playwright browsers
+        run: npx playwright install --with-deps chromium
+
+      - name: Run Playwright tests
+        run: npx playwright test
+
+      - name: Upload report on failure
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-report
+          path: playwright-report/
+          retention-days: 7

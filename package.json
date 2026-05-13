@@ -1,0 +1,14 @@
+{
+  "name": "otrofestiv",
+  "version": "1.0.0",
+  "description": "Festival scheduling PWA",
+  "private": true,
+  "scripts": {
+    "test": "playwright test",
+    "test:headed": "playwright test --headed",
+    "serve": "npx serve . --listen 3000 --no-clipboard"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.60.0"
+  }
+}
