@@ -7887,8 +7887,10 @@ function saveCurrentScenario(){
 }
 function invalidateCalcResult(){
   // Called when availability changes — resets result prompt
-  if(!document.getElementById('ag-result')){showAgView();return;}
+  const _wrap=document.getElementById('ag-result-wrap');
+  if(_wrap) _wrap.style.display='none';
   const res=document.getElementById('ag-result');
+  if(!res) return;
   const pending=[...watchlist].filter(titleStr=>!watched.has(titleStr)&&FILMS.some(f=>f.title===titleStr&&!screeningPassed(f)));
   res.innerHTML=pending.length
     ?`<div class="ag-calc-prompt">${t('plan_hint_opciones')}</div>`
@@ -8000,8 +8002,9 @@ function runCalc(){
   // Cancelar Worker previo si existe
   if(_activeCalcWorker){_activeCalcWorker.terminate();_activeCalcWorker=null;}
   cachedResult=null;
-  // Si ag-result no existe (Estado B — primer cálculo), mostrar el wrapper primero
-  if(!document.getElementById('ag-result')) showAgView();
+  // Mostrar wrapper de resultados si estaba oculto
+  const _wrap=document.getElementById('ag-result-wrap');
+  if(_wrap) _wrap.style.display='';
   const btn=document.querySelector('.av-calc-btn');
   const res=document.getElementById('ag-result');
   if(btn){btn.disabled=true;btn.textContent=t('plan_calculando');}
@@ -8033,6 +8036,7 @@ function runCalc(){
       if(e.data.ok){
         const scenarios=e.data.scenarios;
         cachedResult={scenarios,currentIdx:0,_algorithmCount:scenarios.length};
+        const _w1=document.getElementById('ag-result-wrap');if(_w1)_w1.style.display='';
         if(res) res.innerHTML=buildResultHTML(scenarios);
       }else{
         if(res) res.innerHTML=`<div class="ag-calc-prompt" style="color:var(--red)"><strong>${t('error_calcular')}</strong><br><code class="txt-xs">${e.data.error}</code></div>`;
@@ -8068,6 +8072,7 @@ function _runCalcSync(btn,res){
   try{
     const scenarios=computeScenarios([...watchlist]);
     cachedResult={scenarios,currentIdx:0,_algorithmCount:scenarios.length};
+    const _w2=document.getElementById('ag-result-wrap');if(_w2)_w2.style.display='';
     if(res) res.innerHTML=buildResultHTML(scenarios);
   }catch(err){
     if(res) res.innerHTML=`<div class="ag-calc-prompt" style="color:var(--red)"><strong>${t('error_calcular')}</strong><br><code class="txt-xs">${err.message}</code></div>`;
@@ -8161,7 +8166,7 @@ function renderAgenda(){
     // ── Estado B: con Intereses — herramienta completa ──
     const resultContent=cachedResult
       ?buildResultHTML(cachedResult.scenarios)
-      :`<div class="ag-calc-prompt">${t('plan_hint_opciones')}</div>`;
+      :'';
     view.innerHTML=`${_progressHtml}
       <div class="ag-section">
         ${renderPrioStrip()}
@@ -8177,10 +8182,10 @@ function renderAgenda(){
           </button>
         </div>
       </div>
-      ${cachedResult?`<div class="amber-border-top ag-section">
+      <div class="amber-border-top ag-section" id="ag-result-wrap" style="${cachedResult?'':'display:none'}">
         <div class="txt-amber60 sec-hdr">${ICONS.switch} ${t('plan_opciones')}</div>
         <div id="ag-result">${resultContent}</div>
-      </div>`:''}`;
+      </div>`;
     renderAvBlocks();
   }
 }
