@@ -27,7 +27,7 @@ async function enterFestival(page, festId) {
   }
 
   await page.locator('.splash-enter-btn').click();
-  await page.waitForSelector('.poster-card, .plist-item, .nav-tab', { timeout: 15000 });
+  await page.waitForSelector('.poster-card, .plist-item, .dtab', { timeout: 15000 });
 }
 
 async function addToWatchlist(page, title) {
@@ -55,8 +55,8 @@ async function goToPlanear(page) {
 test('T01 — apóstrofe: corazón en lista agrega al watchlist', async ({ page }) => {
   await enterFestival(page, 'tribeca2026');
 
-  // Navegar a SAT 6
-  await page.locator('.nav-tab').filter({ hasText: /\b6\b/ }).first().click();
+  // Navegar a SAT 6 (2026-06-06)
+  await page.locator('.dtab[data-day="2026-06-06"]').click();
   await page.waitForSelector('.plist-item', { timeout: 8000 });
 
   // Buscar Whoopi's y hacer scroll
@@ -81,7 +81,7 @@ test('T01 — apóstrofe: corazón en lista agrega al watchlist', async ({ page 
 test('T02 — apóstrofe: tap en título abre sheet', async ({ page }) => {
   await enterFestival(page, 'tribeca2026');
 
-  await page.locator('.nav-tab').filter({ hasText: /\b6\b/ }).first().click();
+  await page.locator('.dtab[data-day="2026-06-06"]').click();
   await page.waitForSelector('.plist-item', { timeout: 8000 });
 
   const whoopi = page.locator('.plist-item[data-title*="Whoopi"]').first();
@@ -137,7 +137,7 @@ test('T04 — ver opciones recalcula al presionar de nuevo', async ({ page }) =>
 test('T05 — corazón en lista no abre sheet', async ({ page }) => {
   await enterFestival(page, 'leviza2026');
 
-  await page.locator('.nav-tab').filter({ hasText: /15/ }).first().click();
+  await page.locator('.dtab[data-day="VIE 15"]').click();
   await page.waitForSelector('.plist-item', { timeout: 8000 });
 
   await page.locator('.plist-item').first().locator('.plist-heart').click();
@@ -153,7 +153,7 @@ test('T05 — corazón en lista no abre sheet', async ({ page }) => {
 test('T06 — scroll se mantiene después de toggle corazón', async ({ page }) => {
   await enterFestival(page, 'leviza2026');
 
-  await page.locator('.nav-tab').filter({ hasText: /15/ }).first().click();
+  await page.locator('.dtab[data-day="VIE 15"]').click();
   await page.waitForSelector('.plist-item', { timeout: 8000 });
 
   await page.evaluate(() => window.scrollTo(0, 300));
