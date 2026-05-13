@@ -15,6 +15,7 @@ module.exports = defineConfig({
     baseURL: 'http://localhost:3000',
     headless: true,
     viewport: { width: 390, height: 844 }, // iPhone 14 — mobile first
+    locale: 'es-CO',                              // idioma determinista — evita variaciones de CI runner
   },
   projects: [
     { name: 'chromium', use: { ...devices['Desktop Chrome'] } },
