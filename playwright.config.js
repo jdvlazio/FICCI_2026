@@ -5,7 +5,12 @@ module.exports = defineConfig({
   testDir: './tests',
   timeout: 30000,
   retries: 1,
-  reporter: [['html', { open: 'never' }], ['list']],
+  reporter: [
+    ['html', { open: 'never' }],
+    ['list'],
+    ['github'],  // expone fallos como anotaciones en GitHub Actions
+    ['json', { outputFile: 'test-results.json' }],
+  ],
   use: {
     baseURL: 'http://localhost:3000',
     headless: true,
