@@ -267,7 +267,7 @@ async function waitForApp(frame, timeoutMs = 20000) {
     function check() {
       try {
         const w = frame.contentWindow;
-        if (typeof w.loadFestival === 'function' && w._splashSelectedFestId) return resolve();
+        if (typeof w.loadFestival === 'function' && w.document.readyState === 'complete') return resolve();
       } catch(e) {}
       if (Date.now() > deadline) return reject(new Error('Timeout: loadFestival no encontrada'));
       setTimeout(check, 150);
