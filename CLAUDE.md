@@ -3,7 +3,7 @@
 > No editar a mano — los cambios se sobreescriben en el próximo deploy.
 > Para modificar secciones estáticas, editar el template en el script.
 >
-> Último commit: `ae6bb6c fix(leviza): FESTIVAL_CONFIG completo con festivalDates — detectActiveFest lo seleccionaba como next`
+> Último commit: `ec2ee14 feat(leviza): 7 posters TMDB verificados por PM — cobertura top-level 9/9`
 
 ---
 
