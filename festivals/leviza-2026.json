@@ -174,7 +174,8 @@
       "venue": "Auditorio Polideportivo - Zapatoca",
       "has_qa": true,
       "poster": "/assets/leviza/Chist.jpg",
-      "day_order": 0
+      "day_order": 0,
+      "synopsis": "Un escritor que no escribe llega a su casa entrada la noche con cara de suicidio, dispuesto a torturar a los suyos debido a su estreñimiento creativo. En su despacho, una galería de grandes escritores parece burlarse de sus malos intentos."
     },
     {
       "title": "Sin la Luz Perpetua",
@@ -188,7 +189,8 @@
       "has_qa": true,
       "poster": "/assets/leviza/SinLaLuz.jpg",
       "day_order": 1,
-      "year": 2022
+      "year": 2022,
+      "synopsis": "Tres historias entrelazadas a través de décadas de historia colombiana: un militar desaparecido en la Guerra de Corea, un sacerdote que busca a un colega desaparecido por paramilitares, y una periodista en busca de la familia de un hombre enterrado como N.N."
     },
     {
       "title": "Filminutos Semillero YarimaFICS — Barrancabermeja",

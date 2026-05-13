@@ -853,6 +853,9 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:var(--t
 .poster-card.in-wl{outline:2px solid var(--amber-30);outline-offset:-2px}
 .poster-card.in-watched{opacity:.45}
 .poster-card.past-card{opacity:.35}
+.poster-wrap{display:flex;flex-direction:column;gap:5px}
+.poster-days{display:flex;flex-wrap:wrap;gap:2px 4px;padding:0 1px;min-height:14px}
+.poster-days .pelicula-day{font-size:var(--t-xs);width:auto}
 .ag-excl-item.past-card{opacity:.35}
 .excl-reason{font-size:var(--t-xs);color:var(--gray2)}
 .excl-reason.conflict{color:var(--amber-60);font-weight:var(--w-semi)}
@@ -2839,13 +2842,13 @@ const _I18N = {
     "meta_qa_label": "Q&A",
     "meta_qa_time": "30 min aprox.",
     "meta_registro_text": "Se requiere registro previo.",
-    "plan_restaurar_suger": "t('plan_restaurar_suger')",
+    "plan_restaurar_suger": "Lo podés encontrar de nuevo en Sugerencias.",
     "error_cargar_miplan": "Error al cargar Mi Plan:",
     "plan_no_alts_horario": "No hay alternativas en este horario — revisá Sugerencias.",
-    "plan_sin_actividades": "t('plan_sin_actividades')",
+    "plan_sin_actividades": "No hay actividades disponibles para este horario.",
     "plan_no_incluidas": "No incluidas",
     "error_calcular": "Error al calcular:",
-    "meta_corto_incluye": "t('meta_corto_incluye').",
+    "meta_corto_incluye": "Agregar este corto incluye el programa de proyección completo.",
     "error_cargar_lista": "Error al cargar la lista.",
     "plan_bloqueado_disp": "cae en horarios no disponibles — no podrá incluirse en el plan",
     "plan_vuelta_pendientes": "De vuelta en pendientes",
@@ -3527,8 +3530,7 @@ function makeProgramPoster(title, duration, section){
     .replace(/\p{Emoji}/gu,'')
     .replace(/[^\w\sáéíóúüñÁÉÍÓÚÜÑ¿!?()·\-]/gu,'')
     .trim()
-    .toUpperCase()
-    .substring(0,28);
+    .toUpperCase();
   const headerLabel=cleanSection||'PROGRAMA';
 
   // Número — patrones: "Prog. 4", "Prog. 1 · 16mm", "Voces 2", número al final
@@ -4919,7 +4921,7 @@ function fuzzyMatch(query,title){
 function removeFromAgenda(title){
   if(!savedAgenda) return;
   const _s=title.length>36?title.slice(0,34)+'…':title;
-  showActionModal(t('plan_quitar_plan'),`<b>${_s}</b><br><br>t('plan_restaurar_suger')`,'Quitar',()=>{
+  showActionModal(t('plan_quitar_plan'),`<b>${_s}</b><br><br>${t('plan_restaurar_suger')}`,'Quitar',()=>{
     const rem=savedAgenda.schedule.find(s=>s._title===title);
     if(rem){lastRemovedSlots=lastRemovedSlots.filter(r=>r._title!==rem._title);lastRemovedSlots.unshift({...rem,_isRestored:true});if(lastRemovedSlots.length>MAX_REMEMBERED_SLOTS)lastRemovedSlots.length=MAX_REMEMBERED_SLOTS;saveLastSlot();}
     savedAgenda.schedule=savedAgenda.schedule.filter(s=>s._title!==title);
@@ -6676,7 +6678,7 @@ function renderContextualHeader(){
             <div class="ctx-suggest-venue">${vc2.short}</div>
           </div>
         </div>`;
-    })():`<div class="txt-caption-gray">t('plan_sin_actividades')</div>`;
+    })():`<div class="txt-caption-gray">${t('plan_sin_actividades')}</div>`;
     return`<div class="ctx-header">
       <div class="txt-green70 ctx-eyebrow">
         <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
@@ -9597,11 +9599,12 @@ function renderPeliculaView(){
       }
     }
     const _sep=activeDay==='all'&&f.section&&f.section!==_prevSec?`<div class="poster-grid-sep">${(f.section||'').replace(/^[\p{Emoji}\s]+/u,'').trim()}</div>`:'';_prevSec=f.section||_prevSec;
-    return _sep+`<div class="bg-surf-2 poster-card js-open-pel${inWL&&!inW?' in-wl':''}${inW&&!_ended?' in-watched':''}${(_isPrograma?false:_isEditorialPoster(f))?' editorial':''}" data-title="${f.title}"${_isPrograma?'':_cardBg}>
+    const _daysHtml=_dayChips(screenings);
+    return _sep+`<div class="poster-wrap"><div class="bg-surf-2 poster-card js-open-pel${inWL&&!inW?' in-wl':''}${inW&&!_ended?' in-watched':''}${(_isPrograma?false:_isEditorialPoster(f))?' editorial':''}" data-title="${f.title}"${_isPrograma?'':_cardBg}>
       ${posterImg}
       ${progBadge}
       ${inWL?`<button class="poster-wl-dot wl-on" onclick="event.stopPropagation();toggleWL('${safeT}',event)" aria-label="Interés">${ICONS.heartFill}</button>`:''}
-    </div>`;
+    </div>${_daysHtml?`<div class="poster-days">${_daysHtml}</div>`:''}</div>`
   }).join('')}</div>`;
   requestAnimationFrame(()=>window.dispatchEvent(new Event('scroll')));// trigger lazy load
 }
