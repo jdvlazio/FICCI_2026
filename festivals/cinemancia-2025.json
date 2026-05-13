@@ -2248,7 +2248,7 @@
       "title": "Proyecciones Especiales",
       "title_en": "Special Screenings",
       "country": "Varios",
-      "flags": "🎬",
+      "flags": "",
       "duration": "89 min",
       "director": "Varios",
       "section": "✨ Proyecciones Especiales",
@@ -2257,9 +2257,7 @@
       "time": "19:00",
       "venue": "Colombo Sala 1",
       "day_order": 7,
-      "is_cortos": true,
-      "synopsis": "Programa de cortometrajes de proyecciones especiales de Cinemancia 2025.",
-      "film_list": []
+      "synopsis": "Programa de cortometrajes de proyecciones especiales de Cinemancia 2025."
     },
     {
       "title": "Debut, or, Objects of the Field of Debris as Currently Catalogued",
@@ -2681,7 +2679,7 @@
       "title": "Proyecciones especiales",
       "title_en": "Special Screenings",
       "country": "Varios",
-      "flags": "🎬",
+      "flags": "",
       "duration": "89 min",
       "director": "Varios",
       "section": "✨ Proyecciones Especiales",
@@ -2690,9 +2688,7 @@
       "time": "17:00",
       "venue": "Biblioteca Sabaneta",
       "day_order": 8,
-      "is_cortos": true,
-      "synopsis": "Programa de cortometrajes de proyecciones especiales de Cinemancia 2025.",
-      "film_list": []
+      "synopsis": "Programa de cortometrajes de proyecciones especiales de Cinemancia 2025."
     },
     {
       "title": "Una visita a Producciones Ogawa",

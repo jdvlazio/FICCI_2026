@@ -3,7 +3,7 @@
 > No editar a mano — los cambios se sobreescriben en el próximo deploy.
 > Para modificar secciones estáticas, editar el template en el script.
 >
-> Último commit: `25834c2 fix(tests): T09 — scenarios[0].schedule, no scenarios[0] directo`
+> Último commit: `ea14ef8 fix(tools): smoke-test — w.eval() para variables let del app`
 
 ---
 

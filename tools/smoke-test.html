@@ -336,7 +336,7 @@ async function t2_dayFilter(w) {
   }
 
   const targetDay = dayTab.dataset.day;
-  const prevDay   = w.activeDay;
+  const prevDay   = w.eval('activeDay');
 
   try {
     dayTab.click();
@@ -346,10 +346,10 @@ async function t2_dayFilter(w) {
     return;
   }
 
-  if (w.activeDay === targetDay) {
+  if (w.eval('activeDay') === targetDay) {
     logPass(`T2 · Day filter: click en "${targetDay}" → activeDay cambió correctamente`);
   } else {
-    logFail(`T2 · Day filter: activeDay sigue en "${w.activeDay}", esperaba "${targetDay}"`);
+    logFail(`T2 · Day filter: activeDay sigue en "${w.eval('activeDay')}", esperaba "${targetDay}"`);
   }
 }
 

@@ -582,7 +582,9 @@
           "poster": "/assets/leviza/SinLaLuz.jpg",
           "synopsis": "Tres historias entrelazadas a través de décadas de historia colombiana: un militar desaparecido en la Guerra de Corea, un sacerdote que busca a un colega desaparecido por paramilitares, y una periodista en busca de la familia de un hombre enterrado como N.N."
         }
-      ]
+      ],
+      "poster": "/assets/leviza/Chist.jpg",
+      "genre": "Comedia, Drama"
     },
     {
       "title": "Filminutos YarimaFICS + Candelaria",
@@ -615,7 +617,9 @@
           "lbSlug": "candelaria-2017",
           "poster": "/3xszLcSPv2ntc5QLKx86UAsp52E.jpg"
         }
-      ]
+      ],
+      "poster": "/3xszLcSPv2ntc5QLKx86UAsp52E.jpg",
+      "genre": "Comedia, Drama"
     }
   ]
 }
