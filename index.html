@@ -7523,7 +7523,7 @@ function showActionToast(msg,actionLabel,actionFn,duration=4000){
   let t=document.getElementById('prio-toast');
   if(!t){t=document.createElement('div');t.id='prio-toast';document.body.appendChild(t);}
   t.className='prio-toast action';
-  t.innerHTML=`<span>${msg}</span><button class="toast-action-btn" onclick="if(_toastActionFn){_toastActionFn();_toastActionFn=null;showToast('','info',100)}">${actionLabel}</button>`;
+  t.innerHTML='<span>'+msg+'</span>'+(actionLabel?('<button class="toast-action-btn" onclick="if(_toastActionFn){_toastActionFn();_toastActionFn=null;showToast(\'\',\'info\',100)}">'+actionLabel+'</button>'):'');
   t.style.opacity='1';t.style.pointerEvents='all';
   clearTimeout(t._to);t._to=setTimeout(()=>{t.style.opacity='0';t.style.pointerEvents='none';},duration);
 }
@@ -8830,6 +8830,7 @@ document.addEventListener('keydown',function(e){
 // capture:true garantiza que el evento llega antes del stopPropagation
 // de _posterThumb. data-title contiene el título sin encoding.
 document.addEventListener('click',function(e){
+  if(e.target.closest('.plist-heart,.poster-wl-dot,.av-add-unavail,.av-block-chip,.toast-action-btn')) return;
   const el=e.target.closest('.js-open-pel');
   if(el) openPelSheet(el.dataset.title||'');
 },true);
