@@ -8831,6 +8831,7 @@ document.addEventListener('keydown',function(e){
 // capture:true garantiza que el evento llega antes del stopPropagation
 // de _posterThumb. data-title contiene el título sin encoding.
 document.addEventListener('click',function(e){
+  if(e.target.closest('.plist-heart')) return; // heart toggle — no abrir sheet
   const el=e.target.closest('.js-open-pel');
   if(el) openPelSheet(el.dataset.title||'');
 },true);
