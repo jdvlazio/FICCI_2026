@@ -91,7 +91,8 @@
       "genre": "Drama",
       "lbSlug": "⚠️ LB PENDIENTE",
       "synopsis": "En una remota aldea sin electricidad, una adolescente convence a todo el pueblo para encontrar la forma de ver a su tío, del que está distanciada, competir en un combate del campeonato mundial de boxeo.",
-      "poster": "/PTehUUjJ9afMKhuJoMeKFlA25D.jpg"
+      "poster": "/PTehUUjJ9afMKhuJoMeKFlA25D.jpg",
+      "duration": "83 min"
     },
     {
       "title": "Rebelión",
@@ -108,7 +109,8 @@
       "genre": "Biográfico, Drama, Musical",
       "lbSlug": "⚠️ LB PENDIENTE",
       "synopsis": "La película retrata a un vulnerable y anónimo Joe Arroyo, quizás el cantante colombiano de salsa más importante de la historia, en su viaje claustrofóbico por diferentes momentos de su vida.",
-      "poster": "/pjGO6C0AVxiSJ9EbmJ5B3n7NjAh.jpg"
+      "poster": "/pjGO6C0AVxiSJ9EbmJ5B3n7NjAh.jpg",
+      "duration": "101 min"
     },
     {
       "title": "Muestra Competencia Nacional de Ficción — Jueves",
@@ -161,94 +163,6 @@
       "day_order": 2,
       "flags": "🇨🇴",
       "lbSlug": "⚠️ LB PENDIENTE"
-    },
-    {
-      "title": "Chist",
-      "director": "Elkin Díaz",
-      "country": "Colombia",
-      "flags": "🇨🇴",
-      "year": 2022,
-      "section": "🎞️ Proyecciones",
-      "day": "VIE 15",
-      "time": "10:00",
-      "venue": "Auditorio Polideportivo - Zapatoca",
-      "has_qa": true,
-      "poster": "/assets/leviza/Chist.jpg",
-      "day_order": 0,
-      "synopsis": "Un escritor que no escribe llega a su casa entrada la noche con cara de suicidio, dispuesto a torturar a los suyos debido a su estreñimiento creativo. En su despacho, una galería de grandes escritores parece burlarse de sus malos intentos."
-    },
-    {
-      "title": "Sin la Luz Perpetua",
-      "director": "Raúl Gutiérrez",
-      "country": "Colombia",
-      "flags": "🇨🇴",
-      "section": "🎞️ Proyecciones",
-      "day": "VIE 15",
-      "time": "10:00",
-      "venue": "Auditorio Polideportivo - Zapatoca",
-      "has_qa": true,
-      "poster": "/assets/leviza/SinLaLuz.jpg",
-      "day_order": 1,
-      "year": 2022,
-      "synopsis": "Tres historias entrelazadas a través de décadas de historia colombiana: un militar desaparecido en la Guerra de Corea, un sacerdote que busca a un colega desaparecido por paramilitares, y una periodista en busca de la familia de un hombre enterrado como N.N."
-    },
-    {
-      "title": "Filminutos Semillero YarimaFICS — Barrancabermeja",
-      "section": "📽️ Filminutos",
-      "day": "VIE 15",
-      "time": "16:00",
-      "venue": "Auditorio Polideportivo - Zapatoca",
-      "is_cortos": true,
-      "film_list": [
-        {
-          "title": "Closeth",
-          "lbSlug": "⚠️ LB PENDIENTE"
-        },
-        {
-          "title": "Cristofer",
-          "lbSlug": "⚠️ LB PENDIENTE"
-        },
-        {
-          "title": "Inocente",
-          "lbSlug": "⚠️ LB PENDIENTE"
-        },
-        {
-          "title": "La Enfermera",
-          "lbSlug": "⚠️ LB PENDIENTE"
-        },
-        {
-          "title": "Sálvame",
-          "lbSlug": "⚠️ LB PENDIENTE"
-        },
-        {
-          "title": "Un Día Más",
-          "lbSlug": "⚠️ LB PENDIENTE"
-        },
-        {
-          "title": "Vínculo",
-          "lbSlug": "⚠️ LB PENDIENTE"
-        }
-      ],
-      "day_order": 2,
-      "flags": "🇨🇴",
-      "lbSlug": "⚠️ LB PENDIENTE"
-    },
-    {
-      "title": "Candelaria",
-      "director": "Jhonny Hendrix Hinestroza",
-      "country": "Colombia",
-      "flags": "🇨🇴",
-      "section": "🎞️ Proyecciones",
-      "day": "VIE 15",
-      "time": "16:00",
-      "venue": "Auditorio Polideportivo - Zapatoca",
-      "day_order": 3,
-      "tmdb_id": 483787,
-      "year": 2017,
-      "genre": "Drama",
-      "lbSlug": "⚠️ LB PENDIENTE",
-      "synopsis": "Dos pensionistas, una cámara de video y una propuesta indecente.",
-      "poster": "/8fSJDFprkGGJIQIhgKrPUTF2lII.jpg"
     },
     {
       "title": "Muestra Competencia Nacional de Ficción — Viernes",
@@ -333,7 +247,8 @@
       "genre": "Drama",
       "lbSlug": "⚠️ LB PENDIENTE",
       "synopsis": "A la impresionante edad de 16 años, el joven Mateo enfrenta la tentación de ingresar a las pandillas del barrio o buscar otra manera de expresarse.",
-      "poster": "/5OjMb4Xa4ezZrjhHAHizFkzR2mX.jpg"
+      "poster": "/5OjMb4Xa4ezZrjhHAHizFkzR2mX.jpg",
+      "duration": "86 min"
     },
     {
       "title": "Sumas y Restas",
@@ -351,7 +266,8 @@
       "genre": "Drama, Crimen",
       "lbSlug": "⚠️ LB PENDIENTE",
       "synopsis": "Una mirada al infame cartel de cocaína de Medellín. Focalizándose en la relación entre un constructor y un traficante.",
-      "poster": "/qliOZ0X4vO9cD7oImKivGncbFrS.jpg"
+      "poster": "/qliOZ0X4vO9cD7oImKivGncbFrS.jpg",
+      "duration": "107 min"
     },
     {
       "title": "Muestra Competencia Nacional de Ficción — Sábado",
@@ -427,7 +343,8 @@
       "genre": "Drama",
       "lbSlug": "⚠️ LB PENDIENTE",
       "synopsis": "Mónica, de 13 años, lleva una vida en la calle, ganándose la vida vendiendo rosas.",
-      "poster": "/oZgWtVMiq0IuuvmArTtLzWKIra3.jpg"
+      "poster": "/oZgWtVMiq0IuuvmArTtLzWKIra3.jpg",
+      "duration": "116 min"
     },
     {
       "title": "Los Súper Descendientes",
@@ -444,7 +361,8 @@
       "genre": "Animación, Familiar",
       "lbSlug": "⚠️ LB PENDIENTE",
       "synopsis": "No hace falta ser un superhéroe para ser súper. Hedvig, de 11 años, encoge accidentalmente el traje de su padre, el superhéroe del pueblo, y tendrá que encontrar su propio superpoder.",
-      "poster": "/buCip15i0a0PlT77oC7OwQD0HAC.jpg"
+      "poster": "/buCip15i0a0PlT77oC7OwQD0HAC.jpg",
+      "duration": "76 min"
     },
     {
       "title": "Clausura — Filminutos Movimiento Audiovisual LEVIZA",
@@ -590,6 +508,71 @@
       "time": "14:00",
       "venue": "Mediateca Municipal - Zapatoca",
       "day_order": 4
+    },
+    {
+      "title": "Chist + Sin la Luz Perpetua",
+      "section": "🎞️ Proyecciones",
+      "is_programa": true,
+      "has_qa": true,
+      "day": "VIE 15",
+      "time": "10:00",
+      "venue": "Auditorio Polideportivo - Zapatoca",
+      "duration": "36 min",
+      "day_order": 0,
+      "film_list": [
+        {
+          "title": "Chist",
+          "director": "Elkin Díaz",
+          "year": "2022",
+          "duration": "11 min",
+          "country": "Colombia",
+          "flags": "🇨🇴",
+          "poster": "/assets/leviza/Chist.jpg",
+          "synopsis": "Un escritor que no escribe llega a su casa entrada la noche con cara de suicidio, dispuesto a torturar a los suyos debido a su estreñimiento creativo. En su despacho, una galería de grandes escritores parece burlarse de sus malos intentos."
+        },
+        {
+          "title": "Sin la Luz Perpetua",
+          "director": "Raúl Gutiérrez",
+          "year": "2022",
+          "duration": "25 min",
+          "country": "Colombia",
+          "flags": "🇨🇴",
+          "poster": "/assets/leviza/SinLaLuz.jpg",
+          "synopsis": "Tres historias entrelazadas a través de décadas de historia colombiana: un militar desaparecido en la Guerra de Corea, un sacerdote que busca a un colega desaparecido por paramilitares, y una periodista en busca de la familia de un hombre enterrado como N.N."
+        }
+      ]
+    },
+    {
+      "title": "Filminutos YarimaFICS + Candelaria",
+      "section": "🎞️ Proyecciones",
+      "is_programa": true,
+      "has_qa": false,
+      "day": "VIE 15",
+      "time": "16:00",
+      "venue": "Auditorio Polideportivo - Zapatoca",
+      "duration": "102 min",
+      "day_order": 3,
+      "film_list": [
+        {
+          "title": "Filminutos Semillero YarimaFICS — Barrancabermeja",
+          "director": "",
+          "year": "2025",
+          "duration": "~15 min",
+          "country": "Colombia",
+          "flags": "🇨🇴",
+          "synopsis": "Selección de cortometrajes de un minuto realizados por jóvenes del Semillero YarimaFICS en Barrancabermeja."
+        },
+        {
+          "title": "Candelaria",
+          "director": "Jhonny Hendrix Hinestroza",
+          "year": "2017",
+          "duration": "87 min",
+          "country": "Colombia / Cuba",
+          "flags": "🇨🇴🇨🇺",
+          "synopsis": "Dos pensionistas, una cámara de video y una propuesta indecente.",
+          "lbSlug": "candelaria-2017"
+        }
+      ]
     }
   ]
 }
