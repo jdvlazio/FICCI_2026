@@ -221,14 +221,13 @@ test('T09 — taller recurrente: 3 sesiones en el plan', async ({ page }) => {
   await page.locator('#ag-result-wrap').waitFor({ state: 'visible', timeout: 20000 });
 
   // Verificar directamente en cachedResult
-  const t09Debug = await page.evaluate(() => ({
-    cr: !!cachedResult,
-    sc: cachedResult?.scenarios?.length ?? -1,
-    s0len: cachedResult?.scenarios?.[0]?.length ?? -1,
-    guion: cachedResult?.scenarios?.[0]?.filter(s => s._title === 'Taller de Guion').length ?? -1,
-  }));
-  const sessionCount = t09Debug.guion;
-  expect(sessionCount, `cachedResult=${t09Debug.cr} scenarios=${t09Debug.sc} s0len=${t09Debug.s0len}`).toBe(3);
+  const sessionCount = await page.evaluate(() => {
+    if (!cachedResult || !cachedResult.scenarios || !cachedResult.scenarios.length) return 0;
+    const s0 = cachedResult.scenarios[0];
+    if (!s0 || !s0.schedule) return 0;
+    return s0.schedule.filter(s => s._title === 'Taller de Guion').length;
+  });
+  expect(sessionCount).toBe(3);
 });
 
 // ─────────────────────────────────────────────────────────────────────────────
