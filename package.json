@@ -6,7 +6,7 @@
   "scripts": {
     "test": "playwright test",
     "test:headed": "playwright test --headed",
-    "serve": "npx serve . --listen 3000 --no-clipboard"
+    "serve": "python3 -m http.server 3000"
   },
   "devDependencies": {
     "@playwright/test": "^1.60.0"

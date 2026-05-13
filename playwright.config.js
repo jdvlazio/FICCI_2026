@@ -5,6 +5,7 @@ module.exports = defineConfig({
   testDir: './tests',
   timeout: 30000,
   retries: 1,
+  reporter: [['html', { open: 'never' }], ['list']],
   use: {
     baseURL: 'http://localhost:3000',
     headless: true,
@@ -14,9 +15,9 @@ module.exports = defineConfig({
     { name: 'chromium', use: { ...devices['Desktop Chrome'] } },
   ],
   webServer: {
-    command: 'npx serve . --listen 3000 --no-clipboard',
+    command: 'python3 -m http.server 3000',
     url: 'http://localhost:3000',
     reuseExistingServer: !process.env.CI,
-    timeout: 15000,
+    timeout: 10000,
   },
 });
