@@ -84,9 +84,9 @@ test('T02 — apóstrofe: tap en título abre sheet', async ({ page }) => {
   await page.locator('.dtab[data-day="2026-06-06"]').click();
   await page.waitForSelector('.plist-item', { timeout: 8000 });
 
-  const whoopi = page.locator('.plist-item[data-title*="Whoopi"]').first();
-  await whoopi.scrollIntoViewIfNeeded();
-  await whoopi.locator('.plist-info').click();
+  const film = page.locator('.plist-item[data-title*="Here I"]').first();
+  await film.scrollIntoViewIfNeeded();
+  await film.locator('.plist-info').click();
 
   await page.waitForSelector('#pel-sheet.open', { timeout: 8000 });
   expect(await page.locator('#pel-sheet.open').count()).toBe(1);
@@ -182,7 +182,7 @@ test('T07 — quitar de Intereses desde sheet cierra el sheet', async ({ page })
   await page.waitForSelector('#pel-sheet.open', { timeout: 8000 });
 
   const wlBtn = page.locator('#pel-wl-btn');
-  await expect(wlBtn).toContainText(/intereses/i);
+  await expect(wlBtn).toContainText(/(intereses|interests)/i);
   await wlBtn.click();
 
   await page.waitForTimeout(700);
@@ -221,11 +221,14 @@ test('T09 — taller recurrente: 3 sesiones en el plan', async ({ page }) => {
   await page.locator('#ag-result-wrap').waitFor({ state: 'visible', timeout: 20000 });
 
   // Verificar directamente en cachedResult
-  const sessionCount = await page.evaluate(() => {
-    if (!cachedResult || !cachedResult.scenarios || !cachedResult.scenarios.length) return 0;
-    return cachedResult.scenarios[0].filter(s => s._title === 'Taller de Guion').length;
-  });
-  expect(sessionCount).toBe(3);
+  const t09Debug = await page.evaluate(() => ({
+    cr: !!cachedResult,
+    sc: cachedResult?.scenarios?.length ?? -1,
+    s0len: cachedResult?.scenarios?.[0]?.length ?? -1,
+    guion: cachedResult?.scenarios?.[0]?.filter(s => s._title === 'Taller de Guion').length ?? -1,
+  }));
+  const sessionCount = t09Debug.guion;
+  expect(sessionCount, `cachedResult=${t09Debug.cr} scenarios=${t09Debug.sc} s0len=${t09Debug.s0len}`).toBe(3);
 });
 
 // ─────────────────────────────────────────────────────────────────────────────

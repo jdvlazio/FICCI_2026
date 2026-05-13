@@ -4856,9 +4856,9 @@ function toggleWL(title,e){
   saveState('wl','watched');updateCardState(title);updateAgTab();
   if(activeView==='agenda'){cachedResult=null;renderAgenda();}
   else if(activeView==='day'&&activeMNav==='mnav-cartelera'){
-    // Re-renderizar solo si el pel-sheet no está abierto
+    // Re-renderizar solo si el pel-sheet no está abierto — preservar scroll
     const _pelOpen=document.getElementById('pel-sheet')?.classList.contains('open');
-    if(!_pelOpen) _renderProgramaContent();
+    if(!_pelOpen){const _sy=window.scrollY;_renderProgramaContent();window.scrollTo(0,_sy);}
   }
 }
 function toggleWatched(title,e){
