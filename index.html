@@ -9747,14 +9747,8 @@ function _renderSplashDropdown(activeFestId){
   const dd=document.getElementById('splash-dropdown');
   if(!dd) return;
   const today=new Date();today.setHours(12,0,0,0);
-  // Ordenar: más reciente primero (por festivalEndStr descendente)
-  const entries=Object.entries(FESTIVAL_CONFIG)
-    .filter(([,cfg])=>cfg.name&&cfg.group!=='test')
-    .sort((a,b)=>{
-      const ea=new Date(a[1].festivalEndStr||'2000-01-01');
-      const eb=new Date(b[1].festivalEndStr||'2000-01-01');
-      return eb-ea; // más reciente primero
-    });
+  const entries=_sortFestivals(Object.entries(FESTIVAL_CONFIG)
+    .filter(([,cfg])=>cfg.name&&cfg.group!=='test'), activeFestId);
   const html=entries.map(([id,cfg])=>{
     if(!cfg.name) return '';
     const isTest=cfg.group==='test';
@@ -9783,14 +9777,8 @@ function _renderFestivalSelector(activeFestId){
   const container=document.getElementById('fs-festival-list');
   if(!container) return;
   const today=new Date();today.setHours(12,0,0,0);
-  // Ordenar: más reciente primero
-  const entries=Object.entries(FESTIVAL_CONFIG)
-    .filter(([,cfg])=>cfg.name)
-    .sort((a,b)=>{
-      const ea=new Date(a[1].festivalEndStr||'2000-01-01');
-      const eb=new Date(b[1].festivalEndStr||'2000-01-01');
-      return eb-ea;
-    });
+  const entries=_sortFestivals(Object.entries(FESTIVAL_CONFIG)
+    .filter(([,cfg])=>cfg.name), activeFestId);
   // Group: regular vs test
   const regular=entries.filter(([,cfg])=>cfg.name&&cfg.group!=='test');
   const tests=entries.filter(([,cfg])=>cfg.name&&cfg.group==='test');
@@ -10138,7 +10126,21 @@ _sbInit();
 (function(){
   // Detecta el festival en curso por fecha. Prioridad:
   // 1. Festival que está sucediendo hoy · 2. El próximo más cercano · 3. El más reciente
-  function detectActiveFest(){
+  function _sortFestivals(entries, activeFestId){
+  const _now=new Date();
+  const _tier=([id,cfg])=>{
+    if(id===activeFestId) return 0;
+    if(new Date(cfg.festivalEndStr||'2000-01-01')>_now) return 1;
+    return 2;
+  };
+  return entries.sort((a,b)=>{
+    const ta=_tier(a),tb=_tier(b);
+    if(ta!==tb) return ta-tb;
+    if(ta===1) return new Date(a[1].festivalEndStr)-new Date(b[1].festivalEndStr);
+    return new Date(b[1].festivalEndStr)-new Date(a[1].festivalEndStr);
+  });
+}
+function detectActiveFest(){
     const today=new Date();today.setHours(12,0,0,0);
     let inProgress=null,nextUp=null,nextUpStart=null,mostRecent=null,mostRecentEnd=null;
     Object.entries(FESTIVAL_CONFIG).forEach(([id,cfg])=>{
