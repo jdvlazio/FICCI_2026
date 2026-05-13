@@ -9362,7 +9362,7 @@ function renderProgramaList(){
       const _isPrograma=f.is_programa&&f.film_list&&f.film_list.length>=2;
       const{displayTitle:_rawDt}=parseProgramTitle(f.title);
       const dt=_isPrograma
-        ?((f.film_list[0].title||'').split(' ').slice(0,5).join(' ')+'<span class="film-count-badge">+1</span>')
+        ?(_rawDt+'<span class="film-count-badge">+1</span>')
         :_rawDt;
       const vc=vcfg(f.venue);
       const src=getFilmPoster(f)||'';
