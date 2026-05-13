@@ -4858,12 +4858,12 @@ function toggleWL(title,e){
   saveState('wl','watched');updateCardState(title);updateAgTab();
   if(activeView==='agenda'){cachedResult=null;renderAgenda();}
   else if(activeView==='day'&&activeMNav==='mnav-cartelera'){
-    // Re-renderizar solo si el pel-sheet no está abierto
+    // Actualizar solo el item afectado — sin re-render completo
     const _pelOpen=document.getElementById('pel-sheet')?.classList.contains('open');
     if(!_pelOpen){
-      const _sy=window.scrollY;
-      _renderProgramaContent();
-      requestAnimationFrame(()=>window.scrollTo(0,_sy));
+      const _normT=normTitle(title);
+      const _item=document.querySelector(`.plist-item[data-title="${CSS.escape(_normT)}"], .ag-film-item[data-title="${CSS.escape(_normT)}"]`);
+      if(_item) _item.classList.toggle('in-wl', watchlist.has(_normT));
     }
   }
 }
