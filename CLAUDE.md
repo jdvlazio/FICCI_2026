@@ -3,7 +3,7 @@
 > No editar a mano — los cambios se sobreescriben en el próximo deploy.
 > Para modificar secciones estáticas, editar el template en el script.
 >
-> Último commit: `05696ac chore: bump SW 202605122358 — fuerza cache refresh para fix de posters locales`
+> Último commit: `ae6bb6c fix(leviza): FESTIVAL_CONFIG completo con festivalDates — detectActiveFest lo seleccionaba como next`
 
 ---
 
