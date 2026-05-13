@@ -9411,7 +9411,7 @@ function renderProgramaList(){
           <div class="plist-meta" style="${notice&&notice.type==='cancelled'?'text-decoration:line-through':''}">${vc.short}${sala(f.venue)?' · '+sala(f.venue):''}${f.duration?' · '+durFmt(f.duration):''}</div>
           ${noticeNote||`<div class="plist-sec">${f.section||''}</div>`}
         </div>
-        <div class="plist-heart${inWL?'':' empty'}" onclick="event.stopPropagation();_toggleWLFromList('${safeT}',this)">${inWL?ICONS.heartFill:ICONS.heart}</div>
+        <div class="plist-heart${inWL?'':' empty'}" data-title="${f.title.replace(/"/g,'&quot;')}" onclick="event.stopPropagation();_toggleWLFromList(this.dataset.title,this)">${inWL?ICONS.heartFill:ICONS.heart}</div>
       </div>`;
     }).join('')}
   `).join('');
@@ -9506,7 +9506,7 @@ function _renderExploreLista(){
         <div class="plist-meta">${days?`${daysHtml} · `:''}${durFmt(f.duration)}</div>
         <div class="plist-sec">${f.section||''}</div>
       </div>
-      <div class="plist-heart${inWL?'':' empty'}" onclick="event.stopPropagation();_toggleWLFromList('${safeT}',this)">${inWL?ICONS.heartFill:ICONS.heart}</div>
+      <div class="plist-heart${inWL?'':' empty'}" data-title="${f.title.replace(/"/g,'&quot;')}" onclick="event.stopPropagation();_toggleWLFromList(this.dataset.title,this)">${inWL?ICONS.heartFill:ICONS.heart}</div>
     </div>`;
     const _stk2=_programaStack(f);
     return`<div class="plist-item js-open-pel${allPast?' past-card':''}" data-title="${f.title}">
@@ -9514,7 +9514,7 @@ function _renderExploreLista(){
       <div class="plist-info">
         ${(()=>{const n=NOTICES.find(nx=>nx.title===f.title&&nx.festival===((_activeFestId||_DEFAULT_FEST_ID)));const nb=n?`<span class="notice-badge">${n.type==='cancelled'?t('notice_cancelada'):t('notice_reprog_short')}</span>`:'';const nn=n&&n.type==='cancelled'?`<div class="notice-detail-amber">${t('plan_fecha_pendiente')}</div>`:n&&n.type==='rescheduled'&&n.newTime?`<div class="notice-detail-green">${n.newDay||''} · ${n.newTime}${n.newVenue?' · '+n.newVenue:''}</div>`:'';return`<div class="plist-title" style="${allPast?'opacity:.5':''}">${nb}${dt}</div><div class="plist-meta" style="${n&&n.type==='cancelled'?'text-decoration:line-through':''}${allPast?';opacity:.5':''}">${daysHtml?`${daysHtml} · `:''}${durFmt(f.duration)}${_metaBadges(f)?` · ${_metaBadges(f)}`:''}</div>${nn||`<div class="plist-sec">${f.section||''}</div>`}`;})()}
       </div>
-      <div class="plist-heart${inWL?'':' empty'}" onclick="event.stopPropagation();_toggleWLFromList('${safeT}',this)">${inWL?ICONS.heartFill:ICONS.heart}</div>
+      <div class="plist-heart${inWL?'':' empty'}" data-title="${f.title.replace(/"/g,'&quot;')}" onclick="event.stopPropagation();_toggleWLFromList(this.dataset.title,this)">${inWL?ICONS.heartFill:ICONS.heart}</div>
     </div>`;
   }).join('');
   }catch(e){return;}
