@@ -8000,6 +8000,8 @@ function runCalc(){
   // Cancelar Worker previo si existe
   if(_activeCalcWorker){_activeCalcWorker.terminate();_activeCalcWorker=null;}
   cachedResult=null;
+  // Si ag-result no existe (Estado B — primer cálculo), mostrar el wrapper primero
+  if(!document.getElementById('ag-result')) showAgView();
   const btn=document.querySelector('.av-calc-btn');
   const res=document.getElementById('ag-result');
   if(btn){btn.disabled=true;btn.textContent=t('plan_calculando');}
