@@ -3958,8 +3958,15 @@ const FESTIVAL_CONFIG={
   },
   'leviza2026':{
     name:'Leviza - Festival de Cine y Audiovisuales en Zapatoca',shortName:'LEVIZA',
-    city:'Zapatoca',dates:'14–17 MAY',dates_en:'MAY 14–17',year:2026,
+    city:'Zapatoca',country:'CO',
+    dates:'14–17 MAY',dates_en:'MAY 14–17',year:2026,timezoneOffset:'-05:00',
     storageKey:'leviza2026_',festivalEndStr:'2026-05-17T23:00:00',
+    festivalDates:{'JUE 14':'2026-05-14','VIE 15':'2026-05-15','SÁB 16':'2026-05-16','DOM 17':'2026-05-17'},
+    days:[{k:'JUE 14',d:14,lbl:'JUE'},{k:'VIE 15',d:15,lbl:'VIE'},{k:'SÁB 16',d:16,lbl:'SÁB'},{k:'DOM 17',d:17,lbl:'DOM'}],
+    dayKeys:['JUE 14','VIE 15','SÁB 16','DOM 17'],
+    dayShort:{'JUE 14':'JUE 14','VIE 15':'VIE 15','SÁB 16':'SÁB 16','DOM 17':'DOM 17'},
+    dayShort_en:{'JUE 14':'THU 14','VIE 15':'FRI 15','SÁB 16':'SAT 16','DOM 17':'SUN 17'},
+    prioLimit:5,
     films:null,posters:null,lbSlugs:{}
   }
 };// Festival data loaded async from festivals/<id>.json via loadFestival()
@@ -4390,7 +4397,7 @@ let FESTIVAL_STORAGE_KEY=(localStorage.getItem('otrofestiv_festival')||_DEFAULT_
 // BUILD_VERSION: cambia en cada deploy.
 // Al cargar, compara con localStorage. Si difiere → reload duro.
 // sessionStorage evita loops infinitos dentro de la misma sesión.
-const BUILD_VERSION='202605121857';
+const BUILD_VERSION='202605130010';
 (function(){
   const _vk='otrofestiv_build';
   const _sk='otrofestiv_reloaded';
