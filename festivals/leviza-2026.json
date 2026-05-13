@@ -409,7 +409,9 @@
       "time": "14:00",
       "venue": "Mediateca Municipal - Zapatoca",
       "day_order": 3,
-      "duration": "240 min"
+      "duration": "240 min",
+      "is_recurring": true,
+      "director": "Tere Gaviria"
     },
     {
       "title": "Taller de Producción y Financiación",
@@ -419,7 +421,9 @@
       "time": "14:00",
       "venue": "Mediateca Municipal - Zapatoca",
       "day_order": 5,
-      "duration": "240 min"
+      "duration": "240 min",
+      "is_recurring": true,
+      "director": "Tere Gaviria"
     },
     {
       "title": "Taller de Producción y Financiación",
@@ -429,7 +433,9 @@
       "time": "14:00",
       "venue": "Mediateca Municipal - Zapatoca",
       "day_order": 3,
-      "duration": "240 min"
+      "duration": "240 min",
+      "is_recurring": true,
+      "director": "Tere Gaviria"
     },
     {
       "title": "Taller de Guion",
@@ -439,7 +445,9 @@
       "time": "14:00",
       "venue": "Mediateca Municipal - Zapatoca",
       "day_order": 4,
-      "duration": "240 min"
+      "duration": "240 min",
+      "is_recurring": true,
+      "director": "Raúl Gutiérrez"
     },
     {
       "title": "Taller de Guion",
@@ -449,7 +457,9 @@
       "time": "14:00",
       "venue": "Mediateca Municipal - Zapatoca",
       "day_order": 6,
-      "duration": "240 min"
+      "duration": "240 min",
+      "is_recurring": true,
+      "director": "Raúl Gutiérrez"
     },
     {
       "title": "Taller de Guion",
@@ -459,7 +469,9 @@
       "time": "14:00",
       "venue": "Mediateca Municipal - Zapatoca",
       "day_order": 4,
-      "duration": "240 min"
+      "duration": "240 min",
+      "is_recurring": true,
+      "director": "Raúl Gutiérrez"
     },
     {
       "title": "Taller de Dirección de Actores",
@@ -469,7 +481,9 @@
       "time": "14:00",
       "venue": "Mediateca Municipal - Zapatoca",
       "day_order": 7,
-      "duration": "240 min"
+      "duration": "240 min",
+      "is_recurring": true,
+      "director": "María Gamboa"
     },
     {
       "title": "Taller de Dirección de Actores",
@@ -479,7 +493,9 @@
       "time": "14:00",
       "venue": "Mediateca Municipal - Zapatoca",
       "day_order": 5,
-      "duration": "240 min"
+      "duration": "240 min",
+      "is_recurring": true,
+      "director": "María Gamboa"
     },
     {
       "title": "Taller de Dirección de Actores",
@@ -489,7 +505,9 @@
       "time": "14:00",
       "venue": "Mediateca Municipal - Zapatoca",
       "day_order": 3,
-      "duration": "240 min"
+      "duration": "240 min",
+      "is_recurring": true,
+      "director": "María Gamboa"
     },
     {
       "title": "Taller de Iniciación Actoral",
@@ -499,7 +517,9 @@
       "time": "14:00",
       "venue": "Mediateca Municipal - Zapatoca",
       "day_order": 8,
-      "duration": "240 min"
+      "duration": "240 min",
+      "is_recurring": true,
+      "director": "Herman Sánchez"
     },
     {
       "title": "Taller de Iniciación Actoral",
@@ -509,7 +529,9 @@
       "time": "14:00",
       "venue": "Mediateca Municipal - Zapatoca",
       "day_order": 6,
-      "duration": "240 min"
+      "duration": "240 min",
+      "is_recurring": true,
+      "director": "Herman Sánchez"
     },
     {
       "title": "Taller de Iniciación Actoral",
@@ -519,7 +541,9 @@
       "time": "14:00",
       "venue": "Mediateca Municipal - Zapatoca",
       "day_order": 4,
-      "duration": "240 min"
+      "duration": "240 min",
+      "is_recurring": true,
+      "director": "Herman Sánchez"
     },
     {
       "title": "Chist + Sin la Luz Perpetua",
