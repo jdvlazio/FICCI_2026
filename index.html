@@ -7881,7 +7881,7 @@ function saveCurrentScenario(){
 }
 function invalidateCalcResult(){
   // Called when availability changes — resets result prompt
-  if(!document.getElementById('ag-result')) return;
+  if(!document.getElementById('ag-result')){showAgView();return;}
   const res=document.getElementById('ag-result');
   const pending=[...watchlist].filter(titleStr=>!watched.has(titleStr)&&FILMS.some(f=>f.title===titleStr&&!screeningPassed(f)));
   res.innerHTML=pending.length
@@ -8169,10 +8169,10 @@ function renderAgenda(){
           </button>
         </div>
       </div>
-      <div class="amber-border-top ag-section">
+      ${cachedResult?`<div class="amber-border-top ag-section">
         <div class="txt-amber60 sec-hdr">${ICONS.switch} ${t('plan_opciones')}</div>
         <div id="ag-result">${resultContent}</div>
-      </div>`;
+      </div>`:''}`;
     renderAvBlocks();
   }
 }
