@@ -303,6 +303,18 @@ if dead_items:
 else:
     ok(check, 'sin código muerto conocido')
 
+# ── CHECK 9b: apostrophe-safe onclicks ───────────────────────────────────────
+# Detecta onclick inline que interpolan títulos escapados con &#39; — patrón roto.
+# El escape correcto para onclick es \\' (backslash-quote) o mejor aún dataset.title.
+check = 'apostrophe-onclick'
+import re as _re
+bad_onclick = _re.findall(r"onclick=\"[^\"]*&#39;[^\"]*\"", content)
+if bad_onclick:
+    for match in bad_onclick[:5]:
+        warn(check, f"onclick con &#39; (rompe con apóstrofes): {match[:80]}")
+else:
+    ok(check, 'sin onclick con &#39; inseguro')
+
 # ── CHECK 9: i18n completeness ────────────────────────────────────────────────
 # Verifica que todas las keys usadas en t('key') existan en AMBOS diccionarios ES y EN.
 check = 'i18n-complete'

@@ -9635,7 +9635,7 @@ function renderPeliculaView(){
     return _sep+`<div class="bg-surf-2 poster-card js-open-pel${inWL&&!inW?' in-wl':''}${inW&&!_ended?' in-watched':''}${(_isPrograma?false:_isEditorialPoster(f))?' editorial':''}" data-title="${f.title}"${_isPrograma?'':_cardBg}>
       ${posterImg}
       ${progBadge}
-      ${inWL?`<button class="poster-wl-dot wl-on" onclick="event.stopPropagation();toggleWL('${safeT}',event)" aria-label="Interés">${ICONS.heartFill}</button>`:''}
+      ${inWL?`<button class="poster-wl-dot wl-on" data-title="${f.title.replace(/"/g,'&quot;')}" onclick="event.stopPropagation();toggleWL(this.dataset.title,event)" aria-label="Interés">${ICONS.heartFill}</button>`:''}
     </div>`
   }).join('')}</div>`;
   requestAnimationFrame(()=>window.dispatchEvent(new Event('scroll')));// trigger lazy load
@@ -9713,7 +9713,7 @@ return`<div class="poster-card js-open-pel${inWL&&!inW?' in-wl':''}${inW&&!_fe?'
       ${posterImg}
       <div class="poster-time">${f.time}</div>
       ${nowBadge||pastBadge||progBadge}
-      ${inWL?`<button class="poster-wl-dot wl-on" onclick="event.stopPropagation();toggleWL('${safeT}',event)" aria-label="Interés">${ICONS.heartFill}</button>`:''}
+      ${inWL?`<button class="poster-wl-dot wl-on" data-title="${f.title.replace(/"/g,'&quot;')}" onclick="event.stopPropagation();toggleWL(this.dataset.title,event)" aria-label="Interés">${ICONS.heartFill}</button>`:''}
     </div>`;
   }).join('')+'</div>';
 
