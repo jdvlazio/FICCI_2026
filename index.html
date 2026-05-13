@@ -853,9 +853,6 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:var(--t
 .poster-card.in-wl{outline:2px solid var(--amber-30);outline-offset:-2px}
 .poster-card.in-watched{opacity:.45}
 .poster-card.past-card{opacity:.35}
-.poster-wrap{display:flex;flex-direction:column;gap:5px}
-.poster-days{display:flex;flex-wrap:wrap;gap:2px 4px;padding:0 1px;min-height:14px}
-.poster-days .pelicula-day{font-size:var(--t-xs);width:auto}
 .ag-excl-item.past-card{opacity:.35}
 .excl-reason{font-size:var(--t-xs);color:var(--gray2)}
 .excl-reason.conflict{color:var(--amber-60);font-weight:var(--w-semi)}
@@ -3537,6 +3534,13 @@ function makeProgramPoster(title, duration, section){
   const numMatch=title.match(/(?:Prog\.\s*|Programa\s+)(\d+)|(?:—\s*|:\s*|Prog\.\s*)(\d+)\s*(?:·|$)|\s(\d+)\s*$/);
   const num=numMatch?(numMatch[1]||numMatch[2]||numMatch[3]):null;
 
+  // Día — extrae nombre de día al final del título ("— Jueves" → "JUE")
+  // Solo aplica cuando no hay número (los programas numerados ya tienen su diferenciador)
+  const _dayNameMap={'lunes':'LUN','martes':'MAR','miércoles':'MIÉ','miercoles':'MIÉ',
+    'jueves':'JUE','viernes':'VIE','sábado':'SÁB','sabado':'SÁB','domingo':'DOM'};
+  const _dayMatch=!num&&title.match(/[—\-]\s*([a-záéíóúüñ]+)\s*$/i);
+  const dayAbbr=_dayMatch?(_dayNameMap[_dayMatch[1].toLowerCase()]||null):null;
+
   // Body: siempre vacío cuando hay número (el header + número son suficientes)
   // Sin número: extraer solo la parte distintiva
   let bodyTitle='';
@@ -3555,7 +3559,7 @@ function makeProgramPoster(title, duration, section){
       bodyTitle='';
   }
 
-  return _buildPosterV16({accent, headerLabel, title:bodyTitle, num});
+  return _buildPosterV16({accent, headerLabel, title:bodyTitle, num:num||dayAbbr||null});
 }
 /* ══════════════════════════════════════════════════════
    SISTEMA DE PÓSTERS — fuente unificada y normalizada
@@ -9552,6 +9556,8 @@ function renderPeliculaView(){
     if(so!==0) return so;
     const do_diff=(a.film.day_order||0)-(b.film.day_order||0);
     if(do_diff!==0) return do_diff;
+    const da=DAY_KEYS.indexOf(a.film.day),db=DAY_KEYS.indexOf(b.film.day);
+    if(da!==db) return da-db;
     return toMin(a.film.time||'00:00')-toMin(b.film.time||'00:00');
   });
 
@@ -9599,12 +9605,11 @@ function renderPeliculaView(){
       }
     }
     const _sep=activeDay==='all'&&f.section&&f.section!==_prevSec?`<div class="poster-grid-sep">${(f.section||'').replace(/^[\p{Emoji}\s]+/u,'').trim()}</div>`:'';_prevSec=f.section||_prevSec;
-    const _daysHtml=_dayChips(screenings);
-    return _sep+`<div class="poster-wrap"><div class="bg-surf-2 poster-card js-open-pel${inWL&&!inW?' in-wl':''}${inW&&!_ended?' in-watched':''}${(_isPrograma?false:_isEditorialPoster(f))?' editorial':''}" data-title="${f.title}"${_isPrograma?'':_cardBg}>
+    return _sep+`<div class="bg-surf-2 poster-card js-open-pel${inWL&&!inW?' in-wl':''}${inW&&!_ended?' in-watched':''}${(_isPrograma?false:_isEditorialPoster(f))?' editorial':''}" data-title="${f.title}"${_isPrograma?'':_cardBg}>
       ${posterImg}
       ${progBadge}
       ${inWL?`<button class="poster-wl-dot wl-on" onclick="event.stopPropagation();toggleWL('${safeT}',event)" aria-label="Interés">${ICONS.heartFill}</button>`:''}
-    </div>${_daysHtml?`<div class="poster-days">${_daysHtml}</div>`:''}</div>`
+    </div>`
   }).join('')}</div>`;
   requestAnimationFrame(()=>window.dispatchEvent(new Event('scroll')));// trigger lazy load
 }
