@@ -287,18 +287,24 @@ async function waitForApp(frame, timeoutMs = 20000) {
     throw new Error(`loadFestival('${festId}') falló: ${e.message}`);
   }
 
-  // 4. Confirmar que FILMS se pobló
-  return new Promise((resolve, reject) => {
+  // 4. Confirmar que FILMS se pobló (primer llenado)
+  await new Promise((resolve, reject) => {
     function check() {
       try {
         const films = w.eval('typeof FILMS !== "undefined" ? FILMS : null');
-        if (films && Array.isArray(films) && films.length > 0) return resolve(w);
+        if (films && Array.isArray(films) && films.length > 0) return resolve();
       } catch(e) {}
       if (Date.now() > deadline) return reject(new Error('Timeout: FILMS vacío después de loadFestival'));
       setTimeout(check, 200);
     }
     check();
   });
+
+  // 5. Estabilización — el app puede tener código de init concurrente
+  //    que resetea FILMS brevemente. Esperamos que termine.
+  await sleep(2000);
+
+  return w;
 }
 
 // ── Tests ─────────────────────────────────────────────────────────────────────
