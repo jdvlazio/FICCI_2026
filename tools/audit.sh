@@ -3,7 +3,7 @@
 # Detecta valores hardcodeados que deberían usar var(--).
 # Solo marca propiedades con valor ÚNICO hardcodeado (no shorthands mixtos).
 # Excepciones documentadas en el bloque REGLA DE SISTEMA del :root.
-# Uso: ./audit.sh desde la raíz del repo.
+# Uso: ./tools/audit.sh desde la raíz del repo.
 # ───────────────────────────────────────────────────────────────────────────
 
 FILE="index.html"

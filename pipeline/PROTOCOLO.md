@@ -62,7 +62,7 @@ El script rellena `director`, `genre`, `year`, `synopsis`, **`poster`** (URL TMD
 > **`lbSlug` se resuelve en el mismo script** — el enricher obtiene el slug de Letterboxd automáticamente via `letterboxd.com/tmdb/{id}/`. Films no encontrados en Letterboxd quedan con `⚠️ LB PENDIENTE` en el JSON — buscarlos manualmente y reemplazar el valor.
 
 **Opción B — Enricher web:**
-Abrir `otrofestiv.app/enricher.html`, cargar los films, correr TMDB automáticamente, y resolver slugs de Letterboxd desde la tab del browser.
+Abrir `otrofestiv.app/tools/enricher.html`, cargar los films, correr TMDB automáticamente, y resolver slugs de Letterboxd desde la tab del browser.
 
 **Tú produces:** JSON con `posters{}`, `lbSlugs{}`, `director`, `genre`, `year`, `synopsis` listos.
 
@@ -201,7 +201,7 @@ Para agregar un festival nuevo, el único lugar que se edita es `FESTIVAL_CONFIG
 El festival queda disponible automáticamente en el selector y en `_DEFAULT_FEST_ID`.
 
 > **Seguridad:** La TMDB API key NO debe incluirse en el bundle de producción (`index.html`).
-> Solo pertenece en herramientas de enriquecimiento offline (`enricher.html`, `scripts/enrich-festival.py`).
+> Solo pertenece en herramientas de enriquecimiento offline (`tools/enricher.html`, `scripts/enrich-festival.py`).
 > La key en producción debe ser `''` (string vacío) — los fallbacks la manejan silenciosamente.
 
 
@@ -262,6 +262,6 @@ Siempre emoji de banderas: `"🇨🇴"`, `"🇦🇷🇫🇷"`
   aff-2026.json          ← AFF 2026 (producción)
   ficci-65.json          ← FICCI 65 (archivado)
 
-/ARQUITECTURA.md         ← documentación técnica completa del sistema
-enricher.html            ← enricher de películas (TMDB + Letterboxd)
+/docs/ARQUITECTURA.md         ← documentación técnica completa del sistema
+tools/enricher.html            ← enricher de películas (TMDB + Letterboxd)
 ```

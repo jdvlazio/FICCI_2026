@@ -120,9 +120,9 @@ git clone https://<GITHUB_TOKEN>@github.com/jdvlazio/Otrofestiv.app.git /home/cl
 
 Después del clone, leer en este orden:
 1. Este archivo (\`CLAUDE.md\`)
-2. \`ARQUITECTURA.md\` — diseño, reglas, componentes, patrones
-3. Si el trabajo involucra datos de festival: \`SCHEMA.md\`
-4. Si el trabajo involucra onboarding de un festival nuevo: \`PIPELINE.md\`
+2. \`docs/ARQUITECTURA.md\` — diseño, reglas, componentes, patrones
+3. Si el trabajo involucra datos de festival: \`docs/SCHEMA.md\`
+4. Si el trabajo involucra onboarding de un festival nuevo: \`docs/PIPELINE.md\`
 
 ---
 
@@ -157,16 +157,16 @@ ${featuresSection}
 
 | Archivo | Qué contiene |
 |---|---|
-| \`ARQUITECTURA.md\` | Design system completo, reglas de diseño, mapa de funciones, patrones canónicos |
-| \`PIPELINE.md\` | Proceso de onboarding de festivales nuevos (fases, gates, roles) |
-| \`SCHEMA.md\` | Schema normativo del JSON de festival |
+| \`docs/ARQUITECTURA.md\` | Design system completo, reglas de diseño, mapa de funciones, patrones canónicos |
+| \`docs/PIPELINE.md\` | Proceso de onboarding de festivales nuevos (fases, gates, roles) |
+| \`docs/SCHEMA.md\` | Schema normativo del JSON de festival |
 | \`.specify/memory/constitution.md\` | Rationale de decisiones de arquitectura clave |
 | \`.specify/features/\` | Specs y planes de features en desarrollo |
 | \`validate.py\` | Validador: JS syntax, divs críticos, CSS, patrones prohibidos |
 
 ---
 
-## Reglas críticas (resumen — ver \`ARQUITECTURA.md\` para detalle)
+## Reglas críticas (resumen — ver \`docs/ARQUITECTURA.md\` para detalle)
 
 - **CTA primario:** fondo amber sólido, texto negro. Siempre.
 - **Pósters:** solo vía \`getFilmPoster(f)\` o \`getCortoItemPoster(item)\`. Nunca directo.

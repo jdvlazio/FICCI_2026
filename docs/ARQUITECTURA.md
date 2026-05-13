@@ -12,8 +12,8 @@
 ├── sw.js                       ← Service Worker (actualizar con bump-version.js antes de deploy)
 ├── manifest.json               ← PWA manifest
 ├── version.json                ← Build timestamp — sincronizado por bump-version.js
-├── enricher.html               ← Herramienta de enriquecimiento TMDB
-├── ARQUITECTURA.md             ← Este documento
+├── tools/enricher.html         ← Herramienta de enriquecimiento TMDB
+├── docs/ARQUITECTURA.md        ← Este documento
 ├── i18n/
 │   ├── es.json                 ← Strings en español (fuente de verdad)
 │   ├── en.json                 ← Strings en inglés

@@ -81,7 +81,7 @@
      · gap:10px varios                     → entre sp-2(8) y sp-3(12)
      · margin: 5px, 6px, 10px, 18px, 20px → entre tokens, ritmos ópticos
 
-   Para auditar: ./audit.sh desde la raíz del repo.
+   Para auditar: ./tools/audit.sh desde la raíz del repo.
 ─────────────────────────────────────────────────────────────────────────── */
 
   /* ── Superficies ── */
@@ -3932,7 +3932,7 @@ const NOTICES=[
 //   group:'test' — aparece en sección separada del selector; omitir para festivales regulares
 //   eventPosterLabel — ['LÍNEA1','LÍNEA2'] para el poster generativo de eventos
 //
-// Al agregar festival: también actualizar FESTIVALS en enricher.html
+// Al agregar festival: también actualizar FESTIVALS en tools/enricher.html
 const FESTIVAL_CONFIG={
   // ── Bootstrap mínimo por festival ────────────────────────────────────────
   // Campos requeridos ANTES del fetch (usados por splash y _DEFAULT_FEST_ID):
@@ -4403,7 +4403,7 @@ let FESTIVAL_STORAGE_KEY=(localStorage.getItem('otrofestiv_festival')||_DEFAULT_
 // BUILD_VERSION: cambia en cada deploy.
 // Al cargar, compara con localStorage. Si difiere → reload duro.
 // sessionStorage evita loops infinitos dentro de la misma sesión.
-const BUILD_VERSION='202605130019';
+const BUILD_VERSION='202605132250';
 (function(){
   const _vk='otrofestiv_build';
   const _sk='otrofestiv_reloaded';

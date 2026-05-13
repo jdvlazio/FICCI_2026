@@ -1,5 +1,5 @@
 # Otrofestiv — Constitution
-> El *por qué* de las decisiones de arquitectura. El *qué* y el *cómo* viven en `ARQUITECTURA.md`.
+> El *por qué* de las decisiones de arquitectura. El *qué* y el *cómo* viven en `docs/ARQUITECTURA.md`.
 > Actualizar cada vez que se tome una decisión de arquitectura significativa.
 
 ---
@@ -23,7 +23,7 @@ El 100% de los usuarios accede desde móvil. Desktop es nice-to-have, no requisi
 ## Decisiones de diseño
 
 ### Sistema de tokens (CSS custom properties)
-Todo valor de spacing, tipografía y color usa `var(--)`. Esto no es preferencia estética — es la única forma de mantener consistencia a escala en un archivo de ~10k líneas sin un preprocessor. La regla se audita con `audit.sh`.
+Todo valor de spacing, tipografía y color usa `var(--)`. Esto no es preferencia estética — es la única forma de mantener consistencia a escala en un archivo de ~10k líneas sin un preprocessor. La regla se audita con `tools/audit.sh`.
 
 ### Amber como color de acción
 `--amber` (#F59E0B) es el único CTA primario. Verde (`--green`) es confirmación/estado activo. Rojo (`--red`) es error/conflicto. Ningún otro color tiene semántica de acción. Esta restricción previene proliferación de colores de acción que degradan la jerarquía visual.

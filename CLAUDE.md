@@ -3,7 +3,7 @@
 > No editar a mano — los cambios se sobreescriben en el próximo deploy.
 > Para modificar secciones estáticas, editar el template en el script.
 >
-> Último commit: `ec2ee14 feat(leviza): 7 posters TMDB verificados por PM — cobertura top-level 9/9`
+> Último commit: `25834c2 fix(tests): T09 — scenarios[0].schedule, no scenarios[0] directo`
 
 ---
 
@@ -28,9 +28,9 @@ git clone https://<GITHUB_TOKEN>@github.com/jdvlazio/Otrofestiv.app.git /home/cl
 
 Después del clone, leer en este orden:
 1. Este archivo (`CLAUDE.md`)
-2. `ARQUITECTURA.md` — diseño, reglas, componentes, patrones
-3. Si el trabajo involucra datos de festival: `SCHEMA.md`
-4. Si el trabajo involucra onboarding de un festival nuevo: `PIPELINE.md`
+2. `docs/ARQUITECTURA.md` — diseño, reglas, componentes, patrones
+3. Si el trabajo involucra datos de festival: `docs/SCHEMA.md`
+4. Si el trabajo involucra onboarding de un festival nuevo: `docs/PIPELINE.md`
 
 ---
 
@@ -80,16 +80,16 @@ Juan es Product Owner, diseñador y developer. Claude ejecuta; Juan audita y apr
 
 | Archivo | Qué contiene |
 |---|---|
-| `ARQUITECTURA.md` | Design system completo, reglas de diseño, mapa de funciones, patrones canónicos |
-| `PIPELINE.md` | Proceso de onboarding de festivales nuevos (fases, gates, roles) |
-| `SCHEMA.md` | Schema normativo del JSON de festival |
+| `docs/ARQUITECTURA.md` | Design system completo, reglas de diseño, mapa de funciones, patrones canónicos |
+| `docs/PIPELINE.md` | Proceso de onboarding de festivales nuevos (fases, gates, roles) |
+| `docs/SCHEMA.md` | Schema normativo del JSON de festival |
 | `.specify/memory/constitution.md` | Rationale de decisiones de arquitectura clave |
 | `.specify/features/` | Specs y planes de features en desarrollo |
 | `validate.py` | Validador: JS syntax, divs críticos, CSS, patrones prohibidos |
 
 ---
 
-## Reglas críticas (resumen — ver `ARQUITECTURA.md` para detalle)
+## Reglas críticas (resumen — ver `docs/ARQUITECTURA.md` para detalle)
 
 - **CTA primario:** fondo amber sólido, texto negro. Siempre.
 - **Pósters:** solo vía `getFilmPoster(f)` o `getCortoItemPoster(item)`. Nunca directo.
