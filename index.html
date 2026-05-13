@@ -8502,6 +8502,7 @@ function togglePelWL(title,e){
   const inWL=watchlist.has(title);
   btn.innerHTML=(inWL?ICONS.heartFill:ICONS.heart)+' '+(inWL?t('cta_en_intereses'):t('cta_intereses'));
   btn.className='pel-sheet-action-btn'+(inWL?' act-on btn-primary':' btn-primary');
+  if(wasInWL&&!inWL) closePelSheet(); // quitar de intereses → cerrar sheet
   if(!wasInWL&&inWL){
     showActionToast(`${ICONS.heartFill} ${t('cta_en_intereses')}`,`${ICONS.star} ${t('cta_priorizar')}`,()=>togglePriority(title));
   }
