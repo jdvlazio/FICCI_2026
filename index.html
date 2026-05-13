@@ -8503,6 +8503,8 @@ function togglePelWL(title,e){
   btn.className='pel-sheet-action-btn'+(inWL?' act-on btn-primary':' btn-primary');
   if(!wasInWL&&inWL){
     showActionToast(`${ICONS.heartFill} ${t('cta_en_intereses')}`,`${ICONS.star} ${t('cta_priorizar')}`,()=>togglePriority(title));
+  } else if(wasInWL&&!inWL){
+    setTimeout(()=>closePelSheet(),300);
   }
 }
 // _dayChips — renderiza días únicos de un film como spans tappables (filtran por día)
