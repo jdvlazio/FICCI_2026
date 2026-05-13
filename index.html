@@ -9554,10 +9554,10 @@ function renderPeliculaView(){
   entries.sort((a,b)=>{
     const so=_secIdx(a.film)-_secIdx(b.film);
     if(so!==0) return so;
-    const do_diff=(a.film.day_order||0)-(b.film.day_order||0);
-    if(do_diff!==0) return do_diff;
     const da=DAY_KEYS.indexOf(a.film.day),db=DAY_KEYS.indexOf(b.film.day);
     if(da!==db) return da-db;
+    const do_diff=(a.film.day_order||0)-(b.film.day_order||0);
+    if(do_diff!==0) return do_diff;
     return toMin(a.film.time||'00:00')-toMin(b.film.time||'00:00');
   });
 
