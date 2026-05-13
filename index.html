@@ -2957,7 +2957,7 @@ const _I18N = {
     "plan_vista_hoy": "vista hoy",
     "plan_vistas_hoy": "vistas hoy",
     "cta_en_intereses": "En Intereses",
-    "cta_priorizada": "Priorizada",
+    "cta_quitado_intereses": "Quitado de Intereses",
     "cta_asistio": "Asistí",
     "misc_conservar": "Conservar",
     "misc_omitir": "Omitir",
@@ -3252,7 +3252,7 @@ const _I18N = {
     "plan_vista_hoy": "seen today",
     "plan_vistas_hoy": "seen today",
     "cta_en_intereses": "In Interests",
-    "cta_priorizada": "Prioritized",
+    "cta_quitado_intereses": "Removed from Interests",
     "cta_asistio": "Attended",
     "misc_conservar": "Keep",
     "misc_omitir": "Skip",
@@ -4836,7 +4836,7 @@ function toggleWL(title,e){
     }
     // Now safe to remove from watchlist
     watchlist.delete(title);watched.delete(title);prioritized.delete(title);
-    showToast('Fuera de tus intereses','info');
+    showActionToast(t('cta_quitado_intereses'));
   }
   else{
     watchlist.add(title);watched.delete(title);
@@ -6000,7 +6000,7 @@ function removeFilmFromScenario(title,e){
       watched.delete(title);
       saveState('wl','prio','watched');
       updateAgTab();
-      showToast('Fuera de tus intereses','info');
+      showActionToast(t('cta_quitado_intereses'));
       runCalc(); // recalcula directamente, no borra la vista
     }
   );
