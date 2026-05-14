@@ -54,6 +54,21 @@ El validador chequea JS syntax, divs críticos, CSS corruption y patrones prohib
 ### Atomicidad de tasks
 `tasks.md` se actualiza al terminar la implementación de cada tarea — en el mismo commit que el código, no al final de la sesión. Un commit de feature sin su `tasks.md` correspondiente es un commit incompleto. Esta regla existe porque el contexto entre sesiones se pierde: el tasks.md es la única memoria persistente del estado real de cada feature. `validate.py` advierte si algún `tasks.md` tiene cero tareas completadas — señal de desincronización entre código y documentación.
 
+### CI = solo validar (bump es local)
+El workflow `bump-and-validate.yml` en GitHub Actions solo corre `python3 validate.py`. El bump de versión (`node scripts/bump-version.js`) es responsabilidad del developer local, justo antes de cada push. El auto-bump en CI fue eliminado porque `bump-version.js` fallaba con exit code 1 en el runner de GitHub Actions (causa exacta nunca identificada). El nombre del workflow es histórico — el comportamiento actual es validar-only.
+
+### iOS non-scrollable page bug (patrón conocido)
+Cuando el contenido total de la página es menor que el alto del viewport (página sin scroll), iOS calcula `position:fixed;bottom:0` relativo al fondo del documento en lugar del fondo del viewport. El nav principal aparece flotando en el centro de la pantalla. Se corrige con el primer tap del usuario.
+
+**Causa exacta:** Leviza con modo "Hoy" (día específico) muestra 5 items en una pantalla de 844px — el contenido total (~570px) no supera el viewport.
+
+**Fix implementado:** `_fixStickyOffset()` calcula `--min-content-h = window.innerHeight - topbarHeight + 1px` y lo aplica como `min-height` en `#grid`. Esto garantiza que la página siempre tenga al menos 1px de scroll disponible, forzando a iOS a usar el path correcto para `position:fixed`.
+
+**Para debug futuro:** si el nav aparece en posición incorrecta solo en ciertos festivales o días con pocos items, verificar que `--min-content-h` esté siendo calculado correctamente por `_fixStickyOffset()`.
+
+### hdr-fest-bar — Opción A (nombre truncado, fecha fija derecha)
+El selector de festival en el topbar usa `text-overflow:ellipsis` en `.hdr-fest-name` con `flex:1;min-width:0;overflow:hidden;white-space:nowrap`. La fecha (`.hdr-fest-dates`) tiene `flex-shrink:0;white-space:nowrap` — nunca wrappea, siempre aparece a la derecha. Si el nombre es muy largo, se trunca con `…`. Esto garantiza 1 sola línea en todos los festivales independientemente del largo del nombre. Opciones B y C (name+date fluyen juntos, o fecha abajo) fueron descartadas por inconsistencia visual.
+
 ### Timezone Colombia (UTC-5)
 Los festivales colombianos operan en hora local. `toISOString()` devuelve UTC, lo que produce diferencias de fecha silenciosas en lógica de "hoy". Toda comparación de fechas usa offset `-05:00` explícito.
 

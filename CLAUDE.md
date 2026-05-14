@@ -3,7 +3,7 @@
 > No editar a mano — los cambios se sobreescriben en el próximo deploy.
 > Para modificar secciones estáticas, editar el template en el script.
 >
-> Último commit: `7d704b4 fix(programa): regla global — navegación por día específico siempre en vista lista por defecto`
+> Último commit: `9b0b6a7 fix(tests): T10 acepta .poster-card y .plist-item — compatible con vista lista por defecto`
 
 ---
 
@@ -106,6 +106,25 @@ Juan es Product Owner, diseñador y developer. Claude ejecuta; Juan audita y apr
 
 - **TMDB:** `38f24e78b2f13970af3430eb0732f0ac`
 - **GitHub token:** en el bootstrap command de arriba
+
+---
+
+## Android APK (Play Store)
+
+- **Track:** Closed testing — Alpha
+- **versionCode actual:** 3 (subido MAY 14, 2026)
+- **Próximo versionCode:** **4** — nunca reutilizar un code ya publicado
+- **server.url:** `https://otrofestiv.app` — la app carga desde producción, no desde bundle local
+- **Para compilar:** Android Studio → Build → Generate Signed Bundle → versionCode en `android/app/build.gradle`
+- **Para subir:** Play Console → Testing → Closed testing → Alpha → Create new release
+
+---
+
+## CI — GitHub Actions
+
+- **bump-and-validate.yml:** solo corre `python3 validate.py`. El bump de versión es responsabilidad local — correr `node scripts/bump-version.js` antes de cada push.
+- **playwright.yml:** tests de regresión T01–T10, viewport 390×844 (iPhone 14), simTime frozen para festivales activos.
+- **promote-ios.yml:** workflow manual para promover `version.json.android → .ios` (staged rollout).
 
 ---
 

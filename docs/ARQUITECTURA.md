@@ -377,7 +377,11 @@ Siempre usar `screensConflict(a, b)`. Nunca comparaciones de minutos directas.
     .elemento::after { content: ''; position: absolute; inset: -Xpx; }
     /* X = (44 - tamaño_visual) / 2   |   Ejemplo: emoji 22px → inset: -11px */
     ```
-11. **Cards** — 4 tipos canónicos (no agregar campos sin pasar por arquitectura):
+11. **Vista por modo de navegación** — regla global inamovible:
+    - `activeDay === 'all'` (Explorar/TODO) → `programaViewMode = 'grid'`
+    - `activeDay !== 'all'` (día específico) → `programaViewMode = 'list'`
+    - Se aplica en `loadFestival()`, `filterByVenue()` y `filterBySection()`. El usuario puede cambiar manualmente después; esta regla aplica solo al estado inicial/reset.
+12. **Cards** — 4 tipos canónicos (no agregar campos sin pasar por arquitectura):
     - Película: poster + flags + título + dur + sección, funciones + dir + sinopsis + Letterboxd, CTAs
     - Programa de cortos: igual + lista de cortos, sin Letterboxd
     - Corto individual (`openCortoSheet`): igual, solo Intereses + Calificar

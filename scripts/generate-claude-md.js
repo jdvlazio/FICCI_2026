@@ -186,6 +186,25 @@ ${featuresSection}
 
 ---
 
+## Android APK (Play Store)
+
+- **Track:** Closed testing — Alpha
+- **versionCode actual:** 3 (subido MAY 14, 2026)
+- **Próximo versionCode:** **4** — nunca reutilizar un code ya publicado
+- **server.url:** \`https://otrofestiv.app\` — la app carga desde producción, no desde bundle local
+- **Para compilar:** Android Studio → Build → Generate Signed Bundle → versionCode en \`android/app/build.gradle\`
+- **Para subir:** Play Console → Testing → Closed testing → Alpha → Create new release
+
+---
+
+## CI — GitHub Actions
+
+- **bump-and-validate.yml:** solo corre \`python3 validate.py\`. El bump de versión es responsabilidad local — correr \`node scripts/bump-version.js\` antes de cada push.
+- **playwright.yml:** tests de regresión T01–T10, viewport 390×844 (iPhone 14), simTime frozen para festivales activos.
+- **promote-ios.yml:** workflow manual para promover \`version.json.android → .ios\` (staged rollout).
+
+---
+
 ## Herramientas del pipeline
 
 \`\`\`bash
