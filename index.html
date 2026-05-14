@@ -4403,7 +4403,7 @@ let FESTIVAL_STORAGE_KEY=(localStorage.getItem('otrofestiv_festival')||_DEFAULT_
 // BUILD_VERSION: cambia en cada deploy.
 // Al cargar, compara con localStorage. Si difiere → reload duro.
 // sessionStorage evita loops infinitos dentro de la misma sesión.
-const BUILD_VERSION='202605140012';
+const BUILD_VERSION='202605140018';
 (function(){
   const _vk='otrofestiv_build';
   const _sk='otrofestiv_reloaded';
@@ -6221,11 +6221,11 @@ function renderNextStrip(schedule){
     const margin=nextStart-needed;
     if(margin<0){
       const{displayTitle:nt}=parseProgramTitle(next._title||'');
-      const nShort=nt.length>22?nt.slice(0,20)+'…':nt;
+      const nShort=nt.length>26?nt.slice(0,24)+'…':nt;
       warnHtml=`<div class="delay-warn"><span class="delay-warn-ico">${ICONS.alert}</span><span>Con el retraso terminas ~${minToStr(effectiveEndMin)}. Solo quedan <b>${nextStart-effectiveEndMin} min</b> antes de <b>${nShort}</b>${travel>0?` (${travel} min de viaje)`:''}.</span></div>`;
     } else if(margin<15){
       const{displayTitle:nt}=parseProgramTitle(next._title||'');
-      const nShort=nt.length>22?nt.slice(0,20)+'…':nt;
+      const nShort=nt.length>26?nt.slice(0,24)+'…':nt;
       warnHtml=`<div class="delay-warn warn-amber"><span class="delay-warn-ico">${ICONS.alert}</span><span>Terminas ~${minToStr(effectiveEndMin)}. Margen ajustado: <b>${margin} min</b> hasta <b>${nShort}</b>.</span></div>`;
     }
   }
@@ -6647,7 +6647,7 @@ function renderContextualHeader(){
           const travel=travelMins(next.venue,nextFilm.venue);
           const margin=toMin(nextFilm.time)-(effectiveEndMin+FESTIVAL_BUFFER+travel);
           const{displayTitle:nt}=parseProgramTitle(nextFilm._title||'');
-          const nShort=nt.length>22?nt.slice(0,20)+'…':nt;
+          const nShort=nt.length>26?nt.slice(0,24)+'…':nt;
           if(margin<0){
             warnHtml=`<div class="delay-warn"><span class="delay-warn-ico">${ICONS.alert}</span><span>Con el retraso terminas ~${minToStr(effectiveEndMin)}. Solo quedan <b>${toMin(nextFilm.time)-effectiveEndMin} min</b> antes de <b>${nShort}</b>${travel>0?` (${travel} min de viaje)`:''}</span></div>`;
           }else if(margin<15){

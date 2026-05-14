@@ -1,7 +1,7 @@
 # Tasks — Title truncation fix
 
-- [ ] 1. L5678 prio-chip-title: 14→22 chars (permite 2 líneas completas)
-- [ ] 2. L6478 ctx-prio-chip Mi Plan header: eliminar slice, CSS ellipsis
-- [ ] 3. L6614 ctx-prio next title: 16→24 chars
-- [ ] 4. validate.py
-- [ ] 5. QA: Opening Night visible, Planner chips 2 líneas
+- [x] 1. L5783 prio-chip-title: ya en 22 chars (CSS line-clamp:2 maneja overflow) ✓
+- [x] 2. ctx-prio-name: ya sin slice, CSS text-overflow:ellipsis maneja ✓
+- [x] 3. nShort (delay warnings): 20→24 chars — L6224, L6228, L6650
+- [x] 4. validate.py 13/13 ✓
+- [x] 5. QA: "La Vendedora de Rosas" + "Los Súper Descendientes" — 2 líneas ✓

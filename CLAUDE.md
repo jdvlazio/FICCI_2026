@@ -3,7 +3,7 @@
 > No editar a mano — los cambios se sobreescriben en el próximo deploy.
 > Para modificar secciones estáticas, editar el template en el script.
 >
-> Último commit: `ca2b392 fix(data-title): Fase 2 — openRatingSheet y removeFromAgenda via data-title`
+> Último commit: `611e0fd refactor(data-title): Fase 3 — eliminar orphans safeTitle + safeParent`
 
 ---
 
