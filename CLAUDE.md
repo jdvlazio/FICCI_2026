@@ -3,7 +3,7 @@
 > No editar a mano — los cambios se sobreescriben en el próximo deploy.
 > Para modificar secciones estáticas, editar el template en el script.
 >
-> Último commit: `465a986 copy(leviza): eliminar 'en Zapatoca' del nombre — ciudad aparece en metadatos`
+> Último commit: `5371174 fix(nav): re-ejecutar initProgramaModeBar+_fixStickyOffset post-splash — fix definitivo iOS compositor`
 
 ---
 

@@ -1556,6 +1556,8 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:var(--t
   .hdr-fest-bar{border-top:none;border-bottom:none}
   /* Remove the margin on nav-row that adds space above day tabs. */
   .nav-row{margin-top:0;background:transparent}
+  /* iOS non-scrollable fix: ver _fixStickyOffset */
+  #grid{min-height:var(--min-content-h,0px)}
 
   #chrome-blur{display:none}
 
@@ -4410,7 +4412,7 @@ let FESTIVAL_STORAGE_KEY=(localStorage.getItem('otrofestiv_festival')||_DEFAULT_
 // BUILD_VERSION: cambia en cada deploy.
 // Al cargar, compara con localStorage. Si difiere → reload duro.
 // sessionStorage evita loops infinitos dentro de la misma sesión.
-const BUILD_VERSION='202605142146';
+const BUILD_VERSION='202605142157';
 (function(){
   const _vk='otrofestiv_build';
   const _sk='otrofestiv_reloaded';
@@ -10342,6 +10344,10 @@ function _fixStickyOffset(){
     r.setProperty('--sticky-top-carta',tbH+'px'); // kept for desktop-compat
     r.setProperty('--sticky-top-lista',tbH+'px');
     r.setProperty('--sticky-top-chips',tbH+'px');
+    // iOS non-scrollable page fix: cuando el contenido es corto (ej. Leviza "Hoy": 5 films),
+    // la página no tiene scroll y iOS coloca position:fixed;bottom:0 de forma incorrecta.
+    // Garantizar que #grid siempre sea al menos tan alto como el viewport restante (+ 1px).
+    r.setProperty('--min-content-h',(window.innerHeight-tbH+1)+'px');
   } else {
     r.setProperty('--tb-no-nav',tbH+'px');
     r.setProperty('--tb-total',(tbH+navH)+'px');
