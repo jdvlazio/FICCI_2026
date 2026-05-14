@@ -9086,7 +9086,7 @@ function renderMiPlanList(schedule){
   
   return`<div class="mplan-list-view">${
     DAY_KEYS.filter(d=>byDay[d]).map(day=>`
-      <div class="mplan-list-day">${day}</div>
+      <div class="mplan-list-day">${dayLabel(day)}</div>
       ${byDay[day].map(s=>{
         const{displayTitle:dt}=parseProgramTitle(s._title||'');
         const vc=vcfg(s.venue);
@@ -9096,7 +9096,7 @@ function renderMiPlanList(schedule){
         const safeT=(s._title||'').replace(/'/g,"\\'");
         const isW=watched.has(s._title);
         const isPassed=screeningPassed(s);
-        return`<div class="mplan-list-item js-open-pel${isPassed?' past-card':''}" data-title="${f.title}">
+        return`<div class="mplan-list-item js-open-pel${isPassed?' past-card':''}" data-title="${s._title||''}">
           ${src
             ?`<img class="mplan-list-poster" src="${src}" data-title="${(s._title||"").replace(/"/g,'&quot;')}" loading="lazy" onerror="_posterErr(this)" alt="" style="${isPassed?'opacity:.35':''}">`
             :_lIsEvent
