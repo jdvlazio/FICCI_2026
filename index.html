@@ -3383,7 +3383,12 @@ function _applyI18nDOM(){
     if(attrs.includes('ariaLabel')) el.setAttribute('aria-label',val);
     if(attrs.includes('title'))     el.title=val;
   }
-
+  // 6. dtab labels — update when lang changes (built once in loadFestival)
+  document.querySelectorAll('.dtab[data-lbl-es]').forEach(btn=>{
+    const lbl=_lang==='en'?(btn.dataset.lblEn||btn.dataset.lblEs):btn.dataset.lblEs;
+    const dateSpan=btn.querySelector('.dtab-date');
+    if(dateSpan&&lbl) dateSpan.textContent=lbl;
+  });
 
 }
 
@@ -4407,7 +4412,7 @@ let FESTIVAL_STORAGE_KEY=(localStorage.getItem('otrofestiv_festival')||_DEFAULT_
 // BUILD_VERSION: cambia en cada deploy.
 // Al cargar, compara con localStorage. Si difiere → reload duro.
 // sessionStorage evita loops infinitos dentro de la misma sesión.
-const BUILD_VERSION='202605141342';
+const BUILD_VERSION='202605141423';
 (function(){
   const _vk='otrofestiv_build';
   const _sk='otrofestiv_reloaded';
@@ -9124,7 +9129,8 @@ function _getProgramaPhase(){
   const now=simNow();
   const firstDayKey=DAY_KEYS[0];
   const firstDayDate=FESTIVAL_DATES[firstDayKey];
-  const FEST_START=firstDayDate?new Date(firstDayDate+'T09:00:00'):new Date('2099-01-01');
+   const _tzOff=(FESTIVAL_CONFIG[_activeFestId]||{}).timezoneOffset||'-05:00';
+   const FEST_START=firstDayDate?new Date(firstDayDate+'T09:00:00'+_tzOff):new Date('2099-01-01');
   if(now<FEST_START) return {tabs:[],default:'hoy'};
   const todayStr=simTodayStr();
   const lastDayKey=DAY_KEYS[DAY_KEYS.length-1];
@@ -10058,7 +10064,11 @@ async function loadFestival(id){
       const btn=document.createElement('button');
       btn.className='dtab'+(dayFullyPassed(day.k)?' past':'');
       btn.dataset.day=day.k;
-      const _dtabLbl=_lang==='en'?(DAY_SHORT_EN[day.k]||'').split(' ')[0]||day.lbl:day.lbl;
+      const _dtabLblES=day.lbl;
+      const _dtabLblEN=(DAY_SHORT_EN[day.k]||'').split(' ')[0]||day.lbl;
+      const _dtabLbl=_lang==='en'?_dtabLblEN:_dtabLblES;
+      btn.dataset.lblEs=_dtabLblES;
+      btn.dataset.lblEn=_dtabLblEN;
       btn.innerHTML=`<span class="dtab-date">${_dtabLbl}</span><span class="dtab-name">${day.d}</span>`;
       btn.onclick=()=>{
         activeDay=day.k;activeVenue='all';selectedIdx=null;
