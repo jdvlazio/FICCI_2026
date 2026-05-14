@@ -3,7 +3,7 @@
 > No editar a mano — los cambios se sobreescriben en el próximo deploy.
 > Para modificar secciones estáticas, editar el template en el script.
 >
-> Último commit: `53fa9db fix(ci): simplificar workflow — solo validar, bump es responsabilidad local (protocolo CLAUDE.md)`
+> Último commit: `703c033 fix(nav): eliminar transform:scale del splash fade-out — causa raíz del iOS compositor bug`
 
 ---
 
