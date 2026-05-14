@@ -3,7 +3,7 @@
 > No editar a mano — los cambios se sobreescriben en el próximo deploy.
 > Para modificar secciones estáticas, editar el template en el script.
 >
-> Último commit: `ea14ef8 fix(tools): smoke-test — w.eval() para variables let del app`
+> Último commit: `ca2b392 fix(data-title): Fase 2 — openRatingSheet y removeFromAgenda via data-title`
 
 ---
 

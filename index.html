@@ -4403,7 +4403,7 @@ let FESTIVAL_STORAGE_KEY=(localStorage.getItem('otrofestiv_festival')||_DEFAULT_
 // BUILD_VERSION: cambia en cada deploy.
 // Al cargar, compara con localStorage. Si difiere → reload duro.
 // sessionStorage evita loops infinitos dentro de la misma sesión.
-const BUILD_VERSION='202605132357';
+const BUILD_VERSION='202605140012';
 (function(){
   const _vk='otrofestiv_build';
   const _sk='otrofestiv_reloaded';
@@ -9019,10 +9019,8 @@ function openCortoSheet(title, country, duration, section, flags, director, genr
   const ps=document.getElementById('pel-sheet');
   if(ps) ps.scrollTop=0;
   _pushSheetState();
-  const safeTitle=title.replace(/'/g,"\\'");
   const parent=_findParentProgram(title);
   const parentTitle=parent?parent.title:null;
-  const safeParent=parentTitle?parentTitle.replace(/'/g,"\\'"):safeTitle;
   const inWL=watchlist.has(parentTitle||title);
   const inPrio=prioritized.has(parentTitle||title);
   const secLabel=_secLabel(section||'');
