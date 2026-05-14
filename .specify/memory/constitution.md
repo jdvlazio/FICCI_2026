@@ -51,6 +51,9 @@ La app soporta ES + EN. Esto no es una feature opcional — es parte del modelo 
 ### validate.py como gate obligatorio
 El validador chequea JS syntax, divs críticos, CSS corruption y patrones prohibidos. Es la única forma de detectar regresiones en un archivo de ~10k líneas sin test suite formal. Correr antes de cada commit no es opcional.
 
+### Atomicidad de tasks
+`tasks.md` se actualiza al terminar la implementación de cada tarea — en el mismo commit que el código, no al final de la sesión. Un commit de feature sin su `tasks.md` correspondiente es un commit incompleto. Esta regla existe porque el contexto entre sesiones se pierde: el tasks.md es la única memoria persistente del estado real de cada feature. `validate.py` advierte si algún `tasks.md` tiene cero tareas completadas — señal de desincronización entre código y documentación.
+
 ### Timezone Colombia (UTC-5)
 Los festivales colombianos operan en hora local. `toISOString()` devuelve UTC, lo que produce diferencias de fecha silenciosas en lógica de "hoy". Toda comparación de fechas usa offset `-05:00` explícito.
 

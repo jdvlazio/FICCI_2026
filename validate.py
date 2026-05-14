@@ -378,6 +378,30 @@ except Exception as e:
     warn(check, f'no se pudo verificar i18n: {e}')
 
 # ── JS Syntax (Node.js) ───────────────────────────────────────────────────────
+# ── CHECK: tasks-sync ─────────────────────────────────────────────────────────
+# Detecta features con tasks.md donde cero tareas están completadas ([x]).
+# Señal de desincronización: feature implementada sin documentar, o abandonada.
+# Features con algún [x] + algunos [ ] = trabajo en progreso, no se advierte.
+check = 'tasks-sync'
+try:
+    import glob as _glob
+    stale = []
+    for tf in sorted(_glob.glob('.specify/features/*/tasks.md')):
+        with open(tf) as _f:
+            _lines = _f.read().splitlines()
+        done  = sum(1 for l in _lines if l.strip().startswith('- [x]') or l.strip().startswith('- [X]'))
+        total = sum(1 for l in _lines if l.strip().startswith('- ['))
+        if total > 0 and done == 0:
+            feature = tf.split('/')[2]
+            stale.append(f'{feature} (0/{total} completadas)')
+    if stale:
+        for s in stale:
+            warn(check, f'tasks.md sin ninguna tarea completada — posible desincronización: {s}')
+    else:
+        ok(check, f'todos los tasks.md tienen al menos una tarea completada')
+except Exception as e:
+    warn(check, f'no se pudo verificar tasks: {e}')
+
 check = 'js-syntax'
 try:
     import subprocess, tempfile
