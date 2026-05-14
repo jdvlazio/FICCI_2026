@@ -367,8 +367,8 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:var(--t
 .hdr-search-btn:active{color:var(--white);background:rgba(255,255,255,.04)}
 .hdr-fest-left{display:flex;align-items:center;gap:var(--sp-2);flex:1;min-width:0}
 .hdr-fest-dot{width:5px;height:5px;border-radius:50%;background:var(--amber);flex-shrink:0}
-.hdr-fest-name{font-size:var(--t-label);font-weight:var(--w-bold);letter-spacing:.08em;text-transform:uppercase;color:var(--white)}
-.hdr-fest-dates{font-size:var(--t-label);font-weight:var(--w-semi);letter-spacing:.05em;text-transform:uppercase;color:var(--white-60);white-space:nowrap;flex-shrink:0}
+.hdr-fest-namedate{flex:1;min-width:0}.hdr-fest-name{font-size:var(--t-label);font-weight:var(--w-bold);letter-spacing:.08em;text-transform:uppercase;color:var(--white)}
+.hdr-fest-dates{font-size:var(--t-label);font-weight:var(--w-semi);letter-spacing:.05em;text-transform:uppercase;color:var(--white-60);white-space:nowrap}
 .hdr-fest-chev{display:flex;align-items:center;color:var(--white-60);margin-left:var(--sp-1);opacity:.7}
 
 /* Nav row (tabs de días en Planear) */
@@ -2443,8 +2443,9 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:var(--t
   <div class="hdr-fest-selector" onclick="openFestivalSheet()">
     <div class="hdr-fest-left">
       <div class="hdr-fest-dot"></div>
-      <div class="hdr-fest-name"></div>
-      <div class="hdr-fest-dates"></div>
+      <div class="hdr-fest-namedate">
+        <span class="hdr-fest-name"></span><span class="hdr-fest-dates"></span>
+      </div>
     </div>
     <div class="hdr-fest-chev"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5"/></svg></div>
   </div>
@@ -4412,7 +4413,7 @@ let FESTIVAL_STORAGE_KEY=(localStorage.getItem('otrofestiv_festival')||_DEFAULT_
 // BUILD_VERSION: cambia en cada deploy.
 // Al cargar, compara con localStorage. Si difiere → reload duro.
 // sessionStorage evita loops infinitos dentro de la misma sesión.
-const BUILD_VERSION='202605142244';
+const BUILD_VERSION='202605142253';
 (function(){
   const _vk='otrofestiv_build';
   const _sk='otrofestiv_reloaded';

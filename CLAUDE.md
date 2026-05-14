@@ -3,7 +3,7 @@
 > No editar a mano — los cambios se sobreescriben en el próximo deploy.
 > Para modificar secciones estáticas, editar el template en el script.
 >
-> Último commit: `6fd22a5 fix(nav): root cause — iOS non-scrollable page bug. min-content-h en #grid garantiza scroll siempre`
+> Último commit: `87679dd fix(topbar): white-space:nowrap + flex-shrink:0 en .hdr-fest-dates — fecha nunca wrappea`
 
 ---
 
