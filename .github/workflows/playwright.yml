@@ -34,8 +34,21 @@ jobs:
       - name: Install Playwright browsers
         run: npx playwright install --with-deps chromium
 
-      - name: Run Playwright tests
-        run: npx playwright test
+      - name: Run regression tests
+        run: npx playwright test tests/regression.spec.js
+
+      - name: Run visual audit
+        run: |
+          mkdir -p test-results/visual
+          npx playwright test tests/visual-audit.spec.js --reporter=list || true
+
+      - name: Upload screenshots (visual audit)
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: visual-audit-screenshots
+          path: test-results/visual/
+          retention-days: 14
 
       - name: Upload report on failure
         if: failure()

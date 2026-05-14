@@ -3,7 +3,7 @@
 > No editar a mano — los cambios se sobreescriben en el próximo deploy.
 > Para modificar secciones estáticas, editar el template en el script.
 >
-> Último commit: `8a831c2 fix(miplan): } sobrante en onclick del botón cerrar alternativas — SyntaxError silencioso`
+> Último commit: `97aa738 feat(validate): onclick-syntax check — valida JS en handlers estáticos, detecta bugs como } sobrante`
 
 ---
 
