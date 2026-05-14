@@ -3,7 +3,7 @@
 > No editar a mano — los cambios se sobreescriben en el próximo deploy.
 > Para modificar secciones estáticas, editar el template en el script.
 >
-> Último commit: `703c033 fix(nav): eliminar transform:scale del splash fade-out — causa raíz del iOS compositor bug`
+> Último commit: `e8b6590 fix(nav): getBoundingClientRect en lugar de scrollTo — no interfiere con T06`
 
 ---
 
