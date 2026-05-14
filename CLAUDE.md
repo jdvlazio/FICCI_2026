@@ -3,7 +3,7 @@
 > No editar a mano — los cambios se sobreescriben en el próximo deploy.
 > Para modificar secciones estáticas, editar el template en el script.
 >
-> Último commit: `b89c68d fix(version): bump-version.js soporta android/ios + CI auto-bump en cada push`
+> Último commit: `297cd22 fix(sw): registration.update() en visibilitychange — gap documentado en web.dev/MDN`
 
 ---
 

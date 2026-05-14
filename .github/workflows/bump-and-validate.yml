@@ -1,11 +1,5 @@
 name: Bump version y validar
 
-# Reemplaza validate.yml para index.html y sw.js.
-# En cada push que toca index.html o sw.js:
-#   1. Bump automático de BUILD_VERSION / CACHE_NAME / version.json.android
-#   2. Commit del bump si hubo cambio
-#   3. Validación completa con validate.py
-
 on:
   push:
     paths:
@@ -35,12 +29,12 @@ jobs:
         id: bump
         run: |
           node scripts/bump-version.js
-          # Detectar si hubo cambio real en los archivos versionados
           if git diff --quiet sw.js index.html version.json; then
             echo "changed=false" >> $GITHUB_OUTPUT
           else
             echo "changed=true" >> $GITHUB_OUTPUT
-            echo "build=$(node -e "console.log(require('./version.json').android)")" >> $GITHUB_OUTPUT
+            BUILD_VAL=$(node -e 'console.log(require("./version.json").android)')
+            echo "build=$BUILD_VAL" >> $GITHUB_OUTPUT
           fi
 
       - name: Commit bump
