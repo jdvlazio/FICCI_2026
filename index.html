@@ -1873,13 +1873,11 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:var(--t
   padding:calc(env(safe-area-inset-top) + 14vh) 32px calc(env(safe-area-inset-bottom) + 10vh);
   text-align:center;
   transition:opacity .55s ease,
-             transform .65s cubic-bezier(.22,1,.36,1),
              filter .55s ease,
              visibility .65s;
 }
 #otrofestiv-splash.fade-out{
   opacity:0;
-  transform:scale(1.14);
   filter:blur(28px);
   visibility:hidden;
   pointer-events:none;
@@ -4412,7 +4410,7 @@ let FESTIVAL_STORAGE_KEY=(localStorage.getItem('otrofestiv_festival')||_DEFAULT_
 // BUILD_VERSION: cambia en cada deploy.
 // Al cargar, compara con localStorage. Si difiere → reload duro.
 // sessionStorage evita loops infinitos dentro de la misma sesión.
-const BUILD_VERSION='202605142037';
+const BUILD_VERSION='202605142042';
 (function(){
   const _vk='otrofestiv_build';
   const _sk='otrofestiv_reloaded';
@@ -10140,9 +10138,9 @@ function dismissSplash(){
       }
       // 150ms para que el compositor de iOS se asiente antes de revelar
       setTimeout(()=>{
-        if(s){s.classList.add('fade-out');setTimeout(()=>{s.remove();// iOS compositor flush: el backdrop-filter del nav queda en posición GPU obsoleta
-          // tras quitar un overlay position:fixed con transform. resize() fuerza recálculo.
-          window.dispatchEvent(new Event('resize'));},680);}
+        if(s){s.classList.add('fade-out');setTimeout(()=>{s.remove();// iOS: scrollTo(0,0) garantiza flush del visual viewport tras quitar overlay full-screen.
+          // resize() no alcanza porque el compositor corre en thread separado en WKWebView.
+          window.scrollTo(0,0);},680);}
         if(btn) btn.classList.remove('loading');
       },150);
     })

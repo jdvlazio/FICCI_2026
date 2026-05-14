@@ -3,7 +3,7 @@
 > No editar a mano — los cambios se sobreescriben en el próximo deploy.
 > Para modificar secciones estáticas, editar el template en el script.
 >
-> Último commit: `9846fe1 fix(ci): permissions: contents: write para que el bot pueda pushear el bump`
+> Último commit: `53fa9db fix(ci): simplificar workflow — solo validar, bump es responsabilidad local (protocolo CLAUDE.md)`
 
 ---
 
