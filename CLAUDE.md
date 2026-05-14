@@ -3,7 +3,7 @@
 > No editar a mano — los cambios se sobreescriben en el próximo deploy.
 > Para modificar secciones estáticas, editar el template en el script.
 >
-> Último commit: `9e76063 chore(specify): cerrar i18n-planner-audit — QA via inspección de código ✓`
+> Último commit: `21590c4 process: check tasks-sync en validate.py + regla de atomicidad`
 
 ---
 
