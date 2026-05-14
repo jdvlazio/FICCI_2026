@@ -3,7 +3,7 @@
 > No editar a mano — los cambios se sobreescriben en el próximo deploy.
 > Para modificar secciones estáticas, editar el template en el script.
 >
-> Último commit: `611e0fd refactor(data-title): Fase 3 — eliminar orphans safeTitle + safeParent`
+> Último commit: `01f4e4d chore(specify): cerrar lista-todo-sort y grid-section-separators — ya implementados`
 
 ---
 

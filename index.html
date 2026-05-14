@@ -4403,7 +4403,7 @@ let FESTIVAL_STORAGE_KEY=(localStorage.getItem('otrofestiv_festival')||_DEFAULT_
 // BUILD_VERSION: cambia en cada deploy.
 // Al cargar, compara con localStorage. Si difiere → reload duro.
 // sessionStorage evita loops infinitos dentro de la misma sesión.
-const BUILD_VERSION='202605140018';
+const BUILD_VERSION='202605140044';
 (function(){
   const _vk='otrofestiv_build';
   const _sk='otrofestiv_reloaded';
@@ -4925,7 +4925,7 @@ function fuzzyMatch(query,title){
 function removeFromAgenda(title){
   if(!savedAgenda) return;
   const _s=title.length>36?title.slice(0,34)+'…':title;
-  showActionModal(t('plan_quitar_plan'),`<b>${_s}</b><br><br>${t('plan_restaurar_suger')}`,'Quitar',()=>{
+  showActionModal(t('plan_quitar_plan'),`<b>${_s}</b><br><br>${t('plan_restaurar_suger')}`,t('misc_quitar'),()=>{
     const rem=savedAgenda.schedule.find(s=>s._title===title);
     if(rem){lastRemovedSlots=lastRemovedSlots.filter(r=>r._title!==rem._title);lastRemovedSlots.unshift({...rem,_isRestored:true});if(lastRemovedSlots.length>MAX_REMEMBERED_SLOTS)lastRemovedSlots.length=MAX_REMEMBERED_SLOTS;saveLastSlot();}
     savedAgenda.schedule=savedAgenda.schedule.filter(s=>s._title!==title);
@@ -7669,7 +7669,7 @@ function markWatchedFromPlan(title, day, time, venue, duration, e){
     saveState('wl','watched');
     updateCardState(title);
     updateAgTab();
-    showToast('De vuelta en pendientes','info');
+    showToast(t('plan_vuelta_pendientes'),'info');
     return;
   }
   // Marcar como vista y abrir sheet de calificación
