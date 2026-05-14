@@ -3,7 +3,7 @@
 > No editar a mano — los cambios se sobreescriben en el próximo deploy.
 > Para modificar secciones estáticas, editar el template en el script.
 >
-> Último commit: `297cd22 fix(sw): registration.update() en visibilitychange — gap documentado en web.dev/MDN`
+> Último commit: `23ad518 fix(ci): bash quoting en bump-and-validate + eliminar validate.yml redundante`
 
 ---
 
