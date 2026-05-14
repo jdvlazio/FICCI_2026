@@ -3,7 +3,7 @@
 > No editar a mano — los cambios se sobreescriben en el próximo deploy.
 > Para modificar secciones estáticas, editar el template en el script.
 >
-> Último commit: `21590c4 process: check tasks-sync en validate.py + regla de atomicidad`
+> Último commit: `6a0454a fix(ios): topbar padding-top safe-area-inset-top para Dynamic Island en WKWebView`
 
 ---
 

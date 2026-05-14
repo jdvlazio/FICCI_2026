@@ -4407,7 +4407,7 @@ let FESTIVAL_STORAGE_KEY=(localStorage.getItem('otrofestiv_festival')||_DEFAULT_
 // BUILD_VERSION: cambia en cada deploy.
 // Al cargar, compara con localStorage. Si difiere → reload duro.
 // sessionStorage evita loops infinitos dentro de la misma sesión.
-const BUILD_VERSION='202605141218';
+const BUILD_VERSION='202605141316';
 (function(){
   const _vk='otrofestiv_build';
   const _sk='otrofestiv_reloaded';
@@ -4572,11 +4572,11 @@ function renderMiPlanCalendar(){
     </div>
     <div class="mplan-nav-labels">
       <div class="mplan-nav-day${isPastVs?' past':''}" onclick="selectMiPlanDay(${vs})">
-        <div class="mplan-nav-day-name">${DAYS[vs].lbl}</div>
+        <div class="mplan-nav-day-name">${_lang==='en'?(DAY_SHORT_EN[DAYS[vs].k]||DAYS[vs].lbl).split(' ')[0]:DAYS[vs].lbl}</div>
         <div class="mplan-nav-day-num${vs===activeMiPlanDay?' wk-active-num':''}">${DAYS[vs].d}</div>
       </div>
       <div class="mplan-nav-day${isPastVe?' past':''}" onclick="selectMiPlanDay(${ve})">
-        <div class="mplan-nav-day-name">${DAYS[ve].lbl}</div>
+        <div class="mplan-nav-day-name">${_lang==='en'?(DAY_SHORT_EN[DAYS[ve].k]||DAYS[ve].lbl).split(' ')[0]:DAYS[ve].lbl}</div>
         <div class="mplan-nav-day-num${ve===activeMiPlanDay?' wk-active-num':''}">${DAYS[ve].d}</div>
       </div>
     </div>
@@ -4635,7 +4635,7 @@ function renderMiPlanCalendar(){
     const colClass=['mplan-wk-col',isToday?'wk-today':'',isActive?'wk-active':'',extraClass].filter(Boolean).join(' ');
     return`<div class="${colClass}" style="height:${PHDR+TOTAL}px" onclick="selectMiPlanDay(${i})">
       <div class="mplan-wk-col-hdr">
-        <div class="mplan-wk-col-day"><span class="mplan-wk-day-name">${DAYS[i].lbl}</span><span class="mplan-wk-col-date${dayFilms.length?' wk-has':''}">${DAYS[i].d}</span></div>
+        <div class="mplan-wk-col-day"><span class="mplan-wk-day-name">${_lang==='en'?(DAY_SHORT_EN[DAYS[i].k]||DAYS[i].lbl).split(' ')[0]:DAYS[i].lbl}</span><span class="mplan-wk-col-date${dayFilms.length?' wk-has':''}">${DAYS[i].d}</span></div>
         ${dayFilms.length?'<div class="mplan-wk-col-dot"></div>':''}
       </div>
       ${gridHtml}${nowHtml}${blocksHtml}
@@ -5017,7 +5017,7 @@ let DAY_SHORT_EN={}; // swapeado por loadFestival() — valores en inglés
 /* dayChip(key) — componente apilado: ABREV arriba / NÚMERO abajo — FORMATO ÚNICO */
 const dayChip = key => {
   const _ds = _lang==='en' ? DAY_SHORT_EN : DAY_SHORT;
-  const abr = DAY_ABBR[key] || (_ds[key]||'').split(' ')[0] || key;
+  const abr = (_lang==='en' ? (_ds[key]||'').split(' ')[0] : null) || DAY_ABBR[key] || (_ds[key]||'').split(' ')[0] || key;
   const num = DAY_NUM[key]  || (_ds[key]||'').split(' ')[1] || '';
   return `<span class="day-chip-abr">${abr}</span><span class="day-chip-num">${num}</span>`;
 };
@@ -10058,7 +10058,8 @@ async function loadFestival(id){
       const btn=document.createElement('button');
       btn.className='dtab'+(dayFullyPassed(day.k)?' past':'');
       btn.dataset.day=day.k;
-      btn.innerHTML=`<span class="dtab-date">${day.lbl}</span><span class="dtab-name">${day.d}</span>`;
+      const _dtabLbl=_lang==='en'?(DAY_SHORT_EN[day.k]||'').split(' ')[0]||day.lbl:day.lbl;
+      btn.innerHTML=`<span class="dtab-date">${_dtabLbl}</span><span class="dtab-name">${day.d}</span>`;
       btn.onclick=()=>{
         activeDay=day.k;activeVenue='all';selectedIdx=null;
         setProgramaView('list'); // día específico → siempre Lista (horarios/planificación)
