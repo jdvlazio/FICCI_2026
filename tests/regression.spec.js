@@ -256,7 +256,7 @@ test('T09 — taller recurrente: 3 sesiones en el plan', async ({ page }) => {
 test('T10 — poster editorial: sección completa sin truncar', async ({ page }) => {
   await enterFestival(page, 'leviza2026');
   await freezeSimTime(page, LEVIZA_SIMTIME);
-  await page.waitForSelector('.poster-card', { timeout: 8000 });
+  await page.waitForSelector('.poster-card, .plist-item', { timeout: 8000 });
 
   const content = await page.content();
   expect(content).not.toMatch(/>FICC\s*</);
