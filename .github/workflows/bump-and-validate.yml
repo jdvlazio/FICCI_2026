@@ -9,6 +9,9 @@ on:
       - 'validate.py'
       - 'festivals/**.json'
 
+permissions:
+  contents: write   # necesario para que el bot pueda pushear el bump commit
+
 jobs:
   bump-and-validate:
     runs-on: ubuntu-latest

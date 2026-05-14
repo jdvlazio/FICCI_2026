@@ -3,8 +3,8 @@
 // v14: hadController guard en cliente (fix first-install double-reload)
 //      version.json con android/ios independientes para staged rollout
 
-const CACHE_NAME = 'otrofestiv-v202605142023';
-const BUILD = '202605142023';
+const CACHE_NAME = 'otrofestiv-v202605142029';
+const BUILD = '202605142029';
 
 const STATIC_ASSETS = [
   '/manifest.json',

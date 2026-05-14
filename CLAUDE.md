@@ -3,7 +3,7 @@
 > No editar a mano — los cambios se sobreescriben en el próximo deploy.
 > Para modificar secciones estáticas, editar el template en el script.
 >
-> Último commit: `23ad518 fix(ci): bash quoting en bump-and-validate + eliminar validate.yml redundante`
+> Último commit: `57a3a54 fix(nav): iOS compositor flush post-splash + will-change:transform en main-nav`
 
 ---
 
