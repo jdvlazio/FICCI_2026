@@ -4412,7 +4412,7 @@ let FESTIVAL_STORAGE_KEY=(localStorage.getItem('otrofestiv_festival')||_DEFAULT_
 // BUILD_VERSION: cambia en cada deploy.
 // Al cargar, compara con localStorage. Si difiere → reload duro.
 // sessionStorage evita loops infinitos dentro de la misma sesión.
-const BUILD_VERSION='202605141423';
+const BUILD_VERSION='202605141707';
 (function(){
   const _vk='otrofestiv_build';
   const _sk='otrofestiv_reloaded';
@@ -6020,7 +6020,8 @@ function mkAgendaRow(s, mode='saved'){
   const f=FILMS.find(fi=>fi.title===title);
   const _p=getFilmPoster(f);
   const _safePT=title.replace(/'/g,"\\'");
-  const _ph=_posterThumb(f,'lb-poster',null);
+  const _phInner=_posterThumb(f,'lb-poster',null);
+  const _ph=`<div class="js-open-pel" data-title="${title}" style="flex-shrink:0;cursor:pointer">${_phInner}</div>`;
   const vc2=vcfg(s.venue),sl=sala(s.venue);
   const safeT=(s._title||'').replace(/"/g,'&quot;');
   const isDone=watched.has(title);
@@ -6869,7 +6870,8 @@ function _renderSavedAgendaHTML(){
         <div class="archive-out-lbl">${t('plan_vistas_fuera')}</div>
         ${watchedOutsidePlan.map(f=>{
           const _ap=getFilmPoster(f);
-          const _aph=_posterThumb(f,'lb-poster',null);
+          const _aphInner=_posterThumb(f,'lb-poster',null);
+          const _aph=`<div class="js-open-pel" data-title="${f.title}" style="cursor:pointer">${_aphInner}</div>`;
           return`<div class="saved-item done">
             ${_aph}
             <div class="saved-time">${flagFmt(f.flags)||''}</div>
