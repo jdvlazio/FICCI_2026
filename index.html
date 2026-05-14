@@ -4410,7 +4410,7 @@ let FESTIVAL_STORAGE_KEY=(localStorage.getItem('otrofestiv_festival')||_DEFAULT_
 // BUILD_VERSION: cambia en cada deploy.
 // Al cargar, compara con localStorage. Si difiere → reload duro.
 // sessionStorage evita loops infinitos dentro de la misma sesión.
-const BUILD_VERSION='202605142110';
+const BUILD_VERSION='202605142146';
 (function(){
   const _vk='otrofestiv_build';
   const _sk='otrofestiv_reloaded';
@@ -10138,13 +10138,14 @@ function dismissSplash(){
       }
       // 150ms para que el compositor de iOS se asiente antes de revelar
       setTimeout(()=>{
-        if(s){s.classList.add('fade-out');setTimeout(()=>{s.remove();// iOS: translateY(0) → '' en 2 rAFs fuerza al compositor a recalcular
-          // la posición del nav desde el layout actual. getBoundingClientRect() solo lee
-          // la posición, no la actualiza en el compositor. El transform trick sí lo hace.
-          // Necesario cuando initProgramaModeBar() reflowea el topbar con el splash activo
-          // (caso Leviza: botones Hoy/Mañana se muestran → topbar crece → compositor
-          // cachea nav en posición incorrecta → al quitar splash aparece desplazado).
+        if(s){s.classList.add('fade-out');setTimeout(()=>{s.remove();// FIX iOS compositor (especialmente Leviza/festival activo):
+          // initProgramaModeBar() corrió bajo el splash → reflowó el topbar →
+          // compositor cacheó nav en posición incorrecta. Re-ejecutar DESPUÉS de
+          // quitar el splash fuerza el reflow en viewport abierto → posición correcta.
+          // Luego translateY(0)→'' en doble rAF hace flush definitivo del compositor.
           (function(){
+            if(typeof initProgramaModeBar==='function') initProgramaModeBar();
+            if(typeof _fixStickyOffset==='function') _fixStickyOffset();
             const _nav=document.getElementById('main-nav');
             if(!_nav) return;
             _nav.style.transform='translateY(0)';

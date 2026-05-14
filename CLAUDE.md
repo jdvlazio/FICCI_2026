@@ -3,7 +3,7 @@
 > No editar a mano — los cambios se sobreescriben en el próximo deploy.
 > Para modificar secciones estáticas, editar el template en el script.
 >
-> Último commit: `ee83a32 fix(nav): translateY(0) double-rAF — compositor flush correcto para Leviza topbar reflow`
+> Último commit: `465a986 copy(leviza): eliminar 'en Zapatoca' del nombre — ciudad aparece en metadatos`
 
 ---
 
