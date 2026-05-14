@@ -1,9 +1,9 @@
-// Otrofestiv — Service Worker v12
+// Otrofestiv — Service Worker v13
 // Estrategia: HTML siempre desde red. Assets en caché.
-// v12: auto-reload en cliente cuando SW detecta nueva versión
+// v13: cliente usa controllerchange en lugar de mensaje SW_UPDATED
 
-const CACHE_NAME = 'otrofestiv-v202605141423';
-const BUILD = '202605141423';
+const CACHE_NAME = 'otrofestiv-v202605141903';
+const BUILD = '202605141903';
 
 const STATIC_ASSETS = [
   '/manifest.json',
@@ -24,10 +24,6 @@ self.addEventListener('activate', event => {
     ).then(() => {
       return caches.open(CACHE_NAME).then(c => c.addAll(STATIC_ASSETS));
     }).then(() => self.clients.claim())
-    .then(() => {
-      return self.clients.matchAll({type:'window',includeUncontrolled:true})
-        .then(clients => clients.forEach(c => c.postMessage({type:'SW_UPDATED',build:BUILD})));
-    })
   );
 });
 
