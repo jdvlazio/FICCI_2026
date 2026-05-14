@@ -3,7 +3,7 @@
 > No editar a mano — los cambios se sobreescriben en el próximo deploy.
 > Para modificar secciones estáticas, editar el template en el script.
 >
-> Último commit: `5371174 fix(nav): re-ejecutar initProgramaModeBar+_fixStickyOffset post-splash — fix definitivo iOS compositor`
+> Último commit: `6fd22a5 fix(nav): root cause — iOS non-scrollable page bug. min-content-h en #grid garantiza scroll siempre`
 
 ---
 
