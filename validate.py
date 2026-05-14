@@ -479,6 +479,28 @@ if pel_errors:
 else:
     ok(check, f'Todas las cards tappables tienen js-open-pel')
 
+# ── CHECK 11: version.json format ────────────────────────────────────────────
+# version.json debe tener claves 'android' e 'ios' con builds numéricas.
+# Formato legacy {"build":"..."} ya no es válido — pipeline staged rollout lo requiere.
+check = 'version-json'
+try:
+    import json as _json
+    _vj = _json.load(open('version.json'))
+    if 'android' not in _vj or 'ios' not in _vj:
+        fail(check, "version.json debe tener claves 'android' e 'ios' (formato legacy {\"build\":...} ya no válido)")
+    elif not _vj['android'] or not _vj['ios']:
+        fail(check, "version.json: 'android' e 'ios' no pueden estar vacíos")
+    elif not _vj['android'].isdigit() or not _vj['ios'].isdigit():
+        fail(check, "version.json: los builds deben ser strings numéricas (ej. '202605141911')")
+    elif int(_vj['ios']) > int(_vj['android']):
+        fail(check, f"version.json: ios ({_vj['ios']}) no puede ser mayor que android ({_vj['android']})")
+    else:
+        ok(check, f"version.json válido — android:{_vj['android']} ios:{_vj['ios']}")
+except FileNotFoundError:
+    fail(check, 'version.json no encontrado')
+except Exception as _e:
+    fail(check, f'version.json inválido: {_e}')
+
 # ── Report ────────────────────────────────────────────────────────────────────
 print()
 print('═' * 60)

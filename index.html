@@ -10344,11 +10344,50 @@ window.addEventListener('resize',function(){requestAnimationFrame(_fixStickyOffs
 <script>
 if('serviceWorker' in navigator){
   navigator.serviceWorker.register('/sw.js').catch(function(){});
-  // controllerchange se dispara en el momento exacto que el nuevo SW llama skipWaiting().
-  // En una PWA siempre ocurre durante el splash (apertura fresh), así que la recarga es invisible.
-  navigator.serviceWorker.addEventListener('controllerchange', function(){
-    location.reload();
-  });
+
+  // ── Plataforma y build tracking ───────────────────────────────────────
+  var _isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) ||
+    (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+  var _BUILD_KEY = 'orf_build';
+  var _reloading  = false; // guard: evita double-reload si ambos canales disparan
+
+  // ── Canal Android/Desktop: controllerchange ───────────────────────────
+  // hadController previene el double-reload en primera instalación
+  // (sin SW previo, controller es null → ese controllerchange se ignora)
+  // iOS excluido: WKWebView puede terminar el proceso SW entre sesiones,
+  // haciendo que controllerchange se dispare sin haber actualización real.
+  if(!_isIOS){
+    var _hadController = !!navigator.serviceWorker.controller;
+    navigator.serviceWorker.addEventListener('controllerchange', function(){
+      if(_hadController && !_reloading){
+        _reloading = true;
+        location.reload();
+      }
+      _hadController = true;
+    });
+  }
+
+  // ── Canal version.json: staged rollout y safety net ───────────────────
+  // version.json tiene claves 'android' e 'ios' con builds independientes.
+  // Permite promover la actualización a iOS solo después de validación Android.
+  // Para iOS es el canal principal; para Android es safety net si controllerchange falla.
+  fetch('/version.json', {cache:'no-store'})
+    .then(function(r){ return r.json(); })
+    .then(function(v){
+      var serverBuild = v[_isIOS ? 'ios' : 'android'] || '';
+      var localBuild  = localStorage.getItem(_BUILD_KEY) || '';
+      if(serverBuild){
+        if(localBuild && serverBuild > localBuild && !_reloading){
+          _reloading = true;
+          localStorage.setItem(_BUILD_KEY, serverBuild);
+          location.reload();
+        } else {
+          // Primera carga o misma versión: registrar sin recargar
+          localStorage.setItem(_BUILD_KEY, serverBuild);
+        }
+      }
+    })
+    .catch(function(){});
 }
 
 // ── FILTRO LUGAR — implementación desde cero ─────────────────────────────

@@ -1,9 +1,10 @@
-// Otrofestiv — Service Worker v13
+// Otrofestiv — Service Worker v14
 // Estrategia: HTML siempre desde red. Assets en caché.
-// v13: cliente usa controllerchange en lugar de mensaje SW_UPDATED
+// v14: hadController guard en cliente (fix first-install double-reload)
+//      version.json con android/ios independientes para staged rollout
 
-const CACHE_NAME = 'otrofestiv-v202605141903';
-const BUILD = '202605141903';
+const CACHE_NAME = 'otrofestiv-v202605141911';
+const BUILD = '202605141911';
 
 const STATIC_ASSETS = [
   '/manifest.json',
