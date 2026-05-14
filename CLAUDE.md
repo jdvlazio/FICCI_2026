@@ -3,7 +3,7 @@
 > No editar a mano — los cambios se sobreescriben en el próximo deploy.
 > Para modificar secciones estáticas, editar el template en el script.
 >
-> Último commit: `e5bc506 fix(i18n): wiring final 2 strings — bar_seccion y plan_sin_actividades`
+> Último commit: `1aee486 feat(sw): visibilitychange como segundo canal de update — pattern Slack/Discord/Notion`
 
 ---
 

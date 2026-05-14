@@ -1,0 +1,56 @@
+name: Bump version y validar
+
+# Reemplaza validate.yml para index.html y sw.js.
+# En cada push que toca index.html o sw.js:
+#   1. Bump automático de BUILD_VERSION / CACHE_NAME / version.json.android
+#   2. Commit del bump si hubo cambio
+#   3. Validación completa con validate.py
+
+on:
+  push:
+    paths:
+      - 'index.html'
+      - 'sw.js'
+      - 'version.json'
+      - 'validate.py'
+      - 'festivals/**.json'
+
+jobs:
+  bump-and-validate:
+    runs-on: ubuntu-latest
+    name: Bump version y validar app
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Bump version (android)
+        id: bump
+        run: |
+          node scripts/bump-version.js
+          # Detectar si hubo cambio real en los archivos versionados
+          if git diff --quiet sw.js index.html version.json; then
+            echo "changed=false" >> $GITHUB_OUTPUT
+          else
+            echo "changed=true" >> $GITHUB_OUTPUT
+            echo "build=$(node -e "console.log(require('./version.json').android)")" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Commit bump
+        if: steps.bump.outputs.changed == 'true'
+        run: |
+          git config user.email "github-actions@github.com"
+          git config user.name "GitHub Actions"
+          git add sw.js index.html version.json CLAUDE.md
+          git commit -m "chore(version): auto-bump ${{ steps.bump.outputs.build }}"
+          git push
+
+      - name: Validar app
+        run: python3 validate.py
