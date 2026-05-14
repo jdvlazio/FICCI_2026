@@ -3,7 +3,7 @@
 > No editar a mano — los cambios se sobreescriben en el próximo deploy.
 > Para modificar secciones estáticas, editar el template en el script.
 >
-> Último commit: `af062d9 feat(monitoring): Sentry error monitoring — captura errores JS en producción automáticamente`
+> Último commit: `b44fae3 feat(monitoring): Sentry init con DSN explícito, environment production, filtros de ruido`
 
 ---
 

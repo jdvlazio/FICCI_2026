@@ -4431,7 +4431,7 @@ let FESTIVAL_STORAGE_KEY=(localStorage.getItem('otrofestiv_festival')||_DEFAULT_
 // BUILD_VERSION: cambia en cada deploy.
 // Al cargar, compara con localStorage. Si difiere → reload duro.
 // sessionStorage evita loops infinitos dentro de la misma sesión.
-const BUILD_VERSION='202605142342';
+const BUILD_VERSION='202605142347';
 (function(){
   const _vk='otrofestiv_build';
   const _sk='otrofestiv_reloaded';
@@ -8867,6 +8867,7 @@ document.addEventListener('keydown',function(e){
 // de _posterThumb. data-title contiene el título sin encoding.
 document.addEventListener('click',function(e){
   if(e.target.closest('.plist-heart')) return; // heart toggle — no abrir sheet
+  if(e.target.closest('.suggestion-add')) return; // botón Añadir — no abrir sheet
   const el=e.target.closest('.js-open-pel');
   if(el) openPelSheet(el.dataset.title||'');
 },true);
