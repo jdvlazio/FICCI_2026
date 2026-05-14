@@ -4407,7 +4407,7 @@ let FESTIVAL_STORAGE_KEY=(localStorage.getItem('otrofestiv_festival')||_DEFAULT_
 // BUILD_VERSION: cambia en cada deploy.
 // Al cargar, compara con localStorage. Si difiere → reload duro.
 // sessionStorage evita loops infinitos dentro de la misma sesión.
-const BUILD_VERSION='202605141316';
+const BUILD_VERSION='202605141342';
 (function(){
   const _vk='otrofestiv_build';
   const _sk='otrofestiv_reloaded';
@@ -9661,7 +9661,7 @@ function renderSbar(){
     if(ib>=0) return 1;
     return a.localeCompare(b);
   });
-  if(lbl) lbl.textContent=activeSec==='all'||activeSec==='_chip_'?'Sección':(activeSec.length>18?activeSec.slice(0,16)+'…':activeSec);
+  if(lbl) lbl.textContent=activeSec==='all'||activeSec==='_chip_'?t('bar_seccion'):(activeSec.length>18?activeSec.slice(0,16)+'…':activeSec);
   if(trigBtn) trigBtn.classList.toggle('active',activeSec!=='all'&&activeSec!=='_chip_');
   const mkOpt=(html,isOn,cb)=>{
     const b=document.createElement('button');
@@ -9693,7 +9693,7 @@ function render(){
   const cntEl=document.getElementById('cnt');
   cntEl.innerHTML=''; // count eliminado — redundante con lugar-btn y chips
   const grid=document.getElementById('grid');
-  if(!films.length){grid.innerHTML=emptyState(ICONS.search,'Sin actividades para este filtro.',t('empty_filtros'));return;}
+  if(!films.length){grid.innerHTML=emptyState(ICONS.search,t('plan_sin_actividades'),t('empty_filtros'));return;}
   // ── Vista horario: poster-grid 3 col + overlay de hora ──
   grid.innerHTML='<div class="poster-grid">'+films.map((f,i)=>{
     const isProg=f.is_cortos;
