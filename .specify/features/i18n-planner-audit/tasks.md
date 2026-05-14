@@ -10,3 +10,6 @@
       plan_vuelta_pendientes="Moved back to Interests", bar_todo="All",
       lbl_prioridades="Priorities", notice_cancelada="CANCELED", etc. ✓
 - [x] 8. QA ES: sin cambios — source of truth intacta ✓
+
+## Post-feature fix (sesión 2026-05-14)
+- [x] Fix: mplan-list-day usaba \${day} (raw key) → \${dayLabel(day)} (fd1469c)

@@ -424,6 +424,61 @@ try:
 except FileNotFoundError:
     warn(check, 'Node.js no disponible — skip sintaxis JS')
 
+
+# ── CHECK 10: js-open-pel coverage ───────────────────────────────────────────
+# Todo elemento con data-title que sea una card tappable debe tener js-open-pel.
+# Sin esa clase, el listener delegado no lo encuentra y el tap queda mudo.
+# Clases de cards tappables conocidas: int-item, mplan-list-item, plist-item,
+# saved-item, poster-card, plist-event, ctx-suggest-card, suggestion-item.
+check = 'js-open-pel-coverage'
+TAPPABLE_CARDS = [
+    'int-item',
+    'mplan-list-item',
+    'plist-item',
+    'plist-event',
+    'ctx-suggest-card',
+    'suggestion-item',
+]
+# Excluir variantes que deliberadamente no abren sheet (botones de acción, etc.)
+CARD_EXCLUSIONS = [
+    'plist-heart',   # corazón — stopPropagation intencional
+    'ag-fi-btn',     # quitar de agenda
+    'saved-check',   # marcar vista
+    'int-prio-btn',  # estrella prioridad
+    'mplan-tc',      # tiempo en mplan
+    'mplan-nav',     # navegación días
+]
+import re as _re2
+pel_errors = []
+# Buscar divs/elementos de card sin js-open-pel que tienen data-title
+lines_html = content.split('\n')
+for i, line in enumerate(lines_html, 1):
+    if 'data-title=' not in line:
+        continue
+    # Debe ser apertura de tag con una clase de card tappable
+    if not any(f'"{cls}' in line or f'"{cls} ' in line or f' {cls}"' in line or f' {cls} ' in line
+               for cls in TAPPABLE_CARDS):
+        continue
+    # Si ya tiene js-open-pel, OK
+    if 'js-open-pel' in line:
+        continue
+    # Si es un botón o elemento de acción, ignorar
+    if any(exc in line for exc in CARD_EXCLUSIONS):
+        continue
+    if '<button' in line or 'onclick=' in line and 'event.stopPropagation' in line:
+        continue
+    # Extraer clase para mejor reporte
+    cls_match = _re2.search(r'class="([^"]{1,60})"', line)
+    cls_str = cls_match.group(1)[:50] if cls_match else '?'
+    pel_errors.append(f'L{i}: clase "{cls_str}" tiene data-title pero falta js-open-pel — tap mudo')
+
+if pel_errors:
+    for e in pel_errors:
+        fail(check, e)
+    fail(check, 'Fix: añadir js-open-pel a la clase del elemento, o envolver el poster en <div class="js-open-pel" data-title="...">')
+else:
+    ok(check, f'Todas las cards tappables tienen js-open-pel')
+
 # ── Report ────────────────────────────────────────────────────────────────────
 print()
 print('═' * 60)

@@ -24,3 +24,10 @@
       safeRem, safeSwap, safeNew, safeT (confirmReplace, swapPriority, checkin)
 - [x] 3b. validate.py 13/13 ✓
 - [x] 3c. Commit con descripción completa
+
+## Post-feature fixes (sesión 2026-05-14)
+- [x] Fix: mplan-list-item usaba f.title (undefined en scope) → s._title (fd1469c)
+- [x] Fix: mkAgendaRow poster sin js-open-pel → envuelto en div js-open-pel (ddadc2a)
+- [x] Fix: watchedOutsidePlan poster sin js-open-pel → mismo fix (ddadc2a)
+- [x] Fix: int-item en _mkItem sin js-open-pel → añadida clase (este commit)
+- [x] Fix: validate.py check js-open-pel-coverage — previene regresiones futuras
