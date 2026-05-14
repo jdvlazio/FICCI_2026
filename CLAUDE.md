@@ -3,7 +3,7 @@
 > No editar a mano — los cambios se sobreescriben en el próximo deploy.
 > Para modificar secciones estáticas, editar el template en el script.
 >
-> Último commit: `e7e0355 fix(topbar): namedate wrapper — nombre y fecha fluyen como texto continuo, sin separarse`
+> Último commit: `1888e11 fix(topbar): opción A — nombre truncado con ellipsis, fecha fija a la derecha, siempre 1 línea`
 
 ---
 

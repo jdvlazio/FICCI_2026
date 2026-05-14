@@ -4413,7 +4413,7 @@ let FESTIVAL_STORAGE_KEY=(localStorage.getItem('otrofestiv_festival')||_DEFAULT_
 // BUILD_VERSION: cambia en cada deploy.
 // Al cargar, compara con localStorage. Si difiere → reload duro.
 // sessionStorage evita loops infinitos dentro de la misma sesión.
-const BUILD_VERSION='202605142302';
+const BUILD_VERSION='202605142307';
 (function(){
   const _vk='otrofestiv_build';
   const _sk='otrofestiv_reloaded';
@@ -8532,13 +8532,15 @@ function _dayChips(screenings){
 function filterByVenue(venue){
   closePelSheet();
   activeVenue=venue;activeSec='all';selectedIdx=null;
-  programaSubMode='hoy';programaViewMode='grid';
+  programaSubMode='hoy';
   programaChip='all';_programaChipMatchFn=null;
   // Si el día activo ya pasó, ir al primer día vigente
   if(dayFullyPassed(activeDay)){
     const _ff=DAY_KEYS.find(d=>!dayFullyPassed(d));
     if(_ff) activeDay=_ff;
   }
+  // Regla global: navegación por día → lista por defecto
+  programaViewMode=activeDay==='all'?'grid':'list';
   switchMainNav('mnav-cartelera');
   showDayView();
   // Actualizar label del filtro Lugar
@@ -8569,7 +8571,7 @@ function filterBySection(section){
   // Navegar a Programa · Explorar con esa sección activa
   closePelSheet();
   activeSec=section;activeVenue='all';selectedIdx=null;
-  programaSubMode='hoy';programaViewMode='grid';
+  programaSubMode='hoy';
   programaChip='all';
   _programaChipMatchFn=null;
   // Si el día activo ya pasó, ir al primer día vigente
@@ -8577,6 +8579,8 @@ function filterBySection(section){
     const _ff=DAY_KEYS.find(d=>!dayFullyPassed(d));
     if(_ff) activeDay=_ff;
   }
+  // Regla global: navegación por día → lista por defecto
+  programaViewMode=activeDay==='all'?'grid':'list';
   switchMainNav('mnav-cartelera');
   showDayView();
   // Actualizar chips visualmente después del render
@@ -10111,6 +10115,8 @@ async function loadFestival(id){
     activeDay=DAY_KEYS[_ni];
     programaSubMode='hoy'; // Durante el festival → ir directo a Hoy
   }
+  // Regla global inamovible: navegación por día específico → lista por defecto
+  programaViewMode=activeDay==='all'?'grid':'list';
   TZ_OFFSET=cfg.timezoneOffset||'-05:00';
   FESTIVAL_TRANSPORT=cfg.transport||'transit';
   // Update fest-bar
