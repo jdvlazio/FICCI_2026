@@ -98,7 +98,7 @@ test('T02 — apóstrofe: tap en título abre sheet', async ({ page }) => {
 // ─────────────────────────────────────────────────────────────────────────────
 test('T03 — ver opciones genera resultados', async ({ page }) => {
   await enterFestival(page, 'leviza2026');
-  await addToWatchlist(page, 'La Suprema');
+  await addToWatchlist(page, 'Taller de Guion'); // tiene screenings VIE+SÁB+DOM
   await goToPlanear(page);
 
   // Estado B: wrapper debe estar oculto
@@ -117,7 +117,7 @@ test('T03 — ver opciones genera resultados', async ({ page }) => {
 // ─────────────────────────────────────────────────────────────────────────────
 test('T04 — ver opciones recalcula al presionar de nuevo', async ({ page }) => {
   await enterFestival(page, 'leviza2026');
-  await addToWatchlist(page, 'La Suprema');
+  await addToWatchlist(page, 'Taller de Guion'); // tiene screenings VIE+SÁB+DOM
   await goToPlanear(page);
 
   await page.locator('.av-calc-btn').click();
