@@ -3,7 +3,7 @@
 > No editar a mano — los cambios se sobreescriben en el próximo deploy.
 > Para modificar secciones estáticas, editar el template en el script.
 >
-> Último commit: `87679dd fix(topbar): white-space:nowrap + flex-shrink:0 en .hdr-fest-dates — fecha nunca wrappea`
+> Último commit: `e7e0355 fix(topbar): namedate wrapper — nombre y fecha fluyen como texto continuo, sin separarse`
 
 ---
 
