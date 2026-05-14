@@ -501,6 +501,33 @@ except FileNotFoundError:
 except Exception as _e:
     fail(check, f'version.json inválido: {_e}')
 
+# ── onclick syntax ─────────────────────────────────────────────────────────────
+# Extrae todos los onclick="..." estáticos (sin template vars ${...}) y valida
+# que sean JS sintácticamente válido. Detecta bugs como } sobrante o typos.
+check = 'onclick-syntax'
+try:
+    import re as _re, tempfile as _tf, os as _os
+    _html = open('index.html').read()
+    _all_oc = _re.findall(r'onclick="([^"]+)"', _html)
+    _static = [(i, oc) for i, oc in enumerate(_all_oc) if '${' not in oc]
+    _oc_errors = []
+    for _i, _oc in _static:
+        _code = f'(function(){{{_oc}}})'
+        with _tf.NamedTemporaryFile(suffix='.js', mode='w', delete=False) as _f:
+            _f.write(_code)
+            _tmpname = _f.name
+        _r = subprocess.run(['node', '--check', _tmpname], capture_output=True, text=True)
+        _os.unlink(_tmpname)
+        if _r.returncode != 0:
+            _oc_errors.append(f'onclick #{_i}: {_oc[:60]}')
+    if _oc_errors:
+        for _e in _oc_errors:
+            fail(check, _e)
+    else:
+        ok(check, f'{len(_static)} onclick handlers estáticos con sintaxis válida')
+except Exception as _e:
+    warn(check, f'no se pudo verificar onclicks: {_e}')
+
 # ── Report ────────────────────────────────────────────────────────────────────
 print()
 print('═' * 60)

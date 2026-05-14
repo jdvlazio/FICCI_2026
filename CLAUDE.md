@@ -3,7 +3,7 @@
 > No editar a mano — los cambios se sobreescriben en el próximo deploy.
 > Para modificar secciones estáticas, editar el template en el script.
 >
-> Último commit: `c9754c5 docs: regla vista lista/grid, iOS non-scrollable bug, Android APK, CI en ARQUITECTURA + constitution + CLAUDE.md`
+> Último commit: `8a831c2 fix(miplan): } sobrante en onclick del botón cerrar alternativas — SyntaxError silencioso`
 
 ---
 
