@@ -11,7 +11,14 @@ window.sentryOnLoad = function() {
     ignoreErrors: [
       "Non-Error promise rejection",
       "ResizeObserver loop limit exceeded"
-    ]
+    ],
+    beforeSend: function(event) {
+      // No enviar errores de tests de Playwright (headless Chromium)
+      if (/HeadlessChrome/i.test(navigator.userAgent)) return null;
+      // No enviar errores de localhost o staging
+      if (location.hostname === 'localhost' || location.hostname === '127.0.0.1') return null;
+      return event;
+    }
   });
 };
 </script>
@@ -4431,7 +4438,7 @@ let FESTIVAL_STORAGE_KEY=(localStorage.getItem('otrofestiv_festival')||_DEFAULT_
 // BUILD_VERSION: cambia en cada deploy.
 // Al cargar, compara con localStorage. Si difiere → reload duro.
 // sessionStorage evita loops infinitos dentro de la misma sesión.
-const BUILD_VERSION='202605142347';
+const BUILD_VERSION='202605142353';
 (function(){
   const _vk='otrofestiv_build';
   const _sk='otrofestiv_reloaded';
