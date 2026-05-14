@@ -4412,7 +4412,7 @@ let FESTIVAL_STORAGE_KEY=(localStorage.getItem('otrofestiv_festival')||_DEFAULT_
 // BUILD_VERSION: cambia en cada deploy.
 // Al cargar, compara con localStorage. Si difiere → reload duro.
 // sessionStorage evita loops infinitos dentro de la misma sesión.
-const BUILD_VERSION='202605142010';
+const BUILD_VERSION='202605142012';
 (function(){
   const _vk='otrofestiv_build';
   const _sk='otrofestiv_reloaded';
@@ -10395,14 +10395,19 @@ if('serviceWorker' in navigator){
   // Permite staged rollout: android e ios con builds independientes en version.json.
   _checkVersionJson();
 
-  // ── Canal version.json #2: visibilitychange ───────────────────────────
+  // ── Canal version.json #2 + SW re-check: visibilitychange ────────────
   // Corre cuando el usuario vuelve la app desde background.
   // En mobile, el JS no recarga al volver del background — sin este listener,
   // un usuario que deja la app abierta horas (o días) nunca detecta updates.
   // Patrón usado por Slack, Discord, Notion para actualizaciones en WebView.
+  // registration.update() fuerza re-verificación de sw.js contra el servidor —
+  // el browser solo hace este check en register() (al cargar), no al volver de bg.
+  // Si hay nuevo sw.js → instala → skipWaiting → controllerchange → reload.
   document.addEventListener('visibilitychange', function(){
     if(document.visibilityState === 'visible' && !_reloading){
       _checkVersionJson();
+      // Forzar re-check del SW contra el servidor (gap documentado en web.dev/MDN)
+      navigator.serviceWorker.ready.then(function(reg){ reg.update(); }).catch(function(){});
     }
   });
 }

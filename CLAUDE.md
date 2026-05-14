@@ -3,7 +3,7 @@
 > No editar a mano — los cambios se sobreescriben en el próximo deploy.
 > Para modificar secciones estáticas, editar el template en el script.
 >
-> Último commit: `1aee486 feat(sw): visibilitychange como segundo canal de update — pattern Slack/Discord/Notion`
+> Último commit: `b89c68d fix(version): bump-version.js soporta android/ios + CI auto-bump en cada push`
 
 ---
 
