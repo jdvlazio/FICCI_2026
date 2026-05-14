@@ -3,7 +3,7 @@
 > No editar a mano — los cambios se sobreescriben en el próximo deploy.
 > Para modificar secciones estáticas, editar el template en el script.
 >
-> Último commit: `97aa738 feat(validate): onclick-syntax check — valida JS en handlers estáticos, detecta bugs como } sobrante`
+> Último commit: `6dcdb36 feat(qa): T11/T12/T13 + visual audit screenshots en CI — pipeline de calidad sin revisión humana`
 
 ---
 
