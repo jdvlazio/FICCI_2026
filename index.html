@@ -2,6 +2,19 @@
 <html lang="es">
 <head>
 <!-- Sentry error monitoring — captura errores JS en producción en tiempo real -->
+<script>
+window.sentryOnLoad = function() {
+  Sentry.init({
+    dsn: "https://f9a3edecb09ba965c5426d617e1cf7de@o4511390879514624.ingest.us.sentry.io/4511390886264832",
+    environment: "production",
+    sendDefaultPii: false,
+    ignoreErrors: [
+      "Non-Error promise rejection",
+      "ResizeObserver loop limit exceeded"
+    ]
+  });
+};
+</script>
 <script
   src="https://js.sentry-cdn.com/f9a3edecb09ba965c5426d617e1cf7de.min.js"
   crossorigin="anonymous"
@@ -4418,7 +4431,7 @@ let FESTIVAL_STORAGE_KEY=(localStorage.getItem('otrofestiv_festival')||_DEFAULT_
 // BUILD_VERSION: cambia en cada deploy.
 // Al cargar, compara con localStorage. Si difiere → reload duro.
 // sessionStorage evita loops infinitos dentro de la misma sesión.
-const BUILD_VERSION='202605142340';
+const BUILD_VERSION='202605142342';
 (function(){
   const _vk='otrofestiv_build';
   const _sk='otrofestiv_reloaded';
