@@ -3,7 +3,7 @@
 > No editar a mano — los cambios se sobreescriben en el próximo deploy.
 > Para modificar secciones estáticas, editar el template en el script.
 >
-> Último commit: `01f4e4d chore(specify): cerrar lista-todo-sort y grid-section-separators — ya implementados`
+> Último commit: `673bdb6 fix(i18n): wiring 2 strings hardcodeadas EN → t()`
 
 ---
 
