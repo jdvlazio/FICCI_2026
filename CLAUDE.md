@@ -3,7 +3,7 @@
 > No editar a mano — los cambios se sobreescriben en el próximo deploy.
 > Para modificar secciones estáticas, editar el template en el script.
 >
-> Último commit: `9b0b6a7 fix(tests): T10 acepta .poster-card y .plist-item — compatible con vista lista por defecto`
+> Último commit: `c9754c5 docs: regla vista lista/grid, iOS non-scrollable bug, Android APK, CI en ARQUITECTURA + constitution + CLAUDE.md`
 
 ---
 

@@ -4413,7 +4413,7 @@ let FESTIVAL_STORAGE_KEY=(localStorage.getItem('otrofestiv_festival')||_DEFAULT_
 // BUILD_VERSION: cambia en cada deploy.
 // Al cargar, compara con localStorage. Si difiere → reload duro.
 // sessionStorage evita loops infinitos dentro de la misma sesión.
-const BUILD_VERSION='202605142314';
+const BUILD_VERSION='202605142318';
 (function(){
   const _vk='otrofestiv_build';
   const _sk='otrofestiv_reloaded';
@@ -6354,7 +6354,7 @@ function renderFilmAlternatives(title,day,time){
   return`<div class="film-alts">
     ${optsHtml||`<div class="scenario-label">t('plan_no_alts_horario').</div>`}
     <div class="scenario-footer">
-      <button class="w-full-sm checkin-result-btn secondary" onclick="_expandedFilm='';renderAgenda()}">${t('misc_cerrar')}</button>
+      <button class="w-full-sm checkin-result-btn secondary" onclick="_expandedFilm='';renderAgenda()">${t('misc_cerrar')}</button>
     </div>
   </div>`;
 }
