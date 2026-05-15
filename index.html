@@ -3349,7 +3349,7 @@ function setLang(code){
     if(nav === 'mnav-cartelera')      { typeof showDayView === 'function'         && showDayView(); }
     else if(nav === 'mnav-seleccion') { typeof renderAgenda === 'function'        && renderAgenda(); }
     else if(nav === 'mnav-planner')   { typeof renderSimPanel === 'function'      && renderSimPanel(); }
-    else if(nav === 'mnav-miplan')    { typeof renderMiPlanCalendar === 'function' && renderMiPlanCalendar(); }
+    else if(nav === 'mnav-miplan')    { typeof renderAgenda === 'function'         && renderAgenda(); }
     // Fade in
     requestAnimationFrame(()=>{
       _fadeEls.forEach(el=>el.classList.remove('lang-fade'));
@@ -8905,6 +8905,9 @@ document.addEventListener('keydown',function(e){
 document.addEventListener('click',function(e){
   if(e.target.closest('.plist-heart')) return; // heart toggle — no abrir sheet
   if(e.target.closest('.suggestion-add')) return; // botón Añadir — no abrir sheet
+  if(e.target.closest('.int-prio-btn')) return; // estrella priorizar — no abrir sheet
+  if(e.target.closest('.int-seen-btn')) return; // ya vista — no abrir sheet
+  if(e.target.closest('.prio-chip-rm')) return; // quitar prioridad — no abrir sheet
   const el=e.target.closest('.js-open-pel');
   if(el) openPelSheet(el.dataset.title||'');
 },true);
