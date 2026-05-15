@@ -4,32 +4,40 @@ on:
   push:
     branches: [main]
 
+permissions:
+  contents: write
+
 jobs:
   bundle:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Get build number
         id: build
         run: echo "number=$(date +'%Y%m%d%H%M')" >> $GITHUB_OUTPUT
 
-      - name: Create www folder with latest index.html
+      - name: Build www folder from repo root
         run: |
-          mkdir -p www
+          mkdir -p www/festivals www/i18n www/assets/leviza
           cp index.html www/
-          cp -r assets www/ 2>/dev/null || true
-          cp manifest.json www/ 2>/dev/null || true
-          cp sw.js www/ 2>/dev/null || true
-          cp version.json www/ 2>/dev/null || true
-          cp -r festivals www/ 2>/dev/null || true
-          cp -r i18n www/ 2>/dev/null || true
+          cp sw.js www/
+          cp manifest.json www/
+          cp version.json www/
+          cp update.json www/
+          cp icon-192.png www/ 2>/dev/null || true
+          cp icon-512.png www/ 2>/dev/null || true
+          cp -r festivals/. www/festivals/ 2>/dev/null || true
+          cp -r i18n/. www/i18n/ 2>/dev/null || true
+          cp -r assets/. www/assets/ 2>/dev/null || true
+          echo "www contents:"
+          ls -la www/
 
       - name: Create bundle zip
         run: |
-          cd www
-          zip -r ../bundle.zip .
-          cd ..
+          cd www && zip -r ../bundle.zip . && cd ..
           echo "Bundle size: $(du -sh bundle.zip)"
 
       - name: Update update.json
@@ -42,15 +50,12 @@ jobs:
           git config user.email "github-actions@github.com"
           git config user.name "GitHub Actions"
           git add update.json
-          git diff --staged --quiet || git commit -m "chore: update bundle version to ${{ steps.build.outputs.number }}"
-          git push
+          git diff --staged --quiet || git commit -m "chore: bundle v${{ steps.build.outputs.number }}" && git push
 
-      - name: Create GitHub Release with bundle
-        uses: softprops/action-gh-release@v1
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
         with:
           tag_name: v${{ steps.build.outputs.number }}
           name: Bundle ${{ steps.build.outputs.number }}
           files: bundle.zip
-          body: "Automatic bundle — built from commit ${{ github.sha }}"
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          body: "Bundle automático — commit ${{ github.sha }}"
