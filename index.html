@@ -10219,8 +10219,27 @@ function dismissSplash(){
 }
 // Inicializar Supabase al cargar la página
 // Capgo OTA — notifica que la app arrancó correctamente (Cap 6)
+// Sin esta llamada, el updater hace rollback automático al bundle anterior.
 if(window.Capacitor?.Plugins?.CapacitorUpdater){
-  window.Capacitor.Plugins.CapacitorUpdater.notifyAppReady();
+  const _cu=window.Capacitor.Plugins.CapacitorUpdater;
+  _cu.notifyAppReady();
+  // Auto-update: revisa update.json y descarga bundle nuevo si hay versión distinta
+  (async()=>{
+    try{
+      const res=await fetch('/update.json',{cache:'no-store'});
+      const data=await res.json();
+      const current=await _cu.current();
+      const currentVer=current?.bundle?.version||'';
+      if(data.version&&data.url&&data.version!==currentVer){
+        const bundle=await _cu.download({url:data.url,version:data.version});
+        await _cu.next(bundle);
+        // El bundle nuevo se aplica en el próximo lanzamiento de la app
+        console.log('[Capgo] Bundle nuevo descargado:',data.version);
+      }
+    }catch(e){
+      // Silencioso — no interrumpir la app si falla la actualización
+    }
+  })();
 }
 _sbInit();
 (function(){
