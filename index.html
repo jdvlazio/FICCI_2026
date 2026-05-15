@@ -10448,15 +10448,20 @@ if('serviceWorker' in navigator){
         var serverBuild = v[_isIOS ? 'ios' : 'android'] || '';
         var localBuild  = localStorage.getItem(_BUILD_KEY) || '';
         if(serverBuild){
-          if(localBuild && serverBuild > localBuild && !_reloading){
-            // Nueva versión disponible: actualizar y recargar
-            _reloading = true;
+          if(serverBuild !== localBuild && !_reloading){
+            // Versión distinta (incluye primera instalación con localBuild vacío):
+            // guardar primero para evitar loop, luego recargar solo si había versión previa
+            var wasFirstInstall = !localBuild;
             localStorage.setItem(_BUILD_KEY, serverBuild);
-            location.reload();
-          } else {
-            // Primera carga o misma versión: registrar sin recargar
-            localStorage.setItem(_BUILD_KEY, serverBuild);
+            if(!wasFirstInstall){
+              // Update real: recargar para tomar la nueva versión
+              _reloading = true;
+              location.reload();
+            }
+            // En primera instalación: el SW ya tomó control (skipWaiting+claim),
+            // el próximo visibilitychange o cold-start traerá contenido fresco.
           }
+          // misma versión: no hacer nada
         }
       })
       .catch(function(){});

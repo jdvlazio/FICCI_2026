@@ -3,7 +3,7 @@
 // v14: hadController guard en cliente (fix first-install double-reload)
 //      version.json con android/ios independientes para staged rollout
 
-const CACHE_NAME = 'otrofestiv-v202605151410';
+const CACHE_NAME = 'otrofestiv-v202605151425';
 const BUILD = '202605150119';
 
 const STATIC_ASSETS = [
@@ -20,11 +20,22 @@ self.addEventListener('install', () => {
 
 self.addEventListener('activate', event => {
   event.waitUntil(
-    caches.keys().then(keys =>
-      Promise.all(keys.map(key => caches.delete(key)))
-    ).then(() => {
-      return caches.open(CACHE_NAME).then(c => c.addAll(STATIC_ASSETS));
-    }).then(() => self.clients.claim())
+    caches.keys().then(keys => {
+      // Si no había ninguna caché previa → primera instalación
+      const isFirstInstall = !keys.some(k => k.startsWith('otrofestiv-'));
+      return Promise.all(keys.map(key => caches.delete(key)))
+        .then(() => caches.open(CACHE_NAME).then(c => c.addAll(STATIC_ASSETS)))
+        .then(() => self.clients.claim())
+        .then(() => {
+          // Primera instalación: recargar clientes para que el SW controle
+          // la próxima carga y sirva HTML fresco desde la red
+          if(isFirstInstall){
+            return self.clients.matchAll({type:'window'}).then(clients => {
+              clients.forEach(client => client.navigate(client.url));
+            });
+          }
+        });
+    })
   );
 });
 
