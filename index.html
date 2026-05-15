@@ -9072,7 +9072,7 @@ function openCortoSheet(title, country, duration, section, flags, director, genr
     ?`<div class="psp-editorial"><div class="psp-ed-hdr" style="background:${_sectionColor(section||'')}"><span>${_secLabel(section||'').toUpperCase()}</span></div><div class="psp-ed-img"><img src="${posterUrl}" loading="lazy" onerror="this.parentElement.style.display='none'" alt=""></div></div>`
     :posterUrl
       ?`<img class="pel-sheet-poster" src="${posterUrl}" data-title="${(title||"").replace(/"/g,'&quot;')}" loading="lazy" onerror="_cortoSheetPosterErr(this)" alt="">`
-      :`<div class="pel-sheet-poster-ph">🎬</div>`;
+      :`<img class="pel-sheet-poster" src="${makeProgramPoster(title,dur,section||'')||''}" alt="" loading="lazy">`;
   const ps=document.getElementById('pel-sheet');
   if(ps) ps.scrollTop=0;
   _pushSheetState();
