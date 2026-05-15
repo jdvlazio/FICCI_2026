@@ -12,7 +12,7 @@ module.exports = defineConfig({
     ['json', { outputFile: 'test-results.json' }],
   ],
   use: {
-    baseURL: 'http://localhost:3000',
+    baseURL: process.env.BASE_URL || 'http://localhost:3000',
     headless: true,
     viewport: { width: 390, height: 844 }, // iPhone 14 — mobile first
     locale: 'es-CO',                              // idioma determinista — evita variaciones de CI runner

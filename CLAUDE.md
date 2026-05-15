@@ -3,7 +3,7 @@
 > No editar a mano — los cambios se sobreescriben en el próximo deploy.
 > Para modificar secciones estáticas, editar el template en el script.
 >
-> Último commit: `23cdd8d fix(sugerencias): botón Añadir no abre sheet — capture:true en js-open-pel ignoraba stopPropagation`
+> Último commit: `844797a fix(sentry): beforeSend filtra errores de Playwright (HeadlessChrome) y localhost`
 
 ---
 
