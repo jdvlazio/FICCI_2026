@@ -6109,7 +6109,9 @@ function _mkCortoItemHtml(item, n, {cls='mplan-prog-item', ratingEl=''}={}){
   const _dir=encodeURIComponent(item.director||'');
   const _dg=encodeURIComponent(item.genre||'');
   const _ds=encodeURIComponent((item.synopsis||'').slice(0,200));
-  return`<div class="${cls}" data-ct="${_dt}" data-cc="${_dc}" data-cd="${_dd}" data-cdir="${_dir}" data-cg="${_dg}" data-cs="${_ds}" onclick="openCortoSheetFromEl(this,event)">
+  // data-cp: poster resuelto en render time — viaja directo al sheet, sin re-lookup
+  const _dp=encodeURIComponent(thumb||'');
+  return`<div class="${cls}" data-ct="${_dt}" data-cc="${_dc}" data-cd="${_dd}" data-cdir="${_dir}" data-cg="${_dg}" data-cs="${_ds}" data-cp="${_dp}" onclick="openCortoSheetFromEl(this,event)">
     ${thumbHtml}
     <div style="flex:1;min-width:0">
       <div class="row-baseline">
@@ -6127,6 +6129,8 @@ function openCortoSheetFromEl(el,e){
   const title=decodeURIComponent(el.dataset.ct||'');
   const parent=_findParentProgram(title);
   const section=parent?.section||'';
+  // data-cp: poster resuelto en render time — llega directo, sin depender de richItem lookup
+  const posterOverride=decodeURIComponent(el.dataset.cp||'')||null;
   openCortoSheet(
     title,
     decodeURIComponent(el.dataset.cc||''),
@@ -6135,7 +6139,8 @@ function openCortoSheetFromEl(el,e){
     countryToFlags(decodeURIComponent(el.dataset.cc||'')),
     decodeURIComponent(el.dataset.cdir||''),
     decodeURIComponent(el.dataset.cg||''),
-    decodeURIComponent(el.dataset.cs||'')
+    decodeURIComponent(el.dataset.cs||''),
+    posterOverride
   );
 }
 
@@ -9047,7 +9052,7 @@ function _openCombinedFilmSheet(filmData){
 }
 
 
-function openCortoSheet(title, country, duration, section, flags, director, genre, synopsis){
+function openCortoSheet(title, country, duration, section, flags, director, genre, synopsis, posterOverride){
   const inner=document.getElementById('pel-sheet-inner');
   if(!inner) return;
   const pelSheet=document.getElementById('pel-sheet');
@@ -9066,7 +9071,7 @@ function openCortoSheet(title, country, duration, section, flags, director, genr
   const ctry=country||(richItem&&richItem.country)||'';
   const dur=duration||(richItem&&richItem.duration)||'';
   const flgs=flags||countryToFlags(ctry)||'🌐';
-  const posterUrl=(richItem&&getCortoItemPoster(richItem))||getPosterSrc(title,true)||null;
+  const posterUrl=posterOverride||(richItem&&getCortoItemPoster(richItem))||getPosterSrc(title,true)||null;
   const _isEd3=posterUrl&&posterUrl.includes('cloudfront.net');
   const posterHtml=_isEd3
     ?`<div class="psp-editorial"><div class="psp-ed-hdr" style="background:${_sectionColor(section||'')}"><span>${_secLabel(section||'').toUpperCase()}</span></div><div class="psp-ed-img"><img src="${posterUrl}" loading="lazy" onerror="this.parentElement.style.display='none'" alt=""></div></div>`
