@@ -3,7 +3,7 @@
 > No editar a mano — los cambios se sobreescriben en el próximo deploy.
 > Para modificar secciones estáticas, editar el template en el script.
 >
-> Último commit: `7a4400a fix(tests): T24/T25 reescritos como evaluate único — evitan timing entre renders intermedios`
+> Último commit: `9af4a19 fix(tests): nav IDs correctos (mnav-planner/mnav-seleccion) + showAgView() + selectores T25/T36/T43`
 
 ---
 

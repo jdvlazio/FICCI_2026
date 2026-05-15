@@ -410,7 +410,7 @@ test('T18 — sheet se cierra con el botón X', async ({ page }) => {
 test('T19 — watchlist persiste al navegar entre tabs', async ({ page }) => {
   await enterFestival(page, 'leviza2026', LEVIZA_SIMTIME);
   await addToWatchlist(page, 'La Suprema');
-  await page.evaluate(() => switchMainNav('mnav-seleccion');showAgView());
+  await page.evaluate(() => { switchMainNav('mnav-seleccion'); showAgView(); });
   await page.waitForTimeout(500);
   await page.evaluate(() => switchMainNav('mnav-cartelera'));
   await page.waitForTimeout(500);
@@ -547,7 +547,7 @@ test('T28 — sugerencias: añadir muestra toast', async ({ page }) => {
 test('T29 — planear sin watchlist muestra estado vacío', async ({ page }) => {
   await enterFestival(page, 'leviza2026', LEVIZA_SIMTIME);
   await page.evaluate(() => { watchlist.clear(); savedAgenda = null; saveState('wl','watched'); saveSavedAgenda(); });
-  await page.evaluate(() => switchMainNav('mnav-planner');showAgView());
+  await page.evaluate(() => { switchMainNav('mnav-planner'); showAgView(); });
   await page.waitForTimeout(800);
   // Debe mostrar empty state o CTA para añadir títulos
   const empty = await page.locator('.empty-state, .av-empty, .planear-empty, [class*="empty"]').count();
@@ -558,7 +558,7 @@ test('T29 — planear sin watchlist muestra estado vacío', async ({ page }) => 
 test('T30 — planear con watchlist muestra botón calcular', async ({ page }) => {
   await enterFestival(page, 'leviza2026', LEVIZA_SIMTIME);
   await addToWatchlist(page, 'Taller de Guion');
-  await page.evaluate(() => switchMainNav('mnav-planner');showAgView());
+  await page.evaluate(() => { switchMainNav('mnav-planner'); showAgView(); });
   await page.waitForTimeout(800);
   await expect(page.locator('.av-calc-btn')).toBeVisible({ timeout: 5000 });
 });
@@ -591,7 +591,7 @@ test('T33 — intereses muestra películas en watchlist', async ({ page }) => {
   await enterFestival(page, 'leviza2026', LEVIZA_SIMTIME);
   await addToWatchlist(page, 'La Suprema');
   await addToWatchlist(page, 'Taller de Guion');
-  await page.evaluate(() => switchMainNav('mnav-seleccion');showAgView());
+  await page.evaluate(() => { switchMainNav('mnav-seleccion'); showAgView(); });
   await page.waitForTimeout(800);
   const items = await page.locator('.plist-item, .poster-card, .ag-film-row, .int-item').count();
   expect(items).toBeGreaterThan(0);
@@ -720,7 +720,7 @@ test('T42 — onclick handlers tienen JS válido', async ({ page }) => {
 test('T43 — planear con títulos muestra chips de disponibilidad', async ({ page }) => {
   await enterFestival(page, 'leviza2026', LEVIZA_SIMTIME);
   await addToWatchlist(page, 'Taller de Guion');
-  await page.evaluate(() => switchMainNav('mnav-planner');showAgView());
+  await page.evaluate(() => { switchMainNav('mnav-planner'); showAgView(); });
   await page.waitForTimeout(800);
   // Debe mostrar la sección de disponibilidad o el botón calcular
   const hasUI = await page.locator('.av-calc-btn').count();
