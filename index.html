@@ -2880,6 +2880,7 @@ const _I18N = {
     "plan_listo": "¡Tu plan está listo!",
     "auth_titulo": "Guardá tu plan",
     "auth_otp_sub": "Enviamos un código de 6 dígitos a",
+    "auth_verificando": "Verificando…",
     "auth_desc": "Ingresa tu email y te enviamos un código de 6 dígitos. Sin contraseña.",
     "auth_enviar": "Enviar código",
     "auth_revisa": "Revisá tu email",
@@ -3179,6 +3180,7 @@ const _I18N = {
     "auth_titulo": "Save your plan",
     "auth_desc": "Enter your email and we'll send you a 6-digit code. No password needed. Your plan syncs across all your devices.",
     "auth_otp_sub": "We sent a 6-digit code to",
+    "auth_verificando": "Verifying…",
     "auth_desc": "Enter your email and we'll send you a 6-digit code. No password needed.",
     "auth_enviar": "Send code",
     "auth_revisa": "Check your email",
@@ -4165,7 +4167,12 @@ function _renderAfterSync(){
 function openAuthSheet(){
   if(_sbUser){_showSignedInSheet();return;}
   const s=document.getElementById('auth-sheet');
-  if(s){s.style.display='flex';setTimeout(()=>s.classList.add('open'),10);}
+  if(s){
+    s.style.display='flex';
+    setTimeout(()=>s.classList.add('open'),10);
+    // Aplicar i18n al abrir — garantiza subtítulos en el idioma activo
+    s.querySelectorAll('[data-i18n]').forEach(el=>{el.textContent=t(el.dataset.i18n);});
+  }
 }
 function closeAuthSheet(){
   const s=document.getElementById('auth-sheet');
@@ -4198,12 +4205,12 @@ async function submitOTP(){
   const btn=document.getElementById('auth-otp-btn');
   const msg=document.getElementById('auth-otp-msg');
   if(!token||token.length<6){msg.textContent=t('auth_cod_hint');return;}
-  btn.disabled=true;btn.textContent='Verificando…';
+  btn.disabled=true;btn.textContent=t('auth_verificando');
   try{
     const{data,error}=await _sb.auth.verifyOtp({email,token,type:'email'});
     if(error){
       msg.textContent=t('toast_cod_mal');
-      btn.disabled=false;btn.textContent='Confirmar';
+      btn.disabled=false;btn.textContent=t('av_confirmar');
     } else {
       closeAuthSheet();
       // Reset steps
@@ -4213,7 +4220,7 @@ async function submitOTP(){
     }
   }catch(e){
     msg.textContent=t('toast_algo_mal');
-    btn.disabled=false;btn.textContent='Confirmar';
+    btn.disabled=false;btn.textContent=t('av_confirmar');
   }
 }
 function _showSignedInSheet(){
