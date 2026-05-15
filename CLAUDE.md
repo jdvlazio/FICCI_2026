@@ -3,7 +3,7 @@
 > No editar a mano — los cambios se sobreescriben en el próximo deploy.
 > Para modificar secciones estáticas, editar el template en el script.
 >
-> Último commit: `b28e81a fix(tests): revertir addInitScript — usar page.evaluate que accede a _simTime del app directamente`
+> Último commit: `c4a3721 test: T14–T23 — sheet content, watchlist, programa grid/list/día`
 
 ---
 

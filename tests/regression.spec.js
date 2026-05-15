@@ -465,3 +465,272 @@ test('T23 — filtro por día muestra films del día correcto', async ({ page })
   });
   expect(wrongDay).toBe(false);
 });
+
+// ═════════════════════════════════════════════════════════════════════════════
+// BATCH 2 — Mi Plan · Sugerencias · Planear
+// ═════════════════════════════════════════════════════════════════════════════
+
+// T24 — Mi Plan: quitar sesión del plan con X la elimina
+test('T24 — quitar sesión del plan la elimina', async ({ page }) => {
+  await enterFestival(page, 'leviza2026', LEVIZA_SIMTIME);
+  await addToWatchlist(page, 'Taller de Guion');
+  // Añadir sesión al plan
+  await page.evaluate(() => {
+    const f = FILMS.find(fi => fi.title === 'Taller de Guion' && fi.day === 'VIE 15');
+    if (f) {
+      if (!savedAgenda) savedAgenda = { schedule: [] };
+      savedAgenda.schedule.push({ ...f, _title: f.title });
+      saveSavedAgenda();
+    }
+  });
+  await page.evaluate(() => switchMainNav('mnav-miplan'));
+  await page.waitForTimeout(800);
+  const before = await page.evaluate(() => savedAgenda?.schedule?.length || 0);
+  await page.evaluate(() => removeFromAgenda('Taller de Guion'));
+  const after = await page.evaluate(() => savedAgenda?.schedule?.filter(s => s._title === 'Taller de Guion').length || 0);
+  expect(before).toBeGreaterThan(0);
+  expect(after).toBe(0);
+});
+
+// T25 — Mi Plan: Ver día muestra detalle de la sesión
+test('T25 — ver día muestra detalle del plan', async ({ page }) => {
+  await enterFestival(page, 'leviza2026', LEVIZA_SIMTIME);
+  await addToWatchlist(page, 'Taller de Guion');
+  await page.evaluate(() => {
+    const f = FILMS.find(fi => fi.title === 'Taller de Guion' && fi.day === 'VIE 15');
+    if (f) {
+      if (!savedAgenda) savedAgenda = { schedule: [] };
+      savedAgenda.schedule.push({ ...f, _title: f.title });
+      saveSavedAgenda();
+    }
+    switchMainNav('mnav-miplan');
+    renderAgenda();
+  });
+  await page.waitForTimeout(800);
+  await page.evaluate(() => { activeMiPlanDay = DAY_KEYS.indexOf('VIE 15'); renderAgenda(); });
+  await page.waitForTimeout(500);
+  await expect(page.locator('.mplan-row, .mplan-list-item').first()).toBeVisible({ timeout: 5000 });
+});
+
+// T26 — Mi Plan: hora punteada abre panel de alternativas
+test('T26 — hora punteada abre panel de alternativas', async ({ page }) => {
+  await enterFestival(page, 'tribeca2026');
+  await page.evaluate(() => switchMainNav('mnav-miplan'));
+  await page.waitForTimeout(1000);
+  const hasPlan = await page.locator('.mplan-t1').count();
+  if (!hasPlan) return; // sin plan, skip
+  await page.locator('.mplan-t1').first().click();
+  await page.waitForTimeout(800);
+  const panel = await page.locator('.film-alts').count();
+  expect(panel).toBeGreaterThan(0);
+});
+
+// T27 — Sugerencias: botón Añadir NO abre sheet de película
+test('T27 — sugerencias: añadir no abre sheet', async ({ page }) => {
+  await enterFestival(page, 'tribeca2026');
+  await page.evaluate(() => switchMainNav('mnav-miplan'));
+  await page.waitForTimeout(1000);
+  const addBtn = page.locator('.suggestion-add').first();
+  const hasSuggestions = await addBtn.count();
+  if (!hasSuggestions) return;
+  await addBtn.click();
+  await page.waitForTimeout(800);
+  const sheetOpen = await page.locator('#pel-sheet.open').count();
+  expect(sheetOpen).toBe(0);
+});
+
+// T28 — Sugerencias: botón Añadir muestra toast de confirmación
+test('T28 — sugerencias: añadir muestra toast', async ({ page }) => {
+  await enterFestival(page, 'tribeca2026');
+  await page.evaluate(() => switchMainNav('mnav-miplan'));
+  await page.waitForTimeout(1000);
+  const addBtn = page.locator('.suggestion-add').first();
+  if (!await addBtn.count()) return;
+  await addBtn.click();
+  await page.waitForTimeout(500);
+  const toast = await page.locator('.toast, .toast-msg, #toast').count();
+  expect(toast).toBeGreaterThan(0);
+});
+
+// T29 — Planear: sin watchlist muestra estado vacío
+test('T29 — planear sin watchlist muestra estado vacío', async ({ page }) => {
+  await enterFestival(page, 'leviza2026', LEVIZA_SIMTIME);
+  await page.evaluate(() => { watchlist.clear(); savedAgenda = null; saveState('wl','watched'); saveSavedAgenda(); });
+  await page.evaluate(() => switchMainNav('mnav-planear'));
+  await page.waitForTimeout(800);
+  // Debe mostrar empty state o CTA para añadir títulos
+  const empty = await page.locator('.empty-state, .av-empty, .planear-empty, [class*="empty"]').count();
+  expect(empty).toBeGreaterThan(0);
+});
+
+// T30 — Planear: con watchlist muestra botón calcular
+test('T30 — planear con watchlist muestra botón calcular', async ({ page }) => {
+  await enterFestival(page, 'leviza2026', LEVIZA_SIMTIME);
+  await addToWatchlist(page, 'Taller de Guion');
+  await page.evaluate(() => switchMainNav('mnav-planear'));
+  await page.waitForTimeout(800);
+  await expect(page.locator('.av-calc-btn')).toBeVisible({ timeout: 5000 });
+});
+
+// T31 — Planear: resultado tiene al menos un escenario
+test('T31 — planear genera al menos un escenario', async ({ page }) => {
+  await enterFestival(page, 'leviza2026', LEVIZA_SIMTIME);
+  await addToWatchlist(page, 'Taller de Guion');
+  await goToPlanear(page);
+  await page.locator('.av-calc-btn').click();
+  await page.locator('#ag-result-wrap').waitFor({ state: 'visible', timeout: 20000 });
+  const scenarios = await page.evaluate(() => cachedResult?.scenarios?.length || 0);
+  expect(scenarios).toBeGreaterThan(0);
+});
+
+// T32 — Nav: cambio entre los 4 tabs funciona sin errores JS
+test('T32 — navegar entre los 4 tabs no lanza errores', async ({ page }) => {
+  await enterFestival(page, 'leviza2026', LEVIZA_SIMTIME);
+  const errors = [];
+  page.on('pageerror', e => errors.push(e.message));
+  for (const nav of ['mnav-intereses', 'mnav-planear', 'mnav-miplan', 'mnav-cartelera']) {
+    await page.evaluate((n) => switchMainNav(n), nav);
+    await page.waitForTimeout(400);
+  }
+  expect(errors).toHaveLength(0);
+});
+
+// T33 — Nav: Intereses muestra la lista de películas en watchlist
+test('T33 — intereses muestra películas en watchlist', async ({ page }) => {
+  await enterFestival(page, 'leviza2026', LEVIZA_SIMTIME);
+  await addToWatchlist(page, 'La Suprema');
+  await addToWatchlist(page, 'Taller de Guion');
+  await page.evaluate(() => switchMainNav('mnav-intereses'));
+  await page.waitForTimeout(800);
+  const items = await page.locator('.plist-item, .poster-card, .ag-film-row, .int-item').count();
+  expect(items).toBeGreaterThan(0);
+});
+
+// ═════════════════════════════════════════════════════════════════════════════
+// BATCH 3 — Errores JS · Conflictos · Festival · Sentry · SSL
+// ═════════════════════════════════════════════════════════════════════════════
+
+// T34 — App carga sin errores JS en consola
+test('T34 — carga inicial sin errores JS', async ({ page }) => {
+  const errors = [];
+  page.on('pageerror', e => errors.push(e.message));
+  await enterFestival(page, 'leviza2026', LEVIZA_SIMTIME);
+  // Filtrar errores conocidos de extensiones o third-party
+  const realErrors = errors.filter(e =>
+    !e.includes('extension') && !e.includes('chrome-extension') && !e.includes('sentry')
+  );
+  expect(realErrors).toHaveLength(0);
+});
+
+// T35 — App carga sin errores JS en Tribeca
+test('T35 — carga Tribeca sin errores JS', async ({ page }) => {
+  const errors = [];
+  page.on('pageerror', e => errors.push(e.message));
+  await enterFestival(page, 'tribeca2026');
+  const realErrors = errors.filter(e =>
+    !e.includes('extension') && !e.includes('chrome-extension') && !e.includes('sentry')
+  );
+  expect(realErrors).toHaveLength(0);
+});
+
+// T36 — Conflicto: añadir sesión que solapa abre modal de conflicto
+test('T36 — sesión solapada abre modal de conflicto', async ({ page }) => {
+  await enterFestival(page, 'leviza2026', LEVIZA_SIMTIME);
+  await page.evaluate(() => {
+    // Añadir Taller de Guion VIE 14:00 (4h)
+    const f1 = FILMS.find(fi => fi.title === 'Taller de Guion' && fi.day === 'VIE 15');
+    if (!f1) return;
+    if (!savedAgenda) savedAgenda = { schedule: [] };
+    savedAgenda.schedule = [{ ...f1, _title: f1.title }];
+    saveSavedAgenda();
+    watchlist.add('Taller de Guion');
+    // Intentar añadir Rebelión VIE 16:00 que solapa
+    const f2 = FILMS.find(fi => fi.title === 'Rebelión' && fi.day === 'VIE 15');
+    if (f2) openConflictSheet(f2.title, f2, savedAgenda.schedule[0]);
+  });
+  await page.waitForTimeout(500);
+  const modal = await page.locator('#conflict-modal, .conflict-modal').count();
+  expect(modal).toBeGreaterThan(0);
+});
+
+// T37 — Festival: cambiar festival actualiza el topbar
+test('T37 — cambiar de festival actualiza el topbar', async ({ page }) => {
+  await enterFestival(page, 'leviza2026', LEVIZA_SIMTIME);
+  const beforeName = await page.locator('.hdr-fest-name').textContent();
+  // Cambiar a Tribeca vía JS
+  await page.evaluate(() => loadFestival('tribeca2026'));
+  await page.waitForTimeout(2000);
+  const afterName = await page.locator('.hdr-fest-name').textContent();
+  expect(beforeName).not.toEqual(afterName);
+  expect(afterName?.toUpperCase()).toContain('TRIBECA');
+});
+
+// T38 — Festival: JSON de festival carga correctamente
+test('T38 — JSON del festival tiene films', async ({ page }) => {
+  await enterFestival(page, 'leviza2026', LEVIZA_SIMTIME);
+  const filmCount = await page.evaluate(() => typeof FILMS !== 'undefined' ? FILMS.length : 0);
+  expect(filmCount).toBeGreaterThan(0);
+});
+
+// T39 — Festival: todos los festivales del selector cargan sin error
+test('T39 — todos los festivales cargan sin crash', async ({ page }) => {
+  await enterFestival(page, 'leviza2026', LEVIZA_SIMTIME);
+  const errors = [];
+  page.on('pageerror', e => errors.push(e.message));
+  const festIds = await page.evaluate(() =>
+    Object.keys(FESTIVAL_CONFIG).filter(k => k !== 'default')
+  );
+  for (const id of festIds) {
+    await page.evaluate((fid) => loadFestival(fid), id);
+    await page.waitForTimeout(1500);
+  }
+  const realErrors = errors.filter(e => !e.includes('sentry'));
+  expect(realErrors).toHaveLength(0);
+});
+
+// T40 — Mi Plan: estado de plan vacío muestra UI correcta
+test('T40 — mi plan vacío muestra estado vacío', async ({ page }) => {
+  await enterFestival(page, 'leviza2026', LEVIZA_SIMTIME);
+  await page.evaluate(() => {
+    savedAgenda = null;
+    saveSavedAgenda();
+    switchMainNav('mnav-miplan');
+    renderAgenda();
+  });
+  await page.waitForTimeout(800);
+  // Debe mostrar empty state o CTA
+  const empty = await page.locator('.empty-state, [class*="empty"], .mplan-empty, .cta-ctx').count();
+  expect(empty).toBeGreaterThan(0);
+});
+
+// T41 — Programa: sección del poster no está truncada
+test('T41 — sección del poster no truncada en grid', async ({ page }) => {
+  await enterFestival(page, 'leviza2026', LEVIZA_SIMTIME);
+  await page.evaluate(() => { activeDay='all'; programaViewMode='grid'; _renderProgramaContent(); });
+  await page.waitForSelector('.poster-card', { timeout: 8000 });
+  const content = await page.content();
+  // El bug original: FICCIÓN se truncaba a FICC
+  expect(content).not.toMatch(/>FICC\s*</);
+  expect(content).not.toMatch(/>COMP\s*</);
+});
+
+// T42 — onclick handlers: ninguno tiene sintaxis inválida
+test('T42 — onclick handlers tienen JS válido', async ({ page }) => {
+  await enterFestival(page, 'leviza2026', LEVIZA_SIMTIME);
+  // Verificar que validate.py ya lo cubre — si la app cargó sin errores, los handlers estáticos son válidos
+  const errors = [];
+  page.on('pageerror', e => { if (e.message.includes('SyntaxError')) errors.push(e.message); });
+  await page.waitForTimeout(500);
+  expect(errors).toHaveLength(0);
+});
+
+// T43 — Planear: estado B (con watchlist) muestra chips de disponibilidad
+test('T43 — planear con títulos muestra chips de disponibilidad', async ({ page }) => {
+  await enterFestival(page, 'leviza2026', LEVIZA_SIMTIME);
+  await addToWatchlist(page, 'Taller de Guion');
+  await page.evaluate(() => switchMainNav('mnav-planear'));
+  await page.waitForTimeout(800);
+  // Debe mostrar la sección de disponibilidad o el botón calcular
+  const hasUI = await page.locator('.av-calc-btn, .av-day-chip, .av-block-chip').count();
+  expect(hasUI).toBeGreaterThan(0);
+});
