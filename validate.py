@@ -315,7 +315,23 @@ if bad_onclick:
 else:
     ok(check, 'sin onclick con &#39; inseguro')
 
-# ── CHECK 9: i18n completeness ────────────────────────────────────────────────
+# ── CHECK: static-html-template ──────────────────────────────────────────────
+# Detecta ${t('key')} o ${expr} en HTML estático (antes del primer <script>).
+# En HTML estático no hay template literal — el browser lo renderiza como texto literal.
+# Fix: usar data-i18n="key" con textContent fallback, o span con data-i18n.
+check = 'static-html-template'
+try:
+    html_only = content[:content.find('<script>')]
+    bad_tmpl = re.findall(r'\$\{[^}]{1,60}\}', html_only)
+    if bad_tmpl:
+        for b in bad_tmpl[:10]:
+            fail(check, f'template literal en HTML estático (se renderiza como texto): {b}')
+    else:
+        ok(check, 'sin template literals en HTML estático')
+except Exception as e:
+    warn(check, f'no se pudo verificar: {e}')
+
+
 # Verifica que todas las keys usadas en t('key') existan en AMBOS diccionarios ES y EN.
 check = 'i18n-complete'
 try:
