@@ -425,6 +425,42 @@ except FileNotFoundError:
     warn(check, 'Node.js no disponible — skip sintaxis JS')
 
 
+# ── CHECK 9c: i18n-interpolation ─────────────────────────────────────────────
+# Keys cuyos valores contienen {placeholder} deben ser llamadas con t('key', {...}).
+# Si se llaman como t('key') sin parámetros, el placeholder queda en el string final.
+# Ejemplo del bug: warn_qa_tiempo = "~{n} min" pero t('warn_qa_tiempo') sin params.
+check = 'i18n-interpolation'
+try:
+    import re as _re_interp
+    # Extraer todas las keys con placeholders del diccionario ES (fuente de verdad)
+    es_block = _extract_lang_block(i18n_block, 'es')
+    keys_with_placeholders = {}
+    for m in _re_interp.finditer(r'"([^"]+)"\s*:\s*"([^"]*\{[a-z]\w*\}[^"]*)"', es_block):
+        key, val = m.group(1), m.group(2)
+        placeholders = _re_interp.findall(r'\{([a-z]\w*)\}', val)
+        if placeholders:
+            keys_with_placeholders[key] = placeholders
+
+    script_part = content[content.find('<script>'):content.rfind('</script>')]
+    interp_errors = []
+    for key, placeholders in keys_with_placeholders.items():
+        # Buscar todas las llamadas a t('key') — con o sin parámetros
+        all_calls = _re_interp.findall(rf"t\('{key}'([^)]*)\)", script_part)
+        bare_calls = [c for c in all_calls if c.strip() == '']
+        if bare_calls:
+            interp_errors.append(
+                f"t('{key}') llamado sin params pero la key contiene {{{','.join(placeholders)}}} — "
+                f"usar t('{key}', {{{', '.join(f'{p}: ...' for p in placeholders)}}})"
+            )
+
+    if interp_errors:
+        for e in interp_errors:
+            fail(check, e)
+    else:
+        ok(check, f'{len(keys_with_placeholders)} keys con placeholders — todas llamadas con params')
+except Exception as e:
+    warn(check, f'no se pudo verificar interpolación i18n: {e}')
+
 # ── CHECK 10: js-open-pel coverage ───────────────────────────────────────────
 # Todo elemento con data-title que sea una card tappable debe tener js-open-pel.
 # Sin esa clase, el listener delegado no lo encuentra y el tap queda mudo.
