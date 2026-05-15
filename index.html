@@ -1365,6 +1365,10 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:var(--t
 .mplan-wk-col-date.wk-has{color:var(--white)}
 
 .mplan-wk-col-dot{width:4px;height:4px;border-radius:50%;background:var(--amber);opacity:.7}
+.mplan-wk-col-arrow{display:flex;align-items:center;justify-content:center;color:var(--amber-60);height:6px;line-height:1}
+.mplan-bottom-actions{display:flex;gap:var(--sp-2);padding:var(--sp-2) var(--sp-3);border-top:1px solid var(--bdr-l);justify-content:flex-end}
+.mplan-bottom-btn{display:inline-flex;align-items:center;gap:5px;background:none;border:1px solid var(--bdr);border-radius:var(--r-pill);color:var(--gray2);font-size:var(--t-xs);font-weight:var(--w-semi);font-family:var(--font);padding:4px 10px;cursor:pointer;transition:color var(--tr-base),border-color var(--tr-base);white-space:nowrap;letter-spacing:.2px}
+.mplan-bottom-btn:active{opacity:.7}
 .mplan-wk-hline{position:absolute;left:0;right:0;height:0.5px;background:var(--bdr-l);pointer-events:none}
 .mplan-wk-hline.mp-major{background:var(--bdr)}
 .mplan-wk-nowline{position:absolute;left:0;right:0;height:2px;background:var(--green);z-index:10;pointer-events:none}
@@ -4669,7 +4673,7 @@ function renderMiPlanCalendar(){
     return`<div class="${colClass}" style="height:${PHDR+TOTAL}px" onclick="selectMiPlanDay(${i})">
       <div class="mplan-wk-col-hdr">
         <div class="mplan-wk-col-day"><span class="mplan-wk-day-name">${_lang==='en'?(DAY_SHORT_EN[DAYS[i].k]||DAYS[i].lbl).split(' ')[0]:DAYS[i].lbl}</span><span class="mplan-wk-col-date${dayFilms.length?' wk-has':''}">${DAYS[i].d}</span></div>
-        ${dayFilms.length?'<div class="mplan-wk-col-dot"></div>':''}
+        ${dayFilms.length?(isActive?'<div class="mplan-wk-col-arrow"><svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round"><path d="M19.5 8.25l-7.5 7.5-7.5-7.5"/></svg></div>':'<div class="mplan-wk-col-dot"></div>'):''}
       </div>
       ${gridHtml}${nowHtml}${blocksHtml}
     </div>`;
@@ -4760,6 +4764,10 @@ function renderMiPlanCalendar(){
       if(_hintSeen||!_hasFuture) return '';
       return`<div class="mplan-change-hint">${ICONS.clock} ${t('plan_hint_hora')} ${t('misc_pelicula')}</div>`;
     })()}
+    <div class="mplan-bottom-actions">
+      <button class="mplan-bottom-btn" onclick="sharePlan()">${ICONS.share} ${t('plan_compartir')}</button>
+      <button class="mplan-bottom-btn" onclick="exportICS()">${ICONS.calendar} ${t('misc_calendario')}</button>
+    </div>
   </div>`
 }
 
@@ -6853,31 +6861,19 @@ function _renderSavedAgendaHTML(){
   const totalDays=Math.max(1,DAY_KEYS.length);
   const viewedCount=all.filter(s=>watched.has(s._title)).length;
   const progressPct=dayIdx>=0?Math.round((dayIdx/(totalDays-1))*100):0;
-  const _activeDayLabel=(()=>{
-    if(activeMiPlanDay===null) return t('plan_ver_dia');
-    const dayObj=DAYS[activeMiPlanDay];
-    if(!dayObj) return t('plan_ver_dia');
-    return `${t('plan_ver_dia')} ${dayObj.lbl} ${dayObj.d}`;
-  })();
-  const _mpSwitch=`<button class="mplan-act-btn primary" onclick="_scrollToMplanDetail()" title="${t('aria_ir_detalle')}">${ICONS.chevronD} ${_activeDayLabel}</button>`;
   const progressBar=currentDayNum?`<div class="row-sm festival-progress">
     <div style="flex:1">
       <div class="festival-progress-text"><span>Día <b>${currentDayNum}</b> de ${totalDays}</span><span style="color:var(--amber)">${ICONS.check} ${viewedCount} ${viewedCount===1?'vista':'vistas'}</span></div>
       <div class="festival-progress-bar"><div class="festival-progress-fill" style="width:${progressPct}%"></div></div>
     </div>
   </div>`:'';
-  const planActions=`<div class="mplan-act-row">
-    ${_mpSwitch}
-    <button class="mplan-act-btn" onclick="sharePlan()">${ICONS.share} ${t('plan_compartir')}</button>
-    <button class="mplan-act-btn" onclick="exportICS()">${ICONS.calendar} Calendario</button>
-  </div>`;
 
   const _ctxHeader=renderContextualHeader();
   const _nextStrip=''; // delay controls integrated into ctx-header
   const _unconfirmed=renderUnconfirmed(all);
   let html=`<div class="saved-agenda">
     ${_nextStrip}${_unconfirmed}${_ctxHeader}
-    ${progressBar}${planActions}
+    ${progressBar}
 `;
 
   // ── CTA B: post-eliminación (temporal, auto-dismiss 6s) ──
