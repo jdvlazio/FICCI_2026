@@ -9066,7 +9066,7 @@ function openCortoSheet(title, country, duration, section, flags, director, genr
   const ctry=country||(richItem&&richItem.country)||'';
   const dur=duration||(richItem&&richItem.duration)||'';
   const flgs=flags||countryToFlags(ctry)||'🌐';
-  const posterUrl=(richItem&&richItem.poster)?(richItem.poster.startsWith("http")?richItem.poster:TMDB_IMG+richItem.poster):getPosterSrc(title,true)||null;
+  const posterUrl=(richItem&&getCortoItemPoster(richItem))||getPosterSrc(title,true)||null;
   const _isEd3=posterUrl&&posterUrl.includes('cloudfront.net');
   const posterHtml=_isEd3
     ?`<div class="psp-editorial"><div class="psp-ed-hdr" style="background:${_sectionColor(section||'')}"><span>${_secLabel(section||'').toUpperCase()}</span></div><div class="psp-ed-img"><img src="${posterUrl}" loading="lazy" onerror="this.parentElement.style.display='none'" alt=""></div></div>`
