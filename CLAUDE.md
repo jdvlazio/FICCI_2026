@@ -3,7 +3,7 @@
 > No editar a mano — los cambios se sobreescriben en el próximo deploy.
 > Para modificar secciones estáticas, editar el template en el script.
 >
-> Último commit: `3a3f6f2 fix(tests): SyntaxError en evaluate arrow functions — agregar llaves en multi-statement`
+> Último commit: `f518e90 fix(tests): T18 closePelSheet via JS, T24 lógica pura sin side effects, T25 waitForTimeout antes del DOM check`
 
 ---
 

@@ -498,7 +498,8 @@ test('T25 — ver día muestra detalle del plan', async ({ page }) => {
     switchMainNav('mnav-miplan');
     renderAgenda();
   });
-  await page.waitForTimeout(600);
+  // waitForSelector hace retry automático — más robusto que waitForTimeout fijo
+  await page.waitForSelector('.mplan-row', { timeout: 5000 });
   const rows = await page.locator('.mplan-row').count();
   expect(rows).toBeGreaterThan(0);
 });
