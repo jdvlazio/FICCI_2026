@@ -3318,8 +3318,10 @@ let _lang = (()=>{
   return nav.startsWith('en') ? 'en' : 'es';
 })();
 
-function t(key){
-  return (_I18N[_lang] && _I18N[_lang][key]) || (_I18N['es'][key]) || key;
+function t(key, params){
+  let str = (_I18N[_lang] && _I18N[_lang][key]) || (_I18N['es'][key]) || key;
+  if(params) str = str.replace(/\{(\w+)\}/g, (_,k) => params[k] !== undefined ? params[k] : `{${k}}`);
+  return str;
 }
 
 function setLang(code){
