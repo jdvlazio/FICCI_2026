@@ -6895,6 +6895,8 @@ function _renderSavedAgendaHTML(){
     </div>`;
   }
 
+    html+=renderMiPlanCalendar();
+
   if(archive.length||watchedOutsidePlan.length){
     const totalWatched=archive.length+watchedOutsidePlan.length;
     const archByDay={};
@@ -6939,9 +6941,6 @@ function _renderSavedAgendaHTML(){
         }).join('')}`:''}
     </div>`;
   }
-
-
-  html+=renderMiPlanCalendar();
 
   // Sugerencias solo durante el festival
   if(!festivalEnded()){
