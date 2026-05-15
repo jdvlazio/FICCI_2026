@@ -362,7 +362,7 @@ test('T14 — sheet muestra el título correcto', async ({ page }) => {
   await enterFestival(page, 'leviza2026', LEVIZA_SIMTIME);
   await page.evaluate(() => openPelSheet('La Suprema'));
   await page.waitForSelector('#pel-sheet.open', { timeout: 8000 });
-  const title = await page.locator('#pel-sheet-title').textContent();
+  const title = await page.locator('.pel-sheet-title').first().textContent();
   expect(title?.trim().length).toBeGreaterThan(0);
   expect(title).toContain('Suprema');
 });
@@ -372,7 +372,7 @@ test('T15 — sheet muestra funciones del título', async ({ page }) => {
   await enterFestival(page, 'leviza2026', LEVIZA_SIMTIME);
   await page.evaluate(() => openPelSheet('La Suprema'));
   await page.waitForSelector('#pel-sheet.open', { timeout: 8000 });
-  const funciones = await page.locator('.pel-sheet-screen, .pel-func-row, .pel-screen-row').count();
+  const funciones = await page.locator('.pel-sheet-screening, .pel-sheet-screenings').count();
   expect(funciones).toBeGreaterThan(0);
 });
 

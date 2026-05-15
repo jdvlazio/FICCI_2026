@@ -3,7 +3,7 @@
 > No editar a mano — los cambios se sobreescriben en el próximo deploy.
 > Para modificar secciones estáticas, editar el template en el script.
 >
-> Último commit: `c4a3721 test: T14–T23 — sheet content, watchlist, programa grid/list/día`
+> Último commit: `9e6664f test: T24–T43 — Mi Plan, Sugerencias, Planear, Nav, errores JS, conflictos, festival`
 
 ---
 
