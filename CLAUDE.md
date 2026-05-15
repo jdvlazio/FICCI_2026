@@ -3,7 +3,7 @@
 > No editar a mano — los cambios se sobreescriben en el próximo deploy.
 > Para modificar secciones estáticas, editar el template en el script.
 >
-> Último commit: `f518e90 fix(tests): T18 closePelSheet via JS, T24 lógica pura sin side effects, T25 waitForTimeout antes del DOM check`
+> Último commit: `b99c35e fix(tests): T25 usa waitForSelector en lugar de timeout fijo — retry automático para render async`
 
 ---
 
