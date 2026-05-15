@@ -2738,6 +2738,10 @@ const _I18N = {
     "label_synopsis": "Sinopsis",
     "label_duracion": "Duración",
     "label_funciones": "Funciones",
+    "label_sin_confirmar": "sin confirmar",
+    "misc_luego": "Luego",
+    "label_anterior": "anterior",
+    "label_anteriores": "anteriores",
     "label_min": "min",
     "label_seccion": "Sección",
     "label_valoracion": "Tu valoración",
@@ -3037,6 +3041,10 @@ const _I18N = {
     "label_synopsis": "Synopsis",
     "label_duracion": "Duration",
     "label_funciones": "Screenings",
+    "label_sin_confirmar": "unconfirmed",
+    "misc_luego": "Later",
+    "label_anterior": "earlier",
+    "label_anteriores": "earlier",
     "label_min": "min",
     "label_seccion": "Section",
     "label_valoracion": "Your rating",
@@ -6360,23 +6368,23 @@ function renderUnconfirmed(schedule){
         const st=s._title.replace(/'/g,"&#39;");
         return`<div class="checkin-item">
           <div class="checkin-info"><div class="checkin-title">${sh}</div><div class="checkin-time">${dayLabel(s.day)} · ${s.time}</div></div>
-          <div class="checkin-btns"><button class="row-xs checkin-btn yes" onclick="checkinLaVi('${st}')">${ICONS.check} ${t('cta_vista')}</button><button class="checkin-btn no" onclick="checkinNoLaVi('${st}')">Luego</button></div>
+          <div class="checkin-btns"><button class="row-xs checkin-btn yes" onclick="checkinLaVi('${st}')">${ICONS.check} ${t('cta_vista')}</button><button class="checkin-btn no" onclick="checkinNoLaVi('${st}')">${t('misc_luego')}</button></div>
         </div>`;
       }).join('')}
     </div>
     <div class="sim-hdr-pad">
       <button class="link-gray-xs"
         onclick="const el=document.getElementById('ctx-older');el.style.display=el.style.display==='none'?'block':'none'">
-        + ${older.length} anterior${older.length>1?'es':''} sin confirmar
+        + ${older.length} ${older.length>1?t('label_anteriores'):t('label_anterior')} ${t('label_sin_confirmar')}
       </button>
     </div>`:'';
   return`<div class="checkin-wrap">
-    <div class="checkin-hdr">${t('label_funciones')} sin confirmar</div>
+    <div class="checkin-hdr">${t('label_funciones')} ${t('label_sin_confirmar')}</div>
     <div class="checkin-item">
       <div class="checkin-info"><div class="checkin-title">${short}</div><div class="checkin-time">${timeDesc}</div></div>
       <div class="checkin-btns">
         <button class="row-xs checkin-btn yes" onclick="checkinLaVi('${safeLast}')">${ICONS.check} ${t('cta_vista')}</button>
-        <button class="checkin-btn no" onclick="checkinNoLaVi('${safeLast}')">Luego</button>
+        <button class="checkin-btn no" onclick="checkinNoLaVi('${safeLast}')">${t('misc_luego')}</button>
       </div>
     </div>${olderHtml}
   </div>`;
