@@ -196,7 +196,8 @@ test('T07 — quitar de Intereses desde sheet cierra el sheet', async ({ page })
   await freezeSimTime(page, LEVIZA_SIMTIME);
   await addToWatchlist(page, 'La Suprema');
 
-  await page.locator('[data-title="La Suprema"]').first().click();
+  // Abrir sheet directamente via JS — independiente del día activo
+  await page.evaluate(() => openPelSheet('La Suprema'));
   await page.waitForSelector('#pel-sheet.open', { timeout: 8000 });
 
   const wlBtn = page.locator('#pel-wl-btn');

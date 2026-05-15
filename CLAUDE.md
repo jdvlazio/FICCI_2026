@@ -3,7 +3,7 @@
 > No editar a mano — los cambios se sobreescriben en el próximo deploy.
 > Para modificar secciones estáticas, editar el template en el script.
 >
-> Último commit: `844797a fix(sentry): beforeSend filtra errores de Playwright (HeadlessChrome) y localhost`
+> Último commit: `48fb360 feat(monitoring): synthetic monitoring — cron cada 6h corre regression tests contra producción`
 
 ---
 
