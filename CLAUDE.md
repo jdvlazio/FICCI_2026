@@ -3,7 +3,7 @@
 > No editar a mano — los cambios se sobreescriben en el próximo deploy.
 > Para modificar secciones estáticas, editar el template en el script.
 >
-> Último commit: `c7c817b fix(tests): T07 abre sheet via JS — independiente del día activo (bug: La Suprema no visible en VIE 15)`
+> Último commit: `74cef9b fix(tests): addInitScript para simTime — CI determinístico sin falsos positivos por día activo`
 
 ---
 

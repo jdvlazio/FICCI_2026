@@ -16,16 +16,7 @@ async function selectFestival(page, festId) {
   await page.waitForTimeout(300);
 }
 
-// enterFestival acepta simTime opcional.
-// Si se pasa, inyecta _simTime ANTES de que cargue cualquier JS de la página
-// usando addInitScript — así loadFestival() inicializa con el tiempo correcto
-// desde el primer render. Sin esto, el app carga con hora real del sistema y
-// los tests que dependen del día activo son no-determinísticos.
 async function enterFestival(page, festId, simTime) {
-  if (simTime) {
-    await page.addInitScript((t) => { window._simTime = t; }, simTime);
-  }
-
   await page.goto('/');
   await page.waitForSelector('#splash-sel-btn', { timeout: 15000 });
 
@@ -36,11 +27,28 @@ async function enterFestival(page, festId, simTime) {
 
   await page.locator('.splash-enter-btn').click();
   await page.waitForSelector('.poster-card, .plist-item, .dtab', { timeout: 15000 });
+
+  // Freeze simTime + re-inicializa activeDay y vista para CI determinístico.
+  // page.evaluate accede directamente a la variable del app (let _simTime),
+  // no a window._simTime — por eso funciona donde addInitScript no funciona.
+  if (simTime) {
+    await page.evaluate((t) => {
+      _simTime = t;
+      const ts = simTodayStr();
+      const ni = DAY_KEYS.findIndex(d => FESTIVAL_DATES[d] === ts);
+      if (ni >= 0) {
+        activeDay = DAY_KEYS[ni];
+        programaViewMode = 'list';
+      } else {
+        activeDay = 'all';
+        programaViewMode = 'grid';
+      }
+      _renderProgramaContent && _renderProgramaContent();
+    }, simTime);
+  }
 }
 
-// freezeSimTime actualiza _simTime post-carga — útil para cambiar tiempo
-// en medio de un test, pero NO afecta la inicialización del festival.
-// Para tests que dependen del día activo: pasar simTime a enterFestival.
+// freezeSimTime — para cambiar el tiempo en medio de un test específico.
 async function freezeSimTime(page, isoStr) {
   await page.evaluate((t) => { _simTime = t; }, isoStr);
 }
