@@ -2767,6 +2767,10 @@ const _I18N = {
     "av_confirmar": "Confirmar",
     "av_tipo": "Tipo",
     "av_dia": "Día",
+    "label_dia_prog": "Día",
+    "label_de_dias": "de",
+    "label_vista": "vista",
+    "label_vistas": "vistas",
     "av_horas": "Horas específicas",
     "av_opcion_pers": "Opción personalizada",
     "auth_entrar": "Entrar",
@@ -3070,6 +3074,10 @@ const _I18N = {
     "av_confirmar": "Confirm",
     "av_tipo": "Type",
     "av_dia": "Day",
+    "label_dia_prog": "Day",
+    "label_de_dias": "of",
+    "label_vista": "seen",
+    "label_vistas": "seen",
     "av_horas": "Specific hours",
     "av_opcion_pers": "Custom",
     "auth_entrar": "Enter",
@@ -6889,7 +6897,7 @@ function _renderSavedAgendaHTML(){
   const progressPct=dayIdx>=0?Math.round((dayIdx/(totalDays-1))*100):0;
   const progressBar=currentDayNum?`<div class="row-sm festival-progress">
     <div style="flex:1">
-      <div class="festival-progress-text"><span>Día <b>${currentDayNum}</b> de ${totalDays}</span><span style="color:var(--amber)">${ICONS.check} ${viewedCount} ${viewedCount===1?'vista':'vistas'}</span></div>
+      <div class="festival-progress-text"><span>${t('label_dia_prog')} <b>${currentDayNum}</b> ${t('label_de_dias')} ${totalDays}</span><span style="color:var(--amber)">${ICONS.check} ${viewedCount} ${viewedCount===1?t('label_vista'):t('label_vistas')}</span></div>
       <div class="festival-progress-bar"><div class="festival-progress-fill" style="width:${progressPct}%"></div></div>
     </div>
   </div>`:'';
