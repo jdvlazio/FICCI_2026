@@ -9023,7 +9023,7 @@ function _openCombinedFilmSheet(filmData){
   if(pelSheet&&pelSheet.classList.contains('open')){
     _cortoParentHtml=inner.innerHTML;
   }
-  const{title='',director='',year='',duration='',flags='🌐',country='',synopsis='',lbSlug='',poster:_fPoster=''}=filmData;
+  const{title='',director='',year='',duration='',flags='🌐',country='',synopsis='',synopsis_en='',lbSlug='',poster:_fPoster=''}=filmData;
   const posterUrl=_fPoster?((_fPoster.startsWith('http')||_fPoster.startsWith('/assets/'))?_fPoster:TMDB_IMG+_fPoster):getPosterSrc(title,false)||null;
   const _isEd4=posterUrl&&posterUrl.includes('cloudfront.net');
   const _sec4=(()=>{const _p=FILMS.find(f=>f.film_list&&f.film_list.some(c=>c.title===title));return _p?.section||'';})();
