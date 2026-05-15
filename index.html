@@ -6418,7 +6418,7 @@ function renderFilmAlternatives(title,day,time){
   }).join('');
 
   return`<div class="film-alts">
-    ${optsHtml||`<div class="scenario-label">t('plan_no_alts_horario').</div>`}
+    ${optsHtml||`<div class="scenario-label">${t('plan_no_alts_horario')}.</div>`}
     <div class="scenario-footer">
       <button class="w-full-sm checkin-result-btn secondary" onclick="_expandedFilm='';renderAgenda()">${t('misc_cerrar')}</button>
     </div>

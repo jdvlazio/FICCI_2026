@@ -331,6 +331,25 @@ try:
 except Exception as e:
     warn(check, f'no se pudo verificar: {e}')
 
+# ── CHECK: bare-t-in-template ─────────────────────────────────────────────────
+# Detecta t('key') como texto HTML literal dentro de template literals JS.
+# Patrón específico: >t('key')< o >t('key'). — texto visible en el DOM.
+# Causa: falta el ${} wrapper → renderiza como string literal "t('key')".
+# Fix: >${t('key')}< siempre.
+check = 'bare-t-in-template'
+try:
+    import re as _re_bare
+    script_part = content[content.find('<script>'):content.rfind('</script>')]
+    # Solo el patrón peligroso: t() como contenido de etiqueta HTML, no como expresión JS
+    bad_bare = _re_bare.findall(r'>t\([\'"][a-z_]+[\'"]\)[.<]', script_part)
+    if bad_bare:
+        for b in bad_bare[:5]:
+            fail(check, f't() sin ${{}} como texto HTML en template literal: {b}')
+    else:
+        ok(check, 'sin t() literal como texto HTML en template literals')
+except Exception as e:
+    warn(check, f'no se pudo verificar: {e}')
+
 
 # Verifica que todas las keys usadas en t('key') existan en AMBOS diccionarios ES y EN.
 check = 'i18n-complete'
