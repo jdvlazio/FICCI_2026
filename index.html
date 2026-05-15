@@ -4740,7 +4740,7 @@ function renderMiPlanCalendar(){
         <div class="col-end">
           <button class="icon-btn-circle ag-fi-btn del" data-rmt="${safeT}" onclick="removeFromAgenda(this.dataset.rmt);event.stopPropagation()">${ICONS.x}</button>
         </div>
-      </div>${_expandedFilm===(s._title||'')+(s.day||'')+(s.time||'')?`<div class="film-alts">${renderFilmAlternatives(s._title,s.day,s.time)}</div>`:''}${(()=>{const _mf=FILMS.find(fi=>fi.title===s._title&&fi.day===s.day&&fi.time===s.time);if(!_mf||!_mf.is_cortos||!_mf.film_list||!_mf.film_list.length) return'';return`<div class="mplan-prog-list">${_mf.film_list.map((item,n)=>{const _sc2=item.title.replace(/'/g,"&#39;");const _sco2=(item.country||"").replace(/'/g,"&#39;");const _scd2=(item.duration||"");const _scf2=countryToFlags(item.country||"");const _scs2=(_mf.section||"").replace(/'/g,"&#39;");return _mkCortoItemHtml(item,n,{onclick:`event.stopPropagation();openCortoSheet('${_sc2}','${_sco2}','${_scd2}','${_scs2}','${_scf2}')`});}).join('')}</div>`;})()}`;
+      </div>${_expandedFilm===(s._title||'')+(s.day||'')+(s.time||'')?`<div class="film-alts">${renderFilmAlternatives(s._title,s.day,s.time)}</div>`:''}${(()=>{const _mf=FILMS.find(fi=>fi.title===s._title&&fi.day===s.day&&fi.time===s.time);if(!_mf||!_mf.is_cortos||!_mf.film_list||!_mf.film_list.length) return'';return`<div class="mplan-prog-list">${_mf.film_list.map((item,n)=>_mkCortoItemHtml(item,n)).join('')}</div>`;})()}`;
     });
   }
   listHtml+='</div>';
@@ -6065,7 +6065,7 @@ function mkAgendaRow(s, mode='saved'){
     :'';
   const altsHtml=isExpanded&&mode==='saved'?renderFilmAlternatives(title,s.day,s.time):'';
   const _progBtn=(()=>{const _mf=f;if(!_mf||!_mf.is_cortos||!_mf.film_list||!_mf.film_list.length)return'';return`<button class="row-xs mplan-prog-toggle" onclick="toggleMplanProg(this,event)">${ICONS.chevronR} ${t('label_programa')}</button>`;})();
-  const _progList=(()=>{const _mf=f;if(!_mf||!_mf.is_cortos||!_mf.film_list||!_mf.film_list.length)return'';return`<div class="mplan-prog-list">${_mf.film_list.map((item,n)=>{const _sc=item.title.replace(/'/g,"&#39;");const _sco=item.country||'';const _scd=item.duration||'';const _scf=countryToFlags(item.country||'');const _scs=f?.section||'';return _mkCortoItemHtml(item,n,{onclick:`event.stopPropagation();openCortoSheet('${_sc}','${_sco}','${_scd}','${_scs}','${_scf}')`});}).join('')}</div>`;})();
+  const _progList=(()=>{const _mf=f;if(!_mf||!_mf.is_cortos||!_mf.film_list||!_mf.film_list.length)return'';return`<div class="mplan-prog-list">${_mf.film_list.map((item,n)=>_mkCortoItemHtml(item,n)).join('')}</div>`;})();
   return`<div class="saved-item${isDone?' done':''}">
     ${_ph}
     <div class="saved-time">${s.time}</div>
@@ -6086,12 +6086,19 @@ function mkAgendaRow(s, mode='saved'){
 // opts.cls      → clase CSS del row (default: 'mplan-prog-item')
 // opts.onclick  → atributo onclick completo
 // opts.ratingEl → HTML del botón de calificación (opcional)
-function _mkCortoItemHtml(item, n, {cls='mplan-prog-item', onclick='', ratingEl=''}={}){
+function _mkCortoItemHtml(item, n, {cls='mplan-prog-item', ratingEl=''}={}){
   const thumb=getCortoItemPoster(item);
   const thumbHtml=thumb
     ?`<img src="${thumb}" class="c-film-thumb" loading="lazy" onerror="this.remove()" alt="">`
     :'<div class="c-film-thumb-ph">🎬</div>';
-  return`<div class="${cls}" onclick="${onclick}">
+  // data-* attrs — nunca interpolar strings con contenido variable en onclick
+  const _dt=encodeURIComponent(item.title||'');
+  const _dc=encodeURIComponent(item.country||'');
+  const _dd=encodeURIComponent(item.duration||'');
+  const _dir=encodeURIComponent(item.director||'');
+  const _dg=encodeURIComponent(item.genre||'');
+  const _ds=encodeURIComponent((item.synopsis||'').slice(0,200));
+  return`<div class="${cls}" data-ct="${_dt}" data-cc="${_dc}" data-cd="${_dd}" data-cdir="${_dir}" data-cg="${_dg}" data-cs="${_ds}" onclick="openCortoSheetFromEl(this,event)">
     ${thumbHtml}
     <div style="flex:1;min-width:0">
       <div class="row-baseline">
@@ -6102,6 +6109,23 @@ function _mkCortoItemHtml(item, n, {cls='mplan-prog-item', onclick='', ratingEl=
     </div>
     ${ratingEl}
   </div>`;
+}
+// Wrapper — lee data-* y llama openCortoSheet. Evita interpolación de apóstrofes en onclick.
+function openCortoSheetFromEl(el,e){
+  if(e) e.stopPropagation();
+  const title=decodeURIComponent(el.dataset.ct||'');
+  const parent=_findParentProgram(title);
+  const section=parent?.section||'';
+  openCortoSheet(
+    title,
+    decodeURIComponent(el.dataset.cc||''),
+    decodeURIComponent(el.dataset.cd||''),
+    section,
+    countryToFlags(decodeURIComponent(el.dataset.cc||'')),
+    decodeURIComponent(el.dataset.cdir||''),
+    decodeURIComponent(el.dataset.cg||''),
+    decodeURIComponent(el.dataset.cs||'')
+  );
 }
 
 function renderSavedAgendaHTML(){
@@ -6177,7 +6201,7 @@ function toggleMplanProg(btn,e){
   const list=row?.nextElementSibling;
   if(!list||!list.classList.contains('mplan-prog-list')) return;
   const open=list.classList.toggle('open');
-  btn.innerHTML=(open?ICONS.chevronD:ICONS.chevronR)+' Programa';
+  btn.innerHTML=(open?ICONS.chevronD:ICONS.chevronR)+' '+t('label_programa');
 }
 function setActivePlanFilm(el){_activeMiPlanFilm=el.dataset.fkey||'';}
 function selectFromDetail(el){
@@ -8718,21 +8742,11 @@ function openPelSheet(title){
   if(f.is_cortos&&f.film_list?.length){
     const cortoItems=f.film_list.map((item,n)=>{
       const r=filmRatings[item.title]||0;
-      const safeCorto=item.title.replace(/'/g,"&#39;");
-      const safeCountry=(item.country||'').replace(/'/g,"&#39;");
-      const safeDur=(item.duration||'').replace(/'/g,"&#39;");
-      const _cortoFlags=countryToFlags(item.country||'');
-      const safeFlags=_cortoFlags.replace(/'/g,"&#39;");
-      const safeSec=(f.section||'').replace(/'/g,"&#39;");
       const ratingEl=r
         ?`<span class="corto-rating-stars">${starsText(r)}</span>`
 :`<button class="corto-rate-btn" data-title="${item.title||''}" onclick="event.stopPropagation();closePelSheet();setTimeout(()=>openRatingSheet(this.dataset.title),100)">★</button>`;
-      const _sd=(item.director||'').replace(/['"]/g,'');
-      const _sg=(item.genre||'').replace(/['"]/g,'');
-      const _ss=(item.synopsis||'').replace(/['"]/g,'');
       return _mkCortoItemHtml(item,n,{
         cls:'pel-sheet-corto-item',
-        onclick:`openCortoSheet('${safeCorto}','${safeCountry}','${safeDur}','${safeSec}','${safeFlags}','${_sd}','${_sg}','${_ss.slice(0,150)}')`,
         ratingEl
       });
     }).join('');
@@ -9002,7 +9016,7 @@ function _openCombinedFilmSheet(filmData){
   const posterHtml=_isEd4
     ?`<div class="psp-editorial"><div class="psp-ed-hdr" style="background:${_sectionColor(_sec4)}"><span>${_secLabel(_sec4).toUpperCase()}</span></div><div class="psp-ed-img"><img src="${posterUrl}" loading="lazy" onerror="this.parentElement.style.display='none'" alt=""></div></div>`
     :posterUrl
-      ?`<img class="pel-sheet-poster" src="${posterUrl}" data-title="${(title||"").replace(/"/g,'&quot;')}" loading="lazy" onerror="_posterErr(this)" alt="">`
+      ?`<img class="pel-sheet-poster" src="${posterUrl}" data-title="${(title||"").replace(/"/g,'&quot;')}" loading="lazy" onerror="_cortoSheetPosterErr(this)" alt="">`
       :`<div class="pel-sheet-poster-ph">🎬</div>`;
   const metaLine=[director,year].filter(Boolean).join(' · ');
   const lbHref=lbSlug?`https://letterboxd.com/film/${lbSlug}/`:lbUrl(title);
@@ -9058,7 +9072,7 @@ function openCortoSheet(title, country, duration, section, flags, director, genr
   const posterHtml=_isEd3
     ?`<div class="psp-editorial"><div class="psp-ed-hdr" style="background:${_sectionColor(section||'')}"><span>${_secLabel(section||'').toUpperCase()}</span></div><div class="psp-ed-img"><img src="${posterUrl}" loading="lazy" onerror="this.parentElement.style.display='none'" alt=""></div></div>`
     :posterUrl
-      ?`<img class="pel-sheet-poster" src="${posterUrl}" data-title="${(title||"").replace(/"/g,'&quot;')}" loading="lazy" onerror="_posterErr(this)" alt="">`
+      ?`<img class="pel-sheet-poster" src="${posterUrl}" data-title="${(title||"").replace(/"/g,'&quot;')}" loading="lazy" onerror="_cortoSheetPosterErr(this)" alt="">`
       :`<div class="pel-sheet-poster-ph">🎬</div>`;
   const ps=document.getElementById('pel-sheet');
   if(ps) ps.scrollTop=0;
@@ -9084,8 +9098,8 @@ function openCortoSheet(title, country, duration, section, flags, director, genr
     <div class="pel-sheet-divider"></div>
     ${parentTitle?`<div class="meta-xs-gray">${t('meta_corto_incluye')}</div>`:''}
     <div class="flex-gap1-mt1">
-      <button id="corto-wl-btn" class="row-center-xs pel-sheet-action-btn${inWL?' act-on btn-primary':' btn-primary'}" data-title="${parentTitle||f.title}" onclick="toggleWL(this.dataset.title,event)">${inWL?ICONS.heartFill:ICONS.heart} ${inWL?t('cta_en_intereses'):t('cta_intereses')}</button>
-      <button id="corto-prio-btn" class="row-center-xs pel-sheet-action-btn${inPrio?' act-prio':' btn-secondary'}" data-title="${parentTitle||f.title}" onclick="togglePelPrio(this.dataset.title)">${inPrio?ICONS.starFill:ICONS.star} ${inPrio?t('cta_priorizada'):t('cta_priorizar')}</button>
+      <button id="corto-wl-btn" class="row-center-xs pel-sheet-action-btn${inWL?' act-on btn-primary':' btn-primary'}" data-title="${parentTitle||title}" onclick="toggleWL(this.dataset.title,event)">${inWL?ICONS.heartFill:ICONS.heart} ${inWL?t('cta_en_intereses'):t('cta_intereses')}</button>
+      <button id="corto-prio-btn" class="row-center-xs pel-sheet-action-btn${inPrio?' act-prio':' btn-secondary'}" data-title="${parentTitle||title}" onclick="togglePelPrio(this.dataset.title)">${inPrio?ICONS.starFill:ICONS.star} ${inPrio?t('cta_priorizada'):t('cta_priorizar')}</button>
       <button class="row-center-xs pel-sheet-action-btn${filmRatings[title]?' act-on':' btn-secondary'}" data-title="${title}" onclick="closePelSheet();setTimeout(()=>openRatingSheet(this.dataset.title),100)">${ICONS.star} ${filmRatings[title]?'Cambiar':t('cta_calificar')}</button>
     </div>
   `;
@@ -10892,6 +10906,15 @@ function _posterErr(img){
       }
     })
     .catch(()=>{});
+}
+// Fallback para poster en openCortoSheet: los cortos no están en FILMS top-level,
+// por lo que _posterErr no puede encontrarlos y los oculta. Esto muestra el placeholder.
+function _cortoSheetPosterErr(img){
+  img.onerror=null;
+  const ph=document.createElement('div');
+  ph.className='pel-sheet-poster-ph';
+  ph.textContent='🎬';
+  img.parentNode?.replaceChild(ph,img);
 }
 </script>
 
