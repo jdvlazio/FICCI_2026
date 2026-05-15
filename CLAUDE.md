@@ -3,7 +3,7 @@
 > No editar a mano — los cambios se sobreescriben en el próximo deploy.
 > Para modificar secciones estáticas, editar el template en el script.
 >
-> Último commit: `80cdf8c fix(tests): T14/T15 corrigen selectores del sheet — .pel-sheet-title y .pel-sheet-screening`
+> Último commit: `7a4400a fix(tests): T24/T25 reescritos como evaluate único — evitan timing entre renders intermedios`
 
 ---
 
