@@ -7041,7 +7041,7 @@ function _promptDisplayName(onSave){
     <div class="sheet-handle-bar"></div>
     <div class="sheet-title">${t('export_como_aparecer')}</div>
     <div class="sheet-subtitle">${t('export_aparecera')}</div>
-    <input class="sheet-input" id="dname-input" type="text" maxlength="30" placeholder="${t('auth_nombre')}" autocomplete="name"
+    <input class="sheet-input" id="dname-input" type="text" maxlength="30" placeholder="Tu nombre" data-i18n-ph="auth_nombre" autocomplete="name"
      >
     <button class="sheet-cta" id="dname-save">Guardar y compartir</button>
   </div>`;
@@ -10976,7 +10976,7 @@ function _cortoSheetPosterErr(img){
       <span class="auth-cancel" onclick="closeAuthSheet();document.getElementById('auth-sheet-step1').style.display='block';document.getElementById('auth-sheet-step2').style.display='none'" data-i18n="misc_cancelar">Cancelar</span>
     </div>
     <div id="auth-sheet-step3" style="display:none">
-      <div class="auth-sheet-title">${t('auth_cuenta')}</div>
+      <div class="auth-sheet-title" data-i18n="auth_cuenta">Cuenta</div>
       <div class="auth-sheet-sub" id="auth-signed-email" style="color:var(--white)"></div>
       <div class="mt-2 auth-sheet-sub"><span data-i18n="plan_sincroniza">Tu plan se sincroniza automáticamente entre todos tus dispositivos.</span></div>
       <button class="auth-signout-btn" onclick="signOutAndClose()" data-i18n="auth_cerrar">Cerrar sesión</button>
