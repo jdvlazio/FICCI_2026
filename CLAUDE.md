@@ -3,7 +3,7 @@
 > No editar a mano — los cambios se sobreescriben en el próximo deploy.
 > Para modificar secciones estáticas, editar el template en el script.
 >
-> Último commit: `74cef9b fix(tests): addInitScript para simTime — CI determinístico sin falsos positivos por día activo`
+> Último commit: `b28e81a fix(tests): revertir addInitScript — usar page.evaluate que accede a _simTime del app directamente`
 
 ---
 

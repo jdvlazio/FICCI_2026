@@ -352,3 +352,116 @@ test('T13 — topbar fecha en una sola línea', async ({ page }) => {
 
   expect(lineCount).toBe(1);
 });
+
+// ═════════════════════════════════════════════════════════════════════════════
+// BATCH 1 — Sheet content · Watchlist · Programa
+// ═════════════════════════════════════════════════════════════════════════════
+
+// T14 — Sheet: título correcto
+test('T14 — sheet muestra el título correcto', async ({ page }) => {
+  await enterFestival(page, 'leviza2026', LEVIZA_SIMTIME);
+  await page.evaluate(() => openPelSheet('La Suprema'));
+  await page.waitForSelector('#pel-sheet.open', { timeout: 8000 });
+  const title = await page.locator('#pel-sheet-title').textContent();
+  expect(title?.trim().length).toBeGreaterThan(0);
+  expect(title).toContain('Suprema');
+});
+
+// T15 — Sheet: tiene al menos una función listada
+test('T15 — sheet muestra funciones del título', async ({ page }) => {
+  await enterFestival(page, 'leviza2026', LEVIZA_SIMTIME);
+  await page.evaluate(() => openPelSheet('La Suprema'));
+  await page.waitForSelector('#pel-sheet.open', { timeout: 8000 });
+  const funciones = await page.locator('.pel-sheet-screen, .pel-func-row, .pel-screen-row').count();
+  expect(funciones).toBeGreaterThan(0);
+});
+
+// T16 — Sheet: botón watchlist presente y funcional
+test('T16 — sheet tiene botón de intereses', async ({ page }) => {
+  await enterFestival(page, 'leviza2026', LEVIZA_SIMTIME);
+  await page.evaluate(() => openPelSheet('La Suprema'));
+  await page.waitForSelector('#pel-sheet.open', { timeout: 8000 });
+  await expect(page.locator('#pel-wl-btn')).toBeVisible();
+});
+
+// T17 — Sheet: añadir al watchlist desde sheet
+test('T17 — añadir al watchlist desde sheet actualiza el estado', async ({ page }) => {
+  await enterFestival(page, 'leviza2026', LEVIZA_SIMTIME);
+  await page.evaluate(() => { watchlist.clear(); saveState('wl','watched'); });
+  await page.evaluate(() => openPelSheet('La Suprema'));
+  await page.waitForSelector('#pel-sheet.open', { timeout: 8000 });
+  await page.locator('#pel-wl-btn').click();
+  await page.waitForTimeout(500);
+  const inWL = await page.evaluate(() => watchlist.has('La Suprema'));
+  expect(inWL).toBe(true);
+});
+
+// T18 — Sheet: cerrar con swipe-button o X cierra el sheet
+test('T18 — sheet se cierra con el botón X', async ({ page }) => {
+  await enterFestival(page, 'leviza2026', LEVIZA_SIMTIME);
+  await page.evaluate(() => openPelSheet('La Suprema'));
+  await page.waitForSelector('#pel-sheet.open', { timeout: 8000 });
+  await page.locator('.pel-sheet-close, .sheet-close-btn, [onclick*="closePelSheet"]').first().click();
+  await page.waitForTimeout(500);
+  expect(await page.locator('#pel-sheet.open').count()).toBe(0);
+});
+
+// T19 — Watchlist: persiste al cambiar de tab y volver
+test('T19 — watchlist persiste al navegar entre tabs', async ({ page }) => {
+  await enterFestival(page, 'leviza2026', LEVIZA_SIMTIME);
+  await addToWatchlist(page, 'La Suprema');
+  await page.evaluate(() => switchMainNav('mnav-intereses'));
+  await page.waitForTimeout(500);
+  await page.evaluate(() => switchMainNav('mnav-cartelera'));
+  await page.waitForTimeout(500);
+  const inWL = await page.evaluate(() => watchlist.has('La Suprema'));
+  expect(inWL).toBe(true);
+});
+
+// T20 — Programa: cambiar a día TODO muestra grid
+test('T20 — TODO muestra vista grid', async ({ page }) => {
+  await enterFestival(page, 'leviza2026', LEVIZA_SIMTIME);
+  await page.evaluate(() => { activeDay='all'; programaViewMode='grid'; _renderProgramaContent(); });
+  await page.waitForSelector('.poster-card', { timeout: 8000 });
+  const cards = await page.locator('.poster-card').count();
+  expect(cards).toBeGreaterThan(0);
+});
+
+// T21 — Programa: cambiar a día específico muestra lista
+test('T21 — día específico muestra vista lista', async ({ page }) => {
+  await enterFestival(page, 'leviza2026', LEVIZA_SIMTIME);
+  const grid = await page.locator('.poster-card').count();
+  const list = await page.locator('.plist-item').count();
+  // En día específico debe haber lista, no grid
+  expect(list).toBeGreaterThan(0);
+  expect(grid).toBe(0);
+});
+
+// T22 — Programa: toggle de vista grid/lista funciona
+test('T22 — toggle grid/lista cambia el modo de vista', async ({ page }) => {
+  await enterFestival(page, 'leviza2026', LEVIZA_SIMTIME);
+  // Cambiar a TODO para estar en grid
+  await page.evaluate(() => { activeDay='all'; programaViewMode='grid'; _renderProgramaContent(); });
+  await page.waitForSelector('.poster-card', { timeout: 5000 });
+  // Toggle a lista
+  await page.evaluate(() => setProgramaView('list'));
+  await page.waitForTimeout(400);
+  const afterToggle = await page.evaluate(() => programaViewMode);
+  expect(afterToggle).toBe('list');
+});
+
+// T23 — Programa: filtro por día muestra solo films de ese día
+test('T23 — filtro por día muestra films del día correcto', async ({ page }) => {
+  await enterFestival(page, 'leviza2026', LEVIZA_SIMTIME);
+  // Cambiar a VIE 15
+  await page.evaluate(() => { activeDay='VIE 15'; programaViewMode='list'; _renderProgramaContent(); });
+  await page.waitForSelector('.plist-item', { timeout: 5000 });
+  // Todos los items deben ser de VIE 15
+  const wrongDay = await page.evaluate(() => {
+    return Array.from(document.querySelectorAll('.plist-item')).some(el => {
+      const meta = el.querySelector('.plist-meta')?.textContent || '';
+      return meta.includes('JUE') || meta.includes('SÁB') || meta.includes('DOM');
+    });
+  });
+  expect(wrongDay).toBe(false);
+});
