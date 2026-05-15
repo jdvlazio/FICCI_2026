@@ -2879,6 +2879,7 @@ const _I18N = {
     "conflict_cambiar": "Cambiá una para priorizar esta película",
     "plan_listo": "¡Tu plan está listo!",
     "auth_titulo": "Guardá tu plan",
+    "auth_otp_sub": "Enviamos un código de 6 dígitos a",
     "auth_desc": "Ingresa tu email y te enviamos un código de 6 dígitos. Sin contraseña.",
     "auth_enviar": "Enviar código",
     "auth_revisa": "Revisá tu email",
@@ -3176,6 +3177,8 @@ const _I18N = {
     "conflict_cambiar": "Change one to prioritize this film",
     "plan_listo": "Your plan is ready!",
     "auth_titulo": "Save your plan",
+    "auth_desc": "Enter your email and we'll send you a 6-digit code. No password needed. Your plan syncs across all your devices.",
+    "auth_otp_sub": "We sent a 6-digit code to",
     "auth_desc": "Enter your email and we'll send you a 6-digit code. No password needed.",
     "auth_enviar": "Send code",
     "auth_revisa": "Check your email",
@@ -10950,7 +10953,7 @@ function _cortoSheetPosterErr(img){
   <div class="auth-sheet-inner">
     <div id="auth-sheet-step1">
       <div class="auth-sheet-title" data-i18n="auth_titulo">Guardá tu plan</div>
-      <div class="auth-sheet-sub">Ingresa tu email y te enviamos un código de 6 dígitos. Sin contraseña. Tu plan se sincroniza entre todos tus dispositivos.</div>
+      <div class="auth-sheet-sub" data-i18n="auth_desc">Ingresa tu email y te enviamos un código de 6 dígitos. Sin contraseña. Tu plan se sincroniza entre todos tus dispositivos.</div>
       <input class="auth-email-inp" id="auth-email-inp" type="email" placeholder="tu@email.com" data-i18n-ph="auth_email" autocomplete="email" onkeydown="if(event.key==='Enter')submitAuthEmail()">
       <button class="auth-send-btn" id="auth-send-btn" onclick="submitAuthEmail()" data-i18n="auth_enviar">Enviar código</button>
       <div class="auth-msg" id="auth-msg"></div>
@@ -10958,7 +10961,7 @@ function _cortoSheetPosterErr(img){
     </div>
     <div id="auth-sheet-step2" style="display:none">
       <div class="auth-sheet-title" data-i18n="auth_revisa">Revisá tu email</div>
-      <div class="auth-sheet-sub">Enviamos un código de 6 dígitos a <span id="auth-otp-email" style="color:var(--white)"></span></div>
+      <div class="auth-sheet-sub"><span data-i18n="auth_otp_sub">Enviamos un código de 6 dígitos a</span> <span id="auth-otp-email" style="color:var(--white)"></span></div>
       <input class="pin-display auth-email-inp" id="auth-otp-inp" type="number" placeholder="123456" inputmode="numeric" maxlength="6" onkeydown="if(event.key==='Enter')submitOTP()"><!-- 16px: prevents iOS auto-zoom -->
       <button class="auth-send-btn" data-i18n="av_confirmar" id="auth-otp-btn" onclick="submitOTP()">Confirmar</button>
       <div class="auth-msg" id="auth-otp-msg"></div>
@@ -10967,7 +10970,7 @@ function _cortoSheetPosterErr(img){
     <div id="auth-sheet-step3" style="display:none">
       <div class="auth-sheet-title">${t('auth_cuenta')}</div>
       <div class="auth-sheet-sub" id="auth-signed-email" style="color:var(--white)"></div>
-      <div class="mt-2 auth-sheet-sub"><span data-i18n="plan_sincroniza">Tu plan se sincroniza automáticamente entre todos tus dispositivos.</div>
+      <div class="mt-2 auth-sheet-sub"><span data-i18n="plan_sincroniza">Tu plan se sincroniza automáticamente entre todos tus dispositivos.</span></div>
       <button class="auth-signout-btn" onclick="signOutAndClose()" data-i18n="auth_cerrar">Cerrar sesión</button>
       <span class="auth-cancel" onclick="closeAuthSheet()" data-i18n="misc_cancelar">Cancelar</span>
     </div>
