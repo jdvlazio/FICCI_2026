@@ -3,7 +3,7 @@
 > No editar a mano — los cambios se sobreescriben en el próximo deploy.
 > Para modificar secciones estáticas, editar el template en el script.
 >
-> Último commit: `9e6664f test: T24–T43 — Mi Plan, Sugerencias, Planear, Nav, errores JS, conflictos, festival`
+> Último commit: `80cdf8c fix(tests): T14/T15 corrigen selectores del sheet — .pel-sheet-title y .pel-sheet-screening`
 
 ---
 

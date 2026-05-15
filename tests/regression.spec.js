@@ -470,46 +470,37 @@ test('T23 — filtro por día muestra films del día correcto', async ({ page })
 // BATCH 2 — Mi Plan · Sugerencias · Planear
 // ═════════════════════════════════════════════════════════════════════════════
 
-// T24 — Mi Plan: quitar sesión del plan con X la elimina
+// T24 — Mi Plan: quitar sesión del plan la elimina
 test('T24 — quitar sesión del plan la elimina', async ({ page }) => {
   await enterFestival(page, 'leviza2026', LEVIZA_SIMTIME);
-  await addToWatchlist(page, 'Taller de Guion');
-  // Añadir sesión al plan
-  await page.evaluate(() => {
+  // Todo en un solo evaluate para evitar timing entre renders
+  const result = await page.evaluate(() => {
     const f = FILMS.find(fi => fi.title === 'Taller de Guion' && fi.day === 'VIE 15');
-    if (f) {
-      if (!savedAgenda) savedAgenda = { schedule: [] };
-      savedAgenda.schedule.push({ ...f, _title: f.title });
-      saveSavedAgenda();
-    }
+    if (!f) return { error: 'film not found' };
+    savedAgenda = { schedule: [{ ...f, _title: f.title }] };
+    const before = savedAgenda.schedule.length;
+    removeFromAgenda('Taller de Guion');
+    const after = savedAgenda.schedule.filter(s => s._title === 'Taller de Guion').length;
+    return { before, after };
   });
-  await page.evaluate(() => switchMainNav('mnav-miplan'));
-  await page.waitForTimeout(800);
-  const before = await page.evaluate(() => savedAgenda?.schedule?.length || 0);
-  await page.evaluate(() => removeFromAgenda('Taller de Guion'));
-  const after = await page.evaluate(() => savedAgenda?.schedule?.filter(s => s._title === 'Taller de Guion').length || 0);
-  expect(before).toBeGreaterThan(0);
-  expect(after).toBe(0);
+  expect(result.error).toBeUndefined();
+  expect(result.before).toBeGreaterThan(0);
+  expect(result.after).toBe(0);
 });
 
 // T25 — Mi Plan: Ver día muestra detalle de la sesión
 test('T25 — ver día muestra detalle del plan', async ({ page }) => {
   await enterFestival(page, 'leviza2026', LEVIZA_SIMTIME);
-  await addToWatchlist(page, 'Taller de Guion');
   await page.evaluate(() => {
     const f = FILMS.find(fi => fi.title === 'Taller de Guion' && fi.day === 'VIE 15');
-    if (f) {
-      if (!savedAgenda) savedAgenda = { schedule: [] };
-      savedAgenda.schedule.push({ ...f, _title: f.title });
-      saveSavedAgenda();
-    }
+    if (!f) return;
+    savedAgenda = { schedule: [{ ...f, _title: f.title }] };
+    activeMiPlanDay = DAY_KEYS.indexOf('VIE 15');
     switchMainNav('mnav-miplan');
     renderAgenda();
   });
   await page.waitForTimeout(800);
-  await page.evaluate(() => { activeMiPlanDay = DAY_KEYS.indexOf('VIE 15'); renderAgenda(); });
-  await page.waitForTimeout(500);
-  await expect(page.locator('.mplan-row, .mplan-list-item').first()).toBeVisible({ timeout: 5000 });
+  await expect(page.locator('.mplan-row').first()).toBeVisible({ timeout: 5000 });
 });
 
 // T26 — Mi Plan: hora punteada abre panel de alternativas
