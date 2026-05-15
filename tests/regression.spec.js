@@ -6,28 +6,30 @@ const { test, expect } = require('@playwright/test');
 // ─────────────────────────────────────────────────────────────────────────────
 
 // Tiempo fijo para tests de Leviza (festival 14-17 MAY 2026, Colombia UTC-5).
-// Congelar en medianoche del JUE 14 garantiza que TODAS las sesiones son "futuras"
-// para screeningPassed() y dayFullyPassed(), sin importar cuándo corre el CI.
-// Sin este freeze, tests que usan screenings del JUE 14 fallan después de las 14:10 COT.
+// JUE 14 00:00 COT → todas las sesiones del festival son "futuras", CI determinístico.
 const LEVIZA_SIMTIME = '2026-05-14T00:00:00-05:00';
 
 async function selectFestival(page, festId) {
-  // Abrir dropdown
   await page.locator('#splash-sel-btn').click();
   await page.waitForSelector('#splash-dropdown', { state: 'visible', timeout: 5000 });
-  // Seleccionar festival
   await page.locator(`.splash-drop-item[data-fest="${festId}"]`).click();
   await page.waitForTimeout(300);
 }
 
-async function enterFestival(page, festId) {
+// enterFestival acepta simTime opcional.
+// Si se pasa, inyecta _simTime ANTES de que cargue cualquier JS de la página
+// usando addInitScript — así loadFestival() inicializa con el tiempo correcto
+// desde el primer render. Sin esto, el app carga con hora real del sistema y
+// los tests que dependen del día activo son no-determinísticos.
+async function enterFestival(page, festId, simTime) {
+  if (simTime) {
+    await page.addInitScript((t) => { window._simTime = t; }, simTime);
+  }
+
   await page.goto('/');
   await page.waitForSelector('#splash-sel-btn', { timeout: 15000 });
 
-  // Comprobar si ya está seleccionado
-  const currentFest = await page.locator('#splash-sel-btn').getAttribute('data-current-fest').catch(() => null);
   const selName = await page.locator('#splash-sel-name').textContent().catch(() => '');
-
   if (!selName.toLowerCase().includes(festId.replace(/\d+/g, '').toLowerCase())) {
     await selectFestival(page, festId);
   }
@@ -36,9 +38,9 @@ async function enterFestival(page, festId) {
   await page.waitForSelector('.poster-card, .plist-item, .dtab', { timeout: 15000 });
 }
 
-// Congela el reloj del simulador a un ISO string fijo.
-// Usar en todos los tests de festivales con fechas pasadas o en curso,
-// para que screeningPassed() y dayFullyPassed() sean determinísticos en CI.
+// freezeSimTime actualiza _simTime post-carga — útil para cambiar tiempo
+// en medio de un test, pero NO afecta la inicialización del festival.
+// Para tests que dependen del día activo: pasar simTime a enterFestival.
 async function freezeSimTime(page, isoStr) {
   await page.evaluate((t) => { _simTime = t; }, isoStr);
 }
@@ -110,8 +112,7 @@ test('T02 — apóstrofe: tap en título abre sheet', async ({ page }) => {
 // Bug: ag-result no existía en DOM → runCalc no inyectaba resultados
 // ─────────────────────────────────────────────────────────────────────────────
 test('T03 — ver opciones genera resultados', async ({ page }) => {
-  await enterFestival(page, 'leviza2026');
-  await freezeSimTime(page, LEVIZA_SIMTIME);
+  await enterFestival(page, 'leviza2026', LEVIZA_SIMTIME);
   await addToWatchlist(page, 'Taller de Guion'); // tiene screenings JUE+VIE+SÁB
   await goToPlanear(page);
 
@@ -130,8 +131,7 @@ test('T03 — ver opciones genera resultados', async ({ page }) => {
 // TEST 4 — Ver opciones recalcula al presionar de nuevo
 // ─────────────────────────────────────────────────────────────────────────────
 test('T04 — ver opciones recalcula al presionar de nuevo', async ({ page }) => {
-  await enterFestival(page, 'leviza2026');
-  await freezeSimTime(page, LEVIZA_SIMTIME);
+  await enterFestival(page, 'leviza2026', LEVIZA_SIMTIME);
   await addToWatchlist(page, 'Taller de Guion'); // tiene screenings JUE+VIE+SÁB
   await goToPlanear(page);
 
@@ -150,8 +150,7 @@ test('T04 — ver opciones recalcula al presionar de nuevo', async ({ page }) =>
 // Bug: capture listener con capture:true interceptaba stopPropagation
 // ─────────────────────────────────────────────────────────────────────────────
 test('T05 — corazón en lista no abre sheet', async ({ page }) => {
-  await enterFestival(page, 'leviza2026');
-  await freezeSimTime(page, LEVIZA_SIMTIME);
+  await enterFestival(page, 'leviza2026', LEVIZA_SIMTIME);
 
   await page.locator('.dtab[data-day="VIE 15"]').click();
   await page.waitForSelector('.plist-item', { timeout: 8000 });
@@ -167,8 +166,7 @@ test('T05 — corazón en lista no abre sheet', async ({ page }) => {
 // Bug: _renderProgramaContent() hacía re-render completo
 // ─────────────────────────────────────────────────────────────────────────────
 test('T06 — scroll se mantiene después de toggle corazón', async ({ page }) => {
-  await enterFestival(page, 'leviza2026');
-  await freezeSimTime(page, LEVIZA_SIMTIME);
+  await enterFestival(page, 'leviza2026', LEVIZA_SIMTIME);
 
   await page.locator('.dtab[data-day="VIE 15"]').click();
   await page.waitForSelector('.plist-item', { timeout: 8000 });
@@ -192,8 +190,7 @@ test('T06 — scroll se mantiene después de toggle corazón', async ({ page }) 
 // Bug: mensaje quedaba dentro del sheet invisible
 // ─────────────────────────────────────────────────────────────────────────────
 test('T07 — quitar de Intereses desde sheet cierra el sheet', async ({ page }) => {
-  await enterFestival(page, 'leviza2026');
-  await freezeSimTime(page, LEVIZA_SIMTIME);
+  await enterFestival(page, 'leviza2026', LEVIZA_SIMTIME);
   await addToWatchlist(page, 'La Suprema');
 
   // Abrir sheet directamente via JS — independiente del día activo
@@ -232,8 +229,7 @@ test('T08 — festival selector: Leviza aparece antes que Tribeca', async ({ pag
 // Bug: algoritmo elegía 1 sesión en vez de 3
 // ─────────────────────────────────────────────────────────────────────────────
 test('T09 — taller recurrente: 3 sesiones en el plan', async ({ page }) => {
-  await enterFestival(page, 'leviza2026');
-  await freezeSimTime(page, LEVIZA_SIMTIME);
+  await enterFestival(page, 'leviza2026', LEVIZA_SIMTIME);
   await addToWatchlist(page, 'Taller de Guion');
   await goToPlanear(page);
 
@@ -255,8 +251,7 @@ test('T09 — taller recurrente: 3 sesiones en el plan', async ({ page }) => {
 // Bug: makeProgramPoster truncaba FICCIÓN a FICC
 // ─────────────────────────────────────────────────────────────────────────────
 test('T10 — poster editorial: sección completa sin truncar', async ({ page }) => {
-  await enterFestival(page, 'leviza2026');
-  await freezeSimTime(page, LEVIZA_SIMTIME);
+  await enterFestival(page, 'leviza2026', LEVIZA_SIMTIME);
   await page.waitForSelector('.poster-card, .plist-item', { timeout: 8000 });
 
   const content = await page.content();
@@ -311,8 +306,7 @@ test('T11 — cerrar alternativas en Mi Plan cierra el panel', async ({ page }) 
 // Bug: loadFestival() inicializaba en 'grid' sin importar el día activo.
 // ─────────────────────────────────────────────────────────────────────────────
 test('T12 — día específico carga en vista lista por defecto', async ({ page }) => {
-  await enterFestival(page, 'leviza2026');
-  await freezeSimTime(page, LEVIZA_SIMTIME);
+  await enterFestival(page, 'leviza2026', LEVIZA_SIMTIME);
 
   // Leviza con simTime en medianoche JUE → activeDay = 'JUE 14' (día específico)
   await page.waitForSelector('.plist-item, .poster-card', { timeout: 8000 });
@@ -336,8 +330,7 @@ test('T12 — día específico carga en vista lista por defecto', async ({ page 
 // Bug: .hdr-fest-dates sin white-space:nowrap → "MAY" se separaba de "14-17"
 // ─────────────────────────────────────────────────────────────────────────────
 test('T13 — topbar fecha en una sola línea', async ({ page }) => {
-  await enterFestival(page, 'leviza2026');
-  await freezeSimTime(page, LEVIZA_SIMTIME);
+  await enterFestival(page, 'leviza2026', LEVIZA_SIMTIME);
   await page.waitForSelector('.hdr-fest-dates', { timeout: 5000 });
 
   const lineCount = await page.evaluate(() => {

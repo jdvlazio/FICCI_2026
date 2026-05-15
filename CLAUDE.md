@@ -3,7 +3,7 @@
 > No editar a mano — los cambios se sobreescriben en el próximo deploy.
 > Para modificar secciones estáticas, editar el template en el script.
 >
-> Último commit: `48fb360 feat(monitoring): synthetic monitoring — cron cada 6h corre regression tests contra producción`
+> Último commit: `c7c817b fix(tests): T07 abre sheet via JS — independiente del día activo (bug: La Suprema no visible en VIE 15)`
 
 ---
 
