@@ -4747,7 +4747,7 @@ function renderMiPlanCalendar(){
         <div class="col-end">
           <button class="icon-btn-circle ag-fi-btn del" data-rmt="${safeT}" onclick="removeFromAgenda(this.dataset.rmt);event.stopPropagation()">${ICONS.x}</button>
         </div>
-      </div>${_expandedFilm===(s._title||'')+(s.day||'')+(s.time||'')?`<div class="film-alts">${renderFilmAlternatives(s._title,s.day,s.time)}</div>`:''}${(()=>{const _mf=FILMS.find(fi=>fi.title===s._title&&fi.day===s.day&&fi.time===s.time);if(!_mf||!_mf.is_cortos||!_mf.film_list||!_mf.film_list.length) return'';return`<div class="mplan-prog-list">${_mf.film_list.map((item,n)=>_mkCortoItemHtml(item,n)).join('')}</div>`;})()}`;
+      </div>${_expandedFilm===(s._title||'')+(s.day||'')+(s.time||'')?`<div class="film-alts">${renderFilmAlternatives(s._title,s.day,s.time)}</div>`:''}${(()=>{const _mf=FILMS.find(fi=>fi.title===s._title&&fi.day===s.day&&fi.time===s.time);if(!_mf||!_mf.is_cortos||!_mf.film_list||!_mf.film_list.length) return'';return`<div class="mplan-prog-list">${_mf.film_list.map((item,n)=>_mkCortoItemHtml(item,n,{section:_mf.section||''})).join('')}</div>`;})()}`;
     });
   }
   listHtml+='</div>';
@@ -6076,7 +6076,7 @@ function mkAgendaRow(s, mode='saved'){
     :'';
   const altsHtml=isExpanded&&mode==='saved'?renderFilmAlternatives(title,s.day,s.time):'';
   const _progBtn=(()=>{const _mf=f;if(!_mf||!_mf.is_cortos||!_mf.film_list||!_mf.film_list.length)return'';return`<button class="row-xs mplan-prog-toggle" onclick="toggleMplanProg(this,event)">${ICONS.chevronR} ${t('label_programa')}</button>`;})();
-  const _progList=(()=>{const _mf=f;if(!_mf||!_mf.is_cortos||!_mf.film_list||!_mf.film_list.length)return'';return`<div class="mplan-prog-list">${_mf.film_list.map((item,n)=>_mkCortoItemHtml(item,n)).join('')}</div>`;})();
+  const _progList=(()=>{const _mf=f;if(!_mf||!_mf.is_cortos||!_mf.film_list||!_mf.film_list.length)return'';return`<div class="mplan-prog-list">${_mf.film_list.map((item,n)=>_mkCortoItemHtml(item,n,{section:_mf.section||''})).join('')}</div>`;})();
   return`<div class="saved-item${isDone?' done':''}">
     ${_ph}
     <div class="saved-time">${s.time}</div>
@@ -6095,13 +6095,12 @@ function mkAgendaRow(s, mode='saved'){
 // Fuente única de verdad para el item de corto en lista.
 // Usado en: pel-sheet (cortos list), Mi Plan (mplan-prog-list x2).
 // opts.cls      → clase CSS del row (default: 'mplan-prog-item')
-// opts.onclick  → atributo onclick completo
+// opts.section  → sección del programa padre — para poster generativo con color correcto
 // opts.ratingEl → HTML del botón de calificación (opcional)
-function _mkCortoItemHtml(item, n, {cls='mplan-prog-item', ratingEl=''}={}){
-  const thumb=getCortoItemPoster(item);
-  const thumbHtml=thumb
-    ?`<img src="${thumb}" class="c-film-thumb" loading="lazy" onerror="this.remove()" alt="">`
-    :'<div class="c-film-thumb-ph">🎬</div>';
+function _mkCortoItemHtml(item, n, {cls='mplan-prog-item', section='', ratingEl=''}={}){
+  // Mismo fallback que openCortoSheet: real → generativo. Nunca emoji.
+  const thumb=getCortoItemPoster(item)||makeProgramPoster(item.title,item.duration||'',section);
+  const thumbHtml=`<img src="${thumb}" class="c-film-thumb" loading="lazy" onerror="this.remove()" alt="">`;
   // data-* attrs — nunca interpolar strings con contenido variable en onclick
   const _dt=encodeURIComponent(item.title||'');
   const _dc=encodeURIComponent(item.country||'');
@@ -8751,6 +8750,7 @@ function openPelSheet(title){
 :`<button class="corto-rate-btn" data-title="${item.title||''}" onclick="event.stopPropagation();closePelSheet();setTimeout(()=>openRatingSheet(this.dataset.title),100)">★</button>`;
       return _mkCortoItemHtml(item,n,{
         cls:'pel-sheet-corto-item',
+        section:f.section||'',
         ratingEl
       });
     }).join('');
