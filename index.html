@@ -2860,6 +2860,10 @@ const _I18N = {
     "empty_sin_funciones": "Sin funciones disponibles",
     "plan_empty_hueco": "No hay funciones disponibles para este hueco.",
     "plan_en_curso": "EN CURSO · entró hace",
+    "plan_termina_en": "Termina en",
+    "plan_en_min": "En",
+    "plan_retraso": "¿Retraso?",
+    "label_en_curso": "En curso",
     "plan_termino_hace": "Terminó hace",
     "misc_pelicula": "película",
     "plan_ver_dia": "Ver día",
@@ -3168,6 +3172,10 @@ const _I18N = {
     "empty_sin_funciones": "No screenings available",
     "plan_empty_hueco": "No screenings available for this gap.",
     "plan_en_curso": "NOW SHOWING · started",
+    "plan_termina_en": "Ends in",
+    "plan_en_min": "In",
+    "plan_retraso": "Delay?",
+    "label_en_curso": "Now showing",
     "plan_termino_hace": "Ended",
     "misc_pelicula": "film",
     "plan_ver_dia": "See day",
@@ -6311,7 +6319,7 @@ function renderNextStrip(schedule){
       </div>`;
     } else {
       delayHtml=`<div class="delay-row">
-        <span class="delay-lbl">¿Retraso?</span>
+        <span class="delay-lbl">${t('plan_retraso')}</span>
         ${[10,15,20,30].map(m=>`<button class="delay-btn" onclick="setDelay('${safeT}','${item.day}','${item.time}',${m})" title="Reportar +${m} min">+${m}</button>`).join('')}
       </div>`;
     }
@@ -6722,11 +6730,11 @@ function renderContextualHeader(){
     const _endMin=toMin(next.time)+parseDur(next.duration)+(filmDelays[_delayKey(next)]||0);
     const _leftMin=Math.max(0,_endMin-_nowMin);
     const badge=isNow
-      ?`<span class="ctx-next-badge ending">Termina en ${_leftMin} min</span>`
-      :`<span class="ctx-next-badge">En ${minsUntil} min</span>`;
+      ?`<span class="ctx-next-badge ending">${t('plan_termina_en')} ${_leftMin} min</span>`
+      :`<span class="ctx-next-badge">${t('plan_en_min')} ${minsUntil} min</span>`;
     const _filmObj=FILMS.find(f=>f.title===next._title);
     const _isEvent=_filmObj&&_filmObj.type==='event';
-    const eyebrowLabel=isNow?'En curso':(_isEvent?t('misc_prox_evento'):t('misc_prox_funcion'));
+    const eyebrowLabel=isNow?t('label_en_curso'):(_isEvent?t('misc_prox_evento'):t('misc_prox_funcion'));
 
     // ── Delay controls — solo cuando está en curso ──
     let delayHtml='';
@@ -6762,7 +6770,7 @@ function renderContextualHeader(){
         }
       }else{
         delayHtml=`<div class="delay-row">
-          <span class="delay-lbl">¿Retraso?</span>
+          <span class="delay-lbl">${t('plan_retraso')}</span>
           ${[10,15,20,30].map(m=>`<button class="delay-btn" onclick="setDelay('${safeT}','${next.day}','${next.time}',${m})" title="Reportar +${m} min">+${m}</button>`).join('')}
         </div>`;
       }
