@@ -2864,6 +2864,9 @@ const _I18N = {
     "plan_en_min": "En",
     "plan_retraso": "¿Retraso?",
     "label_en_curso": "En curso",
+    "misc_ahora": "AHORA",
+    "plan_cabe_hueco": "Cabe en tu hueco",
+    "plan_tu_dia_en": "Tu {dia} en",
     "plan_termino_hace": "Terminó hace",
     "misc_pelicula": "película",
     "plan_ver_dia": "Ver día",
@@ -3176,6 +3179,9 @@ const _I18N = {
     "plan_en_min": "In",
     "plan_retraso": "Delay?",
     "label_en_curso": "Now showing",
+    "misc_ahora": "NOW",
+    "plan_cabe_hueco": "Fits in your gap",
+    "plan_tu_dia_en": "Your {dia} at",
     "plan_termino_hace": "Ended",
     "misc_pelicula": "film",
     "plan_ver_dia": "See day",
@@ -6814,7 +6820,7 @@ function renderContextualHeader(){
       const vc2=vcfg(gapSuggestion.venue);
       const dur=parseInt(gapSuggestion.duration)||DEFAULT_DURATION_MIN;
       const safeT=gapSuggestion.title.replace(/'/g,"&#39;");
-      return`<div class="txt-gray-sm-mb1">Cabe en tu hueco</div>
+      return`<div class="txt-gray-sm-mb1">${t('plan_cabe_hueco')}</div>
         <div class="ctx-suggest-card js-open-pel" data-title="${f.title}" style="cursor:pointer">
           <div class="ctx-suggest-badge">${gapSuggestion.time}<br>${dur}m</div>
           <div class="ctx-suggest-info">
@@ -6862,7 +6868,7 @@ function renderContextualHeader(){
     return`<div class="ctx-header">
       <div class="ctx-eyebrow" style="color:var(--gray)">
         <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path stroke-linecap="round" stroke-linejoin="round" d="M21.752 15.002A9.718 9.718 0 0118 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 003 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 009.002-5.998z"/></svg>
-        Tu ${dayName.toLowerCase()} en ${(FESTIVAL_CONFIG[_activeFestId]||{}).name||'el festival'}
+        ${_lang==='en'?t('plan_tu_dia_en').replace('{dia}',dayName):('Tu '+dayName.toLowerCase()+' en '+(FESTIVAL_CONFIG[_activeFestId]||{}).name||'el festival')}
       </div>
       <div class="ctx-main-title">${total} ${t('misc_pelicula')}${total!==1?'s':''} ${total===1?t('plan_vista_hoy'):t('plan_vistas_hoy')}</div>
       ${pendingRating.length?`<div class="mb-3 ctx-sub">${pendingRating.length===1?t('plan_una_pendiente'):t('empty_calificar')}</div>`:`<div class="mb-3"></div>`}
@@ -9496,7 +9502,7 @@ function renderProgramaList(){
       const vc=vcfg(f.venue);
       const src=getFilmPoster(f)||'';
       const _isEdList=_isEditorialPoster(f);
-      const nowBadge=isNow?`<span class="film-check-badge">AHORA</span>`:'';
+      const nowBadge=isNow?`<span class="film-check-badge">${t('misc_ahora')}</span>`:'';
       const notice=NOTICES.find(n=>n.title===f.title&&n.festival===((_activeFestId||_DEFAULT_FEST_ID)));
       const noticeBadge=notice?`<span class="notice-badge">${notice.type==='cancelled'?t('notice_cancelada'):t('notice_reprog_short')}</span>`:'';
       const noticeNote=notice&&notice.type==='cancelled'?`<div class="notice-detail-amber">${t('plan_fecha_pendiente')}</div>`:
@@ -9806,7 +9812,7 @@ function render(){
       ?`<img class="img-cover" src="${posterSrc}" loading="lazy" data-title="${f.title.replace(/"/g,'&quot;')}" onerror="_posterErr(this)" alt="">`
       :``;
     const progBadge='';//REMOVED
-    const nowBadge=isNow?`<div class="poster-now">AHORA</div>`:'';
+    const nowBadge=isNow?`<div class="poster-now">${t('misc_ahora')}</div>`:'';
     const _notice=NOTICES.find(n=>n.title===f.title&&n.festival===(_activeFestId||_DEFAULT_FEST_ID));
     const pastBadge=_notice?`<div class="badge-past poster-past-badge">${_notice.type==='cancelled'?t('notice_cancelada_short'):t('notice_reprog_short')}</div>`:'';
 
