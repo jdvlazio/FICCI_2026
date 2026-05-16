@@ -2864,6 +2864,8 @@ const _I18N = {
     "plan_en_min": "En",
     "plan_retraso": "¿Retraso?",
     "label_en_curso": "En curso",
+    "misc_retraso": "retraso",
+    "plan_termina": "termina",
     "misc_ahora": "AHORA",
     "plan_cabe_hueco": "Cabe en tu hueco",
     "plan_tu_dia_en": "Tu {dia} en",
@@ -3179,6 +3181,8 @@ const _I18N = {
     "plan_en_min": "In",
     "plan_retraso": "Delay?",
     "label_en_curso": "Now showing",
+    "misc_retraso": "delay",
+    "plan_termina": "ends",
     "misc_ahora": "NOW",
     "plan_cabe_hueco": "Fits in your gap",
     "plan_tu_dia_en": "Your {dia} at",
@@ -6306,7 +6310,7 @@ function renderNextStrip(schedule){
   if(inProg){
     const effectiveEnd=new Date(item.end.getTime()+delayMins*60000);
     const leftMin=Math.round((effectiveEnd-now)/60000);
-    label=delayMins>0?`En curso · +${delayMins} min retraso · termina ~${minToStr(item.endMin+delayMins)}`:`En curso · termina en ${leftMin} min`;ico=ICONS.play;
+    label=delayMins>0?`${t('label_en_curso')} · +${delayMins} min ${t('misc_retraso')} · ${t('plan_termina')} ~${minToStr(item.endMin+delayMins)}`:`${t('label_en_curso')} · ${t('plan_termina_en')} ${leftMin} min`;ico=ICONS.play;
   } else {
     const mins=Math.ceil((item.start-now)/60000);
     label=mins<60?`En ${mins} min`:`En ${Math.floor(mins/60)}h${mins%60?` ${mins%60}min`:''}`;ico=ICONS.clock;

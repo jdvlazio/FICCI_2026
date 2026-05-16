@@ -412,6 +412,54 @@ try:
 except Exception as e:
     warn(check, f'no se pudo verificar i18n: {e}')
 
+# ── CHECK: i18n-hardcoded ─────────────────────────────────────────────────────
+# Detecta strings de UI conocidos hardcodeados en JS sin pasar por t().
+# La búsqueda excluye la zona de los diccionarios i18n (antes de "function t(key")
+# para evitar falsos positivos — esos strings aparecen legítimamente en los dicts.
+# Cada string encontrado en auditoría Chrome debe añadirse aquí.
+check = 'i18n-hardcoded'
+try:
+    script_full = content[content.find('<script>'):content.rfind('</script>')]
+    # Boundary: todo DESPUÉS de la definición de t() es código de app
+    t_fn_idx = script_full.find('function t(key')
+    code_only = script_full[t_fn_idx:] if t_fn_idx > 0 else script_full
+
+    # Strings de UI que deben ir siempre por t() — nunca hardcodeados
+    # Fuente: auditorías Chrome EN/ES. Añadir aquí cada nuevo hallazgo.
+    UI_STRINGS_MUST_USE_T = [
+        # MY PLAN — durante festival
+        'En curso', 'AHORA', 'Termina en', '¿Retraso?', 'Cabe en tu hueco',
+        # Checkin / unconfirmed
+        'sin confirmar', 'anteriores sin confirmar', 'anterior sin confirmar',
+        # Botones y CTAs
+        'Verificando', 'Confirmar',
+        # Subtítulos auth
+        'Ingresa tu email y te enviamos',
+        # Labels generales
+        'sinopsis', 'Luego',
+    ]
+
+    # Eliminar comentarios de línea antes de buscar
+    import re as _re2
+    code_no_comments = _re2.sub(r'//[^\n]*', '', code_only)
+
+    hardcoded_found = []
+    for s in UI_STRINGS_MUST_USE_T:
+        # Buscar como string literal: 'texto' o "texto" o dentro de template >texto<
+        in_single = f"'{s}'" in code_no_comments
+        in_double = f'"{s}"' in code_no_comments
+        in_template = f'>{s}<' in code_no_comments or f'>{s} ' in code_no_comments
+        if in_single or in_double or in_template:
+            hardcoded_found.append(s)
+
+    if hardcoded_found:
+        for s in hardcoded_found:
+            fail(check, f"'{s}' hardcodeado en JS — debe usar t()")
+    else:
+        ok(check, f'{len(UI_STRINGS_MUST_USE_T)} strings de UI verificados — ninguno hardcodeado')
+except Exception as e:
+    warn(check, f'no se pudo verificar hardcoding: {e}')
+
 # ── JS Syntax (Node.js) ───────────────────────────────────────────────────────
 # ── CHECK: tasks-sync ─────────────────────────────────────────────────────────
 # Detecta features con tasks.md donde cero tareas están completadas ([x]).
