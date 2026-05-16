@@ -378,6 +378,8 @@ h1.hdr-wordmark,.hdr-wordmark{margin:0;font-family:var(--font);font-size:var(--t
 .auth-msg{font-size:var(--t-sm);color:#e05;margin-top:var(--sp-1)}
 .auth-cancel{display:block;text-align:center;margin-top:var(--sp-3);font-size:var(--t-sm);color:var(--gray2);cursor:pointer;padding:var(--sp-1) 0}
 .auth-check-icon{font-size:32px;margin-bottom:var(--sp-3)}
+.auth-delete-btn{display:block;width:100%;padding:12px;margin-top:8px;border-radius:12px;border:1px solid var(--red,#e53e3e);background:transparent;color:var(--red,#e53e3e);font-size:15px;font-weight:600;cursor:pointer;transition:background .2s,color .2s;}
+.auth-delete-btn:hover{background:var(--red,#e53e3e);color:#fff;}
 .auth-signout-btn{width:100%;padding:var(--sp-btn);background:var(--surf-2);color:var(--white-60);border:1px solid var(--bdr);border-radius:var(--r);font-size:var(--t-base);cursor:pointer;margin-top:var(--sp-3)}
 /* Barra de contexto — Opción C
    Vive dentro de .hdr (padding:var(--sp-5)).
@@ -2903,6 +2905,11 @@ const _I18N = {
     "auth_enviar": "Enviar código",
     "auth_revisa": "Revisá tu email",
     "auth_cerrar": "Cerrar sesión",
+    "auth_eliminar": "Eliminar cuenta",
+    "auth_eliminar_confirm": "¿Eliminar tu cuenta?",
+    "auth_eliminar_desc": "Se eliminarán tu cuenta y tu plan guardado. Esta acción no se puede deshacer.",
+    "auth_eliminar_btn": "Sí, eliminar",
+    "auth_eliminando": "Eliminando…",
     "badge_inscripcion": "INSCRIPCIÓN",
     "badge_inscripcion_prev": "INSCRIPCIÓN PREVIA",
     "filter_sin_peliculas": "Sin películas para este filtro",
@@ -3221,6 +3228,11 @@ const _I18N = {
     "auth_enviar": "Send code",
     "auth_revisa": "Check your email",
     "auth_cerrar": "Sign out",
+    "auth_eliminar": "Delete account",
+    "auth_eliminar_confirm": "Delete your account?",
+    "auth_eliminar_desc": "Your account and saved plan will be deleted. This cannot be undone.",
+    "auth_eliminar_btn": "Yes, delete",
+    "auth_eliminando": "Deleting…",
     "badge_inscripcion": "RSVP",
     "badge_inscripcion_prev": "RSVP REQUIRED",
     "filter_sin_peliculas": "Nothing matches this filter",
@@ -4267,6 +4279,41 @@ function _showSignedInSheet(){
   document.getElementById('auth-sheet-step3').style.display='block';
   document.getElementById('auth-signed-email').textContent=_sbUser?.email||'';
   if(s){s.style.display='flex';setTimeout(()=>s.classList.add('open'),10);}
+}
+async function deleteAccount(){
+  if(!_sb||!_sbUser) return;
+  const btn=document.getElementById('auth-delete-btn');
+  if(!btn) return;
+  // Confirmación inline
+  if(!btn.dataset.confirmed){
+    btn.dataset.confirmed='1';
+    btn.textContent=t('auth_eliminar_confirm');
+    btn.style.background='var(--red,#e53e3e)';
+    setTimeout(()=>{
+      if(btn.dataset.confirmed){
+        delete btn.dataset.confirmed;
+        btn.textContent=t('auth_eliminar');
+        btn.style.background='';
+      }
+    },4000);
+    return;
+  }
+  // Segunda pulsación — ejecutar
+  btn.disabled=true;
+  btn.textContent=t('auth_eliminando');
+  try{
+    const{error}=await _sb.rpc('delete_user');
+    if(error) throw error;
+    await _sbSignOut();
+    closeAuthSheet();
+    showToast(t('auth_eliminar'),'✓');
+  }catch(e){
+    btn.disabled=false;
+    btn.textContent=t('auth_eliminar');
+    delete btn.dataset.confirmed;
+    btn.style.background='';
+    showToast('Error: '+e.message,'✗');
+  }
 }
 async function signOutAndClose(){
   await _sbSignOut();
@@ -11019,6 +11066,7 @@ function _cortoSheetPosterErr(img){
       <div class="auth-sheet-sub" id="auth-signed-email" style="color:var(--white)"></div>
       <div class="mt-2 auth-sheet-sub"><span data-i18n="plan_sincroniza">Tu plan se sincroniza automáticamente entre todos tus dispositivos.</span></div>
       <button class="auth-signout-btn" onclick="signOutAndClose()" data-i18n="auth_cerrar">Cerrar sesión</button>
+      <button class="auth-delete-btn" id="auth-delete-btn" onclick="deleteAccount()" data-i18n="auth_eliminar">Eliminar cuenta</button>
       <span class="auth-cancel" onclick="closeAuthSheet()" data-i18n="misc_cancelar">Cancelar</span>
     </div>
   </div>
